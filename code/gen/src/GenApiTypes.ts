@@ -136,7 +136,8 @@ export default class GenApiTypes {
         for (const aliasName of Object.keys(schema.models)) {
             const model = schema.models[aliasName];
             // remove . from modelId
-
+            //if (aliasName.startsWith('price.DedicatedCloud.2016v4'))
+            //    console.log('in price.DedicatedCloud.2016v4');
             if (~model.id.indexOf('.')) {
                 // console.log('hardFixing typeId: ' + model.id)
                 model.id = model.id.replace(/\./g, '_');

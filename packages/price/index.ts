@@ -1,0 +1,9957 @@
+import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
+
+export namespace OVH {
+export namespace order { //  CurrencyCodeEnum, Price
+    //order.CurrencyCodeEnum
+    export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
+    //order.Price
+    // fullName: order.Price.Price
+    export interface Price {
+        currencyCode?: OVH.order.CurrencyCodeEnum;
+        text?: string;
+        value?: number;
+    }
+}
+export namespace price { //  Dedicated, DedicatedCloud, Domain, Email, Hosting, Hpcspot, License, OverTheBox, Pack, Saas, Telephony, Vps, Xdsl
+    export namespace Dedicated { //  Nasha, Server
+        export namespace Nasha { //  ModelEnum
+            //price.Dedicated.Nasha.ModelEnum
+            export type ModelEnum = "1200g" | "13200g" | "19200g" | "2400g" | "26400g" | "3600g" | "7200g"
+        }
+        export namespace Server { //  AntiDDoSProEnum, BackupStorageEnum, FirewallEnum, IpEnum, ProfessionalUseEnum
+            //price.Dedicated.Server.AntiDDoSProEnum
+            export type AntiDDoSProEnum = "sk"
+            //price.Dedicated.Server.BackupStorageEnum
+            export type BackupStorageEnum = "1000" | "10000" | "500" | "5000"
+            //price.Dedicated.Server.FirewallEnum
+            export type FirewallEnum = "asa5505" | "asa5510" | "asa5520"
+            //price.Dedicated.Server.IpEnum
+            export type IpEnum = "kimsufi" | "parking"
+            //price.Dedicated.Server.ProfessionalUseEnum
+            export type ProfessionalUseEnum = "bhg" | "eg" | "hg" | "mg" | "sp"
+        }
+    }
+    export namespace DedicatedCloud { //  _2013v1, _2014v1, _2014v2, _2016v1, _2016v2, _2016v3, _2016v4, _2016v5, _2016v6, _2016v7, _2018v1, _2018v2, _2018v3, _2018v4, _2018v5, _2018v6, _2018v7
+        export namespace _2013v1 { //  Bhs1a, Rbx2a, Sbg1a
+            export namespace Bhs1a { //  Filer, Host
+                export namespace Filer { //  HourlyEnum, MonthlyEnum
+                    //price.DedicatedCloud._2013v1.Bhs1a.Filer.HourlyEnum
+                    export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200g-GB" | "nfs-3300-GB" | "nfs-3600-GB" | "nfs-6600-GB"
+                    //price.DedicatedCloud._2013v1.Bhs1a.Filer.MonthlyEnum
+                    export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-3300-GB" | "nfs-3600-GB" | "nfs-6600-GB"
+                }
+                export namespace Host { //  HourlyEnum, MonthlyEnum
+                    //price.DedicatedCloud._2013v1.Bhs1a.Host.HourlyEnum
+                    export type HourlyEnum = "L" | "L+" | "L++" | "L2" | "L2+" | "M" | "S" | "S++" | "XL" | "XL+"
+                    //price.DedicatedCloud._2013v1.Bhs1a.Host.MonthlyEnum
+                    export type MonthlyEnum = "L" | "L+" | "L++" | "L2" | "L2+" | "M" | "S" | "S++" | "XL" | "XL+"
+                }
+            }
+            export namespace Rbx2a { //  Filer, Host
+                export namespace Filer { //  HourlyEnum, MonthlyEnum
+                    //price.DedicatedCloud._2013v1.Rbx2a.Filer.HourlyEnum
+                    export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200g-GB" | "nfs-3300-GB" | "nfs-3600-GB" | "nfs-6600-GB"
+                    //price.DedicatedCloud._2013v1.Rbx2a.Filer.MonthlyEnum
+                    export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-3300-GB" | "nfs-3600-GB" | "nfs-6600-GB"
+                }
+                export namespace Host { //  HourlyEnum, MonthlyEnum
+                    //price.DedicatedCloud._2013v1.Rbx2a.Host.HourlyEnum
+                    export type HourlyEnum = "L" | "L+" | "L++" | "L2" | "L2+" | "M" | "S" | "S++" | "XL" | "XL+"
+                    //price.DedicatedCloud._2013v1.Rbx2a.Host.MonthlyEnum
+                    export type MonthlyEnum = "L" | "L+" | "L++" | "L2" | "L2+" | "M" | "S" | "S++" | "XL" | "XL+"
+                }
+            }
+            export namespace Sbg1a { //  Filer, Host
+                export namespace Filer { //  HourlyEnum, MonthlyEnum
+                    //price.DedicatedCloud._2013v1.Sbg1a.Filer.HourlyEnum
+                    export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200g-GB" | "nfs-3300-GB" | "nfs-3600-GB" | "nfs-6600-GB"
+                    //price.DedicatedCloud._2013v1.Sbg1a.Filer.MonthlyEnum
+                    export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-3300-GB" | "nfs-3600-GB" | "nfs-6600-GB"
+                }
+                export namespace Host { //  HourlyEnum, MonthlyEnum
+                    //price.DedicatedCloud._2013v1.Sbg1a.Host.HourlyEnum
+                    export type HourlyEnum = "L" | "L+" | "L++" | "L2" | "L2+" | "M" | "S" | "S++" | "XL" | "XL+"
+                    //price.DedicatedCloud._2013v1.Sbg1a.Host.MonthlyEnum
+                    export type MonthlyEnum = "L" | "L+" | "L++" | "L2" | "L2+" | "M" | "S" | "S++" | "XL" | "XL+"
+                }
+            }
+        }
+        export namespace _2014v1 { //  Bhs1a, Rbx2a, Rbx2b, Sbg1a
+            export namespace Bhs1a { //  Enterprise, Infrastructure
+                export namespace Enterprise { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2014v1.Bhs1a.Enterprise.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2014v1.Bhs1a.Enterprise.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2014v1.Bhs1a.Enterprise.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2014v1.Bhs1a.Enterprise.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2014v1.Bhs1a.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2014v1.Bhs1a.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2014v1.Bhs1a.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2014v1.Bhs1a.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+            }
+            export namespace Rbx2a { //  Enterprise, Infrastructure
+                export namespace Enterprise { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2014v1.Rbx2a.Enterprise.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2014v1.Rbx2a.Enterprise.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2014v1.Rbx2a.Enterprise.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2014v1.Rbx2a.Enterprise.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2014v1.Rbx2a.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2014v1.Rbx2a.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2014v1.Rbx2a.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2014v1.Rbx2a.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+            }
+            export namespace Rbx2b { //  Enterprise, Infrastructure
+                export namespace Enterprise { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2014v1.Rbx2b.Enterprise.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2014v1.Rbx2b.Enterprise.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2014v1.Rbx2b.Enterprise.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2014v1.Rbx2b.Enterprise.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2014v1.Rbx2b.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2014v1.Rbx2b.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2014v1.Rbx2b.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2014v1.Rbx2b.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+            }
+            export namespace Sbg1a { //  Enterprise, Infrastructure
+                export namespace Enterprise { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2014v1.Sbg1a.Enterprise.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2014v1.Sbg1a.Enterprise.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2014v1.Sbg1a.Enterprise.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2014v1.Sbg1a.Enterprise.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2014v1.Sbg1a.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2014v1.Sbg1a.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2014v1.Sbg1a.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2014v1.Sbg1a.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+            }
+        }
+        export namespace _2014v2 { //  Bhs1a, Rbx2a, Rbx2b, Sbg1a
+            export namespace Bhs1a { //  Enterprise, Infrastructure
+                export namespace Enterprise { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2014v2.Bhs1a.Enterprise.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2014v2.Bhs1a.Enterprise.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2014v2.Bhs1a.Enterprise.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2014v2.Bhs1a.Enterprise.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2014v2.Bhs1a.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2014v2.Bhs1a.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2014v2.Bhs1a.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2014v2.Bhs1a.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+            }
+            export namespace Rbx2a { //  Enterprise, Infrastructure
+                export namespace Enterprise { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2014v2.Rbx2a.Enterprise.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2014v2.Rbx2a.Enterprise.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2014v2.Rbx2a.Enterprise.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2014v2.Rbx2a.Enterprise.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2014v2.Rbx2a.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2014v2.Rbx2a.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2014v2.Rbx2a.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2014v2.Rbx2a.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+            }
+            export namespace Rbx2b { //  Enterprise, Infrastructure
+                export namespace Enterprise { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2014v2.Rbx2b.Enterprise.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2014v2.Rbx2b.Enterprise.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2014v2.Rbx2b.Enterprise.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2014v2.Rbx2b.Enterprise.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2014v2.Rbx2b.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2014v2.Rbx2b.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2014v2.Rbx2b.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2014v2.Rbx2b.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+            }
+            export namespace Sbg1a { //  Enterprise, Infrastructure
+                export namespace Enterprise { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2014v2.Sbg1a.Enterprise.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2014v2.Sbg1a.Enterprise.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2014v2.Sbg1a.Enterprise.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2014v2.Sbg1a.Enterprise.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2014v2.Sbg1a.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2014v2.Sbg1a.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2014v2.Sbg1a.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2014v2.Sbg1a.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+            }
+        }
+        export namespace _2016v1 { //  Bhs1a, Rbx2a, Rbx2b, Sbg1a
+            export namespace Bhs1a { //  Enterprise, Infrastructure
+                export namespace Enterprise { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v1.Bhs1a.Enterprise.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v1.Bhs1a.Enterprise.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v1.Bhs1a.Enterprise.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v1.Bhs1a.Enterprise.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v1.Bhs1a.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v1.Bhs1a.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v1.Bhs1a.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v1.Bhs1a.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+            }
+            export namespace Rbx2a { //  Enterprise, Infrastructure
+                export namespace Enterprise { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v1.Rbx2a.Enterprise.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v1.Rbx2a.Enterprise.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v1.Rbx2a.Enterprise.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v1.Rbx2a.Enterprise.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v1.Rbx2a.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v1.Rbx2a.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v1.Rbx2a.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v1.Rbx2a.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+            }
+            export namespace Rbx2b { //  Enterprise, Infrastructure
+                export namespace Enterprise { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v1.Rbx2b.Enterprise.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v1.Rbx2b.Enterprise.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v1.Rbx2b.Enterprise.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v1.Rbx2b.Enterprise.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v1.Rbx2b.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v1.Rbx2b.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v1.Rbx2b.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v1.Rbx2b.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+            }
+            export namespace Sbg1a { //  Enterprise, Infrastructure
+                export namespace Enterprise { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v1.Sbg1a.Enterprise.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v1.Sbg1a.Enterprise.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v1.Sbg1a.Enterprise.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v1.Sbg1a.Enterprise.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v1.Sbg1a.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v1.Sbg1a.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v1.Sbg1a.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v1.Sbg1a.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+            }
+        }
+        export namespace _2016v2 { //  Bhs1a, Rbx2a, Rbx2b, Sbg1a
+            export namespace Bhs1a { //  Enterprise, Infrastructure
+                export namespace Enterprise { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v2.Bhs1a.Enterprise.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v2.Bhs1a.Enterprise.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v2.Bhs1a.Enterprise.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v2.Bhs1a.Enterprise.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v2.Bhs1a.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v2.Bhs1a.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v2.Bhs1a.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v2.Bhs1a.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+            }
+            export namespace Rbx2a { //  Enterprise, Infrastructure
+                export namespace Enterprise { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v2.Rbx2a.Enterprise.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v2.Rbx2a.Enterprise.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v2.Rbx2a.Enterprise.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v2.Rbx2a.Enterprise.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v2.Rbx2a.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v2.Rbx2a.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v2.Rbx2a.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v2.Rbx2a.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+            }
+            export namespace Rbx2b { //  Enterprise, Infrastructure
+                export namespace Enterprise { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v2.Rbx2b.Enterprise.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v2.Rbx2b.Enterprise.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v2.Rbx2b.Enterprise.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v2.Rbx2b.Enterprise.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v2.Rbx2b.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v2.Rbx2b.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v2.Rbx2b.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v2.Rbx2b.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+            }
+            export namespace Sbg1a { //  Enterprise, Infrastructure
+                export namespace Enterprise { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v2.Sbg1a.Enterprise.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v2.Sbg1a.Enterprise.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v2.Sbg1a.Enterprise.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v2.Sbg1a.Enterprise.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v2.Sbg1a.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v2.Sbg1a.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v2.Sbg1a.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v2.Sbg1a.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+            }
+        }
+        export namespace _2016v3 { //  Bhs1a, Rbx2a, Rbx2b, Sbg1a
+            export namespace Bhs1a { //  Enterprise, Infrastructure
+                export namespace Enterprise { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v3.Bhs1a.Enterprise.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v3.Bhs1a.Enterprise.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v3.Bhs1a.Enterprise.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v3.Bhs1a.Enterprise.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v3.Bhs1a.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v3.Bhs1a.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v3.Bhs1a.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v3.Bhs1a.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+            }
+            export namespace Rbx2a { //  Enterprise, Infrastructure
+                export namespace Enterprise { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v3.Rbx2a.Enterprise.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v3.Rbx2a.Enterprise.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v3.Rbx2a.Enterprise.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v3.Rbx2a.Enterprise.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v3.Rbx2a.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v3.Rbx2a.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v3.Rbx2a.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v3.Rbx2a.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+            }
+            export namespace Rbx2b { //  Enterprise, Infrastructure
+                export namespace Enterprise { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v3.Rbx2b.Enterprise.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v3.Rbx2b.Enterprise.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v3.Rbx2b.Enterprise.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v3.Rbx2b.Enterprise.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v3.Rbx2b.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v3.Rbx2b.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v3.Rbx2b.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v3.Rbx2b.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+            }
+            export namespace Sbg1a { //  Enterprise, Infrastructure
+                export namespace Enterprise { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v3.Sbg1a.Enterprise.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v3.Sbg1a.Enterprise.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v3.Sbg1a.Enterprise.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v3.Sbg1a.Enterprise.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v3.Sbg1a.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v3.Sbg1a.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v3.Sbg1a.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v3.Sbg1a.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+            }
+        }
+        export namespace _2016v4 { //  Bhs1a, Rbx2a, Rbx2b, Sbg1a
+            export namespace Bhs1a { //  Enterprise, Infrastructure
+                export namespace Enterprise { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v4.Bhs1a.Enterprise.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v4.Bhs1a.Enterprise.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v4.Bhs1a.Enterprise.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v4.Bhs1a.Enterprise.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v4.Bhs1a.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v4.Bhs1a.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v4.Bhs1a.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v4.Bhs1a.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+            }
+            export namespace Rbx2a { //  Enterprise, Infrastructure
+                export namespace Enterprise { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v4.Rbx2a.Enterprise.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v4.Rbx2a.Enterprise.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v4.Rbx2a.Enterprise.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v4.Rbx2a.Enterprise.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v4.Rbx2a.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v4.Rbx2a.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v4.Rbx2a.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v4.Rbx2a.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+            }
+            export namespace Rbx2b { //  Enterprise, Infrastructure
+                export namespace Enterprise { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v4.Rbx2b.Enterprise.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v4.Rbx2b.Enterprise.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v4.Rbx2b.Enterprise.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v4.Rbx2b.Enterprise.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v4.Rbx2b.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v4.Rbx2b.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v4.Rbx2b.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v4.Rbx2b.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+            }
+            export namespace Sbg1a { //  Enterprise, Infrastructure
+                export namespace Enterprise { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v4.Sbg1a.Enterprise.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v4.Sbg1a.Enterprise.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v4.Sbg1a.Enterprise.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v4.Sbg1a.Enterprise.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v4.Sbg1a.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v4.Sbg1a.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v4.Sbg1a.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v4.Sbg1a.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+            }
+        }
+        export namespace _2016v5 { //  Bhs1a, Rbx2a, Rbx2b, Sbg1a
+            export namespace Bhs1a { //  Enterprise, Infrastructure
+                export namespace Enterprise { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v5.Bhs1a.Enterprise.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v5.Bhs1a.Enterprise.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v5.Bhs1a.Enterprise.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v5.Bhs1a.Enterprise.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v5.Bhs1a.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v5.Bhs1a.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v5.Bhs1a.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v5.Bhs1a.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+            }
+            export namespace Rbx2a { //  Enterprise, Infrastructure
+                export namespace Enterprise { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v5.Rbx2a.Enterprise.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v5.Rbx2a.Enterprise.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v5.Rbx2a.Enterprise.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v5.Rbx2a.Enterprise.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v5.Rbx2a.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v5.Rbx2a.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v5.Rbx2a.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v5.Rbx2a.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+            }
+            export namespace Rbx2b { //  Enterprise, Infrastructure
+                export namespace Enterprise { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v5.Rbx2b.Enterprise.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v5.Rbx2b.Enterprise.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v5.Rbx2b.Enterprise.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v5.Rbx2b.Enterprise.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v5.Rbx2b.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v5.Rbx2b.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v5.Rbx2b.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v5.Rbx2b.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+            }
+            export namespace Sbg1a { //  Enterprise, Infrastructure
+                export namespace Enterprise { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v5.Sbg1a.Enterprise.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v5.Sbg1a.Enterprise.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v5.Sbg1a.Enterprise.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v5.Sbg1a.Enterprise.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v5.Sbg1a.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v5.Sbg1a.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v5.Sbg1a.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v5.Sbg1a.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+            }
+        }
+        export namespace _2016v6 { //  Bhs1a, Rbx2a, Rbx2b, Sbg1a
+            export namespace Bhs1a { //  Enterprise, Infrastructure
+                export namespace Enterprise { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v6.Bhs1a.Enterprise.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v6.Bhs1a.Enterprise.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v6.Bhs1a.Enterprise.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v6.Bhs1a.Enterprise.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v6.Bhs1a.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v6.Bhs1a.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v6.Bhs1a.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v6.Bhs1a.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+            }
+            export namespace Rbx2a { //  Enterprise, Infrastructure
+                export namespace Enterprise { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v6.Rbx2a.Enterprise.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v6.Rbx2a.Enterprise.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v6.Rbx2a.Enterprise.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v6.Rbx2a.Enterprise.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v6.Rbx2a.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v6.Rbx2a.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v6.Rbx2a.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v6.Rbx2a.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+            }
+            export namespace Rbx2b { //  Enterprise, Infrastructure
+                export namespace Enterprise { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v6.Rbx2b.Enterprise.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v6.Rbx2b.Enterprise.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v6.Rbx2b.Enterprise.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v6.Rbx2b.Enterprise.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v6.Rbx2b.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v6.Rbx2b.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v6.Rbx2b.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v6.Rbx2b.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+            }
+            export namespace Sbg1a { //  Enterprise, Infrastructure
+                export namespace Enterprise { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v6.Sbg1a.Enterprise.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v6.Sbg1a.Enterprise.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v6.Sbg1a.Enterprise.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v6.Sbg1a.Enterprise.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v6.Sbg1a.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v6.Sbg1a.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v6.Sbg1a.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v6.Sbg1a.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+            }
+        }
+        export namespace _2016v7 { //  Bhs1a, Rbx2a, Rbx2b, Sbg1a
+            export namespace Bhs1a { //  Enterprise, Infrastructure
+                export namespace Enterprise { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v7.Bhs1a.Enterprise.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v7.Bhs1a.Enterprise.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v7.Bhs1a.Enterprise.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v7.Bhs1a.Enterprise.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v7.Bhs1a.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v7.Bhs1a.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v7.Bhs1a.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v7.Bhs1a.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+            }
+            export namespace Rbx2a { //  Enterprise, Infrastructure
+                export namespace Enterprise { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v7.Rbx2a.Enterprise.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v7.Rbx2a.Enterprise.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v7.Rbx2a.Enterprise.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v7.Rbx2a.Enterprise.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v7.Rbx2a.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v7.Rbx2a.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v7.Rbx2a.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v7.Rbx2a.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+            }
+            export namespace Rbx2b { //  Enterprise, Infrastructure
+                export namespace Enterprise { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v7.Rbx2b.Enterprise.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v7.Rbx2b.Enterprise.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v7.Rbx2b.Enterprise.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v7.Rbx2b.Enterprise.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v7.Rbx2b.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v7.Rbx2b.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v7.Rbx2b.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v7.Rbx2b.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+            }
+            export namespace Sbg1a { //  Enterprise, Infrastructure
+                export namespace Enterprise { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v7.Sbg1a.Enterprise.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v7.Sbg1a.Enterprise.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v7.Sbg1a.Enterprise.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v7.Sbg1a.Enterprise.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v7.Sbg1a.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2016v7.Sbg1a.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2016v7.Sbg1a.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                        //price.DedicatedCloud._2016v7.Sbg1a.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
+                    }
+                }
+            }
+        }
+        export namespace _2018v1 { //  Bhs1a, Eri1c, Lim1c, Rbx2a, Rbx2b, Sbg1a, Waw1c
+            export namespace Bhs1a { //  Infrastructure
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v1.Bhs1a.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2018v1.Bhs1a.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v1.Bhs1a.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        //price.DedicatedCloud._2018v1.Bhs1a.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+            export namespace Eri1c { //  Infrastructure
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v1.Eri1c.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2018v1.Eri1c.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v1.Eri1c.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        //price.DedicatedCloud._2018v1.Eri1c.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+            export namespace Lim1c { //  Infrastructure
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v1.Lim1c.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2018v1.Lim1c.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v1.Lim1c.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        //price.DedicatedCloud._2018v1.Lim1c.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+            export namespace Rbx2a { //  Infrastructure
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v1.Rbx2a.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2018v1.Rbx2a.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v1.Rbx2a.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        //price.DedicatedCloud._2018v1.Rbx2a.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+            export namespace Rbx2b { //  Infrastructure
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v1.Rbx2b.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2018v1.Rbx2b.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v1.Rbx2b.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        //price.DedicatedCloud._2018v1.Rbx2b.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+            export namespace Sbg1a { //  Infrastructure
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v1.Sbg1a.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2018v1.Sbg1a.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v1.Sbg1a.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        //price.DedicatedCloud._2018v1.Sbg1a.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+            export namespace Waw1c { //  Infrastructure
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v1.Waw1c.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2018v1.Waw1c.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v1.Waw1c.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        //price.DedicatedCloud._2018v1.Waw1c.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+        }
+        export namespace _2018v2 { //  Bhs1a, Eri1c, Lim1c, Rbx2a, Rbx2b, Sbg1a, Waw1c
+            export namespace Bhs1a { //  Infrastructure
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v2.Bhs1a.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2018v2.Bhs1a.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v2.Bhs1a.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        //price.DedicatedCloud._2018v2.Bhs1a.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+            export namespace Eri1c { //  Infrastructure
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v2.Eri1c.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2018v2.Eri1c.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v2.Eri1c.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        //price.DedicatedCloud._2018v2.Eri1c.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+            export namespace Lim1c { //  Infrastructure
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v2.Lim1c.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2018v2.Lim1c.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v2.Lim1c.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        //price.DedicatedCloud._2018v2.Lim1c.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+            export namespace Rbx2a { //  Infrastructure
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v2.Rbx2a.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2018v2.Rbx2a.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v2.Rbx2a.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        //price.DedicatedCloud._2018v2.Rbx2a.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+            export namespace Rbx2b { //  Infrastructure
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v2.Rbx2b.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2018v2.Rbx2b.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v2.Rbx2b.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        //price.DedicatedCloud._2018v2.Rbx2b.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+            export namespace Sbg1a { //  Infrastructure
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v2.Sbg1a.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2018v2.Sbg1a.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v2.Sbg1a.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        //price.DedicatedCloud._2018v2.Sbg1a.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+            export namespace Waw1c { //  Infrastructure
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v2.Waw1c.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2018v2.Waw1c.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v2.Waw1c.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        //price.DedicatedCloud._2018v2.Waw1c.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+        }
+        export namespace _2018v3 { //  Bhs1a, Eri1c, Lim1c, Rbx2a, Rbx2b, Sbg1a, Waw1c
+            export namespace Bhs1a { //  Infrastructure
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v3.Bhs1a.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2018v3.Bhs1a.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v3.Bhs1a.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        //price.DedicatedCloud._2018v3.Bhs1a.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+            export namespace Eri1c { //  Infrastructure
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v3.Eri1c.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2018v3.Eri1c.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v3.Eri1c.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        //price.DedicatedCloud._2018v3.Eri1c.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+            export namespace Lim1c { //  Infrastructure
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v3.Lim1c.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2018v3.Lim1c.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v3.Lim1c.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        //price.DedicatedCloud._2018v3.Lim1c.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+            export namespace Rbx2a { //  Infrastructure
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v3.Rbx2a.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2018v3.Rbx2a.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v3.Rbx2a.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        //price.DedicatedCloud._2018v3.Rbx2a.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+            export namespace Rbx2b { //  Infrastructure
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v3.Rbx2b.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2018v3.Rbx2b.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v3.Rbx2b.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        //price.DedicatedCloud._2018v3.Rbx2b.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+            export namespace Sbg1a { //  Infrastructure
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v3.Sbg1a.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2018v3.Sbg1a.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v3.Sbg1a.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        //price.DedicatedCloud._2018v3.Sbg1a.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+            export namespace Waw1c { //  Infrastructure
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v3.Waw1c.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2018v3.Waw1c.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v3.Waw1c.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        //price.DedicatedCloud._2018v3.Waw1c.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+        }
+        export namespace _2018v4 { //  Bhs1a, Eri1c, Lim1c, Rbx2a, Rbx2b, Sbg1a, Waw1c
+            export namespace Bhs1a { //  Infrastructure
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v4.Bhs1a.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2018v4.Bhs1a.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v4.Bhs1a.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        //price.DedicatedCloud._2018v4.Bhs1a.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+            export namespace Eri1c { //  Infrastructure
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v4.Eri1c.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2018v4.Eri1c.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v4.Eri1c.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        //price.DedicatedCloud._2018v4.Eri1c.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+            export namespace Lim1c { //  Infrastructure
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v4.Lim1c.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2018v4.Lim1c.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v4.Lim1c.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        //price.DedicatedCloud._2018v4.Lim1c.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+            export namespace Rbx2a { //  Infrastructure
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v4.Rbx2a.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2018v4.Rbx2a.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v4.Rbx2a.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        //price.DedicatedCloud._2018v4.Rbx2a.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+            export namespace Rbx2b { //  Infrastructure
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v4.Rbx2b.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2018v4.Rbx2b.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v4.Rbx2b.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        //price.DedicatedCloud._2018v4.Rbx2b.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+            export namespace Sbg1a { //  Infrastructure
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v4.Sbg1a.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2018v4.Sbg1a.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v4.Sbg1a.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        //price.DedicatedCloud._2018v4.Sbg1a.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+            export namespace Waw1c { //  Infrastructure
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v4.Waw1c.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2018v4.Waw1c.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v4.Waw1c.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        //price.DedicatedCloud._2018v4.Waw1c.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+        }
+        export namespace _2018v5 { //  Bhs1a, Eri1c, Lim1c, Rbx2a, Rbx2b, Sbg1a, Waw1c
+            export namespace Bhs1a { //  Infrastructure
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v5.Bhs1a.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2018v5.Bhs1a.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v5.Bhs1a.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        //price.DedicatedCloud._2018v5.Bhs1a.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+            export namespace Eri1c { //  Infrastructure
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v5.Eri1c.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2018v5.Eri1c.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v5.Eri1c.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        //price.DedicatedCloud._2018v5.Eri1c.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+            export namespace Lim1c { //  Infrastructure
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v5.Lim1c.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2018v5.Lim1c.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v5.Lim1c.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        //price.DedicatedCloud._2018v5.Lim1c.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+            export namespace Rbx2a { //  Infrastructure
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v5.Rbx2a.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2018v5.Rbx2a.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v5.Rbx2a.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        //price.DedicatedCloud._2018v5.Rbx2a.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+            export namespace Rbx2b { //  Infrastructure
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v5.Rbx2b.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2018v5.Rbx2b.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v5.Rbx2b.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        //price.DedicatedCloud._2018v5.Rbx2b.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+            export namespace Sbg1a { //  Infrastructure
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v5.Sbg1a.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2018v5.Sbg1a.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v5.Sbg1a.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        //price.DedicatedCloud._2018v5.Sbg1a.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+            export namespace Waw1c { //  Infrastructure
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v5.Waw1c.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2018v5.Waw1c.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v5.Waw1c.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        //price.DedicatedCloud._2018v5.Waw1c.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+        }
+        export namespace _2018v6 { //  Bhs1a, Eri1c, Lim1c, Rbx2a, Rbx2b, Sbg1a, Waw1c
+            export namespace Bhs1a { //  Infrastructure
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v6.Bhs1a.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2018v6.Bhs1a.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v6.Bhs1a.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        //price.DedicatedCloud._2018v6.Bhs1a.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+            export namespace Eri1c { //  Infrastructure
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v6.Eri1c.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2018v6.Eri1c.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v6.Eri1c.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        //price.DedicatedCloud._2018v6.Eri1c.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+            export namespace Lim1c { //  Infrastructure
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v6.Lim1c.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2018v6.Lim1c.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v6.Lim1c.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        //price.DedicatedCloud._2018v6.Lim1c.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+            export namespace Rbx2a { //  Infrastructure
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v6.Rbx2a.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2018v6.Rbx2a.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v6.Rbx2a.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        //price.DedicatedCloud._2018v6.Rbx2a.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+            export namespace Rbx2b { //  Infrastructure
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v6.Rbx2b.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2018v6.Rbx2b.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v6.Rbx2b.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        //price.DedicatedCloud._2018v6.Rbx2b.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+            export namespace Sbg1a { //  Infrastructure
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v6.Sbg1a.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2018v6.Sbg1a.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v6.Sbg1a.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        //price.DedicatedCloud._2018v6.Sbg1a.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+            export namespace Waw1c { //  Infrastructure
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v6.Waw1c.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2018v6.Waw1c.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v6.Waw1c.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        //price.DedicatedCloud._2018v6.Waw1c.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+        }
+        export namespace _2018v7 { //  Bhs1a, Eri1c, Lim1c, Rbx2a, Rbx2b, Sbg1a, Waw1c
+            export namespace Bhs1a { //  Infrastructure
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v7.Bhs1a.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2018v7.Bhs1a.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v7.Bhs1a.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        //price.DedicatedCloud._2018v7.Bhs1a.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+            export namespace Eri1c { //  Infrastructure
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v7.Eri1c.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2018v7.Eri1c.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v7.Eri1c.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        //price.DedicatedCloud._2018v7.Eri1c.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+            export namespace Lim1c { //  Infrastructure
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v7.Lim1c.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2018v7.Lim1c.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v7.Lim1c.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        //price.DedicatedCloud._2018v7.Lim1c.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+            export namespace Rbx2a { //  Infrastructure
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v7.Rbx2a.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2018v7.Rbx2a.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v7.Rbx2a.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        //price.DedicatedCloud._2018v7.Rbx2a.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+            export namespace Rbx2b { //  Infrastructure
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v7.Rbx2b.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2018v7.Rbx2b.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v7.Rbx2b.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        //price.DedicatedCloud._2018v7.Rbx2b.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+            export namespace Sbg1a { //  Infrastructure
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v7.Sbg1a.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2018v7.Sbg1a.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v7.Sbg1a.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        //price.DedicatedCloud._2018v7.Sbg1a.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+            export namespace Waw1c { //  Infrastructure
+                export namespace Infrastructure { //  Filer, Host
+                    export namespace Filer { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v7.Waw1c.Infrastructure.Filer.HourlyEnum
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        //price.DedicatedCloud._2018v7.Waw1c.Infrastructure.Filer.MonthlyEnum
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                    }
+                    export namespace Host { //  HourlyEnum, MonthlyEnum
+                        //price.DedicatedCloud._2018v7.Waw1c.Infrastructure.Host.HourlyEnum
+                        export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                        //price.DedicatedCloud._2018v7.Waw1c.Infrastructure.Host.MonthlyEnum
+                        export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
+                    }
+                }
+            }
+        }
+    }
+    export namespace Domain { //  Zone
+        export namespace Zone { //  OptionEnum
+            //price.Domain.Zone.OptionEnum
+            export type OptionEnum = "dnsAnycast"
+        }
+    }
+    export namespace Email { //  Exchange
+        export namespace Exchange { //  OfferEnum
+            //price.Email.Exchange.OfferEnum
+            export type OfferEnum = "hosted"
+        }
+    }
+    export namespace Hosting { //  PrivateDatabaseEnum, Web
+        //price.Hosting.PrivateDatabaseEnum
+        export type PrivateDatabaseEnum = "mysql_4.1_1024" | "mysql_4.1_128" | "mysql_4.1_256" | "mysql_4.1_512" | "mysql_5.0_1024" | "mysql_5.0_128" | "mysql_5.0_256" | "mysql_5.0_512" | "mysql_5.1_1024" | "mysql_5.1_128" | "mysql_5.1_256" | "mysql_5.1_512" | "mysql_5.5_1024" | "mysql_5.5_128" | "mysql_5.5_256" | "mysql_5.5_512"
+        export namespace Web { //  CdnEnum, ExtraSqlPersoEnum, SslEnum
+            //price.Hosting.Web.CdnEnum
+            export type CdnEnum = "CDN_BUSINESS"
+            //price.Hosting.Web.ExtraSqlPersoEnum
+            export type ExtraSqlPersoEnum = "SQLPERSO_1_BASES_400_MB" | "SQLPERSO_1_BASES_800_MB" | "SQLPERSO_20_BASES_100_MB" | "SQLPERSO_20_BASES_200_MB" | "SQLPERSO_2_BASES_400_MB" | "SQLPERSO_2_BASES_800_MB" | "SQLPERSO_50_BASES_100_MB" | "SQLPERSO_50_BASES_200_MB" | "SQLPERSO_5_BASES_100_MB" | "SQLPERSO_5_BASES_200_MB" | "SQLPERSO_5_BASES_400_MB" | "SQLPERSO_5_BASES_800_MB"
+            //price.Hosting.Web.SslEnum
+            export type SslEnum = "HOSTEDSSL"
+        }
+    }
+    export namespace Hpcspot { //  Account, Consumption
+        export namespace Account { //  SubscriptionEnum
+            //price.Hpcspot.Account.SubscriptionEnum
+            export type SubscriptionEnum = "HPCSPOT"
+        }
+        export namespace Consumption { //  JobEnum, ReservationEnum, SessionEnum
+            //price.Hpcspot.Consumption.JobEnum
+            export type JobEnum = "16core.64gb" | "4core.32gb" | "8core.32gb"
+            //price.Hpcspot.Consumption.ReservationEnum
+            export type ReservationEnum = "12core.60gb.quadrok400" | "1core.4gb" | "1core.4gb.quadrok4000" | "2core.8gb" | "2core.8gb.quadrok4000" | "4core.15gb" | "4core.15gb.quadrok4000" | "8core.30gb" | "8core.30gb.quadrok4000"
+            //price.Hpcspot.Consumption.SessionEnum
+            export type SessionEnum = "16core.64gb" | "4core.32gb" | "8core.32gb"
+        }
+    }
+    export namespace License { //  OfficeEnum
+        //price.License.OfficeEnum
+        export type OfficeEnum = "officeBusiness" | "officeProPlus"
+    }
+    export namespace OverTheBox { //  OfferEnum
+        //price.OverTheBox.OfferEnum
+        export type OfferEnum = "plus.v1"
+    }
+    export namespace Pack { //  Xdsl
+        export namespace Xdsl { //  InstallationEnum, OffersEnum, OptionsEnum
+            //price.Pack.Xdsl.InstallationEnum
+            export type InstallationEnum = "enterprise" | "express" | "expressLite"
+            //price.Pack.Xdsl.OffersEnum
+            export type OffersEnum = "enterprise" | "express" | "expressLite"
+            //price.Pack.Xdsl.OptionsEnum
+            export type OptionsEnum = "enterpriseGtr" | "vdslFt"
+        }
+    }
+    export namespace Saas { //  Csp2
+        export namespace Csp2 { //  LicenseEnum
+            //price.Saas.Csp2.LicenseEnum
+            export type LicenseEnum = "AzureActiveDirectoryBasic" | "AzureActiveDirectoryPremiumP1" | "Business" | "BusinessEssentials" | "BusinessPremium" | "EnterpriseE1" | "EnterpriseE3" | "EnterpriseK1" | "ExchangeOnlinePlan1" | "ProPlus" | "ProjectOnline" | "ProjectOnlineProfessional" | "VisioPro"
+        }
+    }
+    export namespace Telephony { //  OfferEnum
+        //price.Telephony.OfferEnum
+        export type OfferEnum = "discovery" | "enterprise" | "enterpriseMobile" | "resellerEnterprise" | "resellerEnterpriseMobile"
+    }
+    export namespace Vps { //  Classic, Cloud, Lowlat, _2013v1, _2014v1, _2015v1, _2017v1, _2017v2, _2017v3, _2018v1, _2018v2
+        export namespace Classic { //  ModelEnum
+            //price.Vps.Classic.ModelEnum
+            export type ModelEnum = "model1" | "model2" | "model3" | "model4" | "model5" | "model6"
+        }
+        export namespace Cloud { //  ModelEnum, OptionEnum
+            //price.Vps.Cloud.ModelEnum
+            export type ModelEnum = "model1" | "model2" | "model3" | "model4" | "model5" | "model6"
+            //price.Vps.Cloud.OptionEnum
+            export type OptionEnum = "ftpbackup" | "ip" | "snapshot" | "veeam"
+        }
+        export namespace Lowlat { //  ModelEnum
+            //price.Vps.Lowlat.ModelEnum
+            export type ModelEnum = "model1" | "model2" | "model3"
+        }
+        export namespace _2013v1 { //  Classic, Cloud, Lowlat
+            export namespace Classic { //  ModelEnum
+                //price.Vps._2013v1.Classic.ModelEnum
+                export type ModelEnum = "model1" | "model2" | "model3" | "model4" | "model5" | "model6"
+            }
+            export namespace Cloud { //  ModelEnum, OptionEnum
+                //price.Vps._2013v1.Cloud.ModelEnum
+                export type ModelEnum = "model1" | "model2" | "model3" | "model4" | "model5" | "model6"
+                //price.Vps._2013v1.Cloud.OptionEnum
+                export type OptionEnum = "ftpbackup" | "ip" | "snapshot" | "veeam"
+            }
+            export namespace Lowlat { //  ModelEnum
+                //price.Vps._2013v1.Lowlat.ModelEnum
+                export type ModelEnum = "model1" | "model2" | "model3"
+            }
+        }
+        export namespace _2014v1 { //  Classic, Cloud
+            export namespace Classic { //  ModelEnum
+                //price.Vps._2014v1.Classic.ModelEnum
+                export type ModelEnum = "model1" | "model2" | "model3" | "model4"
+            }
+            export namespace Cloud { //  ModelEnum, OptionEnum
+                //price.Vps._2014v1.Cloud.ModelEnum
+                export type ModelEnum = "model1" | "model2" | "model3" | "model4"
+                //price.Vps._2014v1.Cloud.OptionEnum
+                export type OptionEnum = "ftpbackup" | "ip" | "snapshot" | "veeam"
+            }
+        }
+        export namespace _2015v1 { //  Cloud, Cloudram, Ssd
+            export namespace Cloud { //  ModelEnum, OptionEnum
+                //price.Vps._2015v1.Cloud.ModelEnum
+                export type ModelEnum = "model1" | "model2" | "model3"
+                //price.Vps._2015v1.Cloud.OptionEnum
+                export type OptionEnum = "additionalDisk100" | "additionalDisk200" | "additionalDisk50" | "additionalDisk500" | "automatedBackup" | "ftpbackup" | "ip" | "snapshot"
+            }
+            export namespace Cloudram { //  ModelEnum, OptionEnum
+                //price.Vps._2015v1.Cloudram.ModelEnum
+                export type ModelEnum = "model1" | "model2" | "model3"
+                //price.Vps._2015v1.Cloudram.OptionEnum
+                export type OptionEnum = "additionalDisk100" | "additionalDisk200" | "additionalDisk50" | "additionalDisk500" | "automatedBackup" | "ftpbackup" | "ip" | "snapshot"
+            }
+            export namespace Ssd { //  ModelEnum, OptionEnum
+                //price.Vps._2015v1.Ssd.ModelEnum
+                export type ModelEnum = "model1" | "model2" | "model3"
+                //price.Vps._2015v1.Ssd.OptionEnum
+                export type OptionEnum = "additionalDisk100" | "additionalDisk200" | "additionalDisk50" | "additionalDisk500" | "ip" | "snapshot"
+            }
+        }
+        export namespace _2017v1 { //  Ssd
+            export namespace Ssd { //  ModelEnum, OptionEnum
+                //price.Vps._2017v1.Ssd.ModelEnum
+                export type ModelEnum = "model1" | "model2" | "model3" | "model4"
+                //price.Vps._2017v1.Ssd.OptionEnum
+                export type OptionEnum = "ip"
+            }
+        }
+        export namespace _2017v2 { //  Cloud, Cloudram, Ssd
+            export namespace Cloud { //  ModelEnum, OptionEnum
+                //price.Vps._2017v2.Cloud.ModelEnum
+                export type ModelEnum = "model1" | "model2" | "model3"
+                //price.Vps._2017v2.Cloud.OptionEnum
+                export type OptionEnum = "additionalDisk100" | "additionalDisk200" | "additionalDisk50" | "additionalDisk500" | "automatedBackup" | "ftpbackup" | "ip" | "snapshot"
+            }
+            export namespace Cloudram { //  ModelEnum, OptionEnum
+                //price.Vps._2017v2.Cloudram.ModelEnum
+                export type ModelEnum = "model1" | "model2" | "model3"
+                //price.Vps._2017v2.Cloudram.OptionEnum
+                export type OptionEnum = "additionalDisk100" | "additionalDisk200" | "additionalDisk50" | "additionalDisk500" | "automatedBackup" | "ftpbackup" | "ip" | "snapshot"
+            }
+            export namespace Ssd { //  ModelEnum, OptionEnum
+                //price.Vps._2017v2.Ssd.ModelEnum
+                export type ModelEnum = "model1" | "model2" | "model3"
+                //price.Vps._2017v2.Ssd.OptionEnum
+                export type OptionEnum = "additionalDisk100" | "additionalDisk200" | "additionalDisk50" | "additionalDisk500" | "ip" | "snapshot"
+            }
+        }
+        export namespace _2017v3 { //  Cloud, Cloudram, Ssd
+            export namespace Cloud { //  ModelEnum, OptionEnum
+                //price.Vps._2017v3.Cloud.ModelEnum
+                export type ModelEnum = "model1" | "model2" | "model3"
+                //price.Vps._2017v3.Cloud.OptionEnum
+                export type OptionEnum = "additionalDisk100" | "additionalDisk200" | "additionalDisk50" | "additionalDisk500" | "automatedBackup" | "ftpbackup" | "ip" | "snapshot"
+            }
+            export namespace Cloudram { //  ModelEnum, OptionEnum
+                //price.Vps._2017v3.Cloudram.ModelEnum
+                export type ModelEnum = "model1" | "model2" | "model3"
+                //price.Vps._2017v3.Cloudram.OptionEnum
+                export type OptionEnum = "additionalDisk100" | "additionalDisk200" | "additionalDisk50" | "additionalDisk500" | "automatedBackup" | "ftpbackup" | "ip" | "snapshot"
+            }
+            export namespace Ssd { //  ModelEnum, OptionEnum
+                //price.Vps._2017v3.Ssd.ModelEnum
+                export type ModelEnum = "model1" | "model2" | "model3"
+                //price.Vps._2017v3.Ssd.OptionEnum
+                export type OptionEnum = "additionalDisk100" | "additionalDisk200" | "additionalDisk50" | "additionalDisk500" | "ip" | "snapshot"
+            }
+        }
+        export namespace _2018v1 { //  Cloud, Cloudram, Ssd
+            export namespace Cloud { //  ModelEnum, OptionEnum
+                //price.Vps._2018v1.Cloud.ModelEnum
+                export type ModelEnum = "model1" | "model2" | "model3"
+                //price.Vps._2018v1.Cloud.OptionEnum
+                export type OptionEnum = "additionalDisk100" | "additionalDisk200" | "additionalDisk50" | "additionalDisk500" | "automatedBackup" | "ftpbackup" | "ip" | "snapshot"
+            }
+            export namespace Cloudram { //  ModelEnum, OptionEnum
+                //price.Vps._2018v1.Cloudram.ModelEnum
+                export type ModelEnum = "model1" | "model2" | "model3"
+                //price.Vps._2018v1.Cloudram.OptionEnum
+                export type OptionEnum = "additionalDisk100" | "additionalDisk200" | "additionalDisk50" | "additionalDisk500" | "automatedBackup" | "ftpbackup" | "ip" | "snapshot"
+            }
+            export namespace Ssd { //  ModelEnum, OptionEnum
+                //price.Vps._2018v1.Ssd.ModelEnum
+                export type ModelEnum = "model1" | "model2" | "model3"
+                //price.Vps._2018v1.Ssd.OptionEnum
+                export type OptionEnum = "additionalDisk100" | "additionalDisk200" | "additionalDisk50" | "additionalDisk500" | "ip" | "snapshot"
+            }
+        }
+        export namespace _2018v2 { //  Ssd
+            export namespace Ssd { //  ModelEnum, OptionEnum
+                //price.Vps._2018v2.Ssd.ModelEnum
+                export type ModelEnum = "model1" | "model2" | "model3" | "model4"
+                //price.Vps._2018v2.Ssd.OptionEnum
+                export type OptionEnum = "ip"
+            }
+        }
+    }
+    export namespace Xdsl { //  AddressMove, InstallationEnum, OffersEnum, Options
+        export namespace AddressMove { //  FeeEnum
+            //price.Xdsl.AddressMove.FeeEnum
+            export type FeeEnum = "keepPortability"
+        }
+        //price.Xdsl.InstallationEnum
+        export type InstallationEnum = "backup"
+        //price.Xdsl.OffersEnum
+        export type OffersEnum = "backup"
+        export namespace Options { //  InstallationEnum, Ipv4Enum, LineEnum
+            //price.Xdsl.Options.InstallationEnum
+            export type InstallationEnum = "ipv4"
+            //price.Xdsl.Options.Ipv4Enum
+            export type Ipv4Enum = "29"
+            //price.Xdsl.Options.LineEnum
+            export type LineEnum = "creation" | "partialToTotal"
+        }
+    }
+}
+// Apis harmony
+// path /price
+export interface Price {
+    dedicated: /* 260 */ {
+        nasha: /* 260 */ {
+            model: /* 260 */ {
+                [keys: string]: {
+                    // GET /price/dedicated/nasha/model/{modelName}
+                    $get(): Promise<order.Price>;
+                } | any
+            }
+        }
+        server: /* 260 */ {
+            antiDDoSPro: /* 260 */ {
+                [keys: string]: {
+                    // GET /price/dedicated/server/antiDDoSPro/{commercialRange}
+                    $get(): Promise<order.Price>;
+                } | any
+            }
+            backupStorage: /* 260 */ {
+                [keys: string]: {
+                    // GET /price/dedicated/server/backupStorage/{capacity}
+                    $get(): Promise<order.Price>;
+                } | any
+            }
+            firewall: /* 260 */ {
+                [keys: string]: {
+                    // GET /price/dedicated/server/firewall/{firewallModel}
+                    $get(): Promise<order.Price>;
+                } | any
+            }
+            ip: /* 260 */ {
+                [keys: string]: {
+                    // GET /price/dedicated/server/ip/{routedTo}
+                    $get(): Promise<order.Price>;
+                } | any
+            }
+        }
+    }
+    dedicatedCloud: /* 260 */ {
+        '2013v1': /* 260 */ {
+            bhs1a: /* 260 */ {
+                filer: /* 260 */ {
+                    hourly: /* 260 */ {
+                        [keys: string]: {
+                            // GET /price/dedicatedCloud/2013v1/bhs1a/filer/hourly/{filerProfile}
+                            $get(): Promise<order.Price>;
+                        } | any
+                    }
+                    monthly: /* 260 */ {
+                        [keys: string]: {
+                            // GET /price/dedicatedCloud/2013v1/bhs1a/filer/monthly/{filerProfile}
+                            $get(): Promise<order.Price>;
+                        } | any
+                    }
+                }
+                host: /* 260 */ {
+                    hourly: /* 260 */ {
+                        [keys: string]: {
+                            // GET /price/dedicatedCloud/2013v1/bhs1a/host/hourly/{hostProfile}
+                            $get(): Promise<order.Price>;
+                        } | any
+                    }
+                    monthly: /* 260 */ {
+                        [keys: string]: {
+                            // GET /price/dedicatedCloud/2013v1/bhs1a/host/monthly/{hostProfile}
+                            $get(): Promise<order.Price>;
+                        } | any
+                    }
+                }
+            }
+            rbx2a: /* 260 */ {
+                filer: /* 260 */ {
+                    hourly: /* 260 */ {
+                        [keys: string]: {
+                            // GET /price/dedicatedCloud/2013v1/rbx2a/filer/hourly/{filerProfile}
+                            $get(): Promise<order.Price>;
+                        } | any
+                    }
+                    monthly: /* 260 */ {
+                        [keys: string]: {
+                            // GET /price/dedicatedCloud/2013v1/rbx2a/filer/monthly/{filerProfile}
+                            $get(): Promise<order.Price>;
+                        } | any
+                    }
+                }
+                host: /* 260 */ {
+                    hourly: /* 260 */ {
+                        [keys: string]: {
+                            // GET /price/dedicatedCloud/2013v1/rbx2a/host/hourly/{hostProfile}
+                            $get(): Promise<order.Price>;
+                        } | any
+                    }
+                    monthly: /* 260 */ {
+                        [keys: string]: {
+                            // GET /price/dedicatedCloud/2013v1/rbx2a/host/monthly/{hostProfile}
+                            $get(): Promise<order.Price>;
+                        } | any
+                    }
+                }
+            }
+            sbg1a: /* 260 */ {
+                filer: /* 260 */ {
+                    hourly: /* 260 */ {
+                        [keys: string]: {
+                            // GET /price/dedicatedCloud/2013v1/sbg1a/filer/hourly/{filerProfile}
+                            $get(): Promise<order.Price>;
+                        } | any
+                    }
+                    monthly: /* 260 */ {
+                        [keys: string]: {
+                            // GET /price/dedicatedCloud/2013v1/sbg1a/filer/monthly/{filerProfile}
+                            $get(): Promise<order.Price>;
+                        } | any
+                    }
+                }
+                host: /* 260 */ {
+                    hourly: /* 260 */ {
+                        [keys: string]: {
+                            // GET /price/dedicatedCloud/2013v1/sbg1a/host/hourly/{hostProfile}
+                            $get(): Promise<order.Price>;
+                        } | any
+                    }
+                    monthly: /* 260 */ {
+                        [keys: string]: {
+                            // GET /price/dedicatedCloud/2013v1/sbg1a/host/monthly/{hostProfile}
+                            $get(): Promise<order.Price>;
+                        } | any
+                    }
+                }
+            }
+        }
+        '2014v1': /* 260 */ {
+            bhs1a: /* 260 */ {
+                enterprise: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/bhs1a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/bhs1a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/bhs1a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/bhs1a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/bhs1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/bhs1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/bhs1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/bhs1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            rbx2a: /* 260 */ {
+                enterprise: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/rbx2a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/rbx2a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/rbx2a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/rbx2a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/rbx2a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/rbx2a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/rbx2a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/rbx2a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            rbx2b: /* 260 */ {
+                enterprise: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/rbx2b/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/rbx2b/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/rbx2b/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/rbx2b/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/rbx2b/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/rbx2b/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/rbx2b/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/rbx2b/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            sbg1a: /* 260 */ {
+                enterprise: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/sbg1a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/sbg1a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/sbg1a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/sbg1a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/sbg1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/sbg1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/sbg1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v1/sbg1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+        }
+        '2014v2': /* 260 */ {
+            bhs1a: /* 260 */ {
+                enterprise: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/bhs1a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/bhs1a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/bhs1a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/bhs1a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/bhs1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/bhs1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/bhs1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/bhs1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            rbx2a: /* 260 */ {
+                enterprise: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/rbx2a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/rbx2a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/rbx2a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/rbx2a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/rbx2a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/rbx2a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/rbx2a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/rbx2a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            rbx2b: /* 260 */ {
+                enterprise: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/rbx2b/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/rbx2b/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/rbx2b/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/rbx2b/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/rbx2b/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/rbx2b/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/rbx2b/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/rbx2b/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            sbg1a: /* 260 */ {
+                enterprise: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/sbg1a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/sbg1a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/sbg1a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/sbg1a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/sbg1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/sbg1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/sbg1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2014v2/sbg1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+        }
+        '2016v1': /* 260 */ {
+            bhs1a: /* 260 */ {
+                enterprise: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/bhs1a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/bhs1a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/bhs1a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/bhs1a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/bhs1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/bhs1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/bhs1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/bhs1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            rbx2a: /* 260 */ {
+                enterprise: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/rbx2a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/rbx2a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/rbx2a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/rbx2a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/rbx2a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/rbx2a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/rbx2a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/rbx2a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            rbx2b: /* 260 */ {
+                enterprise: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/rbx2b/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/rbx2b/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/rbx2b/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/rbx2b/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/rbx2b/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/rbx2b/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/rbx2b/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/rbx2b/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            sbg1a: /* 260 */ {
+                enterprise: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/sbg1a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/sbg1a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/sbg1a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/sbg1a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/sbg1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/sbg1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/sbg1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v1/sbg1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+        }
+        '2016v2': /* 260 */ {
+            bhs1a: /* 260 */ {
+                enterprise: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/bhs1a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/bhs1a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/bhs1a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/bhs1a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/bhs1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/bhs1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/bhs1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/bhs1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            rbx2a: /* 260 */ {
+                enterprise: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/rbx2a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/rbx2a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/rbx2a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/rbx2a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/rbx2a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/rbx2a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/rbx2a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/rbx2a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            rbx2b: /* 260 */ {
+                enterprise: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/rbx2b/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/rbx2b/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/rbx2b/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/rbx2b/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/rbx2b/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/rbx2b/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/rbx2b/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/rbx2b/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            sbg1a: /* 260 */ {
+                enterprise: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/sbg1a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/sbg1a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/sbg1a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/sbg1a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/sbg1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/sbg1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/sbg1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v2/sbg1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+        }
+        '2016v3': /* 260 */ {
+            bhs1a: /* 260 */ {
+                enterprise: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/bhs1a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/bhs1a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/bhs1a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/bhs1a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/bhs1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/bhs1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/bhs1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/bhs1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            rbx2a: /* 260 */ {
+                enterprise: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/rbx2a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/rbx2a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/rbx2a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/rbx2a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/rbx2a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/rbx2a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/rbx2a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/rbx2a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            rbx2b: /* 260 */ {
+                enterprise: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/rbx2b/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/rbx2b/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/rbx2b/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/rbx2b/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/rbx2b/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/rbx2b/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/rbx2b/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/rbx2b/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            sbg1a: /* 260 */ {
+                enterprise: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/sbg1a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/sbg1a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/sbg1a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/sbg1a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/sbg1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/sbg1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/sbg1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v3/sbg1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+        }
+        '2016v4': /* 260 */ {
+            bhs1a: /* 260 */ {
+                enterprise: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/bhs1a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/bhs1a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/bhs1a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/bhs1a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/bhs1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/bhs1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/bhs1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/bhs1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            rbx2a: /* 260 */ {
+                enterprise: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/rbx2a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/rbx2a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/rbx2a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/rbx2a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/rbx2a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/rbx2a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/rbx2a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/rbx2a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            rbx2b: /* 260 */ {
+                enterprise: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/rbx2b/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/rbx2b/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/rbx2b/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/rbx2b/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/rbx2b/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/rbx2b/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/rbx2b/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/rbx2b/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            sbg1a: /* 260 */ {
+                enterprise: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/sbg1a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/sbg1a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/sbg1a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/sbg1a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/sbg1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/sbg1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/sbg1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v4/sbg1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+        }
+        '2016v5': /* 260 */ {
+            bhs1a: /* 260 */ {
+                enterprise: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v5/bhs1a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v5/bhs1a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v5/bhs1a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v5/bhs1a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v5/bhs1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v5/bhs1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v5/bhs1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v5/bhs1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            rbx2a: /* 260 */ {
+                enterprise: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v5/rbx2a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v5/rbx2a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v5/rbx2a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v5/rbx2a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v5/rbx2a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v5/rbx2a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v5/rbx2a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v5/rbx2a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            rbx2b: /* 260 */ {
+                enterprise: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v5/rbx2b/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v5/rbx2b/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v5/rbx2b/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v5/rbx2b/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v5/rbx2b/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v5/rbx2b/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v5/rbx2b/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v5/rbx2b/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            sbg1a: /* 260 */ {
+                enterprise: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v5/sbg1a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v5/sbg1a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v5/sbg1a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v5/sbg1a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v5/sbg1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v5/sbg1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v5/sbg1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v5/sbg1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+        }
+        '2016v6': /* 260 */ {
+            bhs1a: /* 260 */ {
+                enterprise: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/bhs1a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/bhs1a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/bhs1a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/bhs1a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/bhs1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/bhs1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/bhs1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/bhs1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            rbx2a: /* 260 */ {
+                enterprise: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/rbx2a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/rbx2a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/rbx2a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/rbx2a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/rbx2a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/rbx2a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/rbx2a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/rbx2a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            rbx2b: /* 260 */ {
+                enterprise: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/rbx2b/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/rbx2b/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/rbx2b/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/rbx2b/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/rbx2b/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/rbx2b/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/rbx2b/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/rbx2b/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            sbg1a: /* 260 */ {
+                enterprise: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/sbg1a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/sbg1a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/sbg1a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/sbg1a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/sbg1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/sbg1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/sbg1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v6/sbg1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+        }
+        '2016v7': /* 260 */ {
+            bhs1a: /* 260 */ {
+                enterprise: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/bhs1a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/bhs1a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/bhs1a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/bhs1a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/bhs1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/bhs1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/bhs1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/bhs1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            rbx2a: /* 260 */ {
+                enterprise: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/rbx2a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/rbx2a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/rbx2a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/rbx2a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/rbx2a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/rbx2a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/rbx2a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/rbx2a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            rbx2b: /* 260 */ {
+                enterprise: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/rbx2b/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/rbx2b/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/rbx2b/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/rbx2b/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/rbx2b/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/rbx2b/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/rbx2b/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/rbx2b/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            sbg1a: /* 260 */ {
+                enterprise: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/sbg1a/enterprise/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/sbg1a/enterprise/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/sbg1a/enterprise/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/sbg1a/enterprise/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/sbg1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/sbg1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/sbg1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2016v7/sbg1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+        }
+        '2018v1': /* 260 */ {
+            bhs1a: /* 260 */ {
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v1/bhs1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v1/bhs1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v1/bhs1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v1/bhs1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            eri1c: /* 260 */ {
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v1/eri1c/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v1/eri1c/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v1/eri1c/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v1/eri1c/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            lim1c: /* 260 */ {
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v1/lim1c/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v1/lim1c/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v1/lim1c/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v1/lim1c/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            rbx2a: /* 260 */ {
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v1/rbx2a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v1/rbx2a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v1/rbx2a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v1/rbx2a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            rbx2b: /* 260 */ {
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v1/rbx2b/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v1/rbx2b/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v1/rbx2b/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v1/rbx2b/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            sbg1a: /* 260 */ {
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v1/sbg1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v1/sbg1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v1/sbg1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v1/sbg1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            waw1c: /* 260 */ {
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v1/waw1c/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v1/waw1c/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v1/waw1c/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v1/waw1c/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+        }
+        '2018v2': /* 260 */ {
+            bhs1a: /* 260 */ {
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/bhs1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/bhs1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/bhs1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/bhs1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            eri1c: /* 260 */ {
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/eri1c/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/eri1c/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/eri1c/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/eri1c/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            lim1c: /* 260 */ {
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/lim1c/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/lim1c/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/lim1c/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/lim1c/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            rbx2a: /* 260 */ {
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/rbx2a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/rbx2a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/rbx2a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/rbx2a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            rbx2b: /* 260 */ {
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/rbx2b/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/rbx2b/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/rbx2b/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/rbx2b/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            sbg1a: /* 260 */ {
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/sbg1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/sbg1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/sbg1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/sbg1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            waw1c: /* 260 */ {
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/waw1c/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/waw1c/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/waw1c/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v2/waw1c/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+        }
+        '2018v3': /* 260 */ {
+            bhs1a: /* 260 */ {
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v3/bhs1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v3/bhs1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v3/bhs1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v3/bhs1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            eri1c: /* 260 */ {
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v3/eri1c/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v3/eri1c/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v3/eri1c/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v3/eri1c/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            lim1c: /* 260 */ {
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v3/lim1c/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v3/lim1c/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v3/lim1c/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v3/lim1c/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            rbx2a: /* 260 */ {
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v3/rbx2a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v3/rbx2a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v3/rbx2a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v3/rbx2a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            rbx2b: /* 260 */ {
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v3/rbx2b/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v3/rbx2b/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v3/rbx2b/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v3/rbx2b/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            sbg1a: /* 260 */ {
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v3/sbg1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v3/sbg1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v3/sbg1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v3/sbg1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            waw1c: /* 260 */ {
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v3/waw1c/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v3/waw1c/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v3/waw1c/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v3/waw1c/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+        }
+        '2018v4': /* 260 */ {
+            bhs1a: /* 260 */ {
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v4/bhs1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v4/bhs1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v4/bhs1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v4/bhs1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            eri1c: /* 260 */ {
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v4/eri1c/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v4/eri1c/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v4/eri1c/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v4/eri1c/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            lim1c: /* 260 */ {
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v4/lim1c/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v4/lim1c/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v4/lim1c/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v4/lim1c/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            rbx2a: /* 260 */ {
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v4/rbx2a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v4/rbx2a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v4/rbx2a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v4/rbx2a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            rbx2b: /* 260 */ {
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v4/rbx2b/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v4/rbx2b/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v4/rbx2b/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v4/rbx2b/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            sbg1a: /* 260 */ {
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v4/sbg1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v4/sbg1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v4/sbg1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v4/sbg1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            waw1c: /* 260 */ {
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v4/waw1c/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v4/waw1c/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v4/waw1c/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v4/waw1c/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+        }
+        '2018v5': /* 260 */ {
+            bhs1a: /* 260 */ {
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/bhs1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/bhs1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/bhs1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/bhs1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            eri1c: /* 260 */ {
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/eri1c/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/eri1c/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/eri1c/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/eri1c/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            lim1c: /* 260 */ {
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/lim1c/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/lim1c/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/lim1c/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/lim1c/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            rbx2a: /* 260 */ {
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/rbx2a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/rbx2a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/rbx2a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/rbx2a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            rbx2b: /* 260 */ {
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/rbx2b/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/rbx2b/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/rbx2b/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/rbx2b/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            sbg1a: /* 260 */ {
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/sbg1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/sbg1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/sbg1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/sbg1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            waw1c: /* 260 */ {
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/waw1c/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/waw1c/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/waw1c/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v5/waw1c/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+        }
+        '2018v6': /* 260 */ {
+            bhs1a: /* 260 */ {
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v6/bhs1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v6/bhs1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v6/bhs1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v6/bhs1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            eri1c: /* 260 */ {
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v6/eri1c/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v6/eri1c/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v6/eri1c/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v6/eri1c/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            lim1c: /* 260 */ {
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v6/lim1c/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v6/lim1c/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v6/lim1c/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v6/lim1c/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            rbx2a: /* 260 */ {
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v6/rbx2a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v6/rbx2a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v6/rbx2a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v6/rbx2a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            rbx2b: /* 260 */ {
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v6/rbx2b/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v6/rbx2b/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v6/rbx2b/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v6/rbx2b/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            sbg1a: /* 260 */ {
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v6/sbg1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v6/sbg1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v6/sbg1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v6/sbg1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            waw1c: /* 260 */ {
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v6/waw1c/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v6/waw1c/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v6/waw1c/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v6/waw1c/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+        }
+        '2018v7': /* 260 */ {
+            bhs1a: /* 260 */ {
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/bhs1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/bhs1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/bhs1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/bhs1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            eri1c: /* 260 */ {
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/eri1c/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/eri1c/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/eri1c/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/eri1c/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            lim1c: /* 260 */ {
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/lim1c/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/lim1c/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/lim1c/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/lim1c/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            rbx2a: /* 260 */ {
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/rbx2a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/rbx2a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/rbx2a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/rbx2a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            rbx2b: /* 260 */ {
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/rbx2b/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/rbx2b/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/rbx2b/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/rbx2b/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            sbg1a: /* 260 */ {
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/sbg1a/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/sbg1a/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/sbg1a/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/sbg1a/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+            waw1c: /* 260 */ {
+                infrastructure: /* 260 */ {
+                    filer: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/waw1c/infrastructure/filer/hourly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/waw1c/infrastructure/filer/monthly/{filerProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                    host: /* 260 */ {
+                        hourly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/waw1c/infrastructure/host/hourly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                        monthly: /* 260 */ {
+                            [keys: string]: {
+                                // GET /price/dedicatedCloud/2018v7/waw1c/infrastructure/host/monthly/{hostProfile}
+                                $get(): Promise<order.Price>;
+                            } | any
+                        }
+                    }
+                }
+            }
+        }
+    }
+    domain: /* 260 */ {
+        zone: /* 260 */ {
+            option: /* 260 */ {
+                [keys: string]: {
+                    // GET /price/domain/zone/option/{optionName}
+                    $get(): Promise<order.Price>;
+                } | any
+            }
+        }
+    }
+    hosting: /* 260 */ {
+        privateDatabase: /* 260 */ {
+            [keys: string]: {
+                // GET /price/hosting/privateDatabase/{privateDatabaseName}
+                $get(): Promise<order.Price>;
+            } | any
+        }
+        web: /* 260 */ {
+            cdn: /* 260 */ {
+                [keys: string]: {
+                    // GET /price/hosting/web/cdn/{cdnName}
+                    $get(): Promise<order.Price>;
+                } | any
+            }
+            extraSqlPerso: /* 260 */ {
+                [keys: string]: {
+                    // GET /price/hosting/web/extraSqlPerso/{extraSqlPersoName}
+                    $get(): Promise<order.Price>;
+                } | any
+            }
+            ssl: /* 260 */ {
+                [keys: string]: {
+                    // GET /price/hosting/web/ssl/{sslName}
+                    $get(): Promise<order.Price>;
+                } | any
+            }
+        }
+    }
+    hpcspot: /* 260 */ {
+        account: /* 260 */ {
+            subscription: /* 260 */ {
+                [keys: string]: {
+                    // GET /price/hpcspot/account/subscription/{subscriptionName}
+                    $get(): Promise<order.Price>;
+                } | any
+            }
+        }
+        consumption: /* 260 */ {
+            job: /* 260 */ {
+                [keys: string]: {
+                    // GET /price/hpcspot/consumption/job/{reference}
+                    $get(): Promise<order.Price>;
+                } | any
+            }
+            reservation: /* 260 */ {
+                [keys: string]: {
+                    // GET /price/hpcspot/consumption/reservation/{reference}
+                    $get(): Promise<order.Price>;
+                } | any
+            }
+            session: /* 260 */ {
+                [keys: string]: {
+                    // GET /price/hpcspot/consumption/session/{reference}
+                    $get(): Promise<order.Price>;
+                } | any
+            }
+        }
+    }
+    license: /* 260 */ {
+        office: /* 260 */ {
+            [keys: string]: {
+                // GET /price/license/office/{officeName}
+                $get(): Promise<order.Price>;
+            } | any
+        }
+    }
+    overTheBox: /* 260 */ {
+        offer: /* 260 */ {
+            [keys: string]: {
+                // GET /price/overTheBox/offer/{offerName}
+                $get(): Promise<order.Price>;
+            } | any
+        }
+    }
+    saas: /* 260 */ {
+        csp2: /* 260 */ {
+            license: /* 260 */ {
+                [keys: string]: {
+                    // GET /price/saas/csp2/license/{licenseName}
+                    $get(): Promise<order.Price>;
+                } | any
+            }
+        }
+    }
+    vps: /* 260 */ {
+        '2013v1': /* 260 */ {
+            classic: /* 260 */ {
+                model: /* 260 */ {
+                    [keys: string]: {
+                        // GET /price/vps/2013v1/classic/model/{modelName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+            }
+            cloud: /* 260 */ {
+                model: /* 260 */ {
+                    [keys: string]: {
+                        // GET /price/vps/2013v1/cloud/model/{modelName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+                option: /* 260 */ {
+                    [keys: string]: {
+                        // GET /price/vps/2013v1/cloud/option/{optionName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+            }
+            lowlat: /* 260 */ {
+                model: /* 260 */ {
+                    [keys: string]: {
+                        // GET /price/vps/2013v1/lowlat/model/{modelName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+            }
+        }
+        '2014v1': /* 260 */ {
+            classic: /* 260 */ {
+                model: /* 260 */ {
+                    [keys: string]: {
+                        // GET /price/vps/2014v1/classic/model/{modelName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+            }
+            cloud: /* 260 */ {
+                model: /* 260 */ {
+                    [keys: string]: {
+                        // GET /price/vps/2014v1/cloud/model/{modelName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+                option: /* 260 */ {
+                    [keys: string]: {
+                        // GET /price/vps/2014v1/cloud/option/{optionName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+            }
+        }
+        '2015v1': /* 260 */ {
+            cloud: /* 260 */ {
+                model: /* 260 */ {
+                    [keys: string]: {
+                        // GET /price/vps/2015v1/cloud/model/{modelName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+                option: /* 260 */ {
+                    [keys: string]: {
+                        // GET /price/vps/2015v1/cloud/option/{optionName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+            }
+            cloudram: /* 260 */ {
+                model: /* 260 */ {
+                    [keys: string]: {
+                        // GET /price/vps/2015v1/cloudram/model/{modelName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+                option: /* 260 */ {
+                    [keys: string]: {
+                        // GET /price/vps/2015v1/cloudram/option/{optionName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+            }
+            ssd: /* 260 */ {
+                model: /* 260 */ {
+                    [keys: string]: {
+                        // GET /price/vps/2015v1/ssd/model/{modelName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+                option: /* 260 */ {
+                    [keys: string]: {
+                        // GET /price/vps/2015v1/ssd/option/{optionName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+            }
+        }
+        '2017v1': /* 260 */ {
+            ssd: /* 260 */ {
+                model: /* 260 */ {
+                    [keys: string]: {
+                        // GET /price/vps/2017v1/ssd/model/{modelName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+                option: /* 260 */ {
+                    [keys: string]: {
+                        // GET /price/vps/2017v1/ssd/option/{optionName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+            }
+        }
+        '2017v2': /* 260 */ {
+            cloud: /* 260 */ {
+                model: /* 260 */ {
+                    [keys: string]: {
+                        // GET /price/vps/2017v2/cloud/model/{modelName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+                option: /* 260 */ {
+                    [keys: string]: {
+                        // GET /price/vps/2017v2/cloud/option/{optionName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+            }
+            cloudram: /* 260 */ {
+                model: /* 260 */ {
+                    [keys: string]: {
+                        // GET /price/vps/2017v2/cloudram/model/{modelName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+                option: /* 260 */ {
+                    [keys: string]: {
+                        // GET /price/vps/2017v2/cloudram/option/{optionName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+            }
+            ssd: /* 260 */ {
+                model: /* 260 */ {
+                    [keys: string]: {
+                        // GET /price/vps/2017v2/ssd/model/{modelName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+                option: /* 260 */ {
+                    [keys: string]: {
+                        // GET /price/vps/2017v2/ssd/option/{optionName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+            }
+        }
+        '2017v3': /* 260 */ {
+            cloud: /* 260 */ {
+                model: /* 260 */ {
+                    [keys: string]: {
+                        // GET /price/vps/2017v3/cloud/model/{modelName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+                option: /* 260 */ {
+                    [keys: string]: {
+                        // GET /price/vps/2017v3/cloud/option/{optionName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+            }
+            cloudram: /* 260 */ {
+                model: /* 260 */ {
+                    [keys: string]: {
+                        // GET /price/vps/2017v3/cloudram/model/{modelName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+                option: /* 260 */ {
+                    [keys: string]: {
+                        // GET /price/vps/2017v3/cloudram/option/{optionName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+            }
+            ssd: /* 260 */ {
+                model: /* 260 */ {
+                    [keys: string]: {
+                        // GET /price/vps/2017v3/ssd/model/{modelName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+                option: /* 260 */ {
+                    [keys: string]: {
+                        // GET /price/vps/2017v3/ssd/option/{optionName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+            }
+        }
+        '2018v1': /* 260 */ {
+            cloud: /* 260 */ {
+                model: /* 260 */ {
+                    [keys: string]: {
+                        // GET /price/vps/2018v1/cloud/model/{modelName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+                option: /* 260 */ {
+                    [keys: string]: {
+                        // GET /price/vps/2018v1/cloud/option/{optionName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+            }
+            cloudram: /* 260 */ {
+                model: /* 260 */ {
+                    [keys: string]: {
+                        // GET /price/vps/2018v1/cloudram/model/{modelName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+                option: /* 260 */ {
+                    [keys: string]: {
+                        // GET /price/vps/2018v1/cloudram/option/{optionName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+            }
+            ssd: /* 260 */ {
+                model: /* 260 */ {
+                    [keys: string]: {
+                        // GET /price/vps/2018v1/ssd/model/{modelName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+                option: /* 260 */ {
+                    [keys: string]: {
+                        // GET /price/vps/2018v1/ssd/option/{optionName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+            }
+        }
+        '2018v2': /* 260 */ {
+            ssd: /* 260 */ {
+                model: /* 260 */ {
+                    [keys: string]: {
+                        // GET /price/vps/2018v2/ssd/model/{modelName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+                option: /* 260 */ {
+                    [keys: string]: {
+                        // GET /price/vps/2018v2/ssd/option/{optionName}
+                        $get(): Promise<order.Price>;
+                    } | any
+                }
+            }
+        }
+        classic: /* 260 */ {
+            model: /* 260 */ {
+                [keys: string]: {
+                    // GET /price/vps/classic/model/{modelName}
+                    $get(): Promise<order.Price>;
+                } | any
+            }
+        }
+        cloud: /* 260 */ {
+            model: /* 260 */ {
+                [keys: string]: {
+                    // GET /price/vps/cloud/model/{modelName}
+                    $get(): Promise<order.Price>;
+                } | any
+            }
+            option: /* 260 */ {
+                [keys: string]: {
+                    // GET /price/vps/cloud/option/{optionName}
+                    $get(): Promise<order.Price>;
+                } | any
+            }
+        }
+        lowlat: /* 260 */ {
+            model: /* 260 */ {
+                [keys: string]: {
+                    // GET /price/vps/lowlat/model/{modelName}
+                    $get(): Promise<order.Price>;
+                } | any
+            }
+        }
+    }
+    xdsl: /* 260 */ {
+        addressMove: /* 260 */ {
+            fee: /* 260 */ {
+                [keys: string]: {
+                    // GET /price/xdsl/addressMove/fee/{option}
+                    $get(): Promise<order.Price>;
+                } | any
+            }
+        }
+        installation: /* 260 */ {
+            [keys: string]: {
+                // GET /price/xdsl/installation/{offer}
+                $get(): Promise<order.Price>;
+            } | any
+        }
+        offers: /* 260 */ {
+            [keys: string]: {
+                // GET /price/xdsl/offers/{offersName}
+                $get(): Promise<order.Price>;
+            } | any
+        }
+        options: /* 260 */ {
+            installation: /* 260 */ {
+                [keys: string]: {
+                    // GET /price/xdsl/options/installation/{option}
+                    $get(): Promise<order.Price>;
+                } | any
+            }
+            ipv4: /* 260 */ {
+                [keys: string]: {
+                    // GET /price/xdsl/options/ipv4/{ipRange}
+                    $get(): Promise<order.Price>;
+                } | any
+            }
+            line: /* 260 */ {
+                [keys: string]: {
+                    // GET /price/xdsl/options/line/{lineAction}
+                    $get(): Promise<order.Price>;
+                } | any
+            }
+        }
+    }
+}
+// Api
+type PathsPriceGET = '/price/dedicated/nasha/model/{modelName}' |
+  '/price/dedicated/server/antiDDoSPro/{commercialRange}' |
+  '/price/dedicated/server/backupStorage/{capacity}' |
+  '/price/dedicated/server/firewall/{firewallModel}' |
+  '/price/dedicated/server/ip/{routedTo}' |
+  '/price/dedicatedCloud/2013v1/bhs1a/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2013v1/bhs1a/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2013v1/bhs1a/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2013v1/bhs1a/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2013v1/rbx2a/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2013v1/rbx2a/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2013v1/rbx2a/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2013v1/rbx2a/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2013v1/sbg1a/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2013v1/sbg1a/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2013v1/sbg1a/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2013v1/sbg1a/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v1/bhs1a/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v1/bhs1a/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v1/bhs1a/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v1/bhs1a/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v1/bhs1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v1/bhs1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v1/bhs1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v1/bhs1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v1/rbx2a/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v1/rbx2a/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v1/rbx2a/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v1/rbx2a/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v1/rbx2a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v1/rbx2a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v1/rbx2a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v1/rbx2a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v1/rbx2b/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v1/rbx2b/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v1/rbx2b/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v1/rbx2b/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v1/rbx2b/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v1/rbx2b/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v1/rbx2b/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v1/rbx2b/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v1/sbg1a/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v1/sbg1a/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v1/sbg1a/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v1/sbg1a/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v1/sbg1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v1/sbg1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v1/sbg1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v1/sbg1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v2/bhs1a/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v2/bhs1a/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v2/bhs1a/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v2/bhs1a/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v2/bhs1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v2/bhs1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v2/bhs1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v2/bhs1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v2/rbx2a/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v2/rbx2a/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v2/rbx2a/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v2/rbx2a/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v2/rbx2a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v2/rbx2a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v2/rbx2a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v2/rbx2a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v2/rbx2b/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v2/rbx2b/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v2/rbx2b/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v2/rbx2b/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v2/rbx2b/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v2/rbx2b/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v2/rbx2b/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v2/rbx2b/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v2/sbg1a/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v2/sbg1a/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v2/sbg1a/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v2/sbg1a/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v2/sbg1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v2/sbg1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2014v2/sbg1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2014v2/sbg1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v1/bhs1a/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v1/bhs1a/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v1/bhs1a/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v1/bhs1a/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v1/bhs1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v1/bhs1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v1/bhs1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v1/bhs1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v1/rbx2a/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v1/rbx2a/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v1/rbx2a/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v1/rbx2a/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v1/rbx2a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v1/rbx2a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v1/rbx2a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v1/rbx2a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v1/rbx2b/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v1/rbx2b/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v1/rbx2b/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v1/rbx2b/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v1/rbx2b/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v1/rbx2b/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v1/rbx2b/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v1/rbx2b/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v1/sbg1a/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v1/sbg1a/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v1/sbg1a/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v1/sbg1a/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v1/sbg1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v1/sbg1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v1/sbg1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v1/sbg1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v2/bhs1a/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v2/bhs1a/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v2/bhs1a/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v2/bhs1a/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v2/bhs1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v2/bhs1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v2/bhs1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v2/bhs1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v2/rbx2a/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v2/rbx2a/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v2/rbx2a/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v2/rbx2a/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v2/rbx2a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v2/rbx2a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v2/rbx2a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v2/rbx2a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v2/rbx2b/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v2/rbx2b/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v2/rbx2b/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v2/rbx2b/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v2/rbx2b/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v2/rbx2b/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v2/rbx2b/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v2/rbx2b/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v2/sbg1a/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v2/sbg1a/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v2/sbg1a/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v2/sbg1a/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v2/sbg1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v2/sbg1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v2/sbg1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v2/sbg1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v3/bhs1a/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v3/bhs1a/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v3/bhs1a/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v3/bhs1a/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v3/bhs1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v3/bhs1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v3/bhs1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v3/bhs1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v3/rbx2a/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v3/rbx2a/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v3/rbx2a/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v3/rbx2a/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v3/rbx2a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v3/rbx2a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v3/rbx2a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v3/rbx2a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v3/rbx2b/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v3/rbx2b/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v3/rbx2b/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v3/rbx2b/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v3/rbx2b/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v3/rbx2b/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v3/rbx2b/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v3/rbx2b/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v3/sbg1a/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v3/sbg1a/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v3/sbg1a/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v3/sbg1a/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v3/sbg1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v3/sbg1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v3/sbg1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v3/sbg1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v4/bhs1a/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v4/bhs1a/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v4/bhs1a/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v4/bhs1a/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v4/bhs1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v4/bhs1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v4/bhs1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v4/bhs1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v4/rbx2a/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v4/rbx2a/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v4/rbx2a/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v4/rbx2a/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v4/rbx2a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v4/rbx2a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v4/rbx2a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v4/rbx2a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v4/rbx2b/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v4/rbx2b/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v4/rbx2b/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v4/rbx2b/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v4/rbx2b/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v4/rbx2b/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v4/rbx2b/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v4/rbx2b/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v4/sbg1a/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v4/sbg1a/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v4/sbg1a/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v4/sbg1a/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v4/sbg1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v4/sbg1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v4/sbg1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v4/sbg1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v5/bhs1a/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v5/bhs1a/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v5/bhs1a/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v5/bhs1a/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v5/bhs1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v5/bhs1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v5/bhs1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v5/bhs1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v5/rbx2a/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v5/rbx2a/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v5/rbx2a/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v5/rbx2a/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v5/rbx2a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v5/rbx2a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v5/rbx2a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v5/rbx2a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v5/rbx2b/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v5/rbx2b/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v5/rbx2b/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v5/rbx2b/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v5/rbx2b/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v5/rbx2b/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v5/rbx2b/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v5/rbx2b/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v5/sbg1a/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v5/sbg1a/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v5/sbg1a/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v5/sbg1a/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v5/sbg1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v5/sbg1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v5/sbg1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v5/sbg1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v6/bhs1a/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v6/bhs1a/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v6/bhs1a/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v6/bhs1a/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v6/bhs1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v6/bhs1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v6/bhs1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v6/bhs1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v6/rbx2a/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v6/rbx2a/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v6/rbx2a/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v6/rbx2a/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v6/rbx2a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v6/rbx2a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v6/rbx2a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v6/rbx2a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v6/rbx2b/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v6/rbx2b/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v6/rbx2b/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v6/rbx2b/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v6/rbx2b/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v6/rbx2b/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v6/rbx2b/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v6/rbx2b/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v6/sbg1a/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v6/sbg1a/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v6/sbg1a/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v6/sbg1a/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v6/sbg1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v6/sbg1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v6/sbg1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v6/sbg1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v7/bhs1a/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v7/bhs1a/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v7/bhs1a/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v7/bhs1a/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v7/bhs1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v7/bhs1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v7/bhs1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v7/bhs1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v7/rbx2a/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v7/rbx2a/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v7/rbx2a/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v7/rbx2a/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v7/rbx2a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v7/rbx2a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v7/rbx2a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v7/rbx2a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v7/rbx2b/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v7/rbx2b/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v7/rbx2b/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v7/rbx2b/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v7/rbx2b/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v7/rbx2b/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v7/rbx2b/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v7/rbx2b/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v7/sbg1a/enterprise/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v7/sbg1a/enterprise/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v7/sbg1a/enterprise/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v7/sbg1a/enterprise/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v7/sbg1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v7/sbg1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2016v7/sbg1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2016v7/sbg1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v1/bhs1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v1/bhs1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v1/bhs1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v1/bhs1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v1/eri1c/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v1/eri1c/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v1/eri1c/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v1/eri1c/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v1/lim1c/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v1/lim1c/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v1/lim1c/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v1/lim1c/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v1/rbx2a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v1/rbx2a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v1/rbx2a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v1/rbx2a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v1/rbx2b/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v1/rbx2b/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v1/rbx2b/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v1/rbx2b/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v1/sbg1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v1/sbg1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v1/sbg1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v1/sbg1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v1/waw1c/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v1/waw1c/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v1/waw1c/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v1/waw1c/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v2/bhs1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v2/bhs1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v2/bhs1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v2/bhs1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v2/eri1c/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v2/eri1c/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v2/eri1c/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v2/eri1c/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v2/lim1c/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v2/lim1c/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v2/lim1c/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v2/lim1c/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v2/rbx2a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v2/rbx2a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v2/rbx2a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v2/rbx2a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v2/rbx2b/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v2/rbx2b/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v2/rbx2b/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v2/rbx2b/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v2/sbg1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v2/sbg1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v2/sbg1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v2/sbg1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v2/waw1c/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v2/waw1c/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v2/waw1c/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v2/waw1c/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v3/bhs1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v3/bhs1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v3/bhs1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v3/bhs1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v3/eri1c/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v3/eri1c/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v3/eri1c/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v3/eri1c/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v3/lim1c/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v3/lim1c/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v3/lim1c/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v3/lim1c/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v3/rbx2a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v3/rbx2a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v3/rbx2a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v3/rbx2a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v3/rbx2b/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v3/rbx2b/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v3/rbx2b/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v3/rbx2b/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v3/sbg1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v3/sbg1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v3/sbg1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v3/sbg1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v3/waw1c/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v3/waw1c/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v3/waw1c/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v3/waw1c/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v4/bhs1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v4/bhs1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v4/bhs1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v4/bhs1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v4/eri1c/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v4/eri1c/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v4/eri1c/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v4/eri1c/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v4/lim1c/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v4/lim1c/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v4/lim1c/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v4/lim1c/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v4/rbx2a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v4/rbx2a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v4/rbx2a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v4/rbx2a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v4/rbx2b/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v4/rbx2b/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v4/rbx2b/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v4/rbx2b/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v4/sbg1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v4/sbg1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v4/sbg1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v4/sbg1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v4/waw1c/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v4/waw1c/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v4/waw1c/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v4/waw1c/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v5/bhs1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v5/bhs1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v5/bhs1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v5/bhs1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v5/eri1c/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v5/eri1c/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v5/eri1c/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v5/eri1c/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v5/lim1c/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v5/lim1c/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v5/lim1c/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v5/lim1c/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v5/rbx2a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v5/rbx2a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v5/rbx2a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v5/rbx2a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v5/rbx2b/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v5/rbx2b/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v5/rbx2b/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v5/rbx2b/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v5/sbg1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v5/sbg1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v5/sbg1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v5/sbg1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v5/waw1c/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v5/waw1c/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v5/waw1c/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v5/waw1c/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v6/bhs1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v6/bhs1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v6/bhs1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v6/bhs1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v6/eri1c/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v6/eri1c/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v6/eri1c/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v6/eri1c/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v6/lim1c/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v6/lim1c/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v6/lim1c/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v6/lim1c/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v6/rbx2a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v6/rbx2a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v6/rbx2a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v6/rbx2a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v6/rbx2b/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v6/rbx2b/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v6/rbx2b/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v6/rbx2b/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v6/sbg1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v6/sbg1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v6/sbg1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v6/sbg1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v6/waw1c/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v6/waw1c/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v6/waw1c/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v6/waw1c/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v7/bhs1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v7/bhs1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v7/bhs1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v7/bhs1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v7/eri1c/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v7/eri1c/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v7/eri1c/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v7/eri1c/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v7/lim1c/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v7/lim1c/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v7/lim1c/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v7/lim1c/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v7/rbx2a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v7/rbx2a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v7/rbx2a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v7/rbx2a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v7/rbx2b/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v7/rbx2b/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v7/rbx2b/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v7/rbx2b/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v7/sbg1a/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v7/sbg1a/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v7/sbg1a/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v7/sbg1a/infrastructure/host/monthly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v7/waw1c/infrastructure/filer/hourly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v7/waw1c/infrastructure/filer/monthly/{filerProfile}' |
+  '/price/dedicatedCloud/2018v7/waw1c/infrastructure/host/hourly/{hostProfile}' |
+  '/price/dedicatedCloud/2018v7/waw1c/infrastructure/host/monthly/{hostProfile}' |
+  '/price/domain/zone/option/{optionName}' |
+  '/price/hosting/privateDatabase/{privateDatabaseName}' |
+  '/price/hosting/web/cdn/{cdnName}' |
+  '/price/hosting/web/extraSqlPerso/{extraSqlPersoName}' |
+  '/price/hosting/web/ssl/{sslName}' |
+  '/price/hpcspot/account/subscription/{subscriptionName}' |
+  '/price/hpcspot/consumption/job/{reference}' |
+  '/price/hpcspot/consumption/reservation/{reference}' |
+  '/price/hpcspot/consumption/session/{reference}' |
+  '/price/license/office/{officeName}' |
+  '/price/overTheBox/offer/{offerName}' |
+  '/price/saas/csp2/license/{licenseName}' |
+  '/price/vps/2013v1/classic/model/{modelName}' |
+  '/price/vps/2013v1/cloud/model/{modelName}' |
+  '/price/vps/2013v1/cloud/option/{optionName}' |
+  '/price/vps/2013v1/lowlat/model/{modelName}' |
+  '/price/vps/2014v1/classic/model/{modelName}' |
+  '/price/vps/2014v1/cloud/model/{modelName}' |
+  '/price/vps/2014v1/cloud/option/{optionName}' |
+  '/price/vps/2015v1/cloud/model/{modelName}' |
+  '/price/vps/2015v1/cloud/option/{optionName}' |
+  '/price/vps/2015v1/cloudram/model/{modelName}' |
+  '/price/vps/2015v1/cloudram/option/{optionName}' |
+  '/price/vps/2015v1/ssd/model/{modelName}' |
+  '/price/vps/2015v1/ssd/option/{optionName}' |
+  '/price/vps/2017v1/ssd/model/{modelName}' |
+  '/price/vps/2017v1/ssd/option/{optionName}' |
+  '/price/vps/2017v2/cloud/model/{modelName}' |
+  '/price/vps/2017v2/cloud/option/{optionName}' |
+  '/price/vps/2017v2/cloudram/model/{modelName}' |
+  '/price/vps/2017v2/cloudram/option/{optionName}' |
+  '/price/vps/2017v2/ssd/model/{modelName}' |
+  '/price/vps/2017v2/ssd/option/{optionName}' |
+  '/price/vps/2017v3/cloud/model/{modelName}' |
+  '/price/vps/2017v3/cloud/option/{optionName}' |
+  '/price/vps/2017v3/cloudram/model/{modelName}' |
+  '/price/vps/2017v3/cloudram/option/{optionName}' |
+  '/price/vps/2017v3/ssd/model/{modelName}' |
+  '/price/vps/2017v3/ssd/option/{optionName}' |
+  '/price/vps/2018v1/cloud/model/{modelName}' |
+  '/price/vps/2018v1/cloud/option/{optionName}' |
+  '/price/vps/2018v1/cloudram/model/{modelName}' |
+  '/price/vps/2018v1/cloudram/option/{optionName}' |
+  '/price/vps/2018v1/ssd/model/{modelName}' |
+  '/price/vps/2018v1/ssd/option/{optionName}' |
+  '/price/vps/2018v2/ssd/model/{modelName}' |
+  '/price/vps/2018v2/ssd/option/{optionName}' |
+  '/price/vps/classic/model/{modelName}' |
+  '/price/vps/cloud/model/{modelName}' |
+  '/price/vps/cloud/option/{optionName}' |
+  '/price/vps/lowlat/model/{modelName}' |
+  '/price/xdsl/addressMove/fee/{option}' |
+  '/price/xdsl/installation/{offer}' |
+  '/price/xdsl/offers/{offersName}' |
+  '/price/xdsl/options/installation/{option}' |
+  '/price/xdsl/options/ipv4/{ipRange}' |
+  '/price/xdsl/options/line/{lineAction}';
+
+export class ApiPrice extends OvhWrapper {
+  constructor(engine: OvhRequestable) {
+    super(engine);
+  }
+  /**
+   * Get the price of Nas HA offers
+   * Get the price of Nas HA offers
+   */
+  public get(path: '/price/dedicated/nasha/model/{modelName}', params: {modelName: OVH.price.Dedicated.Nasha.ModelEnum}): Promise<order.Price>;
+  /**
+   * Get price of anti-DDos Pro option
+   * Get price of anti-DDos Pro option
+   */
+  public get(path: '/price/dedicated/server/antiDDoSPro/{commercialRange}', params: {commercialRange: OVH.price.Dedicated.Server.AntiDDoSProEnum}): Promise<order.Price>;
+  /**
+   * Get price of backup storage offer
+   * Get price of backup storage offer
+   */
+  public get(path: '/price/dedicated/server/backupStorage/{capacity}', params: {capacity: OVH.price.Dedicated.Server.BackupStorageEnum}): Promise<order.Price>;
+  /**
+   * Get price of available firewall models
+   * Get price of available firewall models
+   */
+  public get(path: '/price/dedicated/server/firewall/{firewallModel}', params: {firewallModel: OVH.price.Dedicated.Server.FirewallEnum}): Promise<order.Price>;
+  /**
+   * Get price of IPs
+   * Get price of IPs
+   */
+  public get(path: '/price/dedicated/server/ip/{routedTo}', params: {routedTo: OVH.price.Dedicated.Server.IpEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2013v1/bhs1a/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2013v1.Bhs1a.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2013v1/bhs1a/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2013v1.Bhs1a.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2013v1/bhs1a/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2013v1.Bhs1a.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2013v1/bhs1a/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2013v1.Bhs1a.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2013v1/rbx2a/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2013v1.Rbx2a.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2013v1/rbx2a/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2013v1.Rbx2a.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2013v1/rbx2a/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2013v1.Rbx2a.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2013v1/rbx2a/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2013v1.Rbx2a.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2013v1/sbg1a/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2013v1.Sbg1a.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2013v1/sbg1a/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2013v1.Sbg1a.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2013v1/sbg1a/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2013v1.Sbg1a.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2013v1/sbg1a/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2013v1.Sbg1a.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v1/bhs1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v1.Bhs1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v1/bhs1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v1.Bhs1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v1/bhs1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v1.Bhs1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v1/bhs1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v1.Bhs1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v1/bhs1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v1.Bhs1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v1/bhs1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v1.Bhs1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v1/bhs1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v1.Bhs1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v1/bhs1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v1.Bhs1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v1/rbx2a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v1.Rbx2a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v1/rbx2a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v1.Rbx2a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v1/rbx2a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v1.Rbx2a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v1/rbx2a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v1.Rbx2a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v1/rbx2a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v1.Rbx2a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v1/rbx2a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v1.Rbx2a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v1/rbx2a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v1.Rbx2a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v1/rbx2a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v1.Rbx2a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v1/rbx2b/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v1.Rbx2b.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v1/rbx2b/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v1.Rbx2b.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v1/rbx2b/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v1.Rbx2b.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v1/rbx2b/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v1.Rbx2b.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v1/rbx2b/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v1.Rbx2b.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v1/rbx2b/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v1.Rbx2b.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v1/rbx2b/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v1.Rbx2b.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v1/rbx2b/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v1.Rbx2b.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v1/sbg1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v1.Sbg1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v1/sbg1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v1.Sbg1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v1/sbg1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v1.Sbg1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v1/sbg1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v1.Sbg1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v1/sbg1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v1.Sbg1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v1/sbg1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v1.Sbg1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v1/sbg1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v1.Sbg1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v1/sbg1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v1.Sbg1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v2/bhs1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v2.Bhs1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v2/bhs1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v2.Bhs1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v2/bhs1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v2.Bhs1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v2/bhs1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v2.Bhs1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v2/bhs1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v2.Bhs1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v2/bhs1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v2.Bhs1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v2/bhs1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v2.Bhs1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v2/bhs1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v2.Bhs1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v2/rbx2a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v2.Rbx2a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v2/rbx2a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v2.Rbx2a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v2/rbx2a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v2.Rbx2a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v2/rbx2a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v2.Rbx2a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v2/rbx2a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v2.Rbx2a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v2/rbx2a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v2.Rbx2a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v2/rbx2a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v2.Rbx2a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v2/rbx2a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v2.Rbx2a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v2/rbx2b/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v2.Rbx2b.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v2/rbx2b/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v2.Rbx2b.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v2/rbx2b/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v2.Rbx2b.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v2/rbx2b/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v2.Rbx2b.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v2/rbx2b/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v2.Rbx2b.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v2/rbx2b/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v2.Rbx2b.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v2/rbx2b/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v2.Rbx2b.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v2/rbx2b/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v2.Rbx2b.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v2/sbg1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v2.Sbg1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v2/sbg1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v2.Sbg1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v2/sbg1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v2.Sbg1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v2/sbg1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v2.Sbg1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v2/sbg1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v2.Sbg1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v2/sbg1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2014v2.Sbg1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v2/sbg1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v2.Sbg1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2014v2/sbg1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2014v2.Sbg1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v1/bhs1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v1.Bhs1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v1/bhs1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v1.Bhs1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v1/bhs1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v1.Bhs1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v1/bhs1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v1.Bhs1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v1/bhs1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v1.Bhs1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v1/bhs1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v1.Bhs1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v1/bhs1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v1.Bhs1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v1/bhs1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v1.Bhs1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v1/rbx2a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v1.Rbx2a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v1/rbx2a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v1.Rbx2a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v1/rbx2a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v1.Rbx2a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v1/rbx2a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v1.Rbx2a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v1/rbx2a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v1.Rbx2a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v1/rbx2a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v1.Rbx2a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v1/rbx2a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v1.Rbx2a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v1/rbx2a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v1.Rbx2a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v1/rbx2b/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v1.Rbx2b.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v1/rbx2b/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v1.Rbx2b.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v1/rbx2b/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v1.Rbx2b.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v1/rbx2b/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v1.Rbx2b.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v1/rbx2b/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v1.Rbx2b.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v1/rbx2b/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v1.Rbx2b.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v1/rbx2b/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v1.Rbx2b.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v1/rbx2b/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v1.Rbx2b.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v1/sbg1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v1.Sbg1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v1/sbg1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v1.Sbg1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v1/sbg1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v1.Sbg1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v1/sbg1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v1.Sbg1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v1/sbg1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v1.Sbg1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v1/sbg1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v1.Sbg1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v1/sbg1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v1.Sbg1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v1/sbg1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v1.Sbg1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v2/bhs1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v2.Bhs1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v2/bhs1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v2.Bhs1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v2/bhs1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v2.Bhs1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v2/bhs1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v2.Bhs1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v2/bhs1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v2.Bhs1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v2/bhs1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v2.Bhs1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v2/bhs1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v2.Bhs1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v2/bhs1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v2.Bhs1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v2/rbx2a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v2.Rbx2a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v2/rbx2a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v2.Rbx2a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v2/rbx2a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v2.Rbx2a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v2/rbx2a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v2.Rbx2a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v2/rbx2a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v2.Rbx2a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v2/rbx2a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v2.Rbx2a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v2/rbx2a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v2.Rbx2a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v2/rbx2a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v2.Rbx2a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v2/rbx2b/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v2.Rbx2b.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v2/rbx2b/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v2.Rbx2b.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v2/rbx2b/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v2.Rbx2b.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v2/rbx2b/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v2.Rbx2b.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v2/rbx2b/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v2.Rbx2b.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v2/rbx2b/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v2.Rbx2b.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v2/rbx2b/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v2.Rbx2b.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v2/rbx2b/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v2.Rbx2b.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v2/sbg1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v2.Sbg1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v2/sbg1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v2.Sbg1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v2/sbg1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v2.Sbg1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v2/sbg1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v2.Sbg1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v2/sbg1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v2.Sbg1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v2/sbg1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v2.Sbg1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v2/sbg1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v2.Sbg1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v2/sbg1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v2.Sbg1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v3/bhs1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v3.Bhs1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v3/bhs1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v3.Bhs1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v3/bhs1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v3.Bhs1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v3/bhs1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v3.Bhs1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v3/bhs1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v3.Bhs1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v3/bhs1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v3.Bhs1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v3/bhs1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v3.Bhs1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v3/bhs1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v3.Bhs1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v3/rbx2a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v3.Rbx2a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v3/rbx2a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v3.Rbx2a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v3/rbx2a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v3.Rbx2a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v3/rbx2a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v3.Rbx2a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v3/rbx2a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v3.Rbx2a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v3/rbx2a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v3.Rbx2a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v3/rbx2a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v3.Rbx2a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v3/rbx2a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v3.Rbx2a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v3/rbx2b/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v3.Rbx2b.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v3/rbx2b/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v3.Rbx2b.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v3/rbx2b/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v3.Rbx2b.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v3/rbx2b/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v3.Rbx2b.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v3/rbx2b/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v3.Rbx2b.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v3/rbx2b/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v3.Rbx2b.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v3/rbx2b/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v3.Rbx2b.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v3/rbx2b/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v3.Rbx2b.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v3/sbg1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v3.Sbg1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v3/sbg1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v3.Sbg1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v3/sbg1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v3.Sbg1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v3/sbg1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v3.Sbg1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v3/sbg1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v3.Sbg1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v3/sbg1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v3.Sbg1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v3/sbg1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v3.Sbg1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v3/sbg1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v3.Sbg1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v4/bhs1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v4.Bhs1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v4/bhs1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v4.Bhs1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v4/bhs1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v4.Bhs1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v4/bhs1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v4.Bhs1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v4/bhs1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v4.Bhs1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v4/bhs1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v4.Bhs1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v4/bhs1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v4.Bhs1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v4/bhs1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v4.Bhs1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v4/rbx2a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v4.Rbx2a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v4/rbx2a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v4.Rbx2a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v4/rbx2a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v4.Rbx2a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v4/rbx2a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v4.Rbx2a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v4/rbx2a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v4.Rbx2a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v4/rbx2a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v4.Rbx2a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v4/rbx2a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v4.Rbx2a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v4/rbx2a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v4.Rbx2a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v4/rbx2b/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v4.Rbx2b.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v4/rbx2b/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v4.Rbx2b.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v4/rbx2b/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v4.Rbx2b.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v4/rbx2b/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v4.Rbx2b.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v4/rbx2b/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v4.Rbx2b.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v4/rbx2b/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v4.Rbx2b.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v4/rbx2b/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v4.Rbx2b.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v4/rbx2b/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v4.Rbx2b.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v4/sbg1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v4.Sbg1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v4/sbg1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v4.Sbg1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v4/sbg1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v4.Sbg1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v4/sbg1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v4.Sbg1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v4/sbg1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v4.Sbg1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v4/sbg1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v4.Sbg1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v4/sbg1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v4.Sbg1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v4/sbg1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v4.Sbg1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v5/bhs1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v5.Bhs1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v5/bhs1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v5.Bhs1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v5/bhs1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v5.Bhs1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v5/bhs1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v5.Bhs1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v5/bhs1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v5.Bhs1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v5/bhs1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v5.Bhs1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v5/bhs1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v5.Bhs1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v5/bhs1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v5.Bhs1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v5/rbx2a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v5.Rbx2a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v5/rbx2a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v5.Rbx2a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v5/rbx2a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v5.Rbx2a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v5/rbx2a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v5.Rbx2a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v5/rbx2a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v5.Rbx2a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v5/rbx2a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v5.Rbx2a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v5/rbx2a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v5.Rbx2a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v5/rbx2a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v5.Rbx2a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v5/rbx2b/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v5.Rbx2b.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v5/rbx2b/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v5.Rbx2b.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v5/rbx2b/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v5.Rbx2b.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v5/rbx2b/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v5.Rbx2b.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v5/rbx2b/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v5.Rbx2b.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v5/rbx2b/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v5.Rbx2b.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v5/rbx2b/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v5.Rbx2b.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v5/rbx2b/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v5.Rbx2b.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v5/sbg1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v5.Sbg1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v5/sbg1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v5.Sbg1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v5/sbg1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v5.Sbg1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v5/sbg1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v5.Sbg1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v5/sbg1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v5.Sbg1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v5/sbg1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v5.Sbg1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v5/sbg1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v5.Sbg1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v5/sbg1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v5.Sbg1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v6/bhs1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v6.Bhs1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v6/bhs1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v6.Bhs1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v6/bhs1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v6.Bhs1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v6/bhs1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v6.Bhs1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v6/bhs1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v6.Bhs1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v6/bhs1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v6.Bhs1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v6/bhs1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v6.Bhs1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v6/bhs1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v6.Bhs1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v6/rbx2a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v6.Rbx2a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v6/rbx2a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v6.Rbx2a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v6/rbx2a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v6.Rbx2a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v6/rbx2a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v6.Rbx2a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v6/rbx2a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v6.Rbx2a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v6/rbx2a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v6.Rbx2a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v6/rbx2a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v6.Rbx2a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v6/rbx2a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v6.Rbx2a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v6/rbx2b/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v6.Rbx2b.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v6/rbx2b/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v6.Rbx2b.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v6/rbx2b/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v6.Rbx2b.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v6/rbx2b/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v6.Rbx2b.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v6/rbx2b/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v6.Rbx2b.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v6/rbx2b/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v6.Rbx2b.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v6/rbx2b/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v6.Rbx2b.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v6/rbx2b/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v6.Rbx2b.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v6/sbg1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v6.Sbg1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v6/sbg1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v6.Sbg1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v6/sbg1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v6.Sbg1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v6/sbg1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v6.Sbg1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v6/sbg1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v6.Sbg1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v6/sbg1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v6.Sbg1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v6/sbg1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v6.Sbg1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v6/sbg1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v6.Sbg1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v7/bhs1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v7.Bhs1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v7/bhs1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v7.Bhs1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v7/bhs1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v7.Bhs1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v7/bhs1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v7.Bhs1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v7/bhs1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v7.Bhs1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v7/bhs1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v7.Bhs1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v7/bhs1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v7.Bhs1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v7/bhs1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v7.Bhs1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v7/rbx2a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v7.Rbx2a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v7/rbx2a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v7.Rbx2a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v7/rbx2a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v7.Rbx2a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v7/rbx2a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v7.Rbx2a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v7/rbx2a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v7.Rbx2a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v7/rbx2a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v7.Rbx2a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v7/rbx2a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v7.Rbx2a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v7/rbx2a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v7.Rbx2a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v7/rbx2b/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v7.Rbx2b.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v7/rbx2b/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v7.Rbx2b.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v7/rbx2b/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v7.Rbx2b.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v7/rbx2b/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v7.Rbx2b.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v7/rbx2b/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v7.Rbx2b.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v7/rbx2b/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v7.Rbx2b.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v7/rbx2b/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v7.Rbx2b.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v7/rbx2b/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v7.Rbx2b.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v7/sbg1a/enterprise/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v7.Sbg1a.Enterprise.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v7/sbg1a/enterprise/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v7.Sbg1a.Enterprise.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v7/sbg1a/enterprise/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v7.Sbg1a.Enterprise.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v7/sbg1a/enterprise/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v7.Sbg1a.Enterprise.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v7/sbg1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v7.Sbg1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v7/sbg1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2016v7.Sbg1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v7/sbg1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v7.Sbg1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2016v7/sbg1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2016v7.Sbg1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v1/bhs1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v1.Bhs1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v1/bhs1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v1.Bhs1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v1/bhs1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v1.Bhs1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v1/bhs1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v1.Bhs1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v1/eri1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v1.Eri1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v1/eri1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v1.Eri1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v1/eri1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v1.Eri1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v1/eri1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v1.Eri1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v1/lim1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v1.Lim1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v1/lim1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v1.Lim1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v1/lim1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v1.Lim1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v1/lim1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v1.Lim1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v1/rbx2a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v1.Rbx2a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v1/rbx2a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v1.Rbx2a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v1/rbx2a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v1.Rbx2a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v1/rbx2a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v1.Rbx2a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v1/rbx2b/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v1.Rbx2b.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v1/rbx2b/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v1.Rbx2b.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v1/rbx2b/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v1.Rbx2b.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v1/rbx2b/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v1.Rbx2b.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v1/sbg1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v1.Sbg1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v1/sbg1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v1.Sbg1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v1/sbg1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v1.Sbg1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v1/sbg1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v1.Sbg1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v1/waw1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v1.Waw1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v1/waw1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v1.Waw1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v1/waw1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v1.Waw1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v1/waw1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v1.Waw1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v2/bhs1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v2.Bhs1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v2/bhs1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v2.Bhs1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v2/bhs1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v2.Bhs1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v2/bhs1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v2.Bhs1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v2/eri1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v2.Eri1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v2/eri1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v2.Eri1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v2/eri1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v2.Eri1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v2/eri1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v2.Eri1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v2/lim1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v2.Lim1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v2/lim1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v2.Lim1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v2/lim1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v2.Lim1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v2/lim1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v2.Lim1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v2/rbx2a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v2.Rbx2a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v2/rbx2a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v2.Rbx2a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v2/rbx2a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v2.Rbx2a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v2/rbx2a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v2.Rbx2a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v2/rbx2b/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v2.Rbx2b.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v2/rbx2b/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v2.Rbx2b.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v2/rbx2b/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v2.Rbx2b.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v2/rbx2b/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v2.Rbx2b.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v2/sbg1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v2.Sbg1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v2/sbg1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v2.Sbg1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v2/sbg1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v2.Sbg1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v2/sbg1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v2.Sbg1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v2/waw1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v2.Waw1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v2/waw1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v2.Waw1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v2/waw1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v2.Waw1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v2/waw1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v2.Waw1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v3/bhs1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v3.Bhs1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v3/bhs1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v3.Bhs1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v3/bhs1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v3.Bhs1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v3/bhs1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v3.Bhs1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v3/eri1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v3.Eri1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v3/eri1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v3.Eri1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v3/eri1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v3.Eri1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v3/eri1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v3.Eri1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v3/lim1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v3.Lim1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v3/lim1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v3.Lim1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v3/lim1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v3.Lim1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v3/lim1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v3.Lim1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v3/rbx2a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v3.Rbx2a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v3/rbx2a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v3.Rbx2a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v3/rbx2a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v3.Rbx2a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v3/rbx2a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v3.Rbx2a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v3/rbx2b/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v3.Rbx2b.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v3/rbx2b/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v3.Rbx2b.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v3/rbx2b/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v3.Rbx2b.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v3/rbx2b/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v3.Rbx2b.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v3/sbg1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v3.Sbg1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v3/sbg1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v3.Sbg1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v3/sbg1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v3.Sbg1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v3/sbg1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v3.Sbg1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v3/waw1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v3.Waw1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v3/waw1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v3.Waw1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v3/waw1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v3.Waw1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v3/waw1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v3.Waw1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v4/bhs1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v4.Bhs1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v4/bhs1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v4.Bhs1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v4/bhs1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v4.Bhs1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v4/bhs1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v4.Bhs1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v4/eri1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v4.Eri1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v4/eri1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v4.Eri1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v4/eri1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v4.Eri1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v4/eri1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v4.Eri1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v4/lim1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v4.Lim1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v4/lim1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v4.Lim1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v4/lim1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v4.Lim1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v4/lim1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v4.Lim1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v4/rbx2a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v4.Rbx2a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v4/rbx2a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v4.Rbx2a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v4/rbx2a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v4.Rbx2a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v4/rbx2a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v4.Rbx2a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v4/rbx2b/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v4.Rbx2b.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v4/rbx2b/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v4.Rbx2b.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v4/rbx2b/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v4.Rbx2b.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v4/rbx2b/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v4.Rbx2b.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v4/sbg1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v4.Sbg1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v4/sbg1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v4.Sbg1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v4/sbg1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v4.Sbg1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v4/sbg1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v4.Sbg1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v4/waw1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v4.Waw1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v4/waw1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v4.Waw1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v4/waw1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v4.Waw1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v4/waw1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v4.Waw1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v5/bhs1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v5.Bhs1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v5/bhs1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v5.Bhs1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v5/bhs1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v5.Bhs1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v5/bhs1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v5.Bhs1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v5/eri1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v5.Eri1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v5/eri1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v5.Eri1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v5/eri1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v5.Eri1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v5/eri1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v5.Eri1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v5/lim1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v5.Lim1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v5/lim1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v5.Lim1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v5/lim1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v5.Lim1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v5/lim1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v5.Lim1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v5/rbx2a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v5.Rbx2a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v5/rbx2a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v5.Rbx2a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v5/rbx2a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v5.Rbx2a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v5/rbx2a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v5.Rbx2a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v5/rbx2b/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v5.Rbx2b.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v5/rbx2b/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v5.Rbx2b.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v5/rbx2b/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v5.Rbx2b.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v5/rbx2b/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v5.Rbx2b.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v5/sbg1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v5.Sbg1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v5/sbg1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v5.Sbg1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v5/sbg1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v5.Sbg1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v5/sbg1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v5.Sbg1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v5/waw1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v5.Waw1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v5/waw1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v5.Waw1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v5/waw1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v5.Waw1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v5/waw1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v5.Waw1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v6/bhs1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v6.Bhs1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v6/bhs1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v6.Bhs1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v6/bhs1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v6.Bhs1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v6/bhs1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v6.Bhs1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v6/eri1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v6.Eri1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v6/eri1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v6.Eri1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v6/eri1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v6.Eri1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v6/eri1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v6.Eri1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v6/lim1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v6.Lim1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v6/lim1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v6.Lim1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v6/lim1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v6.Lim1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v6/lim1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v6.Lim1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v6/rbx2a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v6.Rbx2a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v6/rbx2a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v6.Rbx2a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v6/rbx2a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v6.Rbx2a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v6/rbx2a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v6.Rbx2a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v6/rbx2b/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v6.Rbx2b.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v6/rbx2b/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v6.Rbx2b.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v6/rbx2b/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v6.Rbx2b.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v6/rbx2b/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v6.Rbx2b.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v6/sbg1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v6.Sbg1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v6/sbg1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v6.Sbg1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v6/sbg1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v6.Sbg1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v6/sbg1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v6.Sbg1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v6/waw1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v6.Waw1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v6/waw1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v6.Waw1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v6/waw1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v6.Waw1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v6/waw1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v6.Waw1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v7/bhs1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v7.Bhs1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v7/bhs1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v7.Bhs1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v7/bhs1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v7.Bhs1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v7/bhs1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v7.Bhs1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v7/eri1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v7.Eri1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v7/eri1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v7.Eri1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v7/eri1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v7.Eri1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v7/eri1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v7.Eri1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v7/lim1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v7.Lim1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v7/lim1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v7.Lim1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v7/lim1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v7.Lim1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v7/lim1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v7.Lim1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v7/rbx2a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v7.Rbx2a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v7/rbx2a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v7.Rbx2a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v7/rbx2a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v7.Rbx2a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v7/rbx2a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v7.Rbx2a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v7/rbx2b/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v7.Rbx2b.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v7/rbx2b/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v7.Rbx2b.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v7/rbx2b/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v7.Rbx2b.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v7/rbx2b/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v7.Rbx2b.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v7/sbg1a/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v7.Sbg1a.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v7/sbg1a/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v7.Sbg1a.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v7/sbg1a/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v7.Sbg1a.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v7/sbg1a/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v7.Sbg1a.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly filer ressources
+   * Get price of dedicated Cloud hourly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v7/waw1c/infrastructure/filer/hourly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v7.Waw1c.Infrastructure.Filer.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly filer ressources
+   * Get price of dedicated Cloud monthly filer ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v7/waw1c/infrastructure/filer/monthly/{filerProfile}', params: {filerProfile: OVH.price.DedicatedCloud._2018v7.Waw1c.Infrastructure.Filer.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud hourly host ressources
+   * Get price of dedicated Cloud hourly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v7/waw1c/infrastructure/host/hourly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v7.Waw1c.Infrastructure.Host.HourlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of dedicated Cloud monthly host ressources
+   * Get price of dedicated Cloud monthly host ressources
+   */
+  public get(path: '/price/dedicatedCloud/2018v7/waw1c/infrastructure/host/monthly/{hostProfile}', params: {hostProfile: OVH.price.DedicatedCloud._2018v7.Waw1c.Infrastructure.Host.MonthlyEnum}): Promise<order.Price>;
+  /**
+   * Get price of zone options
+   * Get price of zone options
+   */
+  public get(path: '/price/domain/zone/option/{optionName}', params: {optionName: OVH.price.Domain.Zone.OptionEnum}): Promise<order.Price>;
+  /**
+   * Get the price for a private database
+   * Get the price for a private database
+   */
+  public get(path: '/price/hosting/privateDatabase/{privateDatabaseName}', params: {privateDatabaseName: OVH.price.Hosting.PrivateDatabaseEnum}): Promise<order.Price>;
+  /**
+   * Get the price for cdn option
+   * Get the price for cdn option
+   */
+  public get(path: '/price/hosting/web/cdn/{cdnName}', params: {cdnName: OVH.price.Hosting.Web.CdnEnum}): Promise<order.Price>;
+  /**
+   * Get the price for extra sql perso option
+   * Get the price for extra sql perso option
+   */
+  public get(path: '/price/hosting/web/extraSqlPerso/{extraSqlPersoName}', params: {extraSqlPersoName: OVH.price.Hosting.Web.ExtraSqlPersoEnum}): Promise<order.Price>;
+  /**
+   * Get the price for hosted ssl option
+   * Get the price for hosted ssl option
+   */
+  public get(path: '/price/hosting/web/ssl/{sslName}', params: {sslName: OVH.price.Hosting.Web.SslEnum}): Promise<order.Price>;
+  /**
+   * Get the price of a HPC Spot Account for 1 month
+   * Get the price of a HPC Spot Account for 1 month
+   */
+  public get(path: '/price/hpcspot/account/subscription/{subscriptionName}', params: {subscriptionName: OVH.price.Hpcspot.Account.SubscriptionEnum}): Promise<order.Price>;
+  /**
+   * Get the price of a JOB consumption for 1 hour
+   * Get the price of a JOB consumption for 1 hour
+   */
+  public get(path: '/price/hpcspot/consumption/job/{reference}', params: {reference: OVH.price.Hpcspot.Consumption.JobEnum}): Promise<order.Price>;
+  /**
+   * Get the price of a RESERVATION consumption for 1 hour
+   * Get the price of a RESERVATION consumption for 1 hour
+   */
+  public get(path: '/price/hpcspot/consumption/reservation/{reference}', params: {reference: OVH.price.Hpcspot.Consumption.ReservationEnum}): Promise<order.Price>;
+  /**
+   * Get the price of a SESSION consumption for 1 hour
+   * Get the price of a SESSION consumption for 1 hour
+   */
+  public get(path: '/price/hpcspot/consumption/session/{reference}', params: {reference: OVH.price.Hpcspot.Consumption.SessionEnum}): Promise<order.Price>;
+  /**
+   * Get the monthly price for an office license
+   * Get the monthly price for an office license
+   */
+  public get(path: '/price/license/office/{officeName}', params: {officeName: OVH.price.License.OfficeEnum}): Promise<order.Price>;
+  /**
+   * Get the price of overTheBox offers
+   * Get the price of overTheBox offers
+   */
+  public get(path: '/price/overTheBox/offer/{offerName}', params: {offerName: OVH.price.OverTheBox.OfferEnum}): Promise<order.Price>;
+  /**
+   * Get the monthly price for an Office 365 license
+   * Get the monthly price for an Office 365 license
+   */
+  public get(path: '/price/saas/csp2/license/{licenseName}', params: {licenseName: OVH.price.Saas.Csp2.LicenseEnum}): Promise<order.Price>;
+  /**
+   * Get price of VPS Cloud 2013
+   * Get price of VPS Cloud 2013
+   */
+  public get(path: '/price/vps/2013v1/classic/model/{modelName}', params: {modelName: OVH.price.Vps._2013v1.Classic.ModelEnum}): Promise<order.Price>;
+  /**
+   * Get price of VPS Classic 2013
+   * Get price of VPS Classic 2013
+   */
+  public get(path: '/price/vps/2013v1/cloud/model/{modelName}', params: {modelName: OVH.price.Vps._2013v1.Cloud.ModelEnum}): Promise<order.Price>;
+  /**
+   * Get price of VPS Cloud Options 2013
+   * Get price of VPS Cloud Options 2013
+   */
+  public get(path: '/price/vps/2013v1/cloud/option/{optionName}', params: {optionName: OVH.price.Vps._2013v1.Cloud.OptionEnum}): Promise<order.Price>;
+  /**
+   * Get price of VPS Low Latency 2013
+   * Get price of VPS Low Latency 2013
+   */
+  public get(path: '/price/vps/2013v1/lowlat/model/{modelName}', params: {modelName: OVH.price.Vps._2013v1.Lowlat.ModelEnum}): Promise<order.Price>;
+  /**
+   * Get price of VPS Classic 2014
+   * Get price of VPS Classic 2014
+   */
+  public get(path: '/price/vps/2014v1/classic/model/{modelName}', params: {modelName: OVH.price.Vps._2014v1.Classic.ModelEnum}): Promise<order.Price>;
+  /**
+   * Get price of VPS Cloud 2014
+   * Get price of VPS Cloud 2014
+   */
+  public get(path: '/price/vps/2014v1/cloud/model/{modelName}', params: {modelName: OVH.price.Vps._2014v1.Cloud.ModelEnum}): Promise<order.Price>;
+  /**
+   * Get price of VPS Cloud Options 2014
+   * Get price of VPS Cloud Options 2014
+   */
+  public get(path: '/price/vps/2014v1/cloud/option/{optionName}', params: {optionName: OVH.price.Vps._2014v1.Cloud.OptionEnum}): Promise<order.Price>;
+  /**
+   * Get price of VPS Cloud 2015
+   * Get price of VPS Cloud 2015
+   */
+  public get(path: '/price/vps/2015v1/cloud/model/{modelName}', params: {modelName: OVH.price.Vps._2015v1.Cloud.ModelEnum}): Promise<order.Price>;
+  /**
+   * Get price of VPS Cloud Options 2015/2016
+   * Get price of VPS Cloud Options 2015/2016
+   */
+  public get(path: '/price/vps/2015v1/cloud/option/{optionName}', params: {optionName: OVH.price.Vps._2015v1.Cloud.OptionEnum}): Promise<order.Price>;
+  /**
+   * Get price of VPS Cloud RAM 2016
+   * Get price of VPS Cloud RAM 2016
+   */
+  public get(path: '/price/vps/2015v1/cloudram/model/{modelName}', params: {modelName: OVH.price.Vps._2015v1.Cloudram.ModelEnum}): Promise<order.Price>;
+  /**
+   * Get price of VPS Cloud RAM Options 2015/2016
+   * Get price of VPS Cloud RAM Options 2015/2016
+   */
+  public get(path: '/price/vps/2015v1/cloudram/option/{optionName}', params: {optionName: OVH.price.Vps._2015v1.Cloudram.OptionEnum}): Promise<order.Price>;
+  /**
+   * Get price of VPS SSD 2015
+   * Get price of VPS SSD 2015
+   */
+  public get(path: '/price/vps/2015v1/ssd/model/{modelName}', params: {modelName: OVH.price.Vps._2015v1.Ssd.ModelEnum}): Promise<order.Price>;
+  /**
+   * Get price of VPS SSD Options 2015/2016
+   * Get price of VPS SSD Options 2015/2016
+   */
+  public get(path: '/price/vps/2015v1/ssd/option/{optionName}', params: {optionName: OVH.price.Vps._2015v1.Ssd.OptionEnum}): Promise<order.Price>;
+  /**
+   * Get price of VPS SSD Discovery 2017
+   * Get price of VPS SSD Discovery 2017
+   */
+  public get(path: '/price/vps/2017v1/ssd/model/{modelName}', params: {modelName: OVH.price.Vps._2017v1.Ssd.ModelEnum}): Promise<order.Price>;
+  /**
+   * Get price of VPS SSD Discovery Options 2017
+   * Get price of VPS SSD Discovery Options 2017
+   */
+  public get(path: '/price/vps/2017v1/ssd/option/{optionName}', params: {optionName: OVH.price.Vps._2017v1.Ssd.OptionEnum}): Promise<order.Price>;
+  /**
+   * Get price of VPS Cloud 2017
+   * Get price of VPS Cloud 2017
+   */
+  public get(path: '/price/vps/2017v2/cloud/model/{modelName}', params: {modelName: OVH.price.Vps._2017v2.Cloud.ModelEnum}): Promise<order.Price>;
+  /**
+   * Get price of VPS Cloud Options 2015/2016
+   * Get price of VPS Cloud Options 2015/2016
+   */
+  public get(path: '/price/vps/2017v2/cloud/option/{optionName}', params: {optionName: OVH.price.Vps._2017v2.Cloud.OptionEnum}): Promise<order.Price>;
+  /**
+   * Get price of VPS Cloud RAM 2017
+   * Get price of VPS Cloud RAM 2017
+   */
+  public get(path: '/price/vps/2017v2/cloudram/model/{modelName}', params: {modelName: OVH.price.Vps._2017v2.Cloudram.ModelEnum}): Promise<order.Price>;
+  /**
+   * Get price of VPS Cloud RAM Options 2015/2016
+   * Get price of VPS Cloud RAM Options 2015/2016
+   */
+  public get(path: '/price/vps/2017v2/cloudram/option/{optionName}', params: {optionName: OVH.price.Vps._2017v2.Cloudram.OptionEnum}): Promise<order.Price>;
+  /**
+   * Get price of VPS SSD 2017
+   * Get price of VPS SSD 2017
+   */
+  public get(path: '/price/vps/2017v2/ssd/model/{modelName}', params: {modelName: OVH.price.Vps._2017v2.Ssd.ModelEnum}): Promise<order.Price>;
+  /**
+   * Get price of VPS SSD Options 2015/2016
+   * Get price of VPS SSD Options 2015/2016
+   */
+  public get(path: '/price/vps/2017v2/ssd/option/{optionName}', params: {optionName: OVH.price.Vps._2017v2.Ssd.OptionEnum}): Promise<order.Price>;
+  /**
+   * Get price of VPS Cloud 2017
+   * Get price of VPS Cloud 2017
+   */
+  public get(path: '/price/vps/2017v3/cloud/model/{modelName}', params: {modelName: OVH.price.Vps._2017v3.Cloud.ModelEnum}): Promise<order.Price>;
+  /**
+   * Get price of VPS Cloud Options 2015/2016
+   * Get price of VPS Cloud Options 2015/2016
+   */
+  public get(path: '/price/vps/2017v3/cloud/option/{optionName}', params: {optionName: OVH.price.Vps._2017v3.Cloud.OptionEnum}): Promise<order.Price>;
+  /**
+   * Get price of VPS Cloud RAM 2017
+   * Get price of VPS Cloud RAM 2017
+   */
+  public get(path: '/price/vps/2017v3/cloudram/model/{modelName}', params: {modelName: OVH.price.Vps._2017v3.Cloudram.ModelEnum}): Promise<order.Price>;
+  /**
+   * Get price of VPS Cloud RAM Options 2015/2016
+   * Get price of VPS Cloud RAM Options 2015/2016
+   */
+  public get(path: '/price/vps/2017v3/cloudram/option/{optionName}', params: {optionName: OVH.price.Vps._2017v3.Cloudram.OptionEnum}): Promise<order.Price>;
+  /**
+   * Get price of VPS SSD 2017
+   * Get price of VPS SSD 2017
+   */
+  public get(path: '/price/vps/2017v3/ssd/model/{modelName}', params: {modelName: OVH.price.Vps._2017v3.Ssd.ModelEnum}): Promise<order.Price>;
+  /**
+   * Get price of VPS SSD Options 2015/2016
+   * Get price of VPS SSD Options 2015/2016
+   */
+  public get(path: '/price/vps/2017v3/ssd/option/{optionName}', params: {optionName: OVH.price.Vps._2017v3.Ssd.OptionEnum}): Promise<order.Price>;
+  /**
+   * Get price of VPS Cloud 2017
+   * Get price of VPS Cloud 2017
+   */
+  public get(path: '/price/vps/2018v1/cloud/model/{modelName}', params: {modelName: OVH.price.Vps._2018v1.Cloud.ModelEnum}): Promise<order.Price>;
+  /**
+   * Get price of VPS Cloud Options 2015/2016
+   * Get price of VPS Cloud Options 2015/2016
+   */
+  public get(path: '/price/vps/2018v1/cloud/option/{optionName}', params: {optionName: OVH.price.Vps._2018v1.Cloud.OptionEnum}): Promise<order.Price>;
+  /**
+   * Get price of VPS Cloud RAM 2017
+   * Get price of VPS Cloud RAM 2017
+   */
+  public get(path: '/price/vps/2018v1/cloudram/model/{modelName}', params: {modelName: OVH.price.Vps._2018v1.Cloudram.ModelEnum}): Promise<order.Price>;
+  /**
+   * Get price of VPS Cloud RAM Options 2015/2016
+   * Get price of VPS Cloud RAM Options 2015/2016
+   */
+  public get(path: '/price/vps/2018v1/cloudram/option/{optionName}', params: {optionName: OVH.price.Vps._2018v1.Cloudram.OptionEnum}): Promise<order.Price>;
+  /**
+   * Get price of VPS SSD 2018
+   * Get price of VPS SSD 2018
+   */
+  public get(path: '/price/vps/2018v1/ssd/model/{modelName}', params: {modelName: OVH.price.Vps._2018v1.Ssd.ModelEnum}): Promise<order.Price>;
+  /**
+   * Get price of VPS SSD Options 2015/2016
+   * Get price of VPS SSD Options 2015/2016
+   */
+  public get(path: '/price/vps/2018v1/ssd/option/{optionName}', params: {optionName: OVH.price.Vps._2018v1.Ssd.OptionEnum}): Promise<order.Price>;
+  /**
+   * Get price of VPS SSD APAC
+   * Get price of VPS SSD APAC
+   */
+  public get(path: '/price/vps/2018v2/ssd/model/{modelName}', params: {modelName: OVH.price.Vps._2018v2.Ssd.ModelEnum}): Promise<order.Price>;
+  /**
+   * Get price of VPS SSD APAC Options
+   * Get price of VPS SSD APAC Options
+   */
+  public get(path: '/price/vps/2018v2/ssd/option/{optionName}', params: {optionName: OVH.price.Vps._2018v2.Ssd.OptionEnum}): Promise<order.Price>;
+  /**
+   * Get price of VPS Classic
+   * Get price of VPS Classic
+   */
+  public get(path: '/price/vps/classic/model/{modelName}', params: {modelName: OVH.price.Vps.Classic.ModelEnum}): Promise<order.Price>;
+  /**
+   * Get price of VPS Cloud
+   * Get price of VPS Cloud
+   */
+  public get(path: '/price/vps/cloud/model/{modelName}', params: {modelName: OVH.price.Vps.Cloud.ModelEnum}): Promise<order.Price>;
+  /**
+   * Get price of VPS Cloud Options
+   * Get price of VPS Cloud Options
+   */
+  public get(path: '/price/vps/cloud/option/{optionName}', params: {optionName: OVH.price.Vps.Cloud.OptionEnum}): Promise<order.Price>;
+  /**
+   * Get price of VPS Low Latency
+   * Get price of VPS Low Latency
+   */
+  public get(path: '/price/vps/lowlat/model/{modelName}', params: {modelName: OVH.price.Vps.Lowlat.ModelEnum}): Promise<order.Price>;
+  /**
+   * Get the price of address move option fee
+   * Get the price of address move option fee
+   */
+  public get(path: '/price/xdsl/addressMove/fee/{option}', params: {option: OVH.price.Xdsl.AddressMove.FeeEnum}): Promise<order.Price>;
+  /**
+   * Get the price of options installation fee
+   * Get the price of options installation fee
+   */
+  public get(path: '/price/xdsl/installation/{offer}', params: {offer: OVH.price.Xdsl.InstallationEnum}): Promise<order.Price>;
+  /**
+   * Get the price of xdsl offers
+   * Get the price of xdsl offers
+   */
+  public get(path: '/price/xdsl/offers/{offersName}', params: {offersName: OVH.price.Xdsl.OffersEnum}): Promise<order.Price>;
+  /**
+   * Get the price of options installation fee
+   * Get the price of options installation fee
+   */
+  public get(path: '/price/xdsl/options/installation/{option}', params: {option: OVH.price.Xdsl.Options.InstallationEnum}): Promise<order.Price>;
+  /**
+   * Get the price of IPv4 options
+   * Get the price of IPv4 options
+   */
+  public get(path: '/price/xdsl/options/ipv4/{ipRange}', params: {ipRange: OVH.price.Xdsl.Options.Ipv4Enum}): Promise<order.Price>;
+  /**
+   * Get the price of line action
+   * Get the price of line action
+   */
+  public get(path: '/price/xdsl/options/line/{lineAction}', params: {lineAction: OVH.price.Xdsl.Options.LineEnum}): Promise<order.Price>;
+  public get(path: PathsPriceGET, params?: OvhParamType): Promise<any> {
+    return super.get(path, params);
+  }
+}
+}

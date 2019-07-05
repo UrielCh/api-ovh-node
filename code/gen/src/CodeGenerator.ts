@@ -1,7 +1,7 @@
 import GenApiTypes, { CacheApi, CacheModel, filterReservedKw } from './GenApiTypes';
-import { indentGen, protectFieldName, className, protectJsonKey, rawRemapNode, formatUpperCamlCase } from './utils';
-import { Parameter, Schema, ModelsProp, FieldProp } from './schema';
-import { brotliCompressSync } from 'zlib';
+import { indentGen, protectModelField, className, protectJsonKey, rawRemapNode, formatUpperCamlCase, protectHarmonyField } from './utils';
+import { Parameter, Schema, FieldProp } from './schema';
+import { Hash } from 'crypto';
 
 export class CodeGenerator {
     api: string;
@@ -29,6 +29,19 @@ export class CodeGenerator {
         code += '}';
         return code;
     }
+
+    typeFromParameter(p: Parameter | FieldProp): string {
+        let type = p.fullType || (<any>p).type;
+        if (type.endsWith(':string'))
+            type = 'string'
+        type = this.aliasFilter(type);
+        if (~type.indexOf('.'))
+            type = this.extraNS + type;
+        type = type.replace('<long>', '<number>');
+        return filterReservedKw(type);
+    }
+
+    reservedField = new Set(['_alias', '_model', '_name', '__propo__', '_namespace'])
 
     /**
      * @param depth 
@@ -61,18 +74,10 @@ export class CodeGenerator {
                 for (const pName of props) {
                     const prop = model.properties[pName];
                     // console.log(prop);
-                    code += `${ident0}    ${protectFieldName(pName)}`;
+                    code += `${ident0}    ${protectModelField(pName)}`;
                     if (!prop.required)
                         code += '?';
-                    code += ': ';
-                    let type = prop.fullType || prop.type;
-                    if (type.endsWith(':string'))
-                        type = 'string'
-                    type = this.aliasFilter(type);
-                    if (~type.indexOf('.'))
-                        type = this.extraNS + type;
-                    type = type.replace('<long>', '<number>');
-                    code += filterReservedKw(type);
+                    code += ': ' + this.typeFromParameter(prop);
                     code += ';\n';
                 }
                 code += `${ident0}}\n`;
@@ -80,14 +85,14 @@ export class CodeGenerator {
         }
         {
             // drop _alias _model _name __propo__
-            const keys = Object.keys(cache).filter(k => !k.startsWith('_')).sort();
+            const keys = Object.keys(cache).filter(k => !this.reservedField.has(k)).sort();
             if (!keys.length)
                 return code;
             if (cache._namespace) {
                 // code += `${ident0}// ${JSON.stringify(keys)}\n`;
-                code += `${ident0}export namespace ${filterReservedKw(cache._namespace)} {\n`;
+                code += `${ident0}export namespace ${filterReservedKw(cache._namespace)} { //  ${keys.join(', ')}\n`;
             } else if (cache._name) {
-                code += `${ident0}export namespace ${cache._name} {\n`;
+                code += `${ident0}export namespace ${cache._name} { // ${keys.join(', ')}\n`;
             }
             // drop _ prefixed fields
             // fullNS = fullNS ? fullNS + '.' + cache._name : cache._name;
@@ -182,20 +187,8 @@ export class CodeGenerator {
                         code += `  public ${mtd.toLowerCase()}(path: '${api.path}'`;
 
                         let done = new Set();
-
-                        let typeFromParameter = (p: Parameter | FieldProp): string => {
-                            let type = p.fullType || (<any>p).type;
-                            if (type.endsWith(':string'))
-                                type = 'string'
-                            type = this.aliasFilter(type);
-                            if (~type.indexOf('.'))
-                                type = this.extraNS + type;
-                            type = type.replace('<long>', '<number>');
-                            return filterReservedKw(type);
-                        }
-
                         let params = [];
-                        params.push(...op.parameters.filter(p => p.paramType == 'path').map(p => { done.add(p.name); return `${p.name}: ${typeFromParameter(p)}` }).sort())
+                        params.push(...op.parameters.filter(p => p.paramType == 'path').map(p => { done.add(p.name); return `${p.name}: ${this.typeFromParameter(p)}` }).sort())
                         let paramType = (mtd == 'GET') ? 'query' : 'body';
                         let body = op.parameters.filter(p => p.paramType == paramType);
                         if (body.length == 1 && body[0].name == null) {
@@ -209,7 +202,7 @@ export class CodeGenerator {
                                     let param = `${protectJsonKey(propName)}`;
                                     if (!p.required)
                                         param += '?'
-                                    param += ': ' + typeFromParameter(p);
+                                    param += ': ' + this.typeFromParameter(p);
                                     params.push(param)
                                 }
                             } else {
@@ -224,7 +217,7 @@ export class CodeGenerator {
                                 let param = `${protectJsonKey(p.name || '')}`;
                                 if (!p.required)
                                     param += '?'
-                                param += ': ' + typeFromParameter(p);
+                                param += ': ' + this.typeFromParameter(p);
                                 return param;
                             }))
                         }
@@ -267,7 +260,7 @@ export class CodeGenerator {
                     code += `${ident0}[keys: string]:`;
                     EOB = `${ident0}} | any\n`
                 } else {
-                    code += `${ident0}${protectFieldName(last)}: `;
+                    code += `${ident0}${protectHarmonyField(last)}: /* 260 */`;
                 }
             } else {
                 code += `${ident0}// path ${api._path}\n`;
@@ -278,7 +271,7 @@ export class CodeGenerator {
 
         let ident = indentGen(depth);
         if (api._api) {
-            for (const op of api._api.operations.sort((a,b) => a.httpMethod.localeCompare(b.httpMethod))) {
+            for (const op of api._api.operations.sort((a, b) => a.httpMethod.localeCompare(b.httpMethod))) {
                 // code += `${ident}/**\n${ident} * ${op.description}\n${ident} */\n`;
                 code += `${ident}// ${op.httpMethod} ${api._path}\n`;
 
@@ -293,7 +286,7 @@ export class CodeGenerator {
                     if (params.length)
                         code += 'body?: {'
                 }
-                params = params.sort((a,b) => (<string>a.name).localeCompare(<string>b.name))
+                params = params.sort((a, b) => (<string>a.name).localeCompare(<string>b.name))
                 let array = params.map(param => {
                     let text = protectJsonKey(String(param.name || 'body'));
                     if (!param.required)

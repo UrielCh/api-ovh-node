@@ -17,8 +17,8 @@ async function main() {
     if (false)
         apis = apis.filter((api) => {
             // return ~api.indexOf('veeam')
-            //if ('/price' == api)
-            //    return true;
+            if ('/price' == api)
+                return true;
             //if ('/order' == api)
             //    return true;
             //if ('/cdn/webstorage' == api)
