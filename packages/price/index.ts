@@ -2244,13 +2244,13 @@ export interface Price{
             bhs1a: {
                 filer: {
                     hourly: {
-                        $(filerProfile: price.DedicatedCloud.2013v1.Bhs1a.Filer.HourlyEnum): {
+                        $(filerProfile: price.DedicatedCloud._2013v1.Bhs1a.Filer.HourlyEnum): {
                             // GET /price/dedicatedCloud/2013v1/bhs1a/filer/hourly/{filerProfile}
                             $get(): Promise<order.Price>;
                         };
                     }
                     monthly: {
-                        $(filerProfile: price.DedicatedCloud.2013v1.Bhs1a.Filer.MonthlyEnum): {
+                        $(filerProfile: price.DedicatedCloud._2013v1.Bhs1a.Filer.MonthlyEnum): {
                             // GET /price/dedicatedCloud/2013v1/bhs1a/filer/monthly/{filerProfile}
                             $get(): Promise<order.Price>;
                         };

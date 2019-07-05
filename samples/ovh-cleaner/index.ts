@@ -1,9 +1,9 @@
-import Ovh from '@ovh-api/api';
 import ApiWeb, { proxyHostingWeb, hosting } from '@ovh-api/hosting-web'
 import ApiDom, { proxyDomain }from '@ovh-api/domain'
 import ApiMe, { proxyMe, api } from '@ovh-api/me'
 import Promise from 'bluebird'
 import dns from 'dns';
+import Ovh from '@ovh-api/api';
 
 const ovh = new Ovh({ accessRules: 'GET /hosting/web, GET /hosting/web/*, GET /domain, POST /hosting/web/*/terminate, GET /me/api*, DELETE /me/api*' });
 const apiWeb = proxyHostingWeb(ovh);
@@ -72,7 +72,7 @@ App: ${app.name} Desc:${app.description}`);
 async function cleanDomain() {
     try {
         let cnt = 0;
-        let doms = await apiDom.get('/domain')
+        let doms = await apiDom.$get()
         console.log(`${doms.length} Domaines`)
         let hostings = await apiWeb.web.$get()
         console.log(`${hostings.length} hostings`)
