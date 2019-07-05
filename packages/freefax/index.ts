@@ -252,3 +252,4 @@ export class ApiFreefax extends OvhWrapper {
     return super.post(path, params);
   }
 }
+export default ApiFreefax;

@@ -2402,6 +2402,7 @@ export class ApiXdsl extends OvhWrapper {
     return super.delete(path, params);
   }
 }
+export default ApiXdsl;
 type xdslDslTypeEnum = xdsl.DslTypeEnum;
 type orderPrice = order.Price;
 type xdslDeconsolidationEnum = xdsl.DeconsolidationEnum;

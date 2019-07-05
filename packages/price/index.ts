@@ -9953,3 +9953,4 @@ export class ApiPrice extends OvhWrapper {
     return super.get(path, params);
   }
 }
+export default ApiPrice;

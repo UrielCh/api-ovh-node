@@ -85,3 +85,4 @@ export class ApiSupplyMondialRelay extends OvhWrapper {
     return super.post(path, params);
   }
 }
+export default ApiSupplyMondialRelay;

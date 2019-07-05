@@ -7314,4 +7314,5 @@ export class ApiOrder extends OvhWrapper {
     return super.delete(path, params);
   }
 }
+export default ApiOrder;
 type orderPrice = order.Price;

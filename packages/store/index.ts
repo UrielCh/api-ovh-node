@@ -356,3 +356,4 @@ export class ApiStore extends OvhWrapper {
     return super.delete(path, params);
   }
 }
+export default ApiStore;

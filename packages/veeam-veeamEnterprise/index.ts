@@ -184,4 +184,5 @@ export class ApiVeeamVeeamEnterprise extends OvhWrapper {
     return super.post(path, params);
   }
 }
+export default ApiVeeamVeeamEnterprise;
 type veeamEnterpriseTaskStateEnum = veeamEnterprise.TaskStateEnum;

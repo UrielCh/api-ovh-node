@@ -66,3 +66,4 @@ export class ApiDistributionImage extends OvhWrapper {
     return super.get(path, params);
   }
 }
+export default ApiDistributionImage;

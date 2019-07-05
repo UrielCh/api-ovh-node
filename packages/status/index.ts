@@ -63,3 +63,4 @@ export class ApiStatus extends OvhWrapper {
     return super.get(path, params);
   }
 }
+export default ApiStatus;

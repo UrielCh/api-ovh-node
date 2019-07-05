@@ -4379,5 +4379,6 @@ export class ApiMe extends OvhWrapper {
     return super.delete(path, params);
   }
 }
+export default ApiMe;
 type orderPrice = order.Price;
 type telephonyProtocolEnum = telephony.ProtocolEnum;

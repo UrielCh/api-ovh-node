@@ -113,3 +113,4 @@ export class ApiPackSiptrunk extends OvhWrapper {
     return super.post(path, params);
   }
 }
+export default ApiPackSiptrunk;

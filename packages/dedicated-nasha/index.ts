@@ -554,3 +554,4 @@ export class ApiDedicatedNasha extends OvhWrapper {
     return super.delete(path, params);
   }
 }
+export default ApiDedicatedNasha;

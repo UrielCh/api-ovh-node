@@ -309,3 +309,4 @@ export class ApiDedicatedNas extends OvhWrapper {
     return super.delete(path, params);
   }
 }
+export default ApiDedicatedNas;

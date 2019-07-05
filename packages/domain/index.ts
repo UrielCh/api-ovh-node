@@ -1472,5 +1472,6 @@ export class ApiDomain extends OvhWrapper {
     return super.delete(path, params);
   }
 }
+export default ApiDomain;
 type zoneNamedResolutionFieldTypeEnum = zone.NamedResolutionFieldTypeEnum;
 type zoneRedirectionTypeEnum = zone.RedirectionTypeEnum;

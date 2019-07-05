@@ -287,3 +287,4 @@ export class ApiHostingReseller extends OvhWrapper {
     return super.post(path, params);
   }
 }
+export default ApiHostingReseller;

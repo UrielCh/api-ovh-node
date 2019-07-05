@@ -2453,4 +2453,5 @@ export class ApiDedicatedServer extends OvhWrapper {
     return super.delete(path, params);
   }
 }
+export default ApiDedicatedServer;
 type zoneNamedResolutionFieldTypeEnum = zone.NamedResolutionFieldTypeEnum;

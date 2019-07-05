@@ -2179,4 +2179,5 @@ export class ApiHostingWeb extends OvhWrapper {
     return super.delete(path, params);
   }
 }
+export default ApiHostingWeb;
 type orderPrice = order.Price;

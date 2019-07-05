@@ -349,3 +349,4 @@ export class ApiSaasCsp2 extends OvhWrapper {
     return super.delete(path, params);
   }
 }
+export default ApiSaasCsp2;

@@ -415,3 +415,4 @@ export class ApiConnectivity extends OvhWrapper {
     return super.post(path, params);
   }
 }
+export default ApiConnectivity;

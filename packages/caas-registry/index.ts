@@ -420,3 +420,4 @@ export class ApiCaasRegistry extends OvhWrapper {
     return super.delete(path, params);
   }
 }
+export default ApiCaasRegistry;

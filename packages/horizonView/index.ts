@@ -568,3 +568,4 @@ export class ApiHorizonView extends OvhWrapper {
     return super.delete(path, params);
   }
 }
+export default ApiHorizonView;

@@ -1,6 +1,6 @@
 import Ovh, { OvhParams } from '.';
 
-import {OVH} from '@ovh-api/me';
+import ApiMe from '@ovh-api/me';
 import { assert } from 'chai';
 // import { describe } from 'mocha';
 // import { debug } from 'util';
@@ -14,9 +14,9 @@ const config: OvhParams = {
   // apis: ['ip'],
 };
 
-OVH.ApiMe
+
 const ovhEngine = new Ovh(config);
-const api = new OVH.ApiMe(ovhEngine);
+const api = new ApiMe(ovhEngine);
 
 describe('OvhMe', () => {
   it('retrive nichandler', async () => {

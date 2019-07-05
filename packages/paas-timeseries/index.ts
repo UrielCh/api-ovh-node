@@ -299,4 +299,5 @@ export class ApiPaasTimeseries extends OvhWrapper {
     return super.delete(path, params);
   }
 }
+export default ApiPaasTimeseries;
 type orderPrice = order.Price;

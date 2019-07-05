@@ -508,4 +508,5 @@ export class ApiOverTheBox extends OvhWrapper {
     return super.delete(path, params);
   }
 }
+export default ApiOverTheBox;
 type orderPrice = order.Price;

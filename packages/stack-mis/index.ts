@@ -102,3 +102,4 @@ export class ApiStackMis extends OvhWrapper {
     return super.put(path, params);
   }
 }
+export default ApiStackMis;

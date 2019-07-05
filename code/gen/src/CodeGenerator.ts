@@ -295,7 +295,7 @@ export class CodeGenerator {
             }
         }
         code += `}\n`
-        // code += `export default ${mainClass};\n`
+        code += `export default ${mainClass};\n`
         return code;
     }
 

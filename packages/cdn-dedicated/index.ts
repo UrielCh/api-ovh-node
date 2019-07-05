@@ -510,3 +510,4 @@ export class ApiCdnDedicated extends OvhWrapper {
     return super.delete(path, params);
   }
 }
+export default ApiCdnDedicated;

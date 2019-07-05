@@ -41,15 +41,6 @@ export namespace order {
 }
 export namespace pack {
     export namespace xdsl {
-        //pack.xdsl.AsyncTask
-        // fullName: pack.xdsl.AsyncTask.AsyncTask
-        export interface AsyncTask<T> {
-            error?: string;
-            result?: T;
-            status: pack.xdsl.AsyncTaskStatusEnum;
-        }
-        //pack.xdsl.AsyncTaskStatusEnum
-        export type AsyncTaskStatusEnum = "error" | "ok" | "pending"
         //pack.xdsl.DomainActionEnum
         export type DomainActionEnum = "create" | "trade" | "transfer"
         //pack.xdsl.ExchangeAccountService
@@ -361,6 +352,15 @@ export namespace services {
     }
 }
 export namespace xdsl {
+    //xdsl.AsyncTask
+    // fullName: xdsl.AsyncTask.AsyncTask
+    export interface AsyncTask<T> {
+        error?: string;
+        result?: T;
+        status: xdsl.AsyncTaskStatusEnum;
+    }
+    //xdsl.AsyncTaskStatusEnum
+    export type AsyncTaskStatusEnum = "error" | "ok" | "pending"
     //xdsl.DeconsolidationEnum
     export type DeconsolidationEnum = "createNeighbour" | "creation" | "creationNeighbour" | "partial" | "total"
     //xdsl.DslTypeEnum
@@ -461,11 +461,11 @@ export interface Pack{
             addressMove: {
                 eligibility: {
                     // POST /pack/xdsl/{packName}/addressMove/eligibility
-                    $post(body?: {address?: xdsl.eligibility.Address, lineNumber?: string}): Promise<pack.xdsl.AsyncTask<pack.xdsl.addressMove.Eligibility>>;
+                    $post(body?: {address?: xdsl.eligibility.Address, lineNumber?: string}): Promise<xdsl.AsyncTask<pack.xdsl.addressMove.Eligibility>>;
                 }
                 move: {
                     // POST /pack/xdsl/{packName}/addressMove/move
-                    $post(body?: {creation?: pack.xdsl.addressMove.Creation, keepCurrentNumber: boolean, landline?: pack.xdsl.addressMove.Landline, moveOutDate?: string, offerCode: string, provider?: xdsl.eligibility.ProviderEnum}): Promise<pack.xdsl.AsyncTask<number>>;
+                    $post(body?: {creation?: pack.xdsl.addressMove.Creation, keepCurrentNumber: boolean, landline?: pack.xdsl.addressMove.Landline, moveOutDate?: string, offerCode: string, provider?: xdsl.eligibility.ProviderEnum}): Promise<xdsl.AsyncTask<number>>;
                 }
             }
             canCancelResiliation: {
@@ -587,7 +587,7 @@ export interface Pack{
                         $get(): Promise<pack.xdsl.Hubic>;
                         details: {
                             // GET /pack/xdsl/{packName}/hubic/services/{domain}/details
-                            $get(): Promise<pack.xdsl.AsyncTask<xdsl.hubic.HubicDetailsResponse>>;
+                            $get(): Promise<xdsl.AsyncTask<xdsl.hubic.HubicDetailsResponse>>;
                         }
                     } | any
                 }
@@ -599,7 +599,7 @@ export interface Pack{
                 }
                 offers: {
                     // POST /pack/xdsl/{packName}/migration/offers
-                    $post(): Promise<pack.xdsl.AsyncTask<pack.xdsl.migration.MigrationOfferResponse>>;
+                    $post(): Promise<xdsl.AsyncTask<pack.xdsl.migration.MigrationOfferResponse>>;
                 }
                 servicesToDelete: {
                     // POST /pack/xdsl/{packName}/migration/servicesToDelete
@@ -931,7 +931,7 @@ export class ApiPackXdsl extends OvhWrapper {
    * details operations
    * Details associated to a voucher
    */
-  public get(path: '/pack/xdsl/{packName}/hubic/services/{domain}/details', params: {domain: string, packName: string}): Promise<pack.xdsl.AsyncTask<xdsl.hubic.HubicDetailsResponse>>;
+  public get(path: '/pack/xdsl/{packName}/hubic/services/{domain}/details', params: {domain: string, packName: string}): Promise<xdsl.AsyncTask<xdsl.hubic.HubicDetailsResponse>>;
   /**
    * capabilities operations
    * Get informations about the promotion code generation
@@ -1072,12 +1072,12 @@ export class ApiPackXdsl extends OvhWrapper {
    * eligibility operations
    * Eligibility to move the access
    */
-  public post(path: '/pack/xdsl/{packName}/addressMove/eligibility', params: {packName: string, address?: xdsleligibilityAddress, lineNumber?: string}): Promise<pack.xdsl.AsyncTask<pack.xdsl.addressMove.Eligibility>>;
+  public post(path: '/pack/xdsl/{packName}/addressMove/eligibility', params: {packName: string, address?: xdsleligibilityAddress, lineNumber?: string}): Promise<xdsl.AsyncTask<pack.xdsl.addressMove.Eligibility>>;
   /**
    * move operations
    * Move the access to another address
    */
-  public post(path: '/pack/xdsl/{packName}/addressMove/move', params: {packName: string, creation?: pack.xdsl.addressMove.Creation, keepCurrentNumber: boolean, landline?: pack.xdsl.addressMove.Landline, moveOutDate?: string, offerCode: string, provider?: xdsleligibilityProviderEnum}): Promise<pack.xdsl.AsyncTask<number>>;
+  public post(path: '/pack/xdsl/{packName}/addressMove/move', params: {packName: string, creation?: pack.xdsl.addressMove.Creation, keepCurrentNumber: boolean, landline?: pack.xdsl.addressMove.Landline, moveOutDate?: string, offerCode: string, provider?: xdsleligibilityProviderEnum}): Promise<xdsl.AsyncTask<number>>;
   /**
    * cancelResiliation operations
    * Cancel the ongoing resiliation
@@ -1122,7 +1122,7 @@ export class ApiPackXdsl extends OvhWrapper {
    * offers operations
    * Get the possibilities of migration offers available
    */
-  public post(path: '/pack/xdsl/{packName}/migration/offers', params: {packName: string}): Promise<pack.xdsl.AsyncTask<pack.xdsl.migration.MigrationOfferResponse>>;
+  public post(path: '/pack/xdsl/{packName}/migration/offers', params: {packName: string}): Promise<xdsl.AsyncTask<pack.xdsl.migration.MigrationOfferResponse>>;
   /**
    * servicesToDelete operations
    * Calculate services to delete with new offer and options
@@ -1167,6 +1167,7 @@ export class ApiPackXdsl extends OvhWrapper {
     return super.post(path, params);
   }
 }
+export default ApiPackXdsl;
 type orderPrice = order.Price;
 type xdslDslTypeEnum = xdsl.DslTypeEnum;
 type xdsleligibilityAddress = xdsl.eligibility.Address;

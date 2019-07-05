@@ -7091,5 +7091,6 @@ export class ApiTelephony extends OvhWrapper {
     return super.delete(path, params);
   }
 }
+export default ApiTelephony;
 type telephonyProtocolEnum = telephony.ProtocolEnum;
 type orderPrice = order.Price;

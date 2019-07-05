@@ -1303,6 +1303,7 @@ export class ApiEmailDomain extends OvhWrapper {
     return super.delete(path, params);
   }
 }
+export default ApiEmailDomain;
 type zoneNamedResolutionFieldTypeEnum = zone.NamedResolutionFieldTypeEnum;
 type domainDomainStatusEnum = domain.DomainStatusEnum;
 type domainDomainFilterActionEnum = domain.DomainFilterActionEnum;

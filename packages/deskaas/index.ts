@@ -322,3 +322,4 @@ export class ApiDeskaas extends OvhWrapper {
     return super.post(path, params);
   }
 }
+export default ApiDeskaas;

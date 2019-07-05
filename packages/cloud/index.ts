@@ -3165,4 +3165,5 @@ export class ApiCloud extends OvhWrapper {
     return super.delete(path, params);
   }
 }
+export default ApiCloud;
 type orderPrice = order.Price;

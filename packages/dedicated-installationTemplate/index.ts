@@ -186,3 +186,4 @@ export class ApiDedicatedInstallationTemplate extends OvhWrapper {
     return super.get(path, params);
   }
 }
+export default ApiDedicatedInstallationTemplate;
