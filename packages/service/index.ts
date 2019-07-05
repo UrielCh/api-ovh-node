@@ -176,29 +176,29 @@ export namespace serviceList {
 }
 // Apis harmony
 // path /service
-export interface Service {
+export interface Service{
     // GET /service
     $get(): Promise<number[]>;
-    [keys: string]: {
+    [keys: string]:{
         // GET /service/{serviceId}
         $get(): Promise<serviceList.Service>;
         // PUT /service/{serviceId}
         $put(body?: {body: serviceList.Service}): Promise<void>;
-        renew:  {
+        renew: {
             // GET /service/{serviceId}/renew
             $get(param?: {includeOptions?: boolean}): Promise<service.renew.RenewDescription[]>;
             // POST /service/{serviceId}/renew
             $post(body?: {dryRun?: boolean, duration: string, services: number[]}): Promise<service.renew.RenewOrder>;
         }
-        reopen:  {
+        reopen: {
             // POST /service/{serviceId}/reopen
             $post(): Promise<void>;
         }
-        suspend:  {
+        suspend: {
             // POST /service/{serviceId}/suspend
             $post(): Promise<void>;
         }
-        terminate:  {
+        terminate: {
             // POST /service/{serviceId}/terminate
             $post(): Promise<void>;
         }

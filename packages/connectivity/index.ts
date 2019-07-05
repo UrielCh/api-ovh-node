@@ -222,78 +222,78 @@ export namespace xdsl {
 }
 // Apis harmony
 // path /connectivity
-export interface Connectivity {
-    eligibility:  {
-        search:  {
-            buildingDetails:  {
+export interface Connectivity{
+    eligibility: {
+        search: {
+            buildingDetails: {
                 // POST /connectivity/eligibility/search/buildingDetails
                 $post(body?: {building: string}): Promise<xdsl.AsyncTask<connectivity.eligibility.Building>>;
             }
-            buildings:  {
+            buildings: {
                 // POST /connectivity/eligibility/search/buildings
                 $post(body?: {streetCode: string, streetNumber: string}): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.Building>>;
             }
-            buildingsByLine:  {
+            buildingsByLine: {
                 // POST /connectivity/eligibility/search/buildingsByLine
                 $post(body?: {lineNumber: string, status: connectivity.eligibility.LineStatusEnum}): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.Building>>;
             }
-            cities:  {
+            cities: {
                 // POST /connectivity/eligibility/search/cities
                 $post(body?: {zipCode: string}): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.City>>;
             }
-            lines:  {
+            lines: {
                 // POST /connectivity/eligibility/search/lines
                 $post(body?: {ownerName?: string, streetCode: string, streetNumber: string}): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.Line>>;
             }
-            meetings:  {
+            meetings: {
                 // POST /connectivity/eligibility/search/meetings
                 $post(body?: {eligibilityReference: string, productCode: string}): Promise<xdsl.AsyncTask<connectivity.eligibility.Meetings>>;
             }
-            streetNumbers:  {
+            streetNumbers: {
                 // POST /connectivity/eligibility/search/streetNumbers
                 $post(body?: {streetCode: string}): Promise<xdsl.AsyncTaskArray<string>>;
             }
-            streets:  {
+            streets: {
                 // POST /connectivity/eligibility/search/streets
                 $post(body?: {inseeCode: string}): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.Street>>;
             }
         }
-        test:  {
+        test: {
             // GET /connectivity/eligibility/test
             $get(param?: {eligibilityReference: string}): Promise<connectivity.eligibility.EligibilityTest>;
-            address:  {
+            address: {
                 // POST /connectivity/eligibility/test/address
                 $post(body?: {streetCode: string, streetNumber: string}): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
-                partners:  {
+                partners: {
                     // POST /connectivity/eligibility/test/address/partners
                     $post(body?: {streetCode: string, streetNumber: string}): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
                 }
             }
-            building:  {
+            building: {
                 // POST /connectivity/eligibility/test/building
                 $post(body?: {building: string}): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
             }
-            line:  {
+            line: {
                 // POST /connectivity/eligibility/test/line
                 $post(body?: {lineNumber: string, status: connectivity.eligibility.LineStatusEnum}): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
-                partners:  {
+                partners: {
                     // POST /connectivity/eligibility/test/line/partners
                     $post(body?: {lineNumber: string, status: connectivity.eligibility.LineStatusEnum}): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
                 }
             }
-            otp:  {
+            otp: {
                 // POST /connectivity/eligibility/test/otp
                 $post(body?: {otp: string}): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
             }
         }
     }
-    monitoring:  {
-        genericIncident:  {
-            partners:  {
+    monitoring: {
+        genericIncident: {
+            partners: {
                 // GET /connectivity/monitoring/genericIncident/partners
                 $get(param?: {creationDate?: string, endDate?: string, status?: connectivity.monitoring.GenericIncidentStatusEnum}): Promise<connectivity.monitoring.GenericIncident[]>;
             }
-            public:  {
+            public: {
                 // GET /connectivity/monitoring/genericIncident/public
                 $get(param?: {creationDate?: string, endDate?: string, status?: connectivity.monitoring.GenericIncidentStatusEnum}): Promise<connectivity.monitoring.GenericIncident[]>;
             }

@@ -188,54 +188,54 @@ export namespace stack {
 }
 // Apis harmony
 // path /caas
-export interface Caas {
-    containers:  {
+export interface Caas{
+    containers: {
         // GET /caas/containers
         $get(): Promise<string[]>;
-        slaves:  {
-            flavors:  {
+        slaves: {
+            flavors: {
                 // GET /caas/containers/slaves/flavors
                 $get(): Promise<string[]>;
-                [keys: string]: {
+                [keys: string]:{
                     // GET /caas/containers/slaves/flavors/{flavorId}
                     $get(): Promise<docker.slave.flavor>;
                 } | any
             }
         }
-        [keys: string]: {
+        [keys: string]:{
             // GET /caas/containers/{serviceName}
             $get(): Promise<docker.stack>;
-            availableFrameworks:  {
+            availableFrameworks: {
                 // GET /caas/containers/{serviceName}/availableFrameworks
                 $get(): Promise<string[]>;
             }
-            changeContact:  {
+            changeContact: {
                 // POST /caas/containers/{serviceName}/changeContact
                 $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
             }
-            frameworks:  {
+            frameworks: {
                 // GET /caas/containers/{serviceName}/frameworks
                 $get(): Promise<string[]>;
-                [keys: string]: {
+                [keys: string]:{
                     // GET /caas/containers/{serviceName}/frameworks/{frameworkId}
                     $get(): Promise<stack.framework>;
-                    apps:  {
+                    apps: {
                         // GET /caas/containers/{serviceName}/frameworks/{frameworkId}/apps
                         $get(): Promise<stack.framework.application>;
                     }
-                    password:  {
+                    password: {
                         // PUT /caas/containers/{serviceName}/frameworks/{frameworkId}/password
                         $put(body?: {body: docker.framework.password}): Promise<void>;
                     }
                 } | any
             }
-            registry:  {
-                credentials:  {
+            registry: {
+                credentials: {
                     // GET /caas/containers/{serviceName}/registry/credentials
                     $get(): Promise<string[]>;
                     // POST /caas/containers/{serviceName}/registry/credentials
                     $post(body?: {body: docker.stack.inputCustomSsl}): Promise<docker.stack.registryCredentials>;
-                    [keys: string]: {
+                    [keys: string]:{
                         // DELETE /caas/containers/{serviceName}/registry/credentials/{credentialsId}
                         $delete(): Promise<void>;
                         // GET /caas/containers/{serviceName}/registry/credentials/{credentialsId}
@@ -245,21 +245,21 @@ export interface Caas {
                     } | any
                 }
             }
-            serviceInfos:  {
+            serviceInfos: {
                 // GET /caas/containers/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /caas/containers/{serviceName}/serviceInfos
                 $put(body?: {body: services.Service}): Promise<void>;
             }
-            slaves:  {
+            slaves: {
                 // GET /caas/containers/{serviceName}/slaves
                 $get(): Promise<string[]>;
-                [keys: string]: {
+                [keys: string]:{
                     // GET /caas/containers/{serviceName}/slaves/{slaveId}
                     $get(): Promise<docker.slave>;
                 } | any
             }
-            ssl:  {
+            ssl: {
                 // DELETE /caas/containers/{serviceName}/ssl
                 $delete(): Promise<docker.stack.customSslMessage>;
                 // GET /caas/containers/{serviceName}/ssl

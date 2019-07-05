@@ -74,34 +74,34 @@ export namespace order {
 }
 // Apis harmony
 // path /newAccount
-export interface NewAccount {
+export interface NewAccount{
     // POST /newAccount
     $post(body?: {address?: string, area?: string, birthCity?: string, birthDay?: string, city?: string, companyNationalIdentificationNumber?: string, corporationType?: string, country: nichandle.CountryEnum, email: string, fax?: string, firstname?: string, italianSDI?: string, language?: nichandle.LanguageEnum, legalform: nichandle.LegalFormEnum, name?: string, nationalIdentificationNumber?: string, organisation?: string, ovhCompany: nichandle.OvhCompanyEnum, ovhSubsidiary: nichandle.OvhSubsidiaryEnum, phone?: string, phoneCountry?: nichandle.CountryEnum, sex?: nichandle.GenderEnum, spareEmail?: string, vat?: string, zip?: string}): Promise<nichandle.NewAccountAndToken>;
-    area:  {
+    area: {
         // GET /newAccount/area
         $get(param?: {country: nichandle.CountryEnum}): Promise<string[]>;
     }
-    contracts:  {
+    contracts: {
         // GET /newAccount/contracts
         $get(param?: {company: nichandle.OvhCompanyEnum, subsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.Contract[]>;
     }
-    corporationType:  {
+    corporationType: {
         // GET /newAccount/corporationType
         $get(param?: {country: nichandle.CountryEnum}): Promise<string[]>;
     }
-    countries:  {
+    countries: {
         // GET /newAccount/countries
         $get(param?: {ovhCompany: nichandle.OvhCompanyEnum, ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<nichandle.CountryEnum[]>;
     }
-    creationRules:  {
+    creationRules: {
         // GET /newAccount/creationRules
         $get(param?: {country: nichandle.CountryEnum, legalform: nichandle.LegalFormEnum, ovhCompany: nichandle.OvhCompanyEnum, ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<nichandle.CreationRules>;
     }
-    legalform:  {
+    legalform: {
         // GET /newAccount/legalform
         $get(param?: {country: nichandle.CountryEnum}): Promise<string[]>;
     }
-    rules:  {
+    rules: {
         // POST /newAccount/rules
         $post(body?: {action?: nichandle.CreationRulesActionEnum, address?: string, area?: string, birthCity?: string, birthDay?: string, city?: string, companyNationalIdentificationNumber?: string, corporationType?: string, country?: nichandle.CountryEnum, email?: string, fax?: string, firstname?: string, italianSDI?: string, language?: nichandle.LanguageEnum, legalform?: nichandle.LegalFormEnum, name?: string, nationalIdentificationNumber?: string, organisation?: string, ovhCompany?: nichandle.OvhCompanyEnum, ovhSubsidiary?: nichandle.OvhSubsidiaryEnum, phone?: string, phoneCountry?: nichandle.CountryEnum, sex?: nichandle.GenderEnum, spareEmail?: string, vat?: string, zip?: string}): Promise<nichandle.CreationRule[]>;
     }

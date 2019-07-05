@@ -11,8 +11,8 @@ export namespace secret {
 }
 // Apis harmony
 // path /secret
-export interface Secret {
-    retrieve:  {
+export interface Secret{
+    retrieve: {
         // POST /secret/retrieve
         $post(body?: {id: string}): Promise<secret.Secret>;
     }

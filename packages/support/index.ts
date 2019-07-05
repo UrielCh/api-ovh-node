@@ -52,38 +52,38 @@ export namespace support {
 }
 // Apis harmony
 // path /support
-export interface Support {
-    tickets:  {
+export interface Support{
+    tickets: {
         // GET /support/tickets
         $get(param?: {archived?: boolean, category?: support.TicketCategoryEnum, maxCreationDate?: string, minCreationDate?: string, product?: support.TicketProductEnum, serviceName?: string, status?: support.TicketStatusEnum, subject?: string, ticketNumber?: string}): Promise<number[]>;
-        create:  {
+        create: {
             // POST /support/tickets/create
             $post(body?: {body: string, category?: support.TicketCategoryEnum, product?: support.TicketProductEnum, serviceName?: string, subcategory?: support.TicketSubCategoryEnum, subject: string, type: support.TicketTypeEnum}): Promise<support.NewMessageInfo>;
         }
-        [keys: string]: {
+        [keys: string]:{
             // GET /support/tickets/{ticketId}
             $get(): Promise<support.Ticket>;
-            canBeScored:  {
+            canBeScored: {
                 // GET /support/tickets/{ticketId}/canBeScored
                 $get(): Promise<boolean>;
             }
-            close:  {
+            close: {
                 // POST /support/tickets/{ticketId}/close
                 $post(): Promise<void>;
             }
-            messages:  {
+            messages: {
                 // GET /support/tickets/{ticketId}/messages
                 $get(): Promise<support.Message[]>;
             }
-            reopen:  {
+            reopen: {
                 // POST /support/tickets/{ticketId}/reopen
                 $post(body?: {body: string}): Promise<void>;
             }
-            reply:  {
+            reply: {
                 // POST /support/tickets/{ticketId}/reply
                 $post(body?: {body: string}): Promise<void>;
             }
-            score:  {
+            score: {
                 // POST /support/tickets/{ticketId}/score
                 $post(body?: {score: string, scoreComment?: string}): Promise<void>;
             }

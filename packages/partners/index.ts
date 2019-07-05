@@ -248,32 +248,32 @@ export namespace nichandle {
 }
 // Apis harmony
 // path /partners
-export interface Partners {
-    register:  {
-        company:  {
+export interface Partners{
+    register: {
+        company: {
             // GET /partners/register/company
             $get(): Promise<string[]>;
             // POST /partners/register/company
             $post(body?: {activitySectors?: Partner.activitySectors, address: string, city: string, clientKinds?: Partner.clientKinds, commercialName: string, country: nichandle.CountryEnum, description: string, email: string, employeesNumber: Partner.employeesNumberEnum, expertises?: Partner.expertisesChoices, externalCertifications?: Partner.externalCertifications, facebook?: string, linkedin?: string, logo: string, name: string, OVHCertifications?: Partner.OVHCertifications, OVHCustomersAdvised: Partner.OVHCustomersAdvisedEnum, OVHKnowledgeResources: Partner.knowledgeResourcesRangeEnum, OVHProductsUsed?: Partner.OVHProductsUsed, OVHTechnicalAdvancedResources: Partner.technicalAdvancedResourcesRangeEnum, OVHTechnicalExpertResources: Partner.technicalExpertResourcesRangeEnum, partnerKnowledges?: Partner.partnerKnowledges, phone: string, productCountries?: Partner.productCountries, registrationNumber?: string, revenue: Partner.revenueRangeEnum, twitter?: string, website: string, zipCode: string}): Promise<Partner.Company>;
-            [keys: string]: {
+            [keys: string]:{
                 // DELETE /partners/register/company/{companyId}
                 $delete(): Promise<string>;
                 // GET /partners/register/company/{companyId}
                 $get(): Promise<Partner.Company>;
                 // PUT /partners/register/company/{companyId}
                 $put(body?: {activitySectors?: Partner.activitySectors, address?: string, city?: string, clientKinds?: Partner.clientKinds, commercialName?: string, country?: nichandle.CountryEnum, description?: string, effective?: Partner.employeesNumberEnum, email?: string, expertises?: Partner.expertisesChoices, externalCertifications?: Partner.externalCertifications, facebook?: string, linkedin?: string, logo?: string, name?: string, OVHCertifications?: Partner.OVHCertifications, OVHCustomersAdvised?: Partner.OVHCustomersAdvisedEnum, OVHKnowledgeResources?: Partner.knowledgeResourcesRangeEnum, OVHProductsUsed?: Partner.OVHProductsUsed, OVHTechnicalAdvancedResources?: Partner.technicalAdvancedResourcesRangeEnum, OVHTechnicalExpertResources?: Partner.technicalExpertResourcesRangeEnum, partnerKnowledges?: Partner.partnerKnowledges, phone?: string, productCountries?: Partner.productCountries, registrationNumber?: string, revenue?: Partner.revenueRangeEnum, twitter?: string, website?: string, zipCode?: string}): Promise<Partner.Company>;
-                application:  {
+                application: {
                     // GET /partners/register/company/{companyId}/application
                     $get(): Promise<Partner.Application>;
                     // POST /partners/register/company/{companyId}/application
                     $post(body?: {termsAndConditionsOfServiceAccepted: boolean}): Promise<Partner.Application>;
                 }
-                contact:  {
+                contact: {
                     // GET /partners/register/company/{companyId}/contact
                     $get(): Promise<string[]>;
                     // POST /partners/register/company/{companyId}/contact
                     $post(body?: {email: string, facebook?: string, firstName: string, lastName: string, linkedin?: string, newsletter?: boolean, otherNics?: Partner.Nic[], phone: string, role: string, twitter?: string}): Promise<Partner.Contact>;
-                    [keys: string]: {
+                    [keys: string]:{
                         // DELETE /partners/register/company/{companyId}/contact/{contactId}
                         $delete(): Promise<string>;
                         // GET /partners/register/company/{companyId}/contact/{contactId}

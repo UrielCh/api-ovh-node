@@ -69,21 +69,21 @@ export namespace services {
 }
 // Apis harmony
 // path /hpcspot
-export interface Hpcspot {
+export interface Hpcspot{
     // GET /hpcspot
     $get(): Promise<string[]>;
-    [keys: string]: {
+    [keys: string]:{
         // GET /hpcspot/{serviceName}
         $get(): Promise<hpcspot.Account>;
-        consumption:  {
+        consumption: {
             // GET /hpcspot/{serviceName}/consumption
             $get(param?: {hpcspotItemEndDate_from?: string, hpcspotItemEndDate_to?: string, hpcspotItemId?: number, orderId?: number, type?: hpcspot.ConsumptionTypeEnum}): Promise<number[]>;
-            [keys: string]: {
+            [keys: string]:{
                 // GET /hpcspot/{serviceName}/consumption/{id}
                 $get(): Promise<hpcspot.Consumption>;
             } | any
         }
-        serviceInfos:  {
+        serviceInfos: {
             // GET /hpcspot/{serviceName}/serviceInfos
             $get(): Promise<services.Service>;
             // PUT /hpcspot/{serviceName}/serviceInfos

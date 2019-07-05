@@ -124,78 +124,78 @@ export namespace services {
 }
 // Apis harmony
 // path /saas
-export interface Saas {
-    csp2:  {
+export interface Saas{
+    csp2: {
         // GET /saas/csp2
         $get(): Promise<string[]>;
-        [keys: string]: {
+        [keys: string]:{
             // GET /saas/csp2/{serviceName}
             $get(): Promise<saas.csp2.OfficeTenant>;
             // PUT /saas/csp2/{serviceName}
             $put(body?: {body: saas.csp2.OfficeTenant}): Promise<void>;
-            billingPeriodPeaks:  {
+            billingPeriodPeaks: {
                 // GET /saas/csp2/{serviceName}/billingPeriodPeaks
                 $get(): Promise<saas.csp2.BillingStatistics>;
             }
-            changeAdministratorPassword:  {
+            changeAdministratorPassword: {
                 // POST /saas/csp2/{serviceName}/changeAdministratorPassword
                 $post(body?: {newPassword: string}): Promise<saas.csp2.OfficeTask>;
             }
-            configureDomain:  {
+            configureDomain: {
                 // POST /saas/csp2/{serviceName}/configureDomain
                 $post(body?: {domain: string, supportedServices: saas.csp2.SupportedServiceEnum[]}): Promise<saas.csp2.OfficeTask>;
             }
-            orderableLicenses:  {
+            orderableLicenses: {
                 // GET /saas/csp2/{serviceName}/orderableLicenses
                 $get(): Promise<number[]>;
-                [keys: string]: {
+                [keys: string]:{
                     // GET /saas/csp2/{serviceName}/orderableLicenses/{id}
                     $get(): Promise<saas.csp2.OfficeLicence>;
                 } | any
             }
-            serviceInfos:  {
+            serviceInfos: {
                 // GET /saas/csp2/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /saas/csp2/{serviceName}/serviceInfos
                 $put(body?: {body: services.Service}): Promise<void>;
             }
-            subscription:  {
+            subscription: {
                 // GET /saas/csp2/{serviceName}/subscription
                 $get(): Promise<number[]>;
                 // POST /saas/csp2/{serviceName}/subscription
                 $post(body?: {licenseId: number, quantity: number}): Promise<saas.csp2.OfficeTask>;
-                [keys: string]: {
+                [keys: string]:{
                     // DELETE /saas/csp2/{serviceName}/subscription/{id}
                     $delete(): Promise<saas.csp2.OfficeTask>;
                     // GET /saas/csp2/{serviceName}/subscription/{id}
                     $get(): Promise<saas.csp2.OfficeSubscription>;
-                    addonsSubscriptionIds:  {
+                    addonsSubscriptionIds: {
                         // GET /saas/csp2/{serviceName}/subscription/{id}/addonsSubscriptionIds
                         $get(): Promise<number[]>;
                     }
-                    availableAddonLicenses:  {
+                    availableAddonLicenses: {
                         // GET /saas/csp2/{serviceName}/subscription/{id}/availableAddonLicenses
                         $get(): Promise<number[]>;
                     }
-                    changeQuantity:  {
+                    changeQuantity: {
                         // POST /saas/csp2/{serviceName}/subscription/{id}/changeQuantity
                         $post(body?: {quantity: number}): Promise<saas.csp2.OfficeTask>;
                     }
-                    orderAddon:  {
+                    orderAddon: {
                         // POST /saas/csp2/{serviceName}/subscription/{id}/orderAddon
                         $post(body?: {licenseId: number, quantity: number}): Promise<saas.csp2.OfficeTask>;
                     }
                 } | any
             }
-            task:  {
+            task: {
                 // GET /saas/csp2/{serviceName}/task
                 $get(): Promise<number[]>;
-                [keys: string]: {
+                [keys: string]:{
                     // GET /saas/csp2/{serviceName}/task/{id}
                     $get(): Promise<saas.csp2.OfficeTask>;
                 } | any
             }
-            usageStatistics:  {
+            usageStatistics: {
                 // GET /saas/csp2/{serviceName}/usageStatistics
                 $get(param?: {timePeriod: msServices.LicensePeriodEnum}): Promise<saas.csp2.Statistics[]>;
             }

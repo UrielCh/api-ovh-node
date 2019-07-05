@@ -96,50 +96,50 @@ export namespace services {
 }
 // Apis harmony
 // path /license
-export interface License {
-    worklight:  {
+export interface License{
+    worklight: {
         // GET /license/worklight
         $get(): Promise<string[]>;
-        orderableVersions:  {
+        orderableVersions: {
             // GET /license/worklight/orderableVersions
             $get(param?: {ip: string}): Promise<license.WorkLightOrderConfiguration[]>;
         }
-        [keys: string]: {
+        [keys: string]:{
             // GET /license/worklight/{serviceName}
             $get(): Promise<license.worklight.WorkLight>;
             // PUT /license/worklight/{serviceName}
             $put(body?: {body: license.worklight.WorkLight}): Promise<void>;
-            allowedDestinationIp:  {
+            allowedDestinationIp: {
                 // GET /license/worklight/{serviceName}/allowedDestinationIp
                 $get(): Promise<string[]>;
             }
-            canLicenseBeMovedTo:  {
+            canLicenseBeMovedTo: {
                 // GET /license/worklight/{serviceName}/canLicenseBeMovedTo
                 $get(param?: {destinationIp: string}): Promise<license.ChangeIpStatus>;
             }
-            changeIp:  {
+            changeIp: {
                 // POST /license/worklight/{serviceName}/changeIp
                 $post(body?: {destinationIp: string}): Promise<license.Task>;
             }
-            confirmTermination:  {
+            confirmTermination: {
                 // POST /license/worklight/{serviceName}/confirmTermination
                 $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
             }
-            serviceInfos:  {
+            serviceInfos: {
                 // GET /license/worklight/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /license/worklight/{serviceName}/serviceInfos
                 $put(body?: {body: services.Service}): Promise<void>;
             }
-            tasks:  {
+            tasks: {
                 // GET /license/worklight/{serviceName}/tasks
                 $get(param?: {action?: license.ActionType, status?: license.TaskStateEnum}): Promise<number[]>;
-                [keys: string]: {
+                [keys: string]:{
                     // GET /license/worklight/{serviceName}/tasks/{taskId}
                     $get(): Promise<license.Task>;
                 } | any
             }
-            terminate:  {
+            terminate: {
                 // POST /license/worklight/{serviceName}/terminate
                 $post(): Promise<string>;
             }

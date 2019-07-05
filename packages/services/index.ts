@@ -149,14 +149,14 @@ export namespace services {
 }
 // Apis harmony
 // path /services
-export interface Services {
+export interface Services{
     // GET /services
     $get(param?: {orderBy?: string, routes?: string, sort?: string}): Promise<number[]>;
-    [keys: string]: {
+    [keys: string]:{
         // GET /services/{serviceId}
         $get(): Promise<services.expanded.Service>;
-        billing:  {
-            engagement:  {
+        billing: {
+            engagement: {
                 // GET /services/{serviceId}/billing/engagement
                 $get(): Promise<services.billing.engagement.Engagement>;
             }

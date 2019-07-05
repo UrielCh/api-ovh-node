@@ -96,78 +96,78 @@ export namespace services {
 }
 // Apis harmony
 // path /cdn
-export interface Cdn {
-    website:  {
+export interface Cdn{
+    website: {
         // GET /cdn/website
         $get(): Promise<string[]>;
-        [keys: string]: {
+        [keys: string]:{
             // GET /cdn/website/{serviceName}
             $get(): Promise<cdn.website.Website>;
-            serviceInfos:  {
+            serviceInfos: {
                 // GET /cdn/website/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /cdn/website/{serviceName}/serviceInfos
                 $put(body?: {body: services.Service}): Promise<void>;
             }
-            zone:  {
+            zone: {
                 // DELETE /cdn/website/{serviceName}/zone
                 $delete(): Promise<cdn.website.Task>;
                 // GET /cdn/website/{serviceName}/zone
                 $get(): Promise<cdn.website.Zone>;
                 // POST /cdn/website/{serviceName}/zone
                 $post(body?: {zone: string}): Promise<cdn.website.Zone>;
-                backends:  {
+                backends: {
                     // GET /cdn/website/{serviceName}/zone/backends
                     $get(): Promise<string[]>;
                     // POST /cdn/website/{serviceName}/zone/backends
                     $post(body?: {ipv4: string}): Promise<cdn.website.Task>;
-                    [keys: string]: {
+                    [keys: string]:{
                         // DELETE /cdn/website/{serviceName}/zone/backends/{ipv4}
                         $delete(): Promise<cdn.website.Task>;
                         // GET /cdn/website/{serviceName}/zone/backends/{ipv4}
                         $get(): Promise<cdn.website.Backend>;
-                        tasks:  {
+                        tasks: {
                             // GET /cdn/website/{serviceName}/zone/backends/{ipv4}/tasks
                             $get(): Promise<number[]>;
-                            [keys: string]: {
+                            [keys: string]:{
                                 // GET /cdn/website/{serviceName}/zone/backends/{ipv4}/tasks/{taskId}
                                 $get(): Promise<cdn.website.Task>;
                             } | any
                         }
                     } | any
                 }
-                domains:  {
+                domains: {
                     // GET /cdn/website/{serviceName}/zone/domains
                     $get(): Promise<string[]>;
                     // POST /cdn/website/{serviceName}/zone/domains
                     $post(body?: {domain: string}): Promise<cdn.website.Domain>;
-                    [keys: string]: {
+                    [keys: string]:{
                         // DELETE /cdn/website/{serviceName}/zone/domains/{domain}
                         $delete(): Promise<cdn.website.Task>;
                         // GET /cdn/website/{serviceName}/zone/domains/{domain}
                         $get(): Promise<cdn.website.Domain>;
-                        flush:  {
+                        flush: {
                             // POST /cdn/website/{serviceName}/zone/domains/{domain}/flush
                             $post(): Promise<cdn.website.Task>;
                         }
-                        statistics:  {
+                        statistics: {
                             // GET /cdn/website/{serviceName}/zone/domains/{domain}/statistics
                             $get(param?: {period: cdn.website.StatsPeriodEnum, type: cdn.website.StatsTypeEnum, value: cdn.website.StatsValueEnum}): Promise<cdn.website.StatsDataType[]>;
                         }
-                        tasks:  {
+                        tasks: {
                             // GET /cdn/website/{serviceName}/zone/domains/{domain}/tasks
                             $get(): Promise<number[]>;
-                            [keys: string]: {
+                            [keys: string]:{
                                 // GET /cdn/website/{serviceName}/zone/domains/{domain}/tasks/{taskId}
                                 $get(): Promise<cdn.website.Task>;
                             } | any
                         }
                     } | any
                 }
-                tasks:  {
+                tasks: {
                     // GET /cdn/website/{serviceName}/zone/tasks
                     $get(): Promise<number[]>;
-                    [keys: string]: {
+                    [keys: string]:{
                         // GET /cdn/website/{serviceName}/zone/tasks/{taskId}
                         $get(): Promise<cdn.website.Task>;
                     } | any

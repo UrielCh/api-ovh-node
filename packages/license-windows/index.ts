@@ -102,52 +102,52 @@ export namespace services {
 }
 // Apis harmony
 // path /license
-export interface License {
-    windows:  {
+export interface License{
+    windows: {
         // GET /license/windows
         $get(): Promise<string[]>;
-        orderableVersions:  {
+        orderableVersions: {
             // GET /license/windows/orderableVersions
             $get(param?: {ip: string}): Promise<license.WindowsOrderConfiguration[]>;
         }
-        [keys: string]: {
+        [keys: string]:{
             // GET /license/windows/{serviceName}
             $get(): Promise<license.windows.Windows>;
             // PUT /license/windows/{serviceName}
             $put(body?: {body: license.windows.Windows}): Promise<void>;
-            confirmTermination:  {
+            confirmTermination: {
                 // POST /license/windows/{serviceName}/confirmTermination
                 $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
             }
-            option:  {
+            option: {
                 // GET /license/windows/{serviceName}/option
                 $get(): Promise<license.OptionLabel[]>;
-                [keys: string]: {
+                [keys: string]:{
                     // DELETE /license/windows/{serviceName}/option/{label}
                     $delete(): Promise<license.Task>;
                     // GET /license/windows/{serviceName}/option/{label}
                     $get(): Promise<license.Option>;
                 } | any
             }
-            serviceInfos:  {
+            serviceInfos: {
                 // GET /license/windows/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /license/windows/{serviceName}/serviceInfos
                 $put(body?: {body: services.Service}): Promise<void>;
             }
-            sqlServer:  {
+            sqlServer: {
                 // POST /license/windows/{serviceName}/sqlServer
                 $post(body?: {licenseId: string, version: license.WindowsSqlVersionEnum}): Promise<license.Task>;
             }
-            tasks:  {
+            tasks: {
                 // GET /license/windows/{serviceName}/tasks
                 $get(param?: {action?: license.ActionType, status?: license.TaskStateEnum}): Promise<number[]>;
-                [keys: string]: {
+                [keys: string]:{
                     // GET /license/windows/{serviceName}/tasks/{taskId}
                     $get(): Promise<license.Task>;
                 } | any
             }
-            terminate:  {
+            terminate: {
                 // POST /license/windows/{serviceName}/terminate
                 $post(): Promise<string>;
             }

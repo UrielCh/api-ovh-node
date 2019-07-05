@@ -36,20 +36,20 @@ export namespace auth {
 }
 // Apis harmony
 // path /auth
-export interface Auth {
-    credential:  {
+export interface Auth{
+    credential: {
         // POST /auth/credential
         $post(body?: {accessRules: auth.AccessRule[], redirection?: string}): Promise<auth.Credential>;
     }
-    currentCredential:  {
+    currentCredential: {
         // GET /auth/currentCredential
         $get(): Promise<api.Credential>;
     }
-    logout:  {
+    logout: {
         // POST /auth/logout
         $post(): Promise<void>;
     }
-    time:  {
+    time: {
         // GET /auth/time
         $get(): Promise<number>;
     }

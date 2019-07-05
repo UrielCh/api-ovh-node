@@ -42,8 +42,8 @@ export namespace status {
 }
 // Apis harmony
 // path /status
-export interface Status {
-    task:  {
+export interface Status{
+    task: {
         // GET /status/task
         $get(param?: {impact?: ovhstatus.task.TaskImpactEnum, status?: ovhstatus.task.TaskStatusEnum, type?: ovhstatus.task.TaskTypeEnum}): Promise<status.Task.Task[]>;
     }

@@ -397,182 +397,182 @@ export namespace services {
 }
 // Apis harmony
 // path /ip
-export interface Ip {
+export interface Ip{
     // GET /ip
     $get(param?: {description?: string, ip?: string, routedTo_serviceName?: string, type?: ip.IpTypeEnum}): Promise<string[]>;
-    loadBalancing:  {
+    loadBalancing: {
         // GET /ip/loadBalancing
         $get(): Promise<string[]>;
-        [keys: string]: {
+        [keys: string]:{
             // GET /ip/loadBalancing/{serviceName}
             $get(): Promise<ip.LoadBalancingIp>;
-            allowedBackends:  {
+            allowedBackends: {
                 // GET /ip/loadBalancing/{serviceName}/allowedBackends
                 $get(): Promise<string[]>;
             }
-            backend:  {
+            backend: {
                 // GET /ip/loadBalancing/{serviceName}/backend
                 $get(): Promise<string[]>;
                 // POST /ip/loadBalancing/{serviceName}/backend
                 $post(body?: {ipBackend: string, probe: ip.LoadBalancingBackendProbeEnum, weight?: number}): Promise<ip.LoadBalancingTask>;
-                [keys: string]: {
+                [keys: string]:{
                     // DELETE /ip/loadBalancing/{serviceName}/backend/{backend}
                     $delete(): Promise<ip.LoadBalancingTask>;
                     // GET /ip/loadBalancing/{serviceName}/backend/{backend}
                     $get(): Promise<ip.LoadBalancingBackendIp>;
                     // PUT /ip/loadBalancing/{serviceName}/backend/{backend}
                     $put(body?: {body: ip.LoadBalancingBackendIp}): Promise<void>;
-                    backupState:  {
+                    backupState: {
                         // POST /ip/loadBalancing/{serviceName}/backend/{backend}/backupState
                         $post(body?: {backupStateSet: boolean, mainBackendIp?: string}): Promise<ip.LoadBalancingTask>;
                     }
-                    setWeight:  {
+                    setWeight: {
                         // POST /ip/loadBalancing/{serviceName}/backend/{backend}/setWeight
                         $post(body?: {weight: number}): Promise<ip.LoadBalancingTask>;
                     }
                 } | any
             }
-            importCustomSsl:  {
+            importCustomSsl: {
                 // POST /ip/loadBalancing/{serviceName}/importCustomSsl
                 $post(body?: {certificate: string, chain?: string, key: string}): Promise<ip.LoadBalancingTask>;
             }
-            internalNatIp:  {
+            internalNatIp: {
                 // GET /ip/loadBalancing/{serviceName}/internalNatIp
                 $get(param?: {zone: ip.LoadBalancingZoneEnum}): Promise<string>;
             }
-            portsRedirection:  {
+            portsRedirection: {
                 // GET /ip/loadBalancing/{serviceName}/portsRedirection
                 $get(): Promise<ip.LoadBalancingAdditionalPortEnum[]>;
                 // POST /ip/loadBalancing/{serviceName}/portsRedirection
                 $post(body?: {body: ip.LoadBalancingIp.LoadBalancingPort}): Promise<ip.LoadBalancingTask>;
-                [keys: string]: {
+                [keys: string]:{
                     // DELETE /ip/loadBalancing/{serviceName}/portsRedirection/{srcPort}
                     $delete(): Promise<ip.LoadBalancingTask>;
                     // GET /ip/loadBalancing/{serviceName}/portsRedirection/{srcPort}
                     $get(): Promise<ip.LoadBalancingIp.LoadBalancingPort>;
                 } | any
             }
-            probeIp:  {
+            probeIp: {
                 // GET /ip/loadBalancing/{serviceName}/probeIp
                 $get(param?: {zone: ip.LoadBalancingZoneEnum}): Promise<string[]>;
             }
-            restoreSsl:  {
+            restoreSsl: {
                 // POST /ip/loadBalancing/{serviceName}/restoreSsl
                 $post(): Promise<ip.LoadBalancingTask>;
             }
-            serviceInfos:  {
+            serviceInfos: {
                 // GET /ip/loadBalancing/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /ip/loadBalancing/{serviceName}/serviceInfos
                 $put(body?: {body: services.Service}): Promise<void>;
             }
-            stickiness:  {
+            stickiness: {
                 // POST /ip/loadBalancing/{serviceName}/stickiness
                 $post(body?: {stickiness: ip.LoadBalancingStickinessEnum}): Promise<ip.LoadBalancingTask>;
             }
-            switchToIplbNextGenerationApi:  {
+            switchToIplbNextGenerationApi: {
                 // POST /ip/loadBalancing/{serviceName}/switchToIplbNextGenerationApi
                 $post(): Promise<ipLoadbalancing.Task.Task>;
             }
-            task:  {
+            task: {
                 // GET /ip/loadBalancing/{serviceName}/task
                 $get(): Promise<number[]>;
-                [keys: string]: {
+                [keys: string]:{
                     // GET /ip/loadBalancing/{serviceName}/task/{taskId}
                     $get(): Promise<ip.LoadBalancingTask>;
                 } | any
             }
         } | any
     }
-    service:  {
+    service: {
         // GET /ip/service
         $get(): Promise<string[]>;
-        [keys: string]: {
+        [keys: string]:{
             // GET /ip/service/{serviceName}
             $get(): Promise<ip.ServiceIp>;
             // PUT /ip/service/{serviceName}
             $put(body?: {body: ip.ServiceIp}): Promise<void>;
-            changeContact:  {
+            changeContact: {
                 // POST /ip/service/{serviceName}/changeContact
                 $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
             }
-            confirmTermination:  {
+            confirmTermination: {
                 // POST /ip/service/{serviceName}/confirmTermination
                 $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
             }
-            serviceInfos:  {
+            serviceInfos: {
                 // GET /ip/service/{serviceName}/serviceInfos
                 $get(): Promise<services.NonExpiringService>;
             }
-            terminate:  {
+            terminate: {
                 // POST /ip/service/{serviceName}/terminate
                 $post(): Promise<string>;
             }
         } | any
     }
-    [keys: string]: {
+    [keys: string]:{
         // GET /ip/{ip}
         $get(): Promise<ip.Ip>;
         // PUT /ip/{ip}
         $put(body?: {body: ip.Ip}): Promise<void>;
-        antihack:  {
+        antihack: {
             // GET /ip/{ip}/antihack
             $get(param?: {state?: ip.BlockedIpStateEnum}): Promise<string[]>;
-            [keys: string]: {
+            [keys: string]:{
                 // GET /ip/{ip}/antihack/{ipBlocked}
                 $get(): Promise<ip.BlockedIp>;
-                unblock:  {
+                unblock: {
                     // POST /ip/{ip}/antihack/{ipBlocked}/unblock
                     $post(): Promise<void>;
                 }
             } | any
         }
-        arp:  {
+        arp: {
             // GET /ip/{ip}/arp
             $get(param?: {state?: ip.ArpStateEnum}): Promise<string[]>;
-            [keys: string]: {
+            [keys: string]:{
                 // GET /ip/{ip}/arp/{ipBlocked}
                 $get(): Promise<ip.ArpBlockedIp>;
-                unblock:  {
+                unblock: {
                     // POST /ip/{ip}/arp/{ipBlocked}/unblock
                     $post(): Promise<void>;
                 }
             } | any
         }
-        changeOrg:  {
+        changeOrg: {
             // POST /ip/{ip}/changeOrg
             $post(body?: {organisation: string}): Promise<ip.IpTask>;
         }
-        delegation:  {
+        delegation: {
             // GET /ip/{ip}/delegation
             $get(): Promise<string[]>;
             // POST /ip/{ip}/delegation
             $post(body?: {target: string}): Promise<ip.ReverseDelegation>;
-            [keys: string]: {
+            [keys: string]:{
                 // DELETE /ip/{ip}/delegation/{target}
                 $delete(): Promise<void>;
                 // GET /ip/{ip}/delegation/{target}
                 $get(): Promise<ip.ReverseDelegation>;
             } | any
         }
-        firewall:  {
+        firewall: {
             // GET /ip/{ip}/firewall
             $get(param?: {enabled?: boolean, state?: ip.FirewallStateEnum}): Promise<string[]>;
             // POST /ip/{ip}/firewall
             $post(body?: {ipOnFirewall: string}): Promise<ip.FirewallIp>;
-            [keys: string]: {
+            [keys: string]:{
                 // DELETE /ip/{ip}/firewall/{ipOnFirewall}
                 $delete(): Promise<string>;
                 // GET /ip/{ip}/firewall/{ipOnFirewall}
                 $get(): Promise<ip.FirewallIp>;
                 // PUT /ip/{ip}/firewall/{ipOnFirewall}
                 $put(body?: {body: ip.FirewallIp}): Promise<void>;
-                rule:  {
+                rule: {
                     // GET /ip/{ip}/firewall/{ipOnFirewall}/rule
                     $get(param?: {state?: ip.FirewallRuleStateEnum}): Promise<number[]>;
                     // POST /ip/{ip}/firewall/{ipOnFirewall}/rule
                     $post(body?: {action: ip.FirewallActionEnum, destinationPort?: number, protocol: ip.FirewallProtocolEnum, sequence: ip.FirewallSequenceRangeEnum, source?: string, sourcePort?: number, tcpOption?: ip.FirewallOptionTCP}): Promise<ip.FirewallNetworkRule>;
-                    [keys: string]: {
+                    [keys: string]:{
                         // DELETE /ip/{ip}/firewall/{ipOnFirewall}/rule/{sequence}
                         $delete(): Promise<ip.FirewallNetworkRule>;
                         // GET /ip/{ip}/firewall/{ipOnFirewall}/rule/{sequence}
@@ -581,20 +581,20 @@ export interface Ip {
                 }
             } | any
         }
-        game:  {
+        game: {
             // GET /ip/{ip}/game
             $get(): Promise<string[]>;
-            [keys: string]: {
+            [keys: string]:{
                 // GET /ip/{ip}/game/{ipOnGame}
                 $get(): Promise<ip.GameMitigation>;
                 // PUT /ip/{ip}/game/{ipOnGame}
                 $put(body?: {body: ip.GameMitigation}): Promise<void>;
-                rule:  {
+                rule: {
                     // GET /ip/{ip}/game/{ipOnGame}/rule
                     $get(): Promise<number[]>;
                     // POST /ip/{ip}/game/{ipOnGame}/rule
                     $post(body?: {ports: complexType.Range<number>, protocol: ip.GameMitigationRuleProtocolEnum}): Promise<ip.GameMitigationRule>;
-                    [keys: string]: {
+                    [keys: string]:{
                         // DELETE /ip/{ip}/game/{ipOnGame}/rule/{id}
                         $delete(): Promise<ip.GameMitigationRule>;
                         // GET /ip/{ip}/game/{ipOnGame}/rule/{id}
@@ -603,74 +603,74 @@ export interface Ip {
                 }
             } | any
         }
-        license:  {
-            cloudLinux:  {
+        license: {
+            cloudLinux: {
                 // GET /ip/{ip}/license/cloudLinux
                 $get(param?: {ipAddress?: string}): Promise<string[]>;
             }
-            cpanel:  {
+            cpanel: {
                 // GET /ip/{ip}/license/cpanel
                 $get(param?: {ipAddress?: string}): Promise<string[]>;
             }
-            directadmin:  {
+            directadmin: {
                 // GET /ip/{ip}/license/directadmin
                 $get(param?: {ipAddress?: string}): Promise<string[]>;
             }
-            plesk:  {
+            plesk: {
                 // GET /ip/{ip}/license/plesk
                 $get(param?: {ipAddress?: string}): Promise<string[]>;
             }
-            sqlserver:  {
+            sqlserver: {
                 // GET /ip/{ip}/license/sqlserver
                 $get(param?: {ipAddress?: string}): Promise<string[]>;
             }
-            virtuozzo:  {
+            virtuozzo: {
                 // GET /ip/{ip}/license/virtuozzo
                 $get(param?: {ipAddress?: string}): Promise<string[]>;
             }
-            windows:  {
+            windows: {
                 // GET /ip/{ip}/license/windows
                 $get(param?: {ipAddress?: string}): Promise<string[]>;
             }
-            worklight:  {
+            worklight: {
                 // GET /ip/{ip}/license/worklight
                 $get(param?: {ipAddress?: string}): Promise<string[]>;
             }
         }
-        migrationToken:  {
+        migrationToken: {
             // GET /ip/{ip}/migrationToken
             $get(): Promise<ip.IpMigrationToken>;
             // POST /ip/{ip}/migrationToken
             $post(body?: {customerId: string}): Promise<ip.IpMigrationToken>;
         }
-        mitigation:  {
+        mitigation: {
             // GET /ip/{ip}/mitigation
             $get(param?: {auto?: boolean, state?: ip.MitigationStateEnum}): Promise<string[]>;
             // POST /ip/{ip}/mitigation
             $post(body?: {ipOnMitigation: string}): Promise<ip.MitigationIp>;
-            [keys: string]: {
+            [keys: string]:{
                 // DELETE /ip/{ip}/mitigation/{ipOnMitigation}
                 $delete(): Promise<ip.MitigationIp>;
                 // GET /ip/{ip}/mitigation/{ipOnMitigation}
                 $get(): Promise<ip.MitigationIp>;
                 // PUT /ip/{ip}/mitigation/{ipOnMitigation}
                 $put(body?: {body: ip.MitigationIp}): Promise<void>;
-                stats:  {
+                stats: {
                     // GET /ip/{ip}/mitigation/{ipOnMitigation}/stats
                     $get(param?: {from: string, scale: ip.MitigationStatsScaleEnum, to: string}): Promise<ip.MitigationStats[]>;
                 }
-                topStream:  {
+                topStream: {
                     // GET /ip/{ip}/mitigation/{ipOnMitigation}/topStream
                     $get(param?: {date: string, scale: ip.MitigationStatsScaleEnum}): Promise<ip.MitigationDetailedStats[]>;
                 }
             } | any
         }
-        mitigationProfiles:  {
+        mitigationProfiles: {
             // GET /ip/{ip}/mitigationProfiles
             $get(): Promise<string[]>;
             // POST /ip/{ip}/mitigationProfiles
             $post(body?: {autoMitigationTimeOut: ip.MitigationProfileAutoMitigationTimeOutEnum, ipMitigationProfile: string}): Promise<ip.MitigationProfile>;
-            [keys: string]: {
+            [keys: string]:{
                 // DELETE /ip/{ip}/mitigationProfiles/{ipMitigationProfile}
                 $delete(): Promise<void>;
                 // GET /ip/{ip}/mitigationProfiles/{ipMitigationProfile}
@@ -679,67 +679,67 @@ export interface Ip {
                 $put(body?: {body: ip.MitigationProfile}): Promise<void>;
             } | any
         }
-        move:  {
+        move: {
             // GET /ip/{ip}/move
             $get(): Promise<ip.Destinations>;
             // POST /ip/{ip}/move
             $post(body?: {nexthop?: string, to: string}): Promise<ip.IpTask>;
         }
-        park:  {
+        park: {
             // POST /ip/{ip}/park
             $post(): Promise<ip.IpTask>;
         }
-        phishing:  {
+        phishing: {
             // GET /ip/{ip}/phishing
             $get(param?: {ipOnAntiphishing?: string, state?: ip.AntiphishingStateEnum}): Promise<number[]>;
-            [keys: string]: {
+            [keys: string]:{
                 // GET /ip/{ip}/phishing/{id}
                 $get(): Promise<ip.Antiphishing>;
             } | any
         }
-        reverse:  {
+        reverse: {
             // GET /ip/{ip}/reverse
             $get(): Promise<string[]>;
             // POST /ip/{ip}/reverse
             $post(body?: {ipReverse: string, reverse: string}): Promise<ip.ReverseIp>;
-            [keys: string]: {
+            [keys: string]:{
                 // DELETE /ip/{ip}/reverse/{ipReverse}
                 $delete(): Promise<void>;
                 // GET /ip/{ip}/reverse/{ipReverse}
                 $get(): Promise<ip.ReverseIp>;
             } | any
         }
-        ripe:  {
+        ripe: {
             // GET /ip/{ip}/ripe
             $get(): Promise<ip.RipeInfos>;
             // PUT /ip/{ip}/ripe
             $put(body?: {body: ip.RipeInfos}): Promise<void>;
         }
-        spam:  {
+        spam: {
             // GET /ip/{ip}/spam
             $get(param?: {state?: ip.SpamStateEnum}): Promise<string[]>;
-            [keys: string]: {
+            [keys: string]:{
                 // GET /ip/{ip}/spam/{ipSpamming}
                 $get(): Promise<ip.SpamIp>;
-                stats:  {
+                stats: {
                     // GET /ip/{ip}/spam/{ipSpamming}/stats
                     $get(param?: {from: string, to: string}): Promise<ip.SpamStats[]>;
                 }
-                unblock:  {
+                unblock: {
                     // POST /ip/{ip}/spam/{ipSpamming}/unblock
                     $post(): Promise<ip.SpamIp>;
                 }
             } | any
         }
-        task:  {
+        task: {
             // GET /ip/{ip}/task
             $get(param?: {function_?: ip.TaskFunctionEnum, status?: ip.TaskStatusEnum}): Promise<number[]>;
-            [keys: string]: {
+            [keys: string]:{
                 // GET /ip/{ip}/task/{taskId}
                 $get(): Promise<ip.IpTask>;
             } | any
         }
-        terminate:  {
+        terminate: {
             // POST /ip/{ip}/terminate
             $post(): Promise<ip.IpTask>;
         }

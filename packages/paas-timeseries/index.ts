@@ -136,33 +136,33 @@ export namespace tsaas {
 }
 // Apis harmony
 // path /paas
-export interface Paas {
-    timeseries:  {
+export interface Paas{
+    timeseries: {
         // GET /paas/timeseries
         $get(): Promise<string[]>;
-        region:  {
+        region: {
             // GET /paas/timeseries/region
             $get(): Promise<paas.timeseries.Region[]>;
         }
-        [keys: string]: {
+        [keys: string]:{
             // GET /paas/timeseries/{serviceName}
             $get(): Promise<timeseries.Project>;
             // PUT /paas/timeseries/{serviceName}
             $put(body?: {body: timeseries.Project}): Promise<void>;
-            changeContact:  {
+            changeContact: {
                 // POST /paas/timeseries/{serviceName}/changeContact
                 $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
             }
-            consumption:  {
+            consumption: {
                 // GET /paas/timeseries/{serviceName}/consumption
                 $get(): Promise<paas.timeseries.Consumption[]>;
             }
-            key:  {
+            key: {
                 // GET /paas/timeseries/{serviceName}/key
                 $get(): Promise<paas.timeseries.Key[]>;
                 // POST /paas/timeseries/{serviceName}/key
                 $post(body?: {description?: string, permissions: string[], tags: paas.timeseries.Tag[]}): Promise<paas.timeseries.Key>;
-                [keys: string]: {
+                [keys: string]:{
                     // DELETE /paas/timeseries/{serviceName}/key/{keyId}
                     $delete(): Promise<boolean>;
                     // GET /paas/timeseries/{serviceName}/key/{keyId}
@@ -171,17 +171,17 @@ export interface Paas {
                     $put(body?: {description?: string, permissions: tsaas.PermissionEnum[], tags: paas.timeseries.Tag[]}): Promise<paas.timeseries.Key>;
                 } | any
             }
-            quota:  {
+            quota: {
                 // GET /paas/timeseries/{serviceName}/quota
                 $get(): Promise<paas.timeseries.Quota[]>;
             }
-            serviceInfos:  {
+            serviceInfos: {
                 // GET /paas/timeseries/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /paas/timeseries/{serviceName}/serviceInfos
                 $put(body?: {body: services.Service}): Promise<void>;
             }
-            setup:  {
+            setup: {
                 // POST /paas/timeseries/{serviceName}/setup
                 $post(body?: {description?: string, displayName: string, raTokenId?: string, raTokenKey?: string, regionId?: string}): Promise<paas.timeseries.Project>;
             }

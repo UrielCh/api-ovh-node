@@ -95,31 +95,31 @@ export namespace dedicated {
 }
 // Apis harmony
 // path /dedicated
-export interface Dedicated {
-    installationTemplate:  {
+export interface Dedicated{
+    installationTemplate: {
         // GET /dedicated/installationTemplate
         $get(): Promise<string[]>;
-        [keys: string]: {
+        [keys: string]:{
             // GET /dedicated/installationTemplate/{templateName}
             $get(): Promise<dedicated.installationTemplate.Templates>;
-            partitionScheme:  {
+            partitionScheme: {
                 // GET /dedicated/installationTemplate/{templateName}/partitionScheme
                 $get(): Promise<string[]>;
-                [keys: string]: {
+                [keys: string]:{
                     // GET /dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}
                     $get(): Promise<dedicated.installationTemplate.templatePartitioningSchemes>;
-                    hardwareRaid:  {
+                    hardwareRaid: {
                         // GET /dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid
                         $get(): Promise<string[]>;
-                        [keys: string]: {
+                        [keys: string]:{
                             // GET /dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}
                             $get(): Promise<dedicated.installationTemplate.hardwareRaid>;
                         } | any
                     }
-                    partition:  {
+                    partition: {
                         // GET /dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition
                         $get(): Promise<string[]>;
-                        [keys: string]: {
+                        [keys: string]:{
                             // GET /dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}
                             $get(): Promise<dedicated.installationTemplate.templatePartitions>;
                         } | any

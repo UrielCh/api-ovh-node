@@ -33,12 +33,12 @@ export namespace distribution {
 }
 // Apis harmony
 // path /distribution
-export interface Distribution {
-    image:  {
-        [keys: string]: {
+export interface Distribution{
+    image: {
+        [keys: string]:{
             // GET /distribution/image/{serviceType}
             $get(): Promise<string[]>;
-            [keys: string]: {
+            [keys: string]:{
                 // GET /distribution/image/{serviceType}/{imageName}
                 $get(): Promise<distribution.image>;
             } | any

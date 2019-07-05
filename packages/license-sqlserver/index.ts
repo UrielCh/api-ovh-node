@@ -87,36 +87,36 @@ export namespace services {
 }
 // Apis harmony
 // path /license
-export interface License {
-    sqlserver:  {
+export interface License{
+    sqlserver: {
         // GET /license/sqlserver
         $get(): Promise<string[]>;
-        orderableVersions:  {
+        orderableVersions: {
             // GET /license/sqlserver/orderableVersions
             $get(param?: {ip: string}): Promise<license.SqlServerOrderConfiguration[]>;
         }
-        [keys: string]: {
+        [keys: string]:{
             // GET /license/sqlserver/{serviceName}
             $get(): Promise<license.sqlserver.SqlServer>;
-            confirmTermination:  {
+            confirmTermination: {
                 // POST /license/sqlserver/{serviceName}/confirmTermination
                 $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
             }
-            serviceInfos:  {
+            serviceInfos: {
                 // GET /license/sqlserver/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /license/sqlserver/{serviceName}/serviceInfos
                 $put(body?: {body: services.Service}): Promise<void>;
             }
-            tasks:  {
+            tasks: {
                 // GET /license/sqlserver/{serviceName}/tasks
                 $get(param?: {action?: license.ActionType, status?: license.TaskStateEnum}): Promise<number[]>;
-                [keys: string]: {
+                [keys: string]:{
                     // GET /license/sqlserver/{serviceName}/tasks/{taskId}
                     $get(): Promise<license.Task>;
                 } | any
             }
-            terminate:  {
+            terminate: {
                 // POST /license/sqlserver/{serviceName}/terminate
                 $post(): Promise<string>;
             }

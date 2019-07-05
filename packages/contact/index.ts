@@ -25,11 +25,11 @@ export namespace contact {
 }
 // Apis harmony
 // path /contact
-export interface Contact {
-    form:  {
+export interface Contact{
+    form: {
         // GET /contact/form
         $get(): Promise<contact.FormCharacteristic[]>;
-        send:  {
+        send: {
             // POST /contact/form/send
             $post(body?: {form: complexType.SafeKeyValue<string>[], type: string}): Promise<void>;
         }

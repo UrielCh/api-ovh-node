@@ -189,112 +189,112 @@ export namespace services {
 }
 // Apis harmony
 // path /overTheBox
-export interface OverTheBox {
+export interface OverTheBox{
     // GET /overTheBox
     $get(): Promise<string[]>;
-    availableOffers:  {
+    availableOffers: {
         // GET /overTheBox/availableOffers
         $get(): Promise<price.OverTheBox.OfferEnum[]>;
     }
-    devices:  {
+    devices: {
         // POST /overTheBox/devices
         $post(): Promise<overTheBox.DeviceForRegistration[]>;
     }
-    [keys: string]: {
+    [keys: string]:{
         // DELETE /overTheBox/{serviceName}
         $delete(): Promise<void>;
         // GET /overTheBox/{serviceName}
         $get(): Promise<overTheBox.Service>;
         // PUT /overTheBox/{serviceName}
         $put(body?: {body: overTheBox.Service}): Promise<void>;
-        availableReleaseChannels:  {
+        availableReleaseChannels: {
             // GET /overTheBox/{serviceName}/availableReleaseChannels
             $get(): Promise<string[]>;
         }
-        backups:  {
+        backups: {
             // GET /overTheBox/{serviceName}/backups
             $get(): Promise<string[]>;
-            [keys: string]: {
+            [keys: string]:{
                 // GET /overTheBox/{serviceName}/backups/{backupId}
                 $get(): Promise<overTheBox.Backup>;
             } | any
         }
-        cancelResiliation:  {
+        cancelResiliation: {
             // POST /overTheBox/{serviceName}/cancelResiliation
             $post(): Promise<void>;
         }
-        changeContact:  {
+        changeContact: {
             // POST /overTheBox/{serviceName}/changeContact
             $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
         }
-        device:  {
+        device: {
             // DELETE /overTheBox/{serviceName}/device
             $delete(): Promise<void>;
             // GET /overTheBox/{serviceName}/device
             $get(): Promise<overTheBox.Device>;
-            actions:  {
+            actions: {
                 // GET /overTheBox/{serviceName}/device/actions
                 $get(param?: {name?: string, status?: overTheBox.ActionStatusEnum}): Promise<string[]>;
                 // POST /overTheBox/{serviceName}/device/actions
                 $post(body?: {name: string}): Promise<overTheBox.DeviceAction>;
-                [keys: string]: {
+                [keys: string]:{
                     // GET /overTheBox/{serviceName}/device/actions/{actionId}
                     $get(): Promise<overTheBox.DeviceAction>;
                 } | any
             }
-            availableActions:  {
+            availableActions: {
                 // GET /overTheBox/{serviceName}/device/availableActions
                 $get(): Promise<overTheBox.AvailableDeviceAction[]>;
             }
-            backup:  {
+            backup: {
                 // POST /overTheBox/{serviceName}/device/backup
                 $post(): Promise<overTheBox.DeviceAction>;
             }
-            logs:  {
+            logs: {
                 // POST /overTheBox/{serviceName}/device/logs
                 $post(): Promise<overTheBox.TemporaryLogsLink>;
             }
-            restoreBackup:  {
+            restoreBackup: {
                 // POST /overTheBox/{serviceName}/device/restoreBackup
                 $post(body?: {backupId: string}): Promise<overTheBox.DeviceAction[]>;
             }
         }
-        linkDevice:  {
+        linkDevice: {
             // POST /overTheBox/{serviceName}/linkDevice
             $post(body?: {deviceId: string}): Promise<void>;
         }
-        migration:  {
-            offers:  {
+        migration: {
+            offers: {
                 // GET /overTheBox/{serviceName}/migration/offers
                 $get(): Promise<overTheBox.AvailableMigrationOffer[]>;
             }
         }
-        remoteAccesses:  {
+        remoteAccesses: {
             // GET /overTheBox/{serviceName}/remoteAccesses
             $get(): Promise<string[]>;
             // POST /overTheBox/{serviceName}/remoteAccesses
             $post(body?: {allowedIp?: string, expirationDate?: string, exposedPort: number, publicKey?: string}): Promise<overTheBox.RemoteAccess>;
-            [keys: string]: {
+            [keys: string]:{
                 // DELETE /overTheBox/{serviceName}/remoteAccesses/{remoteAccessId}
                 $delete(): Promise<void>;
                 // GET /overTheBox/{serviceName}/remoteAccesses/{remoteAccessId}
                 $get(): Promise<overTheBox.RemoteAccess>;
-                authorize:  {
+                authorize: {
                     // POST /overTheBox/{serviceName}/remoteAccesses/{remoteAccessId}/authorize
                     $post(): Promise<void>;
                 }
             } | any
         }
-        serviceInfos:  {
+        serviceInfos: {
             // GET /overTheBox/{serviceName}/serviceInfos
             $get(): Promise<services.Service>;
             // PUT /overTheBox/{serviceName}/serviceInfos
             $put(body?: {body: services.Service}): Promise<void>;
         }
-        tasks:  {
+        tasks: {
             // GET /overTheBox/{serviceName}/tasks
             $get(param?: {name?: string, status?: overTheBox.TaskStatusEnum}): Promise<string[]>;
-            [keys: string]: {
+            [keys: string]:{
                 // GET /overTheBox/{serviceName}/tasks/{taskId}
                 $get(): Promise<overTheBox.Task>;
             } | any

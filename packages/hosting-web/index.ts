@@ -800,121 +800,121 @@ export namespace services {
 }
 // Apis harmony
 // path /hosting
-export interface Hosting {
-    web:  {
+export interface Hosting{
+    web: {
         // GET /hosting/web
         $get(): Promise<string[]>;
-        attachedDomain:  {
+        attachedDomain: {
             // GET /hosting/web/attachedDomain
             $get(param?: {domain: string}): Promise<string[]>;
         }
-        availableOffer:  {
+        availableOffer: {
             // GET /hosting/web/availableOffer
             $get(param?: {domain: string}): Promise<hosting.web.OfferEnum[]>;
         }
-        incident:  {
+        incident: {
             // GET /hosting/web/incident
             $get(): Promise<string[]>;
         }
-        localSeo:  {
-            directoriesList:  {
+        localSeo: {
+            directoriesList: {
                 // GET /hosting/web/localSeo/directoriesList
                 $get(param?: {country: hosting.web.localSeo.location.CountryEnum, offer: hosting.web.localSeo.location.OfferEnum}): Promise<hosting.web.localSeo.DirectoriesList>;
             }
-            emailAvailability:  {
+            emailAvailability: {
                 // GET /hosting/web/localSeo/emailAvailability
                 $get(param?: {email: string}): Promise<hosting.web.localSeo.EmailAvailability>;
             }
-            visibilityCheck:  {
+            visibilityCheck: {
                 // POST /hosting/web/localSeo/visibilityCheck
                 $post(body?: {country: hosting.web.localSeo.location.CountryEnum, name: string, street: string, zip: string}): Promise<hosting.web.localSeo.VisibilityCheckResponse>;
             }
-            visibilityCheckResult:  {
+            visibilityCheckResult: {
                 // GET /hosting/web/localSeo/visibilityCheckResult
                 $get(param?: {directory: string, id: number, token: string}): Promise<hosting.web.localSeo.VisibilityCheckResultResponse[]>;
             }
         }
-        moduleList:  {
+        moduleList: {
             // GET /hosting/web/moduleList
             $get(param?: {active?: boolean, branch?: hosting.web.module.BranchEnum, latest?: boolean}): Promise<number[]>;
-            [keys: string]: {
+            [keys: string]:{
                 // GET /hosting/web/moduleList/{id}
                 $get(): Promise<hosting.web.ModuleList>;
             } | any
         }
-        offerCapabilities:  {
+        offerCapabilities: {
             // GET /hosting/web/offerCapabilities
             $get(param?: {offer: hosting.web.OfferCapabilitiesEnum}): Promise<hosting.web.Capabilities>;
         }
-        [keys: string]: {
+        [keys: string]:{
             // GET /hosting/web/{serviceName}
             $get(): Promise<hosting.web.Service>;
             // PUT /hosting/web/{serviceName}
             $put(body?: {body: hosting.web.Service}): Promise<void>;
-            activatePrivateDatabase:  {
+            activatePrivateDatabase: {
                 // POST /hosting/web/{serviceName}/activatePrivateDatabase
                 $post(body?: {ram: hosting.PrivateDatabase.AvailableRamSizeEnum, version: hosting.PrivateDatabase.OrderableVersionEnum}): Promise<hosting.web.task>;
             }
-            attachedDomain:  {
+            attachedDomain: {
                 // GET /hosting/web/{serviceName}/attachedDomain
                 $get(param?: {domain?: string, path?: string}): Promise<string[]>;
                 // POST /hosting/web/{serviceName}/attachedDomain
                 $post(body?: {cdn?: hosting.web.attachedDomain.CdnEnum, domain: string, firewall?: hosting.web.attachedDomain.FirewallEnum, ownLog?: string, path: string, runtimeId?: number, ssl?: boolean}): Promise<hosting.web.task>;
-                [keys: string]: {
+                [keys: string]:{
                     // DELETE /hosting/web/{serviceName}/attachedDomain/{domain}
                     $delete(): Promise<hosting.web.task>;
                     // GET /hosting/web/{serviceName}/attachedDomain/{domain}
                     $get(): Promise<hosting.web.attachedDomain>;
                     // PUT /hosting/web/{serviceName}/attachedDomain/{domain}
                     $put(body?: {body: hosting.web.attachedDomain}): Promise<void>;
-                    purgeCache:  {
+                    purgeCache: {
                         // POST /hosting/web/{serviceName}/attachedDomain/{domain}/purgeCache
                         $post(): Promise<hosting.web.task>;
                     }
-                    restart:  {
+                    restart: {
                         // POST /hosting/web/{serviceName}/attachedDomain/{domain}/restart
                         $post(): Promise<hosting.web.task>;
                     }
                 } | any
             }
-            boostHistory:  {
+            boostHistory: {
                 // GET /hosting/web/{serviceName}/boostHistory
                 $get(param?: {date?: string}): Promise<string[]>;
-                [keys: string]: {
+                [keys: string]:{
                     // GET /hosting/web/{serviceName}/boostHistory/{date}
                     $get(): Promise<hosting.web.boostHistory>;
                 } | any
             }
-            cdn:  {
+            cdn: {
                 // GET /hosting/web/{serviceName}/cdn
                 $get(): Promise<hosting.web.cdn>;
-                serviceInfos:  {
+                serviceInfos: {
                     // GET /hosting/web/{serviceName}/cdn/serviceInfos
                     $get(): Promise<services.Service>;
                 }
-                serviceInfosUpdate:  {
+                serviceInfosUpdate: {
                     // POST /hosting/web/{serviceName}/cdn/serviceInfosUpdate
                     $post(body?: {renew: service.RenewType}): Promise<void>;
                 }
-                terminate:  {
+                terminate: {
                     // POST /hosting/web/{serviceName}/cdn/terminate
                     $post(): Promise<string>;
                 }
             }
-            changeContact:  {
+            changeContact: {
                 // POST /hosting/web/{serviceName}/changeContact
                 $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
             }
-            confirmTermination:  {
+            confirmTermination: {
                 // POST /hosting/web/{serviceName}/confirmTermination
                 $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
             }
-            cron:  {
+            cron: {
                 // GET /hosting/web/{serviceName}/cron
                 $get(param?: {command?: string, description?: string, email?: string, language?: hosting.web.cron.LanguageEnum}): Promise<number[]>;
                 // POST /hosting/web/{serviceName}/cron
                 $post(body?: {command: string, description?: string, email?: string, frequency: string, language: hosting.web.cron.LanguageEnum, status?: hosting.web.cron.StatusEnum}): Promise<string>;
-                [keys: string]: {
+                [keys: string]:{
                     // DELETE /hosting/web/{serviceName}/cron/{id}
                     $delete(): Promise<string>;
                     // GET /hosting/web/{serviceName}/cron/{id}
@@ -923,108 +923,108 @@ export interface Hosting {
                     $put(body?: {body: hosting.web.cron}): Promise<void>;
                 } | any
             }
-            cronAvailableLanguage:  {
+            cronAvailableLanguage: {
                 // GET /hosting/web/{serviceName}/cronAvailableLanguage
                 $get(): Promise<hosting.web.cron.LanguageEnum[]>;
             }
-            database:  {
+            database: {
                 // GET /hosting/web/{serviceName}/database
                 $get(param?: {mode?: hosting.web.database.ModeEnum, name?: string, server?: string, type?: hosting.web.database.DatabaseTypeEnum, user?: string}): Promise<string[]>;
                 // POST /hosting/web/{serviceName}/database
                 $post(body?: {capabilitie: hosting.web.database.DatabaseCapabilitiesTypeEnum, password?: string, quota?: hosting.web.database.ExtraSqlQuotaEnum, type: hosting.web.database.DatabaseTypeEnum, user: string, version?: hosting.web.database.VersionEnum}): Promise<hosting.web.task>;
-                [keys: string]: {
+                [keys: string]:{
                     // DELETE /hosting/web/{serviceName}/database/{name}
                     $delete(): Promise<hosting.web.task>;
                     // GET /hosting/web/{serviceName}/database/{name}
                     $get(): Promise<hosting.web.database>;
-                    capabilities:  {
+                    capabilities: {
                         // GET /hosting/web/{serviceName}/database/{name}/capabilities
                         $get(): Promise<hosting.web.database.DatabaseCapabilities>;
                     }
-                    changePassword:  {
+                    changePassword: {
                         // POST /hosting/web/{serviceName}/database/{name}/changePassword
                         $post(body?: {password: string}): Promise<hosting.web.task>;
                     }
-                    dump:  {
+                    dump: {
                         // GET /hosting/web/{serviceName}/database/{name}/dump
                         $get(param?: {creationDate?: string, deletionDate?: string, type?: hosting.web.database.dump.DateEnum}): Promise<number[]>;
                         // POST /hosting/web/{serviceName}/database/{name}/dump
                         $post(body?: {date: hosting.web.database.dump.DateEnum, sendEmail?: boolean}): Promise<hosting.web.task>;
-                        [keys: string]: {
+                        [keys: string]:{
                             // DELETE /hosting/web/{serviceName}/database/{name}/dump/{id}
                             $delete(): Promise<hosting.web.task>;
                             // GET /hosting/web/{serviceName}/database/{name}/dump/{id}
                             $get(): Promise<hosting.web.database_dump>;
-                            restore:  {
+                            restore: {
                                 // POST /hosting/web/{serviceName}/database/{name}/dump/{id}/restore
                                 $post(): Promise<hosting.web.task>;
                             }
                         } | any
                     }
-                    import:  {
+                    import: {
                         // POST /hosting/web/{serviceName}/database/{name}/import
                         $post(body?: {documentId: string, flushDatabase?: boolean, sendEmail?: boolean}): Promise<hosting.web.task>;
                     }
-                    request:  {
+                    request: {
                         // POST /hosting/web/{serviceName}/database/{name}/request
                         $post(body?: {action: hosting.web.database.RequestActionEnum}): Promise<hosting.web.task>;
                     }
-                    restore:  {
+                    restore: {
                         // POST /hosting/web/{serviceName}/database/{name}/restore
                         $post(body?: {date: hosting.web.database.dump.DateEnum, sendEmail?: boolean}): Promise<hosting.web.task>;
                     }
-                    statistics:  {
+                    statistics: {
                         // GET /hosting/web/{serviceName}/database/{name}/statistics
                         $get(param?: {period: hosting.web.StatisticsPeriodEnum, type: hosting.web.database.StatisticsTypeEnum}): Promise<complexType.ChartSerie<complexType.ChartTimestampValue>[]>;
                     }
                 } | any
             }
-            databaseAvailableType:  {
+            databaseAvailableType: {
                 // GET /hosting/web/{serviceName}/databaseAvailableType
                 $get(): Promise<hosting.web.database.DatabaseTypeEnum[]>;
             }
-            databaseAvailableVersion:  {
+            databaseAvailableVersion: {
                 // GET /hosting/web/{serviceName}/databaseAvailableVersion
                 $get(param?: {type: hosting.web.database.DatabaseTypeEnum}): Promise<hosting.web.database.AvailableVersionStruct>;
             }
-            databaseCreationCapabilities:  {
+            databaseCreationCapabilities: {
                 // GET /hosting/web/{serviceName}/databaseCreationCapabilities
                 $get(): Promise<hosting.web.database.CreationDatabaseCapabilities[]>;
             }
-            dump:  {
+            dump: {
                 // GET /hosting/web/{serviceName}/dump
                 $get(param?: {creationDate?: string, databaseName?: string, deletionDate?: string, orphan?: boolean}): Promise<number[]>;
-                [keys: string]: {
+                [keys: string]:{
                     // DELETE /hosting/web/{serviceName}/dump/{id}
                     $delete(): Promise<hosting.web.task>;
                     // GET /hosting/web/{serviceName}/dump/{id}
                     $get(): Promise<hosting.web.dump>;
                 } | any
             }
-            email:  {
+            email: {
                 // GET /hosting/web/{serviceName}/email
                 $get(): Promise<hosting.web.email>;
                 // PUT /hosting/web/{serviceName}/email
                 $put(body?: {body: hosting.web.email}): Promise<void>;
-                bounces:  {
+                bounces: {
                     // GET /hosting/web/{serviceName}/email/bounces
                     $get(param?: {limit: number}): Promise<hosting.web.mail.Bounce[]>;
                 }
-                request:  {
+                request: {
                     // POST /hosting/web/{serviceName}/email/request
                     $post(body?: {action: hosting.web.mail.ActionEnum}): Promise<string>;
                 }
-                volumes:  {
+                volumes: {
                     // GET /hosting/web/{serviceName}/email/volumes
                     $get(): Promise<hosting.web.mail.VolumeHistory[]>;
                 }
             }
-            envVar:  {
+            envVar: {
                 // GET /hosting/web/{serviceName}/envVar
                 $get(param?: {type?: hosting.web.envVar.TypeEnum}): Promise<string[]>;
                 // POST /hosting/web/{serviceName}/envVar
                 $post(body?: {key: string, type: hosting.web.envVar.TypeEnum, value: string}): Promise<hosting.web.task>;
-                [keys: string]: {
+                [keys: string]:{
                     // DELETE /hosting/web/{serviceName}/envVar/{key}
                     $delete(): Promise<hosting.web.task>;
                     // GET /hosting/web/{serviceName}/envVar/{key}
@@ -1033,141 +1033,141 @@ export interface Hosting {
                     $put(body?: {body: hosting.web.envVar}): Promise<void>;
                 } | any
             }
-            extraSqlPerso:  {
+            extraSqlPerso: {
                 // GET /hosting/web/{serviceName}/extraSqlPerso
                 $get(): Promise<string[]>;
-                [keys: string]: {
+                [keys: string]:{
                     // GET /hosting/web/{serviceName}/extraSqlPerso/{name}
                     $get(): Promise<hosting.web.extrasqlperso>;
-                    databases:  {
+                    databases: {
                         // GET /hosting/web/{serviceName}/extraSqlPerso/{name}/databases
                         $get(): Promise<string[]>;
                     }
-                    serviceInfos:  {
+                    serviceInfos: {
                         // GET /hosting/web/{serviceName}/extraSqlPerso/{name}/serviceInfos
                         $get(): Promise<services.Service>;
                     }
-                    serviceInfosUpdate:  {
+                    serviceInfosUpdate: {
                         // POST /hosting/web/{serviceName}/extraSqlPerso/{name}/serviceInfosUpdate
                         $post(body?: {renew: service.RenewType}): Promise<void>;
                     }
-                    terminate:  {
+                    terminate: {
                         // POST /hosting/web/{serviceName}/extraSqlPerso/{name}/terminate
                         $post(): Promise<string>;
                     }
                 } | any
             }
-            freedom:  {
+            freedom: {
                 // GET /hosting/web/{serviceName}/freedom
                 $get(param?: {status?: hosting.web.freedom.StatusEnum}): Promise<string[]>;
-                [keys: string]: {
+                [keys: string]:{
                     // DELETE /hosting/web/{serviceName}/freedom/{domain}
                     $delete(): Promise<void>;
                     // GET /hosting/web/{serviceName}/freedom/{domain}
                     $get(): Promise<hosting.web.freedom>;
                 } | any
             }
-            indy:  {
+            indy: {
                 // GET /hosting/web/{serviceName}/indy
                 $get(param?: {login?: string}): Promise<string[]>;
-                [keys: string]: {
+                [keys: string]:{
                     // GET /hosting/web/{serviceName}/indy/{login}
                     $get(): Promise<hosting.web.indy>;
                 } | any
             }
-            localSeo:  {
-                account:  {
+            localSeo: {
+                account: {
                     // GET /hosting/web/{serviceName}/localSeo/account
                     $get(param?: {email?: string}): Promise<number[]>;
-                    [keys: string]: {
+                    [keys: string]:{
                         // GET /hosting/web/{serviceName}/localSeo/account/{id}
                         $get(): Promise<hosting.web.localSeo_account>;
-                        login:  {
+                        login: {
                             // POST /hosting/web/{serviceName}/localSeo/account/{id}/login
                             $post(): Promise<string>;
                         }
                     } | any
                 }
-                emailAvailability:  {
+                emailAvailability: {
                     // GET /hosting/web/{serviceName}/localSeo/emailAvailability
                     $get(param?: {email: string}): Promise<hosting.web.localSeo.EmailAvailability>;
                 }
-                location:  {
+                location: {
                     // GET /hosting/web/{serviceName}/localSeo/location
                     $get(): Promise<number[]>;
-                    [keys: string]: {
+                    [keys: string]:{
                         // GET /hosting/web/{serviceName}/localSeo/location/{id}
                         $get(): Promise<hosting.web.localSeo_location>;
-                        serviceInfos:  {
+                        serviceInfos: {
                             // GET /hosting/web/{serviceName}/localSeo/location/{id}/serviceInfos
                             $get(): Promise<services.Service>;
                         }
-                        serviceInfosUpdate:  {
+                        serviceInfosUpdate: {
                             // POST /hosting/web/{serviceName}/localSeo/location/{id}/serviceInfosUpdate
                             $post(body?: {renew: service.RenewType}): Promise<void>;
                         }
-                        terminate:  {
+                        terminate: {
                             // POST /hosting/web/{serviceName}/localSeo/location/{id}/terminate
                             $post(): Promise<string>;
                         }
                     } | any
                 }
             }
-            module:  {
+            module: {
                 // GET /hosting/web/{serviceName}/module
                 $get(): Promise<number[]>;
                 // POST /hosting/web/{serviceName}/module
                 $post(body?: {adminName?: string, adminPassword?: string, dependencies?: hosting.web.module.DependencyType[], domain?: string, language?: hosting.web.module.LanguageEnum, moduleId: number, path?: string}): Promise<hosting.web.task>;
-                [keys: string]: {
+                [keys: string]:{
                     // DELETE /hosting/web/{serviceName}/module/{id}
                     $delete(): Promise<hosting.web.task>;
                     // GET /hosting/web/{serviceName}/module/{id}
                     $get(): Promise<hosting.web.module>;
-                    changePassword:  {
+                    changePassword: {
                         // POST /hosting/web/{serviceName}/module/{id}/changePassword
                         $post(): Promise<hosting.web.task>;
                     }
                 } | any
             }
-            ovhConfig:  {
+            ovhConfig: {
                 // GET /hosting/web/{serviceName}/ovhConfig
                 $get(param?: {historical?: boolean, path?: string}): Promise<number[]>;
-                [keys: string]: {
+                [keys: string]:{
                     // GET /hosting/web/{serviceName}/ovhConfig/{id}
                     $get(): Promise<hosting.web.ovhConfig>;
-                    changeConfiguration:  {
+                    changeConfiguration: {
                         // POST /hosting/web/{serviceName}/ovhConfig/{id}/changeConfiguration
                         $post(body?: {container?: hosting.web.ovhconfig.ContainerEnum, engineName?: hosting.web.ovhConfig.EngineNameEnum, engineVersion?: hosting.web.ovhConfig.AvailableEngineVersionEnum, environment?: hosting.web.ovhConfig.EnvironmentEnum, httpFirewall?: hosting.web.ovhConfig.HttpFirewallEnum}): Promise<hosting.web.task>;
                     }
-                    rollback:  {
+                    rollback: {
                         // POST /hosting/web/{serviceName}/ovhConfig/{id}/rollback
                         $post(body?: {rollbackId: number}): Promise<hosting.web.task>;
                     }
                 } | any
             }
-            ovhConfigRefresh:  {
+            ovhConfigRefresh: {
                 // POST /hosting/web/{serviceName}/ovhConfigRefresh
                 $post(): Promise<hosting.web.task>;
             }
-            ownLogs:  {
+            ownLogs: {
                 // GET /hosting/web/{serviceName}/ownLogs
                 $get(): Promise<number[]>;
-                [keys: string]: {
+                [keys: string]:{
                     // GET /hosting/web/{serviceName}/ownLogs/{id}
                     $get(): Promise<hosting.web.ownLogs>;
-                    userLogs:  {
+                    userLogs: {
                         // GET /hosting/web/{serviceName}/ownLogs/{id}/userLogs
                         $get(param?: {login?: string}): Promise<string[]>;
                         // POST /hosting/web/{serviceName}/ownLogs/{id}/userLogs
                         $post(body?: {description: string, login: string, ownLogsId?: number, password: string}): Promise<string>;
-                        [keys: string]: {
+                        [keys: string]:{
                             // DELETE /hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}
                             $delete(): Promise<string>;
                             // GET /hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}
                             $get(): Promise<hosting.web.userLogs>;
                             // PUT /hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}
                             $put(body?: {body: hosting.web.userLogs}): Promise<void>;
-                            changePassword:  {
+                            changePassword: {
                                 // POST /hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}/changePassword
                                 $post(body?: {password: string}): Promise<string>;
                             }
@@ -1175,131 +1175,131 @@ export interface Hosting {
                     }
                 } | any
             }
-            privateDatabaseCreationCapabilities:  {
+            privateDatabaseCreationCapabilities: {
                 // GET /hosting/web/{serviceName}/privateDatabaseCreationCapabilities
                 $get(): Promise<hosting.web.database.CreationDatabaseCapabilities[]>;
             }
-            privateDatabases:  {
+            privateDatabases: {
                 // GET /hosting/web/{serviceName}/privateDatabases
                 $get(): Promise<string[]>;
             }
-            request:  {
+            request: {
                 // POST /hosting/web/{serviceName}/request
                 $post(body?: {action: hosting.web.RequestActionEnum}): Promise<hosting.web.task>;
             }
-            requestBoost:  {
+            requestBoost: {
                 // POST /hosting/web/{serviceName}/requestBoost
                 $post(body?: {offer?: hosting.web.OfferEnum}): Promise<hosting.web.task>;
             }
-            restoreSnapshot:  {
+            restoreSnapshot: {
                 // POST /hosting/web/{serviceName}/restoreSnapshot
                 $post(body?: {backup: hosting.web.backup.TypeEnum}): Promise<hosting.web.task>;
             }
-            runtime:  {
+            runtime: {
                 // GET /hosting/web/{serviceName}/runtime
                 $get(param?: {name?: string, type?: hosting.web.runtime.TypeEnum}): Promise<number[]>;
                 // POST /hosting/web/{serviceName}/runtime
                 $post(body?: {appBootstrap?: string, appEnv?: hosting.web.runtime.EnvEnum, attachedDomains?: string[], isDefault?: boolean, name?: string, publicDir?: string, type?: hosting.web.runtime.TypeEnum}): Promise<hosting.web.task>;
-                [keys: string]: {
+                [keys: string]:{
                     // DELETE /hosting/web/{serviceName}/runtime/{id}
                     $delete(): Promise<hosting.web.task>;
                     // GET /hosting/web/{serviceName}/runtime/{id}
                     $get(): Promise<hosting.web.runtime>;
                     // PUT /hosting/web/{serviceName}/runtime/{id}
                     $put(body?: {body: hosting.web.runtime}): Promise<void>;
-                    attachedDomains:  {
+                    attachedDomains: {
                         // GET /hosting/web/{serviceName}/runtime/{id}/attachedDomains
                         $get(): Promise<string[]>;
                     }
                 } | any
             }
-            runtimeAvailableTypes:  {
+            runtimeAvailableTypes: {
                 // GET /hosting/web/{serviceName}/runtimeAvailableTypes
                 $get(param?: {language?: string}): Promise<hosting.web.runtime.TypeEnum[]>;
             }
-            serviceInfos:  {
+            serviceInfos: {
                 // GET /hosting/web/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /hosting/web/{serviceName}/serviceInfos
                 $put(body?: {body: services.Service}): Promise<void>;
             }
-            ssl:  {
+            ssl: {
                 // DELETE /hosting/web/{serviceName}/ssl
                 $delete(): Promise<hosting.web.ssl>;
                 // GET /hosting/web/{serviceName}/ssl
                 $get(): Promise<hosting.web.ssl>;
                 // POST /hosting/web/{serviceName}/ssl
                 $post(body?: {certificate?: string, chain?: string, key?: string}): Promise<hosting.web.ssl>;
-                domains:  {
+                domains: {
                     // GET /hosting/web/{serviceName}/ssl/domains
                     $get(): Promise<string[]>;
                 }
-                regenerate:  {
+                regenerate: {
                     // POST /hosting/web/{serviceName}/ssl/regenerate
                     $post(): Promise<hosting.web.ssl>;
                 }
-                report:  {
+                report: {
                     // GET /hosting/web/{serviceName}/ssl/report
                     $get(): Promise<hosting.web.ssl_report>;
                 }
             }
-            statistics:  {
+            statistics: {
                 // GET /hosting/web/{serviceName}/statistics
                 $get(param?: {period: hosting.web.StatisticsPeriodEnum, type: hosting.web.StatisticsTypeEnum}): Promise<complexType.ChartSerie<complexType.ChartTimestampValue>[]>;
             }
-            tasks:  {
+            tasks: {
                 // GET /hosting/web/{serviceName}/tasks
                 $get(param?: {function_?: string, status?: hosting.web.task.StatusEnum}): Promise<number[]>;
-                [keys: string]: {
+                [keys: string]:{
                     // GET /hosting/web/{serviceName}/tasks/{id}
                     $get(): Promise<hosting.web.task>;
                 } | any
             }
-            terminate:  {
+            terminate: {
                 // POST /hosting/web/{serviceName}/terminate
                 $post(): Promise<string>;
             }
-            token:  {
+            token: {
                 // GET /hosting/web/{serviceName}/token
                 $get(): Promise<string>;
             }
-            user:  {
+            user: {
                 // GET /hosting/web/{serviceName}/user
                 $get(param?: {home?: string, login?: string}): Promise<string[]>;
                 // POST /hosting/web/{serviceName}/user
                 $post(body?: {home: string, login: string, password: string, sshState?: hosting.web.user.SshStateEnum}): Promise<hosting.web.task>;
-                [keys: string]: {
+                [keys: string]:{
                     // DELETE /hosting/web/{serviceName}/user/{login}
                     $delete(): Promise<hosting.web.task>;
                     // GET /hosting/web/{serviceName}/user/{login}
                     $get(): Promise<hosting.web.user>;
                     // PUT /hosting/web/{serviceName}/user/{login}
                     $put(body?: {body: hosting.web.user}): Promise<void>;
-                    changePassword:  {
+                    changePassword: {
                         // POST /hosting/web/{serviceName}/user/{login}/changePassword
                         $post(body?: {password: string}): Promise<hosting.web.task>;
                     }
                 } | any
             }
-            userLogs:  {
+            userLogs: {
                 // GET /hosting/web/{serviceName}/userLogs
                 $get(param?: {login?: string}): Promise<string[]>;
                 // POST /hosting/web/{serviceName}/userLogs
                 $post(body?: {description: string, login: string, ownLogsId?: number, password: string}): Promise<string>;
-                [keys: string]: {
+                [keys: string]:{
                     // DELETE /hosting/web/{serviceName}/userLogs/{login}
                     $delete(): Promise<string>;
                     // GET /hosting/web/{serviceName}/userLogs/{login}
                     $get(): Promise<hosting.web.userLogs>;
                     // PUT /hosting/web/{serviceName}/userLogs/{login}
                     $put(body?: {body: hosting.web.userLogs}): Promise<void>;
-                    changePassword:  {
+                    changePassword: {
                         // POST /hosting/web/{serviceName}/userLogs/{login}/changePassword
                         $post(body?: {password: string}): Promise<string>;
                     }
                 } | any
             }
-            userLogsToken:  {
+            userLogsToken: {
                 // GET /hosting/web/{serviceName}/userLogsToken
                 $get(param?: {attachedDomain?: string, remoteCheck?: boolean, ttl?: number}): Promise<string>;
             }

@@ -140,31 +140,31 @@ export namespace services {
 }
 // Apis harmony
 // path /cluster
-export interface Cluster {
-    hadoop:  {
+export interface Cluster{
+    hadoop: {
         // GET /cluster/hadoop
         $get(): Promise<string[]>;
-        orderInformations:  {
+        orderInformations: {
             // GET /cluster/hadoop/orderInformations
             $get(): Promise<cluster.hadoop.OrderInformations>;
         }
-        orderableNodeProfiles:  {
+        orderableNodeProfiles: {
             // GET /cluster/hadoop/orderableNodeProfiles
             $get(): Promise<cluster.hadoop.NodeBillingProfile[]>;
         }
-        [keys: string]: {
+        [keys: string]:{
             // GET /cluster/hadoop/{serviceName}
             $get(): Promise<cluster.hadoop.hadoop>;
-            consumptions:  {
+            consumptions: {
                 // GET /cluster/hadoop/{serviceName}/consumptions
                 $get(): Promise<cluster.hadoop.ClusterConsumption>;
             }
-            networkAcl:  {
+            networkAcl: {
                 // GET /cluster/hadoop/{serviceName}/networkAcl
                 $get(): Promise<string[]>;
                 // POST /cluster/hadoop/{serviceName}/networkAcl
                 $post(body?: {block?: string, description?: string}): Promise<cluster.hadoop.Task>;
-                [keys: string]: {
+                [keys: string]:{
                     // DELETE /cluster/hadoop/{serviceName}/networkAcl/{block}
                     $delete(): Promise<cluster.hadoop.Task>;
                     // GET /cluster/hadoop/{serviceName}/networkAcl/{block}
@@ -173,41 +173,41 @@ export interface Cluster {
                     $put(body?: {body: cluster.hadoop.NetworkAcl}): Promise<void>;
                 } | any
             }
-            node:  {
+            node: {
                 // GET /cluster/hadoop/{serviceName}/node
                 $get(param?: {softwareProfile?: cluster.hadoop.NodeProfileEnum}): Promise<string[]>;
-                [keys: string]: {
+                [keys: string]:{
                     // DELETE /cluster/hadoop/{serviceName}/node/{hostname}
                     $delete(): Promise<cluster.hadoop.Task>;
                     // GET /cluster/hadoop/{serviceName}/node/{hostname}
                     $get(): Promise<cluster.hadoop.Node>;
-                    decommission:  {
+                    decommission: {
                         // POST /cluster/hadoop/{serviceName}/node/{hostname}/decommission
                         $post(): Promise<cluster.hadoop.Task>;
                     }
-                    recommission:  {
+                    recommission: {
                         // POST /cluster/hadoop/{serviceName}/node/{hostname}/recommission
                         $post(): Promise<cluster.hadoop.Task>;
                     }
-                    role:  {
+                    role: {
                         // GET /cluster/hadoop/{serviceName}/node/{hostname}/role
                         $get(): Promise<cluster.hadoop.RoleTypeEnum[]>;
                         // POST /cluster/hadoop/{serviceName}/node/{hostname}/role
                         $post(body?: {type: cluster.hadoop.RoleTypeEnum}): Promise<cluster.hadoop.Task>;
-                        [keys: string]: {
+                        [keys: string]:{
                             // DELETE /cluster/hadoop/{serviceName}/node/{hostname}/role/{type}
                             $delete(): Promise<cluster.hadoop.Task>;
                             // GET /cluster/hadoop/{serviceName}/node/{hostname}/role/{type}
                             $get(): Promise<cluster.hadoop.Role>;
-                            restart:  {
+                            restart: {
                                 // POST /cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/restart
                                 $post(): Promise<cluster.hadoop.Task>;
                             }
-                            start:  {
+                            start: {
                                 // POST /cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/start
                                 $post(): Promise<cluster.hadoop.Task>;
                             }
-                            stop:  {
+                            stop: {
                                 // POST /cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/stop
                                 $post(): Promise<cluster.hadoop.Task>;
                             }
@@ -215,79 +215,79 @@ export interface Cluster {
                     }
                 } | any
             }
-            nodeBillingProfiles:  {
+            nodeBillingProfiles: {
                 // GET /cluster/hadoop/{serviceName}/nodeBillingProfiles
                 $get(): Promise<cluster.hadoop.NodeBillingProfile[]>;
             }
-            nodeConsumptions:  {
+            nodeConsumptions: {
                 // GET /cluster/hadoop/{serviceName}/nodeConsumptions
                 $get(): Promise<cluster.hadoop.NodeConsumption[]>;
             }
-            orderNewNodeHourly:  {
+            orderNewNodeHourly: {
                 // POST /cluster/hadoop/{serviceName}/orderNewNodeHourly
                 $post(body?: {nodeProfile: string}): Promise<cluster.hadoop.Task>;
             }
-            orderableNodeProfiles:  {
+            orderableNodeProfiles: {
                 // GET /cluster/hadoop/{serviceName}/orderableNodeProfiles
                 $get(): Promise<string[]>;
             }
-            restart:  {
+            restart: {
                 // POST /cluster/hadoop/{serviceName}/restart
                 $post(): Promise<cluster.hadoop.Task>;
             }
-            service:  {
-                restart:  {
+            service: {
+                restart: {
                     // POST /cluster/hadoop/{serviceName}/service/restart
                     $post(body?: {service: cluster.hadoop.ClusterServiceNameEnum}): Promise<cluster.hadoop.Task>;
                 }
-                start:  {
+                start: {
                     // POST /cluster/hadoop/{serviceName}/service/start
                     $post(body?: {service: cluster.hadoop.ClusterServiceNameEnum}): Promise<cluster.hadoop.Task>;
                 }
-                stop:  {
+                stop: {
                     // POST /cluster/hadoop/{serviceName}/service/stop
                     $post(body?: {service: cluster.hadoop.ClusterServiceNameEnum}): Promise<cluster.hadoop.Task>;
                 }
             }
-            serviceInfos:  {
+            serviceInfos: {
                 // GET /cluster/hadoop/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /cluster/hadoop/{serviceName}/serviceInfos
                 $put(body?: {body: services.Service}): Promise<void>;
             }
-            start:  {
+            start: {
                 // POST /cluster/hadoop/{serviceName}/start
                 $post(): Promise<cluster.hadoop.Task>;
             }
-            stop:  {
+            stop: {
                 // POST /cluster/hadoop/{serviceName}/stop
                 $post(): Promise<cluster.hadoop.Task>;
             }
-            task:  {
+            task: {
                 // GET /cluster/hadoop/{serviceName}/task
                 $get(param?: {status?: cluster.hadoop.OperationStateEnum}): Promise<number[]>;
-                [keys: string]: {
+                [keys: string]:{
                     // GET /cluster/hadoop/{serviceName}/task/{taskId}
                     $get(): Promise<cluster.hadoop.Task>;
                 } | any
             }
-            terminate:  {
+            terminate: {
                 // POST /cluster/hadoop/{serviceName}/terminate
                 $post(): Promise<cluster.hadoop.Task>;
             }
-            user:  {
+            user: {
                 // GET /cluster/hadoop/{serviceName}/user
                 $get(): Promise<string[]>;
                 // POST /cluster/hadoop/{serviceName}/user
                 $post(body?: {clouderaManager: boolean, httpFrontend: boolean, hue: boolean, password: string, username: string}): Promise<cluster.hadoop.Task>;
-                [keys: string]: {
+                [keys: string]:{
                     // DELETE /cluster/hadoop/{serviceName}/user/{username}
                     $delete(): Promise<cluster.hadoop.Task>;
                     // GET /cluster/hadoop/{serviceName}/user/{username}
                     $get(): Promise<cluster.hadoop.User>;
                     // PUT /cluster/hadoop/{serviceName}/user/{username}
                     $put(body?: {body: cluster.hadoop.User}): Promise<void>;
-                    resetPassword:  {
+                    resetPassword: {
                         // POST /cluster/hadoop/{serviceName}/user/{username}/resetPassword
                         $post(body?: {password: string}): Promise<cluster.hadoop.Task>;
                     }

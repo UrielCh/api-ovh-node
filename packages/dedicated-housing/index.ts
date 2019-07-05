@@ -153,27 +153,27 @@ export namespace services {
 }
 // Apis harmony
 // path /dedicated
-export interface Dedicated {
-    housing:  {
+export interface Dedicated{
+    housing: {
         // GET /dedicated/housing
         $get(): Promise<string[]>;
-        [keys: string]: {
+        [keys: string]:{
             // GET /dedicated/housing/{serviceName}
             $get(): Promise<dedicated.housing.Housing>;
-            features:  {
-                backupFTP:  {
+            features: {
+                backupFTP: {
                     // DELETE /dedicated/housing/{serviceName}/features/backupFTP
                     $delete(): Promise<dedicated.server.Task>;
                     // GET /dedicated/housing/{serviceName}/features/backupFTP
                     $get(): Promise<dedicated.server.BackupFtp>;
                     // POST /dedicated/housing/{serviceName}/features/backupFTP
                     $post(): Promise<dedicated.server.Task>;
-                    access:  {
+                    access: {
                         // GET /dedicated/housing/{serviceName}/features/backupFTP/access
                         $get(): Promise<string[]>;
                         // POST /dedicated/housing/{serviceName}/features/backupFTP/access
                         $post(body?: {cifs: boolean, ftp?: boolean, ipBlock: string, nfs: boolean}): Promise<dedicated.server.Task>;
-                        [keys: string]: {
+                        [keys: string]:{
                             // DELETE /dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}
                             $delete(): Promise<dedicated.server.Task>;
                             // GET /dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}
@@ -182,35 +182,35 @@ export interface Dedicated {
                             $put(body?: {body: dedicated.server.BackupFtpAcl}): Promise<void>;
                         } | any
                     }
-                    authorizableBlocks:  {
+                    authorizableBlocks: {
                         // GET /dedicated/housing/{serviceName}/features/backupFTP/authorizableBlocks
                         $get(): Promise<string[]>;
                     }
-                    password:  {
+                    password: {
                         // POST /dedicated/housing/{serviceName}/features/backupFTP/password
                         $post(): Promise<dedicated.server.Task>;
                     }
                 }
             }
-            orderable:  {
-                APC:  {
+            orderable: {
+                APC: {
                     // GET /dedicated/housing/{serviceName}/orderable/APC
                     $get(): Promise<dedicated.housing.ApcOrderable>;
                 }
             }
-            serviceInfos:  {
+            serviceInfos: {
                 // GET /dedicated/housing/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /dedicated/housing/{serviceName}/serviceInfos
                 $put(body?: {body: services.Service}): Promise<void>;
             }
-            task:  {
+            task: {
                 // GET /dedicated/housing/{serviceName}/task
                 $get(param?: {function_?: dedicated.housing.TaskFunctionEnum, status?: dedicated.TaskStatusEnum}): Promise<number[]>;
-                [keys: string]: {
+                [keys: string]:{
                     // GET /dedicated/housing/{serviceName}/task/{taskId}
                     $get(): Promise<dedicated.housing.Task>;
-                    cancel:  {
+                    cancel: {
                         // POST /dedicated/housing/{serviceName}/task/{taskId}/cancel
                         $post(): Promise<void>;
                     }

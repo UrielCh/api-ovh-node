@@ -807,83 +807,83 @@ export namespace vrack {
 }
 // Apis harmony
 // path /dedicatedCloud
-export interface DedicatedCloud {
+export interface DedicatedCloud{
     // GET /dedicatedCloud
     $get(): Promise<string[]>;
-    commercialRange:  {
+    commercialRange: {
         // GET /dedicatedCloud/commercialRange
         $get(): Promise<string[]>;
-        [keys: string]: {
+        [keys: string]:{
             // GET /dedicatedCloud/commercialRange/{commercialRangeName}
             $get(): Promise<dedicatedCloud.CommercialRange>;
         } | any
     }
-    location:  {
+    location: {
         // GET /dedicatedCloud/location
         $get(): Promise<string[]>;
-        [keys: string]: {
+        [keys: string]:{
             // GET /dedicatedCloud/location/{pccZone}
             $get(): Promise<dedicatedCloud.PccZone>;
-            hostProfile:  {
+            hostProfile: {
                 // GET /dedicatedCloud/location/{pccZone}/hostProfile
                 $get(): Promise<number[]>;
-                [keys: string]: {
+                [keys: string]:{
                     // GET /dedicatedCloud/location/{pccZone}/hostProfile/{id}
                     $get(): Promise<dedicatedCloud.HostProfile>;
                 } | any
             }
-            hypervisor:  {
+            hypervisor: {
                 // GET /dedicatedCloud/location/{pccZone}/hypervisor
                 $get(): Promise<string[]>;
-                [keys: string]: {
+                [keys: string]:{
                     // GET /dedicatedCloud/location/{pccZone}/hypervisor/{shortName}
                     $get(): Promise<dedicatedCloud.Os>;
                 } | any
             }
-            stock:  {
-                host:  {
+            stock: {
+                host: {
                     // GET /dedicatedCloud/location/{pccZone}/stock/host
                     $get(param?: {minYear?: number}): Promise<dedicatedCloud.HostStockProfile[]>;
                 }
-                pcc:  {
+                pcc: {
                     // GET /dedicatedCloud/location/{pccZone}/stock/pcc
                     $get(): Promise<dedicatedCloud.PccStockProfile[]>;
                 }
-                zpool:  {
+                zpool: {
                     // GET /dedicatedCloud/location/{pccZone}/stock/zpool
                     $get(param?: {profileFilter?: string}): Promise<dedicatedCloud.ZpoolStockProfile[]>;
                 }
             }
         } | any
     }
-    [keys: string]: {
+    [keys: string]:{
         // GET /dedicatedCloud/{serviceName}
         $get(): Promise<dedicatedCloud.dedicatedCloud>;
         // PUT /dedicatedCloud/{serviceName}
         $put(body?: {body: dedicatedCloud.dedicatedCloud}): Promise<dedicatedCloud.Task>;
-        allowedNetwork:  {
+        allowedNetwork: {
             // GET /dedicatedCloud/{serviceName}/allowedNetwork
             $get(): Promise<number[]>;
             // POST /dedicatedCloud/{serviceName}/allowedNetwork
             $post(body?: {description?: string, network: string}): Promise<dedicatedCloud.Task>;
-            [keys: string]: {
+            [keys: string]:{
                 // DELETE /dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}
                 $delete(): Promise<dedicatedCloud.Task>;
                 // GET /dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}
                 $get(): Promise<dedicatedCloud.AllowedNetwork>;
                 // PUT /dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}
                 $put(body?: {body: dedicatedCloud.AllowedNetwork}): Promise<dedicatedCloud.Task>;
-                task:  {
+                task: {
                     // GET /dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task
                     $get(param?: {name?: string, state?: dedicatedCloud.TaskStateEnum}): Promise<number[]>;
-                    [keys: string]: {
+                    [keys: string]:{
                         // GET /dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task/{taskId}
                         $get(): Promise<dedicatedCloud.Task>;
-                        changeMaintenanceExecutionDate:  {
+                        changeMaintenanceExecutionDate: {
                             // POST /dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task/{taskId}/changeMaintenanceExecutionDate
                             $post(body?: {executionDate: string}): Promise<dedicatedCloud.Task>;
                         }
-                        resetTaskState:  {
+                        resetTaskState: {
                             // POST /dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task/{taskId}/resetTaskState
                             $post(body?: {reason: string}): Promise<dedicatedCloud.Task>;
                         }
@@ -891,123 +891,123 @@ export interface DedicatedCloud {
                 }
             } | any
         }
-        capabilities:  {
+        capabilities: {
             // GET /dedicatedCloud/{serviceName}/capabilities
             $get(): Promise<dedicatedCloud.Capabilities>;
         }
-        changeContact:  {
+        changeContact: {
             // POST /dedicatedCloud/{serviceName}/changeContact
             $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
         }
-        changeProperties:  {
+        changeProperties: {
             // POST /dedicatedCloud/{serviceName}/changeProperties
             $post(body?: {description?: string, sslV3?: boolean, userAccessPolicy?: dedicatedCloud.UserAccessPolicyEnum, userLimitConcurrentSession?: number, userLogoutPolicy?: dedicatedCloud.UserLogoutPolicyEnum, userSessionTimeout?: number}): Promise<dedicatedCloud.Task>;
         }
-        commercialRange:  {
-            compliance:  {
+        commercialRange: {
+            compliance: {
                 // GET /dedicatedCloud/{serviceName}/commercialRange/compliance
                 $get(): Promise<string[]>;
             }
-            orderable:  {
+            orderable: {
                 // GET /dedicatedCloud/{serviceName}/commercialRange/orderable
                 $get(): Promise<string[]>;
             }
         }
-        confirmTermination:  {
+        confirmTermination: {
             // POST /dedicatedCloud/{serviceName}/confirmTermination
             $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
         }
-        datacenter:  {
+        datacenter: {
             // GET /dedicatedCloud/{serviceName}/datacenter
             $get(): Promise<number[]>;
             // POST /dedicatedCloud/{serviceName}/datacenter
             $post(body?: {commercialRangeName: string, vrackName?: string}): Promise<dedicatedCloud.Task>;
-            [keys: string]: {
+            [keys: string]:{
                 // DELETE /dedicatedCloud/{serviceName}/datacenter/{datacenterId}
                 $delete(): Promise<dedicatedCloud.Task>;
                 // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}
                 $get(): Promise<dedicatedCloud.Datacenter>;
                 // PUT /dedicatedCloud/{serviceName}/datacenter/{datacenterId}
                 $put(body?: {body: dedicatedCloud.Datacenter}): Promise<dedicatedCloud.Task>;
-                backup:  {
+                backup: {
                     // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup
                     $get(): Promise<dedicatedCloud.Backup>;
-                    changeProperties:  {
+                    changeProperties: {
                         // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/changeProperties
                         $post(body?: {backupDurationInReport: boolean, backupOffer: dedicatedCloud.backup.OfferTypeEnum, backupSizeInReport: boolean, diskSizeInReport: boolean, fullDayInReport: boolean, mailAddress?: string, restorePointInReport: boolean, scheduleHour?: string}): Promise<dedicatedCloud.Task>;
                     }
-                    disable:  {
+                    disable: {
                         // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/disable
                         $post(): Promise<dedicatedCloud.Task>;
                     }
-                    enable:  {
+                    enable: {
                         // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/enable
                         $post(body?: {backupOffer?: dedicatedCloud.backup.OfferTypeEnum}): Promise<dedicatedCloud.Task>;
                     }
                 }
-                disasterRecovery:  {
-                    zerto:  {
-                        disable:  {
+                disasterRecovery: {
+                    zerto: {
+                        disable: {
                             // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/disable
                             $post(body?: {secondaryDatacenterId: number, secondaryServiceName: string}): Promise<dedicatedCloud.Task>;
                         }
-                        enable:  {
+                        enable: {
                             // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/enable
                             $post(body?: {primaryEndpointIp: string, secondaryDatacenterId: number, secondaryEndpointIp: string, secondaryServiceName: string}): Promise<dedicatedCloud.Task>;
                         }
-                        generateZsspPassword:  {
+                        generateZsspPassword: {
                             // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/generateZsspPassword
                             $post(): Promise<dedicatedCloud.Task>;
                         }
-                        state:  {
+                        state: {
                             // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/state
                             $post(): Promise<dedicatedCloud.disasterRecovery.Profile>;
                         }
                     }
-                    zertoSingle:  {
-                        configureVpn:  {
+                    zertoSingle: {
+                        configureVpn: {
                             // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/configureVpn
                             $post(body?: {preSharedKey: string, remoteEndpointInternalIp: string, remoteEndpointPublicIp: string, remoteVraNetwork?: string, remoteZvmInternalIp: string}): Promise<dedicatedCloud.Task>;
                         }
-                        defaultLocalVraNetwork:  {
+                        defaultLocalVraNetwork: {
                             // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/defaultLocalVraNetwork
                             $get(): Promise<string>;
                         }
-                        disable:  {
+                        disable: {
                             // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/disable
                             $post(): Promise<dedicatedCloud.Task>;
                         }
-                        enable:  {
+                        enable: {
                             // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/enable
                             $post(body?: {localVraNetwork: string, ovhEndpointIp: string, remoteVraNetwork: string}): Promise<dedicatedCloud.Task>;
                         }
                     }
                 }
-                filer:  {
+                filer: {
                     // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer
                     $get(): Promise<number[]>;
-                    [keys: string]: {
+                    [keys: string]:{
                         // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}
                         $get(): Promise<dedicatedCloud.Filer>;
-                        hourlyConsumption:  {
+                        hourlyConsumption: {
                             // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/hourlyConsumption
                             $get(): Promise<dedicatedCloud.filer.HourlyConsumption>;
                         }
-                        remove:  {
+                        remove: {
                             // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/remove
                             $post(): Promise<dedicatedCloud.Task>;
                         }
-                        task:  {
+                        task: {
                             // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task
                             $get(param?: {name?: string, state?: dedicatedCloud.TaskStateEnum}): Promise<number[]>;
-                            [keys: string]: {
+                            [keys: string]:{
                                 // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task/{taskId}
                                 $get(): Promise<dedicatedCloud.Task>;
-                                changeMaintenanceExecutionDate:  {
+                                changeMaintenanceExecutionDate: {
                                     // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task/{taskId}/changeMaintenanceExecutionDate
                                     $post(body?: {executionDate: string}): Promise<dedicatedCloud.Task>;
                                 }
-                                resetTaskState:  {
+                                resetTaskState: {
                                     // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task/{taskId}/resetTaskState
                                     $post(body?: {reason: string}): Promise<dedicatedCloud.Task>;
                                 }
@@ -1015,35 +1015,35 @@ export interface DedicatedCloud {
                         }
                     } | any
                 }
-                host:  {
+                host: {
                     // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host
                     $get(): Promise<number[]>;
-                    [keys: string]: {
+                    [keys: string]:{
                         // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}
                         $get(): Promise<dedicatedCloud.Host>;
-                        addHostSpare:  {
+                        addHostSpare: {
                             // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/addHostSpare
                             $post(body?: {reason: string}): Promise<dedicatedCloud.Task>;
                         }
-                        hourlyConsumption:  {
+                        hourlyConsumption: {
                             // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/hourlyConsumption
                             $get(): Promise<dedicatedCloud.host.HourlyConsumption>;
                         }
-                        remove:  {
+                        remove: {
                             // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/remove
                             $post(): Promise<dedicatedCloud.Task>;
                         }
-                        task:  {
+                        task: {
                             // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task
                             $get(param?: {name?: string, state?: dedicatedCloud.TaskStateEnum}): Promise<number[]>;
-                            [keys: string]: {
+                            [keys: string]:{
                                 // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task/{taskId}
                                 $get(): Promise<dedicatedCloud.Task>;
-                                changeMaintenanceExecutionDate:  {
+                                changeMaintenanceExecutionDate: {
                                     // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task/{taskId}/changeMaintenanceExecutionDate
                                     $post(body?: {executionDate: string}): Promise<dedicatedCloud.Task>;
                                 }
-                                resetTaskState:  {
+                                resetTaskState: {
                                     // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task/{taskId}/resetTaskState
                                     $post(body?: {reason: string}): Promise<dedicatedCloud.Task>;
                                 }
@@ -1051,83 +1051,83 @@ export interface DedicatedCloud {
                         }
                     } | any
                 }
-                orderNewFilerHourly:  {
+                orderNewFilerHourly: {
                     // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderNewFilerHourly
                     $post(body?: {name: string}): Promise<dedicatedCloud.Task>;
                 }
-                orderNewHostHourly:  {
+                orderNewHostHourly: {
                     // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderNewHostHourly
                     $post(body?: {name: string}): Promise<dedicatedCloud.Task>;
                 }
-                orderableFilerProfiles:  {
+                orderableFilerProfiles: {
                     // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableFilerProfiles
                     $get(): Promise<dedicatedCloud.filer.Profile[]>;
                 }
-                orderableHostProfiles:  {
+                orderableHostProfiles: {
                     // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableHostProfiles
                     $get(): Promise<dedicatedCloud.host.Profile[]>;
                 }
-                task:  {
+                task: {
                     // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task
                     $get(param?: {name?: string, state?: dedicatedCloud.TaskStateEnum}): Promise<number[]>;
-                    [keys: string]: {
+                    [keys: string]:{
                         // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task/{taskId}
                         $get(): Promise<dedicatedCloud.Task>;
-                        changeMaintenanceExecutionDate:  {
+                        changeMaintenanceExecutionDate: {
                             // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task/{taskId}/changeMaintenanceExecutionDate
                             $post(body?: {executionDate: string}): Promise<dedicatedCloud.Task>;
                         }
-                        resetTaskState:  {
+                        resetTaskState: {
                             // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task/{taskId}/resetTaskState
                             $post(body?: {reason: string}): Promise<dedicatedCloud.Task>;
                         }
                     } | any
                 }
-                vm:  {
+                vm: {
                     // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm
                     $get(): Promise<number[]>;
-                    [keys: string]: {
+                    [keys: string]:{
                         // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}
                         $get(): Promise<dedicatedCloud.Vm>;
-                        backupJob:  {
+                        backupJob: {
                             // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob
                             $get(): Promise<dedicatedCloud.BackupJob>;
                             // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob
                             $post(body?: {backupDays: dedicatedCloud.backup.BackupDaysEnum[]}): Promise<dedicatedCloud.Task>;
-                            disable:  {
+                            disable: {
                                 // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/disable
                                 $post(): Promise<dedicatedCloud.Task>;
                             }
-                            enable:  {
+                            enable: {
                                 // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/enable
                                 $post(body?: {backupDays: dedicatedCloud.backup.BackupDaysEnum[]}): Promise<dedicatedCloud.Task>;
                             }
-                            restorePoints:  {
+                            restorePoints: {
                                 // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/restorePoints
                                 $get(): Promise<number[]>;
-                                [keys: string]: {
+                                [keys: string]:{
                                     // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/restorePoints/{restorePointId}
                                     $get(): Promise<dedicatedCloud.RestorePoint>;
-                                    restore:  {
+                                    restore: {
                                         // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/restorePoints/{restorePointId}/restore
                                         $post(body?: {filerId: number}): Promise<dedicatedCloud.Task>;
                                     }
                                 } | any
                             }
                         }
-                        disableBackup:  {
+                        disableBackup: {
                             // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/disableBackup
                             $post(): Promise<dedicatedCloud.Task>;
                         }
-                        editBackup:  {
+                        editBackup: {
                             // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/editBackup
                             $post(body?: {backupDays: dedicatedCloud.backup.BackupDaysEnum[]}): Promise<dedicatedCloud.Task>;
                         }
-                        enableBackup:  {
+                        enableBackup: {
                             // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/enableBackup
                             $post(body?: {backupDays: dedicatedCloud.backup.BackupDaysEnum[]}): Promise<dedicatedCloud.Task>;
                         }
-                        restoreBackup:  {
+                        restoreBackup: {
                             // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/restoreBackup
                             $post(body?: {filerId: number, restorePointId: number}): Promise<dedicatedCloud.Task>;
                         }
@@ -1135,55 +1135,55 @@ export interface DedicatedCloud {
                 }
             } | any
         }
-        federation:  {
+        federation: {
             // GET /dedicatedCloud/{serviceName}/federation
             $get(): Promise<dedicatedCloud.Federation>;
-            activeDirectory:  {
+            activeDirectory: {
                 // GET /dedicatedCloud/{serviceName}/federation/activeDirectory
                 $get(): Promise<number[]>;
                 // POST /dedicatedCloud/{serviceName}/federation/activeDirectory
                 $post(body?: {baseDnForGroups: string, baseDnForUsers: string, description?: string, domainAlias: string, domainName: string, ip: string, password: string, username: string}): Promise<dedicatedCloud.Task>;
-                [keys: string]: {
+                [keys: string]:{
                     // DELETE /dedicatedCloud/{serviceName}/federation/activeDirectory/{activeDirectoryId}
                     $delete(): Promise<dedicatedCloud.Task>;
                     // GET /dedicatedCloud/{serviceName}/federation/activeDirectory/{activeDirectoryId}
                     $get(): Promise<dedicatedCloud.FederationAccessNetwork>;
-                    changeProperties:  {
+                    changeProperties: {
                         // POST /dedicatedCloud/{serviceName}/federation/activeDirectory/{activeDirectoryId}/changeProperties
                         $post(body?: {description?: string, password: string, username: string}): Promise<dedicatedCloud.Task>;
                     }
-                    grantActiveDirectoryUser:  {
+                    grantActiveDirectoryUser: {
                         // POST /dedicatedCloud/{serviceName}/federation/activeDirectory/{activeDirectoryId}/grantActiveDirectoryUser
                         $post(body?: {username: string}): Promise<dedicatedCloud.Task>;
                     }
                 } | any
             }
         }
-        filer:  {
+        filer: {
             // GET /dedicatedCloud/{serviceName}/filer
             $get(): Promise<number[]>;
-            [keys: string]: {
+            [keys: string]:{
                 // GET /dedicatedCloud/{serviceName}/filer/{filerId}
                 $get(): Promise<dedicatedCloud.Filer>;
-                hourlyConsumption:  {
+                hourlyConsumption: {
                     // GET /dedicatedCloud/{serviceName}/filer/{filerId}/hourlyConsumption
                     $get(): Promise<dedicatedCloud.filer.HourlyConsumption>;
                 }
-                remove:  {
+                remove: {
                     // POST /dedicatedCloud/{serviceName}/filer/{filerId}/remove
                     $post(): Promise<dedicatedCloud.Task>;
                 }
-                task:  {
+                task: {
                     // GET /dedicatedCloud/{serviceName}/filer/{filerId}/task
                     $get(param?: {name?: string, state?: dedicatedCloud.TaskStateEnum}): Promise<number[]>;
-                    [keys: string]: {
+                    [keys: string]:{
                         // GET /dedicatedCloud/{serviceName}/filer/{filerId}/task/{taskId}
                         $get(): Promise<dedicatedCloud.Task>;
-                        changeMaintenanceExecutionDate:  {
+                        changeMaintenanceExecutionDate: {
                             // POST /dedicatedCloud/{serviceName}/filer/{filerId}/task/{taskId}/changeMaintenanceExecutionDate
                             $post(body?: {executionDate: string}): Promise<dedicatedCloud.Task>;
                         }
-                        resetTaskState:  {
+                        resetTaskState: {
                             // POST /dedicatedCloud/{serviceName}/filer/{filerId}/task/{taskId}/resetTaskState
                             $post(body?: {reason: string}): Promise<dedicatedCloud.Task>;
                         }
@@ -1191,91 +1191,91 @@ export interface DedicatedCloud {
                 }
             } | any
         }
-        globalTasks:  {
+        globalTasks: {
             // GET /dedicatedCloud/{serviceName}/globalTasks
             $get(param?: {datacenterId?: number, endDate_from?: string, endDate_to?: string, executionDate_from?: string, executionDate_to?: string, filerId?: number, hostId?: number, lastModificationDate_from?: string, lastModificationDate_to?: string, name?: string, networkAccessId?: number, orderId?: number, parentTaskId?: number, state?: dedicatedCloud.TaskStateEnum[], userId?: number, vlanId?: number}): Promise<number[]>;
         }
-        hcx:  {
+        hcx: {
             // GET /dedicatedCloud/{serviceName}/hcx
             $get(): Promise<dedicatedCloud.Hcx>;
-            canBeDisabled:  {
+            canBeDisabled: {
                 // GET /dedicatedCloud/{serviceName}/hcx/canBeDisabled
                 $get(): Promise<boolean>;
             }
-            canBeEnabled:  {
+            canBeEnabled: {
                 // GET /dedicatedCloud/{serviceName}/hcx/canBeEnabled
                 $get(): Promise<boolean>;
             }
-            disable:  {
+            disable: {
                 // POST /dedicatedCloud/{serviceName}/hcx/disable
                 $post(): Promise<dedicatedCloud.Task>;
             }
-            enable:  {
+            enable: {
                 // POST /dedicatedCloud/{serviceName}/hcx/enable
                 $post(): Promise<dedicatedCloud.Task>;
             }
         }
-        hds:  {
+        hds: {
             // GET /dedicatedCloud/{serviceName}/hds
             $get(): Promise<dedicatedCloud.Hds>;
-            canBeDisabled:  {
+            canBeDisabled: {
                 // GET /dedicatedCloud/{serviceName}/hds/canBeDisabled
                 $get(): Promise<dedicatedCloud.optionCompatibility>;
             }
-            canBeEnabled:  {
+            canBeEnabled: {
                 // GET /dedicatedCloud/{serviceName}/hds/canBeEnabled
                 $get(): Promise<dedicatedCloud.optionCompatibility>;
             }
-            disable:  {
+            disable: {
                 // POST /dedicatedCloud/{serviceName}/hds/disable
                 $post(): Promise<dedicatedCloud.Task>;
             }
-            enable:  {
+            enable: {
                 // POST /dedicatedCloud/{serviceName}/hds/enable
                 $post(): Promise<dedicatedCloud.Task>;
             }
         }
-        hipaa:  {
+        hipaa: {
             // GET /dedicatedCloud/{serviceName}/hipaa
             $get(): Promise<dedicatedCloud.Hipaa>;
-            canBeDisabled:  {
+            canBeDisabled: {
                 // GET /dedicatedCloud/{serviceName}/hipaa/canBeDisabled
                 $get(): Promise<dedicatedCloud.optionCompatibility>;
             }
-            canBeEnabled:  {
+            canBeEnabled: {
                 // GET /dedicatedCloud/{serviceName}/hipaa/canBeEnabled
                 $get(): Promise<dedicatedCloud.optionCompatibility>;
             }
-            disable:  {
+            disable: {
                 // POST /dedicatedCloud/{serviceName}/hipaa/disable
                 $post(): Promise<dedicatedCloud.Task>;
             }
-            enable:  {
+            enable: {
                 // POST /dedicatedCloud/{serviceName}/hipaa/enable
                 $post(): Promise<dedicatedCloud.Task>;
             }
         }
-        ip:  {
+        ip: {
             // GET /dedicatedCloud/{serviceName}/ip
             $get(): Promise<string[]>;
-            [keys: string]: {
+            [keys: string]:{
                 // GET /dedicatedCloud/{serviceName}/ip/{network}
                 $get(): Promise<dedicatedCloud.Ip>;
-                details:  {
+                details: {
                     // GET /dedicatedCloud/{serviceName}/ip/{network}/details
                     $get(): Promise<dedicatedCloud.IpDetails[]>;
                 }
-                task:  {
+                task: {
                     // GET /dedicatedCloud/{serviceName}/ip/{network}/task
                     $get(param?: {name?: string, state?: dedicatedCloud.TaskStateEnum}): Promise<number[]>;
-                    [keys: string]: {
+                    [keys: string]:{
                         // GET /dedicatedCloud/{serviceName}/ip/{network}/task/{taskId}
                         $get(): Promise<dedicatedCloud.Task>;
-                        changeMaintenanceExecutionDate:  {
+                        changeMaintenanceExecutionDate: {
                             // POST /dedicatedCloud/{serviceName}/ip/{network}/task/{taskId}/changeMaintenanceExecutionDate
                             $post(body?: {executionDate: string}): Promise<dedicatedCloud.Task>;
                         }
-                        resetTaskState:  {
+                        resetTaskState: {
                             // POST /dedicatedCloud/{serviceName}/ip/{network}/task/{taskId}/resetTaskState
                             $post(body?: {reason: string}): Promise<dedicatedCloud.Task>;
                         }
@@ -1283,191 +1283,191 @@ export interface DedicatedCloud {
                 }
             } | any
         }
-        newPrices:  {
+        newPrices: {
             // GET /dedicatedCloud/{serviceName}/newPrices
             $get(): Promise<dedicatedCloud.resourceNewPrices>;
         }
-        nsx:  {
+        nsx: {
             // GET /dedicatedCloud/{serviceName}/nsx
             $get(): Promise<dedicatedCloud.Nsx>;
-            canBeDisabled:  {
+            canBeDisabled: {
                 // GET /dedicatedCloud/{serviceName}/nsx/canBeDisabled
                 $get(): Promise<dedicatedCloud.optionCompatibility>;
             }
-            canBeEnabled:  {
+            canBeEnabled: {
                 // GET /dedicatedCloud/{serviceName}/nsx/canBeEnabled
                 $get(): Promise<dedicatedCloud.optionCompatibility>;
             }
-            disable:  {
+            disable: {
                 // POST /dedicatedCloud/{serviceName}/nsx/disable
                 $post(): Promise<dedicatedCloud.Task>;
             }
-            enable:  {
+            enable: {
                 // POST /dedicatedCloud/{serviceName}/nsx/enable
                 $post(): Promise<dedicatedCloud.Task>;
             }
         }
-        orderNewFilerHourly:  {
+        orderNewFilerHourly: {
             // POST /dedicatedCloud/{serviceName}/orderNewFilerHourly
             $post(body?: {name: string}): Promise<dedicatedCloud.Task>;
         }
-        orderableIpCountries:  {
+        orderableIpCountries: {
             // GET /dedicatedCloud/{serviceName}/orderableIpCountries
             $get(): Promise<dedicatedCloud.IpCountriesEnum[]>;
         }
-        passwordPolicy:  {
+        passwordPolicy: {
             // GET /dedicatedCloud/{serviceName}/passwordPolicy
             $get(): Promise<dedicatedCloud.passwordPolicy>;
         }
-        pcidss:  {
+        pcidss: {
             // GET /dedicatedCloud/{serviceName}/pcidss
             $get(): Promise<dedicatedCloud.PciDss>;
-            canBeDisabled:  {
+            canBeDisabled: {
                 // GET /dedicatedCloud/{serviceName}/pcidss/canBeDisabled
                 $get(): Promise<dedicatedCloud.optionCompatibility>;
             }
-            canBeEnabled:  {
+            canBeEnabled: {
                 // GET /dedicatedCloud/{serviceName}/pcidss/canBeEnabled
                 $get(): Promise<dedicatedCloud.optionCompatibility>;
             }
-            disable:  {
+            disable: {
                 // POST /dedicatedCloud/{serviceName}/pcidss/disable
                 $post(): Promise<dedicatedCloud.Task>;
             }
-            enable:  {
+            enable: {
                 // POST /dedicatedCloud/{serviceName}/pcidss/enable
                 $post(): Promise<dedicatedCloud.Task>;
             }
         }
-        resetTriggeredAlarm:  {
+        resetTriggeredAlarm: {
             // POST /dedicatedCloud/{serviceName}/resetTriggeredAlarm
             $post(): Promise<dedicatedCloud.Task>;
         }
-        robot:  {
+        robot: {
             // GET /dedicatedCloud/{serviceName}/robot
             $get(): Promise<string[]>;
-            [keys: string]: {
+            [keys: string]:{
                 // GET /dedicatedCloud/{serviceName}/robot/{name}
                 $get(): Promise<dedicatedCloud.Robot>;
             } | any
         }
-        serviceInfos:  {
+        serviceInfos: {
             // GET /dedicatedCloud/{serviceName}/serviceInfos
             $get(): Promise<services.Service>;
             // PUT /dedicatedCloud/{serviceName}/serviceInfos
             $put(body?: {body: services.Service}): Promise<void>;
         }
-        servicePack:  {
+        servicePack: {
             // GET /dedicatedCloud/{serviceName}/servicePack
             $get(): Promise<dedicatedCloud.servicePack>;
         }
-        servicePacks:  {
+        servicePacks: {
             // GET /dedicatedCloud/{serviceName}/servicePacks
             $get(): Promise<string[]>;
-            [keys: string]: {
+            [keys: string]:{
                 // GET /dedicatedCloud/{serviceName}/servicePacks/{name}
                 $get(): Promise<dedicatedCloud.ServicePack>;
             } | any
         }
-        task:  {
+        task: {
             // GET /dedicatedCloud/{serviceName}/task
             $get(param?: {name?: string, state?: dedicatedCloud.TaskStateEnum}): Promise<number[]>;
-            [keys: string]: {
+            [keys: string]:{
                 // GET /dedicatedCloud/{serviceName}/task/{taskId}
                 $get(): Promise<dedicatedCloud.Task>;
-                changeMaintenanceExecutionDate:  {
+                changeMaintenanceExecutionDate: {
                     // POST /dedicatedCloud/{serviceName}/task/{taskId}/changeMaintenanceExecutionDate
                     $post(body?: {executionDate: string}): Promise<dedicatedCloud.Task>;
                 }
-                resetTaskState:  {
+                resetTaskState: {
                     // POST /dedicatedCloud/{serviceName}/task/{taskId}/resetTaskState
                     $post(body?: {reason: string}): Promise<dedicatedCloud.Task>;
                 }
             } | any
         }
-        terminate:  {
+        terminate: {
             // POST /dedicatedCloud/{serviceName}/terminate
             $post(): Promise<string>;
         }
-        twoFAWhitelist:  {
+        twoFAWhitelist: {
             // GET /dedicatedCloud/{serviceName}/twoFAWhitelist
             $get(): Promise<number[]>;
             // POST /dedicatedCloud/{serviceName}/twoFAWhitelist
             $post(body?: {description: string, ip: string}): Promise<dedicatedCloud.Task>;
-            [keys: string]: {
+            [keys: string]:{
                 // DELETE /dedicatedCloud/{serviceName}/twoFAWhitelist/{id}
                 $delete(): Promise<dedicatedCloud.Task>;
                 // GET /dedicatedCloud/{serviceName}/twoFAWhitelist/{id}
                 $get(): Promise<dedicatedCloud.twoFAWhitelist>;
-                changeProperties:  {
+                changeProperties: {
                     // POST /dedicatedCloud/{serviceName}/twoFAWhitelist/{id}/changeProperties
                     $post(body?: {description?: string}): Promise<dedicatedCloud.Task>;
                 }
             } | any
         }
-        upgradeHypervisor:  {
+        upgradeHypervisor: {
             // POST /dedicatedCloud/{serviceName}/upgradeHypervisor
             $post(): Promise<dedicatedCloud.Task>;
         }
-        user:  {
+        user: {
             // GET /dedicatedCloud/{serviceName}/user
             $get(param?: {name?: string}): Promise<number[]>;
             // POST /dedicatedCloud/{serviceName}/user
             $post(body?: {canAddRessource?: boolean, canManageRights?: boolean, email?: string, expirationDate?: string, firstName?: string, lastName?: string, name: string, networkRole?: dedicatedCloud.right.NetworkRoleEnum, nsxRight?: boolean, password?: string, phoneNumber?: string, receiveAlerts?: boolean, right?: dedicatedCloud.right.RightEnum, tokenValidator?: boolean, vmNetworkRole?: dedicatedCloud.right.VmNetworkRoleEnum}): Promise<dedicatedCloud.Task>;
-            [keys: string]: {
+            [keys: string]:{
                 // DELETE /dedicatedCloud/{serviceName}/user/{userId}
                 $delete(): Promise<dedicatedCloud.Task>;
                 // GET /dedicatedCloud/{serviceName}/user/{userId}
                 $get(): Promise<dedicatedCloud.User>;
-                changePassword:  {
+                changePassword: {
                     // POST /dedicatedCloud/{serviceName}/user/{userId}/changePassword
                     $post(body?: {password?: string}): Promise<dedicatedCloud.Task>;
                 }
-                changeProperties:  {
+                changeProperties: {
                     // POST /dedicatedCloud/{serviceName}/user/{userId}/changeProperties
                     $post(body?: {canManageIpFailOvers?: boolean, canManageNetwork?: boolean, canManageRights?: boolean, email?: string, firstName?: string, fullAdminRo?: boolean, lastName?: string, nsxRight?: boolean, phoneNumber?: string, receiveAlerts?: boolean, tokenValidator?: boolean}): Promise<dedicatedCloud.Task>;
                 }
-                disable:  {
+                disable: {
                     // POST /dedicatedCloud/{serviceName}/user/{userId}/disable
                     $post(): Promise<dedicatedCloud.Task>;
                 }
-                enable:  {
+                enable: {
                     // POST /dedicatedCloud/{serviceName}/user/{userId}/enable
                     $post(): Promise<dedicatedCloud.Task>;
                 }
-                objectRight:  {
+                objectRight: {
                     // GET /dedicatedCloud/{serviceName}/user/{userId}/objectRight
                     $get(): Promise<number[]>;
                     // POST /dedicatedCloud/{serviceName}/user/{userId}/objectRight
                     $post(body?: {propagate?: boolean, right: dedicatedCloud.right.RightEnum, type: dedicatedCloud.right.UserObjectRightTypeEnum, vmwareObjectId: string}): Promise<dedicatedCloud.Task>;
-                    [keys: string]: {
+                    [keys: string]:{
                         // DELETE /dedicatedCloud/{serviceName}/user/{userId}/objectRight/{objectRightId}
                         $delete(): Promise<dedicatedCloud.Task>;
                         // GET /dedicatedCloud/{serviceName}/user/{userId}/objectRight/{objectRightId}
                         $get(): Promise<dedicatedCloud.ObjectRight>;
                     } | any
                 }
-                right:  {
+                right: {
                     // GET /dedicatedCloud/{serviceName}/user/{userId}/right
                     $get(): Promise<number[]>;
-                    [keys: string]: {
+                    [keys: string]:{
                         // GET /dedicatedCloud/{serviceName}/user/{userId}/right/{rightId}
                         $get(): Promise<dedicatedCloud.Right>;
                         // PUT /dedicatedCloud/{serviceName}/user/{userId}/right/{rightId}
                         $put(body?: {body: dedicatedCloud.Right}): Promise<dedicatedCloud.Task>;
                     } | any
                 }
-                task:  {
+                task: {
                     // GET /dedicatedCloud/{serviceName}/user/{userId}/task
                     $get(param?: {name?: string, state?: dedicatedCloud.TaskStateEnum}): Promise<number[]>;
-                    [keys: string]: {
+                    [keys: string]:{
                         // GET /dedicatedCloud/{serviceName}/user/{userId}/task/{taskId}
                         $get(): Promise<dedicatedCloud.Task>;
-                        changeMaintenanceExecutionDate:  {
+                        changeMaintenanceExecutionDate: {
                             // POST /dedicatedCloud/{serviceName}/user/{userId}/task/{taskId}/changeMaintenanceExecutionDate
                             $post(body?: {executionDate: string}): Promise<dedicatedCloud.Task>;
                         }
-                        resetTaskState:  {
+                        resetTaskState: {
                             // POST /dedicatedCloud/{serviceName}/user/{userId}/task/{taskId}/resetTaskState
                             $post(body?: {reason: string}): Promise<dedicatedCloud.Task>;
                         }
@@ -1475,72 +1475,72 @@ export interface DedicatedCloud {
                 }
             } | any
         }
-        vendor:  {
+        vendor: {
             // GET /dedicatedCloud/{serviceName}/vendor
             $get(): Promise<dedicatedCloud.Vendor>;
-            objectType:  {
+            objectType: {
                 // POST /dedicatedCloud/{serviceName}/vendor/objectType
                 $post(): Promise<string[]>;
             }
-            ovhId:  {
+            ovhId: {
                 // POST /dedicatedCloud/{serviceName}/vendor/ovhId
                 $post(body?: {objectType: dedicatedCloud.VendorObjectTypeEnum, vendorId: string}): Promise<dedicatedCloud.vendor.OvhId>;
             }
         }
-        vlan:  {
+        vlan: {
             // GET /dedicatedCloud/{serviceName}/vlan
             $get(): Promise<number[]>;
-            [keys: string]: {
+            [keys: string]:{
                 // GET /dedicatedCloud/{serviceName}/vlan/{vlanId}
                 $get(): Promise<dedicatedCloud.Vlan>;
             } | any
         }
-        vmEncryption:  {
+        vmEncryption: {
             // GET /dedicatedCloud/{serviceName}/vmEncryption
             $get(): Promise<dedicatedCloud.VMEncryption>;
-            kms:  {
+            kms: {
                 // GET /dedicatedCloud/{serviceName}/vmEncryption/kms
                 $get(): Promise<number[]>;
                 // POST /dedicatedCloud/{serviceName}/vmEncryption/kms
                 $post(body?: {description?: string, ip: string, sslThumbprint: string}): Promise<dedicatedCloud.Task>;
-                [keys: string]: {
+                [keys: string]:{
                     // DELETE /dedicatedCloud/{serviceName}/vmEncryption/kms/{kmsId}
                     $delete(): Promise<dedicatedCloud.Task>;
                     // GET /dedicatedCloud/{serviceName}/vmEncryption/kms/{kmsId}
                     $get(): Promise<dedicatedCloud.VMEncryptionAccessNetwork>;
-                    changeProperties:  {
+                    changeProperties: {
                         // POST /dedicatedCloud/{serviceName}/vmEncryption/kms/{kmsId}/changeProperties
                         $post(body?: {description?: string, sslThumbprint: string}): Promise<dedicatedCloud.Task>;
                     }
                 } | any
             }
         }
-        vrack:  {
+        vrack: {
             // GET /dedicatedCloud/{serviceName}/vrack
             $get(): Promise<string[]>;
-            [keys: string]: {
+            [keys: string]:{
                 // DELETE /dedicatedCloud/{serviceName}/vrack/{vrack}
                 $delete(): Promise<vrack.Task>;
                 // GET /dedicatedCloud/{serviceName}/vrack/{vrack}
                 $get(): Promise<vrack.dedicatedCloud>;
             } | any
         }
-        vrops:  {
+        vrops: {
             // GET /dedicatedCloud/{serviceName}/vrops
             $get(): Promise<dedicatedCloud.Vrops>;
-            canBeDisabled:  {
+            canBeDisabled: {
                 // GET /dedicatedCloud/{serviceName}/vrops/canBeDisabled
                 $get(): Promise<dedicatedCloud.optionCompatibility>;
             }
-            canBeEnabled:  {
+            canBeEnabled: {
                 // GET /dedicatedCloud/{serviceName}/vrops/canBeEnabled
                 $get(): Promise<dedicatedCloud.optionCompatibility>;
             }
-            disable:  {
+            disable: {
                 // POST /dedicatedCloud/{serviceName}/vrops/disable
                 $post(): Promise<dedicatedCloud.Task>;
             }
-            enable:  {
+            enable: {
                 // POST /dedicatedCloud/{serviceName}/vrops/enable
                 $post(): Promise<dedicatedCloud.Task>;
             }

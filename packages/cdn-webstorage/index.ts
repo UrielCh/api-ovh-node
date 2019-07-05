@@ -67,24 +67,24 @@ export namespace services {
 }
 // Apis harmony
 // path /cdn
-export interface Cdn {
-    webstorage:  {
+export interface Cdn{
+    webstorage: {
         // GET /cdn/webstorage
         $get(): Promise<string[]>;
-        [keys: string]: {
+        [keys: string]:{
             // GET /cdn/webstorage/{serviceName}
             $get(): Promise<cdn.webstorage.Account>;
-            credentials:  {
+            credentials: {
                 // GET /cdn/webstorage/{serviceName}/credentials
                 $get(): Promise<cdn.webstorage.AccountCredentials>;
             }
-            serviceInfos:  {
+            serviceInfos: {
                 // GET /cdn/webstorage/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /cdn/webstorage/{serviceName}/serviceInfos
                 $put(body?: {body: services.Service}): Promise<void>;
             }
-            statistics:  {
+            statistics: {
                 // GET /cdn/webstorage/{serviceName}/statistics
                 $get(param?: {period: cdn.webstorage.StatsPeriodEnum, type: cdn.webstorage.StatsTypeEnum}): Promise<cdn.webstorage.StatsDataType[]>;
             }

@@ -47,13 +47,13 @@ export namespace vip {
 }
 // Apis harmony
 // path /vip
-export interface Vip {
+export interface Vip{
     // GET /vip
     $get(): Promise<string[]>;
-    [keys: string]: {
+    [keys: string]:{
         // GET /vip/{serviceName}
         $get(): Promise<vip.SupportVip>;
-        serviceInfos:  {
+        serviceInfos: {
             // GET /vip/{serviceName}/serviceInfos
             $get(): Promise<services.Service>;
             // PUT /vip/{serviceName}/serviceInfos

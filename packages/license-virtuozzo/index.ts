@@ -120,60 +120,60 @@ export namespace services {
 }
 // Apis harmony
 // path /license
-export interface License {
-    virtuozzo:  {
+export interface License{
+    virtuozzo: {
         // GET /license/virtuozzo
         $get(): Promise<string[]>;
-        orderableVersions:  {
+        orderableVersions: {
             // GET /license/virtuozzo/orderableVersions
             $get(param?: {ip: string}): Promise<license.VirtuozzoOrderConfiguration[]>;
         }
-        [keys: string]: {
+        [keys: string]:{
             // GET /license/virtuozzo/{serviceName}
             $get(): Promise<license.virtuozzo.Virtuozzo>;
             // PUT /license/virtuozzo/{serviceName}
             $put(body?: {body: license.virtuozzo.Virtuozzo}): Promise<void>;
-            allowedDestinationIp:  {
+            allowedDestinationIp: {
                 // GET /license/virtuozzo/{serviceName}/allowedDestinationIp
                 $get(): Promise<string[]>;
             }
-            canLicenseBeMovedTo:  {
+            canLicenseBeMovedTo: {
                 // GET /license/virtuozzo/{serviceName}/canLicenseBeMovedTo
                 $get(param?: {destinationIp: string}): Promise<license.ChangeIpStatus>;
             }
-            changeIp:  {
+            changeIp: {
                 // POST /license/virtuozzo/{serviceName}/changeIp
                 $post(body?: {destinationIp: string}): Promise<license.Task>;
             }
-            confirmTermination:  {
+            confirmTermination: {
                 // POST /license/virtuozzo/{serviceName}/confirmTermination
                 $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
             }
-            option:  {
+            option: {
                 // GET /license/virtuozzo/{serviceName}/option
                 $get(param?: {label?: license.OptionLabel}): Promise<license.OptionLabel[]>;
-                [keys: string]: {
+                [keys: string]:{
                     // DELETE /license/virtuozzo/{serviceName}/option/{label}
                     $delete(): Promise<license.Task>;
                     // GET /license/virtuozzo/{serviceName}/option/{label}
                     $get(): Promise<license.Option>;
                 } | any
             }
-            serviceInfos:  {
+            serviceInfos: {
                 // GET /license/virtuozzo/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /license/virtuozzo/{serviceName}/serviceInfos
                 $put(body?: {body: services.Service}): Promise<void>;
             }
-            tasks:  {
+            tasks: {
                 // GET /license/virtuozzo/{serviceName}/tasks
                 $get(param?: {action?: license.ActionType, status?: license.TaskStateEnum}): Promise<number[]>;
-                [keys: string]: {
+                [keys: string]:{
                     // GET /license/virtuozzo/{serviceName}/tasks/{taskId}
                     $get(): Promise<license.Task>;
                 } | any
             }
-            terminate:  {
+            terminate: {
                 // POST /license/virtuozzo/{serviceName}/terminate
                 $post(): Promise<string>;
             }

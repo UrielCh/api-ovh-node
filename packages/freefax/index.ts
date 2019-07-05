@@ -101,50 +101,50 @@ export namespace telephony {
 }
 // Apis harmony
 // path /freefax
-export interface Freefax {
+export interface Freefax{
     // GET /freefax
     $get(): Promise<string[]>;
-    credits:  {
+    credits: {
         // GET /freefax/credits
         $get(): Promise<freefax.BalanceInformations>;
     }
-    [keys: string]: {
+    [keys: string]:{
         // GET /freefax/{serviceName}
         $get(): Promise<freefax.FreefaxProperties>;
         // PUT /freefax/{serviceName}
         $put(body?: {body: freefax.FreefaxProperties}): Promise<void>;
-        changePassword:  {
+        changePassword: {
             // POST /freefax/{serviceName}/changePassword
             $post(): Promise<string>;
         }
-        mainService:  {
+        mainService: {
             // GET /freefax/{serviceName}/mainService
             $get(): Promise<string>;
         }
-        serviceInfos:  {
+        serviceInfos: {
             // GET /freefax/{serviceName}/serviceInfos
             $get(): Promise<services.Service>;
             // PUT /freefax/{serviceName}/serviceInfos
             $put(body?: {body: services.Service}): Promise<void>;
         }
-        voicemail:  {
+        voicemail: {
             // GET /freefax/{serviceName}/voicemail
             $get(): Promise<telephony.VoicemailProperties>;
             // PUT /freefax/{serviceName}/voicemail
             $put(body?: {body: telephony.VoicemailProperties}): Promise<void>;
-            changePassword:  {
+            changePassword: {
                 // POST /freefax/{serviceName}/voicemail/changePassword
                 $post(body?: {password: string}): Promise<void>;
             }
-            changeRouting:  {
+            changeRouting: {
                 // POST /freefax/{serviceName}/voicemail/changeRouting
                 $post(body?: {routing: telephony.VoicefaxRoutingEnum}): Promise<void>;
             }
-            routing:  {
+            routing: {
                 // GET /freefax/{serviceName}/voicemail/routing
                 $get(): Promise<telephony.VoicefaxRoutingEnum>;
             }
-            voicemailNumbers:  {
+            voicemailNumbers: {
                 // GET /freefax/{serviceName}/voicemail/voicemailNumbers
                 $get(): Promise<telephony.VoicemailNumbers>;
             }

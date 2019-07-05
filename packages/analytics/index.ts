@@ -160,54 +160,54 @@ export namespace services {
 }
 // Apis harmony
 // path /analytics
-export interface Analytics {
-    capabilities:  {
-        platforms:  {
+export interface Analytics{
+    capabilities: {
+        platforms: {
             // GET /analytics/capabilities/platforms
             $get(): Promise<analytics.platform.Capability[]>;
         }
     }
-    platforms:  {
+    platforms: {
         // GET /analytics/platforms
         $get(): Promise<string[]>;
-        [keys: string]: {
+        [keys: string]:{
             // GET /analytics/platforms/{serviceName}
             $get(): Promise<analytics.Cluster>;
-            activity:  {
+            activity: {
                 // GET /analytics/platforms/{serviceName}/activity
                 $get(): Promise<analytics.cluster.Activity[]>;
             }
-            changeContact:  {
+            changeContact: {
                 // POST /analytics/platforms/{serviceName}/changeContact
                 $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
             }
-            confirmTermination:  {
+            confirmTermination: {
                 // POST /analytics/platforms/{serviceName}/confirmTermination
                 $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
             }
-            deploy:  {
+            deploy: {
                 // POST /analytics/platforms/{serviceName}/deploy
                 $post(body?: {body: analytics.cluster.Deploy}): Promise<analytics.cluster.Deploy>;
             }
-            nodes:  {
+            nodes: {
                 // GET /analytics/platforms/{serviceName}/nodes
                 $get(): Promise<string[]>;
-                [keys: string]: {
+                [keys: string]:{
                     // GET /analytics/platforms/{serviceName}/nodes/{nodeId}
                     $get(): Promise<analytics.cluster.Node>;
                 } | any
             }
-            serviceInfos:  {
+            serviceInfos: {
                 // GET /analytics/platforms/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /analytics/platforms/{serviceName}/serviceInfos
                 $put(body?: {body: services.Service}): Promise<void>;
             }
-            status:  {
+            status: {
                 // GET /analytics/platforms/{serviceName}/status
                 $get(): Promise<analytics.cluster.deploy.Status[]>;
             }
-            terminate:  {
+            terminate: {
                 // POST /analytics/platforms/{serviceName}/terminate
                 $post(): Promise<string>;
             }

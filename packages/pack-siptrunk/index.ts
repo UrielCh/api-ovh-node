@@ -46,18 +46,18 @@ export namespace services {
 }
 // Apis harmony
 // path /pack
-export interface Pack {
-    siptrunk:  {
+export interface Pack{
+    siptrunk: {
         // GET /pack/siptrunk
         $get(): Promise<string[]>;
-        [keys: string]: {
+        [keys: string]:{
             // GET /pack/siptrunk/{packName}
             $get(): Promise<pack.siptrunk.PackSipTrunk>;
-            changeContact:  {
+            changeContact: {
                 // POST /pack/siptrunk/{packName}/changeContact
                 $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
             }
-            serviceInfos:  {
+            serviceInfos: {
                 // GET /pack/siptrunk/{packName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /pack/siptrunk/{packName}/serviceInfos

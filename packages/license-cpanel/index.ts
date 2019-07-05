@@ -98,50 +98,50 @@ export namespace services {
 }
 // Apis harmony
 // path /license
-export interface License {
-    cpanel:  {
+export interface License{
+    cpanel: {
         // GET /license/cpanel
         $get(): Promise<string[]>;
-        orderableVersions:  {
+        orderableVersions: {
             // GET /license/cpanel/orderableVersions
             $get(param?: {ip: string}): Promise<license.CpanelOrderConfiguration[]>;
         }
-        [keys: string]: {
+        [keys: string]:{
             // GET /license/cpanel/{serviceName}
             $get(): Promise<license.cpanel.Cpanel>;
             // PUT /license/cpanel/{serviceName}
             $put(body?: {body: license.cpanel.Cpanel}): Promise<void>;
-            allowedDestinationIp:  {
+            allowedDestinationIp: {
                 // GET /license/cpanel/{serviceName}/allowedDestinationIp
                 $get(): Promise<string[]>;
             }
-            canLicenseBeMovedTo:  {
+            canLicenseBeMovedTo: {
                 // GET /license/cpanel/{serviceName}/canLicenseBeMovedTo
                 $get(param?: {destinationIp: string}): Promise<license.ChangeIpStatus>;
             }
-            changeIp:  {
+            changeIp: {
                 // POST /license/cpanel/{serviceName}/changeIp
                 $post(body?: {destinationIp: string}): Promise<license.Task>;
             }
-            confirmTermination:  {
+            confirmTermination: {
                 // POST /license/cpanel/{serviceName}/confirmTermination
                 $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
             }
-            serviceInfos:  {
+            serviceInfos: {
                 // GET /license/cpanel/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /license/cpanel/{serviceName}/serviceInfos
                 $put(body?: {body: services.Service}): Promise<void>;
             }
-            tasks:  {
+            tasks: {
                 // GET /license/cpanel/{serviceName}/tasks
                 $get(param?: {action?: license.ActionType, status?: license.TaskStateEnum}): Promise<number[]>;
-                [keys: string]: {
+                [keys: string]:{
                     // GET /license/cpanel/{serviceName}/tasks/{taskId}
                     $get(): Promise<license.Task>;
                 } | any
             }
-            terminate:  {
+            terminate: {
                 // POST /license/cpanel/{serviceName}/terminate
                 $post(): Promise<string>;
             }

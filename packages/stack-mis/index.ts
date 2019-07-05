@@ -49,14 +49,14 @@ export namespace stack {
 }
 // Apis harmony
 // path /stack
-export interface Stack {
-    mis:  {
+export interface Stack{
+    mis: {
         // GET /stack/mis
         $get(): Promise<string[]>;
-        [keys: string]: {
+        [keys: string]:{
             // GET /stack/mis/{serviceName}
             $get(): Promise<stack.mis.product>;
-            serviceInfos:  {
+            serviceInfos: {
                 // GET /stack/mis/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /stack/mis/{serviceName}/serviceInfos

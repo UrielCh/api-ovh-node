@@ -160,33 +160,33 @@ export namespace tsaas {
 }
 // Apis harmony
 // path /dbaas
-export interface Dbaas {
-    timeseries:  {
+export interface Dbaas{
+    timeseries: {
         // GET /dbaas/timeseries
         $get(): Promise<string[]>;
-        region:  {
+        region: {
             // GET /dbaas/timeseries/region
             $get(): Promise<paas.timeseries.Region[]>;
         }
-        [keys: string]: {
+        [keys: string]:{
             // GET /dbaas/timeseries/{serviceName}
             $get(): Promise<timeseries.Project>;
             // PUT /dbaas/timeseries/{serviceName}
             $put(body?: {body: timeseries.Project}): Promise<void>;
-            changeContact:  {
+            changeContact: {
                 // POST /dbaas/timeseries/{serviceName}/changeContact
                 $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
             }
-            consumption:  {
+            consumption: {
                 // GET /dbaas/timeseries/{serviceName}/consumption
                 $get(): Promise<paas.timeseries.Consumption[]>;
             }
-            key:  {
+            key: {
                 // GET /dbaas/timeseries/{serviceName}/key
                 $get(): Promise<paas.timeseries.Key[]>;
                 // POST /dbaas/timeseries/{serviceName}/key
                 $post(body?: {description?: string, permissions: string[], tags: paas.timeseries.Tag[]}): Promise<paas.timeseries.Key>;
-                [keys: string]: {
+                [keys: string]:{
                     // DELETE /dbaas/timeseries/{serviceName}/key/{keyId}
                     $delete(): Promise<boolean>;
                     // GET /dbaas/timeseries/{serviceName}/key/{keyId}
@@ -195,27 +195,27 @@ export interface Dbaas {
                     $put(body?: {description?: string, permissions: tsaas.PermissionEnum[], tags: paas.timeseries.Tag[]}): Promise<paas.timeseries.Key>;
                 } | any
             }
-            quota:  {
+            quota: {
                 // GET /dbaas/timeseries/{serviceName}/quota
                 $get(): Promise<paas.timeseries.Quota[]>;
             }
-            serviceInfos:  {
+            serviceInfos: {
                 // GET /dbaas/timeseries/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /dbaas/timeseries/{serviceName}/serviceInfos
                 $put(body?: {body: services.Service}): Promise<void>;
             }
-            setup:  {
+            setup: {
                 // POST /dbaas/timeseries/{serviceName}/setup
                 $post(body?: {description?: string, displayName: string, raTokenId?: string, raTokenKey?: string, regionId?: string}): Promise<paas.timeseries.Project>;
             }
-            token:  {
-                opentsdb:  {
+            token: {
+                opentsdb: {
                     // GET /dbaas/timeseries/{serviceName}/token/opentsdb
                     $get(): Promise<tsaas.OpenTSDBToken[]>;
                     // POST /dbaas/timeseries/{serviceName}/token/opentsdb
                     $post(body?: {description?: string, permission: string, tags: paas.timeseries.Tag[]}): Promise<tsaas.OpenTSDBToken>;
-                    [keys: string]: {
+                    [keys: string]:{
                         // DELETE /dbaas/timeseries/{serviceName}/token/opentsdb/{tokenId}
                         $delete(): Promise<boolean>;
                         // GET /dbaas/timeseries/{serviceName}/token/opentsdb/{tokenId}

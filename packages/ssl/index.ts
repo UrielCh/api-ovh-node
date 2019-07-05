@@ -74,22 +74,22 @@ export namespace ssl {
 }
 // Apis harmony
 // path /ssl
-export interface Ssl {
+export interface Ssl{
     // GET /ssl
     $get(): Promise<string[]>;
-    [keys: string]: {
+    [keys: string]:{
         // GET /ssl/{serviceName}
         $get(): Promise<ssl.Certificate>;
-        serviceInfos:  {
+        serviceInfos: {
             // GET /ssl/{serviceName}/serviceInfos
             $get(): Promise<services.Service>;
             // PUT /ssl/{serviceName}/serviceInfos
             $put(body?: {body: services.Service}): Promise<void>;
         }
-        tasks:  {
+        tasks: {
             // GET /ssl/{serviceName}/tasks
             $get(): Promise<number[]>;
-            [keys: string]: {
+            [keys: string]:{
                 // GET /ssl/{serviceName}/tasks/{taskId}
                 $get(): Promise<ssl.Operation>;
             } | any

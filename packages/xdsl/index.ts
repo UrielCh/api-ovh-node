@@ -1057,120 +1057,120 @@ export namespace xdsl {
 }
 // Apis harmony
 // path /xdsl
-export interface Xdsl {
+export interface Xdsl{
     // GET /xdsl
     $get(): Promise<string[]>;
-    eligibility:  {
-        cities:  {
+    eligibility: {
+        cities: {
             // GET /xdsl/eligibility/cities
             $get(param?: {zipCode: string}): Promise<xdsl.eligibility.City[]>;
         }
-        lines:  {
-            active:  {
+        lines: {
+            active: {
                 // POST /xdsl/eligibility/lines/active
                 $post(body?: {city: xdsl.eligibility.City, contactName: string, street: xdsl.eligibility.Street, streetNumber?: string}): Promise<xdsl.AsyncTaskArray<xdsl.eligibility.Line>>;
             }
-            inactive:  {
+            inactive: {
                 // POST /xdsl/eligibility/lines/inactive
                 $post(body?: {city: xdsl.eligibility.City, contactName?: string, street: xdsl.eligibility.Street, streetNumber?: string}): Promise<xdsl.AsyncTaskArray<xdsl.eligibility.Line>>;
             }
         }
-        meetings:  {
+        meetings: {
             // GET /xdsl/eligibility/meetings
             $get(param?: {eligibilityId: string, offerLabel: string}): Promise<xdsl.AsyncTask<xdsl.eligibility.MeetingSlots>>;
         }
-        search:  {
-            buildings:  {
+        search: {
+            buildings: {
                 // POST /xdsl/eligibility/search/buildings
                 $post(body?: {streetCode: string, streetNumber: string}): Promise<xdsl.AsyncTaskArray<xdsl.eligibility.Building>>;
             }
-            cities:  {
+            cities: {
                 // POST /xdsl/eligibility/search/cities
                 $post(body?: {zipCode: string}): Promise<xdsl.AsyncTaskArray<xdsl.eligibility.City>>;
             }
-            fiberStreets:  {
+            fiberStreets: {
                 // POST /xdsl/eligibility/search/fiberStreets
                 $post(body?: {inseeCode: string}): Promise<xdsl.AsyncTaskArray<xdsl.eligibility.FiberStreet>>;
             }
-            streetNumbers:  {
+            streetNumbers: {
                 // POST /xdsl/eligibility/search/streetNumbers
                 $post(body?: {streetCode: string}): Promise<xdsl.AsyncTaskArray<string>>;
             }
         }
-        streets:  {
+        streets: {
             // GET /xdsl/eligibility/streets
             $get(param?: {inseeCode: string, partialName: string}): Promise<xdsl.eligibility.Street[]>;
         }
-        test:  {
+        test: {
             // GET /xdsl/eligibility/test
             $get(param?: {id: string}): Promise<xdsl.eligibility.Eligibility>;
-            address:  {
+            address: {
                 // POST /xdsl/eligibility/test/address
                 $post(body?: {address: xdsl.eligibility.Address}): Promise<xdsl.AsyncTask<xdsl.eligibility.Eligibility>>;
             }
-            fiber:  {
-                building:  {
+            fiber: {
+                building: {
                     // POST /xdsl/eligibility/test/fiber/building
                     $post(body?: {building: string}): Promise<xdsl.AsyncTask<xdsl.eligibility.FiberEligibility>>;
                 }
             }
-            line:  {
+            line: {
                 // POST /xdsl/eligibility/test/line
                 $post(body?: {lineNumber: string, lineStatus: xdsl.eligibility.LandlineStatusEnum}): Promise<xdsl.AsyncTask<xdsl.eligibility.Eligibility>>;
             }
         }
     }
-    email:  {
-        pro:  {
+    email: {
+        pro: {
             // GET /xdsl/email/pro
             $get(): Promise<string[]>;
-            [keys: string]: {
+            [keys: string]:{
                 // DELETE /xdsl/email/pro/{email}
                 $delete(): Promise<void>;
                 // GET /xdsl/email/pro/{email}
                 $get(): Promise<xdsl.xdslEmailPro>;
                 // PUT /xdsl/email/pro/{email}
                 $put(body?: {body: xdsl.xdslEmailPro}): Promise<void>;
-                changePassword:  {
+                changePassword: {
                     // POST /xdsl/email/pro/{email}/changePassword
                     $post(body?: {password: string}): Promise<xdsl.email.pro.Task>;
                 }
             } | any
         }
     }
-    incidents:  {
+    incidents: {
         // GET /xdsl/incidents
         $get(param?: {creationDate?: string, endDate?: string}): Promise<number[]>;
-        [keys: string]: {
+        [keys: string]:{
             // GET /xdsl/incidents/{id}
             $get(): Promise<xdsl.Incident>;
         } | any
     }
-    spare:  {
+    spare: {
         // GET /xdsl/spare
         $get(): Promise<string[]>;
-        brands:  {
+        brands: {
             // GET /xdsl/spare/brands
             $get(): Promise<string[]>;
         }
-        [keys: string]: {
+        [keys: string]:{
             // DELETE /xdsl/spare/{spare}
             $delete(): Promise<void>;
             // GET /xdsl/spare/{spare}
             $get(): Promise<spare.xdsl.XdslSpare>;
-            compatibleReplacement:  {
+            compatibleReplacement: {
                 // GET /xdsl/spare/{spare}/compatibleReplacement
                 $get(): Promise<string[]>;
             }
-            replace:  {
+            replace: {
                 // POST /xdsl/spare/{spare}/replace
                 $post(body?: {domain: string}): Promise<void>;
             }
-            returnMerchandise:  {
+            returnMerchandise: {
                 // POST /xdsl/spare/{spare}/returnMerchandise
                 $post(): Promise<void>;
             }
-            serviceInfos:  {
+            serviceInfos: {
                 // GET /xdsl/spare/{spare}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /xdsl/spare/{spare}/serviceInfos
@@ -1178,12 +1178,12 @@ export interface Xdsl {
             }
         } | any
     }
-    templateModem:  {
+    templateModem: {
         // GET /xdsl/templateModem
         $get(): Promise<string[]>;
         // POST /xdsl/templateModem
         $post(body?: {name: string, serviceName: string}): Promise<xdsl.TemplateModem>;
-        [keys: string]: {
+        [keys: string]:{
             // DELETE /xdsl/templateModem/{name}
             $delete(): Promise<void>;
             // GET /xdsl/templateModem/{name}
@@ -1192,200 +1192,200 @@ export interface Xdsl {
             $put(body?: {body: xdsl.TemplateModem}): Promise<void>;
         } | any
     }
-    [keys: string]: {
+    [keys: string]:{
         // GET /xdsl/{serviceName}
         $get(): Promise<xdsl.Access>;
         // PUT /xdsl/{serviceName}
         $put(body?: {body: xdsl.Access}): Promise<void>;
-        addressMove:  {
-            extraIpRange:  {
+        addressMove: {
+            extraIpRange: {
                 // GET /xdsl/{serviceName}/addressMove/extraIpRange
                 $get(): Promise<xdsl.ExtraIpRangeMove>;
             }
-            extraIpRangeMove:  {
+            extraIpRangeMove: {
                 // POST /xdsl/{serviceName}/addressMove/extraIpRangeMove
                 $post(): Promise<xdsl.Task>;
             }
         }
-        antiSpams:  {
+        antiSpams: {
             // GET /xdsl/{serviceName}/antiSpams
             $get(): Promise<string[]>;
-            [keys: string]: {
+            [keys: string]:{
                 // GET /xdsl/{serviceName}/antiSpams/{ip}
                 $get(): Promise<xdsl.AntiSpam>;
-                evidences:  {
+                evidences: {
                     // GET /xdsl/{serviceName}/antiSpams/{ip}/evidences
                     $get(): Promise<xdsl.antiSpam.EvidencesInfo>;
                 }
             } | any
         }
-        applyTemplateToModem:  {
+        applyTemplateToModem: {
             // POST /xdsl/{serviceName}/applyTemplateToModem
             $post(body?: {templateName: string}): Promise<xdsl.Task>;
         }
-        canCancelResiliation:  {
+        canCancelResiliation: {
             // GET /xdsl/{serviceName}/canCancelResiliation
             $get(): Promise<boolean>;
         }
-        cancelResiliation:  {
+        cancelResiliation: {
             // POST /xdsl/{serviceName}/cancelResiliation
             $post(): Promise<void>;
         }
-        changeContact:  {
+        changeContact: {
             // POST /xdsl/{serviceName}/changeContact
             $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
         }
-        diagnostic:  {
+        diagnostic: {
             // GET /xdsl/{serviceName}/diagnostic
             $get(): Promise<xdsl.AccessDiagnostic>;
             // POST /xdsl/{serviceName}/diagnostic
             $post(): Promise<xdsl.Task>;
         }
-        incident:  {
+        incident: {
             // GET /xdsl/{serviceName}/incident
             $get(): Promise<xdsl.Incident>;
         }
-        ips:  {
+        ips: {
             // GET /xdsl/{serviceName}/ips
             $get(): Promise<string[]>;
             // POST /xdsl/{serviceName}/ips
             $post(): Promise<xdsl.Task>;
-            [keys: string]: {
+            [keys: string]:{
                 // DELETE /xdsl/{serviceName}/ips/{ip}
                 $delete(): Promise<void>;
                 // GET /xdsl/{serviceName}/ips/{ip}
                 $get(): Promise<xdsl.IP>;
             } | any
         }
-        ipv6:  {
+        ipv6: {
             // POST /xdsl/{serviceName}/ipv6
             $post(body?: {enabled: boolean}): Promise<xdsl.Task>;
         }
-        lines:  {
+        lines: {
             // GET /xdsl/{serviceName}/lines
             $get(): Promise<string[]>;
-            [keys: string]: {
+            [keys: string]:{
                 // GET /xdsl/{serviceName}/lines/{number}
                 $get(): Promise<xdsl.Line>;
-                diagnostic:  {
-                    cancel:  {
+                diagnostic: {
+                    cancel: {
                         // POST /xdsl/{serviceName}/lines/{number}/diagnostic/cancel
                         $post(): Promise<void>;
                     }
-                    run:  {
+                    run: {
                         // POST /xdsl/{serviceName}/lines/{number}/diagnostic/run
                         $post(body?: {actionsDone?: xdsl.lineDiagnostic.CustomerActionsEnum[], answers?: xdsl.lineDiagnostic.Answers, faultType: xdsl.lineDiagnostic.FaultTypeEnum}): Promise<xdsl.lineDiagnostic.Diagnostic>;
                     }
                 }
-                dslamPort:  {
+                dslamPort: {
                     // GET /xdsl/{serviceName}/lines/{number}/dslamPort
                     $get(): Promise<xdsl.DslamPort>;
-                    availableProfiles:  {
+                    availableProfiles: {
                         // GET /xdsl/{serviceName}/lines/{number}/dslamPort/availableProfiles
                         $get(): Promise<xdsl.DslamLineProfile[]>;
                     }
-                    changeProfile:  {
+                    changeProfile: {
                         // POST /xdsl/{serviceName}/lines/{number}/dslamPort/changeProfile
                         $post(body?: {dslamProfileId: number}): Promise<xdsl.Task>;
                     }
-                    logs:  {
+                    logs: {
                         // GET /xdsl/{serviceName}/lines/{number}/dslamPort/logs
                         $get(param?: {limit: number}): Promise<xdsl.DslamPortLog[]>;
                     }
-                    reset:  {
+                    reset: {
                         // POST /xdsl/{serviceName}/lines/{number}/dslamPort/reset
                         $post(): Promise<xdsl.Task>;
                     }
                 }
-                statistics:  {
+                statistics: {
                     // GET /xdsl/{serviceName}/lines/{number}/statistics
                     $get(param?: {period: xdsl.StatisticsPeriodEnum, type: xdsl.LineStatisticsTypeEnum}): Promise<complexType.UnitAndValues<xdsl.TimestampAndValue>>;
                 }
             } | any
         }
-        modem:  {
+        modem: {
             // GET /xdsl/{serviceName}/modem
             $get(): Promise<xdsl.Modem>;
             // PUT /xdsl/{serviceName}/modem
             $put(body?: {body: xdsl.Modem}): Promise<void>;
-            availableWLANChannel:  {
+            availableWLANChannel: {
                 // GET /xdsl/{serviceName}/modem/availableWLANChannel
                 $get(param?: {frequency: xdsl.WLANFrequencyEnum}): Promise<number[]>;
             }
-            blocIp:  {
+            blocIp: {
                 // GET /xdsl/{serviceName}/modem/blocIp
                 $get(): Promise<xdsl.ServiceStatusEnum>;
                 // POST /xdsl/{serviceName}/modem/blocIp
                 $post(body?: {status: xdsl.ServiceStatusEnum}): Promise<xdsl.Task>;
             }
-            callWaiting:  {
+            callWaiting: {
                 // GET /xdsl/{serviceName}/modem/callWaiting
                 $get(): Promise<xdsl.ServiceStatusEnum>;
                 // POST /xdsl/{serviceName}/modem/callWaiting
                 $post(body?: {callWaiting: xdsl.ServiceStatusEnum}): Promise<xdsl.Task>;
             }
-            connectedDevices:  {
+            connectedDevices: {
                 // GET /xdsl/{serviceName}/modem/connectedDevices
                 $get(): Promise<string[]>;
-                [keys: string]: {
+                [keys: string]:{
                     // GET /xdsl/{serviceName}/modem/connectedDevices/{macAddress}
                     $get(): Promise<xdsl.connectedDevice>;
                 } | any
             }
-            contentSharing:  {
+            contentSharing: {
                 // GET /xdsl/{serviceName}/modem/contentSharing
                 $get(): Promise<xdsl.ServiceStatusEnum>;
                 // POST /xdsl/{serviceName}/modem/contentSharing
                 $post(body?: {contentSharing: xdsl.ServiceStatusEnum}): Promise<xdsl.Task>;
             }
-            duplicatePortMappingConfig:  {
+            duplicatePortMappingConfig: {
                 // POST /xdsl/{serviceName}/modem/duplicatePortMappingConfig
                 $post(body?: {accessName: string}): Promise<void>;
             }
-            firmware:  {
+            firmware: {
                 // GET /xdsl/{serviceName}/modem/firmware
                 $get(): Promise<string>;
                 // POST /xdsl/{serviceName}/modem/firmware
                 $post(body?: {firmware: string, todoDate?: string}): Promise<xdsl.Task>;
             }
-            firmwareAvailable:  {
+            firmwareAvailable: {
                 // GET /xdsl/{serviceName}/modem/firmwareAvailable
                 $get(): Promise<string[]>;
             }
-            ftp:  {
+            ftp: {
                 // GET /xdsl/{serviceName}/modem/ftp
                 $get(): Promise<xdsl.ServiceStatusEnum>;
                 // POST /xdsl/{serviceName}/modem/ftp
                 $post(body?: {ftp: xdsl.ServiceStatusEnum}): Promise<xdsl.Task>;
             }
-            ipsecAlg:  {
+            ipsecAlg: {
                 // GET /xdsl/{serviceName}/modem/ipsecAlg
                 $get(): Promise<xdsl.ServiceStatusEnum>;
                 // POST /xdsl/{serviceName}/modem/ipsecAlg
                 $post(body?: {ipsecAlg: xdsl.ServiceStatusEnum}): Promise<xdsl.Task>;
             }
-            lan:  {
+            lan: {
                 // GET /xdsl/{serviceName}/modem/lan
                 $get(): Promise<string[]>;
-                [keys: string]: {
+                [keys: string]:{
                     // GET /xdsl/{serviceName}/modem/lan/{lanName}
                     $get(): Promise<xdsl.LAN>;
                     // PUT /xdsl/{serviceName}/modem/lan/{lanName}
                     $put(body?: {body: xdsl.LAN}): Promise<void>;
-                    dhcp:  {
+                    dhcp: {
                         // GET /xdsl/{serviceName}/modem/lan/{lanName}/dhcp
                         $get(): Promise<string[]>;
-                        [keys: string]: {
+                        [keys: string]:{
                             // GET /xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}
                             $get(): Promise<xdsl.DHCP>;
                             // PUT /xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}
                             $put(body?: {body: xdsl.DHCP}): Promise<void>;
-                            DHCPStaticAddresses:  {
+                            DHCPStaticAddresses: {
                                 // GET /xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses
                                 $get(): Promise<string[]>;
                                 // POST /xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses
                                 $post(body?: {IPAddress: string, MACAddress: string, name?: string}): Promise<xdsl.DHCPStaticAddress>;
-                                [keys: string]: {
+                                [keys: string]:{
                                     // DELETE /xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses/{MACAddress}
                                     $delete(): Promise<xdsl.Task>;
                                     // GET /xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses/{MACAddress}
@@ -1398,12 +1398,12 @@ export interface Xdsl {
                     }
                 } | any
             }
-            portMappings:  {
+            portMappings: {
                 // GET /xdsl/{serviceName}/modem/portMappings
                 $get(): Promise<string[]>;
                 // POST /xdsl/{serviceName}/modem/portMappings
                 $post(body?: {allowedRemoteIp?: string, description?: string, externalPortEnd?: number, externalPortStart: number, internalClient: string, internalPort: number, name: string, protocol: xdsl.xdslModemConfig.ProtocolTypeEnum}): Promise<xdsl.PortMapping>;
-                [keys: string]: {
+                [keys: string]:{
                     // DELETE /xdsl/{serviceName}/modem/portMappings/{name}
                     $delete(): Promise<xdsl.Task>;
                     // GET /xdsl/{serviceName}/modem/portMappings/{name}
@@ -1412,46 +1412,46 @@ export interface Xdsl {
                     $put(body?: {body: xdsl.PortMapping}): Promise<void>;
                 } | any
             }
-            reboot:  {
+            reboot: {
                 // POST /xdsl/{serviceName}/modem/reboot
                 $post(body?: {todoDate?: string}): Promise<xdsl.Task>;
             }
-            reconfigureVoip:  {
+            reconfigureVoip: {
                 // POST /xdsl/{serviceName}/modem/reconfigureVoip
                 $post(): Promise<void>;
             }
-            refreshConnectedDevices:  {
+            refreshConnectedDevices: {
                 // POST /xdsl/{serviceName}/modem/refreshConnectedDevices
                 $post(): Promise<xdsl.Task>;
             }
-            reset:  {
+            reset: {
                 // POST /xdsl/{serviceName}/modem/reset
                 $post(body?: {resetOvhConfig?: boolean}): Promise<xdsl.Task>;
             }
-            resetPortMappingConfig:  {
+            resetPortMappingConfig: {
                 // POST /xdsl/{serviceName}/modem/resetPortMappingConfig
                 $post(): Promise<void>;
             }
-            retrieveInfo:  {
+            retrieveInfo: {
                 // POST /xdsl/{serviceName}/modem/retrieveInfo
                 $post(): Promise<xdsl.AsyncTask<xdsl.ModemInfo>>;
             }
-            sipAlg:  {
+            sipAlg: {
                 // GET /xdsl/{serviceName}/modem/sipAlg
                 $get(): Promise<xdsl.ServiceStatusEnum>;
                 // POST /xdsl/{serviceName}/modem/sipAlg
                 $post(body?: {sipAlg: xdsl.ServiceStatusEnum}): Promise<xdsl.Task>;
             }
-            upnp:  {
+            upnp: {
                 // GET /xdsl/{serviceName}/modem/upnp
                 $get(): Promise<xdsl.ServiceStatusEnum>;
                 // POST /xdsl/{serviceName}/modem/upnp
                 $post(body?: {upnp: xdsl.ServiceStatusEnum}): Promise<xdsl.Task>;
             }
-            wifi:  {
+            wifi: {
                 // GET /xdsl/{serviceName}/modem/wifi
                 $get(): Promise<string[]>;
-                [keys: string]: {
+                [keys: string]:{
                     // GET /xdsl/{serviceName}/modem/wifi/{wifiName}
                     $get(): Promise<xdsl.WLAN>;
                     // PUT /xdsl/{serviceName}/modem/wifi/{wifiName}
@@ -1459,12 +1459,12 @@ export interface Xdsl {
                 } | any
             }
         }
-        monitoringNotifications:  {
+        monitoringNotifications: {
             // GET /xdsl/{serviceName}/monitoringNotifications
             $get(): Promise<number[]>;
             // POST /xdsl/{serviceName}/monitoringNotifications
             $post(body?: {allowIncident?: boolean, downThreshold?: number, email?: string, frequency: xdsl.monitoringNotifications.FrequencyEnum, phone?: string, smsAccount?: string, type: xdsl.monitoringNotifications.TypeEnum}): Promise<xdsl.MonitoringNotification>;
-            [keys: string]: {
+            [keys: string]:{
                 // DELETE /xdsl/{serviceName}/monitoringNotifications/{id}
                 $delete(): Promise<void>;
                 // GET /xdsl/{serviceName}/monitoringNotifications/{id}
@@ -1473,42 +1473,42 @@ export interface Xdsl {
                 $put(body?: {body: xdsl.MonitoringNotification}): Promise<void>;
             } | any
         }
-        orderFollowup:  {
+        orderFollowup: {
             // GET /xdsl/{serviceName}/orderFollowup
             $get(): Promise<xdsl.orderFollowup.Step[]>;
         }
-        pendingAction:  {
+        pendingAction: {
             // GET /xdsl/{serviceName}/pendingAction
             $get(): Promise<xdsl.PendingAction>;
         }
-        radiusConnectionLogs:  {
+        radiusConnectionLogs: {
             // GET /xdsl/{serviceName}/radiusConnectionLogs
             $get(): Promise<xdsl.RadiusConnectionLog[]>;
         }
-        requestPPPLoginMail:  {
+        requestPPPLoginMail: {
             // POST /xdsl/{serviceName}/requestPPPLoginMail
             $post(): Promise<void>;
         }
-        requestTotalDeconsolidation:  {
+        requestTotalDeconsolidation: {
             // POST /xdsl/{serviceName}/requestTotalDeconsolidation
             $post(body?: {noPortability?: boolean, rio?: string}): Promise<xdsl.Task>;
         }
-        resiliate:  {
+        resiliate: {
             // POST /xdsl/{serviceName}/resiliate
             $post(body?: {resiliationDate?: string, resiliationSurvey: xdsl.ResiliationSurvey}): Promise<xdsl.ResiliationFollowUpDetail>;
         }
-        resiliationFollowup:  {
+        resiliationFollowup: {
             // GET /xdsl/{serviceName}/resiliationFollowup
             $get(): Promise<xdsl.ResiliationFollowUpDetail>;
         }
-        resiliationTerms:  {
+        resiliationTerms: {
             // GET /xdsl/{serviceName}/resiliationTerms
             $get(param?: {resiliationDate?: string}): Promise<xdsl.ResiliationTerms>;
         }
-        rma:  {
+        rma: {
             // GET /xdsl/{serviceName}/rma
             $get(): Promise<string[]>;
-            [keys: string]: {
+            [keys: string]:{
                 // DELETE /xdsl/{serviceName}/rma/{id}
                 $delete(): Promise<void>;
                 // GET /xdsl/{serviceName}/rma/{id}
@@ -1517,37 +1517,37 @@ export interface Xdsl {
                 $put(body?: {body: telephony.Rma}): Promise<void>;
             } | any
         }
-        sendOrderToProvider:  {
+        sendOrderToProvider: {
             // POST /xdsl/{serviceName}/sendOrderToProvider
             $post(): Promise<void>;
         }
-        serviceInfos:  {
+        serviceInfos: {
             // GET /xdsl/{serviceName}/serviceInfos
             $get(): Promise<services.Service>;
             // PUT /xdsl/{serviceName}/serviceInfos
             $put(body?: {body: services.Service}): Promise<void>;
         }
-        statistics:  {
+        statistics: {
             // GET /xdsl/{serviceName}/statistics
             $get(param?: {period: xdsl.StatisticsPeriodEnum, type: xdsl.AccessStatisticsTypeEnum}): Promise<complexType.UnitAndValues<xdsl.TimestampAndValue>>;
         }
-        tasks:  {
+        tasks: {
             // GET /xdsl/{serviceName}/tasks
             $get(param?: {function_?: string, status?: xdsl.TaskStatusEnum}): Promise<number[]>;
-            [keys: string]: {
+            [keys: string]:{
                 // GET /xdsl/{serviceName}/tasks/{id}
                 $get(): Promise<xdsl.Task>;
-                archive:  {
+                archive: {
                     // POST /xdsl/{serviceName}/tasks/{id}/archive
                     $post(): Promise<void>;
                 }
             } | any
         }
-        totalDeconsolidationTerms:  {
+        totalDeconsolidationTerms: {
             // GET /xdsl/{serviceName}/totalDeconsolidationTerms
             $get(): Promise<xdsl.DeconsolidationTerms>;
         }
-        updateInvalidOrMissingRio:  {
+        updateInvalidOrMissingRio: {
             // POST /xdsl/{serviceName}/updateInvalidOrMissingRio
             $post(body?: {relaunchWithoutPortability: boolean, rio?: string}): Promise<void>;
         }

@@ -64,8 +64,8 @@ export namespace supply {
 }
 // Apis harmony
 // path /supply
-export interface Supply {
-    mondialRelay:  {
+export interface Supply{
+    mondialRelay: {
         // POST /supply/mondialRelay
         $post(body?: {address?: string, city?: string, country: coreTypes.CountryEnum, zipcode?: string}): Promise<supply.MondialRelayReturn>;
     }

@@ -102,65 +102,65 @@ export namespace services {
 }
 // Apis harmony
 // path /hosting
-export interface Hosting {
-    reseller:  {
+export interface Hosting{
+    reseller: {
         // GET /hosting/reseller
         $get(): Promise<string[]>;
-        [keys: string]: {
+        [keys: string]:{
             // GET /hosting/reseller/{serviceName}
             $get(): Promise<hosting.reseller.product>;
-            changeContact:  {
+            changeContact: {
                 // POST /hosting/reseller/{serviceName}/changeContact
                 $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
             }
-            email:  {
+            email: {
                 // POST /hosting/reseller/{serviceName}/email
                 $post(body?: {email: string}): Promise<string>;
             }
-            language:  {
+            language: {
                 // POST /hosting/reseller/{serviceName}/language
                 $post(body?: {language: reseller.pleskLanguageTypeEnum}): Promise<string>;
             }
-            reboot:  {
+            reboot: {
                 // POST /hosting/reseller/{serviceName}/reboot
                 $post(): Promise<string>;
             }
-            reinstall:  {
+            reinstall: {
                 // POST /hosting/reseller/{serviceName}/reinstall
                 $post(): Promise<string>;
             }
-            resetPasswordUrl:  {
+            resetPasswordUrl: {
                 // GET /hosting/reseller/{serviceName}/resetPasswordUrl
                 $get(): Promise<string>;
             }
-            reverse:  {
+            reverse: {
                 // POST /hosting/reseller/{serviceName}/reverse
                 $post(body?: {reverse: string}): Promise<string>;
             }
-            serviceInfos:  {
+            serviceInfos: {
                 // GET /hosting/reseller/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /hosting/reseller/{serviceName}/serviceInfos
                 $put(body?: {body: services.Service}): Promise<void>;
             }
-            snapshot:  {
+            snapshot: {
                 // GET /hosting/reseller/{serviceName}/snapshot
                 $get(): Promise<reseller.snapshot[]>;
                 // POST /hosting/reseller/{serviceName}/snapshot
                 $post(): Promise<string>;
-                [keys: string]: {
+                [keys: string]:{
                     // GET /hosting/reseller/{serviceName}/snapshot/{snapshotId}
                     $get(): Promise<reseller.snapshot>;
-                    restore:  {
+                    restore: {
                         // POST /hosting/reseller/{serviceName}/snapshot/{snapshotId}/restore
                         $post(): Promise<string>;
                     }
                 } | any
             }
-            task:  {
+            task: {
                 // GET /hosting/reseller/{serviceName}/task
                 $get(): Promise<reseller.task[]>;
-                [keys: string]: {
+                [keys: string]:{
                     // GET /hosting/reseller/{serviceName}/task/{taskId}
                     $get(): Promise<reseller.task>;
                 } | any

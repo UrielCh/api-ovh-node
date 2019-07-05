@@ -139,65 +139,65 @@ export namespace services {
 }
 // Apis harmony
 // path /caas
-export interface Caas {
-    registry:  {
+export interface Caas{
+    registry: {
         // GET /caas/registry
         $get(): Promise<string[]>;
-        [keys: string]: {
+        [keys: string]:{
             // GET /caas/registry/{serviceName}
             $get(): Promise<registry.service>;
-            changeContact:  {
+            changeContact: {
                 // POST /caas/registry/{serviceName}/changeContact
                 $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
             }
-            namespaces:  {
+            namespaces: {
                 // GET /caas/registry/{serviceName}/namespaces
                 $get(): Promise<string[]>;
                 // POST /caas/registry/{serviceName}/namespaces
                 $post(body?: {body: registry.inputNamespace}): Promise<registry.namespace>;
-                [keys: string]: {
+                [keys: string]:{
                     // DELETE /caas/registry/{serviceName}/namespaces/{namespaceId}
                     $delete(): Promise<void>;
                     // GET /caas/registry/{serviceName}/namespaces/{namespaceId}
                     $get(): Promise<registry.namespace>;
-                    images:  {
+                    images: {
                         // GET /caas/registry/{serviceName}/namespaces/{namespaceId}/images
                         $get(): Promise<string[]>;
-                        [keys: string]: {
+                        [keys: string]:{
                             // DELETE /caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}
                             $delete(): Promise<void>;
                             // GET /caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}
                             $get(): Promise<registry.image>;
                             // PUT /caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}
                             $put(body?: {body: registry.inputImage}): Promise<registry.image>;
-                            permissions:  {
+                            permissions: {
                                 // GET /caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/permissions
                                 $get(): Promise<string[]>;
                                 // POST /caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/permissions
                                 $post(body?: {body: registry.inputPermissions}): Promise<registry.permissions>;
-                                [keys: string]: {
+                                [keys: string]:{
                                     // DELETE /caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/permissions/{permissionId}
                                     $delete(): Promise<void>;
                                     // GET /caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/permissions/{permissionId}
                                     $get(): Promise<registry.permissions>;
                                 } | any
                             }
-                            tags:  {
+                            tags: {
                                 // GET /caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/tags
                                 $get(): Promise<string[]>;
-                                [keys: string]: {
+                                [keys: string]:{
                                     // GET /caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/tags/{tagId}
                                     $get(): Promise<registry.tag>;
                                 } | any
                             }
                         } | any
                     }
-                    permissions:  {
+                    permissions: {
                         // GET /caas/registry/{serviceName}/namespaces/{namespaceId}/permissions
                         $get(): Promise<string[]>;
                         // POST /caas/registry/{serviceName}/namespaces/{namespaceId}/permissions
                         $post(body?: {body: registry.inputPermissions}): Promise<registry.permissions>;
-                        [keys: string]: {
+                        [keys: string]:{
                             // DELETE /caas/registry/{serviceName}/namespaces/{namespaceId}/permissions/{permissionId}
                             $delete(): Promise<void>;
                             // GET /caas/registry/{serviceName}/namespaces/{namespaceId}/permissions/{permissionId}
@@ -206,23 +206,23 @@ export interface Caas {
                     }
                 } | any
             }
-            serviceInfos:  {
+            serviceInfos: {
                 // GET /caas/registry/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /caas/registry/{serviceName}/serviceInfos
                 $put(body?: {body: services.Service}): Promise<void>;
             }
-            users:  {
+            users: {
                 // GET /caas/registry/{serviceName}/users
                 $get(): Promise<string[]>;
                 // POST /caas/registry/{serviceName}/users
                 $post(body?: {body: registry.inputUser}): Promise<registry.user>;
-                [keys: string]: {
+                [keys: string]:{
                     // DELETE /caas/registry/{serviceName}/users/{userId}
                     $delete(): Promise<void>;
                     // GET /caas/registry/{serviceName}/users/{userId}
                     $get(): Promise<registry.user>;
-                    changePassword:  {
+                    changePassword: {
                         // POST /caas/registry/{serviceName}/users/{userId}/changePassword
                         $post(): Promise<registry.user>;
                     }

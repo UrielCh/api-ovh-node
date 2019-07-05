@@ -131,60 +131,60 @@ export namespace services {
 }
 // Apis harmony
 // path /license
-export interface License {
-    plesk:  {
+export interface License{
+    plesk: {
         // GET /license/plesk
         $get(): Promise<string[]>;
-        orderableVersions:  {
+        orderableVersions: {
             // GET /license/plesk/orderableVersions
             $get(param?: {ip: string}): Promise<license.PleskOrderConfiguration[]>;
         }
-        [keys: string]: {
+        [keys: string]:{
             // GET /license/plesk/{serviceName}
             $get(): Promise<license.plesk.Plesk>;
             // PUT /license/plesk/{serviceName}
             $put(body?: {body: license.plesk.Plesk}): Promise<void>;
-            allowedDestinationIp:  {
+            allowedDestinationIp: {
                 // GET /license/plesk/{serviceName}/allowedDestinationIp
                 $get(): Promise<string[]>;
             }
-            canLicenseBeMovedTo:  {
+            canLicenseBeMovedTo: {
                 // GET /license/plesk/{serviceName}/canLicenseBeMovedTo
                 $get(param?: {destinationIp: string}): Promise<license.ChangeIpStatus>;
             }
-            changeIp:  {
+            changeIp: {
                 // POST /license/plesk/{serviceName}/changeIp
                 $post(body?: {destinationIp: string}): Promise<license.Task>;
             }
-            confirmTermination:  {
+            confirmTermination: {
                 // POST /license/plesk/{serviceName}/confirmTermination
                 $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
             }
-            option:  {
+            option: {
                 // GET /license/plesk/{serviceName}/option
                 $get(): Promise<license.OptionLabel[]>;
-                [keys: string]: {
+                [keys: string]:{
                     // DELETE /license/plesk/{serviceName}/option/{label}
                     $delete(): Promise<license.Task>;
                     // GET /license/plesk/{serviceName}/option/{label}
                     $get(): Promise<license.Option>;
                 } | any
             }
-            serviceInfos:  {
+            serviceInfos: {
                 // GET /license/plesk/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /license/plesk/{serviceName}/serviceInfos
                 $put(body?: {body: services.Service}): Promise<void>;
             }
-            tasks:  {
+            tasks: {
                 // GET /license/plesk/{serviceName}/tasks
                 $get(param?: {action?: license.ActionType, status?: license.TaskStateEnum}): Promise<number[]>;
-                [keys: string]: {
+                [keys: string]:{
                     // GET /license/plesk/{serviceName}/tasks/{taskId}
                     $get(): Promise<license.Task>;
                 } | any
             }
-            terminate:  {
+            terminate: {
                 // POST /license/plesk/{serviceName}/terminate
                 $post(): Promise<string>;
             }

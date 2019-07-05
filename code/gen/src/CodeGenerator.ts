@@ -266,7 +266,7 @@ export class CodeGenerator {
                 code += `${ident0}// path ${api._path}\n`;
                 code += `${ident0}export interface ${className(api._path)}`;
             }
-            code += ` {\n`;
+            code += `{\n`;
         }
 
         let ident = indentGen(depth);

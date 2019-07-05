@@ -1460,44 +1460,44 @@ export namespace xdsl {
 }
 // Apis harmony
 // path /me
-export interface Me {
+export interface Me{
     // GET /me
     $get(): Promise<nichandle.Nichandle>;
     // PUT /me
     $put(body?: {body: nichandle.Nichandle}): Promise<void>;
-    accessRestriction:  {
-        backupCode:  {
+    accessRestriction: {
+        backupCode: {
             // DELETE /me/accessRestriction/backupCode
             $delete(): Promise<void>;
             // GET /me/accessRestriction/backupCode
             $get(): Promise<nichandle.accessRestriction.SOTPAccount>;
             // POST /me/accessRestriction/backupCode
             $post(): Promise<nichandle.accessRestriction.SOTPSecret>;
-            disable:  {
+            disable: {
                 // POST /me/accessRestriction/backupCode/disable
                 $post(body?: {code: string}): Promise<void>;
             }
-            enable:  {
+            enable: {
                 // POST /me/accessRestriction/backupCode/enable
                 $post(body?: {code: string}): Promise<void>;
             }
-            validate:  {
+            validate: {
                 // POST /me/accessRestriction/backupCode/validate
                 $post(body?: {code: string}): Promise<nichandle.accessRestriction.SOTPValidate>;
             }
         }
-        developerMode:  {
+        developerMode: {
             // GET /me/accessRestriction/developerMode
             $get(): Promise<nichandle.DeveloperModeRestriction>;
             // PUT /me/accessRestriction/developerMode
             $put(body?: {body: nichandle.DeveloperModeRestriction}): Promise<void>;
         }
-        ip:  {
+        ip: {
             // GET /me/accessRestriction/ip
             $get(): Promise<number[]>;
             // POST /me/accessRestriction/ip
             $post(body?: {ip: string, rule: nichandle.accessRestriction.IpRestrictionRuleEnum, warning: boolean}): Promise<void>;
-            [keys: string]: {
+            [keys: string]:{
                 // DELETE /me/accessRestriction/ip/{id}
                 $delete(): Promise<void>;
                 // GET /me/accessRestriction/ip/{id}
@@ -1506,160 +1506,160 @@ export interface Me {
                 $put(body?: {body: nichandle.IpRestriction}): Promise<void>;
             } | any
         }
-        ipDefaultRule:  {
+        ipDefaultRule: {
             // GET /me/accessRestriction/ipDefaultRule
             $get(): Promise<nichandle.IpRestrictionDefaultRule>;
             // PUT /me/accessRestriction/ipDefaultRule
             $put(body?: {body: nichandle.IpRestrictionDefaultRule}): Promise<void>;
         }
-        sms:  {
+        sms: {
             // GET /me/accessRestriction/sms
             $get(): Promise<number[]>;
             // POST /me/accessRestriction/sms
             $post(body?: {phone: string}): Promise<nichandle.accessRestriction.SmsSecret>;
-            [keys: string]: {
+            [keys: string]:{
                 // DELETE /me/accessRestriction/sms/{id}
                 $delete(): Promise<void>;
                 // GET /me/accessRestriction/sms/{id}
                 $get(): Promise<nichandle.accessRestriction.SmsAccount>;
                 // PUT /me/accessRestriction/sms/{id}
                 $put(body?: {body: nichandle.accessRestriction.SmsAccount}): Promise<void>;
-                disable:  {
+                disable: {
                     // POST /me/accessRestriction/sms/{id}/disable
                     $post(body?: {code: string}): Promise<void>;
                 }
-                enable:  {
+                enable: {
                     // POST /me/accessRestriction/sms/{id}/enable
                     $post(body?: {code: string}): Promise<void>;
                 }
-                sendCode:  {
+                sendCode: {
                     // POST /me/accessRestriction/sms/{id}/sendCode
                     $post(): Promise<nichandle.accessRestriction.SmsCode>;
                 }
-                validate:  {
+                validate: {
                     // POST /me/accessRestriction/sms/{id}/validate
                     $post(body?: {code: string}): Promise<void>;
                 }
             } | any
         }
-        totp:  {
+        totp: {
             // GET /me/accessRestriction/totp
             $get(): Promise<number[]>;
             // POST /me/accessRestriction/totp
             $post(): Promise<nichandle.accessRestriction.TOTPSecret>;
-            [keys: string]: {
+            [keys: string]:{
                 // DELETE /me/accessRestriction/totp/{id}
                 $delete(): Promise<void>;
                 // GET /me/accessRestriction/totp/{id}
                 $get(): Promise<nichandle.accessRestriction.TOTPAccount>;
                 // PUT /me/accessRestriction/totp/{id}
                 $put(body?: {body: nichandle.accessRestriction.TOTPAccount}): Promise<void>;
-                disable:  {
+                disable: {
                     // POST /me/accessRestriction/totp/{id}/disable
                     $post(body?: {code: string}): Promise<void>;
                 }
-                enable:  {
+                enable: {
                     // POST /me/accessRestriction/totp/{id}/enable
                     $post(body?: {code: string}): Promise<void>;
                 }
-                validate:  {
+                validate: {
                     // POST /me/accessRestriction/totp/{id}/validate
                     $post(body?: {code: string}): Promise<void>;
                 }
             } | any
         }
-        u2f:  {
+        u2f: {
             // GET /me/accessRestriction/u2f
             $get(): Promise<number[]>;
             // POST /me/accessRestriction/u2f
             $post(): Promise<nichandle.accessRestriction.U2FRegisterChallenge>;
-            [keys: string]: {
+            [keys: string]:{
                 // DELETE /me/accessRestriction/u2f/{id}
                 $delete(): Promise<void>;
                 // GET /me/accessRestriction/u2f/{id}
                 $get(): Promise<nichandle.accessRestriction.U2FAccount>;
                 // PUT /me/accessRestriction/u2f/{id}
                 $put(body?: {body: nichandle.accessRestriction.U2FAccount}): Promise<void>;
-                challenge:  {
+                challenge: {
                     // POST /me/accessRestriction/u2f/{id}/challenge
                     $post(): Promise<nichandle.accessRestriction.U2FSignChallenge>;
                 }
-                disable:  {
+                disable: {
                     // POST /me/accessRestriction/u2f/{id}/disable
                     $post(body?: {clientData: string, signatureData: string}): Promise<void>;
                 }
-                enable:  {
+                enable: {
                     // POST /me/accessRestriction/u2f/{id}/enable
                     $post(body?: {clientData: string, signatureData: string}): Promise<void>;
                 }
-                validate:  {
+                validate: {
                     // POST /me/accessRestriction/u2f/{id}/validate
                     $post(body?: {clientData: string, registrationData: string}): Promise<void>;
                 }
             } | any
         }
     }
-    agreements:  {
+    agreements: {
         // GET /me/agreements
         $get(param?: {agreed?: agreements.AgreementStateEnum, contractId?: number}): Promise<number[]>;
-        [keys: string]: {
+        [keys: string]:{
             // GET /me/agreements/{id}
             $get(): Promise<agreements.ContractAgreement>;
-            accept:  {
+            accept: {
                 // POST /me/agreements/{id}/accept
                 $post(): Promise<string>;
             }
-            contract:  {
+            contract: {
                 // GET /me/agreements/{id}/contract
                 $get(): Promise<agreements.Contract>;
             }
         } | any
     }
-    api:  {
-        application:  {
+    api: {
+        application: {
             // GET /me/api/application
             $get(): Promise<number[]>;
-            [keys: string]: {
+            [keys: string]:{
                 // DELETE /me/api/application/{applicationId}
                 $delete(): Promise<void>;
                 // GET /me/api/application/{applicationId}
                 $get(): Promise<api.Application>;
             } | any
         }
-        credential:  {
+        credential: {
             // GET /me/api/credential
             $get(param?: {applicationId?: number, status?: auth.CredentialStateEnum}): Promise<number[]>;
-            [keys: string]: {
+            [keys: string]:{
                 // DELETE /me/api/credential/{credentialId}
                 $delete(): Promise<void>;
                 // GET /me/api/credential/{credentialId}
                 $get(): Promise<api.Credential>;
-                application:  {
+                application: {
                     // GET /me/api/credential/{credentialId}/application
                     $get(): Promise<api.Application>;
                 }
             } | any
         }
-        logs:  {
-            self:  {
+        logs: {
+            self: {
                 // GET /me/api/logs/self
                 $get(): Promise<number[]>;
-                [keys: string]: {
+                [keys: string]:{
                     // GET /me/api/logs/self/{logId}
                     $get(): Promise<api.Log>;
                 } | any
             }
-            services:  {
+            services: {
                 // GET /me/api/logs/services
                 $get(): Promise<number[]>;
-                [keys: string]: {
+                [keys: string]:{
                     // GET /me/api/logs/services/{logId}
                     $get(): Promise<api.Log>;
                 } | any
             }
         }
     }
-    autorenew:  {
+    autorenew: {
         // GET /me/autorenew
         $get(): Promise<nichandle.NicAutorenewInfos>;
         // POST /me/autorenew
@@ -1667,77 +1667,77 @@ export interface Me {
         // PUT /me/autorenew
         $put(body?: {body: nichandle.NicAutorenewInfos}): Promise<void>;
     }
-    availableAutomaticPaymentMeans:  {
+    availableAutomaticPaymentMeans: {
         // GET /me/availableAutomaticPaymentMeans
         $get(): Promise<billing.AutomaticPaymentMean>;
     }
-    bill:  {
+    bill: {
         // GET /me/bill
         $get(param?: {date_from?: string, date_to?: string, orderId?: number}): Promise<string[]>;
-        [keys: string]: {
+        [keys: string]:{
             // GET /me/bill/{billId}
             $get(): Promise<billing.Bill>;
-            debt:  {
+            debt: {
                 // GET /me/bill/{billId}/debt
                 $get(): Promise<debt.Debt>;
-                operation:  {
+                operation: {
                     // GET /me/bill/{billId}/debt/operation
                     $get(param?: {depositOrderId?: number}): Promise<number[]>;
-                    [keys: string]: {
+                    [keys: string]:{
                         // GET /me/bill/{billId}/debt/operation/{operationId}
                         $get(): Promise<debt.Operation>;
-                        associatedObject:  {
+                        associatedObject: {
                             // GET /me/bill/{billId}/debt/operation/{operationId}/associatedObject
                             $get(): Promise<debt.entry.AssociatedObject>;
                         }
                     } | any
                 }
-                pay:  {
+                pay: {
                     // POST /me/bill/{billId}/debt/pay
                     $post(): Promise<billing.Order>;
                 }
             }
-            details:  {
+            details: {
                 // GET /me/bill/{billId}/details
                 $get(): Promise<string[]>;
-                [keys: string]: {
+                [keys: string]:{
                     // GET /me/bill/{billId}/details/{billDetailId}
                     $get(): Promise<billing.BillDetail>;
                 } | any
             }
-            payment:  {
+            payment: {
                 // GET /me/bill/{billId}/payment
                 $get(): Promise<billing.Payment>;
             }
         } | any
     }
-    billing:  {
-        invoicesByPostalMail:  {
+    billing: {
+        invoicesByPostalMail: {
             // GET /me/billing/invoicesByPostalMail
             $get(): Promise<boolean>;
             // POST /me/billing/invoicesByPostalMail
             $post(body?: {enable: boolean}): Promise<void>;
         }
     }
-    certificates:  {
+    certificates: {
         // GET /me/certificates
         $get(param?: {name?: string}): Promise<string[]>;
     }
-    changeEmail:  {
+    changeEmail: {
         // POST /me/changeEmail
         $post(body?: {newEmail: string}): Promise<nichandle.emailChange.Task>;
     }
-    changePassword:  {
+    changePassword: {
         // POST /me/changePassword
         $post(): Promise<void>;
     }
-    consent:  {
+    consent: {
         // GET /me/consent
         $get(): Promise<me.consent.Campaign[]>;
-        [keys: string]: {
+        [keys: string]:{
             // GET /me/consent/{campaignName}
             $get(): Promise<me.consent.Campaign>;
-            decision:  {
+            decision: {
                 // GET /me/consent/{campaignName}/decision
                 $get(): Promise<me.consent.Consent>;
                 // PUT /me/consent/{campaignName}/decision
@@ -1745,162 +1745,162 @@ export interface Me {
             }
         } | any
     }
-    consumption:  {
-        usage:  {
-            current:  {
+    consumption: {
+        usage: {
+            current: {
                 // GET /me/consumption/usage/current
                 $get(): Promise<me.consumption.Transaction[]>;
             }
-            forecast:  {
+            forecast: {
                 // GET /me/consumption/usage/forecast
                 $get(): Promise<me.consumption.Transaction[]>;
             }
-            history:  {
+            history: {
                 // GET /me/consumption/usage/history
                 $get(param?: {beginDate: string, endDate: string}): Promise<me.consumption.Transaction[]>;
             }
         }
     }
-    contact:  {
+    contact: {
         // GET /me/contact
         $get(): Promise<number[]>;
         // POST /me/contact
         $post(body?: {address: contact.Address, birthCity?: string, birthCountry?: nichandle.CountryEnum, birthDay?: string, birthZip?: string, cellPhone?: string, companyNationalIdentificationNumber?: string, email: string, fax?: string, firstName: string, gender?: nichandle.GenderEnum, language: nichandle.LanguageEnum, lastName: string, legalForm: nichandle.LegalFormEnum, nationalIdentificationNumber?: string, nationality?: nichandle.CountryEnum, organisationName?: string, organisationType?: string, phone: string, vat?: string}): Promise<contact.Contact>;
-        [keys: string]: {
+        [keys: string]:{
             // GET /me/contact/{contactId}
             $get(): Promise<contact.Contact>;
             // PUT /me/contact/{contactId}
             $put(body?: {address?: contact.Address, birthCity?: string, birthCountry?: nichandle.CountryEnum, birthDay?: string, birthZip?: string, cellPhone?: string, companyNationalIdentificationNumber?: string, email?: string, fax?: string, firstName?: string, gender?: nichandle.GenderEnum, language?: nichandle.LanguageEnum, lastName?: string, legalForm?: nichandle.LegalFormEnum, nationalIdentificationNumber?: string, nationality?: nichandle.CountryEnum, organisationName?: string, organisationType?: string, phone?: string, vat?: string}): Promise<contact.Contact>;
-            fields:  {
+            fields: {
                 // GET /me/contact/{contactId}/fields
                 $get(): Promise<contact.FieldInformation[]>;
             }
         } | any
     }
-    credit:  {
-        balance:  {
+    credit: {
+        balance: {
             // GET /me/credit/balance
             $get(param?: {type?: billing.credit.balance.Type}): Promise<string[]>;
-            [keys: string]: {
+            [keys: string]:{
                 // GET /me/credit/balance/{balanceName}
                 $get(): Promise<billing.credit.Balance>;
-                movement:  {
+                movement: {
                     // GET /me/credit/balance/{balanceName}/movement
                     $get(): Promise<number[]>;
-                    [keys: string]: {
+                    [keys: string]:{
                         // GET /me/credit/balance/{balanceName}/movement/{movementId}
                         $get(): Promise<billing.credit.balance.Movement>;
                     } | any
                 }
             } | any
         }
-        code:  {
+        code: {
             // POST /me/credit/code
             $post(body?: {inputCode: string}): Promise<billing.credit.balance.Movement>;
         }
     }
-    debtAccount:  {
+    debtAccount: {
         // GET /me/debtAccount
         $get(): Promise<debt.Balance>;
-        debt:  {
+        debt: {
             // GET /me/debtAccount/debt
             $get(): Promise<number[]>;
-            [keys: string]: {
+            [keys: string]:{
                 // GET /me/debtAccount/debt/{debtId}
                 $get(): Promise<debt.Debt>;
-                operation:  {
+                operation: {
                     // GET /me/debtAccount/debt/{debtId}/operation
                     $get(param?: {depositOrderId?: number}): Promise<number[]>;
-                    [keys: string]: {
+                    [keys: string]:{
                         // GET /me/debtAccount/debt/{debtId}/operation/{operationId}
                         $get(): Promise<debt.Operation>;
-                        associatedObject:  {
+                        associatedObject: {
                             // GET /me/debtAccount/debt/{debtId}/operation/{operationId}/associatedObject
                             $get(): Promise<debt.entry.AssociatedObject>;
                         }
                     } | any
                 }
-                pay:  {
+                pay: {
                     // POST /me/debtAccount/debt/{debtId}/pay
                     $post(): Promise<billing.Order>;
                 }
             } | any
         }
-        pay:  {
+        pay: {
             // POST /me/debtAccount/pay
             $post(): Promise<billing.Order>;
         }
     }
-    deposit:  {
+    deposit: {
         // GET /me/deposit
         $get(param?: {date_from?: string, date_to?: string, orderId?: number}): Promise<string[]>;
-        [keys: string]: {
+        [keys: string]:{
             // GET /me/deposit/{depositId}
             $get(): Promise<billing.Deposit>;
-            details:  {
+            details: {
                 // GET /me/deposit/{depositId}/details
                 $get(): Promise<string[]>;
-                [keys: string]: {
+                [keys: string]:{
                     // GET /me/deposit/{depositId}/details/{depositDetailId}
                     $get(): Promise<billing.DepositDetail>;
                 } | any
             }
-            paidBills:  {
+            paidBills: {
                 // GET /me/deposit/{depositId}/paidBills
                 $get(): Promise<string[]>;
-                [keys: string]: {
+                [keys: string]:{
                     // GET /me/deposit/{depositId}/paidBills/{billId}
                     $get(): Promise<billing.Bill>;
-                    debt:  {
+                    debt: {
                         // GET /me/deposit/{depositId}/paidBills/{billId}/debt
                         $get(): Promise<debt.Debt>;
-                        operation:  {
+                        operation: {
                             // GET /me/deposit/{depositId}/paidBills/{billId}/debt/operation
                             $get(param?: {depositOrderId?: number}): Promise<number[]>;
-                            [keys: string]: {
+                            [keys: string]:{
                                 // GET /me/deposit/{depositId}/paidBills/{billId}/debt/operation/{operationId}
                                 $get(): Promise<debt.Operation>;
-                                associatedObject:  {
+                                associatedObject: {
                                     // GET /me/deposit/{depositId}/paidBills/{billId}/debt/operation/{operationId}/associatedObject
                                     $get(): Promise<debt.entry.AssociatedObject>;
                                 }
                             } | any
                         }
-                        pay:  {
+                        pay: {
                             // POST /me/deposit/{depositId}/paidBills/{billId}/debt/pay
                             $post(): Promise<billing.Order>;
                         }
                     }
-                    details:  {
+                    details: {
                         // GET /me/deposit/{depositId}/paidBills/{billId}/details
                         $get(): Promise<string[]>;
-                        [keys: string]: {
+                        [keys: string]:{
                             // GET /me/deposit/{depositId}/paidBills/{billId}/details/{billDetailId}
                             $get(): Promise<billing.BillDetail>;
                         } | any
                     }
-                    payment:  {
+                    payment: {
                         // GET /me/deposit/{depositId}/paidBills/{billId}/payment
                         $get(): Promise<billing.Payment>;
                     }
                 } | any
             }
-            payment:  {
+            payment: {
                 // GET /me/deposit/{depositId}/payment
                 $get(): Promise<billing.Payment>;
             }
         } | any
     }
-    document:  {
+    document: {
         // GET /me/document
         $get(): Promise<string[]>;
         // POST /me/document
         $post(body?: {name: string, tags?: complexType.SafeKeyValue<string>[]}): Promise<nichandle.document.Document>;
-        cors:  {
+        cors: {
             // POST /me/document/cors
             $post(body?: {origin: string}): Promise<void>;
         }
-        [keys: string]: {
+        [keys: string]:{
             // DELETE /me/document/{id}
             $delete(): Promise<void>;
             // GET /me/document/{id}
@@ -1909,13 +1909,13 @@ export interface Me {
             $put(body?: {body: nichandle.document.Document}): Promise<void>;
         } | any
     }
-    fax:  {
-        customDomains:  {
+    fax: {
+        customDomains: {
             // GET /me/fax/customDomains
             $get(): Promise<number[]>;
             // POST /me/fax/customDomains
             $post(body?: {domain: string}): Promise<telephony.MailDomain2Service>;
-            [keys: string]: {
+            [keys: string]:{
                 // DELETE /me/fax/customDomains/{id}
                 $delete(): Promise<void>;
                 // GET /me/fax/customDomains/{id}
@@ -1923,35 +1923,35 @@ export interface Me {
             } | any
         }
     }
-    fidelityAccount:  {
+    fidelityAccount: {
         // GET /me/fidelityAccount
         $get(): Promise<billing.FidelityAccount>;
         // PUT /me/fidelityAccount
         $put(body?: {body: billing.FidelityAccount}): Promise<void>;
-        creditOrder:  {
+        creditOrder: {
             // POST /me/fidelityAccount/creditOrder
             $post(body?: {amount: number}): Promise<billing.Order>;
         }
-        movements:  {
+        movements: {
             // GET /me/fidelityAccount/movements
             $get(param?: {date_from?: string, date_to?: string}): Promise<number[]>;
-            [keys: string]: {
+            [keys: string]:{
                 // GET /me/fidelityAccount/movements/{movementId}
                 $get(): Promise<billing.FidelityMovement>;
             } | any
         }
     }
-    geolocation:  {
+    geolocation: {
         // POST /me/geolocation
         $post(): Promise<geolocation.ContinentCountryLocation>;
     }
-    identity:  {
-        group:  {
+    identity: {
+        group: {
             // GET /me/identity/group
             $get(): Promise<string[]>;
             // POST /me/identity/group
             $post(body?: {description?: string, name: string, role?: nichandle.RoleEnum}): Promise<nichandle.Authentication.Group>;
-            [keys: string]: {
+            [keys: string]:{
                 // DELETE /me/identity/group/{group}
                 $delete(): Promise<void>;
                 // GET /me/identity/group/{group}
@@ -1960,67 +1960,67 @@ export interface Me {
                 $put(body?: {description?: string, role?: nichandle.RoleEnum}): Promise<void>;
             } | any
         }
-        user:  {
+        user: {
             // GET /me/identity/user
             $get(): Promise<string[]>;
             // POST /me/identity/user
             $post(body?: {description?: string, email: string, group?: string, login: string, password: string}): Promise<void>;
-            [keys: string]: {
+            [keys: string]:{
                 // DELETE /me/identity/user/{user}
                 $delete(): Promise<void>;
                 // GET /me/identity/user/{user}
                 $get(): Promise<nichandle.User>;
                 // PUT /me/identity/user/{user}
                 $put(body?: {description?: string, email?: string, group?: string}): Promise<void>;
-                disable:  {
+                disable: {
                     // POST /me/identity/user/{user}/disable
                     $post(): Promise<void>;
                 }
-                enable:  {
+                enable: {
                     // POST /me/identity/user/{user}/enable
                     $post(): Promise<void>;
                 }
             } | any
         }
     }
-    insight:  {
+    insight: {
         // GET /me/insight
         $get(): Promise<insight.Access>;
     }
-    installationTemplate:  {
+    installationTemplate: {
         // GET /me/installationTemplate
         $get(): Promise<string[]>;
         // POST /me/installationTemplate
         $post(body?: {baseTemplateName: string, defaultLanguage: dedicated.TemplateOsLanguageEnum, name: string}): Promise<void>;
-        [keys: string]: {
+        [keys: string]:{
             // DELETE /me/installationTemplate/{templateName}
             $delete(): Promise<void>;
             // GET /me/installationTemplate/{templateName}
             $get(): Promise<dedicated.installationTemplate.Templates>;
             // PUT /me/installationTemplate/{templateName}
             $put(body?: {body: dedicated.installationTemplate.Templates}): Promise<void>;
-            checkIntegrity:  {
+            checkIntegrity: {
                 // POST /me/installationTemplate/{templateName}/checkIntegrity
                 $post(): Promise<void>;
             }
-            partitionScheme:  {
+            partitionScheme: {
                 // GET /me/installationTemplate/{templateName}/partitionScheme
                 $get(): Promise<string[]>;
                 // POST /me/installationTemplate/{templateName}/partitionScheme
                 $post(body?: {name: string, priority: number}): Promise<void>;
-                [keys: string]: {
+                [keys: string]:{
                     // DELETE /me/installationTemplate/{templateName}/partitionScheme/{schemeName}
                     $delete(): Promise<void>;
                     // GET /me/installationTemplate/{templateName}/partitionScheme/{schemeName}
                     $get(): Promise<dedicated.installationTemplate.templatePartitioningSchemes>;
                     // PUT /me/installationTemplate/{templateName}/partitionScheme/{schemeName}
                     $put(body?: {body: dedicated.installationTemplate.templatePartitioningSchemes}): Promise<void>;
-                    hardwareRaid:  {
+                    hardwareRaid: {
                         // GET /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid
                         $get(): Promise<string[]>;
                         // POST /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid
                         $post(body?: {disks: string[], mode: dedicated.TemplateOsHardwareRaidEnum, name: string, step: number}): Promise<void>;
-                        [keys: string]: {
+                        [keys: string]:{
                             // DELETE /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}
                             $delete(): Promise<void>;
                             // GET /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}
@@ -2029,12 +2029,12 @@ export interface Me {
                             $put(body?: {body: dedicated.installationTemplate.hardwareRaid}): Promise<void>;
                         } | any
                     }
-                    partition:  {
+                    partition: {
                         // GET /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition
                         $get(): Promise<string[]>;
                         // POST /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition
                         $post(body?: {filesystem: dedicated.TemplateOsFileSystemEnum, mountpoint: string, raid?: number, size: number, step: number, type: dedicated.TemplatePartitionTypeEnum, volumeName?: string}): Promise<void>;
-                        [keys: string]: {
+                        [keys: string]:{
                             // DELETE /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}
                             $delete(): Promise<void>;
                             // GET /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}
@@ -2047,12 +2047,12 @@ export interface Me {
             }
         } | any
     }
-    ipOrganisation:  {
+    ipOrganisation: {
         // GET /me/ipOrganisation
         $get(): Promise<string[]>;
         // POST /me/ipOrganisation
         $post(body?: {abuse_mailbox: string, address: string, city: string, country: nichandle.CountryEnum, firstname: string, lastname: string, phone: string, registry: nichandle.IpRegistryEnum, state?: string, zip?: string}): Promise<void>;
-        [keys: string]: {
+        [keys: string]:{
             // DELETE /me/ipOrganisation/{organisationId}
             $delete(): Promise<void>;
             // GET /me/ipOrganisation/{organisationId}
@@ -2061,322 +2061,322 @@ export interface Me {
             $put(body?: {body: nichandle.Ipv4Org}): Promise<void>;
         } | any
     }
-    ipxeScript:  {
+    ipxeScript: {
         // GET /me/ipxeScript
         $get(): Promise<string[]>;
         // POST /me/ipxeScript
         $post(body?: {description: string, name: string, script: string}): Promise<nichandle.ipxe>;
-        [keys: string]: {
+        [keys: string]:{
             // DELETE /me/ipxeScript/{name}
             $delete(): Promise<void>;
             // GET /me/ipxeScript/{name}
             $get(): Promise<nichandle.ipxe>;
         } | any
     }
-    mailingList:  {
-        availableLists:  {
+    mailingList: {
+        availableLists: {
             // GET /me/mailingList/availableLists
             $get(): Promise<string[]>;
         }
-        subscribe:  {
+        subscribe: {
             // POST /me/mailingList/subscribe
             $post(body?: {email: string, mailingList: string}): Promise<void>;
         }
     }
-    notification:  {
-        email:  {
-            history:  {
+    notification: {
+        email: {
+            history: {
                 // GET /me/notification/email/history
                 $get(): Promise<number[]>;
-                [keys: string]: {
+                [keys: string]:{
                     // GET /me/notification/email/history/{id}
                     $get(): Promise<nichandle.emailNotification>;
                 } | any
             }
         }
     }
-    order:  {
+    order: {
         // GET /me/order
         $get(param?: {date_from?: string, date_to?: string}): Promise<number[]>;
-        [keys: string]: {
+        [keys: string]:{
             // GET /me/order/{orderId}
             $get(): Promise<billing.Order>;
-            associatedObject:  {
+            associatedObject: {
                 // GET /me/order/{orderId}/associatedObject
                 $get(): Promise<billing.order.AssociatedObject>;
             }
-            availableRegisteredPaymentMean:  {
+            availableRegisteredPaymentMean: {
                 // GET /me/order/{orderId}/availableRegisteredPaymentMean
                 $get(): Promise<billing.order.RegisteredPaymentMean[]>;
             }
-            bill:  {
+            bill: {
                 // GET /me/order/{orderId}/bill
                 $get(): Promise<billing.Bill>;
             }
-            debt:  {
+            debt: {
                 // GET /me/order/{orderId}/debt
                 $get(): Promise<debt.Debt>;
-                operation:  {
+                operation: {
                     // GET /me/order/{orderId}/debt/operation
                     $get(param?: {depositOrderId?: number}): Promise<number[]>;
-                    [keys: string]: {
+                    [keys: string]:{
                         // GET /me/order/{orderId}/debt/operation/{operationId}
                         $get(): Promise<debt.Operation>;
-                        associatedObject:  {
+                        associatedObject: {
                             // GET /me/order/{orderId}/debt/operation/{operationId}/associatedObject
                             $get(): Promise<debt.entry.AssociatedObject>;
                         }
                     } | any
                 }
-                pay:  {
+                pay: {
                     // POST /me/order/{orderId}/debt/pay
                     $post(): Promise<billing.Order>;
                 }
             }
-            details:  {
+            details: {
                 // GET /me/order/{orderId}/details
                 $get(): Promise<number[]>;
-                [keys: string]: {
+                [keys: string]:{
                     // GET /me/order/{orderId}/details/{orderDetailId}
                     $get(): Promise<billing.OrderDetail>;
-                    extension:  {
+                    extension: {
                         // GET /me/order/{orderId}/details/{orderDetailId}/extension
                         $get(): Promise<billing.ItemDetail>;
                     }
                 } | any
             }
-            pay:  {
+            pay: {
                 // POST /me/order/{orderId}/pay
                 $post(body?: {paymentMethod: billing.order.PayWithPaymentMethod}): Promise<void>;
             }
-            payWithRegisteredPaymentMean:  {
+            payWithRegisteredPaymentMean: {
                 // POST /me/order/{orderId}/payWithRegisteredPaymentMean
                 $post(body?: {paymentMean: billing.ReusablePaymentMeanEnum, paymentMeanId?: number}): Promise<void>;
             }
-            payment:  {
+            payment: {
                 // GET /me/order/{orderId}/payment
                 $get(): Promise<billing.Payment>;
             }
-            paymentMeans:  {
+            paymentMeans: {
                 // GET /me/order/{orderId}/paymentMeans
                 $get(): Promise<billing.order.PaymentMeans>;
             }
-            paymentMethods:  {
+            paymentMethods: {
                 // GET /me/order/{orderId}/paymentMethods
                 $get(): Promise<billing.order.PaymentMethods>;
             }
-            refund:  {
+            refund: {
                 // GET /me/order/{orderId}/refund
                 $get(): Promise<billing.Refund>;
             }
-            retraction:  {
+            retraction: {
                 // POST /me/order/{orderId}/retraction
                 $post(body?: {comment?: string, reason: billing.order.RetractionReasonEnum}): Promise<void>;
             }
-            status:  {
+            status: {
                 // GET /me/order/{orderId}/status
                 $get(): Promise<billing.order.OrderStatusEnum>;
             }
         } | any
     }
-    ovhAccount:  {
+    ovhAccount: {
         // GET /me/ovhAccount
         $get(): Promise<string[]>;
-        [keys: string]: {
+        [keys: string]:{
             // GET /me/ovhAccount/{ovhAccountId}
             $get(): Promise<billing.OvhAccount>;
             // PUT /me/ovhAccount/{ovhAccountId}
             $put(body?: {body: billing.OvhAccount}): Promise<void>;
-            creditOrder:  {
+            creditOrder: {
                 // POST /me/ovhAccount/{ovhAccountId}/creditOrder
                 $post(body?: {amount: number}): Promise<billing.Order>;
             }
-            movements:  {
+            movements: {
                 // GET /me/ovhAccount/{ovhAccountId}/movements
                 $get(param?: {date_from?: string, date_to?: string}): Promise<number[]>;
-                [keys: string]: {
+                [keys: string]:{
                     // GET /me/ovhAccount/{ovhAccountId}/movements/{movementId}
                     $get(): Promise<billing.Movement>;
                 } | any
             }
-            retrieveMoney:  {
+            retrieveMoney: {
                 // POST /me/ovhAccount/{ovhAccountId}/retrieveMoney
                 $post(body?: {amount: number, bankAccountId: number}): Promise<billing.Order>;
             }
         } | any
     }
-    passwordRecover:  {
+    passwordRecover: {
         // POST /me/passwordRecover
         $post(body?: {ovhCompany: nichandle.OvhCompanyEnum, ovhId: string}): Promise<void>;
     }
-    payment:  {
-        availableMethods:  {
+    payment: {
+        availableMethods: {
             // GET /me/payment/availableMethods
             $get(): Promise<me.payment.method.AvailablePaymentMethod[]>;
         }
-        method:  {
+        method: {
             // GET /me/payment/method
             $get(param?: {paymentType?: string, status?: me.payment.method.PaymentMethod.Status}): Promise<number[]>;
             // POST /me/payment/method
             $post(body?: {callbackUrl: me.payment.method.CallbackUrl, default_?: boolean, description?: string, orderId?: number, paymentType: string, register?: boolean}): Promise<me.payment.method.Register.ValidationResult>;
-            [keys: string]: {
+            [keys: string]:{
                 // DELETE /me/payment/method/{paymentMethodId}
                 $delete(): Promise<me.payment.method.PaymentMethod>;
                 // GET /me/payment/method/{paymentMethodId}
                 $get(): Promise<me.payment.method.PaymentMethod>;
                 // PUT /me/payment/method/{paymentMethodId}
                 $put(body?: {default_?: boolean, description?: string}): Promise<billing.PaymentMethod>;
-                challenge:  {
+                challenge: {
                     // POST /me/payment/method/{paymentMethodId}/challenge
                     $post(body?: {challenge: string}): Promise<me.payment.method.PaymentMethod>;
                 }
-                finalize:  {
+                finalize: {
                     // POST /me/payment/method/{paymentMethodId}/finalize
                     $post(body?: {expirationMonth?: number, expirationYear?: number, registrationId?: string}): Promise<me.payment.method.PaymentMethod>;
                 }
             } | any
         }
-        transaction:  {
+        transaction: {
             // GET /me/payment/transaction
             $get(param?: {paymentMethodId?: number, status?: me.payment.method.Transaction.Status}): Promise<number[]>;
-            [keys: string]: {
+            [keys: string]:{
                 // GET /me/payment/transaction/{transactionId}
                 $get(): Promise<me.payment.method.Transaction>;
             } | any
         }
     }
-    paymentMean:  {
-        bankAccount:  {
+    paymentMean: {
+        bankAccount: {
             // GET /me/paymentMean/bankAccount
             $get(param?: {state?: billing.BankAccountStateEnum}): Promise<number[]>;
             // POST /me/paymentMean/bankAccount
             $post(body?: {bic: string, description?: string, iban: string, ownerAddress: string, ownerName: string, setDefault?: boolean}): Promise<billing.PaymentMeanValidation>;
-            [keys: string]: {
+            [keys: string]:{
                 // DELETE /me/paymentMean/bankAccount/{id}
                 $delete(): Promise<void>;
                 // GET /me/paymentMean/bankAccount/{id}
                 $get(): Promise<billing.BankAccount>;
                 // PUT /me/paymentMean/bankAccount/{id}
                 $put(body?: {body: billing.BankAccount}): Promise<void>;
-                challenge:  {
+                challenge: {
                     // POST /me/paymentMean/bankAccount/{id}/challenge
                     $post(body?: {challenge: string}): Promise<void>;
                 }
-                chooseAsDefaultPaymentMean:  {
+                chooseAsDefaultPaymentMean: {
                     // POST /me/paymentMean/bankAccount/{id}/chooseAsDefaultPaymentMean
                     $post(): Promise<void>;
                 }
             } | any
         }
-        creditCard:  {
+        creditCard: {
             // GET /me/paymentMean/creditCard
             $get(): Promise<number[]>;
             // POST /me/paymentMean/creditCard
             $post(body?: {description?: string, returnUrl?: string, setDefault?: boolean}): Promise<billing.PaymentMeanValidation>;
-            [keys: string]: {
+            [keys: string]:{
                 // DELETE /me/paymentMean/creditCard/{id}
                 $delete(): Promise<void>;
                 // GET /me/paymentMean/creditCard/{id}
                 $get(): Promise<billing.CreditCard>;
                 // PUT /me/paymentMean/creditCard/{id}
                 $put(body?: {body: billing.CreditCard}): Promise<void>;
-                challenge:  {
+                challenge: {
                     // POST /me/paymentMean/creditCard/{id}/challenge
                     $post(body?: {challenge: string}): Promise<void>;
                 }
-                chooseAsDefaultPaymentMean:  {
+                chooseAsDefaultPaymentMean: {
                     // POST /me/paymentMean/creditCard/{id}/chooseAsDefaultPaymentMean
                     $post(): Promise<void>;
                 }
             } | any
         }
-        deferredPaymentAccount:  {
+        deferredPaymentAccount: {
             // GET /me/paymentMean/deferredPaymentAccount
             $get(): Promise<number[]>;
-            [keys: string]: {
+            [keys: string]:{
                 // GET /me/paymentMean/deferredPaymentAccount/{id}
                 $get(): Promise<billing.DeferredPaymentAccount>;
                 // PUT /me/paymentMean/deferredPaymentAccount/{id}
                 $put(body?: {body: billing.DeferredPaymentAccount}): Promise<void>;
-                chooseAsDefaultPaymentMean:  {
+                chooseAsDefaultPaymentMean: {
                     // POST /me/paymentMean/deferredPaymentAccount/{id}/chooseAsDefaultPaymentMean
                     $post(): Promise<void>;
                 }
             } | any
         }
-        paypal:  {
+        paypal: {
             // GET /me/paymentMean/paypal
             $get(): Promise<number[]>;
             // POST /me/paymentMean/paypal
             $post(body?: {description?: string, returnUrl?: string, setDefault?: boolean}): Promise<billing.PaymentMeanValidation>;
-            [keys: string]: {
+            [keys: string]:{
                 // DELETE /me/paymentMean/paypal/{id}
                 $delete(): Promise<void>;
                 // GET /me/paymentMean/paypal/{id}
                 $get(): Promise<billing.Paypal>;
                 // PUT /me/paymentMean/paypal/{id}
                 $put(body?: {body: billing.Paypal}): Promise<void>;
-                challenge:  {
+                challenge: {
                     // POST /me/paymentMean/paypal/{id}/challenge
                     $post(body?: {challenge: string}): Promise<void>;
                 }
-                chooseAsDefaultPaymentMean:  {
+                chooseAsDefaultPaymentMean: {
                     // POST /me/paymentMean/paypal/{id}/chooseAsDefaultPaymentMean
                     $post(): Promise<void>;
                 }
             } | any
         }
     }
-    refund:  {
+    refund: {
         // GET /me/refund
         $get(param?: {date_from?: string, date_to?: string, orderId?: number}): Promise<string[]>;
-        [keys: string]: {
+        [keys: string]:{
             // GET /me/refund/{refundId}
             $get(): Promise<billing.Refund>;
-            details:  {
+            details: {
                 // GET /me/refund/{refundId}/details
                 $get(): Promise<string[]>;
-                [keys: string]: {
+                [keys: string]:{
                     // GET /me/refund/{refundId}/details/{refundDetailId}
                     $get(): Promise<billing.RefundDetail>;
                 } | any
             }
-            payment:  {
+            payment: {
                 // GET /me/refund/{refundId}/payment
                 $get(): Promise<billing.Payment>;
             }
         } | any
     }
-    sla:  {
+    sla: {
         // GET /me/sla
         $get(): Promise<number[]>;
-        [keys: string]: {
+        [keys: string]:{
             // GET /me/sla/{id}
             $get(): Promise<billing.SlaOperation>;
-            apply:  {
+            apply: {
                 // POST /me/sla/{id}/apply
                 $post(): Promise<void>;
             }
-            canBeApplied:  {
+            canBeApplied: {
                 // GET /me/sla/{id}/canBeApplied
                 $get(): Promise<boolean>;
             }
-            services:  {
+            services: {
                 // GET /me/sla/{id}/services
                 $get(): Promise<billing.SlaOperationService[]>;
             }
-            status:  {
+            status: {
                 // GET /me/sla/{id}/status
                 $get(): Promise<string>;
             }
         } | any
     }
-    sshKey:  {
+    sshKey: {
         // GET /me/sshKey
         $get(): Promise<string[]>;
         // POST /me/sshKey
         $post(body?: {key: string, keyName: string}): Promise<void>;
-        [keys: string]: {
+        [keys: string]:{
             // DELETE /me/sshKey/{keyName}
             $delete(): Promise<void>;
             // GET /me/sshKey/{keyName}
@@ -2385,160 +2385,160 @@ export interface Me {
             $put(body?: {body: nichandle.sshKey}): Promise<void>;
         } | any
     }
-    subAccount:  {
+    subAccount: {
         // GET /me/subAccount
         $get(): Promise<number[]>;
         // POST /me/subAccount
         $post(body?: {description?: string}): Promise<number>;
-        [keys: string]: {
+        [keys: string]:{
             // GET /me/subAccount/{id}
             $get(): Promise<nichandle.SubAccount>;
             // PUT /me/subAccount/{id}
             $put(body?: {body: nichandle.SubAccount}): Promise<void>;
-            createConsumerKey:  {
+            createConsumerKey: {
                 // POST /me/subAccount/{id}/createConsumerKey
                 $post(): Promise<nichandle.SubAccountConsumerKey>;
             }
         } | any
     }
-    subscription:  {
+    subscription: {
         // GET /me/subscription
         $get(): Promise<string[]>;
-        [keys: string]: {
+        [keys: string]:{
             // GET /me/subscription/{subscriptionType}
             $get(): Promise<nichandle.Subscription>;
             // PUT /me/subscription/{subscriptionType}
             $put(body?: {body: nichandle.Subscription}): Promise<void>;
         } | any
     }
-    supportLevel:  {
+    supportLevel: {
         // GET /me/supportLevel
         $get(): Promise<me.SupportLevel.Level>;
     }
-    task:  {
-        contactChange:  {
+    task: {
+        contactChange: {
             // GET /me/task/contactChange
             $get(param?: {askingAccount?: string, state?: nichandle.changeContact.TaskStateEnum, toAccount?: string}): Promise<number[]>;
-            [keys: string]: {
+            [keys: string]:{
                 // GET /me/task/contactChange/{id}
                 $get(): Promise<nichandle.contactChange.Task>;
-                accept:  {
+                accept: {
                     // POST /me/task/contactChange/{id}/accept
                     $post(body?: {token: string}): Promise<void>;
                 }
-                refuse:  {
+                refuse: {
                     // POST /me/task/contactChange/{id}/refuse
                     $post(body?: {token: string}): Promise<void>;
                 }
-                resendEmail:  {
+                resendEmail: {
                     // POST /me/task/contactChange/{id}/resendEmail
                     $post(): Promise<void>;
                 }
             } | any
         }
-        domain:  {
+        domain: {
             // GET /me/task/domain
             $get(param?: {domain?: string, function_?: domain.NicOperationFunctionEnum, status?: domain.OperationStatusEnum}): Promise<number[]>;
-            [keys: string]: {
+            [keys: string]:{
                 // GET /me/task/domain/{id}
                 $get(): Promise<nichandle.DomainTask>;
-                accelerate:  {
+                accelerate: {
                     // POST /me/task/domain/{id}/accelerate
                     $post(): Promise<void>;
                 }
-                argument:  {
+                argument: {
                     // GET /me/task/domain/{id}/argument
                     $get(): Promise<string[]>;
-                    [keys: string]: {
+                    [keys: string]:{
                         // GET /me/task/domain/{id}/argument/{key}
                         $get(): Promise<nichandle.DomainTaskArgument>;
                         // PUT /me/task/domain/{id}/argument/{key}
                         $put(body?: {body: nichandle.DomainTaskArgument}): Promise<void>;
                     } | any
                 }
-                cancel:  {
+                cancel: {
                     // POST /me/task/domain/{id}/cancel
                     $post(): Promise<void>;
                 }
-                progressbar:  {
+                progressbar: {
                     // GET /me/task/domain/{id}/progressbar
                     $get(): Promise<nichandle.DomainTaskProgressBar>;
                 }
-                relaunch:  {
+                relaunch: {
                     // POST /me/task/domain/{id}/relaunch
                     $post(): Promise<void>;
                 }
             } | any
         }
-        emailChange:  {
+        emailChange: {
             // GET /me/task/emailChange
             $get(param?: {state?: nichandle.changeEmail.TaskStateEnum}): Promise<number[]>;
-            [keys: string]: {
+            [keys: string]:{
                 // GET /me/task/emailChange/{id}
                 $get(): Promise<nichandle.emailChange.Task>;
-                accept:  {
+                accept: {
                     // POST /me/task/emailChange/{id}/accept
                     $post(body?: {token: string}): Promise<void>;
                 }
-                refuse:  {
+                refuse: {
                     // POST /me/task/emailChange/{id}/refuse
                     $post(body?: {token: string}): Promise<void>;
                 }
             } | any
         }
     }
-    telephony:  {
-        defaultIpRestriction:  {
+    telephony: {
+        defaultIpRestriction: {
             // GET /me/telephony/defaultIpRestriction
             $get(): Promise<number[]>;
             // POST /me/telephony/defaultIpRestriction
             $post(body?: {subnet: string, type: telephony.ProtocolEnum}): Promise<telephony.DefaultIpRestriction>;
-            [keys: string]: {
+            [keys: string]:{
                 // DELETE /me/telephony/defaultIpRestriction/{id}
                 $delete(): Promise<void>;
                 // GET /me/telephony/defaultIpRestriction/{id}
                 $get(): Promise<telephony.DefaultIpRestriction>;
             } | any
         }
-        settings:  {
+        settings: {
             // GET /me/telephony/settings
             $get(): Promise<telephony.Settings>;
             // POST /me/telephony/settings
             $post(body?: {settings: telephony.Settings}): Promise<void>;
         }
     }
-    vipStatus:  {
+    vipStatus: {
         // GET /me/vipStatus
         $get(): Promise<nichandle.VipStatus>;
     }
-    voucher:  {
-        checkValidity:  {
+    voucher: {
+        checkValidity: {
             // POST /me/voucher/checkValidity
             $post(body?: {voucher: string}): Promise<nichandle.VoucherStatus>;
         }
     }
-    withdrawal:  {
+    withdrawal: {
         // GET /me/withdrawal
         $get(param?: {date_from?: string, date_to?: string, orderId?: number}): Promise<string[]>;
-        [keys: string]: {
+        [keys: string]:{
             // GET /me/withdrawal/{withdrawalId}
             $get(): Promise<billing.Withdrawal>;
-            details:  {
+            details: {
                 // GET /me/withdrawal/{withdrawalId}/details
                 $get(): Promise<string[]>;
-                [keys: string]: {
+                [keys: string]:{
                     // GET /me/withdrawal/{withdrawalId}/details/{withdrawalDetailId}
                     $get(): Promise<billing.WithdrawalDetail>;
                 } | any
             }
-            payment:  {
+            payment: {
                 // GET /me/withdrawal/{withdrawalId}/payment
                 $get(): Promise<billing.Payment>;
             }
         } | any
     }
-    xdsl:  {
-        setting:  {
+    xdsl: {
+        setting: {
             // GET /me/xdsl/setting
             $get(): Promise<xdsl.Setting>;
             // POST /me/xdsl/setting

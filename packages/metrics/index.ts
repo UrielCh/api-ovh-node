@@ -100,52 +100,52 @@ export namespace services {
 }
 // Apis harmony
 // path /metrics
-export interface Metrics {
+export interface Metrics{
     // GET /metrics
     $get(): Promise<string[]>;
-    [keys: string]: {
+    [keys: string]:{
         // GET /metrics/{serviceName}
         $get(): Promise<metrics.api.Service>;
         // PUT /metrics/{serviceName}
         $put(body?: {description?: string}): Promise<metrics.api.Service>;
-        changeContact:  {
+        changeContact: {
             // POST /metrics/{serviceName}/changeContact
             $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
         }
-        confirmTermination:  {
+        confirmTermination: {
             // POST /metrics/{serviceName}/confirmTermination
             $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
         }
-        consumption:  {
+        consumption: {
             // GET /metrics/{serviceName}/consumption
             $get(param?: {duration?: number}): Promise<metrics.api.Consumption>;
         }
-        lookup:  {
-            token:  {
+        lookup: {
+            token: {
                 // POST /metrics/{serviceName}/lookup/token
                 $post(body?: {accessToken: string}): Promise<string[]>;
             }
         }
-        quota:  {
+        quota: {
             // PUT /metrics/{serviceName}/quota
             $put(body?: {quota: number}): Promise<string>;
         }
-        serviceInfos:  {
+        serviceInfos: {
             // GET /metrics/{serviceName}/serviceInfos
             $get(): Promise<services.Service>;
             // PUT /metrics/{serviceName}/serviceInfos
             $put(body?: {body: services.Service}): Promise<void>;
         }
-        terminate:  {
+        terminate: {
             // POST /metrics/{serviceName}/terminate
             $post(): Promise<string>;
         }
-        token:  {
+        token: {
             // GET /metrics/{serviceName}/token
             $get(): Promise<string[]>;
             // POST /metrics/{serviceName}/token
             $post(body?: {description?: string, labels?: metrics.api.Label[], permission: metrics.api.PermissionEnum}): Promise<metrics.api.Token>;
-            [keys: string]: {
+            [keys: string]:{
                 // DELETE /metrics/{serviceName}/token/{tokenId}
                 $delete(): Promise<void>;
                 // GET /metrics/{serviceName}/token/{tokenId}

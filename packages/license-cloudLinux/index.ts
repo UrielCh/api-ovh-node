@@ -87,36 +87,36 @@ export namespace services {
 }
 // Apis harmony
 // path /license
-export interface License {
-    cloudLinux:  {
+export interface License{
+    cloudLinux: {
         // GET /license/cloudLinux
         $get(): Promise<string[]>;
-        orderableVersions:  {
+        orderableVersions: {
             // GET /license/cloudLinux/orderableVersions
             $get(param?: {ip: string}): Promise<license.CloudLinuxOrderConfiguration[]>;
         }
-        [keys: string]: {
+        [keys: string]:{
             // GET /license/cloudLinux/{serviceName}
             $get(): Promise<license.cloudLinux.CloudLinux>;
-            confirmTermination:  {
+            confirmTermination: {
                 // POST /license/cloudLinux/{serviceName}/confirmTermination
                 $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
             }
-            serviceInfos:  {
+            serviceInfos: {
                 // GET /license/cloudLinux/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /license/cloudLinux/{serviceName}/serviceInfos
                 $put(body?: {body: services.Service}): Promise<void>;
             }
-            tasks:  {
+            tasks: {
                 // GET /license/cloudLinux/{serviceName}/tasks
                 $get(param?: {action?: license.ActionType, status?: license.TaskStateEnum}): Promise<number[]>;
-                [keys: string]: {
+                [keys: string]:{
                     // GET /license/cloudLinux/{serviceName}/tasks/{taskId}
                     $get(): Promise<license.Task>;
                 } | any
             }
-            terminate:  {
+            terminate: {
                 // POST /license/cloudLinux/{serviceName}/terminate
                 $post(): Promise<string>;
             }

@@ -93,63 +93,63 @@ export namespace services {
 }
 // Apis harmony
 // path /kube
-export interface Kube {
+export interface Kube{
     // GET /kube
     $get(): Promise<string[]>;
-    [keys: string]: {
+    [keys: string]:{
         // GET /kube/{serviceName}
         $get(): Promise<kube.Cluster>;
         // PUT /kube/{serviceName}
         $put(body?: {name: string}): Promise<void>;
-        changeContact:  {
+        changeContact: {
             // POST /kube/{serviceName}/changeContact
             $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
         }
-        confirmTermination:  {
+        confirmTermination: {
             // POST /kube/{serviceName}/confirmTermination
             $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
         }
-        kubeconfig:  {
+        kubeconfig: {
             // GET /kube/{serviceName}/kubeconfig
             $get(): Promise<kube.Kubeconfig>;
         }
-        publiccloud:  {
-            node:  {
+        publiccloud: {
+            node: {
                 // GET /kube/{serviceName}/publiccloud/node
                 $get(): Promise<kube.Node[]>;
                 // POST /kube/{serviceName}/publiccloud/node
                 $post(body?: {flavorName: string, name?: string}): Promise<kube.Node>;
-                [keys: string]: {
+                [keys: string]:{
                     // DELETE /kube/{serviceName}/publiccloud/node/{nodeId}
                     $delete(): Promise<void>;
                     // GET /kube/{serviceName}/publiccloud/node/{nodeId}
                     $get(): Promise<kube.Node>;
                 } | any
             }
-            project:  {
+            project: {
                 // GET /kube/{serviceName}/publiccloud/project
                 $get(): Promise<kube.PublicCloudProject>;
             }
         }
-        reset:  {
+        reset: {
             // POST /kube/{serviceName}/reset
             $post(body?: {version?: kube.Version, workerNodesPolicy?: kube.ResetWorkerNodesPolicy}): Promise<void>;
         }
-        serviceInfos:  {
+        serviceInfos: {
             // GET /kube/{serviceName}/serviceInfos
             $get(): Promise<services.Service>;
             // PUT /kube/{serviceName}/serviceInfos
             $put(body?: {body: services.Service}): Promise<void>;
         }
-        terminate:  {
+        terminate: {
             // POST /kube/{serviceName}/terminate
             $post(): Promise<string>;
         }
-        update:  {
+        update: {
             // POST /kube/{serviceName}/update
             $post(): Promise<void>;
         }
-        updatePolicy:  {
+        updatePolicy: {
             // PUT /kube/{serviceName}/updatePolicy
             $put(body?: {updatePolicy: kube.UpdatePolicy}): Promise<void>;
         }

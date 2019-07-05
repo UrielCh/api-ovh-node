@@ -95,50 +95,50 @@ export namespace veeamCloudConnect {
 }
 // Apis harmony
 // path /veeamCloudConnect
-export interface VeeamCloudConnect {
+export interface VeeamCloudConnect{
     // GET /veeamCloudConnect
     $get(): Promise<string[]>;
-    [keys: string]: {
+    [keys: string]:{
         // GET /veeamCloudConnect/{serviceName}
         $get(): Promise<veeamCloudConnect.Account>;
-        backupRepository:  {
+        backupRepository: {
             // GET /veeamCloudConnect/{serviceName}/backupRepository
             $get(): Promise<string[]>;
             // POST /veeamCloudConnect/{serviceName}/backupRepository
             $post(): Promise<veeamCloudConnect.Task[]>;
-            [keys: string]: {
+            [keys: string]:{
                 // DELETE /veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}
                 $delete(): Promise<veeamCloudConnect.Task[]>;
                 // GET /veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}
                 $get(): Promise<veeamCloudConnect.BackupRepository>;
-                upgradeQuota:  {
+                upgradeQuota: {
                     // POST /veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}/upgradeQuota
                     $post(body?: {newQuota: number}): Promise<veeamCloudConnect.Task[]>;
                 }
             } | any
         }
-        capabilities:  {
+        capabilities: {
             // GET /veeamCloudConnect/{serviceName}/capabilities
             $get(): Promise<veeamCloudConnect.offerCapabilities>;
         }
-        orderableUpgrade:  {
+        orderableUpgrade: {
             // GET /veeamCloudConnect/{serviceName}/orderableUpgrade
             $get(): Promise<veeamCloudConnect.Offer[]>;
         }
-        resetPassword:  {
+        resetPassword: {
             // POST /veeamCloudConnect/{serviceName}/resetPassword
             $post(): Promise<veeamCloudConnect.Task>;
         }
-        serviceInfos:  {
+        serviceInfos: {
             // GET /veeamCloudConnect/{serviceName}/serviceInfos
             $get(): Promise<services.Service>;
             // PUT /veeamCloudConnect/{serviceName}/serviceInfos
             $put(body?: {body: services.Service}): Promise<void>;
         }
-        task:  {
+        task: {
             // GET /veeamCloudConnect/{serviceName}/task
             $get(param?: {name?: string, state?: veeamCloudConnect.TaskStateEnum}): Promise<number[]>;
-            [keys: string]: {
+            [keys: string]:{
                 // GET /veeamCloudConnect/{serviceName}/task/{taskId}
                 $get(): Promise<veeamCloudConnect.Task>;
             } | any

@@ -57,21 +57,21 @@ export namespace services {
 }
 // Apis harmony
 // path /allDom
-export interface AllDom {
+export interface AllDom{
     // GET /allDom
     $get(): Promise<string[]>;
-    [keys: string]: {
+    [keys: string]:{
         // GET /allDom/{serviceName}
         $get(): Promise<allDom.AllDom>;
-        domain:  {
+        domain: {
             // GET /allDom/{serviceName}/domain
             $get(param?: {domain?: string}): Promise<string[]>;
-            [keys: string]: {
+            [keys: string]:{
                 // GET /allDom/{serviceName}/domain/{domain}
                 $get(): Promise<allDom.AllDomDomain>;
             } | any
         }
-        serviceInfos:  {
+        serviceInfos: {
             // GET /allDom/{serviceName}/serviceInfos
             $get(): Promise<services.Service>;
             // PUT /allDom/{serviceName}/serviceInfos
