@@ -32,32 +32,40 @@ let commonNSColision: { [key: string]: string } = {
 export class CodeGenerator {
     api: string;
     gen: GenApiTypes;
+    schema?: Schema;
     NSCollision = new Set<string>();
 
     constructor(api: string) {
         this.api = api;
         this.gen = new GenApiTypes();
+
     }
 
     async generate(): Promise<string> {
-        //extraNS = `OVH${fat}.`;
-        let schema = await this.gen.loadSchema(`${this.api}.json`)
+        this.schema = await this.gen.loadSchema(`${this.api}.json`)
         // start generation
         // Add extra ROOT NameSpace
-        let code = `import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';\n\n`;
+        //let code = `import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';\n\n/**\n * START API ${this.api} Models\n */\n`;
+        let code = `import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';\n\n/**\n * START API ${this.api} Models\n */\n`;
+        
+
         code = this.dumpModel(0, this.gen.models, code, '');
+        //code += this.GenAllPathSet();
+        code += `\n/**\n * END API ${this.api} Models\n */\n`;
 
         let proxyCall = 'proxy' + formatUpperCamlCase(this.api.replace(/\//g, '_'));
 
         let c1 = this.api.split('/')[1];
-        let mainClass = className(c1)// formatUpperCamlCase("Api_" + this.api.replace(/\//g, '_'));
-        // let mainClass = className(this.api._);
-        code += `export function ${proxyCall}(ovhEngine: OvhRequestable): ${mainClass} {
-    return buildOvhProxy(ovhEngine, '${this.api}');
-}\n`
-        code += this.dumpApiHarmony(0, this.gen.apis, '// Apis harmony\n');
-        code += this.dumpApi(0, schema, this.gen.apis, '// Api\n');
+        let mainClass = className(c1) // formatUpperCamlCase("Api_" + this.api.replace(/\//g, '_'));
 
+//        code += `export function ${proxyCall}(ovhEngine: OvhRequestable): ${mainClass} {\n    return buildOvhProxy(ovhEngine, '${this.api}');\n}\n`
+        code += `export function ${proxyCall}(ovhEngine: OvhRequestable): ${mainClass} {\n    return buildOvhProxy(ovhEngine, '/${c1}');\n}\n`
+        code += `export default ${proxyCall};\n`
+
+        code += `/**\n * Api Proxy model\n */`
+        code += this.dumpApiHarmony(0, this.gen.apis, '// Apis harmony\n');
+        code += `/**\n * classic Model\n */`
+        // extra alias fo bypass namespace colision errors
         for (let type of this.NSCollision) {
             code += `type ${commonNSColision[type]} = ${type};\n`
         }
@@ -82,6 +90,10 @@ export class CodeGenerator {
                 isArray = true;
             }
 
+            //if (~rawType.indexOf('.')) {
+            //    if (!commonNSColision[rawType])
+            //        commonNSColision[rawType] = formatUpperCamlCase(rawType);
+            //}
             let colistion = commonNSColision[rawType];
             if (colistion) {
                 this.NSCollision.add(rawType);
@@ -160,7 +172,7 @@ export class CodeGenerator {
         return code;
     }
 
-    aliasFilter(type: string) : string{
+    aliasFilter(type: string): string {
         let rawType: string = type;
         let isArray: boolean = false;
         let generic: string = '';
@@ -207,11 +219,15 @@ export class CodeGenerator {
         return typename;
     }
 
-    dumpApi(depth: number, schema: Schema, api: CacheApi, code: string): string {
+    /**
+     * deprecated
+     */
+    GenAllPathSet() {
+        let code = '';
         let avaliablePath = formatUpperCamlCase("Paths_" + this.api.replace(/\//g, '_'))
-        let mainClass = formatUpperCamlCase("Api_" + this.api.replace(/\//g, '_'));
+        // let mainClass = formatUpperCamlCase("Api_" + this.api.replace(/\//g, '_'));
         let indexApi = { GET: [], PUT: [], POST: [], DELETE: [] };
-        schema.apis.forEach(
+        (<Schema>this.schema).apis.forEach(
             api => api.operations.forEach(
                 op => (<any>indexApi[op.httpMethod]).push(api.path)
             )
@@ -226,9 +242,17 @@ export class CodeGenerator {
             code += `type ${avaliablePath}${mtd} = ` + arr.sort().map((a: any) => `'${a}'`).join(' |\n  ')
             code += ';\n\n'
         }
-        code += `export class ${mainClass} extends OvhWrapper {\n`;
-        code += `  constructor(engine: OvhRequestable) {\n    super(engine);\n  }\n`;
-        for (let mtd of Object.keys(indexApi)) {
+        return code;
+    }
+
+    /**
+     * 
+     * @param schema flag Call models
+     * @param api 
+     * @param code 
+     */
+    dumpApi(schema: Schema, api: CacheApi, code: string): string {
+        for (let mtd of ['GET', 'PUT', 'POST', 'DELETE']) {
             let calls = 0;
             schema.apis.sort((a, b) => a.path.localeCompare(b.path)).forEach(api => {
                 api.operations.filter(op => op.httpMethod === mtd).forEach(
@@ -238,8 +262,7 @@ export class CodeGenerator {
                         code += `   * ${api.description}\n`;
                         code += `   * ${op.description}\n`;
                         code += '   */\n';
-                        code += `  public ${mtd.toLowerCase()}(path: '${api.path}'`;
-
+                        code += `  ${mtd.toLowerCase()}(path: '${api.path}'): (`;
                         let done = new Set();
                         let params = [];
                         params.push(...op.parameters.filter(p => p.paramType == 'path').map(p => { done.add(p.name); return `${p.name}: ${this.typeFromParameter(p)}` }).sort())
@@ -276,20 +299,20 @@ export class CodeGenerator {
                             }))
                         }
                         if (params.length)
-                            code += `, params: {${params.join(', ')}}`;
+                            code += `params: {${params.join(', ')}}`;
                         // typename = this.aliasFilter(typename);
-                        code += `): Promise<${this.aliasFilter(op.responseType)}>;\n`;
+                        code += `) => Promise<${this.aliasFilter(op.responseType)}>;\n`;
                     }
                 )
             })
-            if (calls) {
-                code += `  public ${mtd.toLowerCase()}(path: ${avaliablePath}${mtd}, params?: OvhParamType): Promise<any> {\n`;
-                code += `    return super.${mtd.toLowerCase()}(path, params);\n`
-                code += `  }\n`
-            }
+            //if (calls) {
+            //    code += `  public ${mtd.toLowerCase()}(path: ${avaliablePath}${mtd}, params?: OvhParamType): Promise<any> {\n`;
+            //    code += `    return super.${mtd.toLowerCase()}(path, params);\n`
+            //    code += `  }\n`
+            //}
         }
-        code += `}\n`
-        code += `export default ${mainClass};\n`
+        // code += `}\n`
+        // code += `export default ${mainClass};\n`
         return code;
     }
 
@@ -303,8 +326,6 @@ export class CodeGenerator {
         // drop _ prefixed fields
         const keys = Object.keys(api).filter(k => !k.startsWith('_'))
 
-        //if (api._api)
-        //    code += `${ident0}/**\n${ident0} * Path:${api._api.path}\n${ident0} * ${api._api.description}\n${ident0} */\n`;
         let EOB = '';
         if (api._path) {
             EOB = `${ident0}}\n`
@@ -312,19 +333,19 @@ export class CodeGenerator {
             if (last && depth > 1) {
                 if (last.startsWith('{')) {
                     let m = last.match(/\{([^}]+)\}/);
-                    let name = m? m[1] : 'id';
+                    let name = m ? m[1] : 'id';
                     let pType = 'string | number';
-                    try{
+                    try {
                         let _api = (<API>api._api);
                         let _op = _api.operations[0];
                         let _params = _op.parameters;
-                        let _param = _params.filter(p => p.name==name)[0];
+                        let _param = _params.filter(p => p.name == name)[0];
                         pType = _param.dataType;
                         pType = this.aliasFilter(pType);
                     } catch {
                     }
                     //code += `${ident0}[keys: string]:`;
-                     code += `${ident0}$(${name}: ${pType}): `;
+                    code += `${ident0}$(${name}: ${pType}): `;
                     EOB = `${ident0}};\n` //  | any
                 } else {
                     code += `${ident0}${protectHarmonyField(last)}: `; //  /* 260 */
@@ -382,6 +403,11 @@ export class CodeGenerator {
                 console.log('Done ', keys);
             }
         }
+
+
+        if (depth === 1)
+            code += this.dumpApi(<Schema>this.schema, this.gen.apis, '// Api\n');
+
         code += EOB;
         return code;
     }

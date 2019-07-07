@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@ovh-api/api": "file:../../code/api",
-    "@ovh-api/common": "^1.2.5",
+    "@ovh-api/common": "file:../../code/common",
     "@ovh-api/domain": "file:../../packages/domain",
     "@ovh-api/hosting-web": "file:../../packages/hosting-web",
     "@ovh-api/me": "file:../../packages/me",

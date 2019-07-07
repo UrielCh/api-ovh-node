@@ -29,15 +29,12 @@ import { IncomingMessage } from 'http';
 import * as https from 'https';
 import * as querystring from 'querystring';
 import { createHash } from 'crypto';
-import { Schema } from './schema';
 import { RequestOptions } from 'http';
 import { endpoints } from './endpoints';
-import { OvhParamType, OvhRequestable } from '@ovh-api/common';
 import open from 'open';
 import { writeFile, readFileSync } from 'fs';
 import { EventEmitter } from 'events';
-
-type DebugFnc = (...args: any[]) => any;
+import { OvhRequestable, OvhParamType } from '@ovh-api/common';
 
 export interface OvhError {
     errorCode: 'INVALID_CREDENTIAL' | 'NOT_CREDENTIAL' | 'QUERY_TIME_OUT' | 'NOT_GRANTED_CALL';
@@ -61,7 +58,6 @@ export interface OvhParams {
     host?: string;
     port?: string;
     apis?: string[];
-    debug?: boolean | DebugFnc,
     accessRules?: string[] | string;
     /**
      * certCache store ans use generated certificate in a file
@@ -82,6 +78,8 @@ const wait = (duration: number) => (args?: any) => new Promise(resolve => setTim
 export interface OvhApiEvent {
     on(ev: 'request', listener: (params: { method: string, path: string, pathTemplate: string }) => void): this;
     once(ev: 'request', listener: (params: { method: string, path: string, pathTemplate: string }) => void): this;
+    on(ev: 'debug', listener: (txt: string) => void): this;
+    once(ev: 'debug', listener: (txt: string) => void): this;
 }
 
 export default class OvhApi extends EventEmitter implements OvhRequestable, OvhApiEvent {
@@ -93,8 +91,6 @@ export default class OvhApi extends EventEmitter implements OvhRequestable, OvhA
     host: string;
     port: number;
     basePath: string; // '/1.0'
-    debug?: DebugFnc;
-    warn: DebugFnc;
     accessRules: string[];
     certCache: string;
     updatingCert: boolean;
@@ -106,7 +102,6 @@ export default class OvhApi extends EventEmitter implements OvhRequestable, OvhA
         this.consumerKey = params.consumerKey || null;
         this.timeout = params.timeout;
         this.apiTimeDiff = params.apiTimeDiff || null;
-        this.warn = console.log;
         this.certCache = params.certCache || '';
         this.updatingCert = false;
         if (params.accessRules) {
@@ -133,14 +128,14 @@ export default class OvhApi extends EventEmitter implements OvhRequestable, OvhA
         }
         if (!params.appKey && !params.appSecret) {
             if (!this.consumerKey && !params.accessRules) {
-                this.warn(`Initializing Api OVH without appKey / appSecret: using Default Certificat
+                console.warn(`Initializing Api OVH without appKey / appSecret: using Default Certificat
 provide an accessRules to choose the authorisation you need
 by default I will ask for all rights`);
             }
         }
 
         // Custom configuration of the API endpoint
-        let { host, port, endpoint, debug } = params;
+        let { host, port, endpoint } = params;
         if (host) {
             this.host = host;
             this.port = Number(port) || 443;
@@ -154,13 +149,6 @@ by default I will ask for all rights`);
         }
         // params.basePath || 
         this.basePath = '/1.0';
-
-        if (typeof (debug) === 'function')
-            this.debug = debug;
-        if (debug)
-            this.debug = console.log;
-        else
-            this.debug = undefined;
         // Declared used API, will be used to check the associated schema
         if (typeof (this.appKey) !== 'string' ||
             typeof (this.appSecret) !== 'string') {
@@ -172,37 +160,10 @@ by default I will ask for all rights`);
      * 
      * @param rules 
      */
-    toAccessRules(...rules: string[]): AccessRule[] {
+    private toAccessRules(...rules: string[]): AccessRule[] {
         return <AccessRule[]>rules
             .map(s => s.split(/\s+/))
             .map(([method, path]) => ({ method, path }));
-    }
-    /**
-     * Fetch an API schema
-     *
-     * @param {Object} options: HTTP request options
-     * @param {Function} callback
-     */
-    loadSchemasRequest(options: https.RequestOptions): Promise<Schema> {
-        return new Promise((resolve, reject) => {
-            https.get(options, (res) => {
-                let body: string = '';
-                res.on('data', (chunk: string) => body += chunk)
-                    .on('end', () => {
-                        if (res.statusCode !== 200) {
-                            return reject(
-                                Error(`[OVH] Unable to load schema ${options.path}, HTTP response code: ${res.statusCode}`));
-                        }
-                        try {
-                            return resolve(<Schema>JSON.parse(body));
-                        } catch (e) {
-                            return reject(
-                                Error(`[OVH] Unable to parse the schema: ${options.path}`));
-                        }
-                    });
-            })
-                .on('error', (err) => reject(`[OVH] Unable to fetch the schemas: ${err}`));
-        })
     }
 
     /**
@@ -215,7 +176,7 @@ by default I will ask for all rights`);
      * @param {Function} callback
      * @param {Object} refer: The parent proxied object
      */
-    async request(httpMethod: string, pathTemplate: string, params?: any): Promise<any> {
+    public async request(httpMethod: string, pathTemplate: string, params?: any): Promise<any> {
         const ovhEngine = this;
         httpMethod = httpMethod.toUpperCase();
         /**
@@ -301,8 +262,8 @@ by default I will ask for all rights`);
         if (ovhEngine.listenerCount('request')) {
             ovhEngine.emit('request', { method: httpMethod, path, pathTemplate })
         }
-        if (ovhEngine.debug) {
-            ovhEngine.debug(`[OVH] API call: ${options.method} ${options.path} ${reqBody}`);
+        if (ovhEngine.listenerCount('debug')) {
+            ovhEngine.emit('debug', `[OVH] API call: ${options.method} ${options.path} ${reqBody}`);
         }
         // retry the Query thith a new cert
         const waitForCertValidation = async (consumerKey: string, validationUrl: string) => new Promise((done) => {
@@ -352,8 +313,8 @@ by default I will ask for all rights`);
                 response = null;
             }
 
-            if (ovhEngine.debug) {
-                ovhEngine.debug(`[OVH] API response to ${httpMethod} ${path}: ${body}`);
+            if (ovhEngine.listenerCount('debug')) {
+                ovhEngine.emit('debug', `[OVH] API response to ${httpMethod} ${path}: ${body}`);
             }
             if (res.statusCode === 200) {
                 return response;
@@ -447,7 +408,7 @@ by default I will ask for all rights`);
      * @param {Number|String} timestamp
      * @return {String} The signature
      */
-    signRequest(httpMethod: string, url: string, body: string, timestamp: Number) {
+    private signRequest(httpMethod: string, url: string, body: string, timestamp: Number) {
         let s = [
             this.appSecret,
             this.consumerKey,
@@ -456,7 +417,6 @@ by default I will ask for all rights`);
             body || '',
             String(timestamp)
         ];
-
         return '$1$' + createHash('sha1').update(s.join('+')).digest('hex');
     }
 }

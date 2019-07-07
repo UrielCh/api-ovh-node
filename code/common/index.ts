@@ -14,67 +14,89 @@ export interface OvhRequestable {
       * @param path: The request path with {pathParams}
       * @param params: The request parameters (passed as query string or body params)
       */
-    requestPromised(httpMethod: string, path: string, params?: OvhParamType): Promise<any>;
+    request(httpMethod: string, path: string, params?: OvhParamType): Promise<any>;
 }
 
-/**
- * Parent class of all Ovh Api helper
- */
-export class OvhWrapper {
-    /**
-     * The Ovh Raw engine
-     * can be the official ovh api or the new Typescript engine
-     * ovh must implements `requestPromised`
-     */
-    private ovh: OvhRequestable;
-    constructor(ovh: OvhRequestable) {
-        this.ovh = ovh;
+const commonGet = (key: string, target: OvhProxyApi) => {
+    if (key.startsWith('$')) {
+        if (key == '$') {
+            return (id: any) => {
+                let child = new OvhProxyApi(target._ovhEngine, target._path + '/' + String(id));
+                return new Proxy(child, handlerChild);
+            }
+        }
+        let fnc = (params: any) => {
+            let mtd = key.substring(1);
+            return target._ovhEngine.request(mtd, target._path, params);
+        }
+        return fnc.bind(target._ovhEngine);
     }
-
-    protected get(path: string, params?: OvhParamType): Promise<any> {
-        return this.ovh.requestPromised('GET', path, params)
-    }
-
-    protected put(path: string, params?: OvhParamType): Promise<any> {
-        return this.ovh.requestPromised('PUT', path, params)
-    }
-
-    protected post(path: string, params?: OvhParamType): Promise<any> {
-        return this.ovh.requestPromised('POST', path, params)
-    }
-
-    protected delete(path: string, params?: OvhParamType): Promise<any> {
-        return this.ovh.requestPromised('DELETE', path, params)
-    }
+    if (key.startsWith('_'))
+        key = key.substring(1);
+    let child = new OvhProxyApi(target._ovhEngine, target._path + '/' + key);
+    return new Proxy(child, handlerChild);
 }
 
-const handler = <ProxyHandler<OvhProxyApi>>{
+
+const handlerChild = <ProxyHandler<OvhProxyApi>>{
     construct(target: OvhProxyApi, argArray: any, newTarget?: any) {
         console.log(argArray);
         console.log(newTarget);
         return target;
     },
     get(target: OvhProxyApi, p: PropertyKey, receiver: any) {
-        let key = p.toString();
-        if (key == 'toString' || key == 'valueOf' || typeof p == 'symbol')
+        if (typeof p == 'symbol')
             return (<any>target)[p];
-        if (key.startsWith('$')) {
-            if (key == '$') {
-                return (id:any) => {
-                    let child = new OvhProxyApi(target._ovhEngine, target._path + '/' + String(id));
-                    return new Proxy(child, handler);
-                }
-            }
-            let fnc = (params: any) => {
-                let mtd = key.substring(1);
-                return target._ovhEngine.requestPromised(mtd, target._path, params);
-            }
-            return fnc.bind(target._ovhEngine);
+        let key = p.toString();
+        switch (key) {
+            case 'toString':
+            case 'valueOf':
+                return (<any>target)[p];
         }
-        let child = new OvhProxyApi(target._ovhEngine, target._path + '/' + key);
-        return new Proxy(child, handler);
+        return commonGet(key, target);
     }
 }
+
+const handlerRoot = <ProxyHandler<OvhProxyApi>>{
+    construct(target: OvhProxyApi, argArray: any, newTarget?: any) {
+        console.log(argArray);
+        console.log(newTarget);
+        return target;
+    },
+    get(target: OvhProxyApi, p: PropertyKey, receiver: any) {
+        if (typeof p == 'symbol')
+            return (<any>target)[p];
+        let key = p.toString();
+        switch (key) {
+            case 'toString':
+            case 'valueOf':
+                return (<any>target)[p];
+            case 'addListener':
+            case 'on':
+            case 'once':
+            case 'prependListener':
+            case 'prependOnceListener':
+            case 'removeListener':
+            case 'off':
+            case 'removeAllListeners':
+            case 'setMaxListeners':
+            case 'getMaxListeners':
+            case 'listeners':
+            case 'rawListeners':
+            case 'emit':
+            case 'eventNames':
+            case 'listenerCount':
+                return (<any>target)[p];
+            case 'get':
+            case 'put':
+            case 'post':
+            case 'delete':
+                return (path: string) => (params: OvhParamType) => target._ovhEngine.request(key, path, params)
+        }
+        return commonGet(key, target);
+    }
+}
+
 class OvhProxyApi {
     public _ovhEngine: OvhRequestable;
     public _path: string = '';
@@ -88,5 +110,5 @@ class OvhProxyApi {
 }
 
 export function buildOvhProxy(ovhEngine: OvhRequestable, path: string): any {
-    return <any>new Proxy(new OvhProxyApi(ovhEngine, path), handler);
+    return <any>new Proxy(new OvhProxyApi(ovhEngine, path), handlerRoot);
 }

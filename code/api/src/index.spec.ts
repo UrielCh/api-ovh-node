@@ -7,7 +7,7 @@ const config: OvhParams = {
   certCache: '../../tokenTest.json'
 };
 const ovhEngine = new Ovh(config);
-const api = new ApiMe(ovhEngine);
+const api = ApiMe(ovhEngine);
 const proxy = proxyMe(ovhEngine);
 
 describe('OvhMe', () => {
@@ -16,7 +16,7 @@ describe('OvhMe', () => {
     ovhEngine.on('request', ({ method, path, pathTemplate }) => {
       console.log(`sending request ${method} ${pathTemplate}`);
     });
-    let constact = await api.get('/me');
+    let constact = await api.get('/me')();
     assert.match(constact.nichandle, /[a-z]{2}[0-9]+-ovh/, 'have nichandle');
 
     let constact2 = await proxy.$get();// (<Me>test).$get();
