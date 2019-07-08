@@ -1,6 +1,6 @@
 import { EOL } from 'os'
 import fse from 'fs-extra'
-import ApiMe, { NichandleNichandle, BillingBill } from '@ovh-api/me'
+import ApiMe, { nichandle, billing } from '@ovh-api/me'
 import Ovh, { OvhParams } from '@ovh-api/api'
 import path from 'path'
 import fetch from 'node-fetch'
@@ -63,8 +63,8 @@ async function main(root: string, type: 'pdf' | 'html') {
     }
   } catch (e) { console.error(e) }
   let ovh = new Ovh(param)
-  const apiMe = new ApiMe(ovh)
-  const me: NichandleNichandle = await apiMe.get('/me')
+  const apiMe = ApiMe(ovh)
+  const me: nichandle.Nichandle = await apiMe.get('/me')()
   if (program.token) {
     console.log(`Saving generarted token for next time in ${program.token}`)
     let { appKey, appSecret, consumerKey } = ovh
@@ -89,12 +89,12 @@ async function main(root: string, type: 'pdf' | 'html') {
       });
   }
   const doneDl = new Set(await listDir(dest, type))
-  let billIds = await apiMe.get('/me/bill')
+  let billIds = await apiMe.get('/me/bill')({})
   billIds = billIds
     .filter(id => (!doneDl.has(id) && !dbInvoice.has(id)))
 
   const getInvoice = async (billId: string) => {
-    const billData: BillingBill = await apiMe.get('/me/bill/{billId}', { billId })
+    const billData: billing.Bill = await apiMe.get('/me/bill/{billId}')({ billId })
     const date = new Date(billData.date);//.getFullYear()
     let year;
     let month;

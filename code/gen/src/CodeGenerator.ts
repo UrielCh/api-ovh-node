@@ -47,7 +47,7 @@ export class CodeGenerator {
         // Add extra ROOT NameSpace
         //let code = `import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';\n\n/**\n * START API ${this.api} Models\n */\n`;
         let code = `import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';\n\n/**\n * START API ${this.api} Models\n */\n`;
-        
+
 
         code = this.dumpModel(0, this.gen.models, code, '');
         //code += this.GenAllPathSet();
@@ -58,7 +58,7 @@ export class CodeGenerator {
         let c1 = this.api.split('/')[1];
         let mainClass = className(c1) // formatUpperCamlCase("Api_" + this.api.replace(/\//g, '_'));
 
-//        code += `export function ${proxyCall}(ovhEngine: OvhRequestable): ${mainClass} {\n    return buildOvhProxy(ovhEngine, '${this.api}');\n}\n`
+        //        code += `export function ${proxyCall}(ovhEngine: OvhRequestable): ${mainClass} {\n    return buildOvhProxy(ovhEngine, '${this.api}');\n}\n`
         code += `export function ${proxyCall}(ovhEngine: OvhRequestable): ${mainClass} {\n    return buildOvhProxy(ovhEngine, '/${c1}');\n}\n`
         code += `export default ${proxyCall};\n`
 
@@ -265,7 +265,9 @@ export class CodeGenerator {
                         code += `  ${mtd.toLowerCase()}(path: '${api.path}'): (`;
                         let done = new Set();
                         let params = [];
+                        let mandatoryParams = 0;
                         params.push(...op.parameters.filter(p => p.paramType == 'path').map(p => { done.add(p.name); return `${p.name}: ${this.typeFromParameter(p)}` }).sort())
+                        mandatoryParams += params.length;
                         let paramType = (mtd == 'GET') ? 'query' : 'body';
                         let body = op.parameters.filter(p => p.paramType == paramType);
                         if (body.length == 1 && body[0].name == null) {
@@ -279,6 +281,8 @@ export class CodeGenerator {
                                     let param = `${protectJsonKey(propName)}`;
                                     if (!p.required)
                                         param += '?'
+                                    else
+                                        mandatoryParams++;
                                     param += ': ' + this.typeFromParameter(p);
                                     params.push(param)
                                 }
@@ -294,12 +298,15 @@ export class CodeGenerator {
                                 let param = `${protectJsonKey(p.name || '')}`;
                                 if (!p.required)
                                     param += '?'
+                                else
+                                    mandatoryParams++;
                                 param += ': ' + this.typeFromParameter(p);
                                 return param;
                             }))
                         }
-                        if (params.length)
+                        if (params.length) {
                             code += `params: {${params.join(', ')}}`;
+                        }
                         // typename = this.aliasFilter(typename);
                         code += `) => Promise<${this.aliasFilter(op.responseType)}>;\n`;
                     }

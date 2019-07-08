@@ -69,14 +69,13 @@ async function main() {
         try {
             await fse.stat(fn);
             rwfile = false;
-            // "@ovh-api/common": "^1.2.5"
         } catch { }
-        rwfile = true;
+        //rwfile = true;
         if (rwfile)
             await fse.writeJSON(fn, {
                 "name": `@ovh-api/${flat}`,
                 "description": `Add typing to to ovh api ${flat}`,
-                "version": "1.3.0",
+                "version": "2.0.0",
                 "typings": "index.d.ts",
                 "license": "MIT",
                 "author": "Uriel Chemouni <uchemouni@gmail.com>",
@@ -103,7 +102,7 @@ async function main() {
         rwfile = true;
         try {
             await fse.stat(fn);
-            //rwfile = false;
+            rwfile = false;
         } catch (e) {
         }
         if (rwfile)
