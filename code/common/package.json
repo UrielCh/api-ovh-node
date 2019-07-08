@@ -1,9 +1,9 @@
 {
   "name": "@ovh-api/common",
-  "description": "common class used by new syntax",
+  "description": "common class used to enable Ovh Api new calls Syntax",
   "version": "1.3.0",
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
+  "main": "index.js",
+  "typings": "index.d.ts",
   "license": "MIT",
   "dependencies": {},
   "gitHead": "b9fec53f25067fa01d341adc086a63ef2c2a5f62",

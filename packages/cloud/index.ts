@@ -707,7 +707,7 @@ export namespace cloud {
             state: cloud.kube.FlavorState;
         }
         //cloud.kube.FlavorCategory
-        export type FlavorCategory = "c" | "g" | "t" | "b"
+        export type FlavorCategory = "c" | "g" | "t" | "b" | "r"
         //cloud.kube.FlavorState
         export type FlavorState = "available" | "unavailable"
         //cloud.kube.Kubeconfig
@@ -1939,7 +1939,7 @@ export interface Cloud{
                 // GET /cloud/project/{serviceName}/user
                 $get(): Promise<cloud.user.User[]>;
                 // POST /cloud/project/{serviceName}/user
-                $post(body?: {description?: string, role?: cloud.user.RoleEnum}): Promise<cloud.user.UserDetail>;
+                $post(body?: {description?: string, role?: cloud.user.RoleEnum, roles?: cloud.user.RoleEnum[]}): Promise<cloud.user.UserDetail>;
                 $(userId: number): {
                     // DELETE /cloud/project/{serviceName}/user/{userId}
                     $delete(): Promise<void>;
@@ -2854,7 +2854,7 @@ export interface Cloud{
    * Missing description
    * Create user
    */
-  post(path: '/cloud/project/{serviceName}/user'): (params: {serviceName: string, description?: string, role?: cloud.user.RoleEnum}) => Promise<cloud.user.UserDetail>;
+  post(path: '/cloud/project/{serviceName}/user'): (params: {serviceName: string, description?: string, role?: cloud.user.RoleEnum, roles?: cloud.user.RoleEnum[]}) => Promise<cloud.user.UserDetail>;
   /**
    * Missing description
    * Regenerate user password

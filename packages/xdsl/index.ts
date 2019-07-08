@@ -30,8 +30,43 @@ export namespace email {
     }
 }
 export namespace order {
+    //order.Contract
+    // fullName: order.Contract.Contract
+    export interface Contract {
+        content: string;
+        name: string;
+        url: string;
+    }
     //order.CurrencyCodeEnum
     export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
+    //order.Order
+    // fullName: order.Order.Order
+    export interface Order {
+        contracts: order.Contract[];
+        details: order.OrderDetail[];
+        orderId?: number;
+        prices: order.OrderPrices;
+        url?: string;
+    }
+    //order.OrderDetail
+    // fullName: order.OrderDetail.OrderDetail
+    export interface OrderDetail {
+        description: string;
+        detailType?: order.OrderDetailTypeEnum;
+        domain: string;
+        quantity: number;
+        totalPrice: orderPrice;
+        unitPrice: orderPrice;
+    }
+    //order.OrderDetailTypeEnum
+    export type OrderDetailTypeEnum = "ACCESSORY" | "CAUTION" | "CHOOSED" | "CONSUMPTION" | "CREATION" | "DELIVERY" | "DURATION" | "GIFT" | "INSTALLATION" | "LICENSE" | "MUTE" | "OTHER" | "OUTPLAN" | "QUANTITY" | "REFUND" | "RENEW" | "SPECIAL" | "SWITCH" | "TRANSFER" | "VOUCHER"
+    //order.OrderPrices
+    // fullName: order.OrderPrices.OrderPrices
+    export interface OrderPrices {
+        tax: orderPrice;
+        withTax: orderPrice;
+        withoutTax: orderPrice;
+    }
     //order.Price
     // fullName: order.Price.Price
     export interface Price {
@@ -1336,6 +1371,10 @@ export interface Xdsl{
                 // POST /xdsl/{serviceName}/modem/callWaiting
                 $post(body?: {callWaiting: xdsl.ServiceStatusEnum}): Promise<xdsl.Task>;
             }
+            comfortExchange: {
+                // POST /xdsl/{serviceName}/modem/comfortExchange
+                $post(body?: {contactShipping?: string}): Promise<order.Order>;
+            }
             connectedDevices: {
                 // GET /xdsl/{serviceName}/modem/connectedDevices
                 $get(): Promise<string[]>;
@@ -2041,6 +2080,11 @@ export interface Xdsl{
    */
   post(path: '/xdsl/{serviceName}/modem/callWaiting'): (params: {serviceName: string, callWaiting: xdsl.ServiceStatusEnum}) => Promise<xdsl.Task>;
   /**
+   * comfortExchange operations
+   * Replace access modem by last model, fees will be applied.
+   */
+  post(path: '/xdsl/{serviceName}/modem/comfortExchange'): (params: {serviceName: string, contactShipping?: string}) => Promise<order.Order>;
+  /**
    * contentSharing operations
    * Change the status of contentSharing on modem
    */
@@ -2258,8 +2302,8 @@ export interface Xdsl{
 }
 /**
  * classic Model
- */type xdslDslTypeEnum = xdsl.DslTypeEnum;
-type orderPrice = order.Price;
+ */type orderPrice = order.Price;
+type xdslDslTypeEnum = xdsl.DslTypeEnum;
 type xdslDeconsolidationEnum = xdsl.DeconsolidationEnum;
 type xdslLineSectionLength = xdsl.LineSectionLength;
 type xdsleligibilityAddress = xdsl.eligibility.Address;
