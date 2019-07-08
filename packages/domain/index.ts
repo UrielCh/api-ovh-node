@@ -586,9 +586,9 @@ export interface Domain{
             }
             record: {
                 // GET /domain/zone/{zoneName}/record
-                $get(params?: {fieldType?: zone.NamedResolutionFieldTypeEnum, subDomain?: string}): Promise<number[]>;
+                $get(params?: {fieldType?: zoneNamedResolutionFieldTypeEnum, subDomain?: string}): Promise<number[]>;
                 // POST /domain/zone/{zoneName}/record
-                $post(params: {fieldType: zone.NamedResolutionFieldTypeEnum, subDomain?: string, target: string, ttl?: number}): Promise<domain.zone.Record>;
+                $post(params: {fieldType: zoneNamedResolutionFieldTypeEnum, subDomain?: string, target: string, ttl?: number}): Promise<domain.zone.Record>;
                 $(id: number): {
                     // DELETE /domain/zone/{zoneName}/record/{id}
                     $delete(): Promise<void>;
@@ -602,7 +602,7 @@ export interface Domain{
                 // GET /domain/zone/{zoneName}/redirection
                 $get(params?: {subDomain?: string}): Promise<number[]>;
                 // POST /domain/zone/{zoneName}/redirection
-                $post(params: {description?: string, keywords?: string, subDomain?: string, target: string, title?: string, type: zone.RedirectionTypeEnum}): Promise<domain.zone.Redirection>;
+                $post(params: {description?: string, keywords?: string, subDomain?: string, target: string, title?: string, type: zoneRedirectionTypeEnum}): Promise<domain.zone.Redirection>;
                 $(id: number): {
                     // DELETE /domain/zone/{zoneName}/redirection/{id}
                     $delete(): Promise<void>;

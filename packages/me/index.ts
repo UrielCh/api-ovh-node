@@ -2504,7 +2504,7 @@ export interface Me{
             // GET /me/telephony/defaultIpRestriction
             $get(): Promise<number[]>;
             // POST /me/telephony/defaultIpRestriction
-            $post(params: {subnet: string, type: telephony.ProtocolEnum}): Promise<telephony.DefaultIpRestriction>;
+            $post(params: {subnet: string, type: telephonyProtocolEnum}): Promise<telephony.DefaultIpRestriction>;
             $(id: number): {
                 // DELETE /me/telephony/defaultIpRestriction/{id}
                 $delete(): Promise<void>;

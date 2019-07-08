@@ -1153,7 +1153,7 @@ export interface Xdsl{
             $get(params: {id: string}): Promise<xdsl.eligibility.Eligibility>;
             address: {
                 // POST /xdsl/eligibility/test/address
-                $post(params: {address: xdsl.eligibility.Address}): Promise<xdsl.AsyncTask<xdsl.eligibility.Eligibility>>;
+                $post(params: {address: xdsleligibilityAddress}): Promise<xdsl.AsyncTask<xdsl.eligibility.Eligibility>>;
             }
             fiber: {
                 building: {
@@ -1163,7 +1163,7 @@ export interface Xdsl{
             }
             line: {
                 // POST /xdsl/eligibility/test/line
-                $post(params: {lineNumber: string, lineStatus: xdsl.eligibility.LandlineStatusEnum}): Promise<xdsl.AsyncTask<xdsl.eligibility.Eligibility>>;
+                $post(params: {lineNumber: string, lineStatus: xdsleligibilityLandlineStatusEnum}): Promise<xdsl.AsyncTask<xdsl.eligibility.Eligibility>>;
             }
         }
     }

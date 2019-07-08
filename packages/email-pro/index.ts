@@ -344,7 +344,7 @@ export interface Email{
             }
             domain: {
                 // GET /email/pro/{service}/domain
-                $get(params?: {state?: email.pro.ObjectStateEnum}): Promise<string[]>;
+                $get(params?: {state?: emailproObjectStateEnum}): Promise<string[]>;
                 // POST /email/pro/{service}/domain
                 $post(params: {configureAutodiscover?: boolean, configureMx?: boolean, mxRelay?: string, name: string, type: email.pro.DomainTypeEnum}): Promise<email.pro.Task>;
                 $(domainName: string): {

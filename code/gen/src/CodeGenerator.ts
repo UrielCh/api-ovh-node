@@ -293,17 +293,17 @@ export class CodeGenerator {
                                 }
                             }
                         } else {
-                            params.push(...body.map(p => {
-                                const name = String(p.name);
-                                if (done.has(name))
-                                    return;
-                                let text = protectJsonKey(name);
-                                if (!p.required)
-                                    text += '?'
-                                else
-                                    mandatoryParams++;
-                                return `${text}: ${this.typeFromParameter(p)}`;
-                            }))
+                            params.push(...body
+                                .filter(p => !done.has(p.name))
+                                .map(p => {
+                                    const name = String(p.name);
+                                    let text = protectJsonKey(name);
+                                    if (!p.required)
+                                        text += '?'
+                                    else
+                                        mandatoryParams++;
+                                    return `${text}: ${this.typeFromParameter(p)}`;
+                                }))
                         }
                         if (params.length) {
                             code += 'params';
@@ -397,17 +397,17 @@ export class CodeGenerator {
                         }
                     }
                 } else {
-                    params.push(...body.map(p => {
-                        const name = String(p.name);
-                        // if (done.has(name))
-                        // return;
-                        let text = protectJsonKey(name);
-                        if (!p.required)
-                            text += '?';
-                        else
-                            mandatoryParams++;
-                        return `${text}: ${this.fullTypeExp(p)}`;
-                    }))
+                    params.push(...body
+                        // no filtrage dupalicate
+                        .map(p => {
+                            const name = String(p.name);
+                            let text = protectJsonKey(name);
+                            if (!p.required)
+                                text += '?';
+                            else
+                                mandatoryParams++;
+                            return `${text}: ${this.typeFromParameter(p)}`; // was fullTypeExp
+                        }))
                 }
                 if (params.length) {
                     code += 'params';

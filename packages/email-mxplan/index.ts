@@ -309,7 +309,7 @@ export interface Email{
             }
             domain: {
                 // GET /email/mxplan/{service}/domain
-                $get(params?: {state?: email.pro.ObjectStateEnum}): Promise<string[]>;
+                $get(params?: {state?: emailproObjectStateEnum}): Promise<string[]>;
                 $(domainName: string): {
                     // GET /email/mxplan/{service}/domain/{domainName}
                     $get(): Promise<email.mxplan.Domain>;

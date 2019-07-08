@@ -102,7 +102,7 @@ export interface Veeam{
             }
             task: {
                 // GET /veeam/veeamEnterprise/{serviceName}/task
-                $get(params?: {name?: string, state?: veeamEnterprise.TaskStateEnum}): Promise<number[]>;
+                $get(params?: {name?: string, state?: veeamEnterpriseTaskStateEnum}): Promise<number[]>;
                 $(taskId: number): {
                     // GET /veeam/veeamEnterprise/{serviceName}/task/{taskId}
                     $get(): Promise<veeam.veeamEnterprise.Task>;
