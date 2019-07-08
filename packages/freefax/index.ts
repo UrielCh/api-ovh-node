@@ -146,11 +146,11 @@ export interface Freefax{
             $put(params?: {annouceMessage?: string, audioFormat?: telephony.ServiceVoicemailAudioFormatEnum, doNotRecord?: boolean, forcePassword?: boolean, fromEmail?: string, fromName?: string, fullGreetingSoundId?: number, greetingType?: telephony.VoicemailGreetingEnum, isNewVersion?: boolean, keepMessage?: boolean, redirectionEmails?: telephony.ServiceVoicemailNotifications[], shortGreetingSoundId?: number, temporaryGreetingActivated?: boolean, temporaryGreetingSoundId?: number, unreadMessages?: number}): Promise<void>;
             changePassword: {
                 // POST /freefax/{serviceName}/voicemail/changePassword
-                $post(params?: {password: string}): Promise<void>;
+                $post(params: {password: string}): Promise<void>;
             }
             changeRouting: {
                 // POST /freefax/{serviceName}/voicemail/changeRouting
-                $post(params?: {routing: telephony.VoicefaxRoutingEnum}): Promise<void>;
+                $post(params: {routing: telephony.VoicefaxRoutingEnum}): Promise<void>;
             }
             routing: {
                 // GET /freefax/{serviceName}/voicemail/routing

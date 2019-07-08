@@ -171,13 +171,13 @@ export interface License{
             }
             usageStatistics: {
                 // GET /license/office/{serviceName}/usageStatistics
-                $get(params?: {from: string, to: string}): Promise<license.office.Statistics[]>;
+                $get(params: {from: string, to: string}): Promise<license.office.Statistics[]>;
             }
             user: {
                 // GET /license/office/{serviceName}/user
                 $get(params?: {activationEmail?: string, firstName?: string, lastName?: string, licences?: license.office.LicenceEnum[]}): Promise<string[]>;
                 // POST /license/office/{serviceName}/user
-                $post(params?: {domain: string, firstName?: string, lastName?: string, licence: license.office.LicenceEnum, login: string}): Promise<license.office.OfficeTask>;
+                $post(params: {domain: string, firstName?: string, lastName?: string, licence: license.office.LicenceEnum, login: string}): Promise<license.office.OfficeTask>;
                 $(activationEmail: string): {
                     // DELETE /license/office/{serviceName}/user/{activationEmail}
                     $delete(): Promise<license.office.OfficeTask>;
@@ -187,7 +187,7 @@ export interface License{
                     $put(params?: {activationEmail?: string, deleteAtExpiration?: boolean, firstName?: string, isVirtual?: boolean, lastName?: string, licences?: license.office.LicenceEnum[], status?: license.office.UserStateEnum, taskPendingId?: number}): Promise<void>;
                     changePassword: {
                         // POST /license/office/{serviceName}/user/{activationEmail}/changePassword
-                        $post(params?: {notifyEmail?: string, password?: string, shouldSendMail: boolean}): Promise<license.office.OfficeTask>;
+                        $post(params: {notifyEmail?: string, password?: string, shouldSendMail: boolean}): Promise<license.office.OfficeTask>;
                     }
                 };
             }

@@ -273,8 +273,9 @@ export class CodeGenerator {
                         //
                         let paramType = (mtd == 'GET') ? 'query' : 'body';
                         let body = op.parameters.filter(p => p.paramType == paramType);
+                        body = body.sort((a, b) => (<string>a.name).localeCompare(<string>b.name))
                         if (body.length == 1 && body[0].name == null) {
-                            let modelsProp = schema.models[body[0].fullType];
+                            let modelsProp = (<Schema>this.schema).models[body[0].fullType];
                             if (!modelsProp || !modelsProp.properties)
                                 console.error(`ERROR in model Body Type ${body[0].fullType} do not exists`)
                             else {
@@ -292,17 +293,16 @@ export class CodeGenerator {
                                 }
                             }
                         } else {
-                            body.sort((a, b) => (<string>a.name).localeCompare(<string>b.name))
                             params.push(...body.map(p => {
-                                if (done.has(p.name))
+                                const name = String(p.name);
+                                if (done.has(name))
                                     return;
-                                let param = `${protectJsonKey(p.name || '')}`;
+                                let text = protectJsonKey(name);
                                 if (!p.required)
-                                    param += '?'
+                                    text += '?'
                                 else
                                     mandatoryParams++;
-                                param += ': ' + this.typeFromParameter(p);
-                                return param;
+                                return `${text}: ${this.typeFromParameter(p)}`;
                             }))
                         }
                         if (params.length) {
@@ -370,22 +370,19 @@ export class CodeGenerator {
                 code += `${ident}$${op.httpMethod.toLowerCase()}(`;
 
                 let done = new Set();
-                // let body: Parameter[] = [];
+                let params: string[] = [];
                 let mandatoryParams = 0;
 
                 // no path param to handle in Poxymode
-
+                //
                 let paramType = (op.httpMethod == 'GET') ? 'query' : 'body';
                 let body = op.parameters.filter(p => p.paramType === paramType)
-                if (body.length)
-                    code += 'params?: {'
                 body = body.sort((a, b) => (<string>a.name).localeCompare(<string>b.name))
-                let array: string[] = [];
                 if (body.length == 1 && body[0].name == null) {
                     let modelsProp = (<Schema>this.schema).models[body[0].fullType];
                     if (!modelsProp || !modelsProp.properties)
                         console.error(`ERROR in model Body Type ${body[0].fullType} do not exists`)
-                    else
+                    else {
                         for (let propName of Object.keys(modelsProp.properties).sort()) {
                             let p = modelsProp.properties[propName];
                             if (done.has(propName))
@@ -396,21 +393,28 @@ export class CodeGenerator {
                             else
                                 mandatoryParams++;
                             param += ': ' + this.typeFromParameter(p);
-                            //code += param;
-                            array.push(param)
+                            params.push(param)
                         }
-
+                    }
                 } else {
-                    array = body.map(param => {
-                        let text = protectJsonKey(String(param.name || 'body'));
-                        if (!param.required)
-                            text += "?";
-                        return `${text}: ${this.fullTypeExp(param)}`;
-                    })
+                    params.push(...body.map(p => {
+                        const name = String(p.name);
+                        // if (done.has(name))
+                        // return;
+                        let text = protectJsonKey(name);
+                        if (!p.required)
+                            text += '?';
+                        else
+                            mandatoryParams++;
+                        return `${text}: ${this.fullTypeExp(p)}`;
+                    }))
                 }
-                code += array.join(', ');
-                if (body.length)
-                    code += '}'
+                if (params.length) {
+                    code += 'params';
+                    if (mandatoryParams == 0)
+                        code += '?';
+                    code += `: {${params.join(', ')}}`
+                }
                 code += `): `;
                 let retType = op.responseFullType;
                 if (!retType)

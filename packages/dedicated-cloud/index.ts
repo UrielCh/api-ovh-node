@@ -884,7 +884,7 @@ export interface DedicatedCloud{
             // GET /dedicatedCloud/{serviceName}/allowedNetwork
             $get(): Promise<number[]>;
             // POST /dedicatedCloud/{serviceName}/allowedNetwork
-            $post(params?: {description?: string, network: string}): Promise<dedicatedCloud.Task>;
+            $post(params: {description?: string, network: string}): Promise<dedicatedCloud.Task>;
             $(networkAccessId: number): {
                 // DELETE /dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}
                 $delete(): Promise<dedicatedCloud.Task>;
@@ -900,11 +900,11 @@ export interface DedicatedCloud{
                         $get(): Promise<dedicatedCloud.Task>;
                         changeMaintenanceExecutionDate: {
                             // POST /dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task/{taskId}/changeMaintenanceExecutionDate
-                            $post(params?: {executionDate: string}): Promise<dedicatedCloud.Task>;
+                            $post(params: {executionDate: string}): Promise<dedicatedCloud.Task>;
                         }
                         resetTaskState: {
                             // POST /dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task/{taskId}/resetTaskState
-                            $post(params?: {reason: string}): Promise<dedicatedCloud.Task>;
+                            $post(params: {reason: string}): Promise<dedicatedCloud.Task>;
                         }
                     };
                 }
@@ -934,13 +934,13 @@ export interface DedicatedCloud{
         }
         confirmTermination: {
             // POST /dedicatedCloud/{serviceName}/confirmTermination
-            $post(params?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+            $post(params: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
         }
         datacenter: {
             // GET /dedicatedCloud/{serviceName}/datacenter
             $get(): Promise<number[]>;
             // POST /dedicatedCloud/{serviceName}/datacenter
-            $post(params?: {commercialRangeName: string, vrackName?: string}): Promise<dedicatedCloud.Task>;
+            $post(params: {commercialRangeName: string, vrackName?: string}): Promise<dedicatedCloud.Task>;
             $(datacenterId: number): {
                 // DELETE /dedicatedCloud/{serviceName}/datacenter/{datacenterId}
                 $delete(): Promise<dedicatedCloud.Task>;
@@ -953,7 +953,7 @@ export interface DedicatedCloud{
                     $get(): Promise<dedicatedCloud.Backup>;
                     changeProperties: {
                         // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/changeProperties
-                        $post(params?: {backupDurationInReport: boolean, backupOffer: dedicatedCloud.backup.OfferTypeEnum, backupSizeInReport: boolean, diskSizeInReport: boolean, fullDayInReport: boolean, mailAddress?: string, restorePointInReport: boolean, scheduleHour?: string}): Promise<dedicatedCloud.Task>;
+                        $post(params: {backupDurationInReport: boolean, backupOffer: dedicatedCloud.backup.OfferTypeEnum, backupSizeInReport: boolean, diskSizeInReport: boolean, fullDayInReport: boolean, mailAddress?: string, restorePointInReport: boolean, scheduleHour?: string}): Promise<dedicatedCloud.Task>;
                     }
                     disable: {
                         // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/disable
@@ -968,11 +968,11 @@ export interface DedicatedCloud{
                     zerto: {
                         disable: {
                             // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/disable
-                            $post(params?: {secondaryDatacenterId: number, secondaryServiceName: string}): Promise<dedicatedCloud.Task>;
+                            $post(params: {secondaryDatacenterId: number, secondaryServiceName: string}): Promise<dedicatedCloud.Task>;
                         }
                         enable: {
                             // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/enable
-                            $post(params?: {primaryEndpointIp: string, secondaryDatacenterId: number, secondaryEndpointIp: string, secondaryServiceName: string}): Promise<dedicatedCloud.Task>;
+                            $post(params: {primaryEndpointIp: string, secondaryDatacenterId: number, secondaryEndpointIp: string, secondaryServiceName: string}): Promise<dedicatedCloud.Task>;
                         }
                         generateZsspPassword: {
                             // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/generateZsspPassword
@@ -986,7 +986,7 @@ export interface DedicatedCloud{
                     zertoSingle: {
                         configureVpn: {
                             // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/configureVpn
-                            $post(params?: {preSharedKey: string, remoteEndpointInternalIp: string, remoteEndpointPublicIp: string, remoteVraNetwork?: string, remoteZvmInternalIp: string}): Promise<dedicatedCloud.Task>;
+                            $post(params: {preSharedKey: string, remoteEndpointInternalIp: string, remoteEndpointPublicIp: string, remoteVraNetwork?: string, remoteZvmInternalIp: string}): Promise<dedicatedCloud.Task>;
                         }
                         defaultLocalVraNetwork: {
                             // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/defaultLocalVraNetwork
@@ -998,7 +998,7 @@ export interface DedicatedCloud{
                         }
                         enable: {
                             // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/enable
-                            $post(params?: {localVraNetwork: string, ovhEndpointIp: string, remoteVraNetwork: string}): Promise<dedicatedCloud.Task>;
+                            $post(params: {localVraNetwork: string, ovhEndpointIp: string, remoteVraNetwork: string}): Promise<dedicatedCloud.Task>;
                         }
                     }
                 }
@@ -1024,11 +1024,11 @@ export interface DedicatedCloud{
                                 $get(): Promise<dedicatedCloud.Task>;
                                 changeMaintenanceExecutionDate: {
                                     // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task/{taskId}/changeMaintenanceExecutionDate
-                                    $post(params?: {executionDate: string}): Promise<dedicatedCloud.Task>;
+                                    $post(params: {executionDate: string}): Promise<dedicatedCloud.Task>;
                                 }
                                 resetTaskState: {
                                     // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task/{taskId}/resetTaskState
-                                    $post(params?: {reason: string}): Promise<dedicatedCloud.Task>;
+                                    $post(params: {reason: string}): Promise<dedicatedCloud.Task>;
                                 }
                             };
                         }
@@ -1042,7 +1042,7 @@ export interface DedicatedCloud{
                         $get(): Promise<dedicatedCloud.Host>;
                         addHostSpare: {
                             // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/addHostSpare
-                            $post(params?: {reason: string}): Promise<dedicatedCloud.Task>;
+                            $post(params: {reason: string}): Promise<dedicatedCloud.Task>;
                         }
                         hourlyConsumption: {
                             // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/hourlyConsumption
@@ -1060,11 +1060,11 @@ export interface DedicatedCloud{
                                 $get(): Promise<dedicatedCloud.Task>;
                                 changeMaintenanceExecutionDate: {
                                     // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task/{taskId}/changeMaintenanceExecutionDate
-                                    $post(params?: {executionDate: string}): Promise<dedicatedCloud.Task>;
+                                    $post(params: {executionDate: string}): Promise<dedicatedCloud.Task>;
                                 }
                                 resetTaskState: {
                                     // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task/{taskId}/resetTaskState
-                                    $post(params?: {reason: string}): Promise<dedicatedCloud.Task>;
+                                    $post(params: {reason: string}): Promise<dedicatedCloud.Task>;
                                 }
                             };
                         }
@@ -1072,11 +1072,11 @@ export interface DedicatedCloud{
                 }
                 orderNewFilerHourly: {
                     // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderNewFilerHourly
-                    $post(params?: {name: string}): Promise<dedicatedCloud.Task>;
+                    $post(params: {name: string}): Promise<dedicatedCloud.Task>;
                 }
                 orderNewHostHourly: {
                     // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderNewHostHourly
-                    $post(params?: {name: string}): Promise<dedicatedCloud.Task>;
+                    $post(params: {name: string}): Promise<dedicatedCloud.Task>;
                 }
                 orderableFilerProfiles: {
                     // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableFilerProfiles
@@ -1094,11 +1094,11 @@ export interface DedicatedCloud{
                         $get(): Promise<dedicatedCloud.Task>;
                         changeMaintenanceExecutionDate: {
                             // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task/{taskId}/changeMaintenanceExecutionDate
-                            $post(params?: {executionDate: string}): Promise<dedicatedCloud.Task>;
+                            $post(params: {executionDate: string}): Promise<dedicatedCloud.Task>;
                         }
                         resetTaskState: {
                             // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task/{taskId}/resetTaskState
-                            $post(params?: {reason: string}): Promise<dedicatedCloud.Task>;
+                            $post(params: {reason: string}): Promise<dedicatedCloud.Task>;
                         }
                     };
                 }
@@ -1112,14 +1112,14 @@ export interface DedicatedCloud{
                             // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob
                             $get(): Promise<dedicatedCloud.BackupJob>;
                             // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob
-                            $post(params?: {backupDays: dedicatedCloud.backup.BackupDaysEnum[]}): Promise<dedicatedCloud.Task>;
+                            $post(params: {backupDays: dedicatedCloud.backup.BackupDaysEnum[]}): Promise<dedicatedCloud.Task>;
                             disable: {
                                 // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/disable
                                 $post(): Promise<dedicatedCloud.Task>;
                             }
                             enable: {
                                 // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/enable
-                                $post(params?: {backupDays: dedicatedCloud.backup.BackupDaysEnum[]}): Promise<dedicatedCloud.Task>;
+                                $post(params: {backupDays: dedicatedCloud.backup.BackupDaysEnum[]}): Promise<dedicatedCloud.Task>;
                             }
                             restorePoints: {
                                 // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/restorePoints
@@ -1129,7 +1129,7 @@ export interface DedicatedCloud{
                                     $get(): Promise<dedicatedCloud.RestorePoint>;
                                     restore: {
                                         // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/restorePoints/{restorePointId}/restore
-                                        $post(params?: {filerId: number}): Promise<dedicatedCloud.Task>;
+                                        $post(params: {filerId: number}): Promise<dedicatedCloud.Task>;
                                     }
                                 };
                             }
@@ -1140,15 +1140,15 @@ export interface DedicatedCloud{
                         }
                         editBackup: {
                             // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/editBackup
-                            $post(params?: {backupDays: dedicatedCloud.backup.BackupDaysEnum[]}): Promise<dedicatedCloud.Task>;
+                            $post(params: {backupDays: dedicatedCloud.backup.BackupDaysEnum[]}): Promise<dedicatedCloud.Task>;
                         }
                         enableBackup: {
                             // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/enableBackup
-                            $post(params?: {backupDays: dedicatedCloud.backup.BackupDaysEnum[]}): Promise<dedicatedCloud.Task>;
+                            $post(params: {backupDays: dedicatedCloud.backup.BackupDaysEnum[]}): Promise<dedicatedCloud.Task>;
                         }
                         restoreBackup: {
                             // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/restoreBackup
-                            $post(params?: {filerId: number, restorePointId: number}): Promise<dedicatedCloud.Task>;
+                            $post(params: {filerId: number, restorePointId: number}): Promise<dedicatedCloud.Task>;
                         }
                     };
                 }
@@ -1161,7 +1161,7 @@ export interface DedicatedCloud{
                 // GET /dedicatedCloud/{serviceName}/federation/activeDirectory
                 $get(): Promise<number[]>;
                 // POST /dedicatedCloud/{serviceName}/federation/activeDirectory
-                $post(params?: {baseDnForGroups: string, baseDnForUsers: string, description?: string, domainAlias: string, domainName: string, ip: string, password: string, username: string}): Promise<dedicatedCloud.Task>;
+                $post(params: {baseDnForGroups: string, baseDnForUsers: string, description?: string, domainAlias: string, domainName: string, ip: string, password: string, username: string}): Promise<dedicatedCloud.Task>;
                 $(activeDirectoryId: number): {
                     // DELETE /dedicatedCloud/{serviceName}/federation/activeDirectory/{activeDirectoryId}
                     $delete(): Promise<dedicatedCloud.Task>;
@@ -1169,11 +1169,11 @@ export interface DedicatedCloud{
                     $get(): Promise<dedicatedCloud.FederationAccessNetwork>;
                     changeProperties: {
                         // POST /dedicatedCloud/{serviceName}/federation/activeDirectory/{activeDirectoryId}/changeProperties
-                        $post(params?: {description?: string, password: string, username: string}): Promise<dedicatedCloud.Task>;
+                        $post(params: {description?: string, password: string, username: string}): Promise<dedicatedCloud.Task>;
                     }
                     grantActiveDirectoryUser: {
                         // POST /dedicatedCloud/{serviceName}/federation/activeDirectory/{activeDirectoryId}/grantActiveDirectoryUser
-                        $post(params?: {username: string}): Promise<dedicatedCloud.Task>;
+                        $post(params: {username: string}): Promise<dedicatedCloud.Task>;
                     }
                 };
             }
@@ -1200,11 +1200,11 @@ export interface DedicatedCloud{
                         $get(): Promise<dedicatedCloud.Task>;
                         changeMaintenanceExecutionDate: {
                             // POST /dedicatedCloud/{serviceName}/filer/{filerId}/task/{taskId}/changeMaintenanceExecutionDate
-                            $post(params?: {executionDate: string}): Promise<dedicatedCloud.Task>;
+                            $post(params: {executionDate: string}): Promise<dedicatedCloud.Task>;
                         }
                         resetTaskState: {
                             // POST /dedicatedCloud/{serviceName}/filer/{filerId}/task/{taskId}/resetTaskState
-                            $post(params?: {reason: string}): Promise<dedicatedCloud.Task>;
+                            $post(params: {reason: string}): Promise<dedicatedCloud.Task>;
                         }
                     };
                 }
@@ -1292,11 +1292,11 @@ export interface DedicatedCloud{
                         $get(): Promise<dedicatedCloud.Task>;
                         changeMaintenanceExecutionDate: {
                             // POST /dedicatedCloud/{serviceName}/ip/{network}/task/{taskId}/changeMaintenanceExecutionDate
-                            $post(params?: {executionDate: string}): Promise<dedicatedCloud.Task>;
+                            $post(params: {executionDate: string}): Promise<dedicatedCloud.Task>;
                         }
                         resetTaskState: {
                             // POST /dedicatedCloud/{serviceName}/ip/{network}/task/{taskId}/resetTaskState
-                            $post(params?: {reason: string}): Promise<dedicatedCloud.Task>;
+                            $post(params: {reason: string}): Promise<dedicatedCloud.Task>;
                         }
                     };
                 }
@@ -1328,7 +1328,7 @@ export interface DedicatedCloud{
         }
         orderNewFilerHourly: {
             // POST /dedicatedCloud/{serviceName}/orderNewFilerHourly
-            $post(params?: {name: string}): Promise<dedicatedCloud.Task>;
+            $post(params: {name: string}): Promise<dedicatedCloud.Task>;
         }
         orderableIpCountries: {
             // GET /dedicatedCloud/{serviceName}/orderableIpCountries
@@ -1396,11 +1396,11 @@ export interface DedicatedCloud{
                 $get(): Promise<dedicatedCloud.Task>;
                 changeMaintenanceExecutionDate: {
                     // POST /dedicatedCloud/{serviceName}/task/{taskId}/changeMaintenanceExecutionDate
-                    $post(params?: {executionDate: string}): Promise<dedicatedCloud.Task>;
+                    $post(params: {executionDate: string}): Promise<dedicatedCloud.Task>;
                 }
                 resetTaskState: {
                     // POST /dedicatedCloud/{serviceName}/task/{taskId}/resetTaskState
-                    $post(params?: {reason: string}): Promise<dedicatedCloud.Task>;
+                    $post(params: {reason: string}): Promise<dedicatedCloud.Task>;
                 }
             };
         }
@@ -1412,7 +1412,7 @@ export interface DedicatedCloud{
             // GET /dedicatedCloud/{serviceName}/twoFAWhitelist
             $get(): Promise<number[]>;
             // POST /dedicatedCloud/{serviceName}/twoFAWhitelist
-            $post(params?: {description: string, ip: string}): Promise<dedicatedCloud.Task>;
+            $post(params: {description: string, ip: string}): Promise<dedicatedCloud.Task>;
             $(id: number): {
                 // DELETE /dedicatedCloud/{serviceName}/twoFAWhitelist/{id}
                 $delete(): Promise<dedicatedCloud.Task>;
@@ -1432,7 +1432,7 @@ export interface DedicatedCloud{
             // GET /dedicatedCloud/{serviceName}/user
             $get(params?: {name?: string}): Promise<number[]>;
             // POST /dedicatedCloud/{serviceName}/user
-            $post(params?: {canAddRessource?: boolean, canManageRights?: boolean, email?: string, expirationDate?: string, firstName?: string, lastName?: string, name: string, networkRole?: dedicatedCloud.right.NetworkRoleEnum, nsxRight?: boolean, password?: string, phoneNumber?: string, receiveAlerts?: boolean, right?: dedicatedCloud.right.RightEnum, tokenValidator?: boolean, vmNetworkRole?: dedicatedCloud.right.VmNetworkRoleEnum}): Promise<dedicatedCloud.Task>;
+            $post(params: {canAddRessource?: boolean, canManageRights?: boolean, email?: string, expirationDate?: string, firstName?: string, lastName?: string, name: string, networkRole?: dedicatedCloud.right.NetworkRoleEnum, nsxRight?: boolean, password?: string, phoneNumber?: string, receiveAlerts?: boolean, right?: dedicatedCloud.right.RightEnum, tokenValidator?: boolean, vmNetworkRole?: dedicatedCloud.right.VmNetworkRoleEnum}): Promise<dedicatedCloud.Task>;
             $(userId: number): {
                 // DELETE /dedicatedCloud/{serviceName}/user/{userId}
                 $delete(): Promise<dedicatedCloud.Task>;
@@ -1458,7 +1458,7 @@ export interface DedicatedCloud{
                     // GET /dedicatedCloud/{serviceName}/user/{userId}/objectRight
                     $get(): Promise<number[]>;
                     // POST /dedicatedCloud/{serviceName}/user/{userId}/objectRight
-                    $post(params?: {propagate?: boolean, right: dedicatedCloud.right.RightEnum, type: dedicatedCloud.right.UserObjectRightTypeEnum, vmwareObjectId: string}): Promise<dedicatedCloud.Task>;
+                    $post(params: {propagate?: boolean, right: dedicatedCloud.right.RightEnum, type: dedicatedCloud.right.UserObjectRightTypeEnum, vmwareObjectId: string}): Promise<dedicatedCloud.Task>;
                     $(objectRightId: number): {
                         // DELETE /dedicatedCloud/{serviceName}/user/{userId}/objectRight/{objectRightId}
                         $delete(): Promise<dedicatedCloud.Task>;
@@ -1484,11 +1484,11 @@ export interface DedicatedCloud{
                         $get(): Promise<dedicatedCloud.Task>;
                         changeMaintenanceExecutionDate: {
                             // POST /dedicatedCloud/{serviceName}/user/{userId}/task/{taskId}/changeMaintenanceExecutionDate
-                            $post(params?: {executionDate: string}): Promise<dedicatedCloud.Task>;
+                            $post(params: {executionDate: string}): Promise<dedicatedCloud.Task>;
                         }
                         resetTaskState: {
                             // POST /dedicatedCloud/{serviceName}/user/{userId}/task/{taskId}/resetTaskState
-                            $post(params?: {reason: string}): Promise<dedicatedCloud.Task>;
+                            $post(params: {reason: string}): Promise<dedicatedCloud.Task>;
                         }
                     };
                 }
@@ -1503,7 +1503,7 @@ export interface DedicatedCloud{
             }
             ovhId: {
                 // POST /dedicatedCloud/{serviceName}/vendor/ovhId
-                $post(params?: {objectType: dedicatedCloud.VendorObjectTypeEnum, vendorId: string}): Promise<dedicatedCloud.vendor.OvhId>;
+                $post(params: {objectType: dedicatedCloud.VendorObjectTypeEnum, vendorId: string}): Promise<dedicatedCloud.vendor.OvhId>;
             }
         }
         vlan: {
@@ -1521,7 +1521,7 @@ export interface DedicatedCloud{
                 // GET /dedicatedCloud/{serviceName}/vmEncryption/kms
                 $get(): Promise<number[]>;
                 // POST /dedicatedCloud/{serviceName}/vmEncryption/kms
-                $post(params?: {description?: string, ip: string, sslThumbprint: string}): Promise<dedicatedCloud.Task>;
+                $post(params: {description?: string, ip: string, sslThumbprint: string}): Promise<dedicatedCloud.Task>;
                 $(kmsId: number): {
                     // DELETE /dedicatedCloud/{serviceName}/vmEncryption/kms/{kmsId}
                     $delete(): Promise<dedicatedCloud.Task>;
@@ -1529,7 +1529,7 @@ export interface DedicatedCloud{
                     $get(): Promise<dedicatedCloud.VMEncryptionAccessNetwork>;
                     changeProperties: {
                         // POST /dedicatedCloud/{serviceName}/vmEncryption/kms/{kmsId}/changeProperties
-                        $post(params?: {description?: string, sslThumbprint: string}): Promise<dedicatedCloud.Task>;
+                        $post(params: {description?: string, sslThumbprint: string}): Promise<dedicatedCloud.Task>;
                     }
                 };
             }

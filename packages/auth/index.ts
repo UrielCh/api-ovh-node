@@ -51,7 +51,7 @@ export default proxyAuth;
 export interface Auth{
     credential: {
         // POST /auth/credential
-        $post(params?: {accessRules: auth.AccessRule[], redirection?: string}): Promise<auth.Credential>;
+        $post(params: {accessRules: auth.AccessRule[], redirection?: string}): Promise<auth.Credential>;
     }
     currentCredential: {
         // GET /auth/currentCredential

@@ -248,7 +248,7 @@ export interface OverTheBox{
                 // GET /overTheBox/{serviceName}/device/actions
                 $get(params?: {name?: string, status?: overTheBox.ActionStatusEnum}): Promise<string[]>;
                 // POST /overTheBox/{serviceName}/device/actions
-                $post(params?: {name: string}): Promise<overTheBox.DeviceAction>;
+                $post(params: {name: string}): Promise<overTheBox.DeviceAction>;
                 $(actionId: string): {
                     // GET /overTheBox/{serviceName}/device/actions/{actionId}
                     $get(): Promise<overTheBox.DeviceAction>;
@@ -268,12 +268,12 @@ export interface OverTheBox{
             }
             restoreBackup: {
                 // POST /overTheBox/{serviceName}/device/restoreBackup
-                $post(params?: {backupId: string}): Promise<overTheBox.DeviceAction[]>;
+                $post(params: {backupId: string}): Promise<overTheBox.DeviceAction[]>;
             }
         }
         linkDevice: {
             // POST /overTheBox/{serviceName}/linkDevice
-            $post(params?: {deviceId: string}): Promise<void>;
+            $post(params: {deviceId: string}): Promise<void>;
         }
         migration: {
             offers: {
@@ -285,7 +285,7 @@ export interface OverTheBox{
             // GET /overTheBox/{serviceName}/remoteAccesses
             $get(): Promise<string[]>;
             // POST /overTheBox/{serviceName}/remoteAccesses
-            $post(params?: {allowedIp?: string, expirationDate?: string, exposedPort: number, publicKey?: string}): Promise<overTheBox.RemoteAccess>;
+            $post(params: {allowedIp?: string, expirationDate?: string, exposedPort: number, publicKey?: string}): Promise<overTheBox.RemoteAccess>;
             $(remoteAccessId: string): {
                 // DELETE /overTheBox/{serviceName}/remoteAccesses/{remoteAccessId}
                 $delete(): Promise<void>;

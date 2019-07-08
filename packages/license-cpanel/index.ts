@@ -116,7 +116,7 @@ export interface License{
         $get(): Promise<string[]>;
         orderableVersions: {
             // GET /license/cpanel/orderableVersions
-            $get(params?: {ip: string}): Promise<license.CpanelOrderConfiguration[]>;
+            $get(params: {ip: string}): Promise<license.CpanelOrderConfiguration[]>;
         }
         $(serviceName: string): {
             // GET /license/cpanel/{serviceName}
@@ -129,15 +129,15 @@ export interface License{
             }
             canLicenseBeMovedTo: {
                 // GET /license/cpanel/{serviceName}/canLicenseBeMovedTo
-                $get(params?: {destinationIp: string}): Promise<license.ChangeIpStatus>;
+                $get(params: {destinationIp: string}): Promise<license.ChangeIpStatus>;
             }
             changeIp: {
                 // POST /license/cpanel/{serviceName}/changeIp
-                $post(params?: {destinationIp: string}): Promise<license.Task>;
+                $post(params: {destinationIp: string}): Promise<license.Task>;
             }
             confirmTermination: {
                 // POST /license/cpanel/{serviceName}/confirmTermination
-                $post(params?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+                $post(params: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
             }
             serviceInfos: {
                 // GET /license/cpanel/{serviceName}/serviceInfos

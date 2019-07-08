@@ -319,7 +319,7 @@ export interface MsServices{
                 $put(params?: {SAMAccountName?: string, creationDate?: string, displayName?: string, firstName?: string, guid?: string, id?: number, initials?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, lastUpdateDate?: string, passwordLastUpdate?: string, state?: msServices.ObjectStateEnum, taskPendingId?: number, userPrincipalName?: string}): Promise<void>;
                 changePassword: {
                     // POST /msServices/{serviceName}/account/{userPrincipalName}/changePassword
-                    $post(params?: {password: string}): Promise<msServices.Task>;
+                    $post(params: {password: string}): Promise<msServices.Task>;
                 }
                 exchange: {
                     // GET /msServices/{serviceName}/account/{userPrincipalName}/exchange
@@ -340,7 +340,7 @@ export interface MsServices{
                     $post(): Promise<msServices.Task>;
                     disable: {
                         // POST /msServices/{serviceName}/account/{userPrincipalName}/mfa/disable
-                        $post(params?: {period: number}): Promise<msServices.Task>;
+                        $post(params: {period: number}): Promise<msServices.Task>;
                     }
                     enable: {
                         // POST /msServices/{serviceName}/account/{userPrincipalName}/mfa/enable
@@ -371,7 +371,7 @@ export interface MsServices{
                     // GET /msServices/{serviceName}/account/{userPrincipalName}/sync
                     $get(): Promise<msServices.SyncInformation>;
                     // POST /msServices/{serviceName}/account/{userPrincipalName}/sync
-                    $post(params?: {license: msServices.SyncLicenseEnum}): Promise<msServices.Task>;
+                    $post(params: {license: msServices.SyncLicenseEnum}): Promise<msServices.Task>;
                     configure: {
                         // POST /msServices/{serviceName}/account/{userPrincipalName}/sync/configure
                         $post(): Promise<msServices.Task>;
@@ -408,7 +408,7 @@ export interface MsServices{
             }
             license: {
                 // GET /msServices/{serviceName}/sharepoint/license
-                $get(params?: {license?: msServices.SharepointLicenseEnum, period: msServices.LicensePeriodEnum}): Promise<msServices.SharepointDailyLicense[]>;
+                $get(params: {license?: msServices.SharepointLicenseEnum, period: msServices.LicensePeriodEnum}): Promise<msServices.SharepointDailyLicense[]>;
             }
             restoreAdminRights: {
                 // POST /msServices/{serviceName}/sharepoint/restoreAdminRights
@@ -430,7 +430,7 @@ export interface MsServices{
             $get(): Promise<msServices.SyncService>;
             changePassword: {
                 // POST /msServices/{serviceName}/sync/changePassword
-                $post(params?: {password: string}): Promise<msServices.Task>;
+                $post(params: {password: string}): Promise<msServices.Task>;
             }
             clientSoftwareURL: {
                 // GET /msServices/{serviceName}/sync/clientSoftwareURL
@@ -440,7 +440,7 @@ export interface MsServices{
             }
             license: {
                 // GET /msServices/{serviceName}/sync/license
-                $get(params?: {license?: msServices.SyncLicenseEnum, period: msServices.LicensePeriodEnum}): Promise<msServices.SyncDailyLicense[]>;
+                $get(params: {license?: msServices.SyncLicenseEnum, period: msServices.LicensePeriodEnum}): Promise<msServices.SyncDailyLicense[]>;
             }
         }
         task: {
@@ -455,7 +455,7 @@ export interface MsServices{
             // GET /msServices/{serviceName}/upnSuffix
             $get(): Promise<string[]>;
             // POST /msServices/{serviceName}/upnSuffix
-            $post(params?: {suffix: string}): Promise<msServices.Task>;
+            $post(params: {suffix: string}): Promise<msServices.Task>;
             $(suffix: string): {
                 // DELETE /msServices/{serviceName}/upnSuffix/{suffix}
                 $delete(): Promise<msServices.Task>;

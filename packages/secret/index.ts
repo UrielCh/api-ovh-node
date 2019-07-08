@@ -26,7 +26,7 @@ export default proxySecret;
 export interface Secret{
     retrieve: {
         // POST /secret/retrieve
-        $post(params?: {id: string}): Promise<secret.Secret>;
+        $post(params: {id: string}): Promise<secret.Secret>;
     }
 // Api
   /**

@@ -127,11 +127,11 @@ export interface Hosting{
             }
             email: {
                 // POST /hosting/reseller/{serviceName}/email
-                $post(params?: {email: string}): Promise<string>;
+                $post(params: {email: string}): Promise<string>;
             }
             language: {
                 // POST /hosting/reseller/{serviceName}/language
-                $post(params?: {language: reseller.pleskLanguageTypeEnum}): Promise<string>;
+                $post(params: {language: reseller.pleskLanguageTypeEnum}): Promise<string>;
             }
             reboot: {
                 // POST /hosting/reseller/{serviceName}/reboot
@@ -147,7 +147,7 @@ export interface Hosting{
             }
             reverse: {
                 // POST /hosting/reseller/{serviceName}/reverse
-                $post(params?: {reverse: string}): Promise<string>;
+                $post(params: {reverse: string}): Promise<string>;
             }
             serviceInfos: {
                 // GET /hosting/reseller/{serviceName}/serviceInfos

@@ -389,7 +389,7 @@ export interface Vps{
     $get(): Promise<string[]>;
     datacenter: {
         // GET /vps/datacenter
-        $get(params?: {country: nichandle.CountryEnum}): Promise<string[]>;
+        $get(params: {country: nichandle.CountryEnum}): Promise<string[]>;
     }
     $(serviceName: string): {
         // GET /vps/{serviceName}
@@ -409,15 +409,15 @@ export interface Vps{
             }
             detachBackup: {
                 // POST /vps/{serviceName}/automatedBackup/detachBackup
-                $post(params?: {restorePoint: string}): Promise<vps.Task>;
+                $post(params: {restorePoint: string}): Promise<vps.Task>;
             }
             restore: {
                 // POST /vps/{serviceName}/automatedBackup/restore
-                $post(params?: {changePassword?: boolean, restorePoint: string, type: vps.RestoreTypeEnum}): Promise<vps.Task>;
+                $post(params: {changePassword?: boolean, restorePoint: string, type: vps.RestoreTypeEnum}): Promise<vps.Task>;
             }
             restorePoints: {
                 // GET /vps/{serviceName}/automatedBackup/restorePoints
-                $get(params?: {state: vps.RestoreStateEnum}): Promise<string[]>;
+                $get(params: {state: vps.RestoreStateEnum}): Promise<string[]>;
             }
         }
         availableUpgrade: {
@@ -431,7 +431,7 @@ export interface Vps{
                 // GET /vps/{serviceName}/backupftp/access
                 $get(): Promise<string[]>;
                 // POST /vps/{serviceName}/backupftp/access
-                $post(params?: {cifs: boolean, ftp?: boolean, ipBlock: string, nfs: boolean}): Promise<dedicated.server.Task>;
+                $post(params: {cifs: boolean, ftp?: boolean, ipBlock: string, nfs: boolean}): Promise<dedicated.server.Task>;
                 $(ipBlock: string): {
                     // DELETE /vps/{serviceName}/backupftp/access/{ipBlock}
                     $delete(): Promise<dedicated.server.Task>;
@@ -456,7 +456,7 @@ export interface Vps{
         }
         confirmTermination: {
             // POST /vps/{serviceName}/confirmTermination
-            $post(params?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+            $post(params: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
         }
         createSnapshot: {
             // POST /vps/{serviceName}/createSnapshot
@@ -476,11 +476,11 @@ export interface Vps{
                 $put(params?: {bandwidthLimit?: number, id?: number, lowFreeSpaceThreshold?: number, monitoring?: boolean, size?: number, state?: vps.disk.StateEnum, type?: vps.disk.TypeEnum}): Promise<void>;
                 monitoring: {
                     // GET /vps/{serviceName}/disks/{id}/monitoring
-                    $get(params?: {period: vps.VpsMonitoringPeriodEnum, type: vps.disk.StatisticTypeEnum}): Promise<complexType.UnitAndValues<vps.VpsTimestampValue>>;
+                    $get(params: {period: vps.VpsMonitoringPeriodEnum, type: vps.disk.StatisticTypeEnum}): Promise<complexType.UnitAndValues<vps.VpsTimestampValue>>;
                 }
                 use: {
                     // GET /vps/{serviceName}/disks/{id}/use
-                    $get(params?: {type: vps.disk.StatisticTypeEnum}): Promise<complexType.UnitAndValue<number>>;
+                    $get(params: {type: vps.disk.StatisticTypeEnum}): Promise<complexType.UnitAndValue<number>>;
                 }
             };
         }
@@ -522,7 +522,7 @@ export interface Vps{
         }
         monitoring: {
             // GET /vps/{serviceName}/monitoring
-            $get(params?: {period: vps.VpsMonitoringPeriodEnum, type: vps.VpsStatisticTypeEnum}): Promise<complexType.UnitAndValues<vps.VpsTimestampValue>>;
+            $get(params: {period: vps.VpsMonitoringPeriodEnum, type: vps.VpsStatisticTypeEnum}): Promise<complexType.UnitAndValues<vps.VpsTimestampValue>>;
         }
         openConsoleAccess: {
             // POST /vps/{serviceName}/openConsoleAccess
@@ -544,13 +544,13 @@ export interface Vps{
         }
         reinstall: {
             // POST /vps/{serviceName}/reinstall
-            $post(params?: {doNotSendPassword?: boolean, language?: string, softwareId?: number[], sshKey?: string[], templateId: number}): Promise<vps.Task>;
+            $post(params: {doNotSendPassword?: boolean, language?: string, softwareId?: number[], sshKey?: string[], templateId: number}): Promise<vps.Task>;
         }
         secondaryDnsDomains: {
             // GET /vps/{serviceName}/secondaryDnsDomains
             $get(): Promise<string[]>;
             // POST /vps/{serviceName}/secondaryDnsDomains
-            $post(params?: {domain: string, ip?: string}): Promise<void>;
+            $post(params: {domain: string, ip?: string}): Promise<void>;
             $(domain: string): {
                 // DELETE /vps/{serviceName}/secondaryDnsDomains/{domain}
                 $delete(): Promise<void>;
@@ -632,7 +632,7 @@ export interface Vps{
         }
         use: {
             // GET /vps/{serviceName}/use
-            $get(params?: {type: vps.VpsStatisticTypeEnum}): Promise<complexType.UnitAndValue<number>>;
+            $get(params: {type: vps.VpsStatisticTypeEnum}): Promise<complexType.UnitAndValue<number>>;
         }
         veeam: {
             // GET /vps/{serviceName}/veeam
@@ -645,7 +645,7 @@ export interface Vps{
                     $get(): Promise<vps.veeam.RestorePoint>;
                     restore: {
                         // POST /vps/{serviceName}/veeam/restorePoints/{id}/restore
-                        $post(params?: {changePassword?: boolean, export?: vps.veeam.ExportTypeEnum, full: boolean}): Promise<vps.Task>;
+                        $post(params: {changePassword?: boolean, export?: vps.veeam.ExportTypeEnum, full: boolean}): Promise<vps.Task>;
                     }
                 };
             }

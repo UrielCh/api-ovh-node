@@ -184,7 +184,7 @@ export interface Dedicated{
                         // GET /dedicated/housing/{serviceName}/features/backupFTP/access
                         $get(): Promise<string[]>;
                         // POST /dedicated/housing/{serviceName}/features/backupFTP/access
-                        $post(params?: {cifs: boolean, ftp?: boolean, ipBlock: string, nfs: boolean}): Promise<dedicated.server.Task>;
+                        $post(params: {cifs: boolean, ftp?: boolean, ipBlock: string, nfs: boolean}): Promise<dedicated.server.Task>;
                         $(ipBlock: string): {
                             // DELETE /dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}
                             $delete(): Promise<dedicated.server.Task>;

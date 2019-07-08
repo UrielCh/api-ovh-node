@@ -120,7 +120,7 @@ export interface License{
         $get(): Promise<string[]>;
         orderableVersions: {
             // GET /license/directadmin/orderableVersions
-            $get(params?: {ip: string}): Promise<license.DirectAdminOrderConfiguration[]>;
+            $get(params: {ip: string}): Promise<license.DirectAdminOrderConfiguration[]>;
         }
         $(serviceName: string): {
             // GET /license/directadmin/{serviceName}
@@ -133,19 +133,19 @@ export interface License{
             }
             canLicenseBeMovedTo: {
                 // GET /license/directadmin/{serviceName}/canLicenseBeMovedTo
-                $get(params?: {destinationIp: string}): Promise<license.ChangeIpStatus>;
+                $get(params: {destinationIp: string}): Promise<license.ChangeIpStatus>;
             }
             changeIp: {
                 // POST /license/directadmin/{serviceName}/changeIp
-                $post(params?: {destinationIp: string}): Promise<license.Task>;
+                $post(params: {destinationIp: string}): Promise<license.Task>;
             }
             changeOs: {
                 // POST /license/directadmin/{serviceName}/changeOs
-                $post(params?: {os: license.DirectAdminOsEnum}): Promise<license.Task>;
+                $post(params: {os: license.DirectAdminOsEnum}): Promise<license.Task>;
             }
             confirmTermination: {
                 // POST /license/directadmin/{serviceName}/confirmTermination
-                $post(params?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+                $post(params: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
             }
             serviceInfos: {
                 // GET /license/directadmin/{serviceName}/serviceInfos

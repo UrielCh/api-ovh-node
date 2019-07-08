@@ -574,7 +574,7 @@ export interface Email{
                         // GET /email/exchange/{organizationName}/service/{exchangeService}/account
                         $get(params?: {accountLicense?: email.exchange.OvhLicenceEnum, id?: number, primaryEmailAddress?: string}): Promise<string[]>;
                         // POST /email/exchange/{organizationName}/service/{exchangeService}/account
-                        $post(params?: {company?: string, displayName?: string, domain: string, firstName?: string, hiddenFromGAL?: boolean, initials?: string, lastName?: string, license: email.exchange.OvhLicenceEnum, litigation?: boolean, litigationPeriod?: number, login: string, mailingFilter?: email.exchange.MailingFilterEnum[], outlookLicense?: boolean, password: string, SAMAccountName?: string, spamAndVirusConfiguration?: email.exchange.spamAndVirusConfiguration}): Promise<email.exchange.Task>;
+                        $post(params: {company?: string, displayName?: string, domain: string, firstName?: string, hiddenFromGAL?: boolean, initials?: string, lastName?: string, license: email.exchange.OvhLicenceEnum, litigation?: boolean, litigationPeriod?: number, login: string, mailingFilter?: email.exchange.MailingFilterEnum[], outlookLicense?: boolean, password: string, SAMAccountName?: string, spamAndVirusConfiguration?: email.exchange.spamAndVirusConfiguration}): Promise<email.exchange.Task>;
                         $(primaryEmailAddress: string): {
                             // DELETE /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}
                             $delete(): Promise<email.exchange.Task>;
@@ -586,7 +586,7 @@ export interface Email{
                                 // GET /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/alias
                                 $get(): Promise<string[]>;
                                 // POST /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/alias
-                                $post(params?: {alias: string}): Promise<email.exchange.Task>;
+                                $post(params: {alias: string}): Promise<email.exchange.Task>;
                                 $(alias: string): {
                                     // DELETE /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/alias/{alias}
                                     $delete(): Promise<email.exchange.Task>;
@@ -606,13 +606,13 @@ export interface Email{
                             }
                             changePassword: {
                                 // POST /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/changePassword
-                                $post(params?: {password: string}): Promise<email.exchange.Task>;
+                                $post(params: {password: string}): Promise<email.exchange.Task>;
                             }
                             diagnostics: {
                                 // GET /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/diagnostics
                                 $get(): Promise<email.exchange.exchangeAccountDiagnosis>;
                                 // POST /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/diagnostics
-                                $post(params?: {password: string}): Promise<email.exchange.Task>;
+                                $post(params: {password: string}): Promise<email.exchange.Task>;
                             }
                             export: {
                                 // DELETE /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/export
@@ -632,7 +632,7 @@ export interface Email{
                                 // GET /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/fullAccess
                                 $get(): Promise<number[]>;
                                 // POST /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/fullAccess
-                                $post(params?: {allowedAccountId: number}): Promise<email.exchange.Task>;
+                                $post(params: {allowedAccountId: number}): Promise<email.exchange.Task>;
                                 $(allowedAccountId: number): {
                                     // DELETE /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/fullAccess/{allowedAccountId}
                                     $delete(): Promise<email.exchange.Task>;
@@ -644,7 +644,7 @@ export interface Email{
                                 // GET /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/outlookURL
                                 $get(): Promise<email.exchange.OutlookUrl>;
                                 // POST /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/outlookURL
-                                $post(params?: {language: email.exchange.LanguageEnum, version: email.exchange.OutlookVersionEnum}): Promise<email.exchange.Task>;
+                                $post(params: {language: email.exchange.LanguageEnum, version: email.exchange.OutlookVersionEnum}): Promise<email.exchange.Task>;
                             }
                             protocol: {
                                 // GET /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/protocol
@@ -656,7 +656,7 @@ export interface Email{
                                 // GET /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendAs
                                 $get(): Promise<number[]>;
                                 // POST /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendAs
-                                $post(params?: {allowAccountId: number}): Promise<email.exchange.Task>;
+                                $post(params: {allowAccountId: number}): Promise<email.exchange.Task>;
                                 $(allowedAccountId: number): {
                                     // DELETE /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendAs/{allowedAccountId}
                                     $delete(): Promise<email.exchange.Task>;
@@ -668,7 +668,7 @@ export interface Email{
                                 // GET /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendOnBehalfTo
                                 $get(): Promise<number[]>;
                                 // POST /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendOnBehalfTo
-                                $post(params?: {allowAccountId: number}): Promise<email.exchange.Task>;
+                                $post(params: {allowAccountId: number}): Promise<email.exchange.Task>;
                                 $(allowedAccountId: number): {
                                     // DELETE /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/sendOnBehalfTo/{allowedAccountId}
                                     $delete(): Promise<email.exchange.Task>;
@@ -692,11 +692,11 @@ export interface Email{
                     }
                     activateSharepoint: {
                         // POST /email/exchange/{organizationName}/service/{exchangeService}/activateSharepoint
-                        $post(params?: {primaryEmailAddress: string, subDomain: string}): Promise<email.exchange.Task>;
+                        $post(params: {primaryEmailAddress: string, subDomain: string}): Promise<email.exchange.Task>;
                     }
                     changeHostname: {
                         // POST /email/exchange/{organizationName}/service/{exchangeService}/changeHostname
-                        $post(params?: {dcvEmail: string, hostname: string, useDnsAssist: boolean}): Promise<email.exchange.Task>;
+                        $post(params: {dcvEmail: string, hostname: string, useDnsAssist: boolean}): Promise<email.exchange.Task>;
                     }
                     dcvEmails: {
                         // GET /email/exchange/{organizationName}/service/{exchangeService}/dcvEmails
@@ -720,7 +720,7 @@ export interface Email{
                         // GET /email/exchange/{organizationName}/service/{exchangeService}/domain
                         $get(params?: {main?: boolean, state?: email.exchange.ObjectStateEnum}): Promise<string[]>;
                         // POST /email/exchange/{organizationName}/service/{exchangeService}/domain
-                        $post(params?: {configureAutodiscover?: boolean, configureMx?: boolean, main?: boolean, mxRelay?: string, name: string, organization2010?: string, type: email.exchange.DomainTypeEnum}): Promise<email.exchange.Task>;
+                        $post(params: {configureAutodiscover?: boolean, configureMx?: boolean, main?: boolean, mxRelay?: string, name: string, organization2010?: string, type: email.exchange.DomainTypeEnum}): Promise<email.exchange.Task>;
                         $(domainName: string): {
                             // DELETE /email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}
                             $delete(): Promise<email.exchange.Task>;
@@ -734,7 +734,7 @@ export interface Email{
                                 // GET /email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/disclaimer
                                 $get(): Promise<email.exchange.disclaimer>;
                                 // POST /email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/disclaimer
-                                $post(params?: {content: string, outsideOnly?: boolean}): Promise<email.exchange.Task>;
+                                $post(params: {content: string, outsideOnly?: boolean}): Promise<email.exchange.Task>;
                                 // PUT /email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/disclaimer
                                 $put(params?: {content?: string, creationDate?: string, name?: string, outsideOnly?: boolean, taskPendingId?: number}): Promise<void>;
                             }
@@ -748,7 +748,7 @@ export interface Email{
                         // GET /email/exchange/{organizationName}/service/{exchangeService}/externalContact
                         $get(params?: {displayName?: string, externalEmailAddress?: string, firstName?: string, id?: number, lastName?: string}): Promise<string[]>;
                         // POST /email/exchange/{organizationName}/service/{exchangeService}/externalContact
-                        $post(params?: {displayName?: string, externalEmailAddress: string, firstName?: string, hiddenFromGAL?: boolean, initials?: string, lastName?: string, organization2010?: string}): Promise<email.exchange.Task>;
+                        $post(params: {displayName?: string, externalEmailAddress: string, firstName?: string, hiddenFromGAL?: boolean, initials?: string, lastName?: string, organization2010?: string}): Promise<email.exchange.Task>;
                         $(externalEmailAddress: string): {
                             // DELETE /email/exchange/{organizationName}/service/{exchangeService}/externalContact/{externalEmailAddress}
                             $delete(): Promise<email.exchange.Task>;
@@ -766,7 +766,7 @@ export interface Email{
                         // GET /email/exchange/{organizationName}/service/{exchangeService}/mailingList
                         $get(params?: {mailingListAddress?: string}): Promise<string[]>;
                         // POST /email/exchange/{organizationName}/service/{exchangeService}/mailingList
-                        $post(params?: {departRestriction: email.exchange.MailingListDepartRestrictionEnum, displayName?: string, hiddenFromGAL?: boolean, joinRestriction: email.exchange.MailingListJoinRestrictionEnum, mailingListAddress: string, maxReceiveSize?: number, maxSendSize?: number, senderAuthentification?: boolean}): Promise<email.exchange.Task>;
+                        $post(params: {departRestriction: email.exchange.MailingListDepartRestrictionEnum, displayName?: string, hiddenFromGAL?: boolean, joinRestriction: email.exchange.MailingListJoinRestrictionEnum, mailingListAddress: string, maxReceiveSize?: number, maxSendSize?: number, senderAuthentification?: boolean}): Promise<email.exchange.Task>;
                         $(mailingListAddress: string): {
                             // DELETE /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}
                             $delete(): Promise<email.exchange.Task>;
@@ -778,7 +778,7 @@ export interface Email{
                                 // GET /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/alias
                                 $get(): Promise<string[]>;
                                 // POST /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/alias
-                                $post(params?: {alias: string}): Promise<email.exchange.Task>;
+                                $post(params: {alias: string}): Promise<email.exchange.Task>;
                                 $(alias: string): {
                                     // DELETE /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/alias/{alias}
                                     $delete(): Promise<email.exchange.Task>;
@@ -791,7 +791,7 @@ export interface Email{
                                     // GET /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/manager/account
                                     $get(): Promise<number[]>;
                                     // POST /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/manager/account
-                                    $post(params?: {managerAccountId: number}): Promise<email.exchange.Task>;
+                                    $post(params: {managerAccountId: number}): Promise<email.exchange.Task>;
                                     $(managerAccountId: number): {
                                         // DELETE /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/manager/account/{managerAccountId}
                                         $delete(): Promise<email.exchange.Task>;
@@ -830,7 +830,7 @@ export interface Email{
                                 // GET /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendAs
                                 $get(): Promise<number[]>;
                                 // POST /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendAs
-                                $post(params?: {allowAccountId: number}): Promise<email.exchange.Task>;
+                                $post(params: {allowAccountId: number}): Promise<email.exchange.Task>;
                                 $(allowedAccountId: number): {
                                     // DELETE /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendAs/{allowedAccountId}
                                     $delete(): Promise<email.exchange.Task>;
@@ -842,7 +842,7 @@ export interface Email{
                                 // GET /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendOnBehalfTo
                                 $get(): Promise<number[]>;
                                 // POST /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendOnBehalfTo
-                                $post(params?: {allowAccountId: number}): Promise<email.exchange.Task>;
+                                $post(params: {allowAccountId: number}): Promise<email.exchange.Task>;
                                 $(allowedAccountId: number): {
                                     // DELETE /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/sendOnBehalfTo/{allowedAccountId}
                                     $delete(): Promise<email.exchange.Task>;
@@ -865,7 +865,7 @@ export interface Email{
                             // GET /email/exchange/{organizationName}/service/{exchangeService}/protocol/activeSyncMailNotification
                             $get(): Promise<number[]>;
                             // POST /email/exchange/{organizationName}/service/{exchangeService}/protocol/activeSyncMailNotification
-                            $post(params?: {notifiedAccountId: number}): Promise<email.exchange.Task>;
+                            $post(params: {notifiedAccountId: number}): Promise<email.exchange.Task>;
                             $(notifiedAccountId: number): {
                                 // DELETE /email/exchange/{organizationName}/service/{exchangeService}/protocol/activeSyncMailNotification/{notifiedAccountId}
                                 $delete(): Promise<email.exchange.Task>;
@@ -878,7 +878,7 @@ export interface Email{
                         // GET /email/exchange/{organizationName}/service/{exchangeService}/publicFolder
                         $get(params?: {path?: string}): Promise<string[]>;
                         // POST /email/exchange/{organizationName}/service/{exchangeService}/publicFolder
-                        $post(params?: {anonymousPermission?: email.exchange.PublicFolderRightTypeEnum, defaultPermission?: email.exchange.PublicFolderRightTypeEnum, path: string, quota: number, type: email.exchange.PublicFolderTypeEnum}): Promise<email.exchange.Task>;
+                        $post(params: {anonymousPermission?: email.exchange.PublicFolderRightTypeEnum, defaultPermission?: email.exchange.PublicFolderRightTypeEnum, path: string, quota: number, type: email.exchange.PublicFolderTypeEnum}): Promise<email.exchange.Task>;
                         $(path: string): {
                             // DELETE /email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}
                             $delete(): Promise<email.exchange.Task>;
@@ -890,7 +890,7 @@ export interface Email{
                                 // GET /email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission
                                 $get(): Promise<number[]>;
                                 // POST /email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission
-                                $post(params?: {accessRights: email.exchange.PublicFolderRightTypeEnum, allowedAccountId: number}): Promise<email.exchange.Task>;
+                                $post(params: {accessRights: email.exchange.PublicFolderRightTypeEnum, allowedAccountId: number}): Promise<email.exchange.Task>;
                                 $(allowedAccountId: number): {
                                     // DELETE /email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission/{allowedAccountId}
                                     $delete(): Promise<email.exchange.Task>;
@@ -908,13 +908,13 @@ export interface Email{
                     }
                     renewSSL: {
                         // POST /email/exchange/{organizationName}/service/{exchangeService}/renewSSL
-                        $post(params?: {dcv: string}): Promise<email.exchange.Task>;
+                        $post(params: {dcv: string}): Promise<email.exchange.Task>;
                     }
                     resourceAccount: {
                         // GET /email/exchange/{organizationName}/service/{exchangeService}/resourceAccount
                         $get(params?: {resourceEmailAddress?: string}): Promise<string[]>;
                         // POST /email/exchange/{organizationName}/service/{exchangeService}/resourceAccount
-                        $post(params?: {addOrganizerToSubject?: boolean, allowConflict?: boolean, bookingWindow?: number, capacity: number, deleteComments?: boolean, deleteSubject?: boolean, displayName?: string, location?: string, maximumDuration?: number, resourceEmailAddress: string, showMeetingDetails?: email.exchange.ShowMeetingDetailsEnum, type: email.exchange.ResourceTypeEnum}): Promise<email.exchange.Task>;
+                        $post(params: {addOrganizerToSubject?: boolean, allowConflict?: boolean, bookingWindow?: number, capacity: number, deleteComments?: boolean, deleteSubject?: boolean, displayName?: string, location?: string, maximumDuration?: number, resourceEmailAddress: string, showMeetingDetails?: email.exchange.ShowMeetingDetailsEnum, type: email.exchange.ResourceTypeEnum}): Promise<email.exchange.Task>;
                         $(resourceEmailAddress: string): {
                             // DELETE /email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}
                             $delete(): Promise<email.exchange.Task>;
@@ -926,7 +926,7 @@ export interface Email{
                                 // GET /email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}/delegate
                                 $get(): Promise<number[]>;
                                 // POST /email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}/delegate
-                                $post(params?: {allowedAccountId: number}): Promise<email.exchange.Task>;
+                                $post(params: {allowedAccountId: number}): Promise<email.exchange.Task>;
                                 $(allowedAccountId: number): {
                                     // DELETE /email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}/delegate/{allowedAccountId}
                                     $delete(): Promise<email.exchange.Task>;
@@ -952,7 +952,7 @@ export interface Email{
                         // GET /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount
                         $get(params?: {sharedEmailAddress?: string}): Promise<string[]>;
                         // POST /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount
-                        $post(params?: {displayName?: string, firstName?: string, hiddenFromGAL?: boolean, initials?: string, lastName?: string, mailingFilter?: email.exchange.MailingFilterEnum[], quota: number, sharedEmailAddress: string}): Promise<email.exchange.Task>;
+                        $post(params: {displayName?: string, firstName?: string, hiddenFromGAL?: boolean, initials?: string, lastName?: string, mailingFilter?: email.exchange.MailingFilterEnum[], quota: number, sharedEmailAddress: string}): Promise<email.exchange.Task>;
                         $(sharedEmailAddress: string): {
                             // DELETE /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}
                             $delete(): Promise<email.exchange.Task>;
@@ -964,7 +964,7 @@ export interface Email{
                                 // GET /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/fullAccess
                                 $get(): Promise<number[]>;
                                 // POST /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/fullAccess
-                                $post(params?: {allowedAccountId: number}): Promise<email.exchange.Task>;
+                                $post(params: {allowedAccountId: number}): Promise<email.exchange.Task>;
                                 $(allowedAccountId: number): {
                                     // DELETE /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/fullAccess/{allowedAccountId}
                                     $delete(): Promise<email.exchange.Task>;
@@ -976,7 +976,7 @@ export interface Email{
                                 // GET /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendAs
                                 $get(): Promise<number[]>;
                                 // POST /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendAs
-                                $post(params?: {allowAccountId: number}): Promise<email.exchange.Task>;
+                                $post(params: {allowAccountId: number}): Promise<email.exchange.Task>;
                                 $(allowedAccountId: number): {
                                     // DELETE /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendAs/{allowedAccountId}
                                     $delete(): Promise<email.exchange.Task>;
@@ -988,7 +988,7 @@ export interface Email{
                                 // GET /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendOnBehalfTo
                                 $get(): Promise<number[]>;
                                 // POST /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendOnBehalfTo
-                                $post(params?: {allowAccountId: number}): Promise<email.exchange.Task>;
+                                $post(params: {allowAccountId: number}): Promise<email.exchange.Task>;
                                 $(allowedAccountId: number): {
                                     // DELETE /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendOnBehalfTo/{allowedAccountId}
                                     $delete(): Promise<email.exchange.Task>;

@@ -127,7 +127,7 @@ export interface Deskaas{
         $get(): Promise<deskaas.deskaas>;
         changeAlias: {
             // POST /deskaas/{serviceName}/changeAlias
-            $post(params?: {alias: string}): Promise<deskaas.Task>;
+            $post(params: {alias: string}): Promise<deskaas.Task>;
         }
         changeContact: {
             // POST /deskaas/{serviceName}/changeContact
@@ -135,7 +135,7 @@ export interface Deskaas{
         }
         confirmTermination: {
             // POST /deskaas/{serviceName}/confirmTermination
-            $post(params?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+            $post(params: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
         }
         console: {
             // POST /deskaas/{serviceName}/console

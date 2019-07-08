@@ -200,7 +200,7 @@ export interface Service{
             // GET /service/{serviceId}/renew
             $get(params?: {includeOptions?: boolean}): Promise<service.renew.RenewDescription[]>;
             // POST /service/{serviceId}/renew
-            $post(params?: {dryRun?: boolean, duration: string, services: number[]}): Promise<service.renew.RenewOrder>;
+            $post(params: {dryRun?: boolean, duration: string, services: number[]}): Promise<service.renew.RenewOrder>;
         }
         reopen: {
             // POST /service/{serviceId}/reopen

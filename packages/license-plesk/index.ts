@@ -149,7 +149,7 @@ export interface License{
         $get(): Promise<string[]>;
         orderableVersions: {
             // GET /license/plesk/orderableVersions
-            $get(params?: {ip: string}): Promise<license.PleskOrderConfiguration[]>;
+            $get(params: {ip: string}): Promise<license.PleskOrderConfiguration[]>;
         }
         $(serviceName: string): {
             // GET /license/plesk/{serviceName}
@@ -162,15 +162,15 @@ export interface License{
             }
             canLicenseBeMovedTo: {
                 // GET /license/plesk/{serviceName}/canLicenseBeMovedTo
-                $get(params?: {destinationIp: string}): Promise<license.ChangeIpStatus>;
+                $get(params: {destinationIp: string}): Promise<license.ChangeIpStatus>;
             }
             changeIp: {
                 // POST /license/plesk/{serviceName}/changeIp
-                $post(params?: {destinationIp: string}): Promise<license.Task>;
+                $post(params: {destinationIp: string}): Promise<license.Task>;
             }
             confirmTermination: {
                 // POST /license/plesk/{serviceName}/confirmTermination
-                $post(params?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+                $post(params: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
             }
             option: {
                 // GET /license/plesk/{serviceName}/option

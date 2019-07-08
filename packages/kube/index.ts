@@ -112,14 +112,14 @@ export interface Kube{
         // GET /kube/{serviceName}
         $get(): Promise<kube.Cluster>;
         // PUT /kube/{serviceName}
-        $put(params?: {name: string}): Promise<void>;
+        $put(params: {name: string}): Promise<void>;
         changeContact: {
             // POST /kube/{serviceName}/changeContact
             $post(params?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
         }
         confirmTermination: {
             // POST /kube/{serviceName}/confirmTermination
-            $post(params?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+            $post(params: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
         }
         kubeconfig: {
             // GET /kube/{serviceName}/kubeconfig
@@ -130,7 +130,7 @@ export interface Kube{
                 // GET /kube/{serviceName}/publiccloud/node
                 $get(): Promise<kube.Node[]>;
                 // POST /kube/{serviceName}/publiccloud/node
-                $post(params?: {flavorName: string, name?: string}): Promise<kube.Node>;
+                $post(params: {flavorName: string, name?: string}): Promise<kube.Node>;
                 $(nodeId: string): {
                     // DELETE /kube/{serviceName}/publiccloud/node/{nodeId}
                     $delete(): Promise<void>;
@@ -163,7 +163,7 @@ export interface Kube{
         }
         updatePolicy: {
             // PUT /kube/{serviceName}/updatePolicy
-            $put(params?: {updatePolicy: kube.UpdatePolicy}): Promise<void>;
+            $put(params: {updatePolicy: kube.UpdatePolicy}): Promise<void>;
         }
     };
 // Api

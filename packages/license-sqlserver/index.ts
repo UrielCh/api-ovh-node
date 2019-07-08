@@ -105,14 +105,14 @@ export interface License{
         $get(): Promise<string[]>;
         orderableVersions: {
             // GET /license/sqlserver/orderableVersions
-            $get(params?: {ip: string}): Promise<license.SqlServerOrderConfiguration[]>;
+            $get(params: {ip: string}): Promise<license.SqlServerOrderConfiguration[]>;
         }
         $(serviceName: string): {
             // GET /license/sqlserver/{serviceName}
             $get(): Promise<license.sqlserver.SqlServer>;
             confirmTermination: {
                 // POST /license/sqlserver/{serviceName}/confirmTermination
-                $post(params?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+                $post(params: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
             }
             serviceInfos: {
                 // GET /license/sqlserver/{serviceName}/serviceInfos

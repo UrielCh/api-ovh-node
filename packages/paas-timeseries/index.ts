@@ -173,14 +173,14 @@ export interface Paas{
                 // GET /paas/timeseries/{serviceName}/key
                 $get(): Promise<paas.timeseries.Key[]>;
                 // POST /paas/timeseries/{serviceName}/key
-                $post(params?: {description?: string, permissions: string[], tags: paas.timeseries.Tag[]}): Promise<paas.timeseries.Key>;
+                $post(params: {description?: string, permissions: string[], tags: paas.timeseries.Tag[]}): Promise<paas.timeseries.Key>;
                 $(keyId: string): {
                     // DELETE /paas/timeseries/{serviceName}/key/{keyId}
                     $delete(): Promise<boolean>;
                     // GET /paas/timeseries/{serviceName}/key/{keyId}
                     $get(): Promise<paas.timeseries.Key>;
                     // PUT /paas/timeseries/{serviceName}/key/{keyId}
-                    $put(params?: {description?: string, permissions: tsaas.PermissionEnum[], tags: paas.timeseries.Tag[]}): Promise<paas.timeseries.Key>;
+                    $put(params: {description?: string, permissions: tsaas.PermissionEnum[], tags: paas.timeseries.Tag[]}): Promise<paas.timeseries.Key>;
                 };
             }
             quota: {
@@ -195,7 +195,7 @@ export interface Paas{
             }
             setup: {
                 // POST /paas/timeseries/{serviceName}/setup
-                $post(params?: {description?: string, displayName: string, raTokenId?: string, raTokenKey?: string, regionId?: string}): Promise<paas.timeseries.Project>;
+                $post(params: {description?: string, displayName: string, raTokenId?: string, raTokenKey?: string, regionId?: string}): Promise<paas.timeseries.Project>;
             }
         };
     }

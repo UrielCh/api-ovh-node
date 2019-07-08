@@ -138,7 +138,7 @@ export interface License{
         $get(): Promise<string[]>;
         orderableVersions: {
             // GET /license/virtuozzo/orderableVersions
-            $get(params?: {ip: string}): Promise<license.VirtuozzoOrderConfiguration[]>;
+            $get(params: {ip: string}): Promise<license.VirtuozzoOrderConfiguration[]>;
         }
         $(serviceName: string): {
             // GET /license/virtuozzo/{serviceName}
@@ -151,15 +151,15 @@ export interface License{
             }
             canLicenseBeMovedTo: {
                 // GET /license/virtuozzo/{serviceName}/canLicenseBeMovedTo
-                $get(params?: {destinationIp: string}): Promise<license.ChangeIpStatus>;
+                $get(params: {destinationIp: string}): Promise<license.ChangeIpStatus>;
             }
             changeIp: {
                 // POST /license/virtuozzo/{serviceName}/changeIp
-                $post(params?: {destinationIp: string}): Promise<license.Task>;
+                $post(params: {destinationIp: string}): Promise<license.Task>;
             }
             confirmTermination: {
                 // POST /license/virtuozzo/{serviceName}/confirmTermination
-                $post(params?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+                $post(params: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
             }
             option: {
                 // GET /license/virtuozzo/{serviceName}/option

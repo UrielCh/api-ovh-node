@@ -114,7 +114,7 @@ export interface License{
         $get(): Promise<string[]>;
         orderableVersions: {
             // GET /license/worklight/orderableVersions
-            $get(params?: {ip: string}): Promise<license.WorkLightOrderConfiguration[]>;
+            $get(params: {ip: string}): Promise<license.WorkLightOrderConfiguration[]>;
         }
         $(serviceName: string): {
             // GET /license/worklight/{serviceName}
@@ -127,15 +127,15 @@ export interface License{
             }
             canLicenseBeMovedTo: {
                 // GET /license/worklight/{serviceName}/canLicenseBeMovedTo
-                $get(params?: {destinationIp: string}): Promise<license.ChangeIpStatus>;
+                $get(params: {destinationIp: string}): Promise<license.ChangeIpStatus>;
             }
             changeIp: {
                 // POST /license/worklight/{serviceName}/changeIp
-                $post(params?: {destinationIp: string}): Promise<license.Task>;
+                $post(params: {destinationIp: string}): Promise<license.Task>;
             }
             confirmTermination: {
                 // POST /license/worklight/{serviceName}/confirmTermination
-                $post(params?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+                $post(params: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
             }
             serviceInfos: {
                 // GET /license/worklight/{serviceName}/serviceInfos

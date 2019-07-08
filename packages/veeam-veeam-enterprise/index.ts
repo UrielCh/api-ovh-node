@@ -88,11 +88,11 @@ export interface Veeam{
             $get(): Promise<veeam.veeamEnterprise.Account>;
             confirmTermination: {
                 // POST /veeam/veeamEnterprise/{serviceName}/confirmTermination
-                $post(params?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+                $post(params: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
             }
             register: {
                 // POST /veeam/veeamEnterprise/{serviceName}/register
-                $post(params?: {ip: string, password: string, port: number, username: string}): Promise<veeam.veeamEnterprise.Task[]>;
+                $post(params: {ip: string, password: string, port: number, username: string}): Promise<veeam.veeamEnterprise.Task[]>;
             }
             serviceInfos: {
                 // GET /veeam/veeamEnterprise/{serviceName}/serviceInfos
@@ -114,7 +114,7 @@ export interface Veeam{
             }
             update: {
                 // POST /veeam/veeamEnterprise/{serviceName}/update
-                $post(params?: {ip: string, password: string, port: number, username: string}): Promise<veeam.veeamEnterprise.Task[]>;
+                $post(params: {ip: string, password: string, port: number, username: string}): Promise<veeam.veeamEnterprise.Task[]>;
             }
         };
     }

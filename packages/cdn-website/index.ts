@@ -127,12 +127,12 @@ export interface Cdn{
                 // GET /cdn/website/{serviceName}/zone
                 $get(): Promise<cdn.website.Zone>;
                 // POST /cdn/website/{serviceName}/zone
-                $post(params?: {zone: string}): Promise<cdn.website.Zone>;
+                $post(params: {zone: string}): Promise<cdn.website.Zone>;
                 backends: {
                     // GET /cdn/website/{serviceName}/zone/backends
                     $get(): Promise<string[]>;
                     // POST /cdn/website/{serviceName}/zone/backends
-                    $post(params?: {ipv4: string}): Promise<cdn.website.Task>;
+                    $post(params: {ipv4: string}): Promise<cdn.website.Task>;
                     $(ipv4: string): {
                         // DELETE /cdn/website/{serviceName}/zone/backends/{ipv4}
                         $delete(): Promise<cdn.website.Task>;
@@ -152,7 +152,7 @@ export interface Cdn{
                     // GET /cdn/website/{serviceName}/zone/domains
                     $get(): Promise<string[]>;
                     // POST /cdn/website/{serviceName}/zone/domains
-                    $post(params?: {domain: string}): Promise<cdn.website.Domain>;
+                    $post(params: {domain: string}): Promise<cdn.website.Domain>;
                     $(domain: string): {
                         // DELETE /cdn/website/{serviceName}/zone/domains/{domain}
                         $delete(): Promise<cdn.website.Task>;
@@ -164,7 +164,7 @@ export interface Cdn{
                         }
                         statistics: {
                             // GET /cdn/website/{serviceName}/zone/domains/{domain}/statistics
-                            $get(params?: {period: cdn.website.StatsPeriodEnum, type: cdn.website.StatsTypeEnum, value: cdn.website.StatsValueEnum}): Promise<cdn.website.StatsDataType[]>;
+                            $get(params: {period: cdn.website.StatsPeriodEnum, type: cdn.website.StatsTypeEnum, value: cdn.website.StatsValueEnum}): Promise<cdn.website.StatsDataType[]>;
                         }
                         tasks: {
                             // GET /cdn/website/{serviceName}/zone/domains/{domain}/tasks

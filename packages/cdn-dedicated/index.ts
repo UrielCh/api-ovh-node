@@ -174,7 +174,7 @@ export interface Cdn{
                 // GET /cdn/dedicated/{serviceName}/domains
                 $get(): Promise<string[]>;
                 // POST /cdn/dedicated/{serviceName}/domains
-                $post(params?: {domain: string}): Promise<cdnanycast.Domain>;
+                $post(params: {domain: string}): Promise<cdnanycast.Domain>;
                 $(domain: string): {
                     // DELETE /cdn/dedicated/{serviceName}/domains/{domain}
                     $delete(): Promise<cdnanycast.Task>;
@@ -186,7 +186,7 @@ export interface Cdn{
                         // GET /cdn/dedicated/{serviceName}/domains/{domain}/backends
                         $get(): Promise<string[]>;
                         // POST /cdn/dedicated/{serviceName}/domains/{domain}/backends
-                        $post(params?: {ip: string}): Promise<cdnanycast.Backend>;
+                        $post(params: {ip: string}): Promise<cdnanycast.Backend>;
                         $(ip: string): {
                             // DELETE /cdn/dedicated/{serviceName}/domains/{domain}/backends/{ip}
                             $delete(): Promise<string>;
@@ -198,7 +198,7 @@ export interface Cdn{
                         // GET /cdn/dedicated/{serviceName}/domains/{domain}/cacheRules
                         $get(params?: {fileMatch?: string}): Promise<number[]>;
                         // POST /cdn/dedicated/{serviceName}/domains/{domain}/cacheRules
-                        $post(params?: {cacheType: cdnanycast.CacheRuleCacheTypeEnum, fileMatch: string, fileType: cdnanycast.CacheRuleFileTypeEnum, ttl: number}): Promise<cdnanycast.CacheRule>;
+                        $post(params: {cacheType: cdnanycast.CacheRuleCacheTypeEnum, fileMatch: string, fileType: cdnanycast.CacheRuleFileTypeEnum, ttl: number}): Promise<cdnanycast.CacheRule>;
                         $(cacheRuleId: number): {
                             // DELETE /cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}
                             $delete(): Promise<cdnanycast.Task>;
@@ -230,7 +230,7 @@ export interface Cdn{
                     }
                     statistics: {
                         // GET /cdn/dedicated/{serviceName}/domains/{domain}/statistics
-                        $get(params?: {period: cdnanycast.StatsPeriodEnum, type: cdnanycast.StatsTypeEnum, value: cdnanycast.StatsValueEnum}): Promise<cdnanycast.StatsDataType[]>;
+                        $get(params: {period: cdnanycast.StatsPeriodEnum, type: cdnanycast.StatsTypeEnum, value: cdnanycast.StatsValueEnum}): Promise<cdnanycast.StatsDataType[]>;
                     }
                     tasks: {
                         // GET /cdn/dedicated/{serviceName}/domains/{domain}/tasks
@@ -248,7 +248,7 @@ export interface Cdn{
             }
             quota: {
                 // GET /cdn/dedicated/{serviceName}/quota
-                $get(params?: {period: cdnanycast.StatsPeriodEnum}): Promise<cdnanycast.StatsDataType[]>;
+                $get(params: {period: cdnanycast.StatsPeriodEnum}): Promise<cdnanycast.StatsDataType[]>;
             }
             serviceInfos: {
                 // GET /cdn/dedicated/{serviceName}/serviceInfos
@@ -262,7 +262,7 @@ export interface Cdn{
                 // GET /cdn/dedicated/{serviceName}/ssl
                 $get(): Promise<cdnanycast.Ssl>;
                 // POST /cdn/dedicated/{serviceName}/ssl
-                $post(params?: {certificate?: string, chain?: string, key?: string, name: string}): Promise<cdnanycast.Ssl>;
+                $post(params: {certificate?: string, chain?: string, key?: string, name: string}): Promise<cdnanycast.Ssl>;
                 tasks: {
                     // GET /cdn/dedicated/{serviceName}/ssl/tasks
                     $get(params?: {function_?: cdnanycast.TaskFunctionEnum, status?: cdnanycast.TaskStateEnum}): Promise<number[]>;
@@ -273,7 +273,7 @@ export interface Cdn{
                 }
                 update: {
                     // POST /cdn/dedicated/{serviceName}/ssl/update
-                    $post(params?: {certificate: string, chain?: string, key: string}): Promise<cdnanycast.Task>;
+                    $post(params: {certificate: string, chain?: string, key: string}): Promise<cdnanycast.Task>;
                 }
             }
         };

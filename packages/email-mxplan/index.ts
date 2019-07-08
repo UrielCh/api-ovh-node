@@ -239,7 +239,7 @@ export interface Email{
                         // GET /email/mxplan/{service}/account/{email}/alias
                         $get(): Promise<string[]>;
                         // POST /email/mxplan/{service}/account/{email}/alias
-                        $post(params?: {alias: string}): Promise<email.pro.Task>;
+                        $post(params: {alias: string}): Promise<email.pro.Task>;
                         $(alias: string): {
                             // DELETE /email/mxplan/{service}/account/{email}/alias/{alias}
                             $delete(): Promise<email.pro.Task>;
@@ -253,19 +253,19 @@ export interface Email{
                     }
                     changePassword: {
                         // POST /email/mxplan/{service}/account/{email}/changePassword
-                        $post(params?: {password: string}): Promise<email.pro.Task>;
+                        $post(params: {password: string}): Promise<email.pro.Task>;
                     }
                     diagnostic: {
                         // GET /email/mxplan/{service}/account/{email}/diagnostic
                         $get(): Promise<email.mxplan.AccountDiagnosis>;
                         // POST /email/mxplan/{service}/account/{email}/diagnostic
-                        $post(params?: {password: string}): Promise<email.pro.Task>;
+                        $post(params: {password: string}): Promise<email.pro.Task>;
                     }
                     fullAccess: {
                         // GET /email/mxplan/{service}/account/{email}/fullAccess
                         $get(): Promise<number[]>;
                         // POST /email/mxplan/{service}/account/{email}/fullAccess
-                        $post(params?: {allowedAccountId: number}): Promise<email.pro.Task>;
+                        $post(params: {allowedAccountId: number}): Promise<email.pro.Task>;
                         $(allowedAccountId: number): {
                             // DELETE /email/mxplan/{service}/account/{email}/fullAccess/{allowedAccountId}
                             $delete(): Promise<email.pro.Task>;
@@ -277,7 +277,7 @@ export interface Email{
                         // GET /email/mxplan/{service}/account/{email}/sendAs
                         $get(): Promise<number[]>;
                         // POST /email/mxplan/{service}/account/{email}/sendAs
-                        $post(params?: {allowAccountId: number}): Promise<email.pro.Task>;
+                        $post(params: {allowAccountId: number}): Promise<email.pro.Task>;
                         $(allowedAccountId: number): {
                             // DELETE /email/mxplan/{service}/account/{email}/sendAs/{allowedAccountId}
                             $delete(): Promise<email.pro.Task>;
@@ -289,7 +289,7 @@ export interface Email{
                         // GET /email/mxplan/{service}/account/{email}/sendOnBehalfTo
                         $get(): Promise<number[]>;
                         // POST /email/mxplan/{service}/account/{email}/sendOnBehalfTo
-                        $post(params?: {allowAccountId: number}): Promise<email.pro.Task>;
+                        $post(params: {allowAccountId: number}): Promise<email.pro.Task>;
                         $(allowedAccountId: number): {
                             // DELETE /email/mxplan/{service}/account/{email}/sendOnBehalfTo/{allowedAccountId}
                             $delete(): Promise<email.pro.Task>;
@@ -321,7 +321,7 @@ export interface Email{
                         // GET /email/mxplan/{service}/domain/{domainName}/disclaimer
                         $get(): Promise<email.pro.disclaimer>;
                         // POST /email/mxplan/{service}/domain/{domainName}/disclaimer
-                        $post(params?: {content: string, outsideOnly?: boolean}): Promise<email.pro.Task>;
+                        $post(params: {content: string, outsideOnly?: boolean}): Promise<email.pro.Task>;
                         // PUT /email/mxplan/{service}/domain/{domainName}/disclaimer
                         $put(params?: {content?: string, creationDate?: string, name?: string, outsideOnly?: boolean, taskPendingId?: number}): Promise<void>;
                     }
@@ -335,7 +335,7 @@ export interface Email{
                 // GET /email/mxplan/{service}/externalContact
                 $get(params?: {displayName?: string, externalEmailAddress?: string, firstName?: string, id?: number, lastName?: string}): Promise<string[]>;
                 // POST /email/mxplan/{service}/externalContact
-                $post(params?: {displayName?: string, externalEmailAddress: string, firstName?: string, hiddenFromGAL?: boolean, initials?: string, lastName?: string}): Promise<email.pro.Task>;
+                $post(params: {displayName?: string, externalEmailAddress: string, firstName?: string, hiddenFromGAL?: boolean, initials?: string, lastName?: string}): Promise<email.pro.Task>;
                 $(externalEmailAddress: string): {
                     // DELETE /email/mxplan/{service}/externalContact/{externalEmailAddress}
                     $delete(): Promise<email.pro.Task>;

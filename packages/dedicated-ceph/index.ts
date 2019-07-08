@@ -59,7 +59,7 @@ export namespace dedicated {
             backup: boolean;
             minActiveReplicas: number;
             name: string;
-            poolType: dedicated.ceph.poolList.response.poolTypeEnum;
+            poolType: dedicated.ceph.poolGet.response.poolTypeEnum;
             replicaCount: number;
             serviceName: string;
         }
@@ -129,12 +129,12 @@ export interface Dedicated{
             // GET /dedicated/ceph/{serviceName}
             $get(): Promise<dedicated.ceph.response>;
             // PUT /dedicated/ceph/{serviceName}
-            $put(params?: {crushTunables: dedicated.ceph.clusterUpdate.crushTunablesEnum, label: string}): Promise<string>;
+            $put(params: {crushTunables: dedicated.ceph.clusterUpdate.crushTunablesEnum, label: string}): Promise<string>;
             acl: {
                 // GET /dedicated/ceph/{serviceName}/acl
                 $get(): Promise<dedicated.ceph.response[]>;
                 // POST /dedicated/ceph/{serviceName}/acl
-                $post(params?: {aclList: string[]}): Promise<string>;
+                $post(params: {aclList: string[]}): Promise<string>;
                 $(aclId: string): {
                     // DELETE /dedicated/ceph/{serviceName}/acl/{aclId}
                     $delete(): Promise<string>;
@@ -148,7 +148,7 @@ export interface Dedicated{
             }
             confirmTermination: {
                 // POST /dedicated/ceph/{serviceName}/confirmTermination
-                $post(params?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+                $post(params: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
             }
             health: {
                 // GET /dedicated/ceph/{serviceName}/health
@@ -158,7 +158,7 @@ export interface Dedicated{
                 // GET /dedicated/ceph/{serviceName}/pool
                 $get(): Promise<dedicated.ceph.response[]>;
                 // POST /dedicated/ceph/{serviceName}/pool
-                $post(params?: {poolName: string}): Promise<string>;
+                $post(params: {poolName: string}): Promise<string>;
                 $(poolName: string): {
                     // DELETE /dedicated/ceph/{serviceName}/pool/{poolName}
                     $delete(): Promise<string>;
@@ -188,7 +188,7 @@ export interface Dedicated{
                 // GET /dedicated/ceph/{serviceName}/user
                 $get(): Promise<dedicated.ceph.response[]>;
                 // POST /dedicated/ceph/{serviceName}/user
-                $post(params?: {userName: string}): Promise<string>;
+                $post(params: {userName: string}): Promise<string>;
                 $(userName: string): {
                     // DELETE /dedicated/ceph/{serviceName}/user/{userName}
                     $delete(): Promise<string>;
@@ -200,7 +200,7 @@ export interface Dedicated{
                         // POST /dedicated/ceph/{serviceName}/user/{userName}/pool
                         $post(params?: {permissions?: dedicated.ceph.permissions[]}): Promise<string>;
                         // PUT /dedicated/ceph/{serviceName}/user/{userName}/pool
-                        $put(params?: {classRead: boolean, classWrite: boolean, execute: boolean, poolName: string, read: boolean, write: boolean}): Promise<string>;
+                        $put(params: {classRead: boolean, classWrite: boolean, execute: boolean, poolName: string, read: boolean, write: boolean}): Promise<string>;
                         $(poolName: string): {
                             // DELETE /dedicated/ceph/{serviceName}/user/{userName}/pool/{poolName}
                             $delete(): Promise<string>;

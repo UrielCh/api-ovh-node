@@ -205,7 +205,7 @@ export interface Cluster{
                         // GET /cluster/hadoop/{serviceName}/node/{hostname}/role
                         $get(): Promise<cluster.hadoop.RoleTypeEnum[]>;
                         // POST /cluster/hadoop/{serviceName}/node/{hostname}/role
-                        $post(params?: {type: cluster.hadoop.RoleTypeEnum}): Promise<cluster.hadoop.Task>;
+                        $post(params: {type: cluster.hadoop.RoleTypeEnum}): Promise<cluster.hadoop.Task>;
                         $(type: cluster.hadoop.RoleTypeEnum): {
                             // DELETE /cluster/hadoop/{serviceName}/node/{hostname}/role/{type}
                             $delete(): Promise<cluster.hadoop.Task>;
@@ -237,7 +237,7 @@ export interface Cluster{
             }
             orderNewNodeHourly: {
                 // POST /cluster/hadoop/{serviceName}/orderNewNodeHourly
-                $post(params?: {nodeProfile: string}): Promise<cluster.hadoop.Task>;
+                $post(params: {nodeProfile: string}): Promise<cluster.hadoop.Task>;
             }
             orderableNodeProfiles: {
                 // GET /cluster/hadoop/{serviceName}/orderableNodeProfiles
@@ -250,15 +250,15 @@ export interface Cluster{
             service: {
                 restart: {
                     // POST /cluster/hadoop/{serviceName}/service/restart
-                    $post(params?: {service: cluster.hadoop.ClusterServiceNameEnum}): Promise<cluster.hadoop.Task>;
+                    $post(params: {service: cluster.hadoop.ClusterServiceNameEnum}): Promise<cluster.hadoop.Task>;
                 }
                 start: {
                     // POST /cluster/hadoop/{serviceName}/service/start
-                    $post(params?: {service: cluster.hadoop.ClusterServiceNameEnum}): Promise<cluster.hadoop.Task>;
+                    $post(params: {service: cluster.hadoop.ClusterServiceNameEnum}): Promise<cluster.hadoop.Task>;
                 }
                 stop: {
                     // POST /cluster/hadoop/{serviceName}/service/stop
-                    $post(params?: {service: cluster.hadoop.ClusterServiceNameEnum}): Promise<cluster.hadoop.Task>;
+                    $post(params: {service: cluster.hadoop.ClusterServiceNameEnum}): Promise<cluster.hadoop.Task>;
                 }
             }
             serviceInfos: {
@@ -291,7 +291,7 @@ export interface Cluster{
                 // GET /cluster/hadoop/{serviceName}/user
                 $get(): Promise<string[]>;
                 // POST /cluster/hadoop/{serviceName}/user
-                $post(params?: {clouderaManager: boolean, httpFrontend: boolean, hue: boolean, password: string, username: string}): Promise<cluster.hadoop.Task>;
+                $post(params: {clouderaManager: boolean, httpFrontend: boolean, hue: boolean, password: string, username: string}): Promise<cluster.hadoop.Task>;
                 $(username: string): {
                     // DELETE /cluster/hadoop/{serviceName}/user/{username}
                     $delete(): Promise<cluster.hadoop.Task>;
@@ -301,7 +301,7 @@ export interface Cluster{
                     $put(params?: {clouderaManager?: boolean, httpFrontend?: boolean, hue?: boolean, username?: string}): Promise<void>;
                     resetPassword: {
                         // POST /cluster/hadoop/{serviceName}/user/{username}/resetPassword
-                        $post(params?: {password: string}): Promise<cluster.hadoop.Task>;
+                        $post(params: {password: string}): Promise<cluster.hadoop.Task>;
                     }
                 };
             }

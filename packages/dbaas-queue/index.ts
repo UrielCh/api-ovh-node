@@ -138,7 +138,7 @@ export interface Dbaas{
             // GET /dbaas/queue/{serviceName}
             $get(): Promise<dbaas.queue.App>;
             // PUT /dbaas/queue/{serviceName}
-            $put(params?: {name: string}): Promise<dbaas.queue.App>;
+            $put(params: {name: string}): Promise<dbaas.queue.App>;
             key: {
                 // GET /dbaas/queue/{serviceName}/key
                 $get(): Promise<string[]>;

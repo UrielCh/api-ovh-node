@@ -105,14 +105,14 @@ export interface License{
         $get(): Promise<string[]>;
         orderableVersions: {
             // GET /license/cloudLinux/orderableVersions
-            $get(params?: {ip: string}): Promise<license.CloudLinuxOrderConfiguration[]>;
+            $get(params: {ip: string}): Promise<license.CloudLinuxOrderConfiguration[]>;
         }
         $(serviceName: string): {
             // GET /license/cloudLinux/{serviceName}
             $get(): Promise<license.cloudLinux.CloudLinux>;
             confirmTermination: {
                 // POST /license/cloudLinux/{serviceName}/confirmTermination
-                $post(params?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+                $post(params: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
             }
             serviceInfos: {
                 // GET /license/cloudLinux/{serviceName}/serviceInfos

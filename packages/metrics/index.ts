@@ -126,7 +126,7 @@ export interface Metrics{
         }
         confirmTermination: {
             // POST /metrics/{serviceName}/confirmTermination
-            $post(params?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+            $post(params: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
         }
         consumption: {
             // GET /metrics/{serviceName}/consumption
@@ -135,12 +135,12 @@ export interface Metrics{
         lookup: {
             token: {
                 // POST /metrics/{serviceName}/lookup/token
-                $post(params?: {accessToken: string}): Promise<string[]>;
+                $post(params: {accessToken: string}): Promise<string[]>;
             }
         }
         quota: {
             // PUT /metrics/{serviceName}/quota
-            $put(params?: {quota: number}): Promise<string>;
+            $put(params: {quota: number}): Promise<string>;
         }
         serviceInfos: {
             // GET /metrics/{serviceName}/serviceInfos
@@ -156,7 +156,7 @@ export interface Metrics{
             // GET /metrics/{serviceName}/token
             $get(): Promise<string[]>;
             // POST /metrics/{serviceName}/token
-            $post(params?: {description?: string, labels?: metrics.api.Label[], permission: metrics.api.PermissionEnum}): Promise<metrics.api.Token>;
+            $post(params: {description?: string, labels?: metrics.api.Label[], permission: metrics.api.PermissionEnum}): Promise<metrics.api.Token>;
             $(tokenId: string): {
                 // DELETE /metrics/{serviceName}/token/{tokenId}
                 $delete(): Promise<void>;

@@ -119,7 +119,7 @@ export interface Dedicated{
                 // GET /dedicated/nas/{serviceName}/partition
                 $get(): Promise<string[]>;
                 // POST /dedicated/nas/{serviceName}/partition
-                $post(params?: {partitionName: string, protocol: dedicated.storage.ProtocolEnum, size: number}): Promise<dedicated.nasTask.Task>;
+                $post(params: {partitionName: string, protocol: dedicated.storage.ProtocolEnum, size: number}): Promise<dedicated.nasTask.Task>;
                 $(partitionName: string): {
                     // DELETE /dedicated/nas/{serviceName}/partition/{partitionName}
                     $delete(): Promise<dedicated.nasTask.Task>;
@@ -131,7 +131,7 @@ export interface Dedicated{
                         // GET /dedicated/nas/{serviceName}/partition/{partitionName}/access
                         $get(): Promise<string[]>;
                         // POST /dedicated/nas/{serviceName}/partition/{partitionName}/access
-                        $post(params?: {ip: string}): Promise<dedicated.nasTask.Task>;
+                        $post(params: {ip: string}): Promise<dedicated.nasTask.Task>;
                         $(ip: string): {
                             // DELETE /dedicated/nas/{serviceName}/partition/{partitionName}/access/{ip}
                             $delete(): Promise<dedicated.nasTask.Task>;
@@ -147,7 +147,7 @@ export interface Dedicated{
                         // GET /dedicated/nas/{serviceName}/partition/{partitionName}/quota
                         $get(): Promise<number[]>;
                         // POST /dedicated/nas/{serviceName}/partition/{partitionName}/quota
-                        $post(params?: {size: number, uid: number}): Promise<dedicated.nasTask.Task>;
+                        $post(params: {size: number, uid: number}): Promise<dedicated.nasTask.Task>;
                         $(uid: number): {
                             // DELETE /dedicated/nas/{serviceName}/partition/{partitionName}/quota/{uid}
                             $delete(): Promise<dedicated.nasTask.Task>;

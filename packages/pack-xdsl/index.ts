@@ -478,7 +478,7 @@ export interface Pack{
                 }
                 move: {
                     // POST /pack/xdsl/{packName}/addressMove/move
-                    $post(params?: {creation?: pack.xdsl.addressMove.Creation, keepCurrentNumber: boolean, landline?: pack.xdsl.addressMove.Landline, moveOutDate?: string, offerCode: string, provider?: xdsl.eligibility.ProviderEnum}): Promise<pack.xdsl.AsyncTask<number>>;
+                    $post(params: {creation?: pack.xdsl.addressMove.Creation, keepCurrentNumber: boolean, landline?: pack.xdsl.addressMove.Landline, moveOutDate?: string, offerCode: string, provider?: xdsl.eligibility.ProviderEnum}): Promise<pack.xdsl.AsyncTask<number>>;
                 }
             }
             canCancelResiliation: {
@@ -504,7 +504,7 @@ export interface Pack{
                     // GET /pack/xdsl/{packName}/domain/services
                     $get(): Promise<string[]>;
                     // POST /pack/xdsl/{packName}/domain/services
-                    $post(params?: {action: pack.xdsl.DomainActionEnum, authInfo?: string, domain: string, tld: string}): Promise<pack.xdsl.Task>;
+                    $post(params: {action: pack.xdsl.DomainActionEnum, authInfo?: string, domain: string, tld: string}): Promise<pack.xdsl.Task>;
                 }
             }
             emailPro: {
@@ -515,14 +515,14 @@ export interface Pack{
                     }
                     isEmailAvailable: {
                         // GET /pack/xdsl/{packName}/emailPro/options/isEmailAvailable
-                        $get(params?: {email: string}): Promise<boolean>;
+                        $get(params: {email: string}): Promise<boolean>;
                     }
                 }
                 services: {
                     // GET /pack/xdsl/{packName}/emailPro/services
                     $get(): Promise<string[]>;
                     // POST /pack/xdsl/{packName}/emailPro/services
-                    $post(params?: {email: string, password: string}): Promise<pack.xdsl.Task>;
+                    $post(params: {email: string, password: string}): Promise<pack.xdsl.Task>;
                 }
             }
             exchangeAccount: {
@@ -543,28 +543,28 @@ export interface Pack{
                     }
                     isEmailAvailable: {
                         // GET /pack/xdsl/{packName}/exchangeIndividual/options/isEmailAvailable
-                        $get(params?: {email: string}): Promise<boolean>;
+                        $get(params: {email: string}): Promise<boolean>;
                     }
                 }
                 services: {
                     // GET /pack/xdsl/{packName}/exchangeIndividual/services
                     $get(): Promise<string[]>;
                     // POST /pack/xdsl/{packName}/exchangeIndividual/services
-                    $post(params?: {email: string, password: string}): Promise<pack.xdsl.Task>;
+                    $post(params: {email: string, password: string}): Promise<pack.xdsl.Task>;
                 }
             }
             exchangeLite: {
                 options: {
                     isEmailAvailable: {
                         // GET /pack/xdsl/{packName}/exchangeLite/options/isEmailAvailable
-                        $get(params?: {email: string}): Promise<boolean>;
+                        $get(params: {email: string}): Promise<boolean>;
                     }
                 }
                 services: {
                     // GET /pack/xdsl/{packName}/exchangeLite/services
                     $get(): Promise<string[]>;
                     // POST /pack/xdsl/{packName}/exchangeLite/services
-                    $post(params?: {antispam?: boolean, displayName?: string, email: string, firstName?: string, initials?: string, lastName?: string, password: string}): Promise<pack.xdsl.Task>;
+                    $post(params: {antispam?: boolean, displayName?: string, email: string, firstName?: string, initials?: string, lastName?: string, password: string}): Promise<pack.xdsl.Task>;
                     $(domain: string): {
                         // GET /pack/xdsl/{packName}/exchangeLite/services/{domain}
                         $get(): Promise<pack.xdsl.ExchangeLiteService>;
@@ -588,7 +588,7 @@ export interface Pack{
                     // GET /pack/xdsl/{packName}/hostedEmail/services
                     $get(): Promise<string[]>;
                     // POST /pack/xdsl/{packName}/hostedEmail/services
-                    $post(params?: {email: string, password: string}): Promise<pack.xdsl.Task>;
+                    $post(params: {email: string, password: string}): Promise<pack.xdsl.Task>;
                 }
             }
             hubic: {
@@ -608,7 +608,7 @@ export interface Pack{
             migration: {
                 migrate: {
                     // POST /pack/xdsl/{packName}/migration/migrate
-                    $post(params?: {acceptContracts: boolean, buildingReference?: string, engageMonths?: number, floor?: string, mondialRelayId?: number, nicShipping?: string, offerName: string, options?: pack.xdsl.migration.OfferOption[], otp?: boolean, otpReference?: string, stair?: string, subServicesToDelete?: pack.xdsl.migration.OfferServiceToDelete[]}): Promise<pack.xdsl.Task>;
+                    $post(params: {acceptContracts: boolean, buildingReference?: string, engageMonths?: number, floor?: string, mondialRelayId?: number, nicShipping?: string, offerName: string, options?: pack.xdsl.migration.OfferOption[], otp?: boolean, otpReference?: string, stair?: string, subServicesToDelete?: pack.xdsl.migration.OfferServiceToDelete[]}): Promise<pack.xdsl.Task>;
                 }
                 offers: {
                     // POST /pack/xdsl/{packName}/migration/offers
@@ -616,7 +616,7 @@ export interface Pack{
                 }
                 servicesToDelete: {
                     // POST /pack/xdsl/{packName}/migration/servicesToDelete
-                    $post(params?: {offerName: string, options?: pack.xdsl.migration.OfferOption[]}): Promise<pack.xdsl.migration.SubServiceToDelete[]>;
+                    $post(params: {offerName: string, options?: pack.xdsl.migration.OfferOption[]}): Promise<pack.xdsl.migration.SubServiceToDelete[]>;
                 }
             }
             promotionCode: {
@@ -631,7 +631,7 @@ export interface Pack{
             }
             resiliate: {
                 // POST /pack/xdsl/{packName}/resiliate
-                $post(params?: {resiliationDate?: string, resiliationSurvey: pack.xdsl.ResiliationSurvey, servicesToKeep?: number[]}): Promise<pack.xdsl.ResiliationFollowUpDetail>;
+                $post(params: {resiliationDate?: string, resiliationSurvey: pack.xdsl.ResiliationSurvey, servicesToKeep?: number[]}): Promise<pack.xdsl.ResiliationFollowUpDetail>;
             }
             resiliationFollowUp: {
                 // GET /pack/xdsl/{packName}/resiliationFollowUp
@@ -653,7 +653,7 @@ export interface Pack{
             }
             shippingAddresses: {
                 // GET /pack/xdsl/{packName}/shippingAddresses
-                $get(params?: {context: pack.xdsl.ShippingAddressContextEnum}): Promise<pack.xdsl.ShippingAddress[]>;
+                $get(params: {context: pack.xdsl.ShippingAddressContextEnum}): Promise<pack.xdsl.ShippingAddress[]>;
             }
             siteBuilderFull: {
                 options: {
@@ -670,7 +670,7 @@ export interface Pack{
                     // GET /pack/xdsl/{packName}/siteBuilderFull/services
                     $get(): Promise<string[]>;
                     // POST /pack/xdsl/{packName}/siteBuilderFull/services
-                    $post(params?: {domain: string, subdomain: string, templateId: number}): Promise<pack.xdsl.Task>;
+                    $post(params: {domain: string, subdomain: string, templateId: number}): Promise<pack.xdsl.Task>;
                 }
             }
             siteBuilderStart: {
@@ -688,7 +688,7 @@ export interface Pack{
                     // GET /pack/xdsl/{packName}/siteBuilderStart/services
                     $get(): Promise<string[]>;
                     // POST /pack/xdsl/{packName}/siteBuilderStart/services
-                    $post(params?: {domain: string, subdomain: string, templateId: number}): Promise<pack.xdsl.Task>;
+                    $post(params: {domain: string, subdomain: string, templateId: number}): Promise<pack.xdsl.Task>;
                 }
             }
             subServices: {
@@ -729,7 +729,7 @@ export interface Pack{
                 options: {
                     customShippingAddress: {
                         // POST /pack/xdsl/{packName}/voipLine/options/customShippingAddress
-                        $post(params?: {address: string, cityName: string, firstName: string, lastName: string, zipCode: string}): Promise<number>;
+                        $post(params: {address: string, cityName: string, firstName: string, lastName: string, zipCode: string}): Promise<number>;
                     }
                     hardwares: {
                         // GET /pack/xdsl/{packName}/voipLine/options/hardwares
@@ -744,7 +744,7 @@ export interface Pack{
                     // GET /pack/xdsl/{packName}/voipLine/services
                     $get(): Promise<string[]>;
                     // POST /pack/xdsl/{packName}/voipLine/services
-                    $post(params?: {hardwareNames: string[], mondialRelayId?: string, shippingId?: string}): Promise<pack.xdsl.VoIPLineOrder>;
+                    $post(params: {hardwareNames: string[], mondialRelayId?: string, shippingId?: string}): Promise<pack.xdsl.VoIPLineOrder>;
                     $(domain: string): {
                         // GET /pack/xdsl/{packName}/voipLine/services/{domain}
                         $get(): Promise<pack.xdsl.VoipLineService>;

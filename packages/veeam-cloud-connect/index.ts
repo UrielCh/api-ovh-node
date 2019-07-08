@@ -125,7 +125,7 @@ export interface VeeamCloudConnect{
                 $get(): Promise<veeamCloudConnect.BackupRepository>;
                 upgradeQuota: {
                     // POST /veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}/upgradeQuota
-                    $post(params?: {newQuota: number}): Promise<veeamCloudConnect.Task[]>;
+                    $post(params: {newQuota: number}): Promise<veeamCloudConnect.Task[]>;
                 }
             };
         }

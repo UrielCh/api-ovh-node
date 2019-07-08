@@ -98,7 +98,7 @@ export interface Cdn{
             }
             statistics: {
                 // GET /cdn/webstorage/{serviceName}/statistics
-                $get(params?: {period: cdn.webstorage.StatsPeriodEnum, type: cdn.webstorage.StatsTypeEnum}): Promise<cdn.webstorage.StatsDataType[]>;
+                $get(params: {period: cdn.webstorage.StatsPeriodEnum, type: cdn.webstorage.StatsTypeEnum}): Promise<cdn.webstorage.StatsDataType[]>;
             }
         };
     }

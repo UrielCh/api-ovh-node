@@ -134,7 +134,7 @@ export interface SslGateway{
     }
     eligibility: {
         // GET /sslGateway/eligibility
-        $get(params?: {domain: string}): Promise<sslGateway.EligibilityStatus>;
+        $get(params: {domain: string}): Promise<sslGateway.EligibilityStatus>;
     }
     $(serviceName: string): {
         // GET /sslGateway/{serviceName}
@@ -147,13 +147,13 @@ export interface SslGateway{
         }
         confirmTermination: {
             // POST /sslGateway/{serviceName}/confirmTermination
-            $post(params?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+            $post(params: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
         }
         domain: {
             // GET /sslGateway/{serviceName}/domain
             $get(): Promise<number[]>;
             // POST /sslGateway/{serviceName}/domain
-            $post(params?: {domain: string}): Promise<sslGateway.Domain>;
+            $post(params: {domain: string}): Promise<sslGateway.Domain>;
             $(id: number): {
                 // DELETE /sslGateway/{serviceName}/domain/{id}
                 $delete(): Promise<void>;
@@ -173,7 +173,7 @@ export interface SslGateway{
             // GET /sslGateway/{serviceName}/server
             $get(): Promise<number[]>;
             // POST /sslGateway/{serviceName}/server
-            $post(params?: {address: string, port: number}): Promise<sslGateway.Server>;
+            $post(params: {address: string, port: number}): Promise<sslGateway.Server>;
             $(id: number): {
                 // DELETE /sslGateway/{serviceName}/server/{id}
                 $delete(): Promise<void>;

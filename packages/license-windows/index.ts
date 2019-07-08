@@ -120,7 +120,7 @@ export interface License{
         $get(): Promise<string[]>;
         orderableVersions: {
             // GET /license/windows/orderableVersions
-            $get(params?: {ip: string}): Promise<license.WindowsOrderConfiguration[]>;
+            $get(params: {ip: string}): Promise<license.WindowsOrderConfiguration[]>;
         }
         $(serviceName: string): {
             // GET /license/windows/{serviceName}
@@ -129,7 +129,7 @@ export interface License{
             $put(params?: {creation?: string, deleteAtExpiration?: boolean, domain?: string, ip?: string, licenseId?: string, status?: license.StateEnum, version?: license.WindowsOsVersionEnum}): Promise<void>;
             confirmTermination: {
                 // POST /license/windows/{serviceName}/confirmTermination
-                $post(params?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+                $post(params: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
             }
             option: {
                 // GET /license/windows/{serviceName}/option
@@ -149,7 +149,7 @@ export interface License{
             }
             sqlServer: {
                 // POST /license/windows/{serviceName}/sqlServer
-                $post(params?: {licenseId: string, version: license.WindowsSqlVersionEnum}): Promise<license.Task>;
+                $post(params: {licenseId: string, version: license.WindowsSqlVersionEnum}): Promise<license.Task>;
             }
             tasks: {
                 // GET /license/windows/{serviceName}/tasks

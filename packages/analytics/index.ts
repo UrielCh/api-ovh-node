@@ -195,11 +195,11 @@ export interface Analytics{
             }
             confirmTermination: {
                 // POST /analytics/platforms/{serviceName}/confirmTermination
-                $post(params?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+                $post(params: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
             }
             deploy: {
                 // POST /analytics/platforms/{serviceName}/deploy
-                $post(params?: {clusterName: string, clusterType: string, edgeNodeStorage: number, hdfsEffectiveStorage: number, hdfsReplicationFactor: number, masterNodeStorage: number, masterPassword: string, nodes: analytics.node.Deploy[], osProjectId: string, osProjectName: string, osRegion: string, osToken: string, sshPublicKey: string}): Promise<analytics.cluster.Deploy>;
+                $post(params: {clusterName: string, clusterType: string, edgeNodeStorage: number, hdfsEffectiveStorage: number, hdfsReplicationFactor: number, masterNodeStorage: number, masterPassword: string, nodes: analytics.node.Deploy[], osProjectId: string, osProjectName: string, osRegion: string, osToken: string, sshPublicKey: string}): Promise<analytics.cluster.Deploy>;
             }
             nodes: {
                 // GET /analytics/platforms/{serviceName}/nodes
