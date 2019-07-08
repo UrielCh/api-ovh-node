@@ -157,47 +157,47 @@ export interface Router{
         $get(): Promise<router.Router>;
         confirmTermination: {
             // POST /router/{serviceName}/confirmTermination
-            $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+            $post(params?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
         }
         network: {
             // GET /router/{serviceName}/network
             $get(): Promise<string[]>;
             // POST /router/{serviceName}/network
-            $post(body?: {description: string, ipNet: string, vlanTag?: number}): Promise<router.Task>;
+            $post(params?: {description: string, ipNet: string, vlanTag?: number}): Promise<router.Task>;
             $(ipNet: string): {
                 // DELETE /router/{serviceName}/network/{ipNet}
                 $delete(): Promise<router.Task>;
                 // GET /router/{serviceName}/network/{ipNet}
                 $get(): Promise<router.Network>;
                 // PUT /router/{serviceName}/network/{ipNet}
-                $put(body?: {creationDate?: string, description?: string, id?: number, ipNet?: string, status?: router.IpStatusEnum, vlanTag?: number}): Promise<void>;
+                $put(params?: {creationDate?: string, description?: string, id?: number, ipNet?: string, status?: router.IpStatusEnum, vlanTag?: number}): Promise<void>;
             };
         }
         privateLink: {
             // GET /router/{serviceName}/privateLink
             $get(): Promise<string[]>;
             // POST /router/{serviceName}/privateLink
-            $post(body?: {name: string, peerServiceName: string}): Promise<string>;
+            $post(params?: {name: string, peerServiceName: string}): Promise<string>;
             $(peerServiceName: string): {
                 // DELETE /router/{serviceName}/privateLink/{peerServiceName}
                 $delete(): Promise<router.Task>;
                 // GET /router/{serviceName}/privateLink/{peerServiceName}
                 $get(): Promise<router.PrivateLink>;
                 // PUT /router/{serviceName}/privateLink/{peerServiceName}
-                $put(body?: {creationDate?: string, id?: number, name?: string, peerServiceName?: string, status?: router.StatusEnum}): Promise<void>;
+                $put(params?: {creationDate?: string, id?: number, name?: string, peerServiceName?: string, status?: router.StatusEnum}): Promise<void>;
                 request: {
                     // GET /router/{serviceName}/privateLink/{peerServiceName}/request
                     $get(): Promise<router.PrivateLinkRequest>;
                     manage: {
                         // POST /router/{serviceName}/privateLink/{peerServiceName}/request/manage
-                        $post(body?: {action: router.PrivLinkReqActionEnum}): Promise<string>;
+                        $post(params?: {action: router.PrivLinkReqActionEnum}): Promise<string>;
                     }
                 }
                 route: {
                     // GET /router/{serviceName}/privateLink/{peerServiceName}/route
                     $get(): Promise<string[]>;
                     // POST /router/{serviceName}/privateLink/{peerServiceName}/route
-                    $post(body?: {network: string}): Promise<router.Task>;
+                    $post(params?: {network: string}): Promise<router.Task>;
                     $(network: string): {
                         // DELETE /router/{serviceName}/privateLink/{peerServiceName}/route/{network}
                         $delete(): Promise<router.Task>;
@@ -211,11 +211,11 @@ export interface Router{
             // GET /router/{serviceName}/serviceInfos
             $get(): Promise<services.Service>;
             // PUT /router/{serviceName}/serviceInfos
-            $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
         }
         task: {
             // GET /router/{serviceName}/task
-            $get(param?: {function_?: router.TaskFunctionEnum, status?: router.TaskStatusEnum}): Promise<number[]>;
+            $get(params?: {function_?: router.TaskFunctionEnum, status?: router.TaskStatusEnum}): Promise<number[]>;
             $(id: number): {
                 // GET /router/{serviceName}/task/{id}
                 $get(): Promise<router.Task>;
@@ -229,17 +229,17 @@ export interface Router{
             // GET /router/{serviceName}/vpn
             $get(): Promise<number[]>;
             // POST /router/{serviceName}/vpn
-            $post(body?: {clientIp?: string, clientPrivNet: string, psk: string, serverPrivNet: string}): Promise<router.Vpn>;
+            $post(params?: {clientIp?: string, clientPrivNet: string, psk: string, serverPrivNet: string}): Promise<router.Vpn>;
             $(id: number): {
                 // DELETE /router/{serviceName}/vpn/{id}
                 $delete(): Promise<router.Task>;
                 // GET /router/{serviceName}/vpn/{id}
                 $get(): Promise<router.Vpn>;
                 // PUT /router/{serviceName}/vpn/{id}
-                $put(body?: {clientIp?: string, clientPrivNet?: string, id?: number, serverIp?: string, serverPrivNet?: string}): Promise<void>;
+                $put(params?: {clientIp?: string, clientPrivNet?: string, id?: number, serverIp?: string, serverPrivNet?: string}): Promise<void>;
                 setPsk: {
                     // POST /router/{serviceName}/vpn/{id}/setPsk
-                    $post(body?: {psk: string}): Promise<router.Task>;
+                    $post(params?: {psk: string}): Promise<router.Task>;
                 }
             };
         }

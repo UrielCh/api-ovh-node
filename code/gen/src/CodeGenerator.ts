@@ -253,27 +253,31 @@ export class CodeGenerator {
      */
     dumpApi(schema: Schema, api: CacheApi, code: string): string {
         for (let mtd of ['GET', 'PUT', 'POST', 'DELETE']) {
-            let calls = 0;
             schema.apis.sort((a, b) => a.path.localeCompare(b.path)).forEach(api => {
                 api.operations.filter(op => op.httpMethod === mtd).forEach(
                     op => {
-                        calls++;
                         code += '  /**\n';
                         code += `   * ${api.description}\n`;
                         code += `   * ${op.description}\n`;
                         code += '   */\n';
-                        code += `  ${mtd.toLowerCase()}(path: '${api.path}'): (`;
+
                         let done = new Set();
                         let params = [];
                         let mandatoryParams = 0;
-                        params.push(...op.parameters.filter(p => p.paramType == 'path').map(p => { done.add(p.name); return `${p.name}: ${this.typeFromParameter(p)}` }).sort())
-                        mandatoryParams += params.length;
+
+                        code += `  ${mtd.toLowerCase()}(path: '${api.path}'): (`;
+                        // only for flat model
+                        let pathParam = op.parameters.filter(p => p.paramType == 'path').map(p => { done.add(p.name); return `${p.name}: ${this.typeFromParameter(p)}` }).sort();
+                        mandatoryParams += pathParam.length;
+                        params.push(...pathParam)
+                        //
                         let paramType = (mtd == 'GET') ? 'query' : 'body';
                         let body = op.parameters.filter(p => p.paramType == paramType);
                         if (body.length == 1 && body[0].name == null) {
-                            // console.log(body[0]);
                             let modelsProp = schema.models[body[0].fullType];
-                            if (modelsProp && modelsProp.properties) {
+                            if (!modelsProp || !modelsProp.properties)
+                                console.error(`ERROR in model Body Type ${body[0].fullType} do not exists`)
+                            else {
                                 for (let propName of Object.keys(modelsProp.properties).sort()) {
                                     let p = modelsProp.properties[propName];
                                     if (done.has(propName))
@@ -286,9 +290,6 @@ export class CodeGenerator {
                                     param += ': ' + this.typeFromParameter(p);
                                     params.push(param)
                                 }
-                            } else {
-                                console.log('ERORROOROR L 270');
-                                //params.push('body: any')
                             }
                         } else {
                             body.sort((a, b) => (<string>a.name).localeCompare(<string>b.name))
@@ -365,31 +366,25 @@ export class CodeGenerator {
         let ident = indentGen(depth);
         if (api._api) {
             for (const op of api._api.operations.sort((a, b) => a.httpMethod.localeCompare(b.httpMethod))) {
-                let done = new Set();
-                let mandatoryParams = 0;
-                let params: Parameter[] = [];
-
-                // code += `${ident}/**\n${ident} * ${op.description}\n${ident} */\n`;
                 code += `${ident}// ${op.httpMethod} ${api._path}\n`;
-
                 code += `${ident}$${op.httpMethod.toLowerCase()}(`;
-                if (op.httpMethod == 'GET') {
-                    params = op.parameters.filter(p => p.paramType === 'query')
-                    if (params.length)
-                        code += 'param?: {'
-                } else {
-                    params = op.parameters.filter(p => p.paramType === 'body').sort((a, b) => (<string>a.name).localeCompare(<string>b.name))
-                    if (params.length)
-                        code += 'body?: {'
-                }
-                params = params.sort((a, b) => (<string>a.name).localeCompare(<string>b.name))
-                let array: string[] = [];
-                if (params.length == 1 && params[0].name == null) {
-                    // console.log(body[0]);
-                    let modelsProp = (<Schema>this.schema).models[params[0].fullType];
 
+                let done = new Set();
+                // let body: Parameter[] = [];
+                let mandatoryParams = 0;
+
+                // no path param to handle in Poxymode
+
+                let paramType = (op.httpMethod == 'GET') ? 'query' : 'body';
+                let body = op.parameters.filter(p => p.paramType === paramType)
+                if (body.length)
+                    code += 'params?: {'
+                body = body.sort((a, b) => (<string>a.name).localeCompare(<string>b.name))
+                let array: string[] = [];
+                if (body.length == 1 && body[0].name == null) {
+                    let modelsProp = (<Schema>this.schema).models[body[0].fullType];
                     if (!modelsProp || !modelsProp.properties)
-                        console.error(`ERROR in model Body Type ${params[0].fullType} do not exists`)
+                        console.error(`ERROR in model Body Type ${body[0].fullType} do not exists`)
                     else
                         for (let propName of Object.keys(modelsProp.properties).sort()) {
                             let p = modelsProp.properties[propName];
@@ -406,7 +401,7 @@ export class CodeGenerator {
                         }
 
                 } else {
-                    array = params.map(param => {
+                    array = body.map(param => {
                         let text = protectJsonKey(String(param.name || 'body'));
                         if (!param.required)
                             text += "?";
@@ -414,7 +409,7 @@ export class CodeGenerator {
                     })
                 }
                 code += array.join(', ');
-                if (params.length)
+                if (body.length)
                     code += '}'
                 code += `): `;
                 let retType = op.responseFullType;

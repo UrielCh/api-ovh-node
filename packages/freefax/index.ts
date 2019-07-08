@@ -124,7 +124,7 @@ export interface Freefax{
         // GET /freefax/{serviceName}
         $get(): Promise<freefax.FreefaxProperties>;
         // PUT /freefax/{serviceName}
-        $put(body?: {faxMaxCall?: telephony.FaxSendingTries, faxQuality?: telephony.FaxQualityEnum, faxTagLine?: string, fromEmail?: string, fromName?: string, number?: string, redirectionEmail?: string[]}): Promise<void>;
+        $put(params?: {faxMaxCall?: telephony.FaxSendingTries, faxQuality?: telephony.FaxQualityEnum, faxTagLine?: string, fromEmail?: string, fromName?: string, number?: string, redirectionEmail?: string[]}): Promise<void>;
         changePassword: {
             // POST /freefax/{serviceName}/changePassword
             $post(): Promise<string>;
@@ -137,20 +137,20 @@ export interface Freefax{
             // GET /freefax/{serviceName}/serviceInfos
             $get(): Promise<services.Service>;
             // PUT /freefax/{serviceName}/serviceInfos
-            $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
         }
         voicemail: {
             // GET /freefax/{serviceName}/voicemail
             $get(): Promise<telephony.VoicemailProperties>;
             // PUT /freefax/{serviceName}/voicemail
-            $put(body?: {annouceMessage?: string, audioFormat?: telephony.ServiceVoicemailAudioFormatEnum, doNotRecord?: boolean, forcePassword?: boolean, fromEmail?: string, fromName?: string, fullGreetingSoundId?: number, greetingType?: telephony.VoicemailGreetingEnum, isNewVersion?: boolean, keepMessage?: boolean, redirectionEmails?: telephony.ServiceVoicemailNotifications[], shortGreetingSoundId?: number, temporaryGreetingActivated?: boolean, temporaryGreetingSoundId?: number, unreadMessages?: number}): Promise<void>;
+            $put(params?: {annouceMessage?: string, audioFormat?: telephony.ServiceVoicemailAudioFormatEnum, doNotRecord?: boolean, forcePassword?: boolean, fromEmail?: string, fromName?: string, fullGreetingSoundId?: number, greetingType?: telephony.VoicemailGreetingEnum, isNewVersion?: boolean, keepMessage?: boolean, redirectionEmails?: telephony.ServiceVoicemailNotifications[], shortGreetingSoundId?: number, temporaryGreetingActivated?: boolean, temporaryGreetingSoundId?: number, unreadMessages?: number}): Promise<void>;
             changePassword: {
                 // POST /freefax/{serviceName}/voicemail/changePassword
-                $post(body?: {password: string}): Promise<void>;
+                $post(params?: {password: string}): Promise<void>;
             }
             changeRouting: {
                 // POST /freefax/{serviceName}/voicemail/changeRouting
-                $post(body?: {routing: telephony.VoicefaxRoutingEnum}): Promise<void>;
+                $post(params?: {routing: telephony.VoicefaxRoutingEnum}): Promise<void>;
             }
             routing: {
                 // GET /freefax/{serviceName}/voicemail/routing

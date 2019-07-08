@@ -1763,7 +1763,7 @@ export interface Telephony{
     $get(): Promise<string[]>;
     accessories: {
         // GET /telephony/accessories
-        $get(param?: {country: telephony.NumberCountryEnum}): Promise<telephony.AccessoryOffer[]>;
+        $get(params?: {country: telephony.NumberCountryEnum}): Promise<telephony.AccessoryOffer[]>;
     }
     aliases: {
         // GET /telephony/aliases
@@ -1773,19 +1773,19 @@ export interface Telephony{
             $get(): Promise<telephony.TelephonyGenericService>;
             changeContact: {
                 // POST /telephony/aliases/{serviceName}/changeContact
-                $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
+                $post(params?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
             }
             serviceInfos: {
                 // GET /telephony/aliases/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /telephony/aliases/{serviceName}/serviceInfos
-                $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
         };
     }
     availableDefaultSipDomains: {
         // GET /telephony/availableDefaultSipDomains
-        $get(param?: {type: telephony.SipDomainProductTypeEnum}): Promise<telephony.DefaultSipDomains[]>;
+        $get(params?: {type: telephony.SipDomainProductTypeEnum}): Promise<telephony.DefaultSipDomains[]>;
     }
     currentOrderIds: {
         // GET /telephony/currentOrderIds
@@ -1794,29 +1794,29 @@ export interface Telephony{
     directories: {
         availableZipCodes: {
             // GET /telephony/directories/availableZipCodes
-            $get(param?: {country: telephony.NumberCountryEnum, number: string}): Promise<string[]>;
+            $get(params?: {country: telephony.NumberCountryEnum, number: string}): Promise<string[]>;
         }
         cities: {
             // GET /telephony/directories/cities
-            $get(param?: {country: telephony.NumberCountryEnum, zipCode: string}): Promise<telephony.City[]>;
+            $get(params?: {country: telephony.NumberCountryEnum, zipCode: string}): Promise<telephony.City[]>;
         }
     }
     fax: {
         offers: {
             // GET /telephony/fax/offers
-            $get(param?: {country: telephony.NumberCountryEnum}): Promise<telephony.LineOffer[]>;
+            $get(params?: {country: telephony.NumberCountryEnum}): Promise<telephony.LineOffer[]>;
         }
     }
     line: {
         offer: {
             phones: {
                 // GET /telephony/line/offer/phones
-                $get(param?: {country: telephony.NumberCountryEnum, offer: string}): Promise<telephony.LinePhone[]>;
+                $get(params?: {country: telephony.NumberCountryEnum, offer: string}): Promise<telephony.LinePhone[]>;
             }
         }
         offers: {
             // GET /telephony/line/offers
-            $get(param?: {country: telephony.NumberCountryEnum}): Promise<telephony.LineOffer[]>;
+            $get(params?: {country: telephony.NumberCountryEnum}): Promise<telephony.LineOffer[]>;
         }
     }
     lines: {
@@ -1827,54 +1827,54 @@ export interface Telephony{
             $get(): Promise<telephony.TelephonyGenericService>;
             changeContact: {
                 // POST /telephony/lines/{serviceName}/changeContact
-                $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
+                $post(params?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
             }
             serviceInfos: {
                 // GET /telephony/lines/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /telephony/lines/{serviceName}/serviceInfos
-                $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
         };
     }
     number: {
         detailedZones: {
             // GET /telephony/number/detailedZones
-            $get(param?: {axiom?: string, country: telephony.NumberCountryEnum}): Promise<telephony.NumberDetailedZone[]>;
+            $get(params?: {axiom?: string, country: telephony.NumberCountryEnum}): Promise<telephony.NumberDetailedZone[]>;
         }
         ranges: {
             // GET /telephony/number/ranges
-            $get(param?: {country: telephony.NumberCountryEnum}): Promise<string[]>;
+            $get(params?: {country: telephony.NumberCountryEnum}): Promise<string[]>;
         }
         specificNumbers: {
             // GET /telephony/number/specificNumbers
-            $get(param?: {country: telephony.NumberCountryEnum, range?: string, type: telephony.NumberTypeEnum, zone?: string}): Promise<telephony.SpecificNumber[]>;
+            $get(params?: {country: telephony.NumberCountryEnum, range?: string, type: telephony.NumberTypeEnum, zone?: string}): Promise<telephony.SpecificNumber[]>;
         }
         zones: {
             // GET /telephony/number/zones
-            $get(param?: {axiom?: string, country: telephony.NumberCountryEnum}): Promise<string[]>;
+            $get(params?: {axiom?: string, country: telephony.NumberCountryEnum}): Promise<string[]>;
         }
     }
     searchServices: {
         // GET /telephony/searchServices
-        $get(param?: {axiom: string}): Promise<telephony.TelephonySearchService[]>;
+        $get(params?: {axiom: string}): Promise<telephony.TelephonySearchService[]>;
     }
     setDefaultSipDomain: {
         // POST /telephony/setDefaultSipDomain
-        $post(body?: {country: telephony.NumberCountryEnum, domain: string, type: telephony.SipDomainProductTypeEnum}): Promise<void>;
+        $post(params?: {country: telephony.NumberCountryEnum, domain: string, type: telephony.SipDomainProductTypeEnum}): Promise<void>;
     }
     sounds: {
         // GET /telephony/sounds
         $get(): Promise<number[]>;
         // POST /telephony/sounds
-        $post(body?: {description?: string, filename: string}): Promise<telephony.Sound>;
+        $post(params?: {description?: string, filename: string}): Promise<telephony.Sound>;
         $(id: number): {
             // DELETE /telephony/sounds/{id}
             $delete(): Promise<void>;
             // GET /telephony/sounds/{id}
             $get(): Promise<telephony.Sound>;
             // PUT /telephony/sounds/{id}
-            $put(body?: {creationDate?: string, description?: string, filename?: string, getUrl?: string, id?: number, putUrl?: string, size?: number}): Promise<void>;
+            $put(params?: {creationDate?: string, description?: string, filename?: string, getUrl?: string, id?: number, putUrl?: string, size?: number}): Promise<void>;
         };
     }
     spare: {
@@ -1895,13 +1895,13 @@ export interface Telephony{
             }
             replace: {
                 // POST /telephony/spare/{spare}/replace
-                $post(body?: {domain: string, ip: string}): Promise<void>;
+                $post(params?: {domain: string, ip: string}): Promise<void>;
             }
             serviceInfos: {
                 // GET /telephony/spare/{spare}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /telephony/spare/{spare}/serviceInfos
-                $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
         };
     }
@@ -1913,13 +1913,13 @@ export interface Telephony{
             $get(): Promise<telephony.TelephonyGenericService>;
             changeContact: {
                 // POST /telephony/trunks/{serviceName}/changeContact
-                $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
+                $post(params?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
             }
             serviceInfos: {
                 // GET /telephony/trunks/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /telephony/trunks/{serviceName}/serviceInfos
-                $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
         };
     }
@@ -1929,19 +1929,19 @@ export interface Telephony{
         // GET /telephony/{billingAccount}
         $get(): Promise<telephony.BillingAccount>;
         // PUT /telephony/{billingAccount}
-        $put(body?: {allowedOutplan?: orderPrice, billingAccount?: string, creditThreshold?: orderPrice, currentOutplan?: orderPrice, description?: string, hiddenExternalNumber?: boolean, overrideDisplayedNumber?: boolean, securityDeposit?: orderPrice, status?: telephony.BillingAccountStatusEnum, trusted?: boolean}): Promise<void>;
+        $put(params?: {allowedOutplan?: orderPrice, billingAccount?: string, creditThreshold?: orderPrice, currentOutplan?: orderPrice, description?: string, hiddenExternalNumber?: boolean, overrideDisplayedNumber?: boolean, securityDeposit?: orderPrice, status?: telephony.BillingAccountStatusEnum, trusted?: boolean}): Promise<void>;
         abbreviatedNumber: {
             // GET /telephony/{billingAccount}/abbreviatedNumber
             $get(): Promise<number[]>;
             // POST /telephony/{billingAccount}/abbreviatedNumber
-            $post(body?: {abbreviatedNumber: number, destinationNumber: string, name: string, surname: string}): Promise<telephony.AbbreviatedNumberGroup>;
+            $post(params?: {abbreviatedNumber: number, destinationNumber: string, name: string, surname: string}): Promise<telephony.AbbreviatedNumberGroup>;
             $(abbreviatedNumber: number): {
                 // DELETE /telephony/{billingAccount}/abbreviatedNumber/{abbreviatedNumber}
                 $delete(): Promise<void>;
                 // GET /telephony/{billingAccount}/abbreviatedNumber/{abbreviatedNumber}
                 $get(): Promise<telephony.AbbreviatedNumberGroup>;
                 // PUT /telephony/{billingAccount}/abbreviatedNumber/{abbreviatedNumber}
-                $put(body?: {abbreviatedNumber?: number, destinationNumber?: string, name?: string, surname?: string}): Promise<void>;
+                $put(params?: {abbreviatedNumber?: number, destinationNumber?: string, name?: string, surname?: string}): Promise<void>;
             };
         }
         allowedCreditThreshold: {
@@ -1956,11 +1956,11 @@ export interface Telephony{
             // GET /telephony/{billingAccount}/billingAccountSite
             $get(): Promise<string>;
             // POST /telephony/{billingAccount}/billingAccountSite
-            $post(body?: {billingAccountSite: string}): Promise<void>;
+            $post(params?: {billingAccountSite: string}): Promise<void>;
         }
         canTransferSecurityDeposit: {
             // POST /telephony/{billingAccount}/canTransferSecurityDeposit
-            $post(body?: {billingAccountDestination: string}): Promise<boolean>;
+            $post(params?: {billingAccountDestination: string}): Promise<boolean>;
         }
         cancelTermination: {
             // POST /telephony/{billingAccount}/cancelTermination
@@ -1968,7 +1968,7 @@ export interface Telephony{
         }
         changeContact: {
             // POST /telephony/{billingAccount}/changeContact
-            $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
+            $post(params?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
         }
         conference: {
             // GET /telephony/{billingAccount}/conference
@@ -1978,7 +1978,7 @@ export interface Telephony{
                 $get(): Promise<telephony.Conference>;
                 announceUpload: {
                     // POST /telephony/{billingAccount}/conference/{serviceName}/announceUpload
-                    $post(body?: {documentId: string}): Promise<telephony.Task>;
+                    $post(params?: {documentId: string}): Promise<telephony.Task>;
                 }
                 histories: {
                     // GET /telephony/{billingAccount}/conference/{serviceName}/histories
@@ -2008,7 +2008,7 @@ export interface Telephony{
                         }
                         energy: {
                             // POST /telephony/{billingAccount}/conference/{serviceName}/participants/{id}/energy
-                            $post(body?: {value: number}): Promise<telephony.Task>;
+                            $post(params?: {value: number}): Promise<telephony.Task>;
                         }
                         kick: {
                             // POST /telephony/{billingAccount}/conference/{serviceName}/participants/{id}/kick
@@ -2032,7 +2032,7 @@ export interface Telephony{
                     // GET /telephony/{billingAccount}/conference/{serviceName}/settings
                     $get(): Promise<telephony.ConferenceProperties>;
                     // PUT /telephony/{billingAccount}/conference/{serviceName}/settings
-                    $put(body?: {announceFile?: boolean, announceFilename?: string, announceSoundId?: number, anonymousRejection?: boolean, enterMuted?: boolean, eventsChannel?: string, language?: telephony.ConferenceLanguageEnum, pin?: string, recordStatus?: boolean, reportEmail?: string, reportStatus?: telephony.ConferenceReportStatusEnum, whiteLabelReport?: boolean}): Promise<void>;
+                    $put(params?: {announceFile?: boolean, announceFilename?: string, announceSoundId?: number, anonymousRejection?: boolean, enterMuted?: boolean, eventsChannel?: string, language?: telephony.ConferenceLanguageEnum, pin?: string, recordStatus?: boolean, reportEmail?: string, reportStatus?: telephony.ConferenceReportStatusEnum, whiteLabelReport?: boolean}): Promise<void>;
                 }
                 unlock: {
                     // POST /telephony/{billingAccount}/conference/{serviceName}/unlock
@@ -2042,7 +2042,7 @@ export interface Telephony{
                     // GET /telephony/{billingAccount}/conference/{serviceName}/webAccess
                     $get(): Promise<number[]>;
                     // POST /telephony/{billingAccount}/conference/{serviceName}/webAccess
-                    $post(body?: {type: telephony.ConferenceWebAccessTypeEnum}): Promise<telephony.ConferenceWebAccess>;
+                    $post(params?: {type: telephony.ConferenceWebAccessTypeEnum}): Promise<telephony.ConferenceWebAccess>;
                     $(id: number): {
                         // DELETE /telephony/{billingAccount}/conference/{serviceName}/webAccess/{id}
                         $delete(): Promise<void>;
@@ -2059,10 +2059,10 @@ export interface Telephony{
                 // GET /telephony/{billingAccount}/ddi/{serviceName}
                 $get(): Promise<telephony.Ddi>;
                 // PUT /telephony/{billingAccount}/ddi/{serviceName}
-                $put(body?: {description?: string, destination?: string, featureType?: telephony.TypeEnum, serviceName?: string, serviceType?: telephony.TypeServiceEnum}): Promise<void>;
+                $put(params?: {description?: string, destination?: string, featureType?: telephony.TypeEnum, serviceName?: string, serviceType?: telephony.TypeServiceEnum}): Promise<void>;
                 changeDestination: {
                     // POST /telephony/{billingAccount}/ddi/{serviceName}/changeDestination
-                    $post(body?: {destination: string}): Promise<telephony.Task>;
+                    $post(params?: {destination: string}): Promise<telephony.Task>;
                 }
             };
         }
@@ -2073,24 +2073,24 @@ export interface Telephony{
                 // GET /telephony/{billingAccount}/easyHunting/{serviceName}
                 $get(): Promise<telephony.EasyHunting>;
                 // PUT /telephony/{billingAccount}/easyHunting/{serviceName}
-                $put(body?: {anonymousRejection?: boolean, description?: string, featureType?: telephony.TypeEnum, isCCS?: boolean, maxWaitTime?: number, queueSize?: number, serviceName?: string, serviceType?: telephony.TypeServiceEnum, showCallerNumber?: telephony.OvhPabxDialplanNumberPresentationEnum, statusIvrEnabled?: boolean, strategy?: telephony.OvhPabxHuntingQueueStrategyEnum, toneOnClosing?: number, toneOnHold?: number, toneOnOpening?: number, voicemail?: string}): Promise<void>;
+                $put(params?: {anonymousRejection?: boolean, description?: string, featureType?: telephony.TypeEnum, isCCS?: boolean, maxWaitTime?: number, queueSize?: number, serviceName?: string, serviceType?: telephony.TypeServiceEnum, showCallerNumber?: telephony.OvhPabxDialplanNumberPresentationEnum, statusIvrEnabled?: boolean, strategy?: telephony.OvhPabxHuntingQueueStrategyEnum, toneOnClosing?: number, toneOnHold?: number, toneOnOpening?: number, voicemail?: string}): Promise<void>;
                 hunting: {
                     // GET /telephony/{billingAccount}/easyHunting/{serviceName}/hunting
                     $get(): Promise<telephony.OvhPabxHunting>;
                     // PUT /telephony/{billingAccount}/easyHunting/{serviceName}/hunting
-                    $put(body?: {crmUrlTemplate?: string, g729?: boolean, name?: string, statusIvrEnabled?: boolean}): Promise<void>;
+                    $put(params?: {crmUrlTemplate?: string, g729?: boolean, name?: string, statusIvrEnabled?: boolean}): Promise<void>;
                     agent: {
                         // GET /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent
                         $get(): Promise<number[]>;
                         // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent
-                        $post(body?: {description?: string, number: string, simultaneousLines: number, status: telephony.OvhPabxHuntingAgentStatusEnum, timeout: number, wrapUpTime: number}): Promise<telephony.OvhPabxHuntingAgent>;
+                        $post(params?: {description?: string, number: string, simultaneousLines: number, status: telephony.OvhPabxHuntingAgentStatusEnum, timeout: number, wrapUpTime: number}): Promise<telephony.OvhPabxHuntingAgent>;
                         $(agentId: number): {
                             // DELETE /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}
                             $delete(): Promise<void>;
                             // GET /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}
                             $get(): Promise<telephony.OvhPabxHuntingAgent>;
                             // PUT /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}
-                            $put(body?: {agentId?: number, breakStatus?: number, description?: string, number?: string, simultaneousLines?: number, status?: telephony.OvhPabxHuntingAgentStatusEnum, timeout?: number, type?: telephony.OvhPabxHuntingAgentTypeEnum, wrapUpTime?: number}): Promise<void>;
+                            $put(params?: {agentId?: number, breakStatus?: number, description?: string, number?: string, simultaneousLines?: number, status?: telephony.OvhPabxHuntingAgentStatusEnum, timeout?: number, type?: telephony.OvhPabxHuntingAgentTypeEnum, wrapUpTime?: number}): Promise<void>;
                             bannerAccess: {
                                 // DELETE /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/bannerAccess
                                 $delete(): Promise<void>;
@@ -2107,7 +2107,7 @@ export interface Telephony{
                                     $get(): Promise<telephony.OvhPabxHuntingQueueLiveCalls>;
                                     eavesdrop: {
                                         // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/eavesdrop
-                                        $post(body?: {number: string}): Promise<telephony.Task>;
+                                        $post(params?: {number: string}): Promise<telephony.Task>;
                                     }
                                     hangup: {
                                         // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/hangup
@@ -2119,15 +2119,15 @@ export interface Telephony{
                                     }
                                     intercept: {
                                         // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/intercept
-                                        $post(body?: {number: string}): Promise<telephony.Task>;
+                                        $post(params?: {number: string}): Promise<telephony.Task>;
                                     }
                                     transfer: {
                                         // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/transfer
-                                        $post(body?: {number: string}): Promise<telephony.Task>;
+                                        $post(params?: {number: string}): Promise<telephony.Task>;
                                     }
                                     whisper: {
                                         // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/whisper
-                                        $post(body?: {number: string, whisperingMode: telephony.OvhPabxWhisperingModeEnum}): Promise<telephony.Task>;
+                                        $post(params?: {number: string, whisperingMode: telephony.OvhPabxWhisperingModeEnum}): Promise<telephony.Task>;
                                     }
                                 };
                             }
@@ -2137,7 +2137,7 @@ export interface Telephony{
                                 // GET /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/eventToken
                                 $get(): Promise<telephony.EventToken>;
                                 // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/eventToken
-                                $post(body?: {expiration: telephony.TokenExpirationEnum}): Promise<string>;
+                                $post(params?: {expiration: telephony.TokenExpirationEnum}): Promise<string>;
                             }
                             liveStatus: {
                                 // GET /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/liveStatus
@@ -2147,14 +2147,14 @@ export interface Telephony{
                                 // GET /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue
                                 $get(): Promise<number[]>;
                                 // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue
-                                $post(body?: {position: number, queueId: number}): Promise<telephony.OvhPabxHuntingAgentQueue>;
+                                $post(params?: {position: number, queueId: number}): Promise<telephony.OvhPabxHuntingAgentQueue>;
                                 $(queueId: number): {
                                     // DELETE /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue/{queueId}
                                     $delete(): Promise<void>;
                                     // GET /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue/{queueId}
                                     $get(): Promise<telephony.OvhPabxHuntingAgentQueue>;
                                     // PUT /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue/{queueId}
-                                    $put(body?: {agentId?: number, position?: number, queueId?: number}): Promise<void>;
+                                    $put(params?: {agentId?: number, position?: number, queueId?: number}): Promise<void>;
                                     liveStatus: {
                                         // GET /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue/{queueId}/liveStatus
                                         $get(): Promise<telephony.OvhPabxHuntingAgentLiveStatus>;
@@ -2167,7 +2167,7 @@ export interface Telephony{
                         // GET /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/customStatus
                         $get(): Promise<number[]>;
                         // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/customStatus
-                        $post(body?: {color?: string, description?: string, name: string}): Promise<telephony.OvhPabxCustomStatus>;
+                        $post(params?: {color?: string, description?: string, name: string}): Promise<telephony.OvhPabxCustomStatus>;
                         $(id: number): {
                             // DELETE /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/customStatus/{id}
                             $delete(): Promise<void>;
@@ -2181,32 +2181,32 @@ export interface Telephony{
                         // GET /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/eventToken
                         $get(): Promise<telephony.EventToken>;
                         // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/eventToken
-                        $post(body?: {expiration: telephony.TokenExpirationEnum}): Promise<string>;
+                        $post(params?: {expiration: telephony.TokenExpirationEnum}): Promise<string>;
                     }
                     queue: {
                         // GET /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue
                         $get(): Promise<number[]>;
                         // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue
-                        $post(body?: {actionOnClosure?: telephony.OvhPabxQueueActionEnum, actionOnClosureParam?: string, actionOnOverflow?: telephony.OvhPabxQueueActionEnum, actionOnOverflowParam?: string, askForRecordDisabling?: boolean, description?: string, maxMember?: number, maxWaitTime?: number, record?: boolean, recordDisablingDigit?: telephony.OvhPabxHuntingQueueRecordDisablingDigitEnum, recordDisablingLanguage?: telephony.OvhPabxHuntingQueueRecordDisablingLanguageEnum, soundOnHold?: number, strategy: telephony.OvhPabxHuntingQueueStrategyEnum}): Promise<telephony.OvhPabxHuntingQueue>;
+                        $post(params?: {actionOnClosure?: telephony.OvhPabxQueueActionEnum, actionOnClosureParam?: string, actionOnOverflow?: telephony.OvhPabxQueueActionEnum, actionOnOverflowParam?: string, askForRecordDisabling?: boolean, description?: string, maxMember?: number, maxWaitTime?: number, record?: boolean, recordDisablingDigit?: telephony.OvhPabxHuntingQueueRecordDisablingDigitEnum, recordDisablingLanguage?: telephony.OvhPabxHuntingQueueRecordDisablingLanguageEnum, soundOnHold?: number, strategy: telephony.OvhPabxHuntingQueueStrategyEnum}): Promise<telephony.OvhPabxHuntingQueue>;
                         $(queueId: number): {
                             // DELETE /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}
                             $delete(): Promise<void>;
                             // GET /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}
                             $get(): Promise<telephony.OvhPabxHuntingQueue>;
                             // PUT /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}
-                            $put(body?: {actionOnClosure?: telephony.OvhPabxQueueActionEnum, actionOnClosureParam?: string, actionOnOverflow?: telephony.OvhPabxQueueActionEnum, actionOnOverflowParam?: string, askForRecordDisabling?: boolean, description?: string, followCallForwards?: boolean, maxMember?: number, maxWaitTime?: number, queueId?: number, record?: boolean, recordDisablingDigit?: telephony.OvhPabxHuntingQueueRecordDisablingDigitEnum, recordDisablingLanguage?: telephony.OvhPabxHuntingQueueRecordDisablingLanguageEnum, soundOnHold?: number, strategy?: telephony.OvhPabxHuntingQueueStrategyEnum}): Promise<void>;
+                            $put(params?: {actionOnClosure?: telephony.OvhPabxQueueActionEnum, actionOnClosureParam?: string, actionOnOverflow?: telephony.OvhPabxQueueActionEnum, actionOnOverflowParam?: string, askForRecordDisabling?: boolean, description?: string, followCallForwards?: boolean, maxMember?: number, maxWaitTime?: number, queueId?: number, record?: boolean, recordDisablingDigit?: telephony.OvhPabxHuntingQueueRecordDisablingDigitEnum, recordDisablingLanguage?: telephony.OvhPabxHuntingQueueRecordDisablingLanguageEnum, soundOnHold?: number, strategy?: telephony.OvhPabxHuntingQueueStrategyEnum}): Promise<void>;
                             agent: {
                                 // GET /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent
                                 $get(): Promise<number[]>;
                                 // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent
-                                $post(body?: {position: number, queueId: number}): Promise<telephony.OvhPabxHuntingAgentQueue>;
+                                $post(params?: {position: number, queueId: number}): Promise<telephony.OvhPabxHuntingAgentQueue>;
                                 $(agentId: number): {
                                     // DELETE /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent/{agentId}
                                     $delete(): Promise<void>;
                                     // GET /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent/{agentId}
                                     $get(): Promise<telephony.OvhPabxHuntingAgentQueue>;
                                     // PUT /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent/{agentId}
-                                    $put(body?: {agentId?: number, position?: number, queueId?: number}): Promise<void>;
+                                    $put(params?: {agentId?: number, position?: number, queueId?: number}): Promise<void>;
                                     liveStatus: {
                                         // GET /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent/{agentId}/liveStatus
                                         $get(): Promise<telephony.OvhPabxHuntingAgentLiveStatus>;
@@ -2221,7 +2221,7 @@ export interface Telephony{
                                     $get(): Promise<telephony.OvhPabxHuntingQueueLiveCalls>;
                                     eavesdrop: {
                                         // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/eavesdrop
-                                        $post(body?: {number: string}): Promise<telephony.Task>;
+                                        $post(params?: {number: string}): Promise<telephony.Task>;
                                     }
                                     hangup: {
                                         // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hangup
@@ -2233,15 +2233,15 @@ export interface Telephony{
                                     }
                                     intercept: {
                                         // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/intercept
-                                        $post(body?: {number: string}): Promise<telephony.Task>;
+                                        $post(params?: {number: string}): Promise<telephony.Task>;
                                     }
                                     transfer: {
                                         // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/transfer
-                                        $post(body?: {number: string}): Promise<telephony.Task>;
+                                        $post(params?: {number: string}): Promise<telephony.Task>;
                                     }
                                     whisper: {
                                         // POST /telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/whisper
-                                        $post(body?: {number: string, whisperingMode: telephony.OvhPabxWhisperingModeEnum}): Promise<telephony.Task>;
+                                        $post(params?: {number: string, whisperingMode: telephony.OvhPabxWhisperingModeEnum}): Promise<telephony.Task>;
                                     }
                                 };
                             }
@@ -2266,19 +2266,19 @@ export interface Telephony{
                     // GET /telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions
                     $get(): Promise<telephony.EasyHuntingScreenListsConditionsSettings>;
                     // PUT /telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions
-                    $put(body?: {status?: telephony.EasyHuntingScreenListsConditionsStatusEnum}): Promise<void>;
+                    $put(params?: {status?: telephony.EasyHuntingScreenListsConditionsStatusEnum}): Promise<void>;
                     conditions: {
                         // GET /telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions
-                        $get(param?: {screenListType?: telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum}): Promise<number[]>;
+                        $get(params?: {screenListType?: telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum}): Promise<number[]>;
                         // POST /telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions
-                        $post(body?: {callerIdNumber?: string, destinationNumber?: string, screenListType: telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum}): Promise<telephony.EasyHuntingScreenListsConditions>;
+                        $post(params?: {callerIdNumber?: string, destinationNumber?: string, screenListType: telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum}): Promise<telephony.EasyHuntingScreenListsConditions>;
                         $(conditionId: number): {
                             // DELETE /telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions/{conditionId}
                             $delete(): Promise<void>;
                             // GET /telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions/{conditionId}
                             $get(): Promise<telephony.EasyHuntingScreenListsConditions>;
                             // PUT /telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions/{conditionId}
-                            $put(body?: {callerIdNumber?: string, conditionId?: number, destinationNumber?: string, screenListType?: telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum}): Promise<void>;
+                            $put(params?: {callerIdNumber?: string, conditionId?: number, destinationNumber?: string, screenListType?: telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum}): Promise<void>;
                         };
                     }
                 }
@@ -2294,25 +2294,25 @@ export interface Telephony{
                 }
                 soundUpload: {
                     // POST /telephony/{billingAccount}/easyHunting/{serviceName}/soundUpload
-                    $post(body?: {documentId?: string, name?: string, url?: string}): Promise<telephony.Task>;
+                    $post(params?: {documentId?: string, name?: string, url?: string}): Promise<telephony.Task>;
                 }
                 timeConditions: {
                     // GET /telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions
                     $get(): Promise<telephony.EasyHuntingTimeConditionsSettings>;
                     // PUT /telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions
-                    $put(body?: {enable?: boolean, slot1Number?: string, slot1Type?: telephony.TimeConditionsSettingsForwardTypeEnum, slot2Number?: string, slot2Type?: telephony.TimeConditionsSettingsForwardTypeEnum, slot3Number?: string, slot3Type?: telephony.TimeConditionsSettingsForwardTypeEnum, unavailableNumber?: string, unavailableType?: telephony.TimeConditionsSettingsForwardTypeEnum}): Promise<void>;
+                    $put(params?: {enable?: boolean, slot1Number?: string, slot1Type?: telephony.TimeConditionsSettingsForwardTypeEnum, slot2Number?: string, slot2Type?: telephony.TimeConditionsSettingsForwardTypeEnum, slot3Number?: string, slot3Type?: telephony.TimeConditionsSettingsForwardTypeEnum, unavailableNumber?: string, unavailableType?: telephony.TimeConditionsSettingsForwardTypeEnum}): Promise<void>;
                     conditions: {
                         // GET /telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions
-                        $get(param?: {policy?: telephony.TimeConditionsPolicyEnum}): Promise<number[]>;
+                        $get(params?: {policy?: telephony.TimeConditionsPolicyEnum}): Promise<number[]>;
                         // POST /telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions
-                        $post(body?: {policy: telephony.TimeConditionsPolicyEnum, timeFrom: string, timeTo: string, weekDay: telephony.OvhPabxDialplanExtensionConditionTimeWeekDayEnum}): Promise<telephony.EasyHuntingTimeConditions>;
+                        $post(params?: {policy: telephony.TimeConditionsPolicyEnum, timeFrom: string, timeTo: string, weekDay: telephony.OvhPabxDialplanExtensionConditionTimeWeekDayEnum}): Promise<telephony.EasyHuntingTimeConditions>;
                         $(conditionId: number): {
                             // DELETE /telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions/{conditionId}
                             $delete(): Promise<void>;
                             // GET /telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions/{conditionId}
                             $get(): Promise<telephony.EasyHuntingTimeConditions>;
                             // PUT /telephony/{billingAccount}/easyHunting/{serviceName}/timeConditions/conditions/{conditionId}
-                            $put(body?: {conditionId?: number, policy?: telephony.TimeConditionsPolicyEnum, timeFrom?: string, timeTo?: string, weekDay?: telephony.OvhPabxDialplanExtensionConditionTimeWeekDayEnum}): Promise<void>;
+                            $put(params?: {conditionId?: number, policy?: telephony.TimeConditionsPolicyEnum, timeFrom?: string, timeTo?: string, weekDay?: telephony.OvhPabxDialplanExtensionConditionTimeWeekDayEnum}): Promise<void>;
                         };
                     }
                 }
@@ -2325,34 +2325,34 @@ export interface Telephony{
                 // GET /telephony/{billingAccount}/easyPabx/{serviceName}
                 $get(): Promise<telephony.EasyPabx>;
                 // PUT /telephony/{billingAccount}/easyPabx/{serviceName}
-                $put(body?: {description?: string, featureType?: telephony.TypeEnum, serviceName?: string, serviceType?: telephony.TypeServiceEnum}): Promise<void>;
+                $put(params?: {description?: string, featureType?: telephony.TypeEnum, serviceName?: string, serviceType?: telephony.TypeServiceEnum}): Promise<void>;
                 hunting: {
                     // GET /telephony/{billingAccount}/easyPabx/{serviceName}/hunting
                     $get(): Promise<telephony.EasyPabxHunting>;
                     // PUT /telephony/{billingAccount}/easyPabx/{serviceName}/hunting
-                    $put(body?: {anonymousCallRejection?: boolean, name?: string, noReplyTimer?: number, numberOfCalls?: number, pattern?: telephony.EasyMiniPabxHuntingPatternEnum, strategy?: telephony.EasyMiniPabxHuntingStrategyEnum, toneOnClosure?: boolean, toneOnClosureSoundId?: number, toneOnHold?: boolean, toneOnHoldSoundId?: number, toneRingback?: boolean, toneRingbackSoundId?: number, voicemail?: string}): Promise<void>;
+                    $put(params?: {anonymousCallRejection?: boolean, name?: string, noReplyTimer?: number, numberOfCalls?: number, pattern?: telephony.EasyMiniPabxHuntingPatternEnum, strategy?: telephony.EasyMiniPabxHuntingStrategyEnum, toneOnClosure?: boolean, toneOnClosureSoundId?: number, toneOnHold?: boolean, toneOnHoldSoundId?: number, toneRingback?: boolean, toneRingbackSoundId?: number, voicemail?: string}): Promise<void>;
                     agent: {
                         // GET /telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent
                         $get(): Promise<string[]>;
                         // POST /telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent
-                        $post(body?: {agentNumber: string, logged: boolean, noReplyTimer: number, position: number}): Promise<telephony.EasyMiniPabxHuntingAgent>;
+                        $post(params?: {agentNumber: string, logged: boolean, noReplyTimer: number, position: number}): Promise<telephony.EasyMiniPabxHuntingAgent>;
                         $(agentNumber: string): {
                             // DELETE /telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent/{agentNumber}
                             $delete(): Promise<void>;
                             // GET /telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent/{agentNumber}
                             $get(): Promise<telephony.EasyMiniPabxHuntingAgent>;
                             // PUT /telephony/{billingAccount}/easyPabx/{serviceName}/hunting/agent/{agentNumber}
-                            $put(body?: {agentNumber?: string, logged?: boolean, noReplyTimer?: number, position?: number}): Promise<void>;
+                            $put(params?: {agentNumber?: string, logged?: boolean, noReplyTimer?: number, position?: number}): Promise<void>;
                         };
                     }
                     tones: {
                         // GET /telephony/{billingAccount}/easyPabx/{serviceName}/hunting/tones
                         $get(): Promise<telephony.Tones>;
                         // PUT /telephony/{billingAccount}/easyPabx/{serviceName}/hunting/tones
-                        $put(body?: {callWaiting?: telephony.TonesEnum, endCall?: telephony.TonesEnum, onHold?: telephony.TonesOnHoldEnum, ringback?: telephony.TonesEnum}): Promise<void>;
+                        $put(params?: {callWaiting?: telephony.TonesEnum, endCall?: telephony.TonesEnum, onHold?: telephony.TonesOnHoldEnum, ringback?: telephony.TonesEnum}): Promise<void>;
                         toneUpload: {
                             // POST /telephony/{billingAccount}/easyPabx/{serviceName}/hunting/tones/toneUpload
-                            $post(body?: {documentId?: string, type: telephony.TonesTypeEnum, url?: string}): Promise<telephony.Task>;
+                            $post(params?: {documentId?: string, type: telephony.TonesTypeEnum, url?: string}): Promise<telephony.Task>;
                         }
                     }
                 }
@@ -2364,7 +2364,7 @@ export interface Telephony{
             // GET /telephony/{billingAccount}/eventToken
             $get(): Promise<telephony.EventToken>;
             // POST /telephony/{billingAccount}/eventToken
-            $post(body?: {expiration: telephony.TokenExpirationEnum}): Promise<string>;
+            $post(params?: {expiration: telephony.TokenExpirationEnum}): Promise<string>;
         }
         fax: {
             // GET /telephony/{billingAccount}/fax
@@ -2373,12 +2373,12 @@ export interface Telephony{
                 // GET /telephony/{billingAccount}/fax/{serviceName}
                 $get(): Promise<telephony.Fax>;
                 // PUT /telephony/{billingAccount}/fax/{serviceName}
-                $put(body?: {description?: string, notifications?: telephony.LineNotificationsOptions, offers?: string[], serviceName?: string, serviceType?: telephony.TypeServiceEnum}): Promise<void>;
+                $put(params?: {description?: string, notifications?: telephony.LineNotificationsOptions, offers?: string[], serviceName?: string, serviceType?: telephony.TypeServiceEnum}): Promise<void>;
                 campaigns: {
                     // GET /telephony/{billingAccount}/fax/{serviceName}/campaigns
                     $get(): Promise<number[]>;
                     // POST /telephony/{billingAccount}/fax/{serviceName}/campaigns
-                    $post(body?: {documentId: string, faxQuality?: telephony.FaxQualityEnum, name: string, recipientsDocId?: string, recipientsList?: string[], recipientsType: telephony.FaxCampaignRecipientsTypeEnum, sendDate?: string, sendType: telephony.FaxCampaignSendTypeEnum}): Promise<telephony.FaxCampaign>;
+                    $post(params?: {documentId: string, faxQuality?: telephony.FaxQualityEnum, name: string, recipientsDocId?: string, recipientsList?: string[], recipientsType: telephony.FaxCampaignRecipientsTypeEnum, sendDate?: string, sendType: telephony.FaxCampaignSendTypeEnum}): Promise<telephony.FaxCampaign>;
                     $(id: number): {
                         // DELETE /telephony/{billingAccount}/fax/{serviceName}/campaigns/{id}
                         $delete(): Promise<void>;
@@ -2404,26 +2404,26 @@ export interface Telephony{
                     // GET /telephony/{billingAccount}/fax/{serviceName}/screenLists
                     $get(): Promise<telephony.FaxScreen>;
                     // POST /telephony/{billingAccount}/fax/{serviceName}/screenLists
-                    $post(body?: {blacklistedNumbers?: string[], blacklistedTSI?: string[], filteringList?: telephony.FaxScreenListTypeEnum, whitelistedNumbers?: string[], whitelistedTSI?: string[]}): Promise<telephony.FaxScreen>;
+                    $post(params?: {blacklistedNumbers?: string[], blacklistedTSI?: string[], filteringList?: telephony.FaxScreenListTypeEnum, whitelistedNumbers?: string[], whitelistedTSI?: string[]}): Promise<telephony.FaxScreen>;
                     // PUT /telephony/{billingAccount}/fax/{serviceName}/screenLists
-                    $put(body?: {blacklistedNumbers?: string[], blacklistedTSI?: string[], callNumber?: string, countryCode?: string, filteringList?: telephony.FaxScreenListTypeEnum, serviceName?: string, whitelistedNumbers?: string[], whitelistedTSI?: string[]}): Promise<void>;
+                    $put(params?: {blacklistedNumbers?: string[], blacklistedTSI?: string[], callNumber?: string, countryCode?: string, filteringList?: telephony.FaxScreenListTypeEnum, serviceName?: string, whitelistedNumbers?: string[], whitelistedTSI?: string[]}): Promise<void>;
                     reset: {
                         // POST /telephony/{billingAccount}/fax/{serviceName}/screenLists/reset
-                        $post(body?: {blacklistedNumbers?: boolean, blacklistedTSI?: boolean, whitelistedNumbers?: boolean, whitelistedTSI?: boolean}): Promise<void>;
+                        $post(params?: {blacklistedNumbers?: boolean, blacklistedTSI?: boolean, whitelistedNumbers?: boolean, whitelistedTSI?: boolean}): Promise<void>;
                     }
                 }
                 settings: {
                     // GET /telephony/{billingAccount}/fax/{serviceName}/settings
                     $get(): Promise<telephony.FaxProperties>;
                     // PUT /telephony/{billingAccount}/fax/{serviceName}/settings
-                    $put(body?: {callNumber?: string, countryCode?: string, faxMaxCall?: telephony.FaxSendingTries, faxQuality?: telephony.FaxQualityEnum, faxTagLine?: string, fromEmail?: string, fromName?: string, mailFormat?: telephony.FaxMailFormatEnum, receiver?: string, redirectionEmail?: string[], rejectAnonymous?: boolean, sender?: string}): Promise<void>;
+                    $put(params?: {callNumber?: string, countryCode?: string, faxMaxCall?: telephony.FaxSendingTries, faxQuality?: telephony.FaxQualityEnum, faxTagLine?: string, fromEmail?: string, fromName?: string, mailFormat?: telephony.FaxMailFormatEnum, receiver?: string, redirectionEmail?: string[], rejectAnonymous?: boolean, sender?: string}): Promise<void>;
                     changePassword: {
                         // POST /telephony/{billingAccount}/fax/{serviceName}/settings/changePassword
-                        $post(body?: {password?: string}): Promise<string>;
+                        $post(params?: {password?: string}): Promise<string>;
                     }
                     sendFax: {
                         // POST /telephony/{billingAccount}/fax/{serviceName}/settings/sendFax
-                        $post(body?: {dateSchedule?: string, pdfUrl: string, recipients: string[]}): Promise<telephony.Task>;
+                        $post(params?: {dateSchedule?: string, pdfUrl: string, recipients: string[]}): Promise<telephony.Task>;
                     }
                 }
             };
@@ -2436,7 +2436,7 @@ export interface Telephony{
                 $get(): Promise<telephony.HistoryConsumption>;
                 file: {
                     // GET /telephony/{billingAccount}/historyConsumption/{date}/file
-                    $get(param?: {extension: telephony.BillDocument}): Promise<telephony.PcsFile>;
+                    $get(params?: {extension: telephony.BillDocument}): Promise<telephony.PcsFile>;
                 }
             };
         }
@@ -2444,7 +2444,7 @@ export interface Telephony{
             // GET /telephony/{billingAccount}/historyRepaymentConsumption
             $get(): Promise<string[]>;
             // POST /telephony/{billingAccount}/historyRepaymentConsumption
-            $post(body?: {billingNumber?: string}): Promise<telephony.HistoryRepaymentConsumption>;
+            $post(params?: {billingNumber?: string}): Promise<telephony.HistoryRepaymentConsumption>;
             $(date: string): {
                 // GET /telephony/{billingAccount}/historyRepaymentConsumption/{date}
                 $get(): Promise<telephony.HistoryRepaymentConsumption>;
@@ -2473,19 +2473,19 @@ export interface Telephony{
                 // GET /telephony/{billingAccount}/line/{serviceName}
                 $get(): Promise<telephony.Line>;
                 // PUT /telephony/{billingAccount}/line/{serviceName}
-                $put(body?: {canChangePassword?: boolean, description?: string, getPublicOffer?: telephony.LineOffer, infrastructure?: string, isAttachedToOtherLinesPhone?: boolean, notifications?: telephony.LineNotificationsOptions, offers?: string[], serviceName?: string, serviceType?: telephony.TypeServiceEnum, simultaneousLines?: number}): Promise<void>;
+                $put(params?: {canChangePassword?: boolean, description?: string, getPublicOffer?: telephony.LineOffer, infrastructure?: string, isAttachedToOtherLinesPhone?: boolean, notifications?: telephony.LineNotificationsOptions, offers?: string[], serviceName?: string, serviceType?: telephony.TypeServiceEnum, simultaneousLines?: number}): Promise<void>;
                 abbreviatedNumber: {
                     // GET /telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber
                     $get(): Promise<number[]>;
                     // POST /telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber
-                    $post(body?: {abbreviatedNumber: number, destinationNumber: string, name: string, surname: string}): Promise<telephony.AbbreviatedNumber>;
+                    $post(params?: {abbreviatedNumber: number, destinationNumber: string, name: string, surname: string}): Promise<telephony.AbbreviatedNumber>;
                     $(abbreviatedNumber: number): {
                         // DELETE /telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber/{abbreviatedNumber}
                         $delete(): Promise<void>;
                         // GET /telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber/{abbreviatedNumber}
                         $get(): Promise<telephony.AbbreviatedNumber>;
                         // PUT /telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber/{abbreviatedNumber}
-                        $put(body?: {abbreviatedNumber?: number, destinationNumber?: string, name?: string, surname?: string}): Promise<void>;
+                        $put(params?: {abbreviatedNumber?: number, destinationNumber?: string, name?: string, surname?: string}): Promise<void>;
                     };
                 }
                 activateNewPhone: {
@@ -2498,17 +2498,17 @@ export interface Telephony{
                     // GET /telephony/{billingAccount}/line/{serviceName}/antihack
                     $get(): Promise<string[]>;
                     // POST /telephony/{billingAccount}/line/{serviceName}/antihack
-                    $post(body?: {action: telephony.AntihackActionEnum, restricted?: string}): Promise<void>;
+                    $post(params?: {action: telephony.AntihackActionEnum, restricted?: string}): Promise<void>;
                 }
                 associateDevice: {
                     // POST /telephony/{billingAccount}/line/{serviceName}/associateDevice
-                    $post(body?: {ipAddress?: string, macAddress: string}): Promise<void>;
+                    $post(params?: {ipAddress?: string, macAddress: string}): Promise<void>;
                 }
                 automaticCall: {
                     // GET /telephony/{billingAccount}/line/{serviceName}/automaticCall
                     $get(): Promise<string[]>;
                     // POST /telephony/{billingAccount}/line/{serviceName}/automaticCall
-                    $post(body?: {bridgeNumberDialplan?: string, calledNumber: string, callingNumber?: string, dialplan: telephony.CallsGeneratorDialplanEnum, isAnonymous: boolean, playbackAudioFileDialplan?: string, timeout?: number, ttsTextDialplan?: string}): Promise<string>;
+                    $post(params?: {bridgeNumberDialplan?: string, calledNumber: string, callingNumber?: string, dialplan: telephony.CallsGeneratorDialplanEnum, isAnonymous: boolean, playbackAudioFileDialplan?: string, timeout?: number, ttsTextDialplan?: string}): Promise<string>;
                     $(identifier: string): {
                         // GET /telephony/{billingAccount}/line/{serviceName}/automaticCall/{identifier}
                         $get(): Promise<telephony.CallsGenerated>;
@@ -2520,7 +2520,7 @@ export interface Telephony{
                 }
                 block: {
                     // POST /telephony/{billingAccount}/line/{serviceName}/block
-                    $post(body?: {mode?: telephony.LineBlockingMode}): Promise<void>;
+                    $post(params?: {mode?: telephony.LineBlockingMode}): Promise<void>;
                 }
                 calls: {
                     // GET /telephony/{billingAccount}/line/{serviceName}/calls
@@ -2530,7 +2530,7 @@ export interface Telephony{
                         $get(): Promise<telephony.OvhPabxHuntingQueueLiveCalls>;
                         eavesdrop: {
                             // POST /telephony/{billingAccount}/line/{serviceName}/calls/{id}/eavesdrop
-                            $post(body?: {number: string}): Promise<telephony.Task>;
+                            $post(params?: {number: string}): Promise<telephony.Task>;
                         }
                         hangup: {
                             // POST /telephony/{billingAccount}/line/{serviceName}/calls/{id}/hangup
@@ -2542,15 +2542,15 @@ export interface Telephony{
                         }
                         intercept: {
                             // POST /telephony/{billingAccount}/line/{serviceName}/calls/{id}/intercept
-                            $post(body?: {number: string}): Promise<telephony.Task>;
+                            $post(params?: {number: string}): Promise<telephony.Task>;
                         }
                         transfer: {
                             // POST /telephony/{billingAccount}/line/{serviceName}/calls/{id}/transfer
-                            $post(body?: {number: string}): Promise<telephony.Task>;
+                            $post(params?: {number: string}): Promise<telephony.Task>;
                         }
                         whisper: {
                             // POST /telephony/{billingAccount}/line/{serviceName}/calls/{id}/whisper
-                            $post(body?: {number: string, whisperingMode: telephony.OvhPabxWhisperingModeEnum}): Promise<telephony.Task>;
+                            $post(params?: {number: string, whisperingMode: telephony.OvhPabxWhisperingModeEnum}): Promise<telephony.Task>;
                         }
                     };
                 }
@@ -2564,17 +2564,17 @@ export interface Telephony{
                 }
                 changePassword: {
                     // POST /telephony/{billingAccount}/line/{serviceName}/changePassword
-                    $post(body?: {password?: string}): Promise<void>;
+                    $post(params?: {password?: string}): Promise<void>;
                 }
                 click2Call: {
                     // POST /telephony/{billingAccount}/line/{serviceName}/click2Call
-                    $post(body?: {calledNumber: string, callingNumber?: string, intercom?: boolean}): Promise<void>;
+                    $post(params?: {calledNumber: string, callingNumber?: string, intercom?: boolean}): Promise<void>;
                 }
                 click2CallUser: {
                     // GET /telephony/{billingAccount}/line/{serviceName}/click2CallUser
                     $get(): Promise<number[]>;
                     // POST /telephony/{billingAccount}/line/{serviceName}/click2CallUser
-                    $post(body?: {login: string, password: string}): Promise<number>;
+                    $post(params?: {login: string, password: string}): Promise<number>;
                     $(id: number): {
                         // DELETE /telephony/{billingAccount}/line/{serviceName}/click2CallUser/{id}
                         $delete(): Promise<void>;
@@ -2582,11 +2582,11 @@ export interface Telephony{
                         $get(): Promise<telephony.Click2CallUser>;
                         changePassword: {
                             // POST /telephony/{billingAccount}/line/{serviceName}/click2CallUser/{id}/changePassword
-                            $post(body?: {password: string}): Promise<void>;
+                            $post(params?: {password: string}): Promise<void>;
                         }
                         click2Call: {
                             // POST /telephony/{billingAccount}/line/{serviceName}/click2CallUser/{id}/click2Call
-                            $post(body?: {calledNumber: string, callingNumber?: string}): Promise<void>;
+                            $post(params?: {calledNumber: string, callingNumber?: string}): Promise<void>;
                         }
                     };
                 }
@@ -2596,7 +2596,7 @@ export interface Telephony{
                 }
                 dissociateDevice: {
                     // POST /telephony/{billingAccount}/line/{serviceName}/dissociateDevice
-                    $post(body?: {ipAddress?: string, macAddress: string}): Promise<void>;
+                    $post(params?: {ipAddress?: string, macAddress: string}): Promise<void>;
                 }
                 ips: {
                     // GET /telephony/{billingAccount}/line/{serviceName}/ips
@@ -2622,7 +2622,7 @@ export interface Telephony{
                     // GET /telephony/{billingAccount}/line/{serviceName}/options
                     $get(): Promise<telephony.LineOptions>;
                     // PUT /telephony/{billingAccount}/line/{serviceName}/options
-                    $put(body?: {absentSubscriber?: boolean, anonymousCallRejection?: boolean, callRestrictionIncoming?: boolean, callRestrictionOutgoing?: boolean, callWaiting?: boolean, codecs?: string, defaultVoicemail?: string, displayNumber?: string, doNotDisturb?: boolean, domain?: string, forwardBackup?: boolean, forwardBackupNature?: telephony.LineOptionForwardNatureTypeEnum, forwardBackupNumber?: string, forwardBusy?: boolean, forwardBusyNature?: telephony.LineOptionForwardNatureTypeEnum, forwardBusyNumber?: string, forwardNoReply?: boolean, forwardNoReplyDelay?: number, forwardNoReplyNature?: telephony.LineOptionForwardNatureTypeEnum, forwardNoReplyNumber?: string, forwardUnconditional?: boolean, forwardUnconditionalNature?: telephony.LineOptionForwardNatureTypeEnum, forwardUnconditionalNumber?: string, identificationRestriction?: boolean, intercom?: telephony.LineOptionIntercomEnum, ipRestrictions?: string[], language?: telephony.LineOptionLanguageEnum, lockOutCall?: boolean, lockOutCallPassword?: string, recordOutgoingCallsBeta?: boolean, toneOnCallWaitingSoundId?: number, toneOnHoldSoundId?: number, toneRingbackSoundId?: number, voicemailExternalNumber?: string, voicemailInternalNumber?: string}): Promise<void>;
+                    $put(params?: {absentSubscriber?: boolean, anonymousCallRejection?: boolean, callRestrictionIncoming?: boolean, callRestrictionOutgoing?: boolean, callWaiting?: boolean, codecs?: string, defaultVoicemail?: string, displayNumber?: string, doNotDisturb?: boolean, domain?: string, forwardBackup?: boolean, forwardBackupNature?: telephony.LineOptionForwardNatureTypeEnum, forwardBackupNumber?: string, forwardBusy?: boolean, forwardBusyNature?: telephony.LineOptionForwardNatureTypeEnum, forwardBusyNumber?: string, forwardNoReply?: boolean, forwardNoReplyDelay?: number, forwardNoReplyNature?: telephony.LineOptionForwardNatureTypeEnum, forwardNoReplyNumber?: string, forwardUnconditional?: boolean, forwardUnconditionalNature?: telephony.LineOptionForwardNatureTypeEnum, forwardUnconditionalNumber?: string, identificationRestriction?: boolean, intercom?: telephony.LineOptionIntercomEnum, ipRestrictions?: string[], language?: telephony.LineOptionLanguageEnum, lockOutCall?: boolean, lockOutCallPassword?: string, recordOutgoingCallsBeta?: boolean, toneOnCallWaitingSoundId?: number, toneOnHoldSoundId?: number, toneRingbackSoundId?: number, voicemailExternalNumber?: string, voicemailInternalNumber?: string}): Promise<void>;
                     availableCodecs: {
                         // GET /telephony/{billingAccount}/line/{serviceName}/options/availableCodecs
                         $get(): Promise<string[]>;
@@ -2636,14 +2636,14 @@ export interface Telephony{
                     // GET /telephony/{billingAccount}/line/{serviceName}/phone
                     $get(): Promise<telephony.Phone>;
                     // PUT /telephony/{billingAccount}/line/{serviceName}/phone
-                    $put(body?: {brand?: string, description?: string, macAddress?: string, maxline?: number, mgcpIpRestriction?: string, phoneConfiguration?: telephony.PhoneConfigurationProperty[], protocol?: telephonyProtocolEnum, userPassword?: string}): Promise<void>;
+                    $put(params?: {brand?: string, description?: string, macAddress?: string, maxline?: number, mgcpIpRestriction?: string, phoneConfiguration?: telephony.PhoneConfigurationProperty[], protocol?: telephonyProtocolEnum, userPassword?: string}): Promise<void>;
                     adminCredentials: {
                         // GET /telephony/{billingAccount}/line/{serviceName}/phone/adminCredentials
                         $get(): Promise<telephony.PhoneCredentials>;
                     }
                     changePhoneConfiguration: {
                         // POST /telephony/{billingAccount}/line/{serviceName}/phone/changePhoneConfiguration
-                        $post(body?: {autoReboot?: boolean, newConfigurations?: complexType.SafeKeyValue<string>[]}): Promise<void>;
+                        $post(params?: {autoReboot?: boolean, newConfigurations?: complexType.SafeKeyValue<string>[]}): Promise<void>;
                     }
                     functionKey: {
                         // GET /telephony/{billingAccount}/line/{serviceName}/phone/functionKey
@@ -2652,7 +2652,7 @@ export interface Telephony{
                             // GET /telephony/{billingAccount}/line/{serviceName}/phone/functionKey/{keyNum}
                             $get(): Promise<telephony.FunctionKey>;
                             // PUT /telephony/{billingAccount}/line/{serviceName}/phone/functionKey/{keyNum}
-                            $put(body?: {default_?: string, function_?: string, keyNum?: number, label?: string, parameter?: string, type?: string}): Promise<void>;
+                            $put(params?: {default_?: string, function_?: string, keyNum?: number, label?: string, parameter?: string, type?: string}): Promise<void>;
                             availableFunction: {
                                 // GET /telephony/{billingAccount}/line/{serviceName}/phone/functionKey/{keyNum}/availableFunction
                                 $get(): Promise<string[]>;
@@ -2667,34 +2667,34 @@ export interface Telephony{
                         // GET /telephony/{billingAccount}/line/{serviceName}/phone/phonebook
                         $get(): Promise<string[]>;
                         // POST /telephony/{billingAccount}/line/{serviceName}/phone/phonebook
-                        $post(body?: {name: string}): Promise<string>;
+                        $post(params?: {name: string}): Promise<string>;
                         $(bookKey: string): {
                             // DELETE /telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}
                             $delete(): Promise<void>;
                             // GET /telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}
                             $get(): Promise<telephony.Phonebook>;
                             // PUT /telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}
-                            $put(body?: {bookKey?: string, isReadonly?: boolean, name?: string, phoneKey?: string}): Promise<void>;
+                            $put(params?: {bookKey?: string, isReadonly?: boolean, name?: string, phoneKey?: string}): Promise<void>;
                             export: {
                                 // GET /telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/export
-                                $get(param?: {format: telephony.ContactsExportFormatsEnum}): Promise<telephony.PcsFile>;
+                                $get(params?: {format: telephony.ContactsExportFormatsEnum}): Promise<telephony.PcsFile>;
                             }
                             import: {
                                 // POST /telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/import
-                                $post(body?: {documentId: string}): Promise<telephony.Task>;
+                                $post(params?: {documentId: string}): Promise<telephony.Task>;
                             }
                             phonebookContact: {
                                 // GET /telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact
                                 $get(): Promise<number[]>;
                                 // POST /telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact
-                                $post(body?: {group: string, homeMobile?: string, homePhone?: string, name: string, surname: string, workMobile?: string, workPhone?: string}): Promise<number>;
+                                $post(params?: {group: string, homeMobile?: string, homePhone?: string, name: string, surname: string, workMobile?: string, workPhone?: string}): Promise<number>;
                                 $(id: number): {
                                     // DELETE /telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact/{id}
                                     $delete(): Promise<void>;
                                     // GET /telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact/{id}
                                     $get(): Promise<telephony.PhonebookContact>;
                                     // PUT /telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact/{id}
-                                    $put(body?: {group?: string, homeMobile?: string, homePhone?: string, id?: number, name?: string, surname?: string, workMobile?: string, workPhone?: string}): Promise<void>;
+                                    $put(params?: {group?: string, homeMobile?: string, homePhone?: string, id?: number, name?: string, surname?: string, workMobile?: string, workPhone?: string}): Promise<void>;
                                 };
                             }
                         };
@@ -2709,20 +2709,20 @@ export interface Telephony{
                     }
                     resetConfig: {
                         // POST /telephony/{billingAccount}/line/{serviceName}/phone/resetConfig
-                        $post(body?: {ip: string}): Promise<telephony.ResetPhoneInfo>;
+                        $post(params?: {ip: string}): Promise<telephony.ResetPhoneInfo>;
                     }
                     rma: {
                         // GET /telephony/{billingAccount}/line/{serviceName}/phone/rma
                         $get(): Promise<string[]>;
                         // POST /telephony/{billingAccount}/line/{serviceName}/phone/rma
-                        $post(body?: {mondialRelayId?: string, newMerchandise?: string, shippingContactId?: number, type: telephony.RmaPublicTypeEnum}): Promise<telephony.RmaReturn>;
+                        $post(params?: {mondialRelayId?: string, newMerchandise?: string, shippingContactId?: number, type: telephony.RmaPublicTypeEnum}): Promise<telephony.RmaReturn>;
                         $(id: string): {
                             // DELETE /telephony/{billingAccount}/line/{serviceName}/phone/rma/{id}
                             $delete(): Promise<void>;
                             // GET /telephony/{billingAccount}/line/{serviceName}/phone/rma/{id}
                             $get(): Promise<telephony.Rma>;
                             // PUT /telephony/{billingAccount}/line/{serviceName}/phone/rma/{id}
-                            $put(body?: {cancellable?: boolean, creationDatetime?: string, equipmentReference?: string, id?: string, newMerchandise?: string, offerTypeNew?: telephony.RmaOfferTypeEnum, offerTypeOld?: telephony.RmaOfferTypeEnum, process?: telephony.RmaReplaceTypeEnum, receptionDatetime?: string, shippingContact?: telephony.Contact, status?: telephony.RmaStatusEnum, steps?: telephony.RmaStep[], terminationDatetime?: string, type?: telephony.RmaTypeEnum}): Promise<void>;
+                            $put(params?: {cancellable?: boolean, creationDatetime?: string, equipmentReference?: string, id?: string, newMerchandise?: string, offerTypeNew?: telephony.RmaOfferTypeEnum, offerTypeOld?: telephony.RmaOfferTypeEnum, process?: telephony.RmaReplaceTypeEnum, receptionDatetime?: string, shippingContact?: telephony.Contact, status?: telephony.RmaStatusEnum, steps?: telephony.RmaStep[], terminationDatetime?: string, type?: telephony.RmaTypeEnum}): Promise<void>;
                         };
                     }
                     supportsPhonebook: {
@@ -2746,7 +2746,7 @@ export interface Telephony{
                 }
                 removeSimultaneousLines: {
                     // POST /telephony/{billingAccount}/line/{serviceName}/removeSimultaneousLines
-                    $post(body?: {quantityRemove: number}): Promise<void>;
+                    $post(params?: {quantityRemove: number}): Promise<void>;
                 }
                 simultaneousChannelsDetails: {
                     // GET /telephony/{billingAccount}/line/{serviceName}/simultaneousChannelsDetails
@@ -2754,23 +2754,23 @@ export interface Telephony{
                 }
                 statistics: {
                     // GET /telephony/{billingAccount}/line/{serviceName}/statistics
-                    $get(param?: {timeframe: telephony.StatisticsTimeframeEnum, type: telephony.LineStatisticsTypeEnum}): Promise<complexType.UnitAndValues<telephony.TimestampAndValue>>;
+                    $get(params?: {timeframe: telephony.StatisticsTimeframeEnum, type: telephony.LineStatisticsTypeEnum}): Promise<complexType.UnitAndValues<telephony.TimestampAndValue>>;
                 }
                 tones: {
                     // GET /telephony/{billingAccount}/line/{serviceName}/tones
                     $get(): Promise<telephony.Tones>;
                     // PUT /telephony/{billingAccount}/line/{serviceName}/tones
-                    $put(body?: {callWaiting?: telephony.TonesEnum, endCall?: telephony.TonesEnum, onHold?: telephony.TonesOnHoldEnum, ringback?: telephony.TonesEnum}): Promise<void>;
+                    $put(params?: {callWaiting?: telephony.TonesEnum, endCall?: telephony.TonesEnum, onHold?: telephony.TonesOnHoldEnum, ringback?: telephony.TonesEnum}): Promise<void>;
                     toneUpload: {
                         // POST /telephony/{billingAccount}/line/{serviceName}/tones/toneUpload
-                        $post(body?: {documentId?: string, type: telephony.TonesTypeEnum, url?: string}): Promise<telephony.Task>;
+                        $post(params?: {documentId?: string, type: telephony.TonesTypeEnum, url?: string}): Promise<telephony.Task>;
                     }
                 }
                 trafficExtracts: {
                     // GET /telephony/{billingAccount}/line/{serviceName}/trafficExtracts
                     $get(): Promise<number[]>;
                     // POST /telephony/{billingAccount}/line/{serviceName}/trafficExtracts
-                    $post(body?: {dateEnd: string, dateStart: string}): Promise<telephony.trafficExtract>;
+                    $post(params?: {dateEnd: string, dateStart: string}): Promise<telephony.trafficExtract>;
                     $(id: number): {
                         // DELETE /telephony/{billingAccount}/line/{serviceName}/trafficExtracts/{id}
                         $delete(): Promise<void>;
@@ -2791,24 +2791,24 @@ export interface Telephony{
                 // GET /telephony/{billingAccount}/miniPabx/{serviceName}
                 $get(): Promise<telephony.MiniPabx>;
                 // PUT /telephony/{billingAccount}/miniPabx/{serviceName}
-                $put(body?: {description?: string, featureType?: telephony.TypeEnum, serviceName?: string, serviceType?: telephony.TypeServiceEnum}): Promise<void>;
+                $put(params?: {description?: string, featureType?: telephony.TypeEnum, serviceName?: string, serviceType?: telephony.TypeServiceEnum}): Promise<void>;
                 hunting: {
                     // GET /telephony/{billingAccount}/miniPabx/{serviceName}/hunting
                     $get(): Promise<telephony.MiniPabxHunting>;
                     // PUT /telephony/{billingAccount}/miniPabx/{serviceName}/hunting
-                    $put(body?: {anonymousCallRejection?: boolean, name?: string, numberOfCalls?: number, onHoldTimer?: number, pattern?: telephony.EasyMiniPabxHuntingPatternEnum, queueSize?: number, strategy?: telephony.EasyMiniPabxHuntingStrategyEnum, toneOnClosure?: boolean, toneOnClosureSoundId?: number, toneOnHold?: boolean, toneOnHoldSoundId?: number, toneRingback?: boolean, toneRingbackSoundId?: number}): Promise<void>;
+                    $put(params?: {anonymousCallRejection?: boolean, name?: string, numberOfCalls?: number, onHoldTimer?: number, pattern?: telephony.EasyMiniPabxHuntingPatternEnum, queueSize?: number, strategy?: telephony.EasyMiniPabxHuntingStrategyEnum, toneOnClosure?: boolean, toneOnClosureSoundId?: number, toneOnHold?: boolean, toneOnHoldSoundId?: number, toneRingback?: boolean, toneRingbackSoundId?: number}): Promise<void>;
                     agent: {
                         // GET /telephony/{billingAccount}/miniPabx/{serviceName}/hunting/agent
                         $get(): Promise<string[]>;
                         // POST /telephony/{billingAccount}/miniPabx/{serviceName}/hunting/agent
-                        $post(body?: {agentNumber: string, logged: boolean, noReplyTimer: number, position: number}): Promise<telephony.EasyMiniPabxHuntingAgent>;
+                        $post(params?: {agentNumber: string, logged: boolean, noReplyTimer: number, position: number}): Promise<telephony.EasyMiniPabxHuntingAgent>;
                         $(agentNumber: string): {
                             // DELETE /telephony/{billingAccount}/miniPabx/{serviceName}/hunting/agent/{agentNumber}
                             $delete(): Promise<void>;
                             // GET /telephony/{billingAccount}/miniPabx/{serviceName}/hunting/agent/{agentNumber}
                             $get(): Promise<telephony.EasyMiniPabxHuntingAgent>;
                             // PUT /telephony/{billingAccount}/miniPabx/{serviceName}/hunting/agent/{agentNumber}
-                            $put(body?: {agentNumber?: string, logged?: boolean, noReplyTimer?: number, position?: number}): Promise<void>;
+                            $put(params?: {agentNumber?: string, logged?: boolean, noReplyTimer?: number, position?: number}): Promise<void>;
                         };
                     }
                 }
@@ -2816,10 +2816,10 @@ export interface Telephony{
                     // GET /telephony/{billingAccount}/miniPabx/{serviceName}/tones
                     $get(): Promise<telephony.Tones>;
                     // PUT /telephony/{billingAccount}/miniPabx/{serviceName}/tones
-                    $put(body?: {callWaiting?: telephony.TonesEnum, endCall?: telephony.TonesEnum, onHold?: telephony.TonesOnHoldEnum, ringback?: telephony.TonesEnum}): Promise<void>;
+                    $put(params?: {callWaiting?: telephony.TonesEnum, endCall?: telephony.TonesEnum, onHold?: telephony.TonesOnHoldEnum, ringback?: telephony.TonesEnum}): Promise<void>;
                     toneUpload: {
                         // POST /telephony/{billingAccount}/miniPabx/{serviceName}/tones/toneUpload
-                        $post(body?: {documentId?: string, type: telephony.TonesTypeEnum, url?: string}): Promise<telephony.Task>;
+                        $post(params?: {documentId?: string, type: telephony.TonesTypeEnum, url?: string}): Promise<telephony.Task>;
                     }
                 }
             };
@@ -2831,18 +2831,18 @@ export interface Telephony{
                 // GET /telephony/{billingAccount}/number/{serviceName}
                 $get(): Promise<telephony.Number>;
                 // PUT /telephony/{billingAccount}/number/{serviceName}
-                $put(body?: {description?: string, featureType?: telephony.TypeEnum, partOfPool?: string, serviceName?: string, serviceType?: telephony.TypeServiceEnum}): Promise<void>;
+                $put(params?: {description?: string, featureType?: telephony.TypeEnum, partOfPool?: string, serviceName?: string, serviceType?: telephony.TypeServiceEnum}): Promise<void>;
                 cancelConvertToLine: {
                     // POST /telephony/{billingAccount}/number/{serviceName}/cancelConvertToLine
                     $post(): Promise<void>;
                 }
                 changeFeatureType: {
                     // POST /telephony/{billingAccount}/number/{serviceName}/changeFeatureType
-                    $post(body?: {featureType: telephony.TypeEnum}): Promise<telephony.Task>;
+                    $post(params?: {featureType: telephony.TypeEnum}): Promise<telephony.Task>;
                 }
                 convertToLine: {
                     // POST /telephony/{billingAccount}/number/{serviceName}/convertToLine
-                    $post(body?: {offer: string}): Promise<telephony.OfferTask>;
+                    $post(params?: {offer: string}): Promise<telephony.OfferTask>;
                 }
                 convertToLineAvailableOffers: {
                     // GET /telephony/{billingAccount}/number/{serviceName}/convertToLineAvailableOffers
@@ -2852,12 +2852,12 @@ export interface Telephony{
         }
         offerTask: {
             // GET /telephony/{billingAccount}/offerTask
-            $get(param?: {action?: telephony.OfferTaskActionEnum, status?: telephony.TaskStatusEnum, type?: telephony.OfferTaskTypeEnum}): Promise<number[]>;
+            $get(params?: {action?: telephony.OfferTaskActionEnum, status?: telephony.TaskStatusEnum, type?: telephony.OfferTaskTypeEnum}): Promise<number[]>;
             $(taskId: number): {
                 // GET /telephony/{billingAccount}/offerTask/{taskId}
                 $get(): Promise<telephony.OfferTask>;
                 // PUT /telephony/{billingAccount}/offerTask/{taskId}
-                $put(body?: {action?: telephony.OfferTaskActionEnum, executionDate?: string, status?: telephony.TaskStatusEnum, taskId?: number, type?: telephony.OfferTaskTypeEnum}): Promise<void>;
+                $put(params?: {action?: telephony.OfferTaskActionEnum, executionDate?: string, status?: telephony.TaskStatusEnum, taskId?: number, type?: telephony.OfferTaskTypeEnum}): Promise<void>;
             };
         }
         oldPhone: {
@@ -2868,7 +2868,7 @@ export interface Telephony{
             // GET /telephony/{billingAccount}/outplanNotification
             $get(): Promise<number[]>;
             // POST /telephony/{billingAccount}/outplanNotification
-            $post(body?: {block: telephony.OutplanNotificationBlockEnum, notifyEmail?: string, percentage: number}): Promise<telephony.ConsumptionThreshold>;
+            $post(params?: {block: telephony.OutplanNotificationBlockEnum, notifyEmail?: string, percentage: number}): Promise<telephony.ConsumptionThreshold>;
             $(id: number): {
                 // DELETE /telephony/{billingAccount}/outplanNotification/{id}
                 $delete(): Promise<void>;
@@ -2883,36 +2883,36 @@ export interface Telephony{
                 // GET /telephony/{billingAccount}/ovhPabx/{serviceName}
                 $get(): Promise<telephony.OvhPabx>;
                 // PUT /telephony/{billingAccount}/ovhPabx/{serviceName}
-                $put(body?: {description?: string, featureType?: telephony.TypeEnum, isCCS?: boolean, serviceName?: string, serviceType?: telephony.TypeServiceEnum}): Promise<void>;
+                $put(params?: {description?: string, featureType?: telephony.TypeEnum, isCCS?: boolean, serviceName?: string, serviceType?: telephony.TypeServiceEnum}): Promise<void>;
                 dialplan: {
                     // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan
                     $get(): Promise<number[]>;
                     // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan
-                    $post(body?: {anonymousRejection: boolean, name: string, showCallerNumber: telephony.OvhPabxDialplanNumberPresentationEnum, transferTimeout: number}): Promise<telephony.OvhPabxDialplan>;
+                    $post(params?: {anonymousRejection: boolean, name: string, showCallerNumber: telephony.OvhPabxDialplanNumberPresentationEnum, transferTimeout: number}): Promise<telephony.OvhPabxDialplan>;
                     $(dialplanId: number): {
                         // DELETE /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}
                         $delete(): Promise<void>;
                         // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}
                         $get(): Promise<telephony.OvhPabxDialplan>;
                         // PUT /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}
-                        $put(body?: {anonymousRejection?: boolean, dialplanId?: number, lastUpdate?: string, name?: string, showCallerNumber?: telephony.OvhPabxDialplanNumberPresentationEnum, transferTimeout?: number}): Promise<void>;
+                        $put(params?: {anonymousRejection?: boolean, dialplanId?: number, lastUpdate?: string, name?: string, showCallerNumber?: telephony.OvhPabxDialplanNumberPresentationEnum, transferTimeout?: number}): Promise<void>;
                         extension: {
                             // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension
                             $get(): Promise<number[]>;
                             // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension
-                            $post(body?: {enable: boolean, position: number, schedulerCategory?: telephony.SchedulerCategoryEnum, screenListType?: telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum}): Promise<telephony.OvhPabxDialplanExtension>;
+                            $post(params?: {enable: boolean, position: number, schedulerCategory?: telephony.SchedulerCategoryEnum, screenListType?: telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum}): Promise<telephony.OvhPabxDialplanExtension>;
                             $(extensionId: number): {
                                 // DELETE /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}
                                 $delete(): Promise<void>;
                                 // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}
                                 $get(): Promise<telephony.OvhPabxDialplanExtension>;
                                 // PUT /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}
-                                $put(body?: {enabled?: boolean, extensionId?: number, position?: number, schedulerCategory?: telephony.SchedulerCategoryEnum, screenListType?: telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum}): Promise<void>;
+                                $put(params?: {enabled?: boolean, extensionId?: number, position?: number, schedulerCategory?: telephony.SchedulerCategoryEnum, screenListType?: telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum}): Promise<void>;
                                 conditionScreenList: {
                                     // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionScreenList
                                     $get(): Promise<number[]>;
                                     // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionScreenList
-                                    $post(body?: {callerIdNumber?: string, destinationNumber?: string, screenListType?: telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum}): Promise<telephony.OvhPabxDialplanExtensionConditionScreenList>;
+                                    $post(params?: {callerIdNumber?: string, destinationNumber?: string, screenListType?: telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum}): Promise<telephony.OvhPabxDialplanExtensionConditionScreenList>;
                                     $(conditionId: number): {
                                         // DELETE /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionScreenList/{conditionId}
                                         $delete(): Promise<void>;
@@ -2924,28 +2924,28 @@ export interface Telephony{
                                     // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime
                                     $get(): Promise<number[]>;
                                     // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime
-                                    $post(body?: {timeFrom: string, timeTo: string, weekDay: telephony.OvhPabxDialplanExtensionConditionTimeWeekDayEnum}): Promise<telephony.OvhPabxDialplanExtensionConditionTime>;
+                                    $post(params?: {timeFrom: string, timeTo: string, weekDay: telephony.OvhPabxDialplanExtensionConditionTimeWeekDayEnum}): Promise<telephony.OvhPabxDialplanExtensionConditionTime>;
                                     $(conditionId: number): {
                                         // DELETE /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime/{conditionId}
                                         $delete(): Promise<void>;
                                         // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime/{conditionId}
                                         $get(): Promise<telephony.OvhPabxDialplanExtensionConditionTime>;
                                         // PUT /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime/{conditionId}
-                                        $put(body?: {conditionId?: number, timeFrom?: string, timeTo?: string, weekDay?: telephony.OvhPabxDialplanExtensionConditionTimeWeekDayEnum}): Promise<void>;
+                                        $put(params?: {conditionId?: number, timeFrom?: string, timeTo?: string, weekDay?: telephony.OvhPabxDialplanExtensionConditionTimeWeekDayEnum}): Promise<void>;
                                     };
                                 }
                                 rule: {
                                     // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule
                                     $get(): Promise<number[]>;
                                     // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule
-                                    $post(body?: {action: telephony.OvhPabxDialplanExtensionRuleActionEnum, actionParam?: string, negativeAction: boolean, position: number}): Promise<telephony.OvhPabxDialplanExtensionRule>;
+                                    $post(params?: {action: telephony.OvhPabxDialplanExtensionRuleActionEnum, actionParam?: string, negativeAction: boolean, position: number}): Promise<telephony.OvhPabxDialplanExtensionRule>;
                                     $(ruleId: number): {
                                         // DELETE /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule/{ruleId}
                                         $delete(): Promise<void>;
                                         // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule/{ruleId}
                                         $get(): Promise<telephony.OvhPabxDialplanExtensionRule>;
                                         // PUT /telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/rule/{ruleId}
-                                        $put(body?: {action?: telephony.OvhPabxDialplanExtensionRuleActionEnum, actionParam?: string, negativeAction?: boolean, position?: number, ruleId?: number}): Promise<void>;
+                                        $put(params?: {action?: telephony.OvhPabxDialplanExtensionRuleActionEnum, actionParam?: string, negativeAction?: boolean, position?: number, ruleId?: number}): Promise<void>;
                                     };
                                 }
                             };
@@ -2956,19 +2956,19 @@ export interface Telephony{
                     // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting
                     $get(): Promise<telephony.OvhPabxHunting>;
                     // PUT /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting
-                    $put(body?: {crmUrlTemplate?: string, g729?: boolean, name?: string, statusIvrEnabled?: boolean}): Promise<void>;
+                    $put(params?: {crmUrlTemplate?: string, g729?: boolean, name?: string, statusIvrEnabled?: boolean}): Promise<void>;
                     agent: {
                         // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent
                         $get(): Promise<number[]>;
                         // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent
-                        $post(body?: {description?: string, number: string, simultaneousLines: number, status: telephony.OvhPabxHuntingAgentStatusEnum, timeout: number, wrapUpTime: number}): Promise<telephony.OvhPabxHuntingAgent>;
+                        $post(params?: {description?: string, number: string, simultaneousLines: number, status: telephony.OvhPabxHuntingAgentStatusEnum, timeout: number, wrapUpTime: number}): Promise<telephony.OvhPabxHuntingAgent>;
                         $(agentId: number): {
                             // DELETE /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}
                             $delete(): Promise<void>;
                             // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}
                             $get(): Promise<telephony.OvhPabxHuntingAgent>;
                             // PUT /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}
-                            $put(body?: {agentId?: number, breakStatus?: number, description?: string, number?: string, simultaneousLines?: number, status?: telephony.OvhPabxHuntingAgentStatusEnum, timeout?: number, type?: telephony.OvhPabxHuntingAgentTypeEnum, wrapUpTime?: number}): Promise<void>;
+                            $put(params?: {agentId?: number, breakStatus?: number, description?: string, number?: string, simultaneousLines?: number, status?: telephony.OvhPabxHuntingAgentStatusEnum, timeout?: number, type?: telephony.OvhPabxHuntingAgentTypeEnum, wrapUpTime?: number}): Promise<void>;
                             bannerAccess: {
                                 // DELETE /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/bannerAccess
                                 $delete(): Promise<void>;
@@ -2985,7 +2985,7 @@ export interface Telephony{
                                     $get(): Promise<telephony.OvhPabxHuntingQueueLiveCalls>;
                                     eavesdrop: {
                                         // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/eavesdrop
-                                        $post(body?: {number: string}): Promise<telephony.Task>;
+                                        $post(params?: {number: string}): Promise<telephony.Task>;
                                     }
                                     hangup: {
                                         // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/hangup
@@ -2997,15 +2997,15 @@ export interface Telephony{
                                     }
                                     intercept: {
                                         // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/intercept
-                                        $post(body?: {number: string}): Promise<telephony.Task>;
+                                        $post(params?: {number: string}): Promise<telephony.Task>;
                                     }
                                     transfer: {
                                         // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/transfer
-                                        $post(body?: {number: string}): Promise<telephony.Task>;
+                                        $post(params?: {number: string}): Promise<telephony.Task>;
                                     }
                                     whisper: {
                                         // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/calls/{id}/whisper
-                                        $post(body?: {number: string, whisperingMode: telephony.OvhPabxWhisperingModeEnum}): Promise<telephony.Task>;
+                                        $post(params?: {number: string, whisperingMode: telephony.OvhPabxWhisperingModeEnum}): Promise<telephony.Task>;
                                     }
                                 };
                             }
@@ -3015,7 +3015,7 @@ export interface Telephony{
                                 // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/eventToken
                                 $get(): Promise<telephony.EventToken>;
                                 // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/eventToken
-                                $post(body?: {expiration: telephony.TokenExpirationEnum}): Promise<string>;
+                                $post(params?: {expiration: telephony.TokenExpirationEnum}): Promise<string>;
                             }
                             liveStatus: {
                                 // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/liveStatus
@@ -3025,14 +3025,14 @@ export interface Telephony{
                                 // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue
                                 $get(): Promise<number[]>;
                                 // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue
-                                $post(body?: {position: number, queueId: number}): Promise<telephony.OvhPabxHuntingAgentQueue>;
+                                $post(params?: {position: number, queueId: number}): Promise<telephony.OvhPabxHuntingAgentQueue>;
                                 $(queueId: number): {
                                     // DELETE /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue/{queueId}
                                     $delete(): Promise<void>;
                                     // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue/{queueId}
                                     $get(): Promise<telephony.OvhPabxHuntingAgentQueue>;
                                     // PUT /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue/{queueId}
-                                    $put(body?: {agentId?: number, position?: number, queueId?: number}): Promise<void>;
+                                    $put(params?: {agentId?: number, position?: number, queueId?: number}): Promise<void>;
                                     liveStatus: {
                                         // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/agent/{agentId}/queue/{queueId}/liveStatus
                                         $get(): Promise<telephony.OvhPabxHuntingAgentLiveStatus>;
@@ -3045,7 +3045,7 @@ export interface Telephony{
                         // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/customStatus
                         $get(): Promise<number[]>;
                         // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/customStatus
-                        $post(body?: {color?: string, description?: string, name: string}): Promise<telephony.OvhPabxCustomStatus>;
+                        $post(params?: {color?: string, description?: string, name: string}): Promise<telephony.OvhPabxCustomStatus>;
                         $(id: number): {
                             // DELETE /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/customStatus/{id}
                             $delete(): Promise<void>;
@@ -3059,32 +3059,32 @@ export interface Telephony{
                         // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/eventToken
                         $get(): Promise<telephony.EventToken>;
                         // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/eventToken
-                        $post(body?: {expiration: telephony.TokenExpirationEnum}): Promise<string>;
+                        $post(params?: {expiration: telephony.TokenExpirationEnum}): Promise<string>;
                     }
                     queue: {
                         // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue
                         $get(): Promise<number[]>;
                         // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue
-                        $post(body?: {actionOnClosure?: telephony.OvhPabxQueueActionEnum, actionOnClosureParam?: string, actionOnOverflow?: telephony.OvhPabxQueueActionEnum, actionOnOverflowParam?: string, askForRecordDisabling?: boolean, description?: string, maxMember?: number, maxWaitTime?: number, record?: boolean, recordDisablingDigit?: telephony.OvhPabxHuntingQueueRecordDisablingDigitEnum, recordDisablingLanguage?: telephony.OvhPabxHuntingQueueRecordDisablingLanguageEnum, soundOnHold?: number, strategy: telephony.OvhPabxHuntingQueueStrategyEnum}): Promise<telephony.OvhPabxHuntingQueue>;
+                        $post(params?: {actionOnClosure?: telephony.OvhPabxQueueActionEnum, actionOnClosureParam?: string, actionOnOverflow?: telephony.OvhPabxQueueActionEnum, actionOnOverflowParam?: string, askForRecordDisabling?: boolean, description?: string, maxMember?: number, maxWaitTime?: number, record?: boolean, recordDisablingDigit?: telephony.OvhPabxHuntingQueueRecordDisablingDigitEnum, recordDisablingLanguage?: telephony.OvhPabxHuntingQueueRecordDisablingLanguageEnum, soundOnHold?: number, strategy: telephony.OvhPabxHuntingQueueStrategyEnum}): Promise<telephony.OvhPabxHuntingQueue>;
                         $(queueId: number): {
                             // DELETE /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}
                             $delete(): Promise<void>;
                             // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}
                             $get(): Promise<telephony.OvhPabxHuntingQueue>;
                             // PUT /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}
-                            $put(body?: {actionOnClosure?: telephony.OvhPabxQueueActionEnum, actionOnClosureParam?: string, actionOnOverflow?: telephony.OvhPabxQueueActionEnum, actionOnOverflowParam?: string, askForRecordDisabling?: boolean, description?: string, followCallForwards?: boolean, maxMember?: number, maxWaitTime?: number, queueId?: number, record?: boolean, recordDisablingDigit?: telephony.OvhPabxHuntingQueueRecordDisablingDigitEnum, recordDisablingLanguage?: telephony.OvhPabxHuntingQueueRecordDisablingLanguageEnum, soundOnHold?: number, strategy?: telephony.OvhPabxHuntingQueueStrategyEnum}): Promise<void>;
+                            $put(params?: {actionOnClosure?: telephony.OvhPabxQueueActionEnum, actionOnClosureParam?: string, actionOnOverflow?: telephony.OvhPabxQueueActionEnum, actionOnOverflowParam?: string, askForRecordDisabling?: boolean, description?: string, followCallForwards?: boolean, maxMember?: number, maxWaitTime?: number, queueId?: number, record?: boolean, recordDisablingDigit?: telephony.OvhPabxHuntingQueueRecordDisablingDigitEnum, recordDisablingLanguage?: telephony.OvhPabxHuntingQueueRecordDisablingLanguageEnum, soundOnHold?: number, strategy?: telephony.OvhPabxHuntingQueueStrategyEnum}): Promise<void>;
                             agent: {
                                 // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent
                                 $get(): Promise<number[]>;
                                 // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent
-                                $post(body?: {position: number, queueId: number}): Promise<telephony.OvhPabxHuntingAgentQueue>;
+                                $post(params?: {position: number, queueId: number}): Promise<telephony.OvhPabxHuntingAgentQueue>;
                                 $(agentId: number): {
                                     // DELETE /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent/{agentId}
                                     $delete(): Promise<void>;
                                     // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent/{agentId}
                                     $get(): Promise<telephony.OvhPabxHuntingAgentQueue>;
                                     // PUT /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent/{agentId}
-                                    $put(body?: {agentId?: number, position?: number, queueId?: number}): Promise<void>;
+                                    $put(params?: {agentId?: number, position?: number, queueId?: number}): Promise<void>;
                                     liveStatus: {
                                         // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/agent/{agentId}/liveStatus
                                         $get(): Promise<telephony.OvhPabxHuntingAgentLiveStatus>;
@@ -3099,7 +3099,7 @@ export interface Telephony{
                                     $get(): Promise<telephony.OvhPabxHuntingQueueLiveCalls>;
                                     eavesdrop: {
                                         // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/eavesdrop
-                                        $post(body?: {number: string}): Promise<telephony.Task>;
+                                        $post(params?: {number: string}): Promise<telephony.Task>;
                                     }
                                     hangup: {
                                         // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hangup
@@ -3111,15 +3111,15 @@ export interface Telephony{
                                     }
                                     intercept: {
                                         // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/intercept
-                                        $post(body?: {number: string}): Promise<telephony.Task>;
+                                        $post(params?: {number: string}): Promise<telephony.Task>;
                                     }
                                     transfer: {
                                         // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/transfer
-                                        $post(body?: {number: string}): Promise<telephony.Task>;
+                                        $post(params?: {number: string}): Promise<telephony.Task>;
                                     }
                                     whisper: {
                                         // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/whisper
-                                        $post(body?: {number: string, whisperingMode: telephony.OvhPabxWhisperingModeEnum}): Promise<telephony.Task>;
+                                        $post(params?: {number: string, whisperingMode: telephony.OvhPabxWhisperingModeEnum}): Promise<telephony.Task>;
                                     }
                                 };
                             }
@@ -3134,26 +3134,26 @@ export interface Telephony{
                     // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/menu
                     $get(): Promise<number[]>;
                     // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/menu
-                    $post(body?: {greetSound?: number, greetSoundTts?: number, invalidSound?: number, invalidSoundTts?: number, name: string}): Promise<telephony.OvhPabxMenu>;
+                    $post(params?: {greetSound?: number, greetSoundTts?: number, invalidSound?: number, invalidSoundTts?: number, name: string}): Promise<telephony.OvhPabxMenu>;
                     $(menuId: number): {
                         // DELETE /telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}
                         $delete(): Promise<void>;
                         // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}
                         $get(): Promise<telephony.OvhPabxMenu>;
                         // PUT /telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}
-                        $put(body?: {greetSound?: number, greetSoundTts?: number, invalidSound?: number, invalidSoundTts?: number, menuId?: number, name?: string}): Promise<void>;
+                        $put(params?: {greetSound?: number, greetSoundTts?: number, invalidSound?: number, invalidSoundTts?: number, menuId?: number, name?: string}): Promise<void>;
                         entry: {
                             // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry
                             $get(): Promise<number[]>;
                             // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry
-                            $post(body?: {action: telephony.OvhPabxIvrMenuEntryActionEnum, actionParam?: string, dtmf: string, position: number}): Promise<telephony.OvhPabxMenuEntry>;
+                            $post(params?: {action: telephony.OvhPabxIvrMenuEntryActionEnum, actionParam?: string, dtmf: string, position: number}): Promise<telephony.OvhPabxMenuEntry>;
                             $(entryId: number): {
                                 // DELETE /telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry/{entryId}
                                 $delete(): Promise<void>;
                                 // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry/{entryId}
                                 $get(): Promise<telephony.OvhPabxMenuEntry>;
                                 // PUT /telephony/{billingAccount}/ovhPabx/{serviceName}/menu/{menuId}/entry/{entryId}
-                                $put(body?: {action?: telephony.OvhPabxIvrMenuEntryActionEnum, actionParam?: string, dtmf?: string, entryId?: number, position?: number}): Promise<void>;
+                                $put(params?: {action?: telephony.OvhPabxIvrMenuEntryActionEnum, actionParam?: string, dtmf?: string, entryId?: number, position?: number}): Promise<void>;
                             };
                         }
                     };
@@ -3180,20 +3180,20 @@ export interface Telephony{
                 }
                 soundUpload: {
                     // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/soundUpload
-                    $post(body?: {documentId?: string, name?: string, url?: string}): Promise<telephony.Task>;
+                    $post(params?: {documentId?: string, name?: string, url?: string}): Promise<telephony.Task>;
                 }
                 tts: {
                     // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/tts
                     $get(): Promise<number[]>;
                     // POST /telephony/{billingAccount}/ovhPabx/{serviceName}/tts
-                    $post(body?: {text: string, voice?: telephony.OvhPabxTtsVoiceEnum}): Promise<void>;
+                    $post(params?: {text: string, voice?: telephony.OvhPabxTtsVoiceEnum}): Promise<void>;
                     $(id: number): {
                         // DELETE /telephony/{billingAccount}/ovhPabx/{serviceName}/tts/{id}
                         $delete(): Promise<void>;
                         // GET /telephony/{billingAccount}/ovhPabx/{serviceName}/tts/{id}
                         $get(): Promise<telephony.OvhPabxTts>;
                         // PUT /telephony/{billingAccount}/ovhPabx/{serviceName}/tts/{id}
-                        $put(body?: {id?: number, text?: string, voice?: telephony.OvhPabxTtsVoiceEnum}): Promise<void>;
+                        $put(params?: {id?: number, text?: string, voice?: telephony.OvhPabxTtsVoiceEnum}): Promise<void>;
                     };
                 }
             };
@@ -3202,34 +3202,34 @@ export interface Telephony{
             // GET /telephony/{billingAccount}/phonebook
             $get(): Promise<string[]>;
             // POST /telephony/{billingAccount}/phonebook
-            $post(body?: {name: string}): Promise<string>;
+            $post(params?: {name: string}): Promise<string>;
             $(bookKey: string): {
                 // DELETE /telephony/{billingAccount}/phonebook/{bookKey}
                 $delete(): Promise<void>;
                 // GET /telephony/{billingAccount}/phonebook/{bookKey}
                 $get(): Promise<telephony.PhonebookMaster>;
                 // PUT /telephony/{billingAccount}/phonebook/{bookKey}
-                $put(body?: {bookKey?: string, name?: string}): Promise<void>;
+                $put(params?: {bookKey?: string, name?: string}): Promise<void>;
                 export: {
                     // GET /telephony/{billingAccount}/phonebook/{bookKey}/export
-                    $get(param?: {format: telephony.ContactsExportFormatsEnum}): Promise<telephony.PcsFile>;
+                    $get(params?: {format: telephony.ContactsExportFormatsEnum}): Promise<telephony.PcsFile>;
                 }
                 import: {
                     // POST /telephony/{billingAccount}/phonebook/{bookKey}/import
-                    $post(body?: {documentId: string}): Promise<telephony.Task>;
+                    $post(params?: {documentId: string}): Promise<telephony.Task>;
                 }
                 phonebookContact: {
                     // GET /telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact
                     $get(): Promise<number[]>;
                     // POST /telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact
-                    $post(body?: {group: string, homeMobile?: string, homePhone?: string, name: string, surname: string, workMobile?: string, workPhone?: string}): Promise<number>;
+                    $post(params?: {group: string, homeMobile?: string, homePhone?: string, name: string, surname: string, workMobile?: string, workPhone?: string}): Promise<number>;
                     $(id: number): {
                         // DELETE /telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact/{id}
                         $delete(): Promise<void>;
                         // GET /telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact/{id}
                         $get(): Promise<telephony.PhonebookContact>;
                         // PUT /telephony/{billingAccount}/phonebook/{bookKey}/phonebookContact/{id}
-                        $put(body?: {group?: string, homeMobile?: string, homePhone?: string, id?: number, name?: string, surname?: string, workMobile?: string, workPhone?: string}): Promise<void>;
+                        $put(params?: {group?: string, homeMobile?: string, homePhone?: string, id?: number, name?: string, surname?: string, workMobile?: string, workPhone?: string}): Promise<void>;
                     };
                 }
             };
@@ -3250,11 +3250,11 @@ export interface Telephony{
                 }
                 cancel: {
                     // POST /telephony/{billingAccount}/portability/{id}/cancel
-                    $post(body?: {reason?: string}): Promise<void>;
+                    $post(params?: {reason?: string}): Promise<void>;
                 }
                 changeDate: {
                     // POST /telephony/{billingAccount}/portability/{id}/changeDate
-                    $post(body?: {date: string}): Promise<void>;
+                    $post(params?: {date: string}): Promise<void>;
                 }
                 dateCanBeChanged: {
                     // GET /telephony/{billingAccount}/portability/{id}/dateCanBeChanged
@@ -3264,14 +3264,14 @@ export interface Telephony{
                     // GET /telephony/{billingAccount}/portability/{id}/document
                     $get(): Promise<number[]>;
                     // POST /telephony/{billingAccount}/portability/{id}/document
-                    $post(body?: {description?: string, name: string}): Promise<telephony.PortabilityDocument>;
+                    $post(params?: {description?: string, name: string}): Promise<telephony.PortabilityDocument>;
                     $(documentId: number): {
                         // DELETE /telephony/{billingAccount}/portability/{id}/document/{documentId}
                         $delete(): Promise<void>;
                         // GET /telephony/{billingAccount}/portability/{id}/document/{documentId}
                         $get(): Promise<telephony.PortabilityDocument>;
                         // PUT /telephony/{billingAccount}/portability/{id}/document/{documentId}
-                        $put(body?: {description?: string, documentId?: number, getUrl?: string, name?: string, putUrl?: string, size?: number}): Promise<void>;
+                        $put(params?: {description?: string, documentId?: number, getUrl?: string, name?: string, putUrl?: string, size?: number}): Promise<void>;
                     };
                 }
                 execute: {
@@ -3282,7 +3282,7 @@ export interface Telephony{
                     // GET /telephony/{billingAccount}/portability/{id}/relaunch
                     $get(): Promise<telephony.PortabilityFixErrorPossibleParameters>;
                     // POST /telephony/{billingAccount}/portability/{id}/relaunch
-                    $post(body?: {parameters: complexType.SafeKeyValue<string>[]}): Promise<void>;
+                    $post(params?: {parameters: complexType.SafeKeyValue<string>[]}): Promise<void>;
                 }
                 status: {
                     // GET /telephony/{billingAccount}/portability/{id}/status
@@ -3297,10 +3297,10 @@ export interface Telephony{
                 // GET /telephony/{billingAccount}/redirect/{serviceName}
                 $get(): Promise<telephony.Redirect>;
                 // PUT /telephony/{billingAccount}/redirect/{serviceName}
-                $put(body?: {description?: string, destination?: string, featureType?: telephony.TypeEnum, serviceName?: string, serviceType?: telephony.TypeServiceEnum}): Promise<void>;
+                $put(params?: {description?: string, destination?: string, featureType?: telephony.TypeEnum, serviceName?: string, serviceType?: telephony.TypeServiceEnum}): Promise<void>;
                 changeDestination: {
                     // POST /telephony/{billingAccount}/redirect/{serviceName}/changeDestination
-                    $post(body?: {destination: string}): Promise<telephony.Task>;
+                    $post(params?: {destination: string}): Promise<telephony.Task>;
                 }
             };
         }
@@ -3311,7 +3311,7 @@ export interface Telephony{
                 // GET /telephony/{billingAccount}/rsva/{serviceName}
                 $get(): Promise<telephony.Rsva>;
                 // PUT /telephony/{billingAccount}/rsva/{serviceName}
-                $put(body?: {serviceName?: string, typology?: telephony.portability.SpecialNumberCategoryEnum}): Promise<void>;
+                $put(params?: {serviceName?: string, typology?: telephony.portability.SpecialNumberCategoryEnum}): Promise<void>;
                 allowedRateCodes: {
                     // GET /telephony/{billingAccount}/rsva/{serviceName}/allowedRateCodes
                     $get(): Promise<telephony.RateCodeInformation[]>;
@@ -3326,7 +3326,7 @@ export interface Telephony{
                 }
                 scheduleRateCode: {
                     // POST /telephony/{billingAccount}/rsva/{serviceName}/scheduleRateCode
-                    $post(body?: {rateCode: string}): Promise<telephony.DetailedRateCodeInformation>;
+                    $post(params?: {rateCode: string}): Promise<telephony.DetailedRateCodeInformation>;
                 }
                 scheduledRateCode: {
                     // GET /telephony/{billingAccount}/rsva/{serviceName}/scheduledRateCode
@@ -3341,24 +3341,24 @@ export interface Telephony{
                 // GET /telephony/{billingAccount}/scheduler/{serviceName}
                 $get(): Promise<telephony.Scheduler>;
                 // PUT /telephony/{billingAccount}/scheduler/{serviceName}
-                $put(body?: {serviceName?: string, timeZone?: telephony.timeZone}): Promise<void>;
+                $put(params?: {serviceName?: string, timeZone?: telephony.timeZone}): Promise<void>;
                 events: {
                     // GET /telephony/{billingAccount}/scheduler/{serviceName}/events
-                    $get(param?: {categories?: telephony.SchedulerCategoryEnum, dateEnd_from?: string, dateEnd_to?: string, dateStart_from?: string, dateStart_to?: string}): Promise<string[]>;
+                    $get(params?: {categories?: telephony.SchedulerCategoryEnum, dateEnd_from?: string, dateEnd_to?: string, dateStart_from?: string, dateStart_to?: string}): Promise<string[]>;
                     // POST /telephony/{billingAccount}/scheduler/{serviceName}/events
-                    $post(body?: {category: telephony.SchedulerCategoryEnum, dateEnd: string, dateStart: string, description?: string, title: string, uid?: string}): Promise<void>;
+                    $post(params?: {category: telephony.SchedulerCategoryEnum, dateEnd: string, dateStart: string, description?: string, title: string, uid?: string}): Promise<void>;
                     $(uid: string): {
                         // DELETE /telephony/{billingAccount}/scheduler/{serviceName}/events/{uid}
                         $delete(): Promise<void>;
                         // GET /telephony/{billingAccount}/scheduler/{serviceName}/events/{uid}
                         $get(): Promise<telephony.SchedulerEvent>;
                         // PUT /telephony/{billingAccount}/scheduler/{serviceName}/events/{uid}
-                        $put(body?: {categories?: telephony.SchedulerCategoryEnum, dateEnd?: string, dateStart?: string, description?: string, title?: string, uid?: string}): Promise<void>;
+                        $put(params?: {categories?: telephony.SchedulerCategoryEnum, dateEnd?: string, dateStart?: string, description?: string, title?: string, uid?: string}): Promise<void>;
                     };
                 }
                 importIcsCalendar: {
                     // POST /telephony/{billingAccount}/scheduler/{serviceName}/importIcsCalendar
-                    $post(body?: {url: string}): Promise<telephony.Task>;
+                    $post(params?: {url: string}): Promise<telephony.Task>;
                 }
             };
         }
@@ -3369,12 +3369,12 @@ export interface Telephony{
                 // GET /telephony/{billingAccount}/screen/{serviceName}
                 $get(): Promise<telephony.Screen>;
                 // PUT /telephony/{billingAccount}/screen/{serviceName}
-                $put(body?: {incomingScreenList?: telephony.ScreenListChoosingEnum, outgoingScreenList?: telephony.ScreenListChoosingEnum, serviceName?: string}): Promise<void>;
+                $put(params?: {incomingScreenList?: telephony.ScreenListChoosingEnum, outgoingScreenList?: telephony.ScreenListChoosingEnum, serviceName?: string}): Promise<void>;
                 screenLists: {
                     // GET /telephony/{billingAccount}/screen/{serviceName}/screenLists
                     $get(): Promise<number[]>;
                     // POST /telephony/{billingAccount}/screen/{serviceName}/screenLists
-                    $post(body?: {callNumber?: string, nature: telephony.ScreenListNatureEnum, type: telephony.ScreenListTypeEnum}): Promise<void>;
+                    $post(params?: {callNumber?: string, nature: telephony.ScreenListNatureEnum, type: telephony.ScreenListTypeEnum}): Promise<void>;
                     $(id: number): {
                         // DELETE /telephony/{billingAccount}/screen/{serviceName}/screenLists/{id}
                         $delete(): Promise<void>;
@@ -3393,31 +3393,31 @@ export interface Telephony{
                 // GET /telephony/{billingAccount}/service/{serviceName}
                 $get(): Promise<telephony.TelephonyService>;
                 // PUT /telephony/{billingAccount}/service/{serviceName}
-                $put(body?: {country?: telephony.NumberCountryEnum, countryCode?: telephony.NumberCountryCodeEnum, currentOutplan?: orderPrice, description?: string, featureType?: telephony.TypeEnum, getPublicOffer?: telephony.LineOffer, hasFaxCapabilities?: boolean, offers?: string[], properties?: telephony.PropertyEnum[], rio?: string, serviceName?: string, serviceType?: telephony.TypeServiceEnum, simultaneousLines?: number}): Promise<void>;
+                $put(params?: {country?: telephony.NumberCountryEnum, countryCode?: telephony.NumberCountryCodeEnum, currentOutplan?: orderPrice, description?: string, featureType?: telephony.TypeEnum, getPublicOffer?: telephony.LineOffer, hasFaxCapabilities?: boolean, offers?: string[], properties?: telephony.PropertyEnum[], rio?: string, serviceName?: string, serviceType?: telephony.TypeServiceEnum, simultaneousLines?: number}): Promise<void>;
                 cancelTermination: {
                     // POST /telephony/{billingAccount}/service/{serviceName}/cancelTermination
                     $post(): Promise<void>;
                 }
                 changeOfBillingAccount: {
                     // POST /telephony/{billingAccount}/service/{serviceName}/changeOfBillingAccount
-                    $post(body?: {billingAccountDestination: string}): Promise<void>;
+                    $post(params?: {billingAccountDestination: string}): Promise<void>;
                 }
                 diagnosticReports: {
                     // GET /telephony/{billingAccount}/service/{serviceName}/diagnosticReports
-                    $get(param?: {dayInterval: telephony.DiagnosticReportIndexEnum}): Promise<telephony.DiagnosticReport[]>;
+                    $get(params?: {dayInterval: telephony.DiagnosticReportIndexEnum}): Promise<telephony.DiagnosticReport[]>;
                 }
                 directory: {
                     // GET /telephony/{billingAccount}/service/{serviceName}/directory
                     $get(): Promise<telephony.DirectoryInfo>;
                     // PUT /telephony/{billingAccount}/service/{serviceName}/directory
-                    $put(body?: {PJSocialNomination?: string, address?: string, addressExtra?: string, ape?: string, areaCode?: number, birthDate?: string, cedex?: string, city?: string, country?: string, directoryServiceCode?: string, displayFirstName?: boolean, displayMarketingDirectory?: boolean, displayOnlyCity?: boolean, displaySearchReverse?: boolean, displayUniversalDirectory?: boolean, email?: string, firstName?: string, gender?: nichandle.GenderEnum, inseeCode?: number, legalForm?: string, lineDescription?: string, modificationDate?: string, modificationType?: string, name?: string, number?: string, occupation?: string, postBox?: string, postCode?: string, receivePJDirectory?: boolean, siret?: string, socialNomination?: string, socialNominationExtra?: string, status?: string, urbanDistrict?: string, wayName?: string, wayNumber?: string, wayNumberExtra?: string, wayType?: string}): Promise<void>;
+                    $put(params?: {PJSocialNomination?: string, address?: string, addressExtra?: string, ape?: string, areaCode?: number, birthDate?: string, cedex?: string, city?: string, country?: string, directoryServiceCode?: string, displayFirstName?: boolean, displayMarketingDirectory?: boolean, displayOnlyCity?: boolean, displaySearchReverse?: boolean, displayUniversalDirectory?: boolean, email?: string, firstName?: string, gender?: nichandle.GenderEnum, inseeCode?: number, legalForm?: string, lineDescription?: string, modificationDate?: string, modificationType?: string, name?: string, number?: string, occupation?: string, postBox?: string, postCode?: string, receivePJDirectory?: boolean, siret?: string, socialNomination?: string, socialNominationExtra?: string, status?: string, urbanDistrict?: string, wayName?: string, wayNumber?: string, wayNumberExtra?: string, wayType?: string}): Promise<void>;
                     fetchEntrepriseInformations: {
                         // POST /telephony/{billingAccount}/service/{serviceName}/directory/fetchEntrepriseInformations
-                        $post(body?: {entrepriseNumber: string}): Promise<telephony.EntrepriseNumberInformationsTask>;
+                        $post(params?: {entrepriseNumber: string}): Promise<telephony.EntrepriseNumberInformationsTask>;
                     }
                     getDirectoryServiceCode: {
                         // GET /telephony/{billingAccount}/service/{serviceName}/directory/getDirectoryServiceCode
-                        $get(param?: {apeCode: string}): Promise<telephony.DirectoryHeadingPJ[]>;
+                        $get(params?: {apeCode: string}): Promise<telephony.DirectoryHeadingPJ[]>;
                     }
                     getWayTypes: {
                         // GET /telephony/{billingAccount}/service/{serviceName}/directory/getWayTypes
@@ -3430,11 +3430,11 @@ export interface Telephony{
                     // GET /telephony/{billingAccount}/service/{serviceName}/eventToken
                     $get(): Promise<telephony.EventToken>;
                     // POST /telephony/{billingAccount}/service/{serviceName}/eventToken
-                    $post(body?: {expiration: telephony.TokenExpirationEnum}): Promise<string>;
+                    $post(params?: {expiration: telephony.TokenExpirationEnum}): Promise<string>;
                 }
                 faxConsumption: {
                     // GET /telephony/{billingAccount}/service/{serviceName}/faxConsumption
-                    $get(param?: {creationDatetime_from?: string, creationDatetime_to?: string, wayType?: telephony.FaxConsumptionWayTypeEnum}): Promise<number[]>;
+                    $get(params?: {creationDatetime_from?: string, creationDatetime_to?: string, wayType?: telephony.FaxConsumptionWayTypeEnum}): Promise<number[]>;
                     $(consumptionId: number): {
                         // GET /telephony/{billingAccount}/service/{serviceName}/faxConsumption/{consumptionId}
                         $get(): Promise<telephony.FaxConsumption>;
@@ -3446,7 +3446,7 @@ export interface Telephony{
                     // GET /telephony/{billingAccount}/service/{serviceName}/offerChange
                     $get(): Promise<telephony.OfferChange>;
                     // POST /telephony/{billingAccount}/service/{serviceName}/offerChange
-                    $post(body?: {offer: string}): Promise<void>;
+                    $post(params?: {offer: string}): Promise<void>;
                 }
                 offerChanges: {
                     // GET /telephony/{billingAccount}/service/{serviceName}/offerChanges
@@ -3454,17 +3454,17 @@ export interface Telephony{
                 }
                 offerTask: {
                     // GET /telephony/{billingAccount}/service/{serviceName}/offerTask
-                    $get(param?: {action?: telephony.OfferTaskActionEnum, status?: telephony.TaskStatusEnum, type?: telephony.OfferTaskTypeEnum}): Promise<number[]>;
+                    $get(params?: {action?: telephony.OfferTaskActionEnum, status?: telephony.TaskStatusEnum, type?: telephony.OfferTaskTypeEnum}): Promise<number[]>;
                     $(taskId: number): {
                         // GET /telephony/{billingAccount}/service/{serviceName}/offerTask/{taskId}
                         $get(): Promise<telephony.OfferTask>;
                         // PUT /telephony/{billingAccount}/service/{serviceName}/offerTask/{taskId}
-                        $put(body?: {action?: telephony.OfferTaskActionEnum, executionDate?: string, status?: telephony.TaskStatusEnum, taskId?: number, type?: telephony.OfferTaskTypeEnum}): Promise<void>;
+                        $put(params?: {action?: telephony.OfferTaskActionEnum, executionDate?: string, status?: telephony.TaskStatusEnum, taskId?: number, type?: telephony.OfferTaskTypeEnum}): Promise<void>;
                     };
                 }
                 previousVoiceConsumption: {
                     // GET /telephony/{billingAccount}/service/{serviceName}/previousVoiceConsumption
-                    $get(param?: {creationDatetime_from?: string, creationDatetime_to?: string, destinationType?: telephony.VoiceConsumptionDestinationTypeEnum, planType?: telephony.VoiceConsumptionPlanTypeEnum, wayType?: telephony.VoiceConsumptionWayTypeEnum}): Promise<number[]>;
+                    $get(params?: {creationDatetime_from?: string, creationDatetime_to?: string, destinationType?: telephony.VoiceConsumptionDestinationTypeEnum, planType?: telephony.VoiceConsumptionPlanTypeEnum, wayType?: telephony.VoiceConsumptionWayTypeEnum}): Promise<number[]>;
                     $(consumptionId: number): {
                         // GET /telephony/{billingAccount}/service/{serviceName}/previousVoiceConsumption/{consumptionId}
                         $get(): Promise<telephony.PreviousVoiceConsumption>;
@@ -3472,7 +3472,7 @@ export interface Telephony{
                 }
                 repaymentConsumption: {
                     // GET /telephony/{billingAccount}/service/{serviceName}/repaymentConsumption
-                    $get(param?: {creationDatetime_from?: string, creationDatetime_to?: string}): Promise<number[]>;
+                    $get(params?: {creationDatetime_from?: string, creationDatetime_to?: string}): Promise<number[]>;
                     $(consumptionId: number): {
                         // GET /telephony/{billingAccount}/service/{serviceName}/repaymentConsumption/{consumptionId}
                         $get(): Promise<telephony.RepaymentConsumption>;
@@ -3480,7 +3480,7 @@ export interface Telephony{
                 }
                 task: {
                     // GET /telephony/{billingAccount}/service/{serviceName}/task
-                    $get(param?: {action?: string, serviceType?: string, status?: telephony.TaskStatusEnum}): Promise<number[]>;
+                    $get(params?: {action?: string, serviceType?: string, status?: telephony.TaskStatusEnum}): Promise<number[]>;
                     $(taskId: number): {
                         // GET /telephony/{billingAccount}/service/{serviceName}/task/{taskId}
                         $get(): Promise<telephony.Task>;
@@ -3488,7 +3488,7 @@ export interface Telephony{
                 }
                 voiceConsumption: {
                     // GET /telephony/{billingAccount}/service/{serviceName}/voiceConsumption
-                    $get(param?: {creationDatetime_from?: string, creationDatetime_to?: string, destinationType?: telephony.VoiceConsumptionDestinationTypeEnum, planType?: telephony.VoiceConsumptionPlanTypeEnum, wayType?: telephony.VoiceConsumptionWayTypeEnum}): Promise<number[]>;
+                    $get(params?: {creationDatetime_from?: string, creationDatetime_to?: string, destinationType?: telephony.VoiceConsumptionDestinationTypeEnum, planType?: telephony.VoiceConsumptionPlanTypeEnum, wayType?: telephony.VoiceConsumptionWayTypeEnum}): Promise<number[]>;
                     $(consumptionId: number): {
                         // GET /telephony/{billingAccount}/service/{serviceName}/voiceConsumption/{consumptionId}
                         $get(): Promise<telephony.VoiceConsumption>;
@@ -3504,11 +3504,11 @@ export interface Telephony{
             // GET /telephony/{billingAccount}/serviceInfos
             $get(): Promise<services.Service>;
             // PUT /telephony/{billingAccount}/serviceInfos
-            $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
         }
         task: {
             // GET /telephony/{billingAccount}/task
-            $get(param?: {action?: string, serviceType?: string, status?: telephony.TaskStatusEnum}): Promise<number[]>;
+            $get(params?: {action?: string, serviceType?: string, status?: telephony.TaskStatusEnum}): Promise<number[]>;
             $(taskId: number): {
                 // GET /telephony/{billingAccount}/task/{taskId}
                 $get(): Promise<telephony.Task>;
@@ -3524,27 +3524,27 @@ export interface Telephony{
                     // GET /telephony/{billingAccount}/timeCondition/{serviceName}/condition
                     $get(): Promise<number[]>;
                     // POST /telephony/{billingAccount}/timeCondition/{serviceName}/condition
-                    $post(body?: {day: telephony.TimeConditionsDayEnum, hourBegin: string, hourEnd: string, policy: telephony.TimeConditionsPolicyEnum}): Promise<telephony.TimeCondition>;
+                    $post(params?: {day: telephony.TimeConditionsDayEnum, hourBegin: string, hourEnd: string, policy: telephony.TimeConditionsPolicyEnum}): Promise<telephony.TimeCondition>;
                     $(id: number): {
                         // DELETE /telephony/{billingAccount}/timeCondition/{serviceName}/condition/{id}
                         $delete(): Promise<void>;
                         // GET /telephony/{billingAccount}/timeCondition/{serviceName}/condition/{id}
                         $get(): Promise<telephony.TimeCondition>;
                         // PUT /telephony/{billingAccount}/timeCondition/{serviceName}/condition/{id}
-                        $put(body?: {day?: telephony.TimeConditionsDayEnum, hourBegin?: string, hourEnd?: string, id?: number, policy?: telephony.TimeConditionsPolicyEnum, status?: string}): Promise<void>;
+                        $put(params?: {day?: telephony.TimeConditionsDayEnum, hourBegin?: string, hourEnd?: string, id?: number, policy?: telephony.TimeConditionsPolicyEnum, status?: string}): Promise<void>;
                     };
                 }
                 options: {
                     // GET /telephony/{billingAccount}/timeCondition/{serviceName}/options
                     $get(): Promise<telephony.TimeConditionOptions>;
                     // PUT /telephony/{billingAccount}/timeCondition/{serviceName}/options
-                    $put(body?: {slot1Number?: string, slot1Type?: telephony.TimeConditionsSlotTypeEnum, slot2Number?: string, slot2Type?: telephony.TimeConditionsSlotTypeEnum, slot3Number?: string, slot3Type?: telephony.TimeConditionsSlotTypeEnum, status?: telephony.TimeConditionsGlobalStatusEnum, timeout?: telephony.TimeConditionsTimeoutEnum, unavailableNumber?: string, unavailableType?: telephony.TimeConditionsSlotTypeEnum}): Promise<void>;
+                    $put(params?: {slot1Number?: string, slot1Type?: telephony.TimeConditionsSlotTypeEnum, slot2Number?: string, slot2Type?: telephony.TimeConditionsSlotTypeEnum, slot3Number?: string, slot3Type?: telephony.TimeConditionsSlotTypeEnum, status?: telephony.TimeConditionsGlobalStatusEnum, timeout?: telephony.TimeConditionsTimeoutEnum, unavailableNumber?: string, unavailableType?: telephony.TimeConditionsSlotTypeEnum}): Promise<void>;
                 }
             };
         }
         transferSecurityDeposit: {
             // POST /telephony/{billingAccount}/transferSecurityDeposit
-            $post(body?: {amount: number, billingAccountDestination: string}): Promise<void>;
+            $post(params?: {amount: number, billingAccountDestination: string}): Promise<void>;
         }
         trunk: {
             // GET /telephony/{billingAccount}/trunk
@@ -3554,13 +3554,13 @@ export interface Telephony{
                 $get(): Promise<telephony.Trunk>;
                 channelsPacksRepartition: {
                     // GET /telephony/{billingAccount}/trunk/{serviceName}/channelsPacksRepartition
-                    $get(param?: {quantity: number}): Promise<telephony.TrunkSimultaneousPacksRepartition>;
+                    $get(params?: {quantity: number}): Promise<telephony.TrunkSimultaneousPacksRepartition>;
                 }
                 externalDisplayedNumber: {
                     // GET /telephony/{billingAccount}/trunk/{serviceName}/externalDisplayedNumber
                     $get(): Promise<string[]>;
                     // POST /telephony/{billingAccount}/trunk/{serviceName}/externalDisplayedNumber
-                    $post(body?: {autoValidation?: boolean, number: string}): Promise<telephony.TrunkExternalDisplayedNumber>;
+                    $post(params?: {autoValidation?: boolean, number: string}): Promise<telephony.TrunkExternalDisplayedNumber>;
                     $(number: string): {
                         // DELETE /telephony/{billingAccount}/trunk/{serviceName}/externalDisplayedNumber/{number}
                         $delete(): Promise<void>;
@@ -3581,10 +3581,10 @@ export interface Telephony{
                 // GET /telephony/{billingAccount}/voicemail/{serviceName}
                 $get(): Promise<telephony.Voicemail>;
                 // PUT /telephony/{billingAccount}/voicemail/{serviceName}
-                $put(body?: {description?: string, offers?: string[], serviceName?: string, serviceType?: telephony.TypeServiceEnum}): Promise<void>;
+                $put(params?: {description?: string, offers?: string[], serviceName?: string, serviceType?: telephony.TypeServiceEnum}): Promise<void>;
                 directories: {
                     // GET /telephony/{billingAccount}/voicemail/{serviceName}/directories
-                    $get(param?: {dir?: telephony.VoicemailMessageFolderDirectoryEnum}): Promise<number[]>;
+                    $get(params?: {dir?: telephony.VoicemailMessageFolderDirectoryEnum}): Promise<number[]>;
                     $(id: number): {
                         // DELETE /telephony/{billingAccount}/voicemail/{serviceName}/directories/{id}
                         $delete(): Promise<void>;
@@ -3592,19 +3592,19 @@ export interface Telephony{
                         $get(): Promise<telephony.VoicemailMessages>;
                         download: {
                             // GET /telephony/{billingAccount}/voicemail/{serviceName}/directories/{id}/download
-                            $get(param?: {format?: telephony.ServiceVoicemailAudioFormatEnum}): Promise<telephony.PcsFile>;
+                            $get(params?: {format?: telephony.ServiceVoicemailAudioFormatEnum}): Promise<telephony.PcsFile>;
                         }
                         move: {
                             // POST /telephony/{billingAccount}/voicemail/{serviceName}/directories/{id}/move
-                            $post(body?: {dir: telephony.VoicemailMessageFolderDirectoryEnum}): Promise<void>;
+                            $post(params?: {dir: telephony.VoicemailMessageFolderDirectoryEnum}): Promise<void>;
                         }
                     };
                 }
                 greetings: {
                     // GET /telephony/{billingAccount}/voicemail/{serviceName}/greetings
-                    $get(param?: {dir?: telephony.VoicemailMessageFolderGreetingEnum}): Promise<number[]>;
+                    $get(params?: {dir?: telephony.VoicemailMessageFolderGreetingEnum}): Promise<number[]>;
                     // POST /telephony/{billingAccount}/voicemail/{serviceName}/greetings
-                    $post(body?: {dir: telephony.VoicemailMessageFolderGreetingEnum, documentId: string}): Promise<number>;
+                    $post(params?: {dir: telephony.VoicemailMessageFolderGreetingEnum, documentId: string}): Promise<number>;
                     $(id: number): {
                         // DELETE /telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}
                         $delete(): Promise<void>;
@@ -3612,11 +3612,11 @@ export interface Telephony{
                         $get(): Promise<telephony.VoicemailGreetings>;
                         download: {
                             // GET /telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}/download
-                            $get(param?: {format?: telephony.ServiceVoicemailAudioFormatEnum}): Promise<telephony.PcsFile>;
+                            $get(params?: {format?: telephony.ServiceVoicemailAudioFormatEnum}): Promise<telephony.PcsFile>;
                         }
                         move: {
                             // POST /telephony/{billingAccount}/voicemail/{serviceName}/greetings/{id}/move
-                            $post(body?: {dir: telephony.VoicemailMessageFolderGreetingEnum}): Promise<void>;
+                            $post(params?: {dir: telephony.VoicemailMessageFolderGreetingEnum}): Promise<void>;
                         }
                     };
                 }
@@ -3628,14 +3628,14 @@ export interface Telephony{
                     // GET /telephony/{billingAccount}/voicemail/{serviceName}/settings
                     $get(): Promise<telephony.VoicemailProperties>;
                     // PUT /telephony/{billingAccount}/voicemail/{serviceName}/settings
-                    $put(body?: {annouceMessage?: string, audioFormat?: telephony.ServiceVoicemailAudioFormatEnum, doNotRecord?: boolean, forcePassword?: boolean, fromEmail?: string, fromName?: string, fullGreetingSoundId?: number, greetingType?: telephony.VoicemailGreetingEnum, isNewVersion?: boolean, keepMessage?: boolean, redirectionEmails?: telephony.ServiceVoicemailNotifications[], shortGreetingSoundId?: number, temporaryGreetingActivated?: boolean, temporaryGreetingSoundId?: number, unreadMessages?: number}): Promise<void>;
+                    $put(params?: {annouceMessage?: string, audioFormat?: telephony.ServiceVoicemailAudioFormatEnum, doNotRecord?: boolean, forcePassword?: boolean, fromEmail?: string, fromName?: string, fullGreetingSoundId?: number, greetingType?: telephony.VoicemailGreetingEnum, isNewVersion?: boolean, keepMessage?: boolean, redirectionEmails?: telephony.ServiceVoicemailNotifications[], shortGreetingSoundId?: number, temporaryGreetingActivated?: boolean, temporaryGreetingSoundId?: number, unreadMessages?: number}): Promise<void>;
                     changePassword: {
                         // POST /telephony/{billingAccount}/voicemail/{serviceName}/settings/changePassword
-                        $post(body?: {password: string}): Promise<void>;
+                        $post(params?: {password: string}): Promise<void>;
                     }
                     changeRouting: {
                         // POST /telephony/{billingAccount}/voicemail/{serviceName}/settings/changeRouting
-                        $post(body?: {routing: telephony.VoicefaxRoutingEnum}): Promise<void>;
+                        $post(params?: {routing: telephony.VoicefaxRoutingEnum}): Promise<void>;
                     }
                     routing: {
                         // GET /telephony/{billingAccount}/voicemail/{serviceName}/settings/routing
@@ -3658,7 +3658,7 @@ export interface Telephony{
                     // GET /telephony/{billingAccount}/vxml/{serviceName}/settings
                     $get(): Promise<telephony.VxmlProperties>;
                     // PUT /telephony/{billingAccount}/vxml/{serviceName}/settings
-                    $put(body?: {url?: string, urlRecord?: string}): Promise<void>;
+                    $put(params?: {url?: string, urlRecord?: string}): Promise<void>;
                     logs: {
                         // POST /telephony/{billingAccount}/vxml/{serviceName}/settings/logs
                         $post(): Promise<telephony.TemporaryLogsLink>;

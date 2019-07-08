@@ -223,7 +223,7 @@ export interface Caas{
             }
             changeContact: {
                 // POST /caas/containers/{serviceName}/changeContact
-                $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
+                $post(params?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
             }
             frameworks: {
                 // GET /caas/containers/{serviceName}/frameworks
@@ -237,7 +237,7 @@ export interface Caas{
                     }
                     password: {
                         // PUT /caas/containers/{serviceName}/frameworks/{frameworkId}/password
-                        $put(body?: {password?: string}): Promise<void>;
+                        $put(params?: {password?: string}): Promise<void>;
                     }
                 };
             }
@@ -246,14 +246,14 @@ export interface Caas{
                     // GET /caas/containers/{serviceName}/registry/credentials
                     $get(): Promise<string[]>;
                     // POST /caas/containers/{serviceName}/registry/credentials
-                    $post(body?: {certificate?: string, key?: string}): Promise<docker.stack.registryCredentials>;
+                    $post(params?: {certificate?: string, key?: string}): Promise<docker.stack.registryCredentials>;
                     $(credentialsId: string): {
                         // DELETE /caas/containers/{serviceName}/registry/credentials/{credentialsId}
                         $delete(): Promise<void>;
                         // GET /caas/containers/{serviceName}/registry/credentials/{credentialsId}
                         $get(): Promise<docker.stack.registryCredentials>;
                         // PUT /caas/containers/{serviceName}/registry/credentials/{credentialsId}
-                        $put(body?: {certificate?: string, key?: string}): Promise<docker.stack.registryCredentials>;
+                        $put(params?: {certificate?: string, key?: string}): Promise<docker.stack.registryCredentials>;
                     };
                 }
             }
@@ -261,7 +261,7 @@ export interface Caas{
                 // GET /caas/containers/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /caas/containers/{serviceName}/serviceInfos
-                $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
             slaves: {
                 // GET /caas/containers/{serviceName}/slaves
@@ -277,7 +277,7 @@ export interface Caas{
                 // GET /caas/containers/{serviceName}/ssl
                 $get(): Promise<docker.stack.customSsl>;
                 // PUT /caas/containers/{serviceName}/ssl
-                $put(body?: {certificate?: string, key?: string}): Promise<docker.stack.customSslMessage>;
+                $put(params?: {certificate?: string, key?: string}): Promise<docker.stack.customSslMessage>;
             }
         };
     }

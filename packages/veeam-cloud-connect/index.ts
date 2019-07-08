@@ -125,7 +125,7 @@ export interface VeeamCloudConnect{
                 $get(): Promise<veeamCloudConnect.BackupRepository>;
                 upgradeQuota: {
                     // POST /veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}/upgradeQuota
-                    $post(body?: {newQuota: number}): Promise<veeamCloudConnect.Task[]>;
+                    $post(params?: {newQuota: number}): Promise<veeamCloudConnect.Task[]>;
                 }
             };
         }
@@ -145,11 +145,11 @@ export interface VeeamCloudConnect{
             // GET /veeamCloudConnect/{serviceName}/serviceInfos
             $get(): Promise<services.Service>;
             // PUT /veeamCloudConnect/{serviceName}/serviceInfos
-            $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
         }
         task: {
             // GET /veeamCloudConnect/{serviceName}/task
-            $get(param?: {name?: string, state?: veeamCloudConnect.TaskStateEnum}): Promise<number[]>;
+            $get(params?: {name?: string, state?: veeamCloudConnect.TaskStateEnum}): Promise<number[]>;
             $(taskId: number): {
                 // GET /veeamCloudConnect/{serviceName}/task/{taskId}
                 $get(): Promise<veeamCloudConnect.Task>;

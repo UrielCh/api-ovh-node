@@ -168,25 +168,25 @@ export interface Cdn{
             $get(): Promise<cdnanycast.Anycast>;
             changeContact: {
                 // POST /cdn/dedicated/{serviceName}/changeContact
-                $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
+                $post(params?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
             }
             domains: {
                 // GET /cdn/dedicated/{serviceName}/domains
                 $get(): Promise<string[]>;
                 // POST /cdn/dedicated/{serviceName}/domains
-                $post(body?: {domain: string}): Promise<cdnanycast.Domain>;
+                $post(params?: {domain: string}): Promise<cdnanycast.Domain>;
                 $(domain: string): {
                     // DELETE /cdn/dedicated/{serviceName}/domains/{domain}
                     $delete(): Promise<cdnanycast.Task>;
                     // GET /cdn/dedicated/{serviceName}/domains/{domain}
                     $get(): Promise<cdnanycast.Domain>;
                     // PUT /cdn/dedicated/{serviceName}/domains/{domain}
-                    $put(body?: {cacheRuleUse?: number, cname?: string, domain?: string, status?: cdnanycast.DomainStatusEnum, type?: cdnanycast.DomainTypeEnum}): Promise<void>;
+                    $put(params?: {cacheRuleUse?: number, cname?: string, domain?: string, status?: cdnanycast.DomainStatusEnum, type?: cdnanycast.DomainTypeEnum}): Promise<void>;
                     backends: {
                         // GET /cdn/dedicated/{serviceName}/domains/{domain}/backends
                         $get(): Promise<string[]>;
                         // POST /cdn/dedicated/{serviceName}/domains/{domain}/backends
-                        $post(body?: {ip: string}): Promise<cdnanycast.Backend>;
+                        $post(params?: {ip: string}): Promise<cdnanycast.Backend>;
                         $(ip: string): {
                             // DELETE /cdn/dedicated/{serviceName}/domains/{domain}/backends/{ip}
                             $delete(): Promise<string>;
@@ -196,16 +196,16 @@ export interface Cdn{
                     }
                     cacheRules: {
                         // GET /cdn/dedicated/{serviceName}/domains/{domain}/cacheRules
-                        $get(param?: {fileMatch?: string}): Promise<number[]>;
+                        $get(params?: {fileMatch?: string}): Promise<number[]>;
                         // POST /cdn/dedicated/{serviceName}/domains/{domain}/cacheRules
-                        $post(body?: {cacheType: cdnanycast.CacheRuleCacheTypeEnum, fileMatch: string, fileType: cdnanycast.CacheRuleFileTypeEnum, ttl: number}): Promise<cdnanycast.CacheRule>;
+                        $post(params?: {cacheType: cdnanycast.CacheRuleCacheTypeEnum, fileMatch: string, fileType: cdnanycast.CacheRuleFileTypeEnum, ttl: number}): Promise<cdnanycast.CacheRule>;
                         $(cacheRuleId: number): {
                             // DELETE /cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}
                             $delete(): Promise<cdnanycast.Task>;
                             // GET /cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}
                             $get(): Promise<cdnanycast.CacheRule>;
                             // PUT /cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}
-                            $put(body?: {cacheRuleId?: number, cacheType?: cdnanycast.CacheRuleCacheTypeEnum, domain?: string, fileMatch?: string, fileType?: cdnanycast.CacheRuleFileTypeEnum, status?: cdnanycast.CacheRuleStatusEnum, ttl?: number}): Promise<void>;
+                            $put(params?: {cacheRuleId?: number, cacheType?: cdnanycast.CacheRuleCacheTypeEnum, domain?: string, fileMatch?: string, fileType?: cdnanycast.CacheRuleFileTypeEnum, status?: cdnanycast.CacheRuleStatusEnum, ttl?: number}): Promise<void>;
                             flush: {
                                 // POST /cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/flush
                                 $post(): Promise<cdnanycast.Task>;
@@ -230,7 +230,7 @@ export interface Cdn{
                     }
                     statistics: {
                         // GET /cdn/dedicated/{serviceName}/domains/{domain}/statistics
-                        $get(param?: {period: cdnanycast.StatsPeriodEnum, type: cdnanycast.StatsTypeEnum, value: cdnanycast.StatsValueEnum}): Promise<cdnanycast.StatsDataType[]>;
+                        $get(params?: {period: cdnanycast.StatsPeriodEnum, type: cdnanycast.StatsTypeEnum, value: cdnanycast.StatsValueEnum}): Promise<cdnanycast.StatsDataType[]>;
                     }
                     tasks: {
                         // GET /cdn/dedicated/{serviceName}/domains/{domain}/tasks
@@ -248,13 +248,13 @@ export interface Cdn{
             }
             quota: {
                 // GET /cdn/dedicated/{serviceName}/quota
-                $get(param?: {period: cdnanycast.StatsPeriodEnum}): Promise<cdnanycast.StatsDataType[]>;
+                $get(params?: {period: cdnanycast.StatsPeriodEnum}): Promise<cdnanycast.StatsDataType[]>;
             }
             serviceInfos: {
                 // GET /cdn/dedicated/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /cdn/dedicated/{serviceName}/serviceInfos
-                $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
             ssl: {
                 // DELETE /cdn/dedicated/{serviceName}/ssl
@@ -262,10 +262,10 @@ export interface Cdn{
                 // GET /cdn/dedicated/{serviceName}/ssl
                 $get(): Promise<cdnanycast.Ssl>;
                 // POST /cdn/dedicated/{serviceName}/ssl
-                $post(body?: {certificate?: string, chain?: string, key?: string, name: string}): Promise<cdnanycast.Ssl>;
+                $post(params?: {certificate?: string, chain?: string, key?: string, name: string}): Promise<cdnanycast.Ssl>;
                 tasks: {
                     // GET /cdn/dedicated/{serviceName}/ssl/tasks
-                    $get(param?: {function_?: cdnanycast.TaskFunctionEnum, status?: cdnanycast.TaskStateEnum}): Promise<number[]>;
+                    $get(params?: {function_?: cdnanycast.TaskFunctionEnum, status?: cdnanycast.TaskStateEnum}): Promise<number[]>;
                     $(taskId: number): {
                         // GET /cdn/dedicated/{serviceName}/ssl/tasks/{taskId}
                         $get(): Promise<cdnanycast.Task>;
@@ -273,7 +273,7 @@ export interface Cdn{
                 }
                 update: {
                     // POST /cdn/dedicated/{serviceName}/ssl/update
-                    $post(body?: {certificate: string, chain?: string, key: string}): Promise<cdnanycast.Task>;
+                    $post(params?: {certificate: string, chain?: string, key: string}): Promise<cdnanycast.Task>;
                 }
             }
         };

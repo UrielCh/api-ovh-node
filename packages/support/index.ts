@@ -67,10 +67,10 @@ export default proxySupport;
 export interface Support{
     tickets: {
         // GET /support/tickets
-        $get(param?: {archived?: boolean, category?: support.TicketCategoryEnum, maxCreationDate?: string, minCreationDate?: string, product?: support.TicketProductEnum, serviceName?: string, status?: support.TicketStatusEnum, subject?: string, ticketNumber?: string}): Promise<number[]>;
+        $get(params?: {archived?: boolean, category?: support.TicketCategoryEnum, maxCreationDate?: string, minCreationDate?: string, product?: support.TicketProductEnum, serviceName?: string, status?: support.TicketStatusEnum, subject?: string, ticketNumber?: string}): Promise<number[]>;
         create: {
             // POST /support/tickets/create
-            $post(body?: {body: string, category?: support.TicketCategoryEnum, product?: support.TicketProductEnum, serviceName?: string, subcategory?: support.TicketSubCategoryEnum, subject: string, type: support.TicketTypeEnum}): Promise<support.NewMessageInfo>;
+            $post(params?: {body: string, category?: support.TicketCategoryEnum, product?: support.TicketProductEnum, serviceName?: string, subcategory?: support.TicketSubCategoryEnum, subject: string, type: support.TicketTypeEnum}): Promise<support.NewMessageInfo>;
         }
         $(ticketId: number): {
             // GET /support/tickets/{ticketId}
@@ -89,15 +89,15 @@ export interface Support{
             }
             reopen: {
                 // POST /support/tickets/{ticketId}/reopen
-                $post(body?: {body: string}): Promise<void>;
+                $post(params?: {body: string}): Promise<void>;
             }
             reply: {
                 // POST /support/tickets/{ticketId}/reply
-                $post(body?: {body: string}): Promise<void>;
+                $post(params?: {body: string}): Promise<void>;
             }
             score: {
                 // POST /support/tickets/{ticketId}/score
-                $post(body?: {score: string, scoreComment?: string}): Promise<void>;
+                $post(params?: {score: string, scoreComment?: string}): Promise<void>;
             }
         };
     }

@@ -105,24 +105,24 @@ export interface License{
         $get(): Promise<string[]>;
         orderableVersions: {
             // GET /license/sqlserver/orderableVersions
-            $get(param?: {ip: string}): Promise<license.SqlServerOrderConfiguration[]>;
+            $get(params?: {ip: string}): Promise<license.SqlServerOrderConfiguration[]>;
         }
         $(serviceName: string): {
             // GET /license/sqlserver/{serviceName}
             $get(): Promise<license.sqlserver.SqlServer>;
             confirmTermination: {
                 // POST /license/sqlserver/{serviceName}/confirmTermination
-                $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+                $post(params?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
             }
             serviceInfos: {
                 // GET /license/sqlserver/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /license/sqlserver/{serviceName}/serviceInfos
-                $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
             tasks: {
                 // GET /license/sqlserver/{serviceName}/tasks
-                $get(param?: {action?: license.ActionType, status?: license.TaskStateEnum}): Promise<number[]>;
+                $get(params?: {action?: license.ActionType, status?: license.TaskStateEnum}): Promise<number[]>;
                 $(taskId: number): {
                     // GET /license/sqlserver/{serviceName}/tasks/{taskId}
                     $get(): Promise<license.Task>;

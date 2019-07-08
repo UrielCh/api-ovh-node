@@ -239,63 +239,63 @@ export interface Connectivity{
         search: {
             buildingDetails: {
                 // POST /connectivity/eligibility/search/buildingDetails
-                $post(body?: {building: string}): Promise<xdsl.AsyncTask<connectivity.eligibility.Building>>;
+                $post(params?: {building: string}): Promise<xdsl.AsyncTask<connectivity.eligibility.Building>>;
             }
             buildings: {
                 // POST /connectivity/eligibility/search/buildings
-                $post(body?: {streetCode: string, streetNumber: string}): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.Building>>;
+                $post(params?: {streetCode: string, streetNumber: string}): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.Building>>;
             }
             buildingsByLine: {
                 // POST /connectivity/eligibility/search/buildingsByLine
-                $post(body?: {lineNumber: string, status: connectivity.eligibility.LineStatusEnum}): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.Building>>;
+                $post(params?: {lineNumber: string, status: connectivity.eligibility.LineStatusEnum}): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.Building>>;
             }
             cities: {
                 // POST /connectivity/eligibility/search/cities
-                $post(body?: {zipCode: string}): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.City>>;
+                $post(params?: {zipCode: string}): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.City>>;
             }
             lines: {
                 // POST /connectivity/eligibility/search/lines
-                $post(body?: {ownerName?: string, streetCode: string, streetNumber: string}): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.Line>>;
+                $post(params?: {ownerName?: string, streetCode: string, streetNumber: string}): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.Line>>;
             }
             meetings: {
                 // POST /connectivity/eligibility/search/meetings
-                $post(body?: {eligibilityReference: string, productCode: string}): Promise<xdsl.AsyncTask<connectivity.eligibility.Meetings>>;
+                $post(params?: {eligibilityReference: string, productCode: string}): Promise<xdsl.AsyncTask<connectivity.eligibility.Meetings>>;
             }
             streetNumbers: {
                 // POST /connectivity/eligibility/search/streetNumbers
-                $post(body?: {streetCode: string}): Promise<xdsl.AsyncTaskArray<string>>;
+                $post(params?: {streetCode: string}): Promise<xdsl.AsyncTaskArray<string>>;
             }
             streets: {
                 // POST /connectivity/eligibility/search/streets
-                $post(body?: {inseeCode: string}): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.Street>>;
+                $post(params?: {inseeCode: string}): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.Street>>;
             }
         }
         test: {
             // GET /connectivity/eligibility/test
-            $get(param?: {eligibilityReference: string}): Promise<connectivity.eligibility.EligibilityTest>;
+            $get(params?: {eligibilityReference: string}): Promise<connectivity.eligibility.EligibilityTest>;
             address: {
                 // POST /connectivity/eligibility/test/address
-                $post(body?: {streetCode: string, streetNumber: string}): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
+                $post(params?: {streetCode: string, streetNumber: string}): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
                 partners: {
                     // POST /connectivity/eligibility/test/address/partners
-                    $post(body?: {streetCode: string, streetNumber: string}): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
+                    $post(params?: {streetCode: string, streetNumber: string}): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
                 }
             }
             building: {
                 // POST /connectivity/eligibility/test/building
-                $post(body?: {building: string}): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
+                $post(params?: {building: string}): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
             }
             line: {
                 // POST /connectivity/eligibility/test/line
-                $post(body?: {lineNumber: string, status: connectivity.eligibility.LineStatusEnum}): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
+                $post(params?: {lineNumber: string, status: connectivity.eligibility.LineStatusEnum}): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
                 partners: {
                     // POST /connectivity/eligibility/test/line/partners
-                    $post(body?: {lineNumber: string, status: connectivity.eligibility.LineStatusEnum}): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
+                    $post(params?: {lineNumber: string, status: connectivity.eligibility.LineStatusEnum}): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
                 }
             }
             otp: {
                 // POST /connectivity/eligibility/test/otp
-                $post(body?: {otp: string}): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
+                $post(params?: {otp: string}): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
             }
         }
     }
@@ -303,11 +303,11 @@ export interface Connectivity{
         genericIncident: {
             partners: {
                 // GET /connectivity/monitoring/genericIncident/partners
-                $get(param?: {creationDate?: string, endDate?: string, status?: connectivity.monitoring.GenericIncidentStatusEnum}): Promise<connectivity.monitoring.GenericIncident[]>;
+                $get(params?: {creationDate?: string, endDate?: string, status?: connectivity.monitoring.GenericIncidentStatusEnum}): Promise<connectivity.monitoring.GenericIncident[]>;
             }
             public: {
                 // GET /connectivity/monitoring/genericIncident/public
-                $get(param?: {creationDate?: string, endDate?: string, status?: connectivity.monitoring.GenericIncidentStatusEnum}): Promise<connectivity.monitoring.GenericIncident[]>;
+                $get(params?: {creationDate?: string, endDate?: string, status?: connectivity.monitoring.GenericIncidentStatusEnum}): Promise<connectivity.monitoring.GenericIncident[]>;
             }
         }
     }

@@ -88,21 +88,21 @@ export interface Veeam{
             $get(): Promise<veeam.veeamEnterprise.Account>;
             confirmTermination: {
                 // POST /veeam/veeamEnterprise/{serviceName}/confirmTermination
-                $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+                $post(params?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
             }
             register: {
                 // POST /veeam/veeamEnterprise/{serviceName}/register
-                $post(body?: {ip: string, password: string, port: number, username: string}): Promise<veeam.veeamEnterprise.Task[]>;
+                $post(params?: {ip: string, password: string, port: number, username: string}): Promise<veeam.veeamEnterprise.Task[]>;
             }
             serviceInfos: {
                 // GET /veeam/veeamEnterprise/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /veeam/veeamEnterprise/{serviceName}/serviceInfos
-                $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
             task: {
                 // GET /veeam/veeamEnterprise/{serviceName}/task
-                $get(param?: {name?: string, state?: veeamEnterprise.TaskStateEnum}): Promise<number[]>;
+                $get(params?: {name?: string, state?: veeamEnterprise.TaskStateEnum}): Promise<number[]>;
                 $(taskId: number): {
                     // GET /veeam/veeamEnterprise/{serviceName}/task/{taskId}
                     $get(): Promise<veeam.veeamEnterprise.Task>;
@@ -114,7 +114,7 @@ export interface Veeam{
             }
             update: {
                 // POST /veeam/veeamEnterprise/{serviceName}/update
-                $post(body?: {ip: string, password: string, port: number, username: string}): Promise<veeam.veeamEnterprise.Task[]>;
+                $post(params?: {ip: string, password: string, port: number, username: string}): Promise<veeam.veeamEnterprise.Task[]>;
             }
         };
     }

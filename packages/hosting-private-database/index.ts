@@ -291,46 +291,46 @@ export interface Hosting{
         $get(): Promise<string[]>;
         availableOrderCapacities: {
             // GET /hosting/privateDatabase/availableOrderCapacities
-            $get(param?: {offer: hosting.PrivateDatabase.OfferEnum}): Promise<hosting.PrivateDatabase.AvailableOrderCapacities>;
+            $get(params?: {offer: hosting.PrivateDatabase.OfferEnum}): Promise<hosting.PrivateDatabase.AvailableOrderCapacities>;
         }
         $(serviceName: string): {
             // GET /hosting/privateDatabase/{serviceName}
             $get(): Promise<hosting.privateDatabase.Service>;
             // PUT /hosting/privateDatabase/{serviceName}
-            $put(body?: {capabilities?: hosting.PrivateDatabase.Capability[], cpu?: number, datacenter?: hosting.PrivateDatabase.DatacenterEnum, displayName?: string, graphEndpoint?: hosting.PrivateDatabase.GraphEndpoint, guiURL?: string, hostname?: string, hostnameFtp?: string, infrastructure?: string, ip?: string, lastCheck?: string, offer?: hosting.PrivateDatabase.OfferEnum, port?: number, portFtp?: number, quotaSize?: complexType.UnitAndValue<number>, quotaUsed?: complexType.UnitAndValue<number>, ram?: complexType.UnitAndValue<number>, server?: string, serviceName?: string, state?: hosting.PrivateDatabase.StateEnum, tlsCa?: string, type?: hosting.PrivateDatabase.TypeEnum, version?: hosting.PrivateDatabase.AvailableVersionEnum, versionNumber?: number}): Promise<void>;
+            $put(params?: {capabilities?: hosting.PrivateDatabase.Capability[], cpu?: number, datacenter?: hosting.PrivateDatabase.DatacenterEnum, displayName?: string, graphEndpoint?: hosting.PrivateDatabase.GraphEndpoint, guiURL?: string, hostname?: string, hostnameFtp?: string, infrastructure?: string, ip?: string, lastCheck?: string, offer?: hosting.PrivateDatabase.OfferEnum, port?: number, portFtp?: number, quotaSize?: complexType.UnitAndValue<number>, quotaUsed?: complexType.UnitAndValue<number>, ram?: complexType.UnitAndValue<number>, server?: string, serviceName?: string, state?: hosting.PrivateDatabase.StateEnum, tlsCa?: string, type?: hosting.PrivateDatabase.TypeEnum, version?: hosting.PrivateDatabase.AvailableVersionEnum, versionNumber?: number}): Promise<void>;
             availableVersions: {
                 // GET /hosting/privateDatabase/{serviceName}/availableVersions
                 $get(): Promise<hosting.PrivateDatabase.AvailableVersionEnum[]>;
             }
             changeContact: {
                 // POST /hosting/privateDatabase/{serviceName}/changeContact
-                $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
+                $post(params?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
             }
             changeFtpPassword: {
                 // POST /hosting/privateDatabase/{serviceName}/changeFtpPassword
-                $post(body?: {password: string}): Promise<hosting.privateDatabase.task>;
+                $post(params?: {password: string}): Promise<hosting.privateDatabase.task>;
             }
             changeVersion: {
                 // POST /hosting/privateDatabase/{serviceName}/changeVersion
-                $post(body?: {version: hosting.PrivateDatabase.AvailableVersionEnum}): Promise<hosting.privateDatabase.task>;
+                $post(params?: {version: hosting.PrivateDatabase.AvailableVersionEnum}): Promise<hosting.privateDatabase.task>;
             }
             config: {
                 // GET /hosting/privateDatabase/{serviceName}/config
                 $get(): Promise<hosting.privateDatabase.Configuration>;
                 update: {
                     // POST /hosting/privateDatabase/{serviceName}/config/update
-                    $post(body?: {parameters: complexType.SafeKeyValue<string>[]}): Promise<hosting.privateDatabase.Configuration>;
+                    $post(params?: {parameters: complexType.SafeKeyValue<string>[]}): Promise<hosting.privateDatabase.Configuration>;
                 }
             }
             confirmTermination: {
                 // POST /hosting/privateDatabase/{serviceName}/confirmTermination
-                $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+                $post(params?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
             }
             database: {
                 // GET /hosting/privateDatabase/{serviceName}/database
                 $get(): Promise<string[]>;
                 // POST /hosting/privateDatabase/{serviceName}/database
-                $post(body?: {databaseName: string}): Promise<hosting.privateDatabase.task>;
+                $post(params?: {databaseName: string}): Promise<hosting.privateDatabase.task>;
                 $(databaseName: string): {
                     // DELETE /hosting/privateDatabase/{serviceName}/database/{databaseName}
                     $delete(): Promise<hosting.privateDatabase.task>;
@@ -338,9 +338,9 @@ export interface Hosting{
                     $get(): Promise<hosting.privateDatabase.database>;
                     dump: {
                         // GET /hosting/privateDatabase/{serviceName}/database/{databaseName}/dump
-                        $get(param?: {creationDate?: string, deletionDate?: string}): Promise<number[]>;
+                        $get(params?: {creationDate?: string, deletionDate?: string}): Promise<number[]>;
                         // POST /hosting/privateDatabase/{serviceName}/database/{databaseName}/dump
-                        $post(body?: {sendEmail?: boolean}): Promise<hosting.privateDatabase.task>;
+                        $post(params?: {sendEmail?: boolean}): Promise<hosting.privateDatabase.task>;
                         $(id: number): {
                             // DELETE /hosting/privateDatabase/{serviceName}/database/{databaseName}/dump/{id}
                             $delete(): Promise<hosting.privateDatabase.task>;
@@ -354,7 +354,7 @@ export interface Hosting{
                     }
                     extension: {
                         // GET /hosting/privateDatabase/{serviceName}/database/{databaseName}/extension
-                        $get(param?: {extensionName?: string, status?: hosting.PrivateDatabase.Database.Extension.Status}): Promise<string[]>;
+                        $get(params?: {extensionName?: string, status?: hosting.PrivateDatabase.Database.Extension.Status}): Promise<string[]>;
                         $(extensionName: string): {
                             // GET /hosting/privateDatabase/{serviceName}/database/{databaseName}/extension/{extensionName}
                             $get(): Promise<hosting.privateDatabase.database_extension>;
@@ -370,17 +370,17 @@ export interface Hosting{
                     }
                     import: {
                         // POST /hosting/privateDatabase/{serviceName}/database/{databaseName}/import
-                        $post(body?: {documentId: string, flushDatabase?: boolean, sendEmail?: boolean}): Promise<hosting.privateDatabase.task>;
+                        $post(params?: {documentId: string, flushDatabase?: boolean, sendEmail?: boolean}): Promise<hosting.privateDatabase.task>;
                     }
                 };
             }
             databaseWizard: {
                 // POST /hosting/privateDatabase/{serviceName}/databaseWizard
-                $post(body?: {databaseName: string, grant: hosting.PrivateDatabase.grant.GrantEnum, password: string, userName: string}): Promise<hosting.privateDatabase.task>;
+                $post(params?: {databaseName: string, grant: hosting.PrivateDatabase.grant.GrantEnum, password: string, userName: string}): Promise<hosting.privateDatabase.task>;
             }
             dump: {
                 // GET /hosting/privateDatabase/{serviceName}/dump
-                $get(param?: {databaseName?: string, orphan?: boolean}): Promise<number[]>;
+                $get(params?: {databaseName?: string, orphan?: boolean}): Promise<number[]>;
                 $(dumpId: number): {
                     // DELETE /hosting/privateDatabase/{serviceName}/dump/{dumpId}
                     $delete(): Promise<hosting.privateDatabase.task>;
@@ -388,7 +388,7 @@ export interface Hosting{
                     $get(): Promise<hosting.privateDatabase.dump>;
                     restore: {
                         // POST /hosting/privateDatabase/{serviceName}/dump/{dumpId}/restore
-                        $post(body?: {databaseName: string}): Promise<hosting.privateDatabase.task>;
+                        $post(params?: {databaseName: string}): Promise<hosting.privateDatabase.task>;
                     }
                 };
             }
@@ -412,7 +412,7 @@ export interface Hosting{
                 // GET /hosting/privateDatabase/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /hosting/privateDatabase/{serviceName}/serviceInfos
-                $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
             start: {
                 // POST /hosting/privateDatabase/{serviceName}/start
@@ -424,7 +424,7 @@ export interface Hosting{
             }
             tasks: {
                 // GET /hosting/privateDatabase/{serviceName}/tasks
-                $get(param?: {function_?: hosting.PrivateDatabase.task.FunctionEnum, status?: hosting.PrivateDatabase.task.StatusEnum}): Promise<number[]>;
+                $get(params?: {function_?: hosting.PrivateDatabase.task.FunctionEnum, status?: hosting.PrivateDatabase.task.StatusEnum}): Promise<number[]>;
                 $(id: number): {
                     // GET /hosting/privateDatabase/{serviceName}/tasks/{id}
                     $get(): Promise<hosting.privateDatabase.task>;
@@ -438,7 +438,7 @@ export interface Hosting{
                 // GET /hosting/privateDatabase/{serviceName}/user
                 $get(): Promise<string[]>;
                 // POST /hosting/privateDatabase/{serviceName}/user
-                $post(body?: {password: string, userName: string}): Promise<hosting.privateDatabase.task>;
+                $post(params?: {password: string, userName: string}): Promise<hosting.privateDatabase.task>;
                 $(userName: string): {
                     // DELETE /hosting/privateDatabase/{serviceName}/user/{userName}
                     $delete(): Promise<hosting.privateDatabase.task>;
@@ -446,13 +446,13 @@ export interface Hosting{
                     $get(): Promise<hosting.privateDatabase.user>;
                     changePassword: {
                         // POST /hosting/privateDatabase/{serviceName}/user/{userName}/changePassword
-                        $post(body?: {password: string}): Promise<hosting.privateDatabase.task>;
+                        $post(params?: {password: string}): Promise<hosting.privateDatabase.task>;
                     }
                     grant: {
                         // GET /hosting/privateDatabase/{serviceName}/user/{userName}/grant
                         $get(): Promise<string[]>;
                         // POST /hosting/privateDatabase/{serviceName}/user/{userName}/grant
-                        $post(body?: {databaseName: string, grant: hosting.PrivateDatabase.grant.GrantEnum}): Promise<hosting.privateDatabase.task>;
+                        $post(params?: {databaseName: string, grant: hosting.PrivateDatabase.grant.GrantEnum}): Promise<hosting.privateDatabase.task>;
                         $(databaseName: string): {
                             // DELETE /hosting/privateDatabase/{serviceName}/user/{userName}/grant/{databaseName}
                             $delete(): Promise<hosting.privateDatabase.task>;
@@ -460,7 +460,7 @@ export interface Hosting{
                             $get(): Promise<hosting.privateDatabase.grant>;
                             update: {
                                 // POST /hosting/privateDatabase/{serviceName}/user/{userName}/grant/{databaseName}/update
-                                $post(body?: {grant: hosting.PrivateDatabase.grant.GrantEnum}): Promise<hosting.privateDatabase.task>;
+                                $post(params?: {grant: hosting.PrivateDatabase.grant.GrantEnum}): Promise<hosting.privateDatabase.task>;
                             }
                         };
                     }
@@ -472,16 +472,16 @@ export interface Hosting{
             }
             whitelist: {
                 // GET /hosting/privateDatabase/{serviceName}/whitelist
-                $get(param?: {ip?: string, service?: boolean, sftp?: boolean}): Promise<string[]>;
+                $get(params?: {ip?: string, service?: boolean, sftp?: boolean}): Promise<string[]>;
                 // POST /hosting/privateDatabase/{serviceName}/whitelist
-                $post(body?: {ip: string, name?: string, service?: boolean, sftp?: boolean}): Promise<hosting.privateDatabase.task>;
+                $post(params?: {ip: string, name?: string, service?: boolean, sftp?: boolean}): Promise<hosting.privateDatabase.task>;
                 $(ip: string): {
                     // DELETE /hosting/privateDatabase/{serviceName}/whitelist/{ip}
                     $delete(): Promise<hosting.privateDatabase.task>;
                     // GET /hosting/privateDatabase/{serviceName}/whitelist/{ip}
                     $get(): Promise<hosting.privateDatabase.whitelist>;
                     // PUT /hosting/privateDatabase/{serviceName}/whitelist/{ip}
-                    $put(body?: {creationDate?: string, ip?: string, lastUpdate?: string, name?: string, service?: boolean, sftp?: boolean, status?: hosting.PrivateDatabase.Whitelist.Status, taskId?: string}): Promise<void>;
+                    $put(params?: {creationDate?: string, ip?: string, lastUpdate?: string, name?: string, service?: boolean, sftp?: boolean, status?: hosting.PrivateDatabase.Whitelist.Status, taskId?: string}): Promise<void>;
                 };
             }
         };

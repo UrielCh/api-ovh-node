@@ -1062,26 +1062,26 @@ export default proxyOrder;
 export interface Order{
     cart: {
         // GET /order/cart
-        $get(param?: {description?: string}): Promise<string[]>;
+        $get(params?: {description?: string}): Promise<string[]>;
         // POST /order/cart
-        $post(body?: {description?: string, expire?: string, ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.cart.Cart>;
+        $post(params?: {description?: string, expire?: string, ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.cart.Cart>;
         $(cartId: string): {
             // DELETE /order/cart/{cartId}
             $delete(): Promise<void>;
             // GET /order/cart/{cartId}
             $get(): Promise<order.cart.Cart>;
             // PUT /order/cart/{cartId}
-            $put(body?: {description?: string, expire?: string}): Promise<order.cart.Cart>;
+            $put(params?: {description?: string, expire?: string}): Promise<order.cart.Cart>;
             analytics: {
                 // GET /order/cart/{cartId}/analytics
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/analytics
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/analytics/options
-                    $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/analytics/options
-                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                    $post(params?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             assign: {
@@ -1092,66 +1092,66 @@ export interface Order{
                 // GET /order/cart/{cartId}/baremetalServers
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/baremetalServers
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/baremetalServers/options
-                    $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/baremetalServers/options
-                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                    $post(params?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             cdn: {
                 // GET /order/cart/{cartId}/cdn
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/cdn
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/cdn/options
-                    $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/cdn/options
-                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                    $post(params?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             cephaas: {
                 // GET /order/cart/{cartId}/cephaas
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/cephaas
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/cephaas/options
-                    $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/cephaas/options
-                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                    $post(params?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             checkout: {
                 // GET /order/cart/{cartId}/checkout
                 $get(): Promise<order.Order>;
                 // POST /order/cart/{cartId}/checkout
-                $post(body?: {autoPayWithPreferredPaymentMethod?: boolean, waiveRetractationPeriod?: boolean}): Promise<order.Order>;
+                $post(params?: {autoPayWithPreferredPaymentMethod?: boolean, waiveRetractationPeriod?: boolean}): Promise<order.Order>;
             }
             cloud: {
                 // GET /order/cart/{cartId}/cloud
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/cloud
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/cloud/options
-                    $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/cloud/options
-                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                    $post(params?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             cloudweb: {
                 // GET /order/cart/{cartId}/cloudweb
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/cloudweb
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/cloudweb/options
-                    $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/cloudweb/options
-                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                    $post(params?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             coupon: {
@@ -1160,184 +1160,184 @@ export interface Order{
                 // GET /order/cart/{cartId}/coupon
                 $get(): Promise<string[]>;
                 // POST /order/cart/{cartId}/coupon
-                $post(body?: {coupon: string}): Promise<string[]>;
+                $post(params?: {coupon: string}): Promise<string[]>;
             }
             csp2: {
                 // GET /order/cart/{cartId}/csp2
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/csp2
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/csp2/options
-                    $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/csp2/options
-                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                    $post(params?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             dbaasTimeseries: {
                 // GET /order/cart/{cartId}/dbaasTimeseries
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/dbaasTimeseries
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             }
             dedicated: {
                 // GET /order/cart/{cartId}/dedicated
-                $get(param?: {family?: string, planCode?: string}): Promise<order.cart.GenericProductDefinition[]>;
+                $get(params?: {family?: string, planCode?: string}): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/dedicated
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/dedicated/options
-                    $get(param?: {family?: string, planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params?: {family?: string, planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/dedicated/options
-                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                    $post(params?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             dedicatedLabs: {
                 // GET /order/cart/{cartId}/dedicatedLabs
-                $get(param?: {planCode?: string}): Promise<order.cart.GenericProductDefinition[]>;
+                $get(params?: {planCode?: string}): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/dedicatedLabs
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/dedicatedLabs/options
-                    $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/dedicatedLabs/options
-                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                    $post(params?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             dedicatedReseller: {
                 // GET /order/cart/{cartId}/dedicatedReseller
-                $get(param?: {family?: string, planCode?: string}): Promise<order.cart.GenericProductDefinition[]>;
+                $get(params?: {family?: string, planCode?: string}): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/dedicatedReseller
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/dedicatedReseller/options
-                    $get(param?: {family?: string, planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params?: {family?: string, planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/dedicatedReseller/options
-                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                    $post(params?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             deskaas: {
                 // GET /order/cart/{cartId}/deskaas
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/deskaas
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             }
             discover: {
                 // GET /order/cart/{cartId}/discover
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/discover
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/discover/options
-                    $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/discover/options
-                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                    $post(params?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             dns: {
                 // GET /order/cart/{cartId}/dns
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/dns
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             }
             domain: {
                 // GET /order/cart/{cartId}/domain
-                $get(param?: {domain: string}): Promise<order.cart.ProductInformation[]>;
+                $get(params?: {domain: string}): Promise<order.cart.ProductInformation[]>;
                 // POST /order/cart/{cartId}/domain
-                $post(body?: {domain: string, duration?: string, offerId?: string, quantity?: number}): Promise<order.cart.Item>;
+                $post(params?: {domain: string, duration?: string, offerId?: string, quantity?: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/domain/options
-                    $get(param?: {domain: string}): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params?: {domain: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/domain/options
-                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                    $post(params?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             domainPacks: {
                 // GET /order/cart/{cartId}/domainPacks
-                $get(param?: {domain: string}): Promise<order.cart.DomainPacksProductInformation[]>;
+                $get(params?: {domain: string}): Promise<order.cart.DomainPacksProductInformation[]>;
                 // POST /order/cart/{cartId}/domainPacks
-                $post(body?: {domain: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {domain: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             }
             domainRestore: {
                 // GET /order/cart/{cartId}/domainRestore
-                $get(param?: {domain: string}): Promise<order.cart.GenericProductDefinition[]>;
+                $get(params?: {domain: string}): Promise<order.cart.GenericProductDefinition[]>;
             }
             domainTransfer: {
                 // GET /order/cart/{cartId}/domainTransfer
-                $get(param?: {domain: string}): Promise<order.cart.ProductInformation[]>;
+                $get(params?: {domain: string}): Promise<order.cart.ProductInformation[]>;
                 // POST /order/cart/{cartId}/domainTransfer
-                $post(body?: {domain: string, duration?: string, offerId?: string, quantity?: number}): Promise<order.cart.Item>;
+                $post(params?: {domain: string, duration?: string, offerId?: string, quantity?: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/domainTransfer/options
-                    $get(param?: {domain: string}): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params?: {domain: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/domainTransfer/options
-                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                    $post(params?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             emailpro: {
                 // GET /order/cart/{cartId}/emailpro
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/emailpro
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/emailpro/options
-                    $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/emailpro/options
-                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                    $post(params?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             exchange: {
                 // GET /order/cart/{cartId}/exchange
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/exchange
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/exchange/options
-                    $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/exchange/options
-                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                    $post(params?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             exchangeEnterprise: {
                 // GET /order/cart/{cartId}/exchangeEnterprise
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/exchangeEnterprise
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/exchangeEnterprise/options
-                    $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/exchangeEnterprise/options
-                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                    $post(params?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             hostingReseller: {
                 // GET /order/cart/{cartId}/hostingReseller
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/hostingReseller
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             }
             ip: {
                 // GET /order/cart/{cartId}/ip
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/ip
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/ip/options
-                    $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/ip/options
-                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                    $post(params?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             ipLoadbalancing: {
                 // GET /order/cart/{cartId}/ipLoadbalancing
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/ipLoadbalancing
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/ipLoadbalancing/options
-                    $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/ipLoadbalancing/options
-                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                    $post(params?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             item: {
@@ -1349,12 +1349,12 @@ export interface Order{
                     // GET /order/cart/{cartId}/item/{itemId}
                     $get(): Promise<order.cart.Item>;
                     // PUT /order/cart/{cartId}/item/{itemId}
-                    $put(body?: {duration?: string, quantity?: number}): Promise<order.cart.Item>;
+                    $put(params?: {duration?: string, quantity?: number}): Promise<order.cart.Item>;
                     configuration: {
                         // GET /order/cart/{cartId}/item/{itemId}/configuration
-                        $get(param?: {label?: string}): Promise<number[]>;
+                        $get(params?: {label?: string}): Promise<number[]>;
                         // POST /order/cart/{cartId}/item/{itemId}/configuration
-                        $post(body?: {label: string, value: string}): Promise<order.cart.ConfigurationItem>;
+                        $post(params?: {label: string, value: string}): Promise<order.cart.ConfigurationItem>;
                         $(configurationId: number): {
                             // DELETE /order/cart/{cartId}/item/{itemId}/configuration/{configurationId}
                             $delete(): Promise<void>;
@@ -1372,282 +1372,282 @@ export interface Order{
                 // GET /order/cart/{cartId}/kubernetes
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/kubernetes
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/kubernetes/options
-                    $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/kubernetes/options
-                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                    $post(params?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             licenseCloudLinux: {
                 // GET /order/cart/{cartId}/licenseCloudLinux
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/licenseCloudLinux
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             }
             licenseDirectadmin: {
                 // GET /order/cart/{cartId}/licenseDirectadmin
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/licenseDirectadmin
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             }
             licensePlesk: {
                 // GET /order/cart/{cartId}/licensePlesk
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/licensePlesk
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/licensePlesk/options
-                    $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/licensePlesk/options
-                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                    $post(params?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             licenseSqlServer: {
                 // GET /order/cart/{cartId}/licenseSqlServer
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/licenseSqlServer
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             }
             licenseVirtuozzo: {
                 // GET /order/cart/{cartId}/licenseVirtuozzo
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/licenseVirtuozzo
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             }
             licenseWindows: {
                 // GET /order/cart/{cartId}/licenseWindows
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/licenseWindows
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             }
             licenseWorklight: {
                 // GET /order/cart/{cartId}/licenseWorklight
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/licenseWorklight
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             }
             licensecPanel: {
                 // GET /order/cart/{cartId}/licensecPanel
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/licensecPanel
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             }
             logs: {
                 // GET /order/cart/{cartId}/logs
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/logs
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/logs/options
-                    $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/logs/options
-                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                    $post(params?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             managedServices: {
                 // GET /order/cart/{cartId}/managedServices
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/managedServices
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/managedServices/options
-                    $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/managedServices/options
-                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                    $post(params?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             metrics: {
                 // GET /order/cart/{cartId}/metrics
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/metrics
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/metrics/options
-                    $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/metrics/options
-                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                    $post(params?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             microsoft: {
                 // GET /order/cart/{cartId}/microsoft
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/microsoft
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/microsoft/options
-                    $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/microsoft/options
-                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                    $post(params?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             nasha: {
                 // GET /order/cart/{cartId}/nasha
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/nasha
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/nasha/options
-                    $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/nasha/options
-                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                    $post(params?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             office365: {
                 // GET /order/cart/{cartId}/office365
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/office365
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/office365/options
-                    $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/office365/options
-                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                    $post(params?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             office365Prepaid: {
                 // GET /order/cart/{cartId}/office365Prepaid
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/office365Prepaid
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/office365Prepaid/options
-                    $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/office365Prepaid/options
-                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                    $post(params?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             otb: {
                 // GET /order/cart/{cartId}/otb
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/otb
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/otb/options
-                    $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/otb/options
-                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                    $post(params?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             ovhCloudConnect: {
                 // GET /order/cart/{cartId}/ovhCloudConnect
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/ovhCloudConnect
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             }
             paasmon: {
                 // GET /order/cart/{cartId}/paasmon
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/paasmon
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             }
             privateCloudCDI: {
                 // GET /order/cart/{cartId}/privateCloudCDI
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/privateCloudCDI
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/privateCloudCDI/options
-                    $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/privateCloudCDI/options
-                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                    $post(params?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             privateCloudDC: {
                 // GET /order/cart/{cartId}/privateCloudDC
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/privateCloudDC
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/privateCloudDC/options
-                    $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/privateCloudDC/options
-                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                    $post(params?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             privateCloudReseller: {
                 // GET /order/cart/{cartId}/privateCloudReseller
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/privateCloudReseller
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/privateCloudReseller/options
-                    $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/privateCloudReseller/options
-                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                    $post(params?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             privateCloudResellerEnterprise: {
                 // GET /order/cart/{cartId}/privateCloudResellerEnterprise
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/privateCloudResellerEnterprise
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/privateCloudResellerEnterprise/options
-                    $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/privateCloudResellerEnterprise/options
-                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                    $post(params?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             privateCloudSDDC: {
                 // GET /order/cart/{cartId}/privateCloudSDDC
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/privateCloudSDDC
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/privateCloudSDDC/options
-                    $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/privateCloudSDDC/options
-                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                    $post(params?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             reseller: {
                 // GET /order/cart/{cartId}/reseller
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/reseller
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             }
             sharepoint: {
                 // GET /order/cart/{cartId}/sharepoint
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/sharepoint
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/sharepoint/options
-                    $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/sharepoint/options
-                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                    $post(params?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             sms: {
                 // GET /order/cart/{cartId}/sms
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/sms
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             }
             sslComodo: {
                 // GET /order/cart/{cartId}/sslComodo
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/sslComodo
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/sslComodo/options
-                    $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/sslComodo/options
-                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                    $post(params?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             sslGateway: {
                 // GET /order/cart/{cartId}/sslGateway
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/sslGateway
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/sslGateway/options
-                    $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/sslGateway/options
-                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                    $post(params?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             summary: {
@@ -1658,102 +1658,102 @@ export interface Order{
                 // GET /order/cart/{cartId}/telephony
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/telephony
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/telephony/options
-                    $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/telephony/options
-                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                    $post(params?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             vco: {
                 // GET /order/cart/{cartId}/vco
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/vco
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             }
             vdi: {
                 // GET /order/cart/{cartId}/vdi
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/vdi
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/vdi/options
-                    $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/vdi/options
-                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                    $post(params?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             veeamEnterprise: {
                 // GET /order/cart/{cartId}/veeamEnterprise
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/veeamEnterprise
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/veeamEnterprise/options
-                    $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/veeamEnterprise/options
-                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                    $post(params?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             veeamcc: {
                 // GET /order/cart/{cartId}/veeamcc
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/veeamcc
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/veeamcc/options
-                    $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/veeamcc/options
-                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                    $post(params?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             vps: {
                 // GET /order/cart/{cartId}/vps
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/vps
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/vps/options
-                    $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/vps/options
-                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                    $post(params?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             vrack: {
                 // GET /order/cart/{cartId}/vrack
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/vrack
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             }
             vrackReseller: {
                 // GET /order/cart/{cartId}/vrackReseller
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/vrackReseller
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             }
             webHosting: {
                 // GET /order/cart/{cartId}/webHosting
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/webHosting
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/webHosting/options
-                    $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/webHosting/options
-                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                    $post(params?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             xdsl: {
                 // GET /order/cart/{cartId}/xdsl
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/xdsl
-                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/xdsl/options
-                    $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
+                    $get(params?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/xdsl/options
-                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                    $post(params?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
         };
@@ -1766,7 +1766,7 @@ export interface Order{
                 // GET /order/cartServiceOption/cloud/{serviceName}
                 $get(): Promise<order.cart.GenericOptionDefinition[]>;
                 // POST /order/cartServiceOption/cloud/{serviceName}
-                $post(body?: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             };
         }
         dedicated: {
@@ -1776,17 +1776,17 @@ export interface Order{
                 // GET /order/cartServiceOption/dedicated/{serviceName}
                 $get(): Promise<order.cart.GenericOptionDefinition[]>;
                 // POST /order/cartServiceOption/dedicated/{serviceName}
-                $post(body?: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             };
         }
         domain: {
             // GET /order/cartServiceOption/domain
-            $get(param?: {whoisOwner?: string}): Promise<string[]>;
+            $get(params?: {whoisOwner?: string}): Promise<string[]>;
             $(serviceName: string): {
                 // GET /order/cartServiceOption/domain/{serviceName}
                 $get(): Promise<order.cart.GenericOptionDefinition[]>;
                 // POST /order/cartServiceOption/domain/{serviceName}
-                $post(body?: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             };
         }
         emailpro: {
@@ -1796,7 +1796,7 @@ export interface Order{
                 // GET /order/cartServiceOption/emailpro/{serviceName}
                 $get(): Promise<order.cart.GenericOptionDefinition[]>;
                 // POST /order/cartServiceOption/emailpro/{serviceName}
-                $post(body?: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             };
         }
         ipLoadbalancing: {
@@ -1806,7 +1806,7 @@ export interface Order{
                 // GET /order/cartServiceOption/ipLoadbalancing/{serviceName}
                 $get(): Promise<order.cart.GenericOptionDefinition[]>;
                 // POST /order/cartServiceOption/ipLoadbalancing/{serviceName}
-                $post(body?: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             };
         }
         logs: {
@@ -1816,7 +1816,7 @@ export interface Order{
                 // GET /order/cartServiceOption/logs/{serviceName}
                 $get(): Promise<order.cart.GenericOptionDefinition[]>;
                 // POST /order/cartServiceOption/logs/{serviceName}
-                $post(body?: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             };
         }
         microsoft: {
@@ -1826,7 +1826,7 @@ export interface Order{
                 // GET /order/cartServiceOption/microsoft/{serviceName}
                 $get(): Promise<order.cart.GenericOptionDefinition[]>;
                 // POST /order/cartServiceOption/microsoft/{serviceName}
-                $post(body?: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             };
         }
         microsoftExchange: {
@@ -1836,7 +1836,7 @@ export interface Order{
                 // GET /order/cartServiceOption/microsoftExchange/{serviceName}
                 $get(): Promise<order.cart.GenericOptionDefinition[]>;
                 // POST /order/cartServiceOption/microsoftExchange/{serviceName}
-                $post(body?: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             };
         }
         office365Prepaid: {
@@ -1846,7 +1846,7 @@ export interface Order{
                 // GET /order/cartServiceOption/office365Prepaid/{serviceName}
                 $get(): Promise<order.cart.GenericOptionDefinition[]>;
                 // POST /order/cartServiceOption/office365Prepaid/{serviceName}
-                $post(body?: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             };
         }
         privateCloud: {
@@ -1856,7 +1856,7 @@ export interface Order{
                 // GET /order/cartServiceOption/privateCloud/{serviceName}
                 $get(): Promise<order.cart.GenericOptionDefinition[]>;
                 // POST /order/cartServiceOption/privateCloud/{serviceName}
-                $post(body?: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             };
         }
         privateCloudReseller: {
@@ -1866,7 +1866,7 @@ export interface Order{
                 // GET /order/cartServiceOption/privateCloudReseller/{serviceName}
                 $get(): Promise<order.cart.GenericOptionDefinition[]>;
                 // POST /order/cartServiceOption/privateCloudReseller/{serviceName}
-                $post(body?: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             };
         }
         privateCloudResellerEnterprise: {
@@ -1876,7 +1876,7 @@ export interface Order{
                 // GET /order/cartServiceOption/privateCloudResellerEnterprise/{serviceName}
                 $get(): Promise<order.cart.GenericOptionDefinition[]>;
                 // POST /order/cartServiceOption/privateCloudResellerEnterprise/{serviceName}
-                $post(body?: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             };
         }
         sharepoint: {
@@ -1886,7 +1886,7 @@ export interface Order{
                 // GET /order/cartServiceOption/sharepoint/{serviceName}
                 $get(): Promise<order.cart.GenericOptionDefinition[]>;
                 // POST /order/cartServiceOption/sharepoint/{serviceName}
-                $post(body?: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             };
         }
         sslGateway: {
@@ -1896,7 +1896,7 @@ export interface Order{
                 // GET /order/cartServiceOption/sslGateway/{serviceName}
                 $get(): Promise<order.cart.GenericOptionDefinition[]>;
                 // POST /order/cartServiceOption/sslGateway/{serviceName}
-                $post(body?: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             };
         }
         vdi: {
@@ -1906,7 +1906,7 @@ export interface Order{
                 // GET /order/cartServiceOption/vdi/{serviceName}
                 $get(): Promise<order.cart.GenericOptionDefinition[]>;
                 // POST /order/cartServiceOption/vdi/{serviceName}
-                $post(body?: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             };
         }
         vps: {
@@ -1916,7 +1916,7 @@ export interface Order{
                 // GET /order/cartServiceOption/vps/{serviceName}
                 $get(): Promise<order.cart.GenericOptionDefinition[]>;
                 // POST /order/cartServiceOption/vps/{serviceName}
-                $post(body?: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             };
         }
         webHosting: {
@@ -1926,7 +1926,7 @@ export interface Order{
                 // GET /order/cartServiceOption/webHosting/{serviceName}
                 $get(): Promise<order.cart.GenericOptionDefinition[]>;
                 // POST /order/cartServiceOption/webHosting/{serviceName}
-                $post(body?: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                $post(params?: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             };
         }
     }
@@ -1936,93 +1936,93 @@ export interface Order{
             $get(): Promise<string[]>;
             cloud: {
                 // GET /order/catalog/formatted/cloud
-                $get(param?: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
+                $get(params?: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
             }
             dedicated: {
                 // GET /order/catalog/formatted/dedicated
-                $get(param?: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
+                $get(params?: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
             }
             deskaas: {
                 // GET /order/catalog/formatted/deskaas
-                $get(param?: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
+                $get(params?: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
             }
             discover: {
                 // GET /order/catalog/formatted/discover
-                $get(param?: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
+                $get(params?: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
             }
             ip: {
                 // GET /order/catalog/formatted/ip
-                $get(param?: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
+                $get(params?: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
             }
             licenseCloudLinux: {
                 // GET /order/catalog/formatted/licenseCloudLinux
-                $get(param?: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
+                $get(params?: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
             }
             licenseDirectadmin: {
                 // GET /order/catalog/formatted/licenseDirectadmin
-                $get(param?: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
+                $get(params?: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
             }
             licensePlesk: {
                 // GET /order/catalog/formatted/licensePlesk
-                $get(param?: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
+                $get(params?: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
             }
             licenseSqlServer: {
                 // GET /order/catalog/formatted/licenseSqlServer
-                $get(param?: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
+                $get(params?: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
             }
             licenseVirtuozzo: {
                 // GET /order/catalog/formatted/licenseVirtuozzo
-                $get(param?: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
+                $get(params?: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
             }
             licenseWindows: {
                 // GET /order/catalog/formatted/licenseWindows
-                $get(param?: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
+                $get(params?: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
             }
             licenseWorklight: {
                 // GET /order/catalog/formatted/licenseWorklight
-                $get(param?: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
+                $get(params?: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
             }
             licensecPanel: {
                 // GET /order/catalog/formatted/licensecPanel
-                $get(param?: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
+                $get(params?: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
             }
             logs: {
                 // GET /order/catalog/formatted/logs
-                $get(param?: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
+                $get(params?: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
             }
             privateCloudCDI: {
                 // GET /order/catalog/formatted/privateCloudCDI
-                $get(param?: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.privateCloud.Catalog>;
+                $get(params?: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.privateCloud.Catalog>;
             }
             privateCloudDC: {
                 // GET /order/catalog/formatted/privateCloudDC
-                $get(param?: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.privateCloud.Catalog>;
+                $get(params?: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.privateCloud.Catalog>;
             }
             privateCloudReseller: {
                 // GET /order/catalog/formatted/privateCloudReseller
-                $get(param?: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.pcc.Catalog>;
+                $get(params?: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.pcc.Catalog>;
             }
             privateCloudResellerEnterprise: {
                 // GET /order/catalog/formatted/privateCloudResellerEnterprise
-                $get(param?: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.pcc.Catalog>;
+                $get(params?: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.pcc.Catalog>;
             }
             privateCloudSDDC: {
                 // GET /order/catalog/formatted/privateCloudSDDC
-                $get(param?: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.privateCloud.Catalog>;
+                $get(params?: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.privateCloud.Catalog>;
             }
             reseller: {
                 // GET /order/catalog/formatted/reseller
-                $get(param?: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
+                $get(params?: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
             }
             vps: {
                 // GET /order/catalog/formatted/vps
-                $get(param?: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
+                $get(params?: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
             }
         }
         public: {
             baremetalServers: {
                 // GET /order/catalog/public/baremetalServers
-                $get(param?: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.publik.DedicatedServerCatalog>;
+                $get(params?: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.publik.DedicatedServerCatalog>;
             }
         }
     }
@@ -2045,32 +2045,32 @@ export interface Order{
                 $get(): Promise<string[]>;
                 backend: {
                     // GET /order/cdn/dedicated/{serviceName}/backend
-                    $get(param?: {backend: number}): Promise<string[]>;
+                    $get(params?: {backend: number}): Promise<string[]>;
                     $(duration: string): {
                         // GET /order/cdn/dedicated/{serviceName}/backend/{duration}
-                        $get(param?: {backend: number}): Promise<order.Order>;
+                        $get(params?: {backend: number}): Promise<order.Order>;
                         // POST /order/cdn/dedicated/{serviceName}/backend/{duration}
-                        $post(body?: {backend: number}): Promise<order.Order>;
+                        $post(params?: {backend: number}): Promise<order.Order>;
                     };
                 }
                 cacheRule: {
                     // GET /order/cdn/dedicated/{serviceName}/cacheRule
-                    $get(param?: {cacheRule: cdnanycast.OrderCacheRuleEnum}): Promise<string[]>;
+                    $get(params?: {cacheRule: cdnanycast.OrderCacheRuleEnum}): Promise<string[]>;
                     $(duration: string): {
                         // GET /order/cdn/dedicated/{serviceName}/cacheRule/{duration}
-                        $get(param?: {cacheRule: cdnanycast.OrderCacheRuleEnum}): Promise<order.Order>;
+                        $get(params?: {cacheRule: cdnanycast.OrderCacheRuleEnum}): Promise<order.Order>;
                         // POST /order/cdn/dedicated/{serviceName}/cacheRule/{duration}
-                        $post(body?: {cacheRule: cdnanycast.OrderCacheRuleEnum}): Promise<order.Order>;
+                        $post(params?: {cacheRule: cdnanycast.OrderCacheRuleEnum}): Promise<order.Order>;
                     };
                 }
                 quota: {
                     // GET /order/cdn/dedicated/{serviceName}/quota
-                    $get(param?: {quota: cdnanycast.OrderQuotaEnum}): Promise<string[]>;
+                    $get(params?: {quota: cdnanycast.OrderQuotaEnum}): Promise<string[]>;
                     $(duration: string): {
                         // GET /order/cdn/dedicated/{serviceName}/quota/{duration}
-                        $get(param?: {quota: cdnanycast.OrderQuotaEnum}): Promise<order.Order>;
+                        $get(params?: {quota: cdnanycast.OrderQuotaEnum}): Promise<order.Order>;
                         // POST /order/cdn/dedicated/{serviceName}/quota/{duration}
-                        $post(body?: {quota: cdnanycast.OrderQuotaEnum}): Promise<order.Order>;
+                        $post(params?: {quota: cdnanycast.OrderQuotaEnum}): Promise<order.Order>;
                     };
                 }
             };
@@ -2083,19 +2083,19 @@ export interface Order{
                 $get(): Promise<string[]>;
                 storage: {
                     // GET /order/cdn/webstorage/{serviceName}/storage
-                    $get(param?: {storage: cdn.webstorage.OrderStorageEnum}): Promise<string[]>;
+                    $get(params?: {storage: cdn.webstorage.OrderStorageEnum}): Promise<string[]>;
                     $(duration: string): {
                         // GET /order/cdn/webstorage/{serviceName}/storage/{duration}
-                        $get(param?: {storage: cdn.webstorage.OrderStorageEnum}): Promise<order.Order>;
+                        $get(params?: {storage: cdn.webstorage.OrderStorageEnum}): Promise<order.Order>;
                         // POST /order/cdn/webstorage/{serviceName}/storage/{duration}
-                        $post(body?: {storage: cdn.webstorage.OrderStorageEnum}): Promise<order.Order>;
+                        $post(params?: {storage: cdn.webstorage.OrderStorageEnum}): Promise<order.Order>;
                     };
                 }
                 traffic: {
                     // GET /order/cdn/webstorage/{serviceName}/traffic
-                    $get(param?: {bandwidth: cdn.webstorage.OrderTrafficEnum}): Promise<order.Order>;
+                    $get(params?: {bandwidth: cdn.webstorage.OrderTrafficEnum}): Promise<order.Order>;
                     // POST /order/cdn/webstorage/{serviceName}/traffic
-                    $post(body?: {bandwidth: cdn.webstorage.OrderTrafficEnum}): Promise<order.Order>;
+                    $post(params?: {bandwidth: cdn.webstorage.OrderTrafficEnum}): Promise<order.Order>;
                 }
             };
         }
@@ -2109,15 +2109,15 @@ export interface Order{
                 $get(): Promise<string[]>;
                 credit: {
                     // GET /order/cloud/project/{serviceName}/credit
-                    $get(param?: {amount: number}): Promise<order.Order>;
+                    $get(params?: {amount: number}): Promise<order.Order>;
                     // POST /order/cloud/project/{serviceName}/credit
-                    $post(body?: {amount: number}): Promise<order.Order>;
+                    $post(params?: {amount: number}): Promise<order.Order>;
                 }
                 ip: {
                     // GET /order/cloud/project/{serviceName}/ip
-                    $get(param?: {country?: vps.ip.GeolocationEnum, instanceId: string, quantity: number}): Promise<order.Order>;
+                    $get(params?: {country?: vps.ip.GeolocationEnum, instanceId: string, quantity: number}): Promise<order.Order>;
                     // POST /order/cloud/project/{serviceName}/ip
-                    $post(body?: {country?: vps.ip.GeolocationEnum, instanceId: string, quantity: number}): Promise<order.Order>;
+                    $post(params?: {country?: vps.ip.GeolocationEnum, instanceId: string, quantity: number}): Promise<order.Order>;
                 }
             };
         }
@@ -2144,12 +2144,12 @@ export interface Order{
         nasha: {
             new: {
                 // GET /order/dedicated/nasha/new
-                $get(param?: {datacenter: dedicated.NasHAZoneEnum, model: dedicated.NasHAOfferEnum}): Promise<string[]>;
+                $get(params?: {datacenter: dedicated.NasHAZoneEnum, model: dedicated.NasHAOfferEnum}): Promise<string[]>;
                 $(duration: string): {
                     // GET /order/dedicated/nasha/new/{duration}
-                    $get(param?: {datacenter: dedicated.NasHAZoneEnum, model: dedicated.NasHAOfferEnum}): Promise<order.Order>;
+                    $get(params?: {datacenter: dedicated.NasHAZoneEnum, model: dedicated.NasHAOfferEnum}): Promise<order.Order>;
                     // POST /order/dedicated/nasha/new/{duration}
-                    $post(body?: {datacenter: dedicated.NasHAZoneEnum, model: dedicated.NasHAOfferEnum}): Promise<order.Order>;
+                    $post(params?: {datacenter: dedicated.NasHAZoneEnum, model: dedicated.NasHAOfferEnum}): Promise<order.Order>;
                 };
             }
         }
@@ -2161,82 +2161,82 @@ export interface Order{
                 $get(): Promise<string[]>;
                 backupStorage: {
                     // GET /order/dedicated/server/{serviceName}/backupStorage
-                    $get(param?: {capacity: dedicated.server.BackupStorageCapacityEnum}): Promise<string[]>;
+                    $get(params?: {capacity: dedicated.server.BackupStorageCapacityEnum}): Promise<string[]>;
                     $(duration: string): {
                         // GET /order/dedicated/server/{serviceName}/backupStorage/{duration}
-                        $get(param?: {capacity: dedicated.server.BackupStorageCapacityEnum}): Promise<order.Order>;
+                        $get(params?: {capacity: dedicated.server.BackupStorageCapacityEnum}): Promise<order.Order>;
                         // POST /order/dedicated/server/{serviceName}/backupStorage/{duration}
-                        $post(body?: {capacity: dedicated.server.BackupStorageCapacityEnum}): Promise<order.Order>;
+                        $post(params?: {capacity: dedicated.server.BackupStorageCapacityEnum}): Promise<order.Order>;
                     };
                 }
                 bandwidth: {
                     // GET /order/dedicated/server/{serviceName}/bandwidth
-                    $get(param?: {bandwidth: dedicated.server.BandwidthOrderEnum, type: dedicated.server.BandwidthOrderTypeEnum}): Promise<string[]>;
+                    $get(params?: {bandwidth: dedicated.server.BandwidthOrderEnum, type: dedicated.server.BandwidthOrderTypeEnum}): Promise<string[]>;
                     $(duration: string): {
                         // GET /order/dedicated/server/{serviceName}/bandwidth/{duration}
-                        $get(param?: {bandwidth: dedicated.server.BandwidthOrderEnum, type: dedicated.server.BandwidthOrderTypeEnum}): Promise<order.Order>;
+                        $get(params?: {bandwidth: dedicated.server.BandwidthOrderEnum, type: dedicated.server.BandwidthOrderTypeEnum}): Promise<order.Order>;
                         // POST /order/dedicated/server/{serviceName}/bandwidth/{duration}
-                        $post(body?: {bandwidth: dedicated.server.BandwidthOrderEnum, type: dedicated.server.BandwidthOrderTypeEnum}): Promise<order.Order>;
+                        $post(params?: {bandwidth: dedicated.server.BandwidthOrderEnum, type: dedicated.server.BandwidthOrderTypeEnum}): Promise<order.Order>;
                     };
                 }
                 bandwidthvRack: {
                     // GET /order/dedicated/server/{serviceName}/bandwidthvRack
-                    $get(param?: {bandwidth: dedicated.server.BandwidthvRackOrderEnum}): Promise<string[]>;
+                    $get(params?: {bandwidth: dedicated.server.BandwidthvRackOrderEnum}): Promise<string[]>;
                     $(duration: string): {
                         // GET /order/dedicated/server/{serviceName}/bandwidthvRack/{duration}
-                        $get(param?: {bandwidth: dedicated.server.BandwidthvRackOrderEnum}): Promise<order.Order>;
+                        $get(params?: {bandwidth: dedicated.server.BandwidthvRackOrderEnum}): Promise<order.Order>;
                         // POST /order/dedicated/server/{serviceName}/bandwidthvRack/{duration}
-                        $post(body?: {bandwidth: dedicated.server.BandwidthvRackOrderEnum}): Promise<order.Order>;
+                        $post(params?: {bandwidth: dedicated.server.BandwidthvRackOrderEnum}): Promise<order.Order>;
                     };
                 }
                 failoverIP: {
                     // GET /order/dedicated/server/{serviceName}/failoverIP
-                    $get(param?: {country: dedicated.server.IpCountryEnum}): Promise<string[]>;
+                    $get(params?: {country: dedicated.server.IpCountryEnum}): Promise<string[]>;
                     $(duration: string): {
                         // GET /order/dedicated/server/{serviceName}/failoverIP/{duration}
-                        $get(param?: {country: dedicated.server.IpCountryEnum}): Promise<order.Order>;
+                        $get(params?: {country: dedicated.server.IpCountryEnum}): Promise<order.Order>;
                         // POST /order/dedicated/server/{serviceName}/failoverIP/{duration}
-                        $post(body?: {country: dedicated.server.IpCountryEnum}): Promise<order.Order>;
+                        $post(params?: {country: dedicated.server.IpCountryEnum}): Promise<order.Order>;
                     };
                 }
                 feature: {
                     // GET /order/dedicated/server/{serviceName}/feature
-                    $get(param?: {feature: dedicated.server.OrderableSysFeatureEnum}): Promise<string[]>;
+                    $get(params?: {feature: dedicated.server.OrderableSysFeatureEnum}): Promise<string[]>;
                     $(duration: string): {
                         // GET /order/dedicated/server/{serviceName}/feature/{duration}
-                        $get(param?: {feature: dedicated.server.OrderableSysFeatureEnum}): Promise<order.Order>;
+                        $get(params?: {feature: dedicated.server.OrderableSysFeatureEnum}): Promise<order.Order>;
                         // POST /order/dedicated/server/{serviceName}/feature/{duration}
-                        $post(body?: {feature: dedicated.server.OrderableSysFeatureEnum}): Promise<order.Order>;
+                        $post(params?: {feature: dedicated.server.OrderableSysFeatureEnum}): Promise<order.Order>;
                     };
                 }
                 firewall: {
                     // GET /order/dedicated/server/{serviceName}/firewall
-                    $get(param?: {firewallModel: dedicated.server.FirewallModelEnum}): Promise<string[]>;
+                    $get(params?: {firewallModel: dedicated.server.FirewallModelEnum}): Promise<string[]>;
                     $(duration: string): {
                         // GET /order/dedicated/server/{serviceName}/firewall/{duration}
-                        $get(param?: {firewallModel: dedicated.server.FirewallModelEnum}): Promise<order.Order>;
+                        $get(params?: {firewallModel: dedicated.server.FirewallModelEnum}): Promise<order.Order>;
                         // POST /order/dedicated/server/{serviceName}/firewall/{duration}
-                        $post(body?: {firewallModel: dedicated.server.FirewallModelEnum}): Promise<order.Order>;
+                        $post(params?: {firewallModel: dedicated.server.FirewallModelEnum}): Promise<order.Order>;
                     };
                 }
                 ip: {
                     // GET /order/dedicated/server/{serviceName}/ip
-                    $get(param?: {blockSize: dedicated.server.IpBlockSizeEnum, country?: dedicated.server.IpCountryEnum, organisationId?: string, type: dedicated.server.IpTypeOrderableEnum}): Promise<string[]>;
+                    $get(params?: {blockSize: dedicated.server.IpBlockSizeEnum, country?: dedicated.server.IpCountryEnum, organisationId?: string, type: dedicated.server.IpTypeOrderableEnum}): Promise<string[]>;
                     $(duration: string): {
                         // GET /order/dedicated/server/{serviceName}/ip/{duration}
-                        $get(param?: {blockSize: dedicated.server.IpBlockSizeEnum, country?: dedicated.server.IpCountryEnum, organisationId?: string, type: dedicated.server.IpTypeOrderableEnum}): Promise<order.Order>;
+                        $get(params?: {blockSize: dedicated.server.IpBlockSizeEnum, country?: dedicated.server.IpCountryEnum, organisationId?: string, type: dedicated.server.IpTypeOrderableEnum}): Promise<order.Order>;
                         // POST /order/dedicated/server/{serviceName}/ip/{duration}
-                        $post(body?: {blockSize: dedicated.server.IpBlockSizeEnum, country?: dedicated.server.IpCountryEnum, organisationId?: string, type: dedicated.server.IpTypeOrderableEnum}): Promise<order.Order>;
+                        $post(params?: {blockSize: dedicated.server.IpBlockSizeEnum, country?: dedicated.server.IpCountryEnum, organisationId?: string, type: dedicated.server.IpTypeOrderableEnum}): Promise<order.Order>;
                     };
                 }
                 ipMigration: {
                     // GET /order/dedicated/server/{serviceName}/ipMigration
-                    $get(param?: {ip: string, token: string}): Promise<string[]>;
+                    $get(params?: {ip: string, token: string}): Promise<string[]>;
                     $(duration: string): {
                         // GET /order/dedicated/server/{serviceName}/ipMigration/{duration}
-                        $get(param?: {ip: string, token: string}): Promise<order.Order>;
+                        $get(params?: {ip: string, token: string}): Promise<order.Order>;
                         // POST /order/dedicated/server/{serviceName}/ipMigration/{duration}
-                        $post(body?: {ip: string, token: string}): Promise<order.Order>;
+                        $post(params?: {ip: string, token: string}): Promise<order.Order>;
                     };
                 }
                 kvm: {
@@ -2271,32 +2271,32 @@ export interface Order{
                 }
                 staticIP: {
                     // GET /order/dedicated/server/{serviceName}/staticIP
-                    $get(param?: {country: dedicated.server.IpStaticCountryEnum}): Promise<string[]>;
+                    $get(params?: {country: dedicated.server.IpStaticCountryEnum}): Promise<string[]>;
                     $(duration: string): {
                         // GET /order/dedicated/server/{serviceName}/staticIP/{duration}
-                        $get(param?: {country: dedicated.server.IpStaticCountryEnum}): Promise<order.Order>;
+                        $get(params?: {country: dedicated.server.IpStaticCountryEnum}): Promise<order.Order>;
                         // POST /order/dedicated/server/{serviceName}/staticIP/{duration}
-                        $post(body?: {country: dedicated.server.IpStaticCountryEnum}): Promise<order.Order>;
+                        $post(params?: {country: dedicated.server.IpStaticCountryEnum}): Promise<order.Order>;
                     };
                 }
                 traffic: {
                     // GET /order/dedicated/server/{serviceName}/traffic
-                    $get(param?: {traffic: dedicated.server.TrafficOrderEnum}): Promise<string[]>;
+                    $get(params?: {traffic: dedicated.server.TrafficOrderEnum}): Promise<string[]>;
                     $(duration: string): {
                         // GET /order/dedicated/server/{serviceName}/traffic/{duration}
-                        $get(param?: {traffic: dedicated.server.TrafficOrderEnum}): Promise<order.Order>;
+                        $get(params?: {traffic: dedicated.server.TrafficOrderEnum}): Promise<order.Order>;
                         // POST /order/dedicated/server/{serviceName}/traffic/{duration}
-                        $post(body?: {traffic: dedicated.server.TrafficOrderEnum}): Promise<order.Order>;
+                        $post(params?: {traffic: dedicated.server.TrafficOrderEnum}): Promise<order.Order>;
                     };
                 }
                 usbKey: {
                     // GET /order/dedicated/server/{serviceName}/usbKey
-                    $get(param?: {capacity: dedicated.server.UsbKeyCapacityEnum}): Promise<string[]>;
+                    $get(params?: {capacity: dedicated.server.UsbKeyCapacityEnum}): Promise<string[]>;
                     $(duration: string): {
                         // GET /order/dedicated/server/{serviceName}/usbKey/{duration}
-                        $get(param?: {capacity: dedicated.server.UsbKeyCapacityEnum}): Promise<order.Order>;
+                        $get(params?: {capacity: dedicated.server.UsbKeyCapacityEnum}): Promise<order.Order>;
                         // POST /order/dedicated/server/{serviceName}/usbKey/{duration}
-                        $post(body?: {capacity: dedicated.server.UsbKeyCapacityEnum}): Promise<order.Order>;
+                        $post(params?: {capacity: dedicated.server.UsbKeyCapacityEnum}): Promise<order.Order>;
                     };
                 }
             };
@@ -2310,42 +2310,42 @@ export interface Order{
             $get(): Promise<string[]>;
             additionalBandwidth: {
                 // GET /order/dedicatedCloud/{serviceName}/additionalBandwidth
-                $get(param?: {bandwidth: dedicatedCloud.AdditionalBandwidthEnum}): Promise<string[]>;
+                $get(params?: {bandwidth: dedicatedCloud.AdditionalBandwidthEnum}): Promise<string[]>;
                 $(duration: string): {
                     // GET /order/dedicatedCloud/{serviceName}/additionalBandwidth/{duration}
-                    $get(param?: {bandwidth: dedicatedCloud.AdditionalBandwidthEnum}): Promise<order.Order>;
+                    $get(params?: {bandwidth: dedicatedCloud.AdditionalBandwidthEnum}): Promise<order.Order>;
                     // POST /order/dedicatedCloud/{serviceName}/additionalBandwidth/{duration}
-                    $post(body?: {bandwidth: dedicatedCloud.AdditionalBandwidthEnum}): Promise<order.Order>;
+                    $post(params?: {bandwidth: dedicatedCloud.AdditionalBandwidthEnum}): Promise<order.Order>;
                 };
             }
             filer: {
                 // GET /order/dedicatedCloud/{serviceName}/filer
-                $get(param?: {datacenterId?: number, name: string, quantity?: number}): Promise<string[]>;
+                $get(params?: {datacenterId?: number, name: string, quantity?: number}): Promise<string[]>;
                 $(duration: string): {
                     // GET /order/dedicatedCloud/{serviceName}/filer/{duration}
-                    $get(param?: {datacenterId?: number, name: string, quantity?: number}): Promise<order.Order>;
+                    $get(params?: {datacenterId?: number, name: string, quantity?: number}): Promise<order.Order>;
                     // POST /order/dedicatedCloud/{serviceName}/filer/{duration}
-                    $post(body?: {datacenterId?: number, name: string, quantity?: number}): Promise<order.Order>;
+                    $post(params?: {datacenterId?: number, name: string, quantity?: number}): Promise<order.Order>;
                 };
             }
             host: {
                 // GET /order/dedicatedCloud/{serviceName}/host
-                $get(param?: {datacenterId: number, name: string, quantity?: number}): Promise<string[]>;
+                $get(params?: {datacenterId: number, name: string, quantity?: number}): Promise<string[]>;
                 $(duration: string): {
                     // GET /order/dedicatedCloud/{serviceName}/host/{duration}
-                    $get(param?: {datacenterId: number, name: string, quantity?: number}): Promise<order.Order>;
+                    $get(params?: {datacenterId: number, name: string, quantity?: number}): Promise<order.Order>;
                     // POST /order/dedicatedCloud/{serviceName}/host/{duration}
-                    $post(body?: {datacenterId: number, name: string, quantity?: number}): Promise<order.Order>;
+                    $post(params?: {datacenterId: number, name: string, quantity?: number}): Promise<order.Order>;
                 };
             }
             ip: {
                 // GET /order/dedicatedCloud/{serviceName}/ip
-                $get(param?: {country: dedicatedCloud.IpCountriesEnum, description: string, estimatedClientsNumber: number, networkName: string, size: dedicatedCloud.OrderableIpBlockRangeEnum, usage: string}): Promise<string[]>;
+                $get(params?: {country: dedicatedCloud.IpCountriesEnum, description: string, estimatedClientsNumber: number, networkName: string, size: dedicatedCloud.OrderableIpBlockRangeEnum, usage: string}): Promise<string[]>;
                 $(duration: string): {
                     // GET /order/dedicatedCloud/{serviceName}/ip/{duration}
-                    $get(param?: {country: dedicatedCloud.IpCountriesEnum, description: string, estimatedClientsNumber: number, networkName: string, size: dedicatedCloud.OrderableIpBlockRangeEnum, usage: string}): Promise<order.Order>;
+                    $get(params?: {country: dedicatedCloud.IpCountriesEnum, description: string, estimatedClientsNumber: number, networkName: string, size: dedicatedCloud.OrderableIpBlockRangeEnum, usage: string}): Promise<order.Order>;
                     // POST /order/dedicatedCloud/{serviceName}/ip/{duration}
-                    $post(body?: {country: dedicatedCloud.IpCountriesEnum, description: string, estimatedClientsNumber: number, networkName: string, size: dedicatedCloud.OrderableIpBlockRangeEnum, usage: string}): Promise<order.Order>;
+                    $post(params?: {country: dedicatedCloud.IpCountriesEnum, description: string, estimatedClientsNumber: number, networkName: string, size: dedicatedCloud.OrderableIpBlockRangeEnum, usage: string}): Promise<order.Order>;
                 };
             }
             spla: {
@@ -2356,19 +2356,19 @@ export interface Order{
             }
             upgradeRessource: {
                 // GET /order/dedicatedCloud/{serviceName}/upgradeRessource
-                $get(param?: {upgradedRessourceId?: number, upgradedRessourceType: dedicatedCloud.ressources.UpgradeRessourceTypeEnum, upgradeType: dedicatedCloud.ressources.UpgradeTypeEnum}): Promise<string[]>;
+                $get(params?: {upgradedRessourceId?: number, upgradedRessourceType: dedicatedCloud.ressources.UpgradeRessourceTypeEnum, upgradeType: dedicatedCloud.ressources.UpgradeTypeEnum}): Promise<string[]>;
                 $(duration: string): {
                     // GET /order/dedicatedCloud/{serviceName}/upgradeRessource/{duration}
-                    $get(param?: {upgradedRessourceId?: number, upgradedRessourceType: dedicatedCloud.ressources.UpgradeRessourceTypeEnum, upgradeType: dedicatedCloud.ressources.UpgradeTypeEnum}): Promise<order.Order>;
+                    $get(params?: {upgradedRessourceId?: number, upgradedRessourceType: dedicatedCloud.ressources.UpgradeRessourceTypeEnum, upgradeType: dedicatedCloud.ressources.UpgradeTypeEnum}): Promise<order.Order>;
                     // POST /order/dedicatedCloud/{serviceName}/upgradeRessource/{duration}
-                    $post(body?: {upgradedRessourceId?: number, upgradedRessourceType: dedicatedCloud.ressources.UpgradeRessourceTypeEnum, upgradeType: dedicatedCloud.ressources.UpgradeTypeEnum}): Promise<order.Order>;
+                    $post(params?: {upgradedRessourceId?: number, upgradedRessourceType: dedicatedCloud.ressources.UpgradeRessourceTypeEnum, upgradeType: dedicatedCloud.ressources.UpgradeTypeEnum}): Promise<order.Order>;
                 };
             }
             vdi: {
                 // GET /order/dedicatedCloud/{serviceName}/vdi
-                $get(param?: {datacenterId: number, firstPublicIpAddress: string, secondPublicIpAddress: string}): Promise<order.Order>;
+                $get(params?: {datacenterId: number, firstPublicIpAddress: string, secondPublicIpAddress: string}): Promise<order.Order>;
                 // POST /order/dedicatedCloud/{serviceName}/vdi
-                $post(body?: {datacenterId: number, firstPublicIpAddress: string, secondPublicIpAddress: string}): Promise<order.Order>;
+                $post(params?: {datacenterId: number, firstPublicIpAddress: string, secondPublicIpAddress: string}): Promise<order.Order>;
             }
         };
     }
@@ -2378,9 +2378,9 @@ export interface Order{
             $get(): Promise<string[]>;
             new: {
                 // GET /order/domain/zone/new
-                $get(param?: {minimized?: boolean, zoneName: string}): Promise<order.Order>;
+                $get(params?: {minimized?: boolean, zoneName: string}): Promise<order.Order>;
                 // POST /order/domain/zone/new
-                $post(body?: {minimized?: boolean, zoneName: string}): Promise<order.Order>;
+                $post(params?: {minimized?: boolean, zoneName: string}): Promise<order.Order>;
             }
             $(zoneName: string): {
                 // GET /order/domain/zone/{zoneName}
@@ -2404,12 +2404,12 @@ export interface Order{
             $get(): Promise<string[]>;
             new: {
                 // GET /order/email/domain/new
-                $get(param?: {domain: string, offer: email.domain.OfferEnum}): Promise<string[]>;
+                $get(params?: {domain: string, offer: email.domain.OfferEnum}): Promise<string[]>;
                 $(duration: string): {
                     // GET /order/email/domain/new/{duration}
-                    $get(param?: {domain: string, offer: email.domain.OfferEnum}): Promise<order.Order>;
+                    $get(params?: {domain: string, offer: email.domain.OfferEnum}): Promise<order.Order>;
                     // POST /order/email/domain/new/{duration}
-                    $post(body?: {domain: string, offer: email.domain.OfferEnum}): Promise<order.Order>;
+                    $post(params?: {domain: string, offer: email.domain.OfferEnum}): Promise<order.Order>;
                 };
             }
         }
@@ -2425,22 +2425,22 @@ export interface Order{
                         $get(): Promise<string[]>;
                         account: {
                             // GET /order/email/exchange/{organizationName}/service/{exchangeService}/account
-                            $get(param?: {licence: email.exchange.OvhLicenceEnum, number: number, storageQuota?: email.exchange.accountQuotaEnum}): Promise<string[]>;
+                            $get(params?: {licence: email.exchange.OvhLicenceEnum, number: number, storageQuota?: email.exchange.accountQuotaEnum}): Promise<string[]>;
                             $(duration: string): {
                                 // GET /order/email/exchange/{organizationName}/service/{exchangeService}/account/{duration}
-                                $get(param?: {licence: email.exchange.OvhLicenceEnum, number: number, storageQuota?: email.exchange.accountQuotaEnum}): Promise<order.Order>;
+                                $get(params?: {licence: email.exchange.OvhLicenceEnum, number: number, storageQuota?: email.exchange.accountQuotaEnum}): Promise<order.Order>;
                                 // POST /order/email/exchange/{organizationName}/service/{exchangeService}/account/{duration}
-                                $post(body?: {licence: email.exchange.OvhLicenceEnum, number: number, storageQuota?: email.exchange.accountQuotaEnum}): Promise<order.Order>;
+                                $post(params?: {licence: email.exchange.OvhLicenceEnum, number: number, storageQuota?: email.exchange.accountQuotaEnum}): Promise<order.Order>;
                             };
                         }
                         accountUpgrade: {
                             // GET /order/email/exchange/{organizationName}/service/{exchangeService}/accountUpgrade
-                            $get(param?: {newQuota: email.exchange.accountQuotaEnum, primaryEmailAddress: string}): Promise<string[]>;
+                            $get(params?: {newQuota: email.exchange.accountQuotaEnum, primaryEmailAddress: string}): Promise<string[]>;
                             $(duration: string): {
                                 // GET /order/email/exchange/{organizationName}/service/{exchangeService}/accountUpgrade/{duration}
-                                $get(param?: {newQuota: email.exchange.accountQuotaEnum, primaryEmailAddress: string}): Promise<order.Order>;
+                                $get(params?: {newQuota: email.exchange.accountQuotaEnum, primaryEmailAddress: string}): Promise<order.Order>;
                                 // POST /order/email/exchange/{organizationName}/service/{exchangeService}/accountUpgrade/{duration}
-                                $post(body?: {newQuota: email.exchange.accountQuotaEnum, primaryEmailAddress: string}): Promise<order.Order>;
+                                $post(params?: {newQuota: email.exchange.accountQuotaEnum, primaryEmailAddress: string}): Promise<order.Order>;
                             };
                         }
                         diskSpace: {
@@ -2451,12 +2451,12 @@ export interface Order{
                         }
                         outlook: {
                             // GET /order/email/exchange/{organizationName}/service/{exchangeService}/outlook
-                            $get(param?: {licence: email.exchange.OutlookVersionEnum, primaryEmailAddress: string}): Promise<string[]>;
+                            $get(params?: {licence: email.exchange.OutlookVersionEnum, primaryEmailAddress: string}): Promise<string[]>;
                             $(duration: string): {
                                 // GET /order/email/exchange/{organizationName}/service/{exchangeService}/outlook/{duration}
-                                $get(param?: {licence: email.exchange.OutlookVersionEnum, primaryEmailAddress: string}): Promise<order.Order>;
+                                $get(params?: {licence: email.exchange.OutlookVersionEnum, primaryEmailAddress: string}): Promise<order.Order>;
                                 // POST /order/email/exchange/{organizationName}/service/{exchangeService}/outlook/{duration}
-                                $post(body?: {licence: email.exchange.OutlookVersionEnum, primaryEmailAddress: string}): Promise<order.Order>;
+                                $post(params?: {licence: email.exchange.OutlookVersionEnum, primaryEmailAddress: string}): Promise<order.Order>;
                             };
                         }
                         upgrade: {
@@ -2477,12 +2477,12 @@ export interface Order{
                 $get(): Promise<string[]>;
                 account: {
                     // GET /order/email/pro/{service}/account
-                    $get(param?: {number: number}): Promise<string[]>;
+                    $get(params?: {number: number}): Promise<string[]>;
                     $(duration: string): {
                         // GET /order/email/pro/{service}/account/{duration}
-                        $get(param?: {number: number}): Promise<order.Order>;
+                        $get(params?: {number: number}): Promise<order.Order>;
                         // POST /order/email/pro/{service}/account/{duration}
-                        $post(body?: {number: number}): Promise<order.Order>;
+                        $post(params?: {number: number}): Promise<order.Order>;
                     };
                 }
             };
@@ -2493,18 +2493,18 @@ export interface Order{
         $get(): Promise<string[]>;
         new: {
             // GET /order/freefax/new
-            $get(param?: {quantity: freefax.QuantityEnum}): Promise<order.Order>;
+            $get(params?: {quantity: freefax.QuantityEnum}): Promise<order.Order>;
             // POST /order/freefax/new
-            $post(body?: {quantity: freefax.QuantityEnum}): Promise<order.Order>;
+            $post(params?: {quantity: freefax.QuantityEnum}): Promise<order.Order>;
         }
         $(serviceName: string): {
             // GET /order/freefax/{serviceName}
             $get(): Promise<string[]>;
             convertToVoicefax: {
                 // GET /order/freefax/{serviceName}/convertToVoicefax
-                $get(param?: {billingAccount: string}): Promise<order.Order>;
+                $get(params?: {billingAccount: string}): Promise<order.Order>;
                 // POST /order/freefax/{serviceName}/convertToVoicefax
-                $post(body?: {billingAccount: string}): Promise<order.Order>;
+                $post(params?: {billingAccount: string}): Promise<order.Order>;
             }
         };
     }
@@ -2514,12 +2514,12 @@ export interface Order{
             $get(): Promise<string[]>;
             new: {
                 // GET /order/hosting/privateDatabase/new
-                $get(param?: {datacenter?: hosting.PrivateDatabase.DatacenterEnum, offer?: hosting.PrivateDatabase.OfferEnum, ram: hosting.PrivateDatabase.AvailableRamSizeEnum, version: hosting.PrivateDatabase.OrderableVersionEnum}): Promise<string[]>;
+                $get(params?: {datacenter?: hosting.PrivateDatabase.DatacenterEnum, offer?: hosting.PrivateDatabase.OfferEnum, ram: hosting.PrivateDatabase.AvailableRamSizeEnum, version: hosting.PrivateDatabase.OrderableVersionEnum}): Promise<string[]>;
                 $(duration: string): {
                     // GET /order/hosting/privateDatabase/new/{duration}
-                    $get(param?: {datacenter?: hosting.PrivateDatabase.DatacenterEnum, offer?: hosting.PrivateDatabase.OfferEnum, ram: hosting.PrivateDatabase.AvailableRamSizeEnum, version: hosting.PrivateDatabase.OrderableVersionEnum}): Promise<order.Order>;
+                    $get(params?: {datacenter?: hosting.PrivateDatabase.DatacenterEnum, offer?: hosting.PrivateDatabase.OfferEnum, ram: hosting.PrivateDatabase.AvailableRamSizeEnum, version: hosting.PrivateDatabase.OrderableVersionEnum}): Promise<order.Order>;
                     // POST /order/hosting/privateDatabase/new/{duration}
-                    $post(body?: {datacenter?: hosting.PrivateDatabase.DatacenterEnum, offer?: hosting.PrivateDatabase.OfferEnum, ram: hosting.PrivateDatabase.AvailableRamSizeEnum, version: hosting.PrivateDatabase.OrderableVersionEnum}): Promise<order.Order>;
+                    $post(params?: {datacenter?: hosting.PrivateDatabase.DatacenterEnum, offer?: hosting.PrivateDatabase.OfferEnum, ram: hosting.PrivateDatabase.AvailableRamSizeEnum, version: hosting.PrivateDatabase.OrderableVersionEnum}): Promise<order.Order>;
                 };
             }
             $(serviceName: string): {
@@ -2527,12 +2527,12 @@ export interface Order{
                 $get(): Promise<string[]>;
                 ram: {
                     // GET /order/hosting/privateDatabase/{serviceName}/ram
-                    $get(param?: {ram: hosting.PrivateDatabase.AvailableRamSizeEnum}): Promise<string[]>;
+                    $get(params?: {ram: hosting.PrivateDatabase.AvailableRamSizeEnum}): Promise<string[]>;
                     $(duration: string): {
                         // GET /order/hosting/privateDatabase/{serviceName}/ram/{duration}
-                        $get(param?: {ram: hosting.PrivateDatabase.AvailableRamSizeEnum}): Promise<order.Order>;
+                        $get(params?: {ram: hosting.PrivateDatabase.AvailableRamSizeEnum}): Promise<order.Order>;
                         // POST /order/hosting/privateDatabase/{serviceName}/ram/{duration}
-                        $post(body?: {ram: hosting.PrivateDatabase.AvailableRamSizeEnum}): Promise<order.Order>;
+                        $post(params?: {ram: hosting.PrivateDatabase.AvailableRamSizeEnum}): Promise<order.Order>;
                     };
                 }
             };
@@ -2542,12 +2542,12 @@ export interface Order{
             $get(): Promise<string[]>;
             new: {
                 // GET /order/hosting/web/new
-                $get(param?: {dnsZone?: hosting.web.DnsZoneEnum, domain: string, module?: hosting.web.module.OrderableNameEnum, offer: hosting.web.OfferEnum, waiveRetractationPeriod?: boolean}): Promise<string[]>;
+                $get(params?: {dnsZone?: hosting.web.DnsZoneEnum, domain: string, module?: hosting.web.module.OrderableNameEnum, offer: hosting.web.OfferEnum, waiveRetractationPeriod?: boolean}): Promise<string[]>;
                 $(duration: string): {
                     // GET /order/hosting/web/new/{duration}
-                    $get(param?: {dnsZone?: hosting.web.DnsZoneEnum, domain: string, module?: hosting.web.module.OrderableNameEnum, offer: hosting.web.OfferEnum, waiveRetractationPeriod?: boolean}): Promise<order.Order>;
+                    $get(params?: {dnsZone?: hosting.web.DnsZoneEnum, domain: string, module?: hosting.web.module.OrderableNameEnum, offer: hosting.web.OfferEnum, waiveRetractationPeriod?: boolean}): Promise<order.Order>;
                     // POST /order/hosting/web/new/{duration}
-                    $post(body?: {dnsZone?: hosting.web.DnsZoneEnum, domain: string, module?: hosting.web.module.OrderableNameEnum, offer: hosting.web.OfferEnum, waiveRetractationPeriod?: boolean}): Promise<order.Order>;
+                    $post(params?: {dnsZone?: hosting.web.DnsZoneEnum, domain: string, module?: hosting.web.module.OrderableNameEnum, offer: hosting.web.OfferEnum, waiveRetractationPeriod?: boolean}): Promise<order.Order>;
                 };
             }
             $(serviceName: string): {
@@ -2555,42 +2555,42 @@ export interface Order{
                 $get(): Promise<string[]>;
                 bandwidth: {
                     // GET /order/hosting/web/{serviceName}/bandwidth
-                    $get(param?: {traffic: hosting.web.BandwidthOfferEnum}): Promise<string[]>;
+                    $get(params?: {traffic: hosting.web.BandwidthOfferEnum}): Promise<string[]>;
                     $(duration: string): {
                         // GET /order/hosting/web/{serviceName}/bandwidth/{duration}
-                        $get(param?: {traffic: hosting.web.BandwidthOfferEnum}): Promise<order.Order>;
+                        $get(params?: {traffic: hosting.web.BandwidthOfferEnum}): Promise<order.Order>;
                         // POST /order/hosting/web/{serviceName}/bandwidth/{duration}
-                        $post(body?: {traffic: hosting.web.BandwidthOfferEnum}): Promise<order.Order>;
+                        $post(params?: {traffic: hosting.web.BandwidthOfferEnum}): Promise<order.Order>;
                     };
                 }
                 cdn: {
                     // GET /order/hosting/web/{serviceName}/cdn
-                    $get(param?: {offer: hosting.web.CdnOfferEnum}): Promise<string[]>;
+                    $get(params?: {offer: hosting.web.CdnOfferEnum}): Promise<string[]>;
                     $(duration: string): {
                         // GET /order/hosting/web/{serviceName}/cdn/{duration}
-                        $get(param?: {offer: hosting.web.CdnOfferEnum}): Promise<order.Order>;
+                        $get(params?: {offer: hosting.web.CdnOfferEnum}): Promise<order.Order>;
                         // POST /order/hosting/web/{serviceName}/cdn/{duration}
-                        $post(body?: {offer: hosting.web.CdnOfferEnum}): Promise<order.Order>;
+                        $post(params?: {offer: hosting.web.CdnOfferEnum}): Promise<order.Order>;
                     };
                 }
                 changeMainDomain: {
                     // GET /order/hosting/web/{serviceName}/changeMainDomain
-                    $get(param?: {domain: string, mxplan: hosting.web.order.MxPlanEnum}): Promise<string[]>;
+                    $get(params?: {domain: string, mxplan: hosting.web.order.MxPlanEnum}): Promise<string[]>;
                     $(duration: string): {
                         // GET /order/hosting/web/{serviceName}/changeMainDomain/{duration}
-                        $get(param?: {domain: string, mxplan: hosting.web.order.MxPlanEnum}): Promise<order.Order>;
+                        $get(params?: {domain: string, mxplan: hosting.web.order.MxPlanEnum}): Promise<order.Order>;
                         // POST /order/hosting/web/{serviceName}/changeMainDomain/{duration}
-                        $post(body?: {domain: string, mxplan: hosting.web.order.MxPlanEnum}): Promise<order.Order>;
+                        $post(params?: {domain: string, mxplan: hosting.web.order.MxPlanEnum}): Promise<order.Order>;
                     };
                 }
                 extraSqlPerso: {
                     // GET /order/hosting/web/{serviceName}/extraSqlPerso
-                    $get(param?: {offer: hosting.web.database.SqlPersoOfferEnum}): Promise<string[]>;
+                    $get(params?: {offer: hosting.web.database.SqlPersoOfferEnum}): Promise<string[]>;
                     $(duration: string): {
                         // GET /order/hosting/web/{serviceName}/extraSqlPerso/{duration}
-                        $get(param?: {offer: hosting.web.database.SqlPersoOfferEnum}): Promise<order.Order>;
+                        $get(params?: {offer: hosting.web.database.SqlPersoOfferEnum}): Promise<order.Order>;
                         // POST /order/hosting/web/{serviceName}/extraSqlPerso/{duration}
-                        $post(body?: {offer: hosting.web.database.SqlPersoOfferEnum}): Promise<order.Order>;
+                        $post(params?: {offer: hosting.web.database.SqlPersoOfferEnum}): Promise<order.Order>;
                     };
                 }
                 ssl: {
@@ -2605,12 +2605,12 @@ export interface Order{
                 }
                 upgrade: {
                     // GET /order/hosting/web/{serviceName}/upgrade
-                    $get(param?: {offer: hosting.web.OfferEnum, startTime?: string, waiveRetractationPeriod?: boolean}): Promise<string[]>;
+                    $get(params?: {offer: hosting.web.OfferEnum, startTime?: string, waiveRetractationPeriod?: boolean}): Promise<string[]>;
                     $(duration: string): {
                         // GET /order/hosting/web/{serviceName}/upgrade/{duration}
-                        $get(param?: {offer: hosting.web.OfferEnum, startTime?: string, waiveRetractationPeriod?: boolean}): Promise<order.Order>;
+                        $get(params?: {offer: hosting.web.OfferEnum, startTime?: string, waiveRetractationPeriod?: boolean}): Promise<order.Order>;
                         // POST /order/hosting/web/{serviceName}/upgrade/{duration}
-                        $post(body?: {offer: hosting.web.OfferEnum, startTime?: string, waiveRetractationPeriod?: boolean}): Promise<order.Order>;
+                        $post(params?: {offer: hosting.web.OfferEnum, startTime?: string, waiveRetractationPeriod?: boolean}): Promise<order.Order>;
                     };
                 }
             };
@@ -2632,48 +2632,48 @@ export interface Order{
         cloudLinux: {
             new: {
                 // GET /order/license/cloudLinux/new
-                $get(param?: {ip: string, version: license.CloudLinuxVersionEnum}): Promise<string[]>;
+                $get(params?: {ip: string, version: license.CloudLinuxVersionEnum}): Promise<string[]>;
                 $(duration: string): {
                     // GET /order/license/cloudLinux/new/{duration}
-                    $get(param?: {ip: string, version: license.CloudLinuxVersionEnum}): Promise<order.Order>;
+                    $get(params?: {ip: string, version: license.CloudLinuxVersionEnum}): Promise<order.Order>;
                     // POST /order/license/cloudLinux/new/{duration}
-                    $post(body?: {ip: string, version: license.CloudLinuxVersionEnum}): Promise<order.Order>;
+                    $post(params?: {ip: string, version: license.CloudLinuxVersionEnum}): Promise<order.Order>;
                 };
             }
         }
         cpanel: {
             new: {
                 // GET /order/license/cpanel/new
-                $get(param?: {ip: string, serviceType?: license.LicenseTypeEnum, version: license.OrderableCpanelVersionEnum}): Promise<string[]>;
+                $get(params?: {ip: string, serviceType?: license.LicenseTypeEnum, version: license.OrderableCpanelVersionEnum}): Promise<string[]>;
                 $(duration: string): {
                     // GET /order/license/cpanel/new/{duration}
-                    $get(param?: {ip: string, serviceType?: license.LicenseTypeEnum, version: license.OrderableCpanelVersionEnum}): Promise<order.Order>;
+                    $get(params?: {ip: string, serviceType?: license.LicenseTypeEnum, version: license.OrderableCpanelVersionEnum}): Promise<order.Order>;
                     // POST /order/license/cpanel/new/{duration}
-                    $post(body?: {ip: string, serviceType?: license.LicenseTypeEnum, version: license.OrderableCpanelVersionEnum}): Promise<order.Order>;
+                    $post(params?: {ip: string, serviceType?: license.LicenseTypeEnum, version: license.OrderableCpanelVersionEnum}): Promise<order.Order>;
                 };
             }
         }
         directadmin: {
             new: {
                 // GET /order/license/directadmin/new
-                $get(param?: {ip: string, serviceType?: license.LicenseTypeEnum, version: license.OrderableDirectAdminVersionEnum}): Promise<string[]>;
+                $get(params?: {ip: string, serviceType?: license.LicenseTypeEnum, version: license.OrderableDirectAdminVersionEnum}): Promise<string[]>;
                 $(duration: string): {
                     // GET /order/license/directadmin/new/{duration}
-                    $get(param?: {ip: string, serviceType?: license.LicenseTypeEnum, version: license.OrderableDirectAdminVersionEnum}): Promise<order.Order>;
+                    $get(params?: {ip: string, serviceType?: license.LicenseTypeEnum, version: license.OrderableDirectAdminVersionEnum}): Promise<order.Order>;
                     // POST /order/license/directadmin/new/{duration}
-                    $post(body?: {ip: string, serviceType?: license.LicenseTypeEnum, version: license.OrderableDirectAdminVersionEnum}): Promise<order.Order>;
+                    $post(params?: {ip: string, serviceType?: license.LicenseTypeEnum, version: license.OrderableDirectAdminVersionEnum}): Promise<order.Order>;
                 };
             }
         }
         office: {
             new: {
                 // GET /order/license/office/new
-                $get(param?: {giftCode?: string, officeBusinessQuantity?: number, officeProPlusQuantity?: number}): Promise<string[]>;
+                $get(params?: {giftCode?: string, officeBusinessQuantity?: number, officeProPlusQuantity?: number}): Promise<string[]>;
                 $(duration: string): {
                     // GET /order/license/office/new/{duration}
-                    $get(param?: {giftCode?: string, officeBusinessQuantity?: number, officeProPlusQuantity?: number}): Promise<order.Order>;
+                    $get(params?: {giftCode?: string, officeBusinessQuantity?: number, officeProPlusQuantity?: number}): Promise<order.Order>;
                     // POST /order/license/office/new/{duration}
-                    $post(body?: {giftCode?: string, officeBusinessQuantity?: number, officeProPlusQuantity?: number}): Promise<order.Order>;
+                    $post(params?: {giftCode?: string, officeBusinessQuantity?: number, officeProPlusQuantity?: number}): Promise<order.Order>;
                 };
             }
         }
@@ -2682,12 +2682,12 @@ export interface Order{
             $get(): Promise<string[]>;
             new: {
                 // GET /order/license/plesk/new
-                $get(param?: {antivirus?: license.OrderableAntivirusEnum, applicationSet?: license.PleskApplicationSetEnum, domainNumber?: license.OrderablePleskDomainNumberEnum, ip: string, languagePackNumber?: license.OrderablePleskLanguagePackEnum, powerpack?: boolean, resellerManagement?: boolean, serviceType?: license.LicenseTypeEnum, version: license.PleskVersionEnum, wordpressToolkit?: boolean}): Promise<string[]>;
+                $get(params?: {antivirus?: license.OrderableAntivirusEnum, applicationSet?: license.PleskApplicationSetEnum, domainNumber?: license.OrderablePleskDomainNumberEnum, ip: string, languagePackNumber?: license.OrderablePleskLanguagePackEnum, powerpack?: boolean, resellerManagement?: boolean, serviceType?: license.LicenseTypeEnum, version: license.PleskVersionEnum, wordpressToolkit?: boolean}): Promise<string[]>;
                 $(duration: string): {
                     // GET /order/license/plesk/new/{duration}
-                    $get(param?: {antivirus?: license.OrderableAntivirusEnum, applicationSet?: license.PleskApplicationSetEnum, domainNumber?: license.OrderablePleskDomainNumberEnum, ip: string, languagePackNumber?: license.OrderablePleskLanguagePackEnum, powerpack?: boolean, resellerManagement?: boolean, serviceType?: license.LicenseTypeEnum, version: license.PleskVersionEnum, wordpressToolkit?: boolean}): Promise<order.Order>;
+                    $get(params?: {antivirus?: license.OrderableAntivirusEnum, applicationSet?: license.PleskApplicationSetEnum, domainNumber?: license.OrderablePleskDomainNumberEnum, ip: string, languagePackNumber?: license.OrderablePleskLanguagePackEnum, powerpack?: boolean, resellerManagement?: boolean, serviceType?: license.LicenseTypeEnum, version: license.PleskVersionEnum, wordpressToolkit?: boolean}): Promise<order.Order>;
                     // POST /order/license/plesk/new/{duration}
-                    $post(body?: {antivirus?: license.OrderableAntivirusEnum, applicationSet?: license.PleskApplicationSetEnum, domainNumber?: license.OrderablePleskDomainNumberEnum, ip: string, languagePackNumber?: license.OrderablePleskLanguagePackEnum, powerpack?: boolean, resellerManagement?: boolean, serviceType?: license.LicenseTypeEnum, version: license.PleskVersionEnum, wordpressToolkit?: boolean}): Promise<order.Order>;
+                    $post(params?: {antivirus?: license.OrderableAntivirusEnum, applicationSet?: license.PleskApplicationSetEnum, domainNumber?: license.OrderablePleskDomainNumberEnum, ip: string, languagePackNumber?: license.OrderablePleskLanguagePackEnum, powerpack?: boolean, resellerManagement?: boolean, serviceType?: license.LicenseTypeEnum, version: license.PleskVersionEnum, wordpressToolkit?: boolean}): Promise<order.Order>;
                 };
             }
             $(serviceName: string): {
@@ -2695,12 +2695,12 @@ export interface Order{
                 $get(): Promise<string[]>;
                 upgrade: {
                     // GET /order/license/plesk/{serviceName}/upgrade
-                    $get(param?: {antispam?: license.OrderableAntispamEnum, antivirus?: license.OrderableAntivirusEnum, applicationSet?: license.PleskApplicationSetEnum, domainNumber?: license.OrderablePleskDomainNumberEnum, languagePackNumber?: license.OrderablePleskLanguagePackEnum, powerpack?: boolean, resellerManagement?: boolean, version?: license.PleskVersionEnum, wordpressToolkit?: boolean}): Promise<string[]>;
+                    $get(params?: {antispam?: license.OrderableAntispamEnum, antivirus?: license.OrderableAntivirusEnum, applicationSet?: license.PleskApplicationSetEnum, domainNumber?: license.OrderablePleskDomainNumberEnum, languagePackNumber?: license.OrderablePleskLanguagePackEnum, powerpack?: boolean, resellerManagement?: boolean, version?: license.PleskVersionEnum, wordpressToolkit?: boolean}): Promise<string[]>;
                     $(duration: string): {
                         // GET /order/license/plesk/{serviceName}/upgrade/{duration}
-                        $get(param?: {antispam?: license.OrderableAntispamEnum, antivirus?: license.OrderableAntivirusEnum, applicationSet?: license.PleskApplicationSetEnum, domainNumber?: license.OrderablePleskDomainNumberEnum, languagePackNumber?: license.OrderablePleskLanguagePackEnum, powerpack?: boolean, resellerManagement?: boolean, version?: license.PleskVersionEnum, wordpressToolkit?: boolean}): Promise<order.Order>;
+                        $get(params?: {antispam?: license.OrderableAntispamEnum, antivirus?: license.OrderableAntivirusEnum, applicationSet?: license.PleskApplicationSetEnum, domainNumber?: license.OrderablePleskDomainNumberEnum, languagePackNumber?: license.OrderablePleskLanguagePackEnum, powerpack?: boolean, resellerManagement?: boolean, version?: license.PleskVersionEnum, wordpressToolkit?: boolean}): Promise<order.Order>;
                         // POST /order/license/plesk/{serviceName}/upgrade/{duration}
-                        $post(body?: {antispam?: license.OrderableAntispamEnum, antivirus?: license.OrderableAntivirusEnum, applicationSet?: license.PleskApplicationSetEnum, domainNumber?: license.OrderablePleskDomainNumberEnum, languagePackNumber?: license.OrderablePleskLanguagePackEnum, powerpack?: boolean, resellerManagement?: boolean, version?: license.PleskVersionEnum, wordpressToolkit?: boolean}): Promise<order.Order>;
+                        $post(params?: {antispam?: license.OrderableAntispamEnum, antivirus?: license.OrderableAntivirusEnum, applicationSet?: license.PleskApplicationSetEnum, domainNumber?: license.OrderablePleskDomainNumberEnum, languagePackNumber?: license.OrderablePleskLanguagePackEnum, powerpack?: boolean, resellerManagement?: boolean, version?: license.PleskVersionEnum, wordpressToolkit?: boolean}): Promise<order.Order>;
                     };
                 }
             };
@@ -2710,12 +2710,12 @@ export interface Order{
             $get(): Promise<string[]>;
             new: {
                 // GET /order/license/sqlserver/new
-                $get(param?: {ip: string, version: license.SqlServerVersionEnum}): Promise<string[]>;
+                $get(params?: {ip: string, version: license.SqlServerVersionEnum}): Promise<string[]>;
                 $(duration: string): {
                     // GET /order/license/sqlserver/new/{duration}
-                    $get(param?: {ip: string, version: license.SqlServerVersionEnum}): Promise<order.Order>;
+                    $get(params?: {ip: string, version: license.SqlServerVersionEnum}): Promise<order.Order>;
                     // POST /order/license/sqlserver/new/{duration}
-                    $post(body?: {ip: string, version: license.SqlServerVersionEnum}): Promise<order.Order>;
+                    $post(params?: {ip: string, version: license.SqlServerVersionEnum}): Promise<order.Order>;
                 };
             }
             $(serviceName: string): {
@@ -2723,12 +2723,12 @@ export interface Order{
                 $get(): Promise<string[]>;
                 upgrade: {
                     // GET /order/license/sqlserver/{serviceName}/upgrade
-                    $get(param?: {version: license.SqlServerVersionEnum}): Promise<string[]>;
+                    $get(params?: {version: license.SqlServerVersionEnum}): Promise<string[]>;
                     $(duration: string): {
                         // GET /order/license/sqlserver/{serviceName}/upgrade/{duration}
-                        $get(param?: {version: license.SqlServerVersionEnum}): Promise<order.Order>;
+                        $get(params?: {version: license.SqlServerVersionEnum}): Promise<order.Order>;
                         // POST /order/license/sqlserver/{serviceName}/upgrade/{duration}
-                        $post(body?: {version: license.SqlServerVersionEnum}): Promise<order.Order>;
+                        $post(params?: {version: license.SqlServerVersionEnum}): Promise<order.Order>;
                     };
                 }
             };
@@ -2738,12 +2738,12 @@ export interface Order{
             $get(): Promise<string[]>;
             new: {
                 // GET /order/license/virtuozzo/new
-                $get(param?: {containerNumber: license.OrderableVirtuozzoContainerNumberEnum, ip: string, serviceType?: license.LicenseTypeEnum, version: license.OrderableVirtuozzoVersionEnum}): Promise<string[]>;
+                $get(params?: {containerNumber: license.OrderableVirtuozzoContainerNumberEnum, ip: string, serviceType?: license.LicenseTypeEnum, version: license.OrderableVirtuozzoVersionEnum}): Promise<string[]>;
                 $(duration: string): {
                     // GET /order/license/virtuozzo/new/{duration}
-                    $get(param?: {containerNumber: license.OrderableVirtuozzoContainerNumberEnum, ip: string, serviceType?: license.LicenseTypeEnum, version: license.OrderableVirtuozzoVersionEnum}): Promise<order.Order>;
+                    $get(params?: {containerNumber: license.OrderableVirtuozzoContainerNumberEnum, ip: string, serviceType?: license.LicenseTypeEnum, version: license.OrderableVirtuozzoVersionEnum}): Promise<order.Order>;
                     // POST /order/license/virtuozzo/new/{duration}
-                    $post(body?: {containerNumber: license.OrderableVirtuozzoContainerNumberEnum, ip: string, serviceType?: license.LicenseTypeEnum, version: license.OrderableVirtuozzoVersionEnum}): Promise<order.Order>;
+                    $post(params?: {containerNumber: license.OrderableVirtuozzoContainerNumberEnum, ip: string, serviceType?: license.LicenseTypeEnum, version: license.OrderableVirtuozzoVersionEnum}): Promise<order.Order>;
                 };
             }
             $(serviceName: string): {
@@ -2751,12 +2751,12 @@ export interface Order{
                 $get(): Promise<string[]>;
                 upgrade: {
                     // GET /order/license/virtuozzo/{serviceName}/upgrade
-                    $get(param?: {containerNumber: license.OrderableVirtuozzoContainerNumberEnum}): Promise<string[]>;
+                    $get(params?: {containerNumber: license.OrderableVirtuozzoContainerNumberEnum}): Promise<string[]>;
                     $(duration: string): {
                         // GET /order/license/virtuozzo/{serviceName}/upgrade/{duration}
-                        $get(param?: {containerNumber: license.OrderableVirtuozzoContainerNumberEnum}): Promise<order.Order>;
+                        $get(params?: {containerNumber: license.OrderableVirtuozzoContainerNumberEnum}): Promise<order.Order>;
                         // POST /order/license/virtuozzo/{serviceName}/upgrade/{duration}
-                        $post(body?: {containerNumber: license.OrderableVirtuozzoContainerNumberEnum}): Promise<order.Order>;
+                        $post(params?: {containerNumber: license.OrderableVirtuozzoContainerNumberEnum}): Promise<order.Order>;
                     };
                 }
             };
@@ -2766,12 +2766,12 @@ export interface Order{
             $get(): Promise<string[]>;
             new: {
                 // GET /order/license/windows/new
-                $get(param?: {ip: string, serviceType?: license.LicenseTypeEnum, sqlVersion?: license.WindowsSqlVersionEnum, version: license.WindowsOsVersionEnum}): Promise<string[]>;
+                $get(params?: {ip: string, serviceType?: license.LicenseTypeEnum, sqlVersion?: license.WindowsSqlVersionEnum, version: license.WindowsOsVersionEnum}): Promise<string[]>;
                 $(duration: string): {
                     // GET /order/license/windows/new/{duration}
-                    $get(param?: {ip: string, serviceType?: license.LicenseTypeEnum, sqlVersion?: license.WindowsSqlVersionEnum, version: license.WindowsOsVersionEnum}): Promise<order.Order>;
+                    $get(params?: {ip: string, serviceType?: license.LicenseTypeEnum, sqlVersion?: license.WindowsSqlVersionEnum, version: license.WindowsOsVersionEnum}): Promise<order.Order>;
                     // POST /order/license/windows/new/{duration}
-                    $post(body?: {ip: string, serviceType?: license.LicenseTypeEnum, sqlVersion?: license.WindowsSqlVersionEnum, version: license.WindowsOsVersionEnum}): Promise<order.Order>;
+                    $post(params?: {ip: string, serviceType?: license.LicenseTypeEnum, sqlVersion?: license.WindowsSqlVersionEnum, version: license.WindowsOsVersionEnum}): Promise<order.Order>;
                 };
             }
             $(serviceName: string): {
@@ -2779,12 +2779,12 @@ export interface Order{
                 $get(): Promise<string[]>;
                 upgrade: {
                     // GET /order/license/windows/{serviceName}/upgrade
-                    $get(param?: {sqlVersion?: license.WindowsSqlVersionEnum, version?: license.WindowsOsVersionEnum}): Promise<string[]>;
+                    $get(params?: {sqlVersion?: license.WindowsSqlVersionEnum, version?: license.WindowsOsVersionEnum}): Promise<string[]>;
                     $(duration: string): {
                         // GET /order/license/windows/{serviceName}/upgrade/{duration}
-                        $get(param?: {sqlVersion?: license.WindowsSqlVersionEnum, version?: license.WindowsOsVersionEnum}): Promise<order.Order>;
+                        $get(params?: {sqlVersion?: license.WindowsSqlVersionEnum, version?: license.WindowsOsVersionEnum}): Promise<order.Order>;
                         // POST /order/license/windows/{serviceName}/upgrade/{duration}
-                        $post(body?: {sqlVersion?: license.WindowsSqlVersionEnum, version?: license.WindowsOsVersionEnum}): Promise<order.Order>;
+                        $post(params?: {sqlVersion?: license.WindowsSqlVersionEnum, version?: license.WindowsOsVersionEnum}): Promise<order.Order>;
                     };
                 }
             };
@@ -2794,12 +2794,12 @@ export interface Order{
             $get(): Promise<string[]>;
             new: {
                 // GET /order/license/worklight/new
-                $get(param?: {ip: string, lessThan1000Users: boolean, version: license.WorkLightVersionEnum}): Promise<string[]>;
+                $get(params?: {ip: string, lessThan1000Users: boolean, version: license.WorkLightVersionEnum}): Promise<string[]>;
                 $(duration: string): {
                     // GET /order/license/worklight/new/{duration}
-                    $get(param?: {ip: string, lessThan1000Users: boolean, version: license.WorkLightVersionEnum}): Promise<order.Order>;
+                    $get(params?: {ip: string, lessThan1000Users: boolean, version: license.WorkLightVersionEnum}): Promise<order.Order>;
                     // POST /order/license/worklight/new/{duration}
-                    $post(body?: {ip: string, lessThan1000Users: boolean, version: license.WorkLightVersionEnum}): Promise<order.Order>;
+                    $post(params?: {ip: string, lessThan1000Users: boolean, version: license.WorkLightVersionEnum}): Promise<order.Order>;
                 };
             }
             $(serviceName: string): {
@@ -2807,12 +2807,12 @@ export interface Order{
                 $get(): Promise<string[]>;
                 upgrade: {
                     // GET /order/license/worklight/{serviceName}/upgrade
-                    $get(param?: {version: license.WorkLightVersionEnum}): Promise<string[]>;
+                    $get(params?: {version: license.WorkLightVersionEnum}): Promise<string[]>;
                     $(duration: string): {
                         // GET /order/license/worklight/{serviceName}/upgrade/{duration}
-                        $get(param?: {version: license.WorkLightVersionEnum}): Promise<order.Order>;
+                        $get(params?: {version: license.WorkLightVersionEnum}): Promise<order.Order>;
                         // POST /order/license/worklight/{serviceName}/upgrade/{duration}
-                        $post(body?: {version: license.WorkLightVersionEnum}): Promise<order.Order>;
+                        $post(params?: {version: license.WorkLightVersionEnum}): Promise<order.Order>;
                     };
                 }
             };
@@ -2823,12 +2823,12 @@ export interface Order{
         $get(): Promise<string[]>;
         new: {
             // GET /order/overTheBox/new
-            $get(param?: {deviceId?: string, offer: string, voucher?: string}): Promise<string[]>;
+            $get(params?: {deviceId?: string, offer: string, voucher?: string}): Promise<string[]>;
             $(duration: string): {
                 // GET /order/overTheBox/new/{duration}
-                $get(param?: {deviceId?: string, offer: string, voucher?: string}): Promise<order.Order>;
+                $get(params?: {deviceId?: string, offer: string, voucher?: string}): Promise<order.Order>;
                 // POST /order/overTheBox/new/{duration}
-                $post(body?: {deviceId?: string, offer: string, voucher?: string}): Promise<order.Order>;
+                $post(params?: {deviceId?: string, offer: string, voucher?: string}): Promise<order.Order>;
             };
         }
         $(serviceName: string): {
@@ -2836,21 +2836,21 @@ export interface Order{
             $get(): Promise<string[]>;
             migrate: {
                 // GET /order/overTheBox/{serviceName}/migrate
-                $get(param?: {hardware: boolean, offer: string, shippingContactID?: string, shippingMethod?: overTheBox.ShippingMethodEnum, shippingRelayID?: number}): Promise<order.Order>;
+                $get(params?: {hardware: boolean, offer: string, shippingContactID?: string, shippingMethod?: overTheBox.ShippingMethodEnum, shippingRelayID?: number}): Promise<order.Order>;
                 // POST /order/overTheBox/{serviceName}/migrate
-                $post(body?: {hardware: boolean, offer: string, shippingContactID?: string, shippingMethod?: overTheBox.ShippingMethodEnum, shippingRelayID?: number}): Promise<order.Order>;
+                $post(params?: {hardware: boolean, offer: string, shippingContactID?: string, shippingMethod?: overTheBox.ShippingMethodEnum, shippingRelayID?: number}): Promise<order.Order>;
             }
         };
     }
     router: {
         new: {
             // GET /order/router/new
-            $get(param?: {vrack: string}): Promise<string[]>;
+            $get(params?: {vrack: string}): Promise<string[]>;
             $(duration: string): {
                 // GET /order/router/new/{duration}
-                $get(param?: {vrack: string}): Promise<order.Order>;
+                $get(params?: {vrack: string}): Promise<order.Order>;
                 // POST /order/router/new/{duration}
-                $post(body?: {vrack: string}): Promise<order.Order>;
+                $post(params?: {vrack: string}): Promise<order.Order>;
             };
         }
     }
@@ -2858,12 +2858,12 @@ export interface Order{
         csp2: {
             new: {
                 // GET /order/saas/csp2/new
-                $get(param?: {giftCode?: string, officeBusinessQuantity?: number, officeProPlusQuantity?: number}): Promise<string[]>;
+                $get(params?: {giftCode?: string, officeBusinessQuantity?: number, officeProPlusQuantity?: number}): Promise<string[]>;
                 $(duration: string): {
                     // GET /order/saas/csp2/new/{duration}
-                    $get(param?: {giftCode?: string, officeBusinessQuantity?: number, officeProPlusQuantity?: number}): Promise<order.Order>;
+                    $get(params?: {giftCode?: string, officeBusinessQuantity?: number, officeProPlusQuantity?: number}): Promise<order.Order>;
                     // POST /order/saas/csp2/new/{duration}
-                    $post(body?: {giftCode?: string, officeBusinessQuantity?: number, officeProPlusQuantity?: number}): Promise<order.Order>;
+                    $post(params?: {giftCode?: string, officeBusinessQuantity?: number, officeProPlusQuantity?: number}): Promise<order.Order>;
                 };
             }
         }
@@ -2873,18 +2873,18 @@ export interface Order{
         $get(): Promise<string[]>;
         new: {
             // GET /order/sms/new
-            $get(param?: {quantity: number}): Promise<order.Order>;
+            $get(params?: {quantity: number}): Promise<order.Order>;
             // POST /order/sms/new
-            $post(body?: {quantity: number}): Promise<order.Order>;
+            $post(params?: {quantity: number}): Promise<order.Order>;
         }
         $(serviceName: string): {
             // GET /order/sms/{serviceName}
             $get(): Promise<string[]>;
             credits: {
                 // GET /order/sms/{serviceName}/credits
-                $get(param?: {quantity: number}): Promise<order.Order>;
+                $get(params?: {quantity: number}): Promise<order.Order>;
                 // POST /order/sms/{serviceName}/credits
-                $post(body?: {quantity: number}): Promise<order.Order>;
+                $post(params?: {quantity: number}): Promise<order.Order>;
             }
         };
     }
@@ -2899,21 +2899,21 @@ export interface Order{
                 $get(): Promise<string[]>;
                 addSimultaneousLines: {
                     // GET /order/telephony/lines/{serviceName}/addSimultaneousLines
-                    $get(param?: {billingAccount: string, quantity: number}): Promise<order.Order>;
+                    $get(params?: {billingAccount: string, quantity: number}): Promise<order.Order>;
                     // POST /order/telephony/lines/{serviceName}/addSimultaneousLines
-                    $post(body?: {billingAccount: string, quantity: number}): Promise<order.Order>;
+                    $post(params?: {billingAccount: string, quantity: number}): Promise<order.Order>;
                 }
                 hardware: {
                     // GET /order/telephony/lines/{serviceName}/hardware
-                    $get(param?: {hardware: string, mondialRelayId?: string, retractation: boolean, shippingContactId?: string}): Promise<order.Order>;
+                    $get(params?: {hardware: string, mondialRelayId?: string, retractation: boolean, shippingContactId?: string}): Promise<order.Order>;
                     // POST /order/telephony/lines/{serviceName}/hardware
-                    $post(body?: {hardware: string, mondialRelayId?: string, retractation: boolean, shippingContactId?: string}): Promise<order.Order>;
+                    $post(params?: {hardware: string, mondialRelayId?: string, retractation: boolean, shippingContactId?: string}): Promise<order.Order>;
                 }
                 updateSimultaneousChannels: {
                     // GET /order/telephony/lines/{serviceName}/updateSimultaneousChannels
-                    $get(param?: {quantity: number}): Promise<order.Order>;
+                    $get(params?: {quantity: number}): Promise<order.Order>;
                     // POST /order/telephony/lines/{serviceName}/updateSimultaneousChannels
-                    $post(body?: {quantity: number}): Promise<order.Order>;
+                    $post(params?: {quantity: number}): Promise<order.Order>;
                 }
             };
         }
@@ -2926,9 +2926,9 @@ export interface Order{
         spare: {
             new: {
                 // GET /order/telephony/spare/new
-                $get(param?: {brand: string, mondialRelayId?: string, quantity: number, shippingContactId: number}): Promise<order.Order>;
+                $get(params?: {brand: string, mondialRelayId?: string, quantity: number, shippingContactId: number}): Promise<order.Order>;
                 // POST /order/telephony/spare/new
-                $post(body?: {brand: string, mondialRelayId?: string, quantity: number, shippingContactId: number}): Promise<order.Order>;
+                $post(params?: {brand: string, mondialRelayId?: string, quantity: number, shippingContactId: number}): Promise<order.Order>;
             }
         }
         trunks: {
@@ -2939,21 +2939,21 @@ export interface Order{
                 $get(): Promise<string[]>;
                 addSimultaneousLines: {
                     // GET /order/telephony/trunks/{serviceName}/addSimultaneousLines
-                    $get(param?: {billingAccount: string, quantity: number}): Promise<order.Order>;
+                    $get(params?: {billingAccount: string, quantity: number}): Promise<order.Order>;
                     // POST /order/telephony/trunks/{serviceName}/addSimultaneousLines
-                    $post(body?: {billingAccount: string, quantity: number}): Promise<order.Order>;
+                    $post(params?: {billingAccount: string, quantity: number}): Promise<order.Order>;
                 }
                 hardware: {
                     // GET /order/telephony/trunks/{serviceName}/hardware
-                    $get(param?: {hardware: string, mondialRelayId?: string, retractation: boolean, shippingContactId?: string}): Promise<order.Order>;
+                    $get(params?: {hardware: string, mondialRelayId?: string, retractation: boolean, shippingContactId?: string}): Promise<order.Order>;
                     // POST /order/telephony/trunks/{serviceName}/hardware
-                    $post(body?: {hardware: string, mondialRelayId?: string, retractation: boolean, shippingContactId?: string}): Promise<order.Order>;
+                    $post(params?: {hardware: string, mondialRelayId?: string, retractation: boolean, shippingContactId?: string}): Promise<order.Order>;
                 }
                 updateSimultaneousChannels: {
                     // GET /order/telephony/trunks/{serviceName}/updateSimultaneousChannels
-                    $get(param?: {quantity: number}): Promise<order.Order>;
+                    $get(params?: {quantity: number}): Promise<order.Order>;
                     // POST /order/telephony/trunks/{serviceName}/updateSimultaneousChannels
-                    $post(body?: {quantity: number}): Promise<order.Order>;
+                    $post(params?: {quantity: number}): Promise<order.Order>;
                 }
             };
         }
@@ -2962,45 +2962,45 @@ export interface Order{
             $get(): Promise<string[]>;
             accessories: {
                 // GET /order/telephony/{billingAccount}/accessories
-                $get(param?: {accessories: string[], mondialRelayId?: string, retractation: boolean, shippingContactId: number}): Promise<order.Order>;
+                $get(params?: {accessories: string[], mondialRelayId?: string, retractation: boolean, shippingContactId: number}): Promise<order.Order>;
                 // POST /order/telephony/{billingAccount}/accessories
-                $post(body?: {accessories: string[], mondialRelayId?: string, retractation: boolean, shippingContactId: number}): Promise<order.Order>;
+                $post(params?: {accessories: string[], mondialRelayId?: string, retractation: boolean, shippingContactId: number}): Promise<order.Order>;
             }
             line: {
                 // GET /order/telephony/{billingAccount}/line
-                $get(param?: {brand?: string, displayUniversalDirectories: boolean[], extraSimultaneousLines: number[], mondialRelayId?: string, offers: string[], ownerContactIds: number[], quantity: number, retractation: boolean, shippingContactId: number, types: telephony.LineTypeEnum[], zones?: string[]}): Promise<order.Order>;
+                $get(params?: {brand?: string, displayUniversalDirectories: boolean[], extraSimultaneousLines: number[], mondialRelayId?: string, offers: string[], ownerContactIds: number[], quantity: number, retractation: boolean, shippingContactId: number, types: telephony.LineTypeEnum[], zones?: string[]}): Promise<order.Order>;
                 // POST /order/telephony/{billingAccount}/line
-                $post(body?: {brand?: string, displayUniversalDirectories: boolean[], extraSimultaneousLines: number[], mondialRelayId?: string, offers: string[], ownerContactIds: number[], quantity: number, retractation: boolean, shippingContactId: number, types: telephony.LineTypeEnum[], zones?: string[]}): Promise<order.Order>;
+                $post(params?: {brand?: string, displayUniversalDirectories: boolean[], extraSimultaneousLines: number[], mondialRelayId?: string, offers: string[], ownerContactIds: number[], quantity: number, retractation: boolean, shippingContactId: number, types: telephony.LineTypeEnum[], zones?: string[]}): Promise<order.Order>;
             }
             numberGeographic: {
                 // GET /order/telephony/{billingAccount}/numberGeographic
-                $get(param?: {ape?: string, city: string, country: telephony.NumberCountryEnum, displayUniversalDirectory: boolean, email?: string, firstname?: string, legalform: nichandle.LegalFormEnum, name?: string, offer: telephony.NumberOffer, organisation?: string, phone?: string, pool?: telephony.NumberPoolEnum, retractation: boolean, siret?: string, socialNomination?: string, specificNumber?: string, streetName?: string, streetNumber?: string, zip?: string, zone: string}): Promise<order.Order>;
+                $get(params?: {ape?: string, city: string, country: telephony.NumberCountryEnum, displayUniversalDirectory: boolean, email?: string, firstname?: string, legalform: nichandle.LegalFormEnum, name?: string, offer: telephony.NumberOffer, organisation?: string, phone?: string, pool?: telephony.NumberPoolEnum, retractation: boolean, siret?: string, socialNomination?: string, specificNumber?: string, streetName?: string, streetNumber?: string, zip?: string, zone: string}): Promise<order.Order>;
                 // POST /order/telephony/{billingAccount}/numberGeographic
-                $post(body?: {ape?: string, city: string, country: telephony.NumberCountryEnum, displayUniversalDirectory: boolean, email?: string, firstname?: string, legalform: nichandle.LegalFormEnum, name?: string, offer: telephony.NumberOffer, organisation?: string, phone?: string, pool?: telephony.NumberPoolEnum, retractation: boolean, siret?: string, socialNomination?: string, specificNumber?: string, streetName?: string, streetNumber?: string, zip?: string, zone: string}): Promise<order.Order>;
+                $post(params?: {ape?: string, city: string, country: telephony.NumberCountryEnum, displayUniversalDirectory: boolean, email?: string, firstname?: string, legalform: nichandle.LegalFormEnum, name?: string, offer: telephony.NumberOffer, organisation?: string, phone?: string, pool?: telephony.NumberPoolEnum, retractation: boolean, siret?: string, socialNomination?: string, specificNumber?: string, streetName?: string, streetNumber?: string, zip?: string, zone: string}): Promise<order.Order>;
             }
             numberNogeographic: {
                 // GET /order/telephony/{billingAccount}/numberNogeographic
-                $get(param?: {ape?: string, city?: string, country: telephony.NumberCountryEnum, displayUniversalDirectory: boolean, email?: string, firstname?: string, legalform: nichandle.LegalFormEnum, name?: string, offer: telephony.NumberOffer, organisation?: string, phone?: string, pool?: telephony.NumberPoolEnum, retractation: boolean, siret?: string, socialNomination?: string, specificNumber?: string, streetName?: string, streetNumber?: string, zip?: string}): Promise<order.Order>;
+                $get(params?: {ape?: string, city?: string, country: telephony.NumberCountryEnum, displayUniversalDirectory: boolean, email?: string, firstname?: string, legalform: nichandle.LegalFormEnum, name?: string, offer: telephony.NumberOffer, organisation?: string, phone?: string, pool?: telephony.NumberPoolEnum, retractation: boolean, siret?: string, socialNomination?: string, specificNumber?: string, streetName?: string, streetNumber?: string, zip?: string}): Promise<order.Order>;
                 // POST /order/telephony/{billingAccount}/numberNogeographic
-                $post(body?: {ape?: string, city?: string, country: telephony.NumberCountryEnum, displayUniversalDirectory: boolean, email?: string, firstname?: string, legalform: nichandle.LegalFormEnum, name?: string, offer: telephony.NumberOffer, organisation?: string, phone?: string, pool?: telephony.NumberPoolEnum, retractation: boolean, siret?: string, socialNomination?: string, specificNumber?: string, streetName?: string, streetNumber?: string, zip?: string}): Promise<order.Order>;
+                $post(params?: {ape?: string, city?: string, country: telephony.NumberCountryEnum, displayUniversalDirectory: boolean, email?: string, firstname?: string, legalform: nichandle.LegalFormEnum, name?: string, offer: telephony.NumberOffer, organisation?: string, phone?: string, pool?: telephony.NumberPoolEnum, retractation: boolean, siret?: string, socialNomination?: string, specificNumber?: string, streetName?: string, streetNumber?: string, zip?: string}): Promise<order.Order>;
             }
             numberSpecial: {
                 // GET /order/telephony/{billingAccount}/numberSpecial
-                $get(param?: {ape: string, city?: string, country: telephony.NumberCountryEnum, displayUniversalDirectory: boolean, email?: string, firstname?: string, legalform: nichandle.LegalFormEnum, name?: string, organisation?: string, phone?: string, pool?: telephony.NumberPoolEnum, range: string, retractation: boolean, siret: string, socialNomination: string, specificNumber?: string, streetName?: string, streetNumber?: string, typology: telephony.NumberSpecialTypologyEnum, zip?: string}): Promise<order.Order>;
+                $get(params?: {ape: string, city?: string, country: telephony.NumberCountryEnum, displayUniversalDirectory: boolean, email?: string, firstname?: string, legalform: nichandle.LegalFormEnum, name?: string, organisation?: string, phone?: string, pool?: telephony.NumberPoolEnum, range: string, retractation: boolean, siret: string, socialNomination: string, specificNumber?: string, streetName?: string, streetNumber?: string, typology: telephony.NumberSpecialTypologyEnum, zip?: string}): Promise<order.Order>;
                 // POST /order/telephony/{billingAccount}/numberSpecial
-                $post(body?: {ape: string, city?: string, country: telephony.NumberCountryEnum, displayUniversalDirectory: boolean, email?: string, firstname?: string, legalform: nichandle.LegalFormEnum, name?: string, organisation?: string, phone?: string, pool?: telephony.NumberPoolEnum, range: string, retractation: boolean, siret: string, socialNomination: string, specificNumber?: string, streetName?: string, streetNumber?: string, typology: telephony.NumberSpecialTypologyEnum, zip?: string}): Promise<order.Order>;
+                $post(params?: {ape: string, city?: string, country: telephony.NumberCountryEnum, displayUniversalDirectory: boolean, email?: string, firstname?: string, legalform: nichandle.LegalFormEnum, name?: string, organisation?: string, phone?: string, pool?: telephony.NumberPoolEnum, range: string, retractation: boolean, siret: string, socialNomination: string, specificNumber?: string, streetName?: string, streetNumber?: string, typology: telephony.NumberSpecialTypologyEnum, zip?: string}): Promise<order.Order>;
             }
             portability: {
                 // GET /order/telephony/{billingAccount}/portability
-                $get(param?: {building?: string, callNumber: string, city: string, contactName?: string, contactNumber?: string, country: telephony.portability.CountriesAvailable, desireDate?: string, displayUniversalDirectory: boolean, door?: string, executeAsSoonAsPossible?: boolean, fiabilisation?: boolean, firstName: string, floor?: number, lineToRedirectAliasTo?: string, listNumbers?: string, mobilePhone?: string, name: string, offer: telephony.portability.OfferType, rio?: string, siret?: string, socialReason: telephony.portability.SocialReason, specialNumberCategory?: telephony.portability.SpecialNumberCategoryEnum, stair?: number, streetName: string, streetNumber: number, streetNumberExtra?: string, streetType?: string, type: telephony.portability.NumberType, zip: string}): Promise<order.Order>;
+                $get(params?: {building?: string, callNumber: string, city: string, contactName?: string, contactNumber?: string, country: telephony.portability.CountriesAvailable, desireDate?: string, displayUniversalDirectory: boolean, door?: string, executeAsSoonAsPossible?: boolean, fiabilisation?: boolean, firstName: string, floor?: number, lineToRedirectAliasTo?: string, listNumbers?: string, mobilePhone?: string, name: string, offer: telephony.portability.OfferType, rio?: string, siret?: string, socialReason: telephony.portability.SocialReason, specialNumberCategory?: telephony.portability.SpecialNumberCategoryEnum, stair?: number, streetName: string, streetNumber: number, streetNumberExtra?: string, streetType?: string, type: telephony.portability.NumberType, zip: string}): Promise<order.Order>;
                 // POST /order/telephony/{billingAccount}/portability
-                $post(body?: {building?: string, callNumber: string, city: string, contactName?: string, contactNumber?: string, country: telephony.portability.CountriesAvailable, desireDate?: string, displayUniversalDirectory: boolean, door?: string, executeAsSoonAsPossible?: boolean, fiabilisation?: boolean, firstName: string, floor?: number, lineToRedirectAliasTo?: string, listNumbers?: string, mobilePhone?: string, name: string, offer: telephony.portability.OfferType, rio?: string, siret?: string, socialReason: telephony.portability.SocialReason, specialNumberCategory?: telephony.portability.SpecialNumberCategoryEnum, stair?: number, streetName: string, streetNumber: number, streetNumberExtra?: string, streetType?: string, type: telephony.portability.NumberType, zip: string}): Promise<order.Order>;
+                $post(params?: {building?: string, callNumber: string, city: string, contactName?: string, contactNumber?: string, country: telephony.portability.CountriesAvailable, desireDate?: string, displayUniversalDirectory: boolean, door?: string, executeAsSoonAsPossible?: boolean, fiabilisation?: boolean, firstName: string, floor?: number, lineToRedirectAliasTo?: string, listNumbers?: string, mobilePhone?: string, name: string, offer: telephony.portability.OfferType, rio?: string, siret?: string, socialReason: telephony.portability.SocialReason, specialNumberCategory?: telephony.portability.SpecialNumberCategoryEnum, stair?: number, streetName: string, streetNumber: number, streetNumberExtra?: string, streetType?: string, type: telephony.portability.NumberType, zip: string}): Promise<order.Order>;
             }
             securityDeposit: {
                 // GET /order/telephony/{billingAccount}/securityDeposit
-                $get(param?: {amount: telephony.SecurityDepositAmountsEnum}): Promise<order.Order>;
+                $get(params?: {amount: telephony.SecurityDepositAmountsEnum}): Promise<order.Order>;
                 // POST /order/telephony/{billingAccount}/securityDeposit
-                $post(body?: {amount: telephony.SecurityDepositAmountsEnum}): Promise<order.Order>;
+                $post(params?: {amount: telephony.SecurityDepositAmountsEnum}): Promise<order.Order>;
             }
         };
     }
@@ -3013,9 +3013,9 @@ export interface Order{
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 $(planCode: string): {
                     // GET /order/upgrade/baremetalPrivateBandwidth/{serviceName}/{planCode}
-                    $get(param?: {quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $get(params?: {quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
                     // POST /order/upgrade/baremetalPrivateBandwidth/{serviceName}/{planCode}
-                    $post(body?: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $post(params?: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
                 };
             };
         }
@@ -3027,9 +3027,9 @@ export interface Order{
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 $(planCode: string): {
                     // GET /order/upgrade/baremetalPublicBandwidth/{serviceName}/{planCode}
-                    $get(param?: {quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $get(params?: {quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
                     // POST /order/upgrade/baremetalPublicBandwidth/{serviceName}/{planCode}
-                    $post(body?: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $post(params?: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
                 };
             };
         }
@@ -3041,9 +3041,9 @@ export interface Order{
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 $(planCode: string): {
                     // GET /order/upgrade/cephaas/{serviceName}/{planCode}
-                    $get(param?: {quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $get(params?: {quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
                     // POST /order/upgrade/cephaas/{serviceName}/{planCode}
-                    $post(body?: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $post(params?: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
                 };
             };
         }
@@ -3055,9 +3055,9 @@ export interface Order{
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 $(planCode: string): {
                     // GET /order/upgrade/ipLoadbalancing/{serviceName}/{planCode}
-                    $get(param?: {quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $get(params?: {quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
                     // POST /order/upgrade/ipLoadbalancing/{serviceName}/{planCode}
-                    $post(body?: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $post(params?: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
                 };
             };
         }
@@ -3069,9 +3069,9 @@ export interface Order{
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 $(planCode: string): {
                     // GET /order/upgrade/logs/{serviceName}/{planCode}
-                    $get(param?: {quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $get(params?: {quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
                     // POST /order/upgrade/logs/{serviceName}/{planCode}
-                    $post(body?: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $post(params?: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
                 };
             };
         }
@@ -3083,9 +3083,9 @@ export interface Order{
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 $(planCode: string): {
                     // GET /order/upgrade/metrics/{serviceName}/{planCode}
-                    $get(param?: {quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $get(params?: {quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
                     // POST /order/upgrade/metrics/{serviceName}/{planCode}
-                    $post(body?: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $post(params?: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
                 };
             };
         }
@@ -3097,9 +3097,9 @@ export interface Order{
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 $(planCode: string): {
                     // GET /order/upgrade/microsoftExchange/{serviceName}/{planCode}
-                    $get(param?: {quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $get(params?: {quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
                     // POST /order/upgrade/microsoftExchange/{serviceName}/{planCode}
-                    $post(body?: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $post(params?: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
                 };
             };
         }
@@ -3111,9 +3111,9 @@ export interface Order{
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 $(planCode: string): {
                     // GET /order/upgrade/privateCloud/{serviceName}/{planCode}
-                    $get(param?: {quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $get(params?: {quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
                     // POST /order/upgrade/privateCloud/{serviceName}/{planCode}
-                    $post(body?: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $post(params?: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
                 };
             };
         }
@@ -3125,9 +3125,9 @@ export interface Order{
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 $(planCode: string): {
                     // GET /order/upgrade/sslGateway/{serviceName}/{planCode}
-                    $get(param?: {quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $get(params?: {quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
                     // POST /order/upgrade/sslGateway/{serviceName}/{planCode}
-                    $post(body?: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $post(params?: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
                 };
             };
         }
@@ -3139,9 +3139,9 @@ export interface Order{
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 $(planCode: string): {
                     // GET /order/upgrade/vps/{serviceName}/{planCode}
-                    $get(param?: {quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $get(params?: {quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
                     // POST /order/upgrade/vps/{serviceName}/{planCode}
-                    $post(body?: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $post(params?: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
                 };
             };
         }
@@ -3154,12 +3154,12 @@ export interface Order{
             $get(): Promise<string[]>;
             upgrade: {
                 // GET /order/veeamCloudConnect/{serviceName}/upgrade
-                $get(param?: {offer: veeamCloudConnect.Offer}): Promise<string[]>;
+                $get(params?: {offer: veeamCloudConnect.Offer}): Promise<string[]>;
                 $(duration: string): {
                     // GET /order/veeamCloudConnect/{serviceName}/upgrade/{duration}
-                    $get(param?: {offer: veeamCloudConnect.Offer}): Promise<order.Order>;
+                    $get(params?: {offer: veeamCloudConnect.Offer}): Promise<order.Order>;
                     // POST /order/veeamCloudConnect/{serviceName}/upgrade/{duration}
-                    $post(body?: {offer: veeamCloudConnect.Offer}): Promise<order.Order>;
+                    $post(params?: {offer: veeamCloudConnect.Offer}): Promise<order.Order>;
                 };
             }
         };
@@ -3172,12 +3172,12 @@ export interface Order{
             $get(): Promise<string[]>;
             additionalDisk: {
                 // GET /order/vps/{serviceName}/additionalDisk
-                $get(param?: {additionalDiskSize: vps.additionalDisk.AdditionalDiskSizeEnum}): Promise<string[]>;
+                $get(params?: {additionalDiskSize: vps.additionalDisk.AdditionalDiskSizeEnum}): Promise<string[]>;
                 $(duration: string): {
                     // GET /order/vps/{serviceName}/additionalDisk/{duration}
-                    $get(param?: {additionalDiskSize: vps.additionalDisk.AdditionalDiskSizeEnum}): Promise<order.Order>;
+                    $get(params?: {additionalDiskSize: vps.additionalDisk.AdditionalDiskSizeEnum}): Promise<order.Order>;
                     // POST /order/vps/{serviceName}/additionalDisk/{duration}
-                    $post(body?: {additionalDiskSize: vps.additionalDisk.AdditionalDiskSizeEnum}): Promise<order.Order>;
+                    $post(params?: {additionalDiskSize: vps.additionalDisk.AdditionalDiskSizeEnum}): Promise<order.Order>;
                 };
             }
             automatedBackup: {
@@ -3212,22 +3212,22 @@ export interface Order{
             }
             ip: {
                 // GET /order/vps/{serviceName}/ip
-                $get(param?: {country?: vps.ip.GeolocationEnum, number: number}): Promise<string[]>;
+                $get(params?: {country?: vps.ip.GeolocationEnum, number: number}): Promise<string[]>;
                 $(duration: string): {
                     // GET /order/vps/{serviceName}/ip/{duration}
-                    $get(param?: {country?: vps.ip.GeolocationEnum, number: number}): Promise<order.Order>;
+                    $get(params?: {country?: vps.ip.GeolocationEnum, number: number}): Promise<order.Order>;
                     // POST /order/vps/{serviceName}/ip/{duration}
-                    $post(body?: {country?: vps.ip.GeolocationEnum, number: number}): Promise<order.Order>;
+                    $post(params?: {country?: vps.ip.GeolocationEnum, number: number}): Promise<order.Order>;
                 };
             }
             plesk: {
                 // GET /order/vps/{serviceName}/plesk
-                $get(param?: {domainNumber: vps.PleskLicenseDomainNumberEnum}): Promise<string[]>;
+                $get(params?: {domainNumber: vps.PleskLicenseDomainNumberEnum}): Promise<string[]>;
                 $(duration: string): {
                     // GET /order/vps/{serviceName}/plesk/{duration}
-                    $get(param?: {domainNumber: vps.PleskLicenseDomainNumberEnum}): Promise<order.Order>;
+                    $get(params?: {domainNumber: vps.PleskLicenseDomainNumberEnum}): Promise<order.Order>;
                     // POST /order/vps/{serviceName}/plesk/{duration}
-                    $post(body?: {domainNumber: vps.PleskLicenseDomainNumberEnum}): Promise<order.Order>;
+                    $post(params?: {domainNumber: vps.PleskLicenseDomainNumberEnum}): Promise<order.Order>;
                 };
             }
             snapshot: {
@@ -3242,12 +3242,12 @@ export interface Order{
             }
             upgrade: {
                 // GET /order/vps/{serviceName}/upgrade
-                $get(param?: {model: string}): Promise<string[]>;
+                $get(params?: {model: string}): Promise<string[]>;
                 $(duration: string): {
                     // GET /order/vps/{serviceName}/upgrade/{duration}
-                    $get(param?: {model: string}): Promise<order.Order>;
+                    $get(params?: {model: string}): Promise<order.Order>;
                     // POST /order/vps/{serviceName}/upgrade/{duration}
-                    $post(body?: {model: string}): Promise<order.Order>;
+                    $post(params?: {model: string}): Promise<order.Order>;
                 };
             }
             veeam: {
@@ -3277,9 +3277,9 @@ export interface Order{
         $get(): Promise<string[]>;
         new: {
             // GET /order/vrack/new
-            $get(param?: {quantity?: number}): Promise<order.Order>;
+            $get(params?: {quantity?: number}): Promise<order.Order>;
             // POST /order/vrack/new
-            $post(body?: {quantity?: number}): Promise<order.Order>;
+            $post(params?: {quantity?: number}): Promise<order.Order>;
         }
         $(serviceName: string): {
             // GET /order/vrack/{serviceName}
@@ -3290,9 +3290,9 @@ export interface Order{
         spare: {
             new: {
                 // GET /order/xdsl/spare/new
-                $get(param?: {brand: string, mondialRelayId?: string, quantity: number, shippingContactId: number}): Promise<order.Order>;
+                $get(params?: {brand: string, mondialRelayId?: string, quantity: number, shippingContactId: number}): Promise<order.Order>;
                 // POST /order/xdsl/spare/new
-                $post(body?: {brand: string, mondialRelayId?: string, quantity: number, shippingContactId: number}): Promise<order.Order>;
+                $post(params?: {brand: string, mondialRelayId?: string, quantity: number, shippingContactId: number}): Promise<order.Order>;
             }
         }
     }

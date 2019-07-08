@@ -218,7 +218,7 @@ export interface OverTheBox{
         // GET /overTheBox/{serviceName}
         $get(): Promise<overTheBox.Service>;
         // PUT /overTheBox/{serviceName}
-        $put(body?: {SOCKSProxyEnabled?: boolean, customerDescription?: string, graphEndpoint?: overTheBox.GraphEndpoint, releaseChannel?: string, serviceName?: string, status?: overTheBox.ServiceStatusEnum, tunnelMode?: overTheBox.TunnelModeEnum}): Promise<void>;
+        $put(params?: {SOCKSProxyEnabled?: boolean, customerDescription?: string, graphEndpoint?: overTheBox.GraphEndpoint, releaseChannel?: string, serviceName?: string, status?: overTheBox.ServiceStatusEnum, tunnelMode?: overTheBox.TunnelModeEnum}): Promise<void>;
         availableReleaseChannels: {
             // GET /overTheBox/{serviceName}/availableReleaseChannels
             $get(): Promise<string[]>;
@@ -237,7 +237,7 @@ export interface OverTheBox{
         }
         changeContact: {
             // POST /overTheBox/{serviceName}/changeContact
-            $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
+            $post(params?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
         }
         device: {
             // DELETE /overTheBox/{serviceName}/device
@@ -246,9 +246,9 @@ export interface OverTheBox{
             $get(): Promise<overTheBox.Device>;
             actions: {
                 // GET /overTheBox/{serviceName}/device/actions
-                $get(param?: {name?: string, status?: overTheBox.ActionStatusEnum}): Promise<string[]>;
+                $get(params?: {name?: string, status?: overTheBox.ActionStatusEnum}): Promise<string[]>;
                 // POST /overTheBox/{serviceName}/device/actions
-                $post(body?: {name: string}): Promise<overTheBox.DeviceAction>;
+                $post(params?: {name: string}): Promise<overTheBox.DeviceAction>;
                 $(actionId: string): {
                     // GET /overTheBox/{serviceName}/device/actions/{actionId}
                     $get(): Promise<overTheBox.DeviceAction>;
@@ -268,12 +268,12 @@ export interface OverTheBox{
             }
             restoreBackup: {
                 // POST /overTheBox/{serviceName}/device/restoreBackup
-                $post(body?: {backupId: string}): Promise<overTheBox.DeviceAction[]>;
+                $post(params?: {backupId: string}): Promise<overTheBox.DeviceAction[]>;
             }
         }
         linkDevice: {
             // POST /overTheBox/{serviceName}/linkDevice
-            $post(body?: {deviceId: string}): Promise<void>;
+            $post(params?: {deviceId: string}): Promise<void>;
         }
         migration: {
             offers: {
@@ -285,7 +285,7 @@ export interface OverTheBox{
             // GET /overTheBox/{serviceName}/remoteAccesses
             $get(): Promise<string[]>;
             // POST /overTheBox/{serviceName}/remoteAccesses
-            $post(body?: {allowedIp?: string, expirationDate?: string, exposedPort: number, publicKey?: string}): Promise<overTheBox.RemoteAccess>;
+            $post(params?: {allowedIp?: string, expirationDate?: string, exposedPort: number, publicKey?: string}): Promise<overTheBox.RemoteAccess>;
             $(remoteAccessId: string): {
                 // DELETE /overTheBox/{serviceName}/remoteAccesses/{remoteAccessId}
                 $delete(): Promise<void>;
@@ -301,11 +301,11 @@ export interface OverTheBox{
             // GET /overTheBox/{serviceName}/serviceInfos
             $get(): Promise<services.Service>;
             // PUT /overTheBox/{serviceName}/serviceInfos
-            $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
         }
         tasks: {
             // GET /overTheBox/{serviceName}/tasks
-            $get(param?: {name?: string, status?: overTheBox.TaskStatusEnum}): Promise<string[]>;
+            $get(params?: {name?: string, status?: overTheBox.TaskStatusEnum}): Promise<string[]>;
             $(taskId: string): {
                 // GET /overTheBox/{serviceName}/tasks/{taskId}
                 $get(): Promise<overTheBox.Task>;

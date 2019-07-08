@@ -120,42 +120,42 @@ export interface License{
         $get(): Promise<string[]>;
         orderableVersions: {
             // GET /license/directadmin/orderableVersions
-            $get(param?: {ip: string}): Promise<license.DirectAdminOrderConfiguration[]>;
+            $get(params?: {ip: string}): Promise<license.DirectAdminOrderConfiguration[]>;
         }
         $(serviceName: string): {
             // GET /license/directadmin/{serviceName}
             $get(): Promise<license.directadmin.DirectAdmin>;
             // PUT /license/directadmin/{serviceName}
-            $put(body?: {clientId?: number, creation?: string, deleteAtExpiration?: boolean, domain?: string, ip?: string, licenseId?: string, os?: license.DirectAdminOsEnum, status?: license.StateEnum, version?: license.DirectAdminVersionEnum}): Promise<void>;
+            $put(params?: {clientId?: number, creation?: string, deleteAtExpiration?: boolean, domain?: string, ip?: string, licenseId?: string, os?: license.DirectAdminOsEnum, status?: license.StateEnum, version?: license.DirectAdminVersionEnum}): Promise<void>;
             allowedDestinationIp: {
                 // GET /license/directadmin/{serviceName}/allowedDestinationIp
                 $get(): Promise<string[]>;
             }
             canLicenseBeMovedTo: {
                 // GET /license/directadmin/{serviceName}/canLicenseBeMovedTo
-                $get(param?: {destinationIp: string}): Promise<license.ChangeIpStatus>;
+                $get(params?: {destinationIp: string}): Promise<license.ChangeIpStatus>;
             }
             changeIp: {
                 // POST /license/directadmin/{serviceName}/changeIp
-                $post(body?: {destinationIp: string}): Promise<license.Task>;
+                $post(params?: {destinationIp: string}): Promise<license.Task>;
             }
             changeOs: {
                 // POST /license/directadmin/{serviceName}/changeOs
-                $post(body?: {os: license.DirectAdminOsEnum}): Promise<license.Task>;
+                $post(params?: {os: license.DirectAdminOsEnum}): Promise<license.Task>;
             }
             confirmTermination: {
                 // POST /license/directadmin/{serviceName}/confirmTermination
-                $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+                $post(params?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
             }
             serviceInfos: {
                 // GET /license/directadmin/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /license/directadmin/{serviceName}/serviceInfos
-                $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
             tasks: {
                 // GET /license/directadmin/{serviceName}/tasks
-                $get(param?: {action?: license.ActionType, status?: license.TaskStateEnum}): Promise<number[]>;
+                $get(params?: {action?: license.ActionType, status?: license.TaskStateEnum}): Promise<number[]>;
                 $(taskId: number): {
                     // GET /license/directadmin/{serviceName}/tasks/{taskId}
                     $get(): Promise<license.Task>;

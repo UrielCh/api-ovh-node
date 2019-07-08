@@ -123,15 +123,15 @@ export interface Hosting{
             $get(): Promise<hosting.reseller.product>;
             changeContact: {
                 // POST /hosting/reseller/{serviceName}/changeContact
-                $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
+                $post(params?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
             }
             email: {
                 // POST /hosting/reseller/{serviceName}/email
-                $post(body?: {email: string}): Promise<string>;
+                $post(params?: {email: string}): Promise<string>;
             }
             language: {
                 // POST /hosting/reseller/{serviceName}/language
-                $post(body?: {language: reseller.pleskLanguageTypeEnum}): Promise<string>;
+                $post(params?: {language: reseller.pleskLanguageTypeEnum}): Promise<string>;
             }
             reboot: {
                 // POST /hosting/reseller/{serviceName}/reboot
@@ -147,13 +147,13 @@ export interface Hosting{
             }
             reverse: {
                 // POST /hosting/reseller/{serviceName}/reverse
-                $post(body?: {reverse: string}): Promise<string>;
+                $post(params?: {reverse: string}): Promise<string>;
             }
             serviceInfos: {
                 // GET /hosting/reseller/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /hosting/reseller/{serviceName}/serviceInfos
-                $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
             snapshot: {
                 // GET /hosting/reseller/{serviceName}/snapshot

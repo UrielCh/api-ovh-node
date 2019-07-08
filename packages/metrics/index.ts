@@ -119,34 +119,34 @@ export interface Metrics{
         // GET /metrics/{serviceName}
         $get(): Promise<metrics.api.Service>;
         // PUT /metrics/{serviceName}
-        $put(body?: {description?: string}): Promise<metrics.api.Service>;
+        $put(params?: {description?: string}): Promise<metrics.api.Service>;
         changeContact: {
             // POST /metrics/{serviceName}/changeContact
-            $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
+            $post(params?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
         }
         confirmTermination: {
             // POST /metrics/{serviceName}/confirmTermination
-            $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+            $post(params?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
         }
         consumption: {
             // GET /metrics/{serviceName}/consumption
-            $get(param?: {duration?: number}): Promise<metrics.api.Consumption>;
+            $get(params?: {duration?: number}): Promise<metrics.api.Consumption>;
         }
         lookup: {
             token: {
                 // POST /metrics/{serviceName}/lookup/token
-                $post(body?: {accessToken: string}): Promise<string[]>;
+                $post(params?: {accessToken: string}): Promise<string[]>;
             }
         }
         quota: {
             // PUT /metrics/{serviceName}/quota
-            $put(body?: {quota: number}): Promise<string>;
+            $put(params?: {quota: number}): Promise<string>;
         }
         serviceInfos: {
             // GET /metrics/{serviceName}/serviceInfos
             $get(): Promise<services.Service>;
             // PUT /metrics/{serviceName}/serviceInfos
-            $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
         }
         terminate: {
             // POST /metrics/{serviceName}/terminate
@@ -156,14 +156,14 @@ export interface Metrics{
             // GET /metrics/{serviceName}/token
             $get(): Promise<string[]>;
             // POST /metrics/{serviceName}/token
-            $post(body?: {description?: string, labels?: metrics.api.Label[], permission: metrics.api.PermissionEnum}): Promise<metrics.api.Token>;
+            $post(params?: {description?: string, labels?: metrics.api.Label[], permission: metrics.api.PermissionEnum}): Promise<metrics.api.Token>;
             $(tokenId: string): {
                 // DELETE /metrics/{serviceName}/token/{tokenId}
                 $delete(): Promise<void>;
                 // GET /metrics/{serviceName}/token/{tokenId}
                 $get(): Promise<metrics.api.Token>;
                 // PUT /metrics/{serviceName}/token/{tokenId}
-                $put(body?: {description?: string}): Promise<metrics.api.Token>;
+                $put(params?: {description?: string}): Promise<metrics.api.Token>;
             };
         }
     };

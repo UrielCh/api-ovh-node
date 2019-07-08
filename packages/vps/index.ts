@@ -389,13 +389,13 @@ export interface Vps{
     $get(): Promise<string[]>;
     datacenter: {
         // GET /vps/datacenter
-        $get(param?: {country: nichandle.CountryEnum}): Promise<string[]>;
+        $get(params?: {country: nichandle.CountryEnum}): Promise<string[]>;
     }
     $(serviceName: string): {
         // GET /vps/{serviceName}
         $get(): Promise<vps.VPS>;
         // PUT /vps/{serviceName}
-        $put(body?: {cluster?: string, displayName?: string, keymap?: vps.VpsKeymapEnum, memoryLimit?: number, model?: vps.Model, monitoringIpBlocks?: string[], name?: string, netbootMode?: vps.VpsNetbootEnum, offerType?: vps.VpsOfferEnum, slaMonitoring?: boolean, state?: vps.VpsStateEnum, vcore?: number, zone?: string}): Promise<void>;
+        $put(params?: {cluster?: string, displayName?: string, keymap?: vps.VpsKeymapEnum, memoryLimit?: number, model?: vps.Model, monitoringIpBlocks?: string[], name?: string, netbootMode?: vps.VpsNetbootEnum, offerType?: vps.VpsOfferEnum, slaMonitoring?: boolean, state?: vps.VpsStateEnum, vcore?: number, zone?: string}): Promise<void>;
         activeOptions: {
             // GET /vps/{serviceName}/activeOptions
             $get(): Promise<vps.VpsOptionEnum[]>;
@@ -409,15 +409,15 @@ export interface Vps{
             }
             detachBackup: {
                 // POST /vps/{serviceName}/automatedBackup/detachBackup
-                $post(body?: {restorePoint: string}): Promise<vps.Task>;
+                $post(params?: {restorePoint: string}): Promise<vps.Task>;
             }
             restore: {
                 // POST /vps/{serviceName}/automatedBackup/restore
-                $post(body?: {changePassword?: boolean, restorePoint: string, type: vps.RestoreTypeEnum}): Promise<vps.Task>;
+                $post(params?: {changePassword?: boolean, restorePoint: string, type: vps.RestoreTypeEnum}): Promise<vps.Task>;
             }
             restorePoints: {
                 // GET /vps/{serviceName}/automatedBackup/restorePoints
-                $get(param?: {state: vps.RestoreStateEnum}): Promise<string[]>;
+                $get(params?: {state: vps.RestoreStateEnum}): Promise<string[]>;
             }
         }
         availableUpgrade: {
@@ -431,14 +431,14 @@ export interface Vps{
                 // GET /vps/{serviceName}/backupftp/access
                 $get(): Promise<string[]>;
                 // POST /vps/{serviceName}/backupftp/access
-                $post(body?: {cifs: boolean, ftp?: boolean, ipBlock: string, nfs: boolean}): Promise<dedicated.server.Task>;
+                $post(params?: {cifs: boolean, ftp?: boolean, ipBlock: string, nfs: boolean}): Promise<dedicated.server.Task>;
                 $(ipBlock: string): {
                     // DELETE /vps/{serviceName}/backupftp/access/{ipBlock}
                     $delete(): Promise<dedicated.server.Task>;
                     // GET /vps/{serviceName}/backupftp/access/{ipBlock}
                     $get(): Promise<dedicated.server.BackupFtpAcl>;
                     // PUT /vps/{serviceName}/backupftp/access/{ipBlock}
-                    $put(body?: {cifs?: boolean, ftp?: boolean, ipBlock?: string, isApplied?: boolean, lastUpdate?: string, nfs?: boolean}): Promise<void>;
+                    $put(params?: {cifs?: boolean, ftp?: boolean, ipBlock?: string, isApplied?: boolean, lastUpdate?: string, nfs?: boolean}): Promise<void>;
                 };
             }
             authorizableBlocks: {
@@ -452,15 +452,15 @@ export interface Vps{
         }
         changeContact: {
             // POST /vps/{serviceName}/changeContact
-            $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
+            $post(params?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
         }
         confirmTermination: {
             // POST /vps/{serviceName}/confirmTermination
-            $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+            $post(params?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
         }
         createSnapshot: {
             // POST /vps/{serviceName}/createSnapshot
-            $post(body?: {description?: string}): Promise<vps.Task>;
+            $post(params?: {description?: string}): Promise<vps.Task>;
         }
         datacenter: {
             // GET /vps/{serviceName}/datacenter
@@ -473,14 +473,14 @@ export interface Vps{
                 // GET /vps/{serviceName}/disks/{id}
                 $get(): Promise<vps.Disk>;
                 // PUT /vps/{serviceName}/disks/{id}
-                $put(body?: {bandwidthLimit?: number, id?: number, lowFreeSpaceThreshold?: number, monitoring?: boolean, size?: number, state?: vps.disk.StateEnum, type?: vps.disk.TypeEnum}): Promise<void>;
+                $put(params?: {bandwidthLimit?: number, id?: number, lowFreeSpaceThreshold?: number, monitoring?: boolean, size?: number, state?: vps.disk.StateEnum, type?: vps.disk.TypeEnum}): Promise<void>;
                 monitoring: {
                     // GET /vps/{serviceName}/disks/{id}/monitoring
-                    $get(param?: {period: vps.VpsMonitoringPeriodEnum, type: vps.disk.StatisticTypeEnum}): Promise<complexType.UnitAndValues<vps.VpsTimestampValue>>;
+                    $get(params?: {period: vps.VpsMonitoringPeriodEnum, type: vps.disk.StatisticTypeEnum}): Promise<complexType.UnitAndValues<vps.VpsTimestampValue>>;
                 }
                 use: {
                     // GET /vps/{serviceName}/disks/{id}/use
-                    $get(param?: {type: vps.disk.StatisticTypeEnum}): Promise<complexType.UnitAndValue<number>>;
+                    $get(params?: {type: vps.disk.StatisticTypeEnum}): Promise<complexType.UnitAndValue<number>>;
                 }
             };
         }
@@ -513,7 +513,7 @@ export interface Vps{
                 // GET /vps/{serviceName}/ips/{ipAddress}
                 $get(): Promise<vps.Ip>;
                 // PUT /vps/{serviceName}/ips/{ipAddress}
-                $put(body?: {gateway?: string, geolocation?: vps.ip.GeolocationEnum, ipAddress?: string, macAddress?: string, reverse?: string, type?: vps.ip.TypeEnum, version?: coreTypes.IpVersionEnum}): Promise<void>;
+                $put(params?: {gateway?: string, geolocation?: vps.ip.GeolocationEnum, ipAddress?: string, macAddress?: string, reverse?: string, type?: vps.ip.TypeEnum, version?: coreTypes.IpVersionEnum}): Promise<void>;
             };
         }
         models: {
@@ -522,11 +522,11 @@ export interface Vps{
         }
         monitoring: {
             // GET /vps/{serviceName}/monitoring
-            $get(param?: {period: vps.VpsMonitoringPeriodEnum, type: vps.VpsStatisticTypeEnum}): Promise<complexType.UnitAndValues<vps.VpsTimestampValue>>;
+            $get(params?: {period: vps.VpsMonitoringPeriodEnum, type: vps.VpsStatisticTypeEnum}): Promise<complexType.UnitAndValues<vps.VpsTimestampValue>>;
         }
         openConsoleAccess: {
             // POST /vps/{serviceName}/openConsoleAccess
-            $post(body?: {protocol?: vps.VncProtocolEnum}): Promise<vps.Vnc>;
+            $post(params?: {protocol?: vps.VncProtocolEnum}): Promise<vps.Vnc>;
         }
         option: {
             // GET /vps/{serviceName}/option
@@ -544,20 +544,20 @@ export interface Vps{
         }
         reinstall: {
             // POST /vps/{serviceName}/reinstall
-            $post(body?: {doNotSendPassword?: boolean, language?: string, softwareId?: number[], sshKey?: string[], templateId: number}): Promise<vps.Task>;
+            $post(params?: {doNotSendPassword?: boolean, language?: string, softwareId?: number[], sshKey?: string[], templateId: number}): Promise<vps.Task>;
         }
         secondaryDnsDomains: {
             // GET /vps/{serviceName}/secondaryDnsDomains
             $get(): Promise<string[]>;
             // POST /vps/{serviceName}/secondaryDnsDomains
-            $post(body?: {domain: string, ip?: string}): Promise<void>;
+            $post(params?: {domain: string, ip?: string}): Promise<void>;
             $(domain: string): {
                 // DELETE /vps/{serviceName}/secondaryDnsDomains/{domain}
                 $delete(): Promise<void>;
                 // GET /vps/{serviceName}/secondaryDnsDomains/{domain}
                 $get(): Promise<secondaryDns.SecondaryDNS>;
                 // PUT /vps/{serviceName}/secondaryDnsDomains/{domain}
-                $put(body?: {creationDate?: string, dns?: string, domain?: string, ipMaster?: string}): Promise<void>;
+                $put(params?: {creationDate?: string, dns?: string, domain?: string, ipMaster?: string}): Promise<void>;
                 dnsServer: {
                     // GET /vps/{serviceName}/secondaryDnsDomains/{domain}/dnsServer
                     $get(): Promise<secondaryDns.SecondaryDNSNameServer>;
@@ -572,7 +572,7 @@ export interface Vps{
             // GET /vps/{serviceName}/serviceInfos
             $get(): Promise<services.Service>;
             // PUT /vps/{serviceName}/serviceInfos
-            $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
         }
         setPassword: {
             // POST /vps/{serviceName}/setPassword
@@ -584,7 +584,7 @@ export interface Vps{
             // GET /vps/{serviceName}/snapshot
             $get(): Promise<vps.Snapshot>;
             // PUT /vps/{serviceName}/snapshot
-            $put(body?: {creationDate?: string, description?: string}): Promise<void>;
+            $put(params?: {creationDate?: string, description?: string}): Promise<void>;
             revert: {
                 // POST /vps/{serviceName}/snapshot/revert
                 $post(): Promise<vps.Task>;
@@ -604,7 +604,7 @@ export interface Vps{
         }
         tasks: {
             // GET /vps/{serviceName}/tasks
-            $get(param?: {state?: vps.TaskStateEnum, type?: vps.TaskTypeEnum}): Promise<number[]>;
+            $get(params?: {state?: vps.TaskStateEnum, type?: vps.TaskTypeEnum}): Promise<number[]>;
             $(id: number): {
                 // GET /vps/{serviceName}/tasks/{id}
                 $get(): Promise<vps.Task>;
@@ -632,20 +632,20 @@ export interface Vps{
         }
         use: {
             // GET /vps/{serviceName}/use
-            $get(param?: {type: vps.VpsStatisticTypeEnum}): Promise<complexType.UnitAndValue<number>>;
+            $get(params?: {type: vps.VpsStatisticTypeEnum}): Promise<complexType.UnitAndValue<number>>;
         }
         veeam: {
             // GET /vps/{serviceName}/veeam
             $get(): Promise<vps.Veeam>;
             restorePoints: {
                 // GET /vps/{serviceName}/veeam/restorePoints
-                $get(param?: {creationTime?: string}): Promise<number[]>;
+                $get(params?: {creationTime?: string}): Promise<number[]>;
                 $(id: number): {
                     // GET /vps/{serviceName}/veeam/restorePoints/{id}
                     $get(): Promise<vps.veeam.RestorePoint>;
                     restore: {
                         // POST /vps/{serviceName}/veeam/restorePoints/{id}/restore
-                        $post(body?: {changePassword?: boolean, export?: vps.veeam.ExportTypeEnum, full: boolean}): Promise<vps.Task>;
+                        $post(params?: {changePassword?: boolean, export?: vps.veeam.ExportTypeEnum, full: boolean}): Promise<vps.Task>;
                     }
                 };
             }
