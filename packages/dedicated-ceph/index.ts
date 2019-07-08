@@ -56,12 +56,10 @@ export namespace dedicated {
         //dedicated.ceph.response
         // fullName: dedicated.ceph.response.response
         export interface response {
-            availableBytes: number;
-            healthy: boolean;
-            serviceName: string;
-            status: string;
-            totalBytes: number;
-            usedBytes: number;
+            family: dedicated.ceph.aclList.response.familyEnum;
+            id: number;
+            netmask: string;
+            network: string;
         }
         export namespace taskGet {
             export namespace response {

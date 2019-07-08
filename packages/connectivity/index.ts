@@ -321,12 +321,12 @@ export interface Connectivity{
    * Missing description
    * List detected, validated and recently closed generic incidents. For partners only
    */
-  get(path: '/connectivity/monitoring/genericIncident/partners'): (params: {creationDate?: string, endDate?: string, status?: connectivity.monitoring.GenericIncidentStatusEnum}) => Promise<connectivity.monitoring.GenericIncident[]>;
+  get(path: '/connectivity/monitoring/genericIncident/partners'): (params?: {creationDate?: string, endDate?: string, status?: connectivity.monitoring.GenericIncidentStatusEnum}) => Promise<connectivity.monitoring.GenericIncident[]>;
   /**
    * Missing description
    * List validated and recently closed generic incidents
    */
-  get(path: '/connectivity/monitoring/genericIncident/public'): (params: {creationDate?: string, endDate?: string, status?: connectivity.monitoring.GenericIncidentStatusEnum}) => Promise<connectivity.monitoring.GenericIncident[]>;
+  get(path: '/connectivity/monitoring/genericIncident/public'): (params?: {creationDate?: string, endDate?: string, status?: connectivity.monitoring.GenericIncidentStatusEnum}) => Promise<connectivity.monitoring.GenericIncident[]>;
   /**
    * Get the details for a building
    * Get the details for a building

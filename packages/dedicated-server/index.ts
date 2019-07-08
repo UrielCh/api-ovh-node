@@ -2041,7 +2041,7 @@ export interface Dedicated{
    * List the availability of dedicated server
    * List the availability of dedicated server
    */
-  get(path: '/dedicated/server/datacenter/availabilities'): (params: {datacenters?: string, excludeDatacenters?: boolean, memory?: string, planCode?: string, server?: string, storage?: string}) => Promise<dedicated.DatacenterAvailability[]>;
+  get(path: '/dedicated/server/datacenter/availabilities'): (params?: {datacenters?: string, excludeDatacenters?: boolean, memory?: string, planCode?: string, server?: string, storage?: string}) => Promise<dedicated.DatacenterAvailability[]>;
   /**
    * List the operating systems available for a specified hardware reference
    * List the os available for a specified hardware reference

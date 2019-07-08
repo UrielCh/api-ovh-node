@@ -825,7 +825,7 @@ export interface Domain{
    * Operations about the DOMAIN service
    * List available services
    */
-  get(path: '/domain'): (params: {whoisOwner?: string}) => Promise<string[]>;
+  get(path: '/domain'): (params?: {whoisOwner?: string}) => Promise<string[]>;
   /**
    * Domain name administration
    * Get this object properties
@@ -970,7 +970,7 @@ export interface Domain{
    * Missing description
    * List all your SMD files
    */
-  get(path: '/domain/data/smd'): (params: {protectedLabels_label?: string}) => Promise<number[]>;
+  get(path: '/domain/data/smd'): (params?: {protectedLabels_label?: string}) => Promise<number[]>;
   /**
    * Missing description
    * Retrieve information about a SMD file

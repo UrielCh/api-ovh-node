@@ -3301,7 +3301,7 @@ export interface Order{
    * Missing description
    * List of your OVH order carts
    */
-  get(path: '/order/cart'): (params: {description?: string}) => Promise<string[]>;
+  get(path: '/order/cart'): (params?: {description?: string}) => Promise<string[]>;
   /**
    * Missing description
    * Retrieve information about a specific cart
@@ -3901,7 +3901,7 @@ export interface Order{
    * Operations about the DOMAIN service
    * List available services
    */
-  get(path: '/order/cartServiceOption/domain'): (params: {whoisOwner?: string}) => Promise<string[]>;
+  get(path: '/order/cartServiceOption/domain'): (params?: {whoisOwner?: string}) => Promise<string[]>;
   /**
    * Listing offers /order/cartServiceOptions/domain/#serviceName#
    * Get informations about additional Domain offer for your service
@@ -4796,7 +4796,7 @@ export interface Order{
    * Create an order for an new office tenant
    * Get allowed durations for 'new' option
    */
-  get(path: '/order/license/office/new'): (params: {giftCode?: string, officeBusinessQuantity?: number, officeProPlusQuantity?: number}) => Promise<string[]>;
+  get(path: '/order/license/office/new'): (params?: {giftCode?: string, officeBusinessQuantity?: number, officeProPlusQuantity?: number}) => Promise<string[]>;
   /**
    * Create an order for an new office tenant
    * Get prices and contracts information
@@ -4991,7 +4991,7 @@ export interface Order{
    * Create an order for a new office tenant
    * Get allowed durations for 'new' option
    */
-  get(path: '/order/saas/csp2/new'): (params: {giftCode?: string, officeBusinessQuantity?: number, officeProPlusQuantity?: number}) => Promise<string[]>;
+  get(path: '/order/saas/csp2/new'): (params?: {giftCode?: string, officeBusinessQuantity?: number, officeProPlusQuantity?: number}) => Promise<string[]>;
   /**
    * Create an order for a new office tenant
    * Get prices and contracts information
@@ -5416,7 +5416,7 @@ export interface Order{
    * Order new vrack
    * Get prices and contracts information
    */
-  get(path: '/order/vrack/new'): (params: {quantity?: number}) => Promise<order.Order>;
+  get(path: '/order/vrack/new'): (params?: {quantity?: number}) => Promise<order.Order>;
   /**
    * Purchase spare modem
    * Get prices and contracts information
@@ -6611,7 +6611,7 @@ export interface Order{
    * Order new vrack
    * Create order
    */
-  post(path: '/order/vrack/new'): (params: {quantity?: number}) => Promise<order.Order>;
+  post(path: '/order/vrack/new'): (params?: {quantity?: number}) => Promise<order.Order>;
   /**
    * Purchase spare modem
    * Create order

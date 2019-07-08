@@ -2154,17 +2154,17 @@ export interface Cloud{
    * Get information about a cloud project creation
    * Get information about a cloud project creation
    */
-  get(path: '/cloud/createProjectInfo'): (params: {voucher?: string}) => Promise<cloud.project.NewProjectInfo>;
+  get(path: '/cloud/createProjectInfo'): (params?: {voucher?: string}) => Promise<cloud.project.NewProjectInfo>;
   /**
    * Missing description
    * Get all cloud pending orders
    */
-  get(path: '/cloud/order'): (params: {planCode?: string}) => Promise<cloud.order.Order[]>;
+  get(path: '/cloud/order'): (params?: {planCode?: string}) => Promise<cloud.order.Order[]>;
   /**
    * Get services prices
    * Get services prices
    */
-  get(path: '/cloud/price'): (params: {flavorId?: string, region?: string}) => Promise<cloud.Price>;
+  get(path: '/cloud/price'): (params?: {flavorId?: string, region?: string}) => Promise<cloud.Price>;
   /**
    * Operations about the PUBLICCLOUD service
    * List available services
@@ -2619,7 +2619,7 @@ export interface Cloud{
    * Start a new cloud project
    * Start a new cloud project
    */
-  post(path: '/cloud/createProject'): (params: {credit?: number, description?: string, voucher?: string}) => Promise<cloud.project.NewProject>;
+  post(path: '/cloud/createProject'): (params?: {credit?: number, description?: string, voucher?: string}) => Promise<cloud.project.NewProject>;
   /**
    * List the cloud.Acl objects
    * Create new ACL

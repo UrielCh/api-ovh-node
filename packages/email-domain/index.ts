@@ -906,7 +906,7 @@ export interface Email{
    * List the email.domain.AccountDelegated objects
    * Delegated emails
    */
-  get(path: '/email/domain/delegatedAccount'): (params: {accountName?: string, domain?: string}) => Promise<string[]>;
+  get(path: '/email/domain/delegatedAccount'): (params?: {accountName?: string, domain?: string}) => Promise<string[]>;
   /**
    * Account List
    * Get this object properties

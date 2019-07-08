@@ -179,7 +179,7 @@ export interface Services{
    * Get list of your service details
    * List available services
    */
-  get(path: '/services'): (params: {orderBy?: string, routes?: string, sort?: string}) => Promise<number[]>;
+  get(path: '/services'): (params?: {orderBy?: string, routes?: string, sort?: string}) => Promise<number[]>;
   /**
    * Get list of your service details
    * Get details about a service

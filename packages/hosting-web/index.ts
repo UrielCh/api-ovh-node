@@ -1692,7 +1692,7 @@ export interface Hosting{
    * List the hosting.web.ModuleList objects
    * IDs of all modules available
    */
-  get(path: '/hosting/web/moduleList'): (params: {active?: boolean, branch?: hosting.web.module.BranchEnum, latest?: boolean}) => Promise<number[]>;
+  get(path: '/hosting/web/moduleList'): (params?: {active?: boolean, branch?: hosting.web.module.BranchEnum, latest?: boolean}) => Promise<number[]>;
   /**
    * A module specifically packaged by OVH
    * Get this object properties

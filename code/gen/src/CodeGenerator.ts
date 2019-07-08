@@ -305,7 +305,10 @@ export class CodeGenerator {
                             }))
                         }
                         if (params.length) {
-                            code += `params: {${params.join(', ')}}`;
+                            code += 'params';
+                            if (mandatoryParams == 0)
+                                code += '?';
+                            code += `: {${params.join(', ')}}`;
                         }
                         // typename = this.aliasFilter(typename);
                         code += `) => Promise<${this.aliasFilter(op.responseType)}>;\n`;

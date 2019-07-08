@@ -2622,7 +2622,7 @@ export interface Me{
    * List the agreements.ContractAgreement objects
    * List of contracts signed between you and OVH
    */
-  get(path: '/me/agreements'): (params: {agreed?: agreements.AgreementStateEnum, contractId?: number}) => Promise<number[]>;
+  get(path: '/me/agreements'): (params?: {agreed?: agreements.AgreementStateEnum, contractId?: number}) => Promise<number[]>;
   /**
    * Contract agreement
    * Get this object properties
@@ -2647,7 +2647,7 @@ export interface Me{
    * List the api.Credential objects
    * List of your Api Credentials
    */
-  get(path: '/me/api/credential'): (params: {applicationId?: number, status?: auth.CredentialStateEnum}) => Promise<number[]>;
+  get(path: '/me/api/credential'): (params?: {applicationId?: number, status?: auth.CredentialStateEnum}) => Promise<number[]>;
   /**
    * API Credential
    * Get this object properties
@@ -2692,7 +2692,7 @@ export interface Me{
    * List the billing.Bill objects
    * List of all the bills the logged account has
    */
-  get(path: '/me/bill'): (params: {date_from?: string, date_to?: string, orderId?: number}) => Promise<string[]>;
+  get(path: '/me/bill'): (params?: {date_from?: string, date_to?: string, orderId?: number}) => Promise<string[]>;
   /**
    * Details about a Bill
    * Get this object properties
@@ -2742,7 +2742,7 @@ export interface Me{
    * Get all certificates of the account
    * Get all certificates of the account
    */
-  get(path: '/me/certificates'): (params: {name?: string}) => Promise<string[]>;
+  get(path: '/me/certificates'): (params?: {name?: string}) => Promise<string[]>;
   /**
    * List all consent campaign available
    * List all consent campaign available
@@ -2792,7 +2792,7 @@ export interface Me{
    * Retrieve credit balance names
    * Retrieve credit balance names
    */
-  get(path: '/me/credit/balance'): (params: {type?: billing.credit.balance.Type}) => Promise<string[]>;
+  get(path: '/me/credit/balance'): (params?: {type?: billing.credit.balance.Type}) => Promise<string[]>;
   /**
    * Retrieve a credit balance
    * Retrieve a credit balance
@@ -2842,7 +2842,7 @@ export interface Me{
    * List the billing.Deposit objects
    * List of all the deposits made to your prepaid account or debt account
    */
-  get(path: '/me/deposit'): (params: {date_from?: string, date_to?: string, orderId?: number}) => Promise<string[]>;
+  get(path: '/me/deposit'): (params?: {date_from?: string, date_to?: string, orderId?: number}) => Promise<string[]>;
   /**
    * Details about a deposit
    * Get this object properties
@@ -2937,7 +2937,7 @@ export interface Me{
    * List the billing.FidelityMovement objects
    * List of entries of the fidelity account
    */
-  get(path: '/me/fidelityAccount/movements'): (params: {date_from?: string, date_to?: string}) => Promise<number[]>;
+  get(path: '/me/fidelityAccount/movements'): (params?: {date_from?: string, date_to?: string}) => Promise<number[]>;
   /**
    * Details about a fidelity account
    * Get this object properties
@@ -3047,7 +3047,7 @@ export interface Me{
    * List the billing.Order objects
    * List of all the orders the logged account has
    */
-  get(path: '/me/order'): (params: {date_from?: string, date_to?: string}) => Promise<number[]>;
+  get(path: '/me/order'): (params?: {date_from?: string, date_to?: string}) => Promise<number[]>;
   /**
    * Details about an Order
    * Get this object properties
@@ -3157,7 +3157,7 @@ export interface Me{
    * Manage payment method
    * Retrieve payment method ID list
    */
-  get(path: '/me/payment/method'): (params: {paymentType?: string, status?: me.payment.method.PaymentMethod.Status}) => Promise<number[]>;
+  get(path: '/me/payment/method'): (params?: {paymentType?: string, status?: me.payment.method.PaymentMethod.Status}) => Promise<number[]>;
   /**
    * Manage payment method
    * Get one payment method
@@ -3167,7 +3167,7 @@ export interface Me{
    * Retrieve payment method transaction ID list
    * Retrieve associated payment method transaction ID list
    */
-  get(path: '/me/payment/transaction'): (params: {paymentMethodId?: number, status?: me.payment.method.Transaction.Status}) => Promise<number[]>;
+  get(path: '/me/payment/transaction'): (params?: {paymentMethodId?: number, status?: me.payment.method.Transaction.Status}) => Promise<number[]>;
   /**
    * Manage payment method transaction
    * Get associated payment method transaction
@@ -3177,7 +3177,7 @@ export interface Me{
    * List the billing.BankAccount objects
    * List of bank accounts
    */
-  get(path: '/me/paymentMean/bankAccount'): (params: {state?: billing.BankAccountStateEnum}) => Promise<number[]>;
+  get(path: '/me/paymentMean/bankAccount'): (params?: {state?: billing.BankAccountStateEnum}) => Promise<number[]>;
   /**
    * SEPA bank account info
    * Get this object properties
@@ -3217,7 +3217,7 @@ export interface Me{
    * List the billing.Refund objects
    * List of all the refunds the logged account has
    */
-  get(path: '/me/refund'): (params: {date_from?: string, date_to?: string, orderId?: number}) => Promise<string[]>;
+  get(path: '/me/refund'): (params?: {date_from?: string, date_to?: string, orderId?: number}) => Promise<string[]>;
   /**
    * Details about a Refund
    * Get this object properties
@@ -3302,7 +3302,7 @@ export interface Me{
    * List the nichandle.contactChange.Task objects
    * List of service contact change tasks you are involved in
    */
-  get(path: '/me/task/contactChange'): (params: {askingAccount?: string, state?: nichandle.changeContact.TaskStateEnum, toAccount?: string}) => Promise<number[]>;
+  get(path: '/me/task/contactChange'): (params?: {askingAccount?: string, state?: nichandle.changeContact.TaskStateEnum, toAccount?: string}) => Promise<number[]>;
   /**
    * Task running a contact change on a service
    * Get this object properties
@@ -3312,7 +3312,7 @@ export interface Me{
    * List the nichandle.DomainTask objects
    * List of domain task
    */
-  get(path: '/me/task/domain'): (params: {domain?: string, function_?: domain.NicOperationFunctionEnum, status?: domain.OperationStatusEnum}) => Promise<number[]>;
+  get(path: '/me/task/domain'): (params?: {domain?: string, function_?: domain.NicOperationFunctionEnum, status?: domain.OperationStatusEnum}) => Promise<number[]>;
   /**
    * Domain tasks
    * Get this object properties
@@ -3337,7 +3337,7 @@ export interface Me{
    * List the nichandle.emailChange.Task objects
    * List of email change tasks you are involved in
    */
-  get(path: '/me/task/emailChange'): (params: {state?: nichandle.changeEmail.TaskStateEnum}) => Promise<number[]>;
+  get(path: '/me/task/emailChange'): (params?: {state?: nichandle.changeEmail.TaskStateEnum}) => Promise<number[]>;
   /**
    * Task running an email change on an account
    * Get this object properties
@@ -3367,7 +3367,7 @@ export interface Me{
    * List the billing.Withdrawal objects
    * List of all the withdrawals made from your prepaid account
    */
-  get(path: '/me/withdrawal'): (params: {date_from?: string, date_to?: string, orderId?: number}) => Promise<string[]>;
+  get(path: '/me/withdrawal'): (params?: {date_from?: string, date_to?: string, orderId?: number}) => Promise<string[]>;
   /**
    * Details about a withdrawal
    * Get this object properties
@@ -3397,12 +3397,12 @@ export interface Me{
    * Details about your OVH identifier
    * Alter this object properties
    */
-  put(path: '/me'): (params: {address?: string, area?: string, birthCity?: string, birthDay?: string, city?: string, companyNationalIdentificationNumber?: string, corporationType?: string, country?: nichandle.CountryEnum, currency?: nichandle.Currency, customerCode?: string, email?: string, fax?: string, firstname?: string, italianSDI?: string, language?: nichandle.LanguageEnum, legalform?: nichandle.LegalFormEnum, name?: string, nationalIdentificationNumber?: string, nichandle?: string, organisation?: string, ovhCompany?: nichandle.OvhCompanyEnum, ovhSubsidiary?: nichandle.OvhSubsidiaryEnum, phone?: string, phoneCountry?: nichandle.CountryEnum, sex?: nichandle.GenderEnum, spareEmail?: string, state?: nichandle.StateEnum, vat?: string, zip?: string}) => Promise<void>;
+  put(path: '/me'): (params?: {address?: string, area?: string, birthCity?: string, birthDay?: string, city?: string, companyNationalIdentificationNumber?: string, corporationType?: string, country?: nichandle.CountryEnum, currency?: nichandle.Currency, customerCode?: string, email?: string, fax?: string, firstname?: string, italianSDI?: string, language?: nichandle.LanguageEnum, legalform?: nichandle.LegalFormEnum, name?: string, nationalIdentificationNumber?: string, nichandle?: string, organisation?: string, ovhCompany?: nichandle.OvhCompanyEnum, ovhSubsidiary?: nichandle.OvhSubsidiaryEnum, phone?: string, phoneCountry?: nichandle.CountryEnum, sex?: nichandle.GenderEnum, spareEmail?: string, state?: nichandle.StateEnum, vat?: string, zip?: string}) => Promise<void>;
   /**
    * Login restrictions on a development version of the Manager
    * Alter this object properties
    */
-  put(path: '/me/accessRestriction/developerMode'): (params: {enabled?: boolean}) => Promise<void>;
+  put(path: '/me/accessRestriction/developerMode'): (params?: {enabled?: boolean}) => Promise<void>;
   /**
    * List of all IP Restrictions
    * Alter this object properties
@@ -3412,7 +3412,7 @@ export interface Me{
    * IP Restriction default rule
    * Alter this object properties
    */
-  put(path: '/me/accessRestriction/ipDefaultRule'): (params: {rule?: nichandle.accessRestriction.IpRestrictionRuleEnum, warning?: boolean}) => Promise<void>;
+  put(path: '/me/accessRestriction/ipDefaultRule'): (params?: {rule?: nichandle.accessRestriction.IpRestrictionRuleEnum, warning?: boolean}) => Promise<void>;
   /**
    * Sms Two-Factor Authentication
    * Alter this object properties
@@ -3432,7 +3432,7 @@ export interface Me{
    * Auto renewal information
    * Alter this object properties
    */
-  put(path: '/me/autorenew'): (params: {active?: boolean, lastRenew?: string, renewDay?: number}) => Promise<void>;
+  put(path: '/me/autorenew'): (params?: {active?: boolean, lastRenew?: string, renewDay?: number}) => Promise<void>;
   /**
    * Get decision value for a consent campaign
    * Update decision of a consent campaign
@@ -3452,7 +3452,7 @@ export interface Me{
    * Balance of the fidelity account
    * Alter this object properties
    */
-  put(path: '/me/fidelityAccount'): (params: {alertThreshold?: number, balance?: number, canBeCredited?: boolean, lastUpdate?: string, openDate?: string}) => Promise<void>;
+  put(path: '/me/fidelityAccount'): (params?: {alertThreshold?: number, balance?: number, canBeCredited?: boolean, lastUpdate?: string, openDate?: string}) => Promise<void>;
   /**
    * A group linked to this account
    * Alter a group
@@ -3842,7 +3842,7 @@ export interface Me{
    * List the billing.CreditCard objects
    * Add a new credit card
    */
-  post(path: '/me/paymentMean/creditCard'): (params: {description?: string, returnUrl?: string, setDefault?: boolean}) => Promise<billing.PaymentMeanValidation>;
+  post(path: '/me/paymentMean/creditCard'): (params?: {description?: string, returnUrl?: string, setDefault?: boolean}) => Promise<billing.PaymentMeanValidation>;
   /**
    * challenge operations
    * Challenge your bank account
@@ -3862,7 +3862,7 @@ export interface Me{
    * List the billing.Paypal objects
    * Enable payment through a new PayPal account
    */
-  post(path: '/me/paymentMean/paypal'): (params: {description?: string, returnUrl?: string, setDefault?: boolean}) => Promise<billing.PaymentMeanValidation>;
+  post(path: '/me/paymentMean/paypal'): (params?: {description?: string, returnUrl?: string, setDefault?: boolean}) => Promise<billing.PaymentMeanValidation>;
   /**
    * challenge operations
    * Challenge your bank account
@@ -3887,7 +3887,7 @@ export interface Me{
    * List the nichandle.SubAccount objects
    * Create a new sub-account
    */
-  post(path: '/me/subAccount'): (params: {description?: string}) => Promise<number>;
+  post(path: '/me/subAccount'): (params?: {description?: string}) => Promise<number>;
   /**
    * createConsumerKey operations
    * Create a consumer key for the current application
@@ -3952,7 +3952,7 @@ export interface Me{
    * setting operations
    * Change xdsl settings linked to the nichandle
    */
-  post(path: '/me/xdsl/setting'): (params: {resellerFastModemShipping?: boolean, resellerModemBasicConfig?: boolean}) => Promise<void>;
+  post(path: '/me/xdsl/setting'): (params?: {resellerFastModemShipping?: boolean, resellerModemBasicConfig?: boolean}) => Promise<void>;
   /**
    * SOTP Two-Factor Authentication
    * Delete this Two-Factor

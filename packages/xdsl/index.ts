@@ -1908,7 +1908,7 @@ export interface Xdsl{
    * List the xdsl.Incident objects
    * List of incidents
    */
-  get(path: '/xdsl/incidents'): (params: {creationDate?: string, endDate?: string}) => Promise<number[]>;
+  get(path: '/xdsl/incidents'): (params?: {creationDate?: string, endDate?: string}) => Promise<number[]>;
   /**
    * Detected incident
    * Get this object properties

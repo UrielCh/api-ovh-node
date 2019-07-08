@@ -761,7 +761,7 @@ export interface Ip{
    * List the ip.Ip objects
    * Your OVH IPs
    */
-  get(path: '/ip'): (params: {description?: string, ip?: string, routedTo_serviceName?: string, type?: ip.IpTypeEnum}) => Promise<string[]>;
+  get(path: '/ip'): (params?: {description?: string, ip?: string, routedTo_serviceName?: string, type?: ip.IpTypeEnum}) => Promise<string[]>;
   /**
    * Your IP
    * Get this object properties

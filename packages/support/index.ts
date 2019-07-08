@@ -106,7 +106,7 @@ export interface Support{
    * List support tickets identifiers for this service
    * List support tickets identifiers for this service
    */
-  get(path: '/support/tickets'): (params: {archived?: boolean, category?: support.TicketCategoryEnum, maxCreationDate?: string, minCreationDate?: string, product?: support.TicketProductEnum, serviceName?: string, status?: support.TicketStatusEnum, subject?: string, ticketNumber?: string}) => Promise<number[]>;
+  get(path: '/support/tickets'): (params?: {archived?: boolean, category?: support.TicketCategoryEnum, maxCreationDate?: string, minCreationDate?: string, product?: support.TicketProductEnum, serviceName?: string, status?: support.TicketStatusEnum, subject?: string, ticketNumber?: string}) => Promise<number[]>;
   /**
    * Get ticket
    * Get ticket
