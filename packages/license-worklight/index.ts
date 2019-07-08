@@ -120,7 +120,7 @@ export interface License{
             // GET /license/worklight/{serviceName}
             $get(): Promise<license.worklight.WorkLight>;
             // PUT /license/worklight/{serviceName}
-            $put(body?: {body: license.worklight.WorkLight}): Promise<void>;
+            $put(body?: {creation?: string, deleteAtExpiration?: boolean, domain?: string, ip?: string, licenseId?: string, status?: license.StateEnum, version?: license.WorkLightVersionEnum}): Promise<void>;
             allowedDestinationIp: {
                 // GET /license/worklight/{serviceName}/allowedDestinationIp
                 $get(): Promise<string[]>;
@@ -141,7 +141,7 @@ export interface License{
                 // GET /license/worklight/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /license/worklight/{serviceName}/serviceInfos
-                $put(body?: {body: services.Service}): Promise<void>;
+                $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
             tasks: {
                 // GET /license/worklight/{serviceName}/tasks

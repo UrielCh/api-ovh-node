@@ -126,7 +126,7 @@ export interface License{
             // GET /license/directadmin/{serviceName}
             $get(): Promise<license.directadmin.DirectAdmin>;
             // PUT /license/directadmin/{serviceName}
-            $put(body?: {body: license.directadmin.DirectAdmin}): Promise<void>;
+            $put(body?: {clientId?: number, creation?: string, deleteAtExpiration?: boolean, domain?: string, ip?: string, licenseId?: string, os?: license.DirectAdminOsEnum, status?: license.StateEnum, version?: license.DirectAdminVersionEnum}): Promise<void>;
             allowedDestinationIp: {
                 // GET /license/directadmin/{serviceName}/allowedDestinationIp
                 $get(): Promise<string[]>;
@@ -151,7 +151,7 @@ export interface License{
                 // GET /license/directadmin/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /license/directadmin/{serviceName}/serviceInfos
-                $put(body?: {body: services.Service}): Promise<void>;
+                $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
             tasks: {
                 // GET /license/directadmin/{serviceName}/tasks

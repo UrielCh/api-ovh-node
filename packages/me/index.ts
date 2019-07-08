@@ -1476,7 +1476,7 @@ export interface Me{
     // GET /me
     $get(): Promise<nichandle.Nichandle>;
     // PUT /me
-    $put(body?: {body: nichandle.Nichandle}): Promise<void>;
+    $put(body?: {address?: string, area?: string, birthCity?: string, birthDay?: string, city?: string, companyNationalIdentificationNumber?: string, corporationType?: string, country?: nichandle.CountryEnum, currency?: nichandle.Currency, customerCode?: string, email?: string, fax?: string, firstname?: string, italianSDI?: string, language?: nichandle.LanguageEnum, legalform?: nichandle.LegalFormEnum, name?: string, nationalIdentificationNumber?: string, nichandle?: string, organisation?: string, ovhCompany?: nichandle.OvhCompanyEnum, ovhSubsidiary?: nichandle.OvhSubsidiaryEnum, phone?: string, phoneCountry?: nichandle.CountryEnum, sex?: nichandle.GenderEnum, spareEmail?: string, state?: nichandle.StateEnum, vat?: string, zip?: string}): Promise<void>;
     accessRestriction: {
         backupCode: {
             // DELETE /me/accessRestriction/backupCode
@@ -1502,7 +1502,7 @@ export interface Me{
             // GET /me/accessRestriction/developerMode
             $get(): Promise<nichandle.DeveloperModeRestriction>;
             // PUT /me/accessRestriction/developerMode
-            $put(body?: {body: nichandle.DeveloperModeRestriction}): Promise<void>;
+            $put(body?: {enabled?: boolean}): Promise<void>;
         }
         ip: {
             // GET /me/accessRestriction/ip
@@ -1515,14 +1515,14 @@ export interface Me{
                 // GET /me/accessRestriction/ip/{id}
                 $get(): Promise<nichandle.IpRestriction>;
                 // PUT /me/accessRestriction/ip/{id}
-                $put(body?: {body: nichandle.IpRestriction}): Promise<void>;
+                $put(body?: {id?: number, ip?: string, rule?: nichandle.accessRestriction.IpRestrictionRuleEnum, warning?: boolean}): Promise<void>;
             };
         }
         ipDefaultRule: {
             // GET /me/accessRestriction/ipDefaultRule
             $get(): Promise<nichandle.IpRestrictionDefaultRule>;
             // PUT /me/accessRestriction/ipDefaultRule
-            $put(body?: {body: nichandle.IpRestrictionDefaultRule}): Promise<void>;
+            $put(body?: {rule?: nichandle.accessRestriction.IpRestrictionRuleEnum, warning?: boolean}): Promise<void>;
         }
         sms: {
             // GET /me/accessRestriction/sms
@@ -1535,7 +1535,7 @@ export interface Me{
                 // GET /me/accessRestriction/sms/{id}
                 $get(): Promise<nichandle.accessRestriction.SmsAccount>;
                 // PUT /me/accessRestriction/sms/{id}
-                $put(body?: {body: nichandle.accessRestriction.SmsAccount}): Promise<void>;
+                $put(body?: {creationDate?: string, description?: string, id?: number, lastUsedDate?: string, phoneNumber?: string, status?: nichandle.accessRestriction.SmsStatusEnum}): Promise<void>;
                 disable: {
                     // POST /me/accessRestriction/sms/{id}/disable
                     $post(body?: {code: string}): Promise<void>;
@@ -1565,7 +1565,7 @@ export interface Me{
                 // GET /me/accessRestriction/totp/{id}
                 $get(): Promise<nichandle.accessRestriction.TOTPAccount>;
                 // PUT /me/accessRestriction/totp/{id}
-                $put(body?: {body: nichandle.accessRestriction.TOTPAccount}): Promise<void>;
+                $put(body?: {creationDate?: string, description?: string, id?: number, lastUsedDate?: string, status?: nichandle.accessRestriction.TOTPStatusEnum}): Promise<void>;
                 disable: {
                     // POST /me/accessRestriction/totp/{id}/disable
                     $post(body?: {code: string}): Promise<void>;
@@ -1591,7 +1591,7 @@ export interface Me{
                 // GET /me/accessRestriction/u2f/{id}
                 $get(): Promise<nichandle.accessRestriction.U2FAccount>;
                 // PUT /me/accessRestriction/u2f/{id}
-                $put(body?: {body: nichandle.accessRestriction.U2FAccount}): Promise<void>;
+                $put(body?: {creationDate?: string, description?: string, id?: number, lastUsedDate?: string, status?: nichandle.accessRestriction.U2FStatusEnum}): Promise<void>;
                 challenge: {
                     // POST /me/accessRestriction/u2f/{id}/challenge
                     $post(): Promise<nichandle.accessRestriction.U2FSignChallenge>;
@@ -1677,7 +1677,7 @@ export interface Me{
         // POST /me/autorenew
         $post(body?: {renewDay: number}): Promise<void>;
         // PUT /me/autorenew
-        $put(body?: {body: nichandle.NicAutorenewInfos}): Promise<void>;
+        $put(body?: {active?: boolean, lastRenew?: string, renewDay?: number}): Promise<void>;
     }
     availableAutomaticPaymentMeans: {
         // GET /me/availableAutomaticPaymentMeans
@@ -1918,7 +1918,7 @@ export interface Me{
             // GET /me/document/{id}
             $get(): Promise<nichandle.document.Document>;
             // PUT /me/document/{id}
-            $put(body?: {body: nichandle.document.Document}): Promise<void>;
+            $put(body?: {creationDate?: string, expirationDate?: string, getUrl?: string, id?: string, name?: string, putUrl?: string, size?: number, tags?: complexType.SafeKeyValue<string>[], validationDate?: string}): Promise<void>;
         };
     }
     fax: {
@@ -1939,7 +1939,7 @@ export interface Me{
         // GET /me/fidelityAccount
         $get(): Promise<billing.FidelityAccount>;
         // PUT /me/fidelityAccount
-        $put(body?: {body: billing.FidelityAccount}): Promise<void>;
+        $put(body?: {alertThreshold?: number, balance?: number, canBeCredited?: boolean, lastUpdate?: string, openDate?: string}): Promise<void>;
         creditOrder: {
             // POST /me/fidelityAccount/creditOrder
             $post(body?: {amount: number}): Promise<billing.Order>;
@@ -2010,7 +2010,7 @@ export interface Me{
             // GET /me/installationTemplate/{templateName}
             $get(): Promise<dedicated.installationTemplate.Templates>;
             // PUT /me/installationTemplate/{templateName}
-            $put(body?: {body: dedicated.installationTemplate.Templates}): Promise<void>;
+            $put(body?: {availableLanguages?: dedicated.TemplateOsLanguageEnum[], beta?: boolean, bitFormat?: dedicated.server.BitFormatEnum, category?: dedicated.TemplateOsUsageEnum, customization?: dedicated.TemplateOsProperties, defaultLanguage?: dedicated.TemplateOsLanguageEnum, deprecated?: boolean, description?: string, distribution?: string, family?: dedicated.TemplateOsTypeEnum, filesystems?: dedicated.TemplateOsFileSystemEnum[], hardRaidConfiguration?: boolean, lastModification?: string, lvmReady?: boolean, supportsDistributionKernel?: boolean, supportsGptLabel?: boolean, supportsRTM?: boolean, supportsSqlServer?: boolean, supportsUEFI?: dedicated.server.SupportsUEFIEnum, templateName?: string}): Promise<void>;
             checkIntegrity: {
                 // POST /me/installationTemplate/{templateName}/checkIntegrity
                 $post(): Promise<void>;
@@ -2026,7 +2026,7 @@ export interface Me{
                     // GET /me/installationTemplate/{templateName}/partitionScheme/{schemeName}
                     $get(): Promise<dedicated.installationTemplate.templatePartitioningSchemes>;
                     // PUT /me/installationTemplate/{templateName}/partitionScheme/{schemeName}
-                    $put(body?: {body: dedicated.installationTemplate.templatePartitioningSchemes}): Promise<void>;
+                    $put(body?: {name?: string, priority?: number}): Promise<void>;
                     hardwareRaid: {
                         // GET /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid
                         $get(): Promise<string[]>;
@@ -2038,7 +2038,7 @@ export interface Me{
                             // GET /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}
                             $get(): Promise<dedicated.installationTemplate.hardwareRaid>;
                             // PUT /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}
-                            $put(body?: {body: dedicated.installationTemplate.hardwareRaid}): Promise<void>;
+                            $put(body?: {disks?: string[], mode?: dedicated.TemplateOsHardwareRaidEnum, name?: string, step?: number}): Promise<void>;
                         };
                     }
                     partition: {
@@ -2052,7 +2052,7 @@ export interface Me{
                             // GET /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}
                             $get(): Promise<dedicated.installationTemplate.templatePartitions>;
                             // PUT /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}
-                            $put(body?: {body: dedicated.installationTemplate.templatePartitions}): Promise<void>;
+                            $put(body?: {filesystem?: dedicated.TemplateOsFileSystemEnum, mountpoint?: string, order?: number, raid?: dedicated.server.PartitionRaidEnum, size?: complexType.UnitAndValue<number>, type?: dedicated.TemplatePartitionTypeEnum, volumeName?: string}): Promise<void>;
                         };
                     }
                 };
@@ -2070,7 +2070,7 @@ export interface Me{
             // GET /me/ipOrganisation/{organisationId}
             $get(): Promise<nichandle.Ipv4Org>;
             // PUT /me/ipOrganisation/{organisationId}
-            $put(body?: {body: nichandle.Ipv4Org}): Promise<void>;
+            $put(body?: {abuse_mailbox?: string, address?: string, city?: string, country?: nichandle.CountryEnum, firstname?: string, lastname?: string, organisationId?: string, phone?: string, registry?: nichandle.IpRegistryEnum, state?: string, zip?: string}): Promise<void>;
         };
     }
     ipxeScript: {
@@ -2198,7 +2198,7 @@ export interface Me{
             // GET /me/ovhAccount/{ovhAccountId}
             $get(): Promise<billing.OvhAccount>;
             // PUT /me/ovhAccount/{ovhAccountId}
-            $put(body?: {body: billing.OvhAccount}): Promise<void>;
+            $put(body?: {alertThreshold?: number, balance?: orderPrice, canBeCredited?: boolean, isActive?: boolean, lastUpdate?: string, openDate?: string, ovhAccountId?: string}): Promise<void>;
             creditOrder: {
                 // POST /me/ovhAccount/{ovhAccountId}/creditOrder
                 $post(body?: {amount: number}): Promise<billing.Order>;
@@ -2269,7 +2269,7 @@ export interface Me{
                 // GET /me/paymentMean/bankAccount/{id}
                 $get(): Promise<billing.BankAccount>;
                 // PUT /me/paymentMean/bankAccount/{id}
-                $put(body?: {body: billing.BankAccount}): Promise<void>;
+                $put(body?: {bic?: string, creationDate?: string, defaultPaymentMean?: boolean, description?: string, iban?: string, id?: number, mandateSignatureDate?: string, ownerAddress?: string, ownerName?: string, state?: billing.BankAccountStateEnum, uniqueReference?: string, validationDocumentLink?: string}): Promise<void>;
                 challenge: {
                     // POST /me/paymentMean/bankAccount/{id}/challenge
                     $post(body?: {challenge: string}): Promise<void>;
@@ -2291,7 +2291,7 @@ export interface Me{
                 // GET /me/paymentMean/creditCard/{id}
                 $get(): Promise<billing.CreditCard>;
                 // PUT /me/paymentMean/creditCard/{id}
-                $put(body?: {body: billing.CreditCard}): Promise<void>;
+                $put(body?: {defaultPaymentMean?: boolean, description?: string, expirationDate?: string, id?: number, number?: string, state?: billing.CreditCardStateEnum, threeDsValidated?: boolean, type?: string}): Promise<void>;
                 challenge: {
                     // POST /me/paymentMean/creditCard/{id}/challenge
                     $post(body?: {challenge: string}): Promise<void>;
@@ -2309,7 +2309,7 @@ export interface Me{
                 // GET /me/paymentMean/deferredPaymentAccount/{id}
                 $get(): Promise<billing.DeferredPaymentAccount>;
                 // PUT /me/paymentMean/deferredPaymentAccount/{id}
-                $put(body?: {body: billing.DeferredPaymentAccount}): Promise<void>;
+                $put(body?: {creationDate?: string, defaultPaymentMean?: boolean, description?: string, id?: number, label?: string, state?: billing.DeferredPaymentAccountStatusEnum}): Promise<void>;
                 chooseAsDefaultPaymentMean: {
                     // POST /me/paymentMean/deferredPaymentAccount/{id}/chooseAsDefaultPaymentMean
                     $post(): Promise<void>;
@@ -2327,7 +2327,7 @@ export interface Me{
                 // GET /me/paymentMean/paypal/{id}
                 $get(): Promise<billing.Paypal>;
                 // PUT /me/paymentMean/paypal/{id}
-                $put(body?: {body: billing.Paypal}): Promise<void>;
+                $put(body?: {agreementId?: string, creationDate?: string, defaultPaymentMean?: boolean, description?: string, email?: string, id?: number, state?: billing.PaypalStateEnum}): Promise<void>;
                 challenge: {
                     // POST /me/paymentMean/paypal/{id}/challenge
                     $post(body?: {challenge: string}): Promise<void>;
@@ -2394,7 +2394,7 @@ export interface Me{
             // GET /me/sshKey/{keyName}
             $get(): Promise<nichandle.sshKey>;
             // PUT /me/sshKey/{keyName}
-            $put(body?: {body: nichandle.sshKey}): Promise<void>;
+            $put(body?: {default_?: boolean, key?: string, keyName?: string}): Promise<void>;
         };
     }
     subAccount: {
@@ -2406,7 +2406,7 @@ export interface Me{
             // GET /me/subAccount/{id}
             $get(): Promise<nichandle.SubAccount>;
             // PUT /me/subAccount/{id}
-            $put(body?: {body: nichandle.SubAccount}): Promise<void>;
+            $put(body?: {creationDate?: string, description?: string, id?: number}): Promise<void>;
             createConsumerKey: {
                 // POST /me/subAccount/{id}/createConsumerKey
                 $post(): Promise<nichandle.SubAccountConsumerKey>;
@@ -2420,7 +2420,7 @@ export interface Me{
             // GET /me/subscription/{subscriptionType}
             $get(): Promise<nichandle.Subscription>;
             // PUT /me/subscription/{subscriptionType}
-            $put(body?: {body: nichandle.Subscription}): Promise<void>;
+            $put(body?: {registered?: boolean, type?: string}): Promise<void>;
         };
     }
     supportLevel: {
@@ -2465,7 +2465,7 @@ export interface Me{
                         // GET /me/task/domain/{id}/argument/{key}
                         $get(): Promise<nichandle.DomainTaskArgument>;
                         // PUT /me/task/domain/{id}/argument/{key}
-                        $put(body?: {body: nichandle.DomainTaskArgument}): Promise<void>;
+                        $put(body?: {acceptedFormats?: domain.DocumentFormatsEnum[], acceptedValues?: string[], description?: string, fields?: xander.ContactFieldEnum[], key?: string, maximumSize?: number, minimumSize?: number, readOnly?: boolean, template?: string, type?: string, value?: string}): Promise<void>;
                     };
                 }
                 cancel: {

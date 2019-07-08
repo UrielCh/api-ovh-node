@@ -218,7 +218,7 @@ export interface OverTheBox{
         // GET /overTheBox/{serviceName}
         $get(): Promise<overTheBox.Service>;
         // PUT /overTheBox/{serviceName}
-        $put(body?: {body: overTheBox.Service}): Promise<void>;
+        $put(body?: {SOCKSProxyEnabled?: boolean, customerDescription?: string, graphEndpoint?: overTheBox.GraphEndpoint, releaseChannel?: string, serviceName?: string, status?: overTheBox.ServiceStatusEnum, tunnelMode?: overTheBox.TunnelModeEnum}): Promise<void>;
         availableReleaseChannels: {
             // GET /overTheBox/{serviceName}/availableReleaseChannels
             $get(): Promise<string[]>;
@@ -301,7 +301,7 @@ export interface OverTheBox{
             // GET /overTheBox/{serviceName}/serviceInfos
             $get(): Promise<services.Service>;
             // PUT /overTheBox/{serviceName}/serviceInfos
-            $put(body?: {body: services.Service}): Promise<void>;
+            $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
         }
         tasks: {
             // GET /overTheBox/{serviceName}/tasks

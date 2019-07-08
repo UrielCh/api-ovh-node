@@ -300,7 +300,7 @@ export interface MsServices{
                 // GET /msServices/sharepoint/{domain}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /msServices/sharepoint/{domain}/serviceInfos
-                $put(body?: {body: services.Service}): Promise<void>;
+                $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
         };
     }
@@ -308,7 +308,7 @@ export interface MsServices{
         // GET /msServices/{serviceName}
         $get(): Promise<msServices.ActiveDirectoryOrganizationalUnit>;
         // PUT /msServices/{serviceName}
-        $put(body?: {body: msServices.ActiveDirectoryOrganizationalUnit}): Promise<void>;
+        $put(body?: {complexityEnabled?: boolean, lockoutDuration?: number, lockoutObservationWindow?: number, lockoutThreshold?: number, maxPasswordAge?: number, minPasswordAge?: number, minPasswordLength?: number, name?: string, officeTenantServiceName?: string, state?: msServices.ServiceStateEnum, taskPendingId?: number}): Promise<void>;
         account: {
             // GET /msServices/{serviceName}/account
             $get(param?: {id?: number, userPrincipalName?: string}): Promise<string[]>;
@@ -316,7 +316,7 @@ export interface MsServices{
                 // GET /msServices/{serviceName}/account/{userPrincipalName}
                 $get(): Promise<msServices.Account>;
                 // PUT /msServices/{serviceName}/account/{userPrincipalName}
-                $put(body?: {body: msServices.Account}): Promise<void>;
+                $put(body?: {SAMAccountName?: string, creationDate?: string, displayName?: string, firstName?: string, guid?: string, id?: number, initials?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, lastUpdateDate?: string, passwordLastUpdate?: string, state?: msServices.ObjectStateEnum, taskPendingId?: number, userPrincipalName?: string}): Promise<void>;
                 changePassword: {
                     // POST /msServices/{serviceName}/account/{userPrincipalName}/changePassword
                     $post(body?: {password: string}): Promise<msServices.Task>;
@@ -325,7 +325,7 @@ export interface MsServices{
                     // GET /msServices/{serviceName}/account/{userPrincipalName}/exchange
                     $get(): Promise<msServices.ExchangeInformation>;
                     // PUT /msServices/{serviceName}/account/{userPrincipalName}/exchange
-                    $put(body?: {body: msServices.ExchangeInformation}): Promise<void>;
+                    $put(body?: {accountLicense?: msServices.ExchangeLicenceEnum, configured?: boolean, creationDate?: string, currentUsage?: number, deleteAtExpiration?: boolean, deleteOutlookAtExpiration?: boolean, exchangeGuid?: string, expirationDate?: string, expirationOutlookDate?: string, hiddenFromGAL?: boolean, id?: number, litigation?: boolean, litigationPeriod?: number, mailingFilter?: msServices.MailingFilterEnum[], outlookLicense?: boolean, owaLimited?: boolean, primaryEmailAddress?: string, quota?: number, renewOutlookPeriod?: msServices.RenewPeriodEnum, renewPeriod?: msServices.RenewPeriodEnum, spamAndVirusConfiguration?: msServices.SpamAndVirusConfiguration, spamDetected?: boolean, spamTicketNumber?: number, state?: msServices.ObjectStateEnum, taskPendingId?: number}): Promise<void>;
                     configure: {
                         // POST /msServices/{serviceName}/account/{userPrincipalName}/exchange/configure
                         $post(): Promise<msServices.exchangeTask>;
@@ -355,7 +355,7 @@ export interface MsServices{
                     // GET /msServices/{serviceName}/account/{userPrincipalName}/sharepoint
                     $get(): Promise<msServices.SharepointInformation>;
                     // PUT /msServices/{serviceName}/account/{userPrincipalName}/sharepoint
-                    $put(body?: {body: msServices.SharepointInformation}): Promise<void>;
+                    $put(body?: {accessRights?: msServices.SharepointAccountAccessRightsEnum, activeDirectoryAccountId?: number, configured?: boolean, currentUsage?: number, deleteAtExpiration?: boolean, id?: number, license?: msServices.SharepointLicenseEnum, officeLicense?: boolean, quota?: number, state?: msServices.ObjectStateEnum, taskPendingId?: number}): Promise<void>;
                     clearSpace: {
                         // POST /msServices/{serviceName}/account/{userPrincipalName}/sharepoint/clearSpace
                         $post(): Promise<msServices.sharepointTask>;
@@ -383,7 +383,7 @@ export interface MsServices{
             // GET /msServices/{serviceName}/exchange
             $get(): Promise<msServices.ExchangeService>;
             // PUT /msServices/{serviceName}/exchange
-            $put(body?: {body: msServices.ExchangeService}): Promise<void>;
+            $put(body?: {displayName?: string, domain?: string, hostname?: string, maxReceiveSize?: number, maxSendSize?: number, offer?: msServices.ServiceOfferEnum, spamAndVirusConfiguration?: msServices.SpamAndVirusConfiguration, sslExpirationDate?: string, state?: msServices.ServiceStateEnum, taskPendingId?: number}): Promise<void>;
             billingMigrated: {
                 // GET /msServices/{serviceName}/exchange/billingMigrated
                 $get(): Promise<boolean>;
@@ -401,7 +401,7 @@ export interface MsServices{
             // GET /msServices/{serviceName}/sharepoint
             $get(): Promise<msServices.SharepointService>;
             // PUT /msServices/{serviceName}/sharepoint
-            $put(body?: {body: msServices.SharepointService}): Promise<void>;
+            $put(body?: {currentUsage?: number, displayName?: string, domain?: string, farmUrl?: string, offer?: msServices.SharepointServiceOfferEnum, quota?: number, state?: msServices.ServiceStateEnum, taskPendingId?: number, url?: string}): Promise<void>;
             billingMigrated: {
                 // GET /msServices/{serviceName}/sharepoint/billingMigrated
                 $get(): Promise<boolean>;

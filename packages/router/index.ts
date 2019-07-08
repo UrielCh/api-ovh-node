@@ -170,7 +170,7 @@ export interface Router{
                 // GET /router/{serviceName}/network/{ipNet}
                 $get(): Promise<router.Network>;
                 // PUT /router/{serviceName}/network/{ipNet}
-                $put(body?: {body: router.Network}): Promise<void>;
+                $put(body?: {creationDate?: string, description?: string, id?: number, ipNet?: string, status?: router.IpStatusEnum, vlanTag?: number}): Promise<void>;
             };
         }
         privateLink: {
@@ -184,7 +184,7 @@ export interface Router{
                 // GET /router/{serviceName}/privateLink/{peerServiceName}
                 $get(): Promise<router.PrivateLink>;
                 // PUT /router/{serviceName}/privateLink/{peerServiceName}
-                $put(body?: {body: router.PrivateLink}): Promise<void>;
+                $put(body?: {creationDate?: string, id?: number, name?: string, peerServiceName?: string, status?: router.StatusEnum}): Promise<void>;
                 request: {
                     // GET /router/{serviceName}/privateLink/{peerServiceName}/request
                     $get(): Promise<router.PrivateLinkRequest>;
@@ -211,7 +211,7 @@ export interface Router{
             // GET /router/{serviceName}/serviceInfos
             $get(): Promise<services.Service>;
             // PUT /router/{serviceName}/serviceInfos
-            $put(body?: {body: services.Service}): Promise<void>;
+            $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
         }
         task: {
             // GET /router/{serviceName}/task
@@ -236,7 +236,7 @@ export interface Router{
                 // GET /router/{serviceName}/vpn/{id}
                 $get(): Promise<router.Vpn>;
                 // PUT /router/{serviceName}/vpn/{id}
-                $put(body?: {body: router.Vpn}): Promise<void>;
+                $put(body?: {clientIp?: string, clientPrivNet?: string, id?: number, serverIp?: string, serverPrivNet?: string}): Promise<void>;
                 setPsk: {
                     // POST /router/{serviceName}/vpn/{id}/setPsk
                     $post(body?: {psk: string}): Promise<router.Task>;

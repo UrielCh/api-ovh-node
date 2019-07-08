@@ -146,7 +146,7 @@ export interface License{
             // GET /license/office/{serviceName}
             $get(): Promise<license.office.OfficeTenant>;
             // PUT /license/office/{serviceName}
-            $put(body?: {body: license.office.OfficeTenant}): Promise<void>;
+            $put(body?: {address?: string, city?: string, creationDate?: string, displayName?: string, firstName?: string, lastName?: string, phone?: string, serviceType?: license.office.ServiceTypeEnum, status?: license.office.ServiceStateEnum, zipCode?: string}): Promise<void>;
             domain: {
                 // GET /license/office/{serviceName}/domain
                 $get(): Promise<string[]>;
@@ -167,7 +167,7 @@ export interface License{
                 // GET /license/office/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /license/office/{serviceName}/serviceInfos
-                $put(body?: {body: services.Service}): Promise<void>;
+                $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
             usageStatistics: {
                 // GET /license/office/{serviceName}/usageStatistics
@@ -184,7 +184,7 @@ export interface License{
                     // GET /license/office/{serviceName}/user/{activationEmail}
                     $get(): Promise<license.office.OfficeUser>;
                     // PUT /license/office/{serviceName}/user/{activationEmail}
-                    $put(body?: {body: license.office.OfficeUser}): Promise<void>;
+                    $put(body?: {activationEmail?: string, deleteAtExpiration?: boolean, firstName?: string, isVirtual?: boolean, lastName?: string, licences?: license.office.LicenceEnum[], status?: license.office.UserStateEnum, taskPendingId?: number}): Promise<void>;
                     changePassword: {
                         // POST /license/office/{serviceName}/user/{activationEmail}/changePassword
                         $post(body?: {notifyEmail?: string, password?: string, shouldSendMail: boolean}): Promise<license.office.OfficeTask>;

@@ -144,7 +144,7 @@ export interface Saas{
             // GET /saas/csp2/{serviceName}
             $get(): Promise<saas.csp2.OfficeTenant>;
             // PUT /saas/csp2/{serviceName}
-            $put(body?: {body: saas.csp2.OfficeTenant}): Promise<void>;
+            $put(body?: {address?: string, city?: string, creationDate?: string, displayName?: string, email?: string, firstName?: string, lastName?: string, phone?: string, serviceName?: string, status?: saas.csp2.ServiceStateEnum, zipCode?: string}): Promise<void>;
             billingPeriodPeaks: {
                 // GET /saas/csp2/{serviceName}/billingPeriodPeaks
                 $get(): Promise<saas.csp2.BillingStatistics>;
@@ -169,7 +169,7 @@ export interface Saas{
                 // GET /saas/csp2/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /saas/csp2/{serviceName}/serviceInfos
-                $put(body?: {body: services.Service}): Promise<void>;
+                $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
             subscription: {
                 // GET /saas/csp2/{serviceName}/subscription

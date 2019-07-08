@@ -246,7 +246,7 @@ export class CodeGenerator {
     }
 
     /**
-     * 
+     * Interface flat
      * @param schema flag Call models
      * @param api 
      * @param code 
@@ -315,18 +315,13 @@ export class CodeGenerator {
                     }
                 )
             })
-            //if (calls) {
-            //    code += `  public ${mtd.toLowerCase()}(path: ${avaliablePath}${mtd}, params?: OvhParamType): Promise<any> {\n`;
-            //    code += `    return super.${mtd.toLowerCase()}(path, params);\n`
-            //    code += `  }\n`
-            //}
         }
-        // code += `}\n`
-        // code += `export default ${mainClass};\n`
         return code;
     }
 
     /**
+     * interface Proxy
+     * 
     * @param depth 
     * @param api 
     * @param code 
@@ -370,11 +365,14 @@ export class CodeGenerator {
         let ident = indentGen(depth);
         if (api._api) {
             for (const op of api._api.operations.sort((a, b) => a.httpMethod.localeCompare(b.httpMethod))) {
+                let done = new Set();
+                let mandatoryParams = 0;
+                let params: Parameter[] = [];
+
                 // code += `${ident}/**\n${ident} * ${op.description}\n${ident} */\n`;
                 code += `${ident}// ${op.httpMethod} ${api._path}\n`;
 
                 code += `${ident}$${op.httpMethod.toLowerCase()}(`;
-                let params: Parameter[] = [];
                 if (op.httpMethod == 'GET') {
                     params = op.parameters.filter(p => p.paramType === 'query')
                     if (params.length)
@@ -385,12 +383,36 @@ export class CodeGenerator {
                         code += 'body?: {'
                 }
                 params = params.sort((a, b) => (<string>a.name).localeCompare(<string>b.name))
-                let array = params.map(param => {
-                    let text = protectJsonKey(String(param.name || 'body'));
-                    if (!param.required)
-                        text += "?";
-                    return `${text}: ${this.fullTypeExp(param)}`;
-                })
+                let array: string[] = [];
+                if (params.length == 1 && params[0].name == null) {
+                    // console.log(body[0]);
+                    let modelsProp = (<Schema>this.schema).models[params[0].fullType];
+
+                    if (!modelsProp || !modelsProp.properties)
+                        console.error(`ERROR in model Body Type ${params[0].fullType} do not exists`)
+                    else
+                        for (let propName of Object.keys(modelsProp.properties).sort()) {
+                            let p = modelsProp.properties[propName];
+                            if (done.has(propName))
+                                continue;
+                            let param = `${protectJsonKey(propName)}`;
+                            if (!p.required)
+                                param += '?'
+                            else
+                                mandatoryParams++;
+                            param += ': ' + this.typeFromParameter(p);
+                            //code += param;
+                            array.push(param)
+                        }
+
+                } else {
+                    array = params.map(param => {
+                        let text = protectJsonKey(String(param.name || 'body'));
+                        if (!param.required)
+                            text += "?";
+                        return `${text}: ${this.fullTypeExp(param)}`;
+                    })
+                }
                 code += array.join(', ');
                 if (params.length)
                     code += '}'

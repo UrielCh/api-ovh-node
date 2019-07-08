@@ -547,7 +547,7 @@ export interface IpLoadbalancing{
         // GET /ipLoadbalancing/{serviceName}
         $get(): Promise<ipLoadbalancing.Ip>;
         // PUT /ipLoadbalancing/{serviceName}
-        $put(body?: {body: ipLoadbalancing.Ip}): Promise<void>;
+        $put(body?: {displayName?: string, ipLoadbalancing?: string, ipv4?: string, ipv6?: string, metricsToken?: string, offer?: string, orderableZone?: ipLoadbalancing.OrderableZone[], serviceName?: string, sslConfiguration?: ipLoadbalancing.SslConfigurationEnum, state?: ipLoadbalancing.IpStateEnum, vrackEligibility?: boolean, vrackName?: string, zone?: string[]}): Promise<void>;
         availableFarmProbes: {
             // GET /ipLoadbalancing/{serviceName}/availableFarmProbes
             $get(): Promise<ipLoadbalancing.FarmAvailableProbe[]>;
@@ -608,7 +608,7 @@ export interface IpLoadbalancing{
                     // GET /ipLoadbalancing/{serviceName}/http/farm/{farmId}
                     $get(): Promise<ipLoadbalancing.backendHttp.BackendHttp>;
                     // PUT /ipLoadbalancing/{serviceName}/http/farm/{farmId}
-                    $put(body?: {body: ipLoadbalancing.backendHttp.BackendHttp}): Promise<void>;
+                    $put(body?: {balance?: ipLoadbalancing.BalanceHTTPEnum, displayName?: string, farmId?: number, port?: number, probe?: ipLoadbalancing.BackendProbe, stickiness?: ipLoadbalancing.StickinessHTTPEnum, vrackNetworkId?: number, zone?: string}): Promise<void>;
                     server: {
                         // GET /ipLoadbalancing/{serviceName}/http/farm/{farmId}/server
                         $get(param?: {address?: string, cookie?: string, status?: ipLoadbalancing.BackendCustomerServerStatusEnum}): Promise<number[]>;
@@ -620,7 +620,7 @@ export interface IpLoadbalancing{
                             // GET /ipLoadbalancing/{serviceName}/http/farm/{farmId}/server/{serverId}
                             $get(): Promise<ipLoadbalancing.backendHttpCustomerServer.BackendHTTPServer>;
                             // PUT /ipLoadbalancing/{serviceName}/http/farm/{farmId}/server/{serverId}
-                            $put(body?: {body: ipLoadbalancing.backendHttpCustomerServer.BackendHTTPServer}): Promise<void>;
+                            $put(body?: {address?: string, backendId?: number, backup?: boolean, chain?: string, cookie?: string, displayName?: string, port?: number, probe?: boolean, proxyProtocolVersion?: ipLoadbalancing.ProxyProtocolVersionEnum, serverId?: number, serverState?: ipLoadbalancing.ServerState[], ssl?: boolean, status?: ipLoadbalancing.BackendCustomerServerStatusEnum, weight?: number}): Promise<void>;
                         };
                     }
                 };
@@ -636,7 +636,7 @@ export interface IpLoadbalancing{
                     // GET /ipLoadbalancing/{serviceName}/http/frontend/{frontendId}
                     $get(): Promise<ipLoadbalancing.frontendHttp.FrontendHttp>;
                     // PUT /ipLoadbalancing/{serviceName}/http/frontend/{frontendId}
-                    $put(body?: {body: ipLoadbalancing.frontendHttp.FrontendHttp}): Promise<void>;
+                    $put(body?: {allowedSource?: string[], dedicatedIpfo?: string[], defaultFarmId?: number, defaultSslId?: number, disabled?: boolean, displayName?: string, frontendId?: number, hsts?: boolean, httpHeader?: string[], port?: string, redirectLocation?: string, ssl?: boolean, zone?: string}): Promise<void>;
                 };
             }
             route: {
@@ -650,7 +650,7 @@ export interface IpLoadbalancing{
                     // GET /ipLoadbalancing/{serviceName}/http/route/{routeId}
                     $get(): Promise<ipLoadbalancing.RouteHttp.RouteHttp>;
                     // PUT /ipLoadbalancing/{serviceName}/http/route/{routeId}
-                    $put(body?: {body: ipLoadbalancing.RouteHttp.RouteHttp}): Promise<void>;
+                    $put(body?: {action?: ipLoadbalancing.RouteHttpAction, displayName?: string, frontendId?: number, routeId?: number, rules?: ipLoadbalancing.RouteRule[], status?: ipLoadbalancing.RouteStatusEnum, weight?: number}): Promise<void>;
                     rule: {
                         // GET /ipLoadbalancing/{serviceName}/http/route/{routeId}/rule
                         $get(): Promise<number[]>;
@@ -662,7 +662,7 @@ export interface IpLoadbalancing{
                             // GET /ipLoadbalancing/{serviceName}/http/route/{routeId}/rule/{ruleId}
                             $get(): Promise<ipLoadbalancing.RouteRule.RouteRule>;
                             // PUT /ipLoadbalancing/{serviceName}/http/route/{routeId}/rule/{ruleId}
-                            $put(body?: {body: ipLoadbalancing.RouteRule.RouteRule}): Promise<void>;
+                            $put(body?: {displayName?: string, field?: string, match?: ipLoadbalancing.RouteRuleMatchesEnum, negate?: boolean, pattern?: string, ruleId?: number, subField?: string}): Promise<void>;
                         };
                     }
                 };
@@ -687,7 +687,7 @@ export interface IpLoadbalancing{
                 // GET /ipLoadbalancing/{serviceName}/quota/{zone}
                 $get(): Promise<ipLoadbalancing.Quota.Quota>;
                 // PUT /ipLoadbalancing/{serviceName}/quota/{zone}
-                $put(body?: {body: ipLoadbalancing.Quota.Quota}): Promise<void>;
+                $put(body?: {alert?: number, included?: number, lastUpdateDate?: string, resetDate?: string, total?: number, zone?: string}): Promise<void>;
             };
         }
         quotaHistory: {
@@ -706,7 +706,7 @@ export interface IpLoadbalancing{
             // GET /ipLoadbalancing/{serviceName}/serviceInfos
             $get(): Promise<services.Service>;
             // PUT /ipLoadbalancing/{serviceName}/serviceInfos
-            $put(body?: {body: services.Service}): Promise<void>;
+            $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
         }
         ssl: {
             // GET /ipLoadbalancing/{serviceName}/ssl
@@ -719,7 +719,7 @@ export interface IpLoadbalancing{
                 // GET /ipLoadbalancing/{serviceName}/ssl/{id}
                 $get(): Promise<ipLoadbalancing.Ssl.Ssl>;
                 // PUT /ipLoadbalancing/{serviceName}/ssl/{id}
-                $put(body?: {body: ipLoadbalancing.Ssl.Ssl}): Promise<void>;
+                $put(body?: {displayName?: string, expireDate?: string, fingerprint?: string, id?: number, san?: string[], serial?: string, subject?: string, type?: ipLoadbalancing.SslTypeEnum}): Promise<void>;
             };
         }
         status: {
@@ -746,7 +746,7 @@ export interface IpLoadbalancing{
                     // GET /ipLoadbalancing/{serviceName}/tcp/farm/{farmId}
                     $get(): Promise<ipLoadbalancing.backendTcp.BackendTcp>;
                     // PUT /ipLoadbalancing/{serviceName}/tcp/farm/{farmId}
-                    $put(body?: {body: ipLoadbalancing.backendTcp.BackendTcp}): Promise<void>;
+                    $put(body?: {balance?: ipLoadbalancing.BalanceTCPEnum, displayName?: string, farmId?: number, port?: number, probe?: ipLoadbalancing.BackendProbe, stickiness?: ipLoadbalancing.StickinessTCPEnum, vrackNetworkId?: number, zone?: string}): Promise<void>;
                     server: {
                         // GET /ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server
                         $get(param?: {address?: string, status?: ipLoadbalancing.BackendCustomerServerStatusEnum}): Promise<number[]>;
@@ -758,7 +758,7 @@ export interface IpLoadbalancing{
                             // GET /ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server/{serverId}
                             $get(): Promise<ipLoadbalancing.backendTcpCustomerServer.BackendTCPServer>;
                             // PUT /ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server/{serverId}
-                            $put(body?: {body: ipLoadbalancing.backendTcpCustomerServer.BackendTCPServer}): Promise<void>;
+                            $put(body?: {address?: string, backendId?: number, backup?: boolean, chain?: string, displayName?: string, port?: number, probe?: boolean, proxyProtocolVersion?: ipLoadbalancing.ProxyProtocolVersionEnum, serverId?: number, serverState?: ipLoadbalancing.ServerState[], ssl?: boolean, status?: ipLoadbalancing.BackendCustomerServerStatusEnum, weight?: number}): Promise<void>;
                         };
                     }
                 };
@@ -774,7 +774,7 @@ export interface IpLoadbalancing{
                     // GET /ipLoadbalancing/{serviceName}/tcp/frontend/{frontendId}
                     $get(): Promise<ipLoadbalancing.frontendTcp.FrontendTcp>;
                     // PUT /ipLoadbalancing/{serviceName}/tcp/frontend/{frontendId}
-                    $put(body?: {body: ipLoadbalancing.frontendTcp.FrontendTcp}): Promise<void>;
+                    $put(body?: {allowedSource?: string[], dedicatedIpfo?: string[], defaultFarmId?: number, defaultSslId?: number, disabled?: boolean, displayName?: string, frontendId?: number, port?: string, ssl?: boolean, zone?: string}): Promise<void>;
                 };
             }
             route: {
@@ -788,7 +788,7 @@ export interface IpLoadbalancing{
                     // GET /ipLoadbalancing/{serviceName}/tcp/route/{routeId}
                     $get(): Promise<ipLoadbalancing.RouteTcp.RouteTcp>;
                     // PUT /ipLoadbalancing/{serviceName}/tcp/route/{routeId}
-                    $put(body?: {body: ipLoadbalancing.RouteTcp.RouteTcp}): Promise<void>;
+                    $put(body?: {action?: ipLoadbalancing.RouteTcpAction, displayName?: string, frontendId?: number, routeId?: number, rules?: ipLoadbalancing.RouteRule[], status?: ipLoadbalancing.RouteStatusEnum, weight?: number}): Promise<void>;
                     rule: {
                         // GET /ipLoadbalancing/{serviceName}/tcp/route/{routeId}/rule
                         $get(): Promise<number[]>;
@@ -800,7 +800,7 @@ export interface IpLoadbalancing{
                             // GET /ipLoadbalancing/{serviceName}/tcp/route/{routeId}/rule/{ruleId}
                             $get(): Promise<ipLoadbalancing.RouteRule.RouteRule>;
                             // PUT /ipLoadbalancing/{serviceName}/tcp/route/{routeId}/rule/{ruleId}
-                            $put(body?: {body: ipLoadbalancing.RouteRule.RouteRule}): Promise<void>;
+                            $put(body?: {displayName?: string, field?: string, match?: ipLoadbalancing.RouteRuleMatchesEnum, negate?: boolean, pattern?: string, ruleId?: number, subField?: string}): Promise<void>;
                         };
                     }
                 };
@@ -822,7 +822,7 @@ export interface IpLoadbalancing{
                     // GET /ipLoadbalancing/{serviceName}/udp/farm/{farmId}
                     $get(): Promise<ipLoadbalancing.backendUdp.BackendUdp>;
                     // PUT /ipLoadbalancing/{serviceName}/udp/farm/{farmId}
-                    $put(body?: {body: ipLoadbalancing.backendUdp.BackendUdp}): Promise<void>;
+                    $put(body?: {displayName?: string, farmId?: number, port?: number, vrackNetworkId?: number, zone?: string}): Promise<void>;
                     server: {
                         // GET /ipLoadbalancing/{serviceName}/udp/farm/{farmId}/server
                         $get(param?: {address?: string, status?: ipLoadbalancing.BackendCustomerServerStatusEnum}): Promise<number[]>;
@@ -834,7 +834,7 @@ export interface IpLoadbalancing{
                             // GET /ipLoadbalancing/{serviceName}/udp/farm/{farmId}/server/{serverId}
                             $get(): Promise<ipLoadbalancing.backendUdpCustomerServer.BackendUDPServer>;
                             // PUT /ipLoadbalancing/{serviceName}/udp/farm/{farmId}/server/{serverId}
-                            $put(body?: {body: ipLoadbalancing.backendUdpCustomerServer.BackendUDPServer}): Promise<void>;
+                            $put(body?: {address?: string, backendId?: number, displayName?: string, port?: number, serverId?: number, status?: ipLoadbalancing.BackendCustomerServerStatusEnum}): Promise<void>;
                         };
                     }
                 };
@@ -850,7 +850,7 @@ export interface IpLoadbalancing{
                     // GET /ipLoadbalancing/{serviceName}/udp/frontend/{frontendId}
                     $get(): Promise<ipLoadbalancing.frontendUdp.FrontendUdp>;
                     // PUT /ipLoadbalancing/{serviceName}/udp/frontend/{frontendId}
-                    $put(body?: {body: ipLoadbalancing.frontendUdp.FrontendUdp}): Promise<void>;
+                    $put(body?: {dedicatedIpfo?: string[], defaultFarmId?: number, disabled?: boolean, displayName?: string, frontendId?: number, port?: string, zone?: string}): Promise<void>;
                 };
             }
         }
@@ -866,7 +866,7 @@ export interface IpLoadbalancing{
                     // GET /ipLoadbalancing/{serviceName}/vrack/network/{vrackNetworkId}
                     $get(): Promise<ipLoadbalancing.VrackNetwork.VrackNetwork>;
                     // PUT /ipLoadbalancing/{serviceName}/vrack/network/{vrackNetworkId}
-                    $put(body?: {body: ipLoadbalancing.VrackNetwork.VrackNetwork}): Promise<void>;
+                    $put(body?: {displayName?: string, farmId?: ipLoadbalancing.DefinedFarm[], natIp?: string, subnet?: string, vlan?: number, vrackNetworkId?: number}): Promise<void>;
                     updateFarmId: {
                         // POST /ipLoadbalancing/{serviceName}/vrack/network/{vrackNetworkId}/updateFarmId
                         $post(body?: {farmId: number[]}): Promise<ipLoadbalancing.VrackNetwork.VrackNetwork>;

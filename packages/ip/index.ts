@@ -433,7 +433,7 @@ export interface Ip{
                     // GET /ip/loadBalancing/{serviceName}/backend/{backend}
                     $get(): Promise<ip.LoadBalancingBackendIp>;
                     // PUT /ip/loadBalancing/{serviceName}/backend/{backend}
-                    $put(body?: {body: ip.LoadBalancingBackendIp}): Promise<void>;
+                    $put(body?: {backend?: string, mainBackendIp?: string, probe?: ip.LoadBalancingBackendProbeEnum, weight?: number, zone?: ip.LoadBalancingZoneEnum}): Promise<void>;
                     backupState: {
                         // POST /ip/loadBalancing/{serviceName}/backend/{backend}/backupState
                         $post(body?: {backupStateSet: boolean, mainBackendIp?: string}): Promise<ip.LoadBalancingTask>;
@@ -456,7 +456,7 @@ export interface Ip{
                 // GET /ip/loadBalancing/{serviceName}/portsRedirection
                 $get(): Promise<ip.LoadBalancingAdditionalPortEnum[]>;
                 // POST /ip/loadBalancing/{serviceName}/portsRedirection
-                $post(body?: {body: ip.LoadBalancingIp.LoadBalancingPort}): Promise<ip.LoadBalancingTask>;
+                $post(body?: {dstPort?: number, srcPort?: ip.LoadBalancingAdditionalPortEnum}): Promise<ip.LoadBalancingTask>;
                 $(srcPort: ip.LoadBalancingAdditionalPortEnum): {
                     // DELETE /ip/loadBalancing/{serviceName}/portsRedirection/{srcPort}
                     $delete(): Promise<ip.LoadBalancingTask>;
@@ -476,7 +476,7 @@ export interface Ip{
                 // GET /ip/loadBalancing/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /ip/loadBalancing/{serviceName}/serviceInfos
-                $put(body?: {body: services.Service}): Promise<void>;
+                $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
             stickiness: {
                 // POST /ip/loadBalancing/{serviceName}/stickiness
@@ -503,7 +503,7 @@ export interface Ip{
             // GET /ip/service/{serviceName}
             $get(): Promise<ip.ServiceIp>;
             // PUT /ip/service/{serviceName}
-            $put(body?: {body: ip.ServiceIp}): Promise<void>;
+            $put(body?: {canBeTerminated?: boolean, country?: coreTypes.CountryEnum, description?: string, ip?: string, organisationId?: string, routedTo?: ip.RoutedTo, type?: ip.IpTypeEnum}): Promise<void>;
             changeContact: {
                 // POST /ip/service/{serviceName}/changeContact
                 $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
@@ -526,7 +526,7 @@ export interface Ip{
         // GET /ip/{ip}
         $get(): Promise<ip.Ip>;
         // PUT /ip/{ip}
-        $put(body?: {body: ip.Ip}): Promise<void>;
+        $put(body?: {canBeTerminated?: boolean, country?: coreTypes.CountryEnum, description?: string, ip?: string, organisationId?: string, routedTo?: ip.RoutedTo, type?: ip.IpTypeEnum}): Promise<void>;
         antihack: {
             // GET /ip/{ip}/antihack
             $get(param?: {state?: ip.BlockedIpStateEnum}): Promise<string[]>;
@@ -578,7 +578,7 @@ export interface Ip{
                 // GET /ip/{ip}/firewall/{ipOnFirewall}
                 $get(): Promise<ip.FirewallIp>;
                 // PUT /ip/{ip}/firewall/{ipOnFirewall}
-                $put(body?: {body: ip.FirewallIp}): Promise<void>;
+                $put(body?: {enabled?: boolean, ipOnFirewall?: string, state?: ip.FirewallStateEnum}): Promise<void>;
                 rule: {
                     // GET /ip/{ip}/firewall/{ipOnFirewall}/rule
                     $get(param?: {state?: ip.FirewallRuleStateEnum}): Promise<number[]>;
@@ -600,7 +600,7 @@ export interface Ip{
                 // GET /ip/{ip}/game/{ipOnGame}
                 $get(): Promise<ip.GameMitigation>;
                 // PUT /ip/{ip}/game/{ipOnGame}
-                $put(body?: {body: ip.GameMitigation}): Promise<void>;
+                $put(body?: {firewallModeEnabled?: boolean, ipOnGame?: string, state?: ip.GameMitigationStateEnum}): Promise<void>;
                 rule: {
                     // GET /ip/{ip}/game/{ipOnGame}/rule
                     $get(): Promise<number[]>;
@@ -666,7 +666,7 @@ export interface Ip{
                 // GET /ip/{ip}/mitigation/{ipOnMitigation}
                 $get(): Promise<ip.MitigationIp>;
                 // PUT /ip/{ip}/mitigation/{ipOnMitigation}
-                $put(body?: {body: ip.MitigationIp}): Promise<void>;
+                $put(body?: {auto?: boolean, ipOnMitigation?: string, permanent?: boolean, state?: ip.MitigationStateEnum}): Promise<void>;
                 stats: {
                     // GET /ip/{ip}/mitigation/{ipOnMitigation}/stats
                     $get(param?: {from: string, scale: ip.MitigationStatsScaleEnum, to: string}): Promise<ip.MitigationStats[]>;
@@ -688,7 +688,7 @@ export interface Ip{
                 // GET /ip/{ip}/mitigationProfiles/{ipMitigationProfile}
                 $get(): Promise<ip.MitigationProfile>;
                 // PUT /ip/{ip}/mitigationProfiles/{ipMitigationProfile}
-                $put(body?: {body: ip.MitigationProfile}): Promise<void>;
+                $put(body?: {autoMitigationTimeOut?: ip.MitigationProfileAutoMitigationTimeOutEnum, ipMitigationProfile?: string, state?: ip.MitigationProfileStateEnum}): Promise<void>;
             };
         }
         move: {
@@ -725,7 +725,7 @@ export interface Ip{
             // GET /ip/{ip}/ripe
             $get(): Promise<ip.RipeInfos>;
             // PUT /ip/{ip}/ripe
-            $put(body?: {body: ip.RipeInfos}): Promise<void>;
+            $put(body?: {description?: string, netname?: string}): Promise<void>;
         }
         spam: {
             // GET /ip/{ip}/spam

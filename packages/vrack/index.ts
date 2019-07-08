@@ -172,7 +172,7 @@ export interface Vrack{
         // GET /vrack/{serviceName}
         $get(): Promise<vrack.vrack>;
         // PUT /vrack/{serviceName}
-        $put(body?: {body: vrack.vrack}): Promise<void>;
+        $put(body?: {description?: string, name?: string}): Promise<void>;
         allowedServices: {
             // GET /vrack/{serviceName}/allowedServices
             $get(): Promise<vrack.AllowedServices>;
@@ -224,7 +224,7 @@ export interface Vrack{
                 // GET /vrack/{serviceName}/dedicatedConnect/{name}
                 $get(): Promise<vrack.dedicatedConnect>;
                 // PUT /vrack/{serviceName}/dedicatedConnect/{name}
-                $put(body?: {body: vrack.dedicatedConnect}): Promise<void>;
+                $put(body?: {name?: string}): Promise<void>;
             };
         }
         dedicatedServer: {

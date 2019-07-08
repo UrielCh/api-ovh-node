@@ -199,7 +199,7 @@ export interface Analytics{
             }
             deploy: {
                 // POST /analytics/platforms/{serviceName}/deploy
-                $post(body?: {body: analytics.cluster.Deploy}): Promise<analytics.cluster.Deploy>;
+                $post(body?: {clusterName: string, clusterType: string, edgeNodeStorage: number, hdfsEffectiveStorage: number, hdfsReplicationFactor: number, masterNodeStorage: number, masterPassword: string, nodes: analytics.node.Deploy[], osProjectId: string, osProjectName: string, osRegion: string, osToken: string, sshPublicKey: string}): Promise<analytics.cluster.Deploy>;
             }
             nodes: {
                 // GET /analytics/platforms/{serviceName}/nodes
@@ -213,7 +213,7 @@ export interface Analytics{
                 // GET /analytics/platforms/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /analytics/platforms/{serviceName}/serviceInfos
-                $put(body?: {body: services.Service}): Promise<void>;
+                $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
             status: {
                 // GET /analytics/platforms/{serviceName}/status

@@ -155,7 +155,7 @@ export interface License{
             // GET /license/plesk/{serviceName}
             $get(): Promise<license.plesk.Plesk>;
             // PUT /license/plesk/{serviceName}
-            $put(body?: {body: license.plesk.Plesk}): Promise<void>;
+            $put(body?: {creation?: string, deleteAtExpiration?: boolean, domain?: string, domainNumber?: license.DomainNumberEnum, informationKey?: string, ip?: string, key?: string, licenseId?: string, productKey?: string, status?: license.StateEnum, version?: license.PleskVersionEnum}): Promise<void>;
             allowedDestinationIp: {
                 // GET /license/plesk/{serviceName}/allowedDestinationIp
                 $get(): Promise<string[]>;
@@ -186,7 +186,7 @@ export interface License{
                 // GET /license/plesk/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /license/plesk/{serviceName}/serviceInfos
-                $put(body?: {body: services.Service}): Promise<void>;
+                $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
             tasks: {
                 // GET /license/plesk/{serviceName}/tasks

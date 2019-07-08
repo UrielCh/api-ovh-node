@@ -345,7 +345,7 @@ export interface Email{
                 // GET /email/domain/delegatedAccount/{email}
                 $get(): Promise<email.domain.AccountDelegated>;
                 // PUT /email/domain/delegatedAccount/{email}
-                $put(body?: {body: email.domain.AccountDelegated}): Promise<void>;
+                $put(body?: {accountName?: string, allowedAccountSize?: number[], description?: string, domain?: string, email?: string, isBlocked?: boolean, size?: number}): Promise<void>;
                 changePassword: {
                     // POST /email/domain/delegatedAccount/{email}/changePassword
                     $post(body?: {password: string}): Promise<email.domain.TaskPop>;
@@ -390,7 +390,7 @@ export interface Email{
                     // POST /email/domain/delegatedAccount/{email}/responder
                     $post(body?: {content: string, copy: boolean, copyTo?: string, from?: string, to?: string}): Promise<email.domain.TaskSpecialAccount>;
                     // PUT /email/domain/delegatedAccount/{email}/responder
-                    $put(body?: {body: email.domain.ResponderAccount}): Promise<void>;
+                    $put(body?: {account?: string, content?: string, copy?: boolean, copyTo?: string, from?: string, to?: string}): Promise<void>;
                 }
                 updateUsage: {
                     // POST /email/domain/delegatedAccount/{email}/updateUsage
@@ -420,7 +420,7 @@ export interface Email{
                     // GET /email/domain/{domain}/account/{accountName}
                     $get(): Promise<email.domain.Account>;
                     // PUT /email/domain/{domain}/account/{accountName}
-                    $put(body?: {body: email.domain.Account}): Promise<void>;
+                    $put(body?: {accountName?: string, description?: string, domain?: string, email?: string, isBlocked?: boolean, size?: number}): Promise<void>;
                     changePassword: {
                         // POST /email/domain/{domain}/account/{accountName}/changePassword
                         $post(body?: {password: string}): Promise<email.domain.TaskPop>;
@@ -546,7 +546,7 @@ export interface Email{
                     // GET /email/domain/{domain}/mailingList/{name}
                     $get(): Promise<email.domain.MailingList>;
                     // PUT /email/domain/{domain}/mailingList/{name}
-                    $put(body?: {body: email.domain.MailingList}): Promise<void>;
+                    $put(body?: {id?: number, language?: domainDomainMlLanguageEnum, name?: string, nbSubscribers?: number, nbSubscribersUpdateDate?: string, options?: domainDomainMlOptionsStruct, ownerEmail?: string, replyTo?: string}): Promise<void>;
                     changeOptions: {
                         // POST /email/domain/{domain}/mailingList/{name}/changeOptions
                         $post(body?: {options: domain.DomainMlOptionsStruct}): Promise<email.domain.TaskMl>;
@@ -620,14 +620,14 @@ export interface Email{
                     // GET /email/domain/{domain}/responder/{account}
                     $get(): Promise<email.domain.Responder>;
                     // PUT /email/domain/{domain}/responder/{account}
-                    $put(body?: {body: email.domain.Responder}): Promise<void>;
+                    $put(body?: {account?: string, content?: string, copy?: boolean, copyTo?: string, from?: string, to?: string}): Promise<void>;
                 };
             }
             serviceInfos: {
                 // GET /email/domain/{domain}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /email/domain/{domain}/serviceInfos
-                $put(body?: {body: services.Service}): Promise<void>;
+                $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
             summary: {
                 // GET /email/domain/{domain}/summary

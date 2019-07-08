@@ -140,7 +140,7 @@ export interface SslGateway{
         // GET /sslGateway/{serviceName}
         $get(): Promise<sslGateway.SslGateway>;
         // PUT /sslGateway/{serviceName}
-        $put(body?: {body: sslGateway.SslGateway}): Promise<void>;
+        $put(body?: {allowedSource?: string[], displayName?: string, hsts?: boolean, httpsRedirect?: boolean, ipv4?: string, ipv6?: string, metricsToken?: string, offer?: sslGateway.OfferEnum, reverse?: string, serverHttps?: boolean, serviceName?: string, sslConfiguration?: sslGateway.SslConfigurationEnum, state?: sslGateway.StateEnum, zones?: string[]}): Promise<void>;
         changeContact: {
             // POST /sslGateway/{serviceName}/changeContact
             $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
@@ -180,14 +180,14 @@ export interface SslGateway{
                 // GET /sslGateway/{serviceName}/server/{id}
                 $get(): Promise<sslGateway.Server>;
                 // PUT /sslGateway/{serviceName}/server/{id}
-                $put(body?: {body: sslGateway.Server}): Promise<void>;
+                $put(body?: {address?: string, id?: number, port?: number, state?: sslGateway.ServerStateEnum}): Promise<void>;
             };
         }
         serviceInfos: {
             // GET /sslGateway/{serviceName}/serviceInfos
             $get(): Promise<services.Service>;
             // PUT /sslGateway/{serviceName}/serviceInfos
-            $put(body?: {body: services.Service}): Promise<void>;
+            $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
         }
         task: {
             // GET /sslGateway/{serviceName}/task

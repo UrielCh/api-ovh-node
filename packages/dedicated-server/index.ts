@@ -994,7 +994,7 @@ export interface Dedicated{
             // GET /dedicated/server/{serviceName}
             $get(): Promise<dedicated.server.Dedicated>;
             // PUT /dedicated/server/{serviceName}
-            $put(body?: {body: dedicated.server.Dedicated}): Promise<void>;
+            $put(body?: {bootId?: number, commercialRange?: string, datacenter?: dedicated.DatacenterEnum, ip?: string, linkSpeed?: number, monitoring?: boolean, name?: string, os?: string, professionalUse?: boolean, rack?: string, rescueMail?: string, reverse?: string, rootDevice?: string, serverId?: number, state?: dedicated.server.StateEnum, supportLevel?: dedicated.server.SupportLevelEnum}): Promise<void>;
             authenticationSecret: {
                 // POST /dedicated/server/{serviceName}/authenticationSecret
                 $post(): Promise<dedicated.server.Access[]>;
@@ -1023,7 +1023,7 @@ export interface Dedicated{
                 // GET /dedicated/server/{serviceName}/burst
                 $get(): Promise<dedicated.server.ServerBurst>;
                 // PUT /dedicated/server/{serviceName}/burst
-                $put(body?: {body: dedicated.server.ServerBurst}): Promise<void>;
+                $put(body?: {capacity?: complexType.UnitAndValue<number>, status?: dedicated.server.BurstStatusEnum}): Promise<void>;
             }
             changeContact: {
                 // POST /dedicated/server/{serviceName}/changeContact
@@ -1064,7 +1064,7 @@ export interface Dedicated{
                             // GET /dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}
                             $get(): Promise<dedicated.server.BackupFtpAcl>;
                             // PUT /dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}
-                            $put(body?: {body: dedicated.server.BackupFtpAcl}): Promise<void>;
+                            $put(body?: {cifs?: boolean, ftp?: boolean, ipBlock?: string, isApplied?: boolean, lastUpdate?: string, nfs?: boolean}): Promise<void>;
                         };
                     }
                     authorizableBlocks: {
@@ -1080,7 +1080,7 @@ export interface Dedicated{
                     // GET /dedicated/server/{serviceName}/features/firewall
                     $get(): Promise<dedicated.server.Firewall>;
                     // PUT /dedicated/server/{serviceName}/features/firewall
-                    $put(body?: {body: dedicated.server.Firewall}): Promise<void>;
+                    $put(body?: {enabled?: boolean, firewall?: string, ip?: string, mode?: dedicated.server.FirewallModeEnum, model?: dedicated.server.FirewallModelEnum}): Promise<void>;
                 }
                 ipmi: {
                     // GET /dedicated/server/{serviceName}/features/ipmi
@@ -1278,7 +1278,7 @@ export interface Dedicated{
                     // GET /dedicated/server/{serviceName}/secondaryDnsDomains/{domain}
                     $get(): Promise<secondaryDns.SecondaryDNS>;
                     // PUT /dedicated/server/{serviceName}/secondaryDnsDomains/{domain}
-                    $put(body?: {body: secondaryDns.SecondaryDNS}): Promise<void>;
+                    $put(body?: {creationDate?: string, dns?: string, domain?: string, ipMaster?: string}): Promise<void>;
                     dnsServer: {
                         // GET /dedicated/server/{serviceName}/secondaryDnsDomains/{domain}/dnsServer
                         $get(): Promise<secondaryDns.SecondaryDNSNameServer>;
@@ -1297,7 +1297,7 @@ export interface Dedicated{
                 // GET /dedicated/server/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /dedicated/server/{serviceName}/serviceInfos
-                $put(body?: {body: services.Service}): Promise<void>;
+                $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
             serviceMonitoring: {
                 // GET /dedicated/server/{serviceName}/serviceMonitoring
@@ -1310,7 +1310,7 @@ export interface Dedicated{
                     // GET /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}
                     $get(): Promise<dedicated.server.serviceMonitoring>;
                     // PUT /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}
-                    $put(body?: {body: dedicated.server.serviceMonitoring}): Promise<void>;
+                    $put(body?: {challengeText?: string, enabled?: boolean, interval?: dedicated.server.MonitoringIntervalEnum, ip?: string, monitoringId?: number, port?: number, protocol?: dedicated.server.MonitoringProtocolEnum, url?: string}): Promise<void>;
                     alert: {
                         email: {
                             // GET /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email
@@ -1323,7 +1323,7 @@ export interface Dedicated{
                                 // GET /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}
                                 $get(): Promise<dedicated.server.emailAlert>;
                                 // PUT /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}
-                                $put(body?: {body: dedicated.server.emailAlert}): Promise<void>;
+                                $put(body?: {alertId?: number, email?: string, enabled?: boolean, language?: dedicated.server.AlertLanguageEnum}): Promise<void>;
                             };
                         }
                         sms: {
@@ -1337,7 +1337,7 @@ export interface Dedicated{
                                 // GET /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}
                                 $get(): Promise<dedicated.server.smsAlert>;
                                 // PUT /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}
-                                $put(body?: {body: dedicated.server.smsAlert}): Promise<void>;
+                                $put(body?: {alertId?: number, enabled?: boolean, fromHour?: number, language?: dedicated.server.AlertLanguageEnum, phoneNumberTo?: string, smsAccount?: string, toHour?: number}): Promise<void>;
                             };
                         }
                     }
@@ -1366,7 +1366,7 @@ export interface Dedicated{
                     // GET /dedicated/server/{serviceName}/spla/{id}
                     $get(): Promise<dedicated.server.spla>;
                     // PUT /dedicated/server/{serviceName}/spla/{id}
-                    $put(body?: {body: dedicated.server.spla}): Promise<void>;
+                    $put(body?: {id?: number, lastUpdate?: string, serialNumber?: string, status?: dedicated.server.SplaStatusEnum, type?: dedicated.server.SplaTypeEnum}): Promise<void>;
                     revoke: {
                         // POST /dedicated/server/{serviceName}/spla/{id}/revoke
                         $post(): Promise<void>;

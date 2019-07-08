@@ -184,7 +184,7 @@ export interface Dbaas{
             // GET /dbaas/timeseries/{serviceName}
             $get(): Promise<timeseries.Project>;
             // PUT /dbaas/timeseries/{serviceName}
-            $put(body?: {body: timeseries.Project}): Promise<void>;
+            $put(body?: {description?: string, displayName?: string, offerId?: string, regionId?: string, serviceName?: string, status?: timeseries.StatusTypeEnum}): Promise<void>;
             changeContact: {
                 // POST /dbaas/timeseries/{serviceName}/changeContact
                 $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
@@ -215,7 +215,7 @@ export interface Dbaas{
                 // GET /dbaas/timeseries/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /dbaas/timeseries/{serviceName}/serviceInfos
-                $put(body?: {body: services.Service}): Promise<void>;
+                $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
             setup: {
                 // POST /dbaas/timeseries/{serviceName}/setup

@@ -160,7 +160,7 @@ export interface Paas{
             // GET /paas/timeseries/{serviceName}
             $get(): Promise<timeseries.Project>;
             // PUT /paas/timeseries/{serviceName}
-            $put(body?: {body: timeseries.Project}): Promise<void>;
+            $put(body?: {description?: string, displayName?: string, offerId?: string, regionId?: string, serviceName?: string, status?: timeseries.StatusTypeEnum}): Promise<void>;
             changeContact: {
                 // POST /paas/timeseries/{serviceName}/changeContact
                 $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
@@ -191,7 +191,7 @@ export interface Paas{
                 // GET /paas/timeseries/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /paas/timeseries/{serviceName}/serviceInfos
-                $put(body?: {body: services.Service}): Promise<void>;
+                $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
             setup: {
                 // POST /paas/timeseries/{serviceName}/setup

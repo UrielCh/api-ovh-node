@@ -56,10 +56,17 @@ export namespace dedicated {
         //dedicated.ceph.response
         // fullName: dedicated.ceph.response.response
         export interface response {
-            family: dedicated.ceph.aclList.response.familyEnum;
-            id: number;
-            netmask: string;
-            network: string;
+            cephMons: string[];
+            cephVersion: string;
+            createDate: string;
+            crushTunables: dedicated.ceph.clusterGet.response.crushTunablesEnum;
+            label: string;
+            region: string;
+            serviceName: string;
+            size: number;
+            state: dedicated.ceph.clusterGet.response.stateEnum;
+            status: dedicated.ceph.clusterGet.response.statusEnum;
+            updateDate: string;
         }
         export namespace taskGet {
             export namespace response {
@@ -168,7 +175,7 @@ export interface Dedicated{
                 // GET /dedicated/ceph/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /dedicated/ceph/{serviceName}/serviceInfos
-                $put(body?: {body: services.Service}): Promise<void>;
+                $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
             task: {
                 // GET /dedicated/ceph/{serviceName}/task

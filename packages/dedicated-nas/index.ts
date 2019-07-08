@@ -114,7 +114,7 @@ export interface Dedicated{
             // GET /dedicated/nas/{serviceName}
             $get(): Promise<dedicated.nas.Nas>;
             // PUT /dedicated/nas/{serviceName}
-            $put(body?: {body: dedicated.nas.Nas}): Promise<void>;
+            $put(body?: {canCreatePartition?: boolean, customName?: string, datacenter?: string, ip?: string, mountPath?: string, serviceName?: string, zpoolSize?: number}): Promise<void>;
             partition: {
                 // GET /dedicated/nas/{serviceName}/partition
                 $get(): Promise<string[]>;
@@ -126,7 +126,7 @@ export interface Dedicated{
                     // GET /dedicated/nas/{serviceName}/partition/{partitionName}
                     $get(): Promise<dedicated.nas.Partition>;
                     // PUT /dedicated/nas/{serviceName}/partition/{partitionName}
-                    $put(body?: {body: dedicated.nas.Partition}): Promise<void>;
+                    $put(body?: {partitionName?: string, protocol?: dedicated.storage.ProtocolEnum, size?: number}): Promise<void>;
                     access: {
                         // GET /dedicated/nas/{serviceName}/partition/{partitionName}/access
                         $get(): Promise<string[]>;
@@ -161,7 +161,7 @@ export interface Dedicated{
                 // GET /dedicated/nas/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /dedicated/nas/{serviceName}/serviceInfos
-                $put(body?: {body: services.Service}): Promise<void>;
+                $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
             task: {
                 // GET /dedicated/nas/{serviceName}/task

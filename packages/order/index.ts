@@ -1064,24 +1064,24 @@ export interface Order{
         // GET /order/cart
         $get(param?: {description?: string}): Promise<string[]>;
         // POST /order/cart
-        $post(body?: {body: order.cart.Creation}): Promise<order.cart.Cart>;
+        $post(body?: {description?: string, expire?: string, ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.cart.Cart>;
         $(cartId: string): {
             // DELETE /order/cart/{cartId}
             $delete(): Promise<void>;
             // GET /order/cart/{cartId}
             $get(): Promise<order.cart.Cart>;
             // PUT /order/cart/{cartId}
-            $put(body?: {body: order.cart.Update}): Promise<order.cart.Cart>;
+            $put(body?: {description?: string, expire?: string}): Promise<order.cart.Cart>;
             analytics: {
                 // GET /order/cart/{cartId}/analytics
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/analytics
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/analytics/options
                     $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/analytics/options
-                    $post(body?: {body: order.cart.GenericOptionCreation}): Promise<order.cart.Item>;
+                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             assign: {
@@ -1092,66 +1092,66 @@ export interface Order{
                 // GET /order/cart/{cartId}/baremetalServers
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/baremetalServers
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/baremetalServers/options
                     $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/baremetalServers/options
-                    $post(body?: {body: order.cart.GenericOptionCreation}): Promise<order.cart.Item>;
+                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             cdn: {
                 // GET /order/cart/{cartId}/cdn
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/cdn
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/cdn/options
                     $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/cdn/options
-                    $post(body?: {body: order.cart.GenericOptionCreation}): Promise<order.cart.Item>;
+                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             cephaas: {
                 // GET /order/cart/{cartId}/cephaas
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/cephaas
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/cephaas/options
                     $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/cephaas/options
-                    $post(body?: {body: order.cart.GenericOptionCreation}): Promise<order.cart.Item>;
+                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             checkout: {
                 // GET /order/cart/{cartId}/checkout
                 $get(): Promise<order.Order>;
                 // POST /order/cart/{cartId}/checkout
-                $post(body?: {body: order.cart.Checkout}): Promise<order.Order>;
+                $post(body?: {autoPayWithPreferredPaymentMethod?: boolean, waiveRetractationPeriod?: boolean}): Promise<order.Order>;
             }
             cloud: {
                 // GET /order/cart/{cartId}/cloud
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/cloud
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/cloud/options
                     $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/cloud/options
-                    $post(body?: {body: order.cart.GenericOptionCreation}): Promise<order.cart.Item>;
+                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             cloudweb: {
                 // GET /order/cart/{cartId}/cloudweb
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/cloudweb
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/cloudweb/options
                     $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/cloudweb/options
-                    $post(body?: {body: order.cart.GenericOptionCreation}): Promise<order.cart.Item>;
+                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             coupon: {
@@ -1160,103 +1160,103 @@ export interface Order{
                 // GET /order/cart/{cartId}/coupon
                 $get(): Promise<string[]>;
                 // POST /order/cart/{cartId}/coupon
-                $post(body?: {body: order.cart.CouponCreation}): Promise<string[]>;
+                $post(body?: {coupon: string}): Promise<string[]>;
             }
             csp2: {
                 // GET /order/cart/{cartId}/csp2
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/csp2
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/csp2/options
                     $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/csp2/options
-                    $post(body?: {body: order.cart.GenericOptionCreation}): Promise<order.cart.Item>;
+                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             dbaasTimeseries: {
                 // GET /order/cart/{cartId}/dbaasTimeseries
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/dbaasTimeseries
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             }
             dedicated: {
                 // GET /order/cart/{cartId}/dedicated
                 $get(param?: {family?: string, planCode?: string}): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/dedicated
-                $post(body?: {body: order.cart.GenericDedicatedCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/dedicated/options
                     $get(param?: {family?: string, planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/dedicated/options
-                    $post(body?: {body: order.cart.GenericDedicatedOptionsCreation}): Promise<order.cart.Item>;
+                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             dedicatedLabs: {
                 // GET /order/cart/{cartId}/dedicatedLabs
                 $get(param?: {planCode?: string}): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/dedicatedLabs
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/dedicatedLabs/options
                     $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/dedicatedLabs/options
-                    $post(body?: {body: order.cart.GenericOptionCreation}): Promise<order.cart.Item>;
+                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             dedicatedReseller: {
                 // GET /order/cart/{cartId}/dedicatedReseller
                 $get(param?: {family?: string, planCode?: string}): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/dedicatedReseller
-                $post(body?: {body: order.cart.GenericDedicatedCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/dedicatedReseller/options
                     $get(param?: {family?: string, planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/dedicatedReseller/options
-                    $post(body?: {body: order.cart.GenericDedicatedOptionsCreation}): Promise<order.cart.Item>;
+                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             deskaas: {
                 // GET /order/cart/{cartId}/deskaas
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/deskaas
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             }
             discover: {
                 // GET /order/cart/{cartId}/discover
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/discover
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/discover/options
                     $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/discover/options
-                    $post(body?: {body: order.cart.GenericOptionCreation}): Promise<order.cart.Item>;
+                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             dns: {
                 // GET /order/cart/{cartId}/dns
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/dns
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             }
             domain: {
                 // GET /order/cart/{cartId}/domain
                 $get(param?: {domain: string}): Promise<order.cart.ProductInformation[]>;
                 // POST /order/cart/{cartId}/domain
-                $post(body?: {body: order.cart.GenericDomainCreation}): Promise<order.cart.Item>;
+                $post(body?: {domain: string, duration?: string, offerId?: string, quantity?: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/domain/options
                     $get(param?: {domain: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/domain/options
-                    $post(body?: {body: order.cart.GenericDomainOptionsCreation}): Promise<order.cart.Item>;
+                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             domainPacks: {
                 // GET /order/cart/{cartId}/domainPacks
                 $get(param?: {domain: string}): Promise<order.cart.DomainPacksProductInformation[]>;
                 // POST /order/cart/{cartId}/domainPacks
-                $post(body?: {body: order.cart.DomainPacksCreation}): Promise<order.cart.Item>;
+                $post(body?: {domain: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             }
             domainRestore: {
                 // GET /order/cart/{cartId}/domainRestore
@@ -1266,78 +1266,78 @@ export interface Order{
                 // GET /order/cart/{cartId}/domainTransfer
                 $get(param?: {domain: string}): Promise<order.cart.ProductInformation[]>;
                 // POST /order/cart/{cartId}/domainTransfer
-                $post(body?: {body: order.cart.GenericDomainCreation}): Promise<order.cart.Item>;
+                $post(body?: {domain: string, duration?: string, offerId?: string, quantity?: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/domainTransfer/options
                     $get(param?: {domain: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/domainTransfer/options
-                    $post(body?: {body: order.cart.GenericDomainOptionsCreation}): Promise<order.cart.Item>;
+                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             emailpro: {
                 // GET /order/cart/{cartId}/emailpro
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/emailpro
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/emailpro/options
                     $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/emailpro/options
-                    $post(body?: {body: order.cart.GenericOptionCreation}): Promise<order.cart.Item>;
+                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             exchange: {
                 // GET /order/cart/{cartId}/exchange
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/exchange
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/exchange/options
                     $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/exchange/options
-                    $post(body?: {body: order.cart.GenericOptionCreation}): Promise<order.cart.Item>;
+                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             exchangeEnterprise: {
                 // GET /order/cart/{cartId}/exchangeEnterprise
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/exchangeEnterprise
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/exchangeEnterprise/options
                     $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/exchangeEnterprise/options
-                    $post(body?: {body: order.cart.GenericOptionCreation}): Promise<order.cart.Item>;
+                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             hostingReseller: {
                 // GET /order/cart/{cartId}/hostingReseller
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/hostingReseller
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             }
             ip: {
                 // GET /order/cart/{cartId}/ip
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/ip
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/ip/options
                     $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/ip/options
-                    $post(body?: {body: order.cart.GenericOptionCreation}): Promise<order.cart.Item>;
+                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             ipLoadbalancing: {
                 // GET /order/cart/{cartId}/ipLoadbalancing
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/ipLoadbalancing
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/ipLoadbalancing/options
                     $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/ipLoadbalancing/options
-                    $post(body?: {body: order.cart.GenericOptionCreation}): Promise<order.cart.Item>;
+                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             item: {
@@ -1349,12 +1349,12 @@ export interface Order{
                     // GET /order/cart/{cartId}/item/{itemId}
                     $get(): Promise<order.cart.Item>;
                     // PUT /order/cart/{cartId}/item/{itemId}
-                    $put(body?: {body: order.cart.ItemUpdate}): Promise<order.cart.Item>;
+                    $put(body?: {duration?: string, quantity?: number}): Promise<order.cart.Item>;
                     configuration: {
                         // GET /order/cart/{cartId}/item/{itemId}/configuration
                         $get(param?: {label?: string}): Promise<number[]>;
                         // POST /order/cart/{cartId}/item/{itemId}/configuration
-                        $post(body?: {body: order.cart.ItemConfigurationCreation}): Promise<order.cart.ConfigurationItem>;
+                        $post(body?: {label: string, value: string}): Promise<order.cart.ConfigurationItem>;
                         $(configurationId: number): {
                             // DELETE /order/cart/{cartId}/item/{itemId}/configuration/{configurationId}
                             $delete(): Promise<void>;
@@ -1372,282 +1372,282 @@ export interface Order{
                 // GET /order/cart/{cartId}/kubernetes
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/kubernetes
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/kubernetes/options
                     $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/kubernetes/options
-                    $post(body?: {body: order.cart.GenericOptionCreation}): Promise<order.cart.Item>;
+                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             licenseCloudLinux: {
                 // GET /order/cart/{cartId}/licenseCloudLinux
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/licenseCloudLinux
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             }
             licenseDirectadmin: {
                 // GET /order/cart/{cartId}/licenseDirectadmin
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/licenseDirectadmin
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             }
             licensePlesk: {
                 // GET /order/cart/{cartId}/licensePlesk
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/licensePlesk
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/licensePlesk/options
                     $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/licensePlesk/options
-                    $post(body?: {body: order.cart.GenericOptionCreation}): Promise<order.cart.Item>;
+                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             licenseSqlServer: {
                 // GET /order/cart/{cartId}/licenseSqlServer
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/licenseSqlServer
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             }
             licenseVirtuozzo: {
                 // GET /order/cart/{cartId}/licenseVirtuozzo
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/licenseVirtuozzo
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             }
             licenseWindows: {
                 // GET /order/cart/{cartId}/licenseWindows
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/licenseWindows
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             }
             licenseWorklight: {
                 // GET /order/cart/{cartId}/licenseWorklight
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/licenseWorklight
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             }
             licensecPanel: {
                 // GET /order/cart/{cartId}/licensecPanel
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/licensecPanel
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             }
             logs: {
                 // GET /order/cart/{cartId}/logs
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/logs
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/logs/options
                     $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/logs/options
-                    $post(body?: {body: order.cart.GenericOptionCreation}): Promise<order.cart.Item>;
+                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             managedServices: {
                 // GET /order/cart/{cartId}/managedServices
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/managedServices
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/managedServices/options
                     $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/managedServices/options
-                    $post(body?: {body: order.cart.GenericOptionCreation}): Promise<order.cart.Item>;
+                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             metrics: {
                 // GET /order/cart/{cartId}/metrics
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/metrics
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/metrics/options
                     $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/metrics/options
-                    $post(body?: {body: order.cart.GenericOptionCreation}): Promise<order.cart.Item>;
+                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             microsoft: {
                 // GET /order/cart/{cartId}/microsoft
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/microsoft
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/microsoft/options
                     $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/microsoft/options
-                    $post(body?: {body: order.cart.GenericOptionCreation}): Promise<order.cart.Item>;
+                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             nasha: {
                 // GET /order/cart/{cartId}/nasha
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/nasha
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/nasha/options
                     $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/nasha/options
-                    $post(body?: {body: order.cart.GenericOptionCreation}): Promise<order.cart.Item>;
+                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             office365: {
                 // GET /order/cart/{cartId}/office365
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/office365
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/office365/options
                     $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/office365/options
-                    $post(body?: {body: order.cart.GenericOptionCreation}): Promise<order.cart.Item>;
+                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             office365Prepaid: {
                 // GET /order/cart/{cartId}/office365Prepaid
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/office365Prepaid
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/office365Prepaid/options
                     $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/office365Prepaid/options
-                    $post(body?: {body: order.cart.GenericOptionCreation}): Promise<order.cart.Item>;
+                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             otb: {
                 // GET /order/cart/{cartId}/otb
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/otb
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/otb/options
                     $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/otb/options
-                    $post(body?: {body: order.cart.GenericOptionCreation}): Promise<order.cart.Item>;
+                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             ovhCloudConnect: {
                 // GET /order/cart/{cartId}/ovhCloudConnect
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/ovhCloudConnect
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             }
             paasmon: {
                 // GET /order/cart/{cartId}/paasmon
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/paasmon
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             }
             privateCloudCDI: {
                 // GET /order/cart/{cartId}/privateCloudCDI
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/privateCloudCDI
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/privateCloudCDI/options
                     $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/privateCloudCDI/options
-                    $post(body?: {body: order.cart.GenericOptionCreation}): Promise<order.cart.Item>;
+                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             privateCloudDC: {
                 // GET /order/cart/{cartId}/privateCloudDC
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/privateCloudDC
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/privateCloudDC/options
                     $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/privateCloudDC/options
-                    $post(body?: {body: order.cart.GenericOptionCreation}): Promise<order.cart.Item>;
+                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             privateCloudReseller: {
                 // GET /order/cart/{cartId}/privateCloudReseller
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/privateCloudReseller
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/privateCloudReseller/options
                     $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/privateCloudReseller/options
-                    $post(body?: {body: order.cart.GenericOptionCreation}): Promise<order.cart.Item>;
+                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             privateCloudResellerEnterprise: {
                 // GET /order/cart/{cartId}/privateCloudResellerEnterprise
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/privateCloudResellerEnterprise
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/privateCloudResellerEnterprise/options
                     $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/privateCloudResellerEnterprise/options
-                    $post(body?: {body: order.cart.GenericOptionCreation}): Promise<order.cart.Item>;
+                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             privateCloudSDDC: {
                 // GET /order/cart/{cartId}/privateCloudSDDC
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/privateCloudSDDC
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/privateCloudSDDC/options
                     $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/privateCloudSDDC/options
-                    $post(body?: {body: order.cart.GenericOptionCreation}): Promise<order.cart.Item>;
+                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             reseller: {
                 // GET /order/cart/{cartId}/reseller
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/reseller
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             }
             sharepoint: {
                 // GET /order/cart/{cartId}/sharepoint
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/sharepoint
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/sharepoint/options
                     $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/sharepoint/options
-                    $post(body?: {body: order.cart.GenericOptionCreation}): Promise<order.cart.Item>;
+                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             sms: {
                 // GET /order/cart/{cartId}/sms
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/sms
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             }
             sslComodo: {
                 // GET /order/cart/{cartId}/sslComodo
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/sslComodo
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/sslComodo/options
                     $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/sslComodo/options
-                    $post(body?: {body: order.cart.GenericOptionCreation}): Promise<order.cart.Item>;
+                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             sslGateway: {
                 // GET /order/cart/{cartId}/sslGateway
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/sslGateway
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/sslGateway/options
                     $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/sslGateway/options
-                    $post(body?: {body: order.cart.GenericOptionCreation}): Promise<order.cart.Item>;
+                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             summary: {
@@ -1658,12 +1658,12 @@ export interface Order{
                 // GET /order/cart/{cartId}/telephony
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/telephony
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/telephony/options
                     $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/telephony/options
-                    $post(body?: {body: order.cart.GenericOptionCreation}): Promise<order.cart.Item>;
+                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             vco: {
@@ -1676,84 +1676,84 @@ export interface Order{
                 // GET /order/cart/{cartId}/vdi
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/vdi
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/vdi/options
                     $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/vdi/options
-                    $post(body?: {body: order.cart.GenericOptionCreation}): Promise<order.cart.Item>;
+                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             veeamEnterprise: {
                 // GET /order/cart/{cartId}/veeamEnterprise
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/veeamEnterprise
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/veeamEnterprise/options
                     $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/veeamEnterprise/options
-                    $post(body?: {body: order.cart.GenericOptionCreation}): Promise<order.cart.Item>;
+                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             veeamcc: {
                 // GET /order/cart/{cartId}/veeamcc
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/veeamcc
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/veeamcc/options
                     $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/veeamcc/options
-                    $post(body?: {body: order.cart.GenericOptionCreation}): Promise<order.cart.Item>;
+                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             vps: {
                 // GET /order/cart/{cartId}/vps
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/vps
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/vps/options
                     $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/vps/options
-                    $post(body?: {body: order.cart.GenericOptionCreation}): Promise<order.cart.Item>;
+                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             vrack: {
                 // GET /order/cart/{cartId}/vrack
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/vrack
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             }
             vrackReseller: {
                 // GET /order/cart/{cartId}/vrackReseller
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/vrackReseller
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             }
             webHosting: {
                 // GET /order/cart/{cartId}/webHosting
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/webHosting
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/webHosting/options
                     $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/webHosting/options
-                    $post(body?: {body: order.cart.GenericOptionCreation}): Promise<order.cart.Item>;
+                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
             xdsl: {
                 // GET /order/cart/{cartId}/xdsl
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/xdsl
-                $post(body?: {body: order.cart.GenericProductCreation}): Promise<order.cart.Item>;
+                $post(body?: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 options: {
                     // GET /order/cart/{cartId}/xdsl/options
                     $get(param?: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
                     // POST /order/cart/{cartId}/xdsl/options
-                    $post(body?: {body: order.cart.GenericOptionCreation}): Promise<order.cart.Item>;
+                    $post(body?: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
         };

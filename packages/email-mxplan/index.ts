@@ -224,7 +224,7 @@ export interface Email{
             // GET /email/mxplan/{service}
             $get(): Promise<email.mxplan.Service>;
             // PUT /email/mxplan/{service}
-            $put(body?: {body: email.mxplan.Service}): Promise<void>;
+            $put(body?: {complexityEnabled?: boolean, displayName?: string, domain?: string, hostname?: string, lastUpdateDate?: string, lockoutDuration?: number, lockoutObservationWindow?: number, lockoutThreshold?: number, maxPasswordAge?: number, maxReceiveSize?: number, maxSendSize?: number, minPasswordAge?: number, minPasswordLength?: number, offer?: email.mxplan.ServiceOfferEnum, spamAndVirusConfiguration?: email.pro.spamAndVirusConfiguration, state?: email.pro.ServiceStateEnum, taskPendingId?: number, webUrl?: string}): Promise<void>;
             account: {
                 // GET /email/mxplan/{service}/account
                 $get(param?: {id?: number, primaryEmailAddress?: string}): Promise<string[]>;
@@ -234,7 +234,7 @@ export interface Email{
                     // GET /email/mxplan/{service}/account/{email}
                     $get(): Promise<email.mxplan.Account>;
                     // PUT /email/mxplan/{service}/account/{email}
-                    $put(body?: {body: email.mxplan.Account}): Promise<void>;
+                    $put(body?: {SAMAccountName?: string, configured?: boolean, creationDate?: string, currentUsage?: number, deleteAtExpiration?: boolean, displayName?: string, domain?: string, expirationDate?: string, expirationOutlookDate?: string, firstName?: string, hiddenFromGAL?: boolean, id?: number, initial?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, lastUpdateDate?: string, login?: string, mailingFilter?: email.pro.MailingFilterEnum[], passwordLastUpdate?: string, primaryEmailAddress?: string, quota?: number, renewPeriod?: email.pro.renewPeriodEnum, spamAndVirusConfiguration?: email.pro.spamAndVirusConfiguration, spamDetected?: boolean, spamTicketNumber?: number, state?: emailproObjectStateEnum, taskPendingId?: number}): Promise<void>;
                     alias: {
                         // GET /email/mxplan/{service}/account/{email}/alias
                         $get(): Promise<string[]>;
@@ -314,7 +314,7 @@ export interface Email{
                     // GET /email/mxplan/{service}/domain/{domainName}
                     $get(): Promise<email.mxplan.Domain>;
                     // PUT /email/mxplan/{service}/domain/{domainName}
-                    $put(body?: {body: email.mxplan.Domain}): Promise<void>;
+                    $put(body?: {cnameToCheck?: string, domainAliases?: string[], domainValidated?: boolean, isAliasDomain?: boolean, mxIsValid?: boolean, mxRecord?: string[], mxRelay?: string, name?: string, srvIsValid?: boolean, srvRecord?: string[], state?: emailproObjectStateEnum, taskPendingId?: number, type?: email.pro.DomainTypeEnum}): Promise<void>;
                     disclaimer: {
                         // DELETE /email/mxplan/{service}/domain/{domainName}/disclaimer
                         $delete(): Promise<email.pro.Task>;
@@ -323,7 +323,7 @@ export interface Email{
                         // POST /email/mxplan/{service}/domain/{domainName}/disclaimer
                         $post(body?: {content: string, outsideOnly?: boolean}): Promise<email.pro.Task>;
                         // PUT /email/mxplan/{service}/domain/{domainName}/disclaimer
-                        $put(body?: {body: email.pro.disclaimer}): Promise<void>;
+                        $put(body?: {content?: string, creationDate?: string, name?: string, outsideOnly?: boolean, taskPendingId?: number}): Promise<void>;
                     }
                     disclaimerAttribute: {
                         // GET /email/mxplan/{service}/domain/{domainName}/disclaimerAttribute
@@ -342,7 +342,7 @@ export interface Email{
                     // GET /email/mxplan/{service}/externalContact/{externalEmailAddress}
                     $get(): Promise<email.mxplan.ExternalContact>;
                     // PUT /email/mxplan/{service}/externalContact/{externalEmailAddress}
-                    $put(body?: {body: email.mxplan.ExternalContact}): Promise<void>;
+                    $put(body?: {creationDate?: string, displayName?: string, externalEmailAddress?: string, firstName?: string, hiddenFromGAL?: boolean, id?: number, initials?: string, lastName?: string, state?: emailproObjectStateEnum, taskPendingId?: number}): Promise<void>;
                 };
             }
             server: {

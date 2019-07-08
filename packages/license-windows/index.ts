@@ -126,7 +126,7 @@ export interface License{
             // GET /license/windows/{serviceName}
             $get(): Promise<license.windows.Windows>;
             // PUT /license/windows/{serviceName}
-            $put(body?: {body: license.windows.Windows}): Promise<void>;
+            $put(body?: {creation?: string, deleteAtExpiration?: boolean, domain?: string, ip?: string, licenseId?: string, status?: license.StateEnum, version?: license.WindowsOsVersionEnum}): Promise<void>;
             confirmTermination: {
                 // POST /license/windows/{serviceName}/confirmTermination
                 $post(body?: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
@@ -145,7 +145,7 @@ export interface License{
                 // GET /license/windows/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /license/windows/{serviceName}/serviceInfos
-                $put(body?: {body: services.Service}): Promise<void>;
+                $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
             sqlServer: {
                 // POST /license/windows/{serviceName}/sqlServer

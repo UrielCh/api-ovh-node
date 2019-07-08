@@ -297,7 +297,7 @@ export interface Hosting{
             // GET /hosting/privateDatabase/{serviceName}
             $get(): Promise<hosting.privateDatabase.Service>;
             // PUT /hosting/privateDatabase/{serviceName}
-            $put(body?: {body: hosting.privateDatabase.Service}): Promise<void>;
+            $put(body?: {capabilities?: hosting.PrivateDatabase.Capability[], cpu?: number, datacenter?: hosting.PrivateDatabase.DatacenterEnum, displayName?: string, graphEndpoint?: hosting.PrivateDatabase.GraphEndpoint, guiURL?: string, hostname?: string, hostnameFtp?: string, infrastructure?: string, ip?: string, lastCheck?: string, offer?: hosting.PrivateDatabase.OfferEnum, port?: number, portFtp?: number, quotaSize?: complexType.UnitAndValue<number>, quotaUsed?: complexType.UnitAndValue<number>, ram?: complexType.UnitAndValue<number>, server?: string, serviceName?: string, state?: hosting.PrivateDatabase.StateEnum, tlsCa?: string, type?: hosting.PrivateDatabase.TypeEnum, version?: hosting.PrivateDatabase.AvailableVersionEnum, versionNumber?: number}): Promise<void>;
             availableVersions: {
                 // GET /hosting/privateDatabase/{serviceName}/availableVersions
                 $get(): Promise<hosting.PrivateDatabase.AvailableVersionEnum[]>;
@@ -412,7 +412,7 @@ export interface Hosting{
                 // GET /hosting/privateDatabase/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /hosting/privateDatabase/{serviceName}/serviceInfos
-                $put(body?: {body: services.Service}): Promise<void>;
+                $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
             start: {
                 // POST /hosting/privateDatabase/{serviceName}/start
@@ -481,7 +481,7 @@ export interface Hosting{
                     // GET /hosting/privateDatabase/{serviceName}/whitelist/{ip}
                     $get(): Promise<hosting.privateDatabase.whitelist>;
                     // PUT /hosting/privateDatabase/{serviceName}/whitelist/{ip}
-                    $put(body?: {body: hosting.privateDatabase.whitelist}): Promise<void>;
+                    $put(body?: {creationDate?: string, ip?: string, lastUpdate?: string, name?: string, service?: boolean, sftp?: boolean, status?: hosting.PrivateDatabase.Whitelist.Status, taskId?: string}): Promise<void>;
                 };
             }
         };

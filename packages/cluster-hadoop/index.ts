@@ -182,7 +182,7 @@ export interface Cluster{
                     // GET /cluster/hadoop/{serviceName}/networkAcl/{block}
                     $get(): Promise<cluster.hadoop.NetworkAcl>;
                     // PUT /cluster/hadoop/{serviceName}/networkAcl/{block}
-                    $put(body?: {body: cluster.hadoop.NetworkAcl}): Promise<void>;
+                    $put(body?: {block?: string, description?: string, state?: cluster.hadoop.NetworkAclStateEnum}): Promise<void>;
                 };
             }
             node: {
@@ -265,7 +265,7 @@ export interface Cluster{
                 // GET /cluster/hadoop/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /cluster/hadoop/{serviceName}/serviceInfos
-                $put(body?: {body: services.Service}): Promise<void>;
+                $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
             start: {
                 // POST /cluster/hadoop/{serviceName}/start
@@ -298,7 +298,7 @@ export interface Cluster{
                     // GET /cluster/hadoop/{serviceName}/user/{username}
                     $get(): Promise<cluster.hadoop.User>;
                     // PUT /cluster/hadoop/{serviceName}/user/{username}
-                    $put(body?: {body: cluster.hadoop.User}): Promise<void>;
+                    $put(body?: {clouderaManager?: boolean, httpFrontend?: boolean, hue?: boolean, username?: string}): Promise<void>;
                     resetPassword: {
                         // POST /cluster/hadoop/{serviceName}/user/{username}/resetPassword
                         $post(body?: {password: string}): Promise<cluster.hadoop.Task>;

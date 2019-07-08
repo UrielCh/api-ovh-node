@@ -1474,7 +1474,7 @@ export interface Cloud{
             // GET /cloud/project/{serviceName}
             $get(): Promise<cloud.Project>;
             // PUT /cloud/project/{serviceName}
-            $put(body?: {body: cloud.Project}): Promise<void>;
+            $put(body?: {access?: cloud.AccessTypeEnum, creationDate?: string, description?: string, expiration?: string, orderId?: number, planCode?: string, project_id?: string, status?: cloud.project.ProjectStatus, unleash?: boolean}): Promise<void>;
             acl: {
                 // GET /cloud/project/{serviceName}/acl
                 $get(param?: {type?: cloud.AclTypeEnum}): Promise<string[]>;
@@ -1498,7 +1498,7 @@ export interface Cloud{
                     // GET /cloud/project/{serviceName}/alerting/{id}
                     $get(): Promise<cloud.Alerting>;
                     // PUT /cloud/project/{serviceName}/alerting/{id}
-                    $put(body?: {body: cloud.Alerting}): Promise<void>;
+                    $put(body?: {creationDate?: string, delay?: cloud.AlertingDelayEnum, email?: string, formattedMonthlyThreshold?: orderPrice, id?: string, monthlyThreshold?: number}): Promise<void>;
                     alert: {
                         // GET /cloud/project/{serviceName}/alerting/{id}/alert
                         $get(): Promise<number[]>;
@@ -1835,7 +1835,7 @@ export interface Cloud{
                 // GET /cloud/project/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /cloud/project/{serviceName}/serviceInfos
-                $put(body?: {body: services.Service}): Promise<void>;
+                $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
             snapshot: {
                 // GET /cloud/project/{serviceName}/snapshot
@@ -2023,7 +2023,7 @@ export interface Cloud{
                 // GET /cloud/{serviceName}/pca/{pcaServiceName}
                 $get(): Promise<pca.Account>;
                 // PUT /cloud/{serviceName}/pca/{pcaServiceName}
-                $put(body?: {body: pca.Account}): Promise<void>;
+                $put(body?: {domain?: string, host?: string, login?: string, password?: string, sshkey?: string}): Promise<void>;
                 billing: {
                     // GET /cloud/{serviceName}/pca/{pcaServiceName}/billing
                     $get(param?: {billed?: boolean, date_from?: string, date_to?: string}): Promise<number[]>;
@@ -2036,7 +2036,7 @@ export interface Cloud{
                     // GET /cloud/{serviceName}/pca/{pcaServiceName}/serviceInfos
                     $get(): Promise<services.Service>;
                     // PUT /cloud/{serviceName}/pca/{pcaServiceName}/serviceInfos
-                    $put(body?: {body: services.Service}): Promise<void>;
+                    $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
                 }
                 sessions: {
                     // GET /cloud/{serviceName}/pca/{pcaServiceName}/sessions
@@ -2047,7 +2047,7 @@ export interface Cloud{
                         // GET /cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}
                         $get(): Promise<pca.Session>;
                         // PUT /cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}
-                        $put(body?: {body: pca.Session}): Promise<void>;
+                        $put(body?: {endDate?: string, id?: string, login?: string, name?: string, size?: number, srcIp?: string, startDate?: string, state?: cloud.pca.SessionStateEnum}): Promise<void>;
                         files: {
                             // GET /cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}/files
                             $get(param?: {name?: string}): Promise<string[]>;

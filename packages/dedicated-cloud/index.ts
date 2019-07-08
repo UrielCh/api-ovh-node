@@ -535,16 +535,23 @@ export namespace dedicatedCloud {
         export interface RemoteSiteDetails {
             datacenterId?: number;
             datacenterName?: string;
+            lastVpnConfig?: string;
+            remoteEndpointInternalIp?: string;
+            remoteEndpointPublicIp?: string;
+            remoteZvmInternalIp?: string;
             role?: dedicatedCloud.disasterRecovery.SiteRoleEnum;
             serviceName?: string;
             state?: dedicatedCloud.StateEnum;
             type: dedicatedCloud.disasterRecovery.SiteTypeEnum;
+            vpnConfigState?: dedicatedCloud.disasterRecovery.VpnConfigStateEnum;
             zertoVersion?: string;
         }
         //dedicatedCloud.disasterRecovery.SiteRoleEnum
         export type SiteRoleEnum = "primary" | "secondary" | "single"
         //dedicatedCloud.disasterRecovery.SiteTypeEnum
         export type SiteTypeEnum = "onPremise" | "ovhPrivateCloud"
+        //dedicatedCloud.disasterRecovery.VpnConfigStateEnum
+        export type VpnConfigStateEnum = "configured" | "configuring" | "error" | "notConfigured" | "tunnelError"
     }
     export namespace filer {
         //dedicatedCloud.filer.HourlyConsumption
@@ -872,7 +879,7 @@ export interface DedicatedCloud{
         // GET /dedicatedCloud/{serviceName}
         $get(): Promise<dedicatedCloud.dedicatedCloud>;
         // PUT /dedicatedCloud/{serviceName}
-        $put(body?: {body: dedicatedCloud.dedicatedCloud}): Promise<dedicatedCloud.Task>;
+        $put(body?: {advancedSecurity?: boolean, bandwidth?: string, billingType?: dedicatedCloud.BillingTypeEnum, certifiedInterfaceUrl?: string, commercialRange?: string, description?: string, generation?: dedicatedCloud.GenerationEnum, location?: string, managementInterface?: dedicatedCloud.ManagementInterfaceEnum, serviceName?: string, servicePackName?: string, spla?: boolean, sslV3?: boolean, state?: dedicatedCloud.StateEnum, userAccessPolicy?: dedicatedCloud.UserAccessPolicyEnum, userLimitConcurrentSession?: number, userLogoutPolicy?: dedicatedCloud.UserLogoutPolicyEnum, userSessionTimeout?: number, vScopeUrl?: string, version?: dedicatedCloud.Version, webInterfaceUrl?: string}): Promise<dedicatedCloud.Task>;
         allowedNetwork: {
             // GET /dedicatedCloud/{serviceName}/allowedNetwork
             $get(): Promise<number[]>;
@@ -884,7 +891,7 @@ export interface DedicatedCloud{
                 // GET /dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}
                 $get(): Promise<dedicatedCloud.AllowedNetwork>;
                 // PUT /dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}
-                $put(body?: {body: dedicatedCloud.AllowedNetwork}): Promise<dedicatedCloud.Task>;
+                $put(body?: {description?: string, network?: string, networkAccessId?: number, state?: dedicatedCloud.AllowedNetworkStateEnum}): Promise<dedicatedCloud.Task>;
                 task: {
                     // GET /dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task
                     $get(param?: {name?: string, state?: dedicatedCloud.TaskStateEnum}): Promise<number[]>;
@@ -940,7 +947,7 @@ export interface DedicatedCloud{
                 // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}
                 $get(): Promise<dedicatedCloud.Datacenter>;
                 // PUT /dedicatedCloud/{serviceName}/datacenter/{datacenterId}
-                $put(body?: {body: dedicatedCloud.Datacenter}): Promise<dedicatedCloud.Task>;
+                $put(body?: {commercialName?: dedicatedCloud.CommercialNameEnum, commercialRangeName?: string, datacenterId?: number, description?: string, horizonViewName?: string, isRemovable?: boolean, name?: string, version?: string}): Promise<dedicatedCloud.Task>;
                 backup: {
                     // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup
                     $get(): Promise<dedicatedCloud.Backup>;
@@ -1367,7 +1374,7 @@ export interface DedicatedCloud{
             // GET /dedicatedCloud/{serviceName}/serviceInfos
             $get(): Promise<services.Service>;
             // PUT /dedicatedCloud/{serviceName}/serviceInfos
-            $put(body?: {body: services.Service}): Promise<void>;
+            $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
         }
         servicePack: {
             // GET /dedicatedCloud/{serviceName}/servicePack
@@ -1466,7 +1473,7 @@ export interface DedicatedCloud{
                         // GET /dedicatedCloud/{serviceName}/user/{userId}/right/{rightId}
                         $get(): Promise<dedicatedCloud.Right>;
                         // PUT /dedicatedCloud/{serviceName}/user/{userId}/right/{rightId}
-                        $put(body?: {body: dedicatedCloud.Right}): Promise<dedicatedCloud.Task>;
+                        $put(body?: {canAddRessource?: boolean, datacenterId?: number, networkRole?: dedicatedCloud.right.NetworkRoleEnum, right?: dedicatedCloud.right.RightEnum, rightId?: number, vmNetworkRole?: dedicatedCloud.right.VmNetworkRoleEnum}): Promise<dedicatedCloud.Task>;
                     };
                 }
                 task: {

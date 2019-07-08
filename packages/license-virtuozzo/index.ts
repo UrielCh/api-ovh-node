@@ -144,7 +144,7 @@ export interface License{
             // GET /license/virtuozzo/{serviceName}
             $get(): Promise<license.virtuozzo.Virtuozzo>;
             // PUT /license/virtuozzo/{serviceName}
-            $put(body?: {body: license.virtuozzo.Virtuozzo}): Promise<void>;
+            $put(body?: {containerNumber?: license.VirtuozzoContainerNumberEnum, creation?: string, deleteAtExpiration?: boolean, domain?: string, informationKey?: string, ip?: string, licenseId?: string, productKey?: string, status?: license.StateEnum, version?: license.VirtuozzoVersionEnum}): Promise<void>;
             allowedDestinationIp: {
                 // GET /license/virtuozzo/{serviceName}/allowedDestinationIp
                 $get(): Promise<string[]>;
@@ -175,7 +175,7 @@ export interface License{
                 // GET /license/virtuozzo/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /license/virtuozzo/{serviceName}/serviceInfos
-                $put(body?: {body: services.Service}): Promise<void>;
+                $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
             tasks: {
                 // GET /license/virtuozzo/{serviceName}/tasks

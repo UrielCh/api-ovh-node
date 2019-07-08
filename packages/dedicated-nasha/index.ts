@@ -193,7 +193,7 @@ export interface Dedicated{
             // GET /dedicated/nasha/{serviceName}
             $get(): Promise<dedicated.nasha.Storage>;
             // PUT /dedicated/nasha/{serviceName}
-            $put(body?: {body: dedicated.nasha.Storage}): Promise<void>;
+            $put(body?: {canCreatePartition?: boolean, customName?: string, datacenter?: string, ip?: string, monitored?: boolean, serviceName?: string, zpoolCapacity?: number, zpoolSize?: number}): Promise<void>;
             changeContact: {
                 // POST /dedicated/nasha/{serviceName}/changeContact
                 $post(body?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
@@ -213,7 +213,7 @@ export interface Dedicated{
                     // GET /dedicated/nasha/{serviceName}/partition/{partitionName}
                     $get(): Promise<dedicated.nasha.Partition>;
                     // PUT /dedicated/nasha/{serviceName}/partition/{partitionName}
-                    $put(body?: {body: dedicated.nasha.Partition}): Promise<void>;
+                    $put(body?: {partitionCapacity?: number, partitionName?: string, protocol?: dedicated.storage.ProtocolEnum, size?: number, usedBySnapshots?: number}): Promise<void>;
                     access: {
                         // GET /dedicated/nasha/{serviceName}/partition/{partitionName}/access
                         $get(): Promise<string[]>;
@@ -286,7 +286,7 @@ export interface Dedicated{
                 // GET /dedicated/nasha/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /dedicated/nasha/{serviceName}/serviceInfos
-                $put(body?: {body: services.Service}): Promise<void>;
+                $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
             task: {
                 // GET /dedicated/nasha/{serviceName}/task

@@ -862,7 +862,7 @@ export interface Hosting{
             // GET /hosting/web/{serviceName}
             $get(): Promise<hosting.web.Service>;
             // PUT /hosting/web/{serviceName}
-            $put(body?: {body: hosting.web.Service}): Promise<void>;
+            $put(body?: {availableBoostOffer?: hosting.web.AvailableOfferStruct[], boostOffer?: hosting.web.OfferCapabilitiesEnum, cluster?: string, clusterIp?: string, clusterIpv6?: string, countriesIp?: hosting.web.CountriesIp[], datacenter?: hosting.web.DatacenterEnum, displayName?: string, filer?: string, hasCdn?: boolean, hasHostedSsl?: boolean, home?: string, hostingIp?: string, hostingIpv6?: string, lastOvhConfigScan?: string, offer?: hosting.web.OfferCapabilitiesEnum, operatingSystem?: hosting.web.OperatingSystemEnum, phpVersions?: hosting.web.PhpVersion[], primaryLogin?: string, quotaSize?: complexType.UnitAndValue<number>, quotaUsed?: complexType.UnitAndValue<number>, recommendedOffer?: hosting.web.OfferEnum, resourceType?: hosting.web.ResourceEnum, serviceManagementAccess?: hosting.web.ServiceAccess, serviceName?: string, state?: hosting.web.StateEnum, token?: string, trafficQuotaSize?: complexType.UnitAndValue<number>, trafficQuotaUsed?: complexType.UnitAndValue<number>, updates?: string[]}): Promise<void>;
             activatePrivateDatabase: {
                 // POST /hosting/web/{serviceName}/activatePrivateDatabase
                 $post(body?: {ram: hosting.PrivateDatabase.AvailableRamSizeEnum, version: hosting.PrivateDatabase.OrderableVersionEnum}): Promise<hosting.web.task>;
@@ -878,7 +878,7 @@ export interface Hosting{
                     // GET /hosting/web/{serviceName}/attachedDomain/{domain}
                     $get(): Promise<hosting.web.attachedDomain>;
                     // PUT /hosting/web/{serviceName}/attachedDomain/{domain}
-                    $put(body?: {body: hosting.web.attachedDomain}): Promise<void>;
+                    $put(body?: {cdn?: hosting.web.attachedDomain.CdnEnum, domain?: string, firewall?: hosting.web.attachedDomain.FirewallEnum, ipLocation?: hosting.web.CountryEnum, ownLog?: string, path?: string, runtimeId?: number, ssl?: boolean, status?: hosting.web.attachedDomain.StatusEnum, taskId?: number}): Promise<void>;
                     purgeCache: {
                         // POST /hosting/web/{serviceName}/attachedDomain/{domain}/purgeCache
                         $post(): Promise<hosting.web.task>;
@@ -932,7 +932,7 @@ export interface Hosting{
                     // GET /hosting/web/{serviceName}/cron/{id}
                     $get(): Promise<hosting.web.cron>;
                     // PUT /hosting/web/{serviceName}/cron/{id}
-                    $put(body?: {body: hosting.web.cron}): Promise<void>;
+                    $put(body?: {command?: string, description?: string, email?: string, frequency?: string, id?: number, language?: hosting.web.cron.LanguageEnum, status?: hosting.web.cron.StatusEnum}): Promise<void>;
                 };
             }
             cronAvailableLanguage: {
@@ -1017,7 +1017,7 @@ export interface Hosting{
                 // GET /hosting/web/{serviceName}/email
                 $get(): Promise<hosting.web.email>;
                 // PUT /hosting/web/{serviceName}/email
-                $put(body?: {body: hosting.web.email}): Promise<void>;
+                $put(body?: {bounce?: number, email?: string, maxPerDay?: number, sent?: number, sentToday?: number, state?: hosting.web.mail.StateEnum}): Promise<void>;
                 bounces: {
                     // GET /hosting/web/{serviceName}/email/bounces
                     $get(param?: {limit: number}): Promise<hosting.web.mail.Bounce[]>;
@@ -1042,7 +1042,7 @@ export interface Hosting{
                     // GET /hosting/web/{serviceName}/envVar/{key}
                     $get(): Promise<hosting.web.envVar>;
                     // PUT /hosting/web/{serviceName}/envVar/{key}
-                    $put(body?: {body: hosting.web.envVar}): Promise<void>;
+                    $put(body?: {key?: string, status?: hosting.web.envVar.StatusEnum, taskId?: number, type?: hosting.web.envVar.TypeEnum, value?: string}): Promise<void>;
                 };
             }
             extraSqlPerso: {
@@ -1178,7 +1178,7 @@ export interface Hosting{
                             // GET /hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}
                             $get(): Promise<hosting.web.userLogs>;
                             // PUT /hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}
-                            $put(body?: {body: hosting.web.userLogs}): Promise<void>;
+                            $put(body?: {creationDate?: string, description?: string, login?: string, ownLogsId?: number, status?: hosting.web.userLogs.StatusEnum, taskId?: number}): Promise<void>;
                             changePassword: {
                                 // POST /hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}/changePassword
                                 $post(body?: {password: string}): Promise<string>;
@@ -1218,7 +1218,7 @@ export interface Hosting{
                     // GET /hosting/web/{serviceName}/runtime/{id}
                     $get(): Promise<hosting.web.runtime>;
                     // PUT /hosting/web/{serviceName}/runtime/{id}
-                    $put(body?: {body: hosting.web.runtime}): Promise<void>;
+                    $put(body?: {appBootstrap?: string, appEnv?: hosting.web.runtime.EnvEnum, creationDate?: string, id?: number, isDefault?: boolean, isDeletable?: boolean, lastUpdate?: string, name?: string, publicDir?: string, status?: hosting.web.runtime.StateEnum, taskId?: number, type?: hosting.web.runtime.TypeEnum}): Promise<void>;
                     attachedDomains: {
                         // GET /hosting/web/{serviceName}/runtime/{id}/attachedDomains
                         $get(): Promise<string[]>;
@@ -1233,7 +1233,7 @@ export interface Hosting{
                 // GET /hosting/web/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /hosting/web/{serviceName}/serviceInfos
-                $put(body?: {body: services.Service}): Promise<void>;
+                $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
             ssl: {
                 // DELETE /hosting/web/{serviceName}/ssl
@@ -1286,7 +1286,7 @@ export interface Hosting{
                     // GET /hosting/web/{serviceName}/user/{login}
                     $get(): Promise<hosting.web.user>;
                     // PUT /hosting/web/{serviceName}/user/{login}
-                    $put(body?: {body: hosting.web.user}): Promise<void>;
+                    $put(body?: {home?: string, isPrimaryAccount?: boolean, login?: string, serviceManagementCredentials?: hosting.web.user.ServiceCredentials, sshState?: hosting.web.user.SshStateEnum, state?: hosting.web.user.StateEnum, status?: hosting.web.user.StatusEnum, taskId?: number}): Promise<void>;
                     changePassword: {
                         // POST /hosting/web/{serviceName}/user/{login}/changePassword
                         $post(body?: {password: string}): Promise<hosting.web.task>;
@@ -1304,7 +1304,7 @@ export interface Hosting{
                     // GET /hosting/web/{serviceName}/userLogs/{login}
                     $get(): Promise<hosting.web.userLogs>;
                     // PUT /hosting/web/{serviceName}/userLogs/{login}
-                    $put(body?: {body: hosting.web.userLogs}): Promise<void>;
+                    $put(body?: {creationDate?: string, description?: string, login?: string, ownLogsId?: number, status?: hosting.web.userLogs.StatusEnum, taskId?: number}): Promise<void>;
                     changePassword: {
                         // POST /hosting/web/{serviceName}/userLogs/{login}/changePassword
                         $post(body?: {password: string}): Promise<string>;

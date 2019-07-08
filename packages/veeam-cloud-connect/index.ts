@@ -145,7 +145,7 @@ export interface VeeamCloudConnect{
             // GET /veeamCloudConnect/{serviceName}/serviceInfos
             $get(): Promise<services.Service>;
             // PUT /veeamCloudConnect/{serviceName}/serviceInfos
-            $put(body?: {body: services.Service}): Promise<void>;
+            $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
         }
         task: {
             // GET /veeamCloudConnect/{serviceName}/task

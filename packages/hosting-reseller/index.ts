@@ -153,7 +153,7 @@ export interface Hosting{
                 // GET /hosting/reseller/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /hosting/reseller/{serviceName}/serviceInfos
-                $put(body?: {body: services.Service}): Promise<void>;
+                $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
             snapshot: {
                 // GET /hosting/reseller/{serviceName}/snapshot

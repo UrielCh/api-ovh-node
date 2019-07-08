@@ -542,7 +542,7 @@ export interface Domain{
                         // GET /domain/zone/{zoneName}/dynHost/login/{login}
                         $get(): Promise<domain.zone.DynHostLogin>;
                         // PUT /domain/zone/{zoneName}/dynHost/login/{login}
-                        $put(body?: {body: domain.zone.DynHostLogin}): Promise<void>;
+                        $put(body?: {login?: string, subDomain?: string, zone?: string}): Promise<void>;
                         changePassword: {
                             // POST /domain/zone/{zoneName}/dynHost/login/{login}/changePassword
                             $post(body?: {password: string}): Promise<void>;
@@ -560,7 +560,7 @@ export interface Domain{
                         // GET /domain/zone/{zoneName}/dynHost/record/{id}
                         $get(): Promise<domain.zone.DynHostRecord>;
                         // PUT /domain/zone/{zoneName}/dynHost/record/{id}
-                        $put(body?: {body: domain.zone.DynHostRecord}): Promise<void>;
+                        $put(body?: {id?: number, ip?: string, subDomain?: string, ttl?: number, zone?: string}): Promise<void>;
                     };
                 }
             }
@@ -595,7 +595,7 @@ export interface Domain{
                     // GET /domain/zone/{zoneName}/record/{id}
                     $get(): Promise<domain.zone.Record>;
                     // PUT /domain/zone/{zoneName}/record/{id}
-                    $put(body?: {body: domain.zone.Record}): Promise<void>;
+                    $put(body?: {fieldType?: zoneNamedResolutionFieldTypeEnum, id?: number, subDomain?: string, target?: string, ttl?: number, zone?: string}): Promise<void>;
                 };
             }
             redirection: {
@@ -609,7 +609,7 @@ export interface Domain{
                     // GET /domain/zone/{zoneName}/redirection/{id}
                     $get(): Promise<domain.zone.Redirection>;
                     // PUT /domain/zone/{zoneName}/redirection/{id}
-                    $put(body?: {body: domain.zone.Redirection}): Promise<void>;
+                    $put(body?: {description?: string, id?: number, keywords?: string, subDomain?: string, target?: string, title?: string, type?: zoneRedirectionTypeEnum, zone?: string}): Promise<void>;
                 };
             }
             refresh: {
@@ -624,13 +624,13 @@ export interface Domain{
                 // GET /domain/zone/{zoneName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /domain/zone/{zoneName}/serviceInfos
-                $put(body?: {body: services.Service}): Promise<void>;
+                $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
             soa: {
                 // GET /domain/zone/{zoneName}/soa
                 $get(): Promise<domain.zone.Soa>;
                 // PUT /domain/zone/{zoneName}/soa
-                $put(body?: {body: domain.zone.Soa}): Promise<void>;
+                $put(body?: {email?: string, expire?: number, nxDomainTtl?: number, refresh?: number, serial?: number, server?: string, ttl?: number}): Promise<void>;
             }
             status: {
                 // GET /domain/zone/{zoneName}/status
@@ -666,7 +666,7 @@ export interface Domain{
         // GET /domain/{serviceName}
         $get(): Promise<domain.Domain>;
         // PUT /domain/{serviceName}
-        $put(body?: {body: domain.Domain}): Promise<void>;
+        $put(body?: {dnssecSupported?: boolean, domain?: string, glueRecordIpv6Supported?: boolean, glueRecordMultiIpSupported?: boolean, lastUpdate?: string, nameServerType?: domain.DomainNsTypeEnum, offer?: domain.OfferEnum, owoSupported?: boolean, parentService?: domain.ParentService, transferLockStatus?: domain.DomainLockStatusEnum, whoisOwner?: string}): Promise<void>;
         activateZone: {
             // POST /domain/{serviceName}/activateZone
             $post(body?: {minimized?: boolean}): Promise<void>;
@@ -789,7 +789,7 @@ export interface Domain{
             // GET /domain/{serviceName}/serviceInfos
             $get(): Promise<services.Service>;
             // PUT /domain/{serviceName}/serviceInfos
-            $put(body?: {body: services.Service}): Promise<void>;
+            $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
         }
         task: {
             // GET /domain/{serviceName}/task

@@ -122,7 +122,7 @@ export interface License{
             // GET /license/cpanel/{serviceName}
             $get(): Promise<license.cpanel.Cpanel>;
             // PUT /license/cpanel/{serviceName}
-            $put(body?: {body: license.cpanel.Cpanel}): Promise<void>;
+            $put(body?: {creation?: string, deleteAtExpiration?: boolean, domain?: string, ip?: string, licenseId?: string, status?: license.StateEnum, version?: license.CpanelVersionEnum}): Promise<void>;
             allowedDestinationIp: {
                 // GET /license/cpanel/{serviceName}/allowedDestinationIp
                 $get(): Promise<string[]>;
@@ -143,7 +143,7 @@ export interface License{
                 // GET /license/cpanel/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /license/cpanel/{serviceName}/serviceInfos
-                $put(body?: {body: services.Service}): Promise<void>;
+                $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
             tasks: {
                 // GET /license/cpanel/{serviceName}/tasks

@@ -181,7 +181,7 @@ export interface Cdn{
                     // GET /cdn/dedicated/{serviceName}/domains/{domain}
                     $get(): Promise<cdnanycast.Domain>;
                     // PUT /cdn/dedicated/{serviceName}/domains/{domain}
-                    $put(body?: {body: cdnanycast.Domain}): Promise<void>;
+                    $put(body?: {cacheRuleUse?: number, cname?: string, domain?: string, status?: cdnanycast.DomainStatusEnum, type?: cdnanycast.DomainTypeEnum}): Promise<void>;
                     backends: {
                         // GET /cdn/dedicated/{serviceName}/domains/{domain}/backends
                         $get(): Promise<string[]>;
@@ -205,7 +205,7 @@ export interface Cdn{
                             // GET /cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}
                             $get(): Promise<cdnanycast.CacheRule>;
                             // PUT /cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}
-                            $put(body?: {body: cdnanycast.CacheRule}): Promise<void>;
+                            $put(body?: {cacheRuleId?: number, cacheType?: cdnanycast.CacheRuleCacheTypeEnum, domain?: string, fileMatch?: string, fileType?: cdnanycast.CacheRuleFileTypeEnum, status?: cdnanycast.CacheRuleStatusEnum, ttl?: number}): Promise<void>;
                             flush: {
                                 // POST /cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/flush
                                 $post(): Promise<cdnanycast.Task>;
@@ -254,7 +254,7 @@ export interface Cdn{
                 // GET /cdn/dedicated/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /cdn/dedicated/{serviceName}/serviceInfos
-                $put(body?: {body: services.Service}): Promise<void>;
+                $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
             ssl: {
                 // DELETE /cdn/dedicated/{serviceName}/ssl

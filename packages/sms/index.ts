@@ -423,7 +423,7 @@ export interface Sms{
                 // GET /sms/virtualNumbers/{number}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /sms/virtualNumbers/{number}/serviceInfos
-                $put(body?: {body: services.Service}): Promise<void>;
+                $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
         };
     }
@@ -431,7 +431,7 @@ export interface Sms{
         // GET /sms/{serviceName}
         $get(): Promise<sms.Account>;
         // PUT /sms/{serviceName}
-        $put(body?: {body: sms.Account}): Promise<void>;
+        $put(body?: {automaticRecreditAmount?: sms.PackQuantityAutomaticRecreditEnum, callBack?: string, creditThresholdForAutomaticRecredit?: number, creditsHoldByQuota?: number, creditsLeft?: number, description?: string, name?: string, smsResponse?: sms.Response, status?: sms.StatusAccountEnum, stopCallBack?: string, templates?: sms.Templates, userQuantityWithQuota?: number}): Promise<void>;
         blacklists: {
             // GET /sms/{serviceName}/blacklists
             $get(): Promise<string[]>;
@@ -511,7 +511,7 @@ export interface Sms{
                 // GET /sms/{serviceName}/phonebooks/{bookKey}
                 $get(): Promise<sms.Phonebook>;
                 // PUT /sms/{serviceName}/phonebooks/{bookKey}
-                $put(body?: {body: sms.Phonebook}): Promise<void>;
+                $put(body?: {bookKey?: string, name?: string, phoneKey?: string}): Promise<void>;
                 export: {
                     // GET /sms/{serviceName}/phonebooks/{bookKey}/export
                     $get(param?: {format: telephony.ContactsExportFormatsEnum}): Promise<telephony.PcsFile>;
@@ -531,7 +531,7 @@ export interface Sms{
                         // GET /sms/{serviceName}/phonebooks/{bookKey}/phonebookContact/{id}
                         $get(): Promise<sms.PhonebookContact>;
                         // PUT /sms/{serviceName}/phonebooks/{bookKey}/phonebookContact/{id}
-                        $put(body?: {body: sms.PhonebookContact}): Promise<void>;
+                        $put(body?: {group?: string, homeMobile?: string, homePhone?: string, id?: number, name?: string, surname?: string, workMobile?: string, workPhone?: string}): Promise<void>;
                     };
                 }
             };
@@ -547,7 +547,7 @@ export interface Sms{
                 // GET /sms/{serviceName}/receivers/{slotId}
                 $get(): Promise<sms.Receiver>;
                 // PUT /sms/{serviceName}/receivers/{slotId}
-                $put(body?: {body: sms.Receiver}): Promise<void>;
+                $put(body?: {autoUpdate?: boolean, canAutoUpdate?: boolean, datetime?: string, description?: string, records?: number, slotId?: number}): Promise<void>;
                 clean: {
                     // POST /sms/{serviceName}/receivers/{slotId}/clean
                     $post(body?: {freemium: boolean, priceOnly: boolean}): Promise<sms.ReceiversAsynchronousCleanReport>;
@@ -573,7 +573,7 @@ export interface Sms{
                 // GET /sms/{serviceName}/senders/{sender}
                 $get(): Promise<sms.Sender>;
                 // PUT /sms/{serviceName}/senders/{sender}
-                $put(body?: {body: sms.Sender}): Promise<void>;
+                $put(body?: {comment?: string, description?: string, referer?: sms.RefererSenderEnum, sender?: string, status?: sms.StatusSenderEnum, type?: sms.TypeSenderEnum, validationMedia?: string}): Promise<void>;
                 validate: {
                     // POST /sms/{serviceName}/senders/{sender}/validate
                     $post(body?: {code: string}): Promise<void>;
@@ -588,7 +588,7 @@ export interface Sms{
             // GET /sms/{serviceName}/serviceInfos
             $get(): Promise<services.Service>;
             // PUT /sms/{serviceName}/serviceInfos
-            $put(body?: {body: services.Service}): Promise<void>;
+            $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
         }
         task: {
             // GET /sms/{serviceName}/task
@@ -609,7 +609,7 @@ export interface Sms{
                 // GET /sms/{serviceName}/templatesControl/{name}
                 $get(): Promise<sms.TemplateControl>;
                 // PUT /sms/{serviceName}/templatesControl/{name}
-                $put(body?: {body: sms.TemplateControl}): Promise<void>;
+                $put(body?: {activity?: sms.TypeTemplateEnum, comment?: string, datetime?: string, description?: string, message?: string, name?: string, status?: sms.StatusSenderEnum}): Promise<void>;
                 relaunchValidation: {
                     // POST /sms/{serviceName}/templatesControl/{name}/relaunchValidation
                     $post(body?: {description: string, message: string}): Promise<void>;
@@ -631,7 +631,7 @@ export interface Sms{
                 // GET /sms/{serviceName}/users/{login}
                 $get(): Promise<sms.User>;
                 // PUT /sms/{serviceName}/users/{login}
-                $put(body?: {body: sms.User}): Promise<void>;
+                $put(body?: {alertThresholdInformations?: sms.AlertThreshold, callBack?: string, ipRestrictions?: string[], login?: string, password?: string, quotaInformations?: sms.Quota, stopCallBack?: string}): Promise<void>;
                 document: {
                     // GET /sms/{serviceName}/users/{login}/document
                     $get(param?: {creationDatetime_from?: string, creationDatetime_to?: string, tag?: string, wayType: sms.DocumentWayTypeEnum}): Promise<string>;
@@ -683,7 +683,7 @@ export interface Sms{
                         // GET /sms/{serviceName}/users/{login}/receivers/{slotId}
                         $get(): Promise<sms.Receiver>;
                         // PUT /sms/{serviceName}/users/{login}/receivers/{slotId}
-                        $put(body?: {body: sms.Receiver}): Promise<void>;
+                        $put(body?: {autoUpdate?: boolean, canAutoUpdate?: boolean, datetime?: string, description?: string, records?: number, slotId?: number}): Promise<void>;
                         clean: {
                             // POST /sms/{serviceName}/users/{login}/receivers/{slotId}/clean
                             $post(body?: {freemium: boolean, priceOnly: boolean}): Promise<sms.ReceiversAsynchronousCleanReport>;

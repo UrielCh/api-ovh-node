@@ -195,7 +195,7 @@ export interface Service{
         // GET /service/{serviceId}
         $get(): Promise<serviceList.Service>;
         // PUT /service/{serviceId}
-        $put(body?: {body: serviceList.Service}): Promise<void>;
+        $put(body?: {creationDate?: string, details?: complexType.SafeKeyValue<string>[], engagementDate?: string, expirationDate?: string, nextBillingDate?: string, plan?: service.Plan, quantity?: number, renew?: service.Renew, resource?: service.Resource, route?: service.Route, state?: service.BillingStateEnum}): Promise<void>;
         renew: {
             // GET /service/{serviceId}/renew
             $get(param?: {includeOptions?: boolean}): Promise<service.renew.RenewDescription[]>;

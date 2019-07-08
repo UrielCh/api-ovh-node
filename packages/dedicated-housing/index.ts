@@ -191,7 +191,7 @@ export interface Dedicated{
                             // GET /dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}
                             $get(): Promise<dedicated.server.BackupFtpAcl>;
                             // PUT /dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}
-                            $put(body?: {body: dedicated.server.BackupFtpAcl}): Promise<void>;
+                            $put(body?: {cifs?: boolean, ftp?: boolean, ipBlock?: string, isApplied?: boolean, lastUpdate?: string, nfs?: boolean}): Promise<void>;
                         };
                     }
                     authorizableBlocks: {
@@ -214,7 +214,7 @@ export interface Dedicated{
                 // GET /dedicated/housing/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /dedicated/housing/{serviceName}/serviceInfos
-                $put(body?: {body: services.Service}): Promise<void>;
+                $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
             task: {
                 // GET /dedicated/housing/{serviceName}/task

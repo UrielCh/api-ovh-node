@@ -96,7 +96,7 @@ export interface Ssl{
             // GET /ssl/{serviceName}/serviceInfos
             $get(): Promise<services.Service>;
             // PUT /ssl/{serviceName}/serviceInfos
-            $put(body?: {body: services.Service}): Promise<void>;
+            $put(body?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
         }
         tasks: {
             // GET /ssl/{serviceName}/tasks
