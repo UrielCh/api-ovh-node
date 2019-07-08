@@ -30,7 +30,7 @@
   },
   "scripts": {
     "build": "tsc -p .",
-    "test": "mocha -r ts-node/register src/**/*.spec.ts",
+    "test": "mocha dist/**/*.spec.js",
     "prepublish": "yarn run build",
     "build:watch": "tsc -p . --watch"
   },
