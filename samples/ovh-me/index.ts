@@ -7,6 +7,6 @@ const config = { appKey: String(process.env.APP_KEY),
     consumerKey: String(process.env.CONSUMER_KEY)
 };
 const ovh = new Ovh(config);
-const apiMe = new ApiMe(ovh);
+const apiMe = ApiMe(ovh);
 
-apiMe.get("/me").then(console.log);
+apiMe.get("/me")().then(console.log);

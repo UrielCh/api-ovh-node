@@ -24,20 +24,20 @@ const headers = { 'Content-Type': 'application/json', 'Accept': 'text/plain' };
 async function feachToken(): Promise<gToken[]> {
     let tokens: gToken[] = []
     const ovh = new Ovh({ accessRules: 'GET /telephony, GET /telephony/*/eventToken, POST /telephony/*/eventToken' });
-    const api = new Api(ovh);
-    const groups = await api.get('/telephony');
-
+    const api = Api(ovh);
+    const groups = await api.get('/telephony')();
+    
     function addToken(billingAccount: string, token: string) {
         tokens.push({ billingAccount, token })
     }
     console.log(`Importing ${groups.length} token`)
     await bluebird.map(
         groups,
-        (billingAccount, index, length) => api.get('/telephony/{billingAccount}/eventToken', { billingAccount })
+        (billingAccount, index, length) => api.get('/telephony/{billingAccount}/eventToken')({ billingAccount })
             .then(
                 ({ token }) => addToken(billingAccount, token),
                 // 404: The requested object (eventToken) does not exist
-                (err) => api.post('/telephony/{billingAccount}/eventToken', { billingAccount, expiration: 'unlimited' })
+                (err) => api.post('/telephony/{billingAccount}/eventToken')({ billingAccount, expiration: 'unlimited' })
                     .then(token => addToken(billingAccount, token))
             ).catch((err) => { console.log(`Error with ${billingAccount} ${err}`) }),
         { concurrency: 5 }

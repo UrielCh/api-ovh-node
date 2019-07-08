@@ -89,7 +89,7 @@ async function main(root: string, type: 'pdf' | 'html') {
       });
   }
   const doneDl = new Set(await listDir(dest, type))
-  let billIds = await apiMe.get('/me/bill')({})
+  let billIds = await apiMe.get('/me/bill')()
   billIds = billIds
     .filter(id => (!doneDl.has(id) && !dbInvoice.has(id)))
 

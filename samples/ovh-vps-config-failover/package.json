@@ -22,13 +22,13 @@
     "build:watch": "tsc --watch"
   },
   "dependencies": {
-    "@ovh-api/api": "^1.2.7",
-    "@ovh-api/vps": "^1.2.3",
-    "fs-extra": "^8.0.1"
+    "@ovh-api/api": "^2.0.0",
+    "@ovh-api/vps": "^2.0.0",
+    "fs-extra": "^8.1.0"
   },
   "devDependencies": {
-    "@types/fs-extra": "^7.0.0",
-    "ts-node": "^8.1.0",
-    "typescript": "^3.4.5"
+    "@types/fs-extra": "^8.0.0",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.5.2"
   }
 }
