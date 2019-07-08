@@ -14,9 +14,14 @@ export interface OvhRequestable {
       * @param path: The request path with {pathParams}
       * @param params: The request parameters (passed as query string or body params)
       */
-    request(httpMethod: string, path: string, params?: OvhParamType): Promise<any>;
+     requestPromised(httpMethod: string, path: string, params?: OvhParamType): Promise<any>;
 }
-
+/**
+ * common Getter part fot handlers
+ * - $()
+ * - $getv/$put()/$post()/$delete()
+ * - path navigation
+ */
 const commonGet = (key: string, target: OvhProxyApi) => {
     if (key.startsWith('$')) {
         if (key == '$') {
@@ -27,7 +32,7 @@ const commonGet = (key: string, target: OvhProxyApi) => {
         }
         let fnc = (params: any) => {
             let mtd = key.substring(1);
-            return target._ovhEngine.request(mtd, target._path, params);
+            return target._ovhEngine.requestPromised(mtd, target._path, params);
         }
         return fnc.bind(target._ovhEngine);
     }
@@ -37,7 +42,14 @@ const commonGet = (key: string, target: OvhProxyApi) => {
     return new Proxy(child, handlerChild);
 }
 
-
+/**
+ * handler for all proxy level except the root one
+ * handle:
+ * - Object Field
+ * - $()
+ * - $getv/$put()/$post()/$delete()
+ * - path navigation
+ */
 const handlerChild = <ProxyHandler<OvhProxyApi>>{
     construct(target: OvhProxyApi, argArray: any, newTarget?: any) {
         console.log(argArray);
@@ -56,7 +68,16 @@ const handlerChild = <ProxyHandler<OvhProxyApi>>{
         return commonGet(key, target);
     }
 }
-
+/**
+ * handler for the first level of the proxy
+ * handle:
+ * - Object Field
+ * - EventEmitter Field
+ * - flat get/put/post/delete calls
+ * - $()
+ * - $get()/$put()/$post()/$delete()
+ * - path navigation
+ */
 const handlerRoot = <ProxyHandler<OvhProxyApi>>{
     construct(target: OvhProxyApi, argArray: any, newTarget?: any) {
         console.log(argArray);
@@ -91,12 +112,17 @@ const handlerRoot = <ProxyHandler<OvhProxyApi>>{
             case 'put':
             case 'post':
             case 'delete':
-                return (path: string) => (params: OvhParamType) => target._ovhEngine.request(key, path, params)
+                return (path: string) => (params: OvhParamType) => target._ovhEngine.requestPromised(key, path, params)
         }
         return commonGet(key, target);
     }
 }
 
+/**
+ * for Ovh API 2.0 Proxy
+ * Data cloned on each Proxy node call
+ * maintains full PATH for OVH calls
+ */
 class OvhProxyApi {
     public _ovhEngine: OvhRequestable;
     public _path: string = '';
@@ -108,7 +134,55 @@ class OvhProxyApi {
         return 'current path:' + this._path
     }
 }
-
+/**
+ * Build Ovh API 2.0 Proxy
+ * 
+ * @param ovhEngine 
+ * @param path 
+ */
 export function buildOvhProxy(ovhEngine: OvhRequestable, path: string): any {
     return <any>new Proxy(new OvhProxyApi(ovhEngine, path), handlerRoot);
+}
+
+/**
+ * Parent class of all Ovh Api helper
+ * for retro-compatibility with API OVH 1.x
+ */
+export class OvhWrapper {
+    /**
+     * The Ovh Raw engine
+     * can be the official ovh api or the new Typescript engine
+     * ovh must implements `requestPromised`
+     */
+    private ovh: OvhRequestable;
+    constructor(ovh: OvhRequestable) {
+        this.ovh = ovh;
+    }
+    /**
+     * Used to merged All Get Calls
+     */
+    protected get(path: string, params?: OvhParamType): Promise<any> {
+        return this.ovh.requestPromised('GET', path, params)
+    }
+
+    /**
+     * Used to merged All Put Calls
+     */
+    protected put(path: string, params?: OvhParamType): Promise<any> {
+        return this.ovh.requestPromised('PUT', path, params)
+    }
+
+    /**
+     * Used to merged All Post Calls
+     */
+    protected post(path: string, params?: OvhParamType): Promise<any> {
+        return this.ovh.requestPromised('POST', path, params)
+    }
+
+    /**
+     * Used to merged All Delete Calls
+     */
+    protected delete(path: string, params?: OvhParamType): Promise<any> {
+        return this.ovh.requestPromised('DELETE', path, params)
+    }
 }
