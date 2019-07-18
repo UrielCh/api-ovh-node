@@ -56,11 +56,17 @@ export namespace dedicated {
         //dedicated.ceph.response
         // fullName: dedicated.ceph.response.response
         export interface response {
+            cephMons: string[];
+            cephVersion: string;
             createDate: string;
-            finishDate?: string;
-            name: string;
-            state?: dedicated.ceph.taskGet.response.stateEnum;
-            type: string;
+            crushTunables: dedicated.ceph.clusterGet.response.crushTunablesEnum;
+            label: string;
+            region: string;
+            serviceName: string;
+            size: number;
+            state: dedicated.ceph.clusterGet.response.stateEnum;
+            status: dedicated.ceph.clusterGet.response.statusEnum;
+            updateDate: string;
         }
         export namespace taskGet {
             export namespace response {

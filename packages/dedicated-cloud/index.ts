@@ -660,7 +660,7 @@ export namespace dedicatedCloud {
     //dedicatedCloud.servicePackEnum
     export type servicePackEnum = "default" | "hds" | "hipaa" | "legacy" | "nsx" | "nsx-and-vrops" | "pcidss" | "vrops"
     //dedicatedCloud.servicePackStateEnum
-    export type servicePackStateEnum = "activating" | "active" | "waitingForCustomer"
+    export type servicePackStateEnum = "activating" | "active" | "error" | "waitingForCustomer"
     //dedicatedCloud.twoFAWhitelist
     // fullName: dedicatedCloud.twoFAWhitelist.twoFAWhitelist
     export interface twoFAWhitelist {

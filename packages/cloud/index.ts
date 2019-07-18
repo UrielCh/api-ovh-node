@@ -689,6 +689,7 @@ export namespace cloud {
             id: string;
             isUpToDate: boolean;
             name: string;
+            nextUpgradeVersions?: cloud.kube.Version[];
             nodesUrl: string;
             status: cloud.kube.ClusterStatus;
             updatePolicy: string;
@@ -731,11 +732,13 @@ export namespace cloud {
         //cloud.kube.NodeStatus
         export type NodeStatus = "INSTALLING" | "UPDATING" | "RESETTING" | "SUSPENDING" | "REOPENING" | "DELETING" | "SUSPENDED" | "ERROR" | "USER_ERROR" | "USER_QUOTA_ERROR" | "USER_NODE_NOT_FOUND_ERROR" | "USER_NODE_SUSPENDED_SERVICE" | "READY"
         //cloud.kube.Region
-        export type Region = "GRA5"
+        export type Region = "GRA5" | "GRA7"
         //cloud.kube.ResetWorkerNodesPolicy
         export type ResetWorkerNodesPolicy = "reinstall" | "delete"
         //cloud.kube.UpdatePolicy
         export type UpdatePolicy = "ALWAYS_UPDATE" | "MINIMAL_DOWNTIME" | "NEVER_UPDATE"
+        //cloud.kube.UpdateStrategy
+        export type UpdateStrategy = "LATEST_PATCH" | "NEXT_MINOR"
         //cloud.kube.Version
         export type Version = "1.11" | "1.12" | "1.13" | "1.14"
     }
@@ -1731,7 +1734,7 @@ export interface Cloud{
                     }
                     update: {
                         // POST /cloud/project/{serviceName}/kube/{kubeId}/update
-                        $post(): Promise<void>;
+                        $post(params?: {strategy?: cloud.kube.UpdateStrategy}): Promise<void>;
                     }
                     updatePolicy: {
                         // PUT /cloud/project/{serviceName}/kube/{kubeId}/updatePolicy
@@ -2762,9 +2765,9 @@ export interface Cloud{
   post(path: '/cloud/project/{serviceName}/kube/{kubeId}/reset'): (params: {kubeId: string, serviceName: string, version?: cloud.kube.Version, workerNodesPolicy?: cloud.kube.ResetWorkerNodesPolicy}) => Promise<void>;
   /**
    * Update cluster
-   * Update cluster to the latest patch version
+   * Force cluster and node update to the latest patch within minor version or next minor version
    */
-  post(path: '/cloud/project/{serviceName}/kube/{kubeId}/update'): (params: {kubeId: string, serviceName: string}) => Promise<void>;
+  post(path: '/cloud/project/{serviceName}/kube/{kubeId}/update'): (params: {kubeId: string, serviceName: string, strategy?: cloud.kube.UpdateStrategy}) => Promise<void>;
   /**
    * Missing description
    * Create a new network

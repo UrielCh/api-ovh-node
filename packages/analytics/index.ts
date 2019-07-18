@@ -53,6 +53,11 @@ export namespace analytics {
             osToken: string;
             sshPublicKey: string;
         }
+        //analytics.cluster.Destroy
+        // fullName: analytics.cluster.Destroy.Destroy
+        export interface Destroy {
+            osToken: string;
+        }
         //analytics.cluster.Node
         // fullName: analytics.cluster.Node.Node
         export interface Node {
@@ -201,6 +206,10 @@ export interface Analytics{
                 // POST /analytics/platforms/{serviceName}/deploy
                 $post(params: {clusterName: string, clusterType: string, edgeNodeStorage: number, hdfsEffectiveStorage: number, hdfsReplicationFactor: number, masterNodeStorage: number, masterPassword: string, nodes: analytics.node.Deploy[], osProjectId: string, osProjectName: string, osRegion: string, osToken: string, sshPublicKey: string}): Promise<analytics.cluster.Deploy>;
             }
+            destroy: {
+                // POST /analytics/platforms/{serviceName}/destroy
+                $post(params: {osToken: string}): Promise<void>;
+            }
             nodes: {
                 // GET /analytics/platforms/{serviceName}/nodes
                 $get(): Promise<string[]>;
@@ -286,6 +295,11 @@ export interface Analytics{
    * Deploy an Analytics Data Platform
    */
   post(path: '/analytics/platforms/{serviceName}/deploy'): (params: {serviceName: string, clusterName: string, clusterType: string, edgeNodeStorage: number, hdfsEffectiveStorage: number, hdfsReplicationFactor: number, masterNodeStorage: number, masterPassword: string, nodes: analytics.node.Deploy[], osProjectId: string, osProjectName: string, osRegion: string, osToken: string, sshPublicKey: string}) => Promise<analytics.cluster.Deploy>;
+  /**
+   * 
+   * Destroy an Analytics Data Platform
+   */
+  post(path: '/analytics/platforms/{serviceName}/destroy'): (params: {serviceName: string, osToken: string}) => Promise<void>;
   /**
    * Terminate your service
    * Terminate your service

@@ -32,6 +32,8 @@ export namespace saas {
             licenceType: saas.csp2.LicenseTypeEnum;
             limit?: number;
             name: string;
+            newSeatsAllowed: boolean;
+            newSubscriptionsAllowed: boolean;
         }
         //saas.csp2.OfficeSubscription
         // fullName: saas.csp2.OfficeSubscription.OfficeSubscription
