@@ -11,10 +11,6 @@
   },
   "dependencies": {
     "@ovh-api/api": "^2.0.0",
-    "@ovh-api/ip": "^2.0.1"
-  },
-  "devDependencies": {
-    "ts-node": "^8.3.0",
-    "typescript": "^3.5.2"
+    "@ovh-api/ip": "^2.0.2"
   }
 }
