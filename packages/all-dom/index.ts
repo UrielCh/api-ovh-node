@@ -1,177 +1,127 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
-/**
- * AllDom administration
- */
-export interface AllDomAllDom {
-  /**
-   * Name of the allDom
-   *
-   */
-  name: string;
-  /**
-   * Offer of the allDom
-   *
-   */
-  offer: DomainOfferEnum;
-  /**
-   * Type of the allDom
-   *
-   */
-  type: AllDomTypeEnum;
-}
-/**
- * Domain name of a allDom
- */
-export interface AllDomAllDomDomain {
-  /**
-   * Domain name
-   *
-   */
-  domain: string;
-}
-/**
- * Type
- */
-export type AllDomTypeEnum = 'french' | 'french+international' | 'international';
-/**
- * Offer
- */
-export type DomainOfferEnum = 'diamond' | 'gold' | 'platinum';
-/**
- * Map a possible renew for a specific service
- */
-export interface ServiceRenewType {
-  /**
-   * The service is automatically renewed
-   *
-   */
-  automatic: boolean;
-  /**
-   * The service will be deleted at expiration
-   *
-   */
-  deleteAtExpiration: boolean;
-  /**
-   * The service forced to be renewed
-   *
-   */
-  forced: boolean;
-  /**
-   * The service needs to be manually renewed and paid
-   *
-   */
-  manualPayment?: boolean;
-  /**
-   * period of renew in month
-   *
-   */
-  period?: number;
-}
-/**
- * Detailed renewal type of a service
- */
-export type ServiceRenewalTypeEnum = 'automaticForcedProduct' | 'automaticV2012' | 'automaticV2014' | 'automaticV2016' | 'manual' | 'oneShot' | 'option';
-/**
- * 
- */
-export type ServiceStateEnum = 'expired' | 'inCreation' | 'ok' | 'pendingDebt' | 'unPaid';
-/**
- * Details about a Service
- */
-export interface ServicesService {
-  /**
-   * Indicates that the service can be set up to be deleted at expiration
-   *
-   */
-  canDeleteAtExpiration: boolean;
-  /**
-   */
-  contactAdmin: string;
-  /**
-   */
-  contactBilling: string;
-  /**
-   */
-  contactTech: string;
-  /**
-   */
-  creation: string;
-  /**
-   */
-  domain: string;
-  /**
-   */
-  engagedUpTo?: string;
-  /**
-   */
-  expiration: string;
-  /**
-   * All the possible renew period of your service in month
-   *
-   */
-  possibleRenewPeriod?: number[];
-  /**
-   * Way of handling the renew
-   *
-   */
-  renew?: ServiceRenewType;
-  /**
-   */
-  renewalType: ServiceRenewalTypeEnum;
-  /**
-   */
-  serviceId: number;
-  /**
-   */
-  status: ServiceStateEnum;
-}
-type PathsAllDomGET = '/allDom' | 
-'/allDom/{serviceName}' | 
-'/allDom/{serviceName}/domain' | 
-'/allDom/{serviceName}/domain/{domain}' | 
-'/allDom/{serviceName}/serviceInfos';
+import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
-type PathsAllDomPUT = '/allDom/{serviceName}/serviceInfos';
+/**
+ * START API /allDom Models
+ */
+export namespace allDom {
+    //allDom.AllDom
+    // fullName: allDom.AllDom.AllDom
+    export interface AllDom {
+        name: string;
+        offer: domain.OfferEnum;
+        type: allDom.TypeEnum;
+    }
+    //allDom.AllDomDomain
+    // fullName: allDom.AllDomDomain.AllDomDomain
+    export interface AllDomDomain {
+        domain: string;
+    }
+    //allDom.TypeEnum
+    export type TypeEnum = "french" | "french+international" | "international"
+}
+export namespace domain {
+    //domain.OfferEnum
+    export type OfferEnum = "diamond" | "gold" | "platinum"
+}
+export namespace service {
+    //service.RenewType
+    // fullName: service.RenewType.RenewType
+    export interface RenewType {
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
+        manualPayment?: boolean;
+        period?: number;
+    }
+    //service.RenewalTypeEnum
+    export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
+    //service.StateEnum
+    export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
+}
+export namespace services {
+    //services.Service
+    // fullName: services.Service.Service
+    export interface Service {
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
+        engagedUpTo?: string;
+        expiration: string;
+        possibleRenewPeriod?: number[];
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
+        serviceId: number;
+        status: service.StateEnum;
+    }
+}
 
-export class ApiAllDom extends OvhWrapper {
-  constructor(engine: OvhRequestable) {
-    super(engine);
-  }
+/**
+ * END API /allDom Models
+ */
+export function proxyAllDom(ovhEngine: OvhRequestable): AllDom {
+    return buildOvhProxy(ovhEngine, '/allDom');
+}
+export default proxyAllDom;
+/**
+ * Api Proxy model
+ */// Apis harmony
+// path /allDom
+export interface AllDom{
+    // GET /allDom
+    $get(): Promise<string[]>;
+    $(serviceName: string): {
+        // GET /allDom/{serviceName}
+        $get(): Promise<allDom.AllDom>;
+        domain: {
+            // GET /allDom/{serviceName}/domain
+            $get(params?: {domain?: string}): Promise<string[]>;
+            $(domain: string): {
+                // GET /allDom/{serviceName}/domain/{domain}
+                $get(): Promise<allDom.AllDomDomain>;
+            };
+        }
+        serviceInfos: {
+            // GET /allDom/{serviceName}/serviceInfos
+            $get(): Promise<services.Service>;
+            // PUT /allDom/{serviceName}/serviceInfos
+            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+        }
+    };
+// Api
   /**
    * Operations about the ALLDOM service
    * List available services
    */
-  public get(path: '/allDom'): Promise<string[]>;
+  get(path: '/allDom'): () => Promise<string[]>;
   /**
    * AllDom administration
    * Get this object properties
    */
-  public get(path: '/allDom/{serviceName}', params: {serviceName: string}): Promise<AllDomAllDom>;
+  get(path: '/allDom/{serviceName}'): (params: {serviceName: string}) => Promise<allDom.AllDom>;
   /**
    * List the allDom.AllDomDomain objects
    * Domains attached to this allDom
    */
-  public get(path: '/allDom/{serviceName}/domain', params: {serviceName: string, domain?: string}): Promise<string[]>;
+  get(path: '/allDom/{serviceName}/domain'): (params: {serviceName: string, domain?: string}) => Promise<string[]>;
   /**
    * Domain name of a allDom
    * Get this object properties
    */
-  public get(path: '/allDom/{serviceName}/domain/{domain}', params: {serviceName: string, domain: string}): Promise<AllDomAllDomDomain>;
+  get(path: '/allDom/{serviceName}/domain/{domain}'): (params: {domain: string, serviceName: string}) => Promise<allDom.AllDomDomain>;
   /**
    * Details about a Service
    * Get this object properties
    */
-  public get(path: '/allDom/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
-  public get(path: PathsAllDomGET, params?: OvhParamType): Promise<any> {
-    return super.get(path, params
-  );}
+  get(path: '/allDom/{serviceName}/serviceInfos'): (params: {serviceName: string}) => Promise<services.Service>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/allDom/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
-  public put(path: PathsAllDomPUT, params?: OvhParamType): Promise<any> {
-    return super.put(path, params
-  );}
+  put(path: '/allDom/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
 }
-export default ApiAllDom;
+/**
+ * classic Model
+ */

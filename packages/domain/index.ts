@@ -1,1937 +1,1363 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
-/**
- * Dnssec Status
- */
-export type DnssecDnssecStatusEnum = 'disableInProgress' | 'disabled' | 'enableInProgress' | 'enabled';
-/**
- * Key type
- */
-export interface DnssecKey {
-  /**
-   * Algorithm
-   *
-   */
-  algorithm: DnssecKeyAlgorithmEnum;
-  /**
-   * Flag of the dnssec key
-   *
-   */
-  flags: DnssecKeyFlagEnum;
-  /**
-   * Public key
-   *
-   */
-  publicKey: string;
-  /**
-   * Key tag
-   *
-   */
-  tag: number;
-}
-/**
- * Dnssec Algorithm
-                        ###
-                        3  : DSA
-                        5  : RSASHA1
-                        6  : DSA-NSEC3-SHA1
-                        7  : RSASHA1-NSEC3-SHA1
-                        8  : RSASHA256
-                        10 : RSASHA512
-                        13 : ECDSAP256SHA256
-                        14 : ECDSAP384SHA384
- */
-export type DnssecKeyAlgorithmEnum = 10 | 13 | 14 | 3 | 5 | 6 | 7 | 8;
-/**
- * Dnssec Key Flag Type
-                        ###
-                        256 : Zone Signing Key (ZSK)
-                        257 : Key  Signing Key (KSK)
- */
-export type DnssecKeyFlagEnum = 256 | 257;
-/**
- * 
-                Generated : The key has been created, but has not yet been used for anything.
-                ###
-                Published : The DNSKEY record is published in the zone, but predecessors of the key may be held in caches.
-                ###
-                Ready     : The new key data has been published for long enough to guarantee that any previous versions of the DNSKEY RRset have expired from caches.
-                ###
-                Active    : The key has started to be used to sign RRsets.
-                ###
-                Retired   : A successor key has become active and this key is no longer being used to generate RRSIGs.
-                ###
-                Removed   : The key has been removed from the zone.
-                ###
-                Revoked   : The key is published for a period with the "revoke" bit set as a way of notifying validating resolvers that have configured it as an trust anchor that it is about to be removed from the zone.
- */
-export type DnssecKeyStatusEnum = 'active' | 'generated' | 'published' | 'removed' | 'retired' | 'revoked';
-/**
- * Contact type fields
- */
-export type DomainContactAllTypesEnum = 'admin' | 'all' | 'billing' | 'owner' | 'tech';
-/**
- * CurrentNameServer
- */
-export interface DomainCurrentNameServer {
-  /**
-   * Host of the name server
-   *
-   */
-  host: string;
-  /**
-   * Id of the name server
-   *
-   */
-  id: number;
-  /**
-   * Ip of the name server
-   *
-   */
-  ip?: string;
-  /**
-   * isUsed flag of the name server
-   *
-   */
-  isUsed: boolean;
-  /**
-   * toDelete flag of the name server
-   *
-   */
-  toDelete: boolean;
-}
-/**
- * Domain's DNSSEC Key
- */
-export interface DomainDnssecKey {
-  /**
-   * Algorithm number of the DNSSEC key
-   *
-   */
-  algorithm: DnssecKeyAlgorithmEnum;
-  /**
-   * Flag of the DNSSEC key
-   *
-   */
-  flags: DnssecKeyFlagEnum;
-  /**
-   * Id of the DNSSEC key
-   *
-   */
-  id: number;
-  /**
-   * Public key
-   *
-   */
-  publicKey: string;
-  /**
-   * Key status of the DNSSEC key
-   *
-   */
-  status: DnssecKeyStatusEnum;
-  /**
-   * Tag of the DNSSEC key
-   *
-   */
-  tag: number;
-}
-/**
- * Domain name administration
- */
-export interface DomainDomain {
-  /**
-   * Is DNSSEC implemented for this domain name's tld
-   *
-   */
-  dnssecSupported: boolean;
-  /**
-   * Domain name
-   *
-   */
-  domain: string;
-  /**
-   * Does the registry support ipv6 glue record
-   *
-   */
-  glueRecordIpv6Supported: boolean;
-  /**
-   * Does the registry support multi ip glue record
-   *
-   */
-  glueRecordMultiIpSupported: boolean;
-  /**
-   * Last update date
-   *
-   */
-  lastUpdate: string;
-  /**
-   * Name servers type
-   *
-   */
-  nameServerType: DomainDomainNsTypeEnum;
-  /**
-   * Domain's offer
-   *
-   */
-  offer: DomainOfferEnum;
-  /**
-   * Is whois obfuscation supported by this domain name's registry
-   *
-   */
-  owoSupported: boolean;
-  /**
-   * Parent service
-   *
-   */
-  parentService?: DomainParentService;
-  /**
-   * Transfer lock status
-   *
-   */
-  transferLockStatus: DomainDomainLockStatusEnum;
-  /**
-   * Contact Owner (you can edit it via /me/contact/<ID>)
-   *
-   */
-  whoisOwner: string;
-}
-/**
- * All contact type for a domain
- */
-export type DomainDomainContactTypeEnum = 'admin' | 'billing' | 'owner' | 'tech';
-/**
- * Domain lock status
- */
-export type DomainDomainLockStatusEnum = 'locked' | 'locking' | 'unavailable' | 'unlocked' | 'unlocking';
-/**
- * Name server
- */
-export interface DomainDomainNs {
-  /**
-   * Host
-   *
-   */
-  host: string;
-  /**
-   * Ip
-   *
-   */
-  ip?: string;
-}
-/**
- * DNS server state
- */
-export type DomainDomainNsStateEnum = 'ko' | 'ok';
-/**
- * DNS server status
- */
-export interface DomainDomainNsStatus {
-  /**
-   * Whether or not the DNS server is working
-   *
-   */
-  state: DomainDomainNsStateEnum;
-  /**
-   * Whether or not the DNS server is managed by OVH
-   *
-   */
-  type: DomainDomainNsTypeEnum;
-  /**
-   * Date from which the DNS server is used by the domain
-   *
-   */
-  usedSince?: string;
-}
-/**
- * DomainNS Type
- */
-export type DomainDomainNsTypeEnum = 'external' | 'hosted';
-/**
- * All options a domain can have
- */
-export type DomainDomainOptionEnum = 'dnsAnycast';
-/**
- * All states a domain Option can be in
- */
-export type DomainDomainOptionStateEnum = 'released' | 'subscribed';
-/**
- * Glue record
- */
-export interface DomainGlueRecord {
-  /**
-   * Host of the glue record
-   *
-   */
-  host: string;
-  /**
-   * Ips of the glue record
-   *
-   */
-  ips: string[];
-}
-/**
- * Offer
- */
-export type DomainOfferEnum = 'diamond' | 'gold' | 'platinum';
-/**
- * Operation status
- */
-export type DomainOperationStatusEnum = 'cancelled' | 'doing' | 'done' | 'error' | 'todo';
-/**
- * Whois optin fields
- */
-export type DomainOptinFieldsEnum = 'address' | 'city' | 'country' | 'email' | 'fax' | 'name' | 'organisation' | 'phone' | 'province' | 'zip';
-/**
- * Information about the options of a domain
- */
-export interface DomainOption {
-  /**
-   * The option name
-   *
-   */
-  option: DomainDomainOptionEnum;
-  /**
-   * The state of the option
-   *
-   */
-  state: DomainDomainOptionStateEnum;
-}
-/**
- * Obfuscate whois
- */
-export interface DomainOwo {
-  /**
-   * Obfuscated field
-   *
-   */
-  field: DomainWhoisObfuscatorFieldsEnum;
-}
-/**
- * Parent service
- */
-export interface DomainParentService {
-  /**
-   * Name of the parent service
-   *
-   */
-  name: string;
-  /**
-   * Type of the parent service
-   *
-   */
-  type: DomainParentServiceTypeEnum;
-}
-/**
- * Parent service type enum
- */
-export type DomainParentServiceTypeEnum = '/allDom';
-/**
- * Description not available
- */
-export interface DomainRule {
-  /**
-   */
-  allowedValues?: string[];
-  /**
-   */
-  description: string;
-  /**
-   */
-  fields?: string[];
-  /**
-   */
-  innerConfigurations?: DomainRule[];
-  /**
-   */
-  label?: string;
-  /**
-   */
-  required?: boolean;
-  /**
-   */
-  type: string;
-}
-/**
- * Tasks associated to domain
- */
-export interface DomainTask {
-  /**
-   * Can accelerate the task
-   *
-   */
-  canAccelerate: boolean;
-  /**
-   * Can cancel the task
-   *
-   */
-  canCancel: boolean;
-  /**
-   * Can relaunch the task
-   *
-   */
-  canRelaunch: boolean;
-  /**
-   * Comment about the task
-   *
-   */
-  comment?: string;
-  /**
-   * Creation date of the task
-   *
-   */
-  creationDate: string;
-  /**
-   * Done date of the task
-   *
-   */
-  doneDate?: string;
-  /**
-   * Function of the task
-   *
-   */
-  function: string;
-  /**
-   * Id of the task
-   *
-   */
-  id: number;
-  /**
-   * Last update date of the task
-   *
-   */
-  lastUpdate: string;
-  /**
-   * Status of the task
-   *
-   */
-  status: DomainOperationStatusEnum;
-  /**
-   * Todo date of the task
-   *
-   */
-  todoDate: string;
-}
-/**
- * Representation of a UK Registrar (used for outgoing transfer)
- */
-export interface DomainUkRegistrar {
-  /**
-   * Registrar name
-   *
-   */
-  name: string;
-  /**
-   * Registrar tag
-   *
-   */
-  tag: string;
-}
-/**
- * Whois obfuscable fields
- */
-export type DomainWhoisObfuscatorFieldsEnum = 'address' | 'email' | 'phone';
-/**
- * Representation of the obfuscated emails configuration
- */
-export interface DomainConfigurationsObfuscatedEmail {
-  /**
-   * Contact's type associated to the obfuscated email
-   *
-   */
-  type: DomainContactAllTypesEnum;
-  /**
-   * Obfuscated email value
-   *
-   */
-  value: string;
-}
-/**
- * Representation of the optin configuration
- */
-export interface DomainConfigurationsOptin {
-  /**
-   * Displayed fields
-   *
-   */
-  fields: DomainOptinFieldsEnum[];
-  /**
-   * Contact's type associated to the optin configuration
-   *
-   */
-  type: DomainContactAllTypesEnum;
-}
-/**
- * Representation of an Inpi additional information for a corporation
- */
-export interface DomainDataAfnicCorporationTrademarkContact {
-  /**
-   * Contact ID related to the Inpi additional information
-   *
-   */
-  contactId: number;
-  /**
-   * Corporation Inpi additional information ID
-   *
-   */
-  id: number;
-  /**
-   * Number of the Inpi declaration
-   *
-   */
-  inpiNumber: string;
-  /**
-   * Owner of the trademark
-   *
-   */
-  inpiTrademarkOwner: string;
-}
-/**
- * Representation of a Association additional information
- */
-export interface DomainDataAssociationContact {
-  /**
-   * Contact ID related to the association contact information
-   *
-   */
-  contactId: number;
-  /**
-   * Date of the declaration of the association
-   *
-   */
-  declarationDate: string;
-  /**
-   * Association additional information ID
-   *
-   */
-  id: number;
-  /**
-   * Date of the publication of the declaration of the association
-   *
-   */
-  publicationDate: string;
-  /**
-   * Number of the publication of the declaration of the association
-   *
-   */
-  publicationNumber: string;
-  /**
-   * Page number of the publication of the declaration of the association
-   *
-   */
-  publicationPageNumber: string;
-}
-/**
- * Representation of an .pro Contact Resource
- */
-export interface DomainDataProContact {
-  /**
-   * Authority that certify your profesional status
-   *
-   */
-  authority: string;
-  /**
-   * Website of the authority that certify your profesional status
-   *
-   */
-  authorityWebsite: string;
-  /**
-   * .pro Contact ID
-   *
-   */
-  id: number;
-  /**
-   * Description of your job
-   *
-   */
-  jobDescription: string;
-  /**
-   * License number given by the authority
-   *
-   */
-  licenseNumber: string;
-}
-/**
- * Representation of a SMD Resource file
- */
-export interface DomainDataSmd {
-  /**
-   * SMD file content
-   *
-   */
-  data: string;
-  /**
-   * SMD file ID
-   *
-   */
-  id: number;
-  /**
-   * Date when information about SMD file aren't valid anymore
-   *
-   */
-  notAfter?: string;
-  /**
-   * Date before when information about SMD file aren't valid yet
-   *
-   */
-  notBefore?: string;
-  /**
-   * List of the labels that are protected with that SMD file
-   *
-   */
-  protectedLabels: DomainDataSmdLabel[];
-  /**
-   * TMCH Internal identifier
-   *
-   */
-  smdId?: string;
-}
-/**
- * Representation of a protected label
- */
-export interface DomainDataSmdLabel {
-  /**
-   * Label that is protected
-   *
-   */
-  label: string;
-  /**
-   * Trademark associated to the protected label
-   *
-   */
-  trademark: string;
-}
-/**
- * Address for a claim notice holder
- */
-export interface DomainDataClaimNoticeAddress {
-  /**
-   * City
-   *
-   */
-  city?: string;
-  /**
-   * Country code
-   *
-   */
-  countryCode?: NichandleCountryEnum;
-  /**
-   * Fax number
-   *
-   */
-  fax?: string;
-  /**
-   * Fax number extension
-   *
-   */
-  faxExtension?: string;
-  /**
-   * Postal zip code
-   *
-   */
-  postalCode?: string;
-  /**
-   * State of province
-   *
-   */
-  stateOrProvince?: string;
-  /**
-   * Array of street name
-   *
-   */
-  streets: string[];
-  /**
-   * Phone number
-   *
-   */
-  voice?: string;
-  /**
-   * Phone number extension
-   *
-   */
-  voiceExtension?: string;
-}
-/**
- * Definition of claim notices applying to a domain name
- */
-export interface DomainDataClaimNoticeClaimNotice {
-  /**
-   * Array of claim notice for the domain
-   *
-   */
-  claims?: DomainDataClaimNoticeClaimNoticeDecision[];
-  /**
-   * Ending date of claim notice
-   *
-   */
-  endingDate: string;
-  /**
-   * Claim notice ID
-   *
-   */
-  id: string;
-  /**
-   * Label referring to claim notice
-   *
-   */
-  label: string;
-  /**
-   * Beginning date of claim notice
-   *
-   */
-  startingDate?: string;
-  /**
-   * Type of claim notice
-   *
-   */
-  type?: DomainDataClaimNoticeClaimNoticeTypeEnum;
-}
-/**
- * Definition of a single claim notice
- */
-export interface DomainDataClaimNoticeClaimNoticeDecision {
-  /**
-   * Classifications where trademark claim notice apply
-   *
-   */
-  classifications: DomainDataClaimNoticeClassification[];
-  /**
-   * Array of court decisions related to claim notice
-   *
-   */
-  courtDecisions: DomainDataClaimNoticeCourtDecision[];
-  /**
-   * Goods and services on which apply claim notice
-   *
-   */
-  goodsAndServices: string;
-  /**
-   * Name of jurisdiction
-   *
-   */
-  jurisdiction: string;
-  /**
-   * Jurisdiction country code
-   *
-   */
-  jurisdictionCountryCode: string;
-  /**
-   * Mark name implicated in claim notice
-   *
-   */
-  markName: string;
-  /**
-   * Trademark contacts
-   *
-   */
-  trademarkContacts: DomainDataClaimNoticeContact[];
-  /**
-   * Trademark holders
-   *
-   */
-  trademarkHolders: DomainDataClaimNoticeContact[];
-  /**
-   * Trademark UDRP informations
-   *
-   */
-  trademarkUDRP: DomainDataClaimNoticeUDRP[];
-}
-/**
- * Type of claim notice
- */
-export type DomainDataClaimNoticeClaimNoticeTypeEnum = 'TRADEMARK' | 'UK';
-/**
- * Definition of a trademark claim notice classification
- */
-export interface DomainDataClaimNoticeClassification {
-  /**
-   * Summary of the classification
-   *
-   */
-  description: string;
-  /**
-   * Code of the classification
-   *
-   */
-  number: string;
-}
-/**
- * Contact definition of a claim notice holder
- */
-export interface DomainDataClaimNoticeContact {
-  /**
-   * Address of holder
-   *
-   */
-  address: DomainDataClaimNoticeAddress;
-  /**
-   * Email address
-   *
-   */
-  email?: string;
-  /**
-   * Legitimacy of holder
-   *
-   */
-  entitlement?: string;
-  /**
-   * Name of claim notice holder
-   *
-   */
-  name?: string;
-  /**
-   * Organisation name
-   *
-   */
-  organisation?: string;
-  /**
-   * Type of contact
-   *
-   */
-  type?: string;
-}
-/**
- * Definition of a court decision
- */
-export interface DomainDataClaimNoticeCourtDecision {
-  /**
-   * Country code
-   *
-   */
-  countryCode: string;
-  /**
-   * Court name
-   *
-   */
-  courtName: string;
-  /**
-   * Reference number of court decision
-   *
-   */
-  referenceNumber: string;
-  /**
-   * Regions where court decision apply
-   *
-   */
-  regions: string[];
-}
-/**
- * Definition of a UDRP procedure
- */
-export interface DomainDataClaimNoticeUDRP {
-  /**
-   * Case number
-   *
-   */
-  caseNumber: string;
-  /**
-   * UDRP Provider
-   *
-   */
-  udrpProvider: string;
-}
-/**
- * Representation of the optin rule
- */
-export interface DomainRulesOptin {
-  /**
-   * Displayed fields
-   *
-   */
-  fields: DomainOptinFieldsEnum[];
-  /**
-   * Contact's type associated to the optin rule
-   *
-   */
-  type: DomainContactAllTypesEnum;
-}
-/**
- * Manage Dnssec for this zone
- */
-export interface DomainZoneDnssec {
-  /**
-   */
-  status: DnssecDnssecStatusEnum;
-}
-/**
- * Manage DynHost login
- */
-export interface DomainZoneDynHostLogin {
-  /**
-   * Login
-   *
-   */
-  login: string;
-  /**
-   * Subdomain that the login will be allowed to update (* to allow all)
-   *
-   */
-  subDomain: string;
-  /**
-   * Zone
-   *
-   */
-  zone: string;
-}
-/**
- * DynHost record
- */
-export interface DomainZoneDynHostRecord {
-  /**
-   * Id of the DynHost record
-   *
-   */
-  id: number;
-  /**
-   * Ip address of the DynHost record
-   *
-   */
-  ip: string;
-  /**
-   * Subdomain of the DynHost record
-   *
-   */
-  subDomain?: string;
-  /**
-   * DynHost record ttl
-   *
-   */
-  ttl?: number;
-  /**
-   * Zone of the DynHost record
-   *
-   */
-  zone: string;
-}
-/**
- * Zone resource records
- */
-export interface DomainZoneRecord {
-  /**
-   * Resource record Name
-   *
-   */
-  fieldType: ZoneNamedResolutionFieldTypeEnum;
-  /**
-   * Id of the zone resource record
-   *
-   */
-  id: number;
-  /**
-   * Resource record subdomain
-   *
-   */
-  subDomain?: string;
-  /**
-   * Resource record target
-   *
-   */
-  target: string;
-  /**
-   * Resource record ttl
-   *
-   */
-  ttl?: number;
-  /**
-   * Resource record zone
-   *
-   */
-  zone: string;
-}
-/**
- * Redirection
- */
-export interface DomainZoneRedirection {
-  /**
-   * Desciption for invisible redirection
-   *
-   */
-  description?: string;
-  /**
-   * Id of the redirection
-   *
-   */
-  id: number;
-  /**
-   * Keywords for invisible redirection
-   *
-   */
-  keywords?: string;
-  /**
-   * subdomain to redirect
-   *
-   */
-  subDomain?: string;
-  /**
-   * Target of the redirection
-   *
-   */
-  target: string;
-  /**
-   * Title for invisible redirection
-   *
-   */
-  title?: string;
-  /**
-   * Redirection type
-   *
-   */
-  type: ZoneRedirectionTypeEnum;
-  /**
-   * Redirection zone
-   *
-   */
-  zone: string;
-}
-/**
- * Zone Start Of Authority
- */
-export interface DomainZoneSoa {
-  /**
-   * Email address of the DNS Administrator
-   *
-   */
-  email: string;
-  /**
-   * When a zone transfer fails, a countdown clock begins. When the number of seconds set in the expire field elapses, the nameserver stops answering for that zone file
-   *
-   */
-  expire: number;
-  /**
-   * Non-Existent Domain TTL, if the name server returns a negative response, the remote server should wait the number of seconds set in the nxDomainTtl field before trying again
-   *
-   */
-  nxDomainTtl: number;
-  /**
-   * The refresh value determines the interval in seconds between successful zone transfers of the entire zone file from a nameserver to another.
-   *
-   */
-  refresh: number;
-  /**
-   * The serial number is used to indicate which copy of the zone file is the most current. When editing zone files, you must increment the serial number
-   *
-   */
-  serial: number;
-  /**
-   * Primary authoritative server
-   *
-   */
-  server: string;
-  /**
-   * Time To Live in seconds
-   *
-   */
-  ttl: number;
-}
-/**
- * Tasks associated to a zone
- */
-export interface DomainZoneTask {
-  /**
-   * Can accelerate the task
-   *
-   */
-  canAccelerate: boolean;
-  /**
-   * Can cancel the task
-   *
-   */
-  canCancel: boolean;
-  /**
-   * Can relaunch the task
-   *
-   */
-  canRelaunch: boolean;
-  /**
-   * Comment about the task
-   *
-   */
-  comment?: string;
-  /**
-   * Creation date of the task
-   *
-   */
-  creationDate: string;
-  /**
-   * Done date of the task
-   *
-   */
-  doneDate?: string;
-  /**
-   * Function of the task
-   *
-   */
-  function: string;
-  /**
-   * Id of the task
-   *
-   */
-  id: number;
-  /**
-   * Last update date of the task
-   *
-   */
-  lastUpdate: string;
-  /**
-   * Status of the task
-   *
-   */
-  status: DomainOperationStatusEnum;
-  /**
-   * Todo date of the task
-   *
-   */
-  todoDate: string;
-}
-/**
- * Zone dns Management
- */
-export interface DomainZoneZone {
-  /**
-   * Is DNSSEC supported by this zone
-   *
-   */
-  dnssecSupported: boolean;
-  /**
-   * hasDnsAnycast flag of the DNS zone
-   *
-   */
-  hasDnsAnycast: boolean;
-  /**
-   * Last update date of the DNS zone
-   *
-   */
-  lastUpdate: string;
-  /**
-   * Zone name
-   *
-   */
-  name: string;
-  /**
-   * Name servers that host the DNS zone
-   *
-   */
-  nameServers: string[];
-}
-/**
- * Zone restore point
- */
-export interface DomainZoneZoneRestorePoint {
-  /**
-   * Date of backup creation
-   *
-   */
-  creationDate: string;
-  /**
-   * URL to get backup content
-   *
-   */
-  zoneFileUrl: string;
-}
-/**
- * Countries a nichandle can choose
- */
-export type NichandleCountryEnum = 'AC' | 'AD' | 'AE' | 'AF' | 'AG' | 'AI' | 'AL' | 'AM' | 'AO' | 'AQ' | 'AR' | 'AS' | 'AT' | 'AU' | 'AW' | 'AX' | 'AZ' | 'BA' | 'BB' | 'BD' | 'BE' | 'BF' | 'BG' | 'BH' | 'BI' | 'BJ' | 'BL' | 'BM' | 'BN' | 'BO' | 'BQ' | 'BR' | 'BS' | 'BT' | 'BW' | 'BY' | 'BZ' | 'CA' | 'CC' | 'CD' | 'CF' | 'CG' | 'CH' | 'CI' | 'CK' | 'CL' | 'CM' | 'CN' | 'CO' | 'CR' | 'CU' | 'CV' | 'CW' | 'CX' | 'CY' | 'CZ' | 'DE' | 'DG' | 'DJ' | 'DK' | 'DM' | 'DO' | 'DZ' | 'EA' | 'EC' | 'EE' | 'EG' | 'EH' | 'ER' | 'ES' | 'ET' | 'FI' | 'FJ' | 'FK' | 'FM' | 'FO' | 'FR' | 'GA' | 'GB' | 'GD' | 'GE' | 'GF' | 'GG' | 'GH' | 'GI' | 'GL' | 'GM' | 'GN' | 'GP' | 'GQ' | 'GR' | 'GS' | 'GT' | 'GU' | 'GW' | 'GY' | 'HK' | 'HN' | 'HR' | 'HT' | 'HU' | 'IC' | 'ID' | 'IE' | 'IL' | 'IM' | 'IN' | 'IO' | 'IQ' | 'IR' | 'IS' | 'IT' | 'JE' | 'JM' | 'JO' | 'JP' | 'KE' | 'KG' | 'KH' | 'KI' | 'KM' | 'KN' | 'KP' | 'KR' | 'KW' | 'KY' | 'KZ' | 'LA' | 'LB' | 'LC' | 'LI' | 'LK' | 'LR' | 'LS' | 'LT' | 'LU' | 'LV' | 'LY' | 'MA' | 'MC' | 'MD' | 'ME' | 'MF' | 'MG' | 'MH' | 'MK' | 'ML' | 'MM' | 'MN' | 'MO' | 'MP' | 'MQ' | 'MR' | 'MS' | 'MT' | 'MU' | 'MV' | 'MW' | 'MX' | 'MY' | 'MZ' | 'NA' | 'NC' | 'NE' | 'NF' | 'NG' | 'NI' | 'NL' | 'NO' | 'NP' | 'NR' | 'NU' | 'NZ' | 'OM' | 'PA' | 'PE' | 'PF' | 'PG' | 'PH' | 'PK' | 'PL' | 'PM' | 'PN' | 'PR' | 'PS' | 'PT' | 'PW' | 'PY' | 'QA' | 'RE' | 'RO' | 'RS' | 'RU' | 'RW' | 'SA' | 'SB' | 'SC' | 'SD' | 'SE' | 'SG' | 'SH' | 'SI' | 'SJ' | 'SK' | 'SL' | 'SM' | 'SN' | 'SO' | 'SR' | 'SS' | 'ST' | 'SV' | 'SX' | 'SY' | 'SZ' | 'TA' | 'TC' | 'TD' | 'TF' | 'TG' | 'TH' | 'TJ' | 'TK' | 'TL' | 'TM' | 'TN' | 'TO' | 'TR' | 'TT' | 'TV' | 'TW' | 'TZ' | 'UA' | 'UG' | 'UM' | 'UNKNOWN' | 'US' | 'UY' | 'UZ' | 'VA' | 'VC' | 'VE' | 'VG' | 'VI' | 'VN' | 'VU' | 'WF' | 'WS' | 'XK' | 'YE' | 'YT' | 'ZA' | 'ZM' | 'ZW';
-/**
- * Map a possible renew for a specific service
- */
-export interface ServiceRenewType {
-  /**
-   * The service is automatically renewed
-   *
-   */
-  automatic: boolean;
-  /**
-   * The service will be deleted at expiration
-   *
-   */
-  deleteAtExpiration: boolean;
-  /**
-   * The service forced to be renewed
-   *
-   */
-  forced: boolean;
-  /**
-   * The service needs to be manually renewed and paid
-   *
-   */
-  manualPayment?: boolean;
-  /**
-   * period of renew in month
-   *
-   */
-  period?: number;
-}
-/**
- * Detailed renewal type of a service
- */
-export type ServiceRenewalTypeEnum = 'automaticForcedProduct' | 'automaticV2012' | 'automaticV2014' | 'automaticV2016' | 'manual' | 'oneShot' | 'option';
-/**
- * 
- */
-export type ServiceStateEnum = 'expired' | 'inCreation' | 'ok' | 'pendingDebt' | 'unPaid';
-/**
- * All future uses you can provide for a service termination
- */
-export type ServiceTerminationFutureUseEnum = 'NOT_REPLACING_SERVICE' | 'OTHER' | 'SUBSCRIBE_AN_OTHER_SERVICE' | 'SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR' | 'SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR';
-/**
- * All reasons you can provide for a service termination
- */
-export type ServiceTerminationReasonEnum = 'FEATURES_DONT_SUIT_ME' | 'LACK_OF_PERFORMANCES' | 'MIGRATED_TO_ANOTHER_OVH_PRODUCT' | 'MIGRATED_TO_COMPETITOR' | 'NOT_NEEDED_ANYMORE' | 'NOT_RELIABLE' | 'NO_ANSWER' | 'OTHER' | 'TOO_EXPENSIVE' | 'TOO_HARD_TO_USE' | 'UNSATIFIED_BY_CUSTOMER_SUPPORT';
-/**
- * Details about a Service
- */
-export interface ServicesService {
-  /**
-   * Indicates that the service can be set up to be deleted at expiration
-   *
-   */
-  canDeleteAtExpiration: boolean;
-  /**
-   */
-  contactAdmin: string;
-  /**
-   */
-  contactBilling: string;
-  /**
-   */
-  contactTech: string;
-  /**
-   */
-  creation: string;
-  /**
-   */
-  domain: string;
-  /**
-   */
-  engagedUpTo?: string;
-  /**
-   */
-  expiration: string;
-  /**
-   * All the possible renew period of your service in month
-   *
-   */
-  possibleRenewPeriod?: number[];
-  /**
-   * Way of handling the renew
-   *
-   */
-  renew?: ServiceRenewType;
-  /**
-   */
-  renewalType: ServiceRenewalTypeEnum;
-  /**
-   */
-  serviceId: number;
-  /**
-   */
-  status: ServiceStateEnum;
-}
-/**
- * Resource record fieldType
- */
-export type ZoneNamedResolutionFieldTypeEnum = 'A' | 'AAAA' | 'CAA' | 'CNAME' | 'DKIM' | 'DMARC' | 'LOC' | 'MX' | 'NAPTR' | 'NS' | 'PTR' | 'SPF' | 'SRV' | 'SSHFP' | 'TLSA' | 'TXT';
-/**
- * Redirection type enum : visible -> Redirection by http code 302, visiblePermanent -> Redirection by http code 301, invisible -> Redirection by html frame
- */
-export type ZoneRedirectionTypeEnum = 'invisible' | 'visible' | 'visiblePermanent';
-/**
- * Resource record
- */
-export interface ZoneResetRecord {
-  /**
-   */
-  fieldType: ZoneResettableNamedResolutionFieldTypeEnum;
-  /**
-   * Resource record target
-   *
-   */
-  target: string;
-}
-/**
- * Resource record type
- */
-export type ZoneResettableNamedResolutionFieldTypeEnum = 'A' | 'MX';
-/**
- * Zone status
- */
-export interface ZoneStatus {
-  /**
-   * Error list
-   *
-   */
-  errors?: string[];
-  /**
-   * True if the zone has successfully been deployed
-   *
-   */
-  isDeployed: boolean;
-  /**
-   * Warning list
-   *
-   */
-  warnings?: string[];
-}
-type PathsDomainGET = '/domain' | 
-'/domain/data/afnicAssociationInformation' | 
-'/domain/data/afnicAssociationInformation/{associationInformationId}' | 
-'/domain/data/afnicCorporationTrademarkInformation' | 
-'/domain/data/afnicCorporationTrademarkInformation/{afnicCorporationTrademarkId}' | 
-'/domain/data/claimNotice' | 
-'/domain/data/extension' | 
-'/domain/data/proContact' | 
-'/domain/data/proContact/{proContactId}' | 
-'/domain/data/smd' | 
-'/domain/data/smd/{smdId}' | 
-'/domain/rules' | 
-'/domain/zone' | 
-'/domain/zone/{zoneName}' | 
-'/domain/zone/{zoneName}/dnssec' | 
-'/domain/zone/{zoneName}/dynHost/login' | 
-'/domain/zone/{zoneName}/dynHost/login/{login}' | 
-'/domain/zone/{zoneName}/dynHost/record' | 
-'/domain/zone/{zoneName}/dynHost/record/{id}' | 
-'/domain/zone/{zoneName}/export' | 
-'/domain/zone/{zoneName}/history' | 
-'/domain/zone/{zoneName}/history/{creationDate}' | 
-'/domain/zone/{zoneName}/record' | 
-'/domain/zone/{zoneName}/record/{id}' | 
-'/domain/zone/{zoneName}/redirection' | 
-'/domain/zone/{zoneName}/redirection/{id}' | 
-'/domain/zone/{zoneName}/serviceInfos' | 
-'/domain/zone/{zoneName}/soa' | 
-'/domain/zone/{zoneName}/status' | 
-'/domain/zone/{zoneName}/task' | 
-'/domain/zone/{zoneName}/task/{id}' | 
-'/domain/{serviceName}' | 
-'/domain/{serviceName}/authInfo' | 
-'/domain/{serviceName}/configurations/obfuscatedEmails' | 
-'/domain/{serviceName}/configurations/optin' | 
-'/domain/{serviceName}/dsRecord' | 
-'/domain/{serviceName}/dsRecord/{id}' | 
-'/domain/{serviceName}/glueRecord' | 
-'/domain/{serviceName}/glueRecord/{host}' | 
-'/domain/{serviceName}/nameServer' | 
-'/domain/{serviceName}/nameServer/{id}' | 
-'/domain/{serviceName}/option' | 
-'/domain/{serviceName}/option/{option}' | 
-'/domain/{serviceName}/owo' | 
-'/domain/{serviceName}/owo/{field}' | 
-'/domain/{serviceName}/rules/emailsObfuscation' | 
-'/domain/{serviceName}/rules/optin' | 
-'/domain/{serviceName}/serviceInfos' | 
-'/domain/{serviceName}/task' | 
-'/domain/{serviceName}/task/{id}' | 
-'/domain/{serviceName}/ukRegistrars';
+import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
-type PathsDomainPUT = '/domain/data/smd/{smdId}' | 
-'/domain/zone/{zoneName}/dynHost/login/{login}' | 
-'/domain/zone/{zoneName}/dynHost/record/{id}' | 
-'/domain/zone/{zoneName}/record/{id}' | 
-'/domain/zone/{zoneName}/redirection/{id}' | 
-'/domain/zone/{zoneName}/serviceInfos' | 
-'/domain/zone/{zoneName}/soa' | 
-'/domain/{serviceName}' | 
-'/domain/{serviceName}/configurations/obfuscatedEmails' | 
-'/domain/{serviceName}/configurations/optin' | 
-'/domain/{serviceName}/serviceInfos';
+/**
+ * START API /domain Models
+ */
+export namespace dnssec {
+    //dnssec.DnssecStatusEnum
+    export type DnssecStatusEnum = "disableInProgress" | "disabled" | "enableInProgress" | "enabled"
+    //dnssec.Key
+    // fullName: dnssec.Key.Key
+    export interface Key {
+        algorithm: dnssec.KeyAlgorithmEnum;
+        flags: dnssec.KeyFlagEnum;
+        publicKey: string;
+        tag: number;
+    }
+    //dnssec.KeyAlgorithmEnum
+    export type KeyAlgorithmEnum = 10 | 13 | 14 | 3 | 5 | 6 | 7 | 8
+    //dnssec.KeyFlagEnum
+    export type KeyFlagEnum = 256 | 257
+    //dnssec.KeyStatusEnum
+    export type KeyStatusEnum = "active" | "generated" | "published" | "removed" | "retired" | "revoked"
+}
+export namespace domain {
+    //domain.ContactAllTypesEnum
+    export type ContactAllTypesEnum = "admin" | "all" | "billing" | "owner" | "tech"
+    //domain.CurrentNameServer
+    // fullName: domain.CurrentNameServer.CurrentNameServer
+    export interface CurrentNameServer {
+        host: string;
+        id: number;
+        ip?: string;
+        isUsed: boolean;
+        toDelete: boolean;
+    }
+    //domain.DnssecKey
+    // fullName: domain.DnssecKey.DnssecKey
+    export interface DnssecKey {
+        algorithm: dnssec.KeyAlgorithmEnum;
+        flags: dnssec.KeyFlagEnum;
+        id: number;
+        publicKey: string;
+        status: dnssec.KeyStatusEnum;
+        tag: number;
+    }
+    //domain.Domain
+    // fullName: domain.Domain.Domain
+    export interface Domain {
+        dnssecSupported: boolean;
+        domain: string;
+        glueRecordIpv6Supported: boolean;
+        glueRecordMultiIpSupported: boolean;
+        lastUpdate: string;
+        nameServerType: domain.DomainNsTypeEnum;
+        offer: domain.OfferEnum;
+        owoSupported: boolean;
+        parentService?: domain.ParentService;
+        transferLockStatus: domain.DomainLockStatusEnum;
+        whoisOwner: string;
+    }
+    //domain.DomainContactTypeEnum
+    export type DomainContactTypeEnum = "admin" | "billing" | "owner" | "tech"
+    //domain.DomainLockStatusEnum
+    export type DomainLockStatusEnum = "locked" | "locking" | "unavailable" | "unlocked" | "unlocking"
+    //domain.DomainNs
+    // fullName: domain.DomainNs.DomainNs
+    export interface DomainNs {
+        host: string;
+        ip?: string;
+    }
+    //domain.DomainNsStateEnum
+    export type DomainNsStateEnum = "ko" | "ok"
+    //domain.DomainNsStatus
+    // fullName: domain.DomainNsStatus.DomainNsStatus
+    export interface DomainNsStatus {
+        state: domain.DomainNsStateEnum;
+        type: domain.DomainNsTypeEnum;
+        usedSince?: string;
+    }
+    //domain.DomainNsTypeEnum
+    export type DomainNsTypeEnum = "external" | "hosted"
+    //domain.DomainOptionEnum
+    export type DomainOptionEnum = "dnsAnycast"
+    //domain.DomainOptionStateEnum
+    export type DomainOptionStateEnum = "released" | "subscribed"
+    //domain.GlueRecord
+    // fullName: domain.GlueRecord.GlueRecord
+    export interface GlueRecord {
+        host: string;
+        ips: string[];
+    }
+    //domain.OfferEnum
+    export type OfferEnum = "diamond" | "gold" | "platinum"
+    //domain.OperationStatusEnum
+    export type OperationStatusEnum = "cancelled" | "doing" | "done" | "error" | "todo"
+    //domain.OptinFieldsEnum
+    export type OptinFieldsEnum = "address" | "city" | "country" | "email" | "fax" | "name" | "organisation" | "phone" | "province" | "zip"
+    //domain.Option
+    // fullName: domain.Option.Option
+    export interface Option {
+        option: domain.DomainOptionEnum;
+        state: domain.DomainOptionStateEnum;
+    }
+    //domain.Owo
+    // fullName: domain.Owo.Owo
+    export interface Owo {
+        field: domain.WhoisObfuscatorFieldsEnum;
+    }
+    //domain.ParentService
+    // fullName: domain.ParentService.ParentService
+    export interface ParentService {
+        name: string;
+        type: domain.ParentServiceTypeEnum;
+    }
+    //domain.ParentServiceTypeEnum
+    export type ParentServiceTypeEnum = "/allDom"
+    //domain.Rule
+    // fullName: domain.Rule.Rule
+    export interface Rule {
+        allowedValues?: string[];
+        description: string;
+        fields?: string[];
+        innerConfigurations?: domain.Rule[];
+        label?: string;
+        required?: boolean;
+        type: string;
+    }
+    //domain.Task
+    // fullName: domain.Task.Task
+    export interface Task {
+        canAccelerate: boolean;
+        canCancel: boolean;
+        canRelaunch: boolean;
+        comment?: string;
+        creationDate: string;
+        doneDate?: string;
+        function: string;
+        id: number;
+        lastUpdate: string;
+        status: domain.OperationStatusEnum;
+        todoDate: string;
+    }
+    //domain.UkRegistrar
+    // fullName: domain.UkRegistrar.UkRegistrar
+    export interface UkRegistrar {
+        name: string;
+        tag: string;
+    }
+    //domain.WhoisObfuscatorFieldsEnum
+    export type WhoisObfuscatorFieldsEnum = "address" | "email" | "phone"
+    export namespace configurations {
+        //domain.configurations.ObfuscatedEmails
+        // fullName: domain.configurations.ObfuscatedEmails.ObfuscatedEmails
+        export interface ObfuscatedEmails {
+            type: domain.ContactAllTypesEnum;
+            value: string;
+        }
+        //domain.configurations.Optin
+        // fullName: domain.configurations.Optin.Optin
+        export interface Optin {
+            fields: domain.OptinFieldsEnum[];
+            type: domain.ContactAllTypesEnum;
+        }
+    }
+    export namespace data {
+        //domain.data.AfnicCorporationTrademarkContact
+        // fullName: domain.data.AfnicCorporationTrademarkContact.AfnicCorporationTrademarkContact
+        export interface AfnicCorporationTrademarkContact {
+            contactId: number;
+            id: number;
+            inpiNumber: string;
+            inpiTrademarkOwner: string;
+        }
+        //domain.data.AssociationContact
+        // fullName: domain.data.AssociationContact.AssociationContact
+        export interface AssociationContact {
+            contactId: number;
+            declarationDate: string;
+            id: number;
+            publicationDate: string;
+            publicationNumber: string;
+            publicationPageNumber: string;
+        }
+        //domain.data.ProContact
+        // fullName: domain.data.ProContact.ProContact
+        export interface ProContact {
+            authority: string;
+            authorityWebsite: string;
+            id: number;
+            jobDescription: string;
+            licenseNumber: string;
+        }
+        //domain.data.Smd
+        // fullName: domain.data.Smd.Smd
+        export interface Smd {
+            data: string;
+            id: number;
+            notAfter?: string;
+            notBefore?: string;
+            protectedLabels: domain.data.SmdLabel[];
+            smdId?: string;
+        }
+        //domain.data.SmdLabel
+        // fullName: domain.data.SmdLabel.SmdLabel
+        export interface SmdLabel {
+            label: string;
+            trademark: string;
+        }
+        export namespace claimNotice {
+            //domain.data.claimNotice.Address
+            // fullName: domain.data.claimNotice.Address.Address
+            export interface Address {
+                city?: string;
+                countryCode?: nichandle.CountryEnum;
+                fax?: string;
+                faxExtension?: string;
+                postalCode?: string;
+                stateOrProvince?: string;
+                streets: string[];
+                voice?: string;
+                voiceExtension?: string;
+            }
+            //domain.data.claimNotice.ClaimNotice
+            // fullName: domain.data.claimNotice.ClaimNotice.ClaimNotice
+            export interface ClaimNotice {
+                claims?: domain.data.claimNotice.ClaimNoticeDecision[];
+                endingDate: string;
+                id: string;
+                label: string;
+                startingDate?: string;
+                type?: domain.data.claimNotice.ClaimNoticeTypeEnum;
+            }
+            //domain.data.claimNotice.ClaimNoticeDecision
+            // fullName: domain.data.claimNotice.ClaimNoticeDecision.ClaimNoticeDecision
+            export interface ClaimNoticeDecision {
+                classifications: domain.data.claimNotice.Classification[];
+                courtDecisions: domain.data.claimNotice.CourtDecision[];
+                goodsAndServices: string;
+                jurisdiction: string;
+                jurisdictionCountryCode: string;
+                markName: string;
+                trademarkContacts: domain.data.claimNotice.Contact[];
+                trademarkHolders: domain.data.claimNotice.Contact[];
+                trademarkUDRP: domain.data.claimNotice.UDRP[];
+            }
+            //domain.data.claimNotice.ClaimNoticeTypeEnum
+            export type ClaimNoticeTypeEnum = "UK" | "TRADEMARK"
+            //domain.data.claimNotice.Classification
+            // fullName: domain.data.claimNotice.Classification.Classification
+            export interface Classification {
+                description: string;
+                number: string;
+            }
+            //domain.data.claimNotice.Contact
+            // fullName: domain.data.claimNotice.Contact.Contact
+            export interface Contact {
+                address: domain.data.claimNotice.Address;
+                email?: string;
+                entitlement?: string;
+                name?: string;
+                organisation?: string;
+                type?: string;
+            }
+            //domain.data.claimNotice.CourtDecision
+            // fullName: domain.data.claimNotice.CourtDecision.CourtDecision
+            export interface CourtDecision {
+                countryCode: string;
+                courtName: string;
+                referenceNumber: string;
+                regions: string[];
+            }
+            //domain.data.claimNotice.UDRP
+            // fullName: domain.data.claimNotice.UDRP.UDRP
+            export interface UDRP {
+                caseNumber: string;
+                udrpProvider: string;
+            }
+        }
+    }
+    export namespace rules {
+        //domain.rules.Optin
+        // fullName: domain.rules.Optin.Optin
+        export interface Optin {
+            fields: domain.OptinFieldsEnum[];
+            type: domain.ContactAllTypesEnum;
+        }
+    }
+    export namespace zone {
+        //domain.zone.Dnssec
+        // fullName: domain.zone.Dnssec.Dnssec
+        export interface Dnssec {
+            status: dnssec.DnssecStatusEnum;
+        }
+        //domain.zone.DynHostLogin
+        // fullName: domain.zone.DynHostLogin.DynHostLogin
+        export interface DynHostLogin {
+            login: string;
+            subDomain: string;
+            zone: string;
+        }
+        //domain.zone.DynHostRecord
+        // fullName: domain.zone.DynHostRecord.DynHostRecord
+        export interface DynHostRecord {
+            id: number;
+            ip: string;
+            subDomain?: string;
+            ttl?: number;
+            zone: string;
+        }
+        //domain.zone.Record
+        // fullName: domain.zone.Record.Record
+        export interface Record {
+            fieldType: zoneNamedResolutionFieldTypeEnum;
+            id: number;
+            subDomain?: string;
+            target: string;
+            ttl?: number;
+            zone: string;
+        }
+        //domain.zone.Redirection
+        // fullName: domain.zone.Redirection.Redirection
+        export interface Redirection {
+            description?: string;
+            id: number;
+            keywords?: string;
+            subDomain?: string;
+            target: string;
+            title?: string;
+            type: zoneRedirectionTypeEnum;
+            zone: string;
+        }
+        //domain.zone.Soa
+        // fullName: domain.zone.Soa.Soa
+        export interface Soa {
+            email: string;
+            expire: number;
+            nxDomainTtl: number;
+            refresh: number;
+            serial: number;
+            server: string;
+            ttl: number;
+        }
+        //domain.zone.Task
+        // fullName: domain.zone.Task.Task
+        export interface Task {
+            canAccelerate: boolean;
+            canCancel: boolean;
+            canRelaunch: boolean;
+            comment?: string;
+            creationDate: string;
+            doneDate?: string;
+            function: string;
+            id: number;
+            lastUpdate: string;
+            status: domain.OperationStatusEnum;
+            todoDate: string;
+        }
+        //domain.zone.Zone
+        // fullName: domain.zone.Zone.Zone
+        export interface Zone {
+            dnssecSupported: boolean;
+            hasDnsAnycast: boolean;
+            lastUpdate: string;
+            name: string;
+            nameServers: string[];
+        }
+        //domain.zone.ZoneRestorePoint
+        // fullName: domain.zone.ZoneRestorePoint.ZoneRestorePoint
+        export interface ZoneRestorePoint {
+            creationDate: string;
+            zoneFileUrl: string;
+        }
+    }
+}
+export namespace nichandle {
+    //nichandle.CountryEnum
+    export type CountryEnum = "AC" | "AD" | "AE" | "AF" | "AG" | "AI" | "AL" | "AM" | "AO" | "AQ" | "AR" | "AS" | "AT" | "AU" | "AW" | "AX" | "AZ" | "BA" | "BB" | "BD" | "BE" | "BF" | "BG" | "BH" | "BI" | "BJ" | "BL" | "BM" | "BN" | "BO" | "BQ" | "BR" | "BS" | "BT" | "BW" | "BY" | "BZ" | "CA" | "CC" | "CD" | "CF" | "CG" | "CH" | "CI" | "CK" | "CL" | "CM" | "CN" | "CO" | "CR" | "CU" | "CV" | "CW" | "CX" | "CY" | "CZ" | "DE" | "DG" | "DJ" | "DK" | "DM" | "DO" | "DZ" | "EA" | "EC" | "EE" | "EG" | "EH" | "ER" | "ES" | "ET" | "FI" | "FJ" | "FK" | "FM" | "FO" | "FR" | "GA" | "GB" | "GD" | "GE" | "GF" | "GG" | "GH" | "GI" | "GL" | "GM" | "GN" | "GP" | "GQ" | "GR" | "GS" | "GT" | "GU" | "GW" | "GY" | "HK" | "HN" | "HR" | "HT" | "HU" | "IC" | "ID" | "IE" | "IL" | "IM" | "IN" | "IO" | "IQ" | "IR" | "IS" | "IT" | "JE" | "JM" | "JO" | "JP" | "KE" | "KG" | "KH" | "KI" | "KM" | "KN" | "KP" | "KR" | "KW" | "KY" | "KZ" | "LA" | "LB" | "LC" | "LI" | "LK" | "LR" | "LS" | "LT" | "LU" | "LV" | "LY" | "MA" | "MC" | "MD" | "ME" | "MF" | "MG" | "MH" | "MK" | "ML" | "MM" | "MN" | "MO" | "MP" | "MQ" | "MR" | "MS" | "MT" | "MU" | "MV" | "MW" | "MX" | "MY" | "MZ" | "NA" | "NC" | "NE" | "NF" | "NG" | "NI" | "NL" | "NO" | "NP" | "NR" | "NU" | "NZ" | "OM" | "PA" | "PE" | "PF" | "PG" | "PH" | "PK" | "PL" | "PM" | "PN" | "PR" | "PS" | "PT" | "PW" | "PY" | "QA" | "RE" | "RO" | "RS" | "RU" | "RW" | "SA" | "SB" | "SC" | "SD" | "SE" | "SG" | "SH" | "SI" | "SJ" | "SK" | "SL" | "SM" | "SN" | "SO" | "SR" | "SS" | "ST" | "SV" | "SX" | "SY" | "SZ" | "TA" | "TC" | "TD" | "TF" | "TG" | "TH" | "TJ" | "TK" | "TL" | "TM" | "TN" | "TO" | "TR" | "TT" | "TV" | "TW" | "TZ" | "UA" | "UG" | "UM" | "UNKNOWN" | "US" | "UY" | "UZ" | "VA" | "VC" | "VE" | "VG" | "VI" | "VN" | "VU" | "WF" | "WS" | "XK" | "YE" | "YT" | "ZA" | "ZM" | "ZW"
+}
+export namespace service {
+    //service.RenewType
+    // fullName: service.RenewType.RenewType
+    export interface RenewType {
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
+        manualPayment?: boolean;
+        period?: number;
+    }
+    //service.RenewalTypeEnum
+    export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
+    //service.StateEnum
+    export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
+    //service.TerminationFutureUseEnum
+    export type TerminationFutureUseEnum = "NOT_REPLACING_SERVICE" | "OTHER" | "SUBSCRIBE_AN_OTHER_SERVICE" | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR" | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
+    //service.TerminationReasonEnum
+    export type TerminationReasonEnum = "FEATURES_DONT_SUIT_ME" | "LACK_OF_PERFORMANCES" | "MIGRATED_TO_ANOTHER_OVH_PRODUCT" | "MIGRATED_TO_COMPETITOR" | "NOT_NEEDED_ANYMORE" | "NOT_RELIABLE" | "NO_ANSWER" | "OTHER" | "TOO_EXPENSIVE" | "TOO_HARD_TO_USE" | "UNSATIFIED_BY_CUSTOMER_SUPPORT"
+}
+export namespace services {
+    //services.Service
+    // fullName: services.Service.Service
+    export interface Service {
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
+        engagedUpTo?: string;
+        expiration: string;
+        possibleRenewPeriod?: number[];
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
+        serviceId: number;
+        status: service.StateEnum;
+    }
+}
+export namespace zone {
+    //zone.NamedResolutionFieldTypeEnum
+    export type NamedResolutionFieldTypeEnum = "A" | "AAAA" | "CAA" | "CNAME" | "DKIM" | "DMARC" | "LOC" | "MX" | "NAPTR" | "NS" | "PTR" | "SPF" | "SRV" | "SSHFP" | "TLSA" | "TXT"
+    //zone.RedirectionTypeEnum
+    export type RedirectionTypeEnum = "invisible" | "visible" | "visiblePermanent"
+    //zone.ResetRecord
+    // fullName: zone.ResetRecord.ResetRecord
+    export interface ResetRecord {
+        fieldType: zone.ResettableNamedResolutionFieldTypeEnum;
+        target: string;
+    }
+    //zone.ResettableNamedResolutionFieldTypeEnum
+    export type ResettableNamedResolutionFieldTypeEnum = "A" | "MX"
+    //zone.Status
+    // fullName: zone.Status.Status
+    export interface Status {
+        errors?: string[];
+        isDeployed: boolean;
+        warnings?: string[];
+    }
+}
 
-type PathsDomainPOST = '/domain/data/afnicAssociationInformation' | 
-'/domain/data/afnicCorporationTrademarkInformation' | 
-'/domain/data/proContact' | 
-'/domain/data/smd' | 
-'/domain/zone/{zoneName}/changeContact' | 
-'/domain/zone/{zoneName}/confirmTermination' | 
-'/domain/zone/{zoneName}/dnssec' | 
-'/domain/zone/{zoneName}/dynHost/login' | 
-'/domain/zone/{zoneName}/dynHost/login/{login}/changePassword' | 
-'/domain/zone/{zoneName}/dynHost/record' | 
-'/domain/zone/{zoneName}/history/{creationDate}/restore' | 
-'/domain/zone/{zoneName}/import' | 
-'/domain/zone/{zoneName}/record' | 
-'/domain/zone/{zoneName}/redirection' | 
-'/domain/zone/{zoneName}/refresh' | 
-'/domain/zone/{zoneName}/reset' | 
-'/domain/zone/{zoneName}/task/{id}/accelerate' | 
-'/domain/zone/{zoneName}/task/{id}/cancel' | 
-'/domain/zone/{zoneName}/task/{id}/relaunch' | 
-'/domain/zone/{zoneName}/terminate' | 
-'/domain/{serviceName}/activateZone' | 
-'/domain/{serviceName}/changeContact' | 
-'/domain/{serviceName}/configurations/obfuscatedEmails/refresh' | 
-'/domain/{serviceName}/dsRecord' | 
-'/domain/{serviceName}/email/obfuscated/refresh' | 
-'/domain/{serviceName}/glueRecord' | 
-'/domain/{serviceName}/glueRecord/{host}/update' | 
-'/domain/{serviceName}/nameServer' | 
-'/domain/{serviceName}/nameServer/{id}/status' | 
-'/domain/{serviceName}/nameServers/update' | 
-'/domain/{serviceName}/owo' | 
-'/domain/{serviceName}/task/{id}/accelerate' | 
-'/domain/{serviceName}/task/{id}/cancel' | 
-'/domain/{serviceName}/task/{id}/relaunch' | 
-'/domain/{serviceName}/ukOutgoingTransfer';
-
-type PathsDomainDELETE = '/domain/data/smd/{smdId}' | 
-'/domain/zone/{zoneName}/dnssec' | 
-'/domain/zone/{zoneName}/dynHost/login/{login}' | 
-'/domain/zone/{zoneName}/dynHost/record/{id}' | 
-'/domain/zone/{zoneName}/record/{id}' | 
-'/domain/zone/{zoneName}/redirection/{id}' | 
-'/domain/{serviceName}/glueRecord/{host}' | 
-'/domain/{serviceName}/nameServer/{id}' | 
-'/domain/{serviceName}/option/{option}' | 
-'/domain/{serviceName}/owo/{field}';
-
-export class ApiDomain extends OvhWrapper {
-  constructor(engine: OvhRequestable) {
-    super(engine);
-  }
+/**
+ * END API /domain Models
+ */
+export function proxyDomain(ovhEngine: OvhRequestable): Domain {
+    return buildOvhProxy(ovhEngine, '/domain');
+}
+export default proxyDomain;
+/**
+ * Api Proxy model
+ */// Apis harmony
+// path /domain
+export interface Domain{
+    // GET /domain
+    $get(params?: {whoisOwner?: string}): Promise<string[]>;
+    data: {
+        afnicAssociationInformation: {
+            // GET /domain/data/afnicAssociationInformation
+            $get(): Promise<number[]>;
+            // POST /domain/data/afnicAssociationInformation
+            $post(params: {contactId: number, declarationDate: string, publicationDate: string, publicationNumber: string, publicationPageNumber: string}): Promise<domain.data.AssociationContact>;
+            $(associationInformationId: number): {
+                // GET /domain/data/afnicAssociationInformation/{associationInformationId}
+                $get(): Promise<domain.data.AssociationContact>;
+            };
+        }
+        afnicCorporationTrademarkInformation: {
+            // GET /domain/data/afnicCorporationTrademarkInformation
+            $get(): Promise<number[]>;
+            // POST /domain/data/afnicCorporationTrademarkInformation
+            $post(params: {contactId: number, inpiNumber: string, inpiTrademarkOwner: string}): Promise<domain.data.AfnicCorporationTrademarkContact>;
+            $(afnicCorporationTrademarkId: number): {
+                // GET /domain/data/afnicCorporationTrademarkInformation/{afnicCorporationTrademarkId}
+                $get(): Promise<domain.data.AfnicCorporationTrademarkContact>;
+            };
+        }
+        claimNotice: {
+            // GET /domain/data/claimNotice
+            $get(params: {domain: string}): Promise<domain.data.claimNotice.ClaimNotice>;
+        }
+        extension: {
+            // GET /domain/data/extension
+            $get(params: {country: nichandle.CountryEnum}): Promise<string[]>;
+        }
+        proContact: {
+            // GET /domain/data/proContact
+            $get(): Promise<number[]>;
+            // POST /domain/data/proContact
+            $post(params: {authority: string, authorityWebsite: string, contactId?: number, jobDescription: string, licenseNumber: string}): Promise<domain.data.ProContact>;
+            $(proContactId: number): {
+                // GET /domain/data/proContact/{proContactId}
+                $get(): Promise<domain.data.ProContact>;
+            };
+        }
+        smd: {
+            // GET /domain/data/smd
+            $get(params?: {protectedLabels_label?: string}): Promise<number[]>;
+            // POST /domain/data/smd
+            $post(params: {data: string}): Promise<domain.data.Smd>;
+            $(smdId: number): {
+                // DELETE /domain/data/smd/{smdId}
+                $delete(): Promise<void>;
+                // GET /domain/data/smd/{smdId}
+                $get(): Promise<domain.data.Smd>;
+                // PUT /domain/data/smd/{smdId}
+                $put(params: {data: string}): Promise<domain.data.Smd>;
+            };
+        }
+    }
+    rules: {
+        // GET /domain/rules
+        $get(params: {cartId: string, itemId: number}): Promise<domain.Rule>;
+    }
+    zone: {
+        // GET /domain/zone
+        $get(): Promise<string[]>;
+        $(zoneName: string): {
+            // GET /domain/zone/{zoneName}
+            $get(): Promise<domain.zone.Zone>;
+            changeContact: {
+                // POST /domain/zone/{zoneName}/changeContact
+                $post(params?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
+            }
+            confirmTermination: {
+                // POST /domain/zone/{zoneName}/confirmTermination
+                $post(params: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+            }
+            dnssec: {
+                // DELETE /domain/zone/{zoneName}/dnssec
+                $delete(): Promise<void>;
+                // GET /domain/zone/{zoneName}/dnssec
+                $get(): Promise<domain.zone.Dnssec>;
+                // POST /domain/zone/{zoneName}/dnssec
+                $post(): Promise<void>;
+            }
+            dynHost: {
+                login: {
+                    // GET /domain/zone/{zoneName}/dynHost/login
+                    $get(params?: {login?: string, subDomain?: string}): Promise<string[]>;
+                    // POST /domain/zone/{zoneName}/dynHost/login
+                    $post(params: {loginSuffix: string, password: string, subDomain: string}): Promise<domain.zone.DynHostLogin>;
+                    $(login: string): {
+                        // DELETE /domain/zone/{zoneName}/dynHost/login/{login}
+                        $delete(): Promise<void>;
+                        // GET /domain/zone/{zoneName}/dynHost/login/{login}
+                        $get(): Promise<domain.zone.DynHostLogin>;
+                        // PUT /domain/zone/{zoneName}/dynHost/login/{login}
+                        $put(params?: {login?: string, subDomain?: string, zone?: string}): Promise<void>;
+                        changePassword: {
+                            // POST /domain/zone/{zoneName}/dynHost/login/{login}/changePassword
+                            $post(params: {password: string}): Promise<void>;
+                        }
+                    };
+                }
+                record: {
+                    // GET /domain/zone/{zoneName}/dynHost/record
+                    $get(params?: {subDomain?: string}): Promise<number[]>;
+                    // POST /domain/zone/{zoneName}/dynHost/record
+                    $post(params: {ip: string, subDomain?: string}): Promise<domain.zone.DynHostRecord>;
+                    $(id: number): {
+                        // DELETE /domain/zone/{zoneName}/dynHost/record/{id}
+                        $delete(): Promise<void>;
+                        // GET /domain/zone/{zoneName}/dynHost/record/{id}
+                        $get(): Promise<domain.zone.DynHostRecord>;
+                        // PUT /domain/zone/{zoneName}/dynHost/record/{id}
+                        $put(params?: {id?: number, ip?: string, subDomain?: string, ttl?: number, zone?: string}): Promise<void>;
+                    };
+                }
+            }
+            export: {
+                // GET /domain/zone/{zoneName}/export
+                $get(): Promise<string>;
+            }
+            history: {
+                // GET /domain/zone/{zoneName}/history
+                $get(params?: {creationDate_from?: string, creationDate_to?: string}): Promise<string[]>;
+                $(creationDate: string): {
+                    // GET /domain/zone/{zoneName}/history/{creationDate}
+                    $get(): Promise<domain.zone.ZoneRestorePoint>;
+                    restore: {
+                        // POST /domain/zone/{zoneName}/history/{creationDate}/restore
+                        $post(): Promise<domain.zone.Task>;
+                    }
+                };
+            }
+            import: {
+                // POST /domain/zone/{zoneName}/import
+                $post(params: {zoneFile: string}): Promise<domain.zone.Task>;
+            }
+            record: {
+                // GET /domain/zone/{zoneName}/record
+                $get(params?: {fieldType?: zoneNamedResolutionFieldTypeEnum, subDomain?: string}): Promise<number[]>;
+                // POST /domain/zone/{zoneName}/record
+                $post(params: {fieldType: zoneNamedResolutionFieldTypeEnum, subDomain?: string, target: string, ttl?: number}): Promise<domain.zone.Record>;
+                $(id: number): {
+                    // DELETE /domain/zone/{zoneName}/record/{id}
+                    $delete(): Promise<void>;
+                    // GET /domain/zone/{zoneName}/record/{id}
+                    $get(): Promise<domain.zone.Record>;
+                    // PUT /domain/zone/{zoneName}/record/{id}
+                    $put(params?: {fieldType?: zoneNamedResolutionFieldTypeEnum, id?: number, subDomain?: string, target?: string, ttl?: number, zone?: string}): Promise<void>;
+                };
+            }
+            redirection: {
+                // GET /domain/zone/{zoneName}/redirection
+                $get(params?: {subDomain?: string}): Promise<number[]>;
+                // POST /domain/zone/{zoneName}/redirection
+                $post(params: {description?: string, keywords?: string, subDomain?: string, target: string, title?: string, type: zoneRedirectionTypeEnum}): Promise<domain.zone.Redirection>;
+                $(id: number): {
+                    // DELETE /domain/zone/{zoneName}/redirection/{id}
+                    $delete(): Promise<void>;
+                    // GET /domain/zone/{zoneName}/redirection/{id}
+                    $get(): Promise<domain.zone.Redirection>;
+                    // PUT /domain/zone/{zoneName}/redirection/{id}
+                    $put(params?: {description?: string, id?: number, keywords?: string, subDomain?: string, target?: string, title?: string, type?: zoneRedirectionTypeEnum, zone?: string}): Promise<void>;
+                };
+            }
+            refresh: {
+                // POST /domain/zone/{zoneName}/refresh
+                $post(): Promise<void>;
+            }
+            reset: {
+                // POST /domain/zone/{zoneName}/reset
+                $post(params?: {DnsRecords?: zone.ResetRecord[], minimized?: boolean}): Promise<void>;
+            }
+            serviceInfos: {
+                // GET /domain/zone/{zoneName}/serviceInfos
+                $get(): Promise<services.Service>;
+                // PUT /domain/zone/{zoneName}/serviceInfos
+                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+            }
+            soa: {
+                // GET /domain/zone/{zoneName}/soa
+                $get(): Promise<domain.zone.Soa>;
+                // PUT /domain/zone/{zoneName}/soa
+                $put(params?: {email?: string, expire?: number, nxDomainTtl?: number, refresh?: number, serial?: number, server?: string, ttl?: number}): Promise<void>;
+            }
+            status: {
+                // GET /domain/zone/{zoneName}/status
+                $get(): Promise<zone.Status>;
+            }
+            task: {
+                // GET /domain/zone/{zoneName}/task
+                $get(params?: {function_?: string, status?: domain.OperationStatusEnum}): Promise<number[]>;
+                $(id: number): {
+                    // GET /domain/zone/{zoneName}/task/{id}
+                    $get(): Promise<domain.zone.Task>;
+                    accelerate: {
+                        // POST /domain/zone/{zoneName}/task/{id}/accelerate
+                        $post(): Promise<void>;
+                    }
+                    cancel: {
+                        // POST /domain/zone/{zoneName}/task/{id}/cancel
+                        $post(): Promise<void>;
+                    }
+                    relaunch: {
+                        // POST /domain/zone/{zoneName}/task/{id}/relaunch
+                        $post(): Promise<void>;
+                    }
+                };
+            }
+            terminate: {
+                // POST /domain/zone/{zoneName}/terminate
+                $post(): Promise<string>;
+            }
+        };
+    }
+    $(serviceName: string): {
+        // GET /domain/{serviceName}
+        $get(): Promise<domain.Domain>;
+        // PUT /domain/{serviceName}
+        $put(params?: {dnssecSupported?: boolean, domain?: string, glueRecordIpv6Supported?: boolean, glueRecordMultiIpSupported?: boolean, lastUpdate?: string, nameServerType?: domain.DomainNsTypeEnum, offer?: domain.OfferEnum, owoSupported?: boolean, parentService?: domain.ParentService, transferLockStatus?: domain.DomainLockStatusEnum, whoisOwner?: string}): Promise<void>;
+        activateZone: {
+            // POST /domain/{serviceName}/activateZone
+            $post(params?: {minimized?: boolean}): Promise<void>;
+        }
+        authInfo: {
+            // GET /domain/{serviceName}/authInfo
+            $get(): Promise<string>;
+        }
+        changeContact: {
+            // POST /domain/{serviceName}/changeContact
+            $post(params?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
+        }
+        configurations: {
+            obfuscatedEmails: {
+                // GET /domain/{serviceName}/configurations/obfuscatedEmails
+                $get(): Promise<domain.configurations.ObfuscatedEmails[]>;
+                // PUT /domain/{serviceName}/configurations/obfuscatedEmails
+                $put(params: {contacts: domain.ContactAllTypesEnum[]}): Promise<domain.configurations.ObfuscatedEmails[]>;
+                refresh: {
+                    // POST /domain/{serviceName}/configurations/obfuscatedEmails/refresh
+                    $post(params: {contacts: domain.ContactAllTypesEnum[]}): Promise<void>;
+                }
+            }
+            optin: {
+                // GET /domain/{serviceName}/configurations/optin
+                $get(): Promise<domain.configurations.Optin[]>;
+                // PUT /domain/{serviceName}/configurations/optin
+                $put(params: {optin: domain.configurations.Optin[]}): Promise<domain.configurations.Optin[]>;
+            }
+        }
+        dsRecord: {
+            // GET /domain/{serviceName}/dsRecord
+            $get(params?: {flags?: dnssec.KeyFlagEnum, status?: dnssec.KeyStatusEnum}): Promise<number[]>;
+            // POST /domain/{serviceName}/dsRecord
+            $post(params: {keys: dnssec.Key[]}): Promise<domain.Task>;
+            $(id: number): {
+                // GET /domain/{serviceName}/dsRecord/{id}
+                $get(): Promise<domain.DnssecKey>;
+            };
+        }
+        email: {
+            obfuscated: {
+                refresh: {
+                    // POST /domain/{serviceName}/email/obfuscated/refresh
+                    $post(params: {contactType: domain.DomainContactTypeEnum[]}): Promise<void>;
+                }
+            }
+        }
+        glueRecord: {
+            // GET /domain/{serviceName}/glueRecord
+            $get(params?: {host?: string}): Promise<string[]>;
+            // POST /domain/{serviceName}/glueRecord
+            $post(params: {host: string, ips: string[]}): Promise<domain.Task>;
+            $(host: string): {
+                // DELETE /domain/{serviceName}/glueRecord/{host}
+                $delete(): Promise<domain.Task>;
+                // GET /domain/{serviceName}/glueRecord/{host}
+                $get(): Promise<domain.GlueRecord>;
+                update: {
+                    // POST /domain/{serviceName}/glueRecord/{host}/update
+                    $post(params: {ips: string[]}): Promise<domain.Task>;
+                }
+            };
+        }
+        nameServer: {
+            // GET /domain/{serviceName}/nameServer
+            $get(): Promise<number[]>;
+            // POST /domain/{serviceName}/nameServer
+            $post(params: {nameServer: domain.DomainNs[]}): Promise<domain.Task>;
+            $(id: number): {
+                // DELETE /domain/{serviceName}/nameServer/{id}
+                $delete(): Promise<domain.Task>;
+                // GET /domain/{serviceName}/nameServer/{id}
+                $get(): Promise<domain.CurrentNameServer>;
+                status: {
+                    // POST /domain/{serviceName}/nameServer/{id}/status
+                    $post(): Promise<domain.DomainNsStatus>;
+                }
+            };
+        }
+        nameServers: {
+            update: {
+                // POST /domain/{serviceName}/nameServers/update
+                $post(params: {nameServers: domain.DomainNs[]}): Promise<domain.Task>;
+            }
+        }
+        option: {
+            // GET /domain/{serviceName}/option
+            $get(): Promise<domain.DomainOptionEnum[]>;
+            $(option: domain.DomainOptionEnum): {
+                // DELETE /domain/{serviceName}/option/{option}
+                $delete(): Promise<void>;
+                // GET /domain/{serviceName}/option/{option}
+                $get(): Promise<domain.Option>;
+            };
+        }
+        owo: {
+            // GET /domain/{serviceName}/owo
+            $get(params?: {field?: domain.WhoisObfuscatorFieldsEnum}): Promise<domain.WhoisObfuscatorFieldsEnum[]>;
+            // POST /domain/{serviceName}/owo
+            $post(params: {fields: domain.WhoisObfuscatorFieldsEnum[]}): Promise<domain.WhoisObfuscatorFieldsEnum[]>;
+            $(field: domain.WhoisObfuscatorFieldsEnum): {
+                // DELETE /domain/{serviceName}/owo/{field}
+                $delete(): Promise<void>;
+                // GET /domain/{serviceName}/owo/{field}
+                $get(): Promise<domain.Owo>;
+            };
+        }
+        rules: {
+            emailsObfuscation: {
+                // GET /domain/{serviceName}/rules/emailsObfuscation
+                $get(): Promise<domain.ContactAllTypesEnum[]>;
+            }
+            optin: {
+                // GET /domain/{serviceName}/rules/optin
+                $get(): Promise<domain.rules.Optin[]>;
+            }
+        }
+        serviceInfos: {
+            // GET /domain/{serviceName}/serviceInfos
+            $get(): Promise<services.Service>;
+            // PUT /domain/{serviceName}/serviceInfos
+            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+        }
+        task: {
+            // GET /domain/{serviceName}/task
+            $get(params?: {function_?: string, status?: domain.OperationStatusEnum}): Promise<number[]>;
+            $(id: number): {
+                // GET /domain/{serviceName}/task/{id}
+                $get(): Promise<domain.Task>;
+                accelerate: {
+                    // POST /domain/{serviceName}/task/{id}/accelerate
+                    $post(): Promise<void>;
+                }
+                cancel: {
+                    // POST /domain/{serviceName}/task/{id}/cancel
+                    $post(): Promise<void>;
+                }
+                relaunch: {
+                    // POST /domain/{serviceName}/task/{id}/relaunch
+                    $post(): Promise<void>;
+                }
+            };
+        }
+        ukOutgoingTransfer: {
+            // POST /domain/{serviceName}/ukOutgoingTransfer
+            $post(params: {tag: string}): Promise<domain.Task>;
+        }
+        ukRegistrars: {
+            // GET /domain/{serviceName}/ukRegistrars
+            $get(): Promise<domain.UkRegistrar[]>;
+        }
+    };
+// Api
   /**
    * Operations about the DOMAIN service
    * List available services
    */
-  public get(path: '/domain', params: {whoisOwner?: string}): Promise<string[]>;
-  /**
-   * Missing description
-   * Retrieve all association information according to Afnic
-   */
-  public get(path: '/domain/data/afnicAssociationInformation'): Promise<number[]>;
-  /**
-   * Missing description
-   * Retrieve an association information according to Afnic
-   */
-  public get(path: '/domain/data/afnicAssociationInformation/{associationInformationId}', params: {associationInformationId: number}): Promise<DomainDataAssociationContact>;
-  /**
-   * Missing description
-   * Retrieve all corporation trademark information according to Afnic
-   */
-  public get(path: '/domain/data/afnicCorporationTrademarkInformation'): Promise<number[]>;
-  /**
-   * Missing description
-   * Retrieve a corporation trademark information according to Afnic
-   */
-  public get(path: '/domain/data/afnicCorporationTrademarkInformation/{afnicCorporationTrademarkId}', params: {afnicCorporationTrademarkId: number}): Promise<DomainDataAfnicCorporationTrademarkContact>;
-  /**
-   * Missing description
-   * Retrieve claim notices associated to a domain
-   */
-  public get(path: '/domain/data/claimNotice', params: {domain: string}): Promise<DomainDataClaimNoticeClaimNotice>;
-  /**
-   * Missing description
-   * List all the extensions for a specific country
-   */
-  public get(path: '/domain/data/extension', params: {country: NichandleCountryEnum}): Promise<string[]>;
-  /**
-   * Missing description
-   * Retrieve all your Pro Contact
-   */
-  public get(path: '/domain/data/proContact'): Promise<number[]>;
-  /**
-   * Missing description
-   * Retrieve information about a Pro Contact
-   */
-  public get(path: '/domain/data/proContact/{proContactId}', params: {proContactId: number}): Promise<DomainDataProContact>;
-  /**
-   * Missing description
-   * List all your SMD files
-   */
-  public get(path: '/domain/data/smd', params: {'protectedLabels.label'?: string}): Promise<number[]>;
-  /**
-   * Missing description
-   * Retrieve information about a SMD file
-   */
-  public get(path: '/domain/data/smd/{smdId}', params: {smdId: number}): Promise<DomainDataSmd>;
-  /**
-   * Rules for creating a domain
-   * List all the rules for a specific cartId/itemId
-   */
-  public get(path: '/domain/rules', params: {cartId: string, itemId: number}): Promise<any>;
-  /**
-   * Operations about the HOSTING service
-   * List available services
-   */
-  public get(path: '/domain/zone'): Promise<string[]>;
-  /**
-   * Zone dns Management
-   * Get this object properties
-   */
-  public get(path: '/domain/zone/{zoneName}', params: {zoneName: string}): Promise<DomainZoneZone>;
-  /**
-   * Manage Dnssec for this zone
-   * Get this object properties
-   */
-  public get(path: '/domain/zone/{zoneName}/dnssec', params: {zoneName: string}): Promise<DomainZoneDnssec>;
-  /**
-   * List the domain.zone.DynHostLogin objects
-   * DynHost' logins
-   */
-  public get(path: '/domain/zone/{zoneName}/dynHost/login', params: {zoneName: string, login?: string, subDomain?: string}): Promise<string[]>;
-  /**
-   * Manage DynHost login
-   * Get this object properties
-   */
-  public get(path: '/domain/zone/{zoneName}/dynHost/login/{login}', params: {zoneName: string, login: string}): Promise<DomainZoneDynHostLogin>;
-  /**
-   * List the domain.zone.DynHostRecord objects
-   * DynHost' records
-   */
-  public get(path: '/domain/zone/{zoneName}/dynHost/record', params: {zoneName: string, subDomain?: string}): Promise<number[]>;
-  /**
-   * DynHost record
-   * Get this object properties
-   */
-  public get(path: '/domain/zone/{zoneName}/dynHost/record/{id}', params: {zoneName: string, id: number}): Promise<DomainZoneDynHostRecord>;
-  /**
-   * export operations
-   * Export zone
-   */
-  public get(path: '/domain/zone/{zoneName}/export', params: {zoneName: string}): Promise<string>;
-  /**
-   * List the domain.zone.ZoneRestorePoint objects
-   * Zone restore points
-   */
-  public get(path: '/domain/zone/{zoneName}/history', params: {zoneName: string, 'creationDate.from'?: string, 'creationDate.to'?: string}): Promise<string[]>;
-  /**
-   * Zone restore point
-   * Get this object properties
-   */
-  public get(path: '/domain/zone/{zoneName}/history/{creationDate}', params: {zoneName: string, creationDate: string}): Promise<DomainZoneZoneRestorePoint>;
-  /**
-   * List the domain.zone.Record objects
-   * Records of the zone
-   */
-  public get(path: '/domain/zone/{zoneName}/record', params: {zoneName: string, fieldType?: ZoneNamedResolutionFieldTypeEnum, subDomain?: string}): Promise<number[]>;
-  /**
-   * Zone resource records
-   * Get this object properties
-   */
-  public get(path: '/domain/zone/{zoneName}/record/{id}', params: {zoneName: string, id: number}): Promise<DomainZoneRecord>;
-  /**
-   * List the domain.zone.Redirection objects
-   * Redirections
-   */
-  public get(path: '/domain/zone/{zoneName}/redirection', params: {zoneName: string, subDomain?: string}): Promise<number[]>;
-  /**
-   * Redirection
-   * Get this object properties
-   */
-  public get(path: '/domain/zone/{zoneName}/redirection/{id}', params: {zoneName: string, id: number}): Promise<DomainZoneRedirection>;
-  /**
-   * Details about a Service
-   * Get this object properties
-   */
-  public get(path: '/domain/zone/{zoneName}/serviceInfos', params: {zoneName: string}): Promise<ServicesService>;
-  /**
-   * Zone Start Of Authority
-   * Get this object properties
-   */
-  public get(path: '/domain/zone/{zoneName}/soa', params: {zoneName: string}): Promise<DomainZoneSoa>;
-  /**
-   * status operations
-   * Zone status
-   */
-  public get(path: '/domain/zone/{zoneName}/status', params: {zoneName: string}): Promise<ZoneStatus>;
-  /**
-   * List the domain.zone.Task objects
-   * Domain pending tasks
-   */
-  public get(path: '/domain/zone/{zoneName}/task', params: {zoneName: string, function?: string, status?: DomainOperationStatusEnum}): Promise<number[]>;
-  /**
-   * Tasks associated to a zone
-   * Get this object properties
-   */
-  public get(path: '/domain/zone/{zoneName}/task/{id}', params: {zoneName: string, id: number}): Promise<DomainZoneTask>;
+  get(path: '/domain'): (params?: {whoisOwner?: string}) => Promise<string[]>;
   /**
    * Domain name administration
    * Get this object properties
    */
-  public get(path: '/domain/{serviceName}', params: {serviceName: string}): Promise<DomainDomain>;
+  get(path: '/domain/{serviceName}'): (params: {serviceName: string}) => Promise<domain.Domain>;
   /**
    * authInfo operations
    * Return authInfo code if the domain is unlocked
    */
-  public get(path: '/domain/{serviceName}/authInfo', params: {serviceName: string}): Promise<string>;
+  get(path: '/domain/{serviceName}/authInfo'): (params: {serviceName: string}) => Promise<string>;
   /**
    * Missing description
    * Retrieve obfuscated emails configuration
    */
-  public get(path: '/domain/{serviceName}/configurations/obfuscatedEmails', params: {serviceName: string}): Promise<DomainConfigurationsObfuscatedEmail[]>;
+  get(path: '/domain/{serviceName}/configurations/obfuscatedEmails'): (params: {serviceName: string}) => Promise<domain.configurations.ObfuscatedEmails[]>;
   /**
    * Missing description
    * Retrieve optin configuration
    */
-  public get(path: '/domain/{serviceName}/configurations/optin', params: {serviceName: string}): Promise<DomainConfigurationsOptin[]>;
+  get(path: '/domain/{serviceName}/configurations/optin'): (params: {serviceName: string}) => Promise<domain.configurations.Optin[]>;
   /**
    * List the domain.DnssecKey objects
    * List of domain's DS Records
    */
-  public get(path: '/domain/{serviceName}/dsRecord', params: {serviceName: string, flags?: DnssecKeyFlagEnum, status?: DnssecKeyStatusEnum}): Promise<number[]>;
+  get(path: '/domain/{serviceName}/dsRecord'): (params: {serviceName: string, flags?: dnssec.KeyFlagEnum, status?: dnssec.KeyStatusEnum}) => Promise<number[]>;
   /**
    * Domain's DNSSEC Key
    * Get this object properties
    */
-  public get(path: '/domain/{serviceName}/dsRecord/{id}', params: {serviceName: string, id: number}): Promise<DomainDnssecKey>;
+  get(path: '/domain/{serviceName}/dsRecord/{id}'): (params: {id: number, serviceName: string}) => Promise<domain.DnssecKey>;
   /**
    * List the domain.GlueRecord objects
    * List of glue record
    */
-  public get(path: '/domain/{serviceName}/glueRecord', params: {serviceName: string, host?: string}): Promise<string[]>;
+  get(path: '/domain/{serviceName}/glueRecord'): (params: {serviceName: string, host?: string}) => Promise<string[]>;
   /**
    * Glue record
    * Get this object properties
    */
-  public get(path: '/domain/{serviceName}/glueRecord/{host}', params: {serviceName: string, host: string}): Promise<DomainGlueRecord>;
+  get(path: '/domain/{serviceName}/glueRecord/{host}'): (params: {host: string, serviceName: string}) => Promise<domain.GlueRecord>;
   /**
    * List the domain.CurrentNameServer objects
    * List of current name servers
    */
-  public get(path: '/domain/{serviceName}/nameServer', params: {serviceName: string}): Promise<number[]>;
+  get(path: '/domain/{serviceName}/nameServer'): (params: {serviceName: string}) => Promise<number[]>;
   /**
    * CurrentNameServer
    * Get this object properties
    */
-  public get(path: '/domain/{serviceName}/nameServer/{id}', params: {serviceName: string, id: number}): Promise<DomainCurrentNameServer>;
+  get(path: '/domain/{serviceName}/nameServer/{id}'): (params: {id: number, serviceName: string}) => Promise<domain.CurrentNameServer>;
   /**
    * List the domain.Option objects
    * List of domain options
    */
-  public get(path: '/domain/{serviceName}/option', params: {serviceName: string}): Promise<DomainDomainOptionEnum[]>;
+  get(path: '/domain/{serviceName}/option'): (params: {serviceName: string}) => Promise<domain.DomainOptionEnum[]>;
   /**
    * Information about the options of a domain
    * Get this object properties
    */
-  public get(path: '/domain/{serviceName}/option/{option}', params: {serviceName: string, option: DomainDomainOptionEnum}): Promise<DomainOption>;
+  get(path: '/domain/{serviceName}/option/{option}'): (params: {option: domain.DomainOptionEnum, serviceName: string}) => Promise<domain.Option>;
   /**
    * List the domain.Owo objects
    * List of whois obfuscators
    */
-  public get(path: '/domain/{serviceName}/owo', params: {serviceName: string, field?: DomainWhoisObfuscatorFieldsEnum}): Promise<DomainWhoisObfuscatorFieldsEnum[]>;
+  get(path: '/domain/{serviceName}/owo'): (params: {serviceName: string, field?: domain.WhoisObfuscatorFieldsEnum}) => Promise<domain.WhoisObfuscatorFieldsEnum[]>;
   /**
    * Obfuscate whois
    * Get this object properties
    */
-  public get(path: '/domain/{serviceName}/owo/{field}', params: {serviceName: string, field: DomainWhoisObfuscatorFieldsEnum}): Promise<DomainOwo>;
+  get(path: '/domain/{serviceName}/owo/{field}'): (params: {field: domain.WhoisObfuscatorFieldsEnum, serviceName: string}) => Promise<domain.Owo>;
   /**
    * Missing description
    * Retrieve emails obfuscation rule
    */
-  public get(path: '/domain/{serviceName}/rules/emailsObfuscation', params: {serviceName: string}): Promise<DomainContactAllTypesEnum[]>;
+  get(path: '/domain/{serviceName}/rules/emailsObfuscation'): (params: {serviceName: string}) => Promise<domain.ContactAllTypesEnum[]>;
   /**
    * Missing description
    * Retrieve optin rule
    */
-  public get(path: '/domain/{serviceName}/rules/optin', params: {serviceName: string}): Promise<DomainRulesOptin[]>;
+  get(path: '/domain/{serviceName}/rules/optin'): (params: {serviceName: string}) => Promise<domain.rules.Optin[]>;
   /**
    * Details about a Service
    * Get this object properties
    */
-  public get(path: '/domain/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
+  get(path: '/domain/{serviceName}/serviceInfos'): (params: {serviceName: string}) => Promise<services.Service>;
   /**
    * List the domain.Task objects
    * Domain pending tasks
    */
-  public get(path: '/domain/{serviceName}/task', params: {serviceName: string, function?: string, status?: DomainOperationStatusEnum}): Promise<number[]>;
+  get(path: '/domain/{serviceName}/task'): (params: {serviceName: string, function_?: string, status?: domain.OperationStatusEnum}) => Promise<number[]>;
   /**
    * Tasks associated to domain
    * Get this object properties
    */
-  public get(path: '/domain/{serviceName}/task/{id}', params: {serviceName: string, id: number}): Promise<DomainTask>;
+  get(path: '/domain/{serviceName}/task/{id}'): (params: {id: number, serviceName: string}) => Promise<domain.Task>;
   /**
    * ukRegistrars operations
    * Return the list of all .uk registrars
    */
-  public get(path: '/domain/{serviceName}/ukRegistrars', params: {serviceName: string}): Promise<DomainUkRegistrar[]>;
-  public get(path: PathsDomainGET, params?: OvhParamType): Promise<any> {
-    return super.get(path, params
-  );}
+  get(path: '/domain/{serviceName}/ukRegistrars'): (params: {serviceName: string}) => Promise<domain.UkRegistrar[]>;
   /**
    * Missing description
-   * Modify an existing SMD file
+   * Retrieve all association information according to Afnic
    */
-  public put(path: '/domain/data/smd/{smdId}', params: {smdId: number, data: string}): Promise<DomainDataSmd>;
+  get(path: '/domain/data/afnicAssociationInformation'): () => Promise<number[]>;
+  /**
+   * Missing description
+   * Retrieve an association information according to Afnic
+   */
+  get(path: '/domain/data/afnicAssociationInformation/{associationInformationId}'): (params: {associationInformationId: number}) => Promise<domain.data.AssociationContact>;
+  /**
+   * Missing description
+   * Retrieve all corporation trademark information according to Afnic
+   */
+  get(path: '/domain/data/afnicCorporationTrademarkInformation'): () => Promise<number[]>;
+  /**
+   * Missing description
+   * Retrieve a corporation trademark information according to Afnic
+   */
+  get(path: '/domain/data/afnicCorporationTrademarkInformation/{afnicCorporationTrademarkId}'): (params: {afnicCorporationTrademarkId: number}) => Promise<domain.data.AfnicCorporationTrademarkContact>;
+  /**
+   * Missing description
+   * Retrieve claim notices associated to a domain
+   */
+  get(path: '/domain/data/claimNotice'): (params: {domain: string}) => Promise<domain.data.claimNotice.ClaimNotice>;
+  /**
+   * Missing description
+   * List all the extensions for a specific country
+   */
+  get(path: '/domain/data/extension'): (params: {country: nichandle.CountryEnum}) => Promise<string[]>;
+  /**
+   * Missing description
+   * Retrieve all your Pro Contact
+   */
+  get(path: '/domain/data/proContact'): () => Promise<number[]>;
+  /**
+   * Missing description
+   * Retrieve information about a Pro Contact
+   */
+  get(path: '/domain/data/proContact/{proContactId}'): (params: {proContactId: number}) => Promise<domain.data.ProContact>;
+  /**
+   * Missing description
+   * List all your SMD files
+   */
+  get(path: '/domain/data/smd'): (params?: {protectedLabels_label?: string}) => Promise<number[]>;
+  /**
+   * Missing description
+   * Retrieve information about a SMD file
+   */
+  get(path: '/domain/data/smd/{smdId}'): (params: {smdId: number}) => Promise<domain.data.Smd>;
+  /**
+   * Rules for creating a domain
+   * List all the rules for a specific cartId/itemId
+   */
+  get(path: '/domain/rules'): (params: {cartId: string, itemId: number}) => Promise<domain.Rule>;
+  /**
+   * Operations about the HOSTING service
+   * List available services
+   */
+  get(path: '/domain/zone'): () => Promise<string[]>;
+  /**
+   * Zone dns Management
+   * Get this object properties
+   */
+  get(path: '/domain/zone/{zoneName}'): (params: {zoneName: string}) => Promise<domain.zone.Zone>;
+  /**
+   * Manage Dnssec for this zone
+   * Get this object properties
+   */
+  get(path: '/domain/zone/{zoneName}/dnssec'): (params: {zoneName: string}) => Promise<domain.zone.Dnssec>;
+  /**
+   * List the domain.zone.DynHostLogin objects
+   * DynHost' logins
+   */
+  get(path: '/domain/zone/{zoneName}/dynHost/login'): (params: {zoneName: string, login?: string, subDomain?: string}) => Promise<string[]>;
   /**
    * Manage DynHost login
-   * Alter this object properties
+   * Get this object properties
    */
-  public put(path: '/domain/zone/{zoneName}/dynHost/login/{login}', params: {zoneName: string, login: string, subDomain?: string, zone?: string}): Promise<void>;
+  get(path: '/domain/zone/{zoneName}/dynHost/login/{login}'): (params: {login: string, zoneName: string}) => Promise<domain.zone.DynHostLogin>;
+  /**
+   * List the domain.zone.DynHostRecord objects
+   * DynHost' records
+   */
+  get(path: '/domain/zone/{zoneName}/dynHost/record'): (params: {zoneName: string, subDomain?: string}) => Promise<number[]>;
   /**
    * DynHost record
-   * Alter this object properties
+   * Get this object properties
    */
-  public put(path: '/domain/zone/{zoneName}/dynHost/record/{id}', params: {zoneName: string, id: number, ip?: string, subDomain?: string, ttl?: number, zone?: string}): Promise<void>;
+  get(path: '/domain/zone/{zoneName}/dynHost/record/{id}'): (params: {id: number, zoneName: string}) => Promise<domain.zone.DynHostRecord>;
+  /**
+   * export operations
+   * Export zone
+   */
+  get(path: '/domain/zone/{zoneName}/export'): (params: {zoneName: string}) => Promise<string>;
+  /**
+   * List the domain.zone.ZoneRestorePoint objects
+   * Zone restore points
+   */
+  get(path: '/domain/zone/{zoneName}/history'): (params: {zoneName: string, creationDate_from?: string, creationDate_to?: string}) => Promise<string[]>;
+  /**
+   * Zone restore point
+   * Get this object properties
+   */
+  get(path: '/domain/zone/{zoneName}/history/{creationDate}'): (params: {creationDate: string, zoneName: string}) => Promise<domain.zone.ZoneRestorePoint>;
+  /**
+   * List the domain.zone.Record objects
+   * Records of the zone
+   */
+  get(path: '/domain/zone/{zoneName}/record'): (params: {zoneName: string, fieldType?: zoneNamedResolutionFieldTypeEnum, subDomain?: string}) => Promise<number[]>;
   /**
    * Zone resource records
-   * Alter this object properties
+   * Get this object properties
    */
-  public put(path: '/domain/zone/{zoneName}/record/{id}', params: {zoneName: string, id: number, fieldType?: ZoneNamedResolutionFieldTypeEnum, subDomain?: string, target?: string, ttl?: number, zone?: string}): Promise<void>;
+  get(path: '/domain/zone/{zoneName}/record/{id}'): (params: {id: number, zoneName: string}) => Promise<domain.zone.Record>;
+  /**
+   * List the domain.zone.Redirection objects
+   * Redirections
+   */
+  get(path: '/domain/zone/{zoneName}/redirection'): (params: {zoneName: string, subDomain?: string}) => Promise<number[]>;
   /**
    * Redirection
-   * Alter this object properties
+   * Get this object properties
    */
-  public put(path: '/domain/zone/{zoneName}/redirection/{id}', params: {zoneName: string, id: number, description?: string, keywords?: string, subDomain?: string, target?: string, title?: string, type?: ZoneRedirectionTypeEnum, zone?: string}): Promise<void>;
+  get(path: '/domain/zone/{zoneName}/redirection/{id}'): (params: {id: number, zoneName: string}) => Promise<domain.zone.Redirection>;
   /**
    * Details about a Service
-   * Alter this object properties
+   * Get this object properties
    */
-  public put(path: '/domain/zone/{zoneName}/serviceInfos', params: {zoneName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
+  get(path: '/domain/zone/{zoneName}/serviceInfos'): (params: {zoneName: string}) => Promise<services.Service>;
   /**
    * Zone Start Of Authority
-   * Alter this object properties
+   * Get this object properties
    */
-  public put(path: '/domain/zone/{zoneName}/soa', params: {zoneName: string, email?: string, expire?: number, nxDomainTtl?: number, refresh?: number, serial?: number, server?: string, ttl?: number}): Promise<void>;
+  get(path: '/domain/zone/{zoneName}/soa'): (params: {zoneName: string}) => Promise<domain.zone.Soa>;
+  /**
+   * status operations
+   * Zone status
+   */
+  get(path: '/domain/zone/{zoneName}/status'): (params: {zoneName: string}) => Promise<zone.Status>;
+  /**
+   * List the domain.zone.Task objects
+   * Domain pending tasks
+   */
+  get(path: '/domain/zone/{zoneName}/task'): (params: {zoneName: string, function_?: string, status?: domain.OperationStatusEnum}) => Promise<number[]>;
+  /**
+   * Tasks associated to a zone
+   * Get this object properties
+   */
+  get(path: '/domain/zone/{zoneName}/task/{id}'): (params: {id: number, zoneName: string}) => Promise<domain.zone.Task>;
   /**
    * Domain name administration
    * Alter this object properties
    */
-  public put(path: '/domain/{serviceName}', params: {serviceName: string, dnssecSupported?: boolean, domain?: string, glueRecordIpv6Supported?: boolean, glueRecordMultiIpSupported?: boolean, lastUpdate?: string, nameServerType?: DomainDomainNsTypeEnum, offer?: DomainOfferEnum, owoSupported?: boolean, parentService?: DomainParentService, transferLockStatus?: DomainDomainLockStatusEnum, whoisOwner?: string}): Promise<void>;
+  put(path: '/domain/{serviceName}'): (params: {serviceName: string, dnssecSupported?: boolean, domain?: string, glueRecordIpv6Supported?: boolean, glueRecordMultiIpSupported?: boolean, lastUpdate?: string, nameServerType?: domain.DomainNsTypeEnum, offer?: domain.OfferEnum, owoSupported?: boolean, parentService?: domain.ParentService, transferLockStatus?: domain.DomainLockStatusEnum, whoisOwner?: string}) => Promise<void>;
   /**
    * Missing description
    * Save a new obfuscated emails configuration
    */
-  public put(path: '/domain/{serviceName}/configurations/obfuscatedEmails', params: {serviceName: string, contacts: DomainContactAllTypesEnum[]}): Promise<DomainConfigurationsObfuscatedEmail[]>;
+  put(path: '/domain/{serviceName}/configurations/obfuscatedEmails'): (params: {serviceName: string, contacts: domain.ContactAllTypesEnum[]}) => Promise<domain.configurations.ObfuscatedEmails[]>;
   /**
    * Missing description
    * Save a new optin configuration
    */
-  public put(path: '/domain/{serviceName}/configurations/optin', params: {serviceName: string, optin: DomainConfigurationsOptin[]}): Promise<DomainConfigurationsOptin[]>;
+  put(path: '/domain/{serviceName}/configurations/optin'): (params: {serviceName: string, optin: domain.configurations.Optin[]}) => Promise<domain.configurations.Optin[]>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/domain/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
-  public put(path: PathsDomainPUT, params?: OvhParamType): Promise<any> {
-    return super.put(path, params
-  );}
+  put(path: '/domain/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
   /**
    * Missing description
-   * Post a new association information according to Afnic
+   * Modify an existing SMD file
    */
-  public post(path: '/domain/data/afnicAssociationInformation', params: {contactId: number, declarationDate: string, publicationDate: string, publicationNumber: string, publicationPageNumber: string}): Promise<DomainDataAssociationContact>;
+  put(path: '/domain/data/smd/{smdId}'): (params: {smdId: number, data: string}) => Promise<domain.data.Smd>;
   /**
-   * Missing description
-   * Post a new corporation trademark information according to Afnic
+   * Manage DynHost login
+   * Alter this object properties
    */
-  public post(path: '/domain/data/afnicCorporationTrademarkInformation', params: {contactId: number, inpiNumber: string, inpiTrademarkOwner: string}): Promise<DomainDataAfnicCorporationTrademarkContact>;
+  put(path: '/domain/zone/{zoneName}/dynHost/login/{login}'): (params: {login: string, zoneName: string, subDomain?: string, zone?: string}) => Promise<void>;
   /**
-   * Missing description
-   * Post new information about .pro contact information
+   * DynHost record
+   * Alter this object properties
    */
-  public post(path: '/domain/data/proContact', params: {authority: string, authorityWebsite: string, contactId?: number, jobDescription: string, licenseNumber: string}): Promise<DomainDataProContact>;
+  put(path: '/domain/zone/{zoneName}/dynHost/record/{id}'): (params: {id: number, zoneName: string, ip?: string, subDomain?: string, ttl?: number, zone?: string}) => Promise<void>;
   /**
-   * Missing description
-   * Post a new SMD file
+   * Zone resource records
+   * Alter this object properties
    */
-  public post(path: '/domain/data/smd', params: {data: string}): Promise<DomainDataSmd>;
+  put(path: '/domain/zone/{zoneName}/record/{id}'): (params: {id: number, zoneName: string, fieldType?: zoneNamedResolutionFieldTypeEnum, subDomain?: string, target?: string, ttl?: number, zone?: string}) => Promise<void>;
   /**
-   * Change the contacts of this service
-   * Launch a contact change procedure
+   * Redirection
+   * Alter this object properties
    */
-  public post(path: '/domain/zone/{zoneName}/changeContact', params: {zoneName: string, contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
+  put(path: '/domain/zone/{zoneName}/redirection/{id}'): (params: {id: number, zoneName: string, description?: string, keywords?: string, subDomain?: string, target?: string, title?: string, type?: zoneRedirectionTypeEnum, zone?: string}) => Promise<void>;
   /**
-   * Confirm termination of your service
-   * Confirm termination of your service
+   * Details about a Service
+   * Alter this object properties
    */
-  public post(path: '/domain/zone/{zoneName}/confirmTermination', params: {zoneName: string, commentary?: string, futureUse?: ServiceTerminationFutureUseEnum, reason?: ServiceTerminationReasonEnum, token: string}): Promise<string>;
+  put(path: '/domain/zone/{zoneName}/serviceInfos'): (params: {zoneName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
   /**
-   * Manage Dnssec for this zone
-   * Enable Dnssec
+   * Zone Start Of Authority
+   * Alter this object properties
    */
-  public post(path: '/domain/zone/{zoneName}/dnssec', params: {zoneName: string}): Promise<void>;
-  /**
-   * List the domain.zone.DynHostLogin objects
-   * Create a new DynHost login
-   */
-  public post(path: '/domain/zone/{zoneName}/dynHost/login', params: {zoneName: string, loginSuffix: string, password: string, subDomain: string}): Promise<DomainZoneDynHostLogin>;
-  /**
-   * changePassword operations
-   * Change password of the DynHost login
-   */
-  public post(path: '/domain/zone/{zoneName}/dynHost/login/{login}/changePassword', params: {zoneName: string, login: string, password: string}): Promise<void>;
-  /**
-   * List the domain.zone.DynHostRecord objects
-   * Create a new DynHost record (Don't forget to refresh the zone)
-   */
-  public post(path: '/domain/zone/{zoneName}/dynHost/record', params: {zoneName: string, ip: string, subDomain?: string}): Promise<DomainZoneDynHostRecord>;
-  /**
-   * restore operations
-   * Restore the DNS zone
-   */
-  public post(path: '/domain/zone/{zoneName}/history/{creationDate}/restore', params: {zoneName: string, creationDate: string}): Promise<DomainZoneTask>;
-  /**
-   * import operations
-   * Import zone
-   */
-  public post(path: '/domain/zone/{zoneName}/import', params: {zoneName: string, zoneFile: string}): Promise<DomainZoneTask>;
-  /**
-   * List the domain.zone.Record objects
-   * Create a new DNS record (Don't forget to refresh the zone)
-   */
-  public post(path: '/domain/zone/{zoneName}/record', params: {zoneName: string, fieldType: ZoneNamedResolutionFieldTypeEnum, subDomain?: string, target: string, ttl?: number}): Promise<DomainZoneRecord>;
-  /**
-   * List the domain.zone.Redirection objects
-   * Create a new redirection (Don't forget to refresh the zone)
-   */
-  public post(path: '/domain/zone/{zoneName}/redirection', params: {zoneName: string, description?: string, keywords?: string, subDomain?: string, target: string, title?: string, type: ZoneRedirectionTypeEnum}): Promise<DomainZoneRedirection>;
-  /**
-   * refresh operations
-   * Apply zone modification on DNS servers
-   */
-  public post(path: '/domain/zone/{zoneName}/refresh', params: {zoneName: string}): Promise<void>;
-  /**
-   * reset operations
-   * Reset the DNS zone
-   */
-  public post(path: '/domain/zone/{zoneName}/reset', params: {zoneName: string, DnsRecords?: ZoneResetRecord[], minimized?: boolean}): Promise<void>;
-  /**
-   * accelerate operations
-   * Accelerate the task
-   */
-  public post(path: '/domain/zone/{zoneName}/task/{id}/accelerate', params: {zoneName: string, id: number}): Promise<void>;
-  /**
-   * cancel operations
-   * Cancel the task
-   */
-  public post(path: '/domain/zone/{zoneName}/task/{id}/cancel', params: {zoneName: string, id: number}): Promise<void>;
-  /**
-   * relaunch operations
-   * Relaunch the task
-   */
-  public post(path: '/domain/zone/{zoneName}/task/{id}/relaunch', params: {zoneName: string, id: number}): Promise<void>;
-  /**
-   * Terminate your service
-   * Terminate your service
-   */
-  public post(path: '/domain/zone/{zoneName}/terminate', params: {zoneName: string}): Promise<string>;
+  put(path: '/domain/zone/{zoneName}/soa'): (params: {zoneName: string, email?: string, expire?: number, nxDomainTtl?: number, refresh?: number, serial?: number, server?: string, ttl?: number}) => Promise<void>;
   /**
    * activateZone operations
    * Activate the DNS zone for this domain
    */
-  public post(path: '/domain/{serviceName}/activateZone', params: {serviceName: string, minimized?: boolean}): Promise<void>;
+  post(path: '/domain/{serviceName}/activateZone'): (params: {serviceName: string, minimized?: boolean}) => Promise<void>;
   /**
    * Change the contacts of this service
    * Launch a contact change procedure
    */
-  public post(path: '/domain/{serviceName}/changeContact', params: {serviceName: string, contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
+  post(path: '/domain/{serviceName}/changeContact'): (params: {serviceName: string, contactAdmin?: string, contactBilling?: string, contactTech?: string}) => Promise<number[]>;
   /**
    * Missing description
    * Refresh an obfuscated emails configuration
    */
-  public post(path: '/domain/{serviceName}/configurations/obfuscatedEmails/refresh', params: {serviceName: string, contacts: DomainContactAllTypesEnum[]}): Promise<void>;
+  post(path: '/domain/{serviceName}/configurations/obfuscatedEmails/refresh'): (params: {serviceName: string, contacts: domain.ContactAllTypesEnum[]}) => Promise<void>;
   /**
    * List the domain.DnssecKey objects
    * Update DS records
    */
-  public post(path: '/domain/{serviceName}/dsRecord', params: {serviceName: string, keys: DnssecKey[]}): Promise<DomainTask>;
+  post(path: '/domain/{serviceName}/dsRecord'): (params: {serviceName: string, keys: dnssec.Key[]}) => Promise<domain.Task>;
   /**
    * refresh operations
    * Regenerate the obfuscated email address
    */
-  public post(path: '/domain/{serviceName}/email/obfuscated/refresh', params: {serviceName: string, contactType: DomainDomainContactTypeEnum[]}): Promise<void>;
+  post(path: '/domain/{serviceName}/email/obfuscated/refresh'): (params: {serviceName: string, contactType: domain.DomainContactTypeEnum[]}) => Promise<void>;
   /**
    * List the domain.GlueRecord objects
    * Create a glue record
    */
-  public post(path: '/domain/{serviceName}/glueRecord', params: {serviceName: string, host: string, ips: string[]}): Promise<DomainTask>;
+  post(path: '/domain/{serviceName}/glueRecord'): (params: {serviceName: string, host: string, ips: string[]}) => Promise<domain.Task>;
   /**
    * update operations
    * Update the glue record
    */
-  public post(path: '/domain/{serviceName}/glueRecord/{host}/update', params: {serviceName: string, host: string, ips: string[]}): Promise<DomainTask>;
+  post(path: '/domain/{serviceName}/glueRecord/{host}/update'): (params: {host: string, serviceName: string, ips: string[]}) => Promise<domain.Task>;
   /**
    * List the domain.CurrentNameServer objects
    * Add new name server
    */
-  public post(path: '/domain/{serviceName}/nameServer', params: {serviceName: string, nameServer: DomainDomainNs[]}): Promise<DomainTask>;
+  post(path: '/domain/{serviceName}/nameServer'): (params: {serviceName: string, nameServer: domain.DomainNs[]}) => Promise<domain.Task>;
   /**
    * status operations
    * Get name server status
    */
-  public post(path: '/domain/{serviceName}/nameServer/{id}/status', params: {serviceName: string, id: number}): Promise<DomainDomainNsStatus>;
+  post(path: '/domain/{serviceName}/nameServer/{id}/status'): (params: {id: number, serviceName: string}) => Promise<domain.DomainNsStatus>;
   /**
    * update operations
    * Update DNS servers
    */
-  public post(path: '/domain/{serviceName}/nameServers/update', params: {serviceName: string, nameServers: DomainDomainNs[]}): Promise<DomainTask>;
+  post(path: '/domain/{serviceName}/nameServers/update'): (params: {serviceName: string, nameServers: domain.DomainNs[]}) => Promise<domain.Task>;
   /**
    * List the domain.Owo objects
    * Add whois obfuscators
    */
-  public post(path: '/domain/{serviceName}/owo', params: {serviceName: string, fields: DomainWhoisObfuscatorFieldsEnum[]}): Promise<DomainWhoisObfuscatorFieldsEnum[]>;
+  post(path: '/domain/{serviceName}/owo'): (params: {serviceName: string, fields: domain.WhoisObfuscatorFieldsEnum[]}) => Promise<domain.WhoisObfuscatorFieldsEnum[]>;
   /**
    * accelerate operations
    * Accelerate the task
    */
-  public post(path: '/domain/{serviceName}/task/{id}/accelerate', params: {serviceName: string, id: number}): Promise<void>;
+  post(path: '/domain/{serviceName}/task/{id}/accelerate'): (params: {id: number, serviceName: string}) => Promise<void>;
   /**
    * cancel operations
    * Cancel the task
    */
-  public post(path: '/domain/{serviceName}/task/{id}/cancel', params: {serviceName: string, id: number}): Promise<void>;
+  post(path: '/domain/{serviceName}/task/{id}/cancel'): (params: {id: number, serviceName: string}) => Promise<void>;
   /**
    * relaunch operations
    * Relaunch the task
    */
-  public post(path: '/domain/{serviceName}/task/{id}/relaunch', params: {serviceName: string, id: number}): Promise<void>;
+  post(path: '/domain/{serviceName}/task/{id}/relaunch'): (params: {id: number, serviceName: string}) => Promise<void>;
   /**
    * ukOutgoingTransfer operations
    * Schedule an outgoing transfer task for this domain (.uk only)
    */
-  public post(path: '/domain/{serviceName}/ukOutgoingTransfer', params: {serviceName: string, tag: string}): Promise<DomainTask>;
-  public post(path: PathsDomainPOST, params?: OvhParamType): Promise<any> {
-    return super.post(path, params
-  );}
+  post(path: '/domain/{serviceName}/ukOutgoingTransfer'): (params: {serviceName: string, tag: string}) => Promise<domain.Task>;
   /**
    * Missing description
-   * Delete a SMD file
+   * Post a new association information according to Afnic
    */
-  public delete(path: '/domain/data/smd/{smdId}', params: {smdId: number}): Promise<void>;
+  post(path: '/domain/data/afnicAssociationInformation'): (params: {contactId: number, declarationDate: string, publicationDate: string, publicationNumber: string, publicationPageNumber: string}) => Promise<domain.data.AssociationContact>;
+  /**
+   * Missing description
+   * Post a new corporation trademark information according to Afnic
+   */
+  post(path: '/domain/data/afnicCorporationTrademarkInformation'): (params: {contactId: number, inpiNumber: string, inpiTrademarkOwner: string}) => Promise<domain.data.AfnicCorporationTrademarkContact>;
+  /**
+   * Missing description
+   * Post new information about .pro contact information
+   */
+  post(path: '/domain/data/proContact'): (params: {authority: string, authorityWebsite: string, contactId?: number, jobDescription: string, licenseNumber: string}) => Promise<domain.data.ProContact>;
+  /**
+   * Missing description
+   * Post a new SMD file
+   */
+  post(path: '/domain/data/smd'): (params: {data: string}) => Promise<domain.data.Smd>;
+  /**
+   * Change the contacts of this service
+   * Launch a contact change procedure
+   */
+  post(path: '/domain/zone/{zoneName}/changeContact'): (params: {zoneName: string, contactAdmin?: string, contactBilling?: string, contactTech?: string}) => Promise<number[]>;
+  /**
+   * Confirm termination of your service
+   * Confirm termination of your service
+   */
+  post(path: '/domain/zone/{zoneName}/confirmTermination'): (params: {zoneName: string, commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}) => Promise<string>;
   /**
    * Manage Dnssec for this zone
-   * Disable Dnssec
+   * Enable Dnssec
    */
-  public delete(path: '/domain/zone/{zoneName}/dnssec', params: {zoneName: string}): Promise<void>;
+  post(path: '/domain/zone/{zoneName}/dnssec'): (params: {zoneName: string}) => Promise<void>;
   /**
-   * Manage DynHost login
-   * Delete a DynHost login
+   * List the domain.zone.DynHostLogin objects
+   * Create a new DynHost login
    */
-  public delete(path: '/domain/zone/{zoneName}/dynHost/login/{login}', params: {zoneName: string, login: string}): Promise<void>;
+  post(path: '/domain/zone/{zoneName}/dynHost/login'): (params: {zoneName: string, loginSuffix: string, password: string, subDomain: string}) => Promise<domain.zone.DynHostLogin>;
   /**
-   * DynHost record
-   * Delete a DynHost record (Don't forget to refresh the zone)
+   * changePassword operations
+   * Change password of the DynHost login
    */
-  public delete(path: '/domain/zone/{zoneName}/dynHost/record/{id}', params: {zoneName: string, id: number}): Promise<void>;
+  post(path: '/domain/zone/{zoneName}/dynHost/login/{login}/changePassword'): (params: {login: string, zoneName: string, password: string}) => Promise<void>;
   /**
-   * Zone resource records
-   * Delete a DNS record (Don't forget to refresh the zone)
+   * List the domain.zone.DynHostRecord objects
+   * Create a new DynHost record (Don't forget to refresh the zone)
    */
-  public delete(path: '/domain/zone/{zoneName}/record/{id}', params: {zoneName: string, id: number}): Promise<void>;
+  post(path: '/domain/zone/{zoneName}/dynHost/record'): (params: {zoneName: string, ip: string, subDomain?: string}) => Promise<domain.zone.DynHostRecord>;
   /**
-   * Redirection
-   * Delete a redirection (Don't forget to refresh the zone)
+   * restore operations
+   * Restore the DNS zone
    */
-  public delete(path: '/domain/zone/{zoneName}/redirection/{id}', params: {zoneName: string, id: number}): Promise<void>;
+  post(path: '/domain/zone/{zoneName}/history/{creationDate}/restore'): (params: {creationDate: string, zoneName: string}) => Promise<domain.zone.Task>;
+  /**
+   * import operations
+   * Import zone
+   */
+  post(path: '/domain/zone/{zoneName}/import'): (params: {zoneName: string, zoneFile: string}) => Promise<domain.zone.Task>;
+  /**
+   * List the domain.zone.Record objects
+   * Create a new DNS record (Don't forget to refresh the zone)
+   */
+  post(path: '/domain/zone/{zoneName}/record'): (params: {zoneName: string, fieldType: zoneNamedResolutionFieldTypeEnum, subDomain?: string, target: string, ttl?: number}) => Promise<domain.zone.Record>;
+  /**
+   * List the domain.zone.Redirection objects
+   * Create a new redirection (Don't forget to refresh the zone)
+   */
+  post(path: '/domain/zone/{zoneName}/redirection'): (params: {zoneName: string, description?: string, keywords?: string, subDomain?: string, target: string, title?: string, type: zoneRedirectionTypeEnum}) => Promise<domain.zone.Redirection>;
+  /**
+   * refresh operations
+   * Apply zone modification on DNS servers
+   */
+  post(path: '/domain/zone/{zoneName}/refresh'): (params: {zoneName: string}) => Promise<void>;
+  /**
+   * reset operations
+   * Reset the DNS zone
+   */
+  post(path: '/domain/zone/{zoneName}/reset'): (params: {zoneName: string, DnsRecords?: zone.ResetRecord[], minimized?: boolean}) => Promise<void>;
+  /**
+   * accelerate operations
+   * Accelerate the task
+   */
+  post(path: '/domain/zone/{zoneName}/task/{id}/accelerate'): (params: {id: number, zoneName: string}) => Promise<void>;
+  /**
+   * cancel operations
+   * Cancel the task
+   */
+  post(path: '/domain/zone/{zoneName}/task/{id}/cancel'): (params: {id: number, zoneName: string}) => Promise<void>;
+  /**
+   * relaunch operations
+   * Relaunch the task
+   */
+  post(path: '/domain/zone/{zoneName}/task/{id}/relaunch'): (params: {id: number, zoneName: string}) => Promise<void>;
+  /**
+   * Terminate your service
+   * Terminate your service
+   */
+  post(path: '/domain/zone/{zoneName}/terminate'): (params: {zoneName: string}) => Promise<string>;
   /**
    * Glue record
    * Delete the glue record
    */
-  public delete(path: '/domain/{serviceName}/glueRecord/{host}', params: {serviceName: string, host: string}): Promise<DomainTask>;
+  delete(path: '/domain/{serviceName}/glueRecord/{host}'): (params: {host: string, serviceName: string}) => Promise<domain.Task>;
   /**
    * CurrentNameServer
    * Delete a name server
    */
-  public delete(path: '/domain/{serviceName}/nameServer/{id}', params: {serviceName: string, id: number}): Promise<DomainTask>;
+  delete(path: '/domain/{serviceName}/nameServer/{id}'): (params: {id: number, serviceName: string}) => Promise<domain.Task>;
   /**
    * Information about the options of a domain
    * Release a given option
    */
-  public delete(path: '/domain/{serviceName}/option/{option}', params: {serviceName: string, option: DomainDomainOptionEnum}): Promise<void>;
+  delete(path: '/domain/{serviceName}/option/{option}'): (params: {option: domain.DomainOptionEnum, serviceName: string}) => Promise<void>;
   /**
    * Obfuscate whois
    * Delete a whois obfuscator
    */
-  public delete(path: '/domain/{serviceName}/owo/{field}', params: {serviceName: string, field: DomainWhoisObfuscatorFieldsEnum}): Promise<void>;
-  public delete(path: PathsDomainDELETE, params?: OvhParamType): Promise<any> {
-    return super.delete(path, params
-  );}
+  delete(path: '/domain/{serviceName}/owo/{field}'): (params: {field: domain.WhoisObfuscatorFieldsEnum, serviceName: string}) => Promise<void>;
+  /**
+   * Missing description
+   * Delete a SMD file
+   */
+  delete(path: '/domain/data/smd/{smdId}'): (params: {smdId: number}) => Promise<void>;
+  /**
+   * Manage Dnssec for this zone
+   * Disable Dnssec
+   */
+  delete(path: '/domain/zone/{zoneName}/dnssec'): (params: {zoneName: string}) => Promise<void>;
+  /**
+   * Manage DynHost login
+   * Delete a DynHost login
+   */
+  delete(path: '/domain/zone/{zoneName}/dynHost/login/{login}'): (params: {login: string, zoneName: string}) => Promise<void>;
+  /**
+   * DynHost record
+   * Delete a DynHost record (Don't forget to refresh the zone)
+   */
+  delete(path: '/domain/zone/{zoneName}/dynHost/record/{id}'): (params: {id: number, zoneName: string}) => Promise<void>;
+  /**
+   * Zone resource records
+   * Delete a DNS record (Don't forget to refresh the zone)
+   */
+  delete(path: '/domain/zone/{zoneName}/record/{id}'): (params: {id: number, zoneName: string}) => Promise<void>;
+  /**
+   * Redirection
+   * Delete a redirection (Don't forget to refresh the zone)
+   */
+  delete(path: '/domain/zone/{zoneName}/redirection/{id}'): (params: {id: number, zoneName: string}) => Promise<void>;
 }
-export default ApiDomain;
+/**
+ * classic Model
+ */type zoneNamedResolutionFieldTypeEnum = zone.NamedResolutionFieldTypeEnum;
+type zoneRedirectionTypeEnum = zone.RedirectionTypeEnum;

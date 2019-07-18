@@ -1,146 +1,103 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
-/**
- * Map a possible renew for a specific service
- */
-export interface ServiceRenewType {
-  /**
-   * The service is automatically renewed
-   *
-   */
-  automatic: boolean;
-  /**
-   * The service will be deleted at expiration
-   *
-   */
-  deleteAtExpiration: boolean;
-  /**
-   * The service forced to be renewed
-   *
-   */
-  forced: boolean;
-  /**
-   * The service needs to be manually renewed and paid
-   *
-   */
-  manualPayment?: boolean;
-  /**
-   * period of renew in month
-   *
-   */
-  period?: number;
-}
-/**
- * Detailed renewal type of a service
- */
-export type ServiceRenewalTypeEnum = 'automaticForcedProduct' | 'automaticV2012' | 'automaticV2014' | 'automaticV2016' | 'manual' | 'oneShot' | 'option';
-/**
- * 
- */
-export type ServiceStateEnum = 'expired' | 'inCreation' | 'ok' | 'pendingDebt' | 'unPaid';
-/**
- * Details about a Service
- */
-export interface ServicesService {
-  /**
-   * Indicates that the service can be set up to be deleted at expiration
-   *
-   */
-  canDeleteAtExpiration: boolean;
-  /**
-   */
-  contactAdmin: string;
-  /**
-   */
-  contactBilling: string;
-  /**
-   */
-  contactTech: string;
-  /**
-   */
-  creation: string;
-  /**
-   */
-  domain: string;
-  /**
-   */
-  engagedUpTo?: string;
-  /**
-   */
-  expiration: string;
-  /**
-   * All the possible renew period of your service in month
-   *
-   */
-  possibleRenewPeriod?: number[];
-  /**
-   * Way of handling the renew
-   *
-   */
-  renew?: ServiceRenewType;
-  /**
-   */
-  renewalType: ServiceRenewalTypeEnum;
-  /**
-   */
-  serviceId: number;
-  /**
-   */
-  status: ServiceStateEnum;
-}
-/**
- * Stack type
- */
-export type StackStackTypeEnum = 'MDS' | 'MIS' | 'MOS';
-/**
- * Stack MIS
- */
-export interface StackMisProduct {
-  /**
-   * Domain of the service
-   *
-   */
-  domain: string;
-  /**
-   * Type of the infrastructure
-   *
-   */
-  type: StackStackTypeEnum;
-}
-type PathsStackMisGET = '/stack/mis' | 
-'/stack/mis/{serviceName}' | 
-'/stack/mis/{serviceName}/serviceInfos';
+import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
-type PathsStackMisPUT = '/stack/mis/{serviceName}/serviceInfos';
+/**
+ * START API /stack/mis Models
+ */
+export namespace service {
+    //service.RenewType
+    // fullName: service.RenewType.RenewType
+    export interface RenewType {
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
+        manualPayment?: boolean;
+        period?: number;
+    }
+    //service.RenewalTypeEnum
+    export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
+    //service.StateEnum
+    export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
+}
+export namespace services {
+    //services.Service
+    // fullName: services.Service.Service
+    export interface Service {
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
+        engagedUpTo?: string;
+        expiration: string;
+        possibleRenewPeriod?: number[];
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
+        serviceId: number;
+        status: service.StateEnum;
+    }
+}
+export namespace stack {
+    //stack.StackTypeEnum
+    export type StackTypeEnum = "MDS" | "MIS" | "MOS"
+    export namespace mis {
+        //stack.mis.product
+        // fullName: stack.mis.product.product
+        export interface product {
+            domain: string;
+            type: stack.StackTypeEnum;
+        }
+    }
+}
 
-export class ApiStackMis extends OvhWrapper {
-  constructor(engine: OvhRequestable) {
-    super(engine);
-  }
+/**
+ * END API /stack/mis Models
+ */
+export function proxyStackMis(ovhEngine: OvhRequestable): Stack {
+    return buildOvhProxy(ovhEngine, '/stack');
+}
+export default proxyStackMis;
+/**
+ * Api Proxy model
+ */// Apis harmony
+// path /stack
+export interface Stack{
+    mis: {
+        // GET /stack/mis
+        $get(): Promise<string[]>;
+        $(serviceName: string): {
+            // GET /stack/mis/{serviceName}
+            $get(): Promise<stack.mis.product>;
+            serviceInfos: {
+                // GET /stack/mis/{serviceName}/serviceInfos
+                $get(): Promise<services.Service>;
+                // PUT /stack/mis/{serviceName}/serviceInfos
+                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+            }
+        };
+    }
+// Api
   /**
    * Operations about the GS service
    * List available services
    */
-  public get(path: '/stack/mis'): Promise<string[]>;
+  get(path: '/stack/mis'): () => Promise<string[]>;
   /**
    * Stack MIS
    * Get this object properties
    */
-  public get(path: '/stack/mis/{serviceName}', params: {serviceName: string}): Promise<StackMisProduct>;
+  get(path: '/stack/mis/{serviceName}'): (params: {serviceName: string}) => Promise<stack.mis.product>;
   /**
    * Details about a Service
    * Get this object properties
    */
-  public get(path: '/stack/mis/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
-  public get(path: PathsStackMisGET, params?: OvhParamType): Promise<any> {
-    return super.get(path, params
-  );}
+  get(path: '/stack/mis/{serviceName}/serviceInfos'): (params: {serviceName: string}) => Promise<services.Service>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/stack/mis/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
-  public put(path: PathsStackMisPUT, params?: OvhParamType): Promise<any> {
-    return super.put(path, params
-  );}
+  put(path: '/stack/mis/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
 }
-export default ApiStackMis;
+/**
+ * classic Model
+ */

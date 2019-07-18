@@ -1,196 +1,139 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
-/**
- * Static CDN
- */
-export interface CdnWebstorageAccount {
-  /**
-   */
-  domain: string;
-  /**
-   */
-  server: string;
-  /**
-   * value in Bytes
-   *
-   */
-  storageLimit: number;
-  /**
-   * value in Bytes
-   *
-   */
-  storageUsage: number;
-}
-/**
- * A structure with credentials for using openstack account
- */
-export interface CdnWebstorageAccountCredentials {
-  /**
-   */
-  endpoint: string;
-  /**
-   */
-  login: string;
-  /**
-   */
-  password: string;
-  /**
-   */
-  tenant: string;
-}
-/**
- * A structure describing type of a stats hash
- */
-export interface CdnWebstorageStatsDataType {
-  /**
-   */
-  date: string;
-  /**
-   */
-  value: number;
-}
-/**
- * Period of the statistics
- */
-export type CdnWebstorageStatsPeriodEnum = 'day' | 'month' | 'week';
-/**
- * Type of statistics related to cache
- */
-export type CdnWebstorageStatsTypeEnum = 'backend' | 'cdn' | 'quota';
-/**
- * Map a possible renew for a specific service
- */
-export interface ServiceRenewType {
-  /**
-   * The service is automatically renewed
-   *
-   */
-  automatic: boolean;
-  /**
-   * The service will be deleted at expiration
-   *
-   */
-  deleteAtExpiration: boolean;
-  /**
-   * The service forced to be renewed
-   *
-   */
-  forced: boolean;
-  /**
-   * The service needs to be manually renewed and paid
-   *
-   */
-  manualPayment?: boolean;
-  /**
-   * period of renew in month
-   *
-   */
-  period?: number;
-}
-/**
- * Detailed renewal type of a service
- */
-export type ServiceRenewalTypeEnum = 'automaticForcedProduct' | 'automaticV2012' | 'automaticV2014' | 'automaticV2016' | 'manual' | 'oneShot' | 'option';
-/**
- * 
- */
-export type ServiceStateEnum = 'expired' | 'inCreation' | 'ok' | 'pendingDebt' | 'unPaid';
-/**
- * Details about a Service
- */
-export interface ServicesService {
-  /**
-   * Indicates that the service can be set up to be deleted at expiration
-   *
-   */
-  canDeleteAtExpiration: boolean;
-  /**
-   */
-  contactAdmin: string;
-  /**
-   */
-  contactBilling: string;
-  /**
-   */
-  contactTech: string;
-  /**
-   */
-  creation: string;
-  /**
-   */
-  domain: string;
-  /**
-   */
-  engagedUpTo?: string;
-  /**
-   */
-  expiration: string;
-  /**
-   * All the possible renew period of your service in month
-   *
-   */
-  possibleRenewPeriod?: number[];
-  /**
-   * Way of handling the renew
-   *
-   */
-  renew?: ServiceRenewType;
-  /**
-   */
-  renewalType: ServiceRenewalTypeEnum;
-  /**
-   */
-  serviceId: number;
-  /**
-   */
-  status: ServiceStateEnum;
-}
-type PathsCdnWebstorageGET = '/cdn/webstorage' | 
-'/cdn/webstorage/{serviceName}' | 
-'/cdn/webstorage/{serviceName}/credentials' | 
-'/cdn/webstorage/{serviceName}/serviceInfos' | 
-'/cdn/webstorage/{serviceName}/statistics';
+import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
-type PathsCdnWebstoragePUT = '/cdn/webstorage/{serviceName}/serviceInfos';
+/**
+ * START API /cdn/webstorage Models
+ */
+export namespace cdn {
+    export namespace webstorage {
+        //cdn.webstorage.Account
+        // fullName: cdn.webstorage.Account.Account
+        export interface Account {
+            domain: string;
+            server: string;
+            storageLimit: number;
+            storageUsage: number;
+        }
+        //cdn.webstorage.AccountCredentials
+        // fullName: cdn.webstorage.AccountCredentials.AccountCredentials
+        export interface AccountCredentials {
+            endpoint: string;
+            login: string;
+            password: string;
+            tenant: string;
+        }
+        //cdn.webstorage.StatsDataType
+        // fullName: cdn.webstorage.StatsDataType.StatsDataType
+        export interface StatsDataType {
+            date: string;
+            value: number;
+        }
+        //cdn.webstorage.StatsPeriodEnum
+        export type StatsPeriodEnum = "day" | "month" | "week"
+        //cdn.webstorage.StatsTypeEnum
+        export type StatsTypeEnum = "backend" | "cdn" | "quota"
+    }
+}
+export namespace service {
+    //service.RenewType
+    // fullName: service.RenewType.RenewType
+    export interface RenewType {
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
+        manualPayment?: boolean;
+        period?: number;
+    }
+    //service.RenewalTypeEnum
+    export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
+    //service.StateEnum
+    export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
+}
+export namespace services {
+    //services.Service
+    // fullName: services.Service.Service
+    export interface Service {
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
+        engagedUpTo?: string;
+        expiration: string;
+        possibleRenewPeriod?: number[];
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
+        serviceId: number;
+        status: service.StateEnum;
+    }
+}
 
-export class ApiCdnWebstorage extends OvhWrapper {
-  constructor(engine: OvhRequestable) {
-    super(engine);
-  }
+/**
+ * END API /cdn/webstorage Models
+ */
+export function proxyCdnWebstorage(ovhEngine: OvhRequestable): Cdn {
+    return buildOvhProxy(ovhEngine, '/cdn');
+}
+export default proxyCdnWebstorage;
+/**
+ * Api Proxy model
+ */// Apis harmony
+// path /cdn
+export interface Cdn{
+    webstorage: {
+        // GET /cdn/webstorage
+        $get(): Promise<string[]>;
+        $(serviceName: string): {
+            // GET /cdn/webstorage/{serviceName}
+            $get(): Promise<cdn.webstorage.Account>;
+            credentials: {
+                // GET /cdn/webstorage/{serviceName}/credentials
+                $get(): Promise<cdn.webstorage.AccountCredentials>;
+            }
+            serviceInfos: {
+                // GET /cdn/webstorage/{serviceName}/serviceInfos
+                $get(): Promise<services.Service>;
+                // PUT /cdn/webstorage/{serviceName}/serviceInfos
+                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+            }
+            statistics: {
+                // GET /cdn/webstorage/{serviceName}/statistics
+                $get(params: {period: cdn.webstorage.StatsPeriodEnum, type: cdn.webstorage.StatsTypeEnum}): Promise<cdn.webstorage.StatsDataType[]>;
+            }
+        };
+    }
+// Api
   /**
    * Operations about the CDNSTATIC service
    * List available services
    */
-  public get(path: '/cdn/webstorage'): Promise<string[]>;
+  get(path: '/cdn/webstorage'): () => Promise<string[]>;
   /**
    * Static CDN
    * Get this object properties
    */
-  public get(path: '/cdn/webstorage/{serviceName}', params: {serviceName: string}): Promise<CdnWebstorageAccount>;
+  get(path: '/cdn/webstorage/{serviceName}'): (params: {serviceName: string}) => Promise<cdn.webstorage.Account>;
   /**
    * credentials operations
    * Gives for customer credentials to accesss swift account
    */
-  public get(path: '/cdn/webstorage/{serviceName}/credentials', params: {serviceName: string}): Promise<CdnWebstorageAccountCredentials>;
+  get(path: '/cdn/webstorage/{serviceName}/credentials'): (params: {serviceName: string}) => Promise<cdn.webstorage.AccountCredentials>;
   /**
    * Details about a Service
    * Get this object properties
    */
-  public get(path: '/cdn/webstorage/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
+  get(path: '/cdn/webstorage/{serviceName}/serviceInfos'): (params: {serviceName: string}) => Promise<services.Service>;
   /**
    * statistics operations
    * Return stats about bandwidth consumption
    */
-  public get(path: '/cdn/webstorage/{serviceName}/statistics', params: {serviceName: string, period: CdnWebstorageStatsPeriodEnum, type: CdnWebstorageStatsTypeEnum}): Promise<CdnWebstorageStatsDataType[]>;
-  public get(path: PathsCdnWebstorageGET, params?: OvhParamType): Promise<any> {
-    return super.get(path, params
-  );}
+  get(path: '/cdn/webstorage/{serviceName}/statistics'): (params: {serviceName: string, period: cdn.webstorage.StatsPeriodEnum, type: cdn.webstorage.StatsTypeEnum}) => Promise<cdn.webstorage.StatsDataType[]>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/cdn/webstorage/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
-  public put(path: PathsCdnWebstoragePUT, params?: OvhParamType): Promise<any> {
-    return super.put(path, params
-  );}
+  put(path: '/cdn/webstorage/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
 }
-export default ApiCdnWebstorage;
+/**
+ * classic Model
+ */

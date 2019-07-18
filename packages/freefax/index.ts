@@ -1,376 +1,239 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
-/**
- * Return credit balance informations structure
- */
-export interface FreefaxBalanceInformations {
-  /**
-   * The number of equivalement remaining french faxs
-   *
-   */
-  faxs: number;
-  /**
-   * Total balance available in points
-   *
-   */
-  points: number;
-}
-/**
- * Freefax properties
- */
-export interface FreefaxFreefaxProperties {
-  /**
-   * Number of max tentative of fax sending
-   *
-   */
-  faxMaxCall: TelephonyFaxSendingTries;
-  /**
-   * Quality of fax sending
-   *
-   */
-  faxQuality: TelephonyFaxQualityEnum;
-  /**
-   * Customised freefax header
-   *
-   */
-  faxTagLine: string;
-  /**
-   * FROM email header
-   *
-   */
-  fromEmail: string;
-  /**
-   * Name of the sender of the email
-   *
-   */
-  fromName: string;
-  /**
-   * Freefax number in international format
-   *
-   */
-  number: string;
-  /**
-   * Email address to redirect fax response.
-   *
-   */
-  redirectionEmail: string[];
-}
-/**
- * Map a possible renew for a specific service
- */
-export interface ServiceRenewType {
-  /**
-   * The service is automatically renewed
-   *
-   */
-  automatic: boolean;
-  /**
-   * The service will be deleted at expiration
-   *
-   */
-  deleteAtExpiration: boolean;
-  /**
-   * The service forced to be renewed
-   *
-   */
-  forced: boolean;
-  /**
-   * The service needs to be manually renewed and paid
-   *
-   */
-  manualPayment?: boolean;
-  /**
-   * period of renew in month
-   *
-   */
-  period?: number;
-}
-/**
- * Detailed renewal type of a service
- */
-export type ServiceRenewalTypeEnum = 'automaticForcedProduct' | 'automaticV2012' | 'automaticV2014' | 'automaticV2016' | 'manual' | 'oneShot' | 'option';
-/**
- * 
- */
-export type ServiceStateEnum = 'expired' | 'inCreation' | 'ok' | 'pendingDebt' | 'unPaid';
-/**
- * Details about a Service
- */
-export interface ServicesService {
-  /**
-   * Indicates that the service can be set up to be deleted at expiration
-   *
-   */
-  canDeleteAtExpiration: boolean;
-  /**
-   */
-  contactAdmin: string;
-  /**
-   */
-  contactBilling: string;
-  /**
-   */
-  contactTech: string;
-  /**
-   */
-  creation: string;
-  /**
-   */
-  domain: string;
-  /**
-   */
-  engagedUpTo?: string;
-  /**
-   */
-  expiration: string;
-  /**
-   * All the possible renew period of your service in month
-   *
-   */
-  possibleRenewPeriod?: number[];
-  /**
-   * Way of handling the renew
-   *
-   */
-  renew?: ServiceRenewType;
-  /**
-   */
-  renewalType: ServiceRenewalTypeEnum;
-  /**
-   */
-  serviceId: number;
-  /**
-   */
-  status: ServiceStateEnum;
-}
-/**
- * Available quality for fax documents
- */
-export type TelephonyFaxQualityEnum = 'best' | 'high' | 'normal';
-/**
- * Number of tries when sending a fax
- */
-export type TelephonyFaxSendingTries = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
-/**
- * Voicemail audio format
- */
-export type TelephonyServiceVoicemailAudioFormatEnum = 'aiff' | 'au' | 'flac' | 'mp3' | 'ogg' | 'wav';
-/**
- * Voicemail configuration
- */
-export type TelephonyServiceVoicemailMailOptionEnum = 'attachment' | 'simple';
-/**
- * Voicemail configuration
- */
-export interface TelephonyServiceVoicemailNotifications {
-  /**
-   */
-  email: string;
-  /**
-   */
-  type: TelephonyServiceVoicemailMailOptionEnum;
-}
-/**
- * All existing type of routing for a voicemail
- */
-export type TelephonyVoicefaxRoutingEnum = 'fax' | 'voicemail';
-/**
- * Greeting type
- */
-export type TelephonyVoicemailGreetingEnum = 'default' | 'full' | 'short';
-/**
- * Internal and external numbers for voicemail service
- */
-export interface TelephonyVoicemailNumbers {
-  /**
-   * The external voicemail number
-   *
-   */
-  external: string;
-  /**
-   * The internal voicemail number
-   *
-   */
-  internal: string;
-}
-/**
- * Voicemail Properties
- */
-export interface TelephonyVoicemailProperties {
-  /**
-   * Name of the voicemail panel announce file
-   *
-   */
-  annouceMessage: string;
-  /**
-   * Format of the voicemail audio file attached to emails
-   *
-   */
-  audioFormat: TelephonyServiceVoicemailAudioFormatEnum;
-  /**
-   * Don't allow callers to leave voicemails
-   *
-   */
-  doNotRecord: boolean;
-  /**
-   * Force password request to access the voicemail panel
-   *
-   */
-  forcePassword: boolean;
-  /**
-   * Email address from which emails will be sent
-   *
-   */
-  fromEmail: string;
-  /**
-   * Name from which emails will be sent
-   *
-   */
-  fromName: string;
-  /**
-   * Sound ID of the long greeeting
-   *
-   */
-  fullGreetingSoundId?: number;
-  /**
-   * Type of the greeting to play
-   *
-   */
-  greetingType: TelephonyVoicemailGreetingEnum;
-  /**
-   * Current voicemail version
-   *
-   */
-  isNewVersion: boolean;
-  /**
-   * Don't delete voicemails after they've been sent by email
-   *
-   */
-  keepMessage: boolean;
-  /**
-   * Email addresses to notify when a new voicemail is left
-   *
-   */
-  redirectionEmails: TelephonyServiceVoicemailNotifications[];
-  /**
-   * Sound ID of the short greeting played before an automated message
-   *
-   */
-  shortGreetingSoundId?: number;
-  /**
-   * Play the temporary greeting instead of the regular one
-   *
-   */
-  temporaryGreetingActivated: boolean;
-  /**
-   * Sound ID of the temporary greeeting
-   *
-   */
-  temporaryGreetingSoundId?: number;
-  /**
-   * Quantity of unread voicemails
-   *
-   */
-  unreadMessages: number;
-}
-type PathsFreefaxGET = '/freefax' | 
-'/freefax/credits' | 
-'/freefax/{serviceName}' | 
-'/freefax/{serviceName}/mainService' | 
-'/freefax/{serviceName}/serviceInfos' | 
-'/freefax/{serviceName}/voicemail' | 
-'/freefax/{serviceName}/voicemail/routing' | 
-'/freefax/{serviceName}/voicemail/voicemailNumbers';
+import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
-type PathsFreefaxPUT = '/freefax/{serviceName}' | 
-'/freefax/{serviceName}/serviceInfos' | 
-'/freefax/{serviceName}/voicemail';
+/**
+ * START API /freefax Models
+ */
+export namespace freefax {
+    //freefax.BalanceInformations
+    // fullName: freefax.BalanceInformations.BalanceInformations
+    export interface BalanceInformations {
+        faxs: number;
+        points: number;
+    }
+    //freefax.FreefaxProperties
+    // fullName: freefax.FreefaxProperties.FreefaxProperties
+    export interface FreefaxProperties {
+        faxMaxCall: telephony.FaxSendingTries;
+        faxQuality: telephony.FaxQualityEnum;
+        faxTagLine: string;
+        fromEmail: string;
+        fromName: string;
+        number: string;
+        redirectionEmail: string[];
+    }
+}
+export namespace service {
+    //service.RenewType
+    // fullName: service.RenewType.RenewType
+    export interface RenewType {
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
+        manualPayment?: boolean;
+        period?: number;
+    }
+    //service.RenewalTypeEnum
+    export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
+    //service.StateEnum
+    export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
+}
+export namespace services {
+    //services.Service
+    // fullName: services.Service.Service
+    export interface Service {
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
+        engagedUpTo?: string;
+        expiration: string;
+        possibleRenewPeriod?: number[];
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
+        serviceId: number;
+        status: service.StateEnum;
+    }
+}
+export namespace telephony {
+    //telephony.FaxQualityEnum
+    export type FaxQualityEnum = "best" | "high" | "normal"
+    //telephony.FaxSendingTries
+    export type FaxSendingTries = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+    //telephony.ServiceVoicemailAudioFormatEnum
+    export type ServiceVoicemailAudioFormatEnum = "aiff" | "au" | "flac" | "mp3" | "ogg" | "wav"
+    //telephony.ServiceVoicemailMailOptionEnum
+    export type ServiceVoicemailMailOptionEnum = "attachment" | "simple"
+    //telephony.ServiceVoicemailNotifications
+    // fullName: telephony.ServiceVoicemailNotifications.ServiceVoicemailNotifications
+    export interface ServiceVoicemailNotifications {
+        email: string;
+        type: telephony.ServiceVoicemailMailOptionEnum;
+    }
+    //telephony.VoicefaxRoutingEnum
+    export type VoicefaxRoutingEnum = "fax" | "voicemail"
+    //telephony.VoicemailGreetingEnum
+    export type VoicemailGreetingEnum = "default" | "full" | "short"
+    //telephony.VoicemailNumbers
+    // fullName: telephony.VoicemailNumbers.VoicemailNumbers
+    export interface VoicemailNumbers {
+        external: string;
+        internal: string;
+    }
+    //telephony.VoicemailProperties
+    // fullName: telephony.VoicemailProperties.VoicemailProperties
+    export interface VoicemailProperties {
+        annouceMessage: string;
+        audioFormat: telephony.ServiceVoicemailAudioFormatEnum;
+        doNotRecord: boolean;
+        forcePassword: boolean;
+        fromEmail: string;
+        fromName: string;
+        fullGreetingSoundId?: number;
+        greetingType: telephony.VoicemailGreetingEnum;
+        isNewVersion: boolean;
+        keepMessage: boolean;
+        redirectionEmails: telephony.ServiceVoicemailNotifications[];
+        shortGreetingSoundId?: number;
+        temporaryGreetingActivated: boolean;
+        temporaryGreetingSoundId?: number;
+        unreadMessages: number;
+    }
+}
 
-type PathsFreefaxPOST = '/freefax/{serviceName}/changePassword' | 
-'/freefax/{serviceName}/voicemail/changePassword' | 
-'/freefax/{serviceName}/voicemail/changeRouting';
-
-export class ApiFreefax extends OvhWrapper {
-  constructor(engine: OvhRequestable) {
-    super(engine);
-  }
+/**
+ * END API /freefax Models
+ */
+export function proxyFreefax(ovhEngine: OvhRequestable): Freefax {
+    return buildOvhProxy(ovhEngine, '/freefax');
+}
+export default proxyFreefax;
+/**
+ * Api Proxy model
+ */// Apis harmony
+// path /freefax
+export interface Freefax{
+    // GET /freefax
+    $get(): Promise<string[]>;
+    credits: {
+        // GET /freefax/credits
+        $get(): Promise<freefax.BalanceInformations>;
+    }
+    $(serviceName: string): {
+        // GET /freefax/{serviceName}
+        $get(): Promise<freefax.FreefaxProperties>;
+        // PUT /freefax/{serviceName}
+        $put(params?: {faxMaxCall?: telephony.FaxSendingTries, faxQuality?: telephony.FaxQualityEnum, faxTagLine?: string, fromEmail?: string, fromName?: string, number?: string, redirectionEmail?: string[]}): Promise<void>;
+        changePassword: {
+            // POST /freefax/{serviceName}/changePassword
+            $post(): Promise<string>;
+        }
+        mainService: {
+            // GET /freefax/{serviceName}/mainService
+            $get(): Promise<string>;
+        }
+        serviceInfos: {
+            // GET /freefax/{serviceName}/serviceInfos
+            $get(): Promise<services.Service>;
+            // PUT /freefax/{serviceName}/serviceInfos
+            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+        }
+        voicemail: {
+            // GET /freefax/{serviceName}/voicemail
+            $get(): Promise<telephony.VoicemailProperties>;
+            // PUT /freefax/{serviceName}/voicemail
+            $put(params?: {annouceMessage?: string, audioFormat?: telephony.ServiceVoicemailAudioFormatEnum, doNotRecord?: boolean, forcePassword?: boolean, fromEmail?: string, fromName?: string, fullGreetingSoundId?: number, greetingType?: telephony.VoicemailGreetingEnum, isNewVersion?: boolean, keepMessage?: boolean, redirectionEmails?: telephony.ServiceVoicemailNotifications[], shortGreetingSoundId?: number, temporaryGreetingActivated?: boolean, temporaryGreetingSoundId?: number, unreadMessages?: number}): Promise<void>;
+            changePassword: {
+                // POST /freefax/{serviceName}/voicemail/changePassword
+                $post(params: {password: string}): Promise<void>;
+            }
+            changeRouting: {
+                // POST /freefax/{serviceName}/voicemail/changeRouting
+                $post(params: {routing: telephony.VoicefaxRoutingEnum}): Promise<void>;
+            }
+            routing: {
+                // GET /freefax/{serviceName}/voicemail/routing
+                $get(): Promise<telephony.VoicefaxRoutingEnum>;
+            }
+            voicemailNumbers: {
+                // GET /freefax/{serviceName}/voicemail/voicemailNumbers
+                $get(): Promise<telephony.VoicemailNumbers>;
+            }
+        }
+    };
+// Api
   /**
    * Operations about the VOIP service
    * List available services
    */
-  public get(path: '/freefax'): Promise<string[]>;
-  /**
-   * Get the credit balance and the remaining pages available for all our freefax
-   * Get the credit balance and the remaining pages available for all our freefax
-   */
-  public get(path: '/freefax/credits'): Promise<FreefaxBalanceInformations>;
+  get(path: '/freefax'): () => Promise<string[]>;
   /**
    * Freefax properties
    * Get this object properties
    */
-  public get(path: '/freefax/{serviceName}', params: {serviceName: string}): Promise<FreefaxFreefaxProperties>;
+  get(path: '/freefax/{serviceName}'): (params: {serviceName: string}) => Promise<freefax.FreefaxProperties>;
   /**
    * mainService operations
    * Main service attached to freefax
    */
-  public get(path: '/freefax/{serviceName}/mainService', params: {serviceName: string}): Promise<string>;
+  get(path: '/freefax/{serviceName}/mainService'): (params: {serviceName: string}) => Promise<string>;
   /**
    * Details about a Service
    * Get this object properties
    */
-  public get(path: '/freefax/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
+  get(path: '/freefax/{serviceName}/serviceInfos'): (params: {serviceName: string}) => Promise<services.Service>;
   /**
    * Voicemail Properties
    * Get this object properties
    */
-  public get(path: '/freefax/{serviceName}/voicemail', params: {serviceName: string}): Promise<TelephonyVoicemailProperties>;
+  get(path: '/freefax/{serviceName}/voicemail'): (params: {serviceName: string}) => Promise<telephony.VoicemailProperties>;
   /**
    * routing operations
    * Get the status of the voicemail. Available only if the line has fax capabilities
    */
-  public get(path: '/freefax/{serviceName}/voicemail/routing', params: {serviceName: string}): Promise<TelephonyVoicefaxRoutingEnum>;
+  get(path: '/freefax/{serviceName}/voicemail/routing'): (params: {serviceName: string}) => Promise<telephony.VoicefaxRoutingEnum>;
   /**
    * voicemailNumbers operations
    * Get number for internal and external voicemail
    */
-  public get(path: '/freefax/{serviceName}/voicemail/voicemailNumbers', params: {serviceName: string}): Promise<TelephonyVoicemailNumbers>;
-  public get(path: PathsFreefaxGET, params?: OvhParamType): Promise<any> {
-    return super.get(path, params
-  );}
+  get(path: '/freefax/{serviceName}/voicemail/voicemailNumbers'): (params: {serviceName: string}) => Promise<telephony.VoicemailNumbers>;
+  /**
+   * Get the credit balance and the remaining pages available for all our freefax
+   * Get the credit balance and the remaining pages available for all our freefax
+   */
+  get(path: '/freefax/credits'): () => Promise<freefax.BalanceInformations>;
   /**
    * Freefax properties
    * Alter this object properties
    */
-  public put(path: '/freefax/{serviceName}', params: {serviceName: string, faxMaxCall?: TelephonyFaxSendingTries, faxQuality?: TelephonyFaxQualityEnum, faxTagLine?: string, fromEmail?: string, fromName?: string, number?: string, redirectionEmail?: string[]}): Promise<void>;
+  put(path: '/freefax/{serviceName}'): (params: {serviceName: string, faxMaxCall?: telephony.FaxSendingTries, faxQuality?: telephony.FaxQualityEnum, faxTagLine?: string, fromEmail?: string, fromName?: string, number?: string, redirectionEmail?: string[]}) => Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/freefax/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
+  put(path: '/freefax/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
   /**
    * Voicemail Properties
    * Alter this object properties
    */
-  public put(path: '/freefax/{serviceName}/voicemail', params: {serviceName: string, annouceMessage?: string, audioFormat?: TelephonyServiceVoicemailAudioFormatEnum, doNotRecord?: boolean, forcePassword?: boolean, fromEmail?: string, fromName?: string, fullGreetingSoundId?: number, greetingType?: TelephonyVoicemailGreetingEnum, isNewVersion?: boolean, keepMessage?: boolean, redirectionEmails?: TelephonyServiceVoicemailNotifications[], shortGreetingSoundId?: number, temporaryGreetingActivated?: boolean, temporaryGreetingSoundId?: number, unreadMessages?: number}): Promise<void>;
-  public put(path: PathsFreefaxPUT, params?: OvhParamType): Promise<any> {
-    return super.put(path, params
-  );}
+  put(path: '/freefax/{serviceName}/voicemail'): (params: {serviceName: string, annouceMessage?: string, audioFormat?: telephony.ServiceVoicemailAudioFormatEnum, doNotRecord?: boolean, forcePassword?: boolean, fromEmail?: string, fromName?: string, fullGreetingSoundId?: number, greetingType?: telephony.VoicemailGreetingEnum, isNewVersion?: boolean, keepMessage?: boolean, redirectionEmails?: telephony.ServiceVoicemailNotifications[], shortGreetingSoundId?: number, temporaryGreetingActivated?: boolean, temporaryGreetingSoundId?: number, unreadMessages?: number}) => Promise<void>;
   /**
    * changePassword operations
    * Generates a new password for your fax account
    */
-  public post(path: '/freefax/{serviceName}/changePassword', params: {serviceName: string}): Promise<string>;
+  post(path: '/freefax/{serviceName}/changePassword'): (params: {serviceName: string}) => Promise<string>;
   /**
    * changePassword operations
    * Change the voicemail password. It must be 4 digit
    */
-  public post(path: '/freefax/{serviceName}/voicemail/changePassword', params: {serviceName: string, password: string}): Promise<void>;
+  post(path: '/freefax/{serviceName}/voicemail/changePassword'): (params: {serviceName: string, password: string}) => Promise<void>;
   /**
    * changeRouting operations
    * Disable/Enable voicemail. Available only if the line has fax capabilities
    */
-  public post(path: '/freefax/{serviceName}/voicemail/changeRouting', params: {serviceName: string, routing: TelephonyVoicefaxRoutingEnum}): Promise<void>;
-  public post(path: PathsFreefaxPOST, params?: OvhParamType): Promise<any> {
-    return super.post(path, params
-  );}
+  post(path: '/freefax/{serviceName}/voicemail/changeRouting'): (params: {serviceName: string, routing: telephony.VoicefaxRoutingEnum}) => Promise<void>;
 }
-export default ApiFreefax;
+/**
+ * classic Model
+ */

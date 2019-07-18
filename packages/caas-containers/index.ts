@@ -1,647 +1,398 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
-/**
- * The new framework password
- */
-export interface DockerFrameworkPassword {
-  /**
-   * The new framework password
-   *
-   */
-  password: string;
-}
-/**
- * A host on which containers can be deployed
- */
-export interface DockerSlave {
-  /**
-   * Date of the resource creation
-   *
-   */
-  createdAt: string;
-  /**
-   * The framework UUID
-   *
-   */
-  flavorId: string;
-  /**
-   * The slave UUID
-   *
-   */
-  id: string;
-  /**
-   * Metrics about slave usage
-   *
-   */
-  metrics: DockerSlaveMetrics;
-  /**
-   * The slave hostname
-   *
-   */
-  name: string;
-  /**
-   * The region where the slave is located
-   *
-   */
-  region: string;
-  /**
-   * The stack to which the slave belongs
-   *
-   */
-  stack: string;
-  /**
-   * The state of the slave
-   *
-   */
-  state: DockerSlaveStatus;
-  /**
-   * Date of the resource last update
-   *
-   */
-  updatedAt: string;
-}
-/**
- * Attributes of the slave flavor
- */
-export interface DockerSlaveFlavor {
-  /**
-   * The network bandwidth, in Mbps
-   *
-   */
-  bandwidth: number;
-  /**
-   * The amount of (v)CPUs
-   *
-   */
-  cpus: number;
-  /**
-   * The disk size, in GB
-   *
-   */
-  disk: number;
-  /**
-   * Wether the disk is HA (stored in Ceph) or local (SSD)
-   *
-   */
-  diskHa: boolean;
-  /**
-   * The flavor UUID
-   *
-   */
-  id: string;
-  /**
-   * Whether the flavor is an Openstack or dedicated flavor
-   *
-   */
-  isVm: boolean;
-  /**
-   * The amount of RAM, in MB
-   *
-   */
-  ram: number;
-}
-/**
- * Application data
- */
-export interface DockerSlaveFrameworkApp {
-  /**
-   * Application CPU
-   *
-   */
-  cpu?: number;
-  /**
-   * Application environment
-   *
-   */
-  env: DockerSlaveFrameworkAppEnvironment[];
-  /**
-   * Application id
-   *
-   */
-  id?: string;
-  /**
-   * Application image
-   *
-   */
-  image?: string;
-  /**
-   * Number of running containers instances
-   *
-   */
-  instances?: number;
-  /**
-   * Application memory
-   *
-   */
-  mem?: number;
-  /**
-   * Application ports
-   *
-   */
-  ports: DockerSlaveFrameworkAppPort[];
-  /**
-   * Application status
-   *
-   */
-  status?: string;
-  /**
-   * Application volumes
-   *
-   */
-  volumes: DockerSlaveFrameworkAppVolume[];
-}
-/**
- * Application environment variable
- */
-export interface DockerSlaveFrameworkAppEnvironment {
-  /**
-   * variable key
-   *
-   */
-  key?: string;
-  /**
-   * variable value
-   *
-   */
-  value?: string;
-}
-/**
- * Application ports
- */
-export interface DockerSlaveFrameworkAppPort {
-  /**
-   * Container port
-   *
-   */
-  containerPort?: number;
-  /**
-   * Host port
-   *
-   */
-  hostPort?: number;
-  /**
-   * Port protocol
-   *
-   */
-  protocol?: string;
-}
-/**
- * Application volumes
- */
-export interface DockerSlaveFrameworkAppVolume {
-  /**
-   * Container path
-   *
-   */
-  containerPath?: number;
-  /**
-   * Host path
-   *
-   */
-  hostPath?: number;
-  /**
-   * Volume mode
-   *
-   */
-  mode?: string;
-}
-/**
- * Metrics about slave usage
- */
-export interface DockerSlaveMetrics {
-  /**
-   * Metrics about available slave resources
-   *
-   */
-  resources: DockerSlaveMetricsResources;
-  /**
-   * Metrics about used slave resources
-   *
-   */
-  usedResources: DockerSlaveMetricsUsedResources;
-}
-/**
- * Metrics about available slave resources
- */
-export interface DockerSlaveMetricsResources {
-  /**
-   * Available CPU
-   *
-   */
-  cpu?: number;
-  /**
-   * Available memory
-   *
-   */
-  mem?: number;
-}
-/**
- * Metrics about used slave resources
- */
-export interface DockerSlaveMetricsUsedResources {
-  /**
-   * Used CPU
-   *
-   */
-  cpu?: number;
-  /**
-   * Used memory
-   *
-   */
-  mem?: number;
-}
-/**
- * The state of the slave
- */
-export type DockerSlaveStatus = 'blocked' | 'created' | 'creating';
-/**
- * An isolated client Docker PaaS environment
- */
-export interface DockerStack {
-  /**
-   * The cluster on which the stack is deployed
-   *
-   */
-  cluster?: string;
-  /**
-   * Date of the resource creation
-   *
-   */
-  createdAt: string;
-  /**
-   * The DNS address of the stack load balancer
-   *
-   */
-  loadBalancer: string;
-  /**
-   * Metrics about slave usage
-   *
-   */
-  metrics: DockerSlaveMetrics;
-  /**
-   * The stack name
-   *
-   */
-  name: string;
-  /**
-   * A list of slave UUIDs
-   *
-   */
-  slaves: string[];
-  /**
-   * Date of the resource last update
-   *
-   */
-  updatedAt: string;
-}
-/**
- * A custom SSL certificate associated to a Docker PaaS environment
- */
-export interface DockerStackCustomSsl {
-  /**
-   * The custom SSL public certificate
-   *
-   */
-  certificate: string;
-  /**
-   * Date of the resource creation
-   *
-   */
-  createdAt: string;
-  /**
-   * Date of the resource last update
-   *
-   */
-  updatedAt: string;
-}
-/**
- * Action validation message
- */
-export interface DockerStackCustomSslMessage {
-  /**
-   * The action validation message
-   *
-   */
-  message: string;
-}
-/**
- * A custom SSL certificate associated to a Docker PaaS environment
- */
-export interface DockerStackInputCustomSsl {
-  /**
-   * The custom SSL public certificate
-   *
-   */
-  certificate: string;
-  /**
-   * The custom SSL certificate private key
-   *
-   */
-  key: string;
-}
-/**
- * Credentials providing authentication to an external registry
- */
-export interface DockerStackRegistryCredentials {
-  /**
-   * Date of the resource creation
-   *
-   */
-  createdAt: string;
-  /**
-   * The URL of the registry
-   *
-   */
-  registryUrl: string;
-  /**
-   * Date of the resource last update
-   *
-   */
-  updatedAt: string;
-  /**
-   * The registry account username
-   *
-   */
-  username: string;
-}
-/**
- * Map a possible renew for a specific service
- */
-export interface ServiceRenewType {
-  /**
-   * The service is automatically renewed
-   *
-   */
-  automatic: boolean;
-  /**
-   * The service will be deleted at expiration
-   *
-   */
-  deleteAtExpiration: boolean;
-  /**
-   * The service forced to be renewed
-   *
-   */
-  forced: boolean;
-  /**
-   * The service needs to be manually renewed and paid
-   *
-   */
-  manualPayment?: boolean;
-  /**
-   * period of renew in month
-   *
-   */
-  period?: number;
-}
-/**
- * Detailed renewal type of a service
- */
-export type ServiceRenewalTypeEnum = 'automaticForcedProduct' | 'automaticV2012' | 'automaticV2014' | 'automaticV2016' | 'manual' | 'oneShot' | 'option';
-/**
- * 
- */
-export type ServiceStateEnum = 'expired' | 'inCreation' | 'ok' | 'pendingDebt' | 'unPaid';
-/**
- * Details about a Service
- */
-export interface ServicesService {
-  /**
-   * Indicates that the service can be set up to be deleted at expiration
-   *
-   */
-  canDeleteAtExpiration: boolean;
-  /**
-   */
-  contactAdmin: string;
-  /**
-   */
-  contactBilling: string;
-  /**
-   */
-  contactTech: string;
-  /**
-   */
-  creation: string;
-  /**
-   */
-  domain: string;
-  /**
-   */
-  engagedUpTo?: string;
-  /**
-   */
-  expiration: string;
-  /**
-   * All the possible renew period of your service in month
-   *
-   */
-  possibleRenewPeriod?: number[];
-  /**
-   * Way of handling the renew
-   *
-   */
-  renew?: ServiceRenewType;
-  /**
-   */
-  renewalType: ServiceRenewalTypeEnum;
-  /**
-   */
-  serviceId: number;
-  /**
-   */
-  status: ServiceStateEnum;
-}
-/**
- * A framework installed for a docker PaaS stack
- */
-export interface StackFramework {
-  /**
-   * The framework name
-   *
-   */
-  accessUrl: string;
-  /**
-   * Date of the resource creation
-   *
-   */
-  createdAt: string;
-  /**
-   * The framework UUID
-   *
-   */
-  id: string;
-  /**
-   * The framework name
-   *
-   */
-  name: string;
-  /**
-   * Date of the resource last update
-   *
-   */
-  updatedAt: string;
-}
-/**
- * Application deployed on the framework
- */
-export interface StackFrameworkApplication {
-  /**
-   * Application list
-   *
-   */
-  apps: DockerSlaveFrameworkApp[];
-}
-type PathsCaasContainersGET = '/caas/containers' | 
-'/caas/containers/slaves/flavors' | 
-'/caas/containers/slaves/flavors/{flavorId}' | 
-'/caas/containers/{serviceName}' | 
-'/caas/containers/{serviceName}/availableFrameworks' | 
-'/caas/containers/{serviceName}/frameworks' | 
-'/caas/containers/{serviceName}/frameworks/{frameworkId}' | 
-'/caas/containers/{serviceName}/frameworks/{frameworkId}/apps' | 
-'/caas/containers/{serviceName}/registry/credentials' | 
-'/caas/containers/{serviceName}/registry/credentials/{credentialsId}' | 
-'/caas/containers/{serviceName}/serviceInfos' | 
-'/caas/containers/{serviceName}/slaves' | 
-'/caas/containers/{serviceName}/slaves/{slaveId}' | 
-'/caas/containers/{serviceName}/ssl';
+import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
-type PathsCaasContainersPUT = '/caas/containers/{serviceName}/frameworks/{frameworkId}/password' | 
-'/caas/containers/{serviceName}/registry/credentials/{credentialsId}' | 
-'/caas/containers/{serviceName}/serviceInfos' | 
-'/caas/containers/{serviceName}/ssl';
+/**
+ * START API /caas/containers Models
+ */
+export namespace docker {
+    export namespace framework {
+        //docker.framework.password
+        // fullName: docker.framework.password.password
+        export interface password {
+            password: string;
+        }
+    }
+    //docker.slave
+    // fullName: docker.slave.slave
+    export interface slave {
+        createdAt: string;
+        flavorId: string;
+        id: string;
+        metrics: docker.slave.metrics;
+        name: string;
+        region: string;
+        stack: string;
+        state: docker.slave.status;
+        updatedAt: string;
+    }
+    export namespace slave {
+        //docker.slave.flavor
+        // fullName: docker.slave.flavor.flavor
+        export interface flavor {
+            bandwidth: number;
+            cpus: number;
+            disk: number;
+            diskHa: boolean;
+            id: string;
+            isVm: boolean;
+            ram: number;
+        }
+        export namespace framework {
+            //docker.slave.framework.app
+            // fullName: docker.slave.framework.app.app
+            export interface app {
+                cpu?: number;
+                env: docker.slave.framework.app.environment[];
+                id?: string;
+                image?: string;
+                instances?: number;
+                mem?: number;
+                ports: docker.slave.framework.app.port[];
+                status?: string;
+                volumes: docker.slave.framework.app.volume[];
+            }
+            export namespace app {
+                //docker.slave.framework.app.environment
+                // fullName: docker.slave.framework.app.environment.environment
+                export interface environment {
+                    key?: string;
+                    value?: string;
+                }
+                //docker.slave.framework.app.port
+                // fullName: docker.slave.framework.app.port.port
+                export interface port {
+                    containerPort?: number;
+                    hostPort?: number;
+                    protocol?: string;
+                }
+                //docker.slave.framework.app.volume
+                // fullName: docker.slave.framework.app.volume.volume
+                export interface volume {
+                    containerPath?: number;
+                    hostPath?: number;
+                    mode?: string;
+                }
+            }
+        }
+        //docker.slave.metrics
+        // fullName: docker.slave.metrics.metrics
+        export interface metrics {
+            resources: docker.slave.metrics.resources;
+            usedResources: docker.slave.metrics.usedResources;
+        }
+        export namespace metrics {
+            //docker.slave.metrics.resources
+            // fullName: docker.slave.metrics.resources.resources
+            export interface resources {
+                cpu?: number;
+                mem?: number;
+            }
+            //docker.slave.metrics.usedResources
+            // fullName: docker.slave.metrics.usedResources.usedResources
+            export interface usedResources {
+                cpu?: number;
+                mem?: number;
+            }
+        }
+        //docker.slave.status
+        export type status = "blocked" | "created" | "creating"
+    }
+    //docker.stack
+    // fullName: docker.stack.stack
+    export interface stack {
+        cluster?: string;
+        createdAt: string;
+        loadBalancer: string;
+        metrics: docker.slave.metrics;
+        name: string;
+        slaves: string[];
+        updatedAt: string;
+    }
+    export namespace stack {
+        //docker.stack.customSsl
+        // fullName: docker.stack.customSsl.customSsl
+        export interface customSsl {
+            certificate: string;
+            createdAt: string;
+            updatedAt: string;
+        }
+        //docker.stack.customSslMessage
+        // fullName: docker.stack.customSslMessage.customSslMessage
+        export interface customSslMessage {
+            message: string;
+        }
+        //docker.stack.inputCustomSsl
+        // fullName: docker.stack.inputCustomSsl.inputCustomSsl
+        export interface inputCustomSsl {
+            certificate: string;
+            key: string;
+        }
+        //docker.stack.registryCredentials
+        // fullName: docker.stack.registryCredentials.registryCredentials
+        export interface registryCredentials {
+            createdAt: string;
+            registryUrl: string;
+            updatedAt: string;
+            username: string;
+        }
+    }
+}
+export namespace service {
+    //service.RenewType
+    // fullName: service.RenewType.RenewType
+    export interface RenewType {
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
+        manualPayment?: boolean;
+        period?: number;
+    }
+    //service.RenewalTypeEnum
+    export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
+    //service.StateEnum
+    export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
+}
+export namespace services {
+    //services.Service
+    // fullName: services.Service.Service
+    export interface Service {
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
+        engagedUpTo?: string;
+        expiration: string;
+        possibleRenewPeriod?: number[];
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
+        serviceId: number;
+        status: service.StateEnum;
+    }
+}
+export namespace stack {
+    //stack.framework
+    // fullName: stack.framework.framework
+    export interface framework {
+        accessUrl: string;
+        createdAt: string;
+        id: string;
+        name: string;
+        updatedAt: string;
+    }
+    export namespace framework {
+        //stack.framework.application
+        // fullName: stack.framework.application.application
+        export interface application {
+            apps: docker.slave.framework.app[];
+        }
+    }
+}
 
-type PathsCaasContainersPOST = '/caas/containers/{serviceName}/changeContact' | 
-'/caas/containers/{serviceName}/registry/credentials';
-
-type PathsCaasContainersDELETE = '/caas/containers/{serviceName}/registry/credentials/{credentialsId}' | 
-'/caas/containers/{serviceName}/ssl';
-
-export class ApiCaasContainers extends OvhWrapper {
-  constructor(engine: OvhRequestable) {
-    super(engine);
-  }
+/**
+ * END API /caas/containers Models
+ */
+export function proxyCaasContainers(ovhEngine: OvhRequestable): Caas {
+    return buildOvhProxy(ovhEngine, '/caas');
+}
+export default proxyCaasContainers;
+/**
+ * Api Proxy model
+ */// Apis harmony
+// path /caas
+export interface Caas{
+    containers: {
+        // GET /caas/containers
+        $get(): Promise<string[]>;
+        slaves: {
+            flavors: {
+                // GET /caas/containers/slaves/flavors
+                $get(): Promise<string[]>;
+                $(flavorId: string): {
+                    // GET /caas/containers/slaves/flavors/{flavorId}
+                    $get(): Promise<docker.slave.flavor>;
+                };
+            }
+        }
+        $(serviceName: string): {
+            // GET /caas/containers/{serviceName}
+            $get(): Promise<docker.stack>;
+            availableFrameworks: {
+                // GET /caas/containers/{serviceName}/availableFrameworks
+                $get(): Promise<string[]>;
+            }
+            changeContact: {
+                // POST /caas/containers/{serviceName}/changeContact
+                $post(params?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
+            }
+            frameworks: {
+                // GET /caas/containers/{serviceName}/frameworks
+                $get(): Promise<string[]>;
+                $(frameworkId: string): {
+                    // GET /caas/containers/{serviceName}/frameworks/{frameworkId}
+                    $get(): Promise<stack.framework>;
+                    apps: {
+                        // GET /caas/containers/{serviceName}/frameworks/{frameworkId}/apps
+                        $get(): Promise<stack.framework.application>;
+                    }
+                    password: {
+                        // PUT /caas/containers/{serviceName}/frameworks/{frameworkId}/password
+                        $put(params?: {password?: string}): Promise<void>;
+                    }
+                };
+            }
+            registry: {
+                credentials: {
+                    // GET /caas/containers/{serviceName}/registry/credentials
+                    $get(): Promise<string[]>;
+                    // POST /caas/containers/{serviceName}/registry/credentials
+                    $post(params?: {certificate?: string, key?: string}): Promise<docker.stack.registryCredentials>;
+                    $(credentialsId: string): {
+                        // DELETE /caas/containers/{serviceName}/registry/credentials/{credentialsId}
+                        $delete(): Promise<void>;
+                        // GET /caas/containers/{serviceName}/registry/credentials/{credentialsId}
+                        $get(): Promise<docker.stack.registryCredentials>;
+                        // PUT /caas/containers/{serviceName}/registry/credentials/{credentialsId}
+                        $put(params?: {certificate?: string, key?: string}): Promise<docker.stack.registryCredentials>;
+                    };
+                }
+            }
+            serviceInfos: {
+                // GET /caas/containers/{serviceName}/serviceInfos
+                $get(): Promise<services.Service>;
+                // PUT /caas/containers/{serviceName}/serviceInfos
+                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+            }
+            slaves: {
+                // GET /caas/containers/{serviceName}/slaves
+                $get(): Promise<string[]>;
+                $(slaveId: string): {
+                    // GET /caas/containers/{serviceName}/slaves/{slaveId}
+                    $get(): Promise<docker.slave>;
+                };
+            }
+            ssl: {
+                // DELETE /caas/containers/{serviceName}/ssl
+                $delete(): Promise<docker.stack.customSslMessage>;
+                // GET /caas/containers/{serviceName}/ssl
+                $get(): Promise<docker.stack.customSsl>;
+                // PUT /caas/containers/{serviceName}/ssl
+                $put(params?: {certificate?: string, key?: string}): Promise<docker.stack.customSslMessage>;
+            }
+        };
+    }
+// Api
   /**
    * Operations about the DOCKER service
    * List available services
    */
-  public get(path: '/caas/containers'): Promise<string[]>;
-  /**
-   * Missing description
-   * List the /cloud flavors available for the Docker PaaS slaves
-   */
-  public get(path: '/caas/containers/slaves/flavors'): Promise<string[]>;
-  /**
-   * Missing description
-   * Inspect the argument slave flavor
-   */
-  public get(path: '/caas/containers/slaves/flavors/{flavorId}', params: {flavorId: string}): Promise<DockerSlaveFlavor>;
+  get(path: '/caas/containers'): () => Promise<string[]>;
   /**
    * Missing description
    * Inspect the argument stack
    */
-  public get(path: '/caas/containers/{serviceName}', params: {serviceName: string}): Promise<DockerStack>;
+  get(path: '/caas/containers/{serviceName}'): (params: {serviceName: string}) => Promise<docker.stack>;
   /**
    * Missing description
    * List all the installable Mesos frameworks
    */
-  public get(path: '/caas/containers/{serviceName}/availableFrameworks', params: {serviceName: string}): Promise<string[]>;
+  get(path: '/caas/containers/{serviceName}/availableFrameworks'): (params: {serviceName: string}) => Promise<string[]>;
   /**
    * Missing description
    * List the frameworks installed on the argument stack
    */
-  public get(path: '/caas/containers/{serviceName}/frameworks', params: {serviceName: string}): Promise<string[]>;
+  get(path: '/caas/containers/{serviceName}/frameworks'): (params: {serviceName: string}) => Promise<string[]>;
   /**
    * Missing description
    * Inspect the stack framework
    */
-  public get(path: '/caas/containers/{serviceName}/frameworks/{frameworkId}', params: {frameworkId: string, serviceName: string}): Promise<StackFramework>;
+  get(path: '/caas/containers/{serviceName}/frameworks/{frameworkId}'): (params: {frameworkId: string, serviceName: string}) => Promise<stack.framework>;
   /**
    * Missing description
    * List apps in the framework
    */
-  public get(path: '/caas/containers/{serviceName}/frameworks/{frameworkId}/apps', params: {frameworkId: string, serviceName: string}): Promise<StackFrameworkApplication>;
+  get(path: '/caas/containers/{serviceName}/frameworks/{frameworkId}/apps'): (params: {frameworkId: string, serviceName: string}) => Promise<stack.framework.application>;
   /**
    * Missing description
    * List the registry credentials associated to the stack.
    */
-  public get(path: '/caas/containers/{serviceName}/registry/credentials', params: {serviceName: string}): Promise<string[]>;
+  get(path: '/caas/containers/{serviceName}/registry/credentials'): (params: {serviceName: string}) => Promise<string[]>;
   /**
    * Missing description
    * Inspect the image registry credentials associated to the stack
    */
-  public get(path: '/caas/containers/{serviceName}/registry/credentials/{credentialsId}', params: {credentialsId: string, serviceName: string}): Promise<DockerStackRegistryCredentials>;
+  get(path: '/caas/containers/{serviceName}/registry/credentials/{credentialsId}'): (params: {credentialsId: string, serviceName: string}) => Promise<docker.stack.registryCredentials>;
   /**
    * Details about a Service
    * Get this object properties
    */
-  public get(path: '/caas/containers/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
+  get(path: '/caas/containers/{serviceName}/serviceInfos'): (params: {serviceName: string}) => Promise<services.Service>;
   /**
    * Missing description
    * List the id of the registered slave instances
    */
-  public get(path: '/caas/containers/{serviceName}/slaves', params: {serviceName: string}): Promise<string[]>;
+  get(path: '/caas/containers/{serviceName}/slaves'): (params: {serviceName: string}) => Promise<string[]>;
   /**
    * Missing description
    * Inspect the argument user slave instance
    */
-  public get(path: '/caas/containers/{serviceName}/slaves/{slaveId}', params: {slaveId: string, serviceName: string}): Promise<DockerSlave>;
+  get(path: '/caas/containers/{serviceName}/slaves/{slaveId}'): (params: {serviceName: string, slaveId: string}) => Promise<docker.slave>;
   /**
    * Missing description
    * Inspect the custom SSL certificate and private
    */
-  public get(path: '/caas/containers/{serviceName}/ssl', params: {serviceName: string}): Promise<DockerStackCustomSsl>;
-  public get(path: PathsCaasContainersGET, params?: OvhParamType): Promise<any> {
-    return super.get(path, params
-  );}
+  get(path: '/caas/containers/{serviceName}/ssl'): (params: {serviceName: string}) => Promise<docker.stack.customSsl>;
+  /**
+   * Missing description
+   * List the /cloud flavors available for the Docker PaaS slaves
+   */
+  get(path: '/caas/containers/slaves/flavors'): () => Promise<string[]>;
+  /**
+   * Missing description
+   * Inspect the argument slave flavor
+   */
+  get(path: '/caas/containers/slaves/flavors/{flavorId}'): (params: {flavorId: string}) => Promise<docker.slave.flavor>;
   /**
    * Missing description
    * Update the framework access password
    */
-  public put(path: '/caas/containers/{serviceName}/frameworks/{frameworkId}/password', params: {frameworkId: string, serviceName: string, password?: string}): Promise<void>;
+  put(path: '/caas/containers/{serviceName}/frameworks/{frameworkId}/password'): (params: {frameworkId: string, serviceName: string, password?: string}) => Promise<void>;
   /**
    * Missing description
    * Update the registry credentials.
    */
-  public put(path: '/caas/containers/{serviceName}/registry/credentials/{credentialsId}', params: {credentialsId: string, serviceName: string, certificate?: string, key?: string}): Promise<DockerStackRegistryCredentials>;
+  put(path: '/caas/containers/{serviceName}/registry/credentials/{credentialsId}'): (params: {credentialsId: string, serviceName: string, certificate?: string, key?: string}) => Promise<docker.stack.registryCredentials>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/caas/containers/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
+  put(path: '/caas/containers/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
   /**
    * Missing description
    * Update the custom SSL certificate and private
    */
-  public put(path: '/caas/containers/{serviceName}/ssl', params: {serviceName: string, certificate?: string, key?: string}): Promise<DockerStackCustomSslMessage>;
-  public put(path: PathsCaasContainersPUT, params?: OvhParamType): Promise<any> {
-    return super.put(path, params
-  );}
+  put(path: '/caas/containers/{serviceName}/ssl'): (params: {serviceName: string, certificate?: string, key?: string}) => Promise<docker.stack.customSslMessage>;
   /**
    * Change the contacts of this service
    * Launch a contact change procedure
    */
-  public post(path: '/caas/containers/{serviceName}/changeContact', params: {serviceName: string, contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
+  post(path: '/caas/containers/{serviceName}/changeContact'): (params: {serviceName: string, contactAdmin?: string, contactBilling?: string, contactTech?: string}) => Promise<number[]>;
   /**
    * Missing description
    * Associate the stack with some credentials to an authenticated registry.
    */
-  public post(path: '/caas/containers/{serviceName}/registry/credentials', params: {serviceName: string, certificate?: string, key?: string}): Promise<DockerStackRegistryCredentials>;
-  public post(path: PathsCaasContainersPOST, params?: OvhParamType): Promise<any> {
-    return super.post(path, params
-  );}
+  post(path: '/caas/containers/{serviceName}/registry/credentials'): (params: {serviceName: string, certificate?: string, key?: string}) => Promise<docker.stack.registryCredentials>;
   /**
    * Missing description
    * Delete the registry credentials.
    */
-  public delete(path: '/caas/containers/{serviceName}/registry/credentials/{credentialsId}', params: {credentialsId: string, serviceName: string}): Promise<void>;
+  delete(path: '/caas/containers/{serviceName}/registry/credentials/{credentialsId}'): (params: {credentialsId: string, serviceName: string}) => Promise<void>;
   /**
    * Missing description
    * Delete the custom SSL certificate and private key associated to the stack
    */
-  public delete(path: '/caas/containers/{serviceName}/ssl', params: {serviceName: string}): Promise<DockerStackCustomSslMessage>;
-  public delete(path: PathsCaasContainersDELETE, params?: OvhParamType): Promise<any> {
-    return super.delete(path, params
-  );}
+  delete(path: '/caas/containers/{serviceName}/ssl'): (params: {serviceName: string}) => Promise<docker.stack.customSslMessage>;
 }
-export default ApiCaasContainers;
+/**
+ * classic Model
+ */

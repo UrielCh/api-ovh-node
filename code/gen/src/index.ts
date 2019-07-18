@@ -5,18 +5,32 @@ import { CodeGenerator } from './CodeGenerator';
 import Promise from 'bluebird';
 import rimraf from 'rimraf'
 
+
+const PathToApiName = (api: string) => api.substring(1).replace(/\//g, '-').replace(/[A-Z]/g, letter => `-${letter.toLowerCase()}`).replace(/^-/, '');
+
 async function main() {
     let gen = new GenApiTypes();
     let apis = await gen.listSchemas()
     // ['/me', '/domain']
     // await fse.mkdir('dist');
-    let allApi = apis.map(api => api.substring(1).replace(/\//g, '-'));
+    let allApi = apis.map(PathToApiName);
     let apiSet = new Set(allApi);
 
     // debug gen a single API
-    if (true)
+    if (false)
         apis = apis.filter((api) => {
-            // return ~api.indexOf('veeam')
+            //return ~api.indexOf('veeam')
+            if ('/cloud' == api)
+                return true;
+            if ('/domain' == api)
+                return true;
+            if ('/email/domain' == api)
+                return true;
+            if ('/me' == api)
+                return true;
+            // if (this.api == '/cloud' || this.api == '/domain' || this.api == '/email/domain' || this.api == '/me'
+            // || this.api == '/pack/xdsl' || this.api == '/veeam/veeamEnterprise' || this.api == '/telephony' || this.api == '/xdsl')
+
             //if ('/price' == api)
             //    return true;
             //if ('/order' == api)
@@ -40,7 +54,7 @@ async function main() {
     })
     console.log(`new APis:` + allApi.join(','));
     await Promise.map(apis, async api => {
-        let flat = api.substring(1).replace(/\//g, '-');
+        let flat = PathToApiName(api);
         let dir = path.join('..', '..', 'packages', flat);
         await fse.ensureDir(dir);
         let fn = path.join(dir, 'index.ts');
@@ -49,19 +63,24 @@ async function main() {
         console.log(`${api} saving ${fn}`);
         await fse.writeFile(fn, code);
 
+        let rwfile = true;
+
         fn = path.join(dir, 'package.json');
         try {
             await fse.stat(fn);
-        } catch (e) {
+            rwfile = false;
+        } catch { }
+        //rwfile = true;
+        if (rwfile)
             await fse.writeJSON(fn, {
                 "name": `@ovh-api/${flat}`,
                 "description": `Add typing to to ovh api ${flat}`,
-                "version": "1.2.4",
+                "version": "2.0.0",
                 "typings": "index.d.ts",
                 "license": "MIT",
                 "author": "Uriel Chemouni <uchemouni@gmail.com>",
                 "dependencies": {
-                    "@ovh-api/common": "^1.2.2"
+                    "@ovh-api/common": "^1.3.0",
                 },
                 "publishConfig": {
                     "access": "public"
@@ -77,18 +96,26 @@ async function main() {
                     "build:watch": "tsc --watch"
                 },
             }, { spaces: 4 })
-        }
+        //}
 
         fn = path.join(dir, 'tsconfig.json');
+        rwfile = true;
         try {
             await fse.stat(fn);
+            rwfile = false;
         } catch (e) {
+        }
+        if (rwfile)
             await fse.writeJSON(fn, {
-                "extends": "../../tsconfig.json",
                 "compilerOptions": {
+                    "target": "es2017",
+                    "module": "commonjs",
+                    "declaration": true,
+                    "strict": true,
+                    "moduleResolution": "node",
+                    "esModuleInterop": true,
                 }
             }, { spaces: 4 });
-        }
 
 
     }, { concurrency: 4 });

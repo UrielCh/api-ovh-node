@@ -1,103 +1,92 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
-/**
- * API Credential
- */
-export interface ApiCredential {
-  /**
-   */
-  applicationId: number;
-  /**
-   */
-  creation: string;
-  /**
-   */
-  credentialId: number;
-  /**
-   */
-  expiration?: string;
-  /**
-   */
-  lastUse?: string;
-  /**
-   * States whether this credential has been created by yourself or by the OVH support team
-   *
-   */
-  ovhSupport: boolean;
-  /**
-   */
-  rules: AuthAccessRule[];
-  /**
-   */
-  status: AuthCredentialStateEnum;
-}
-/**
- * Access rule required for the application
- */
-export interface AuthAccessRule {
-  /**
-   */
-  method: AuthMethodEnum;
-  /**
-   */
-  path: string;
-}
-/**
- * Credential request to get access to the API
- */
-export interface AuthCredential {
-  /**
-   */
-  consumerKey: string;
-  /**
-   */
-  state: AuthCredentialStateEnum;
-  /**
-   */
-  validationUrl?: string;
-}
-/**
- * All states a Credential can be in
- */
-export type AuthCredentialStateEnum = 'expired' | 'pendingValidation' | 'refused' | 'validated';
-/**
- * All HTTP methods available
- */
-export type AuthMethodEnum = 'DELETE' | 'GET' | 'POST' | 'PUT';
-type PathsAuthGET = '/auth/currentCredential' | 
-'/auth/time';
+import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
-type PathsAuthPOST = '/auth/credential' | 
-'/auth/logout';
+/**
+ * START API /auth Models
+ */
+export namespace api {
+    //api.Credential
+    // fullName: api.Credential.Credential
+    export interface Credential {
+        applicationId: number;
+        creation: string;
+        credentialId: number;
+        expiration?: string;
+        lastUse?: string;
+        ovhSupport: boolean;
+        rules: auth.AccessRule[];
+        status: auth.CredentialStateEnum;
+    }
+}
+export namespace auth {
+    //auth.AccessRule
+    // fullName: auth.AccessRule.AccessRule
+    export interface AccessRule {
+        method: auth.MethodEnum;
+        path: string;
+    }
+    //auth.Credential
+    // fullName: auth.Credential.Credential
+    export interface Credential {
+        consumerKey: string;
+        state: auth.CredentialStateEnum;
+        validationUrl?: string;
+    }
+    //auth.CredentialStateEnum
+    export type CredentialStateEnum = "expired" | "pendingValidation" | "refused" | "validated"
+    //auth.MethodEnum
+    export type MethodEnum = "DELETE" | "GET" | "POST" | "PUT"
+}
 
-export class ApiAuth extends OvhWrapper {
-  constructor(engine: OvhRequestable) {
-    super(engine);
-  }
+/**
+ * END API /auth Models
+ */
+export function proxyAuth(ovhEngine: OvhRequestable): Auth {
+    return buildOvhProxy(ovhEngine, '/auth');
+}
+export default proxyAuth;
+/**
+ * Api Proxy model
+ */// Apis harmony
+// path /auth
+export interface Auth{
+    credential: {
+        // POST /auth/credential
+        $post(params: {accessRules: auth.AccessRule[], redirection?: string}): Promise<auth.Credential>;
+    }
+    currentCredential: {
+        // GET /auth/currentCredential
+        $get(): Promise<api.Credential>;
+    }
+    logout: {
+        // POST /auth/logout
+        $post(): Promise<void>;
+    }
+    time: {
+        // GET /auth/time
+        $get(): Promise<number>;
+    }
+// Api
   /**
    * Get the current credential details
    * Get the current credential details
    */
-  public get(path: '/auth/currentCredential'): Promise<ApiCredential>;
+  get(path: '/auth/currentCredential'): () => Promise<api.Credential>;
   /**
    * Get the time of OVH servers
    * Get the current time of the OVH servers, since UNIX epoch
    */
-  public get(path: '/auth/time'): Promise<number>;
-  public get(path: PathsAuthGET, params?: OvhParamType): Promise<any> {
-    return super.get(path, params
-  );}
+  get(path: '/auth/time'): () => Promise<number>;
   /**
    * Operations with credentials
    * Request a new credential for your application
    */
-  public post(path: '/auth/credential', params: {accessRules: AuthAccessRule[], redirection?: string}): Promise<AuthCredential>;
+  post(path: '/auth/credential'): (params: {accessRules: auth.AccessRule[], redirection?: string}) => Promise<auth.Credential>;
   /**
    * Expire current credential
    * Expire current credential
    */
-  public post(path: '/auth/logout'): Promise<void>;
-  public post(path: PathsAuthPOST, params?: OvhParamType): Promise<any> {
-    return super.post(path, params
-  );}
+  post(path: '/auth/logout'): () => Promise<void>;
 }
-export default ApiAuth;
+/**
+ * classic Model
+ */

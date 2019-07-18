@@ -1,451 +1,289 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
-/**
- * A short description of what does the Task on your license
- */
-export type LicenseActionType = 'addWindowFromExistingSerial' | 'changeIp' | 'changeOs' | 'installLicense' | 'optionUpgrade' | 'releaseOption' | 'versionUpgrade';
-/**
- * Messages from change IP
- */
-export type LicenseChangeIpMessageEnum = 'OK' | 'destinationNotAllowed' | 'licenseAlreadyExists' | 'notAllowedToHandleThis' | 'notSameType' | 'sameIp' | 'versionNotAllowed';
-/**
- * License change ip status return
- */
-export interface LicenseChangeIpStatus {
-  /**
-   */
-  message: LicenseChangeIpMessageEnum;
-  /**
-   */
-  success: boolean;
-}
-/**
- * All quantities of domain available for a license
- */
-export type LicenseDomainNumberEnum = '0' | '1' | '10' | '100' | '30' | '300' | 'unlimited';
-/**
- * Possible values for license type
- */
-export type LicenseLicenseTypeEnum = 'dedicated' | 'dedicatedCloud' | 'dedicatedFailover' | 'failover' | 'vm' | 'vps' | 'vps_ceph' | 'vps_classic' | 'vps_cloud' | 'vps_cloud_2016' | 'vps_ssd';
-/**
- * Your License options
- */
-export interface LicenseOption {
-  /**
-   * Quantity or corresponding label of the designated option enabled on your license
-   *
-   */
-  amount?: string;
-  /**
-   * Specifies whether this option can be released or not
-   *
-   */
-  canBeDeleted: boolean;
-  /**
-   * This option expiration date
-   *
-   */
-  expirationDate: string;
-  /**
-   * This option designation
-   *
-   */
-  label: LicenseOptionLabel;
-  /**
-   * This option related version
-   *
-   */
-  version?: string;
-}
-/**
- * The name of an option currently enabled on your license
- */
-export type LicenseOptionLabel = 'ANTISPAM_SPAMASSASSIN' | 'ANTIVIRUS_DRWEB' | 'ANTIVIRUS_KASPERSKY' | 'DOMAINS' | 'LANGUAGE_PACK' | 'POWERPACK' | 'SQL_SERVER' | 'VIRTUOZZO_CONTAINERS';
-/**
- * All antivirus available for Plesk products
- */
-export type LicenseOrderableAntivirusEnum = 'DR_WEB' | 'KASPERSKY_UNLIMITED_MAILBOXES' | 'kaspersky';
-/**
- * All versions available for Plesk products
- */
-export interface LicenseOrderablePleskCompatibilityInfos {
-  /**
-   */
-  canHavePowerPack: boolean;
-  /**
-   */
-  canHaveResellerManagement: boolean;
-  /**
-   */
-  canHaveWordpressToolkit: boolean;
-  /**
-   */
-  compliantAntivirus: LicenseOrderableAntivirusEnum[];
-  /**
-   */
-  compliantApplicationSets: LicensePleskApplicationSetEnum[];
-  /**
-   */
-  compliantDomains: LicenseOrderablePleskDomainNumberEnum[];
-  /**
-   */
-  compliantLanguagePack: LicenseOrderablePleskLanguagePackEnum[];
-  /**
-   */
-  potentialProblems: LicensePotentialProblemPleskEnum[];
-  /**
-   */
-  version: LicensePleskVersionEnum;
-}
-/**
- * All domain available for Plesk products
- */
-export type LicenseOrderablePleskDomainNumberEnum = '10' | '100' | '30' | '300' | 'hostingsuite' | 'unlimited';
-/**
- * All language pack numbers available for Plesk products
- */
-export type LicenseOrderablePleskLanguagePackEnum = '1' | '1-extra-language-for-plesk12' | '2' | '2-extra-languages-for-plesk12' | '3' | '3-extra-languages-for-plesk12' | '4' | '4-extra-languages-for-plesk12' | '5' | '5-extra-languages-for-plesk12' | 'unlimited' | 'unlimited-extra-languages-for-plesk12';
-/**
- * Application set available for Plesk products
- */
-export type LicensePleskApplicationSetEnum = 'applicationpack' | 'developerpack' | 'power-pack-for-plesk12' | 'powerpack';
-/**
- * The serviceTypes allowed to Order a plesk version and associated Versions
- */
-export interface LicensePleskOrderConfiguration {
-  /**
-   */
-  orderableVersions: LicenseOrderablePleskCompatibilityInfos[];
-  /**
-   */
-  serviceType: LicenseLicenseTypeEnum;
-}
-/**
- * All versions available for Plesk products
- */
-export type LicensePleskVersionEnum = 'PLESK_10_AND_LATER' | 'PLESK_10_AND_LATER_FOR_KVM' | 'PLESK_10_AND_LATER_FOR_VMWARE' | 'PLESK_10_AND_LATER_FOR_VZ' | 'PLESK_10_AND_LATER_FOR_WIN' | 'PLESK_10_AND_LATER_FOR_WIN_FOR_VMWARE' | 'PLESK_10_AND_LATER_FOR_WIN_FOR_VZ' | 'PLESK_10_AND_LATER_FOR_WIN_FOR_XEN' | 'PLESK_10_AND_LATER_FOR_XEN' | 'PLESK_12_VPS_WEB_ADMIN' | 'PLESK_12_VPS_WEB_APP' | 'PLESK_12_VPS_WEB_HOST' | 'PLESK_12_VPS_WEB_HOST_CLNX' | 'PLESK_12_VPS_WEB_PRO' | 'PLESK_12_VPS_WEB_PRO_CLNX' | 'PLESK_12_WEB_ADMIN' | 'PLESK_12_WEB_APP' | 'PLESK_12_WEB_HOST' | 'PLESK_12_WEB_HOST_CLNX' | 'PLESK_12_WEB_PRO' | 'PLESK_12_WEB_PRO_CLNX' | 'PLESK_75_RELOADED' | 'PLESK_80' | 'PLESK_80_FOR_VZ' | 'PLESK_81_FOR_WIN' | 'PLESK_9' | 'PLESK_95' | 'PLESK_95_FOR_VZ' | 'PLESK_95_FOR_WIN' | 'PLESK_9_FOR_VZ' | 'PLESK_9_FOR_WIN' | 'PLESK_ONYX_VPS_WEB_ADMIN' | 'PLESK_ONYX_VPS_WEB_APP' | 'PLESK_ONYX_VPS_WEB_HOST' | 'PLESK_ONYX_VPS_WEB_HOST_CLNX' | 'PLESK_ONYX_VPS_WEB_PRO' | 'PLESK_ONYX_VPS_WEB_PRO_CLNX' | 'PLESK_ONYX_WEB_ADMIN' | 'PLESK_ONYX_WEB_APP' | 'PLESK_ONYX_WEB_HOST' | 'PLESK_ONYX_WEB_HOST_CLNX' | 'PLESK_ONYX_WEB_PRO' | 'PLESK_ONYX_WEB_PRO_CLNX' | 'plesk-12-webadmin-for-vps' | 'plesk-12-webhost' | 'plesk-12-webhost-for-vps' | 'plesk-12-webpro' | 'plesk-12-webpro-for-vps';
-/**
- * Tests that have failed for Plesk products
- */
-export type LicensePotentialProblemPleskEnum = 'isHostOsHyperVLike' | 'isHostOsVMwareLike' | 'isHostOsVirtuozzo4Like' | 'isHostOsXenLike' | 'isLinuxOs' | 'isOsCloudLinux' | 'isOsPlesk10andLater' | 'isOsPlesk12' | 'isOsPleskOnyx' | 'isWindowsOs';
-/**
- * All states a license can be in
- */
-export type LicenseStateEnum = 'ok' | 'released' | 'terminated' | 'toDeliver';
-/**
- * licenses Todos
- */
-export interface LicenseTask {
-  /**
-   * This Task description
-   *
-   */
-  action: LicenseActionType;
-  /**
-   * When was this Task done
-   *
-   */
-  doneDate?: string;
-  /**
-   * The last time this Task was updated
-   *
-   */
-  lastUpdate: string;
-  /**
-   * This Task name
-   *
-   */
-  name: string;
-  /**
-   * Current Taks status
-   *
-   */
-  status: LicenseTaskStateEnum;
-  /**
-   * This Task id
-   *
-   */
-  taskId: number;
-  /**
-   * When was this Task created
-   *
-   */
-  todoDate: string;
-}
-/**
- * All states a license Task can be in
- */
-export type LicenseTaskStateEnum = 'cancelled' | 'doing' | 'done' | 'error' | 'todo';
-/**
- * Your Plesk license
- */
-export interface LicensePleskPlesk {
-  /**
-   * This license creation date
-   *
-   */
-  creation: string;
-  /**
-   * Shall we delete this on expiration ?
-   *
-   */
-  deleteAtExpiration: boolean;
-  /**
-   * The internal name of your license
-   *
-   */
-  domain: string;
-  /**
-   * The amount of domain this license can manage
-   *
-   */
-  domainNumber?: LicenseDomainNumberEnum;
-  /**
-   * This license Information key
-   *
-   */
-  informationKey?: string;
-  /**
-   * The ip on which this license is attached
-   *
-   */
-  ip: string;
-  /**
-   * This license key
-   *
-   */
-  key: string;
-  /**
-   * The license id on license provider side
-   *
-   */
-  licenseId: string;
-  /**
-   * This license product key
-   *
-   */
-  productKey?: string;
-  /**
-   * This license state
-   *
-   */
-  status: LicenseStateEnum;
-  /**
-   * This license version
-   *
-   */
-  version: LicensePleskVersionEnum;
-}
-/**
- * Map a possible renew for a specific service
- */
-export interface ServiceRenewType {
-  /**
-   * The service is automatically renewed
-   *
-   */
-  automatic: boolean;
-  /**
-   * The service will be deleted at expiration
-   *
-   */
-  deleteAtExpiration: boolean;
-  /**
-   * The service forced to be renewed
-   *
-   */
-  forced: boolean;
-  /**
-   * The service needs to be manually renewed and paid
-   *
-   */
-  manualPayment?: boolean;
-  /**
-   * period of renew in month
-   *
-   */
-  period?: number;
-}
-/**
- * Detailed renewal type of a service
- */
-export type ServiceRenewalTypeEnum = 'automaticForcedProduct' | 'automaticV2012' | 'automaticV2014' | 'automaticV2016' | 'manual' | 'oneShot' | 'option';
-/**
- * 
- */
-export type ServiceStateEnum = 'expired' | 'inCreation' | 'ok' | 'pendingDebt' | 'unPaid';
-/**
- * All future uses you can provide for a service termination
- */
-export type ServiceTerminationFutureUseEnum = 'NOT_REPLACING_SERVICE' | 'OTHER' | 'SUBSCRIBE_AN_OTHER_SERVICE' | 'SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR' | 'SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR';
-/**
- * All reasons you can provide for a service termination
- */
-export type ServiceTerminationReasonEnum = 'FEATURES_DONT_SUIT_ME' | 'LACK_OF_PERFORMANCES' | 'MIGRATED_TO_ANOTHER_OVH_PRODUCT' | 'MIGRATED_TO_COMPETITOR' | 'NOT_NEEDED_ANYMORE' | 'NOT_RELIABLE' | 'NO_ANSWER' | 'OTHER' | 'TOO_EXPENSIVE' | 'TOO_HARD_TO_USE' | 'UNSATIFIED_BY_CUSTOMER_SUPPORT';
-/**
- * Details about a Service
- */
-export interface ServicesService {
-  /**
-   * Indicates that the service can be set up to be deleted at expiration
-   *
-   */
-  canDeleteAtExpiration: boolean;
-  /**
-   */
-  contactAdmin: string;
-  /**
-   */
-  contactBilling: string;
-  /**
-   */
-  contactTech: string;
-  /**
-   */
-  creation: string;
-  /**
-   */
-  domain: string;
-  /**
-   */
-  engagedUpTo?: string;
-  /**
-   */
-  expiration: string;
-  /**
-   * All the possible renew period of your service in month
-   *
-   */
-  possibleRenewPeriod?: number[];
-  /**
-   * Way of handling the renew
-   *
-   */
-  renew?: ServiceRenewType;
-  /**
-   */
-  renewalType: ServiceRenewalTypeEnum;
-  /**
-   */
-  serviceId: number;
-  /**
-   */
-  status: ServiceStateEnum;
-}
-type PathsLicensePleskGET = '/license/plesk' | 
-'/license/plesk/orderableVersions' | 
-'/license/plesk/{serviceName}' | 
-'/license/plesk/{serviceName}/allowedDestinationIp' | 
-'/license/plesk/{serviceName}/canLicenseBeMovedTo' | 
-'/license/plesk/{serviceName}/option' | 
-'/license/plesk/{serviceName}/option/{label}' | 
-'/license/plesk/{serviceName}/serviceInfos' | 
-'/license/plesk/{serviceName}/tasks' | 
-'/license/plesk/{serviceName}/tasks/{taskId}';
+import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
-type PathsLicensePleskPUT = '/license/plesk/{serviceName}' | 
-'/license/plesk/{serviceName}/serviceInfos';
+/**
+ * START API /license/plesk Models
+ */
+export namespace license {
+    //license.ActionType
+    export type ActionType = "addWindowFromExistingSerial" | "changeIp" | "changeOs" | "installLicense" | "optionUpgrade" | "releaseOption" | "versionUpgrade"
+    //license.ChangeIpMessageEnum
+    export type ChangeIpMessageEnum = "OK" | "destinationNotAllowed" | "licenseAlreadyExists" | "notAllowedToHandleThis" | "notSameType" | "sameIp" | "versionNotAllowed"
+    //license.ChangeIpStatus
+    // fullName: license.ChangeIpStatus.ChangeIpStatus
+    export interface ChangeIpStatus {
+        message: license.ChangeIpMessageEnum;
+        success: boolean;
+    }
+    //license.DomainNumberEnum
+    export type DomainNumberEnum = "0" | "1" | "10" | "100" | "30" | "300" | "unlimited"
+    //license.LicenseTypeEnum
+    export type LicenseTypeEnum = "dedicated" | "dedicatedCloud" | "dedicatedFailover" | "failover" | "vm" | "vps" | "vps_ceph" | "vps_classic" | "vps_cloud" | "vps_cloud_2016" | "vps_ssd"
+    //license.Option
+    // fullName: license.Option.Option
+    export interface Option {
+        amount?: string;
+        canBeDeleted: boolean;
+        expirationDate: string;
+        label: license.OptionLabel;
+        version?: string;
+    }
+    //license.OptionLabel
+    export type OptionLabel = "ANTISPAM_SPAMASSASSIN" | "ANTIVIRUS_DRWEB" | "ANTIVIRUS_KASPERSKY" | "DOMAINS" | "LANGUAGE_PACK" | "POWERPACK" | "SQL_SERVER" | "VIRTUOZZO_CONTAINERS"
+    //license.OrderableAntivirusEnum
+    export type OrderableAntivirusEnum = "DR_WEB" | "KASPERSKY_UNLIMITED_MAILBOXES" | "kaspersky"
+    //license.OrderablePleskCompatibilityInfos
+    // fullName: license.OrderablePleskCompatibilityInfos.OrderablePleskCompatibilityInfos
+    export interface OrderablePleskCompatibilityInfos {
+        canHavePowerPack: boolean;
+        canHaveResellerManagement: boolean;
+        canHaveWordpressToolkit: boolean;
+        compliantAntivirus: license.OrderableAntivirusEnum[];
+        compliantApplicationSets: license.PleskApplicationSetEnum[];
+        compliantDomains: license.OrderablePleskDomainNumberEnum[];
+        compliantLanguagePack: license.OrderablePleskLanguagePackEnum[];
+        potentialProblems: license.PotentialProblemPleskEnum[];
+        version: license.PleskVersionEnum;
+    }
+    //license.OrderablePleskDomainNumberEnum
+    export type OrderablePleskDomainNumberEnum = "10" | "100" | "30" | "300" | "hostingsuite" | "unlimited"
+    //license.OrderablePleskLanguagePackEnum
+    export type OrderablePleskLanguagePackEnum = "1" | "1-extra-language-for-plesk12" | "2" | "2-extra-languages-for-plesk12" | "3" | "3-extra-languages-for-plesk12" | "4" | "4-extra-languages-for-plesk12" | "5" | "5-extra-languages-for-plesk12" | "unlimited" | "unlimited-extra-languages-for-plesk12"
+    //license.PleskApplicationSetEnum
+    export type PleskApplicationSetEnum = "applicationpack" | "developerpack" | "power-pack-for-plesk12" | "powerpack"
+    //license.PleskOrderConfiguration
+    // fullName: license.PleskOrderConfiguration.PleskOrderConfiguration
+    export interface PleskOrderConfiguration {
+        orderableVersions: license.OrderablePleskCompatibilityInfos[];
+        serviceType: license.LicenseTypeEnum;
+    }
+    //license.PleskVersionEnum
+    export type PleskVersionEnum = "PLESK_10_AND_LATER" | "PLESK_10_AND_LATER_FOR_KVM" | "PLESK_10_AND_LATER_FOR_VMWARE" | "PLESK_10_AND_LATER_FOR_VZ" | "PLESK_10_AND_LATER_FOR_WIN" | "PLESK_10_AND_LATER_FOR_WIN_FOR_VMWARE" | "PLESK_10_AND_LATER_FOR_WIN_FOR_VZ" | "PLESK_10_AND_LATER_FOR_WIN_FOR_XEN" | "PLESK_10_AND_LATER_FOR_XEN" | "PLESK_12_VPS_WEB_ADMIN" | "PLESK_12_VPS_WEB_APP" | "PLESK_12_VPS_WEB_HOST" | "PLESK_12_VPS_WEB_HOST_CLNX" | "PLESK_12_VPS_WEB_PRO" | "PLESK_12_VPS_WEB_PRO_CLNX" | "PLESK_12_WEB_ADMIN" | "PLESK_12_WEB_APP" | "PLESK_12_WEB_HOST" | "PLESK_12_WEB_HOST_CLNX" | "PLESK_12_WEB_PRO" | "PLESK_12_WEB_PRO_CLNX" | "PLESK_75_RELOADED" | "PLESK_80" | "PLESK_80_FOR_VZ" | "PLESK_81_FOR_WIN" | "PLESK_9" | "PLESK_95" | "PLESK_95_FOR_VZ" | "PLESK_95_FOR_WIN" | "PLESK_9_FOR_VZ" | "PLESK_9_FOR_WIN" | "PLESK_ONYX_VPS_WEB_ADMIN" | "PLESK_ONYX_VPS_WEB_APP" | "PLESK_ONYX_VPS_WEB_HOST" | "PLESK_ONYX_VPS_WEB_HOST_CLNX" | "PLESK_ONYX_VPS_WEB_PRO" | "PLESK_ONYX_VPS_WEB_PRO_CLNX" | "PLESK_ONYX_WEB_ADMIN" | "PLESK_ONYX_WEB_APP" | "PLESK_ONYX_WEB_HOST" | "PLESK_ONYX_WEB_HOST_CLNX" | "PLESK_ONYX_WEB_PRO" | "PLESK_ONYX_WEB_PRO_CLNX" | "plesk-12-webadmin-for-vps" | "plesk-12-webhost" | "plesk-12-webhost-for-vps" | "plesk-12-webpro" | "plesk-12-webpro-for-vps"
+    //license.PotentialProblemPleskEnum
+    export type PotentialProblemPleskEnum = "isHostOsHyperVLike" | "isHostOsVMwareLike" | "isHostOsVirtuozzo4Like" | "isHostOsXenLike" | "isLinuxOs" | "isOsCloudLinux" | "isOsPlesk10andLater" | "isOsPlesk12" | "isOsPleskOnyx" | "isWindowsOs"
+    //license.StateEnum
+    export type StateEnum = "ok" | "released" | "terminated" | "toDeliver"
+    //license.Task
+    // fullName: license.Task.Task
+    export interface Task {
+        action: license.ActionType;
+        doneDate?: string;
+        lastUpdate: string;
+        name: string;
+        status: license.TaskStateEnum;
+        taskId: number;
+        todoDate: string;
+    }
+    //license.TaskStateEnum
+    export type TaskStateEnum = "cancelled" | "doing" | "done" | "error" | "todo"
+    export namespace plesk {
+        //license.plesk.Plesk
+        // fullName: license.plesk.Plesk.Plesk
+        export interface Plesk {
+            creation: string;
+            deleteAtExpiration: boolean;
+            domain: string;
+            domainNumber?: license.DomainNumberEnum;
+            informationKey?: string;
+            ip: string;
+            key: string;
+            licenseId: string;
+            productKey?: string;
+            status: license.StateEnum;
+            version: license.PleskVersionEnum;
+        }
+    }
+}
+export namespace service {
+    //service.RenewType
+    // fullName: service.RenewType.RenewType
+    export interface RenewType {
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
+        manualPayment?: boolean;
+        period?: number;
+    }
+    //service.RenewalTypeEnum
+    export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
+    //service.StateEnum
+    export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
+    //service.TerminationFutureUseEnum
+    export type TerminationFutureUseEnum = "NOT_REPLACING_SERVICE" | "OTHER" | "SUBSCRIBE_AN_OTHER_SERVICE" | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR" | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
+    //service.TerminationReasonEnum
+    export type TerminationReasonEnum = "FEATURES_DONT_SUIT_ME" | "LACK_OF_PERFORMANCES" | "MIGRATED_TO_ANOTHER_OVH_PRODUCT" | "MIGRATED_TO_COMPETITOR" | "NOT_NEEDED_ANYMORE" | "NOT_RELIABLE" | "NO_ANSWER" | "OTHER" | "TOO_EXPENSIVE" | "TOO_HARD_TO_USE" | "UNSATIFIED_BY_CUSTOMER_SUPPORT"
+}
+export namespace services {
+    //services.Service
+    // fullName: services.Service.Service
+    export interface Service {
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
+        engagedUpTo?: string;
+        expiration: string;
+        possibleRenewPeriod?: number[];
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
+        serviceId: number;
+        status: service.StateEnum;
+    }
+}
 
-type PathsLicensePleskPOST = '/license/plesk/{serviceName}/changeIp' | 
-'/license/plesk/{serviceName}/confirmTermination' | 
-'/license/plesk/{serviceName}/terminate';
-
-type PathsLicensePleskDELETE = '/license/plesk/{serviceName}/option/{label}';
-
-export class ApiLicensePlesk extends OvhWrapper {
-  constructor(engine: OvhRequestable) {
-    super(engine);
-  }
+/**
+ * END API /license/plesk Models
+ */
+export function proxyLicensePlesk(ovhEngine: OvhRequestable): License {
+    return buildOvhProxy(ovhEngine, '/license');
+}
+export default proxyLicensePlesk;
+/**
+ * Api Proxy model
+ */// Apis harmony
+// path /license
+export interface License{
+    plesk: {
+        // GET /license/plesk
+        $get(): Promise<string[]>;
+        orderableVersions: {
+            // GET /license/plesk/orderableVersions
+            $get(params: {ip: string}): Promise<license.PleskOrderConfiguration[]>;
+        }
+        $(serviceName: string): {
+            // GET /license/plesk/{serviceName}
+            $get(): Promise<license.plesk.Plesk>;
+            // PUT /license/plesk/{serviceName}
+            $put(params?: {creation?: string, deleteAtExpiration?: boolean, domain?: string, domainNumber?: license.DomainNumberEnum, informationKey?: string, ip?: string, key?: string, licenseId?: string, productKey?: string, status?: license.StateEnum, version?: license.PleskVersionEnum}): Promise<void>;
+            allowedDestinationIp: {
+                // GET /license/plesk/{serviceName}/allowedDestinationIp
+                $get(): Promise<string[]>;
+            }
+            canLicenseBeMovedTo: {
+                // GET /license/plesk/{serviceName}/canLicenseBeMovedTo
+                $get(params: {destinationIp: string}): Promise<license.ChangeIpStatus>;
+            }
+            changeIp: {
+                // POST /license/plesk/{serviceName}/changeIp
+                $post(params: {destinationIp: string}): Promise<license.Task>;
+            }
+            confirmTermination: {
+                // POST /license/plesk/{serviceName}/confirmTermination
+                $post(params: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+            }
+            option: {
+                // GET /license/plesk/{serviceName}/option
+                $get(): Promise<license.OptionLabel[]>;
+                $(label: license.OptionLabel): {
+                    // DELETE /license/plesk/{serviceName}/option/{label}
+                    $delete(): Promise<license.Task>;
+                    // GET /license/plesk/{serviceName}/option/{label}
+                    $get(): Promise<license.Option>;
+                };
+            }
+            serviceInfos: {
+                // GET /license/plesk/{serviceName}/serviceInfos
+                $get(): Promise<services.Service>;
+                // PUT /license/plesk/{serviceName}/serviceInfos
+                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+            }
+            tasks: {
+                // GET /license/plesk/{serviceName}/tasks
+                $get(params?: {action?: license.ActionType, status?: license.TaskStateEnum}): Promise<number[]>;
+                $(taskId: number): {
+                    // GET /license/plesk/{serviceName}/tasks/{taskId}
+                    $get(): Promise<license.Task>;
+                };
+            }
+            terminate: {
+                // POST /license/plesk/{serviceName}/terminate
+                $post(): Promise<string>;
+            }
+        };
+    }
+// Api
   /**
    * Operations about the LICENSE service
    * List available services
    */
-  public get(path: '/license/plesk'): Promise<string[]>;
-  /**
-   * Get the orderable Plesk versions and their associated compatibilities
-   * Get the orderable Plesk versions and their associated compatibilities
-   */
-  public get(path: '/license/plesk/orderableVersions', params: {ip: string}): Promise<LicensePleskOrderConfiguration[]>;
+  get(path: '/license/plesk'): () => Promise<string[]>;
   /**
    * Your Plesk license
    * Get this object properties
    */
-  public get(path: '/license/plesk/{serviceName}', params: {serviceName: string}): Promise<LicensePleskPlesk>;
+  get(path: '/license/plesk/{serviceName}'): (params: {serviceName: string}) => Promise<license.plesk.Plesk>;
   /**
    * allowedDestinationIp operations
    * Returns an array of ips where the license can be moved to
    */
-  public get(path: '/license/plesk/{serviceName}/allowedDestinationIp', params: {serviceName: string}): Promise<string[]>;
+  get(path: '/license/plesk/{serviceName}/allowedDestinationIp'): (params: {serviceName: string}) => Promise<string[]>;
   /**
    * canLicenseBeMovedTo operations
    * Will tell if the ip can accept the license
    */
-  public get(path: '/license/plesk/{serviceName}/canLicenseBeMovedTo', params: {serviceName: string, destinationIp: string}): Promise<LicenseChangeIpStatus>;
+  get(path: '/license/plesk/{serviceName}/canLicenseBeMovedTo'): (params: {serviceName: string, destinationIp: string}) => Promise<license.ChangeIpStatus>;
   /**
    * List the license.Option objects
    * options attached to this license
    */
-  public get(path: '/license/plesk/{serviceName}/option', params: {serviceName: string}): Promise<LicenseOptionLabel[]>;
+  get(path: '/license/plesk/{serviceName}/option'): (params: {serviceName: string}) => Promise<license.OptionLabel[]>;
   /**
    * Your License options
    * Get this object properties
    */
-  public get(path: '/license/plesk/{serviceName}/option/{label}', params: {serviceName: string, label: LicenseOptionLabel}): Promise<LicenseOption>;
+  get(path: '/license/plesk/{serviceName}/option/{label}'): (params: {label: license.OptionLabel, serviceName: string}) => Promise<license.Option>;
   /**
    * Details about a Service
    * Get this object properties
    */
-  public get(path: '/license/plesk/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
+  get(path: '/license/plesk/{serviceName}/serviceInfos'): (params: {serviceName: string}) => Promise<services.Service>;
   /**
    * List the license.Task objects
    * tasks linked to this license
    */
-  public get(path: '/license/plesk/{serviceName}/tasks', params: {serviceName: string, action?: LicenseActionType, status?: LicenseTaskStateEnum}): Promise<number[]>;
+  get(path: '/license/plesk/{serviceName}/tasks'): (params: {serviceName: string, action?: license.ActionType, status?: license.TaskStateEnum}) => Promise<number[]>;
   /**
    * licenses Todos
    * Get this object properties
    */
-  public get(path: '/license/plesk/{serviceName}/tasks/{taskId}', params: {serviceName: string, taskId: number}): Promise<LicenseTask>;
-  public get(path: PathsLicensePleskGET, params?: OvhParamType): Promise<any> {
-    return super.get(path, params
-  );}
+  get(path: '/license/plesk/{serviceName}/tasks/{taskId}'): (params: {serviceName: string, taskId: number}) => Promise<license.Task>;
+  /**
+   * Get the orderable Plesk versions and their associated compatibilities
+   * Get the orderable Plesk versions and their associated compatibilities
+   */
+  get(path: '/license/plesk/orderableVersions'): (params: {ip: string}) => Promise<license.PleskOrderConfiguration[]>;
   /**
    * Your Plesk license
    * Alter this object properties
    */
-  public put(path: '/license/plesk/{serviceName}', params: {serviceName: string, creation?: string, deleteAtExpiration?: boolean, domain?: string, domainNumber?: LicenseDomainNumberEnum, informationKey?: string, ip?: string, key?: string, licenseId?: string, productKey?: string, status?: LicenseStateEnum, version?: LicensePleskVersionEnum}): Promise<void>;
+  put(path: '/license/plesk/{serviceName}'): (params: {serviceName: string, creation?: string, deleteAtExpiration?: boolean, domain?: string, domainNumber?: license.DomainNumberEnum, informationKey?: string, ip?: string, key?: string, licenseId?: string, productKey?: string, status?: license.StateEnum, version?: license.PleskVersionEnum}) => Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/license/plesk/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
-  public put(path: PathsLicensePleskPUT, params?: OvhParamType): Promise<any> {
-    return super.put(path, params
-  );}
+  put(path: '/license/plesk/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
   /**
    * changeIp operations
    * Move this license to another Ip
    */
-  public post(path: '/license/plesk/{serviceName}/changeIp', params: {serviceName: string, destinationIp: string}): Promise<LicenseTask>;
+  post(path: '/license/plesk/{serviceName}/changeIp'): (params: {serviceName: string, destinationIp: string}) => Promise<license.Task>;
   /**
    * Confirm termination of your service
    * Confirm termination of your service
    */
-  public post(path: '/license/plesk/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: ServiceTerminationFutureUseEnum, reason?: ServiceTerminationReasonEnum, token: string}): Promise<string>;
+  post(path: '/license/plesk/{serviceName}/confirmTermination'): (params: {serviceName: string, commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}) => Promise<string>;
   /**
    * Terminate your service
    * Terminate your service
    */
-  public post(path: '/license/plesk/{serviceName}/terminate', params: {serviceName: string}): Promise<string>;
-  public post(path: PathsLicensePleskPOST, params?: OvhParamType): Promise<any> {
-    return super.post(path, params
-  );}
+  post(path: '/license/plesk/{serviceName}/terminate'): (params: {serviceName: string}) => Promise<string>;
   /**
    * Your License options
    * release this Option
    */
-  public delete(path: '/license/plesk/{serviceName}/option/{label}', params: {serviceName: string, label: LicenseOptionLabel}): Promise<LicenseTask>;
-  public delete(path: PathsLicensePleskDELETE, params?: OvhParamType): Promise<any> {
-    return super.delete(path, params
-  );}
+  delete(path: '/license/plesk/{serviceName}/option/{label}'): (params: {label: license.OptionLabel, serviceName: string}) => Promise<license.Task>;
 }
-export default ApiLicensePlesk;
+/**
+ * classic Model
+ */

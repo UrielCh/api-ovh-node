@@ -1,32 +1,40 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
-/**
- * A secret
- */
-export interface SecretSecret {
-  /**
-   * Expiration time of the secret
-   *
-   */
-  expiration: string;
-  /**
-   * The secret
-   *
-   */
-  secret: string;
-}
-type PathsSecretPOST = '/secret/retrieve';
+import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
-export class ApiSecret extends OvhWrapper {
-  constructor(engine: OvhRequestable) {
-    super(engine);
-  }
+/**
+ * START API /secret Models
+ */
+export namespace secret {
+    //secret.Secret
+    // fullName: secret.Secret.Secret
+    export interface Secret {
+        expiration: string;
+        secret: string;
+    }
+}
+
+/**
+ * END API /secret Models
+ */
+export function proxySecret(ovhEngine: OvhRequestable): Secret {
+    return buildOvhProxy(ovhEngine, '/secret');
+}
+export default proxySecret;
+/**
+ * Api Proxy model
+ */// Apis harmony
+// path /secret
+export interface Secret{
+    retrieve: {
+        // POST /secret/retrieve
+        $post(params: {id: string}): Promise<secret.Secret>;
+    }
+// Api
   /**
    * Retrieve a secret sent by email
    * Retrieve a secret sent by email
    */
-  public post(path: '/secret/retrieve', params: {id: string}): Promise<SecretSecret>;
-  public post(path: PathsSecretPOST, params?: OvhParamType): Promise<any> {
-    return super.post(path, params
-  );}
+  post(path: '/secret/retrieve'): (params: {id: string}) => Promise<secret.Secret>;
 }
-export default ApiSecret;
+/**
+ * classic Model
+ */

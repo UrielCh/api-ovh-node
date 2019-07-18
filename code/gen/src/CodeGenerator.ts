@@ -1,34 +1,112 @@
 import GenApiTypes, { CacheApi, CacheModel, filterReservedKw } from './GenApiTypes';
-import { indentGen, protectFieldName, className, protectJsonKey, rawRemapNode, formatUpperCamlCase } from './utils';
-import { Parameter, Schema, ModelsProp } from './schema';
-import { brotliCompressSync } from 'zlib';
+import { indentGen, protectModelField, className, protectJsonKey, rawRemapNode, formatUpperCamlCase, protectHarmonyField } from './utils';
+import { Parameter, Schema, FieldProp, API } from './schema';
+
+
+let commonNSColision: { [key: string]: string } = {
+    'order.Price': 'orderPrice',
+    'zone.NamedResolutionFieldTypeEnum': 'zoneNamedResolutionFieldTypeEnum',
+    'domain.DomainStatusEnum': 'domainDomainStatusEnum',
+    'domain.DomainMlLanguageEnum': 'domainDomainMlLanguageEnum',
+    'domain.DomainMlOptionsStruct': 'domainDomainMlOptionsStruct',
+    'domain.DomainFilterActionEnum': 'domainDomainFilterActionEnum',
+    'domain.DomainFilterOperandEnum': 'domainDomainFilterOperandEnum',
+    'domain.DomainSpecialAccountActionEnum': 'domainDomainSpecialAccountActionEnum',
+    'domain.DomainPopActionEnum': 'domainDomainPopActionEnum',
+    'domain.DomainSpecialAccountTypeEnum': 'domainDomainSpecialAccountTypeEnum',
+    'zone.RedirectionTypeEnum': 'zoneRedirectionTypeEnum',
+    'xdsl.DslTypeEnum': 'xdslDslTypeEnum',
+    'xdsl.eligibility.Address': 'xdsleligibilityAddress',
+    'xdsl.eligibility.BookMeetingSlot': 'xdsleligibilityBookMeetingSlot',
+    'xdsl.eligibility.LandlineStatusEnum': 'xdsleligibilityLandlineStatusEnum',
+    'xdsl.DeconsolidationEnum': 'xdslDeconsolidationEnum',
+    'xdsl.LineSectionLength': 'xdslLineSectionLength',
+    'xdsl.eligibility.Portability': 'xdsleligibilityPortability',
+    'xdsl.eligibility.MeetingSlots': 'xdsleligibilityMeetingSlots',
+    'xdsl.eligibility.ProviderEnum': 'xdsleligibilityProviderEnum',
+    'email.pro.ObjectStateEnum': 'emailproObjectStateEnum',
+    'veeamEnterprise.TaskStateEnum': 'veeamEnterpriseTaskStateEnum',
+    'telephony.ProtocolEnum': 'telephonyProtocolEnum',
+}
 
 export class CodeGenerator {
     api: string;
     gen: GenApiTypes;
-    extraNS: string;
+    schema?: Schema;
+    NSCollision = new Set<string>();
 
     constructor(api: string) {
         this.api = api;
         this.gen = new GenApiTypes();
-        this.extraNS = `OVH.`;
+
     }
 
     async generate(): Promise<string> {
-        //extraNS = `OVH${fat}.`;
-        let schema = await this.gen.loadSchema(`${this.api}.json`)
+        this.schema = await this.gen.loadSchema(`${this.api}.json`)
         // start generation
         // Add extra ROOT NameSpace
-        let code = `import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';\n\n`;
+        //let code = `import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';\n\n/**\n * START API ${this.api} Models\n */\n`;
+        let code = `import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';\n\n/**\n * START API ${this.api} Models\n */\n`;
 
-        code += `export namespace ${this.extraNS.replace('.', '')} {\n`;
+
         code = this.dumpModel(0, this.gen.models, code, '');
-        code += this.dumpApiHarmony(0, this.gen.apis, '// Apis harmony\n');
-        code += this.dumpApi(0, schema, this.gen.apis, '// Api\n');
+        //code += this.GenAllPathSet();
+        code += `\n/**\n * END API ${this.api} Models\n */\n`;
 
-        code += '}';
+        let proxyCall = 'proxy' + formatUpperCamlCase(this.api.replace(/\//g, '_'));
+
+        let c1 = this.api.split('/')[1];
+        let mainClass = className(c1) // formatUpperCamlCase("Api_" + this.api.replace(/\//g, '_'));
+
+        //        code += `export function ${proxyCall}(ovhEngine: OvhRequestable): ${mainClass} {\n    return buildOvhProxy(ovhEngine, '${this.api}');\n}\n`
+        code += `export function ${proxyCall}(ovhEngine: OvhRequestable): ${mainClass} {\n    return buildOvhProxy(ovhEngine, '/${c1}');\n}\n`
+        code += `export default ${proxyCall};\n`
+
+        code += `/**\n * Api Proxy model\n */`
+        code += this.dumpApiHarmony(0, this.gen.apis, '// Apis harmony\n');
+        code += `/**\n * classic Model\n */`
+        // extra alias fo bypass namespace colision errors
+        for (let type of this.NSCollision) {
+            code += `type ${commonNSColision[type]} = ${type};\n`
+        }
+
         return code;
     }
+
+    typeFromParameter(p: Parameter | FieldProp): string {
+        let type = p.fullType || (<any>p).type;
+        if (type.endsWith(':string'))
+            type = 'string'
+
+        type = this.aliasFilter(type);
+
+        type = type.replace('<long>', '<number>');
+        // deal with namespace colision
+        {
+            let rawType = type;
+            let isArray = false;
+            if (type.endsWith("[]")) {
+                rawType = type.substring(0, type.length - 2);
+                isArray = true;
+            }
+
+            //if (~rawType.indexOf('.')) {
+            //    if (!commonNSColision[rawType])
+            //        commonNSColision[rawType] = formatUpperCamlCase(rawType);
+            //}
+            let colistion = commonNSColision[rawType];
+            if (colistion) {
+                this.NSCollision.add(rawType);
+                if (isArray)
+                    type = colistion + '[]';
+                else
+                    type = colistion;
+            }
+        }
+        return filterReservedKw(type);
+    }
+
+    reservedField = new Set(['_alias', '_model', '_name', '__propo__', '_namespace'])
 
     /**
      * @param depth 
@@ -61,18 +139,10 @@ export class CodeGenerator {
                 for (const pName of props) {
                     const prop = model.properties[pName];
                     // console.log(prop);
-                    code += `${ident0}    ${protectFieldName(pName)}`;
-                    if (!prop.required)
+                    code += `${ident0}    ${protectModelField(pName)}`;
+                    if (!prop.required && prop.canBeNull)
                         code += '?';
-                    code += ': ';
-                    let type = prop.fullType || prop.type;
-                    if (type.endsWith(':string'))
-                        type = 'string'
-                    type = this.aliasFilter(type);
-                    if (~type.indexOf('.'))
-                        type = this.extraNS + type;
-                    type = type.replace('<long>', '<number>');
-                    code += filterReservedKw(type);
+                    code += ': ' + this.typeFromParameter(prop);
                     code += ';\n';
                 }
                 code += `${ident0}}\n`;
@@ -80,14 +150,14 @@ export class CodeGenerator {
         }
         {
             // drop _alias _model _name __propo__
-            const keys = Object.keys(cache).filter(k => !k.startsWith('_')).sort();
+            const keys = Object.keys(cache).filter(k => !this.reservedField.has(k)).sort();
             if (!keys.length)
                 return code;
             if (cache._namespace) {
                 // code += `${ident0}// ${JSON.stringify(keys)}\n`;
-                code += `${ident0}export namespace ${filterReservedKw(cache._namespace)} {\n`;
+                code += `${ident0}export namespace ${filterReservedKw(cache._namespace)} {\n`; //  //  ${keys.join(', ')}
             } else if (cache._name) {
-                code += `${ident0}export namespace ${cache._name} {\n`;
+                code += `${ident0}export namespace ${cache._name} {\n`; //  //  ${keys.join(', ')}
             }
             // drop _ prefixed fields
             // fullNS = fullNS ? fullNS + '.' + cache._name : cache._name;
@@ -102,7 +172,7 @@ export class CodeGenerator {
         return code;
     }
 
-    aliasFilter(type: string) {
+    aliasFilter(type: string): string {
         let rawType: string = type;
         let isArray: boolean = false;
         let generic: string = '';
@@ -134,7 +204,6 @@ export class CodeGenerator {
         return rawType;
     }
 
-
     fullTypeExp(param: Parameter) {
         // final String prefix = data.getNodeProject();
         let typename = param.fullType;
@@ -150,10 +219,15 @@ export class CodeGenerator {
         return typename;
     }
 
-    dumpApi(depth: number, schema: Schema, api: CacheApi, code: string): string {
+    /**
+     * deprecated
+     */
+    GenAllPathSet() {
+        let code = '';
         let avaliablePath = formatUpperCamlCase("Paths_" + this.api.replace(/\//g, '_'))
+        // let mainClass = formatUpperCamlCase("Api_" + this.api.replace(/\//g, '_'));
         let indexApi = { GET: [], PUT: [], POST: [], DELETE: [] };
-        schema.apis.forEach(
+        (<Schema>this.schema).apis.forEach(
             api => api.operations.forEach(
                 op => (<any>indexApi[op.httpMethod]).push(api.path)
             )
@@ -165,33 +239,46 @@ export class CodeGenerator {
                 continue;
             if (!arr.length)
                 continue;
-            code += `type ${avaliablePath}${mtd} = ` + arr.map((a: any) => `'${a}'`).join(' |\n  ')
+            code += `type ${avaliablePath}${mtd} = ` + arr.sort().map((a: any) => `'${a}'`).join(' |\n  ')
             code += ';\n\n'
         }
-        code += `export class ${formatUpperCamlCase("Api_" + this.api.replace(/\//g, '_'))} extends OvhWrapper {\n`;
-        code += `  constructor(engine: OvhRequestable) {\n    super(engine);\n  }\n`;
-        for (let mtd of Object.keys(indexApi)) {
-            let calls = 0;
+        return code;
+    }
+
+    /**
+     * Interface flat
+     * @param schema flag Call models
+     * @param api 
+     * @param code 
+     */
+    dumpApi(schema: Schema, api: CacheApi, code: string): string {
+        for (let mtd of ['GET', 'PUT', 'POST', 'DELETE']) {
             schema.apis.sort((a, b) => a.path.localeCompare(b.path)).forEach(api => {
                 api.operations.filter(op => op.httpMethod === mtd).forEach(
                     op => {
-                        calls++;
                         code += '  /**\n';
                         code += `   * ${api.description}\n`;
                         code += `   * ${op.description}\n`;
                         code += '   */\n';
-                        code += `  public ${mtd.toLowerCase()}(path: '${api.path}'`;
 
                         let done = new Set();
-
                         let params = [];
-                        params.push(...op.parameters.filter(p => p.paramType == 'path').map(p => { done.add(p.name); return `${p.name}: string` }))
+                        let mandatoryParams = 0;
+
+                        code += `  ${mtd.toLowerCase()}(path: '${api.path}'): (`;
+                        // only for flat model
+                        let pathParam = op.parameters.filter(p => p.paramType == 'path').map(p => { done.add(p.name); return `${p.name}: ${this.typeFromParameter(p)}` }).sort();
+                        mandatoryParams += pathParam.length;
+                        params.push(...pathParam)
+                        //
                         let paramType = (mtd == 'GET') ? 'query' : 'body';
                         let body = op.parameters.filter(p => p.paramType == paramType);
+                        body = body.sort((a, b) => (<string>a.name).localeCompare(<string>b.name))
                         if (body.length == 1 && body[0].name == null) {
-                            // console.log(body[0]);
-                            let modelsProp = schema.models[body[0].fullType];
-                            if (modelsProp && modelsProp.properties) {
+                            let modelsProp = (<Schema>this.schema).models[body[0].fullType];
+                            if (!modelsProp || !modelsProp.properties)
+                                console.error(`ERROR in model Body Type ${body[0].fullType} do not exists`)
+                            else {
                                 for (let propName of Object.keys(modelsProp.properties).sort()) {
                                     let p = modelsProp.properties[propName];
                                     if (done.has(propName))
@@ -199,60 +286,43 @@ export class CodeGenerator {
                                     let param = `${protectJsonKey(propName)}`;
                                     if (!p.required)
                                         param += '?'
-                                    param += ': '
-                                    // this.fullTypeExp(p)
-                                    let type = p.fullType || p.type;
-                                    if (type.endsWith(':string'))
-                                        type = 'string'
-                                    type = this.aliasFilter(type);
-                                    if (~type.indexOf('.'))
-                                        type = this.extraNS + type;
-                                    type = type.replace('<long>', '<number>');
-                                    param += filterReservedKw(type);
+                                    else
+                                        mandatoryParams++;
+                                    param += ': ' + this.typeFromParameter(p);
                                     params.push(param)
                                 }
-                            } else {
-                                console.log('ERORROOROR');
-                                params.push('body: any')
                             }
                         } else {
-                            body.sort((a, b) => (<string>a.name).localeCompare(<string>b.name))
-                            params.push(...body.map(p => {
-                                if (done.has(p.name))
-                                    return;
-                                let param = `${protectJsonKey(p.name || '')}`;
-                                if (!p.required)
-                                    param += '?'
-                                param += ': '
-                                let type = p.fullType;// || p.type;
-                                if (type.endsWith(':string'))
-                                    type = 'string'
-                                type = this.aliasFilter(type);
-                                if (~type.indexOf('.'))
-                                    type = this.extraNS + type;
-                                type = type.replace('<long>', '<number>');
-                                param += filterReservedKw(type);
-                                return param;
-                            }))
+                            params.push(...body
+                                .filter(p => !done.has(p.name))
+                                .map(p => {
+                                    const name = String(p.name);
+                                    let text = protectJsonKey(name);
+                                    if (!p.required)
+                                        text += '?'
+                                    else
+                                        mandatoryParams++;
+                                    return `${text}: ${this.typeFromParameter(p)}`;
+                                }))
                         }
-                        if (params.length)
-                            code += `, params: {${params.join(', ')}}`;
+                        if (params.length) {
+                            code += 'params';
+                            if (mandatoryParams == 0)
+                                code += '?';
+                            code += `: {${params.join(', ')}}`;
+                        }
                         // typename = this.aliasFilter(typename);
-                        code += `): Promise<${this.aliasFilter(op.responseType)}>;\n`;
+                        code += `) => Promise<${this.aliasFilter(op.responseType)}>;\n`;
                     }
                 )
             })
-            if (calls) {
-                code += `  public ${mtd.toLowerCase()}(path: ${avaliablePath}${mtd}, params?: OvhParamType): Promise<any> {\n`;
-                code += `    return super.${mtd.toLowerCase()}(path, params);\n`
-                code += `  }\n`
-            }
         }
-        code += `}\n`
         return code;
     }
 
     /**
+     * interface Proxy
+     * 
     * @param depth 
     * @param api 
     * @param code 
@@ -262,56 +332,89 @@ export class CodeGenerator {
         // drop _ prefixed fields
         const keys = Object.keys(api).filter(k => !k.startsWith('_'))
 
-        //if (api._api)
-        //    code += `${ident0}/**\n${ident0} * Path:${api._api.path}\n${ident0} * ${api._api.description}\n${ident0} */\n`;
         let EOB = '';
         if (api._path) {
             EOB = `${ident0}}\n`
             let last = api._path.split('/').pop();
             if (last && depth > 1) {
                 if (last.startsWith('{')) {
-                    //code += `${ident0}/** ${last} */ \n`;
-                    code += `${ident0}[keys: string]:`;
-                    EOB = `${ident0}} | any\n`
+                    let m = last.match(/\{([^}]+)\}/);
+                    let name = m ? m[1] : 'id';
+                    let pType = 'string | number';
+                    try {
+                        let _api = (<API>api._api);
+                        let _op = _api.operations[0];
+                        let _params = _op.parameters;
+                        let _param = _params.filter(p => p.name == name)[0];
+                        pType = _param.dataType;
+                        pType = this.aliasFilter(pType);
+                    } catch {
+                    }
+                    //code += `${ident0}[keys: string]:`;
+                    code += `${ident0}$(${name}: ${pType}): `;
+                    EOB = `${ident0}};\n` //  | any
                 } else {
-                    code += `${ident0}${protectFieldName(last)}: `;
+                    code += `${ident0}${protectHarmonyField(last)}: `; //  /* 260 */
                 }
             } else {
                 code += `${ident0}// path ${api._path}\n`;
                 code += `${ident0}export interface ${className(api._path)}`;
             }
-            code += ` {\n`;
+            code += `{\n`;
         }
 
         let ident = indentGen(depth);
         if (api._api) {
-            for (const op of api._api.operations) {
-                // code += `${ident}/**\n${ident} * ${op.description}\n${ident} */\n`;
+            for (const op of api._api.operations.sort((a, b) => a.httpMethod.localeCompare(b.httpMethod))) {
                 code += `${ident}// ${op.httpMethod} ${api._path}\n`;
+                code += `${ident}$${op.httpMethod.toLowerCase()}(`;
 
-                code += `${ident}${op.httpMethod}(`;
-                let params: Parameter[] = [];
-                if (op.httpMethod == 'GET') {
-                    params = op.parameters.filter(p => p.paramType === 'query')
-                    if (params.length)
-                        code += 'param?: {'
+                let done = new Set();
+                let params: string[] = [];
+                let mandatoryParams = 0;
+
+                // no path param to handle in Poxymode
+                //
+                let paramType = (op.httpMethod == 'GET') ? 'query' : 'body';
+                let body = op.parameters.filter(p => p.paramType === paramType)
+                body = body.sort((a, b) => (<string>a.name).localeCompare(<string>b.name))
+                if (body.length == 1 && body[0].name == null) {
+                    let modelsProp = (<Schema>this.schema).models[body[0].fullType];
+                    if (!modelsProp || !modelsProp.properties)
+                        console.error(`ERROR in model Body Type ${body[0].fullType} do not exists`)
+                    else {
+                        for (let propName of Object.keys(modelsProp.properties).sort()) {
+                            let p = modelsProp.properties[propName];
+                            if (done.has(propName))
+                                continue;
+                            let param = `${protectJsonKey(propName)}`;
+                            if (!p.required)
+                                param += '?'
+                            else
+                                mandatoryParams++;
+                            param += ': ' + this.typeFromParameter(p);
+                            params.push(param)
+                        }
+                    }
                 } else {
-                    params = op.parameters.filter(p => p.paramType === 'body')
-                    if (params.length)
-                        code += 'body?: {'
+                    params.push(...body
+                        // no filtrage dupalicate
+                        .map(p => {
+                            const name = String(p.name);
+                            let text = protectJsonKey(name);
+                            if (!p.required)
+                                text += '?';
+                            else
+                                mandatoryParams++;
+                            return `${text}: ${this.typeFromParameter(p)}`; // was fullTypeExp
+                        }))
                 }
-                for (let i = 0; i < params.length; i++) {
-                    const param = params[i];
-                    if (i > 0)
-                        code += ', ';
-                    code += protectJsonKey(String(param.name || 'body'));
-                    if (!param.required)
-                        code += "?";
-                    code += ": ";
-                    code += this.fullTypeExp(param);
+                if (params.length) {
+                    code += 'params';
+                    if (mandatoryParams == 0)
+                        code += '?';
+                    code += `: {${params.join(', ')}}`
                 }
-                if (params.length)
-                    code += '}'
                 code += `): `;
                 let retType = op.responseFullType;
                 if (!retType)
@@ -321,7 +424,7 @@ export class CodeGenerator {
             }
         }
 
-        for (const k of keys) {
+        for (const k of keys.sort()) {
             const value: any = api[k];
             // API | string | CacheApi | undefined
             // console.log(indent(depth), value._path, value);
@@ -331,6 +434,11 @@ export class CodeGenerator {
                 console.log('Done ', keys);
             }
         }
+
+
+        if (depth === 1)
+            code += this.dumpApi(<Schema>this.schema, this.gen.apis, '// Api\n');
+
         code += EOB;
         return code;
     }

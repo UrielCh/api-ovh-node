@@ -41,8 +41,8 @@ async function main() {
   console.log({ serviceName, distrib: dist });
   console.log('');
   let ovh = new Ovh({ accessRules: `GET /vps/${serviceName}/ips` });
-  const vps = new ApiVps(ovh);
-  let data = await vps.get('/vps/{serviceName}/ips', { serviceName })
+  const vps = ApiVps(ovh);
+  let data = await vps.get('/vps/{serviceName}/ips')({ serviceName })
   const ipFo = data.filter(a => a != mainIP).filter(a => !~a.indexOf(':'))
   console.log(`TOTAL IP: ${data.length} FO: ${ipFo.length}`)
   if (dist === 'debian') {

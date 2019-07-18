@@ -1,26 +1,24 @@
 {
-  "name": "@ovh-api/cloud",
-  "description": "Add typing to to ovh api cloud",
-  "version": "1.2.6",
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
-  "license": "MIT",
-  "author": "Uriel Chemouni <uchemouni@gmail.com>",
-  "dependencies": {
-    "@ovh-api/common": "^1.2.2"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "bugs": "https://github.com/UrielCh/api-ovh-node/issues",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/UrielCh/api-ovh-node.git"
-  },
-  "scripts": {
-    "run": "ts-node src/index.ts",
-    "build": "tsc",
-    "build:watch": "tsc --watch"
-  },
-  "gitHead": "b9fec53f25067fa01d341adc086a63ef2c2a5f62"
+    "name": "@ovh-api/cloud",
+    "description": "Add typing to to ovh api cloud",
+    "version": "2.0.3",
+    "typings": "index.d.ts",
+    "license": "MIT",
+    "author": "Uriel Chemouni <uchemouni@gmail.com>",
+    "dependencies": {
+        "@ovh-api/common": "^1.3.0"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "bugs": "https://github.com/UrielCh/api-ovh-node/issues",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/UrielCh/api-ovh-node.git"
+    },
+    "scripts": {
+        "run": "ts-node src/index.ts",
+        "build": "tsc",
+        "build:watch": "tsc --watch"
+    }
 }

@@ -1,492 +1,327 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
-/**
- * Period of time used to determine license statistics
- */
-export type MsServicesLicensePeriodEnum = 'lastMonth' | 'lastQuarter' | 'lastWeek' | 'lastYear';
-/**
- * Billing statistics for the current period
- */
-export interface SaasCsp2BillingStatistics {
-  /**
-   * End of the billing period
-   *
-   */
-  endDate: string;
-  /**
-   * List of lines associated to this statistics entity.
-   *
-   */
-  lines: SaasCsp2BillingStatisticsLine[];
-  /**
-   * Start of the billing period
-   *
-   */
-  startDate: string;
-}
-/**
- * Billing statistics line.
- */
-export interface SaasCsp2BillingStatisticsLine {
-  /**
-   * Id of the Office license.
-   *
-   */
-  licenceId: number;
-  /**
-   * Name of the Office license.
-   *
-   */
-  licenceName: string;
-  /**
-   * Maximum count of simultaneous activated licences.
-   *
-   */
-  peakCount: number;
-}
-/**
- * Office license's type
- */
-export type SaasCsp2LicenseTypeEnum = 'ADDON' | 'NON-SPECIFIC';
-/**
- * Office licence
- */
-export interface SaasCsp2OfficeLicence {
-  /**
-   * License unique identifier
-   *
-   */
-  id: number;
-  /**
-   * License's type, indicates if the licence is standalone or an addon
-   *
-   */
-  licenceType: SaasCsp2LicenseTypeEnum;
-  /**
-   * Maximum purchasable license
-   *
-   */
-  limit?: number;
-  /**
-   * License name
-   *
-   */
-  name: string;
-}
-/**
- * Office subscription
- */
-export interface SaasCsp2OfficeSubscription {
-  /**
-   * Creation date
-   *
-   */
-  creationDate: string;
-  /**
-   * Subscription's unique identifier
-   *
-   */
-  id: number;
-  /**
-   * Last update date
-   *
-   */
-  lastUpdate?: string;
-  /**
-   * License's type id
-   *
-   */
-  licenseId: number;
-  /**
-   * Number of available licenses
-   *
-   */
-  quantity: number;
-  /**
-   * Subscription's status
-   *
-   */
-  status: string;
-  /**
-   * Pending task's unique identifier
-   *
-   */
-  taskPendingId: number;
-}
-/**
- * Office task
- */
-export interface SaasCsp2OfficeTask {
-  /**
-   * Completion date
-   *
-   */
-  finishDate?: string;
-  /**
-   * Function name
-   *
-   */
-  function: string;
-  /**
-   * Unique identifier of the task
-   *
-   */
-  id: number;
-  /**
-   * Task state
-   *
-   */
-  status: SaasCsp2TaskStatusEnum;
-  /**
-   * Creation date
-   *
-   */
-  todoDate: string;
-}
-/**
- * Office tenant
- */
-export interface SaasCsp2OfficeTenant {
-  /**
-   * Contact's address line
-   *
-   */
-  address: string;
-  /**
-   * Contact's city
-   *
-   */
-  city: string;
-  /**
-   * Creation date
-   *
-   */
-  creationDate: string;
-  /**
-   * Tenant's display name
-   *
-   */
-  displayName: string;
-  /**
-   * Contact's email address
-   *
-   */
-  email: string;
-  /**
-   * Contact's first name
-   *
-   */
-  firstName: string;
-  /**
-   * Contact's last name
-   *
-   */
-  lastName: string;
-  /**
-   * Primary phone number
-   *
-   */
-  phone: string;
-  /**
-   * Internal service name
-   *
-   */
-  serviceName: string;
-  /**
-   * Tenant's status
-   *
-   */
-  status: SaasCsp2ServiceStateEnum;
-  /**
-   * Contact's zip code
-   *
-   */
-  zipCode: string;
-}
-/**
- * Office tenant state
- */
-export type SaasCsp2ServiceStateEnum = 'creating' | 'inMaintenance' | 'ok' | 'suspended';
-/**
- * License usage statistics.
- */
-export interface SaasCsp2Statistics {
-  /**
-   * Date of the statistics.
-   *
-   */
-  date: string;
-  /**
-   * List of lines associated to this statistics entity.
-   *
-   */
-  lines: SaasCsp2StatisticsLine[];
-}
-/**
- * License usage statistics line.
- */
-export interface SaasCsp2StatisticsLine {
-  /**
-   * Count of activated licenses at the end of the day.
-   *
-   */
-  endOfDayCount: number;
-  /**
-   * Id of the Office license.
-   *
-   */
-  licenceId: number;
-  /**
-   * Name of the Office license.
-   *
-   */
-  licenceName: string;
-  /**
-   * Maximum count of simultaneous activated licences.
-   *
-   */
-  peakCount: number;
-}
-/**
- * Supported services of Office365
- */
-export type SaasCsp2SupportedServiceEnum = 'Email' | 'Intune' | 'OfficeCommunicationsOnline';
-/**
- * Office CSP2 task status
- */
-export type SaasCsp2TaskStatusEnum = 'cancelled' | 'doing' | 'done' | 'error' | 'todo';
-/**
- * Map a possible renew for a specific service
- */
-export interface ServiceRenewType {
-  /**
-   * The service is automatically renewed
-   *
-   */
-  automatic: boolean;
-  /**
-   * The service will be deleted at expiration
-   *
-   */
-  deleteAtExpiration: boolean;
-  /**
-   * The service forced to be renewed
-   *
-   */
-  forced: boolean;
-  /**
-   * The service needs to be manually renewed and paid
-   *
-   */
-  manualPayment?: boolean;
-  /**
-   * period of renew in month
-   *
-   */
-  period?: number;
-}
-/**
- * Detailed renewal type of a service
- */
-export type ServiceRenewalTypeEnum = 'automaticForcedProduct' | 'automaticV2012' | 'automaticV2014' | 'automaticV2016' | 'manual' | 'oneShot' | 'option';
-/**
- * 
- */
-export type ServiceStateEnum = 'expired' | 'inCreation' | 'ok' | 'pendingDebt' | 'unPaid';
-/**
- * Details about a Service
- */
-export interface ServicesService {
-  /**
-   * Indicates that the service can be set up to be deleted at expiration
-   *
-   */
-  canDeleteAtExpiration: boolean;
-  /**
-   */
-  contactAdmin: string;
-  /**
-   */
-  contactBilling: string;
-  /**
-   */
-  contactTech: string;
-  /**
-   */
-  creation: string;
-  /**
-   */
-  domain: string;
-  /**
-   */
-  engagedUpTo?: string;
-  /**
-   */
-  expiration: string;
-  /**
-   * All the possible renew period of your service in month
-   *
-   */
-  possibleRenewPeriod?: number[];
-  /**
-   * Way of handling the renew
-   *
-   */
-  renew?: ServiceRenewType;
-  /**
-   */
-  renewalType: ServiceRenewalTypeEnum;
-  /**
-   */
-  serviceId: number;
-  /**
-   */
-  status: ServiceStateEnum;
-}
-type PathsSaasCsp2GET = '/saas/csp2' | 
-'/saas/csp2/{serviceName}' | 
-'/saas/csp2/{serviceName}/billingPeriodPeaks' | 
-'/saas/csp2/{serviceName}/orderableLicenses' | 
-'/saas/csp2/{serviceName}/orderableLicenses/{id}' | 
-'/saas/csp2/{serviceName}/serviceInfos' | 
-'/saas/csp2/{serviceName}/subscription' | 
-'/saas/csp2/{serviceName}/subscription/{id}' | 
-'/saas/csp2/{serviceName}/subscription/{id}/addonsSubscriptionIds' | 
-'/saas/csp2/{serviceName}/subscription/{id}/availableAddonLicenses' | 
-'/saas/csp2/{serviceName}/task' | 
-'/saas/csp2/{serviceName}/task/{id}' | 
-'/saas/csp2/{serviceName}/usageStatistics';
+import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
-type PathsSaasCsp2PUT = '/saas/csp2/{serviceName}' | 
-'/saas/csp2/{serviceName}/serviceInfos';
+/**
+ * START API /saas/csp2 Models
+ */
+export namespace msServices {
+    //msServices.LicensePeriodEnum
+    export type LicensePeriodEnum = "lastMonth" | "lastQuarter" | "lastWeek" | "lastYear"
+}
+export namespace saas {
+    export namespace csp2 {
+        //saas.csp2.BillingStatistics
+        // fullName: saas.csp2.BillingStatistics.BillingStatistics
+        export interface BillingStatistics {
+            endDate: string;
+            lines: saas.csp2.BillingStatisticsLine[];
+            startDate: string;
+        }
+        //saas.csp2.BillingStatisticsLine
+        // fullName: saas.csp2.BillingStatisticsLine.BillingStatisticsLine
+        export interface BillingStatisticsLine {
+            licenceId: number;
+            licenceName: string;
+            peakCount: number;
+        }
+        //saas.csp2.LicenseTypeEnum
+        export type LicenseTypeEnum = "ADDON" | "NON-SPECIFIC"
+        //saas.csp2.OfficeLicence
+        // fullName: saas.csp2.OfficeLicence.OfficeLicence
+        export interface OfficeLicence {
+            id: number;
+            licenceType: saas.csp2.LicenseTypeEnum;
+            limit?: number;
+            name: string;
+            newSeatsAllowed: boolean;
+            newSubscriptionsAllowed: boolean;
+        }
+        //saas.csp2.OfficeSubscription
+        // fullName: saas.csp2.OfficeSubscription.OfficeSubscription
+        export interface OfficeSubscription {
+            creationDate: string;
+            id: number;
+            lastUpdate?: string;
+            licenseId: number;
+            quantity: number;
+            status: string;
+            taskPendingId: number;
+        }
+        //saas.csp2.OfficeTask
+        // fullName: saas.csp2.OfficeTask.OfficeTask
+        export interface OfficeTask {
+            finishDate?: string;
+            function: string;
+            id: number;
+            status: saas.csp2.TaskStatusEnum;
+            todoDate: string;
+        }
+        //saas.csp2.OfficeTenant
+        // fullName: saas.csp2.OfficeTenant.OfficeTenant
+        export interface OfficeTenant {
+            address: string;
+            city: string;
+            creationDate: string;
+            displayName: string;
+            email: string;
+            firstName: string;
+            lastName: string;
+            phone: string;
+            serviceName: string;
+            status: saas.csp2.ServiceStateEnum;
+            zipCode: string;
+        }
+        //saas.csp2.ServiceStateEnum
+        export type ServiceStateEnum = "creating" | "inMaintenance" | "ok" | "suspended"
+        //saas.csp2.Statistics
+        // fullName: saas.csp2.Statistics.Statistics
+        export interface Statistics {
+            date: string;
+            lines: saas.csp2.StatisticsLine[];
+        }
+        //saas.csp2.StatisticsLine
+        // fullName: saas.csp2.StatisticsLine.StatisticsLine
+        export interface StatisticsLine {
+            endOfDayCount: number;
+            licenceId: number;
+            licenceName: string;
+            peakCount: number;
+        }
+        //saas.csp2.SupportedServiceEnum
+        export type SupportedServiceEnum = "Email" | "Intune" | "OfficeCommunicationsOnline"
+        //saas.csp2.TaskStatusEnum
+        export type TaskStatusEnum = "cancelled" | "doing" | "done" | "error" | "todo"
+    }
+}
+export namespace service {
+    //service.RenewType
+    // fullName: service.RenewType.RenewType
+    export interface RenewType {
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
+        manualPayment?: boolean;
+        period?: number;
+    }
+    //service.RenewalTypeEnum
+    export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
+    //service.StateEnum
+    export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
+}
+export namespace services {
+    //services.Service
+    // fullName: services.Service.Service
+    export interface Service {
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
+        engagedUpTo?: string;
+        expiration: string;
+        possibleRenewPeriod?: number[];
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
+        serviceId: number;
+        status: service.StateEnum;
+    }
+}
 
-type PathsSaasCsp2POST = '/saas/csp2/{serviceName}/changeAdministratorPassword' | 
-'/saas/csp2/{serviceName}/configureDomain' | 
-'/saas/csp2/{serviceName}/subscription' | 
-'/saas/csp2/{serviceName}/subscription/{id}/changeQuantity' | 
-'/saas/csp2/{serviceName}/subscription/{id}/orderAddon';
-
-type PathsSaasCsp2DELETE = '/saas/csp2/{serviceName}/subscription/{id}';
-
-export class ApiSaasCsp2 extends OvhWrapper {
-  constructor(engine: OvhRequestable) {
-    super(engine);
-  }
+/**
+ * END API /saas/csp2 Models
+ */
+export function proxySaasCsp2(ovhEngine: OvhRequestable): Saas {
+    return buildOvhProxy(ovhEngine, '/saas');
+}
+export default proxySaasCsp2;
+/**
+ * Api Proxy model
+ */// Apis harmony
+// path /saas
+export interface Saas{
+    csp2: {
+        // GET /saas/csp2
+        $get(): Promise<string[]>;
+        $(serviceName: string): {
+            // GET /saas/csp2/{serviceName}
+            $get(): Promise<saas.csp2.OfficeTenant>;
+            // PUT /saas/csp2/{serviceName}
+            $put(params?: {address?: string, city?: string, creationDate?: string, displayName?: string, email?: string, firstName?: string, lastName?: string, phone?: string, serviceName?: string, status?: saas.csp2.ServiceStateEnum, zipCode?: string}): Promise<void>;
+            billingPeriodPeaks: {
+                // GET /saas/csp2/{serviceName}/billingPeriodPeaks
+                $get(): Promise<saas.csp2.BillingStatistics>;
+            }
+            changeAdministratorPassword: {
+                // POST /saas/csp2/{serviceName}/changeAdministratorPassword
+                $post(params: {newPassword: string}): Promise<saas.csp2.OfficeTask>;
+            }
+            configureDomain: {
+                // POST /saas/csp2/{serviceName}/configureDomain
+                $post(params: {domain: string, supportedServices: saas.csp2.SupportedServiceEnum[]}): Promise<saas.csp2.OfficeTask>;
+            }
+            orderableLicenses: {
+                // GET /saas/csp2/{serviceName}/orderableLicenses
+                $get(): Promise<number[]>;
+                $(id: number): {
+                    // GET /saas/csp2/{serviceName}/orderableLicenses/{id}
+                    $get(): Promise<saas.csp2.OfficeLicence>;
+                };
+            }
+            serviceInfos: {
+                // GET /saas/csp2/{serviceName}/serviceInfos
+                $get(): Promise<services.Service>;
+                // PUT /saas/csp2/{serviceName}/serviceInfos
+                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+            }
+            subscription: {
+                // GET /saas/csp2/{serviceName}/subscription
+                $get(): Promise<number[]>;
+                // POST /saas/csp2/{serviceName}/subscription
+                $post(params: {licenseId: number, quantity: number}): Promise<saas.csp2.OfficeTask>;
+                $(id: number): {
+                    // DELETE /saas/csp2/{serviceName}/subscription/{id}
+                    $delete(): Promise<saas.csp2.OfficeTask>;
+                    // GET /saas/csp2/{serviceName}/subscription/{id}
+                    $get(): Promise<saas.csp2.OfficeSubscription>;
+                    addonsSubscriptionIds: {
+                        // GET /saas/csp2/{serviceName}/subscription/{id}/addonsSubscriptionIds
+                        $get(): Promise<number[]>;
+                    }
+                    availableAddonLicenses: {
+                        // GET /saas/csp2/{serviceName}/subscription/{id}/availableAddonLicenses
+                        $get(): Promise<number[]>;
+                    }
+                    changeQuantity: {
+                        // POST /saas/csp2/{serviceName}/subscription/{id}/changeQuantity
+                        $post(params: {quantity: number}): Promise<saas.csp2.OfficeTask>;
+                    }
+                    orderAddon: {
+                        // POST /saas/csp2/{serviceName}/subscription/{id}/orderAddon
+                        $post(params: {licenseId: number, quantity: number}): Promise<saas.csp2.OfficeTask>;
+                    }
+                };
+            }
+            task: {
+                // GET /saas/csp2/{serviceName}/task
+                $get(): Promise<number[]>;
+                $(id: number): {
+                    // GET /saas/csp2/{serviceName}/task/{id}
+                    $get(): Promise<saas.csp2.OfficeTask>;
+                };
+            }
+            usageStatistics: {
+                // GET /saas/csp2/{serviceName}/usageStatistics
+                $get(params: {timePeriod: msServices.LicensePeriodEnum}): Promise<saas.csp2.Statistics[]>;
+            }
+        };
+    }
+// Api
   /**
    * Operations about the CSP2 service
    * List available services
    */
-  public get(path: '/saas/csp2'): Promise<string[]>;
+  get(path: '/saas/csp2'): () => Promise<string[]>;
   /**
    * Office tenant
    * Get this object properties
    */
-  public get(path: '/saas/csp2/{serviceName}', params: {serviceName: string}): Promise<SaasCsp2OfficeTenant>;
+  get(path: '/saas/csp2/{serviceName}'): (params: {serviceName: string}) => Promise<saas.csp2.OfficeTenant>;
   /**
    * billingPeriodPeaks operations
    * Get the curren billing period's usage peak for each subscription
    */
-  public get(path: '/saas/csp2/{serviceName}/billingPeriodPeaks', params: {serviceName: string}): Promise<SaasCsp2BillingStatistics>;
+  get(path: '/saas/csp2/{serviceName}/billingPeriodPeaks'): (params: {serviceName: string}) => Promise<saas.csp2.BillingStatistics>;
   /**
    * List the saas.csp2.OfficeLicence objects
    * Licenses available for order
    */
-  public get(path: '/saas/csp2/{serviceName}/orderableLicenses', params: {serviceName: string}): Promise<number[]>;
+  get(path: '/saas/csp2/{serviceName}/orderableLicenses'): (params: {serviceName: string}) => Promise<number[]>;
   /**
    * Office licence
    * Get this object properties
    */
-  public get(path: '/saas/csp2/{serviceName}/orderableLicenses/{id}', params: {serviceName: string, id: number}): Promise<SaasCsp2OfficeLicence>;
+  get(path: '/saas/csp2/{serviceName}/orderableLicenses/{id}'): (params: {id: number, serviceName: string}) => Promise<saas.csp2.OfficeLicence>;
   /**
    * Details about a Service
    * Get this object properties
    */
-  public get(path: '/saas/csp2/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
+  get(path: '/saas/csp2/{serviceName}/serviceInfos'): (params: {serviceName: string}) => Promise<services.Service>;
   /**
    * List the saas.csp2.OfficeSubscription objects
    * Subscriptions associated to this office tenant
    */
-  public get(path: '/saas/csp2/{serviceName}/subscription', params: {serviceName: string}): Promise<number[]>;
+  get(path: '/saas/csp2/{serviceName}/subscription'): (params: {serviceName: string}) => Promise<number[]>;
   /**
    * Office subscription
    * Get this object properties
    */
-  public get(path: '/saas/csp2/{serviceName}/subscription/{id}', params: {serviceName: string, id: number}): Promise<SaasCsp2OfficeSubscription>;
+  get(path: '/saas/csp2/{serviceName}/subscription/{id}'): (params: {id: number, serviceName: string}) => Promise<saas.csp2.OfficeSubscription>;
   /**
    * addonsSubscriptionIds operations
    * Addon subscriptions associated to this office subscription
    */
-  public get(path: '/saas/csp2/{serviceName}/subscription/{id}/addonsSubscriptionIds', params: {serviceName: string, id: number}): Promise<number[]>;
+  get(path: '/saas/csp2/{serviceName}/subscription/{id}/addonsSubscriptionIds'): (params: {id: number, serviceName: string}) => Promise<number[]>;
   /**
    * availableAddonLicenses operations
    * Gives a list of licenses ids that can be ordered as an addon for this subscription
    */
-  public get(path: '/saas/csp2/{serviceName}/subscription/{id}/availableAddonLicenses', params: {serviceName: string, id: number}): Promise<number[]>;
+  get(path: '/saas/csp2/{serviceName}/subscription/{id}/availableAddonLicenses'): (params: {id: number, serviceName: string}) => Promise<number[]>;
   /**
    * List the saas.csp2.OfficeTask objects
    * Pending tasks of this tenant
    */
-  public get(path: '/saas/csp2/{serviceName}/task', params: {serviceName: string}): Promise<number[]>;
+  get(path: '/saas/csp2/{serviceName}/task'): (params: {serviceName: string}) => Promise<number[]>;
   /**
    * Office task
    * Get this object properties
    */
-  public get(path: '/saas/csp2/{serviceName}/task/{id}', params: {serviceName: string, id: number}): Promise<SaasCsp2OfficeTask>;
+  get(path: '/saas/csp2/{serviceName}/task/{id}'): (params: {id: number, serviceName: string}) => Promise<saas.csp2.OfficeTask>;
   /**
    * usageStatistics operations
    * Get the usage statistics over the chose period
    */
-  public get(path: '/saas/csp2/{serviceName}/usageStatistics', params: {serviceName: string, timePeriod: MsServicesLicensePeriodEnum}): Promise<SaasCsp2Statistics[]>;
-  public get(path: PathsSaasCsp2GET, params?: OvhParamType): Promise<any> {
-    return super.get(path, params
-  );}
+  get(path: '/saas/csp2/{serviceName}/usageStatistics'): (params: {serviceName: string, timePeriod: msServices.LicensePeriodEnum}) => Promise<saas.csp2.Statistics[]>;
   /**
    * Office tenant
    * Alter this object properties
    */
-  public put(path: '/saas/csp2/{serviceName}', params: {serviceName: string, address?: string, city?: string, creationDate?: string, displayName?: string, email?: string, firstName?: string, lastName?: string, phone?: string, status?: SaasCsp2ServiceStateEnum, zipCode?: string}): Promise<void>;
+  put(path: '/saas/csp2/{serviceName}'): (params: {serviceName: string, address?: string, city?: string, creationDate?: string, displayName?: string, email?: string, firstName?: string, lastName?: string, phone?: string, status?: saas.csp2.ServiceStateEnum, zipCode?: string}) => Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/saas/csp2/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
-  public put(path: PathsSaasCsp2PUT, params?: OvhParamType): Promise<any> {
-    return super.put(path, params
-  );}
+  put(path: '/saas/csp2/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
   /**
    * changeAdministratorPassword operations
    * Changes the tenant administrator's password
    */
-  public post(path: '/saas/csp2/{serviceName}/changeAdministratorPassword', params: {serviceName: string, newPassword: string}): Promise<SaasCsp2OfficeTask>;
+  post(path: '/saas/csp2/{serviceName}/changeAdministratorPassword'): (params: {serviceName: string, newPassword: string}) => Promise<saas.csp2.OfficeTask>;
   /**
    * configureDomain operations
    * Automatically sets up an OVH-hosted domain of yours for your office365 services. Note, this requires the domain to not have any interfering MX/SRV/TXT records
    */
-  public post(path: '/saas/csp2/{serviceName}/configureDomain', params: {serviceName: string, domain: string, supportedServices: SaasCsp2SupportedServiceEnum[]}): Promise<SaasCsp2OfficeTask>;
+  post(path: '/saas/csp2/{serviceName}/configureDomain'): (params: {serviceName: string, domain: string, supportedServices: saas.csp2.SupportedServiceEnum[]}) => Promise<saas.csp2.OfficeTask>;
   /**
    * List the saas.csp2.OfficeSubscription objects
    * Add a subscription to this tenant
    */
-  public post(path: '/saas/csp2/{serviceName}/subscription', params: {serviceName: string, licenseId: number, quantity: number}): Promise<SaasCsp2OfficeTask>;
+  post(path: '/saas/csp2/{serviceName}/subscription'): (params: {serviceName: string, licenseId: number, quantity: number}) => Promise<saas.csp2.OfficeTask>;
   /**
    * changeQuantity operations
    * Change the quantity of seats in the subscription
    */
-  public post(path: '/saas/csp2/{serviceName}/subscription/{id}/changeQuantity', params: {serviceName: string, id: number, quantity: number}): Promise<SaasCsp2OfficeTask>;
+  post(path: '/saas/csp2/{serviceName}/subscription/{id}/changeQuantity'): (params: {id: number, serviceName: string, quantity: number}) => Promise<saas.csp2.OfficeTask>;
   /**
    * orderAddon operations
    * Creates a new subscription as an addon for this subscription
    */
-  public post(path: '/saas/csp2/{serviceName}/subscription/{id}/orderAddon', params: {serviceName: string, id: number, licenseId: number, quantity: number}): Promise<SaasCsp2OfficeTask>;
-  public post(path: PathsSaasCsp2POST, params?: OvhParamType): Promise<any> {
-    return super.post(path, params
-  );}
+  post(path: '/saas/csp2/{serviceName}/subscription/{id}/orderAddon'): (params: {id: number, serviceName: string, licenseId: number, quantity: number}) => Promise<saas.csp2.OfficeTask>;
   /**
    * Office subscription
    * Delete a subscription from this tenant
    */
-  public delete(path: '/saas/csp2/{serviceName}/subscription/{id}', params: {serviceName: string, id: number}): Promise<SaasCsp2OfficeTask>;
-  public delete(path: PathsSaasCsp2DELETE, params?: OvhParamType): Promise<any> {
-    return super.delete(path, params
-  );}
+  delete(path: '/saas/csp2/{serviceName}/subscription/{id}'): (params: {id: number, serviceName: string}) => Promise<saas.csp2.OfficeTask>;
 }
-export default ApiSaasCsp2;
+/**
+ * classic Model
+ */

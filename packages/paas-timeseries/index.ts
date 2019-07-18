@@ -1,446 +1,281 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
-/**
- * A numeric value tagged with its unit
- */
-export interface ComplexTypeUnitAndValue<T> {
-  /**
-   */
-  unit: string;
-  /**
-   */
-  value: T;
-}
-/**
- * 
- */
-export type OrderCurrencyCodeEnum = 'AUD' | 'CAD' | 'CZK' | 'EUR' | 'GBP' | 'LTL' | 'MAD' | 'N/A' | 'PLN' | 'SGD' | 'TND' | 'USD' | 'XOF' | 'points';
-/**
- * Price with it's currency and textual representation
- */
-export interface OrderPrice {
-  /**
-   */
-  currencyCode: OrderCurrencyCodeEnum;
-  /**
-   */
-  text: string;
-  /**
-   */
-  value: number;
-}
-/**
- * Consumption
- */
-export interface PaasTimeseriesConsumption {
-  /**
-   * Consumption start date
-   *
-   */
-  from: string;
-  /**
-   * Timestamp of consumption generation
-   *
-   */
-  generated: string;
-  /**
-   * List of consumption items
-   *
-   */
-  items: PaasTimeseriesConsumptionItem[];
-  /**
-   * Consumption end date
-   *
-   */
-  to: string;
-  /**
-   * Total
-   *
-   */
-  total: OrderPrice;
-}
-/**
- * ConsumptionItem
- */
-export interface PaasTimeseriesConsumptionItem {
-  /**
-   * Metric name
-   *
-   */
-  metricName: PaasTimeseriesConsumptionItemMetricNameEnum;
-  /**
-   * Price
-   *
-   */
-  price: OrderPrice;
-  /**
-   * Quantity consumed in unit
-   *
-   */
-  quantity: ComplexTypeUnitAndValue<number>;
-  /**
-   * Unit price
-   *
-   */
-  unitPrice: OrderPrice;
-}
-/**
- * Key
- */
-export interface PaasTimeseriesKey {
-  /**
-   * Description
-   *
-   */
-  description: string;
-  /**
-   * Id
-   *
-   */
-  id: string;
-  /**
-   * List of permissions
-   *
-   */
-  permissions: PaasTimeseriesPermissionEnum[];
-  /**
-   * Secret part
-   *
-   */
-  secret: string;
-  /**
-   * List of tags
-   *
-   */
-  tags: PaasTimeseriesTag[];
-}
-/**
- * Tokens permissions
- */
-export type PaasTimeseriesPermissionEnum = 'READ' | 'WRITE';
-/**
- * Project
- */
-export interface PaasTimeseriesProject {
-  /**
-   * Description
-   *
-   */
-  description?: string;
-  /**
-   * Name
-   *
-   */
-  displayName: string;
-  /**
-   * Region
-   *
-   */
-  region: PaasTimeseriesRegion;
-  /**
-   * Id
-   *
-   */
-  serviceName: string;
-}
-/**
- * Quota
- */
-export interface PaasTimeseriesQuota {
-  /**
-   * Current value
-   *
-   */
-  current: number;
-  /**
-   * Max allowed
-   *
-   */
-  max: number;
-  /**
-   * Type (ie: mads, ddp, ...)
-   *
-   */
-  type: PaasTimeseriesQuotaTypeEnum;
-}
-/**
- * Project quotas
- */
-export type PaasTimeseriesQuotaTypeEnum = 'ddp' | 'mads';
-/**
- * Region
- */
-export interface PaasTimeseriesRegion {
-  /**
-   * Name
-   *
-   */
-  displayName: string;
-  /**
-   * Id
-   *
-   */
-  id: string;
-  /**
-   * URL
-   *
-   */
-  url: string;
-}
-/**
- * Tag
- */
-export interface PaasTimeseriesTag {
-  /**
-   * Key
-   *
-   */
-  key: string;
-  /**
-   * Value
-   *
-   */
-  value: string;
-}
-/**
- * Metric name
- */
-export type PaasTimeseriesConsumptionItemMetricNameEnum = 'input' | 'output' | 'storage';
-/**
- * Map a possible renew for a specific service
- */
-export interface ServiceRenewType {
-  /**
-   * The service is automatically renewed
-   *
-   */
-  automatic: boolean;
-  /**
-   * The service will be deleted at expiration
-   *
-   */
-  deleteAtExpiration: boolean;
-  /**
-   * The service forced to be renewed
-   *
-   */
-  forced: boolean;
-  /**
-   * The service needs to be manually renewed and paid
-   *
-   */
-  manualPayment?: boolean;
-  /**
-   * period of renew in month
-   *
-   */
-  period?: number;
-}
-/**
- * Detailed renewal type of a service
- */
-export type ServiceRenewalTypeEnum = 'automaticForcedProduct' | 'automaticV2012' | 'automaticV2014' | 'automaticV2016' | 'manual' | 'oneShot' | 'option';
-/**
- * 
- */
-export type ServiceStateEnum = 'expired' | 'inCreation' | 'ok' | 'pendingDebt' | 'unPaid';
-/**
- * Details about a Service
- */
-export interface ServicesService {
-  /**
-   * Indicates that the service can be set up to be deleted at expiration
-   *
-   */
-  canDeleteAtExpiration: boolean;
-  /**
-   */
-  contactAdmin: string;
-  /**
-   */
-  contactBilling: string;
-  /**
-   */
-  contactTech: string;
-  /**
-   */
-  creation: string;
-  /**
-   */
-  domain: string;
-  /**
-   */
-  engagedUpTo?: string;
-  /**
-   */
-  expiration: string;
-  /**
-   * All the possible renew period of your service in month
-   *
-   */
-  possibleRenewPeriod?: number[];
-  /**
-   * Way of handling the renew
-   *
-   */
-  renew?: ServiceRenewType;
-  /**
-   */
-  renewalType: ServiceRenewalTypeEnum;
-  /**
-   */
-  serviceId: number;
-  /**
-   */
-  status: ServiceStateEnum;
-}
-/**
- * Timeseries project
- */
-export interface TimeseriesProject {
-  /**
-   * description of your project
-   *
-   */
-  description?: string;
-  /**
-   * name of your project
-   *
-   */
-  displayName?: string;
-  /**
-   * subscribed offer
-   *
-   */
-  offerId?: string;
-  /**
-   * region where your data are located
-   *
-   */
-  regionId?: string;
-  /**
-   * timeseries Project id
-   *
-   */
-  serviceName: string;
-  /**
-   * project status
-   *
-   */
-  status?: TimeseriesStatusTypeEnum;
-}
-/**
- * The current status for the project
- */
-export type TimeseriesStatusTypeEnum = 'ACTIVE' | 'CREATION' | 'DELETED' | 'UNCONFIGURED';
-type PathsPaasTimeseriesGET = '/paas/timeseries' | 
-'/paas/timeseries/region' | 
-'/paas/timeseries/{serviceName}' | 
-'/paas/timeseries/{serviceName}/consumption' | 
-'/paas/timeseries/{serviceName}/key' | 
-'/paas/timeseries/{serviceName}/key/{keyId}' | 
-'/paas/timeseries/{serviceName}/quota' | 
-'/paas/timeseries/{serviceName}/serviceInfos';
+import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
-type PathsPaasTimeseriesPUT = '/paas/timeseries/{serviceName}' | 
-'/paas/timeseries/{serviceName}/key/{keyId}' | 
-'/paas/timeseries/{serviceName}/serviceInfos';
+/**
+ * START API /paas/timeseries Models
+ */
+export namespace complexType {
+    //complexType.UnitAndValue
+    // fullName: complexType.UnitAndValue.UnitAndValue
+    export interface UnitAndValue<T> {
+        unit: string;
+        value: T;
+    }
+}
+export namespace order {
+    //order.CurrencyCodeEnum
+    export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
+    //order.Price
+    // fullName: order.Price.Price
+    export interface Price {
+        currencyCode: order.CurrencyCodeEnum;
+        text: string;
+        value: number;
+    }
+}
+export namespace paas {
+    export namespace timeseries {
+        //paas.timeseries.Consumption
+        // fullName: paas.timeseries.Consumption.Consumption
+        export interface Consumption {
+            from: string;
+            generated: string;
+            items: paas.timeseries.ConsumptionItem[];
+            to: string;
+            total: orderPrice;
+        }
+        //paas.timeseries.ConsumptionItem
+        // fullName: paas.timeseries.ConsumptionItem.ConsumptionItem
+        export interface ConsumptionItem {
+            metricName: tsaas.MetricNameEnum;
+            price: orderPrice;
+            quantity: complexType.UnitAndValue<number>;
+            unitPrice: orderPrice;
+        }
+        //paas.timeseries.Key
+        // fullName: paas.timeseries.Key.Key
+        export interface Key {
+            description: string;
+            id: string;
+            permissions: tsaas.PermissionEnum[];
+            secret: string;
+            tags: paas.timeseries.Tag[];
+        }
+        //paas.timeseries.Project
+        // fullName: paas.timeseries.Project.Project
+        export interface Project {
+            description?: string;
+            displayName: string;
+            region: paas.timeseries.Region;
+            serviceName: string;
+        }
+        //paas.timeseries.Quota
+        // fullName: paas.timeseries.Quota.Quota
+        export interface Quota {
+            current: number;
+            max: number;
+            type: tsaas.QuotaTypeEnum;
+        }
+        //paas.timeseries.Region
+        // fullName: paas.timeseries.Region.Region
+        export interface Region {
+            displayName: string;
+            id: string;
+            url: string;
+        }
+        //paas.timeseries.Tag
+        // fullName: paas.timeseries.Tag.Tag
+        export interface Tag {
+            key: string;
+            value: string;
+        }
+    }
+}
+export namespace service {
+    //service.RenewType
+    // fullName: service.RenewType.RenewType
+    export interface RenewType {
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
+        manualPayment?: boolean;
+        period?: number;
+    }
+    //service.RenewalTypeEnum
+    export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
+    //service.StateEnum
+    export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
+}
+export namespace services {
+    //services.Service
+    // fullName: services.Service.Service
+    export interface Service {
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
+        engagedUpTo?: string;
+        expiration: string;
+        possibleRenewPeriod?: number[];
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
+        serviceId: number;
+        status: service.StateEnum;
+    }
+}
+export namespace timeseries {
+    //timeseries.Project
+    // fullName: timeseries.Project.Project
+    export interface Project {
+        description?: string;
+        displayName?: string;
+        offerId?: string;
+        regionId?: string;
+        serviceName: string;
+        status?: timeseries.StatusTypeEnum;
+    }
+    //timeseries.StatusTypeEnum
+    export type StatusTypeEnum = "ACTIVE" | "CREATION" | "DELETED" | "UNCONFIGURED"
+}
+export namespace tsaas {
+    //tsaas.MetricNameEnum
+    export type MetricNameEnum = "storage" | "input" | "output"
+    //tsaas.PermissionEnum
+    export type PermissionEnum = "READ" | "WRITE"
+    //tsaas.QuotaTypeEnum
+    export type QuotaTypeEnum = "ddp" | "mads"
+}
 
-type PathsPaasTimeseriesPOST = '/paas/timeseries/{serviceName}/changeContact' | 
-'/paas/timeseries/{serviceName}/key' | 
-'/paas/timeseries/{serviceName}/setup';
-
-type PathsPaasTimeseriesDELETE = '/paas/timeseries/{serviceName}/key/{keyId}';
-
-export class ApiPaasTimeseries extends OvhWrapper {
-  constructor(engine: OvhRequestable) {
-    super(engine);
-  }
+/**
+ * END API /paas/timeseries Models
+ */
+export function proxyPaasTimeseries(ovhEngine: OvhRequestable): Paas {
+    return buildOvhProxy(ovhEngine, '/paas');
+}
+export default proxyPaasTimeseries;
+/**
+ * Api Proxy model
+ */// Apis harmony
+// path /paas
+export interface Paas{
+    timeseries: {
+        // GET /paas/timeseries
+        $get(): Promise<string[]>;
+        region: {
+            // GET /paas/timeseries/region
+            $get(): Promise<paas.timeseries.Region[]>;
+        }
+        $(serviceName: string): {
+            // GET /paas/timeseries/{serviceName}
+            $get(): Promise<timeseries.Project>;
+            // PUT /paas/timeseries/{serviceName}
+            $put(params?: {description?: string, displayName?: string, offerId?: string, regionId?: string, serviceName?: string, status?: timeseries.StatusTypeEnum}): Promise<void>;
+            changeContact: {
+                // POST /paas/timeseries/{serviceName}/changeContact
+                $post(params?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
+            }
+            consumption: {
+                // GET /paas/timeseries/{serviceName}/consumption
+                $get(): Promise<paas.timeseries.Consumption[]>;
+            }
+            key: {
+                // GET /paas/timeseries/{serviceName}/key
+                $get(): Promise<paas.timeseries.Key[]>;
+                // POST /paas/timeseries/{serviceName}/key
+                $post(params: {description?: string, permissions: string[], tags: paas.timeseries.Tag[]}): Promise<paas.timeseries.Key>;
+                $(keyId: string): {
+                    // DELETE /paas/timeseries/{serviceName}/key/{keyId}
+                    $delete(): Promise<boolean>;
+                    // GET /paas/timeseries/{serviceName}/key/{keyId}
+                    $get(): Promise<paas.timeseries.Key>;
+                    // PUT /paas/timeseries/{serviceName}/key/{keyId}
+                    $put(params: {description?: string, permissions: tsaas.PermissionEnum[], tags: paas.timeseries.Tag[]}): Promise<paas.timeseries.Key>;
+                };
+            }
+            quota: {
+                // GET /paas/timeseries/{serviceName}/quota
+                $get(): Promise<paas.timeseries.Quota[]>;
+            }
+            serviceInfos: {
+                // GET /paas/timeseries/{serviceName}/serviceInfos
+                $get(): Promise<services.Service>;
+                // PUT /paas/timeseries/{serviceName}/serviceInfos
+                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+            }
+            setup: {
+                // POST /paas/timeseries/{serviceName}/setup
+                $post(params: {description?: string, displayName: string, raTokenId?: string, raTokenKey?: string, regionId?: string}): Promise<paas.timeseries.Project>;
+            }
+        };
+    }
+// Api
   /**
    * Operations about the PAAS_TIMESERIES service
    * List available services
    */
-  public get(path: '/paas/timeseries'): Promise<string[]>;
-  /**
-   * Regions
-   * Get available regions
-   */
-  public get(path: '/paas/timeseries/region'): Promise<PaasTimeseriesRegion[]>;
+  get(path: '/paas/timeseries'): () => Promise<string[]>;
   /**
    * Timeseries project
    * Get this object properties
    */
-  public get(path: '/paas/timeseries/{serviceName}', params: {serviceName: string}): Promise<TimeseriesProject>;
+  get(path: '/paas/timeseries/{serviceName}'): (params: {serviceName: string}) => Promise<timeseries.Project>;
   /**
    * Consumption
    * Get consumption
    */
-  public get(path: '/paas/timeseries/{serviceName}/consumption', params: {serviceName: string}): Promise<PaasTimeseriesConsumption[]>;
+  get(path: '/paas/timeseries/{serviceName}/consumption'): (params: {serviceName: string}) => Promise<paas.timeseries.Consumption[]>;
   /**
    * Keys
    * Get keys for a project
    */
-  public get(path: '/paas/timeseries/{serviceName}/key', params: {serviceName: string}): Promise<PaasTimeseriesKey[]>;
+  get(path: '/paas/timeseries/{serviceName}/key'): (params: {serviceName: string}) => Promise<paas.timeseries.Key[]>;
   /**
    * Key
    * Get a key
    */
-  public get(path: '/paas/timeseries/{serviceName}/key/{keyId}', params: {serviceName: string, keyId: string}): Promise<PaasTimeseriesKey>;
+  get(path: '/paas/timeseries/{serviceName}/key/{keyId}'): (params: {keyId: string, serviceName: string}) => Promise<paas.timeseries.Key>;
   /**
    * Quotas
    * Get quotas
    */
-  public get(path: '/paas/timeseries/{serviceName}/quota', params: {serviceName: string}): Promise<PaasTimeseriesQuota[]>;
+  get(path: '/paas/timeseries/{serviceName}/quota'): (params: {serviceName: string}) => Promise<paas.timeseries.Quota[]>;
   /**
    * Details about a Service
    * Get this object properties
    */
-  public get(path: '/paas/timeseries/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
-  public get(path: PathsPaasTimeseriesGET, params?: OvhParamType): Promise<any> {
-    return super.get(path, params
-  );}
+  get(path: '/paas/timeseries/{serviceName}/serviceInfos'): (params: {serviceName: string}) => Promise<services.Service>;
+  /**
+   * Regions
+   * Get available regions
+   */
+  get(path: '/paas/timeseries/region'): () => Promise<paas.timeseries.Region[]>;
   /**
    * Timeseries project
    * Alter this object properties
    */
-  public put(path: '/paas/timeseries/{serviceName}', params: {serviceName: string, description?: string, displayName?: string, offerId?: string, regionId?: string, status?: TimeseriesStatusTypeEnum}): Promise<void>;
+  put(path: '/paas/timeseries/{serviceName}'): (params: {serviceName: string, description?: string, displayName?: string, offerId?: string, regionId?: string, status?: timeseries.StatusTypeEnum}) => Promise<void>;
   /**
    * Key
    * Create a key
    */
-  public put(path: '/paas/timeseries/{serviceName}/key/{keyId}', params: {serviceName: string, keyId: string, description?: string, permissions: PaasTimeseriesPermissionEnum[], tags: PaasTimeseriesTag[]}): Promise<PaasTimeseriesKey>;
+  put(path: '/paas/timeseries/{serviceName}/key/{keyId}'): (params: {keyId: string, serviceName: string, description?: string, permissions: tsaas.PermissionEnum[], tags: paas.timeseries.Tag[]}) => Promise<paas.timeseries.Key>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/paas/timeseries/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
-  public put(path: PathsPaasTimeseriesPUT, params?: OvhParamType): Promise<any> {
-    return super.put(path, params
-  );}
+  put(path: '/paas/timeseries/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
   /**
    * Change the contacts of this service
    * Launch a contact change procedure
    */
-  public post(path: '/paas/timeseries/{serviceName}/changeContact', params: {serviceName: string, contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
+  post(path: '/paas/timeseries/{serviceName}/changeContact'): (params: {serviceName: string, contactAdmin?: string, contactBilling?: string, contactTech?: string}) => Promise<number[]>;
   /**
    * Keys
    * Create a key for a project
    */
-  public post(path: '/paas/timeseries/{serviceName}/key', params: {serviceName: string, description?: string, permissions: string[], tags: PaasTimeseriesTag[]}): Promise<PaasTimeseriesKey>;
+  post(path: '/paas/timeseries/{serviceName}/key'): (params: {serviceName: string, description?: string, permissions: string[], tags: paas.timeseries.Tag[]}) => Promise<paas.timeseries.Key>;
   /**
    * Setup your project on our platform
    * Setup a project
    */
-  public post(path: '/paas/timeseries/{serviceName}/setup', params: {serviceName: string, description?: string, displayName: string, raTokenId?: string, raTokenKey?: string, regionId?: string}): Promise<PaasTimeseriesProject>;
-  public post(path: PathsPaasTimeseriesPOST, params?: OvhParamType): Promise<any> {
-    return super.post(path, params
-  );}
+  post(path: '/paas/timeseries/{serviceName}/setup'): (params: {serviceName: string, description?: string, displayName: string, raTokenId?: string, raTokenKey?: string, regionId?: string}) => Promise<paas.timeseries.Project>;
   /**
    * Key
    * Delete a OpenTSDB token
    */
-  public delete(path: '/paas/timeseries/{serviceName}/key/{keyId}', params: {serviceName: string, keyId: string}): Promise<boolean>;
-  public delete(path: PathsPaasTimeseriesDELETE, params?: OvhParamType): Promise<any> {
-    return super.delete(path, params
-  );}
+  delete(path: '/paas/timeseries/{serviceName}/key/{keyId}'): (params: {keyId: string, serviceName: string}) => Promise<boolean>;
 }
-export default ApiPaasTimeseries;
+/**
+ * classic Model
+ */type orderPrice = order.Price;

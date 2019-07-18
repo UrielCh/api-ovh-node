@@ -1,68 +1,63 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
-/**
- * Key and value, with proper key strings
- */
-export interface ComplexTypeSafeKeyValue<T> {
-  /**
-   */
-  key: string;
-  /**
-   */
-  value: T;
-}
-/**
- * Form characteristics
- */
-export interface ContactFormCharacteristic {
-  /**
-   * Form keys to send
-   *
-   */
-  keys: ContactKeyFormCharacteristic[];
-  /**
-   * Form type
-   *
-   */
-  type: string;
-}
-/**
- * Form key description
- */
-export interface ContactKeyFormCharacteristic {
-  /**
-   * Key name
-   *
-   */
-  key: string;
-  /**
-   * Key required or not
-   *
-   */
-  required: boolean;
-}
-type PathsContactGET = '/contact/form';
+import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
-type PathsContactPOST = '/contact/form/send';
+/**
+ * START API /contact Models
+ */
+export namespace complexType {
+    //complexType.SafeKeyValue
+    // fullName: complexType.SafeKeyValue.SafeKeyValue
+    export interface SafeKeyValue<T> {
+        key: string;
+        value: T;
+    }
+}
+export namespace contact {
+    //contact.FormCharacteristic
+    // fullName: contact.FormCharacteristic.FormCharacteristic
+    export interface FormCharacteristic {
+        keys: contact.KeyFormCharacteristic[];
+        type: string;
+    }
+    //contact.KeyFormCharacteristic
+    // fullName: contact.KeyFormCharacteristic.KeyFormCharacteristic
+    export interface KeyFormCharacteristic {
+        key: string;
+        required: boolean;
+    }
+}
 
-export class ApiContact extends OvhWrapper {
-  constructor(engine: OvhRequestable) {
-    super(engine);
-  }
+/**
+ * END API /contact Models
+ */
+export function proxyContact(ovhEngine: OvhRequestable): Contact {
+    return buildOvhProxy(ovhEngine, '/contact');
+}
+export default proxyContact;
+/**
+ * Api Proxy model
+ */// Apis harmony
+// path /contact
+export interface Contact{
+    form: {
+        // GET /contact/form
+        $get(): Promise<contact.FormCharacteristic[]>;
+        send: {
+            // POST /contact/form/send
+            $post(params: {form: complexType.SafeKeyValue<string>[], type: string}): Promise<void>;
+        }
+    }
+// Api
   /**
    * Get form characteristics
    * Get form characteristics
    */
-  public get(path: '/contact/form'): Promise<ContactFormCharacteristic[]>;
-  public get(path: PathsContactGET, params?: OvhParamType): Promise<any> {
-    return super.get(path, params
-  );}
+  get(path: '/contact/form'): () => Promise<contact.FormCharacteristic[]>;
   /**
    * Send form following characteristics of /contact/form
    * Send form following characteristics of /contact/form
    */
-  public post(path: '/contact/form/send', params: {form: ComplexTypeSafeKeyValue<string>[], type: string}): Promise<void>;
-  public post(path: PathsContactPOST, params?: OvhParamType): Promise<any> {
-    return super.post(path, params
-  );}
+  post(path: '/contact/form/send'): (params: {form: complexType.SafeKeyValue<string>[], type: string}) => Promise<void>;
 }
-export default ApiContact;
+/**
+ * classic Model
+ */

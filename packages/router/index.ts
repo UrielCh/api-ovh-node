@@ -1,542 +1,401 @@
-import { OvhWrapper, OvhRequestable, OvhParamType } from '@ovh-api/common';
-/**
- * Network Dnat
- */
-export interface RouterDnat {
-  /**
-   * Destination port number
-   *
-   */
-  destinationPort?: number;
-  /**
-   */
-  id: number;
-  /**
-   * New destination IP
-   *
-   */
-  newDestinationNet: string;
-  /**
-   * New destination port number
-   *
-   */
-  newDestinationPort?: number;
-  /**
-   * Protocol (TCP, UDP)
-   *
-   */
-  protocol: RouterProtocolEnum;
-  /**
-   * Source IP or network
-   *
-   */
-  sourceNet?: string;
-  /**
-   */
-  status: RouterStatusEnum;
-}
-/**
- * All states this object can be in
- */
-export type RouterIpStatusEnum = 'blacklisted' | 'deleted' | 'free' | 'installing' | 'ok' | 'quarantined' | 'removing' | 'suspended';
-/**
- * Network
- */
-export interface RouterNetwork {
-  /**
-   */
-  creationDate: string;
-  /**
-   */
-  description?: string;
-  /**
-   */
-  id: number;
-  /**
-   * Gateway IP / CIDR Netmask
-   *
-   */
-  ipNet: string;
-  /**
-   */
-  status: RouterIpStatusEnum;
-  /**
-   */
-  vlanTag?: number;
-}
-/**
- * Action to be taken against the Private Link request
- */
-export type RouterPrivLinkReqActionEnum = 'accept' | 'cancel' | 'reject';
-/**
- * Request status of this private link (all links have to be accepted before being created)
- */
-export type RouterPrivLinkReqStatusEnum = 'accepted' | 'cancelled' | 'error' | 'pending' | 'rejected';
-/**
- * Private Link to another service
- */
-export interface RouterPrivateLink {
-  /**
-   */
-  creationDate: string;
-  /**
-   */
-  id: number;
-  /**
-   * Your memory-friendly name of this private link
-   *
-   */
-  name: string;
-  /**
-   * Service name of the other side of this link
-   *
-   */
-  peerServiceName: string;
-  /**
-   */
-  status: RouterStatusEnum;
-}
-/**
- * Received Private Link requests
- */
-export interface RouterPrivateLinkRequest {
-  /**
-   */
-  creationDate: string;
-  /**
-   */
-  status: RouterPrivLinkReqStatusEnum;
-}
-/**
- * Outgoing routes configured inside a Private Link
- */
-export interface RouterPrivateLinkRoute {
-  /**
-   */
-  creationDate: string;
-  /**
-   */
-  id: number;
-  /**
-   * Network allowed to be routed outside
-   *
-   */
-  network: string;
-  /**
-   */
-  status: RouterStatusEnum;
-}
-/**
- * Allowed protocols
- */
-export type RouterProtocolEnum = 'any' | 'tcp' | 'udp';
-/**
- * Router
- */
-export interface RouterRouter {
-  /**
-   */
-  name: string;
-  /**
-   * The internal name of your Router offer
-   *
-   */
-  service: string;
-  /**
-   */
-  status: RouterStatusEnum;
-}
-/**
- * Network Snat
- */
-export interface RouterSnat {
-  /**
-   * Destination IP or network
-   *
-   */
-  destinationNet?: string;
-  /**
-   * Destination port number
-   *
-   */
-  destinationPort?: number;
-  /**
-   */
-  id: number;
-  /**
-   * New source IP
-   *
-   */
-  newSourceNet: string;
-  /**
-   * New destination port number
-   *
-   */
-  newSourcePort?: number;
-  /**
-   * Protocol (TCP, UDP)
-   *
-   */
-  protocol: RouterProtocolEnum;
-  /**
-   */
-  status: RouterStatusEnum;
-}
-/**
- * All states this object can be in
- */
-export type RouterStatusEnum = 'creating' | 'error' | 'off' | 'on' | 'removing' | 'suspended';
-/**
- * Task
- */
-export interface RouterTask {
-  /**
-   */
-  creationDate: string;
-  /**
-   */
-  finishDate?: string;
-  /**
-   */
-  function: RouterTaskFunctionEnum;
-  /**
-   */
-  id: number;
-  /**
-   */
-  status: RouterTaskStatusEnum;
-}
-/**
- * All executable types of tasks
- */
-export type RouterTaskFunctionEnum = 'addDnat' | 'addDnatMaster' | 'addNetwork' | 'addNetworkMaster' | 'addPrivateLink' | 'addPrivateLinkMaster' | 'addPrivateLinkRoute' | 'addPrivateLinkRouteMaster' | 'addSnat' | 'addSnatMaster' | 'delDnat' | 'delDnatMaster' | 'delNetwork' | 'delNetworkMaster' | 'delPrivateLink' | 'delPrivateLinkMaster' | 'delPrivateLinkRoute' | 'delPrivateLinkRouteMaster' | 'delSnat' | 'delSnatMaster' | 'vpnCreation' | 'vpnDeletion' | 'vpnSetConfig' | 'vpnSetConfigMaster' | 'vpnSetSecrets' | 'vpnSetSecretsMaster';
-/**
- * All states a Task can be in
- */
-export type RouterTaskStatusEnum = 'cancelled' | 'doing' | 'done' | 'error' | 'todo';
-/**
- * Virtual Private Network
- */
-export interface RouterVpn {
-  /**
-   * IP you will be connecting from / NULL (allow all)
-   *
-   */
-  clientIp?: string;
-  /**
-   * Client's private network
-   *
-   */
-  clientPrivNet: string;
-  /**
-   */
-  id: number;
-  /**
-   * Your VPN server IP
-   *
-   */
-  serverIp: string;
-  /**
-   * Server's private network
-   *
-   */
-  serverPrivNet: string;
-}
-/**
- * Map a possible renew for a specific service
- */
-export interface ServiceRenewType {
-  /**
-   * The service is automatically renewed
-   *
-   */
-  automatic: boolean;
-  /**
-   * The service will be deleted at expiration
-   *
-   */
-  deleteAtExpiration: boolean;
-  /**
-   * The service forced to be renewed
-   *
-   */
-  forced: boolean;
-  /**
-   * The service needs to be manually renewed and paid
-   *
-   */
-  manualPayment?: boolean;
-  /**
-   * period of renew in month
-   *
-   */
-  period?: number;
-}
-/**
- * Detailed renewal type of a service
- */
-export type ServiceRenewalTypeEnum = 'automaticForcedProduct' | 'automaticV2012' | 'automaticV2014' | 'automaticV2016' | 'manual' | 'oneShot' | 'option';
-/**
- * 
- */
-export type ServiceStateEnum = 'expired' | 'inCreation' | 'ok' | 'pendingDebt' | 'unPaid';
-/**
- * All future uses you can provide for a service termination
- */
-export type ServiceTerminationFutureUseEnum = 'NOT_REPLACING_SERVICE' | 'OTHER' | 'SUBSCRIBE_AN_OTHER_SERVICE' | 'SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR' | 'SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR';
-/**
- * All reasons you can provide for a service termination
- */
-export type ServiceTerminationReasonEnum = 'FEATURES_DONT_SUIT_ME' | 'LACK_OF_PERFORMANCES' | 'MIGRATED_TO_ANOTHER_OVH_PRODUCT' | 'MIGRATED_TO_COMPETITOR' | 'NOT_NEEDED_ANYMORE' | 'NOT_RELIABLE' | 'NO_ANSWER' | 'OTHER' | 'TOO_EXPENSIVE' | 'TOO_HARD_TO_USE' | 'UNSATIFIED_BY_CUSTOMER_SUPPORT';
-/**
- * Details about a Service
- */
-export interface ServicesService {
-  /**
-   * Indicates that the service can be set up to be deleted at expiration
-   *
-   */
-  canDeleteAtExpiration: boolean;
-  /**
-   */
-  contactAdmin: string;
-  /**
-   */
-  contactBilling: string;
-  /**
-   */
-  contactTech: string;
-  /**
-   */
-  creation: string;
-  /**
-   */
-  domain: string;
-  /**
-   */
-  engagedUpTo?: string;
-  /**
-   */
-  expiration: string;
-  /**
-   * All the possible renew period of your service in month
-   *
-   */
-  possibleRenewPeriod?: number[];
-  /**
-   * Way of handling the renew
-   *
-   */
-  renew?: ServiceRenewType;
-  /**
-   */
-  renewalType: ServiceRenewalTypeEnum;
-  /**
-   */
-  serviceId: number;
-  /**
-   */
-  status: ServiceStateEnum;
-}
-type PathsRouterGET = '/router' | 
-'/router/{serviceName}' | 
-'/router/{serviceName}/network' | 
-'/router/{serviceName}/network/{ipNet}' | 
-'/router/{serviceName}/privateLink' | 
-'/router/{serviceName}/privateLink/{peerServiceName}' | 
-'/router/{serviceName}/privateLink/{peerServiceName}/request' | 
-'/router/{serviceName}/privateLink/{peerServiceName}/route' | 
-'/router/{serviceName}/privateLink/{peerServiceName}/route/{network}' | 
-'/router/{serviceName}/serviceInfos' | 
-'/router/{serviceName}/task' | 
-'/router/{serviceName}/task/{id}' | 
-'/router/{serviceName}/vpn' | 
-'/router/{serviceName}/vpn/{id}';
+import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
-type PathsRouterPUT = '/router/{serviceName}/network/{ipNet}' | 
-'/router/{serviceName}/privateLink/{peerServiceName}' | 
-'/router/{serviceName}/serviceInfos' | 
-'/router/{serviceName}/vpn/{id}';
+/**
+ * START API /router Models
+ */
+export namespace router {
+    //router.Dnat
+    // fullName: router.Dnat.Dnat
+    export interface Dnat {
+        destinationPort?: number;
+        id: number;
+        newDestinationNet: string;
+        newDestinationPort?: number;
+        protocol: router.ProtocolEnum;
+        sourceNet?: string;
+        status: router.StatusEnum;
+    }
+    //router.IpStatusEnum
+    export type IpStatusEnum = "blacklisted" | "deleted" | "free" | "installing" | "ok" | "quarantined" | "removing" | "suspended"
+    //router.Network
+    // fullName: router.Network.Network
+    export interface Network {
+        creationDate: string;
+        description?: string;
+        id: number;
+        ipNet: string;
+        status: router.IpStatusEnum;
+        vlanTag?: number;
+    }
+    //router.PrivLinkReqActionEnum
+    export type PrivLinkReqActionEnum = "accept" | "cancel" | "reject"
+    //router.PrivLinkReqStatusEnum
+    export type PrivLinkReqStatusEnum = "accepted" | "cancelled" | "error" | "pending" | "rejected"
+    //router.PrivateLink
+    // fullName: router.PrivateLink.PrivateLink
+    export interface PrivateLink {
+        creationDate: string;
+        id: number;
+        name: string;
+        peerServiceName: string;
+        status: router.StatusEnum;
+    }
+    //router.PrivateLinkRequest
+    // fullName: router.PrivateLinkRequest.PrivateLinkRequest
+    export interface PrivateLinkRequest {
+        creationDate: string;
+        status: router.PrivLinkReqStatusEnum;
+    }
+    //router.PrivateLinkRoute
+    // fullName: router.PrivateLinkRoute.PrivateLinkRoute
+    export interface PrivateLinkRoute {
+        creationDate: string;
+        id: number;
+        network: string;
+        status: router.StatusEnum;
+    }
+    //router.ProtocolEnum
+    export type ProtocolEnum = "any" | "tcp" | "udp"
+    //router.Router
+    // fullName: router.Router.Router
+    export interface Router {
+        name: string;
+        service: string;
+        status: router.StatusEnum;
+    }
+    //router.Snat
+    // fullName: router.Snat.Snat
+    export interface Snat {
+        destinationNet?: string;
+        destinationPort?: number;
+        id: number;
+        newSourceNet: string;
+        newSourcePort?: number;
+        protocol: router.ProtocolEnum;
+        status: router.StatusEnum;
+    }
+    //router.StatusEnum
+    export type StatusEnum = "creating" | "error" | "off" | "on" | "removing" | "suspended"
+    //router.Task
+    // fullName: router.Task.Task
+    export interface Task {
+        creationDate: string;
+        finishDate?: string;
+        function: router.TaskFunctionEnum;
+        id: number;
+        status: router.TaskStatusEnum;
+    }
+    //router.TaskFunctionEnum
+    export type TaskFunctionEnum = "addDnat" | "addDnatMaster" | "addNetwork" | "addNetworkMaster" | "addPrivateLink" | "addPrivateLinkMaster" | "addPrivateLinkRoute" | "addPrivateLinkRouteMaster" | "addSnat" | "addSnatMaster" | "delDnat" | "delDnatMaster" | "delNetwork" | "delNetworkMaster" | "delPrivateLink" | "delPrivateLinkMaster" | "delPrivateLinkRoute" | "delPrivateLinkRouteMaster" | "delSnat" | "delSnatMaster" | "vpnCreation" | "vpnDeletion" | "vpnSetConfig" | "vpnSetConfigMaster" | "vpnSetSecrets" | "vpnSetSecretsMaster"
+    //router.TaskStatusEnum
+    export type TaskStatusEnum = "cancelled" | "doing" | "done" | "error" | "todo"
+    //router.Vpn
+    // fullName: router.Vpn.Vpn
+    export interface Vpn {
+        clientIp?: string;
+        clientPrivNet: string;
+        id: number;
+        serverIp: string;
+        serverPrivNet: string;
+    }
+}
+export namespace service {
+    //service.RenewType
+    // fullName: service.RenewType.RenewType
+    export interface RenewType {
+        automatic: boolean;
+        deleteAtExpiration: boolean;
+        forced: boolean;
+        manualPayment?: boolean;
+        period?: number;
+    }
+    //service.RenewalTypeEnum
+    export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
+    //service.StateEnum
+    export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
+    //service.TerminationFutureUseEnum
+    export type TerminationFutureUseEnum = "NOT_REPLACING_SERVICE" | "OTHER" | "SUBSCRIBE_AN_OTHER_SERVICE" | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR" | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
+    //service.TerminationReasonEnum
+    export type TerminationReasonEnum = "FEATURES_DONT_SUIT_ME" | "LACK_OF_PERFORMANCES" | "MIGRATED_TO_ANOTHER_OVH_PRODUCT" | "MIGRATED_TO_COMPETITOR" | "NOT_NEEDED_ANYMORE" | "NOT_RELIABLE" | "NO_ANSWER" | "OTHER" | "TOO_EXPENSIVE" | "TOO_HARD_TO_USE" | "UNSATIFIED_BY_CUSTOMER_SUPPORT"
+}
+export namespace services {
+    //services.Service
+    // fullName: services.Service.Service
+    export interface Service {
+        canDeleteAtExpiration: boolean;
+        contactAdmin: string;
+        contactBilling: string;
+        contactTech: string;
+        creation: string;
+        domain: string;
+        engagedUpTo?: string;
+        expiration: string;
+        possibleRenewPeriod?: number[];
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
+        serviceId: number;
+        status: service.StateEnum;
+    }
+}
 
-type PathsRouterPOST = '/router/{serviceName}/confirmTermination' | 
-'/router/{serviceName}/network' | 
-'/router/{serviceName}/privateLink' | 
-'/router/{serviceName}/privateLink/{peerServiceName}/request/manage' | 
-'/router/{serviceName}/privateLink/{peerServiceName}/route' | 
-'/router/{serviceName}/terminate' | 
-'/router/{serviceName}/vpn' | 
-'/router/{serviceName}/vpn/{id}/setPsk';
-
-type PathsRouterDELETE = '/router/{serviceName}/network/{ipNet}' | 
-'/router/{serviceName}/privateLink/{peerServiceName}' | 
-'/router/{serviceName}/privateLink/{peerServiceName}/route/{network}' | 
-'/router/{serviceName}/vpn/{id}';
-
-export class ApiRouter extends OvhWrapper {
-  constructor(engine: OvhRequestable) {
-    super(engine);
-  }
+/**
+ * END API /router Models
+ */
+export function proxyRouter(ovhEngine: OvhRequestable): Router {
+    return buildOvhProxy(ovhEngine, '/router');
+}
+export default proxyRouter;
+/**
+ * Api Proxy model
+ */// Apis harmony
+// path /router
+export interface Router{
+    // GET /router
+    $get(): Promise<string[]>;
+    $(serviceName: string): {
+        // GET /router/{serviceName}
+        $get(): Promise<router.Router>;
+        confirmTermination: {
+            // POST /router/{serviceName}/confirmTermination
+            $post(params: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+        }
+        network: {
+            // GET /router/{serviceName}/network
+            $get(): Promise<string[]>;
+            // POST /router/{serviceName}/network
+            $post(params: {description: string, ipNet: string, vlanTag?: number}): Promise<router.Task>;
+            $(ipNet: string): {
+                // DELETE /router/{serviceName}/network/{ipNet}
+                $delete(): Promise<router.Task>;
+                // GET /router/{serviceName}/network/{ipNet}
+                $get(): Promise<router.Network>;
+                // PUT /router/{serviceName}/network/{ipNet}
+                $put(params?: {creationDate?: string, description?: string, id?: number, ipNet?: string, status?: router.IpStatusEnum, vlanTag?: number}): Promise<void>;
+            };
+        }
+        privateLink: {
+            // GET /router/{serviceName}/privateLink
+            $get(): Promise<string[]>;
+            // POST /router/{serviceName}/privateLink
+            $post(params: {name: string, peerServiceName: string}): Promise<string>;
+            $(peerServiceName: string): {
+                // DELETE /router/{serviceName}/privateLink/{peerServiceName}
+                $delete(): Promise<router.Task>;
+                // GET /router/{serviceName}/privateLink/{peerServiceName}
+                $get(): Promise<router.PrivateLink>;
+                // PUT /router/{serviceName}/privateLink/{peerServiceName}
+                $put(params?: {creationDate?: string, id?: number, name?: string, peerServiceName?: string, status?: router.StatusEnum}): Promise<void>;
+                request: {
+                    // GET /router/{serviceName}/privateLink/{peerServiceName}/request
+                    $get(): Promise<router.PrivateLinkRequest>;
+                    manage: {
+                        // POST /router/{serviceName}/privateLink/{peerServiceName}/request/manage
+                        $post(params: {action: router.PrivLinkReqActionEnum}): Promise<string>;
+                    }
+                }
+                route: {
+                    // GET /router/{serviceName}/privateLink/{peerServiceName}/route
+                    $get(): Promise<string[]>;
+                    // POST /router/{serviceName}/privateLink/{peerServiceName}/route
+                    $post(params: {network: string}): Promise<router.Task>;
+                    $(network: string): {
+                        // DELETE /router/{serviceName}/privateLink/{peerServiceName}/route/{network}
+                        $delete(): Promise<router.Task>;
+                        // GET /router/{serviceName}/privateLink/{peerServiceName}/route/{network}
+                        $get(): Promise<router.PrivateLinkRoute>;
+                    };
+                }
+            };
+        }
+        serviceInfos: {
+            // GET /router/{serviceName}/serviceInfos
+            $get(): Promise<services.Service>;
+            // PUT /router/{serviceName}/serviceInfos
+            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+        }
+        task: {
+            // GET /router/{serviceName}/task
+            $get(params?: {function_?: router.TaskFunctionEnum, status?: router.TaskStatusEnum}): Promise<number[]>;
+            $(id: number): {
+                // GET /router/{serviceName}/task/{id}
+                $get(): Promise<router.Task>;
+            };
+        }
+        terminate: {
+            // POST /router/{serviceName}/terminate
+            $post(): Promise<string>;
+        }
+        vpn: {
+            // GET /router/{serviceName}/vpn
+            $get(): Promise<number[]>;
+            // POST /router/{serviceName}/vpn
+            $post(params: {clientIp?: string, clientPrivNet: string, psk: string, serverPrivNet: string}): Promise<router.Vpn>;
+            $(id: number): {
+                // DELETE /router/{serviceName}/vpn/{id}
+                $delete(): Promise<router.Task>;
+                // GET /router/{serviceName}/vpn/{id}
+                $get(): Promise<router.Vpn>;
+                // PUT /router/{serviceName}/vpn/{id}
+                $put(params?: {clientIp?: string, clientPrivNet?: string, id?: number, serverIp?: string, serverPrivNet?: string}): Promise<void>;
+                setPsk: {
+                    // POST /router/{serviceName}/vpn/{id}/setPsk
+                    $post(params: {psk: string}): Promise<router.Task>;
+                }
+            };
+        }
+    };
+// Api
   /**
    * Operations about the ROUTER service
    * List available services
    */
-  public get(path: '/router'): Promise<string[]>;
+  get(path: '/router'): () => Promise<string[]>;
   /**
    * Router
    * Get this object properties
    */
-  public get(path: '/router/{serviceName}', params: {serviceName: string}): Promise<RouterRouter>;
+  get(path: '/router/{serviceName}'): (params: {serviceName: string}) => Promise<router.Router>;
   /**
    * List the router.Network objects
    * Networks mounted on this Router
    */
-  public get(path: '/router/{serviceName}/network', params: {serviceName: string}): Promise<string[]>;
+  get(path: '/router/{serviceName}/network'): (params: {serviceName: string}) => Promise<string[]>;
   /**
    * Network
    * Get this object properties
    */
-  public get(path: '/router/{serviceName}/network/{ipNet}', params: {serviceName: string, ipNet: string}): Promise<RouterNetwork>;
+  get(path: '/router/{serviceName}/network/{ipNet}'): (params: {ipNet: string, serviceName: string}) => Promise<router.Network>;
   /**
    * List the router.PrivateLink objects
    * Private links set up on this router
    */
-  public get(path: '/router/{serviceName}/privateLink', params: {serviceName: string}): Promise<string[]>;
+  get(path: '/router/{serviceName}/privateLink'): (params: {serviceName: string}) => Promise<string[]>;
   /**
    * Private Link to another service
    * Get this object properties
    */
-  public get(path: '/router/{serviceName}/privateLink/{peerServiceName}', params: {serviceName: string, peerServiceName: string}): Promise<RouterPrivateLink>;
+  get(path: '/router/{serviceName}/privateLink/{peerServiceName}'): (params: {peerServiceName: string, serviceName: string}) => Promise<router.PrivateLink>;
   /**
    * Received Private Link requests
    * Get this object properties
    */
-  public get(path: '/router/{serviceName}/privateLink/{peerServiceName}/request', params: {serviceName: string, peerServiceName: string}): Promise<RouterPrivateLinkRequest>;
+  get(path: '/router/{serviceName}/privateLink/{peerServiceName}/request'): (params: {peerServiceName: string, serviceName: string}) => Promise<router.PrivateLinkRequest>;
   /**
    * List the router.PrivateLinkRoute objects
    * Routes set up in a Private Link
    */
-  public get(path: '/router/{serviceName}/privateLink/{peerServiceName}/route', params: {serviceName: string, peerServiceName: string}): Promise<string[]>;
+  get(path: '/router/{serviceName}/privateLink/{peerServiceName}/route'): (params: {peerServiceName: string, serviceName: string}) => Promise<string[]>;
   /**
    * Outgoing routes configured inside a Private Link
    * Get this object properties
    */
-  public get(path: '/router/{serviceName}/privateLink/{peerServiceName}/route/{network}', params: {serviceName: string, peerServiceName: string, network: string}): Promise<RouterPrivateLinkRoute>;
+  get(path: '/router/{serviceName}/privateLink/{peerServiceName}/route/{network}'): (params: {network: string, peerServiceName: string, serviceName: string}) => Promise<router.PrivateLinkRoute>;
   /**
    * Details about a Service
    * Get this object properties
    */
-  public get(path: '/router/{serviceName}/serviceInfos', params: {serviceName: string}): Promise<ServicesService>;
+  get(path: '/router/{serviceName}/serviceInfos'): (params: {serviceName: string}) => Promise<services.Service>;
   /**
    * List the router.Task objects
    * Tasks for this Router
    */
-  public get(path: '/router/{serviceName}/task', params: {serviceName: string, function?: RouterTaskFunctionEnum, status?: RouterTaskStatusEnum}): Promise<number[]>;
+  get(path: '/router/{serviceName}/task'): (params: {serviceName: string, function_?: router.TaskFunctionEnum, status?: router.TaskStatusEnum}) => Promise<number[]>;
   /**
    * Task
    * Get this object properties
    */
-  public get(path: '/router/{serviceName}/task/{id}', params: {serviceName: string, id: number}): Promise<RouterTask>;
+  get(path: '/router/{serviceName}/task/{id}'): (params: {id: number, serviceName: string}) => Promise<router.Task>;
   /**
    * List the router.Vpn objects
    * VPN associated with this Router
    */
-  public get(path: '/router/{serviceName}/vpn', params: {serviceName: string}): Promise<number[]>;
+  get(path: '/router/{serviceName}/vpn'): (params: {serviceName: string}) => Promise<number[]>;
   /**
    * Virtual Private Network
    * Get this object properties
    */
-  public get(path: '/router/{serviceName}/vpn/{id}', params: {serviceName: string, id: number}): Promise<RouterVpn>;
-  public get(path: PathsRouterGET, params?: OvhParamType): Promise<any> {
-    return super.get(path, params
-  );}
+  get(path: '/router/{serviceName}/vpn/{id}'): (params: {id: number, serviceName: string}) => Promise<router.Vpn>;
   /**
    * Network
    * Alter this object properties
    */
-  public put(path: '/router/{serviceName}/network/{ipNet}', params: {serviceName: string, ipNet: string, creationDate?: string, description?: string, id?: number, status?: RouterIpStatusEnum, vlanTag?: number}): Promise<void>;
+  put(path: '/router/{serviceName}/network/{ipNet}'): (params: {ipNet: string, serviceName: string, creationDate?: string, description?: string, id?: number, status?: router.IpStatusEnum, vlanTag?: number}) => Promise<void>;
   /**
    * Private Link to another service
    * Alter this object properties
    */
-  public put(path: '/router/{serviceName}/privateLink/{peerServiceName}', params: {serviceName: string, peerServiceName: string, creationDate?: string, id?: number, name?: string, status?: RouterStatusEnum}): Promise<void>;
+  put(path: '/router/{serviceName}/privateLink/{peerServiceName}'): (params: {peerServiceName: string, serviceName: string, creationDate?: string, id?: number, name?: string, status?: router.StatusEnum}) => Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  public put(path: '/router/{serviceName}/serviceInfos', params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: ServiceRenewType, renewalType?: ServiceRenewalTypeEnum, serviceId?: number, status?: ServiceStateEnum}): Promise<void>;
+  put(path: '/router/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
   /**
    * Virtual Private Network
    * Alter this object properties
    */
-  public put(path: '/router/{serviceName}/vpn/{id}', params: {serviceName: string, id: number, clientIp?: string, clientPrivNet?: string, serverIp?: string, serverPrivNet?: string}): Promise<void>;
-  public put(path: PathsRouterPUT, params?: OvhParamType): Promise<any> {
-    return super.put(path, params
-  );}
+  put(path: '/router/{serviceName}/vpn/{id}'): (params: {id: number, serviceName: string, clientIp?: string, clientPrivNet?: string, serverIp?: string, serverPrivNet?: string}) => Promise<void>;
   /**
    * Confirm termination of your service
    * Confirm termination of your service
    */
-  public post(path: '/router/{serviceName}/confirmTermination', params: {serviceName: string, commentary?: string, futureUse?: ServiceTerminationFutureUseEnum, reason?: ServiceTerminationReasonEnum, token: string}): Promise<string>;
+  post(path: '/router/{serviceName}/confirmTermination'): (params: {serviceName: string, commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}) => Promise<string>;
   /**
    * List the router.Network objects
    * Add a network to your router
    */
-  public post(path: '/router/{serviceName}/network', params: {serviceName: string, description: string, ipNet: string, vlanTag?: number}): Promise<RouterTask>;
+  post(path: '/router/{serviceName}/network'): (params: {serviceName: string, description: string, ipNet: string, vlanTag?: number}) => Promise<router.Task>;
   /**
    * List the router.PrivateLink objects
    * Add a new Private Link to your Router service
    */
-  public post(path: '/router/{serviceName}/privateLink', params: {serviceName: string, name: string, peerServiceName: string}): Promise<string>;
+  post(path: '/router/{serviceName}/privateLink'): (params: {serviceName: string, name: string, peerServiceName: string}) => Promise<string>;
   /**
    * manage operations
    * Accept, reject or cancel a pending request
    */
-  public post(path: '/router/{serviceName}/privateLink/{peerServiceName}/request/manage', params: {serviceName: string, peerServiceName: string, action: RouterPrivLinkReqActionEnum}): Promise<string>;
+  post(path: '/router/{serviceName}/privateLink/{peerServiceName}/request/manage'): (params: {peerServiceName: string, serviceName: string, action: router.PrivLinkReqActionEnum}) => Promise<string>;
   /**
    * List the router.PrivateLinkRoute objects
    * Add a new outgoing route to your router
    */
-  public post(path: '/router/{serviceName}/privateLink/{peerServiceName}/route', params: {serviceName: string, peerServiceName: string, network: string}): Promise<RouterTask>;
+  post(path: '/router/{serviceName}/privateLink/{peerServiceName}/route'): (params: {peerServiceName: string, serviceName: string, network: string}) => Promise<router.Task>;
   /**
    * Terminate your service
    * Terminate your service
    */
-  public post(path: '/router/{serviceName}/terminate', params: {serviceName: string}): Promise<string>;
+  post(path: '/router/{serviceName}/terminate'): (params: {serviceName: string}) => Promise<string>;
   /**
    * List the router.Vpn objects
    * Add a VPN to your router
    */
-  public post(path: '/router/{serviceName}/vpn', params: {serviceName: string, clientIp?: string, clientPrivNet: string, psk: string, serverPrivNet: string}): Promise<RouterVpn>;
+  post(path: '/router/{serviceName}/vpn'): (params: {serviceName: string, clientIp?: string, clientPrivNet: string, psk: string, serverPrivNet: string}) => Promise<router.Vpn>;
   /**
    * setPsk operations
    * Change your VPN's PSK
    */
-  public post(path: '/router/{serviceName}/vpn/{id}/setPsk', params: {serviceName: string, id: number, psk: string}): Promise<RouterTask>;
-  public post(path: PathsRouterPOST, params?: OvhParamType): Promise<any> {
-    return super.post(path, params
-  );}
+  post(path: '/router/{serviceName}/vpn/{id}/setPsk'): (params: {id: number, serviceName: string, psk: string}) => Promise<router.Task>;
   /**
    * Network
    * Remove this network from your router
    */
-  public delete(path: '/router/{serviceName}/network/{ipNet}', params: {serviceName: string, ipNet: string}): Promise<RouterTask>;
+  delete(path: '/router/{serviceName}/network/{ipNet}'): (params: {ipNet: string, serviceName: string}) => Promise<router.Task>;
   /**
    * Private Link to another service
    * Remove an existing Private Link from your Router service
    */
-  public delete(path: '/router/{serviceName}/privateLink/{peerServiceName}', params: {serviceName: string, peerServiceName: string}): Promise<RouterTask>;
+  delete(path: '/router/{serviceName}/privateLink/{peerServiceName}'): (params: {peerServiceName: string, serviceName: string}) => Promise<router.Task>;
   /**
    * Outgoing routes configured inside a Private Link
    * Delete an existing route from your router
    */
-  public delete(path: '/router/{serviceName}/privateLink/{peerServiceName}/route/{network}', params: {serviceName: string, peerServiceName: string, network: string}): Promise<RouterTask>;
+  delete(path: '/router/{serviceName}/privateLink/{peerServiceName}/route/{network}'): (params: {network: string, peerServiceName: string, serviceName: string}) => Promise<router.Task>;
   /**
    * Virtual Private Network
    * Delete a VPN from your router
    */
-  public delete(path: '/router/{serviceName}/vpn/{id}', params: {serviceName: string, id: number}): Promise<RouterTask>;
-  public delete(path: PathsRouterDELETE, params?: OvhParamType): Promise<any> {
-    return super.delete(path, params
-  );}
+  delete(path: '/router/{serviceName}/vpn/{id}'): (params: {id: number, serviceName: string}) => Promise<router.Task>;
 }
-export default ApiRouter;
+/**
+ * classic Model
+ */

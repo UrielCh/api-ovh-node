@@ -8,8 +8,11 @@ export function indentGen(depth: number): string {
     }
     return s;
 }
-
-export const protectFieldName = (name: string): string => {
+/**
+ * use in data model
+ * @param name 
+ */
+export const protectModelField = (name: string): string => {
     if (name.match(/^[0-9].*/)) {
         return `'${name}'`;
     }
@@ -17,6 +20,17 @@ export const protectFieldName = (name: string): string => {
         return `'${name}'`;
     return name;
 }
+/**
+ * use to generate harmony proxy path
+ */
+export const protectHarmonyField = (name: string): string => {
+    if (name.match(/^[0-9].*/) || ~name.indexOf('-')) {
+        return `'${name}'`;
+    }
+    return name;
+}
+
+
 // add package private ???
 const needProtectMap: { [key: string]: boolean } = { 'default': true, 'function': true };
 

@@ -1,7 +1,10 @@
 {
-    "extends": "../../tsconfig.json",
     "compilerOptions": {
-        // "outDir": "dist",
-        // "rootDirs": [ "src" ],
+        "target": "es2017",
+        "module": "commonjs",
+        "declaration": true,
+        "strict": true,
+        "moduleResolution": "node",
+        "esModuleInterop": true
     }
 }
