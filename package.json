@@ -27,7 +27,7 @@
     "clean2": "lerna clean -y",
     "bootstrap": "lerna bootstrap",
     "build": "lerna run build",
-    "publish": "lerna run tsc && lerna publish",
+    "publish": "lerna clean -y && lerna bootstrap && lerna run build && lerna publish",
     "prepublish": "lerna run yarn run lint && lerna run yarn run test && lerna run yarn run build"
   }
 }
