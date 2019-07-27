@@ -106,6 +106,23 @@ export namespace dbaas {
         export type FlowggerConfigurationLogFormatEnum = "RFC5424" | "LTSV" | "GELF" | "CAPNP"
         //dbaas.logs.FlowggerConfigurationLogFramingEnum
         export type FlowggerConfigurationLogFramingEnum = "LINE" | "NUL" | "SYSLEN" | "CAPNP"
+        //dbaas.logs.Helper
+        // fullName: dbaas.logs.Helper.Helper
+        export interface Helper {
+            description: string;
+            engineId: string;
+            helperId: string;
+            sections: dbaas.logs.HelperSection[];
+            title: string;
+        }
+        //dbaas.logs.HelperSection
+        // fullName: dbaas.logs.HelperSection.HelperSection
+        export interface HelperSection {
+            content: string;
+            name: dbaas.logs.HelperSectionNameEnum;
+        }
+        //dbaas.logs.HelperSectionNameEnum
+        export type HelperSectionNameEnum = "LOGSTASH_INPUT" | "LOGSTASH_FILTER" | "LOGSTASH_PATTERN"
         //dbaas.logs.Index
         // fullName: dbaas.logs.Index.Index
         export interface Index {
@@ -407,12 +424,15 @@ export namespace dbaas {
             dashboardId?: string;
             indexId?: string;
             permissionId: string;
+            permissionType?: dbaas.logs.PermissionTypeEnum;
             streamId?: string;
         }
         //dbaas.logs.PermissionDashboardPermissionTypeEnum
         export type PermissionDashboardPermissionTypeEnum = "READ_ONLY" | "READ_WRITE"
         //dbaas.logs.PermissionIndexPermissionTypeEnum
         export type PermissionIndexPermissionTypeEnum = "READ_ONLY" | "READ_WRITE"
+        //dbaas.logs.PermissionTypeEnum
+        export type PermissionTypeEnum = "READ_ONLY" | "READ_WRITE"
         //dbaas.logs.PublicOffer
         // fullName: dbaas.logs.PublicOffer.PublicOffer
         export interface PublicOffer {
@@ -688,6 +708,14 @@ export interface Dbaas{
                 $(engineId: string): {
                     // GET /dbaas/logs/input/engine/{engineId}
                     $get(): Promise<dbaas.logs.Engine>;
+                    helper: {
+                        // GET /dbaas/logs/input/engine/{engineId}/helper
+                        $get(): Promise<string[]>;
+                        $(helperId: string): {
+                            // GET /dbaas/logs/input/engine/{engineId}/helper/{helperId}
+                            $get(): Promise<dbaas.logs.Helper>;
+                        };
+                    }
                 };
             }
         }
@@ -1021,7 +1049,7 @@ export interface Dbaas{
                             // DELETE /dbaas/logs/{serviceName}/role/{roleId}/permission/{permissionId}
                             $delete(): Promise<dbaas.logs.Operation>;
                             // GET /dbaas/logs/{serviceName}/role/{roleId}/permission/{permissionId}
-                            $get(): Promise<dbaas.logs.Permission[]>;
+                            $get(): Promise<dbaas.logs.Permission>;
                         };
                     }
                 };
@@ -1298,7 +1326,7 @@ export interface Dbaas{
    * RolePermission
    * Returns details of specified permission
    */
-  get(path: '/dbaas/logs/{serviceName}/role/{roleId}/permission/{permissionId}'): (params: {permissionId: string, roleId: string, serviceName: string}) => Promise<dbaas.logs.Permission[]>;
+  get(path: '/dbaas/logs/{serviceName}/role/{roleId}/permission/{permissionId}'): (params: {permissionId: string, roleId: string, serviceName: string}) => Promise<dbaas.logs.Permission>;
   /**
    * Details about a Service
    * Get this object properties
@@ -1329,6 +1357,16 @@ export interface Dbaas{
    * Returns details of specified input engine
    */
   get(path: '/dbaas/logs/input/engine/{engineId}'): (params: {engineId: string}) => Promise<dbaas.logs.Engine>;
+  /**
+   * Input engine helpers
+   * Return the list of available helpers for the given input engine
+   */
+  get(path: '/dbaas/logs/input/engine/{engineId}/helper'): (params: {engineId: string}) => Promise<string[]>;
+  /**
+   * Input engine helpers
+   * Returns details of specified input engine
+   */
+  get(path: '/dbaas/logs/input/engine/{engineId}/helper/{helperId}'): (params: {engineId: string, helperId: string}) => Promise<dbaas.logs.Helper>;
   /**
    * Offer
    * Display specified offer

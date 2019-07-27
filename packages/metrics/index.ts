@@ -4,6 +4,33 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /metrics Models
  */
 export namespace metrics {
+    //metrics.LookupTokenCreation
+    // fullName: metrics.LookupTokenCreation.LookupTokenCreation
+    export interface LookupTokenCreation {
+        accessToken: string;
+    }
+    //metrics.QuotaUpdate
+    // fullName: metrics.QuotaUpdate.QuotaUpdate
+    export interface QuotaUpdate {
+        quota: number;
+    }
+    //metrics.TokenCreation
+    // fullName: metrics.TokenCreation.TokenCreation
+    export interface TokenCreation {
+        description?: string;
+        labels?: metrics.api.Label[];
+        permission: metrics.api.PermissionEnum;
+    }
+    //metrics.TokenUpdate
+    // fullName: metrics.TokenUpdate.TokenUpdate
+    export interface TokenUpdate {
+        description?: string;
+    }
+    //metrics.Update
+    // fullName: metrics.Update.Update
+    export interface Update {
+        description?: string;
+    }
     export namespace api {
         //metrics.api.Consumption
         // fullName: metrics.api.Consumption.Consumption
@@ -174,7 +201,7 @@ export interface Metrics{
    */
   get(path: '/metrics'): () => Promise<string[]>;
   /**
-   * Missing description
+   * Operations about the METRICS service
    * Get service
    */
   get(path: '/metrics/{serviceName}'): (params: {serviceName: string}) => Promise<metrics.api.Service>;
@@ -199,7 +226,7 @@ export interface Metrics{
    */
   get(path: '/metrics/{serviceName}/token/{tokenId}'): (params: {serviceName: string, tokenId: string}) => Promise<metrics.api.Token>;
   /**
-   * Missing description
+   * Operations about the METRICS service
    * Modify service
    */
   put(path: '/metrics/{serviceName}'): (params: {serviceName: string, description?: string}) => Promise<metrics.api.Service>;

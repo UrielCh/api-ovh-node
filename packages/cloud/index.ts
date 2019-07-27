@@ -691,6 +691,7 @@ export namespace cloud {
             name: string;
             nextUpgradeVersions?: cloud.kube.Version[];
             nodesUrl: string;
+            region: cloud.kube.Region;
             status: cloud.kube.ClusterStatus;
             updatePolicy: string;
             updatedAt: string;
@@ -740,7 +741,7 @@ export namespace cloud {
         //cloud.kube.UpdateStrategy
         export type UpdateStrategy = "LATEST_PATCH" | "NEXT_MINOR"
         //cloud.kube.Version
-        export type Version = "1.11" | "1.12" | "1.13" | "1.14"
+        export type Version = "1.11" | "1.12" | "1.13" | "1.14" | "1.15"
     }
     export namespace migration {
         //cloud.migration.Migration
@@ -1007,9 +1008,24 @@ export namespace cloud {
         }
     }
     export namespace quota {
-        //cloud.quota.InstanceQuotas
-        // fullName: cloud.quota.InstanceQuotas.InstanceQuotas
-        export interface InstanceQuotas {
+        //cloud.quota.AllowedQuota
+        // fullName: cloud.quota.AllowedQuota.AllowedQuota
+        export interface AllowedQuota {
+            compute: cloud.quota.ComputeQuota;
+            name: string;
+            network: cloud.quota.NetworkQuota;
+            volume: cloud.quota.VolumeQuota;
+        }
+        //cloud.quota.ComputeQuota
+        // fullName: cloud.quota.ComputeQuota.ComputeQuota
+        export interface ComputeQuota {
+            cores: number;
+            instances: number;
+            ram: number;
+        }
+        //cloud.quota.InstanceUsageQuotas
+        // fullName: cloud.quota.InstanceUsageQuotas.InstanceUsageQuotas
+        export interface InstanceUsageQuotas {
             maxCores: number;
             maxInstances: number;
             maxRam: number;
@@ -1022,17 +1038,31 @@ export namespace cloud {
         export interface KeypairQuotas {
             maxCount: number;
         }
+        //cloud.quota.NetworkQuota
+        // fullName: cloud.quota.NetworkQuota.NetworkQuota
+        export interface NetworkQuota {
+            networks: number;
+            ports: number;
+            subnets: number;
+        }
         //cloud.quota.Quotas
         // fullName: cloud.quota.Quotas.Quotas
         export interface Quotas {
-            instance: cloud.quota.InstanceQuotas;
-            keypair: cloud.quota.KeypairQuotas;
+            instance?: cloud.quota.InstanceUsageQuotas;
+            keypair?: cloud.quota.KeypairQuotas;
             region: string;
-            volume: cloud.quota.VolumeQuotas;
+            volume?: cloud.quota.VolumeUsageQuotas;
         }
-        //cloud.quota.VolumeQuotas
-        // fullName: cloud.quota.VolumeQuotas.VolumeQuotas
-        export interface VolumeQuotas {
+        //cloud.quota.VolumeQuota
+        // fullName: cloud.quota.VolumeQuota.VolumeQuota
+        export interface VolumeQuota {
+            gigabytes: number;
+            snapshots: number;
+            volumes: number;
+        }
+        //cloud.quota.VolumeUsageQuotas
+        // fullName: cloud.quota.VolumeUsageQuotas.VolumeUsageQuotas
+        export interface VolumeUsageQuotas {
             maxGigabytes: number;
             usedGigabytes: number;
             volumeCount: number;
@@ -1277,6 +1307,7 @@ export namespace cloud {
             description: string;
             id: number;
             password: string;
+            roles: cloud.role.Role[];
             status: cloud.user.UserStatusEnum;
             username: string;
         }
@@ -1810,6 +1841,10 @@ export interface Cloud{
                 $(regionName: string): {
                     // GET /cloud/project/{serviceName}/region/{regionName}
                     $get(): Promise<cloud.Region>;
+                    quota: {
+                        // GET /cloud/project/{serviceName}/region/{regionName}/quota
+                        $get(): Promise<cloud.quota.Quotas>;
+                    }
                     workflow: {
                         backup: {
                             // GET /cloud/project/{serviceName}/region/{regionName}/workflow/backup
@@ -1833,6 +1868,10 @@ export interface Cloud{
             retain: {
                 // POST /cloud/project/{serviceName}/retain
                 $post(): Promise<void>;
+            }
+            role: {
+                // GET /cloud/project/{serviceName}/role
+                $get(): Promise<cloud.role.Roles>;
             }
             serviceInfos: {
                 // GET /cloud/project/{serviceName}/serviceInfos
@@ -1959,6 +1998,20 @@ export interface Cloud{
                     regeneratePassword: {
                         // POST /cloud/project/{serviceName}/user/{userId}/regeneratePassword
                         $post(): Promise<cloud.user.UserDetail>;
+                    }
+                    role: {
+                        // GET /cloud/project/{serviceName}/user/{userId}/role
+                        $get(): Promise<cloud.role.Role[]>;
+                        // POST /cloud/project/{serviceName}/user/{userId}/role
+                        $post(params: {roleId: string}): Promise<cloud.user.User>;
+                        // PUT /cloud/project/{serviceName}/user/{userId}/role
+                        $put(params: {rolesIds: string[]}): Promise<cloud.user.User>;
+                        $(roleId: string): {
+                            // DELETE /cloud/project/{serviceName}/user/{userId}/role/{roleId}
+                            $delete(): Promise<void>;
+                            // GET /cloud/project/{serviceName}/user/{userId}/role/{roleId}
+                            $get(): Promise<cloud.role.Role>;
+                        };
                     }
                     token: {
                         // POST /cloud/project/{serviceName}/user/{userId}/token
@@ -2389,8 +2442,8 @@ export interface Cloud{
    */
   get(path: '/cloud/project/{serviceName}/operation/{operationId}'): (params: {operationId: string, serviceName: string}) => Promise<cloud.Operation>;
   /**
-   * Missing description
-   * Get project quotas
+   * List your quota
+   * List quotas
    */
   get(path: '/cloud/project/{serviceName}/quota'): (params: {serviceName: string}) => Promise<cloud.quota.Quotas[]>;
   /**
@@ -2403,6 +2456,11 @@ export interface Cloud{
    * Get information about your region
    */
   get(path: '/cloud/project/{serviceName}/region/{regionName}'): (params: {regionName: string, serviceName: string}) => Promise<cloud.Region>;
+  /**
+   * Consult quotas
+   * List quotas
+   */
+  get(path: '/cloud/project/{serviceName}/region/{regionName}/quota'): (params: {regionName: string, serviceName: string}) => Promise<cloud.quota.Quotas>;
   /**
    * Manage your automated backups
    * List your automated backups
@@ -2418,6 +2476,11 @@ export interface Cloud{
    * List the regions on which you can ask an access to
    */
   get(path: '/cloud/project/{serviceName}/regionAvailable'): (params: {serviceName: string}) => Promise<cloud.AvailableRegion[]>;
+  /**
+   * Missing description
+   * Get all Roles
+   */
+  get(path: '/cloud/project/{serviceName}/role'): (params: {serviceName: string}) => Promise<cloud.role.Roles>;
   /**
    * Details about a Service
    * Get this object properties
@@ -2508,6 +2571,16 @@ export interface Cloud{
    * Get rclone configuration file
    */
   get(path: '/cloud/project/{serviceName}/user/{userId}/rclone'): (params: {serviceName: string, userId: number, region: string}) => Promise<cloud.user.Rclone>;
+  /**
+   * Missing description
+   * Get user roles
+   */
+  get(path: '/cloud/project/{serviceName}/user/{userId}/role'): (params: {serviceName: string, userId: number}) => Promise<cloud.role.Role[]>;
+  /**
+   * Missing description
+   * Get role detail
+   */
+  get(path: '/cloud/project/{serviceName}/user/{userId}/role/{roleId}'): (params: {roleId: string, serviceName: string, userId: number}) => Promise<cloud.role.Role>;
   /**
    * Missing description
    * Get volumes
@@ -2603,6 +2676,11 @@ export interface Cloud{
    * Update your storage container
    */
   put(path: '/cloud/project/{serviceName}/storage/{containerId}'): (params: {containerId: string, serviceName: string, containerType?: cloud.storage.TypeEnum}) => Promise<void>;
+  /**
+   * Missing description
+   * Update roles of a user
+   */
+  put(path: '/cloud/project/{serviceName}/user/{userId}/role'): (params: {serviceName: string, userId: number, rolesIds: string[]}) => Promise<cloud.user.User>;
   /**
    * Missing description
    * Update a volume
@@ -2865,6 +2943,11 @@ export interface Cloud{
   post(path: '/cloud/project/{serviceName}/user/{userId}/regeneratePassword'): (params: {serviceName: string, userId: number}) => Promise<cloud.user.UserDetail>;
   /**
    * Missing description
+   * Add a role to a user
+   */
+  post(path: '/cloud/project/{serviceName}/user/{userId}/role'): (params: {serviceName: string, userId: number, roleId: string}) => Promise<cloud.user.User>;
+  /**
+   * Missing description
    * Get token for user
    */
   post(path: '/cloud/project/{serviceName}/user/{userId}/token'): (params: {serviceName: string, userId: number, password: string}) => Promise<cloud.authentication.Token>;
@@ -2988,6 +3071,11 @@ export interface Cloud{
    * Delete user
    */
   delete(path: '/cloud/project/{serviceName}/user/{userId}'): (params: {serviceName: string, userId: number}) => Promise<void>;
+  /**
+   * Missing description
+   * Remove role for a user
+   */
+  delete(path: '/cloud/project/{serviceName}/user/{userId}/role/{roleId}'): (params: {roleId: string, serviceName: string, userId: number}) => Promise<void>;
   /**
    * Missing description
    * Delete a volume
