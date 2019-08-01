@@ -1,6 +1,7 @@
 import { EventEmitter } from "events";
 import { IOvhEventListener, IEvToken, IVoipEvent } from "./model";
 import { IHandyRedis } from "handy-redis";
+import fetch from "node-fetch";
 
 const headers = { 'Content-Type': 'application/json', 'Accept': 'text/plain' };
 

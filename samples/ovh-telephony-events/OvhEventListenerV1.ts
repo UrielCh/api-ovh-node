@@ -1,6 +1,7 @@
 import { VoipEventV1Root, IOvhEventListener, IEvToken, IVoipEvent, VoipEventV1 } from "./model";
 import { EventEmitter } from "events";
 import { IHandyRedis } from "handy-redis";
+import fetch from "node-fetch";
 
 const headers = { 'Content-Type': 'application/json', 'Accept': 'text/plain' };
 
