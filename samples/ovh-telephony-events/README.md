@@ -18,8 +18,10 @@ npm install -g ovh-telephony-events
 
 ```typescript
   const listener = new OvhEventListenerV2(tokens);
-  listen.on("message", (m) => console.log(m))
-  await listener.listen(); // this promise never get resolved.
+  listen.on("message", (m) => console.log(m));
+   // OvhEventListenerV1 promise never resolve
+   // OvhEventListenerV2 promise when all even are captured
+  await listener.listen();
 ```
 
 ## Usage script
