@@ -9,10 +9,13 @@ code/gen/src/*.js
 code/gen/src/*.d.ts
 code/gen/dist/
 code/common/dist/
-**/index.d.ts
-**/index.js
-**/index.js.map
+packages/**/index.d.ts
+packages/**/index.js
+packages/**/index.js.map
 tokenTest.json
 code/gen/src/*.js.map
 code/gen/*.js.map
 code/gen/*.js
+samples/*/*.d.ts
+samples/*/*.map
+samples/*/*.js
