@@ -14,7 +14,15 @@ This script use the npm packages `@ovh-api/api` and `@ovh-api/telephony`
 npm install -g ovh-telephony-events
 ```
 
-## Usage
+## Usage API
+
+```typescript
+  const listener = new OvhEventListenerV2(tokens);
+  listen.on("message", (m) => console.log(m))
+  await listener.listen(); // this promise never get resolved.
+```
+
+## Usage script
 
 ```bash
 $ ovh-telephony-events --help
