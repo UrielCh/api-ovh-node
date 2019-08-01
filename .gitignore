@@ -14,5 +14,5 @@ code/common/dist/
 **/index.js.map
 tokenTest.json
 code/gen/src/*.js.map
-code/gen/ns.js.map
-code/gen/ns.js
+code/gen/*.js.map
+code/gen/*.js
