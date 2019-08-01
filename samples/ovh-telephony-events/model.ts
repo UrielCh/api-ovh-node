@@ -9,8 +9,8 @@ import { IHandyRedis } from "handy-redis";
 // bridge-agent-end
 // member-count
 // agent-offering
-type LineEvent = 'start_ringing' | 'start_calling' | 'end_ringing' | 'end_calling' | 'registered';
-type queueEvent = 'member-queue-start' | 'bridge-agent-start' | 'bridge-agent-fail' | 'member-queue-end' | 'bridge-agent-end' | 'members-count' | 'agent-offering';
+export type LineEvent = 'start_ringing' | 'start_calling' | 'end_ringing' | 'end_calling' | 'registered';
+export type QueueEvent = 'member-queue-start' | 'bridge-agent-start' | 'bridge-agent-fail' | 'member-queue-end' | 'bridge-agent-end' | 'members-count' | 'agent-offering';
 // timestamp in sec as String
 type TSSecString = string;
 
@@ -26,33 +26,33 @@ export interface VoipEventV1Root {
  * V1
  */
 export interface VoipEventV1 {
-    Event:     LineEvent | queueEvent;
+    Event:     LineEvent | QueueEvent;
     Token:     string;
     Service:   'queues' | string;
     Ressource: string;
     Timestamp: number;
     Date:      string;
-    Data:      Data;
+    Data:      IEvData;
     Details:   Details;
 }
 /**
  * V2
  */
-export interface VoipEventV2 {
-    event: LineEvent | queueEvent;
+export interface IVoipEventV2 {
+    event: LineEvent | QueueEvent;
     token: string;
     service: 'queues' | string;
     ressource: string; // 0033900000000
     timestamp: number;
     date: string;
-    data: Data;
+    data: IEvData;
     details: Details;
 }
 /**
  * V1 + V2
  */
-export interface Data {
-    Action: LineEvent | queueEvent;
+export interface IEvData {
+    Action: LineEvent | QueueEvent;
     Agent: string; // 0033900000000
     Calling: string; // 0033900000000
     Count: string; // '1'|'2'|'3' ...
@@ -96,20 +96,19 @@ export interface EventSession {
     lastConnection: string, //"2019-06-07T11:40:16.036199867+02:00"
 }
 
-export interface gToken {
+export interface IevToken {
     billingAccount: string;
     token: string;
     //    session: string;
 }
 
-export interface gTokenGroup {
-    groups: gToken[];
+export interface IEvTokenGroup {
+    groups: IevToken[];
     session: string;
 }
 
-
 export interface IOvhEventListener {
-    on(event: "message", listener: (msg: VoipEventV2) => void): this;
+    on(event: "message", listener: (msg: IVoipEventV2) => void): this;
     redis(redis: IHandyRedis, channel: string): IOvhEventListener;
     listen(): Promise<any>
 }

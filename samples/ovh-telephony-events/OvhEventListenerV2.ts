@@ -1,14 +1,14 @@
 import { EventEmitter } from "events";
-import { IOvhEventListener, gToken, gTokenGroup, EventSession, VoipEventV2 } from "./model";
+import { IOvhEventListener, IevToken, IEvTokenGroup, EventSession, IVoipEventV2 } from "./model";
 import { IHandyRedis } from "handy-redis";
 
 const headers = { 'Content-Type': 'application/json', 'Accept': 'text/plain' };
 
 export class OvhEventListenerV2 extends EventEmitter implements IOvhEventListener {
     private _redis: IHandyRedis | null;
-    private tokens: gToken[];
+    private tokens: IevToken[];
     private channel: string;
-    constructor(tokens: gToken[]) {
+    constructor(tokens: IevToken[]) {
         super();
         this._redis = null
         this.tokens = tokens;
@@ -22,7 +22,7 @@ export class OvhEventListenerV2 extends EventEmitter implements IOvhEventListene
     }
 
     public async listen() {
-        let groups2: gTokenGroup[] = [];
+        let groups2: IEvTokenGroup[] = [];
         groups2.push({ groups: [], session: '' });
         for (let i = 0; i < this.tokens.length; i++) {
             let last = groups2[groups2.length - 1];
@@ -46,12 +46,12 @@ export class OvhEventListenerV2 extends EventEmitter implements IOvhEventListene
             }
         }
         console.log(`Registred Ok on event Api V2`)
-        const listen = groups2.map(async (group: gTokenGroup) => {
+        const listen = groups2.map(async (group: IEvTokenGroup) => {
             const url = `https://events.voip.ovh.net/v2/session/${group.session}/events/poll`;
             while (true) {
                 try {
                     let response = await fetch(url, { method: 'GET', headers })
-                    let events: VoipEventV2[] = await response.json();
+                    let events: IVoipEventV2[] = await response.json();
                     if (events && events.length) {
                         if (this.listenerCount("message") > 0) {
                             for (const m of events) {

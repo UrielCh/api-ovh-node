@@ -1,5 +1,5 @@
 import program from 'commander'
-import { gToken, IOvhEventListener } from './model';
+import { IevToken, IOvhEventListener } from './model';
 import { createHandyClient, IHandyRedis } from 'handy-redis';
 import { OvhEventListenerV1 } from './OvhEventListenerV1';
 import { OvhEventListenerV2 } from './OvhEventListenerV2';
@@ -24,7 +24,7 @@ async function main() {
         redis = createHandyClient({ host: program['redisHost'], port: Number(program['redisPort']) | 6379, password: program['redisPassword'] });
     }
     const cachefile: string = program.cache;
-    const tokens: gToken[] = await new OvhEventTokenImporter().cacheFile(cachefile).load();
+    const tokens: IevToken[] = await new OvhEventTokenImporter().cacheFile(cachefile).load();
 
     let listener: IOvhEventListener;
     if (program.v1)
