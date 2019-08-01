@@ -592,6 +592,13 @@ export namespace dedicatedCloud {
     export type hostSystemConnectionState = "connected" | "disconnected" | "notResponding"
     //dedicatedCloud.ipUsageEnum
     export type ipUsageEnum = "reserved" | "vm"
+    //dedicatedCloud.metricsToken
+    // fullName: dedicatedCloud.metricsToken.metricsToken
+    export interface metricsToken {
+        opentsdbEndpoint: string;
+        token: string;
+        warpEndpoint: string;
+    }
     export namespace option {
         //dedicatedCloud.option.StateEnum
         export type StateEnum = "disabled" | "disabling" | "enabled" | "enabling" | "error" | "migrating" | "unknown"
@@ -651,16 +658,16 @@ export namespace dedicatedCloud {
         //dedicatedCloud.right.VmNetworkRoleEnum
         export type VmNetworkRoleEnum = "admin" | "noAccess" | "readonly"
     }
-    //dedicatedCloud.servicePack
-    // fullName: dedicatedCloud.servicePack.servicePack
-    export interface servicePack {
-        name: dedicatedCloud.servicePackEnum;
-        state: dedicatedCloud.servicePackStateEnum;
-    }
     //dedicatedCloud.servicePackEnum
     export type servicePackEnum = "default" | "hds" | "hipaa" | "legacy" | "nsx" | "nsx-and-vrops" | "pcidss" | "vrops"
     //dedicatedCloud.servicePackStateEnum
     export type servicePackStateEnum = "activating" | "active" | "error" | "waitingForCustomer"
+    //dedicatedCloud.servicePackStatus
+    // fullName: dedicatedCloud.servicePackStatus.servicePackStatus
+    export interface servicePackStatus {
+        name: dedicatedCloud.servicePackEnum;
+        state: dedicatedCloud.servicePackStateEnum;
+    }
     //dedicatedCloud.twoFAWhitelist
     // fullName: dedicatedCloud.twoFAWhitelist.twoFAWhitelist
     export interface twoFAWhitelist {
@@ -1378,7 +1385,7 @@ export interface DedicatedCloud{
         }
         servicePack: {
             // GET /dedicatedCloud/{serviceName}/servicePack
-            $get(): Promise<dedicatedCloud.servicePack>;
+            $get(): Promise<dedicatedCloud.servicePackStatus>;
         }
         servicePacks: {
             // GET /dedicatedCloud/{serviceName}/servicePacks
@@ -1453,6 +1460,10 @@ export interface DedicatedCloud{
                 enable: {
                     // POST /dedicatedCloud/{serviceName}/user/{userId}/enable
                     $post(): Promise<dedicatedCloud.Task>;
+                }
+                metricsToken: {
+                    // POST /dedicatedCloud/{serviceName}/user/{userId}/metricsToken
+                    $post(): Promise<dedicatedCloud.metricsToken>;
                 }
                 objectRight: {
                     // GET /dedicatedCloud/{serviceName}/user/{userId}/objectRight
@@ -1905,7 +1916,7 @@ export interface DedicatedCloud{
    * servicePack operations
    * Retrieve the service pack informations
    */
-  get(path: '/dedicatedCloud/{serviceName}/servicePack'): (params: {serviceName: string}) => Promise<dedicatedCloud.servicePack>;
+  get(path: '/dedicatedCloud/{serviceName}/servicePack'): (params: {serviceName: string}) => Promise<dedicatedCloud.servicePackStatus>;
   /**
    * List the dedicatedCloud.ServicePack objects
    * Service Pack compliant with the current Private Cloud
@@ -2446,6 +2457,11 @@ export interface DedicatedCloud{
    * Enable the given Private Cloud user 
    */
   post(path: '/dedicatedCloud/{serviceName}/user/{userId}/enable'): (params: {serviceName: string, userId: number}) => Promise<dedicatedCloud.Task>;
+  /**
+   * metricsToken operations
+   * Get Metrics Token to query vScope Graphs data 
+   */
+  post(path: '/dedicatedCloud/{serviceName}/user/{userId}/metricsToken'): (params: {serviceName: string, userId: number}) => Promise<dedicatedCloud.metricsToken>;
   /**
    * List the dedicatedCloud.ObjectRight objects
    * Add a new object right to user in datacenter on Private Cloud

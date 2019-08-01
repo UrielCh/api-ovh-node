@@ -56,10 +56,12 @@ export namespace dedicated {
         //dedicated.ceph.response
         // fullName: dedicated.ceph.response.response
         export interface response {
-            family: dedicated.ceph.aclList.response.familyEnum;
-            id: number;
-            netmask: string;
-            network: string;
+            backup: boolean;
+            minActiveReplicas: number;
+            name: string;
+            poolType: dedicated.ceph.poolList.response.poolTypeEnum;
+            replicaCount: number;
+            serviceName: string;
         }
         export namespace taskGet {
             export namespace response {

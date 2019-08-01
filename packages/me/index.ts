@@ -905,6 +905,7 @@ export namespace me {
                 oneshot: boolean;
                 paymentType: string;
                 registerable: boolean;
+                registerableWithTransaction: boolean;
             }
             //me.payment.method.CallbackUrl
             // fullName: me.payment.method.CallbackUrl.CallbackUrl
@@ -1405,6 +1406,7 @@ export namespace payment {
             oneshot: boolean;
             paymentType: string;
             registerable: boolean;
+            registerableWithTransaction: boolean;
         }
         //payment.method.Icon
         // fullName: payment.method.Icon.Icon

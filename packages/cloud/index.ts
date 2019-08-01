@@ -733,7 +733,7 @@ export namespace cloud {
         //cloud.kube.NodeStatus
         export type NodeStatus = "INSTALLING" | "UPDATING" | "RESETTING" | "SUSPENDING" | "REOPENING" | "DELETING" | "SUSPENDED" | "ERROR" | "USER_ERROR" | "USER_QUOTA_ERROR" | "USER_NODE_NOT_FOUND_ERROR" | "USER_NODE_SUSPENDED_SERVICE" | "READY"
         //cloud.kube.Region
-        export type Region = "GRA5" | "GRA7"
+        export type Region = "GRA5" | "GRA7" | "BHS5"
         //cloud.kube.ResetWorkerNodesPolicy
         export type ResetWorkerNodesPolicy = "reinstall" | "delete"
         //cloud.kube.UpdatePolicy
@@ -1844,6 +1844,12 @@ export interface Cloud{
                     quota: {
                         // GET /cloud/project/{serviceName}/region/{regionName}/quota
                         $get(): Promise<cloud.quota.Quotas>;
+                        // POST /cloud/project/{serviceName}/region/{regionName}/quota
+                        $post(params: {name: string}): Promise<cloud.Operation>;
+                        allowed: {
+                            // GET /cloud/project/{serviceName}/region/{regionName}/quota/allowed
+                            $get(): Promise<cloud.quota.AllowedQuota[]>;
+                        }
                     }
                     workflow: {
                         backup: {
@@ -2462,6 +2468,11 @@ export interface Cloud{
    */
   get(path: '/cloud/project/{serviceName}/region/{regionName}/quota'): (params: {regionName: string, serviceName: string}) => Promise<cloud.quota.Quotas>;
   /**
+   * Get allowed quotas
+   * Get allowed quotas on region
+   */
+  get(path: '/cloud/project/{serviceName}/region/{regionName}/quota/allowed'): (params: {regionName: string, serviceName: string}) => Promise<cloud.quota.AllowedQuota[]>;
+  /**
    * Manage your automated backups
    * List your automated backups
    */
@@ -2871,6 +2882,11 @@ export interface Cloud{
    * Request access to a region
    */
   post(path: '/cloud/project/{serviceName}/region'): (params: {serviceName: string, region: string}) => Promise<cloud.Region>;
+  /**
+   * Consult quotas
+   * Change project quotas on region
+   */
+  post(path: '/cloud/project/{serviceName}/region/{regionName}/quota'): (params: {regionName: string, serviceName: string, name: string}) => Promise<cloud.Operation>;
   /**
    * Manage your automated backups
    * Create a new automated backup
