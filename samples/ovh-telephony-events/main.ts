@@ -3,7 +3,7 @@ import { gToken, IOvhEventListener } from './model';
 import { createHandyClient, IHandyRedis } from 'handy-redis';
 import { OvhEventListenerV1 } from './OvhEventListenerV1';
 import { OvhEventListenerV2 } from './OvhEventListenerV2';
-import { loadTokens } from './tokenLoader';
+import { OvhEventTokenImporter } from './OvhEventTokenImporter';
 import { debounce } from 'debounce';
 
 // sample exec line:
@@ -24,7 +24,7 @@ async function main() {
         redis = createHandyClient({ host: program['redisHost'], port: Number(program['redisPort']) | 6379, password: program['redisPassword'] });
     }
     const cachefile: string = program.cache;
-    const tokens: gToken[] = await loadTokens(cachefile);
+    const tokens: gToken[] = await new OvhEventTokenImporter().cacheFile(cachefile).load();
 
     let listener: IOvhEventListener;
     if (program.v1)
@@ -36,7 +36,7 @@ async function main() {
     let channel = program.channel || 'event-voip';
 
     if (redis)
-        listener.setRedis(redis, channel)
+        listener.redis(redis, channel)
 
     let cnt = 0;
     const log = debounce(() => {

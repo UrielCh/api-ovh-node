@@ -110,6 +110,6 @@ export interface gTokenGroup {
 
 export interface IOvhEventListener {
     on(event: "message", listener: (msg: VoipEventV2) => void): this;
-    setRedis(redis: IHandyRedis, channel: string): IOvhEventListener;
+    redis(redis: IHandyRedis, channel: string): IOvhEventListener;
     listen(): Promise<any>
 }

@@ -5,18 +5,18 @@ import { IHandyRedis } from "handy-redis";
 const headers = { 'Content-Type': 'application/json', 'Accept': 'text/plain' };
 
 export class OvhEventListenerV2 extends EventEmitter implements IOvhEventListener {
-    private redis: IHandyRedis | null;
+    private _redis: IHandyRedis | null;
     private tokens: gToken[];
     private channel: string;
     constructor(tokens: gToken[]) {
         super();
-        this.redis = null
+        this._redis = null
         this.tokens = tokens;
         this.channel = '';
     }
 
-    public setRedis(redis: IHandyRedis, channel: string): OvhEventListenerV2 {
-        this.redis = redis;
+    public redis(redis: IHandyRedis, channel: string): OvhEventListenerV2 {
+        this._redis = redis;
         this.channel = channel;
         return this;
     }
@@ -59,11 +59,11 @@ export class OvhEventListenerV2 extends EventEmitter implements IOvhEventListene
                                 this.emit("message", m);
                             }
                         }
-                        if (this.redis) {
+                        if (this._redis) {
                             console.log(`${(new Date()).toISOString()} Send ${events.length} event to ${this.channel}`);
                             for (const m of events) {
                                 delete m['token']; // hide token
-                                await this.redis.publish(this.channel, JSON.stringify(m));
+                                await this._redis.publish(this.channel, JSON.stringify(m));
                             }
                         }
                     }
