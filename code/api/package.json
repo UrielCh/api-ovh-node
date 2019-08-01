@@ -11,12 +11,12 @@
     "open": "^6.4.0"
   },
   "devDependencies": {
-    "@ovh-api/me": "^2.0.2",
+    "@ovh-api/me": "^2.0.4",
     "@types/chai": "^4.1.7",
     "@types/mocha": "^5.2.7",
     "@types/open": "^6.2.1",
     "chai": "^4.2.0",
-    "mocha": "^6.1.4",
+    "mocha": "^6.2.0",
     "ts-node": "^8.3.0",
     "typescript": "^3.5.3"
   },

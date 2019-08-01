@@ -13,3 +13,6 @@ code/common/dist/
 **/index.js
 **/index.js.map
 tokenTest.json
+code/gen/src/*.js.map
+code/gen/ns.js.map
+code/gen/ns.js

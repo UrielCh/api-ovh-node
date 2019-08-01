@@ -23,12 +23,12 @@
   },
   "dependencies": {
     "@ovh-api/api": "^2.0.0",
-    "@ovh-api/vps": "^2.0.0",
+    "@ovh-api/vps": "^2.0.4",
     "fs-extra": "^8.1.0"
   },
   "devDependencies": {
     "@types/fs-extra": "^8.0.0",
     "ts-node": "^8.3.0",
-    "typescript": "^3.5.2"
+    "typescript": "^3.5.3"
   }
 }
