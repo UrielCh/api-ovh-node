@@ -33,12 +33,12 @@ export interface VoipEventV1 {
     Timestamp: number;
     Date:      string;
     Data:      IEvData;
-    Details:   Details;
+    Details:   IEvDetails;
 }
 /**
  * V2
  */
-export interface IVoipEventV2 {
+export interface IVoipEvent {
     event: LineEvent | QueueEvent;
     token: string;
     service: 'queues' | string;
@@ -46,7 +46,7 @@ export interface IVoipEventV2 {
     timestamp: number;
     date: string;
     data: IEvData;
-    details: Details;
+    details: IEvDetails;
 }
 /**
  * V1 + V2
@@ -78,7 +78,7 @@ export interface IEvData {
 /**
  * V1 + V2
  */
-export interface Details {
+export interface IEvDetails {
     Description: string; // OVH label
     Id: string; // instAsString OVH id
     IdBillingAccount: string; // instAsString IdBillingAccount
@@ -86,29 +86,14 @@ export interface Details {
     Type: 'easyHunting' | string;
 }
 
-/**
- * For API V2
- */
-export interface EventSession {
-    id: string; // "BkfFH11M1cf7",
-    creation: string, // "2019-06-07T11:40:16.036197406+02:00",
-    lastUpdate: string, //"2019-06-07T11:40:16.03650895+02:00",
-    lastConnection: string, //"2019-06-07T11:40:16.036199867+02:00"
-}
-
-export interface IevToken {
+export interface IEvToken {
     billingAccount: string;
     token: string;
     //    session: string;
 }
 
-export interface IEvTokenGroup {
-    groups: IevToken[];
-    session: string;
-}
-
 export interface IOvhEventListener {
-    on(event: "message", listener: (msg: IVoipEventV2) => void): this;
+    on(event: "message", listener: (msg: IVoipEvent) => void): this;
     redis(redis: IHandyRedis, channel: string): IOvhEventListener;
     listen(): Promise<any>
 }

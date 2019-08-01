@@ -1,4 +1,4 @@
-import { VoipEventV1Root, IOvhEventListener, IevToken, IVoipEventV2, VoipEventV1 } from "./model";
+import { VoipEventV1Root, IOvhEventListener, IEvToken, IVoipEvent, VoipEventV1 } from "./model";
 import { EventEmitter } from "events";
 import { IHandyRedis } from "handy-redis";
 
@@ -6,9 +6,9 @@ const headers = { 'Content-Type': 'application/json', 'Accept': 'text/plain' };
 
 export class OvhEventListenerV1 extends EventEmitter implements IOvhEventListener {
     private _redis: IHandyRedis | null;
-    private tokens: IevToken[];
+    private tokens: IEvToken[];
     private channel: string;
-    constructor(tokens: IevToken[]) {
+    constructor(tokens: IEvToken[]) {
         super();
         this._redis = null
         this.tokens = tokens
@@ -27,8 +27,8 @@ export class OvhEventListenerV1 extends EventEmitter implements IOvhEventListene
             while (true) {
                 try {
                     const rawData = await this.get(url);
-                    let events: IVoipEventV2[] = rawData.Events.map((e: VoipEventV1) => {
-                        const conv: IVoipEventV2 = {
+                    let events: IVoipEvent[] = rawData.Events.map((e: VoipEventV1) => {
+                        const conv: IVoipEvent = {
                             event: e.Event,
                             token: e.Token,
                             service: e.Service,

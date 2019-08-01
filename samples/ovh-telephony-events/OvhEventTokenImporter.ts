@@ -1,6 +1,6 @@
 import Api from '@ovh-api/telephony';
 import bluebird from 'bluebird';
-import { IevToken } from "./model";
+import { IEvToken } from "./model";
 import OvhApi from "@ovh-api/api";
 import fse from 'fs-extra';
 
@@ -21,7 +21,7 @@ export class OvhEventTokenImporter {
         return this;
     }
 
-    public async load(billingAccounts?: string[]): Promise<IevToken[]> {
+    public async load(billingAccounts?: string[]): Promise<IEvToken[]> {
         if (!this._cachefile) {
             return await this.feachToken(billingAccounts);
         }
@@ -29,7 +29,7 @@ export class OvhEventTokenImporter {
             await fse.access(this._cachefile);
             let tokens = await fse.readJSON(this._cachefile);
             if (billingAccounts) {
-                const ready = new Set(tokens.map((g: IevToken) => g.billingAccount))
+                const ready = new Set(tokens.map((g: IEvToken) => g.billingAccount))
                 const missing = billingAccounts.filter(g => !ready.has(g))
                 if (missing.length) {
                     let extras = await this.feachToken(missing);
@@ -47,8 +47,8 @@ export class OvhEventTokenImporter {
         }
     }
 
-    private async feachToken(billingAccounts?: string[]): Promise<IevToken[]> {
-        let tokens: IevToken[] = []
+    private async feachToken(billingAccounts?: string[]): Promise<IEvToken[]> {
+        let tokens: IEvToken[] = []
         const api = Api(this.engine);
         if (!billingAccounts || billingAccounts.length == 0)
             billingAccounts = await api.$get();

@@ -1,14 +1,29 @@
 import { EventEmitter } from "events";
-import { IOvhEventListener, IevToken, IEvTokenGroup, EventSession, IVoipEventV2 } from "./model";
+import { IOvhEventListener, IEvToken, IVoipEvent } from "./model";
 import { IHandyRedis } from "handy-redis";
 
 const headers = { 'Content-Type': 'application/json', 'Accept': 'text/plain' };
 
+interface IEvTokenGroup {
+    groups: IEvToken[];
+    session: string;
+}
+
+/**
+ * For API V2
+ */
+interface EventSession {
+    id: string; // "BkfFH11M1cf7",
+    creation: string, // "2019-06-07T11:40:16.036197406+02:00",
+    lastUpdate: string, //"2019-06-07T11:40:16.03650895+02:00",
+    lastConnection: string, //"2019-06-07T11:40:16.036199867+02:00"
+}
+
 export class OvhEventListenerV2 extends EventEmitter implements IOvhEventListener {
     private _redis: IHandyRedis | null;
-    private tokens: IevToken[];
+    private tokens: IEvToken[];
     private channel: string;
-    constructor(tokens: IevToken[]) {
+    constructor(tokens: IEvToken[]) {
         super();
         this._redis = null
         this.tokens = tokens;
@@ -51,7 +66,7 @@ export class OvhEventListenerV2 extends EventEmitter implements IOvhEventListene
             while (true) {
                 try {
                     let response = await fetch(url, { method: 'GET', headers })
-                    let events: IVoipEventV2[] = await response.json();
+                    let events: IVoipEvent[] = await response.json();
                     if (events && events.length) {
                         if (this.listenerCount("message") > 0) {
                             for (const m of events) {
