@@ -1,4 +1,4 @@
-import { VoipEventV1Root, IOvhEventListener, IEvToken, IVoipEvent, VoipEventV1 } from "./model";
+import { VoipEventV1Root, IOvhEventListener, IEvToken, IVoipEvent, VoipEventV1, QueueEvent, LineEvent, IVoipEventQueues, IVoipEventSip } from "./model";
 import { EventEmitter } from "events";
 import { IHandyRedis } from "handy-redis";
 import fetch from "node-fetch";
@@ -29,18 +29,35 @@ export class OvhEventListenerV1 extends EventEmitter implements IOvhEventListene
                 try {
                     const rawData = await this.get(url);
                     let events: IVoipEvent[] = rawData.Events.map((e: VoipEventV1) => {
-                        const conv: IVoipEvent = {
-                            event: e.Event,
-                            token: e.Token,
-                            service: e.Service,
-                            ressource: e.Ressource,
-                            timestamp: e.Timestamp,
-                            date: e.Date,
-                            data: e.Data,
-                            details: e.Details,
+                        let conv: IVoipEvent;
+                        if (e.Service === 'queues')
+                            return {
+                                event: e.Event,
+                                token: e.Token,
+                                service: e.Service,
+                                ressource: e.Ressource,
+                                timestamp: e.Timestamp,
+                                date: e.Date,
+                                data: e.Data,
+                                details: e.Details,
+
+                            } as IVoipEventQueues;
+                        else if (e.Service === 'sip') {
+                            return {
+                                event: e.Event,
+                                token: e.Token,
+                                service: e.Service,
+                                ressource: e.Ressource,
+                                timestamp: e.Timestamp,
+                                date: e.Date,
+                                data: e.Data,
+                                details: e.Details,
+
+                            } as IVoipEventSip;
                         }
-                        return conv;
-                    })
+                        console.error('Uknown model ', event)
+                        return null;
+                    }).filter(a => a) as IVoipEvent[];
                     if (events.length) {
                         if (this.listenerCount("message") > 0) {
                             for (const m of events) {
