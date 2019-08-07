@@ -18,8 +18,10 @@ import ApiMe from '@ovh-api/me';
 import Ovh from '@ovh-api/api';
 
 const ovh = new Ovh({accessRules: 'GET /ip'});
-const api = new ApiMe(ovh);
+const api = ApiMe(ovh);
 api.get('/me').then(console.log)
+// or
+api.$get().then(console.log)
 ```
 
 You will be asked to authorized an new issued certificat.
@@ -38,8 +40,10 @@ const config = {
     consumerKey: String(process.env.CONSUMER_KEY)
 };
 const ovh = new Ovh(config);
-const api = new ApiMe(ovh);
+const api = ApiMe(ovh);
 api.get('/me').then(console.log);
+// or
+api.$get().then(console.log);
 ```
 
 ### Same thing with a credential using the [official Ovh api](https://github.com/ovh/node-ovh)
@@ -57,8 +61,10 @@ const config = {
     consumerKey: String(process.env.CONSUMER_KEY)
 };
 const ovh = new Ovh(config);
-const api = new ApiMe(ovh);
+const api = ApiMe(ovh);
 api.get('/me').then(console.log);
+// or
+api.$get().then(console.log);
 ```
 
 For more sample see [samples](https://github.com/UrielCh/api-ovh-node/tree/master/code/sample)
