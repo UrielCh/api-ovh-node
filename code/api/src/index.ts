@@ -198,7 +198,7 @@ by default I will ask for all rights`);
         while (m = path.match(/{([^}]+)}/)) {
             let val = params[m[1]];
             if (val === undefined)
-                return <Promise<any>>Promise.reject(`${m[1]} param must be provide to ${pathTemplate}`);
+                return <Promise<any>>Promise.reject(Error(`${m[1]} param must be provide to ${pathTemplate}`));
             delete params[m[1]];
             path = path.replace(m[0], String(val));
         }
@@ -367,7 +367,7 @@ by default I will ask for all rights`);
                         }
                         return handleResponse(res, body).then(resolve, reject)
                     })
-            }).on('error', (e) => reject(e.message || e));
+            }).on('error', (e) => reject(Error(e.message) || e));
 
             // mocked socket has no setTimeout
             if (typeof (ovhEngine.timeout) === 'number') {
