@@ -1,13 +1,16 @@
 {
   "name": "ovh-dynhost2",
   "version": "1.0.0",
-  "description": "",
+  "description": "Update a Ovh DynHost",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Uriel Chemouni <uchemouni@gmail.com>",
+  "bin": {
+    "ovh-dynhost2": "./bin/ovh-dynhost2"
+  },
+  "license": "MIT",
   "dependencies": {
     "@ovh-api/api": "^2.0.0",
     "@ovh-api/domain": "^2.0.4",
