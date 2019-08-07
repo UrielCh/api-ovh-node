@@ -1,6 +1,6 @@
 {
   "name": "ovh-dynhost2",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Update a Ovh DynHost",
   "main": "index.js",
   "keywords": [
@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "build": "tsc -p .",
-    "publish": "tsc -p . && npm run publish"
+    "prepublish": "tsc -p ."
   },
   "author": "Uriel Chemouni <uchemouni@gmail.com>",
   "bin": {
