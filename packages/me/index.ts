@@ -902,6 +902,7 @@ export namespace me {
             // fullName: me.payment.method.AvailablePaymentMethod.AvailablePaymentMethod
             export interface AvailablePaymentMethod {
                 icon: me.payment.method.Icon;
+                integration: payment.method.IntegrationType;
                 oneshot: boolean;
                 paymentType: string;
                 registerable: boolean;
@@ -949,10 +950,8 @@ export namespace me {
                 export interface ValidationResult {
                     paymentMethodId: number;
                     url?: string;
-                    validationType: me.payment.method.Register.ValidationType;
+                    validationType: payment.method.IntegrationType;
                 }
-                //me.payment.method.Register.ValidationType
-                export type ValidationType = "DONE" | "REDIRECT" | "IFRAME_VANTIV"
             }
             //me.payment.method.Transaction
             // fullName: me.payment.method.Transaction.Transaction
@@ -1403,6 +1402,7 @@ export namespace payment {
         // fullName: payment.method.AvailablePaymentMethod.AvailablePaymentMethod
         export interface AvailablePaymentMethod {
             icon: payment.method.Icon;
+            integration: payment.method.IntegrationType;
             oneshot: boolean;
             paymentType: string;
             registerable: boolean;
@@ -1414,6 +1414,8 @@ export namespace payment {
             data?: string;
             name?: string;
         }
+        //payment.method.IntegrationType
+        export type IntegrationType = "DONE" | "IFRAME_VANTIV" | "REDIRECT"
     }
 }
 export namespace telephony {
@@ -1810,7 +1812,7 @@ export interface Me{
         }
         code: {
             // POST /me/credit/code
-            $post(params: {inputCode: string}): Promise<billing.credit.balance.Movement>;
+            $post(params: {inputCode: string, serviceId?: number}): Promise<billing.credit.balance.Movement>;
         }
     }
     debtAccount: {
@@ -3674,7 +3676,7 @@ export interface Me{
    * Validate a code to generate associated credit
    * Validate a code to generate associated credit movement
    */
-  post(path: '/me/credit/code'): (params: {inputCode: string}) => Promise<billing.credit.balance.Movement>;
+  post(path: '/me/credit/code'): (params: {inputCode: string, serviceId?: number}) => Promise<billing.credit.balance.Movement>;
   /**
    * pay operations
    * Create an order in order to pay this order's debt

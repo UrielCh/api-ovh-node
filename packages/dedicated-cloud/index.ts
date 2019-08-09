@@ -263,6 +263,14 @@ export namespace dedicatedCloud {
     export interface PciDss {
         state: dedicatedCloud.option.StateEnum;
     }
+    //dedicatedCloud.PrivateGateway
+    // fullName: dedicatedCloud.PrivateGateway.PrivateGateway
+    export interface PrivateGateway {
+        customerIp?: string;
+        customerNetmask?: string;
+        customerPortGroup?: string;
+        state: dedicatedCloud.option.StateEnum;
+    }
     //dedicatedCloud.RestorePoint
     // fullName: dedicatedCloud.RestorePoint.RestorePoint
     export interface RestorePoint {
@@ -298,7 +306,7 @@ export namespace dedicatedCloud {
         options: string[];
     }
     //dedicatedCloud.StateEnum
-    export type StateEnum = "available" | "delivered" | "disabled" | "disabling" | "error" | "migrating" | "provisionning" | "recycling" | "reserved" | "toDisable" | "toProvision" | "toRecycle" | "toUnprovision" | "unprovisionning"
+    export type StateEnum = "available" | "delivered" | "disabled" | "disabling" | "error" | "migrating" | "provisionning" | "recycling" | "reserved" | "toDisable" | "toProvision" | "toRecycle" | "toRemove" | "toUnprovision" | "unprovisionning"
     //dedicatedCloud.Task
     // fullName: dedicatedCloud.Task.Task
     export interface Task {
@@ -1093,6 +1101,18 @@ export interface DedicatedCloud{
                     // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableHostProfiles
                     $get(): Promise<dedicatedCloud.host.Profile[]>;
                 }
+                privateGateway: {
+                    // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/privateGateway
+                    $get(): Promise<dedicatedCloud.PrivateGateway>;
+                    disable: {
+                        // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/privateGateway/disable
+                        $post(): Promise<dedicatedCloud.Task>;
+                    }
+                    enable: {
+                        // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/privateGateway/enable
+                        $post(params: {ip: string, netmask: string, portgroup: string}): Promise<dedicatedCloud.Task>;
+                    }
+                }
                 task: {
                     // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task
                     $get(params?: {name?: string, state?: dedicatedCloud.TaskStateEnum}): Promise<number[]>;
@@ -1703,6 +1723,11 @@ export interface DedicatedCloud{
    */
   get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableHostProfiles'): (params: {datacenterId: number, serviceName: string}) => Promise<dedicatedCloud.host.Profile[]>;
   /**
+   * Private management gateway deployed in your Private Cloud to block all public access
+   * Get this object properties
+   */
+  get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/privateGateway'): (params: {datacenterId: number, serviceName: string}) => Promise<dedicatedCloud.PrivateGateway>;
+  /**
    * List the dedicatedCloud.Task objects
    * Tasks associated with this Datacenter
    */
@@ -2252,6 +2277,16 @@ export interface DedicatedCloud{
    * Order a new hourly Host in a given Datacenter
    */
   post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderNewHostHourly'): (params: {datacenterId: number, serviceName: string, name: string}) => Promise<dedicatedCloud.Task>;
+  /**
+   * disable operations
+   * Remove the private gateway in your Private Cloud and open public access.
+   */
+  post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/privateGateway/disable'): (params: {datacenterId: number, serviceName: string}) => Promise<dedicatedCloud.Task>;
+  /**
+   * enable operations
+   * Deploy a private gateway on your Private Cloud to block all public access
+   */
+  post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/privateGateway/enable'): (params: {datacenterId: number, serviceName: string, ip: string, netmask: string, portgroup: string}) => Promise<dedicatedCloud.Task>;
   /**
    * changeMaintenanceExecutionDate operations
    * Change the execution date of a maintenance. Works only if task type is maintenance and if it has not started yet.

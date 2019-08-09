@@ -186,6 +186,7 @@ export namespace xdsl {
         lnsRateLimit?: number;
         monitoring: boolean;
         nra: string;
+        packName?: string;
         pairsNumber: number;
         role: xdsl.AccessRoleEnum;
         status: xdsl.AccessStatusEnum;
@@ -1243,7 +1244,7 @@ export interface Xdsl{
         // GET /xdsl/{serviceName}
         $get(): Promise<xdsl.Access>;
         // PUT /xdsl/{serviceName}
-        $put(params?: {accessName?: string, accessType?: xdslDslTypeEnum, address?: xdsl.AddressDetail, capabilities?: xdsl.AccessCapabilities, description?: string, ipv6Enabled?: boolean, lnsRateLimit?: number, monitoring?: boolean, nra?: string, pairsNumber?: number, role?: xdsl.AccessRoleEnum, status?: xdsl.AccessStatusEnum}): Promise<void>;
+        $put(params?: {accessName?: string, accessType?: xdslDslTypeEnum, address?: xdsl.AddressDetail, capabilities?: xdsl.AccessCapabilities, description?: string, ipv6Enabled?: boolean, lnsRateLimit?: number, monitoring?: boolean, nra?: string, packName?: string, pairsNumber?: number, role?: xdsl.AccessRoleEnum, status?: xdsl.AccessStatusEnum}): Promise<void>;
         addressMove: {
             extraIpRange: {
                 // GET /xdsl/{serviceName}/addressMove/extraIpRange
@@ -1953,7 +1954,7 @@ export interface Xdsl{
    * XDSL Access
    * Alter this object properties
    */
-  put(path: '/xdsl/{serviceName}'): (params: {serviceName: string, accessName?: string, accessType?: xdslDslTypeEnum, address?: xdsl.AddressDetail, capabilities?: xdsl.AccessCapabilities, description?: string, ipv6Enabled?: boolean, lnsRateLimit?: number, monitoring?: boolean, nra?: string, pairsNumber?: number, role?: xdsl.AccessRoleEnum, status?: xdsl.AccessStatusEnum}) => Promise<void>;
+  put(path: '/xdsl/{serviceName}'): (params: {serviceName: string, accessName?: string, accessType?: xdslDslTypeEnum, address?: xdsl.AddressDetail, capabilities?: xdsl.AccessCapabilities, description?: string, ipv6Enabled?: boolean, lnsRateLimit?: number, monitoring?: boolean, nra?: string, packName?: string, pairsNumber?: number, role?: xdsl.AccessRoleEnum, status?: xdsl.AccessStatusEnum}) => Promise<void>;
   /**
    * Modem
    * Alter this object properties

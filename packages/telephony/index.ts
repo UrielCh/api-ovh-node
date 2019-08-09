@@ -230,6 +230,32 @@ export namespace telephony {
     export type CallsGeneratorDialplanEnum = "PlayAudioFile" | "PlayAudioFileAndTransferCall" | "ReadText" | "RequestAppointmentConfirmation" | "RequestAppointmentConfirmationWithTransfer"
     //telephony.CallsGeneratorHangupCauseEnum
     export type CallsGeneratorHangupCauseEnum = "AccessInformationDiscarded" | "AllottedTimeout" | "AttendedTransfer" | "BlindTransfer" | "CallAwardedbeing" | "ChannelTypeNotImplemented" | "ChannelUnacceptable" | "CodeSip403BearerCapabilityNotAuthorized" | "CodeSip403IncomingCallsBarred" | "CodeSip403OutgoingCallsBarred" | "CodeSip404NoRouteToDestination" | "CodeSip404NoRouteToSpecifiedTransitNetwork" | "CodeSip404UnallocatedNumber" | "CodeSip408NoUserResponding" | "CodeSip410NumberChanged" | "CodeSip410RedirectionToNewDestination" | "CodeSip480NoAnswerFromUser" | "CodeSip480NormalUnspecified" | "CodeSip480SubscriberAbsent" | "CodeSip483ExchangeRoutingError" | "CodeSip484InvalidNumberFormatAddressIncomplete" | "CodeSip486UserBusy" | "CodeSip487OriginatorCancel" | "CodeSip488IncompatibleDestination" | "CodeSip488bearerCapabilityNotImplemented" | "CodeSip501FacilitiesRejected" | "CodeSip501RequestedFacilityNotImplemented" | "CodeSip501ServiceOrOptionNotImplementedUnspecified" | "CodeSip502DestinationOutOfOrder" | "CodeSip503BearerCapabilityNotPresentlyAvailable" | "CodeSip503NetworkOutOfOrder" | "CodeSip503NoCircuitChannelAvailable" | "CodeSip503RequestedCircuitOrChannelNotAvailable" | "CodeSip503SwitchingEquipmentCongestion" | "CodeSip503TemporaryFailure" | "CodeSip504RecoveryOnTimerExpiry" | "CodeSip603CallRejected" | "Crash" | "GatewayDown" | "InformationElementOrParameterNonExistentOrNotImplemented" | "InterworkingUnspecified" | "InvalidCallReferenceValue" | "InvalidInformationElementContents" | "InvalidMessageUnspecified" | "LoseRace" | "ManagerRequest" | "MandatoryInformationElementIsMissing" | "MediaTimeout" | "MessageNotCompatibleWithCallState" | "MessageNotCompatibleWithCallStateOrMessageTypeNonExistentOrNotImplemented" | "MessageTypeNonExistentOrNotImplemented" | "NormalCallClearing" | "ParameterNonExistentOrNotImplementedPassedOnNationalUse" | "PickedOff" | "PreEmpted" | "ProgressTimeout" | "ProtocolErrorUnspecified" | "RequestedFacilityNotSubscribed" | "ResponseToStatusInquiry" | "ServiceOrOptionNotAvailableUnspecified" | "SystemShutdown" | "UnknownOrCallUnfinished" | "UnspecifiedNoOtherCauseCodesApplicable" | "UserChallenge" | "UserNotRegistered"
+    //telephony.CarrierSip
+    // fullName: telephony.CarrierSip.CarrierSip
+    export interface CarrierSip {
+        description: string;
+        serviceName: string;
+        serviceType: telephony.TypeServiceEnum;
+    }
+    //telephony.CarrierSipCustomerEndpoint
+    // fullName: telephony.CarrierSipCustomerEndpoint.CarrierSipCustomerEndpoint
+    export interface CarrierSipCustomerEndpoint {
+        id: number;
+        ip: string;
+        port: number;
+        priority: number;
+        protocol: telephony.CarrierSipEndpointProtocolEnum;
+        weight: number;
+    }
+    //telephony.CarrierSipDetails
+    // fullName: telephony.CarrierSipDetails.CarrierSipDetails
+    export interface CarrierSipDetails {
+        description: string;
+        maxCallsPerSecond: number;
+        maxConcurrentCalls: number;
+    }
+    //telephony.CarrierSipEndpointProtocolEnum
+    export type CarrierSipEndpointProtocolEnum = "tcp" | "tls" | "udp"
     //telephony.City
     // fullName: telephony.City.City
     export interface City {
@@ -1965,6 +1991,28 @@ export interface Telephony{
         cancelTermination: {
             // POST /telephony/{billingAccount}/cancelTermination
             $post(): Promise<void>;
+        }
+        carrierSip: {
+            // GET /telephony/{billingAccount}/carrierSip
+            $get(): Promise<string[]>;
+            $(serviceName: string): {
+                // GET /telephony/{billingAccount}/carrierSip/{serviceName}
+                $get(): Promise<telephony.CarrierSip>;
+                endpoints: {
+                    // GET /telephony/{billingAccount}/carrierSip/{serviceName}/endpoints
+                    $get(): Promise<number[]>;
+                    $(id: number): {
+                        // GET /telephony/{billingAccount}/carrierSip/{serviceName}/endpoints/{id}
+                        $get(): Promise<telephony.CarrierSipCustomerEndpoint>;
+                    };
+                }
+                settings: {
+                    // GET /telephony/{billingAccount}/carrierSip/{serviceName}/settings
+                    $get(): Promise<telephony.CarrierSipDetails>;
+                    // PUT /telephony/{billingAccount}/carrierSip/{serviceName}/settings
+                    $put(params?: {description?: string, maxCallsPerSecond?: number, maxConcurrentCalls?: number}): Promise<void>;
+                }
+            };
         }
         changeContact: {
             // POST /telephony/{billingAccount}/changeContact
@@ -3704,6 +3752,31 @@ export interface Telephony{
    */
   get(path: '/telephony/{billingAccount}/billingAccountSite'): (params: {billingAccount: string}) => Promise<string>;
   /**
+   * List the telephony.CarrierSip objects
+   * Carrier SIP trunks associated with this billing account
+   */
+  get(path: '/telephony/{billingAccount}/carrierSip'): (params: {billingAccount: string}) => Promise<string[]>;
+  /**
+   * CarrierSip
+   * Get this object properties
+   */
+  get(path: '/telephony/{billingAccount}/carrierSip/{serviceName}'): (params: {billingAccount: string, serviceName: string}) => Promise<telephony.CarrierSip>;
+  /**
+   * List the telephony.CarrierSipCustomerEndpoint objects
+   * List of your remote sip endpoints (ips, ports, protocol) of your carrier sip trunk service
+   */
+  get(path: '/telephony/{billingAccount}/carrierSip/{serviceName}/endpoints'): (params: {billingAccount: string, serviceName: string}) => Promise<number[]>;
+  /**
+   * Carrier SIP Endpoints
+   * Get this object properties
+   */
+  get(path: '/telephony/{billingAccount}/carrierSip/{serviceName}/endpoints/{id}'): (params: {billingAccount: string, id: number, serviceName: string}) => Promise<telephony.CarrierSipCustomerEndpoint>;
+  /**
+   * Carrier SIP Properties
+   * Get this object properties
+   */
+  get(path: '/telephony/{billingAccount}/carrierSip/{serviceName}/settings'): (params: {billingAccount: string, serviceName: string}) => Promise<telephony.CarrierSipDetails>;
+  /**
    * List the telephony.Conference objects
    * Conferences associated with this billing account
    */
@@ -5103,6 +5176,11 @@ export interface Telephony{
    * Alter this object properties
    */
   put(path: '/telephony/{billingAccount}/abbreviatedNumber/{abbreviatedNumber}'): (params: {abbreviatedNumber: number, billingAccount: string, destinationNumber?: string, name?: string, surname?: string}) => Promise<void>;
+  /**
+   * Carrier SIP Properties
+   * Alter this object properties
+   */
+  put(path: '/telephony/{billingAccount}/carrierSip/{serviceName}/settings'): (params: {billingAccount: string, serviceName: string, description?: string, maxCallsPerSecond?: number, maxConcurrentCalls?: number}) => Promise<void>;
   /**
    * Conference properties
    * Alter this object properties
