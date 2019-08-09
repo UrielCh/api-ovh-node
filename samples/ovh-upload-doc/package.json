@@ -1,10 +1,27 @@
 {
-  "private": true,
   "name": "ovh-upload-doc",
   "version": "1.0.1",
+  "description": "Upload a file as an OVH document",
   "main": "index.js",
+  "keywords": [
+    "ovh",
+    "document",
+    "upload"
+  ],
   "typings": "index.d.ts",
   "license": "MIT",
+  "author": "Uriel Chemouni <uchemouni@gmail.com>",
+  "bin": {
+    "ovh-upload-doc": "./bin/ovh-upload-doc"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UrielCh/api-ovh-node.git"
+  },
+  "bugs": "https://github.com/UrielCh/api-ovh-node/issues",
   "scripts": {
     "build": "tsc",
     "build:watch": "tsc --watch"

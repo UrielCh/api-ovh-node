@@ -1,15 +1,22 @@
 {
   "name": "ovh-vps-config-failover",
   "version": "1.0.4",
+  "description": "Configure IP Failover on an Debian/CentOS based OVH VPS.",
   "main": "index.js",
+  "keywords": [
+    "ovh",
+    "VPS",
+    "IP",
+    "Failover",
+    "debian",
+    "centos"
+  ],
   "typings": "index.d.ts",
   "license": "MIT",
   "author": "Uriel Chemouni <uchemouni@gmail.com>",
-  "description": "Configure IP Failover on an Debian/centOS based OVH VPS.",
   "bin": {
     "ovh-vps-config-failover": "./bin/ovh-vps-config-failover"
   },
-  "preferGlobal": true,
   "publishConfig": {
     "access": "public"
   },
@@ -17,6 +24,7 @@
     "type": "git",
     "url": "git+https://github.com/UrielCh/api-ovh-node.git"
   },
+  "bugs": "https://github.com/UrielCh/api-ovh-node/issues",
   "scripts": {
     "build": "tsc",
     "build:watch": "tsc --watch"

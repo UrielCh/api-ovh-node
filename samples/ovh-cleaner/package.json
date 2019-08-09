@@ -1,10 +1,28 @@
 {
-  "private": true,
   "name": "ovh-cleaner",
   "version": "1.0.0",
+  "description": "Help you to secure your OVH account by revoking third-party authorization",
   "main": "index.js",
+  "keywords": [
+    "ovh",
+    "certificate",
+    "revoking",
+    "security"
+  ],
   "typings": "index.d.ts",
   "license": "MIT",
+  "author": "Uriel Chemouni <uchemouni@gmail.com>",
+  "bin": {
+    "ovh-cleaner": "./bin/ovh-cleaner"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UrielCh/api-ovh-node.git"
+  },
+  "bugs": "https://github.com/UrielCh/api-ovh-node/issues",
   "scripts": {
     "build": "tsc",
     "build:watch": "tsc --watch"

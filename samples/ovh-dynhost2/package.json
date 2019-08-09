@@ -4,24 +4,28 @@
   "description": "Update a Ovh DynHost",
   "main": "index.js",
   "keywords": [
-    "dns",
     "ovh",
+    "dns",
     "dynhost"
   ],
-  "scripts": {
-    "build": "tsc -p .",
-    "prepublish": "tsc -p ."
-  },
+  "typings": "index.d.ts",
+  "license": "MIT",
   "author": "Uriel Chemouni <uchemouni@gmail.com>",
   "bin": {
     "ovh-dynhost2": "./bin/ovh-dynhost2"
   },
-  "bugs": "https://github.com/UrielCh/api-ovh-node/issues",
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/UrielCh/api-ovh-node.git"
   },
-  "license": "MIT",
+  "bugs": "https://github.com/UrielCh/api-ovh-node/issues",
+  "scripts": {
+    "build": "tsc -p .",
+    "prepublish": "tsc -p ."
+  },
   "dependencies": {
     "@ovh-api/api": "^2.0.0",
     "@ovh-api/domain": "^2.0.4",

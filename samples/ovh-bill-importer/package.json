@@ -1,14 +1,20 @@
 {
   "name": "ovh-bill-importer",
   "version": "1.0.2",
+  "description": "Download and organize all your OVH bills",
   "main": "index.js",
+  "keywords": [
+    "ovh",
+    "billing",
+    "download",
+    "VAT"
+  ],
   "typings": "index.d.ts",
   "license": "MIT",
   "author": "Uriel Chemouni <uchemouni@gmail.com>",
   "bin": {
     "ovh-bill-importer": "./bin/ovh-bill-importer"
   },
-  "preferGlobal": true,
   "publishConfig": {
     "access": "public"
   },
@@ -16,6 +22,7 @@
     "type": "git",
     "url": "git+https://github.com/UrielCh/api-ovh-node.git"
   },
+  "bugs": "https://github.com/UrielCh/api-ovh-node/issues",
   "scripts": {
     "build": "tsc",
     "build:watch": "tsc --watch"
