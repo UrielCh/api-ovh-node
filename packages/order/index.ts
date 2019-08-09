@@ -1542,6 +1542,18 @@ export interface Order{
                 // POST /order/cart/{cartId}/paasmon
                 $post(params: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             }
+            privateCloud: {
+                // GET /order/cart/{cartId}/privateCloud
+                $get(): Promise<order.cart.GenericProductDefinition[]>;
+                // POST /order/cart/{cartId}/privateCloud
+                $post(params: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                options: {
+                    // GET /order/cart/{cartId}/privateCloud/options
+                    $get(params: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
+                    // POST /order/cart/{cartId}/privateCloud/options
+                    $post(params: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                }
+            }
             privateCloudCDI: {
                 // GET /order/cart/{cartId}/privateCloudCDI
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -1989,6 +2001,10 @@ export interface Order{
             logs: {
                 // GET /order/catalog/formatted/logs
                 $get(params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
+            }
+            privateCloud: {
+                // GET /order/catalog/formatted/privateCloud
+                $get(params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.pcc.Catalog>;
             }
             privateCloudCDI: {
                 // GET /order/catalog/formatted/privateCloudCDI
@@ -3699,6 +3715,16 @@ export interface Order{
   get(path: '/order/cart/{cartId}/paasmon'): (params: {cartId: string}) => Promise<order.cart.GenericProductDefinition[]>;
   /**
    * Missing description
+   * Get informations about Hosted Private Cloud offers
+   */
+  get(path: '/order/cart/{cartId}/privateCloud'): (params: {cartId: string}) => Promise<order.cart.GenericProductDefinition[]>;
+  /**
+   * Missing description
+   * Get informations about Hosted Private Cloud options
+   */
+  get(path: '/order/cart/{cartId}/privateCloud/options'): (params: {cartId: string, planCode: string}) => Promise<order.cart.GenericOptionDefinition[]>;
+  /**
+   * Missing description
    * Get informations about Private Cloud CDI offers
    */
   get(path: '/order/cart/{cartId}/privateCloudCDI'): (params: {cartId: string}) => Promise<order.cart.GenericProductDefinition[]>;
@@ -4122,6 +4148,11 @@ export interface Order{
    * Retrieve information of Logs Data Platform catalog
    */
   get(path: '/order/catalog/formatted/logs'): (params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}) => Promise<order.catalog.Catalog>;
+  /**
+   * Missing description
+   * Retrieve information of Private Cloud catalog
+   */
+  get(path: '/order/catalog/formatted/privateCloud'): (params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}) => Promise<order.catalog.pcc.Catalog>;
   /**
    * Missing description
    * Retrieve information of Private Cloud CDI catalog
@@ -5807,6 +5838,16 @@ export interface Order{
    * Post a new PaaS Monitoring item in your cart
    */
   post(path: '/order/cart/{cartId}/paasmon'): (params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}) => Promise<order.cart.Item>;
+  /**
+   * Missing description
+   * Post a new Hosted Private Cloud item in your cart
+   */
+  post(path: '/order/cart/{cartId}/privateCloud'): (params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}) => Promise<order.cart.Item>;
+  /**
+   * Missing description
+   * Post a new Hosted Private Cloud option in your cart
+   */
+  post(path: '/order/cart/{cartId}/privateCloud/options'): (params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}) => Promise<order.cart.Item>;
   /**
    * Missing description
    * Post a new Private Cloud CDI item in your cart
