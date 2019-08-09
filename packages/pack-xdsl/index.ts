@@ -480,6 +480,10 @@ export interface Pack{
                     // POST /pack/xdsl/{packName}/addressMove/move
                     $post(params: {creation?: pack.xdsl.addressMove.Creation, keepCurrentNumber: boolean, landline?: pack.xdsl.addressMove.Landline, moveOutDate?: string, offerCode: string, provider?: xdsleligibilityProviderEnum}): Promise<pack.xdsl.AsyncTask<number>>;
                 }
+                moveFtth: {
+                    // POST /pack/xdsl/{packName}/addressMove/moveFtth
+                    $post(params: {buildingReference: string, floor: string, moveOutDate?: string, otp: boolean, otpReference?: string, stair: string}): Promise<pack.xdsl.AsyncTask<number>>;
+                }
             }
             canCancelResiliation: {
                 // GET /pack/xdsl/{packName}/canCancelResiliation
@@ -1007,9 +1011,14 @@ export interface Pack{
   post(path: '/pack/xdsl/{packName}/addressMove/eligibility'): (params: {packName: string, address?: xdsleligibilityAddress, lineNumber?: string}) => Promise<pack.xdsl.AsyncTask<pack.xdsl.addressMove.Eligibility>>;
   /**
    * move operations
-   * Move the access to another address
+   * Move the Xdsl access to another address
    */
   post(path: '/pack/xdsl/{packName}/addressMove/move'): (params: {packName: string, creation?: pack.xdsl.addressMove.Creation, keepCurrentNumber: boolean, landline?: pack.xdsl.addressMove.Landline, moveOutDate?: string, offerCode: string, provider?: xdsleligibilityProviderEnum}) => Promise<pack.xdsl.AsyncTask<number>>;
+  /**
+   * moveFtth operations
+   * Move the FTTH access to another address
+   */
+  post(path: '/pack/xdsl/{packName}/addressMove/moveFtth'): (params: {packName: string, buildingReference: string, floor: string, moveOutDate?: string, otp: boolean, otpReference?: string, stair: string}) => Promise<pack.xdsl.AsyncTask<number>>;
   /**
    * cancelResiliation operations
    * Cancel the ongoing resiliation
