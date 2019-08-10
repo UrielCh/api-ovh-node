@@ -42,7 +42,7 @@ export namespace dedicatedCloud {
     // interface fullName: dedicatedCloud.BackupJob.BackupJob
     export interface BackupJob {
         allocatedDisk?: number;
-        backupDays?: dedicatedCloud.backup.BackupDaysEnum[];
+        backupDays?: dedicatedCloudbackupBackupDaysEnum[];
         encryption?: boolean;
         offerType?: dedicatedCloudbackupOfferTypeEnum;
         retentionTime?: number;
@@ -69,8 +69,8 @@ export namespace dedicatedCloud {
     export type CommercialNameEnum = "DC" | "DC-ANCIENT" | "DC-ANCIENT-HDS" | "DC-ANCIENT-HIPAA" | "DC-ANCIENT-NSX" | "DC-ANCIENT-NSX-VROPS" | "DC-ANCIENT-PCIDSS" | "DC-ANCIENT-UNKNOWN" | "DC-ANCIENT-VROPS" | "DC-HDS" | "DC-HIPAA" | "DC-LEGACY" | "DC-LEGACY-HDS" | "DC-LEGACY-HIPAA" | "DC-LEGACY-NSX" | "DC-LEGACY-NSX-VROPS" | "DC-LEGACY-PCIDSS" | "DC-LEGACY-UNKNOWN" | "DC-LEGACY-VROPS" | "DC-NSX" | "DC-NSX-VROPS" | "DC-PCIDSS" | "DC-UNKNOWN" | "DC-VROPS" | "SDDC" | "SDDC-HDS" | "SDDC-HIPAA" | "SDDC-LEGACY" | "SDDC-LEGACY-HDS" | "SDDC-LEGACY-HIPAA" | "SDDC-LEGACY-PCIDSS" | "SDDC-LEGACY-UNKNOWN" | "SDDC-LEGACY-VROPS" | "SDDC-LEGACY-VROPS-WITHOUT-NSX" | "SDDC-LEGACY-WITHOUT-NSX" | "SDDC-PCIDSS" | "SDDC-UNKNOWN" | "SDDC-VROPS" | "SDDC-VROPS-WITHOUT-NSX" | "SDDC-WITHOUT-NSX" | "UNKNOWN" | "UNKNOWN-HDS" | "UNKNOWN-HIPAA" | "UNKNOWN-NSX" | "UNKNOWN-NSX-VROPS" | "UNKNOWN-PCIDSS" | "UNKNOWN-UNKNOWN" | "UNKNOWN-VROPS"
     // interface fullName: dedicatedCloud.CommercialRange.CommercialRange
     export interface CommercialRange {
-        allowedHypervisorVersions: dedicatedCloud.HypervisorVersionEnum[];
-        allowedNetworkRoles: dedicatedCloud.right.NetworkRoleEnum[];
+        allowedHypervisorVersions: dedicatedCloudHypervisorVersionEnum[];
+        allowedNetworkRoles: dedicatedCloudrightNetworkRoleEnum[];
         commercialRangeName: string;
         dedicatedCloudVersion: string;
         range?: string;
@@ -111,7 +111,7 @@ export namespace dedicatedCloud {
         fullProfile: string;
         name: string;
         profile: string;
-        size: complexType.UnitAndValue<number>;
+        size: complexTypeUnitAndValuenumber;
         spaceFree?: number;
         spaceProvisionned?: number;
         spaceUsed?: number;
@@ -139,7 +139,7 @@ export namespace dedicatedCloud {
         billingType: dedicatedCloudressourcesBillingTypeEnum;
         clusterName?: string;
         connectionState?: dedicatedCloudhostSystemConnectionState;
-        cpu: complexType.UnitAndValue<number>;
+        cpu: complexTypeUnitAndValuenumber;
         cpuMax?: number;
         cpuMaxCore?: number;
         cpuNum?: number;
@@ -152,7 +152,7 @@ export namespace dedicatedCloud {
         profile: string;
         profileCode: string;
         rack: string;
-        ram: complexType.UnitAndValue<number>;
+        ram: complexTypeUnitAndValuenumber;
         state: dedicatedCloudhostStateEnum;
         uptime?: number;
         vmTotal?: number;
@@ -171,14 +171,14 @@ export namespace dedicatedCloud {
     // interface fullName: dedicatedCloud.HostStockProcGen.HostStockProcGen
     export interface HostStockProcGen {
         cpuGeneration: string;
-        value: dedicatedCloud.HostStockHypervisor[];
+        value: dedicatedCloudHostStockHypervisor[];
     }
     // interface fullName: dedicatedCloud.HostStockProfile.HostStockProfile
     export interface HostStockProfile {
         id: number;
         name: string;
         ref: string;
-        value: dedicatedCloud.HostStockProcGen[];
+        value: dedicatedCloudHostStockProcGen[];
     }
     // type fullname: dedicatedCloud.HypervisorVersionEnum
     export type HypervisorVersionEnum = "4.1" | "5.0" | "5.1" | "5.5" | "6.0" | "6.5" | "hv3.1" | "hvdc3.1" | "nc1.0"
@@ -249,7 +249,7 @@ export namespace dedicatedCloud {
         creationTime?: string;
         isCorrupted: boolean;
         restorePointId: number;
-        restorePointSize: complexType.UnitAndValue<number>;
+        restorePointSize: complexTypeUnitAndValuenumber;
         type?: dedicatedCloudbackupBackupTypeEnum;
     }
     // interface fullName: dedicatedCloud.Right.Right
@@ -366,14 +366,14 @@ export namespace dedicatedCloud {
     // interface fullName: dedicatedCloud.Vm.Vm
     export interface Vm {
         backup?: dedicatedCloudbackupBackup;
-        cdroms?: dedicatedCloud.virtualMachineCdrom[];
+        cdroms?: dedicatedCloudvirtualMachineCdrom[];
         clusterName?: string;
         cpuMax?: number;
         cpuNum?: number;
         cpuReady?: number;
         cpuReadyPercent?: number;
         cpuUsed?: number;
-        filers?: dedicatedCloud.vmFiler[];
+        filers?: dedicatedCloudvmFiler[];
         folderName?: string;
         hostName?: string;
         memoryMax?: number;
@@ -385,7 +385,7 @@ export namespace dedicatedCloud {
         netPacketTx?: number;
         netRx?: number;
         netTx?: number;
-        networks?: dedicatedCloud.vmNetwork[];
+        networks?: dedicatedCloudvmNetwork[];
         powerState: dedicatedCloudvirtualMachinePowerState;
         readLatency?: number;
         readPerSecond?: number;
@@ -415,15 +415,15 @@ export namespace dedicatedCloud {
         // interface fullName: dedicatedCloud.backup.Backup.Backup
         export interface Backup {
             allocatedDisk?: number;
-            backupDays?: dedicatedCloud.backup.BackupDaysEnum[];
+            backupDays?: dedicatedCloudbackupBackupDaysEnum[];
             encryption?: boolean;
             lastCreationTime?: string;
-            lastDuration?: complexType.UnitAndValue<number>;
-            lastResult?: dedicatedCloud.backup.JobStateEnum;
+            lastDuration?: complexTypeUnitAndValuenumber;
+            lastResult?: dedicatedCloudbackupJobStateEnum;
             lastSuccessfulCreationTime?: string;
-            lastSuccessfulDuration?: complexType.UnitAndValue<number>;
+            lastSuccessfulDuration?: complexTypeUnitAndValuenumber;
             offerType?: dedicatedCloudbackupOfferTypeEnum;
-            restorePoints?: dedicatedCloud.backup.RestorePoint[];
+            restorePoints?: dedicatedCloudbackupRestorePoint[];
             retentionTime?: number;
             state?: dedicatedCloudbackupStateEnum;
         }
@@ -440,7 +440,7 @@ export namespace dedicatedCloud {
             creationTime?: string;
             isCorrupted?: boolean;
             restorePointId: number;
-            size?: complexType.UnitAndValue<number>;
+            size?: complexTypeUnitAndValuenumber;
             type?: dedicatedCloudbackupBackupTypeEnum;
         }
         // type fullname: dedicatedCloud.backup.StateEnum
@@ -479,16 +479,16 @@ export namespace dedicatedCloud {
         export type DrpTypeEnum = "onPremise" | "ovh"
         // interface fullName: dedicatedCloud.disasterRecovery.LocalSiteDetails.LocalSiteDetails
         export interface LocalSiteDetails {
-            role: dedicatedCloud.disasterRecovery.SiteRoleEnum;
-            type: dedicatedCloud.disasterRecovery.SiteTypeEnum;
+            role: dedicatedClouddisasterRecoverySiteRoleEnum;
+            type: dedicatedClouddisasterRecoverySiteTypeEnum;
             zertoVersion: string;
             zvmIp?: string;
         }
         // interface fullName: dedicatedCloud.disasterRecovery.Profile.Profile
         export interface Profile {
-            drpType?: dedicatedCloud.disasterRecovery.DrpTypeEnum;
-            localSiteInformation?: dedicatedCloud.disasterRecovery.LocalSiteDetails;
-            remoteSiteInformation?: dedicatedCloud.disasterRecovery.RemoteSiteDetails;
+            drpType?: dedicatedClouddisasterRecoveryDrpTypeEnum;
+            localSiteInformation?: dedicatedClouddisasterRecoveryLocalSiteDetails;
+            remoteSiteInformation?: dedicatedClouddisasterRecoveryRemoteSiteDetails;
             state: dedicatedCloudStateEnum;
             systemVersion: string;
         }
@@ -500,11 +500,11 @@ export namespace dedicatedCloud {
             remoteEndpointInternalIp?: string;
             remoteEndpointPublicIp?: string;
             remoteZvmInternalIp?: string;
-            role?: dedicatedCloud.disasterRecovery.SiteRoleEnum;
+            role?: dedicatedClouddisasterRecoverySiteRoleEnum;
             serviceName?: string;
             state?: dedicatedCloudStateEnum;
-            type: dedicatedCloud.disasterRecovery.SiteTypeEnum;
-            vpnConfigState?: dedicatedCloud.disasterRecovery.VpnConfigStateEnum;
+            type: dedicatedClouddisasterRecoverySiteTypeEnum;
+            vpnConfigState?: dedicatedClouddisasterRecoveryVpnConfigStateEnum;
             zertoVersion?: string;
         }
         // type fullname: dedicatedCloud.disasterRecovery.SiteRoleEnum
@@ -517,14 +517,14 @@ export namespace dedicatedCloud {
     export namespace filer {
         // interface fullName: dedicatedCloud.filer.HourlyConsumption.HourlyConsumption
         export interface HourlyConsumption {
-            consumption: complexType.UnitAndValue<number>;
+            consumption: complexTypeUnitAndValuenumber;
             lastUpdate: string;
         }
         // interface fullName: dedicatedCloud.filer.Profile.Profile
         export interface Profile {
             fullName: string;
             name: string;
-            size: complexType.UnitAndValue<number>;
+            size: complexTypeUnitAndValuenumber;
         }
         // type fullname: dedicatedCloud.filer.StateEnum
         export type StateEnum = "adding" | "delivered" | "error" | "removing" | "unknown"
@@ -532,15 +532,15 @@ export namespace dedicatedCloud {
     export namespace host {
         // interface fullName: dedicatedCloud.host.HourlyConsumption.HourlyConsumption
         export interface HourlyConsumption {
-            consumption: complexType.UnitAndValue<number>;
+            consumption: complexTypeUnitAndValuenumber;
             lastUpdate: string;
         }
         // interface fullName: dedicatedCloud.host.Profile.Profile
         export interface Profile {
             core: string;
-            cpu: complexType.UnitAndValue<number>;
+            cpu: complexTypeUnitAndValuenumber;
             name: string;
-            ram: complexType.UnitAndValue<number>;
+            ram: complexTypeUnitAndValuenumber;
         }
         // type fullname: dedicatedCloud.host.StateEnum
         export type StateEnum = "adding" | "delivered" | "error" | "removing" | "unknown"
@@ -583,15 +583,15 @@ export namespace dedicatedCloud {
     }
     // interface fullName: dedicatedCloud.resourceNewPrices.resourceNewPrices
     export interface resourceNewPrices {
-        resources?: dedicatedCloud.resourceNewPricesEntry[];
+        resources?: dedicatedCloudresourceNewPricesEntry[];
     }
     // interface fullName: dedicatedCloud.resourceNewPricesEntry.resourceNewPricesEntry
     export interface resourceNewPricesEntry {
         billingType: dedicatedCloudressourcesBillingTypeEnum;
         changed: boolean;
         name: string;
-        newPrice: order.Price;
-        oldPrice: order.Price;
+        newPrice: orderPrice;
+        oldPrice: orderPrice;
         resourceType: dedicatedCloudressourcesResourceTypeEnum;
     }
     export namespace ressources {
@@ -661,7 +661,7 @@ export namespace dedicatedCloud {
     // interface fullName: dedicatedCloud.vmFiler.vmFiler
     export interface vmFiler {
         committed: number;
-        disks: dedicatedCloud.vmFilerDisk[];
+        disks: dedicatedCloudvmFilerDisk[];
         name: string;
     }
     // interface fullName: dedicatedCloud.vmFilerDisk.vmFilerDisk
@@ -698,7 +698,7 @@ export namespace order {
     export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
     // interface fullName: order.Price.Price
     export interface Price {
-        currencyCode: order.CurrencyCodeEnum;
+        currencyCode: orderCurrencyCodeEnum;
         text: string;
         value: number;
     }
@@ -733,10 +733,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: service.RenewType;
-        renewalType: service.RenewalTypeEnum;
+        renew?: serviceRenewType;
+        renewalType: serviceRenewalTypeEnum;
         serviceId: number;
-        status: service.StateEnum;
+        status: serviceStateEnum;
     }
 }
 export namespace vrack {
@@ -747,7 +747,7 @@ export namespace vrack {
         lastUpdate?: string;
         orderId?: number;
         serviceName?: string;
-        status: vrack.TaskStatusEnum;
+        status: vrackTaskStatusEnum;
         targetDomain?: string;
         todoDate?: string;
     }
@@ -1070,14 +1070,14 @@ export interface DedicatedCloud{
                             // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob
                             $get(): Promise<dedicatedCloud.BackupJob>;
                             // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob
-                            $post(params: {backupDays: dedicatedCloud.backup.BackupDaysEnum[]}): Promise<dedicatedCloud.Task>;
+                            $post(params: {backupDays: dedicatedCloudbackupBackupDaysEnum[]}): Promise<dedicatedCloud.Task>;
                             disable: {
                                 // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/disable
                                 $post(): Promise<dedicatedCloud.Task>;
                             }
                             enable: {
                                 // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/enable
-                                $post(params: {backupDays: dedicatedCloud.backup.BackupDaysEnum[]}): Promise<dedicatedCloud.Task>;
+                                $post(params: {backupDays: dedicatedCloudbackupBackupDaysEnum[]}): Promise<dedicatedCloud.Task>;
                             }
                             restorePoints: {
                                 // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/restorePoints
@@ -1098,11 +1098,11 @@ export interface DedicatedCloud{
                         }
                         editBackup: {
                             // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/editBackup
-                            $post(params: {backupDays: dedicatedCloud.backup.BackupDaysEnum[]}): Promise<dedicatedCloud.Task>;
+                            $post(params: {backupDays: dedicatedCloudbackupBackupDaysEnum[]}): Promise<dedicatedCloud.Task>;
                         }
                         enableBackup: {
                             // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/enableBackup
-                            $post(params: {backupDays: dedicatedCloud.backup.BackupDaysEnum[]}): Promise<dedicatedCloud.Task>;
+                            $post(params: {backupDays: dedicatedCloudbackupBackupDaysEnum[]}): Promise<dedicatedCloud.Task>;
                         }
                         restoreBackup: {
                             // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/restoreBackup
@@ -1332,7 +1332,7 @@ export interface DedicatedCloud{
             // GET /dedicatedCloud/{serviceName}/serviceInfos
             $get(): Promise<services.Service>;
             // PUT /dedicatedCloud/{serviceName}/serviceInfos
-            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}): Promise<void>;
         }
         servicePack: {
             // GET /dedicatedCloud/{serviceName}/servicePack
@@ -2072,7 +2072,7 @@ export interface DedicatedCloud{
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/dedicatedCloud/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
+  put(path: '/dedicatedCloud/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}) => Promise<void>;
   /**
    * Private Cloud User right
    * Alter this object properties
@@ -2232,7 +2232,7 @@ export interface DedicatedCloud{
    * Private Cloud Backup Job
    * Edit a backup job
    */
-  post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob'): (params: {datacenterId: number, serviceName: string, vmId: number, backupDays: dedicatedCloud.backup.BackupDaysEnum[]}) => Promise<dedicatedCloud.Task>;
+  post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob'): (params: {datacenterId: number, serviceName: string, vmId: number, backupDays: dedicatedCloudbackupBackupDaysEnum[]}) => Promise<dedicatedCloud.Task>;
   /**
    * disable operations
    * Disable backup solution on this virtual Machine
@@ -2242,7 +2242,7 @@ export interface DedicatedCloud{
    * enable operations
    * Enable backup solution on this virtual Machine
    */
-  post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/enable'): (params: {datacenterId: number, serviceName: string, vmId: number, backupDays: dedicatedCloud.backup.BackupDaysEnum[]}) => Promise<dedicatedCloud.Task>;
+  post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/enable'): (params: {datacenterId: number, serviceName: string, vmId: number, backupDays: dedicatedCloudbackupBackupDaysEnum[]}) => Promise<dedicatedCloud.Task>;
   /**
    * restore operations
    * Restore this restore point
@@ -2257,12 +2257,12 @@ export interface DedicatedCloud{
    * editBackup operations
    * Edit backup on this virtual Machine
    */
-  post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/editBackup'): (params: {datacenterId: number, serviceName: string, vmId: number, backupDays: dedicatedCloud.backup.BackupDaysEnum[]}) => Promise<dedicatedCloud.Task>;
+  post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/editBackup'): (params: {datacenterId: number, serviceName: string, vmId: number, backupDays: dedicatedCloudbackupBackupDaysEnum[]}) => Promise<dedicatedCloud.Task>;
   /**
    * enableBackup operations
    * Enable backup on this virtual Machine
    */
-  post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/enableBackup'): (params: {datacenterId: number, serviceName: string, vmId: number, backupDays: dedicatedCloud.backup.BackupDaysEnum[]}) => Promise<dedicatedCloud.Task>;
+  post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/enableBackup'): (params: {datacenterId: number, serviceName: string, vmId: number, backupDays: dedicatedCloudbackupBackupDaysEnum[]}) => Promise<dedicatedCloud.Task>;
   /**
    * restoreBackup operations
    * Restore this restore point
@@ -2520,26 +2520,26 @@ export interface DedicatedCloud{
 type dedicatedCloudAllowedNetworkStateEnum = dedicatedCloud.AllowedNetworkStateEnum;
 type dedicatedCloudbackupOfferTypeEnum = dedicatedCloud.backup.OfferTypeEnum;
 type dedicatedCloudBackupStateEnum = dedicatedCloud.BackupStateEnum;
-type dedicatedCloudbackupBackupDaysEnum[] = dedicatedCloud.backup.BackupDaysEnum[];
+type dedicatedCloudbackupBackupDaysEnum = dedicatedCloud.backup.BackupDaysEnum;
 type dedicatedCloudbackupStateEnum = dedicatedCloud.backup.StateEnum;
 type dedicatedCloudcapabilitiesFeatureStatusEnum = dedicatedCloud.capabilities.FeatureStatusEnum;
-type dedicatedCloudHypervisorVersionEnum[] = dedicatedCloud.HypervisorVersionEnum[];
-type dedicatedCloudrightNetworkRoleEnum[] = dedicatedCloud.right.NetworkRoleEnum[];
+type dedicatedCloudHypervisorVersionEnum = dedicatedCloud.HypervisorVersionEnum;
+type dedicatedCloudrightNetworkRoleEnum = dedicatedCloud.right.NetworkRoleEnum;
 type dedicatedCloudCommercialNameEnum = dedicatedCloud.CommercialNameEnum;
 type dedicatedCloudoptionStateEnum = dedicatedCloud.option.StateEnum;
 type dedicatedCloudoptionAccessNetworkStateEnum = dedicatedCloud.optionAccessNetwork.StateEnum;
 type dedicatedCloudressourcesBillingTypeEnum = dedicatedCloud.ressources.BillingTypeEnum;
+type complexTypeUnitAndValuenumber = complexType.UnitAndValue<number>;
 type dedicatedCloudfilerStateEnum = dedicatedCloud.filer.StateEnum;
 type dedicatedCloudhostSystemConnectionState = dedicatedCloud.hostSystemConnectionState;
 type dedicatedCloudhostStateEnum = dedicatedCloud.host.StateEnum;
-type dedicatedCloudHostStockHypervisor[] = dedicatedCloud.HostStockHypervisor[];
-type dedicatedCloudHostStockProcGen[] = dedicatedCloud.HostStockProcGen[];
+type dedicatedCloudHostStockHypervisor = dedicatedCloud.HostStockHypervisor;
+type dedicatedCloudHostStockProcGen = dedicatedCloud.HostStockProcGen;
 type dedicatedCloudBlockRegisterEnum = dedicatedCloud.BlockRegisterEnum;
 type dedicatedCloudipUsageEnum = dedicatedCloud.ipUsageEnum;
 type dedicatedCloudrightRightEnum = dedicatedCloud.right.RightEnum;
 type dedicatedCloudrightUserObjectRightTypeEnum = dedicatedCloud.right.UserObjectRightTypeEnum;
 type dedicatedCloudbackupBackupTypeEnum = dedicatedCloud.backup.BackupTypeEnum;
-type dedicatedCloudrightNetworkRoleEnum = dedicatedCloud.right.NetworkRoleEnum;
 type dedicatedCloudrightVmNetworkRoleEnum = dedicatedCloud.right.VmNetworkRoleEnum;
 type dedicatedCloudTaskStateEnum = dedicatedCloud.TaskStateEnum;
 type dedicatedClouduserActivationStateEnum = dedicatedCloud.user.ActivationStateEnum;
@@ -2547,11 +2547,13 @@ type dedicatedClouduserStateEnum = dedicatedCloud.user.StateEnum;
 type dedicatedCloudvlanStateEnum = dedicatedCloud.vlan.StateEnum;
 type dedicatedCloudvlanTypeEnum = dedicatedCloud.vlan.TypeEnum;
 type dedicatedCloudbackupBackup = dedicatedCloud.backup.Backup;
-type dedicatedCloudvirtualMachineCdrom[] = dedicatedCloud.virtualMachineCdrom[];
-type dedicatedCloudvmFiler[] = dedicatedCloud.vmFiler[];
-type dedicatedCloudvmNetwork[] = dedicatedCloud.vmNetwork[];
+type dedicatedCloudvirtualMachineCdrom = dedicatedCloud.virtualMachineCdrom;
+type dedicatedCloudvmFiler = dedicatedCloud.vmFiler;
+type dedicatedCloudvmNetwork = dedicatedCloud.vmNetwork;
 type dedicatedCloudvirtualMachinePowerState = dedicatedCloud.virtualMachinePowerState;
 type dedicatedCloudvirtualMachineFaultToleranceState = dedicatedCloud.virtualMachineFaultToleranceState;
+type dedicatedCloudbackupJobStateEnum = dedicatedCloud.backup.JobStateEnum;
+type dedicatedCloudbackupRestorePoint = dedicatedCloud.backup.RestorePoint;
 type dedicatedCloudBillingTypeEnum = dedicatedCloud.BillingTypeEnum;
 type dedicatedCloudGenerationEnum = dedicatedCloud.GenerationEnum;
 type dedicatedCloudManagementInterfaceEnum = dedicatedCloud.ManagementInterfaceEnum;
@@ -2559,12 +2561,24 @@ type dedicatedCloudStateEnum = dedicatedCloud.StateEnum;
 type dedicatedCloudUserAccessPolicyEnum = dedicatedCloud.UserAccessPolicyEnum;
 type dedicatedCloudUserLogoutPolicyEnum = dedicatedCloud.UserLogoutPolicyEnum;
 type dedicatedCloudVersion = dedicatedCloud.Version;
-type dedicatedCloudresourceNewPricesEntry[] = dedicatedCloud.resourceNewPricesEntry[];
+type dedicatedClouddisasterRecoverySiteRoleEnum = dedicatedCloud.disasterRecovery.SiteRoleEnum;
+type dedicatedClouddisasterRecoverySiteTypeEnum = dedicatedCloud.disasterRecovery.SiteTypeEnum;
+type dedicatedClouddisasterRecoveryDrpTypeEnum = dedicatedCloud.disasterRecovery.DrpTypeEnum;
+type dedicatedClouddisasterRecoveryLocalSiteDetails = dedicatedCloud.disasterRecovery.LocalSiteDetails;
+type dedicatedClouddisasterRecoveryRemoteSiteDetails = dedicatedCloud.disasterRecovery.RemoteSiteDetails;
+type dedicatedClouddisasterRecoveryVpnConfigStateEnum = dedicatedCloud.disasterRecovery.VpnConfigStateEnum;
+type dedicatedCloudresourceNewPricesEntry = dedicatedCloud.resourceNewPricesEntry;
+type orderPrice = order.Price;
 type dedicatedCloudressourcesResourceTypeEnum = dedicatedCloud.ressources.ResourceTypeEnum;
 type dedicatedCloudservicePackEnum = dedicatedCloud.servicePackEnum;
 type dedicatedCloudservicePackStateEnum = dedicatedCloud.servicePackStateEnum;
 type dedicatedCloudTwoFAWhitelistStateEnum = dedicatedCloud.TwoFAWhitelistStateEnum;
-type dedicatedCloudvmFilerDisk[] = dedicatedCloud.vmFilerDisk[];
+type dedicatedCloudvmFilerDisk = dedicatedCloud.vmFilerDisk;
 type dedicatedCloudvmNetworkBacking = dedicatedCloud.vmNetworkBacking;
 type dedicatedCloudvirtualDeviceConnectInfoStatus = dedicatedCloud.virtualDeviceConnectInfoStatus;
 type dedicatedCloudvmNetworkBackingTypeEnum = dedicatedCloud.vmNetworkBackingTypeEnum;
+type orderCurrencyCodeEnum = order.CurrencyCodeEnum;
+type serviceRenewType = service.RenewType;
+type serviceRenewalTypeEnum = service.RenewalTypeEnum;
+type serviceStateEnum = service.StateEnum;
+type vrackTaskStatusEnum = vrack.TaskStatusEnum;

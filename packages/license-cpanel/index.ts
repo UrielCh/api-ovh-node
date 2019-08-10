@@ -10,13 +10,13 @@ export namespace license {
     export type ChangeIpMessageEnum = "OK" | "destinationNotAllowed" | "licenseAlreadyExists" | "notAllowedToHandleThis" | "notSameType" | "sameIp" | "versionNotAllowed"
     // interface fullName: license.ChangeIpStatus.ChangeIpStatus
     export interface ChangeIpStatus {
-        message: license.ChangeIpMessageEnum;
+        message: licenseChangeIpMessageEnum;
         success: boolean;
     }
     // interface fullName: license.CpanelOrderConfiguration.CpanelOrderConfiguration
     export interface CpanelOrderConfiguration {
-        orderableVersions: license.OrderableCpanelCompatibilityInfos[];
-        serviceType: license.LicenseTypeEnum;
+        orderableVersions: licenseOrderableCpanelCompatibilityInfos[];
+        serviceType: licenseLicenseTypeEnum;
     }
     // type fullname: license.CpanelVersionEnum
     export type CpanelVersionEnum = "VERSION_11_FOR_LINUX" | "VERSION_11_FOR_VIRTUOZZO" | "VERSION_11_FOR_VPS" | "cpanel-license-version-11" | "cpanel-license-version-11-for-virtuozzo" | "cpanel-license-version-11-for-vps"
@@ -24,7 +24,7 @@ export namespace license {
     export type LicenseTypeEnum = "dedicated" | "dedicatedCloud" | "dedicatedFailover" | "failover" | "vm" | "vps" | "vps_ceph" | "vps_classic" | "vps_cloud" | "vps_cloud_2016" | "vps_ssd"
     // interface fullName: license.OrderableCpanelCompatibilityInfos.OrderableCpanelCompatibilityInfos
     export interface OrderableCpanelCompatibilityInfos {
-        version: license.OrderableCpanelVersionEnum;
+        version: licenseOrderableCpanelVersionEnum;
     }
     // type fullname: license.OrderableCpanelVersionEnum
     export type OrderableCpanelVersionEnum = "VERSION_11_FOR_LINUX" | "VERSION_11_FOR_VIRTUOZZO" | "VERSION_11_FOR_VPS" | "cpanel-license-version-11" | "cpanel-license-version-11-for-virtuozzo" | "cpanel-license-version-11-for-vps"
@@ -32,11 +32,11 @@ export namespace license {
     export type StateEnum = "ok" | "released" | "terminated" | "toDeliver"
     // interface fullName: license.Task.Task
     export interface Task {
-        action: license.ActionType;
+        action: licenseActionType;
         doneDate?: string;
         lastUpdate: string;
         name: string;
-        status: license.TaskStateEnum;
+        status: licenseTaskStateEnum;
         taskId: number;
         todoDate: string;
     }
@@ -50,8 +50,8 @@ export namespace license {
             domain: string;
             ip: string;
             licenseId: string;
-            status: license.StateEnum;
-            version: license.CpanelVersionEnum;
+            status: licenseStateEnum;
+            version: licenseCpanelVersionEnum;
         }
     }
 }
@@ -85,10 +85,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: service.RenewType;
-        renewalType: service.RenewalTypeEnum;
+        renew?: serviceRenewType;
+        renewalType: serviceRenewalTypeEnum;
         serviceId: number;
-        status: service.StateEnum;
+        status: serviceStateEnum;
     }
 }
 
@@ -115,7 +115,7 @@ export interface License{
             // GET /license/cpanel/{serviceName}
             $get(): Promise<license.cpanel.Cpanel>;
             // PUT /license/cpanel/{serviceName}
-            $put(params?: {creation?: string, deleteAtExpiration?: boolean, domain?: string, ip?: string, licenseId?: string, status?: license.StateEnum, version?: license.CpanelVersionEnum}): Promise<void>;
+            $put(params?: {creation?: string, deleteAtExpiration?: boolean, domain?: string, ip?: string, licenseId?: string, status?: licenseStateEnum, version?: licenseCpanelVersionEnum}): Promise<void>;
             allowedDestinationIp: {
                 // GET /license/cpanel/{serviceName}/allowedDestinationIp
                 $get(): Promise<string[]>;
@@ -136,11 +136,11 @@ export interface License{
                 // GET /license/cpanel/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /license/cpanel/{serviceName}/serviceInfos
-                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}): Promise<void>;
             }
             tasks: {
                 // GET /license/cpanel/{serviceName}/tasks
-                $get(params?: {action?: license.ActionType, status?: license.TaskStateEnum}): Promise<number[]>;
+                $get(params?: {action?: licenseActionType, status?: licenseTaskStateEnum}): Promise<number[]>;
                 $(taskId: number): {
                     // GET /license/cpanel/{serviceName}/tasks/{taskId}
                     $get(): Promise<license.Task>;
@@ -182,7 +182,7 @@ export interface License{
    * List the license.Task objects
    * tasks linked to this license
    */
-  get(path: '/license/cpanel/{serviceName}/tasks'): (params: {serviceName: string, action?: license.ActionType, status?: license.TaskStateEnum}) => Promise<number[]>;
+  get(path: '/license/cpanel/{serviceName}/tasks'): (params: {serviceName: string, action?: licenseActionType, status?: licenseTaskStateEnum}) => Promise<number[]>;
   /**
    * licenses Todos
    * Get this object properties
@@ -197,12 +197,12 @@ export interface License{
    * Your Cpanel license
    * Alter this object properties
    */
-  put(path: '/license/cpanel/{serviceName}'): (params: {serviceName: string, creation?: string, deleteAtExpiration?: boolean, domain?: string, ip?: string, licenseId?: string, status?: license.StateEnum, version?: license.CpanelVersionEnum}) => Promise<void>;
+  put(path: '/license/cpanel/{serviceName}'): (params: {serviceName: string, creation?: string, deleteAtExpiration?: boolean, domain?: string, ip?: string, licenseId?: string, status?: licenseStateEnum, version?: licenseCpanelVersionEnum}) => Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/license/cpanel/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
+  put(path: '/license/cpanel/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}) => Promise<void>;
   /**
    * changeIp operations
    * Move this license to another Ip
@@ -219,3 +219,17 @@ export interface License{
    */
   post(path: '/license/cpanel/{serviceName}/terminate'): (params: {serviceName: string}) => Promise<string>;
 }
+/**
+ * Extra Alias to bypass relativer namespace colitions
+ */
+type licenseChangeIpMessageEnum = license.ChangeIpMessageEnum;
+type licenseOrderableCpanelCompatibilityInfos = license.OrderableCpanelCompatibilityInfos;
+type licenseLicenseTypeEnum = license.LicenseTypeEnum;
+type licenseOrderableCpanelVersionEnum = license.OrderableCpanelVersionEnum;
+type licenseActionType = license.ActionType;
+type licenseTaskStateEnum = license.TaskStateEnum;
+type licenseStateEnum = license.StateEnum;
+type licenseCpanelVersionEnum = license.CpanelVersionEnum;
+type serviceRenewType = service.RenewType;
+type serviceRenewalTypeEnum = service.RenewalTypeEnum;
+type serviceStateEnum = service.StateEnum;

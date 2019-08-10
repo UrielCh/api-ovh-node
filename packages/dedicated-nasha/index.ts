@@ -13,13 +13,13 @@ export namespace complexType {
 export namespace dedicated {
     // interface fullName: dedicated.NasHAAvailabilities.NasHAAvailabilities
     export interface NasHAAvailabilities {
-        datacenters: dedicated.NasHAAvailabilityDatacenter[];
-        offer: dedicated.NasHAOfferEnum;
+        datacenters: dedicatedNasHAAvailabilityDatacenter[];
+        offer: dedicatedNasHAOfferEnum;
     }
     // interface fullName: dedicated.NasHAAvailabilityDatacenter.NasHAAvailabilityDatacenter
     export interface NasHAAvailabilityDatacenter {
-        availability: dedicated.NasHAAvailabilityEnum;
-        datacenter: dedicated.NasHAZoneEnum;
+        availability: dedicatedNasHAAvailabilityEnum;
+        datacenter: dedicatedNasHAZoneEnum;
     }
     // type fullname: dedicated.NasHAAvailabilityEnum
     export type NasHAAvailabilityEnum = "1H" | "240H" | "24H" | "72H" | "unknown"
@@ -35,9 +35,9 @@ export namespace dedicated {
             details?: string;
             doneDate?: string;
             lastUpdate?: string;
-            operation: dedicated.storage.TaskFunctionEnum;
+            operation: dedicatedstorageTaskFunctionEnum;
             partitionName?: string;
-            status: dedicated.TaskStatusEnum;
+            status: dedicatedTaskStatusEnum;
             storageName?: string;
             taskId: number;
             todoDate?: string;
@@ -48,13 +48,13 @@ export namespace dedicated {
         export interface Access {
             accessId: number;
             ip: string;
-            type: dedicated.storage.AclTypeEnum;
+            type: dedicatedstorageAclTypeEnum;
         }
         // interface fullName: dedicated.nasha.Partition.Partition
         export interface Partition {
             partitionCapacity?: number;
             partitionName: string;
-            protocol: dedicated.storage.ProtocolEnum;
+            protocol: dedicatedstorageProtocolEnum;
             size: number;
             usedBySnapshots?: number;
         }
@@ -65,7 +65,7 @@ export namespace dedicated {
         }
         // interface fullName: dedicated.nasha.Snapshot.Snapshot
         export interface Snapshot {
-            snapshotType: dedicated.storage.SnapshotEnum;
+            snapshotType: dedicatedstorageSnapshotEnum;
         }
         // interface fullName: dedicated.nasha.Storage.Storage
         export interface Storage {
@@ -149,10 +149,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: service.RenewType;
-        renewalType: service.RenewalTypeEnum;
+        renew?: serviceRenewType;
+        renewalType: serviceRenewalTypeEnum;
         serviceId: number;
-        status: service.StateEnum;
+        status: serviceStateEnum;
     }
 }
 
@@ -192,19 +192,19 @@ export interface Dedicated{
                 // GET /dedicated/nasha/{serviceName}/partition
                 $get(): Promise<string[]>;
                 // POST /dedicated/nasha/{serviceName}/partition
-                $post(params: {partitionName: string, protocol: dedicated.storage.ProtocolEnum, size: number}): Promise<dedicated.nasTask.Task>;
+                $post(params: {partitionName: string, protocol: dedicatedstorageProtocolEnum, size: number}): Promise<dedicated.nasTask.Task>;
                 $(partitionName: string): {
                     // DELETE /dedicated/nasha/{serviceName}/partition/{partitionName}
                     $delete(): Promise<dedicated.nasTask.Task>;
                     // GET /dedicated/nasha/{serviceName}/partition/{partitionName}
                     $get(): Promise<dedicated.nasha.Partition>;
                     // PUT /dedicated/nasha/{serviceName}/partition/{partitionName}
-                    $put(params?: {partitionCapacity?: number, partitionName?: string, protocol?: dedicated.storage.ProtocolEnum, size?: number, usedBySnapshots?: number}): Promise<void>;
+                    $put(params?: {partitionCapacity?: number, partitionName?: string, protocol?: dedicatedstorageProtocolEnum, size?: number, usedBySnapshots?: number}): Promise<void>;
                     access: {
                         // GET /dedicated/nasha/{serviceName}/partition/{partitionName}/access
                         $get(): Promise<string[]>;
                         // POST /dedicated/nasha/{serviceName}/partition/{partitionName}/access
-                        $post(params: {ip: string, type?: dedicated.storage.AclTypeEnum}): Promise<dedicated.nasTask.Task>;
+                        $post(params: {ip: string, type?: dedicatedstorageAclTypeEnum}): Promise<dedicated.nasTask.Task>;
                         $(ip: string): {
                             // DELETE /dedicated/nasha/{serviceName}/partition/{partitionName}/access/{ip}
                             $delete(): Promise<dedicated.nasTask.Task>;
@@ -254,7 +254,7 @@ export interface Dedicated{
                         // GET /dedicated/nasha/{serviceName}/partition/{partitionName}/snapshot
                         $get(): Promise<dedicated.storage.SnapshotEnum[]>;
                         // POST /dedicated/nasha/{serviceName}/partition/{partitionName}/snapshot
-                        $post(params: {snapshotType: dedicated.storage.SnapshotEnum}): Promise<dedicated.nasTask.Task>;
+                        $post(params: {snapshotType: dedicatedstorageSnapshotEnum}): Promise<dedicated.nasTask.Task>;
                         $(snapshotType: dedicated.storage.SnapshotEnum): {
                             // DELETE /dedicated/nasha/{serviceName}/partition/{partitionName}/snapshot/{snapshotType}
                             $delete(): Promise<dedicated.nasTask.Task>;
@@ -272,11 +272,11 @@ export interface Dedicated{
                 // GET /dedicated/nasha/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /dedicated/nasha/{serviceName}/serviceInfos
-                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}): Promise<void>;
             }
             task: {
                 // GET /dedicated/nasha/{serviceName}/task
-                $get(params?: {operation?: dedicated.storage.TaskFunctionEnum, status?: dedicated.TaskStatusEnum}): Promise<number[]>;
+                $get(params?: {operation?: dedicatedstorageTaskFunctionEnum, status?: dedicatedTaskStatusEnum}): Promise<number[]>;
                 $(taskId: number): {
                     // GET /dedicated/nasha/{serviceName}/task/{taskId}
                     $get(): Promise<dedicated.nasTask.Task>;
@@ -371,7 +371,7 @@ export interface Dedicated{
    * Partition Snapshot
    * Get this object properties
    */
-  get(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/snapshot/{snapshotType}'): (params: {partitionName: string, serviceName: string, snapshotType: dedicated.storage.SnapshotEnum}) => Promise<dedicated.nasha.Snapshot>;
+  get(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/snapshot/{snapshotType}'): (params: {partitionName: string, serviceName: string, snapshotType: dedicatedstorageSnapshotEnum}) => Promise<dedicated.nasha.Snapshot>;
   /**
    * use operations
    * Return statistics about the partition
@@ -386,7 +386,7 @@ export interface Dedicated{
    * List the dedicated.nasTask.Task objects
    * View task list
    */
-  get(path: '/dedicated/nasha/{serviceName}/task'): (params: {serviceName: string, operation?: dedicated.storage.TaskFunctionEnum, status?: dedicated.TaskStatusEnum}) => Promise<number[]>;
+  get(path: '/dedicated/nasha/{serviceName}/task'): (params: {serviceName: string, operation?: dedicatedstorageTaskFunctionEnum, status?: dedicatedTaskStatusEnum}) => Promise<number[]>;
   /**
    * Storage task
    * Get this object properties
@@ -411,12 +411,12 @@ export interface Dedicated{
    * Storage zpool partition
    * Alter this object properties
    */
-  put(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}'): (params: {partitionName: string, serviceName: string, partitionCapacity?: number, protocol?: dedicated.storage.ProtocolEnum, size?: number, usedBySnapshots?: number}) => Promise<void>;
+  put(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}'): (params: {partitionName: string, serviceName: string, partitionCapacity?: number, protocol?: dedicatedstorageProtocolEnum, size?: number, usedBySnapshots?: number}) => Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/dedicated/nasha/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
+  put(path: '/dedicated/nasha/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}) => Promise<void>;
   /**
    * Change the contacts of this service
    * Launch a contact change procedure
@@ -431,12 +431,12 @@ export interface Dedicated{
    * List the dedicated.nasha.Partition objects
    * Create a new partition
    */
-  post(path: '/dedicated/nasha/{serviceName}/partition'): (params: {serviceName: string, partitionName: string, protocol: dedicated.storage.ProtocolEnum, size: number}) => Promise<dedicated.nasTask.Task>;
+  post(path: '/dedicated/nasha/{serviceName}/partition'): (params: {serviceName: string, partitionName: string, protocol: dedicatedstorageProtocolEnum, size: number}) => Promise<dedicated.nasTask.Task>;
   /**
    * List the dedicated.nasha.Access objects
    * Add a new ACL entry
    */
-  post(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/access'): (params: {partitionName: string, serviceName: string, ip: string, type?: dedicated.storage.AclTypeEnum}) => Promise<dedicated.nasTask.Task>;
+  post(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/access'): (params: {partitionName: string, serviceName: string, ip: string, type?: dedicatedstorageAclTypeEnum}) => Promise<dedicated.nasTask.Task>;
   /**
    * List the dedicated.nasha.customSnap objects
    * Create a new snapshot
@@ -456,7 +456,7 @@ export interface Dedicated{
    * List the dedicated.nasha.Snapshot objects
    * Schedule a new snapshot type
    */
-  post(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/snapshot'): (params: {partitionName: string, serviceName: string, snapshotType: dedicated.storage.SnapshotEnum}) => Promise<dedicated.nasTask.Task>;
+  post(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/snapshot'): (params: {partitionName: string, serviceName: string, snapshotType: dedicatedstorageSnapshotEnum}) => Promise<dedicated.nasTask.Task>;
   /**
    * Terminate your service
    * Terminate your service
@@ -486,10 +486,25 @@ export interface Dedicated{
    * Partition Snapshot
    * Delete a given snapshot
    */
-  delete(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/snapshot/{snapshotType}'): (params: {partitionName: string, serviceName: string, snapshotType: dedicated.storage.SnapshotEnum}) => Promise<dedicated.nasTask.Task>;
+  delete(path: '/dedicated/nasha/{serviceName}/partition/{partitionName}/snapshot/{snapshotType}'): (params: {partitionName: string, serviceName: string, snapshotType: dedicatedstorageSnapshotEnum}) => Promise<dedicated.nasTask.Task>;
   /**
    * Partition Vrack
    * Delete the vrack container
    */
   delete(path: '/dedicated/nasha/{serviceName}/vrack'): (params: {serviceName: string}) => Promise<dedicated.nasTask.Task>;
 }
+/**
+ * Extra Alias to bypass relativer namespace colitions
+ */
+type dedicatedNasHAAvailabilityDatacenter = dedicated.NasHAAvailabilityDatacenter;
+type dedicatedNasHAOfferEnum = dedicated.NasHAOfferEnum;
+type dedicatedNasHAAvailabilityEnum = dedicated.NasHAAvailabilityEnum;
+type dedicatedNasHAZoneEnum = dedicated.NasHAZoneEnum;
+type dedicatedstorageTaskFunctionEnum = dedicated.storage.TaskFunctionEnum;
+type dedicatedTaskStatusEnum = dedicated.TaskStatusEnum;
+type dedicatedstorageAclTypeEnum = dedicated.storage.AclTypeEnum;
+type dedicatedstorageProtocolEnum = dedicated.storage.ProtocolEnum;
+type dedicatedstorageSnapshotEnum = dedicated.storage.SnapshotEnum;
+type serviceRenewType = service.RenewType;
+type serviceRenewalTypeEnum = service.RenewalTypeEnum;
+type serviceStateEnum = service.StateEnum;

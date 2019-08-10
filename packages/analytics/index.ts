@@ -12,11 +12,11 @@ export namespace analytics {
         deploymentEndDate?: string;
         deploymentStartDate?: string;
         domain?: string;
-        nodes?: analytics.cluster.Node[];
+        nodes?: analyticsclusterNode[];
         osProjectId?: string;
         osRegion?: string;
         serviceName: string;
-        status: analytics.Status;
+        status: analyticsStatus;
     }
     // interface fullName: analytics.Component.Component
     export interface Component {
@@ -29,7 +29,7 @@ export namespace analytics {
         // interface fullName: analytics.cluster.Activity.Activity
         export interface Activity {
             description: string;
-            status: analytics.Status;
+            status: analyticsStatus;
             timestamp: string;
             user?: string;
         }
@@ -42,7 +42,7 @@ export namespace analytics {
             hdfsReplicationFactor: number;
             masterNodeStorage: number;
             masterPassword: string;
-            nodes: analytics.node.Deploy[];
+            nodes: analyticsnodeDeploy[];
             osProjectId: string;
             osProjectName: string;
             osRegion: string;
@@ -61,16 +61,16 @@ export namespace analytics {
             hostname?: string;
             ip?: string;
             nodeId: string;
-            nodeType: analytics.node.Type;
+            nodeType: analyticsnodeType;
             osRegion?: string;
-            status: analytics.Status;
+            status: analyticsStatus;
             storage?: number;
         }
         export namespace deploy {
             // interface fullName: analytics.cluster.deploy.Status.Status
             export interface Status {
                 percentage: number;
-                status: analytics.Status;
+                status: analyticsStatus;
                 task: string;
             }
         }
@@ -87,7 +87,7 @@ export namespace analytics {
         // interface fullName: analytics.node.Deploy.Deploy
         export interface Deploy {
             nodeFlavor: string;
-            nodeType: analytics.node.Type;
+            nodeType: analyticsnodeType;
         }
         // type fullname: analytics.node.Type
         export type Type = "MASTER" | "SLAVE" | "EDGE" | "UTILITY"
@@ -96,16 +96,16 @@ export namespace analytics {
         // interface fullName: analytics.platform.Capability.Capability
         export interface Capability {
             availableRegion: string[];
-            bastionNode: analytics.node.Capability;
-            components: analytics.Component[];
-            edgeNode: analytics.node.Capability;
+            bastionNode: analyticsnodeCapability;
+            components: analyticsComponent[];
+            edgeNode: analyticsnodeCapability;
             hdfsReplicationFactor: number;
-            masterNode: analytics.node.Capability;
-            requirements?: analytics.platform.Capability.Requirement[];
-            utilityNode: analytics.node.Capability;
+            masterNode: analyticsnodeCapability;
+            requirements?: analyticsplatformCapabilityRequirement[];
+            utilityNode: analyticsnodeCapability;
             version: string;
             versionDescription: string;
-            workerNode: analytics.node.Capability;
+            workerNode: analyticsnodeCapability;
         }
         export namespace Capability {
             // interface fullName: analytics.platform.Capability.Requirement.Requirement
@@ -146,10 +146,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: service.RenewType;
-        renewalType: service.RenewalTypeEnum;
+        renew?: serviceRenewType;
+        renewalType: serviceRenewalTypeEnum;
         serviceId: number;
-        status: service.StateEnum;
+        status: serviceStateEnum;
     }
 }
 
@@ -191,7 +191,7 @@ export interface Analytics{
             }
             deploy: {
                 // POST /analytics/platforms/{serviceName}/deploy
-                $post(params: {clusterName: string, clusterType: string, edgeNodeStorage: number, hdfsEffectiveStorage: number, hdfsReplicationFactor: number, masterNodeStorage: number, masterPassword: string, nodes: analytics.node.Deploy[], osProjectId: string, osProjectName: string, osRegion: string, osToken: string, sshPublicKey: string}): Promise<analytics.cluster.Deploy>;
+                $post(params: {clusterName: string, clusterType: string, edgeNodeStorage: number, hdfsEffectiveStorage: number, hdfsReplicationFactor: number, masterNodeStorage: number, masterPassword: string, nodes: analyticsnodeDeploy[], osProjectId: string, osProjectName: string, osRegion: string, osToken: string, sshPublicKey: string}): Promise<analytics.cluster.Deploy>;
             }
             destroy: {
                 // POST /analytics/platforms/{serviceName}/destroy
@@ -209,7 +209,7 @@ export interface Analytics{
                 // GET /analytics/platforms/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /analytics/platforms/{serviceName}/serviceInfos
-                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}): Promise<void>;
             }
             status: {
                 // GET /analytics/platforms/{serviceName}/status
@@ -266,7 +266,7 @@ export interface Analytics{
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/analytics/platforms/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
+  put(path: '/analytics/platforms/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}) => Promise<void>;
   /**
    * Change the contacts of this service
    * Launch a contact change procedure
@@ -281,7 +281,7 @@ export interface Analytics{
    * 
    * Deploy an Analytics Data Platform
    */
-  post(path: '/analytics/platforms/{serviceName}/deploy'): (params: {serviceName: string, clusterName: string, clusterType: string, edgeNodeStorage: number, hdfsEffectiveStorage: number, hdfsReplicationFactor: number, masterNodeStorage: number, masterPassword: string, nodes: analytics.node.Deploy[], osProjectId: string, osProjectName: string, osRegion: string, osToken: string, sshPublicKey: string}) => Promise<analytics.cluster.Deploy>;
+  post(path: '/analytics/platforms/{serviceName}/deploy'): (params: {serviceName: string, clusterName: string, clusterType: string, edgeNodeStorage: number, hdfsEffectiveStorage: number, hdfsReplicationFactor: number, masterNodeStorage: number, masterPassword: string, nodes: analyticsnodeDeploy[], osProjectId: string, osProjectName: string, osRegion: string, osToken: string, sshPublicKey: string}) => Promise<analytics.cluster.Deploy>;
   /**
    * 
    * Destroy an Analytics Data Platform
@@ -293,3 +293,16 @@ export interface Analytics{
    */
   post(path: '/analytics/platforms/{serviceName}/terminate'): (params: {serviceName: string}) => Promise<string>;
 }
+/**
+ * Extra Alias to bypass relativer namespace colitions
+ */
+type analyticsclusterNode = analytics.cluster.Node;
+type analyticsStatus = analytics.Status;
+type analyticsnodeDeploy = analytics.node.Deploy;
+type analyticsnodeType = analytics.node.Type;
+type analyticsnodeCapability = analytics.node.Capability;
+type analyticsComponent = analytics.Component;
+type analyticsplatformCapabilityRequirement = analytics.platform.Capability.Requirement;
+type serviceRenewType = service.RenewType;
+type serviceRenewalTypeEnum = service.RenewalTypeEnum;
+type serviceStateEnum = service.StateEnum;

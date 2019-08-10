@@ -40,10 +40,10 @@ export namespace dedicated {
         export interface Task {
             comment?: string;
             doneDate?: string;
-            function: dedicated.TaskFunctionEnum;
+            function: dedicatedTaskFunctionEnum;
             lastUpdate?: string;
             startDate: string;
-            status: dedicated.TaskStatusEnum;
+            status: dedicatedTaskStatusEnum;
             taskId: number;
         }
     }
@@ -97,25 +97,25 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: service.RenewType;
-        renewalType: service.RenewalTypeEnum;
+        renew?: serviceRenewType;
+        renewalType: serviceRenewalTypeEnum;
         serviceId: number;
-        status: service.StateEnum;
+        status: serviceStateEnum;
     }
 }
 export namespace vps {
     // interface fullName: vps.AutomatedBackup.AutomatedBackup
     export interface AutomatedBackup {
         schedule?: string;
-        state: vps.BackupStateEnum;
+        state: vpsBackupStateEnum;
     }
     // interface fullName: vps.BackupFtp.BackupFtp
     export interface BackupFtp {
         ftpBackupName: string;
-        quota?: complexType.UnitAndValue<number>;
+        quota?: complexTypeUnitAndValuenumber;
         readOnlyDate?: string;
         type: string;
-        usage?: complexType.UnitAndValue<number>;
+        usage?: complexTypeUnitAndValuenumber;
     }
     // type fullname: vps.BackupStateEnum
     export type BackupStateEnum = "disabled" | "enabled"
@@ -131,8 +131,8 @@ export namespace vps {
         lowFreeSpaceThreshold?: number;
         monitoring?: boolean;
         size: number;
-        state: vps.disk.StateEnum;
-        type: vps.disk.TypeEnum;
+        state: vpsdiskStateEnum;
+        type: vpsdiskTypeEnum;
     }
     // interface fullName: vps.Image.Image
     export interface Image {
@@ -142,16 +142,16 @@ export namespace vps {
     // interface fullName: vps.Ip.Ip
     export interface Ip {
         gateway?: string;
-        geolocation: vps.ip.GeolocationEnum;
+        geolocation: vpsipGeolocationEnum;
         ipAddress: string;
         macAddress?: string;
         reverse?: string;
-        type: vps.ip.TypeEnum;
-        version: coreTypes.IpVersionEnum;
+        type: vpsipTypeEnum;
+        version: coreTypesIpVersionEnum;
     }
     // interface fullName: vps.Model.Model
     export interface Model {
-        availableOptions: vps.VpsOptionEnum[];
+        availableOptions: vpsVpsOptionEnum[];
         datacenter: string[];
         disk: number;
         maximumAdditionnalIp: number;
@@ -159,12 +159,12 @@ export namespace vps {
         name: string;
         offer: string;
         vcore: number;
-        version: vps.VpsVersionEnum;
+        version: vpsVpsVersionEnum;
     }
     // interface fullName: vps.Option.Option
     export interface Option {
-        option: vps.VpsOptionEnum;
-        state: vps.VpsOptionStateEnum;
+        option: vpsVpsOptionEnum;
+        state: vpsVpsOptionStateEnum;
     }
     // type fullname: vps.RestoreStateEnum
     export type RestoreStateEnum = "available" | "restored" | "restoring"
@@ -179,8 +179,8 @@ export namespace vps {
     export interface Software {
         id: number;
         name: string;
-        status: vps.SoftwareStatusEnum;
-        type: vps.SoftwareTypeEnum;
+        status: vpsSoftwareStatusEnum;
+        type: vpsSoftwareTypeEnum;
     }
     // type fullname: vps.SoftwareStatusEnum
     export type SoftwareStatusEnum = "deprecated" | "stable" | "testing"
@@ -190,8 +190,8 @@ export namespace vps {
     export interface Task {
         id: number;
         progress: number;
-        state: vps.TaskStateEnum;
-        type: vps.TaskTypeEnum;
+        state: vpsTaskStateEnum;
+        type: vpsTaskTypeEnum;
     }
     // type fullname: vps.TaskStateEnum
     export type TaskStateEnum = "blocked" | "cancelled" | "doing" | "done" | "error" | "paused" | "todo" | "waitingAck"
@@ -200,7 +200,7 @@ export namespace vps {
     // interface fullName: vps.Template.Template
     export interface Template {
         availableLanguage: string[];
-        bitFormat: vps.TemplateBitFormatEnum;
+        bitFormat: vpsTemplateBitFormatEnum;
         distribution: string;
         id: number;
         locale: string;
@@ -212,15 +212,15 @@ export namespace vps {
     export interface VPS {
         cluster: string;
         displayName?: string;
-        keymap?: vps.VpsKeymapEnum;
+        keymap?: vpsVpsKeymapEnum;
         memoryLimit: number;
-        model: vps.Model;
+        model: vpsModel;
         monitoringIpBlocks: string[];
         name: string;
-        netbootMode: vps.VpsNetbootEnum;
-        offerType: vps.VpsOfferEnum;
+        netbootMode: vpsVpsNetbootEnum;
+        offerType: vpsVpsOfferEnum;
         slaMonitoring?: boolean;
-        state: vps.VpsStateEnum;
+        state: vpsVpsStateEnum;
         vcore: number;
         zone: string;
     }
@@ -266,7 +266,7 @@ export namespace vps {
     export namespace automatedBackup {
         // interface fullName: vps.automatedBackup.Attached.Attached
         export interface Attached {
-            access: vps.automatedBackup.attached.Infos;
+            access: vpsautomatedBackupattachedInfos;
             restorePoint: string;
         }
         export namespace attached {
@@ -291,18 +291,18 @@ export namespace vps {
         export type GeolocationEnum = "au" | "be" | "ca" | "cz" | "de" | "es" | "fi" | "fr" | "ie" | "it" | "lt" | "nl" | "pl" | "pt" | "sg" | "uk" | "us"
         // interface fullName: vps.ip.ServiceStatus.ServiceStatus
         export interface ServiceStatus {
-            dns: vps.ip.ServiceStatusService;
-            http: vps.ip.ServiceStatusService;
-            https: vps.ip.ServiceStatusService;
-            ping: vps.ip.ServiceStatusStateEnum;
-            smtp: vps.ip.ServiceStatusService;
-            ssh: vps.ip.ServiceStatusService;
-            tools?: vps.ip.ServiceStatusStateEnum;
+            dns: vpsipServiceStatusService;
+            http: vpsipServiceStatusService;
+            https: vpsipServiceStatusService;
+            ping: vpsipServiceStatusStateEnum;
+            smtp: vpsipServiceStatusService;
+            ssh: vpsipServiceStatusService;
+            tools?: vpsipServiceStatusStateEnum;
         }
         // interface fullName: vps.ip.ServiceStatusService.ServiceStatusService
         export interface ServiceStatusService {
             port: number;
-            state: vps.ip.ServiceStatusStateEnum;
+            state: vpsipServiceStatusStateEnum;
         }
         // type fullname: vps.ip.ServiceStatusStateEnum
         export type ServiceStatusStateEnum = "down" | "up"
@@ -331,9 +331,9 @@ export namespace vps {
         }
         // interface fullName: vps.veeam.RestoredBackup.RestoredBackup
         export interface RestoredBackup {
-            accessInfos: vps.veeam.Infos;
+            accessInfos: vpsveeamInfos;
             restorePointId: number;
-            state: vps.veeam.StateEnum;
+            state: vpsveeamStateEnum;
         }
         // type fullname: vps.veeam.StateEnum
         export type StateEnum = "mounted" | "restoring" | "unmounted" | "unmounting"
@@ -362,7 +362,7 @@ export interface Vps{
         // GET /vps/{serviceName}
         $get(): Promise<vps.VPS>;
         // PUT /vps/{serviceName}
-        $put(params?: {cluster?: string, displayName?: string, keymap?: vps.VpsKeymapEnum, memoryLimit?: number, model?: vps.Model, monitoringIpBlocks?: string[], name?: string, netbootMode?: vps.VpsNetbootEnum, offerType?: vps.VpsOfferEnum, slaMonitoring?: boolean, state?: vps.VpsStateEnum, vcore?: number, zone?: string}): Promise<void>;
+        $put(params?: {cluster?: string, displayName?: string, keymap?: vpsVpsKeymapEnum, memoryLimit?: number, model?: vpsModel, monitoringIpBlocks?: string[], name?: string, netbootMode?: vpsVpsNetbootEnum, offerType?: vpsVpsOfferEnum, slaMonitoring?: boolean, state?: vpsVpsStateEnum, vcore?: number, zone?: string}): Promise<void>;
         activeOptions: {
             // GET /vps/{serviceName}/activeOptions
             $get(): Promise<vps.VpsOptionEnum[]>;
@@ -440,7 +440,7 @@ export interface Vps{
                 // GET /vps/{serviceName}/disks/{id}
                 $get(): Promise<vps.Disk>;
                 // PUT /vps/{serviceName}/disks/{id}
-                $put(params?: {bandwidthLimit?: number, id?: number, lowFreeSpaceThreshold?: number, monitoring?: boolean, size?: number, state?: vps.disk.StateEnum, type?: vps.disk.TypeEnum}): Promise<void>;
+                $put(params?: {bandwidthLimit?: number, id?: number, lowFreeSpaceThreshold?: number, monitoring?: boolean, size?: number, state?: vpsdiskStateEnum, type?: vpsdiskTypeEnum}): Promise<void>;
                 monitoring: {
                     // GET /vps/{serviceName}/disks/{id}/monitoring
                     $get(params: {period: vps.VpsMonitoringPeriodEnum, type: vps.disk.StatisticTypeEnum}): Promise<complexType.UnitAndValues<vps.VpsTimestampValue>>;
@@ -480,7 +480,7 @@ export interface Vps{
                 // GET /vps/{serviceName}/ips/{ipAddress}
                 $get(): Promise<vps.Ip>;
                 // PUT /vps/{serviceName}/ips/{ipAddress}
-                $put(params?: {gateway?: string, geolocation?: vps.ip.GeolocationEnum, ipAddress?: string, macAddress?: string, reverse?: string, type?: vps.ip.TypeEnum, version?: coreTypes.IpVersionEnum}): Promise<void>;
+                $put(params?: {gateway?: string, geolocation?: vpsipGeolocationEnum, ipAddress?: string, macAddress?: string, reverse?: string, type?: vpsipTypeEnum, version?: coreTypesIpVersionEnum}): Promise<void>;
             };
         }
         models: {
@@ -539,7 +539,7 @@ export interface Vps{
             // GET /vps/{serviceName}/serviceInfos
             $get(): Promise<services.Service>;
             // PUT /vps/{serviceName}/serviceInfos
-            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}): Promise<void>;
         }
         setPassword: {
             // POST /vps/{serviceName}/setPassword
@@ -571,7 +571,7 @@ export interface Vps{
         }
         tasks: {
             // GET /vps/{serviceName}/tasks
-            $get(params?: {state?: vps.TaskStateEnum, type?: vps.TaskTypeEnum}): Promise<number[]>;
+            $get(params?: {state?: vpsTaskStateEnum, type?: vpsTaskTypeEnum}): Promise<number[]>;
             $(id: number): {
                 // GET /vps/{serviceName}/tasks/{id}
                 $get(): Promise<vps.Task>;
@@ -754,7 +754,7 @@ export interface Vps{
    * Information about the options of a VPS Virtual Machine
    * Get this object properties
    */
-  get(path: '/vps/{serviceName}/option/{option}'): (params: {option: vps.VpsOptionEnum, serviceName: string}) => Promise<vps.Option>;
+  get(path: '/vps/{serviceName}/option/{option}'): (params: {option: vpsVpsOptionEnum, serviceName: string}) => Promise<vps.Option>;
   /**
    * List the secondaryDns.SecondaryDNS objects
    * List of secondary dns domain name
@@ -794,7 +794,7 @@ export interface Vps{
    * List the vps.Task objects
    * Tasks associated to this virtual server
    */
-  get(path: '/vps/{serviceName}/tasks'): (params: {serviceName: string, state?: vps.TaskStateEnum, type?: vps.TaskTypeEnum}) => Promise<number[]>;
+  get(path: '/vps/{serviceName}/tasks'): (params: {serviceName: string, state?: vpsTaskStateEnum, type?: vpsTaskTypeEnum}) => Promise<number[]>;
   /**
    * Operation on a VPS Virtual Machine
    * Get this object properties
@@ -854,7 +854,7 @@ export interface Vps{
    * VPS Virtual Machine
    * Alter this object properties
    */
-  put(path: '/vps/{serviceName}'): (params: {serviceName: string, cluster?: string, displayName?: string, keymap?: vps.VpsKeymapEnum, memoryLimit?: number, model?: vps.Model, monitoringIpBlocks?: string[], name?: string, netbootMode?: vps.VpsNetbootEnum, offerType?: vps.VpsOfferEnum, slaMonitoring?: boolean, state?: vps.VpsStateEnum, vcore?: number, zone?: string}) => Promise<void>;
+  put(path: '/vps/{serviceName}'): (params: {serviceName: string, cluster?: string, displayName?: string, keymap?: vpsVpsKeymapEnum, memoryLimit?: number, model?: vpsModel, monitoringIpBlocks?: string[], name?: string, netbootMode?: vpsVpsNetbootEnum, offerType?: vpsVpsOfferEnum, slaMonitoring?: boolean, state?: vpsVpsStateEnum, vcore?: number, zone?: string}) => Promise<void>;
   /**
    * Backup Ftp ACL for this server and Backup Ftp
    * Alter this object properties
@@ -864,12 +864,12 @@ export interface Vps{
    * Information about a disk of a VPS Virtual Machine
    * Alter this object properties
    */
-  put(path: '/vps/{serviceName}/disks/{id}'): (params: {id: number, serviceName: string, bandwidthLimit?: number, lowFreeSpaceThreshold?: number, monitoring?: boolean, size?: number, state?: vps.disk.StateEnum, type?: vps.disk.TypeEnum}) => Promise<void>;
+  put(path: '/vps/{serviceName}/disks/{id}'): (params: {id: number, serviceName: string, bandwidthLimit?: number, lowFreeSpaceThreshold?: number, monitoring?: boolean, size?: number, state?: vpsdiskStateEnum, type?: vpsdiskTypeEnum}) => Promise<void>;
   /**
    * Information about an IP address for a VPS Virtual Machine
    * Alter this object properties
    */
-  put(path: '/vps/{serviceName}/ips/{ipAddress}'): (params: {ipAddress: string, serviceName: string, gateway?: string, geolocation?: vps.ip.GeolocationEnum, macAddress?: string, reverse?: string, type?: vps.ip.TypeEnum, version?: coreTypes.IpVersionEnum}) => Promise<void>;
+  put(path: '/vps/{serviceName}/ips/{ipAddress}'): (params: {ipAddress: string, serviceName: string, gateway?: string, geolocation?: vpsipGeolocationEnum, macAddress?: string, reverse?: string, type?: vpsipTypeEnum, version?: coreTypesIpVersionEnum}) => Promise<void>;
   /**
    * Secondary dns infos
    * Alter this object properties
@@ -879,7 +879,7 @@ export interface Vps{
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/vps/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
+  put(path: '/vps/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}) => Promise<void>;
   /**
    * Information about the snapshot of a VPS Virtual Machine
    * Alter this object properties
@@ -989,7 +989,7 @@ export interface Vps{
    * Information about the options of a VPS Virtual Machine
    * Release a given option
    */
-  delete(path: '/vps/{serviceName}/option/{option}'): (params: {option: vps.VpsOptionEnum, serviceName: string}) => Promise<void>;
+  delete(path: '/vps/{serviceName}/option/{option}'): (params: {option: vpsVpsOptionEnum, serviceName: string}) => Promise<void>;
   /**
    * Secondary dns infos
    * remove this domain
@@ -1006,3 +1006,36 @@ export interface Vps{
    */
   delete(path: '/vps/{serviceName}/veeam/restoredBackup'): (params: {serviceName: string}) => Promise<vps.Task>;
 }
+/**
+ * Extra Alias to bypass relativer namespace colitions
+ */
+type dedicatedTaskFunctionEnum = dedicated.TaskFunctionEnum;
+type dedicatedTaskStatusEnum = dedicated.TaskStatusEnum;
+type serviceRenewType = service.RenewType;
+type serviceRenewalTypeEnum = service.RenewalTypeEnum;
+type serviceStateEnum = service.StateEnum;
+type vpsBackupStateEnum = vps.BackupStateEnum;
+type complexTypeUnitAndValuenumber = complexType.UnitAndValue<number>;
+type vpsdiskStateEnum = vps.disk.StateEnum;
+type vpsdiskTypeEnum = vps.disk.TypeEnum;
+type vpsipGeolocationEnum = vps.ip.GeolocationEnum;
+type vpsipTypeEnum = vps.ip.TypeEnum;
+type coreTypesIpVersionEnum = coreTypes.IpVersionEnum;
+type vpsVpsOptionEnum = vps.VpsOptionEnum;
+type vpsVpsVersionEnum = vps.VpsVersionEnum;
+type vpsVpsOptionStateEnum = vps.VpsOptionStateEnum;
+type vpsSoftwareStatusEnum = vps.SoftwareStatusEnum;
+type vpsSoftwareTypeEnum = vps.SoftwareTypeEnum;
+type vpsTaskStateEnum = vps.TaskStateEnum;
+type vpsTaskTypeEnum = vps.TaskTypeEnum;
+type vpsTemplateBitFormatEnum = vps.TemplateBitFormatEnum;
+type vpsVpsKeymapEnum = vps.VpsKeymapEnum;
+type vpsModel = vps.Model;
+type vpsVpsNetbootEnum = vps.VpsNetbootEnum;
+type vpsVpsOfferEnum = vps.VpsOfferEnum;
+type vpsVpsStateEnum = vps.VpsStateEnum;
+type vpsautomatedBackupattachedInfos = vps.automatedBackup.attached.Infos;
+type vpsipServiceStatusService = vps.ip.ServiceStatusService;
+type vpsipServiceStatusStateEnum = vps.ip.ServiceStatusStateEnum;
+type vpsveeamInfos = vps.veeam.Infos;
+type vpsveeamStateEnum = vps.veeam.StateEnum;

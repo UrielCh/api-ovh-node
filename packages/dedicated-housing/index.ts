@@ -27,15 +27,15 @@ export namespace dedicated {
         export type HaRoutingOfferEnum = "ha2x2" | "ha2x4"
         // interface fullName: dedicated.housing.HaRoutingOrderable.HaRoutingOrderable
         export interface HaRoutingOrderable {
-            offer: dedicated.housing.HaRoutingOfferEnum[];
+            offer: dedicatedhousingHaRoutingOfferEnum[];
             orderable: boolean;
         }
         // interface fullName: dedicated.housing.Housing.Housing
         export interface Housing {
-            datacenter?: dedicated.housing.DatacenterEnum;
+            datacenter?: dedicatedhousingDatacenterEnum;
             name: string;
-            network: dedicated.housing.NetworkInfo[];
-            options: dedicated.housing.Options;
+            network: dedicatedhousingNetworkInfo[];
+            options: dedicatedhousingOptions;
             rack: string;
             securityCode: string;
         }
@@ -52,9 +52,9 @@ export namespace dedicated {
         }
         // interface fullName: dedicated.housing.NetworkInfo.NetworkInfo
         export interface NetworkInfo {
-            ipv4?: dedicated.housing.IpInfo;
-            ipv6?: dedicated.housing.IpInfo;
-            link?: dedicated.housing.LinkInfo;
+            ipv4?: dedicatedhousingIpInfo;
+            ipv6?: dedicatedhousingIpInfo;
+            link?: dedicatedhousingLinkInfo;
         }
         // interface fullName: dedicated.housing.Options.Options
         export interface Options {
@@ -66,10 +66,10 @@ export namespace dedicated {
         export interface Task {
             comment?: string;
             doneDate?: string;
-            function: dedicated.housing.TaskFunctionEnum;
+            function: dedicatedhousingTaskFunctionEnum;
             lastUpdate?: string;
             startDate: string;
-            status: dedicated.TaskStatusEnum;
+            status: dedicatedTaskStatusEnum;
             taskId: number;
         }
         // type fullname: dedicated.housing.TaskFunctionEnum
@@ -79,10 +79,10 @@ export namespace dedicated {
         // interface fullName: dedicated.server.BackupFtp.BackupFtp
         export interface BackupFtp {
             ftpBackupName: string;
-            quota?: complexType.UnitAndValue<number>;
+            quota?: complexTypeUnitAndValuenumber;
             readOnlyDate?: string;
-            type: dedicated.server.BackupStorageTypeEnum;
-            usage?: complexType.UnitAndValue<number>;
+            type: dedicatedserverBackupStorageTypeEnum;
+            usage?: complexTypeUnitAndValuenumber;
         }
         // interface fullName: dedicated.server.BackupFtpAcl.BackupFtpAcl
         export interface BackupFtpAcl {
@@ -99,10 +99,10 @@ export namespace dedicated {
         export interface Task {
             comment?: string;
             doneDate?: string;
-            function: dedicated.TaskFunctionEnum;
+            function: dedicatedTaskFunctionEnum;
             lastUpdate?: string;
             startDate: string;
-            status: dedicated.TaskStatusEnum;
+            status: dedicatedTaskStatusEnum;
             taskId: number;
         }
     }
@@ -133,10 +133,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: service.RenewType;
-        renewalType: service.RenewalTypeEnum;
+        renew?: serviceRenewType;
+        renewalType: serviceRenewalTypeEnum;
         serviceId: number;
-        status: service.StateEnum;
+        status: serviceStateEnum;
     }
 }
 
@@ -200,11 +200,11 @@ export interface Dedicated{
                 // GET /dedicated/housing/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /dedicated/housing/{serviceName}/serviceInfos
-                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}): Promise<void>;
             }
             task: {
                 // GET /dedicated/housing/{serviceName}/task
-                $get(params?: {function_?: dedicated.housing.TaskFunctionEnum, status?: dedicated.TaskStatusEnum}): Promise<number[]>;
+                $get(params?: {function_?: dedicatedhousingTaskFunctionEnum, status?: dedicatedTaskStatusEnum}): Promise<number[]>;
                 $(taskId: number): {
                     // GET /dedicated/housing/{serviceName}/task/{taskId}
                     $get(): Promise<dedicated.housing.Task>;
@@ -261,7 +261,7 @@ export interface Dedicated{
    * List the dedicated.housing.Task objects
    * View task list
    */
-  get(path: '/dedicated/housing/{serviceName}/task'): (params: {serviceName: string, function_?: dedicated.housing.TaskFunctionEnum, status?: dedicated.TaskStatusEnum}) => Promise<number[]>;
+  get(path: '/dedicated/housing/{serviceName}/task'): (params: {serviceName: string, function_?: dedicatedhousingTaskFunctionEnum, status?: dedicatedTaskStatusEnum}) => Promise<number[]>;
   /**
    * Housing tasks
    * Get this object properties
@@ -276,7 +276,7 @@ export interface Dedicated{
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/dedicated/housing/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
+  put(path: '/dedicated/housing/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}) => Promise<void>;
   /**
    * Backup Ftp assigned to this server
    * Create a new Backup FTP space
@@ -308,3 +308,20 @@ export interface Dedicated{
    */
   delete(path: '/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}'): (params: {ipBlock: string, serviceName: string}) => Promise<dedicated.server.Task>;
 }
+/**
+ * Extra Alias to bypass relativer namespace colitions
+ */
+type dedicatedhousingHaRoutingOfferEnum = dedicated.housing.HaRoutingOfferEnum;
+type dedicatedhousingDatacenterEnum = dedicated.housing.DatacenterEnum;
+type dedicatedhousingNetworkInfo = dedicated.housing.NetworkInfo;
+type dedicatedhousingOptions = dedicated.housing.Options;
+type dedicatedhousingIpInfo = dedicated.housing.IpInfo;
+type dedicatedhousingLinkInfo = dedicated.housing.LinkInfo;
+type dedicatedhousingTaskFunctionEnum = dedicated.housing.TaskFunctionEnum;
+type dedicatedTaskStatusEnum = dedicated.TaskStatusEnum;
+type complexTypeUnitAndValuenumber = complexType.UnitAndValue<number>;
+type dedicatedserverBackupStorageTypeEnum = dedicated.server.BackupStorageTypeEnum;
+type dedicatedTaskFunctionEnum = dedicated.TaskFunctionEnum;
+type serviceRenewType = service.RenewType;
+type serviceRenewalTypeEnum = service.RenewalTypeEnum;
+type serviceStateEnum = service.StateEnum;

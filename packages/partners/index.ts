@@ -10,33 +10,33 @@ export namespace Partner {
     }
     // interface fullName: Partner.Company.Company
     export interface Company {
-        OVHCertifications: Partner.OVHCertifications;
+        OVHCertifications: PartnerOVHCertifications;
         OVHCustomersAdvised: string;
         OVHKnowledgeResources: string;
-        OVHProductsUsed: Partner.OVHProductsUsed;
+        OVHProductsUsed: PartnerOVHProductsUsed;
         OVHTechnicalAdvancedResources: string;
         OVHTechnicalExpertResources: string;
-        activitySectors: Partner.activitySectors;
+        activitySectors: PartneractivitySectors;
         address: string;
         city: string;
-        clientKinds: Partner.clientKinds;
+        clientKinds: PartnerclientKinds;
         commercialName: string;
         country: string;
         description: string;
         email: string;
         employeesNumber: string;
-        expertises: Partner.expertisesChoices;
-        externalCertifications: Partner.externalCertifications;
+        expertises: PartnerexpertisesChoices;
+        externalCertifications: PartnerexternalCertifications;
         facebook: string;
         linkedin: string;
         logo: string;
         name: string;
-        partnerKnowledges: Partner.partnerKnowledges;
+        partnerKnowledges: PartnerpartnerKnowledges;
         phone: string;
-        productCountries: Partner.productCountries;
+        productCountries: PartnerproductCountries;
         registrationNumber: string;
         revenue: string;
-        status: Partner.companyStatusEnum;
+        status: PartnercompanyStatusEnum;
         twitter: string;
         website: string;
         zipCode: string;
@@ -68,10 +68,10 @@ export namespace Partner {
     export type OVHCustomersAdvisedEnum = "none" | "one" | "from2To3" | "from4To5" | "moreThan5"
     // interface fullName: Partner.OVHProductsUsed.OVHProductsUsed
     export interface OVHProductsUsed {
-        cloud: Partner.OVHProductsUsedCloud;
-        mobileHosting: Partner.OVHProductsUsedMobileHosting;
-        telecom: Partner.OVHProductsUsedTelecom;
-        web: Partner.OVHProductsUsedWeb;
+        cloud: PartnerOVHProductsUsedCloud;
+        mobileHosting: PartnerOVHProductsUsedMobileHosting;
+        telecom: PartnerOVHProductsUsedTelecom;
+        web: PartnerOVHProductsUsedWeb;
     }
     // interface fullName: Partner.OVHProductsUsedCloud.OVHProductsUsedCloud
     export interface OVHProductsUsedCloud {
@@ -140,10 +140,10 @@ export namespace Partner {
     export type employeesNumberEnum = "from1To10" | "from11To50" | "from51To100" | "from101To500" | "moreThan500"
     // interface fullName: Partner.expertisesChoices.expertisesChoices
     export interface expertisesChoices {
-        consulting: Partner.expertisesChoicesConsulting;
-        installationAndIntegration: Partner.expertisesChoicesInstallationAndIntegration;
-        outsourcingAndMaintenance: Partner.expertisesChoicesOutsourcingAndMaintenance;
-        softwareAndDevelopment: Partner.expertisesChoicesSoftwareAndDevelopment;
+        consulting: PartnerexpertisesChoicesConsulting;
+        installationAndIntegration: PartnerexpertisesChoicesInstallationAndIntegration;
+        outsourcingAndMaintenance: PartnerexpertisesChoicesOutsourcingAndMaintenance;
+        softwareAndDevelopment: PartnerexpertisesChoicesSoftwareAndDevelopment;
     }
     // interface fullName: Partner.expertisesChoicesConsulting.expertisesChoicesConsulting
     export interface expertisesChoicesConsulting {
@@ -246,14 +246,14 @@ export interface Partners{
             // GET /partners/register/company
             $get(): Promise<string[]>;
             // POST /partners/register/company
-            $post(params: {activitySectors?: Partner.activitySectors, address: string, city: string, clientKinds?: Partner.clientKinds, commercialName: string, country: nichandle.CountryEnum, description: string, email: string, employeesNumber: Partner.employeesNumberEnum, expertises?: Partner.expertisesChoices, externalCertifications?: Partner.externalCertifications, facebook?: string, linkedin?: string, logo: string, name: string, OVHCertifications?: Partner.OVHCertifications, OVHCustomersAdvised: Partner.OVHCustomersAdvisedEnum, OVHKnowledgeResources: Partner.knowledgeResourcesRangeEnum, OVHProductsUsed?: Partner.OVHProductsUsed, OVHTechnicalAdvancedResources: Partner.technicalAdvancedResourcesRangeEnum, OVHTechnicalExpertResources: Partner.technicalExpertResourcesRangeEnum, partnerKnowledges?: Partner.partnerKnowledges, phone: string, productCountries?: Partner.productCountries, registrationNumber?: string, revenue: Partner.revenueRangeEnum, twitter?: string, website: string, zipCode: string}): Promise<Partner.Company>;
+            $post(params: {activitySectors?: PartneractivitySectors, address: string, city: string, clientKinds?: PartnerclientKinds, commercialName: string, country: nichandle.CountryEnum, description: string, email: string, employeesNumber: Partner.employeesNumberEnum, expertises?: PartnerexpertisesChoices, externalCertifications?: PartnerexternalCertifications, facebook?: string, linkedin?: string, logo: string, name: string, OVHCertifications?: PartnerOVHCertifications, OVHCustomersAdvised: Partner.OVHCustomersAdvisedEnum, OVHKnowledgeResources: Partner.knowledgeResourcesRangeEnum, OVHProductsUsed?: PartnerOVHProductsUsed, OVHTechnicalAdvancedResources: Partner.technicalAdvancedResourcesRangeEnum, OVHTechnicalExpertResources: Partner.technicalExpertResourcesRangeEnum, partnerKnowledges?: PartnerpartnerKnowledges, phone: string, productCountries?: PartnerproductCountries, registrationNumber?: string, revenue: Partner.revenueRangeEnum, twitter?: string, website: string, zipCode: string}): Promise<Partner.Company>;
             $(companyId: string): {
                 // DELETE /partners/register/company/{companyId}
                 $delete(): Promise<string>;
                 // GET /partners/register/company/{companyId}
                 $get(): Promise<Partner.Company>;
                 // PUT /partners/register/company/{companyId}
-                $put(params?: {activitySectors?: Partner.activitySectors, address?: string, city?: string, clientKinds?: Partner.clientKinds, commercialName?: string, country?: nichandle.CountryEnum, description?: string, effective?: Partner.employeesNumberEnum, email?: string, expertises?: Partner.expertisesChoices, externalCertifications?: Partner.externalCertifications, facebook?: string, linkedin?: string, logo?: string, name?: string, OVHCertifications?: Partner.OVHCertifications, OVHCustomersAdvised?: Partner.OVHCustomersAdvisedEnum, OVHKnowledgeResources?: Partner.knowledgeResourcesRangeEnum, OVHProductsUsed?: Partner.OVHProductsUsed, OVHTechnicalAdvancedResources?: Partner.technicalAdvancedResourcesRangeEnum, OVHTechnicalExpertResources?: Partner.technicalExpertResourcesRangeEnum, partnerKnowledges?: Partner.partnerKnowledges, phone?: string, productCountries?: Partner.productCountries, registrationNumber?: string, revenue?: Partner.revenueRangeEnum, twitter?: string, website?: string, zipCode?: string}): Promise<Partner.Company>;
+                $put(params?: {activitySectors?: PartneractivitySectors, address?: string, city?: string, clientKinds?: PartnerclientKinds, commercialName?: string, country?: nichandle.CountryEnum, description?: string, effective?: Partner.employeesNumberEnum, email?: string, expertises?: PartnerexpertisesChoices, externalCertifications?: PartnerexternalCertifications, facebook?: string, linkedin?: string, logo?: string, name?: string, OVHCertifications?: PartnerOVHCertifications, OVHCustomersAdvised?: Partner.OVHCustomersAdvisedEnum, OVHKnowledgeResources?: Partner.knowledgeResourcesRangeEnum, OVHProductsUsed?: PartnerOVHProductsUsed, OVHTechnicalAdvancedResources?: Partner.technicalAdvancedResourcesRangeEnum, OVHTechnicalExpertResources?: Partner.technicalExpertResourcesRangeEnum, partnerKnowledges?: PartnerpartnerKnowledges, phone?: string, productCountries?: PartnerproductCountries, registrationNumber?: string, revenue?: Partner.revenueRangeEnum, twitter?: string, website?: string, zipCode?: string}): Promise<Partner.Company>;
                 application: {
                     // GET /partners/register/company/{companyId}/application
                     $get(): Promise<Partner.Application>;
@@ -307,7 +307,7 @@ export interface Partners{
    * Company.get
    * Update some fields on a created company
    */
-  put(path: '/partners/register/company/{companyId}'): (params: {companyId: string, activitySectors?: Partner.activitySectors, address?: string, city?: string, clientKinds?: Partner.clientKinds, commercialName?: string, country?: nichandle.CountryEnum, description?: string, effective?: Partner.employeesNumberEnum, email?: string, expertises?: Partner.expertisesChoices, externalCertifications?: Partner.externalCertifications, facebook?: string, linkedin?: string, logo?: string, name?: string, OVHCertifications?: Partner.OVHCertifications, OVHCustomersAdvised?: Partner.OVHCustomersAdvisedEnum, OVHKnowledgeResources?: Partner.knowledgeResourcesRangeEnum, OVHProductsUsed?: Partner.OVHProductsUsed, OVHTechnicalAdvancedResources?: Partner.technicalAdvancedResourcesRangeEnum, OVHTechnicalExpertResources?: Partner.technicalExpertResourcesRangeEnum, partnerKnowledges?: Partner.partnerKnowledges, phone?: string, productCountries?: Partner.productCountries, registrationNumber?: string, revenue?: Partner.revenueRangeEnum, twitter?: string, website?: string, zipCode?: string}) => Promise<Partner.Company>;
+  put(path: '/partners/register/company/{companyId}'): (params: {companyId: string, activitySectors?: PartneractivitySectors, address?: string, city?: string, clientKinds?: PartnerclientKinds, commercialName?: string, country?: nichandle.CountryEnum, description?: string, effective?: Partner.employeesNumberEnum, email?: string, expertises?: PartnerexpertisesChoices, externalCertifications?: PartnerexternalCertifications, facebook?: string, linkedin?: string, logo?: string, name?: string, OVHCertifications?: PartnerOVHCertifications, OVHCustomersAdvised?: Partner.OVHCustomersAdvisedEnum, OVHKnowledgeResources?: Partner.knowledgeResourcesRangeEnum, OVHProductsUsed?: PartnerOVHProductsUsed, OVHTechnicalAdvancedResources?: Partner.technicalAdvancedResourcesRangeEnum, OVHTechnicalExpertResources?: Partner.technicalExpertResourcesRangeEnum, partnerKnowledges?: PartnerpartnerKnowledges, phone?: string, productCountries?: PartnerproductCountries, registrationNumber?: string, revenue?: Partner.revenueRangeEnum, twitter?: string, website?: string, zipCode?: string}) => Promise<Partner.Company>;
   /**
    * Contact.get
    * Update some fields on a created contact
@@ -317,7 +317,7 @@ export interface Partners{
    * Company.list
    * Created a new company for the inscription
    */
-  post(path: '/partners/register/company'): (params: {activitySectors?: Partner.activitySectors, address: string, city: string, clientKinds?: Partner.clientKinds, commercialName: string, country: nichandle.CountryEnum, description: string, email: string, employeesNumber: Partner.employeesNumberEnum, expertises?: Partner.expertisesChoices, externalCertifications?: Partner.externalCertifications, facebook?: string, linkedin?: string, logo: string, name: string, OVHCertifications?: Partner.OVHCertifications, OVHCustomersAdvised: Partner.OVHCustomersAdvisedEnum, OVHKnowledgeResources: Partner.knowledgeResourcesRangeEnum, OVHProductsUsed?: Partner.OVHProductsUsed, OVHTechnicalAdvancedResources: Partner.technicalAdvancedResourcesRangeEnum, OVHTechnicalExpertResources: Partner.technicalExpertResourcesRangeEnum, partnerKnowledges?: Partner.partnerKnowledges, phone: string, productCountries?: Partner.productCountries, registrationNumber?: string, revenue: Partner.revenueRangeEnum, twitter?: string, website: string, zipCode: string}) => Promise<Partner.Company>;
+  post(path: '/partners/register/company'): (params: {activitySectors?: PartneractivitySectors, address: string, city: string, clientKinds?: PartnerclientKinds, commercialName: string, country: nichandle.CountryEnum, description: string, email: string, employeesNumber: Partner.employeesNumberEnum, expertises?: PartnerexpertisesChoices, externalCertifications?: PartnerexternalCertifications, facebook?: string, linkedin?: string, logo: string, name: string, OVHCertifications?: PartnerOVHCertifications, OVHCustomersAdvised: Partner.OVHCustomersAdvisedEnum, OVHKnowledgeResources: Partner.knowledgeResourcesRangeEnum, OVHProductsUsed?: PartnerOVHProductsUsed, OVHTechnicalAdvancedResources: Partner.technicalAdvancedResourcesRangeEnum, OVHTechnicalExpertResources: Partner.technicalExpertResourcesRangeEnum, partnerKnowledges?: PartnerpartnerKnowledges, phone: string, productCountries?: PartnerproductCountries, registrationNumber?: string, revenue: Partner.revenueRangeEnum, twitter?: string, website: string, zipCode: string}) => Promise<Partner.Company>;
   /**
    * Application.create
    * Submit application information for validation
@@ -339,3 +339,23 @@ export interface Partners{
    */
   delete(path: '/partners/register/company/{companyId}/contact/{contactId}'): (params: {companyId: string, contactId: string}) => Promise<string>;
 }
+/**
+ * Extra Alias to bypass relativer namespace colitions
+ */
+type PartnerOVHCertifications = Partner.OVHCertifications;
+type PartnerOVHProductsUsed = Partner.OVHProductsUsed;
+type PartneractivitySectors = Partner.activitySectors;
+type PartnerclientKinds = Partner.clientKinds;
+type PartnerexpertisesChoices = Partner.expertisesChoices;
+type PartnerexternalCertifications = Partner.externalCertifications;
+type PartnerpartnerKnowledges = Partner.partnerKnowledges;
+type PartnerproductCountries = Partner.productCountries;
+type PartnercompanyStatusEnum = Partner.companyStatusEnum;
+type PartnerOVHProductsUsedCloud = Partner.OVHProductsUsedCloud;
+type PartnerOVHProductsUsedMobileHosting = Partner.OVHProductsUsedMobileHosting;
+type PartnerOVHProductsUsedTelecom = Partner.OVHProductsUsedTelecom;
+type PartnerOVHProductsUsedWeb = Partner.OVHProductsUsedWeb;
+type PartnerexpertisesChoicesConsulting = Partner.expertisesChoicesConsulting;
+type PartnerexpertisesChoicesInstallationAndIntegration = Partner.expertisesChoicesInstallationAndIntegration;
+type PartnerexpertisesChoicesOutsourcingAndMaintenance = Partner.expertisesChoicesOutsourcingAndMaintenance;
+type PartnerexpertisesChoicesSoftwareAndDevelopment = Partner.expertisesChoicesSoftwareAndDevelopment;

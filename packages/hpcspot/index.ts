@@ -23,9 +23,9 @@ export namespace hpcspot {
         hpcspotUrl?: string;
         id: number;
         orderId?: number;
-        quantity: complexType.UnitAndValue<number>;
-        reference: hpcspot.ConsumptionReferenceEnum;
-        type: hpcspot.ConsumptionTypeEnum;
+        quantity: complexTypeUnitAndValuenumber;
+        reference: hpcspotConsumptionReferenceEnum;
+        type: hpcspotConsumptionTypeEnum;
     }
     // type fullname: hpcspot.ConsumptionReferenceEnum
     export type ConsumptionReferenceEnum = "12core.60gb.quadrok4000" | "16core.64gb" | "1core.4gb" | "1core.4gb.quadrok4000" | "2core.8gb" | "2core.8gb.quadrok4000" | "4core.15gb" | "4core.15gb.quadrok4000" | "4core.32gb" | "8core.30gb" | "8core.30gb.quadrok4000" | "8core.32gb.1teslak20"
@@ -58,10 +58,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: service.RenewType;
-        renewalType: service.RenewalTypeEnum;
+        renew?: serviceRenewType;
+        renewalType: serviceRenewalTypeEnum;
         serviceId: number;
-        status: service.StateEnum;
+        status: serviceStateEnum;
     }
 }
 
@@ -84,7 +84,7 @@ export interface Hpcspot{
         $get(): Promise<hpcspot.Account>;
         consumption: {
             // GET /hpcspot/{serviceName}/consumption
-            $get(params?: {hpcspotItemEndDate_from?: string, hpcspotItemEndDate_to?: string, hpcspotItemId?: number, orderId?: number, type?: hpcspot.ConsumptionTypeEnum}): Promise<number[]>;
+            $get(params?: {hpcspotItemEndDate_from?: string, hpcspotItemEndDate_to?: string, hpcspotItemId?: number, orderId?: number, type?: hpcspotConsumptionTypeEnum}): Promise<number[]>;
             $(id: number): {
                 // GET /hpcspot/{serviceName}/consumption/{id}
                 $get(): Promise<hpcspot.Consumption>;
@@ -94,7 +94,7 @@ export interface Hpcspot{
             // GET /hpcspot/{serviceName}/serviceInfos
             $get(): Promise<services.Service>;
             // PUT /hpcspot/{serviceName}/serviceInfos
-            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}): Promise<void>;
         }
     };
 // Api
@@ -112,7 +112,7 @@ export interface Hpcspot{
    * List the hpcspot.Consumption objects
    * Details of the consumption of your account
    */
-  get(path: '/hpcspot/{serviceName}/consumption'): (params: {serviceName: string, hpcspotItemEndDate_from?: string, hpcspotItemEndDate_to?: string, hpcspotItemId?: number, orderId?: number, type?: hpcspot.ConsumptionTypeEnum}) => Promise<number[]>;
+  get(path: '/hpcspot/{serviceName}/consumption'): (params: {serviceName: string, hpcspotItemEndDate_from?: string, hpcspotItemEndDate_to?: string, hpcspotItemId?: number, orderId?: number, type?: hpcspotConsumptionTypeEnum}) => Promise<number[]>;
   /**
    * Detail of a HPC Spot consumtion
    * Get this object properties
@@ -127,5 +127,14 @@ export interface Hpcspot{
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/hpcspot/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
+  put(path: '/hpcspot/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}) => Promise<void>;
 }
+/**
+ * Extra Alias to bypass relativer namespace colitions
+ */
+type complexTypeUnitAndValuenumber = complexType.UnitAndValue<number>;
+type hpcspotConsumptionReferenceEnum = hpcspot.ConsumptionReferenceEnum;
+type hpcspotConsumptionTypeEnum = hpcspot.ConsumptionTypeEnum;
+type serviceRenewType = service.RenewType;
+type serviceRenewalTypeEnum = service.RenewalTypeEnum;
+type serviceStateEnum = service.StateEnum;

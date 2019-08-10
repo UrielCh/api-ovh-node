@@ -29,24 +29,24 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: service.RenewType;
-        renewalType: service.RenewalTypeEnum;
+        renew?: serviceRenewType;
+        renewalType: serviceRenewalTypeEnum;
         serviceId: number;
-        status: service.StateEnum;
+        status: serviceStateEnum;
     }
 }
 export namespace ssl {
     // interface fullName: ssl.Certificate.Certificate
     export interface Certificate {
-        authority: ssl.CertificateAuthorityEnum;
+        authority: sslCertificateAuthorityEnum;
         certificate?: string;
         chain?: string;
         commonName: string;
         csr: string;
         serviceName: string;
-        status: ssl.CertificateStatusEnum;
+        status: sslCertificateStatusEnum;
         subjectAltName: string[];
-        type: ssl.CertificateTypeEnum;
+        type: sslCertificateTypeEnum;
         validityEnd?: string;
         validityStart?: string;
     }
@@ -59,10 +59,10 @@ export namespace ssl {
     // interface fullName: ssl.Operation.Operation
     export interface Operation {
         doneDate?: string;
-        function: ssl.OperationFunctionEnum;
+        function: sslOperationFunctionEnum;
         lastUpdate: string;
         startDate: string;
-        status: ssl.OperationStatusEnum;
+        status: sslOperationStatusEnum;
         taskId: number;
     }
     // type fullname: ssl.OperationFunctionEnum
@@ -92,7 +92,7 @@ export interface Ssl{
             // GET /ssl/{serviceName}/serviceInfos
             $get(): Promise<services.Service>;
             // PUT /ssl/{serviceName}/serviceInfos
-            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}): Promise<void>;
         }
         tasks: {
             // GET /ssl/{serviceName}/tasks
@@ -133,5 +133,16 @@ export interface Ssl{
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/ssl/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
+  put(path: '/ssl/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}) => Promise<void>;
 }
+/**
+ * Extra Alias to bypass relativer namespace colitions
+ */
+type serviceRenewType = service.RenewType;
+type serviceRenewalTypeEnum = service.RenewalTypeEnum;
+type serviceStateEnum = service.StateEnum;
+type sslCertificateAuthorityEnum = ssl.CertificateAuthorityEnum;
+type sslCertificateStatusEnum = ssl.CertificateStatusEnum;
+type sslCertificateTypeEnum = ssl.CertificateTypeEnum;
+type sslOperationFunctionEnum = ssl.OperationFunctionEnum;
+type sslOperationStatusEnum = ssl.OperationStatusEnum;

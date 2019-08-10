@@ -18,18 +18,9 @@ export class CodeGenerator {
     async generate(): Promise<string> {
         this.schema = await this.gen.loadSchema(`${this.api}.json`)
         // start generation
-        // Add extra ROOT NameSpace
-        //let code = `import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';${EOL}${EOL}/**${EOL} * START API ${this.api} Models${EOL} */${EOL}`;
         let code = `import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';${EOL}${EOL}/**${EOL} * START API ${this.api} Models${EOL} */${EOL}`;
 
         code = this.dumpModel(0, this.gen.models, code, '');
-
-        // look for colition
-        // this.allFullTypes.sort((a, b) => a.length - b.length)
-        // console.log(this.allFullTypes);
-
-
-        //code += this.GenAllPathSet();
         code += `${EOL}/**${EOL} * END API ${this.api} Models${EOL} */${EOL}`;
 
         let proxyCall = 'proxy' + formatUpperCamlCase(this.api.replace(/\//g, '_'));
@@ -130,9 +121,32 @@ export class CodeGenerator {
                     let type = this.typeFromParameter(prop);
                     const prefix = type.replace(/^([^\.]+)\..+$/, '$1');
                     if (prefix !== type) {
-                        if (~cache._model.namespace.indexOf(`.${prefix}.`) || (cache._parent && cache._parent[prefix])) {
+                        let inParents = false;
+                        // const parents = new Set() as Set<string>;
+                        let parent = cache._parent
+                        while (parent) {
+                            if (parent[prefix]) {
+                                inParents = true;
+                                break;
+                            }
+                            parent = parent._parent;
+                        }
+                        if (~cache._model.namespace.indexOf(`.${prefix}.`) || inParents) {
+                            // drop array spec
+                            type = type.replace('[]', '');
+
+                            let alias = type.replace(/\./g, '');
+                            // need double check generics support
+                            // type complexTypeUnitAndValue<number> = complexType.UnitAndValue<number>;
+                            let generics = type.match(/<(.*)>/);
+                            if (generics) {
+                                alias = alias.replace(/[<>]/g, '');
+                                //type = type.replace(`${generics[0]}`, '');
+                            }
+
+                            //type = type.replace(/<.*>/, '');
                             // enable protection
-                            this.NSColision[type] = type.replace(/\./g, '');
+                            this.NSColision[type] = alias;
                             type = this.typeFromParameter(prop);
                         }
                     }

@@ -8,7 +8,7 @@ export namespace order {
     export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
     // interface fullName: order.Price.Price
     export interface Price {
-        currencyCode: order.CurrencyCodeEnum;
+        currencyCode: orderCurrencyCodeEnum;
         text: string;
         value: number;
     }
@@ -23,12 +23,12 @@ export namespace overTheBox {
     }
     // interface fullName: overTheBox.AvailableMigrationOffer.AvailableMigrationOffer
     export interface AvailableMigrationOffer {
-        currentOfferPrice: order.Price;
+        currentOfferPrice: orderPrice;
         description: string;
         engagementMonths: number;
         hardwareAvailable: boolean;
         offer: string;
-        price: order.Price;
+        price: orderPrice;
     }
     // interface fullName: overTheBox.Backup.Backup
     export interface Backup {
@@ -41,7 +41,7 @@ export namespace overTheBox {
         activated: boolean;
         deviceId: string;
         lastSeen: string;
-        networkInterfaces: overTheBox.DeviceInterface[];
+        networkInterfaces: overTheBoxDeviceInterface[];
         publicIp: string;
         systemVersion: string;
         version: string;
@@ -52,7 +52,7 @@ export namespace overTheBox {
         createdAt: string;
         details: string;
         name: string;
-        status: overTheBox.ActionStatusEnum;
+        status: overTheBoxActionStatusEnum;
         todoDate: string;
         updatedAt: string;
     }
@@ -68,7 +68,7 @@ export namespace overTheBox {
         dnsServers?: string[];
         gateway?: string;
         ip?: string;
-        multipathStatus: overTheBox.MultipathStatusEnum;
+        multipathStatus: overTheBoxMultipathStatusEnum;
         name: string;
         netmask?: string;
         publicIp?: string;
@@ -86,12 +86,12 @@ export namespace overTheBox {
         accepted: boolean;
         askDate: string;
         authorizedBy?: string;
-        connectionInfos: overTheBox.RemoteAccessConnectionInfos;
+        connectionInfos: overTheBoxRemoteAccessConnectionInfos;
         expirationDate: string;
         exposedPort: number;
         remoteAccessId: string;
-        remoteUserInfos: overTheBox.RemoteAccessUserInfos;
-        status: overTheBox.RemoteAccessStatusEnum;
+        remoteUserInfos: overTheBoxRemoteAccessUserInfos;
+        status: overTheBoxRemoteAccessStatusEnum;
     }
     // interface fullName: overTheBox.RemoteAccessConnectionInfos.RemoteAccessConnectionInfos
     export interface RemoteAccessConnectionInfos {
@@ -110,18 +110,18 @@ export namespace overTheBox {
     export interface Service {
         SOCKSProxyEnabled: boolean;
         customerDescription?: string;
-        graphEndpoint?: overTheBox.GraphEndpoint;
+        graphEndpoint?: overTheBoxGraphEndpoint;
         releaseChannel: string;
         serviceName: string;
-        status: overTheBox.ServiceStatusEnum;
-        tunnelMode: overTheBox.TunnelModeEnum;
+        status: overTheBoxServiceStatusEnum;
+        tunnelMode: overTheBoxTunnelModeEnum;
     }
     // type fullname: overTheBox.ServiceStatusEnum
     export type ServiceStatusEnum = "active" | "creating" | "deleted" | "suspended" | "toCreate" | "toDelete"
     // interface fullName: overTheBox.Task.Task
     export interface Task {
         name: string;
-        status: overTheBox.TaskStatusEnum;
+        status: overTheBoxTaskStatusEnum;
         taskId: string;
     }
     // type fullname: overTheBox.TaskStatusEnum
@@ -166,10 +166,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: service.RenewType;
-        renewalType: service.RenewalTypeEnum;
+        renew?: serviceRenewType;
+        renewalType: serviceRenewalTypeEnum;
         serviceId: number;
-        status: service.StateEnum;
+        status: serviceStateEnum;
     }
 }
 
@@ -201,7 +201,7 @@ export interface OverTheBox{
         // GET /overTheBox/{serviceName}
         $get(): Promise<overTheBox.Service>;
         // PUT /overTheBox/{serviceName}
-        $put(params?: {SOCKSProxyEnabled?: boolean, customerDescription?: string, graphEndpoint?: overTheBox.GraphEndpoint, releaseChannel?: string, serviceName?: string, status?: overTheBox.ServiceStatusEnum, tunnelMode?: overTheBox.TunnelModeEnum}): Promise<void>;
+        $put(params?: {SOCKSProxyEnabled?: boolean, customerDescription?: string, graphEndpoint?: overTheBoxGraphEndpoint, releaseChannel?: string, serviceName?: string, status?: overTheBoxServiceStatusEnum, tunnelMode?: overTheBoxTunnelModeEnum}): Promise<void>;
         availableReleaseChannels: {
             // GET /overTheBox/{serviceName}/availableReleaseChannels
             $get(): Promise<string[]>;
@@ -229,7 +229,7 @@ export interface OverTheBox{
             $get(): Promise<overTheBox.Device>;
             actions: {
                 // GET /overTheBox/{serviceName}/device/actions
-                $get(params?: {name?: string, status?: overTheBox.ActionStatusEnum}): Promise<string[]>;
+                $get(params?: {name?: string, status?: overTheBoxActionStatusEnum}): Promise<string[]>;
                 // POST /overTheBox/{serviceName}/device/actions
                 $post(params: {name: string}): Promise<overTheBox.DeviceAction>;
                 $(actionId: string): {
@@ -284,11 +284,11 @@ export interface OverTheBox{
             // GET /overTheBox/{serviceName}/serviceInfos
             $get(): Promise<services.Service>;
             // PUT /overTheBox/{serviceName}/serviceInfos
-            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}): Promise<void>;
         }
         tasks: {
             // GET /overTheBox/{serviceName}/tasks
-            $get(params?: {name?: string, status?: overTheBox.TaskStatusEnum}): Promise<string[]>;
+            $get(params?: {name?: string, status?: overTheBoxTaskStatusEnum}): Promise<string[]>;
             $(taskId: string): {
                 // GET /overTheBox/{serviceName}/tasks/{taskId}
                 $get(): Promise<overTheBox.Task>;
@@ -330,7 +330,7 @@ export interface OverTheBox{
    * List the overTheBox.DeviceAction objects
    * List of actions scheduled for this device
    */
-  get(path: '/overTheBox/{serviceName}/device/actions'): (params: {serviceName: string, name?: string, status?: overTheBox.ActionStatusEnum}) => Promise<string[]>;
+  get(path: '/overTheBox/{serviceName}/device/actions'): (params: {serviceName: string, name?: string, status?: overTheBoxActionStatusEnum}) => Promise<string[]>;
   /**
    * Device action
    * Get this object properties
@@ -365,7 +365,7 @@ export interface OverTheBox{
    * List the overTheBox.Task objects
    * List of tasks scheduled for this service
    */
-  get(path: '/overTheBox/{serviceName}/tasks'): (params: {serviceName: string, name?: string, status?: overTheBox.TaskStatusEnum}) => Promise<string[]>;
+  get(path: '/overTheBox/{serviceName}/tasks'): (params: {serviceName: string, name?: string, status?: overTheBoxTaskStatusEnum}) => Promise<string[]>;
   /**
    * Task
    * Get this object properties
@@ -380,12 +380,12 @@ export interface OverTheBox{
    * Service
    * Alter this object properties
    */
-  put(path: '/overTheBox/{serviceName}'): (params: {serviceName: string, SOCKSProxyEnabled?: boolean, customerDescription?: string, graphEndpoint?: overTheBox.GraphEndpoint, releaseChannel?: string, status?: overTheBox.ServiceStatusEnum, tunnelMode?: overTheBox.TunnelModeEnum}) => Promise<void>;
+  put(path: '/overTheBox/{serviceName}'): (params: {serviceName: string, SOCKSProxyEnabled?: boolean, customerDescription?: string, graphEndpoint?: overTheBoxGraphEndpoint, releaseChannel?: string, status?: overTheBoxServiceStatusEnum, tunnelMode?: overTheBoxTunnelModeEnum}) => Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/overTheBox/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
+  put(path: '/overTheBox/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}) => Promise<void>;
   /**
    * cancelResiliation operations
    * Cancel the resiliation of the Service
@@ -452,3 +452,21 @@ export interface OverTheBox{
    */
   delete(path: '/overTheBox/{serviceName}/remoteAccesses/{remoteAccessId}'): (params: {remoteAccessId: string, serviceName: string}) => Promise<void>;
 }
+/**
+ * Extra Alias to bypass relativer namespace colitions
+ */
+type orderCurrencyCodeEnum = order.CurrencyCodeEnum;
+type orderPrice = order.Price;
+type overTheBoxDeviceInterface = overTheBox.DeviceInterface;
+type overTheBoxActionStatusEnum = overTheBox.ActionStatusEnum;
+type overTheBoxMultipathStatusEnum = overTheBox.MultipathStatusEnum;
+type overTheBoxRemoteAccessConnectionInfos = overTheBox.RemoteAccessConnectionInfos;
+type overTheBoxRemoteAccessUserInfos = overTheBox.RemoteAccessUserInfos;
+type overTheBoxRemoteAccessStatusEnum = overTheBox.RemoteAccessStatusEnum;
+type overTheBoxGraphEndpoint = overTheBox.GraphEndpoint;
+type overTheBoxServiceStatusEnum = overTheBox.ServiceStatusEnum;
+type overTheBoxTunnelModeEnum = overTheBox.TunnelModeEnum;
+type overTheBoxTaskStatusEnum = overTheBox.TaskStatusEnum;
+type serviceRenewType = service.RenewType;
+type serviceRenewalTypeEnum = service.RenewalTypeEnum;
+type serviceStateEnum = service.StateEnum;

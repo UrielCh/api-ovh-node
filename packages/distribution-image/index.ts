@@ -7,9 +7,9 @@ export namespace distribution {
     // interface fullName: distribution.image.image
     export interface image {
         name: string;
-        packages: distribution.image.pakage[];
-        properties: distribution.image.properties;
-        service: distribution.image.service;
+        packages: distributionimagepakage[];
+        properties: distributionimageproperties;
+        service: distributionimageservice;
     }
     export namespace image {
         // interface fullName: distribution.image.package.pakage
@@ -20,7 +20,7 @@ export namespace distribution {
         }
         // interface fullName: distribution.image.properties.properties
         export interface properties {
-            category: distribution.image.properties.category;
+            category: distributionimagepropertiescategory;
         }
         export namespace properties {
             // type fullname: distribution.image.properties.category
@@ -58,10 +58,17 @@ export interface Distribution{
    * Missing description
    * List images for a service
    */
-  get(path: '/distribution/image/{serviceType}'): (params: {serviceType: distribution.image.service}) => Promise<string[]>;
+  get(path: '/distribution/image/{serviceType}'): (params: {serviceType: distributionimageservice}) => Promise<string[]>;
   /**
    * Missing description
    * Show image details
    */
-  get(path: '/distribution/image/{serviceType}/{imageName}'): (params: {imageName: string, serviceType: distribution.image.service}) => Promise<distribution.image>;
+  get(path: '/distribution/image/{serviceType}/{imageName}'): (params: {imageName: string, serviceType: distributionimageservice}) => Promise<distribution.image>;
 }
+/**
+ * Extra Alias to bypass relativer namespace colitions
+ */
+type distributionimagepakage = distribution.image.pakage;
+type distributionimageproperties = distribution.image.properties;
+type distributionimageservice = distribution.image.service;
+type distributionimagepropertiescategory = distribution.image.properties.category;

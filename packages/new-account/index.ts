@@ -18,31 +18,31 @@ export namespace nichandle {
     }
     // interface fullName: nichandle.CreationRules.CreationRules
     export interface CreationRules {
-        address: nichandle.CreationRule;
-        area: nichandle.CreationRule;
-        birthCity: nichandle.CreationRule;
-        birthDay: nichandle.CreationRule;
-        city: nichandle.CreationRule;
-        companyNationalIdentificationNumber: nichandle.CreationRule;
-        corporationType: nichandle.CreationRule;
-        country: nichandle.CreationRule;
-        email: nichandle.CreationRule;
-        fax: nichandle.CreationRule;
-        firstname: nichandle.CreationRule;
-        italianSDI: nichandle.CreationRule;
-        language: nichandle.CreationRule;
-        legalform: nichandle.CreationRule;
-        name: nichandle.CreationRule;
-        nationalIdentificationNumber: nichandle.CreationRule;
-        organisation: nichandle.CreationRule;
-        ovhCompany: nichandle.CreationRule;
-        ovhSubsidiary: nichandle.CreationRule;
-        phone: nichandle.CreationRule;
-        phoneCountry: nichandle.CreationRule;
-        sex: nichandle.CreationRule;
-        spareEmail: nichandle.CreationRule;
-        vat: nichandle.CreationRule;
-        zip: nichandle.CreationRule;
+        address: nichandleCreationRule;
+        area: nichandleCreationRule;
+        birthCity: nichandleCreationRule;
+        birthDay: nichandleCreationRule;
+        city: nichandleCreationRule;
+        companyNationalIdentificationNumber: nichandleCreationRule;
+        corporationType: nichandleCreationRule;
+        country: nichandleCreationRule;
+        email: nichandleCreationRule;
+        fax: nichandleCreationRule;
+        firstname: nichandleCreationRule;
+        italianSDI: nichandleCreationRule;
+        language: nichandleCreationRule;
+        legalform: nichandleCreationRule;
+        name: nichandleCreationRule;
+        nationalIdentificationNumber: nichandleCreationRule;
+        organisation: nichandleCreationRule;
+        ovhCompany: nichandleCreationRule;
+        ovhSubsidiary: nichandleCreationRule;
+        phone: nichandleCreationRule;
+        phoneCountry: nichandleCreationRule;
+        sex: nichandleCreationRule;
+        spareEmail: nichandleCreationRule;
+        vat: nichandleCreationRule;
+        zip: nichandleCreationRule;
     }
     // type fullname: nichandle.CreationRulesActionEnum
     export type CreationRulesActionEnum = "create" | "update"
@@ -155,3 +155,7 @@ export interface NewAccount{
    */
   post(path: '/newAccount/rules'): (params?: {action?: nichandle.CreationRulesActionEnum, address?: string, area?: string, birthCity?: string, birthDay?: string, city?: string, companyNationalIdentificationNumber?: string, corporationType?: string, country?: nichandle.CountryEnum, email?: string, fax?: string, firstname?: string, italianSDI?: string, language?: nichandle.LanguageEnum, legalform?: nichandle.LegalFormEnum, name?: string, nationalIdentificationNumber?: string, organisation?: string, ovhCompany?: nichandle.OvhCompanyEnum, ovhSubsidiary?: nichandle.OvhSubsidiaryEnum, phone?: string, phoneCountry?: nichandle.CountryEnum, sex?: nichandle.GenderEnum, spareEmail?: string, vat?: string, zip?: string}) => Promise<nichandle.CreationRule[]>;
 }
+/**
+ * Extra Alias to bypass relativer namespace colitions
+ */
+type nichandleCreationRule = nichandle.CreationRule;

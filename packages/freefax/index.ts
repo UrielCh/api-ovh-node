@@ -11,8 +11,8 @@ export namespace freefax {
     }
     // interface fullName: freefax.FreefaxProperties.FreefaxProperties
     export interface FreefaxProperties {
-        faxMaxCall: telephony.FaxSendingTries;
-        faxQuality: telephony.FaxQualityEnum;
+        faxMaxCall: telephonyFaxSendingTries;
+        faxQuality: telephonyFaxQualityEnum;
         faxTagLine: string;
         fromEmail: string;
         fromName: string;
@@ -46,10 +46,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: service.RenewType;
-        renewalType: service.RenewalTypeEnum;
+        renew?: serviceRenewType;
+        renewalType: serviceRenewalTypeEnum;
         serviceId: number;
-        status: service.StateEnum;
+        status: serviceStateEnum;
     }
 }
 export namespace telephony {
@@ -64,7 +64,7 @@ export namespace telephony {
     // interface fullName: telephony.ServiceVoicemailNotifications.ServiceVoicemailNotifications
     export interface ServiceVoicemailNotifications {
         email: string;
-        type: telephony.ServiceVoicemailMailOptionEnum;
+        type: telephonyServiceVoicemailMailOptionEnum;
     }
     // type fullname: telephony.VoicefaxRoutingEnum
     export type VoicefaxRoutingEnum = "fax" | "voicemail"
@@ -78,16 +78,16 @@ export namespace telephony {
     // interface fullName: telephony.VoicemailProperties.VoicemailProperties
     export interface VoicemailProperties {
         annouceMessage: string;
-        audioFormat: telephony.ServiceVoicemailAudioFormatEnum;
+        audioFormat: telephonyServiceVoicemailAudioFormatEnum;
         doNotRecord: boolean;
         forcePassword: boolean;
         fromEmail: string;
         fromName: string;
         fullGreetingSoundId?: number;
-        greetingType: telephony.VoicemailGreetingEnum;
+        greetingType: telephonyVoicemailGreetingEnum;
         isNewVersion: boolean;
         keepMessage: boolean;
-        redirectionEmails: telephony.ServiceVoicemailNotifications[];
+        redirectionEmails: telephonyServiceVoicemailNotifications[];
         shortGreetingSoundId?: number;
         temporaryGreetingActivated: boolean;
         temporaryGreetingSoundId?: number;
@@ -117,7 +117,7 @@ export interface Freefax{
         // GET /freefax/{serviceName}
         $get(): Promise<freefax.FreefaxProperties>;
         // PUT /freefax/{serviceName}
-        $put(params?: {faxMaxCall?: telephony.FaxSendingTries, faxQuality?: telephony.FaxQualityEnum, faxTagLine?: string, fromEmail?: string, fromName?: string, number?: string, redirectionEmail?: string[]}): Promise<void>;
+        $put(params?: {faxMaxCall?: telephonyFaxSendingTries, faxQuality?: telephonyFaxQualityEnum, faxTagLine?: string, fromEmail?: string, fromName?: string, number?: string, redirectionEmail?: string[]}): Promise<void>;
         changePassword: {
             // POST /freefax/{serviceName}/changePassword
             $post(): Promise<string>;
@@ -130,13 +130,13 @@ export interface Freefax{
             // GET /freefax/{serviceName}/serviceInfos
             $get(): Promise<services.Service>;
             // PUT /freefax/{serviceName}/serviceInfos
-            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}): Promise<void>;
         }
         voicemail: {
             // GET /freefax/{serviceName}/voicemail
             $get(): Promise<telephony.VoicemailProperties>;
             // PUT /freefax/{serviceName}/voicemail
-            $put(params?: {annouceMessage?: string, audioFormat?: telephony.ServiceVoicemailAudioFormatEnum, doNotRecord?: boolean, forcePassword?: boolean, fromEmail?: string, fromName?: string, fullGreetingSoundId?: number, greetingType?: telephony.VoicemailGreetingEnum, isNewVersion?: boolean, keepMessage?: boolean, redirectionEmails?: telephony.ServiceVoicemailNotifications[], shortGreetingSoundId?: number, temporaryGreetingActivated?: boolean, temporaryGreetingSoundId?: number, unreadMessages?: number}): Promise<void>;
+            $put(params?: {annouceMessage?: string, audioFormat?: telephonyServiceVoicemailAudioFormatEnum, doNotRecord?: boolean, forcePassword?: boolean, fromEmail?: string, fromName?: string, fullGreetingSoundId?: number, greetingType?: telephonyVoicemailGreetingEnum, isNewVersion?: boolean, keepMessage?: boolean, redirectionEmails?: telephonyServiceVoicemailNotifications[], shortGreetingSoundId?: number, temporaryGreetingActivated?: boolean, temporaryGreetingSoundId?: number, unreadMessages?: number}): Promise<void>;
             changePassword: {
                 // POST /freefax/{serviceName}/voicemail/changePassword
                 $post(params: {password: string}): Promise<void>;
@@ -200,17 +200,17 @@ export interface Freefax{
    * Freefax properties
    * Alter this object properties
    */
-  put(path: '/freefax/{serviceName}'): (params: {serviceName: string, faxMaxCall?: telephony.FaxSendingTries, faxQuality?: telephony.FaxQualityEnum, faxTagLine?: string, fromEmail?: string, fromName?: string, number?: string, redirectionEmail?: string[]}) => Promise<void>;
+  put(path: '/freefax/{serviceName}'): (params: {serviceName: string, faxMaxCall?: telephonyFaxSendingTries, faxQuality?: telephonyFaxQualityEnum, faxTagLine?: string, fromEmail?: string, fromName?: string, number?: string, redirectionEmail?: string[]}) => Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/freefax/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
+  put(path: '/freefax/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}) => Promise<void>;
   /**
    * Voicemail Properties
    * Alter this object properties
    */
-  put(path: '/freefax/{serviceName}/voicemail'): (params: {serviceName: string, annouceMessage?: string, audioFormat?: telephony.ServiceVoicemailAudioFormatEnum, doNotRecord?: boolean, forcePassword?: boolean, fromEmail?: string, fromName?: string, fullGreetingSoundId?: number, greetingType?: telephony.VoicemailGreetingEnum, isNewVersion?: boolean, keepMessage?: boolean, redirectionEmails?: telephony.ServiceVoicemailNotifications[], shortGreetingSoundId?: number, temporaryGreetingActivated?: boolean, temporaryGreetingSoundId?: number, unreadMessages?: number}) => Promise<void>;
+  put(path: '/freefax/{serviceName}/voicemail'): (params: {serviceName: string, annouceMessage?: string, audioFormat?: telephonyServiceVoicemailAudioFormatEnum, doNotRecord?: boolean, forcePassword?: boolean, fromEmail?: string, fromName?: string, fullGreetingSoundId?: number, greetingType?: telephonyVoicemailGreetingEnum, isNewVersion?: boolean, keepMessage?: boolean, redirectionEmails?: telephonyServiceVoicemailNotifications[], shortGreetingSoundId?: number, temporaryGreetingActivated?: boolean, temporaryGreetingSoundId?: number, unreadMessages?: number}) => Promise<void>;
   /**
    * changePassword operations
    * Generates a new password for your fax account
@@ -227,3 +227,15 @@ export interface Freefax{
    */
   post(path: '/freefax/{serviceName}/voicemail/changeRouting'): (params: {serviceName: string, routing: telephony.VoicefaxRoutingEnum}) => Promise<void>;
 }
+/**
+ * Extra Alias to bypass relativer namespace colitions
+ */
+type telephonyFaxSendingTries = telephony.FaxSendingTries;
+type telephonyFaxQualityEnum = telephony.FaxQualityEnum;
+type serviceRenewType = service.RenewType;
+type serviceRenewalTypeEnum = service.RenewalTypeEnum;
+type serviceStateEnum = service.StateEnum;
+type telephonyServiceVoicemailMailOptionEnum = telephony.ServiceVoicemailMailOptionEnum;
+type telephonyServiceVoicemailAudioFormatEnum = telephony.ServiceVoicemailAudioFormatEnum;
+type telephonyVoicemailGreetingEnum = telephony.VoicemailGreetingEnum;
+type telephonyServiceVoicemailNotifications = telephony.ServiceVoicemailNotifications;

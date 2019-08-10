@@ -8,7 +8,7 @@ export namespace order {
     export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
     // interface fullName: order.Price.Price
     export interface Price {
-        currencyCode: order.CurrencyCodeEnum;
+        currencyCode: orderCurrencyCodeEnum;
         text: string;
         value: number;
     }
@@ -9398,3 +9398,7 @@ export interface Price{
    */
   get(path: '/price/xdsl/options/line/{lineAction}'): (params: {lineAction: price.Xdsl.Options.LineEnum}) => Promise<order.Price>;
 }
+/**
+ * Extra Alias to bypass relativer namespace colitions
+ */
+type orderCurrencyCodeEnum = order.CurrencyCodeEnum;

@@ -25,15 +25,15 @@ export namespace email {
             lastName?: string;
             lastUpdateDate?: string;
             login: string;
-            mailingFilter?: email.pro.MailingFilterEnum[];
+            mailingFilter?: emailproMailingFilterEnum[];
             passwordLastUpdate?: string;
             primaryEmailAddress: string;
             quota: number;
-            renewPeriod?: email.pro.renewPeriodEnum;
-            spamAndVirusConfiguration: email.pro.spamAndVirusConfiguration;
+            renewPeriod?: emailprorenewPeriodEnum;
+            spamAndVirusConfiguration: emailprospamAndVirusConfiguration;
             spamDetected: boolean;
             spamTicketNumber?: number;
-            state: email.pro.ObjectStateEnum;
+            state: emailproObjectStateEnum;
             taskPendingId: number;
         }
         // interface fullName: email.pro.AccountAlias.AccountAlias
@@ -86,9 +86,9 @@ export namespace email {
             name: string;
             srvIsValid: boolean;
             srvRecord?: string[];
-            state: email.pro.ObjectStateEnum;
+            state: emailproObjectStateEnum;
             taskPendingId: number;
-            type: email.pro.DomainTypeEnum;
+            type: emailproDomainTypeEnum;
         }
         // type fullname: email.pro.DomainTypeEnum
         export type DomainTypeEnum = "authoritative" | "nonAuthoritative"
@@ -102,7 +102,7 @@ export namespace email {
             id: number;
             initials?: string;
             lastName?: string;
-            state: email.pro.ObjectStateEnum;
+            state: emailproObjectStateEnum;
             taskPendingId: number;
         }
         // type fullname: email.pro.MailingFilterEnum
@@ -119,7 +119,7 @@ export namespace email {
             isAaaaValid: boolean;
             isPtrV6Valid: boolean;
             isPtrValid: boolean;
-            state: email.pro.ServerStateEnum;
+            state: emailproServerStateEnum;
             taskPendingId: number;
             version?: number;
         }
@@ -140,9 +140,9 @@ export namespace email {
             maxSendSize: number;
             minPasswordAge?: number;
             minPasswordLength?: number;
-            offer: email.pro.ServiceOfferEnum;
-            spamAndVirusConfiguration: email.pro.spamAndVirusConfiguration;
-            state: email.pro.ServiceStateEnum;
+            offer: emailproServiceOfferEnum;
+            spamAndVirusConfiguration: emailprospamAndVirusConfiguration;
+            state: emailproServiceStateEnum;
             taskPendingId: number;
             webUrl?: string;
         }
@@ -153,9 +153,9 @@ export namespace email {
         // interface fullName: email.pro.Task.Task
         export interface Task {
             finishDate?: string;
-            function: email.pro.TaskFunctionEnum;
+            function: emailproTaskFunctionEnum;
             id: number;
-            status: email.pro.TaskStatusEnum;
+            status: emailproTaskStatusEnum;
             todoDate: string;
         }
         // type fullname: email.pro.TaskFunctionEnum
@@ -210,10 +210,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: service.RenewType;
-        renewalType: service.RenewalTypeEnum;
+        renew?: serviceRenewType;
+        renewalType: serviceRenewalTypeEnum;
         serviceId: number;
-        status: service.StateEnum;
+        status: serviceStateEnum;
     }
 }
 
@@ -236,7 +236,7 @@ export interface Email{
             // GET /email/pro/{service}
             $get(): Promise<email.pro.Service>;
             // PUT /email/pro/{service}
-            $put(params?: {complexityEnabled?: boolean, displayName?: string, domain?: string, hostname?: string, lastUpdateDate?: string, lockoutDuration?: number, lockoutObservationWindow?: number, lockoutThreshold?: number, maxPasswordAge?: number, maxReceiveSize?: number, maxSendSize?: number, minPasswordAge?: number, minPasswordLength?: number, offer?: email.pro.ServiceOfferEnum, spamAndVirusConfiguration?: email.pro.spamAndVirusConfiguration, state?: email.pro.ServiceStateEnum, taskPendingId?: number, webUrl?: string}): Promise<void>;
+            $put(params?: {complexityEnabled?: boolean, displayName?: string, domain?: string, hostname?: string, lastUpdateDate?: string, lockoutDuration?: number, lockoutObservationWindow?: number, lockoutThreshold?: number, maxPasswordAge?: number, maxReceiveSize?: number, maxSendSize?: number, minPasswordAge?: number, minPasswordLength?: number, offer?: emailproServiceOfferEnum, spamAndVirusConfiguration?: emailprospamAndVirusConfiguration, state?: emailproServiceStateEnum, taskPendingId?: number, webUrl?: string}): Promise<void>;
             account: {
                 // GET /email/pro/{service}/account
                 $get(params?: {id?: number, primaryEmailAddress?: string}): Promise<string[]>;
@@ -246,7 +246,7 @@ export interface Email{
                     // GET /email/pro/{service}/account/{email}
                     $get(): Promise<email.pro.Account>;
                     // PUT /email/pro/{service}/account/{email}
-                    $put(params?: {SAMAccountName?: string, configured?: boolean, creationDate?: string, currentUsage?: number, deleteAtExpiration?: boolean, displayName?: string, domain?: string, expirationDate?: string, expirationOutlookDate?: string, firstName?: string, hiddenFromGAL?: boolean, id?: number, initial?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, lastUpdateDate?: string, login?: string, mailingFilter?: email.pro.MailingFilterEnum[], passwordLastUpdate?: string, primaryEmailAddress?: string, quota?: number, renewPeriod?: email.pro.renewPeriodEnum, spamAndVirusConfiguration?: email.pro.spamAndVirusConfiguration, spamDetected?: boolean, spamTicketNumber?: number, state?: email.pro.ObjectStateEnum, taskPendingId?: number}): Promise<void>;
+                    $put(params?: {SAMAccountName?: string, configured?: boolean, creationDate?: string, currentUsage?: number, deleteAtExpiration?: boolean, displayName?: string, domain?: string, expirationDate?: string, expirationOutlookDate?: string, firstName?: string, hiddenFromGAL?: boolean, id?: number, initial?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, lastUpdateDate?: string, login?: string, mailingFilter?: emailproMailingFilterEnum[], passwordLastUpdate?: string, primaryEmailAddress?: string, quota?: number, renewPeriod?: emailprorenewPeriodEnum, spamAndVirusConfiguration?: emailprospamAndVirusConfiguration, spamDetected?: boolean, spamTicketNumber?: number, state?: emailproObjectStateEnum, taskPendingId?: number}): Promise<void>;
                     alias: {
                         // GET /email/pro/{service}/account/{email}/alias
                         $get(): Promise<string[]>;
@@ -329,16 +329,16 @@ export interface Email{
             }
             domain: {
                 // GET /email/pro/{service}/domain
-                $get(params?: {state?: email.pro.ObjectStateEnum}): Promise<string[]>;
+                $get(params?: {state?: emailproObjectStateEnum}): Promise<string[]>;
                 // POST /email/pro/{service}/domain
-                $post(params: {configureAutodiscover?: boolean, configureMx?: boolean, mxRelay?: string, name: string, type: email.pro.DomainTypeEnum}): Promise<email.pro.Task>;
+                $post(params: {configureAutodiscover?: boolean, configureMx?: boolean, mxRelay?: string, name: string, type: emailproDomainTypeEnum}): Promise<email.pro.Task>;
                 $(domainName: string): {
                     // DELETE /email/pro/{service}/domain/{domainName}
                     $delete(): Promise<email.pro.Task>;
                     // GET /email/pro/{service}/domain/{domainName}
                     $get(): Promise<email.pro.Domain>;
                     // PUT /email/pro/{service}/domain/{domainName}
-                    $put(params?: {cnameToCheck?: string, domainAliases?: string[], domainValidated?: boolean, isAliasDomain?: boolean, mxIsValid?: boolean, mxRecord?: string[], mxRelay?: string, name?: string, srvIsValid?: boolean, srvRecord?: string[], state?: email.pro.ObjectStateEnum, taskPendingId?: number, type?: email.pro.DomainTypeEnum}): Promise<void>;
+                    $put(params?: {cnameToCheck?: string, domainAliases?: string[], domainValidated?: boolean, isAliasDomain?: boolean, mxIsValid?: boolean, mxRecord?: string[], mxRelay?: string, name?: string, srvIsValid?: boolean, srvRecord?: string[], state?: emailproObjectStateEnum, taskPendingId?: number, type?: emailproDomainTypeEnum}): Promise<void>;
                     disclaimer: {
                         // DELETE /email/pro/{service}/domain/{domainName}/disclaimer
                         $delete(): Promise<email.pro.Task>;
@@ -366,7 +366,7 @@ export interface Email{
                     // GET /email/pro/{service}/externalContact/{externalEmailAddress}
                     $get(): Promise<email.pro.ExternalContact>;
                     // PUT /email/pro/{service}/externalContact/{externalEmailAddress}
-                    $put(params?: {creationDate?: string, displayName?: string, externalEmailAddress?: string, firstName?: string, hiddenFromGAL?: boolean, id?: number, initials?: string, lastName?: string, state?: email.pro.ObjectStateEnum, taskPendingId?: number}): Promise<void>;
+                    $put(params?: {creationDate?: string, displayName?: string, externalEmailAddress?: string, firstName?: string, hiddenFromGAL?: boolean, id?: number, initials?: string, lastName?: string, state?: emailproObjectStateEnum, taskPendingId?: number}): Promise<void>;
                 };
             }
             server: {
@@ -377,7 +377,7 @@ export interface Email{
                 // GET /email/pro/{service}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /email/pro/{service}/serviceInfos
-                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}): Promise<void>;
             }
             task: {
                 // GET /email/pro/{service}/task
@@ -483,7 +483,7 @@ export interface Email{
    * List the email.pro.Domain objects
    * Domains associated to this service
    */
-  get(path: '/email/pro/{service}/domain'): (params: {service: string, state?: email.pro.ObjectStateEnum}) => Promise<string[]>;
+  get(path: '/email/pro/{service}/domain'): (params: {service: string, state?: emailproObjectStateEnum}) => Promise<string[]>;
   /**
    * Domain
    * Get this object properties
@@ -533,17 +533,17 @@ export interface Email{
    * Email pro service
    * Alter this object properties
    */
-  put(path: '/email/pro/{service}'): (params: {service: string, complexityEnabled?: boolean, displayName?: string, domain?: string, hostname?: string, lastUpdateDate?: string, lockoutDuration?: number, lockoutObservationWindow?: number, lockoutThreshold?: number, maxPasswordAge?: number, maxReceiveSize?: number, maxSendSize?: number, minPasswordAge?: number, minPasswordLength?: number, offer?: email.pro.ServiceOfferEnum, spamAndVirusConfiguration?: email.pro.spamAndVirusConfiguration, state?: email.pro.ServiceStateEnum, taskPendingId?: number, webUrl?: string}) => Promise<void>;
+  put(path: '/email/pro/{service}'): (params: {service: string, complexityEnabled?: boolean, displayName?: string, domain?: string, hostname?: string, lastUpdateDate?: string, lockoutDuration?: number, lockoutObservationWindow?: number, lockoutThreshold?: number, maxPasswordAge?: number, maxReceiveSize?: number, maxSendSize?: number, minPasswordAge?: number, minPasswordLength?: number, offer?: emailproServiceOfferEnum, spamAndVirusConfiguration?: emailprospamAndVirusConfiguration, state?: emailproServiceStateEnum, taskPendingId?: number, webUrl?: string}) => Promise<void>;
   /**
    * Mailbox
    * Alter this object properties
    */
-  put(path: '/email/pro/{service}/account/{email}'): (params: {email: string, service: string, SAMAccountName?: string, configured?: boolean, creationDate?: string, currentUsage?: number, deleteAtExpiration?: boolean, displayName?: string, domain?: string, expirationDate?: string, expirationOutlookDate?: string, firstName?: string, hiddenFromGAL?: boolean, id?: number, initial?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, lastUpdateDate?: string, login?: string, mailingFilter?: email.pro.MailingFilterEnum[], passwordLastUpdate?: string, primaryEmailAddress?: string, quota?: number, renewPeriod?: email.pro.renewPeriodEnum, spamAndVirusConfiguration?: email.pro.spamAndVirusConfiguration, spamDetected?: boolean, spamTicketNumber?: number, state?: email.pro.ObjectStateEnum, taskPendingId?: number}) => Promise<void>;
+  put(path: '/email/pro/{service}/account/{email}'): (params: {email: string, service: string, SAMAccountName?: string, configured?: boolean, creationDate?: string, currentUsage?: number, deleteAtExpiration?: boolean, displayName?: string, domain?: string, expirationDate?: string, expirationOutlookDate?: string, firstName?: string, hiddenFromGAL?: boolean, id?: number, initial?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, lastUpdateDate?: string, login?: string, mailingFilter?: emailproMailingFilterEnum[], passwordLastUpdate?: string, primaryEmailAddress?: string, quota?: number, renewPeriod?: emailprorenewPeriodEnum, spamAndVirusConfiguration?: emailprospamAndVirusConfiguration, spamDetected?: boolean, spamTicketNumber?: number, state?: emailproObjectStateEnum, taskPendingId?: number}) => Promise<void>;
   /**
    * Domain
    * Alter this object properties
    */
-  put(path: '/email/pro/{service}/domain/{domainName}'): (params: {domainName: string, service: string, cnameToCheck?: string, domainAliases?: string[], domainValidated?: boolean, isAliasDomain?: boolean, mxIsValid?: boolean, mxRecord?: string[], mxRelay?: string, name?: string, srvIsValid?: boolean, srvRecord?: string[], state?: email.pro.ObjectStateEnum, taskPendingId?: number, type?: email.pro.DomainTypeEnum}) => Promise<void>;
+  put(path: '/email/pro/{service}/domain/{domainName}'): (params: {domainName: string, service: string, cnameToCheck?: string, domainAliases?: string[], domainValidated?: boolean, isAliasDomain?: boolean, mxIsValid?: boolean, mxRecord?: string[], mxRelay?: string, name?: string, srvIsValid?: boolean, srvRecord?: string[], state?: emailproObjectStateEnum, taskPendingId?: number, type?: emailproDomainTypeEnum}) => Promise<void>;
   /**
    * disclaimer
    * Alter this object properties
@@ -553,12 +553,12 @@ export interface Email{
    * External contact for this pro service
    * Alter this object properties
    */
-  put(path: '/email/pro/{service}/externalContact/{externalEmailAddress}'): (params: {externalEmailAddress: string, service: string, creationDate?: string, displayName?: string, firstName?: string, hiddenFromGAL?: boolean, id?: number, initials?: string, lastName?: string, state?: email.pro.ObjectStateEnum, taskPendingId?: number}) => Promise<void>;
+  put(path: '/email/pro/{service}/externalContact/{externalEmailAddress}'): (params: {externalEmailAddress: string, service: string, creationDate?: string, displayName?: string, firstName?: string, hiddenFromGAL?: boolean, id?: number, initials?: string, lastName?: string, state?: emailproObjectStateEnum, taskPendingId?: number}) => Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/email/pro/{service}/serviceInfos'): (params: {service: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
+  put(path: '/email/pro/{service}/serviceInfos'): (params: {service: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}) => Promise<void>;
   /**
    * List the email.pro.AccountAlias objects
    * Create new alias
@@ -598,7 +598,7 @@ export interface Email{
    * List the email.pro.Domain objects
    * Create new domain in pro services
    */
-  post(path: '/email/pro/{service}/domain'): (params: {service: string, configureAutodiscover?: boolean, configureMx?: boolean, mxRelay?: string, name: string, type: email.pro.DomainTypeEnum}) => Promise<email.pro.Task>;
+  post(path: '/email/pro/{service}/domain'): (params: {service: string, configureAutodiscover?: boolean, configureMx?: boolean, mxRelay?: string, name: string, type: emailproDomainTypeEnum}) => Promise<email.pro.Task>;
   /**
    * disclaimer
    * Create organization disclaimer of each email
@@ -655,3 +655,19 @@ export interface Email{
    */
   delete(path: '/email/pro/{service}/externalContact/{externalEmailAddress}'): (params: {externalEmailAddress: string, service: string}) => Promise<email.pro.Task>;
 }
+/**
+ * Extra Alias to bypass relativer namespace colitions
+ */
+type emailproMailingFilterEnum = email.pro.MailingFilterEnum;
+type emailprorenewPeriodEnum = email.pro.renewPeriodEnum;
+type emailprospamAndVirusConfiguration = email.pro.spamAndVirusConfiguration;
+type emailproObjectStateEnum = email.pro.ObjectStateEnum;
+type emailproDomainTypeEnum = email.pro.DomainTypeEnum;
+type emailproServerStateEnum = email.pro.ServerStateEnum;
+type emailproServiceOfferEnum = email.pro.ServiceOfferEnum;
+type emailproServiceStateEnum = email.pro.ServiceStateEnum;
+type emailproTaskFunctionEnum = email.pro.TaskFunctionEnum;
+type emailproTaskStatusEnum = email.pro.TaskStatusEnum;
+type serviceRenewType = service.RenewType;
+type serviceRenewalTypeEnum = service.RenewalTypeEnum;
+type serviceStateEnum = service.StateEnum;

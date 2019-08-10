@@ -12,7 +12,7 @@ export namespace license {
         // interface fullName: license.office.OfficeDomain.OfficeDomain
         export interface OfficeDomain {
             domainName: string;
-            status: license.office.DomainStateEnum;
+            status: licenseofficeDomainStateEnum;
             txtEntry: string;
         }
         // interface fullName: license.office.OfficeSubscription.OfficeSubscription
@@ -30,7 +30,7 @@ export namespace license {
             finishDate?: string;
             function: string;
             id: number;
-            status: license.office.TaskStatusEnum;
+            status: licenseofficeTaskStatusEnum;
             todoDate: string;
         }
         // interface fullName: license.office.OfficeTenant.OfficeTenant
@@ -42,8 +42,8 @@ export namespace license {
             firstName: string;
             lastName: string;
             phone: string;
-            serviceType: license.office.ServiceTypeEnum;
-            status: license.office.ServiceStateEnum;
+            serviceType: licenseofficeServiceTypeEnum;
+            status: licenseofficeServiceStateEnum;
             zipCode: string;
         }
         // interface fullName: license.office.OfficeUser.OfficeUser
@@ -53,8 +53,8 @@ export namespace license {
             firstName: string;
             isVirtual: boolean;
             lastName: string;
-            licences: license.office.LicenceEnum[];
-            status: license.office.UserStateEnum;
+            licences: licenseofficeLicenceEnum[];
+            status: licenseofficeUserStateEnum;
             taskPendingId: number;
         }
         // type fullname: license.office.ServiceStateEnum
@@ -70,12 +70,12 @@ export namespace license {
         // interface fullName: license.office.Statistics.Statistics
         export interface Statistics {
             date: string;
-            lines: license.office.StatisticsLine[];
+            lines: licenseofficeStatisticsLine[];
         }
         // interface fullName: license.office.StatisticsLine.StatisticsLine
         export interface StatisticsLine {
             endOfDayCount: number;
-            licenceType: license.office.LicenceEnum;
+            licenceType: licenseofficeLicenceEnum;
             peakCount: number;
         }
         // type fullname: license.office.TaskStatusEnum
@@ -110,10 +110,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: service.RenewType;
-        renewalType: service.RenewalTypeEnum;
+        renew?: serviceRenewType;
+        renewalType: serviceRenewalTypeEnum;
         serviceId: number;
-        status: service.StateEnum;
+        status: serviceStateEnum;
     }
 }
 
@@ -136,7 +136,7 @@ export interface License{
             // GET /license/office/{serviceName}
             $get(): Promise<license.office.OfficeTenant>;
             // PUT /license/office/{serviceName}
-            $put(params?: {address?: string, city?: string, creationDate?: string, displayName?: string, firstName?: string, lastName?: string, phone?: string, serviceType?: license.office.ServiceTypeEnum, status?: license.office.ServiceStateEnum, zipCode?: string}): Promise<void>;
+            $put(params?: {address?: string, city?: string, creationDate?: string, displayName?: string, firstName?: string, lastName?: string, phone?: string, serviceType?: licenseofficeServiceTypeEnum, status?: licenseofficeServiceStateEnum, zipCode?: string}): Promise<void>;
             domain: {
                 // GET /license/office/{serviceName}/domain
                 $get(): Promise<string[]>;
@@ -157,7 +157,7 @@ export interface License{
                 // GET /license/office/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /license/office/{serviceName}/serviceInfos
-                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}): Promise<void>;
             }
             usageStatistics: {
                 // GET /license/office/{serviceName}/usageStatistics
@@ -165,16 +165,16 @@ export interface License{
             }
             user: {
                 // GET /license/office/{serviceName}/user
-                $get(params?: {activationEmail?: string, firstName?: string, lastName?: string, licences?: license.office.LicenceEnum[]}): Promise<string[]>;
+                $get(params?: {activationEmail?: string, firstName?: string, lastName?: string, licences?: licenseofficeLicenceEnum[]}): Promise<string[]>;
                 // POST /license/office/{serviceName}/user
-                $post(params: {domain: string, firstName?: string, lastName?: string, licence: license.office.LicenceEnum, login: string}): Promise<license.office.OfficeTask>;
+                $post(params: {domain: string, firstName?: string, lastName?: string, licence: licenseofficeLicenceEnum, login: string}): Promise<license.office.OfficeTask>;
                 $(activationEmail: string): {
                     // DELETE /license/office/{serviceName}/user/{activationEmail}
                     $delete(): Promise<license.office.OfficeTask>;
                     // GET /license/office/{serviceName}/user/{activationEmail}
                     $get(): Promise<license.office.OfficeUser>;
                     // PUT /license/office/{serviceName}/user/{activationEmail}
-                    $put(params?: {activationEmail?: string, deleteAtExpiration?: boolean, firstName?: string, isVirtual?: boolean, lastName?: string, licences?: license.office.LicenceEnum[], status?: license.office.UserStateEnum, taskPendingId?: number}): Promise<void>;
+                    $put(params?: {activationEmail?: string, deleteAtExpiration?: boolean, firstName?: string, isVirtual?: boolean, lastName?: string, licences?: licenseofficeLicenceEnum[], status?: licenseofficeUserStateEnum, taskPendingId?: number}): Promise<void>;
                     changePassword: {
                         // POST /license/office/{serviceName}/user/{activationEmail}/changePassword
                         $post(params: {notifyEmail?: string, password?: string, shouldSendMail: boolean}): Promise<license.office.OfficeTask>;
@@ -228,7 +228,7 @@ export interface License{
    * List the license.office.OfficeUser objects
    * Accounts associated to this office tenant
    */
-  get(path: '/license/office/{serviceName}/user'): (params: {serviceName: string, activationEmail?: string, firstName?: string, lastName?: string, licences?: license.office.LicenceEnum[]}) => Promise<string[]>;
+  get(path: '/license/office/{serviceName}/user'): (params: {serviceName: string, activationEmail?: string, firstName?: string, lastName?: string, licences?: licenseofficeLicenceEnum[]}) => Promise<string[]>;
   /**
    * Office user
    * Get this object properties
@@ -238,22 +238,22 @@ export interface License{
    * Office tenant
    * Alter this object properties
    */
-  put(path: '/license/office/{serviceName}'): (params: {serviceName: string, address?: string, city?: string, creationDate?: string, displayName?: string, firstName?: string, lastName?: string, phone?: string, serviceType?: license.office.ServiceTypeEnum, status?: license.office.ServiceStateEnum, zipCode?: string}) => Promise<void>;
+  put(path: '/license/office/{serviceName}'): (params: {serviceName: string, address?: string, city?: string, creationDate?: string, displayName?: string, firstName?: string, lastName?: string, phone?: string, serviceType?: licenseofficeServiceTypeEnum, status?: licenseofficeServiceStateEnum, zipCode?: string}) => Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/license/office/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
+  put(path: '/license/office/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}) => Promise<void>;
   /**
    * Office user
    * Alter this object properties
    */
-  put(path: '/license/office/{serviceName}/user/{activationEmail}'): (params: {activationEmail: string, serviceName: string, deleteAtExpiration?: boolean, firstName?: string, isVirtual?: boolean, lastName?: string, licences?: license.office.LicenceEnum[], status?: license.office.UserStateEnum, taskPendingId?: number}) => Promise<void>;
+  put(path: '/license/office/{serviceName}/user/{activationEmail}'): (params: {activationEmail: string, serviceName: string, deleteAtExpiration?: boolean, firstName?: string, isVirtual?: boolean, lastName?: string, licences?: licenseofficeLicenceEnum[], status?: licenseofficeUserStateEnum, taskPendingId?: number}) => Promise<void>;
   /**
    * List the license.office.OfficeUser objects
    * Create new office user
    */
-  post(path: '/license/office/{serviceName}/user'): (params: {serviceName: string, domain: string, firstName?: string, lastName?: string, licence: license.office.LicenceEnum, login: string}) => Promise<license.office.OfficeTask>;
+  post(path: '/license/office/{serviceName}/user'): (params: {serviceName: string, domain: string, firstName?: string, lastName?: string, licence: licenseofficeLicenceEnum, login: string}) => Promise<license.office.OfficeTask>;
   /**
    * changePassword operations
    * Change or reset  user's password
@@ -265,3 +265,16 @@ export interface License{
    */
   delete(path: '/license/office/{serviceName}/user/{activationEmail}'): (params: {activationEmail: string, serviceName: string}) => Promise<license.office.OfficeTask>;
 }
+/**
+ * Extra Alias to bypass relativer namespace colitions
+ */
+type licenseofficeDomainStateEnum = license.office.DomainStateEnum;
+type licenseofficeTaskStatusEnum = license.office.TaskStatusEnum;
+type licenseofficeServiceTypeEnum = license.office.ServiceTypeEnum;
+type licenseofficeServiceStateEnum = license.office.ServiceStateEnum;
+type licenseofficeLicenceEnum = license.office.LicenceEnum;
+type licenseofficeUserStateEnum = license.office.UserStateEnum;
+type licenseofficeStatisticsLine = license.office.StatisticsLine;
+type serviceRenewType = service.RenewType;
+type serviceRenewalTypeEnum = service.RenewalTypeEnum;
+type serviceStateEnum = service.StateEnum;

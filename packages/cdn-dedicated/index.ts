@@ -23,11 +23,11 @@ export namespace cdnanycast {
     // interface fullName: cdnanycast.CacheRule.CacheRule
     export interface CacheRule {
         cacheRuleId: number;
-        cacheType: cdnanycast.CacheRuleCacheTypeEnum;
+        cacheType: cdnanycastCacheRuleCacheTypeEnum;
         domain: string;
         fileMatch: string;
-        fileType: cdnanycast.CacheRuleFileTypeEnum;
-        status: cdnanycast.CacheRuleStatusEnum;
+        fileType: cdnanycastCacheRuleFileTypeEnum;
+        status: cdnanycastCacheRuleStatusEnum;
         ttl: number;
     }
     // type fullname: cdnanycast.CacheRuleCacheTypeEnum
@@ -41,8 +41,8 @@ export namespace cdnanycast {
         cacheRuleUse: number;
         cname: string;
         domain: string;
-        status: cdnanycast.DomainStatusEnum;
-        type: cdnanycast.DomainTypeEnum;
+        status: cdnanycastDomainStatusEnum;
+        type: cdnanycastDomainTypeEnum;
     }
     // type fullname: cdnanycast.DomainStatusEnum
     export type DomainStatusEnum = "error" | "off" | "on" | "removing"
@@ -58,7 +58,7 @@ export namespace cdnanycast {
         city: string;
         comment: string;
         name: string;
-        status: cdnanycast.PopStatusEnum;
+        status: cdnanycastPopStatusEnum;
     }
     // type fullname: cdnanycast.PopStatusEnum
     export type PopStatusEnum = "down" | "ok" | "rerouted" | "unknown"
@@ -69,7 +69,7 @@ export namespace cdnanycast {
         certificateValidTo?: string;
         cn?: string;
         name: string;
-        status: cdnanycast.SslStateEnum;
+        status: cdnanycastSslStateEnum;
     }
     // type fullname: cdnanycast.SslStateEnum
     export type SslStateEnum = "checking" | "creating" | "error" | "off" | "on" | "removing" | "updating" | "uploading"
@@ -87,8 +87,8 @@ export namespace cdnanycast {
     // interface fullName: cdnanycast.Task.Task
     export interface Task {
         comment?: string;
-        function: cdnanycast.TaskFunctionEnum;
-        status: cdnanycast.TaskStateEnum;
+        function: cdnanycastTaskFunctionEnum;
+        status: cdnanycastTaskStateEnum;
         taskId: number;
     }
     // type fullname: cdnanycast.TaskFunctionEnum
@@ -122,10 +122,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: service.RenewType;
-        renewalType: service.RenewalTypeEnum;
+        renew?: serviceRenewType;
+        renewalType: serviceRenewalTypeEnum;
         serviceId: number;
-        status: service.StateEnum;
+        status: serviceStateEnum;
     }
 }
 
@@ -170,7 +170,7 @@ export interface Cdn{
                     // GET /cdn/dedicated/{serviceName}/domains/{domain}
                     $get(): Promise<cdnanycast.Domain>;
                     // PUT /cdn/dedicated/{serviceName}/domains/{domain}
-                    $put(params?: {cacheRuleUse?: number, cname?: string, domain?: string, status?: cdnanycast.DomainStatusEnum, type?: cdnanycast.DomainTypeEnum}): Promise<void>;
+                    $put(params?: {cacheRuleUse?: number, cname?: string, domain?: string, status?: cdnanycastDomainStatusEnum, type?: cdnanycastDomainTypeEnum}): Promise<void>;
                     backends: {
                         // GET /cdn/dedicated/{serviceName}/domains/{domain}/backends
                         $get(): Promise<string[]>;
@@ -187,14 +187,14 @@ export interface Cdn{
                         // GET /cdn/dedicated/{serviceName}/domains/{domain}/cacheRules
                         $get(params?: {fileMatch?: string}): Promise<number[]>;
                         // POST /cdn/dedicated/{serviceName}/domains/{domain}/cacheRules
-                        $post(params: {cacheType: cdnanycast.CacheRuleCacheTypeEnum, fileMatch: string, fileType: cdnanycast.CacheRuleFileTypeEnum, ttl: number}): Promise<cdnanycast.CacheRule>;
+                        $post(params: {cacheType: cdnanycastCacheRuleCacheTypeEnum, fileMatch: string, fileType: cdnanycastCacheRuleFileTypeEnum, ttl: number}): Promise<cdnanycast.CacheRule>;
                         $(cacheRuleId: number): {
                             // DELETE /cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}
                             $delete(): Promise<cdnanycast.Task>;
                             // GET /cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}
                             $get(): Promise<cdnanycast.CacheRule>;
                             // PUT /cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}
-                            $put(params?: {cacheRuleId?: number, cacheType?: cdnanycast.CacheRuleCacheTypeEnum, domain?: string, fileMatch?: string, fileType?: cdnanycast.CacheRuleFileTypeEnum, status?: cdnanycast.CacheRuleStatusEnum, ttl?: number}): Promise<void>;
+                            $put(params?: {cacheRuleId?: number, cacheType?: cdnanycastCacheRuleCacheTypeEnum, domain?: string, fileMatch?: string, fileType?: cdnanycastCacheRuleFileTypeEnum, status?: cdnanycastCacheRuleStatusEnum, ttl?: number}): Promise<void>;
                             flush: {
                                 // POST /cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}/flush
                                 $post(): Promise<cdnanycast.Task>;
@@ -243,7 +243,7 @@ export interface Cdn{
                 // GET /cdn/dedicated/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /cdn/dedicated/{serviceName}/serviceInfos
-                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}): Promise<void>;
             }
             ssl: {
                 // DELETE /cdn/dedicated/{serviceName}/ssl
@@ -254,7 +254,7 @@ export interface Cdn{
                 $post(params: {certificate?: string, chain?: string, key?: string, name: string}): Promise<cdnanycast.Ssl>;
                 tasks: {
                     // GET /cdn/dedicated/{serviceName}/ssl/tasks
-                    $get(params?: {function_?: cdnanycast.TaskFunctionEnum, status?: cdnanycast.TaskStateEnum}): Promise<number[]>;
+                    $get(params?: {function_?: cdnanycastTaskFunctionEnum, status?: cdnanycastTaskStateEnum}): Promise<number[]>;
                     $(taskId: number): {
                         // GET /cdn/dedicated/{serviceName}/ssl/tasks/{taskId}
                         $get(): Promise<cdnanycast.Task>;
@@ -352,7 +352,7 @@ export interface Cdn{
    * List the cdnanycast.Task objects
    * Task associated to the ssl
    */
-  get(path: '/cdn/dedicated/{serviceName}/ssl/tasks'): (params: {serviceName: string, function_?: cdnanycast.TaskFunctionEnum, status?: cdnanycast.TaskStateEnum}) => Promise<number[]>;
+  get(path: '/cdn/dedicated/{serviceName}/ssl/tasks'): (params: {serviceName: string, function_?: cdnanycastTaskFunctionEnum, status?: cdnanycastTaskStateEnum}) => Promise<number[]>;
   /**
    * Task on a CDN
    * Get this object properties
@@ -372,17 +372,17 @@ export interface Cdn{
    * Domain on CDN
    * Alter this object properties
    */
-  put(path: '/cdn/dedicated/{serviceName}/domains/{domain}'): (params: {domain: string, serviceName: string, cacheRuleUse?: number, cname?: string, status?: cdnanycast.DomainStatusEnum, type?: cdnanycast.DomainTypeEnum}) => Promise<void>;
+  put(path: '/cdn/dedicated/{serviceName}/domains/{domain}'): (params: {domain: string, serviceName: string, cacheRuleUse?: number, cname?: string, status?: cdnanycastDomainStatusEnum, type?: cdnanycastDomainTypeEnum}) => Promise<void>;
   /**
    * CacheRules for a domain
    * Alter this object properties
    */
-  put(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}'): (params: {cacheRuleId: number, domain: string, serviceName: string, cacheType?: cdnanycast.CacheRuleCacheTypeEnum, fileMatch?: string, fileType?: cdnanycast.CacheRuleFileTypeEnum, status?: cdnanycast.CacheRuleStatusEnum, ttl?: number}) => Promise<void>;
+  put(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules/{cacheRuleId}'): (params: {cacheRuleId: number, domain: string, serviceName: string, cacheType?: cdnanycastCacheRuleCacheTypeEnum, fileMatch?: string, fileType?: cdnanycastCacheRuleFileTypeEnum, status?: cdnanycastCacheRuleStatusEnum, ttl?: number}) => Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/cdn/dedicated/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
+  put(path: '/cdn/dedicated/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}) => Promise<void>;
   /**
    * Change the contacts of this service
    * Launch a contact change procedure
@@ -402,7 +402,7 @@ export interface Cdn{
    * List the cdnanycast.CacheRule objects
    * Add a cache rule to a domain
    */
-  post(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules'): (params: {domain: string, serviceName: string, cacheType: cdnanycast.CacheRuleCacheTypeEnum, fileMatch: string, fileType: cdnanycast.CacheRuleFileTypeEnum, ttl: number}) => Promise<cdnanycast.CacheRule>;
+  post(path: '/cdn/dedicated/{serviceName}/domains/{domain}/cacheRules'): (params: {domain: string, serviceName: string, cacheType: cdnanycastCacheRuleCacheTypeEnum, fileMatch: string, fileType: cdnanycastCacheRuleFileTypeEnum, ttl: number}) => Promise<cdnanycast.CacheRule>;
   /**
    * flush operations
    * Flush the cache
@@ -454,3 +454,18 @@ export interface Cdn{
    */
   delete(path: '/cdn/dedicated/{serviceName}/ssl'): (params: {serviceName: string}) => Promise<cdnanycast.Task>;
 }
+/**
+ * Extra Alias to bypass relativer namespace colitions
+ */
+type cdnanycastCacheRuleCacheTypeEnum = cdnanycast.CacheRuleCacheTypeEnum;
+type cdnanycastCacheRuleFileTypeEnum = cdnanycast.CacheRuleFileTypeEnum;
+type cdnanycastCacheRuleStatusEnum = cdnanycast.CacheRuleStatusEnum;
+type cdnanycastDomainStatusEnum = cdnanycast.DomainStatusEnum;
+type cdnanycastDomainTypeEnum = cdnanycast.DomainTypeEnum;
+type cdnanycastPopStatusEnum = cdnanycast.PopStatusEnum;
+type cdnanycastSslStateEnum = cdnanycast.SslStateEnum;
+type cdnanycastTaskFunctionEnum = cdnanycast.TaskFunctionEnum;
+type cdnanycastTaskStateEnum = cdnanycast.TaskStateEnum;
+type serviceRenewType = service.RenewType;
+type serviceRenewalTypeEnum = service.RenewalTypeEnum;
+type serviceStateEnum = service.StateEnum;

@@ -35,11 +35,11 @@ export namespace deskaas {
     // interface fullName: deskaas.deskaas.deskaas
     export interface deskaas {
         alias: string;
-        dataDisk: complexType.UnitAndValue<number>;
+        dataDisk: complexTypeUnitAndValuenumber;
         ip?: string;
         os: string;
         planCode: string;
-        ram: complexType.UnitAndValue<number>;
+        ram: complexTypeUnitAndValuenumber;
         reference: string;
         serviceName: string;
         state: deskaasStateEnum;
@@ -94,10 +94,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: service.RenewType;
-        renewalType: service.RenewalTypeEnum;
+        renew?: serviceRenewType;
+        renewalType: serviceRenewalTypeEnum;
         serviceId: number;
-        status: service.StateEnum;
+        status: serviceStateEnum;
     }
 }
 
@@ -150,7 +150,7 @@ export interface Deskaas{
             // GET /deskaas/{serviceName}/serviceInfos
             $get(): Promise<services.Service>;
             // PUT /deskaas/{serviceName}/serviceInfos
-            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}): Promise<void>;
         }
         task: {
             // GET /deskaas/{serviceName}/task
@@ -239,7 +239,7 @@ export interface Deskaas{
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/deskaas/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
+  put(path: '/deskaas/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}) => Promise<void>;
   /**
    * changeAlias operations
    * Change the Virtual Desktop alias
@@ -297,4 +297,8 @@ export interface Deskaas{
 type deskaasTaskStateEnum = deskaas.TaskStateEnum;
 type deskaasuserActivationStateEnum = deskaas.user.ActivationStateEnum;
 type deskaasuserStateEnum = deskaas.user.StateEnum;
+type complexTypeUnitAndValuenumber = complexType.UnitAndValue<number>;
 type deskaasStateEnum = deskaas.StateEnum;
+type serviceRenewType = service.RenewType;
+type serviceRenewalTypeEnum = service.RenewalTypeEnum;
+type serviceStateEnum = service.StateEnum;

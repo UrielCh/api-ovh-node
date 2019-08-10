@@ -36,27 +36,27 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: service.RenewType;
-        renewalType: service.RenewalTypeEnum;
+        renew?: serviceRenewType;
+        renewalType: serviceRenewalTypeEnum;
         serviceId: number;
-        status: service.StateEnum;
+        status: serviceStateEnum;
     }
 }
 export namespace veeamCloudConnect {
     // interface fullName: veeamCloudConnect.Account.Account
     export interface Account {
-        location: veeamCloudConnect.Location;
-        productOffer: veeamCloudConnect.Offer;
+        location: veeamCloudConnectLocation;
+        productOffer: veeamCloudConnectOffer;
         serviceName: string;
         vmCount?: number;
     }
     // interface fullName: veeamCloudConnect.BackupRepository.BackupRepository
     export interface BackupRepository {
         inventoryName: string;
-        quota: complexType.UnitAndValue<number>;
-        quotaUsed?: complexType.UnitAndValue<number>;
-        replicationZone?: veeamCloudConnect.Location;
-        state: veeamCloudConnect.BackupRepositoryStateEnum;
+        quota: complexTypeUnitAndValuenumber;
+        quotaUsed?: complexTypeUnitAndValuenumber;
+        replicationZone?: veeamCloudConnectLocation;
+        state: veeamCloudConnectBackupRepositoryStateEnum;
         usage?: number;
     }
     // type fullname: veeamCloudConnect.BackupRepositoryStateEnum
@@ -71,7 +71,7 @@ export namespace veeamCloudConnect {
         name: string;
         progress: number;
         startDate?: string;
-        state: veeamCloudConnect.TaskStateEnum;
+        state: veeamCloudConnectTaskStateEnum;
         taskId: number;
     }
     // type fullname: veeamCloudConnect.TaskStateEnum
@@ -138,11 +138,11 @@ export interface VeeamCloudConnect{
             // GET /veeamCloudConnect/{serviceName}/serviceInfos
             $get(): Promise<services.Service>;
             // PUT /veeamCloudConnect/{serviceName}/serviceInfos
-            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}): Promise<void>;
         }
         task: {
             // GET /veeamCloudConnect/{serviceName}/task
-            $get(params?: {name?: string, state?: veeamCloudConnect.TaskStateEnum}): Promise<number[]>;
+            $get(params?: {name?: string, state?: veeamCloudConnectTaskStateEnum}): Promise<number[]>;
             $(taskId: number): {
                 // GET /veeamCloudConnect/{serviceName}/task/{taskId}
                 $get(): Promise<veeamCloudConnect.Task>;
@@ -189,7 +189,7 @@ export interface VeeamCloudConnect{
    * List the veeamCloudConnect.Task objects
    * Tasks associated with Cloud Tenant
    */
-  get(path: '/veeamCloudConnect/{serviceName}/task'): (params: {serviceName: string, name?: string, state?: veeamCloudConnect.TaskStateEnum}) => Promise<number[]>;
+  get(path: '/veeamCloudConnect/{serviceName}/task'): (params: {serviceName: string, name?: string, state?: veeamCloudConnectTaskStateEnum}) => Promise<number[]>;
   /**
    * Operation with the Cloud Tenant Account
    * Get this object properties
@@ -199,7 +199,7 @@ export interface VeeamCloudConnect{
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/veeamCloudConnect/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
+  put(path: '/veeamCloudConnect/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}) => Promise<void>;
   /**
    * List the veeamCloudConnect.BackupRepository objects
    * Add a new Backup Repository to your professional account
@@ -221,3 +221,14 @@ export interface VeeamCloudConnect{
    */
   delete(path: '/veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}'): (params: {inventoryName: string, serviceName: string}) => Promise<veeamCloudConnect.Task[]>;
 }
+/**
+ * Extra Alias to bypass relativer namespace colitions
+ */
+type serviceRenewType = service.RenewType;
+type serviceRenewalTypeEnum = service.RenewalTypeEnum;
+type serviceStateEnum = service.StateEnum;
+type veeamCloudConnectLocation = veeamCloudConnect.Location;
+type veeamCloudConnectOffer = veeamCloudConnect.Offer;
+type complexTypeUnitAndValuenumber = complexType.UnitAndValue<number>;
+type veeamCloudConnectBackupRepositoryStateEnum = veeamCloudConnect.BackupRepositoryStateEnum;
+type veeamCloudConnectTaskStateEnum = veeamCloudConnect.TaskStateEnum;

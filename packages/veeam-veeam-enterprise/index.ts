@@ -33,10 +33,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: service.RenewType;
-        renewalType: service.RenewalTypeEnum;
+        renew?: serviceRenewType;
+        renewalType: serviceRenewalTypeEnum;
         serviceId: number;
-        status: service.StateEnum;
+        status: serviceStateEnum;
     }
 }
 export namespace veeam {
@@ -54,7 +54,7 @@ export namespace veeam {
             name: string;
             progress: number;
             startDate?: string;
-            state: veeamEnterprise.TaskStateEnum;
+            state: veeamEnterpriseTaskStateEnum;
             taskId: number;
         }
     }
@@ -94,11 +94,11 @@ export interface Veeam{
                 // GET /veeam/veeamEnterprise/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /veeam/veeamEnterprise/{serviceName}/serviceInfos
-                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}): Promise<void>;
             }
             task: {
                 // GET /veeam/veeamEnterprise/{serviceName}/task
-                $get(params?: {name?: string, state?: veeamEnterprise.TaskStateEnum}): Promise<number[]>;
+                $get(params?: {name?: string, state?: veeamEnterpriseTaskStateEnum}): Promise<number[]>;
                 $(taskId: number): {
                     // GET /veeam/veeamEnterprise/{serviceName}/task/{taskId}
                     $get(): Promise<veeam.veeamEnterprise.Task>;
@@ -134,7 +134,7 @@ export interface Veeam{
    * List the veeam.veeamEnterprise.Task objects
    * Tasks associated with Veeam Enterprise
    */
-  get(path: '/veeam/veeamEnterprise/{serviceName}/task'): (params: {serviceName: string, name?: string, state?: veeamEnterprise.TaskStateEnum}) => Promise<number[]>;
+  get(path: '/veeam/veeamEnterprise/{serviceName}/task'): (params: {serviceName: string, name?: string, state?: veeamEnterpriseTaskStateEnum}) => Promise<number[]>;
   /**
    * Operation with the Enterprise Account
    * Get this object properties
@@ -144,7 +144,7 @@ export interface Veeam{
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/veeam/veeamEnterprise/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
+  put(path: '/veeam/veeamEnterprise/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}) => Promise<void>;
   /**
    * Confirm termination of your service
    * Confirm termination of your service
@@ -166,3 +166,10 @@ export interface Veeam{
    */
   post(path: '/veeam/veeamEnterprise/{serviceName}/update'): (params: {serviceName: string, ip: string, password: string, port: number, username: string}) => Promise<veeam.veeamEnterprise.Task[]>;
 }
+/**
+ * Extra Alias to bypass relativer namespace colitions
+ */
+type serviceRenewType = service.RenewType;
+type serviceRenewalTypeEnum = service.RenewalTypeEnum;
+type serviceStateEnum = service.StateEnum;
+type veeamEnterpriseTaskStateEnum = veeamEnterprise.TaskStateEnum;

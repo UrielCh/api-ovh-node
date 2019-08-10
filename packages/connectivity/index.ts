@@ -29,8 +29,8 @@ export namespace connectivity {
             name: string;
             nro?: string;
             reference: string;
-            stairs: connectivity.eligibility.BuildingStair[];
-            type: connectivity.eligibility.BuildingTypeEnum;
+            stairs: connectivityeligibilityBuildingStair[];
+            type: connectivityeligibilityBuildingTypeEnum;
         }
         // interface fullName: connectivity.eligibility.BuildingStair.BuildingStair
         export interface BuildingStair {
@@ -51,25 +51,25 @@ export namespace connectivity {
             availablePairs?: number;
             maxAvailablePairs?: number;
             nra?: string;
-            sectionsLengths: connectivity.eligibility.SectionLength[];
-            status: connectivity.eligibility.LineStatusEnum;
+            sectionsLengths: connectivityeligibilitySectionLength[];
+            status: connectivityeligibilityLineStatusEnum;
             underConstruction?: boolean;
             unlistedNumber: boolean;
         }
         // interface fullName: connectivity.eligibility.EligibilityTest.EligibilityTest
         export interface EligibilityTest {
             eligibilityReference: string;
-            endpoint: connectivity.eligibility.Endpoint;
-            offers: connectivity.eligibility.Offer[];
+            endpoint: connectivityeligibilityEndpoint;
+            offers: connectivityeligibilityOffer[];
         }
         // interface fullName: connectivity.eligibility.Endpoint.Endpoint
         export interface Endpoint {
-            address: connectivity.eligibility.Address;
-            copperInfo?: connectivity.eligibility.CopperInfo;
-            fiberInfo?: connectivity.eligibility.FiberInfo;
-            portability?: connectivity.eligibility.Portability;
+            address: connectivityeligibilityAddress;
+            copperInfo?: connectivityeligibilityCopperInfo;
+            fiberInfo?: connectivityeligibilityFiberInfo;
+            portability?: connectivityeligibilityPortability;
             reference: string;
-            referenceType: connectivity.eligibility.EndpointReferenceTypeEnum;
+            referenceType: connectivityeligibilityEndpointReferenceTypeEnum;
         }
         // type fullname: connectivity.eligibility.EndpointReferenceTypeEnum
         export type EndpointReferenceTypeEnum = "building" | "lineNumber" | "otp"
@@ -77,15 +77,15 @@ export namespace connectivity {
         export interface FiberInfo {
             buildingName: string;
             buildingReference: string;
-            buildingType: connectivity.eligibility.BuildingTypeEnum;
+            buildingType: connectivityeligibilityBuildingTypeEnum;
             nro?: string;
             operatorCode: string;
             operatorName: string;
         }
         // interface fullName: connectivity.eligibility.Line.Line
         export interface Line {
-            address: connectivity.eligibility.Address;
-            copperInfo: connectivity.eligibility.CopperInfo;
+            address: connectivityeligibilityAddress;
+            copperInfo: connectivityeligibilityCopperInfo;
             lineNumber: string;
         }
         // type fullname: connectivity.eligibility.LineStatusEnum
@@ -99,29 +99,29 @@ export namespace connectivity {
         // interface fullName: connectivity.eligibility.Meetings.Meetings
         export interface Meetings {
             canBookFakeMeeting: boolean;
-            meetingSlots: connectivity.eligibility.MeetingSlot[];
+            meetingSlots: connectivityeligibilityMeetingSlot[];
         }
         // interface fullName: connectivity.eligibility.Message.Message
         export interface Message {
             availabilityDate?: string;
-            code: connectivity.eligibility.MessageCodeEnum;
+            code: connectivityeligibilityMessageCodeEnum;
             message: string;
         }
         // type fullname: connectivity.eligibility.MessageCodeEnum
         export type MessageCodeEnum = "2006" | "2011" | "2102" | "2103" | "2104" | "2105" | "3009" | "3011" | "3012" | "3013" | "3014" | "3031" | "3040" | "3041" | "3043" | "3044" | "3045" | "3046" | "3047" | "3048" | "3049" | "ATTENUATION_LIMIT" | "COMPATIBILITY_CHECK" | "COPPER_NOT_AVAILABLE" | "COPPER_NOT_YET_AVAILABLE" | "DELAY_30" | "DELAY_7" | "EXTERNAL_WS_UNREACHABLE" | "FIBER_NOT_AVAILABLE" | "FIBER_NOT_DEPLOYED_IN_BUILDING" | "FIBER_NOT_YET_AVAILABLE" | "FIBER_NOT_YET_DEPLOYED" | "INCOMPATIBLE_LOCAL_LOOP" | "NETWORK_SATURATED" | "OTP_NOT_CONNECTABLE" | "OTP_NOT_MARKETABLE" | "PAIRS_SATURATION" | "PRODUCT_NOT_AVAILABLE" | "PRODUCT_NOT_YET_AVAILABLE" | "TOO_MUCH_ATTENUATION" | "UNCERTAIN_DATA"
         // interface fullName: connectivity.eligibility.Offer.Offer
         export interface Offer {
-            eligibility: connectivity.eligibility.OfferEligibility;
-            product: connectivity.eligibility.OfferProduct;
+            eligibility: connectivityeligibilityOfferEligibility;
+            product: connectivityeligibilityOfferProduct;
         }
         // interface fullName: connectivity.eligibility.OfferEligibility.OfferEligibility
         export interface OfferEligibility {
-            activationTypes: connectivity.eligibility.ActivationTypeEnum[];
+            activationTypes: connectivityeligibilityActivationTypeEnum[];
             eligible: boolean;
             estimatedDownloadRate?: number;
             estimatedUploadRate?: number;
-            reasons: connectivity.eligibility.Message[];
-            underConditions: connectivity.eligibility.Message[];
+            reasons: connectivityeligibilityMessage[];
+            underConditions: connectivityeligibilityMessage[];
         }
         // interface fullName: connectivity.eligibility.OfferProduct.OfferProduct
         export interface OfferProduct {
@@ -131,9 +131,9 @@ export namespace connectivity {
             guaranteed: boolean;
             name: string;
             pairs?: number;
-            provider: connectivity.eligibility.OfferProductProviderEnum;
-            type: connectivity.eligibility.OfferProductTypeEnum;
-            unbundlingType?: connectivity.eligibility.OfferProductUnbundlingTypeEnum;
+            provider: connectivityeligibilityOfferProductProviderEnum;
+            type: connectivityeligibilityOfferProductTypeEnum;
+            unbundlingType?: connectivityeligibilityOfferProductUnbundlingTypeEnum;
             uploadRate: number;
         }
         // type fullname: connectivity.eligibility.OfferProductProviderEnum
@@ -144,15 +144,15 @@ export namespace connectivity {
         export type OfferProductUnbundlingTypeEnum = "full" | "partial"
         // interface fullName: connectivity.eligibility.Portability.Portability
         export interface Portability {
-            eligibility: connectivity.eligibility.PortabilityEligibility;
+            eligibility: connectivityeligibilityPortabilityEligibility;
             quarantineEndDate?: string;
-            type?: connectivity.eligibility.PortabilityTypeEnum;
+            type?: connectivityeligibilityPortabilityTypeEnum;
         }
         // interface fullName: connectivity.eligibility.PortabilityEligibility.PortabilityEligibility
         export interface PortabilityEligibility {
             eligible: boolean;
-            reasons: connectivity.eligibility.Message[];
-            underConditions: connectivity.eligibility.Message[];
+            reasons: connectivityeligibilityMessage[];
+            underConditions: connectivityeligibilityMessage[];
         }
         // type fullname: connectivity.eligibility.PortabilityTypeEnum
         export type PortabilityTypeEnum = "portin" | "portinback" | "portout" | "subsequent" | "subsquentportin"
@@ -176,8 +176,8 @@ export namespace connectivity {
             endDate?: string;
             id: number;
             nra: string[];
-            operators: connectivity.OperatorEnum[];
-            status: connectivity.monitoring.GenericIncidentStatusEnum;
+            operators: connectivityOperatorEnum[];
+            status: connectivitymonitoringGenericIncidentStatusEnum;
             taskId?: number;
         }
         // type fullname: connectivity.monitoring.GenericIncidentStatusEnum
@@ -189,13 +189,13 @@ export namespace xdsl {
     export interface AsyncTask<T> {
         error?: string;
         result?: T;
-        status: xdsl.AsyncTaskStatusEnum;
+        status: xdslAsyncTaskStatusEnum;
     }
     // interface fullName: xdsl.AsyncTaskArray.AsyncTaskArray
     export interface AsyncTaskArray<T> {
         error?: string;
         result?: T[];
-        status: xdsl.AsyncTaskStatusEnum;
+        status: xdslAsyncTaskStatusEnum;
     }
     // type fullname: xdsl.AsyncTaskStatusEnum
     export type AsyncTaskStatusEnum = "error" | "ok" | "pending"
@@ -225,7 +225,7 @@ export interface Connectivity{
             }
             buildingsByLine: {
                 // POST /connectivity/eligibility/search/buildingsByLine
-                $post(params: {lineNumber: string, status: connectivity.eligibility.LineStatusEnum}): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.Building>>;
+                $post(params: {lineNumber: string, status: connectivityeligibilityLineStatusEnum}): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.Building>>;
             }
             cities: {
                 // POST /connectivity/eligibility/search/cities
@@ -265,10 +265,10 @@ export interface Connectivity{
             }
             line: {
                 // POST /connectivity/eligibility/test/line
-                $post(params: {lineNumber: string, status: connectivity.eligibility.LineStatusEnum}): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
+                $post(params: {lineNumber: string, status: connectivityeligibilityLineStatusEnum}): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
                 partners: {
                     // POST /connectivity/eligibility/test/line/partners
-                    $post(params: {lineNumber: string, status: connectivity.eligibility.LineStatusEnum}): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
+                    $post(params: {lineNumber: string, status: connectivityeligibilityLineStatusEnum}): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
                 }
             }
             otp: {
@@ -281,11 +281,11 @@ export interface Connectivity{
         genericIncident: {
             partners: {
                 // GET /connectivity/monitoring/genericIncident/partners
-                $get(params?: {creationDate?: string, endDate?: string, status?: connectivity.monitoring.GenericIncidentStatusEnum}): Promise<connectivity.monitoring.GenericIncident[]>;
+                $get(params?: {creationDate?: string, endDate?: string, status?: connectivitymonitoringGenericIncidentStatusEnum}): Promise<connectivity.monitoring.GenericIncident[]>;
             }
             public: {
                 // GET /connectivity/monitoring/genericIncident/public
-                $get(params?: {creationDate?: string, endDate?: string, status?: connectivity.monitoring.GenericIncidentStatusEnum}): Promise<connectivity.monitoring.GenericIncident[]>;
+                $get(params?: {creationDate?: string, endDate?: string, status?: connectivitymonitoringGenericIncidentStatusEnum}): Promise<connectivity.monitoring.GenericIncident[]>;
             }
         }
     }
@@ -299,12 +299,12 @@ export interface Connectivity{
    * Missing description
    * List detected, validated and recently closed generic incidents. For partners only
    */
-  get(path: '/connectivity/monitoring/genericIncident/partners'): (params?: {creationDate?: string, endDate?: string, status?: connectivity.monitoring.GenericIncidentStatusEnum}) => Promise<connectivity.monitoring.GenericIncident[]>;
+  get(path: '/connectivity/monitoring/genericIncident/partners'): (params?: {creationDate?: string, endDate?: string, status?: connectivitymonitoringGenericIncidentStatusEnum}) => Promise<connectivity.monitoring.GenericIncident[]>;
   /**
    * Missing description
    * List validated and recently closed generic incidents
    */
-  get(path: '/connectivity/monitoring/genericIncident/public'): (params?: {creationDate?: string, endDate?: string, status?: connectivity.monitoring.GenericIncidentStatusEnum}) => Promise<connectivity.monitoring.GenericIncident[]>;
+  get(path: '/connectivity/monitoring/genericIncident/public'): (params?: {creationDate?: string, endDate?: string, status?: connectivitymonitoringGenericIncidentStatusEnum}) => Promise<connectivity.monitoring.GenericIncident[]>;
   /**
    * Get the details for a building
    * Get the details for a building
@@ -319,7 +319,7 @@ export interface Connectivity{
    * Get building references from a given line number
    * Get building references from a given line number
    */
-  post(path: '/connectivity/eligibility/search/buildingsByLine'): (params: {lineNumber: string, status: connectivity.eligibility.LineStatusEnum}) => Promise<xdsl.AsyncTaskArray<connectivity.eligibility.Building>>;
+  post(path: '/connectivity/eligibility/search/buildingsByLine'): (params: {lineNumber: string, status: connectivityeligibilityLineStatusEnum}) => Promise<xdsl.AsyncTaskArray<connectivity.eligibility.Building>>;
   /**
    * Get all localities linked to a zip code
    * Get all localities linked to a zip code
@@ -364,15 +364,43 @@ export interface Connectivity{
    * Do an eligibility test on a line number, for copper only
    * Do an eligibility test on a line number, for copper only
    */
-  post(path: '/connectivity/eligibility/test/line'): (params: {lineNumber: string, status: connectivity.eligibility.LineStatusEnum}) => Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
+  post(path: '/connectivity/eligibility/test/line'): (params: {lineNumber: string, status: connectivityeligibilityLineStatusEnum}) => Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
   /**
    * Do an eligibility test on a line number, for copper only. Partners only.
    * Do an eligibility test on a line number, for copper only. Partners only.
    */
-  post(path: '/connectivity/eligibility/test/line/partners'): (params: {lineNumber: string, status: connectivity.eligibility.LineStatusEnum}) => Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
+  post(path: '/connectivity/eligibility/test/line/partners'): (params: {lineNumber: string, status: connectivityeligibilityLineStatusEnum}) => Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
   /**
    * Do an eligibility test on an OTP (Optical Termination Panel), for fiber only
    * Do an eligibility test on an OTP (Optical Termination Panel), for fiber only
    */
   post(path: '/connectivity/eligibility/test/otp'): (params: {otp: string}) => Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
 }
+/**
+ * Extra Alias to bypass relativer namespace colitions
+ */
+type connectivityeligibilityBuildingStair = connectivity.eligibility.BuildingStair;
+type connectivityeligibilityBuildingTypeEnum = connectivity.eligibility.BuildingTypeEnum;
+type connectivityeligibilitySectionLength = connectivity.eligibility.SectionLength;
+type connectivityeligibilityLineStatusEnum = connectivity.eligibility.LineStatusEnum;
+type connectivityeligibilityEndpoint = connectivity.eligibility.Endpoint;
+type connectivityeligibilityOffer = connectivity.eligibility.Offer;
+type connectivityeligibilityAddress = connectivity.eligibility.Address;
+type connectivityeligibilityCopperInfo = connectivity.eligibility.CopperInfo;
+type connectivityeligibilityFiberInfo = connectivity.eligibility.FiberInfo;
+type connectivityeligibilityPortability = connectivity.eligibility.Portability;
+type connectivityeligibilityEndpointReferenceTypeEnum = connectivity.eligibility.EndpointReferenceTypeEnum;
+type connectivityeligibilityMeetingSlot = connectivity.eligibility.MeetingSlot;
+type connectivityeligibilityMessageCodeEnum = connectivity.eligibility.MessageCodeEnum;
+type connectivityeligibilityOfferEligibility = connectivity.eligibility.OfferEligibility;
+type connectivityeligibilityOfferProduct = connectivity.eligibility.OfferProduct;
+type connectivityeligibilityActivationTypeEnum = connectivity.eligibility.ActivationTypeEnum;
+type connectivityeligibilityMessage = connectivity.eligibility.Message;
+type connectivityeligibilityOfferProductProviderEnum = connectivity.eligibility.OfferProductProviderEnum;
+type connectivityeligibilityOfferProductTypeEnum = connectivity.eligibility.OfferProductTypeEnum;
+type connectivityeligibilityOfferProductUnbundlingTypeEnum = connectivity.eligibility.OfferProductUnbundlingTypeEnum;
+type connectivityeligibilityPortabilityEligibility = connectivity.eligibility.PortabilityEligibility;
+type connectivityeligibilityPortabilityTypeEnum = connectivity.eligibility.PortabilityTypeEnum;
+type connectivityOperatorEnum = connectivity.OperatorEnum;
+type connectivitymonitoringGenericIncidentStatusEnum = connectivity.monitoring.GenericIncidentStatusEnum;
+type xdslAsyncTaskStatusEnum = xdsl.AsyncTaskStatusEnum;

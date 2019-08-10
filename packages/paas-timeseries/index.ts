@@ -15,7 +15,7 @@ export namespace order {
     export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
     // interface fullName: order.Price.Price
     export interface Price {
-        currencyCode: order.CurrencyCodeEnum;
+        currencyCode: orderCurrencyCodeEnum;
         text: string;
         value: number;
     }
@@ -26,37 +26,37 @@ export namespace paas {
         export interface Consumption {
             from: string;
             generated: string;
-            items: paas.timeseries.ConsumptionItem[];
+            items: paastimeseriesConsumptionItem[];
             to: string;
-            total: order.Price;
+            total: orderPrice;
         }
         // interface fullName: paas.timeseries.ConsumptionItem.ConsumptionItem
         export interface ConsumptionItem {
-            metricName: tsaas.MetricNameEnum;
-            price: order.Price;
-            quantity: complexType.UnitAndValue<number>;
-            unitPrice: order.Price;
+            metricName: tsaasMetricNameEnum;
+            price: orderPrice;
+            quantity: complexTypeUnitAndValuenumber;
+            unitPrice: orderPrice;
         }
         // interface fullName: paas.timeseries.Key.Key
         export interface Key {
             description: string;
             id: string;
-            permissions: tsaas.PermissionEnum[];
+            permissions: tsaasPermissionEnum[];
             secret: string;
-            tags: paas.timeseries.Tag[];
+            tags: paastimeseriesTag[];
         }
         // interface fullName: paas.timeseries.Project.Project
         export interface Project {
             description?: string;
             displayName: string;
-            region: paas.timeseries.Region;
+            region: paastimeseriesRegion;
             serviceName: string;
         }
         // interface fullName: paas.timeseries.Quota.Quota
         export interface Quota {
             current: number;
             max: number;
-            type: tsaas.QuotaTypeEnum;
+            type: tsaasQuotaTypeEnum;
         }
         // interface fullName: paas.timeseries.Region.Region
         export interface Region {
@@ -97,10 +97,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: service.RenewType;
-        renewalType: service.RenewalTypeEnum;
+        renew?: serviceRenewType;
+        renewalType: serviceRenewalTypeEnum;
         serviceId: number;
-        status: service.StateEnum;
+        status: serviceStateEnum;
     }
 }
 export namespace timeseries {
@@ -111,7 +111,7 @@ export namespace timeseries {
         offerId?: string;
         regionId?: string;
         serviceName: string;
-        status?: timeseries.StatusTypeEnum;
+        status?: timeseriesStatusTypeEnum;
     }
     // type fullname: timeseries.StatusTypeEnum
     export type StatusTypeEnum = "ACTIVE" | "CREATION" | "DELETED" | "UNCONFIGURED"
@@ -148,7 +148,7 @@ export interface Paas{
             // GET /paas/timeseries/{serviceName}
             $get(): Promise<timeseries.Project>;
             // PUT /paas/timeseries/{serviceName}
-            $put(params?: {description?: string, displayName?: string, offerId?: string, regionId?: string, serviceName?: string, status?: timeseries.StatusTypeEnum}): Promise<void>;
+            $put(params?: {description?: string, displayName?: string, offerId?: string, regionId?: string, serviceName?: string, status?: timeseriesStatusTypeEnum}): Promise<void>;
             changeContact: {
                 // POST /paas/timeseries/{serviceName}/changeContact
                 $post(params?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
@@ -161,14 +161,14 @@ export interface Paas{
                 // GET /paas/timeseries/{serviceName}/key
                 $get(): Promise<paas.timeseries.Key[]>;
                 // POST /paas/timeseries/{serviceName}/key
-                $post(params: {description?: string, permissions: string[], tags: paas.timeseries.Tag[]}): Promise<paas.timeseries.Key>;
+                $post(params: {description?: string, permissions: string[], tags: paastimeseriesTag[]}): Promise<paas.timeseries.Key>;
                 $(keyId: string): {
                     // DELETE /paas/timeseries/{serviceName}/key/{keyId}
                     $delete(): Promise<boolean>;
                     // GET /paas/timeseries/{serviceName}/key/{keyId}
                     $get(): Promise<paas.timeseries.Key>;
                     // PUT /paas/timeseries/{serviceName}/key/{keyId}
-                    $put(params: {description?: string, permissions: tsaas.PermissionEnum[], tags: paas.timeseries.Tag[]}): Promise<paas.timeseries.Key>;
+                    $put(params: {description?: string, permissions: tsaasPermissionEnum[], tags: paastimeseriesTag[]}): Promise<paas.timeseries.Key>;
                 };
             }
             quota: {
@@ -179,7 +179,7 @@ export interface Paas{
                 // GET /paas/timeseries/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /paas/timeseries/{serviceName}/serviceInfos
-                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}): Promise<void>;
             }
             setup: {
                 // POST /paas/timeseries/{serviceName}/setup
@@ -232,17 +232,17 @@ export interface Paas{
    * Timeseries project
    * Alter this object properties
    */
-  put(path: '/paas/timeseries/{serviceName}'): (params: {serviceName: string, description?: string, displayName?: string, offerId?: string, regionId?: string, status?: timeseries.StatusTypeEnum}) => Promise<void>;
+  put(path: '/paas/timeseries/{serviceName}'): (params: {serviceName: string, description?: string, displayName?: string, offerId?: string, regionId?: string, status?: timeseriesStatusTypeEnum}) => Promise<void>;
   /**
    * Key
    * Create a key
    */
-  put(path: '/paas/timeseries/{serviceName}/key/{keyId}'): (params: {keyId: string, serviceName: string, description?: string, permissions: tsaas.PermissionEnum[], tags: paas.timeseries.Tag[]}) => Promise<paas.timeseries.Key>;
+  put(path: '/paas/timeseries/{serviceName}/key/{keyId}'): (params: {keyId: string, serviceName: string, description?: string, permissions: tsaasPermissionEnum[], tags: paastimeseriesTag[]}) => Promise<paas.timeseries.Key>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/paas/timeseries/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
+  put(path: '/paas/timeseries/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}) => Promise<void>;
   /**
    * Change the contacts of this service
    * Launch a contact change procedure
@@ -252,7 +252,7 @@ export interface Paas{
    * Keys
    * Create a key for a project
    */
-  post(path: '/paas/timeseries/{serviceName}/key'): (params: {serviceName: string, description?: string, permissions: string[], tags: paas.timeseries.Tag[]}) => Promise<paas.timeseries.Key>;
+  post(path: '/paas/timeseries/{serviceName}/key'): (params: {serviceName: string, description?: string, permissions: string[], tags: paastimeseriesTag[]}) => Promise<paas.timeseries.Key>;
   /**
    * Setup your project on our platform
    * Setup a project
@@ -264,3 +264,19 @@ export interface Paas{
    */
   delete(path: '/paas/timeseries/{serviceName}/key/{keyId}'): (params: {keyId: string, serviceName: string}) => Promise<boolean>;
 }
+/**
+ * Extra Alias to bypass relativer namespace colitions
+ */
+type orderCurrencyCodeEnum = order.CurrencyCodeEnum;
+type paastimeseriesConsumptionItem = paas.timeseries.ConsumptionItem;
+type orderPrice = order.Price;
+type tsaasMetricNameEnum = tsaas.MetricNameEnum;
+type complexTypeUnitAndValuenumber = complexType.UnitAndValue<number>;
+type tsaasPermissionEnum = tsaas.PermissionEnum;
+type paastimeseriesTag = paas.timeseries.Tag;
+type paastimeseriesRegion = paas.timeseries.Region;
+type tsaasQuotaTypeEnum = tsaas.QuotaTypeEnum;
+type serviceRenewType = service.RenewType;
+type serviceRenewalTypeEnum = service.RenewalTypeEnum;
+type serviceStateEnum = service.StateEnum;
+type timeseriesStatusTypeEnum = timeseries.StatusTypeEnum;

@@ -33,26 +33,26 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: service.RenewType;
-        renewalType: service.RenewalTypeEnum;
+        renew?: serviceRenewType;
+        renewalType: serviceRenewalTypeEnum;
         serviceId: number;
-        status: service.StateEnum;
+        status: serviceStateEnum;
     }
 }
 export namespace sms {
     // interface fullName: sms.Account.Account
     export interface Account {
-        automaticRecreditAmount?: sms.PackQuantityAutomaticRecreditEnum;
+        automaticRecreditAmount?: smsPackQuantityAutomaticRecreditEnum;
         callBack?: string;
         creditThresholdForAutomaticRecredit: number;
         creditsHoldByQuota: number;
         creditsLeft: number;
         description: string;
         name: string;
-        smsResponse: sms.Response;
-        status: sms.StatusAccountEnum;
+        smsResponse: smsResponse;
+        status: smsStatusAccountEnum;
         stopCallBack?: string;
-        templates: sms.Templates;
+        templates: smsTemplates;
         userQuantityWithQuota: number;
     }
     // interface fullName: sms.AlertThreshold.AlertThreshold
@@ -60,7 +60,7 @@ export namespace sms {
         alertEmail: string;
         alertNumber: string;
         alertThreshold: number;
-        support: sms.SupportEnum;
+        support: smsSupportEnum;
     }
     // interface fullName: sms.Blacklist.Blacklist
     export interface Blacklist {
@@ -88,7 +88,7 @@ export namespace sms {
         countrySuffixe: string;
         messages: string[];
         operators: string;
-        restrictionCode: sms.RestrictionCodeEnum;
+        restrictionCode: smsRestrictionCodeEnum;
         substitution?: string;
     }
     // interface fullName: sms.Hlr.Hlr
@@ -108,7 +108,7 @@ export namespace sms {
         ported: boolean;
         reachable: boolean;
         roaming: boolean;
-        status: sms.HlrStatuses;
+        status: smsHlrStatuses;
         valid: boolean;
     }
     // type fullname: sms.HlrStatuses
@@ -190,14 +190,14 @@ export namespace sms {
     export interface PttDetails {
         comment: string;
         description: string;
-        duration: sms.PttDurationTypeEnum;
+        duration: smsPttDurationTypeEnum;
     }
     // type fullname: sms.PttDurationTypeEnum
     export type PttDurationTypeEnum = "indeterminated" | "permanent" | "temporary"
     // interface fullName: sms.Quota.Quota
     export interface Quota {
         quotaLeft: number;
-        quotaStatus: sms.QuotaStatusUserEnum;
+        quotaStatus: smsQuotaStatusUserEnum;
     }
     // type fullname: sms.QuotaStatusUserEnum
     export type QuotaStatusUserEnum = "active" | "inactive"
@@ -220,16 +220,16 @@ export namespace sms {
     // interface fullName: sms.Response.Response
     export interface Response {
         cgiUrl?: string;
-        responseType: sms.ResponseTypeEnum;
+        responseType: smsResponseTypeEnum;
         text?: string;
         trackingDefaultSmsSender?: string;
-        trackingOptions?: sms.ResponseTrackingOptions[];
+        trackingOptions?: smsResponseTrackingOptions[];
     }
     // type fullname: sms.ResponseTrackingMediaEnum
     export type ResponseTrackingMediaEnum = "email" | "sms" | "voice"
     // interface fullName: sms.ResponseTrackingOptions.ResponseTrackingOptions
     export interface ResponseTrackingOptions {
-        media: sms.ResponseTrackingMediaEnum;
+        media: smsResponseTrackingMediaEnum;
         sender: string;
         target: string;
     }
@@ -241,15 +241,15 @@ export namespace sms {
     export interface Sender {
         comment?: string;
         description: string;
-        referer: sms.RefererSenderEnum;
+        referer: smsRefererSenderEnum;
         sender: string;
-        status: sms.StatusSenderEnum;
-        type?: sms.TypeSenderEnum;
+        status: smsStatusSenderEnum;
+        type?: smsTypeSenderEnum;
         validationMedia?: string;
     }
     // interface fullName: sms.SenderAvailable.SenderAvailable
     export interface SenderAvailable {
-        referer: sms.SenderRefererEnum;
+        referer: smsSenderRefererEnum;
         sender: string;
     }
     // type fullname: sms.SenderRefererEnum
@@ -269,20 +269,20 @@ export namespace sms {
     export type SupportEnum = "both" | "mail" | "sms"
     // interface fullName: sms.Task.Task
     export interface Task {
-        function: sms.TodoGeneralPublicFunctionsEnum;
-        status: telephony.TaskStatusEnum;
-        step: sms.TodoGeneralPublicStepsEnum;
+        function: smsTodoGeneralPublicFunctionsEnum;
+        status: telephonyTaskStatusEnum;
+        step: smsTodoGeneralPublicStepsEnum;
         taskId: number;
     }
     // interface fullName: sms.TemplateControl.TemplateControl
     export interface TemplateControl {
-        activity: sms.TypeTemplateEnum;
+        activity: smsTypeTemplateEnum;
         comment: string;
         datetime: string;
         description: string;
         message: string;
         name: string;
-        status: sms.StatusSenderEnum;
+        status: smsStatusSenderEnum;
     }
     // interface fullName: sms.Templates.Templates
     export interface Templates {
@@ -303,22 +303,22 @@ export namespace sms {
     export type TypeTemplateEnum = "alerting" | "authentification" | "transactional"
     // interface fullName: sms.User.User
     export interface User {
-        alertThresholdInformations: sms.AlertThreshold;
+        alertThresholdInformations: smsAlertThreshold;
         callBack?: string;
         ipRestrictions: string[];
         login: string;
         password: string;
-        quotaInformations: sms.Quota;
+        quotaInformations: smsQuota;
         stopCallBack?: string;
     }
     // interface fullName: sms.VirtualNumber.VirtualNumber
     export interface VirtualNumber {
-        countryCode: sms.VirtualNumberIsoCountryCodeEnum;
+        countryCode: smsVirtualNumberIsoCountryCodeEnum;
         number: string;
     }
     // interface fullName: sms.VirtualNumberGenericService.VirtualNumberGenericService
     export interface VirtualNumberGenericService {
-        countryCode: sms.VirtualNumberIsoCountryCodeEnum;
+        countryCode: smsVirtualNumberIsoCountryCodeEnum;
         number: string;
     }
     // type fullname: sms.VirtualNumberIsoCountryCodeEnum
@@ -343,7 +343,7 @@ export namespace telephony {
     // interface fullName: telephony.PcsFile.PcsFile
     export interface PcsFile {
         filename: string;
-        status: telephony.PcsFileStatusEnum;
+        status: telephonyPcsFileStatusEnum;
         url: string;
         urlExpirationDatetime: string;
     }
@@ -355,7 +355,7 @@ export namespace telephony {
         message?: string;
         objectCreated?: string;
         serviceType: string;
-        status: telephony.TaskStatusEnum;
+        status: telephonyTaskStatusEnum;
         taskId: number;
     }
     // type fullname: telephony.TaskStatusEnum
@@ -390,7 +390,7 @@ export interface Sms{
                 // GET /sms/virtualNumbers/{number}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /sms/virtualNumbers/{number}/serviceInfos
-                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}): Promise<void>;
             }
         };
     }
@@ -398,7 +398,7 @@ export interface Sms{
         // GET /sms/{serviceName}
         $get(): Promise<sms.Account>;
         // PUT /sms/{serviceName}
-        $put(params?: {automaticRecreditAmount?: sms.PackQuantityAutomaticRecreditEnum, callBack?: string, creditThresholdForAutomaticRecredit?: number, creditsHoldByQuota?: number, creditsLeft?: number, description?: string, name?: string, smsResponse?: sms.Response, status?: sms.StatusAccountEnum, stopCallBack?: string, templates?: sms.Templates, userQuantityWithQuota?: number}): Promise<void>;
+        $put(params?: {automaticRecreditAmount?: smsPackQuantityAutomaticRecreditEnum, callBack?: string, creditThresholdForAutomaticRecredit?: number, creditsHoldByQuota?: number, creditsLeft?: number, description?: string, name?: string, smsResponse?: smsResponse, status?: smsStatusAccountEnum, stopCallBack?: string, templates?: smsTemplates, userQuantityWithQuota?: number}): Promise<void>;
         blacklists: {
             // GET /sms/{serviceName}/blacklists
             $get(): Promise<string[]>;
@@ -540,7 +540,7 @@ export interface Sms{
                 // GET /sms/{serviceName}/senders/{sender}
                 $get(): Promise<sms.Sender>;
                 // PUT /sms/{serviceName}/senders/{sender}
-                $put(params?: {comment?: string, description?: string, referer?: sms.RefererSenderEnum, sender?: string, status?: sms.StatusSenderEnum, type?: sms.TypeSenderEnum, validationMedia?: string}): Promise<void>;
+                $put(params?: {comment?: string, description?: string, referer?: smsRefererSenderEnum, sender?: string, status?: smsStatusSenderEnum, type?: smsTypeSenderEnum, validationMedia?: string}): Promise<void>;
                 validate: {
                     // POST /sms/{serviceName}/senders/{sender}/validate
                     $post(params: {code: string}): Promise<void>;
@@ -549,17 +549,17 @@ export interface Sms{
         }
         sendersAvailableForValidation: {
             // GET /sms/{serviceName}/sendersAvailableForValidation
-            $get(params?: {referer?: sms.SenderRefererEnum}): Promise<sms.SenderAvailable[]>;
+            $get(params?: {referer?: smsSenderRefererEnum}): Promise<sms.SenderAvailable[]>;
         }
         serviceInfos: {
             // GET /sms/{serviceName}/serviceInfos
             $get(): Promise<services.Service>;
             // PUT /sms/{serviceName}/serviceInfos
-            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}): Promise<void>;
         }
         task: {
             // GET /sms/{serviceName}/task
-            $get(params?: {status?: telephony.TaskStatusEnum}): Promise<number[]>;
+            $get(params?: {status?: telephonyTaskStatusEnum}): Promise<number[]>;
             $(taskId: number): {
                 // GET /sms/{serviceName}/task/{taskId}
                 $get(): Promise<sms.Task>;
@@ -569,14 +569,14 @@ export interface Sms{
             // GET /sms/{serviceName}/templatesControl
             $get(): Promise<string[]>;
             // POST /sms/{serviceName}/templatesControl
-            $post(params: {activity: sms.TypeTemplateEnum, description?: string, message: string, name: string, reason?: string}): Promise<void>;
+            $post(params: {activity: smsTypeTemplateEnum, description?: string, message: string, name: string, reason?: string}): Promise<void>;
             $(name: string): {
                 // DELETE /sms/{serviceName}/templatesControl/{name}
                 $delete(): Promise<void>;
                 // GET /sms/{serviceName}/templatesControl/{name}
                 $get(): Promise<sms.TemplateControl>;
                 // PUT /sms/{serviceName}/templatesControl/{name}
-                $put(params?: {activity?: sms.TypeTemplateEnum, comment?: string, datetime?: string, description?: string, message?: string, name?: string, status?: sms.StatusSenderEnum}): Promise<void>;
+                $put(params?: {activity?: smsTypeTemplateEnum, comment?: string, datetime?: string, description?: string, message?: string, name?: string, status?: smsStatusSenderEnum}): Promise<void>;
                 relaunchValidation: {
                     // POST /sms/{serviceName}/templatesControl/{name}/relaunchValidation
                     $post(params: {description: string, message: string}): Promise<void>;
@@ -598,7 +598,7 @@ export interface Sms{
                 // GET /sms/{serviceName}/users/{login}
                 $get(): Promise<sms.User>;
                 // PUT /sms/{serviceName}/users/{login}
-                $put(params?: {alertThresholdInformations?: sms.AlertThreshold, callBack?: string, ipRestrictions?: string[], login?: string, password?: string, quotaInformations?: sms.Quota, stopCallBack?: string}): Promise<void>;
+                $put(params?: {alertThresholdInformations?: smsAlertThreshold, callBack?: string, ipRestrictions?: string[], login?: string, password?: string, quotaInformations?: smsQuota, stopCallBack?: string}): Promise<void>;
                 document: {
                     // GET /sms/{serviceName}/users/{login}/document
                     $get(params: {creationDatetime_from?: string, creationDatetime_to?: string, tag?: string, wayType: sms.DocumentWayTypeEnum}): Promise<string>;
@@ -856,7 +856,7 @@ export interface Sms{
    * sendersAvailableForValidation operations
    * The senders that are attached to your personal informations or OVH services and that can be automatically validated
    */
-  get(path: '/sms/{serviceName}/sendersAvailableForValidation'): (params: {serviceName: string, referer?: sms.SenderRefererEnum}) => Promise<sms.SenderAvailable[]>;
+  get(path: '/sms/{serviceName}/sendersAvailableForValidation'): (params: {serviceName: string, referer?: smsSenderRefererEnum}) => Promise<sms.SenderAvailable[]>;
   /**
    * Details about a Service
    * Get this object properties
@@ -866,7 +866,7 @@ export interface Sms{
    * List the sms.Task objects
    * Operations on a SMS service
    */
-  get(path: '/sms/{serviceName}/task'): (params: {serviceName: string, status?: telephony.TaskStatusEnum}) => Promise<number[]>;
+  get(path: '/sms/{serviceName}/task'): (params: {serviceName: string, status?: telephonyTaskStatusEnum}) => Promise<number[]>;
   /**
    * Operation on a SMS service
    * Get this object properties
@@ -1021,7 +1021,7 @@ export interface Sms{
    * SMS details
    * Alter this object properties
    */
-  put(path: '/sms/{serviceName}'): (params: {serviceName: string, automaticRecreditAmount?: sms.PackQuantityAutomaticRecreditEnum, callBack?: string, creditThresholdForAutomaticRecredit?: number, creditsHoldByQuota?: number, creditsLeft?: number, description?: string, name?: string, smsResponse?: sms.Response, status?: sms.StatusAccountEnum, stopCallBack?: string, templates?: sms.Templates, userQuantityWithQuota?: number}) => Promise<void>;
+  put(path: '/sms/{serviceName}'): (params: {serviceName: string, automaticRecreditAmount?: smsPackQuantityAutomaticRecreditEnum, callBack?: string, creditThresholdForAutomaticRecredit?: number, creditsHoldByQuota?: number, creditsLeft?: number, description?: string, name?: string, smsResponse?: smsResponse, status?: smsStatusAccountEnum, stopCallBack?: string, templates?: smsTemplates, userQuantityWithQuota?: number}) => Promise<void>;
   /**
    * Phone book
    * Alter this object properties
@@ -1041,22 +1041,22 @@ export interface Sms{
    * SMS senders
    * Alter this object properties
    */
-  put(path: '/sms/{serviceName}/senders/{sender}'): (params: {sender: string, serviceName: string, comment?: string, description?: string, referer?: sms.RefererSenderEnum, status?: sms.StatusSenderEnum, type?: sms.TypeSenderEnum, validationMedia?: string}) => Promise<void>;
+  put(path: '/sms/{serviceName}/senders/{sender}'): (params: {sender: string, serviceName: string, comment?: string, description?: string, referer?: smsRefererSenderEnum, status?: smsStatusSenderEnum, type?: smsTypeSenderEnum, validationMedia?: string}) => Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/sms/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
+  put(path: '/sms/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}) => Promise<void>;
   /**
    * Sms template for moderation (Needed to send in US country)
    * Alter this object properties
    */
-  put(path: '/sms/{serviceName}/templatesControl/{name}'): (params: {name: string, serviceName: string, activity?: sms.TypeTemplateEnum, comment?: string, datetime?: string, description?: string, message?: string, status?: sms.StatusSenderEnum}) => Promise<void>;
+  put(path: '/sms/{serviceName}/templatesControl/{name}'): (params: {name: string, serviceName: string, activity?: smsTypeTemplateEnum, comment?: string, datetime?: string, description?: string, message?: string, status?: smsStatusSenderEnum}) => Promise<void>;
   /**
    * SMS users
    * Alter this object properties
    */
-  put(path: '/sms/{serviceName}/users/{login}'): (params: {login: string, serviceName: string, alertThresholdInformations?: sms.AlertThreshold, callBack?: string, ipRestrictions?: string[], password?: string, quotaInformations?: sms.Quota, stopCallBack?: string}) => Promise<void>;
+  put(path: '/sms/{serviceName}/users/{login}'): (params: {login: string, serviceName: string, alertThresholdInformations?: smsAlertThreshold, callBack?: string, ipRestrictions?: string[], password?: string, quotaInformations?: smsQuota, stopCallBack?: string}) => Promise<void>;
   /**
    * Sms receivers preloaded
    * Alter this object properties
@@ -1066,7 +1066,7 @@ export interface Sms{
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/sms/virtualNumbers/{number}/serviceInfos'): (params: {number: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
+  put(path: '/sms/virtualNumbers/{number}/serviceInfos'): (params: {number: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}) => Promise<void>;
   /**
    * List the sms.HlrLookupNumber objects
    * Add one or several sending hlr lookup request
@@ -1116,7 +1116,7 @@ export interface Sms{
    * List the sms.TemplateControl objects
    * Create the sms template control given
    */
-  post(path: '/sms/{serviceName}/templatesControl'): (params: {serviceName: string, activity: sms.TypeTemplateEnum, description?: string, message: string, name: string, reason?: string}) => Promise<void>;
+  post(path: '/sms/{serviceName}/templatesControl'): (params: {serviceName: string, activity: smsTypeTemplateEnum, description?: string, message: string, name: string, reason?: string}) => Promise<void>;
   /**
    * relaunchValidation operations
    * Attempt a new validation after moderation refusal
@@ -1248,3 +1248,33 @@ export interface Sms{
    */
   delete(path: '/sms/{serviceName}/virtualNumbers/{number}/outgoing/{id}'): (params: {id: number, number: string, serviceName: string}) => Promise<void>;
 }
+/**
+ * Extra Alias to bypass relativer namespace colitions
+ */
+type serviceRenewType = service.RenewType;
+type serviceRenewalTypeEnum = service.RenewalTypeEnum;
+type serviceStateEnum = service.StateEnum;
+type smsPackQuantityAutomaticRecreditEnum = sms.PackQuantityAutomaticRecreditEnum;
+type smsResponse = sms.Response;
+type smsStatusAccountEnum = sms.StatusAccountEnum;
+type smsTemplates = sms.Templates;
+type smsSupportEnum = sms.SupportEnum;
+type smsRestrictionCodeEnum = sms.RestrictionCodeEnum;
+type smsHlrStatuses = sms.HlrStatuses;
+type smsPttDurationTypeEnum = sms.PttDurationTypeEnum;
+type smsQuotaStatusUserEnum = sms.QuotaStatusUserEnum;
+type smsResponseTypeEnum = sms.ResponseTypeEnum;
+type smsResponseTrackingOptions = sms.ResponseTrackingOptions;
+type smsResponseTrackingMediaEnum = sms.ResponseTrackingMediaEnum;
+type smsRefererSenderEnum = sms.RefererSenderEnum;
+type smsStatusSenderEnum = sms.StatusSenderEnum;
+type smsTypeSenderEnum = sms.TypeSenderEnum;
+type smsSenderRefererEnum = sms.SenderRefererEnum;
+type smsTodoGeneralPublicFunctionsEnum = sms.TodoGeneralPublicFunctionsEnum;
+type telephonyTaskStatusEnum = telephony.TaskStatusEnum;
+type smsTodoGeneralPublicStepsEnum = sms.TodoGeneralPublicStepsEnum;
+type smsTypeTemplateEnum = sms.TypeTemplateEnum;
+type smsAlertThreshold = sms.AlertThreshold;
+type smsQuota = sms.Quota;
+type smsVirtualNumberIsoCountryCodeEnum = sms.VirtualNumberIsoCountryCodeEnum;
+type telephonyPcsFileStatusEnum = telephony.PcsFileStatusEnum;

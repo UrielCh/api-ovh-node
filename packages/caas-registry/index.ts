@@ -10,7 +10,7 @@ export namespace registry {
         id: string;
         name: string;
         public: boolean;
-        status: registry.image.status;
+        status: registryimagestatus;
         updatedAt: string;
     }
     export namespace image {
@@ -30,7 +30,7 @@ export namespace registry {
         canRead: boolean;
         canWrite: boolean;
         isAdmin: boolean;
-        status: registry.permission.status;
+        status: registrypermissionstatus;
         userId: string;
     }
     // interface fullName: registry.inputUser.inputUser
@@ -42,7 +42,7 @@ export namespace registry {
         createdAt: string;
         id: string;
         name: string;
-        status: registry.namespace.status;
+        status: registrynamespacestatus;
         updatedAt: string;
     }
     export namespace namespace {
@@ -60,7 +60,7 @@ export namespace registry {
         createdAt: string;
         id: string;
         isAdmin: boolean;
-        status: registry.permission.status;
+        status: registrypermissionstatus;
         updatedAt: string;
         userId: string;
     }
@@ -86,7 +86,7 @@ export namespace registry {
         createdAt: string;
         description: boolean;
         id: string;
-        status: registry.user.status;
+        status: registryuserstatus;
         updatedAt: string;
         username: string;
     }
@@ -121,10 +121,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: service.RenewType;
-        renewalType: service.RenewalTypeEnum;
+        renew?: serviceRenewType;
+        renewalType: serviceRenewalTypeEnum;
         serviceId: number;
-        status: service.StateEnum;
+        status: serviceStateEnum;
     }
 }
 
@@ -174,7 +174,7 @@ export interface Caas{
                                 // GET /caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/permissions
                                 $get(): Promise<string[]>;
                                 // POST /caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/permissions
-                                $post(params?: {canRead?: boolean, canWrite?: boolean, isAdmin?: boolean, status?: registry.permission.status, userId?: string}): Promise<registry.permissions>;
+                                $post(params?: {canRead?: boolean, canWrite?: boolean, isAdmin?: boolean, status?: registrypermissionstatus, userId?: string}): Promise<registry.permissions>;
                                 $(permissionId: string): {
                                     // DELETE /caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/permissions/{permissionId}
                                     $delete(): Promise<void>;
@@ -196,7 +196,7 @@ export interface Caas{
                         // GET /caas/registry/{serviceName}/namespaces/{namespaceId}/permissions
                         $get(): Promise<string[]>;
                         // POST /caas/registry/{serviceName}/namespaces/{namespaceId}/permissions
-                        $post(params?: {canRead?: boolean, canWrite?: boolean, isAdmin?: boolean, status?: registry.permission.status, userId?: string}): Promise<registry.permissions>;
+                        $post(params?: {canRead?: boolean, canWrite?: boolean, isAdmin?: boolean, status?: registrypermissionstatus, userId?: string}): Promise<registry.permissions>;
                         $(permissionId: string): {
                             // DELETE /caas/registry/{serviceName}/namespaces/{namespaceId}/permissions/{permissionId}
                             $delete(): Promise<void>;
@@ -210,7 +210,7 @@ export interface Caas{
                 // GET /caas/registry/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /caas/registry/{serviceName}/serviceInfos
-                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}): Promise<void>;
             }
             users: {
                 // GET /caas/registry/{serviceName}/users
@@ -315,7 +315,7 @@ export interface Caas{
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/caas/registry/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
+  put(path: '/caas/registry/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}) => Promise<void>;
   /**
    * Change the contacts of this service
    * Launch a contact change procedure
@@ -330,12 +330,12 @@ export interface Caas{
    * Missing description
    * Create image permissions
    */
-  post(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/permissions'): (params: {imageId: string, namespaceId: string, serviceName: string, canRead?: boolean, canWrite?: boolean, isAdmin?: boolean, status?: registry.permission.status, userId?: string}) => Promise<registry.permissions>;
+  post(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/permissions'): (params: {imageId: string, namespaceId: string, serviceName: string, canRead?: boolean, canWrite?: boolean, isAdmin?: boolean, status?: registrypermissionstatus, userId?: string}) => Promise<registry.permissions>;
   /**
    * Missing description
    * Create namespace permissions
    */
-  post(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/permissions'): (params: {namespaceId: string, serviceName: string, canRead?: boolean, canWrite?: boolean, isAdmin?: boolean, status?: registry.permission.status, userId?: string}) => Promise<registry.permissions>;
+  post(path: '/caas/registry/{serviceName}/namespaces/{namespaceId}/permissions'): (params: {namespaceId: string, serviceName: string, canRead?: boolean, canWrite?: boolean, isAdmin?: boolean, status?: registrypermissionstatus, userId?: string}) => Promise<registry.permissions>;
   /**
    * Missing description
    * Create user
@@ -372,3 +372,13 @@ export interface Caas{
    */
   delete(path: '/caas/registry/{serviceName}/users/{userId}'): (params: {serviceName: string, userId: string}) => Promise<void>;
 }
+/**
+ * Extra Alias to bypass relativer namespace colitions
+ */
+type registryimagestatus = registry.image.status;
+type registrypermissionstatus = registry.permission.status;
+type registrynamespacestatus = registry.namespace.status;
+type registryuserstatus = registry.user.status;
+type serviceRenewType = service.RenewType;
+type serviceRenewalTypeEnum = service.RenewalTypeEnum;
+type serviceStateEnum = service.StateEnum;

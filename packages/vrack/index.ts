@@ -17,7 +17,7 @@ export namespace dedicated {
         // interface fullName: dedicated.server.MrtgTimestampValue.MrtgTimestampValue
         export interface MrtgTimestampValue {
             timestamp: number;
-            value?: complexType.UnitAndValue<number>;
+            value?: complexTypeUnitAndValuenumber;
         }
         // type fullname: dedicated.server.MrtgTypeEnum
         export type MrtgTypeEnum = "errors:download" | "errors:upload" | "packets:download" | "packets:upload" | "traffic:download" | "traffic:upload"
@@ -36,7 +36,7 @@ export namespace services {
         creation: string;
         domain: string;
         serviceId: number;
-        status: service.StateEnum;
+        status: serviceStateEnum;
     }
 }
 export namespace vrack {
@@ -53,7 +53,7 @@ export namespace vrack {
         dedicatedCloudDatacenter?: string[];
         dedicatedConnect?: string[];
         dedicatedServer?: string[];
-        dedicatedServerInterface?: vrack.AllowedDedicatedServerInterfaces[];
+        dedicatedServerInterface?: vrackAllowedDedicatedServerInterfaces[];
         ip?: string[];
         ipLoadbalancing?: string[];
         legacyVrack?: string[];
@@ -533,6 +533,8 @@ export interface Vrack{
 /**
  * Extra Alias to bypass relativer namespace colitions
  */
-type vrackAllowedDedicatedServerInterfaces[] = vrack.AllowedDedicatedServerInterfaces[];
+type complexTypeUnitAndValuenumber = complexType.UnitAndValue<number>;
+type serviceStateEnum = service.StateEnum;
+type vrackAllowedDedicatedServerInterfaces = vrack.AllowedDedicatedServerInterfaces;
 type vrackTaskStatusEnum = vrack.TaskStatusEnum;
 type vrackVrackZoneEnum = vrack.VrackZoneEnum;

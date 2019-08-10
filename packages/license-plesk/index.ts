@@ -10,7 +10,7 @@ export namespace license {
     export type ChangeIpMessageEnum = "OK" | "destinationNotAllowed" | "licenseAlreadyExists" | "notAllowedToHandleThis" | "notSameType" | "sameIp" | "versionNotAllowed"
     // interface fullName: license.ChangeIpStatus.ChangeIpStatus
     export interface ChangeIpStatus {
-        message: license.ChangeIpMessageEnum;
+        message: licenseChangeIpMessageEnum;
         success: boolean;
     }
     // type fullname: license.DomainNumberEnum
@@ -22,7 +22,7 @@ export namespace license {
         amount?: string;
         canBeDeleted: boolean;
         expirationDate: string;
-        label: license.OptionLabel;
+        label: licenseOptionLabel;
         version?: string;
     }
     // type fullname: license.OptionLabel
@@ -34,12 +34,12 @@ export namespace license {
         canHavePowerPack: boolean;
         canHaveResellerManagement: boolean;
         canHaveWordpressToolkit: boolean;
-        compliantAntivirus: license.OrderableAntivirusEnum[];
-        compliantApplicationSets: license.PleskApplicationSetEnum[];
-        compliantDomains: license.OrderablePleskDomainNumberEnum[];
-        compliantLanguagePack: license.OrderablePleskLanguagePackEnum[];
-        potentialProblems: license.PotentialProblemPleskEnum[];
-        version: license.PleskVersionEnum;
+        compliantAntivirus: licenseOrderableAntivirusEnum[];
+        compliantApplicationSets: licensePleskApplicationSetEnum[];
+        compliantDomains: licenseOrderablePleskDomainNumberEnum[];
+        compliantLanguagePack: licenseOrderablePleskLanguagePackEnum[];
+        potentialProblems: licensePotentialProblemPleskEnum[];
+        version: licensePleskVersionEnum;
     }
     // type fullname: license.OrderablePleskDomainNumberEnum
     export type OrderablePleskDomainNumberEnum = "10" | "100" | "30" | "300" | "hostingsuite" | "unlimited"
@@ -49,8 +49,8 @@ export namespace license {
     export type PleskApplicationSetEnum = "applicationpack" | "developerpack" | "power-pack-for-plesk12" | "powerpack"
     // interface fullName: license.PleskOrderConfiguration.PleskOrderConfiguration
     export interface PleskOrderConfiguration {
-        orderableVersions: license.OrderablePleskCompatibilityInfos[];
-        serviceType: license.LicenseTypeEnum;
+        orderableVersions: licenseOrderablePleskCompatibilityInfos[];
+        serviceType: licenseLicenseTypeEnum;
     }
     // type fullname: license.PleskVersionEnum
     export type PleskVersionEnum = "PLESK_10_AND_LATER" | "PLESK_10_AND_LATER_FOR_KVM" | "PLESK_10_AND_LATER_FOR_VMWARE" | "PLESK_10_AND_LATER_FOR_VZ" | "PLESK_10_AND_LATER_FOR_WIN" | "PLESK_10_AND_LATER_FOR_WIN_FOR_VMWARE" | "PLESK_10_AND_LATER_FOR_WIN_FOR_VZ" | "PLESK_10_AND_LATER_FOR_WIN_FOR_XEN" | "PLESK_10_AND_LATER_FOR_XEN" | "PLESK_12_VPS_WEB_ADMIN" | "PLESK_12_VPS_WEB_APP" | "PLESK_12_VPS_WEB_HOST" | "PLESK_12_VPS_WEB_HOST_CLNX" | "PLESK_12_VPS_WEB_PRO" | "PLESK_12_VPS_WEB_PRO_CLNX" | "PLESK_12_WEB_ADMIN" | "PLESK_12_WEB_APP" | "PLESK_12_WEB_HOST" | "PLESK_12_WEB_HOST_CLNX" | "PLESK_12_WEB_PRO" | "PLESK_12_WEB_PRO_CLNX" | "PLESK_75_RELOADED" | "PLESK_80" | "PLESK_80_FOR_VZ" | "PLESK_81_FOR_WIN" | "PLESK_9" | "PLESK_95" | "PLESK_95_FOR_VZ" | "PLESK_95_FOR_WIN" | "PLESK_9_FOR_VZ" | "PLESK_9_FOR_WIN" | "PLESK_ONYX_VPS_WEB_ADMIN" | "PLESK_ONYX_VPS_WEB_APP" | "PLESK_ONYX_VPS_WEB_HOST" | "PLESK_ONYX_VPS_WEB_HOST_CLNX" | "PLESK_ONYX_VPS_WEB_PRO" | "PLESK_ONYX_VPS_WEB_PRO_CLNX" | "PLESK_ONYX_WEB_ADMIN" | "PLESK_ONYX_WEB_APP" | "PLESK_ONYX_WEB_HOST" | "PLESK_ONYX_WEB_HOST_CLNX" | "PLESK_ONYX_WEB_PRO" | "PLESK_ONYX_WEB_PRO_CLNX" | "plesk-12-webadmin-for-vps" | "plesk-12-webhost" | "plesk-12-webhost-for-vps" | "plesk-12-webpro" | "plesk-12-webpro-for-vps"
@@ -60,11 +60,11 @@ export namespace license {
     export type StateEnum = "ok" | "released" | "terminated" | "toDeliver"
     // interface fullName: license.Task.Task
     export interface Task {
-        action: license.ActionType;
+        action: licenseActionType;
         doneDate?: string;
         lastUpdate: string;
         name: string;
-        status: license.TaskStateEnum;
+        status: licenseTaskStateEnum;
         taskId: number;
         todoDate: string;
     }
@@ -76,14 +76,14 @@ export namespace license {
             creation: string;
             deleteAtExpiration: boolean;
             domain: string;
-            domainNumber?: license.DomainNumberEnum;
+            domainNumber?: licenseDomainNumberEnum;
             informationKey?: string;
             ip: string;
             key: string;
             licenseId: string;
             productKey?: string;
-            status: license.StateEnum;
-            version: license.PleskVersionEnum;
+            status: licenseStateEnum;
+            version: licensePleskVersionEnum;
         }
     }
 }
@@ -117,10 +117,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: service.RenewType;
-        renewalType: service.RenewalTypeEnum;
+        renew?: serviceRenewType;
+        renewalType: serviceRenewalTypeEnum;
         serviceId: number;
-        status: service.StateEnum;
+        status: serviceStateEnum;
     }
 }
 
@@ -147,7 +147,7 @@ export interface License{
             // GET /license/plesk/{serviceName}
             $get(): Promise<license.plesk.Plesk>;
             // PUT /license/plesk/{serviceName}
-            $put(params?: {creation?: string, deleteAtExpiration?: boolean, domain?: string, domainNumber?: license.DomainNumberEnum, informationKey?: string, ip?: string, key?: string, licenseId?: string, productKey?: string, status?: license.StateEnum, version?: license.PleskVersionEnum}): Promise<void>;
+            $put(params?: {creation?: string, deleteAtExpiration?: boolean, domain?: string, domainNumber?: licenseDomainNumberEnum, informationKey?: string, ip?: string, key?: string, licenseId?: string, productKey?: string, status?: licenseStateEnum, version?: licensePleskVersionEnum}): Promise<void>;
             allowedDestinationIp: {
                 // GET /license/plesk/{serviceName}/allowedDestinationIp
                 $get(): Promise<string[]>;
@@ -178,11 +178,11 @@ export interface License{
                 // GET /license/plesk/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /license/plesk/{serviceName}/serviceInfos
-                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}): Promise<void>;
             }
             tasks: {
                 // GET /license/plesk/{serviceName}/tasks
-                $get(params?: {action?: license.ActionType, status?: license.TaskStateEnum}): Promise<number[]>;
+                $get(params?: {action?: licenseActionType, status?: licenseTaskStateEnum}): Promise<number[]>;
                 $(taskId: number): {
                     // GET /license/plesk/{serviceName}/tasks/{taskId}
                     $get(): Promise<license.Task>;
@@ -224,7 +224,7 @@ export interface License{
    * Your License options
    * Get this object properties
    */
-  get(path: '/license/plesk/{serviceName}/option/{label}'): (params: {label: license.OptionLabel, serviceName: string}) => Promise<license.Option>;
+  get(path: '/license/plesk/{serviceName}/option/{label}'): (params: {label: licenseOptionLabel, serviceName: string}) => Promise<license.Option>;
   /**
    * Details about a Service
    * Get this object properties
@@ -234,7 +234,7 @@ export interface License{
    * List the license.Task objects
    * tasks linked to this license
    */
-  get(path: '/license/plesk/{serviceName}/tasks'): (params: {serviceName: string, action?: license.ActionType, status?: license.TaskStateEnum}) => Promise<number[]>;
+  get(path: '/license/plesk/{serviceName}/tasks'): (params: {serviceName: string, action?: licenseActionType, status?: licenseTaskStateEnum}) => Promise<number[]>;
   /**
    * licenses Todos
    * Get this object properties
@@ -249,12 +249,12 @@ export interface License{
    * Your Plesk license
    * Alter this object properties
    */
-  put(path: '/license/plesk/{serviceName}'): (params: {serviceName: string, creation?: string, deleteAtExpiration?: boolean, domain?: string, domainNumber?: license.DomainNumberEnum, informationKey?: string, ip?: string, key?: string, licenseId?: string, productKey?: string, status?: license.StateEnum, version?: license.PleskVersionEnum}) => Promise<void>;
+  put(path: '/license/plesk/{serviceName}'): (params: {serviceName: string, creation?: string, deleteAtExpiration?: boolean, domain?: string, domainNumber?: licenseDomainNumberEnum, informationKey?: string, ip?: string, key?: string, licenseId?: string, productKey?: string, status?: licenseStateEnum, version?: licensePleskVersionEnum}) => Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/license/plesk/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
+  put(path: '/license/plesk/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}) => Promise<void>;
   /**
    * changeIp operations
    * Move this license to another Ip
@@ -274,5 +274,25 @@ export interface License{
    * Your License options
    * release this Option
    */
-  delete(path: '/license/plesk/{serviceName}/option/{label}'): (params: {label: license.OptionLabel, serviceName: string}) => Promise<license.Task>;
+  delete(path: '/license/plesk/{serviceName}/option/{label}'): (params: {label: licenseOptionLabel, serviceName: string}) => Promise<license.Task>;
 }
+/**
+ * Extra Alias to bypass relativer namespace colitions
+ */
+type licenseChangeIpMessageEnum = license.ChangeIpMessageEnum;
+type licenseOptionLabel = license.OptionLabel;
+type licenseOrderableAntivirusEnum = license.OrderableAntivirusEnum;
+type licensePleskApplicationSetEnum = license.PleskApplicationSetEnum;
+type licenseOrderablePleskDomainNumberEnum = license.OrderablePleskDomainNumberEnum;
+type licenseOrderablePleskLanguagePackEnum = license.OrderablePleskLanguagePackEnum;
+type licensePotentialProblemPleskEnum = license.PotentialProblemPleskEnum;
+type licensePleskVersionEnum = license.PleskVersionEnum;
+type licenseOrderablePleskCompatibilityInfos = license.OrderablePleskCompatibilityInfos;
+type licenseLicenseTypeEnum = license.LicenseTypeEnum;
+type licenseActionType = license.ActionType;
+type licenseTaskStateEnum = license.TaskStateEnum;
+type licenseDomainNumberEnum = license.DomainNumberEnum;
+type licenseStateEnum = license.StateEnum;
+type serviceRenewType = service.RenewType;
+type serviceRenewalTypeEnum = service.RenewalTypeEnum;
+type serviceStateEnum = service.StateEnum;

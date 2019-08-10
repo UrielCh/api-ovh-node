@@ -8,8 +8,8 @@ export namespace license {
     export type ActionType = "addWindowFromExistingSerial" | "changeIp" | "changeOs" | "installLicense" | "optionUpgrade" | "releaseOption" | "versionUpgrade"
     // interface fullName: license.CloudLinuxOrderConfiguration.CloudLinuxOrderConfiguration
     export interface CloudLinuxOrderConfiguration {
-        orderableVersions: license.OrderableCloudLinuxCompatibilityInfos[];
-        serviceType: license.LicenseTypeEnum;
+        orderableVersions: licenseOrderableCloudLinuxCompatibilityInfos[];
+        serviceType: licenseLicenseTypeEnum;
     }
     // type fullname: license.CloudLinuxVersionEnum
     export type CloudLinuxVersionEnum = "SINGLE" | "WITH_CPANEL" | "WITH_PLESK12" | "cloudlinux-license"
@@ -17,17 +17,17 @@ export namespace license {
     export type LicenseTypeEnum = "dedicated" | "dedicatedCloud" | "dedicatedFailover" | "failover" | "vm" | "vps" | "vps_ceph" | "vps_classic" | "vps_cloud" | "vps_cloud_2016" | "vps_ssd"
     // interface fullName: license.OrderableCloudLinuxCompatibilityInfos.OrderableCloudLinuxCompatibilityInfos
     export interface OrderableCloudLinuxCompatibilityInfos {
-        version: license.CloudLinuxVersionEnum;
+        version: licenseCloudLinuxVersionEnum;
     }
     // type fullname: license.StateEnum
     export type StateEnum = "ok" | "released" | "terminated" | "toDeliver"
     // interface fullName: license.Task.Task
     export interface Task {
-        action: license.ActionType;
+        action: licenseActionType;
         doneDate?: string;
         lastUpdate: string;
         name: string;
-        status: license.TaskStateEnum;
+        status: licenseTaskStateEnum;
         taskId: number;
         todoDate: string;
     }
@@ -40,8 +40,8 @@ export namespace license {
             domain: string;
             ip: string;
             licenseId: string;
-            status: license.StateEnum;
-            version: license.CloudLinuxVersionEnum;
+            status: licenseStateEnum;
+            version: licenseCloudLinuxVersionEnum;
         }
     }
 }
@@ -75,10 +75,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: service.RenewType;
-        renewalType: service.RenewalTypeEnum;
+        renew?: serviceRenewType;
+        renewalType: serviceRenewalTypeEnum;
         serviceId: number;
-        status: service.StateEnum;
+        status: serviceStateEnum;
     }
 }
 
@@ -112,11 +112,11 @@ export interface License{
                 // GET /license/cloudLinux/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /license/cloudLinux/{serviceName}/serviceInfos
-                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}): Promise<void>;
             }
             tasks: {
                 // GET /license/cloudLinux/{serviceName}/tasks
-                $get(params?: {action?: license.ActionType, status?: license.TaskStateEnum}): Promise<number[]>;
+                $get(params?: {action?: licenseActionType, status?: licenseTaskStateEnum}): Promise<number[]>;
                 $(taskId: number): {
                     // GET /license/cloudLinux/{serviceName}/tasks/{taskId}
                     $get(): Promise<license.Task>;
@@ -148,7 +148,7 @@ export interface License{
    * List the license.Task objects
    * Tasks linked to this license
    */
-  get(path: '/license/cloudLinux/{serviceName}/tasks'): (params: {serviceName: string, action?: license.ActionType, status?: license.TaskStateEnum}) => Promise<number[]>;
+  get(path: '/license/cloudLinux/{serviceName}/tasks'): (params: {serviceName: string, action?: licenseActionType, status?: licenseTaskStateEnum}) => Promise<number[]>;
   /**
    * licenses Todos
    * Get this object properties
@@ -163,7 +163,7 @@ export interface License{
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/license/cloudLinux/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
+  put(path: '/license/cloudLinux/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}) => Promise<void>;
   /**
    * Confirm termination of your service
    * Confirm termination of your service
@@ -175,3 +175,15 @@ export interface License{
    */
   post(path: '/license/cloudLinux/{serviceName}/terminate'): (params: {serviceName: string}) => Promise<string>;
 }
+/**
+ * Extra Alias to bypass relativer namespace colitions
+ */
+type licenseOrderableCloudLinuxCompatibilityInfos = license.OrderableCloudLinuxCompatibilityInfos;
+type licenseLicenseTypeEnum = license.LicenseTypeEnum;
+type licenseCloudLinuxVersionEnum = license.CloudLinuxVersionEnum;
+type licenseActionType = license.ActionType;
+type licenseTaskStateEnum = license.TaskStateEnum;
+type licenseStateEnum = license.StateEnum;
+type serviceRenewType = service.RenewType;
+type serviceRenewalTypeEnum = service.RenewalTypeEnum;
+type serviceStateEnum = service.StateEnum;

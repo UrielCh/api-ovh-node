@@ -8,7 +8,7 @@ export namespace support {
     export interface Message {
         body: string;
         creationDate: string;
-        from: support.MessageSenderEnum;
+        from: supportMessageSenderEnum;
         messageId: number;
         ticketId: number;
         updateDate: string;
@@ -25,17 +25,17 @@ export namespace support {
     export interface Ticket {
         accountId: string;
         canBeClosed: boolean;
-        category?: support.TicketCategoryEnum;
+        category?: supportTicketCategoryEnum;
         creationDate: string;
-        lastMessageFrom: support.MessageSenderEnum;
-        product?: support.TicketProductEnum;
+        lastMessageFrom: supportMessageSenderEnum;
+        product?: supportTicketProductEnum;
         score: string;
         serviceName?: string;
-        state: support.TicketStatusEnum;
+        state: supportTicketStatusEnum;
         subject: string;
         ticketId: number;
         ticketNumber: number;
-        type: support.TicketTypeEnum;
+        type: supportTicketTypeEnum;
         updateDate: string;
     }
     // type fullname: support.TicketCategoryEnum
@@ -64,10 +64,10 @@ export default proxySupport;
 export interface Support{
     tickets: {
         // GET /support/tickets
-        $get(params?: {archived?: boolean, category?: support.TicketCategoryEnum, maxCreationDate?: string, minCreationDate?: string, product?: support.TicketProductEnum, serviceName?: string, status?: support.TicketStatusEnum, subject?: string, ticketNumber?: string}): Promise<number[]>;
+        $get(params?: {archived?: boolean, category?: supportTicketCategoryEnum, maxCreationDate?: string, minCreationDate?: string, product?: supportTicketProductEnum, serviceName?: string, status?: supportTicketStatusEnum, subject?: string, ticketNumber?: string}): Promise<number[]>;
         create: {
             // POST /support/tickets/create
-            $post(params: {body: string, category?: support.TicketCategoryEnum, product?: support.TicketProductEnum, serviceName?: string, subcategory?: support.TicketSubCategoryEnum, subject: string, type: support.TicketTypeEnum}): Promise<support.NewMessageInfo>;
+            $post(params: {body: string, category?: supportTicketCategoryEnum, product?: supportTicketProductEnum, serviceName?: string, subcategory?: support.TicketSubCategoryEnum, subject: string, type: supportTicketTypeEnum}): Promise<support.NewMessageInfo>;
         }
         $(ticketId: number): {
             // GET /support/tickets/{ticketId}
@@ -103,7 +103,7 @@ export interface Support{
    * List support tickets identifiers for this service
    * List support tickets identifiers for this service
    */
-  get(path: '/support/tickets'): (params?: {archived?: boolean, category?: support.TicketCategoryEnum, maxCreationDate?: string, minCreationDate?: string, product?: support.TicketProductEnum, serviceName?: string, status?: support.TicketStatusEnum, subject?: string, ticketNumber?: string}) => Promise<number[]>;
+  get(path: '/support/tickets'): (params?: {archived?: boolean, category?: supportTicketCategoryEnum, maxCreationDate?: string, minCreationDate?: string, product?: supportTicketProductEnum, serviceName?: string, status?: supportTicketStatusEnum, subject?: string, ticketNumber?: string}) => Promise<number[]>;
   /**
    * Get ticket
    * Get ticket
@@ -143,5 +143,13 @@ export interface Support{
    * Create a new ticket
    * Create a new ticket
    */
-  post(path: '/support/tickets/create'): (params: {body: string, category?: support.TicketCategoryEnum, product?: support.TicketProductEnum, serviceName?: string, subcategory?: support.TicketSubCategoryEnum, subject: string, type: support.TicketTypeEnum}) => Promise<support.NewMessageInfo>;
+  post(path: '/support/tickets/create'): (params: {body: string, category?: supportTicketCategoryEnum, product?: supportTicketProductEnum, serviceName?: string, subcategory?: support.TicketSubCategoryEnum, subject: string, type: supportTicketTypeEnum}) => Promise<support.NewMessageInfo>;
 }
+/**
+ * Extra Alias to bypass relativer namespace colitions
+ */
+type supportMessageSenderEnum = support.MessageSenderEnum;
+type supportTicketCategoryEnum = support.TicketCategoryEnum;
+type supportTicketProductEnum = support.TicketProductEnum;
+type supportTicketStatusEnum = support.TicketStatusEnum;
+type supportTicketTypeEnum = support.TicketTypeEnum;
