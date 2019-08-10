@@ -4,10 +4,9 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /me Models
  */
 export namespace agreements {
-    //agreements.AgreementStateEnum
+    // type fullname: agreements.AgreementStateEnum
     export type AgreementStateEnum = "ko" | "obsolete" | "ok" | "todo"
-    //agreements.Contract
-    // fullName: agreements.Contract.Contract
+    // interface fullName: agreements.Contract.Contract
     export interface Contract {
         active: boolean;
         date: string;
@@ -15,8 +14,7 @@ export namespace agreements {
         pdf: string;
         text: string;
     }
-    //agreements.ContractAgreement
-    // fullName: agreements.ContractAgreement.ContractAgreement
+    // interface fullName: agreements.ContractAgreement.ContractAgreement
     export interface ContractAgreement {
         agreed: agreements.AgreementStateEnum;
         contractId: number;
@@ -25,8 +23,7 @@ export namespace agreements {
     }
 }
 export namespace api {
-    //api.Application
-    // fullName: api.Application.Application
+    // interface fullName: api.Application.Application
     export interface Application {
         applicationId: number;
         applicationKey: string;
@@ -34,10 +31,9 @@ export namespace api {
         name: string;
         status: api.ApplicationStatusEnum;
     }
-    //api.ApplicationStatusEnum
+    // type fullname: api.ApplicationStatusEnum
     export type ApplicationStatusEnum = "active" | "blocked" | "inactive" | "trusted"
-    //api.Credential
-    // fullName: api.Credential.Credential
+    // interface fullName: api.Credential.Credential
     export interface Credential {
         applicationId: number;
         creation: string;
@@ -48,8 +44,7 @@ export namespace api {
         rules: auth.AccessRule[];
         status: auth.CredentialStateEnum;
     }
-    //api.Log
-    // fullName: api.Log.Log
+    // interface fullName: api.Log.Log
     export interface Log {
         account: string;
         date: string;
@@ -61,28 +56,25 @@ export namespace api {
     }
 }
 export namespace auth {
-    //auth.AccessRule
-    // fullName: auth.AccessRule.AccessRule
+    // interface fullName: auth.AccessRule.AccessRule
     export interface AccessRule {
         method: auth.MethodEnum;
         path: string;
     }
-    //auth.CredentialStateEnum
+    // type fullname: auth.CredentialStateEnum
     export type CredentialStateEnum = "expired" | "pendingValidation" | "refused" | "validated"
-    //auth.MethodEnum
+    // type fullname: auth.MethodEnum
     export type MethodEnum = "DELETE" | "GET" | "POST" | "PUT"
 }
 export namespace billing {
-    //billing.AutomaticPaymentMean
-    // fullName: billing.AutomaticPaymentMean.AutomaticPaymentMean
+    // interface fullName: billing.AutomaticPaymentMean.AutomaticPaymentMean
     export interface AutomaticPaymentMean {
         bankAccount: boolean;
         creditCard: boolean;
         deferredPaymentAccount: boolean;
         paypal: boolean;
     }
-    //billing.BankAccount
-    // fullName: billing.BankAccount.BankAccount
+    // interface fullName: billing.BankAccount.BankAccount
     export interface BankAccount {
         bic: string;
         creationDate: string;
@@ -97,10 +89,9 @@ export namespace billing {
         uniqueReference: string;
         validationDocumentLink?: string;
     }
-    //billing.BankAccountStateEnum
+    // type fullname: billing.BankAccountStateEnum
     export type BankAccountStateEnum = "blockedForIncidents" | "pendingValidation" | "valid"
-    //billing.Bill
-    // fullName: billing.Bill.Bill
+    // interface fullName: billing.Bill.Bill
     export interface Bill {
         billId: string;
         date: string;
@@ -112,8 +103,7 @@ export namespace billing {
         tax: orderPrice;
         url: string;
     }
-    //billing.BillDetail
-    // fullName: billing.BillDetail.BillDetail
+    // interface fullName: billing.BillDetail.BillDetail
     export interface BillDetail {
         billDetailId: string;
         description: string;
@@ -124,16 +114,14 @@ export namespace billing {
         totalPrice: orderPrice;
         unitPrice: orderPrice;
     }
-    //billing.BillingTaskStatusEnum
+    // type fullname: billing.BillingTaskStatusEnum
     export type BillingTaskStatusEnum = "cancelled" | "customerError" | "doing" | "done" | "init" | "ovhError" | "todo"
-    //billing.CreditBalance
-    // fullName: billing.CreditBalance.CreditBalance
+    // interface fullName: billing.CreditBalance.CreditBalance
     export interface CreditBalance {
         amount: orderPrice;
         balanceName: string;
     }
-    //billing.CreditCard
-    // fullName: billing.CreditCard.CreditCard
+    // interface fullName: billing.CreditCard.CreditCard
     export interface CreditCard {
         defaultPaymentMean: boolean;
         description?: string;
@@ -144,10 +132,9 @@ export namespace billing {
         threeDsValidated: boolean;
         type: string;
     }
-    //billing.CreditCardStateEnum
+    // type fullname: billing.CreditCardStateEnum
     export type CreditCardStateEnum = "expired" | "tooManyFailures" | "valid"
-    //billing.DeferredPaymentAccount
-    // fullName: billing.DeferredPaymentAccount.DeferredPaymentAccount
+    // interface fullName: billing.DeferredPaymentAccount.DeferredPaymentAccount
     export interface DeferredPaymentAccount {
         creationDate: string;
         defaultPaymentMean: boolean;
@@ -156,10 +143,9 @@ export namespace billing {
         label?: string;
         state: billing.DeferredPaymentAccountStatusEnum;
     }
-    //billing.DeferredPaymentAccountStatusEnum
+    // type fullname: billing.DeferredPaymentAccountStatusEnum
     export type DeferredPaymentAccountStatusEnum = "valid"
-    //billing.Deposit
-    // fullName: billing.Deposit.Deposit
+    // interface fullName: billing.Deposit.Deposit
     export interface Deposit {
         amount: orderPrice;
         date: string;
@@ -170,8 +156,7 @@ export namespace billing {
         pdfUrl: string;
         url: string;
     }
-    //billing.DepositDetail
-    // fullName: billing.DepositDetail.DepositDetail
+    // interface fullName: billing.DepositDetail.DepositDetail
     export interface DepositDetail {
         depositDetailId: string;
         description: string;
@@ -180,8 +165,7 @@ export namespace billing {
         totalPrice: orderPrice;
         unitPrice: orderPrice;
     }
-    //billing.FidelityAccount
-    // fullName: billing.FidelityAccount.FidelityAccount
+    // interface fullName: billing.FidelityAccount.FidelityAccount
     export interface FidelityAccount {
         alertThreshold?: number;
         balance: number;
@@ -189,8 +173,7 @@ export namespace billing {
         lastUpdate: string;
         openDate: string;
     }
-    //billing.FidelityMovement
-    // fullName: billing.FidelityMovement.FidelityMovement
+    // interface fullName: billing.FidelityMovement.FidelityMovement
     export interface FidelityMovement {
         amount: number;
         balance: number;
@@ -201,29 +184,25 @@ export namespace billing {
         order: number;
         previousBalance: number;
     }
-    //billing.ItemDetail
-    // fullName: billing.ItemDetail.ItemDetail
+    // interface fullName: billing.ItemDetail.ItemDetail
     export interface ItemDetail {
         order: billing.ItemDetail.Order;
     }
     export namespace ItemDetail {
-        //billing.ItemDetail.Order
-        // fullName: billing.ItemDetail.Order.Order
+        // interface fullName: billing.ItemDetail.Order.Order
         export interface Order {
             action?: billing.ItemDetail.OrderActionEnum;
             configurations: billing.ItemDetail.OrderConfiguration[];
             plan: billing.ItemDetail.OrderPlan;
         }
-        //billing.ItemDetail.OrderActionEnum
+        // type fullname: billing.ItemDetail.OrderActionEnum
         export type OrderActionEnum = "consumption" | "installation" | "renew" | "upgrade"
-        //billing.ItemDetail.OrderConfiguration
-        // fullName: billing.ItemDetail.OrderConfiguration.OrderConfiguration
+        // interface fullName: billing.ItemDetail.OrderConfiguration.OrderConfiguration
         export interface OrderConfiguration {
             label: string;
             value: string;
         }
-        //billing.ItemDetail.OrderPlan
-        // fullName: billing.ItemDetail.OrderPlan.OrderPlan
+        // interface fullName: billing.ItemDetail.OrderPlan.OrderPlan
         export interface OrderPlan {
             code?: string;
             duration?: string;
@@ -231,21 +210,18 @@ export namespace billing {
             product: billing.ItemDetail.OrderPlanProduct;
             quantity?: number;
         }
-        //billing.ItemDetail.OrderPlanProduct
-        // fullName: billing.ItemDetail.OrderPlanProduct.OrderPlanProduct
+        // interface fullName: billing.ItemDetail.OrderPlanProduct.OrderPlanProduct
         export interface OrderPlanProduct {
             name?: string;
         }
     }
-    //billing.ManualDomainPaymentStatus
-    // fullName: billing.ManualDomainPaymentStatus.ManualDomainPaymentStatus
+    // interface fullName: billing.ManualDomainPaymentStatus.ManualDomainPaymentStatus
     export interface ManualDomainPaymentStatus {
         domainsToMigrate?: number;
         migratedDomains?: number;
         status: billing.BillingTaskStatusEnum;
     }
-    //billing.Movement
-    // fullName: billing.Movement.Movement
+    // interface fullName: billing.Movement.Movement
     export interface Movement {
         amount: orderPrice;
         balance: orderPrice;
@@ -256,8 +232,7 @@ export namespace billing {
         order: number;
         previousBalance: orderPrice;
     }
-    //billing.Order
-    // fullName: billing.Order.Order
+    // interface fullName: billing.Order.Order
     export interface Order {
         date?: string;
         expirationDate?: string;
@@ -270,8 +245,7 @@ export namespace billing {
         tax: orderPrice;
         url: string;
     }
-    //billing.OrderDetail
-    // fullName: billing.OrderDetail.OrderDetail
+    // interface fullName: billing.OrderDetail.OrderDetail
     export interface OrderDetail {
         cancelled: boolean;
         description: string;
@@ -281,8 +255,7 @@ export namespace billing {
         totalPrice: orderPrice;
         unitPrice: orderPrice;
     }
-    //billing.OvhAccount
-    // fullName: billing.OvhAccount.OvhAccount
+    // interface fullName: billing.OvhAccount.OvhAccount
     export interface OvhAccount {
         alertThreshold?: number;
         balance: orderPrice;
@@ -292,27 +265,24 @@ export namespace billing {
         openDate: string;
         ovhAccountId: string;
     }
-    //billing.Payment
-    // fullName: billing.Payment.Payment
+    // interface fullName: billing.Payment.Payment
     export interface Payment {
         paymentDate: string;
         paymentIdentifier?: string;
         paymentType: billing.PaymentMeanEnum;
     }
-    //billing.PaymentMeanEnum
+    // type fullname: billing.PaymentMeanEnum
     export type PaymentMeanEnum = "cash" | "chargeback" | "cheque" | "creditAccount" | "creditCard" | "debtAccount" | "deposit" | "digitalLaunchPad" | "edinar" | "fidelityPoints" | "free" | "ideal" | "incubatorAccount" | "mandat" | "multibanco" | "none" | "ovhAccount" | "paymentMandate" | "paypal" | "payu" | "platnosci" | "refund" | "transfer" | "withdrawal"
-    //billing.PaymentMeanValidation
-    // fullName: billing.PaymentMeanValidation.PaymentMeanValidation
+    // interface fullName: billing.PaymentMeanValidation.PaymentMeanValidation
     export interface PaymentMeanValidation {
         id: number;
         submitUrl?: string;
         url: string;
         validationType: billing.PaymentMeanValidationType;
     }
-    //billing.PaymentMeanValidationType
+    // type fullname: billing.PaymentMeanValidationType
     export type PaymentMeanValidationType = "creditAccount" | "documentToSend" | "simpleValidation"
-    //billing.PaymentMethod
-    // fullName: billing.PaymentMethod.PaymentMethod
+    // interface fullName: billing.PaymentMethod.PaymentMethod
     export interface PaymentMethod {
         billingContactId: number;
         creationDate: string;
@@ -324,8 +294,7 @@ export namespace billing {
         publicLabel: string;
         status: billing.paymentMethod.StatusEnum;
     }
-    //billing.Paypal
-    // fullName: billing.Paypal.Paypal
+    // interface fullName: billing.Paypal.Paypal
     export interface Paypal {
         agreementId: string;
         creationDate: string;
@@ -335,10 +304,9 @@ export namespace billing {
         id: number;
         state: billing.PaypalStateEnum;
     }
-    //billing.PaypalStateEnum
+    // type fullname: billing.PaypalStateEnum
     export type PaypalStateEnum = "tooManyFailures" | "valid"
-    //billing.Refund
-    // fullName: billing.Refund.Refund
+    // interface fullName: billing.Refund.Refund
     export interface Refund {
         date: string;
         orderId: number;
@@ -351,8 +319,7 @@ export namespace billing {
         tax: orderPrice;
         url: string;
     }
-    //billing.RefundDetail
-    // fullName: billing.RefundDetail.RefundDetail
+    // interface fullName: billing.RefundDetail.RefundDetail
     export interface RefundDetail {
         description: string;
         domain: string;
@@ -363,10 +330,9 @@ export namespace billing {
         totalPrice: orderPrice;
         unitPrice: orderPrice;
     }
-    //billing.ReusablePaymentMeanEnum
+    // type fullname: billing.ReusablePaymentMeanEnum
     export type ReusablePaymentMeanEnum = "CREDIT_CARD" | "ENTERPRISE" | "INTERNAL_TRUSTED_ACCOUNT" | "PAYPAL" | "bankAccount" | "creditCard" | "fidelityAccount" | "ovhAccount" | "paypal"
-    //billing.SlaOperation
-    // fullName: billing.SlaOperation.SlaOperation
+    // interface fullName: billing.SlaOperation.SlaOperation
     export interface SlaOperation {
         date: string;
         description: string;
@@ -375,24 +341,21 @@ export namespace billing {
         name: string;
         startDate: string;
     }
-    //billing.SlaOperationService
-    // fullName: billing.SlaOperationService.SlaOperationService
+    // interface fullName: billing.SlaOperationService.SlaOperationService
     export interface SlaOperationService {
         description: string;
         serviceName: string;
         slaApplication: string;
         slaPlan: string;
     }
-    //billing.VoucherAccount
-    // fullName: billing.VoucherAccount.VoucherAccount
+    // interface fullName: billing.VoucherAccount.VoucherAccount
     export interface VoucherAccount {
         balance: orderPrice;
         lastUpdate: string;
         openDate: string;
         voucherAccountId: string;
     }
-    //billing.VoucherMovement
-    // fullName: billing.VoucherMovement.VoucherMovement
+    // interface fullName: billing.VoucherMovement.VoucherMovement
     export interface VoucherMovement {
         amount: orderPrice;
         balance: orderPrice;
@@ -403,8 +366,7 @@ export namespace billing {
         order: number;
         previousBalance: orderPrice;
     }
-    //billing.Withdrawal
-    // fullName: billing.Withdrawal.Withdrawal
+    // interface fullName: billing.Withdrawal.Withdrawal
     export interface Withdrawal {
         amount: orderPrice;
         country: string;
@@ -415,8 +377,7 @@ export namespace billing {
         url: string;
         withdrawalId: string;
     }
-    //billing.WithdrawalDetail
-    // fullName: billing.WithdrawalDetail.WithdrawalDetail
+    // interface fullName: billing.WithdrawalDetail.WithdrawalDetail
     export interface WithdrawalDetail {
         description: string;
         domain: string;
@@ -426,8 +387,7 @@ export namespace billing {
         withdrawalDetailId: string;
     }
     export namespace credit {
-        //billing.credit.Balance
-        // fullName: billing.credit.Balance.Balance
+        // interface fullName: billing.credit.Balance.Balance
         export interface Balance {
             amount: orderPrice;
             balanceName: string;
@@ -439,14 +399,12 @@ export namespace billing {
             type: billing.credit.balance.Type;
         }
         export namespace balance {
-            //billing.credit.balance.BookedMovement
-            // fullName: billing.credit.balance.BookedMovement.BookedMovement
+            // interface fullName: billing.credit.balance.BookedMovement.BookedMovement
             export interface BookedMovement {
                 amount: orderPrice;
                 orderId: number;
             }
-            //billing.credit.balance.ExpiringMovement
-            // fullName: billing.credit.balance.ExpiringMovement.ExpiringMovement
+            // interface fullName: billing.credit.balance.ExpiringMovement.ExpiringMovement
             export interface ExpiringMovement {
                 amount: orderPrice;
                 creationDate: string;
@@ -454,8 +412,7 @@ export namespace billing {
                 lastUpdate: string;
                 sourceObject: billing.credit.balance.movement.SubObject;
             }
-            //billing.credit.balance.Movement
-            // fullName: billing.credit.balance.Movement.Movement
+            // interface fullName: billing.credit.balance.Movement.Movement
             export interface Movement {
                 amount: orderPrice;
                 balanceName: string;
@@ -467,11 +424,10 @@ export namespace billing {
                 sourceObject: billing.credit.balance.movement.SubObject;
                 type: string;
             }
-            //billing.credit.balance.Type
+            // type fullname: billing.credit.balance.Type
             export type Type = "PREPAID_ACCOUNT" | "VOUCHER" | "DEPOSIT" | "BONUS"
             export namespace movement {
-                //billing.credit.balance.movement.SubObject
-                // fullName: billing.credit.balance.movement.SubObject.SubObject
+                // interface fullName: billing.credit.balance.movement.SubObject.SubObject
                 export interface SubObject {
                     id?: string;
                     name?: string;
@@ -480,25 +436,22 @@ export namespace billing {
         }
     }
     export namespace fidelityAccount {
-        //billing.fidelityAccount.OperationEnum
+        // type fullname: billing.fidelityAccount.OperationEnum
         export type OperationEnum = "bonus" | "cancel-bonus" | "cancel-credit" | "cancel-debit" | "cancel-pre-debit" | "credit" | "debit" | "pre-credit" | "pre-debit"
     }
     export namespace order {
-        //billing.order.AssociatedObject
-        // fullName: billing.order.AssociatedObject.AssociatedObject
+        // interface fullName: billing.order.AssociatedObject.AssociatedObject
         export interface AssociatedObject {
             id?: string;
             type?: billing.order.associatedObject.TypeEnum;
         }
-        //billing.order.OrderStatusEnum
+        // type fullname: billing.order.OrderStatusEnum
         export type OrderStatusEnum = "cancelled" | "cancelling" | "checking" | "delivered" | "delivering" | "documentsRequested" | "notPaid" | "unknown"
-        //billing.order.PayWithPaymentMethod
-        // fullName: billing.order.PayWithPaymentMethod.PayWithPaymentMethod
+        // interface fullName: billing.order.PayWithPaymentMethod.PayWithPaymentMethod
         export interface PayWithPaymentMethod {
             id: number;
         }
-        //billing.order.PaymentMean
-        // fullName: billing.order.PaymentMean.PaymentMean
+        // interface fullName: billing.order.PaymentMean.PaymentMean
         export interface PaymentMean {
             fee: number;
             htmlForm?: string;
@@ -508,8 +461,7 @@ export namespace billing {
             subType?: string;
             url: string;
         }
-        //billing.order.PaymentMeans
-        // fullName: billing.order.PaymentMeans.PaymentMeans
+        // interface fullName: billing.order.PaymentMeans.PaymentMeans
         export interface PaymentMeans {
             creditCard?: billing.order.PaymentMean[];
             edinar?: billing.order.PaymentMean[];
@@ -520,33 +472,29 @@ export namespace billing {
             paypal?: billing.order.PaymentMean[];
             promotion?: billing.order.PaymentMean[];
         }
-        //billing.order.PaymentMethods
-        // fullName: billing.order.PaymentMethods.PaymentMethods
+        // interface fullName: billing.order.PaymentMethods.PaymentMethods
         export interface PaymentMethods {
             available: payment.method.AvailablePaymentMethod[];
             registered: number[];
         }
-        //billing.order.RegisteredPaymentMean
-        // fullName: billing.order.RegisteredPaymentMean.RegisteredPaymentMean
+        // interface fullName: billing.order.RegisteredPaymentMean.RegisteredPaymentMean
         export interface RegisteredPaymentMean {
             paymentMean: billing.ReusablePaymentMeanEnum;
         }
-        //billing.order.RetractionReasonEnum
+        // type fullname: billing.order.RetractionReasonEnum
         export type RetractionReasonEnum = "competitor" | "difficulty" | "expensive" | "other" | "performance" | "reliability" | "unused"
         export namespace associatedObject {
-            //billing.order.associatedObject.TypeEnum
+            // type fullname: billing.order.associatedObject.TypeEnum
             export type TypeEnum = "Bill" | "Deposit" | "Refund" | "Withdrawal"
         }
         export namespace paymentMean {
-            //billing.order.paymentMean.HttpParameter
-            // fullName: billing.order.paymentMean.HttpParameter.HttpParameter
+            // interface fullName: billing.order.paymentMean.HttpParameter.HttpParameter
             export interface HttpParameter {
                 choice?: billing.order.paymentMean.HttpParameterChoice[];
                 name: string;
                 value?: string;
             }
-            //billing.order.paymentMean.HttpParameterChoice
-            // fullName: billing.order.paymentMean.HttpParameterChoice.HttpParameterChoice
+            // interface fullName: billing.order.paymentMean.HttpParameterChoice.HttpParameterChoice
             export interface HttpParameterChoice {
                 name: string;
                 value: string;
@@ -554,39 +502,36 @@ export namespace billing {
         }
     }
     export namespace ovhAccount {
-        //billing.ovhAccount.OperationEnum
+        // type fullname: billing.ovhAccount.OperationEnum
         export type OperationEnum = "cancel-credit" | "cancel-debit" | "cancel-pre-debit" | "credit" | "debit" | "pre-credit" | "pre-debit"
     }
     export namespace paymentMethod {
-        //billing.paymentMethod.PaymentSubTypeEnum
+        // type fullname: billing.paymentMethod.PaymentSubTypeEnum
         export type PaymentSubTypeEnum = "AMERICAN_EXPRESS" | "MASTERCARD" | "VISA"
-        //billing.paymentMethod.PaymentTypeEnum
+        // type fullname: billing.paymentMethod.PaymentTypeEnum
         export type PaymentTypeEnum = "BANK_ACCOUNT" | "CREDIT_CARD" | "DEFERRED_PAYMENT_ACCOUNT" | "ENTERPRISE" | "INTERNAL_TRUSTED_ACCOUNT" | "PAYPAL"
-        //billing.paymentMethod.StatusEnum
+        // type fullname: billing.paymentMethod.StatusEnum
         export type StatusEnum = "BLOCKED" | "BLOCKED_BY_CUSTOMER" | "BROKEN" | "CANCELED" | "CANCELED_BY_CUSTOMER" | "CREATED" | "ERROR" | "EXPIRED" | "PAUSED" | "VALID" | "VALID_FOR_CREDIT"
     }
     export namespace voucherAccount {
-        //billing.voucherAccount.OperationEnum
+        // type fullname: billing.voucherAccount.OperationEnum
         export type OperationEnum = "cancel-credit" | "cancel-debit" | "cancel-pre-debit" | "credit" | "debit" | "pre-credit" | "pre-debit"
     }
 }
 export namespace complexType {
-    //complexType.SafeKeyValue
-    // fullName: complexType.SafeKeyValue.SafeKeyValue
+    // interface fullName: complexType.SafeKeyValue.SafeKeyValue
     export interface SafeKeyValue<T> {
         key: string;
         value: T;
     }
-    //complexType.UnitAndValue
-    // fullName: complexType.UnitAndValue.UnitAndValue
+    // interface fullName: complexType.UnitAndValue.UnitAndValue
     export interface UnitAndValue<T> {
         unit: string;
         value: T;
     }
 }
 export namespace contact {
-    //contact.Address
-    // fullName: contact.Address.Address
+    // interface fullName: contact.Address.Address
     export interface Address {
         city: string;
         country: nichandle.CountryEnum;
@@ -597,8 +542,7 @@ export namespace contact {
         province?: string;
         zip: string;
     }
-    //contact.Contact
-    // fullName: contact.Contact.Contact
+    // interface fullName: contact.Contact.Contact
     export interface Contact {
         address: contact.Address;
         birthCity?: string;
@@ -623,8 +567,7 @@ export namespace contact {
         spareEmail?: string;
         vat?: string;
     }
-    //contact.FieldInformation
-    // fullName: contact.FieldInformation.FieldInformation
+    // interface fullName: contact.FieldInformation.FieldInformation
     export interface FieldInformation {
         fieldName: string;
         mandatory: boolean;
@@ -632,14 +575,13 @@ export namespace contact {
     }
 }
 export namespace coreTypes {
-    //coreTypes.ContinentEnum
+    // type fullname: coreTypes.ContinentEnum
     export type ContinentEnum = "africa" | "antartica" | "asia" | "europe" | "north-america" | "oceania" | "south-america"
-    //coreTypes.CountryEnum
+    // type fullname: coreTypes.CountryEnum
     export type CountryEnum = "ac" | "ad" | "ae" | "af" | "ag" | "ai" | "al" | "am" | "an" | "ao" | "aq" | "ar" | "as" | "at" | "au" | "aw" | "ax" | "az" | "ba" | "bb" | "bd" | "be" | "bf" | "bg" | "bh" | "bi" | "bj" | "bl" | "bm" | "bn" | "bo" | "bq" | "br" | "bs" | "bt" | "bv" | "bw" | "by" | "bz" | "ca" | "cc" | "cd" | "cf" | "cg" | "ch" | "ci" | "ck" | "cl" | "cm" | "cn" | "co" | "cr" | "cs" | "cu" | "cv" | "cw" | "cx" | "cy" | "cz" | "de" | "dj" | "dk" | "dm" | "do" | "dz" | "ec" | "ee" | "eg" | "eh" | "er" | "es" | "et" | "fc" | "fd" | "fi" | "fj" | "fk" | "fm" | "fo" | "fr" | "fx" | "ga" | "gb" | "gd" | "ge" | "gf" | "gg" | "gh" | "gi" | "gl" | "gm" | "gn" | "gp" | "gq" | "gr" | "gs" | "gt" | "gu" | "gw" | "gy" | "hk" | "hm" | "hn" | "hr" | "ht" | "hu" | "id" | "ie" | "il" | "im" | "in" | "io" | "iq" | "ir" | "is" | "it" | "je" | "jm" | "jo" | "jp" | "ke" | "kg" | "kh" | "ki" | "km" | "kn" | "kp" | "kr" | "kw" | "ky" | "kz" | "la" | "lb" | "lc" | "li" | "lk" | "lr" | "ls" | "lt" | "lu" | "lv" | "ly" | "ma" | "mc" | "md" | "me" | "mf" | "mg" | "mh" | "mk" | "ml" | "mm" | "mn" | "mo" | "mp" | "mq" | "mr" | "ms" | "mt" | "mu" | "mv" | "mw" | "mx" | "my" | "mz" | "na" | "nc" | "ne" | "nf" | "ng" | "ni" | "nl" | "no" | "np" | "nr" | "nu" | "nz" | "om" | "pa" | "pe" | "pf" | "pg" | "ph" | "pk" | "pl" | "pm" | "pn" | "pr" | "ps" | "pt" | "pw" | "py" | "qa" | "qc" | "re" | "ro" | "rs" | "ru" | "rw" | "sa" | "sb" | "sc" | "sd" | "se" | "sg" | "sh" | "si" | "sj" | "sk" | "sl" | "sm" | "sn" | "so" | "sr" | "ss" | "st" | "sv" | "sx" | "sy" | "sz" | "tc" | "td" | "tf" | "tg" | "th" | "tj" | "tk" | "tl" | "tm" | "tn" | "to" | "tp" | "tr" | "tt" | "tv" | "tw" | "tz" | "ua" | "ug" | "uk" | "um" | "us" | "uy" | "uz" | "va" | "vc" | "ve" | "vg" | "vi" | "vn" | "vu" | "we" | "wf" | "ws" | "ye" | "yt" | "yu" | "za" | "zm" | "zw"
 }
 export namespace debt {
-    //debt.Balance
-    // fullName: debt.Balance.Balance
+    // interface fullName: debt.Balance.Balance
     export interface Balance {
         active: boolean;
         dueAmount: orderPrice;
@@ -647,8 +589,7 @@ export namespace debt {
         todoAmount: orderPrice;
         unmaturedAmount: orderPrice;
     }
-    //debt.Debt
-    // fullName: debt.Debt.Debt
+    // interface fullName: debt.Debt.Debt
     export interface Debt {
         amount: orderPrice;
         date: string;
@@ -660,8 +601,7 @@ export namespace debt {
         todoAmount: orderPrice;
         unmaturedAmount: orderPrice;
     }
-    //debt.Operation
-    // fullName: debt.Operation.Operation
+    // interface fullName: debt.Operation.Operation
     export interface Operation {
         amount: orderPrice;
         date: string;
@@ -671,40 +611,37 @@ export namespace debt {
         type?: debt.entry.OperationEnum;
     }
     export namespace associatedObject {
-        //debt.associatedObject.PaymentInfo
-        // fullName: debt.associatedObject.PaymentInfo.PaymentInfo
+        // interface fullName: debt.associatedObject.PaymentInfo.PaymentInfo
         export interface PaymentInfo {
             description?: string;
             paymentType: billing.PaymentMeanEnum;
             publicLabel?: string;
         }
-        //debt.associatedObject.TypeEnum
+        // type fullname: debt.associatedObject.TypeEnum
         export type TypeEnum = "Bill" | "DebtOperation" | "Deposit" | "Order" | "OvhAccountMovement" | "Refund" | "Withdrawal"
     }
     export namespace entry {
-        //debt.entry.AssociatedObject
-        // fullName: debt.entry.AssociatedObject.AssociatedObject
+        // interface fullName: debt.entry.AssociatedObject.AssociatedObject
         export interface AssociatedObject {
             id?: string;
             paymentInfo?: debt.associatedObject.PaymentInfo;
             subId?: string;
             type?: debt.associatedObject.TypeEnum;
         }
-        //debt.entry.OperationEnum
+        // type fullname: debt.entry.OperationEnum
         export type OperationEnum = "CANCEL" | "CASH_MANUAL" | "CHECK_MANUAL" | "CREDITCARD" | "CREDITCARD_AUTOMATIC" | "CREDITCARD_MANUAL" | "CREDIT_ACCOUNT_AUTOMATIC" | "EDINAR_MANUAL" | "IDEAL_MANUAL" | "MULTIBANCO_MANUAL" | "ORDER" | "PAYPAL_AUTOMATIC" | "PAYPAL_MANUAL" | "PAYU_MANUAL" | "RECOVERY_TRANSFER_AUTOMATIC" | "REFUND" | "REFUND_CHECK" | "REFUND_CREDITCARD" | "REFUND_CREDIT_ACCOUNT" | "REFUND_LOSS" | "REFUND_PAYPAL" | "REFUND_PAYU" | "REFUND_SEPA" | "REFUND_TRANSFER" | "REFUND_UNKNOWN" | "SEPA_AUTOMATIC" | "TRANSFER_MANUAL" | "UNPAID_CHECK" | "UNPAID_CREDITCARD" | "UNPAID_CREDIT_ACCOUNT" | "UNPAID_PAYPAL" | "UNPAID_SEPA" | "UNPAID_WITHDRAW" | "WARRANT_MANUAL" | "WITHDRAW_AUTOMATIC"
-        //debt.entry.StatusEnum
+        // type fullname: debt.entry.StatusEnum
         export type StatusEnum = "CANCELLED" | "DONE" | "FAILED" | "PAID" | "PENDING" | "TODO"
     }
 }
 export namespace dedicated {
-    //dedicated.TemplateOsFileSystemEnum
+    // type fullname: dedicated.TemplateOsFileSystemEnum
     export type TemplateOsFileSystemEnum = "btrfs" | "ext3" | "ext4" | "ntfs" | "reiserfs" | "swap" | "ufs" | "xfs" | "zfs"
-    //dedicated.TemplateOsHardwareRaidEnum
+    // type fullname: dedicated.TemplateOsHardwareRaidEnum
     export type TemplateOsHardwareRaidEnum = "raid0" | "raid1" | "raid10" | "raid5" | "raid50" | "raid6" | "raid60"
-    //dedicated.TemplateOsLanguageEnum
+    // type fullname: dedicated.TemplateOsLanguageEnum
     export type TemplateOsLanguageEnum = "ar" | "bg" | "cs" | "da" | "de" | "el" | "en" | "es" | "et" | "fi" | "fr" | "he" | "hr" | "hu" | "it" | "ja" | "ko" | "lt" | "lv" | "nb" | "nl" | "no" | "pl" | "pt" | "ro" | "ru" | "sk" | "sl" | "sr" | "sv" | "th" | "tr" | "tu" | "uk" | "zh-Hans-CN" | "zh-Hans-HK"
-    //dedicated.TemplateOsProperties
-    // fullName: dedicated.TemplateOsProperties.TemplateOsProperties
+    // interface fullName: dedicated.TemplateOsProperties.TemplateOsProperties
     export interface TemplateOsProperties {
         changeLog?: string;
         customHostname?: string;
@@ -714,15 +651,14 @@ export namespace dedicated {
         sshKeyName?: string;
         useDistributionKernel?: boolean;
     }
-    //dedicated.TemplateOsTypeEnum
+    // type fullname: dedicated.TemplateOsTypeEnum
     export type TemplateOsTypeEnum = "bsd" | "linux" | "solaris" | "windows"
-    //dedicated.TemplateOsUsageEnum
+    // type fullname: dedicated.TemplateOsUsageEnum
     export type TemplateOsUsageEnum = "basic" | "customer" | "hosting" | "other" | "readyToUse" | "virtualisation"
-    //dedicated.TemplatePartitionTypeEnum
+    // type fullname: dedicated.TemplatePartitionTypeEnum
     export type TemplatePartitionTypeEnum = "logical" | "lv" | "primary"
     export namespace installationTemplate {
-        //dedicated.installationTemplate.Templates
-        // fullName: dedicated.installationTemplate.Templates.Templates
+        // interface fullName: dedicated.installationTemplate.Templates.Templates
         export interface Templates {
             availableLanguages: dedicated.TemplateOsLanguageEnum[];
             beta?: boolean;
@@ -745,22 +681,19 @@ export namespace dedicated {
             supportsUEFI?: dedicated.server.SupportsUEFIEnum;
             templateName: string;
         }
-        //dedicated.installationTemplate.hardwareRaid
-        // fullName: dedicated.installationTemplate.hardwareRaid.hardwareRaid
+        // interface fullName: dedicated.installationTemplate.hardwareRaid.hardwareRaid
         export interface hardwareRaid {
             disks: string[];
             mode: dedicated.TemplateOsHardwareRaidEnum;
             name: string;
             step: number;
         }
-        //dedicated.installationTemplate.templatePartitioningSchemes
-        // fullName: dedicated.installationTemplate.templatePartitioningSchemes.templatePartitioningSchemes
+        // interface fullName: dedicated.installationTemplate.templatePartitioningSchemes.templatePartitioningSchemes
         export interface templatePartitioningSchemes {
             name: string;
             priority: number;
         }
-        //dedicated.installationTemplate.templatePartitions
-        // fullName: dedicated.installationTemplate.templatePartitions.templatePartitions
+        // interface fullName: dedicated.installationTemplate.templatePartitions.templatePartitions
         export interface templatePartitions {
             filesystem: dedicated.TemplateOsFileSystemEnum;
             mountpoint: string;
@@ -772,25 +705,24 @@ export namespace dedicated {
         }
     }
     export namespace server {
-        //dedicated.server.BitFormatEnum
+        // type fullname: dedicated.server.BitFormatEnum
         export type BitFormatEnum = 32 | 64
-        //dedicated.server.PartitionRaidEnum
+        // type fullname: dedicated.server.PartitionRaidEnum
         export type PartitionRaidEnum = "0" | "1" | "10" | "5" | "6"
-        //dedicated.server.SupportsUEFIEnum
+        // type fullname: dedicated.server.SupportsUEFIEnum
         export type SupportsUEFIEnum = "no" | "only" | "yes"
     }
 }
 export namespace domain {
-    //domain.DocumentFormatsEnum
+    // type fullname: domain.DocumentFormatsEnum
     export type DocumentFormatsEnum = "gif" | "jpeg" | "jpg" | "pdf" | "png"
-    //domain.NicOperationFunctionEnum
+    // type fullname: domain.NicOperationFunctionEnum
     export type NicOperationFunctionEnum = "ContactControl" | "DnsAnycastActivate" | "DnsAnycastDeactivate" | "DnssecDisable" | "DnssecEnable" | "DnssecResigning" | "DnssecRollKsk" | "DnssecRollZsk" | "DomainContactControl" | "DomainContactUpdate" | "DomainControl" | "DomainCreate" | "DomainDelete" | "DomainDnsUpdate" | "DomainDsUpdate" | "DomainHold" | "DomainHostCreate" | "DomainHostDelete" | "DomainHostUpdate" | "DomainIncomingTransfer" | "DomainLock" | "DomainOutgoingTransfer" | "DomainRenew" | "DomainRestore" | "DomainTrade" | "ZoneImport"
-    //domain.OperationActionEnum
+    // type fullname: domain.OperationActionEnum
     export type OperationActionEnum = "canCancel" | "canCorrect" | "canRelaunch" | "canReset"
-    //domain.OperationStatusEnum
+    // type fullname: domain.OperationStatusEnum
     export type OperationStatusEnum = "cancelled" | "doing" | "done" | "error" | "todo"
-    //domain.OperationStep
-    // fullName: domain.OperationStep.OperationStep
+    // interface fullName: domain.OperationStep.OperationStep
     export interface OperationStep {
         description: string;
         executionDuration: number;
@@ -798,8 +730,7 @@ export namespace domain {
     }
 }
 export namespace geolocation {
-    //geolocation.ContinentCountryLocation
-    // fullName: geolocation.ContinentCountryLocation.ContinentCountryLocation
+    // interface fullName: geolocation.ContinentCountryLocation.ContinentCountryLocation
     export interface ContinentCountryLocation {
         continent: coreTypes.ContinentEnum;
         countryCode: coreTypes.CountryEnum;
@@ -807,12 +738,11 @@ export namespace geolocation {
     }
 }
 export namespace http {
-    //http.MethodEnum
+    // type fullname: http.MethodEnum
     export type MethodEnum = "DELETE" | "GET" | "POST" | "PUT"
 }
 export namespace insight {
-    //insight.Access
-    // fullName: insight.Access.Access
+    // interface fullName: insight.Access.Access
     export interface Access {
         access: string;
         createdAt: string;
@@ -821,50 +751,44 @@ export namespace insight {
 }
 export namespace me {
     export namespace SupportLevel {
-        //me.SupportLevel.Level
-        // fullName: me.SupportLevel.Level.Level
+        // interface fullName: me.SupportLevel.Level.Level
         export interface Level {
             level: me.SupportLevel.LevelTypeEnum;
         }
-        //me.SupportLevel.LevelTypeEnum
+        // type fullname: me.SupportLevel.LevelTypeEnum
         export type LevelTypeEnum = "standard" | "premium" | "premium-accredited" | "business" | "enterprise"
     }
     export namespace consent {
-        //me.consent.Campaign
-        // fullName: me.consent.Campaign.Campaign
+        // interface fullName: me.consent.Campaign.Campaign
         export interface Campaign {
             description: string;
             name: string;
             type: me.consent.CampaignTypeEnum;
         }
-        //me.consent.CampaignTypeEnum
+        // type fullname: me.consent.CampaignTypeEnum
         export type CampaignTypeEnum = "OPTIN" | "OPTOUT"
-        //me.consent.Consent
-        // fullName: me.consent.Consent.Consent
+        // interface fullName: me.consent.Consent.Consent
         export interface Consent {
             campaign: string;
             history: me.consent.Decision[];
             type: me.consent.CampaignTypeEnum;
             value: boolean;
         }
-        //me.consent.Decision
-        // fullName: me.consent.Decision.Decision
+        // interface fullName: me.consent.Decision.Decision
         export interface Decision {
             timestamp: string;
             value: boolean;
         }
     }
     export namespace consumption {
-        //me.consumption.Price
-        // fullName: me.consumption.Price.Price
+        // interface fullName: me.consumption.Price.Price
         export interface Price {
             currencyCode: order.CurrencyCodeEnum;
             text: string;
             value: number;
             valueInUcents: number;
         }
-        //me.consumption.Transaction
-        // fullName: me.consumption.Transaction.Transaction
+        // interface fullName: me.consumption.Transaction.Transaction
         export interface Transaction {
             beginDate: string;
             creationDate?: string;
@@ -876,8 +800,7 @@ export namespace me {
             serviceId: number;
         }
         export namespace transaction {
-            //me.consumption.transaction.Element
-            // fullName: me.consumption.transaction.Element.Element
+            // interface fullName: me.consumption.transaction.Element.Element
             export interface Element {
                 details: me.consumption.transaction.Element.Detail[];
                 planCode: string;
@@ -886,8 +809,7 @@ export namespace me {
                 quantity: number;
             }
             export namespace Element {
-                //me.consumption.transaction.Element.Detail
-                // fullName: me.consumption.transaction.Element.Detail.Detail
+                // interface fullName: me.consumption.transaction.Element.Detail.Detail
                 export interface Detail {
                     price: me.consumption.Price;
                     quantity: number;
@@ -898,18 +820,16 @@ export namespace me {
     }
     export namespace payment {
         export namespace method {
-            //me.payment.method.AvailablePaymentMethod
-            // fullName: me.payment.method.AvailablePaymentMethod.AvailablePaymentMethod
+            // interface fullName: me.payment.method.AvailablePaymentMethod.AvailablePaymentMethod
             export interface AvailablePaymentMethod {
                 icon: me.payment.method.Icon;
-                integration: payment.method.IntegrationType;
+                integration: paymentMethodIntegrationType;
                 oneshot: boolean;
                 paymentType: string;
                 registerable: boolean;
                 registerableWithTransaction: boolean;
             }
-            //me.payment.method.CallbackUrl
-            // fullName: me.payment.method.CallbackUrl.CallbackUrl
+            // interface fullName: me.payment.method.CallbackUrl.CallbackUrl
             export interface CallbackUrl {
                 cancel: string;
                 error: string;
@@ -917,14 +837,12 @@ export namespace me {
                 pending: string;
                 success: string;
             }
-            //me.payment.method.Icon
-            // fullName: me.payment.method.Icon.Icon
+            // interface fullName: me.payment.method.Icon.Icon
             export interface Icon {
                 data?: string;
                 name?: string;
             }
-            //me.payment.method.PaymentMethod
-            // fullName: me.payment.method.PaymentMethod.PaymentMethod
+            // interface fullName: me.payment.method.PaymentMethod.PaymentMethod
             export interface PaymentMethod {
                 billingContactId?: number;
                 creationDate: string;
@@ -941,20 +859,18 @@ export namespace me {
                 status: me.payment.method.PaymentMethod.Status;
             }
             export namespace PaymentMethod {
-                //me.payment.method.PaymentMethod.Status
+                // type fullname: me.payment.method.PaymentMethod.Status
                 export type Status = "CANCELED" | "CANCELING" | "CREATED" | "ERROR" | "EXPIRED" | "CREATING" | "MAINTENANCE" | "PAUSED" | "VALID"
             }
             export namespace Register {
-                //me.payment.method.Register.ValidationResult
-                // fullName: me.payment.method.Register.ValidationResult.ValidationResult
+                // interface fullName: me.payment.method.Register.ValidationResult.ValidationResult
                 export interface ValidationResult {
                     paymentMethodId: number;
                     url?: string;
-                    validationType: payment.method.IntegrationType;
+                    validationType: paymentMethodIntegrationType;
                 }
             }
-            //me.payment.method.Transaction
-            // fullName: me.payment.method.Transaction.Transaction
+            // interface fullName: me.payment.method.Transaction.Transaction
             export interface Transaction {
                 amount: orderPrice;
                 creationDate: string;
@@ -963,9 +879,9 @@ export namespace me {
                 type: me.payment.method.Transaction.Type;
             }
             export namespace Transaction {
-                //me.payment.method.Transaction.Status
+                // type fullname: me.payment.method.Transaction.Status
                 export type Status = "CANCELED" | "CANCELING" | "CONFIRMING" | "CREATED" | "ERROR" | "FAILED" | "READY" | "SUCCESS"
-                //me.payment.method.Transaction.Type
+                // type fullname: me.payment.method.Transaction.Type
                 export type Type = "CREDIT" | "DEBIT"
             }
         }
@@ -973,14 +889,12 @@ export namespace me {
 }
 export namespace nichandle {
     export namespace Authentication {
-        //nichandle.Authentication.Certificate
-        // fullName: nichandle.Authentication.Certificate.Certificate
+        // interface fullName: nichandle.Authentication.Certificate.Certificate
         export interface Certificate {
             expiration: string;
             subject: string;
         }
-        //nichandle.Authentication.Group
-        // fullName: nichandle.Authentication.Group.Group
+        // interface fullName: nichandle.Authentication.Group.Group
         export interface Group {
             creation: string;
             defaultGroup: boolean;
@@ -989,8 +903,7 @@ export namespace nichandle {
             name: string;
             role: nichandle.RoleEnum;
         }
-        //nichandle.Authentication.Provider
-        // fullName: nichandle.Authentication.Provider.Provider
+        // interface fullName: nichandle.Authentication.Provider.Provider
         export interface Provider {
             creation: string;
             groupAttributeName: string;
@@ -999,28 +912,24 @@ export namespace nichandle {
             ssoServiceUrl: string;
         }
     }
-    //nichandle.BillingCapacities
-    // fullName: nichandle.BillingCapacities.BillingCapacities
+    // interface fullName: nichandle.BillingCapacities.BillingCapacities
     export interface BillingCapacities {
         canUseDebtSystem: boolean;
         canUsePostalMailForInvoices: boolean;
         requiredPaymentMethod: nichandle.RequiredPaymentMethodEnum;
     }
-    //nichandle.CountryEnum
+    // type fullname: nichandle.CountryEnum
     export type CountryEnum = "AC" | "AD" | "AE" | "AF" | "AG" | "AI" | "AL" | "AM" | "AO" | "AQ" | "AR" | "AS" | "AT" | "AU" | "AW" | "AX" | "AZ" | "BA" | "BB" | "BD" | "BE" | "BF" | "BG" | "BH" | "BI" | "BJ" | "BL" | "BM" | "BN" | "BO" | "BQ" | "BR" | "BS" | "BT" | "BW" | "BY" | "BZ" | "CA" | "CC" | "CD" | "CF" | "CG" | "CH" | "CI" | "CK" | "CL" | "CM" | "CN" | "CO" | "CR" | "CU" | "CV" | "CW" | "CX" | "CY" | "CZ" | "DE" | "DG" | "DJ" | "DK" | "DM" | "DO" | "DZ" | "EA" | "EC" | "EE" | "EG" | "EH" | "ER" | "ES" | "ET" | "FI" | "FJ" | "FK" | "FM" | "FO" | "FR" | "GA" | "GB" | "GD" | "GE" | "GF" | "GG" | "GH" | "GI" | "GL" | "GM" | "GN" | "GP" | "GQ" | "GR" | "GS" | "GT" | "GU" | "GW" | "GY" | "HK" | "HN" | "HR" | "HT" | "HU" | "IC" | "ID" | "IE" | "IL" | "IM" | "IN" | "IO" | "IQ" | "IR" | "IS" | "IT" | "JE" | "JM" | "JO" | "JP" | "KE" | "KG" | "KH" | "KI" | "KM" | "KN" | "KP" | "KR" | "KW" | "KY" | "KZ" | "LA" | "LB" | "LC" | "LI" | "LK" | "LR" | "LS" | "LT" | "LU" | "LV" | "LY" | "MA" | "MC" | "MD" | "ME" | "MF" | "MG" | "MH" | "MK" | "ML" | "MM" | "MN" | "MO" | "MP" | "MQ" | "MR" | "MS" | "MT" | "MU" | "MV" | "MW" | "MX" | "MY" | "MZ" | "NA" | "NC" | "NE" | "NF" | "NG" | "NI" | "NL" | "NO" | "NP" | "NR" | "NU" | "NZ" | "OM" | "PA" | "PE" | "PF" | "PG" | "PH" | "PK" | "PL" | "PM" | "PN" | "PR" | "PS" | "PT" | "PW" | "PY" | "QA" | "RE" | "RO" | "RS" | "RU" | "RW" | "SA" | "SB" | "SC" | "SD" | "SE" | "SG" | "SH" | "SI" | "SJ" | "SK" | "SL" | "SM" | "SN" | "SO" | "SR" | "SS" | "ST" | "SV" | "SX" | "SY" | "SZ" | "TA" | "TC" | "TD" | "TF" | "TG" | "TH" | "TJ" | "TK" | "TL" | "TM" | "TN" | "TO" | "TR" | "TT" | "TV" | "TW" | "TZ" | "UA" | "UG" | "UM" | "UNKNOWN" | "US" | "UY" | "UZ" | "VA" | "VC" | "VE" | "VG" | "VI" | "VN" | "VU" | "WF" | "WS" | "XK" | "YE" | "YT" | "ZA" | "ZM" | "ZW"
-    //nichandle.Currency
-    // fullName: nichandle.Currency.Currency
+    // interface fullName: nichandle.Currency.Currency
     export interface Currency {
         code: string;
         symbol: string;
     }
-    //nichandle.DeveloperModeRestriction
-    // fullName: nichandle.DeveloperModeRestriction.DeveloperModeRestriction
+    // interface fullName: nichandle.DeveloperModeRestriction.DeveloperModeRestriction
     export interface DeveloperModeRestriction {
         enabled: boolean;
     }
-    //nichandle.DomainTask
-    // fullName: nichandle.DomainTask.DomainTask
+    // interface fullName: nichandle.DomainTask.DomainTask
     export interface DomainTask {
         canAccelerate: boolean;
         canCancel: boolean;
@@ -1035,8 +944,7 @@ export namespace nichandle {
         status: domain.OperationStatusEnum;
         todoDate: string;
     }
-    //nichandle.DomainTaskArgument
-    // fullName: nichandle.DomainTaskArgument.DomainTaskArgument
+    // interface fullName: nichandle.DomainTaskArgument.DomainTaskArgument
     export interface DomainTaskArgument {
         acceptedFormats?: domain.DocumentFormatsEnum[];
         acceptedValues?: string[];
@@ -1050,8 +958,7 @@ export namespace nichandle {
         type: string;
         value?: string;
     }
-    //nichandle.DomainTaskProgressBar
-    // fullName: nichandle.DomainTaskProgressBar.DomainTaskProgressBar
+    // interface fullName: nichandle.DomainTaskProgressBar.DomainTaskProgressBar
     export interface DomainTaskProgressBar {
         currentStep: domain.OperationStep;
         expectedDoneDate?: string;
@@ -1061,26 +968,23 @@ export namespace nichandle {
         taskActions: domain.OperationActionEnum[];
         taskStatus: domain.OperationStatusEnum;
     }
-    //nichandle.GenderEnum
+    // type fullname: nichandle.GenderEnum
     export type GenderEnum = "female" | "male"
-    //nichandle.IpRegistryEnum
+    // type fullname: nichandle.IpRegistryEnum
     export type IpRegistryEnum = "ARIN" | "RIPE"
-    //nichandle.IpRestriction
-    // fullName: nichandle.IpRestriction.IpRestriction
+    // interface fullName: nichandle.IpRestriction.IpRestriction
     export interface IpRestriction {
         id: number;
         ip: string;
         rule: nichandle.accessRestriction.IpRestrictionRuleEnum;
         warning: boolean;
     }
-    //nichandle.IpRestrictionDefaultRule
-    // fullName: nichandle.IpRestrictionDefaultRule.IpRestrictionDefaultRule
+    // interface fullName: nichandle.IpRestrictionDefaultRule.IpRestrictionDefaultRule
     export interface IpRestrictionDefaultRule {
         rule: nichandle.accessRestriction.IpRestrictionRuleEnum;
         warning: boolean;
     }
-    //nichandle.Ipv4Org
-    // fullName: nichandle.Ipv4Org.Ipv4Org
+    // interface fullName: nichandle.Ipv4Org.Ipv4Org
     export interface Ipv4Org {
         abuse_mailbox: string;
         address: string;
@@ -1094,25 +998,22 @@ export namespace nichandle {
         state?: string;
         zip?: string;
     }
-    //nichandle.LanguageEnum
+    // type fullname: nichandle.LanguageEnum
     export type LanguageEnum = "cs_CZ" | "de_DE" | "en_AU" | "en_CA" | "en_GB" | "en_IE" | "en_US" | "es_ES" | "fi_FI" | "fr_CA" | "fr_FR" | "fr_MA" | "fr_SN" | "fr_TN" | "it_IT" | "lt_LT" | "nl_NL" | "pl_PL" | "pt_PT"
-    //nichandle.LegalFormEnum
+    // type fullname: nichandle.LegalFormEnum
     export type LegalFormEnum = "administration" | "association" | "corporation" | "individual" | "other" | "personalcorporation"
-    //nichandle.ManagerPreference
-    // fullName: nichandle.ManagerPreference.ManagerPreference
+    // interface fullName: nichandle.ManagerPreference.ManagerPreference
     export interface ManagerPreference {
         key: string;
         value: string;
     }
-    //nichandle.NicAutorenewInfos
-    // fullName: nichandle.NicAutorenewInfos.NicAutorenewInfos
+    // interface fullName: nichandle.NicAutorenewInfos.NicAutorenewInfos
     export interface NicAutorenewInfos {
         active: boolean;
         lastRenew?: string;
         renewDay: number;
     }
-    //nichandle.Nichandle
-    // fullName: nichandle.Nichandle.Nichandle
+    // interface fullName: nichandle.Nichandle.Nichandle
     export interface Nichandle {
         address?: string;
         area?: string;
@@ -1144,8 +1045,7 @@ export namespace nichandle {
         vat?: string;
         zip?: string;
     }
-    //nichandle.NichandleSmsNotification
-    // fullName: nichandle.NichandleSmsNotification.NichandleSmsNotification
+    // interface fullName: nichandle.NichandleSmsNotification.NichandleSmsNotification
     export interface NichandleSmsNotification {
         abuse: boolean;
         creationDate: string;
@@ -1153,38 +1053,34 @@ export namespace nichandle {
         status: nichandle.NotificationStatusEnum;
         updateDate?: string;
     }
-    //nichandle.NotificationStatusEnum
+    // type fullname: nichandle.NotificationStatusEnum
     export type NotificationStatusEnum = "ok" | "waitingForValidation"
-    //nichandle.OvhCompanyEnum
+    // type fullname: nichandle.OvhCompanyEnum
     export type OvhCompanyEnum = "kimsufi" | "ovh" | "soyoustart"
-    //nichandle.OvhSubsidiaryEnum
+    // type fullname: nichandle.OvhSubsidiaryEnum
     export type OvhSubsidiaryEnum = "ASIA" | "AU" | "CA" | "CZ" | "DE" | "ES" | "EU" | "FI" | "FR" | "GB" | "IE" | "IT" | "LT" | "MA" | "NL" | "PL" | "PT" | "QC" | "SG" | "SN" | "TN" | "US" | "WE" | "WS"
-    //nichandle.RequiredPaymentMethodEnum
+    // type fullname: nichandle.RequiredPaymentMethodEnum
     export type RequiredPaymentMethodEnum = "mandatoryForAutorenew" | "mandatoryForPostpaid" | "notMandatory"
-    //nichandle.RoleEnum
+    // type fullname: nichandle.RoleEnum
     export type RoleEnum = "REGULAR" | "ADMIN" | "UNPRIVILEGED"
-    //nichandle.StateEnum
+    // type fullname: nichandle.StateEnum
     export type StateEnum = "complete" | "incomplete"
-    //nichandle.SubAccount
-    // fullName: nichandle.SubAccount.SubAccount
+    // interface fullName: nichandle.SubAccount.SubAccount
     export interface SubAccount {
         creationDate: string;
         description?: string;
         id: number;
     }
-    //nichandle.SubAccountConsumerKey
-    // fullName: nichandle.SubAccountConsumerKey.SubAccountConsumerKey
+    // interface fullName: nichandle.SubAccountConsumerKey.SubAccountConsumerKey
     export interface SubAccountConsumerKey {
         consumerKey: string;
     }
-    //nichandle.Subscription
-    // fullName: nichandle.Subscription.Subscription
+    // interface fullName: nichandle.Subscription.Subscription
     export interface Subscription {
         registered?: boolean;
         type: string;
     }
-    //nichandle.User
-    // fullName: nichandle.User.User
+    // interface fullName: nichandle.User.User
     export interface User {
         creation: string;
         description: string;
@@ -1195,46 +1091,40 @@ export namespace nichandle {
         passwordLastUpdate: string;
         status: nichandle.UserStatus;
     }
-    //nichandle.UserStatus
+    // type fullname: nichandle.UserStatus
     export type UserStatus = "OK" | "DISABLED" | "PASSWORD_CHANGE_REQUIRED"
-    //nichandle.VipStatus
-    // fullName: nichandle.VipStatus.VipStatus
+    // interface fullName: nichandle.VipStatus.VipStatus
     export interface VipStatus {
         cloud: boolean;
         dedicated: boolean;
         telecom: boolean;
         web: boolean;
     }
-    //nichandle.VoucherStatus
-    // fullName: nichandle.VoucherStatus.VoucherStatus
+    // interface fullName: nichandle.VoucherStatus.VoucherStatus
     export interface VoucherStatus {
         validity: boolean;
     }
     export namespace accessRestriction {
-        //nichandle.accessRestriction.IpRestrictionRuleEnum
+        // type fullname: nichandle.accessRestriction.IpRestrictionRuleEnum
         export type IpRestrictionRuleEnum = "accept" | "deny"
-        //nichandle.accessRestriction.SOTPAccount
-        // fullName: nichandle.accessRestriction.SOTPAccount.SOTPAccount
+        // interface fullName: nichandle.accessRestriction.SOTPAccount.SOTPAccount
         export interface SOTPAccount {
             creationDate: string;
             lastUsedDate?: string;
             remaining: number;
             status: nichandle.accessRestriction.SOTPStatusEnum;
         }
-        //nichandle.accessRestriction.SOTPSecret
-        // fullName: nichandle.accessRestriction.SOTPSecret.SOTPSecret
+        // interface fullName: nichandle.accessRestriction.SOTPSecret.SOTPSecret
         export interface SOTPSecret {
             codes: string[];
         }
-        //nichandle.accessRestriction.SOTPStatusEnum
+        // type fullname: nichandle.accessRestriction.SOTPStatusEnum
         export type SOTPStatusEnum = "disabled" | "enabled" | "needCodeValidation" | "needEmailValidation"
-        //nichandle.accessRestriction.SOTPValidate
-        // fullName: nichandle.accessRestriction.SOTPValidate.SOTPValidate
+        // interface fullName: nichandle.accessRestriction.SOTPValidate.SOTPValidate
         export interface SOTPValidate {
             remainingCodes: number;
         }
-        //nichandle.accessRestriction.SmsAccount
-        // fullName: nichandle.accessRestriction.SmsAccount.SmsAccount
+        // interface fullName: nichandle.accessRestriction.SmsAccount.SmsAccount
         export interface SmsAccount {
             creationDate: string;
             description: string;
@@ -1243,21 +1133,18 @@ export namespace nichandle {
             phoneNumber: string;
             status: nichandle.accessRestriction.SmsStatusEnum;
         }
-        //nichandle.accessRestriction.SmsCode
-        // fullName: nichandle.accessRestriction.SmsCode.SmsCode
+        // interface fullName: nichandle.accessRestriction.SmsCode.SmsCode
         export interface SmsCode {
             challenge: string;
         }
-        //nichandle.accessRestriction.SmsSecret
-        // fullName: nichandle.accessRestriction.SmsSecret.SmsSecret
+        // interface fullName: nichandle.accessRestriction.SmsSecret.SmsSecret
         export interface SmsSecret {
             id: number;
             remainingTry: number;
         }
-        //nichandle.accessRestriction.SmsStatusEnum
+        // type fullname: nichandle.accessRestriction.SmsStatusEnum
         export type SmsStatusEnum = "disabled" | "enabled" | "needCodeValidation" | "needEmailValidation"
-        //nichandle.accessRestriction.TOTPAccount
-        // fullName: nichandle.accessRestriction.TOTPAccount.TOTPAccount
+        // interface fullName: nichandle.accessRestriction.TOTPAccount.TOTPAccount
         export interface TOTPAccount {
             creationDate: string;
             description: string;
@@ -1265,17 +1152,15 @@ export namespace nichandle {
             lastUsedDate?: string;
             status: nichandle.accessRestriction.TOTPStatusEnum;
         }
-        //nichandle.accessRestriction.TOTPSecret
-        // fullName: nichandle.accessRestriction.TOTPSecret.TOTPSecret
+        // interface fullName: nichandle.accessRestriction.TOTPSecret.TOTPSecret
         export interface TOTPSecret {
             id: number;
             qrcodeHelper: string;
             secret: string;
         }
-        //nichandle.accessRestriction.TOTPStatusEnum
+        // type fullname: nichandle.accessRestriction.TOTPStatusEnum
         export type TOTPStatusEnum = "disabled" | "enabled" | "needCodeValidation" | "needEmailValidation"
-        //nichandle.accessRestriction.U2FAccount
-        // fullName: nichandle.accessRestriction.U2FAccount.U2FAccount
+        // interface fullName: nichandle.accessRestriction.U2FAccount.U2FAccount
         export interface U2FAccount {
             creationDate: string;
             description: string;
@@ -1283,48 +1168,43 @@ export namespace nichandle {
             lastUsedDate?: string;
             status: nichandle.accessRestriction.U2FStatusEnum;
         }
-        //nichandle.accessRestriction.U2FRegisterChallenge
-        // fullName: nichandle.accessRestriction.U2FRegisterChallenge.U2FRegisterChallenge
+        // interface fullName: nichandle.accessRestriction.U2FRegisterChallenge.U2FRegisterChallenge
         export interface U2FRegisterChallenge {
             applicationId: string;
             id: number;
             request: nichandle.accessRestriction.U2FRegistrationRequest;
         }
-        //nichandle.accessRestriction.U2FRegistrationRequest
-        // fullName: nichandle.accessRestriction.U2FRegistrationRequest.U2FRegistrationRequest
+        // interface fullName: nichandle.accessRestriction.U2FRegistrationRequest.U2FRegistrationRequest
         export interface U2FRegistrationRequest {
             challenge: string;
             version: string;
         }
-        //nichandle.accessRestriction.U2FSignChallenge
-        // fullName: nichandle.accessRestriction.U2FSignChallenge.U2FSignChallenge
+        // interface fullName: nichandle.accessRestriction.U2FSignChallenge.U2FSignChallenge
         export interface U2FSignChallenge {
             applicationId: string;
             request: nichandle.accessRestriction.U2FSignRequest;
         }
-        //nichandle.accessRestriction.U2FSignRequest
-        // fullName: nichandle.accessRestriction.U2FSignRequest.U2FSignRequest
+        // interface fullName: nichandle.accessRestriction.U2FSignRequest.U2FSignRequest
         export interface U2FSignRequest {
             challenge: string;
             keyHandle: string;
             version: string;
         }
-        //nichandle.accessRestriction.U2FStatusEnum
+        // type fullname: nichandle.accessRestriction.U2FStatusEnum
         export type U2FStatusEnum = "disabled" | "enabled" | "needCodeValidation"
     }
     export namespace changeContact {
-        //nichandle.changeContact.ContactTypeEnum
+        // type fullname: nichandle.changeContact.ContactTypeEnum
         export type ContactTypeEnum = "contactAdmin" | "contactBilling" | "contactTech"
-        //nichandle.changeContact.TaskStateEnum
+        // type fullname: nichandle.changeContact.TaskStateEnum
         export type TaskStateEnum = "aborted" | "checkValidity" | "doing" | "done" | "error" | "expired" | "refused" | "todo" | "validatingByCustomers"
     }
     export namespace changeEmail {
-        //nichandle.changeEmail.TaskStateEnum
+        // type fullname: nichandle.changeEmail.TaskStateEnum
         export type TaskStateEnum = "aborted" | "done" | "refused" | "todo"
     }
     export namespace contactChange {
-        //nichandle.contactChange.Task
-        // fullName: nichandle.contactChange.Task.Task
+        // interface fullName: nichandle.contactChange.Task.Task
         export interface Task {
             askingAccount?: string;
             contactTypes: nichandle.changeContact.ContactTypeEnum[];
@@ -1338,8 +1218,7 @@ export namespace nichandle {
         }
     }
     export namespace document {
-        //nichandle.document.Document
-        // fullName: nichandle.document.Document.Document
+        // interface fullName: nichandle.document.Document.Document
         export interface Document {
             creationDate: string;
             expirationDate?: string;
@@ -1353,8 +1232,7 @@ export namespace nichandle {
         }
     }
     export namespace emailChange {
-        //nichandle.emailChange.Task
-        // fullName: nichandle.emailChange.Task.Task
+        // interface fullName: nichandle.emailChange.Task.Task
         export interface Task {
             dateDone?: string;
             dateRequest: string;
@@ -1363,22 +1241,19 @@ export namespace nichandle {
             state: nichandle.changeEmail.TaskStateEnum;
         }
     }
-    //nichandle.emailNotification
-    // fullName: nichandle.emailNotification.emailNotification
+    // interface fullName: nichandle.emailNotification.emailNotification
     export interface emailNotification {
         body: string;
         date: string;
         id: number;
         subject: string;
     }
-    //nichandle.ipxe
-    // fullName: nichandle.ipxe.ipxe
+    // interface fullName: nichandle.ipxe.ipxe
     export interface ipxe {
         name: string;
         script: string;
     }
-    //nichandle.sshKey
-    // fullName: nichandle.sshKey.sshKey
+    // interface fullName: nichandle.sshKey.sshKey
     export interface sshKey {
         default: boolean;
         key: string;
@@ -1386,10 +1261,9 @@ export namespace nichandle {
     }
 }
 export namespace order {
-    //order.CurrencyCodeEnum
+    // type fullname: order.CurrencyCodeEnum
     export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
-    //order.Price
-    // fullName: order.Price.Price
+    // interface fullName: order.Price.Price
     export interface Price {
         currencyCode: order.CurrencyCodeEnum;
         text: string;
@@ -1398,67 +1272,59 @@ export namespace order {
 }
 export namespace payment {
     export namespace method {
-        //payment.method.AvailablePaymentMethod
-        // fullName: payment.method.AvailablePaymentMethod.AvailablePaymentMethod
+        // interface fullName: payment.method.AvailablePaymentMethod.AvailablePaymentMethod
         export interface AvailablePaymentMethod {
             icon: payment.method.Icon;
-            integration: payment.method.IntegrationType;
+            integration: paymentMethodIntegrationType;
             oneshot: boolean;
             paymentType: string;
             registerable: boolean;
             registerableWithTransaction: boolean;
         }
-        //payment.method.Icon
-        // fullName: payment.method.Icon.Icon
+        // interface fullName: payment.method.Icon.Icon
         export interface Icon {
             data?: string;
             name?: string;
         }
-        //payment.method.IntegrationType
+        // type fullname: payment.method.IntegrationType
         export type IntegrationType = "DONE" | "IFRAME_VANTIV" | "REDIRECT"
     }
 }
 export namespace telephony {
-    //telephony.BillingSettings
-    // fullName: telephony.BillingSettings.BillingSettings
+    // interface fullName: telephony.BillingSettings.BillingSettings
     export interface BillingSettings {
         renewByBillingContact: boolean;
     }
-    //telephony.DefaultIpRestriction
-    // fullName: telephony.DefaultIpRestriction.DefaultIpRestriction
+    // interface fullName: telephony.DefaultIpRestriction.DefaultIpRestriction
     export interface DefaultIpRestriction {
         id: number;
         subnet: string;
         type: telephonyProtocolEnum;
     }
-    //telephony.LineDescriptionSettings
-    // fullName: telephony.LineDescriptionSettings.LineDescriptionSettings
+    // interface fullName: telephony.LineDescriptionSettings.LineDescriptionSettings
     export interface LineDescriptionSettings {
         displayOnBill: boolean;
         displayOnIncomingCall: boolean;
     }
-    //telephony.MailDomain2Service
-    // fullName: telephony.MailDomain2Service.MailDomain2Service
+    // interface fullName: telephony.MailDomain2Service.MailDomain2Service
     export interface MailDomain2Service {
         domain: string;
         id: number;
     }
-    //telephony.ProtocolEnum
+    // type fullname: telephony.ProtocolEnum
     export type ProtocolEnum = "mgcp" | "sip"
-    //telephony.Settings
-    // fullName: telephony.Settings.Settings
+    // interface fullName: telephony.Settings.Settings
     export interface Settings {
         billingPolicies: telephony.BillingSettings;
         lineDescriptionPolicies: telephony.LineDescriptionSettings;
     }
 }
 export namespace xander {
-    //xander.ContactFieldEnum
+    // type fullname: xander.ContactFieldEnum
     export type ContactFieldEnum = "address.city" | "address.country" | "address.line1" | "address.line2" | "address.line3" | "address.otherDetails" | "address.province" | "address.zip" | "birthCity" | "birthCountry" | "birthDay" | "birthZip" | "cellPhone" | "companyNationalIdentificationNumber" | "email" | "fax" | "firstName" | "gender" | "language" | "lastName" | "legalForm" | "nationalIdentificationNumber" | "nationality" | "organisationName" | "organisationType" | "phone" | "spareEmail" | "vat"
 }
 export namespace xdsl {
-    //xdsl.Setting
-    // fullName: xdsl.Setting.Setting
+    // interface fullName: xdsl.Setting.Setting
     export interface Setting {
         resellerFastModemShipping: boolean;
         resellerModemBasicConfig: boolean;
@@ -4076,4 +3942,5 @@ export interface Me{
 /**
  * classic Model
  */type orderPrice = order.Price;
+type paymentMethodIntegrationType = payment.method.IntegrationType;
 type telephonyProtocolEnum = telephony.ProtocolEnum;

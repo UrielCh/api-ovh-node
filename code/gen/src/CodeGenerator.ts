@@ -3,6 +3,7 @@ import { indentGen, protectModelField, className, protectJsonKey, rawRemapNode, 
 import { Parameter, Schema, FieldProp, API } from './schema';
 import { EOL } from 'os';
 
+
 let commonNSColision: { [key: string]: string } = {
     'order.Price': 'orderPrice',
     'zone.NamedResolutionFieldTypeEnum': 'zoneNamedResolutionFieldTypeEnum',
@@ -27,6 +28,7 @@ let commonNSColision: { [key: string]: string } = {
     'email.pro.ObjectStateEnum': 'emailproObjectStateEnum',
     'veeamEnterprise.TaskStateEnum': 'veeamEnterpriseTaskStateEnum',
     'telephony.ProtocolEnum': 'telephonyProtocolEnum',
+    'payment.method.IntegrationType': 'paymentMethodIntegrationType',
 }
 
 export class CodeGenerator {
@@ -34,11 +36,12 @@ export class CodeGenerator {
     gen: GenApiTypes;
     schema?: Schema;
     NSCollision = new Set<string>();
+    // allFullTypes = [] as string[];
+    // allFullInterface = [] as string[];
 
     constructor(api: string) {
         this.api = api;
         this.gen = new GenApiTypes();
-
     }
 
     async generate(): Promise<string> {
@@ -48,8 +51,27 @@ export class CodeGenerator {
         //let code = `import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';${EOL}${EOL}/**${EOL} * START API ${this.api} Models${EOL} */${EOL}`;
         let code = `import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';${EOL}${EOL}/**${EOL} * START API ${this.api} Models${EOL} */${EOL}`;
 
+        /*
+        let models = Object.keys(this.schema.models).sort((a, b) => a.length - b.length)
+        console.log(models);
+        for (let i = 0; i < models.length; i++)
+            for (let j = (i + 1); j < models.length; j++) {
+                let type = models[i];
+                let tested = models[j];
+                if (tested.endsWith(type)) {
+                    commonNSColision[type] = type.replace(/\./g, '');
+                    console.log(`colison ${tested} endWith ${type} => ${commonNSColision[type]}`)
+                }
+            }
+        */
 
         code = this.dumpModel(0, this.gen.models, code, '');
+
+        // look for colition
+        // this.allFullTypes.sort((a, b) => a.length - b.length)
+        // console.log(this.allFullTypes);
+
+
         //code += this.GenAllPathSet();
         code += `${EOL}/**${EOL} * END API ${this.api} Models${EOL} */${EOL}`;
 
@@ -126,15 +148,18 @@ export class CodeGenerator {
                 generic = `<${model.generics.join(", ")}>`
             }
             // code += `${ident0}/**${EOL}${ident0} * id:${model.id}${EOL}${ident0} * ${model.description}${EOL}${ident0} */${EOL}`;
-            code += `${ident0}//${fullNS}${EOL}`;
             if (model.enum) {
+                // this.allFullTypes.push(fullNS);
+                code += `${ident0}// type fullname: ${fullNS}${EOL}`;
                 if (model.enumType === 'long') // enum of number
                     code += `${ident0}export type ${name} = ${model.enum.join(' | ')}${EOL}`;
                 else // enum of string
                     code += `${ident0}export type ${name} = "${model.enum.join('" | "')}"${EOL}`;
             } else if (model.properties) {
+                code += `${ident0}// interface fullName: ${fullNS}.${name}${EOL}`;
+                // this.allFullTypes.push(`${fullNS}.${name}`);
                 let props = Object.keys(model.properties).sort();
-                code += `${ident0}// fullName: ${fullNS}.${name}${EOL}`;
+                // this.allFullInterface.push(name);
                 code += `${ident0}export interface ${name}${generic} {${EOL}`;
                 for (const pName of props) {
                     const prop = model.properties[pName];

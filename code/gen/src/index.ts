@@ -11,12 +11,11 @@ const PathToApiName = (api: string) => api.substring(1).replace(/\//g, '-').repl
 async function main() {
     let gen = new GenApiTypes();
     let apis = await gen.listSchemas()
-    // ['/me', '/domain']
-    // await fse.mkdir('dist');
     let allApi = apis.map(PathToApiName);
+    // All existing API
     let apiSet = new Set(allApi);
 
-    // debug gen a single API
+    // debug gen a aubset of API
     if (false)
         apis = apis.filter((api) => {
             //return ~api.indexOf('veeam')
@@ -41,25 +40,29 @@ async function main() {
             //    return true;
             return false;
         })
-
-
+    // DEBUG gen a single API
+    // apis = apis.filter((api) => '/me' == api)
+    /**
+     * Delete API removed API
+     */
     const packagesDir = path.join('..', '..', 'packages');
-    //let dir = path.join('..', '..', 'packages', flat);
     let oldApis = await fse.readdir(packagesDir)
-
     oldApis = oldApis.filter(name => !apiSet.has(name))
     oldApis.forEach(name => {
         console.log(`${name} can be remove`);
         rimraf.sync(path.join(packagesDir, name));
     })
-    console.log(`new APis:` + allApi.join(','));
+    /**
+     * 
+     */
+    console.log(`APis:` + allApi.join(','));
     await Promise.map(apis, async api => {
         let flat = PathToApiName(api);
         let dir = path.join('..', '..', 'packages', flat);
         await fse.ensureDir(dir);
         let fn = path.join(dir, 'index.ts');
         let cg = new CodeGenerator(api);
-        let code = await cg.generate()
+        let code = await cg.generate();
         console.log(`${api} saving ${fn}`);
         await fse.writeFile(fn, code);
 
@@ -116,8 +119,6 @@ async function main() {
                     "esModuleInterop": true,
                 }
             }, { spaces: 4 });
-
-
     }, { concurrency: 4 });
 }
 
