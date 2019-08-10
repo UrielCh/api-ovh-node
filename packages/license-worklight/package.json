@@ -1,7 +1,7 @@
 {
     "name": "@ovh-api/license-worklight",
     "description": "Add typing to to ovh api license-worklight",
-    "version": "2.0.4",
+    "version": "2.0.6",
     "typings": "index.d.ts",
     "license": "MIT",
     "author": "Uriel Chemouni <uchemouni@gmail.com>",
