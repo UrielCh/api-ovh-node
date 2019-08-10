@@ -37,7 +37,7 @@ export namespace hosting {
         // interface fullName: hosting.web.AvailableOfferStruct.AvailableOfferStruct
         export interface AvailableOfferStruct {
             offer: hosting.web.OfferEnum;
-            price: orderPrice;
+            price: order.Price;
         }
         // interface fullName: hosting.web.Capabilities.Capabilities
         export interface Capabilities {
@@ -1975,6 +1975,3 @@ export interface Hosting{
    */
   delete(path: '/hosting/web/{serviceName}/userLogs/{login}'): (params: {login: string, serviceName: string}) => Promise<string>;
 }
-/**
- * classic Model
- */type orderPrice = order.Price;

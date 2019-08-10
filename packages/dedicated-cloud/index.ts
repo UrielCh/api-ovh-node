@@ -20,14 +20,14 @@ export namespace dedicatedCloud {
         description?: string;
         network: string;
         networkAccessId: number;
-        state: dedicatedCloud.AllowedNetworkStateEnum;
+        state: dedicatedCloudAllowedNetworkStateEnum;
     }
     // type fullname: dedicatedCloud.AllowedNetworkStateEnum
     export type AllowedNetworkStateEnum = "allowed" | "toDelete" | "toUpdate"
     // interface fullName: dedicatedCloud.Backup.Backup
     export interface Backup {
         backupDurationInReport?: boolean;
-        backupOffer?: dedicatedCloud.backup.OfferTypeEnum;
+        backupOffer?: dedicatedCloudbackupOfferTypeEnum;
         backupSizeInReport?: boolean;
         diskSizeInReport?: boolean;
         encryption?: boolean;
@@ -36,7 +36,7 @@ export namespace dedicatedCloud {
         mailAddress?: string;
         restorePointInReport?: boolean;
         scheduleHour?: string;
-        state: dedicatedCloud.BackupStateEnum;
+        state: dedicatedCloudBackupStateEnum;
         vmwareVmId?: string;
     }
     // interface fullName: dedicatedCloud.BackupJob.BackupJob
@@ -44,9 +44,9 @@ export namespace dedicatedCloud {
         allocatedDisk?: number;
         backupDays?: dedicatedCloud.backup.BackupDaysEnum[];
         encryption?: boolean;
-        offerType?: dedicatedCloud.backup.OfferTypeEnum;
+        offerType?: dedicatedCloudbackupOfferTypeEnum;
         retentionTime?: number;
-        state: dedicatedCloud.backup.StateEnum;
+        state: dedicatedCloudbackupStateEnum;
         vmName?: string;
     }
     // type fullname: dedicatedCloud.BackupStateEnum
@@ -57,13 +57,13 @@ export namespace dedicatedCloud {
     export type BlockRegisterEnum = "arin" | "ripe"
     // interface fullName: dedicatedCloud.Capabilities.Capabilities
     export interface Capabilities {
-        addRessourceRightStatus: dedicatedCloud.capabilities.FeatureStatusEnum;
-        backupStatus: dedicatedCloud.capabilities.FeatureStatusEnum;
+        addRessourceRightStatus: dedicatedCloudcapabilitiesFeatureStatusEnum;
+        backupStatus: dedicatedCloudcapabilitiesFeatureStatusEnum;
         canAddUser: boolean;
-        fullAdminRoUserStatus: dedicatedCloud.capabilities.FeatureStatusEnum;
-        nexus1000vStatus: dedicatedCloud.capabilities.FeatureStatusEnum;
+        fullAdminRoUserStatus: dedicatedCloudcapabilitiesFeatureStatusEnum;
+        nexus1000vStatus: dedicatedCloudcapabilitiesFeatureStatusEnum;
         upgradable: boolean;
-        userAccessPolicyStatus: dedicatedCloud.capabilities.FeatureStatusEnum;
+        userAccessPolicyStatus: dedicatedCloudcapabilitiesFeatureStatusEnum;
     }
     // type fullname: dedicatedCloud.CommercialNameEnum
     export type CommercialNameEnum = "DC" | "DC-ANCIENT" | "DC-ANCIENT-HDS" | "DC-ANCIENT-HIPAA" | "DC-ANCIENT-NSX" | "DC-ANCIENT-NSX-VROPS" | "DC-ANCIENT-PCIDSS" | "DC-ANCIENT-UNKNOWN" | "DC-ANCIENT-VROPS" | "DC-HDS" | "DC-HIPAA" | "DC-LEGACY" | "DC-LEGACY-HDS" | "DC-LEGACY-HIPAA" | "DC-LEGACY-NSX" | "DC-LEGACY-NSX-VROPS" | "DC-LEGACY-PCIDSS" | "DC-LEGACY-UNKNOWN" | "DC-LEGACY-VROPS" | "DC-NSX" | "DC-NSX-VROPS" | "DC-PCIDSS" | "DC-UNKNOWN" | "DC-VROPS" | "SDDC" | "SDDC-HDS" | "SDDC-HIPAA" | "SDDC-LEGACY" | "SDDC-LEGACY-HDS" | "SDDC-LEGACY-HIPAA" | "SDDC-LEGACY-PCIDSS" | "SDDC-LEGACY-UNKNOWN" | "SDDC-LEGACY-VROPS" | "SDDC-LEGACY-VROPS-WITHOUT-NSX" | "SDDC-LEGACY-WITHOUT-NSX" | "SDDC-PCIDSS" | "SDDC-UNKNOWN" | "SDDC-VROPS" | "SDDC-VROPS-WITHOUT-NSX" | "SDDC-WITHOUT-NSX" | "UNKNOWN" | "UNKNOWN-HDS" | "UNKNOWN-HIPAA" | "UNKNOWN-NSX" | "UNKNOWN-NSX-VROPS" | "UNKNOWN-PCIDSS" | "UNKNOWN-UNKNOWN" | "UNKNOWN-VROPS"
@@ -77,7 +77,7 @@ export namespace dedicatedCloud {
     }
     // interface fullName: dedicatedCloud.Datacenter.Datacenter
     export interface Datacenter {
-        commercialName: dedicatedCloud.CommercialNameEnum;
+        commercialName: dedicatedCloudCommercialNameEnum;
         commercialRangeName: string;
         datacenterId: number;
         description: string;
@@ -88,7 +88,7 @@ export namespace dedicatedCloud {
     }
     // interface fullName: dedicatedCloud.Federation.Federation
     export interface Federation {
-        state: dedicatedCloud.option.StateEnum;
+        state: dedicatedCloudoptionStateEnum;
     }
     // interface fullName: dedicatedCloud.FederationAccessNetwork.FederationAccessNetwork
     export interface FederationAccessNetwork {
@@ -101,12 +101,12 @@ export namespace dedicatedCloud {
         ip: string;
         ldapTcpPort: number;
         sslThumbprint?: string;
-        state: dedicatedCloud.optionAccessNetwork.StateEnum;
+        state: dedicatedCloudoptionAccessNetworkStateEnum;
         username: string;
     }
     // interface fullName: dedicatedCloud.Filer.Filer
     export interface Filer {
-        billingType: dedicatedCloud.ressources.BillingTypeEnum;
+        billingType: dedicatedCloudressourcesBillingTypeEnum;
         filerId: number;
         fullProfile: string;
         name: string;
@@ -115,7 +115,7 @@ export namespace dedicatedCloud {
         spaceFree?: number;
         spaceProvisionned?: number;
         spaceUsed?: number;
-        state: dedicatedCloud.filer.StateEnum;
+        state: dedicatedCloudfilerStateEnum;
         vmTotal?: number;
     }
     // type fullname: dedicatedCloud.GenerationEnum
@@ -123,22 +123,22 @@ export namespace dedicatedCloud {
     // interface fullName: dedicatedCloud.Hcx.Hcx
     export interface Hcx {
         build?: string;
-        state: dedicatedCloud.option.StateEnum;
+        state: dedicatedCloudoptionStateEnum;
         version?: string;
     }
     // interface fullName: dedicatedCloud.Hds.Hds
     export interface Hds {
-        state: dedicatedCloud.option.StateEnum;
+        state: dedicatedCloudoptionStateEnum;
     }
     // interface fullName: dedicatedCloud.Hipaa.Hipaa
     export interface Hipaa {
-        state: dedicatedCloud.option.StateEnum;
+        state: dedicatedCloudoptionStateEnum;
     }
     // interface fullName: dedicatedCloud.Host.Host
     export interface Host {
-        billingType: dedicatedCloud.ressources.BillingTypeEnum;
+        billingType: dedicatedCloudressourcesBillingTypeEnum;
         clusterName?: string;
-        connectionState?: dedicatedCloud.hostSystemConnectionState;
+        connectionState?: dedicatedCloudhostSystemConnectionState;
         cpu: complexType.UnitAndValue<number>;
         cpuMax?: number;
         cpuMaxCore?: number;
@@ -153,7 +153,7 @@ export namespace dedicatedCloud {
         profileCode: string;
         rack: string;
         ram: complexType.UnitAndValue<number>;
-        state: dedicatedCloud.host.StateEnum;
+        state: dedicatedCloudhostStateEnum;
         uptime?: number;
         vmTotal?: number;
         vmVcpuTotal?: number;
@@ -188,7 +188,7 @@ export namespace dedicatedCloud {
         description: string;
         network: string;
         networkName: string;
-        register: dedicatedCloud.BlockRegisterEnum;
+        register: dedicatedCloudBlockRegisterEnum;
         vlanNumber: number;
     }
     // type fullname: dedicatedCloud.IpCountriesEnum
@@ -197,14 +197,14 @@ export namespace dedicatedCloud {
     export interface IpDetails {
         ip: string;
         reverse?: string;
-        usage: dedicatedCloud.ipUsageEnum;
+        usage: dedicatedCloudipUsageEnum;
         usageDetails?: string;
     }
     // type fullname: dedicatedCloud.ManagementInterfaceEnum
     export type ManagementInterfaceEnum = "azure" | "openstack" | "systemcenter" | "vcloud" | "vcsa" | "vsphere"
     // interface fullName: dedicatedCloud.Nsx.Nsx
     export interface Nsx {
-        state: dedicatedCloud.option.StateEnum;
+        state: dedicatedCloudoptionStateEnum;
         url?: string;
     }
     // interface fullName: dedicatedCloud.ObjectRight.ObjectRight
@@ -212,8 +212,8 @@ export namespace dedicatedCloud {
         name: string;
         objectRightId: number;
         propagate: boolean;
-        right: dedicatedCloud.right.RightEnum;
-        type: dedicatedCloud.right.UserObjectRightTypeEnum;
+        right: dedicatedCloudrightRightEnum;
+        type: dedicatedCloudrightUserObjectRightTypeEnum;
         vmwareObjectId: string;
     }
     // interface fullName: dedicatedCloud.Os.Os
@@ -235,14 +235,14 @@ export namespace dedicatedCloud {
     }
     // interface fullName: dedicatedCloud.PciDss.PciDss
     export interface PciDss {
-        state: dedicatedCloud.option.StateEnum;
+        state: dedicatedCloudoptionStateEnum;
     }
     // interface fullName: dedicatedCloud.PrivateGateway.PrivateGateway
     export interface PrivateGateway {
         customerIp?: string;
         customerNetmask?: string;
         customerPortGroup?: string;
-        state: dedicatedCloud.option.StateEnum;
+        state: dedicatedCloudoptionStateEnum;
     }
     // interface fullName: dedicatedCloud.RestorePoint.RestorePoint
     export interface RestorePoint {
@@ -250,16 +250,16 @@ export namespace dedicatedCloud {
         isCorrupted: boolean;
         restorePointId: number;
         restorePointSize: complexType.UnitAndValue<number>;
-        type?: dedicatedCloud.backup.BackupTypeEnum;
+        type?: dedicatedCloudbackupBackupTypeEnum;
     }
     // interface fullName: dedicatedCloud.Right.Right
     export interface Right {
         canAddRessource: boolean;
         datacenterId: number;
-        networkRole: dedicatedCloud.right.NetworkRoleEnum;
-        right: dedicatedCloud.right.RightEnum;
+        networkRole: dedicatedCloudrightNetworkRoleEnum;
+        right: dedicatedCloudrightRightEnum;
         rightId: number;
-        vmNetworkRole: dedicatedCloud.right.VmNetworkRoleEnum;
+        vmNetworkRole: dedicatedCloudrightVmNetworkRoleEnum;
     }
     // interface fullName: dedicatedCloud.Robot.Robot
     export interface Robot {
@@ -295,7 +295,7 @@ export namespace dedicatedCloud {
         orderId?: number;
         parentTaskId?: number;
         progress: number;
-        state: dedicatedCloud.TaskStateEnum;
+        state: dedicatedCloudTaskStateEnum;
         taskId: number;
         type: string;
         userId?: number;
@@ -307,7 +307,7 @@ export namespace dedicatedCloud {
     export type TwoFAWhitelistStateEnum = "enabled" | "enabling" | "error" | "migrating" | "removed" | "removing"
     // interface fullName: dedicatedCloud.User.User
     export interface User {
-        activationState?: dedicatedCloud.user.ActivationStateEnum;
+        activationState?: dedicatedClouduserActivationStateEnum;
         canManageIpFailOvers: boolean;
         canManageNetwork: boolean;
         canManageRights: boolean;
@@ -322,7 +322,7 @@ export namespace dedicatedCloud {
         nsxRight: boolean;
         phoneNumber?: string;
         receiveAlerts: boolean;
-        state: dedicatedCloud.user.StateEnum;
+        state: dedicatedClouduserStateEnum;
         userId: number;
     }
     // type fullname: dedicatedCloud.UserAccessPolicyEnum
@@ -331,7 +331,7 @@ export namespace dedicatedCloud {
     export type UserLogoutPolicyEnum = "first" | "last"
     // interface fullName: dedicatedCloud.VMEncryption.VMEncryption
     export interface VMEncryption {
-        state: dedicatedCloud.option.StateEnum;
+        state: dedicatedCloudoptionStateEnum;
     }
     // interface fullName: dedicatedCloud.VMEncryptionAccessNetwork.VMEncryptionAccessNetwork
     export interface VMEncryptionAccessNetwork {
@@ -340,7 +340,7 @@ export namespace dedicatedCloud {
         kmsId: number;
         kmsTcpPort: number;
         sslThumbprint: string;
-        state: dedicatedCloud.optionAccessNetwork.StateEnum;
+        state: dedicatedCloudoptionAccessNetworkStateEnum;
     }
     // interface fullName: dedicatedCloud.Vendor.Vendor
     export interface Vendor {
@@ -358,14 +358,14 @@ export namespace dedicatedCloud {
     export interface Vlan {
         name: string;
         routingRateLimit: string;
-        state: dedicatedCloud.vlan.StateEnum;
-        type: dedicatedCloud.vlan.TypeEnum;
+        state: dedicatedCloudvlanStateEnum;
+        type: dedicatedCloudvlanTypeEnum;
         vlanId: number;
         vlanNumber: number;
     }
     // interface fullName: dedicatedCloud.Vm.Vm
     export interface Vm {
-        backup?: dedicatedCloud.backup.Backup;
+        backup?: dedicatedCloudbackupBackup;
         cdroms?: dedicatedCloud.virtualMachineCdrom[];
         clusterName?: string;
         cpuMax?: number;
@@ -386,13 +386,13 @@ export namespace dedicatedCloud {
         netRx?: number;
         netTx?: number;
         networks?: dedicatedCloud.vmNetwork[];
-        powerState: dedicatedCloud.virtualMachinePowerState;
+        powerState: dedicatedCloudvirtualMachinePowerState;
         readLatency?: number;
         readPerSecond?: number;
         readRate?: number;
         roleFt?: string;
         snapshotNum?: number;
-        stateFt?: dedicatedCloud.virtualMachineFaultToleranceState;
+        stateFt?: dedicatedCloudvirtualMachineFaultToleranceState;
         vmId: number;
         vmwareTools?: string;
         vmwareToolsVersion?: string;
@@ -402,7 +402,7 @@ export namespace dedicatedCloud {
     }
     // interface fullName: dedicatedCloud.Vrops.Vrops
     export interface Vrops {
-        state: dedicatedCloud.option.StateEnum;
+        state: dedicatedCloudoptionStateEnum;
         url?: string;
     }
     // interface fullName: dedicatedCloud.ZpoolStockProfile.ZpoolStockProfile
@@ -422,10 +422,10 @@ export namespace dedicatedCloud {
             lastResult?: dedicatedCloud.backup.JobStateEnum;
             lastSuccessfulCreationTime?: string;
             lastSuccessfulDuration?: complexType.UnitAndValue<number>;
-            offerType?: dedicatedCloud.backup.OfferTypeEnum;
+            offerType?: dedicatedCloudbackupOfferTypeEnum;
             restorePoints?: dedicatedCloud.backup.RestorePoint[];
             retentionTime?: number;
-            state?: dedicatedCloud.backup.StateEnum;
+            state?: dedicatedCloudbackupStateEnum;
         }
         // type fullname: dedicatedCloud.backup.BackupDaysEnum
         export type BackupDaysEnum = "Friday" | "Monday" | "Saturday" | "Sunday" | "Thursday" | "Tuesday" | "Wednesday"
@@ -441,7 +441,7 @@ export namespace dedicatedCloud {
             isCorrupted?: boolean;
             restorePointId: number;
             size?: complexType.UnitAndValue<number>;
-            type?: dedicatedCloud.backup.BackupTypeEnum;
+            type?: dedicatedCloudbackupBackupTypeEnum;
         }
         // type fullname: dedicatedCloud.backup.StateEnum
         export type StateEnum = "deleting" | "delivered" | "disabled" | "disabling" | "enabling" | "error" | "migrating" | "pending" | "removed" | "stopping" | "toCreate" | "toDelete" | "toDisable" | "toEnable" | "toStop" | "unknown"
@@ -454,24 +454,24 @@ export namespace dedicatedCloud {
     export interface dedicatedCloud {
         advancedSecurity: boolean;
         bandwidth: string;
-        billingType: dedicatedCloud.BillingTypeEnum;
+        billingType: dedicatedCloudBillingTypeEnum;
         certifiedInterfaceUrl: string;
         commercialRange: string;
         description: string;
-        generation: dedicatedCloud.GenerationEnum;
+        generation: dedicatedCloudGenerationEnum;
         location: string;
-        managementInterface: dedicatedCloud.ManagementInterfaceEnum;
+        managementInterface: dedicatedCloudManagementInterfaceEnum;
         serviceName: string;
         servicePackName?: string;
         spla: boolean;
         sslV3?: boolean;
-        state: dedicatedCloud.StateEnum;
-        userAccessPolicy: dedicatedCloud.UserAccessPolicyEnum;
+        state: dedicatedCloudStateEnum;
+        userAccessPolicy: dedicatedCloudUserAccessPolicyEnum;
         userLimitConcurrentSession: number;
-        userLogoutPolicy: dedicatedCloud.UserLogoutPolicyEnum;
+        userLogoutPolicy: dedicatedCloudUserLogoutPolicyEnum;
         userSessionTimeout: number;
         vScopeUrl: string;
-        version: dedicatedCloud.Version;
+        version: dedicatedCloudVersion;
         webInterfaceUrl: string;
     }
     export namespace disasterRecovery {
@@ -489,7 +489,7 @@ export namespace dedicatedCloud {
             drpType?: dedicatedCloud.disasterRecovery.DrpTypeEnum;
             localSiteInformation?: dedicatedCloud.disasterRecovery.LocalSiteDetails;
             remoteSiteInformation?: dedicatedCloud.disasterRecovery.RemoteSiteDetails;
-            state: dedicatedCloud.StateEnum;
+            state: dedicatedCloudStateEnum;
             systemVersion: string;
         }
         // interface fullName: dedicatedCloud.disasterRecovery.RemoteSiteDetails.RemoteSiteDetails
@@ -502,7 +502,7 @@ export namespace dedicatedCloud {
             remoteZvmInternalIp?: string;
             role?: dedicatedCloud.disasterRecovery.SiteRoleEnum;
             serviceName?: string;
-            state?: dedicatedCloud.StateEnum;
+            state?: dedicatedCloudStateEnum;
             type: dedicatedCloud.disasterRecovery.SiteTypeEnum;
             vpnConfigState?: dedicatedCloud.disasterRecovery.VpnConfigStateEnum;
             zertoVersion?: string;
@@ -587,12 +587,12 @@ export namespace dedicatedCloud {
     }
     // interface fullName: dedicatedCloud.resourceNewPricesEntry.resourceNewPricesEntry
     export interface resourceNewPricesEntry {
-        billingType: dedicatedCloud.ressources.BillingTypeEnum;
+        billingType: dedicatedCloudressourcesBillingTypeEnum;
         changed: boolean;
         name: string;
-        newPrice: orderPrice;
-        oldPrice: orderPrice;
-        resourceType: dedicatedCloud.ressources.ResourceTypeEnum;
+        newPrice: order.Price;
+        oldPrice: order.Price;
+        resourceType: dedicatedCloudressourcesResourceTypeEnum;
     }
     export namespace ressources {
         // type fullname: dedicatedCloud.ressources.BillingTypeEnum
@@ -616,15 +616,15 @@ export namespace dedicatedCloud {
     export type servicePackStateEnum = "activating" | "active" | "error" | "waitingForCustomer"
     // interface fullName: dedicatedCloud.servicePackStatus.servicePackStatus
     export interface servicePackStatus {
-        name: dedicatedCloud.servicePackEnum;
-        state: dedicatedCloud.servicePackStateEnum;
+        name: dedicatedCloudservicePackEnum;
+        state: dedicatedCloudservicePackStateEnum;
     }
     // interface fullName: dedicatedCloud.twoFAWhitelist.twoFAWhitelist
     export interface twoFAWhitelist {
         description: string;
         id: number;
         ip: string;
-        state: dedicatedCloud.TwoFAWhitelistStateEnum;
+        state: dedicatedCloudTwoFAWhitelistStateEnum;
     }
     export namespace user {
         // type fullname: dedicatedCloud.user.ActivationStateEnum
@@ -672,13 +672,13 @@ export namespace dedicatedCloud {
     // interface fullName: dedicatedCloud.vmNetwork.vmNetwork
     export interface vmNetwork {
         allowGuestControl: boolean;
-        backing: dedicatedCloud.vmNetworkBacking;
+        backing: dedicatedCloudvmNetworkBacking;
         connected: boolean;
         controler: string;
         label: string;
         macAddress: string;
         startConnected: boolean;
-        status: dedicatedCloud.virtualDeviceConnectInfoStatus;
+        status: dedicatedCloudvirtualDeviceConnectInfoStatus;
     }
     // interface fullName: dedicatedCloud.vmNetworkBacking.vmNetworkBacking
     export interface vmNetworkBacking {
@@ -686,7 +686,7 @@ export namespace dedicatedCloud {
         portGroupKey?: string;
         portKey?: string;
         switchUuid?: string;
-        type: dedicatedCloud.vmNetworkBackingTypeEnum;
+        type: dedicatedCloudvmNetworkBackingTypeEnum;
         useAutoDetect?: boolean;
         valueMoref?: string;
     }
@@ -825,7 +825,7 @@ export interface DedicatedCloud{
         // GET /dedicatedCloud/{serviceName}
         $get(): Promise<dedicatedCloud.dedicatedCloud>;
         // PUT /dedicatedCloud/{serviceName}
-        $put(params?: {advancedSecurity?: boolean, bandwidth?: string, billingType?: dedicatedCloud.BillingTypeEnum, certifiedInterfaceUrl?: string, commercialRange?: string, description?: string, generation?: dedicatedCloud.GenerationEnum, location?: string, managementInterface?: dedicatedCloud.ManagementInterfaceEnum, serviceName?: string, servicePackName?: string, spla?: boolean, sslV3?: boolean, state?: dedicatedCloud.StateEnum, userAccessPolicy?: dedicatedCloud.UserAccessPolicyEnum, userLimitConcurrentSession?: number, userLogoutPolicy?: dedicatedCloud.UserLogoutPolicyEnum, userSessionTimeout?: number, vScopeUrl?: string, version?: dedicatedCloud.Version, webInterfaceUrl?: string}): Promise<dedicatedCloud.Task>;
+        $put(params?: {advancedSecurity?: boolean, bandwidth?: string, billingType?: dedicatedCloudBillingTypeEnum, certifiedInterfaceUrl?: string, commercialRange?: string, description?: string, generation?: dedicatedCloudGenerationEnum, location?: string, managementInterface?: dedicatedCloudManagementInterfaceEnum, serviceName?: string, servicePackName?: string, spla?: boolean, sslV3?: boolean, state?: dedicatedCloudStateEnum, userAccessPolicy?: dedicatedCloudUserAccessPolicyEnum, userLimitConcurrentSession?: number, userLogoutPolicy?: dedicatedCloudUserLogoutPolicyEnum, userSessionTimeout?: number, vScopeUrl?: string, version?: dedicatedCloudVersion, webInterfaceUrl?: string}): Promise<dedicatedCloud.Task>;
         allowedNetwork: {
             // GET /dedicatedCloud/{serviceName}/allowedNetwork
             $get(): Promise<number[]>;
@@ -837,10 +837,10 @@ export interface DedicatedCloud{
                 // GET /dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}
                 $get(): Promise<dedicatedCloud.AllowedNetwork>;
                 // PUT /dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}
-                $put(params?: {description?: string, network?: string, networkAccessId?: number, state?: dedicatedCloud.AllowedNetworkStateEnum}): Promise<dedicatedCloud.Task>;
+                $put(params?: {description?: string, network?: string, networkAccessId?: number, state?: dedicatedCloudAllowedNetworkStateEnum}): Promise<dedicatedCloud.Task>;
                 task: {
                     // GET /dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task
-                    $get(params?: {name?: string, state?: dedicatedCloud.TaskStateEnum}): Promise<number[]>;
+                    $get(params?: {name?: string, state?: dedicatedCloudTaskStateEnum}): Promise<number[]>;
                     $(taskId: number): {
                         // GET /dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task/{taskId}
                         $get(): Promise<dedicatedCloud.Task>;
@@ -866,7 +866,7 @@ export interface DedicatedCloud{
         }
         changeProperties: {
             // POST /dedicatedCloud/{serviceName}/changeProperties
-            $post(params?: {description?: string, sslV3?: boolean, userAccessPolicy?: dedicatedCloud.UserAccessPolicyEnum, userLimitConcurrentSession?: number, userLogoutPolicy?: dedicatedCloud.UserLogoutPolicyEnum, userSessionTimeout?: number}): Promise<dedicatedCloud.Task>;
+            $post(params?: {description?: string, sslV3?: boolean, userAccessPolicy?: dedicatedCloudUserAccessPolicyEnum, userLimitConcurrentSession?: number, userLogoutPolicy?: dedicatedCloudUserLogoutPolicyEnum, userSessionTimeout?: number}): Promise<dedicatedCloud.Task>;
         }
         commercialRange: {
             compliance: {
@@ -893,13 +893,13 @@ export interface DedicatedCloud{
                 // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}
                 $get(): Promise<dedicatedCloud.Datacenter>;
                 // PUT /dedicatedCloud/{serviceName}/datacenter/{datacenterId}
-                $put(params?: {commercialName?: dedicatedCloud.CommercialNameEnum, commercialRangeName?: string, datacenterId?: number, description?: string, horizonViewName?: string, isRemovable?: boolean, name?: string, version?: string}): Promise<dedicatedCloud.Task>;
+                $put(params?: {commercialName?: dedicatedCloudCommercialNameEnum, commercialRangeName?: string, datacenterId?: number, description?: string, horizonViewName?: string, isRemovable?: boolean, name?: string, version?: string}): Promise<dedicatedCloud.Task>;
                 backup: {
                     // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup
                     $get(): Promise<dedicatedCloud.Backup>;
                     changeProperties: {
                         // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/changeProperties
-                        $post(params: {backupDurationInReport: boolean, backupOffer: dedicatedCloud.backup.OfferTypeEnum, backupSizeInReport: boolean, diskSizeInReport: boolean, fullDayInReport: boolean, mailAddress?: string, restorePointInReport: boolean, scheduleHour?: string}): Promise<dedicatedCloud.Task>;
+                        $post(params: {backupDurationInReport: boolean, backupOffer: dedicatedCloudbackupOfferTypeEnum, backupSizeInReport: boolean, diskSizeInReport: boolean, fullDayInReport: boolean, mailAddress?: string, restorePointInReport: boolean, scheduleHour?: string}): Promise<dedicatedCloud.Task>;
                     }
                     disable: {
                         // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/disable
@@ -907,7 +907,7 @@ export interface DedicatedCloud{
                     }
                     enable: {
                         // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/enable
-                        $post(params?: {backupOffer?: dedicatedCloud.backup.OfferTypeEnum}): Promise<dedicatedCloud.Task>;
+                        $post(params?: {backupOffer?: dedicatedCloudbackupOfferTypeEnum}): Promise<dedicatedCloud.Task>;
                     }
                 }
                 disasterRecovery: {
@@ -964,7 +964,7 @@ export interface DedicatedCloud{
                         }
                         task: {
                             // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task
-                            $get(params?: {name?: string, state?: dedicatedCloud.TaskStateEnum}): Promise<number[]>;
+                            $get(params?: {name?: string, state?: dedicatedCloudTaskStateEnum}): Promise<number[]>;
                             $(taskId: number): {
                                 // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task/{taskId}
                                 $get(): Promise<dedicatedCloud.Task>;
@@ -1000,7 +1000,7 @@ export interface DedicatedCloud{
                         }
                         task: {
                             // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task
-                            $get(params?: {name?: string, state?: dedicatedCloud.TaskStateEnum}): Promise<number[]>;
+                            $get(params?: {name?: string, state?: dedicatedCloudTaskStateEnum}): Promise<number[]>;
                             $(taskId: number): {
                                 // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task/{taskId}
                                 $get(): Promise<dedicatedCloud.Task>;
@@ -1046,7 +1046,7 @@ export interface DedicatedCloud{
                 }
                 task: {
                     // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task
-                    $get(params?: {name?: string, state?: dedicatedCloud.TaskStateEnum}): Promise<number[]>;
+                    $get(params?: {name?: string, state?: dedicatedCloudTaskStateEnum}): Promise<number[]>;
                     $(taskId: number): {
                         // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task/{taskId}
                         $get(): Promise<dedicatedCloud.Task>;
@@ -1152,7 +1152,7 @@ export interface DedicatedCloud{
                 }
                 task: {
                     // GET /dedicatedCloud/{serviceName}/filer/{filerId}/task
-                    $get(params?: {name?: string, state?: dedicatedCloud.TaskStateEnum}): Promise<number[]>;
+                    $get(params?: {name?: string, state?: dedicatedCloudTaskStateEnum}): Promise<number[]>;
                     $(taskId: number): {
                         // GET /dedicatedCloud/{serviceName}/filer/{filerId}/task/{taskId}
                         $get(): Promise<dedicatedCloud.Task>;
@@ -1170,7 +1170,7 @@ export interface DedicatedCloud{
         }
         globalTasks: {
             // GET /dedicatedCloud/{serviceName}/globalTasks
-            $get(params?: {datacenterId?: number, endDate_from?: string, endDate_to?: string, executionDate_from?: string, executionDate_to?: string, filerId?: number, hostId?: number, lastModificationDate_from?: string, lastModificationDate_to?: string, name?: string, networkAccessId?: number, orderId?: number, parentTaskId?: number, state?: dedicatedCloud.TaskStateEnum[], userId?: number, vlanId?: number}): Promise<number[]>;
+            $get(params?: {datacenterId?: number, endDate_from?: string, endDate_to?: string, executionDate_from?: string, executionDate_to?: string, filerId?: number, hostId?: number, lastModificationDate_from?: string, lastModificationDate_to?: string, name?: string, networkAccessId?: number, orderId?: number, parentTaskId?: number, state?: dedicatedCloudTaskStateEnum[], userId?: number, vlanId?: number}): Promise<number[]>;
         }
         hcx: {
             // GET /dedicatedCloud/{serviceName}/hcx
@@ -1244,7 +1244,7 @@ export interface DedicatedCloud{
                 }
                 task: {
                     // GET /dedicatedCloud/{serviceName}/ip/{network}/task
-                    $get(params?: {name?: string, state?: dedicatedCloud.TaskStateEnum}): Promise<number[]>;
+                    $get(params?: {name?: string, state?: dedicatedCloudTaskStateEnum}): Promise<number[]>;
                     $(taskId: number): {
                         // GET /dedicatedCloud/{serviceName}/ip/{network}/task/{taskId}
                         $get(): Promise<dedicatedCloud.Task>;
@@ -1348,7 +1348,7 @@ export interface DedicatedCloud{
         }
         task: {
             // GET /dedicatedCloud/{serviceName}/task
-            $get(params?: {name?: string, state?: dedicatedCloud.TaskStateEnum}): Promise<number[]>;
+            $get(params?: {name?: string, state?: dedicatedCloudTaskStateEnum}): Promise<number[]>;
             $(taskId: number): {
                 // GET /dedicatedCloud/{serviceName}/task/{taskId}
                 $get(): Promise<dedicatedCloud.Task>;
@@ -1390,7 +1390,7 @@ export interface DedicatedCloud{
             // GET /dedicatedCloud/{serviceName}/user
             $get(params?: {name?: string}): Promise<number[]>;
             // POST /dedicatedCloud/{serviceName}/user
-            $post(params: {canAddRessource?: boolean, canManageRights?: boolean, email?: string, expirationDate?: string, firstName?: string, lastName?: string, name: string, networkRole?: dedicatedCloud.right.NetworkRoleEnum, nsxRight?: boolean, password?: string, phoneNumber?: string, receiveAlerts?: boolean, right?: dedicatedCloud.right.RightEnum, tokenValidator?: boolean, vmNetworkRole?: dedicatedCloud.right.VmNetworkRoleEnum}): Promise<dedicatedCloud.Task>;
+            $post(params: {canAddRessource?: boolean, canManageRights?: boolean, email?: string, expirationDate?: string, firstName?: string, lastName?: string, name: string, networkRole?: dedicatedCloudrightNetworkRoleEnum, nsxRight?: boolean, password?: string, phoneNumber?: string, receiveAlerts?: boolean, right?: dedicatedCloudrightRightEnum, tokenValidator?: boolean, vmNetworkRole?: dedicatedCloudrightVmNetworkRoleEnum}): Promise<dedicatedCloud.Task>;
             $(userId: number): {
                 // DELETE /dedicatedCloud/{serviceName}/user/{userId}
                 $delete(): Promise<dedicatedCloud.Task>;
@@ -1420,7 +1420,7 @@ export interface DedicatedCloud{
                     // GET /dedicatedCloud/{serviceName}/user/{userId}/objectRight
                     $get(): Promise<number[]>;
                     // POST /dedicatedCloud/{serviceName}/user/{userId}/objectRight
-                    $post(params: {propagate?: boolean, right: dedicatedCloud.right.RightEnum, type: dedicatedCloud.right.UserObjectRightTypeEnum, vmwareObjectId: string}): Promise<dedicatedCloud.Task>;
+                    $post(params: {propagate?: boolean, right: dedicatedCloudrightRightEnum, type: dedicatedCloudrightUserObjectRightTypeEnum, vmwareObjectId: string}): Promise<dedicatedCloud.Task>;
                     $(objectRightId: number): {
                         // DELETE /dedicatedCloud/{serviceName}/user/{userId}/objectRight/{objectRightId}
                         $delete(): Promise<dedicatedCloud.Task>;
@@ -1435,12 +1435,12 @@ export interface DedicatedCloud{
                         // GET /dedicatedCloud/{serviceName}/user/{userId}/right/{rightId}
                         $get(): Promise<dedicatedCloud.Right>;
                         // PUT /dedicatedCloud/{serviceName}/user/{userId}/right/{rightId}
-                        $put(params?: {canAddRessource?: boolean, datacenterId?: number, networkRole?: dedicatedCloud.right.NetworkRoleEnum, right?: dedicatedCloud.right.RightEnum, rightId?: number, vmNetworkRole?: dedicatedCloud.right.VmNetworkRoleEnum}): Promise<dedicatedCloud.Task>;
+                        $put(params?: {canAddRessource?: boolean, datacenterId?: number, networkRole?: dedicatedCloudrightNetworkRoleEnum, right?: dedicatedCloudrightRightEnum, rightId?: number, vmNetworkRole?: dedicatedCloudrightVmNetworkRoleEnum}): Promise<dedicatedCloud.Task>;
                     };
                 }
                 task: {
                     // GET /dedicatedCloud/{serviceName}/user/{userId}/task
-                    $get(params?: {name?: string, state?: dedicatedCloud.TaskStateEnum}): Promise<number[]>;
+                    $get(params?: {name?: string, state?: dedicatedCloudTaskStateEnum}): Promise<number[]>;
                     $(taskId: number): {
                         // GET /dedicatedCloud/{serviceName}/user/{userId}/task/{taskId}
                         $get(): Promise<dedicatedCloud.Task>;
@@ -1552,7 +1552,7 @@ export interface DedicatedCloud{
    * List the dedicatedCloud.Task objects
    * Tasks associated with this allowed network
    */
-  get(path: '/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task'): (params: {networkAccessId: number, serviceName: string, name?: string, state?: dedicatedCloud.TaskStateEnum}) => Promise<number[]>;
+  get(path: '/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task'): (params: {networkAccessId: number, serviceName: string, name?: string, state?: dedicatedCloudTaskStateEnum}) => Promise<number[]>;
   /**
    * Operation on a Private Cloud component
    * Get this object properties
@@ -1612,7 +1612,7 @@ export interface DedicatedCloud{
    * List the dedicatedCloud.Task objects
    * Tasks associated with this Filer
    */
-  get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task'): (params: {datacenterId: number, filerId: number, serviceName: string, name?: string, state?: dedicatedCloud.TaskStateEnum}) => Promise<number[]>;
+  get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task'): (params: {datacenterId: number, filerId: number, serviceName: string, name?: string, state?: dedicatedCloudTaskStateEnum}) => Promise<number[]>;
   /**
    * Operation on a Private Cloud component
    * Get this object properties
@@ -1637,7 +1637,7 @@ export interface DedicatedCloud{
    * List the dedicatedCloud.Task objects
    * Tasks associated with this Host
    */
-  get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task'): (params: {datacenterId: number, hostId: number, serviceName: string, name?: string, state?: dedicatedCloud.TaskStateEnum}) => Promise<number[]>;
+  get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task'): (params: {datacenterId: number, hostId: number, serviceName: string, name?: string, state?: dedicatedCloudTaskStateEnum}) => Promise<number[]>;
   /**
    * Operation on a Private Cloud component
    * Get this object properties
@@ -1662,7 +1662,7 @@ export interface DedicatedCloud{
    * List the dedicatedCloud.Task objects
    * Tasks associated with this Datacenter
    */
-  get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task'): (params: {datacenterId: number, serviceName: string, name?: string, state?: dedicatedCloud.TaskStateEnum}) => Promise<number[]>;
+  get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task'): (params: {datacenterId: number, serviceName: string, name?: string, state?: dedicatedCloudTaskStateEnum}) => Promise<number[]>;
   /**
    * Operation on a Private Cloud component
    * Get this object properties
@@ -1727,7 +1727,7 @@ export interface DedicatedCloud{
    * List the dedicatedCloud.Task objects
    * Tasks associated with this Filer
    */
-  get(path: '/dedicatedCloud/{serviceName}/filer/{filerId}/task'): (params: {filerId: number, serviceName: string, name?: string, state?: dedicatedCloud.TaskStateEnum}) => Promise<number[]>;
+  get(path: '/dedicatedCloud/{serviceName}/filer/{filerId}/task'): (params: {filerId: number, serviceName: string, name?: string, state?: dedicatedCloudTaskStateEnum}) => Promise<number[]>;
   /**
    * Operation on a Private Cloud component
    * Get this object properties
@@ -1737,7 +1737,7 @@ export interface DedicatedCloud{
    * globalTasks operations
    * Get filtered tasks associated with this Private Cloud
    */
-  get(path: '/dedicatedCloud/{serviceName}/globalTasks'): (params: {serviceName: string, datacenterId?: number, endDate_from?: string, endDate_to?: string, executionDate_from?: string, executionDate_to?: string, filerId?: number, hostId?: number, lastModificationDate_from?: string, lastModificationDate_to?: string, name?: string, networkAccessId?: number, orderId?: number, parentTaskId?: number, state?: dedicatedCloud.TaskStateEnum[], userId?: number, vlanId?: number}) => Promise<number[]>;
+  get(path: '/dedicatedCloud/{serviceName}/globalTasks'): (params: {serviceName: string, datacenterId?: number, endDate_from?: string, endDate_to?: string, executionDate_from?: string, executionDate_to?: string, filerId?: number, hostId?: number, lastModificationDate_from?: string, lastModificationDate_to?: string, name?: string, networkAccessId?: number, orderId?: number, parentTaskId?: number, state?: dedicatedCloudTaskStateEnum[], userId?: number, vlanId?: number}) => Promise<number[]>;
   /**
    * Private Cloud VMware Hybrid Cloud Extension option
    * Get this object properties
@@ -1802,7 +1802,7 @@ export interface DedicatedCloud{
    * List the dedicatedCloud.Task objects
    * Tasks associated with this IP Block
    */
-  get(path: '/dedicatedCloud/{serviceName}/ip/{network}/task'): (params: {network: string, serviceName: string, name?: string, state?: dedicatedCloud.TaskStateEnum}) => Promise<number[]>;
+  get(path: '/dedicatedCloud/{serviceName}/ip/{network}/task'): (params: {network: string, serviceName: string, name?: string, state?: dedicatedCloudTaskStateEnum}) => Promise<number[]>;
   /**
    * Operation on a Private Cloud component
    * Get this object properties
@@ -1887,7 +1887,7 @@ export interface DedicatedCloud{
    * List the dedicatedCloud.Task objects
    * Tasks associated with this Private Cloud
    */
-  get(path: '/dedicatedCloud/{serviceName}/task'): (params: {serviceName: string, name?: string, state?: dedicatedCloud.TaskStateEnum}) => Promise<number[]>;
+  get(path: '/dedicatedCloud/{serviceName}/task'): (params: {serviceName: string, name?: string, state?: dedicatedCloudTaskStateEnum}) => Promise<number[]>;
   /**
    * Operation on a Private Cloud component
    * Get this object properties
@@ -1937,7 +1937,7 @@ export interface DedicatedCloud{
    * List the dedicatedCloud.Task objects
    * Tasks associated with this User
    */
-  get(path: '/dedicatedCloud/{serviceName}/user/{userId}/task'): (params: {serviceName: string, userId: number, name?: string, state?: dedicatedCloud.TaskStateEnum}) => Promise<number[]>;
+  get(path: '/dedicatedCloud/{serviceName}/user/{userId}/task'): (params: {serviceName: string, userId: number, name?: string, state?: dedicatedCloudTaskStateEnum}) => Promise<number[]>;
   /**
    * Operation on a Private Cloud component
    * Get this object properties
@@ -2057,17 +2057,17 @@ export interface DedicatedCloud{
    * Private Cloud
    * Alter this object properties
    */
-  put(path: '/dedicatedCloud/{serviceName}'): (params: {serviceName: string, advancedSecurity?: boolean, bandwidth?: string, billingType?: dedicatedCloud.BillingTypeEnum, certifiedInterfaceUrl?: string, commercialRange?: string, description?: string, generation?: dedicatedCloud.GenerationEnum, location?: string, managementInterface?: dedicatedCloud.ManagementInterfaceEnum, servicePackName?: string, spla?: boolean, sslV3?: boolean, state?: dedicatedCloud.StateEnum, userAccessPolicy?: dedicatedCloud.UserAccessPolicyEnum, userLimitConcurrentSession?: number, userLogoutPolicy?: dedicatedCloud.UserLogoutPolicyEnum, userSessionTimeout?: number, vScopeUrl?: string, version?: dedicatedCloud.Version, webInterfaceUrl?: string}) => Promise<dedicatedCloud.Task>;
+  put(path: '/dedicatedCloud/{serviceName}'): (params: {serviceName: string, advancedSecurity?: boolean, bandwidth?: string, billingType?: dedicatedCloudBillingTypeEnum, certifiedInterfaceUrl?: string, commercialRange?: string, description?: string, generation?: dedicatedCloudGenerationEnum, location?: string, managementInterface?: dedicatedCloudManagementInterfaceEnum, servicePackName?: string, spla?: boolean, sslV3?: boolean, state?: dedicatedCloudStateEnum, userAccessPolicy?: dedicatedCloudUserAccessPolicyEnum, userLimitConcurrentSession?: number, userLogoutPolicy?: dedicatedCloudUserLogoutPolicyEnum, userSessionTimeout?: number, vScopeUrl?: string, version?: dedicatedCloudVersion, webInterfaceUrl?: string}) => Promise<dedicatedCloud.Task>;
   /**
    * Network allowed to connect to the Private Cloud management interface
    * Alter this object properties
    */
-  put(path: '/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}'): (params: {networkAccessId: number, serviceName: string, description?: string, network?: string, state?: dedicatedCloud.AllowedNetworkStateEnum}) => Promise<dedicatedCloud.Task>;
+  put(path: '/dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}'): (params: {networkAccessId: number, serviceName: string, description?: string, network?: string, state?: dedicatedCloudAllowedNetworkStateEnum}) => Promise<dedicatedCloud.Task>;
   /**
    * Private Cloud Datacenter
    * Alter this object properties
    */
-  put(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}'): (params: {datacenterId: number, serviceName: string, commercialName?: dedicatedCloud.CommercialNameEnum, commercialRangeName?: string, description?: string, horizonViewName?: string, isRemovable?: boolean, name?: string, version?: string}) => Promise<dedicatedCloud.Task>;
+  put(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}'): (params: {datacenterId: number, serviceName: string, commercialName?: dedicatedCloudCommercialNameEnum, commercialRangeName?: string, description?: string, horizonViewName?: string, isRemovable?: boolean, name?: string, version?: string}) => Promise<dedicatedCloud.Task>;
   /**
    * Details about a Service
    * Alter this object properties
@@ -2077,7 +2077,7 @@ export interface DedicatedCloud{
    * Private Cloud User right
    * Alter this object properties
    */
-  put(path: '/dedicatedCloud/{serviceName}/user/{userId}/right/{rightId}'): (params: {rightId: number, serviceName: string, userId: number, canAddRessource?: boolean, datacenterId?: number, networkRole?: dedicatedCloud.right.NetworkRoleEnum, right?: dedicatedCloud.right.RightEnum, vmNetworkRole?: dedicatedCloud.right.VmNetworkRoleEnum}) => Promise<dedicatedCloud.Task>;
+  put(path: '/dedicatedCloud/{serviceName}/user/{userId}/right/{rightId}'): (params: {rightId: number, serviceName: string, userId: number, canAddRessource?: boolean, datacenterId?: number, networkRole?: dedicatedCloudrightNetworkRoleEnum, right?: dedicatedCloudrightRightEnum, vmNetworkRole?: dedicatedCloudrightVmNetworkRoleEnum}) => Promise<dedicatedCloud.Task>;
   /**
    * List the dedicatedCloud.AllowedNetwork objects
    * Create a new Allowed network for your dedicatedCloud
@@ -2102,7 +2102,7 @@ export interface DedicatedCloud{
    * changeProperties operations
    * Update this Private Cloud properties.
    */
-  post(path: '/dedicatedCloud/{serviceName}/changeProperties'): (params: {serviceName: string, description?: string, sslV3?: boolean, userAccessPolicy?: dedicatedCloud.UserAccessPolicyEnum, userLimitConcurrentSession?: number, userLogoutPolicy?: dedicatedCloud.UserLogoutPolicyEnum, userSessionTimeout?: number}) => Promise<dedicatedCloud.Task>;
+  post(path: '/dedicatedCloud/{serviceName}/changeProperties'): (params: {serviceName: string, description?: string, sslV3?: boolean, userAccessPolicy?: dedicatedCloudUserAccessPolicyEnum, userLimitConcurrentSession?: number, userLogoutPolicy?: dedicatedCloudUserLogoutPolicyEnum, userSessionTimeout?: number}) => Promise<dedicatedCloud.Task>;
   /**
    * Confirm termination of your service
    * Confirm termination of your service
@@ -2117,7 +2117,7 @@ export interface DedicatedCloud{
    * changeProperties operations
    * Edit the backup on a Private Cloud
    */
-  post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/changeProperties'): (params: {datacenterId: number, serviceName: string, backupDurationInReport: boolean, backupOffer: dedicatedCloud.backup.OfferTypeEnum, backupSizeInReport: boolean, diskSizeInReport: boolean, fullDayInReport: boolean, mailAddress?: string, restorePointInReport: boolean, scheduleHour?: string}) => Promise<dedicatedCloud.Task>;
+  post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/changeProperties'): (params: {datacenterId: number, serviceName: string, backupDurationInReport: boolean, backupOffer: dedicatedCloudbackupOfferTypeEnum, backupSizeInReport: boolean, diskSizeInReport: boolean, fullDayInReport: boolean, mailAddress?: string, restorePointInReport: boolean, scheduleHour?: string}) => Promise<dedicatedCloud.Task>;
   /**
    * disable operations
    * Disable backup solution on a Private Cloud
@@ -2127,7 +2127,7 @@ export interface DedicatedCloud{
    * enable operations
    * Enable backup solution on a Private Cloud
    */
-  post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/enable'): (params: {datacenterId: number, serviceName: string, backupOffer?: dedicatedCloud.backup.OfferTypeEnum}) => Promise<dedicatedCloud.Task>;
+  post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/enable'): (params: {datacenterId: number, serviceName: string, backupOffer?: dedicatedCloudbackupOfferTypeEnum}) => Promise<dedicatedCloud.Task>;
   /**
    * disable operations
    * Disable Zerto
@@ -2402,7 +2402,7 @@ export interface DedicatedCloud{
    * List the dedicatedCloud.User objects
    * Create a new User in your Private Cloud
    */
-  post(path: '/dedicatedCloud/{serviceName}/user'): (params: {serviceName: string, canAddRessource?: boolean, canManageRights?: boolean, email?: string, expirationDate?: string, firstName?: string, lastName?: string, name: string, networkRole?: dedicatedCloud.right.NetworkRoleEnum, nsxRight?: boolean, password?: string, phoneNumber?: string, receiveAlerts?: boolean, right?: dedicatedCloud.right.RightEnum, tokenValidator?: boolean, vmNetworkRole?: dedicatedCloud.right.VmNetworkRoleEnum}) => Promise<dedicatedCloud.Task>;
+  post(path: '/dedicatedCloud/{serviceName}/user'): (params: {serviceName: string, canAddRessource?: boolean, canManageRights?: boolean, email?: string, expirationDate?: string, firstName?: string, lastName?: string, name: string, networkRole?: dedicatedCloudrightNetworkRoleEnum, nsxRight?: boolean, password?: string, phoneNumber?: string, receiveAlerts?: boolean, right?: dedicatedCloudrightRightEnum, tokenValidator?: boolean, vmNetworkRole?: dedicatedCloudrightVmNetworkRoleEnum}) => Promise<dedicatedCloud.Task>;
   /**
    * changePassword operations
    * Change Private Cloud user password
@@ -2432,7 +2432,7 @@ export interface DedicatedCloud{
    * List the dedicatedCloud.ObjectRight objects
    * Add a new object right to user in datacenter on Private Cloud
    */
-  post(path: '/dedicatedCloud/{serviceName}/user/{userId}/objectRight'): (params: {serviceName: string, userId: number, propagate?: boolean, right: dedicatedCloud.right.RightEnum, type: dedicatedCloud.right.UserObjectRightTypeEnum, vmwareObjectId: string}) => Promise<dedicatedCloud.Task>;
+  post(path: '/dedicatedCloud/{serviceName}/user/{userId}/objectRight'): (params: {serviceName: string, userId: number, propagate?: boolean, right: dedicatedCloudrightRightEnum, type: dedicatedCloudrightUserObjectRightTypeEnum, vmwareObjectId: string}) => Promise<dedicatedCloud.Task>;
   /**
    * changeMaintenanceExecutionDate operations
    * Change the execution date of a maintenance. Works only if task type is maintenance and if it has not started yet.
@@ -2515,5 +2515,56 @@ export interface DedicatedCloud{
   delete(path: '/dedicatedCloud/{serviceName}/vrack/{vrack}'): (params: {serviceName: string, vrack: string}) => Promise<vrack.Task>;
 }
 /**
- * classic Model
- */type orderPrice = order.Price;
+ * Extra Alias to bypass relativer namespace colitions
+ */
+type dedicatedCloudAllowedNetworkStateEnum = dedicatedCloud.AllowedNetworkStateEnum;
+type dedicatedCloudbackupOfferTypeEnum = dedicatedCloud.backup.OfferTypeEnum;
+type dedicatedCloudBackupStateEnum = dedicatedCloud.BackupStateEnum;
+type dedicatedCloudbackupBackupDaysEnum[] = dedicatedCloud.backup.BackupDaysEnum[];
+type dedicatedCloudbackupStateEnum = dedicatedCloud.backup.StateEnum;
+type dedicatedCloudcapabilitiesFeatureStatusEnum = dedicatedCloud.capabilities.FeatureStatusEnum;
+type dedicatedCloudHypervisorVersionEnum[] = dedicatedCloud.HypervisorVersionEnum[];
+type dedicatedCloudrightNetworkRoleEnum[] = dedicatedCloud.right.NetworkRoleEnum[];
+type dedicatedCloudCommercialNameEnum = dedicatedCloud.CommercialNameEnum;
+type dedicatedCloudoptionStateEnum = dedicatedCloud.option.StateEnum;
+type dedicatedCloudoptionAccessNetworkStateEnum = dedicatedCloud.optionAccessNetwork.StateEnum;
+type dedicatedCloudressourcesBillingTypeEnum = dedicatedCloud.ressources.BillingTypeEnum;
+type dedicatedCloudfilerStateEnum = dedicatedCloud.filer.StateEnum;
+type dedicatedCloudhostSystemConnectionState = dedicatedCloud.hostSystemConnectionState;
+type dedicatedCloudhostStateEnum = dedicatedCloud.host.StateEnum;
+type dedicatedCloudHostStockHypervisor[] = dedicatedCloud.HostStockHypervisor[];
+type dedicatedCloudHostStockProcGen[] = dedicatedCloud.HostStockProcGen[];
+type dedicatedCloudBlockRegisterEnum = dedicatedCloud.BlockRegisterEnum;
+type dedicatedCloudipUsageEnum = dedicatedCloud.ipUsageEnum;
+type dedicatedCloudrightRightEnum = dedicatedCloud.right.RightEnum;
+type dedicatedCloudrightUserObjectRightTypeEnum = dedicatedCloud.right.UserObjectRightTypeEnum;
+type dedicatedCloudbackupBackupTypeEnum = dedicatedCloud.backup.BackupTypeEnum;
+type dedicatedCloudrightNetworkRoleEnum = dedicatedCloud.right.NetworkRoleEnum;
+type dedicatedCloudrightVmNetworkRoleEnum = dedicatedCloud.right.VmNetworkRoleEnum;
+type dedicatedCloudTaskStateEnum = dedicatedCloud.TaskStateEnum;
+type dedicatedClouduserActivationStateEnum = dedicatedCloud.user.ActivationStateEnum;
+type dedicatedClouduserStateEnum = dedicatedCloud.user.StateEnum;
+type dedicatedCloudvlanStateEnum = dedicatedCloud.vlan.StateEnum;
+type dedicatedCloudvlanTypeEnum = dedicatedCloud.vlan.TypeEnum;
+type dedicatedCloudbackupBackup = dedicatedCloud.backup.Backup;
+type dedicatedCloudvirtualMachineCdrom[] = dedicatedCloud.virtualMachineCdrom[];
+type dedicatedCloudvmFiler[] = dedicatedCloud.vmFiler[];
+type dedicatedCloudvmNetwork[] = dedicatedCloud.vmNetwork[];
+type dedicatedCloudvirtualMachinePowerState = dedicatedCloud.virtualMachinePowerState;
+type dedicatedCloudvirtualMachineFaultToleranceState = dedicatedCloud.virtualMachineFaultToleranceState;
+type dedicatedCloudBillingTypeEnum = dedicatedCloud.BillingTypeEnum;
+type dedicatedCloudGenerationEnum = dedicatedCloud.GenerationEnum;
+type dedicatedCloudManagementInterfaceEnum = dedicatedCloud.ManagementInterfaceEnum;
+type dedicatedCloudStateEnum = dedicatedCloud.StateEnum;
+type dedicatedCloudUserAccessPolicyEnum = dedicatedCloud.UserAccessPolicyEnum;
+type dedicatedCloudUserLogoutPolicyEnum = dedicatedCloud.UserLogoutPolicyEnum;
+type dedicatedCloudVersion = dedicatedCloud.Version;
+type dedicatedCloudresourceNewPricesEntry[] = dedicatedCloud.resourceNewPricesEntry[];
+type dedicatedCloudressourcesResourceTypeEnum = dedicatedCloud.ressources.ResourceTypeEnum;
+type dedicatedCloudservicePackEnum = dedicatedCloud.servicePackEnum;
+type dedicatedCloudservicePackStateEnum = dedicatedCloud.servicePackStateEnum;
+type dedicatedCloudTwoFAWhitelistStateEnum = dedicatedCloud.TwoFAWhitelistStateEnum;
+type dedicatedCloudvmFilerDisk[] = dedicatedCloud.vmFilerDisk[];
+type dedicatedCloudvmNetworkBacking = dedicatedCloud.vmNetworkBacking;
+type dedicatedCloudvirtualDeviceConnectInfoStatus = dedicatedCloud.virtualDeviceConnectInfoStatus;
+type dedicatedCloudvmNetworkBackingTypeEnum = dedicatedCloud.vmNetworkBackingTypeEnum;

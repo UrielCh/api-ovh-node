@@ -176,6 +176,3 @@ export interface Dedicated{
    */
   get(path: '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}'): (params: {mountpoint: string, schemeName: string, templateName: string}) => Promise<dedicated.installationTemplate.templatePartitions>;
 }
-/**
- * classic Model
- */

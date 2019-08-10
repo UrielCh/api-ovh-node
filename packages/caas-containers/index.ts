@@ -374,6 +374,3 @@ export interface Caas{
    */
   delete(path: '/caas/containers/{serviceName}/ssl'): (params: {serviceName: string}) => Promise<docker.stack.customSslMessage>;
 }
-/**
- * classic Model
- */

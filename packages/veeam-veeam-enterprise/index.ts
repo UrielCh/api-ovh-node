@@ -54,7 +54,7 @@ export namespace veeam {
             name: string;
             progress: number;
             startDate?: string;
-            state: veeamEnterpriseTaskStateEnum;
+            state: veeamEnterprise.TaskStateEnum;
             taskId: number;
         }
     }
@@ -98,7 +98,7 @@ export interface Veeam{
             }
             task: {
                 // GET /veeam/veeamEnterprise/{serviceName}/task
-                $get(params?: {name?: string, state?: veeamEnterpriseTaskStateEnum}): Promise<number[]>;
+                $get(params?: {name?: string, state?: veeamEnterprise.TaskStateEnum}): Promise<number[]>;
                 $(taskId: number): {
                     // GET /veeam/veeamEnterprise/{serviceName}/task/{taskId}
                     $get(): Promise<veeam.veeamEnterprise.Task>;
@@ -134,7 +134,7 @@ export interface Veeam{
    * List the veeam.veeamEnterprise.Task objects
    * Tasks associated with Veeam Enterprise
    */
-  get(path: '/veeam/veeamEnterprise/{serviceName}/task'): (params: {serviceName: string, name?: string, state?: veeamEnterpriseTaskStateEnum}) => Promise<number[]>;
+  get(path: '/veeam/veeamEnterprise/{serviceName}/task'): (params: {serviceName: string, name?: string, state?: veeamEnterprise.TaskStateEnum}) => Promise<number[]>;
   /**
    * Operation with the Enterprise Account
    * Get this object properties
@@ -166,6 +166,3 @@ export interface Veeam{
    */
   post(path: '/veeam/veeamEnterprise/{serviceName}/update'): (params: {serviceName: string, ip: string, password: string, port: number, username: string}) => Promise<veeam.veeamEnterprise.Task[]>;
 }
-/**
- * classic Model
- */type veeamEnterpriseTaskStateEnum = veeamEnterprise.TaskStateEnum;

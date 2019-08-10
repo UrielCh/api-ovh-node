@@ -50,16 +50,16 @@ export namespace order {
         detailType?: order.OrderDetailTypeEnum;
         domain: string;
         quantity: number;
-        totalPrice: orderPrice;
-        unitPrice: orderPrice;
+        totalPrice: order.Price;
+        unitPrice: order.Price;
     }
     // type fullname: order.OrderDetailTypeEnum
     export type OrderDetailTypeEnum = "ACCESSORY" | "CAUTION" | "CHOOSED" | "CONSUMPTION" | "CREATION" | "DELIVERY" | "DURATION" | "GIFT" | "INSTALLATION" | "LICENSE" | "MUTE" | "OTHER" | "OUTPLAN" | "QUANTITY" | "REFUND" | "RENEW" | "SPECIAL" | "SWITCH" | "TRANSFER" | "VOUCHER"
     // interface fullName: order.OrderPrices.OrderPrices
     export interface OrderPrices {
-        tax: orderPrice;
-        withTax: orderPrice;
-        withoutTax: orderPrice;
+        tax: order.Price;
+        withTax: order.Price;
+        withoutTax: order.Price;
     }
     // interface fullName: order.Price.Price
     export interface Price {
@@ -164,7 +164,7 @@ export namespace xdsl {
     // interface fullName: xdsl.Access.Access
     export interface Access {
         accessName: string;
-        accessType: xdslDslTypeEnum;
+        accessType: xdsl.DslTypeEnum;
         address: xdsl.AddressDetail;
         capabilities: xdsl.AccessCapabilities;
         description: string;
@@ -276,8 +276,8 @@ export namespace xdsl {
     // interface fullName: xdsl.DeconsolidationTerms.DeconsolidationTerms
     export interface DeconsolidationTerms {
         engagement: number;
-        monthlyPrice: orderPrice;
-        price: orderPrice;
+        monthlyPrice: order.Price;
+        price: order.Price;
     }
     // interface fullName: xdsl.DeviceModemInfo.DeviceModemInfo
     export interface DeviceModemInfo {
@@ -364,11 +364,11 @@ export namespace xdsl {
     // interface fullName: xdsl.Line.Line
     export interface Line {
         concentrationPoint?: xdsl.LandlineConcentrationPoint;
-        deconsolidation: xdslDeconsolidationEnum;
+        deconsolidation: xdsl.DeconsolidationEnum;
         directDistribution?: boolean;
         distance: number;
         faultRepairTime: xdsl.FaultRepairTimeEnum;
-        lineSectionsLength: xdslLineSectionLength[];
+        lineSectionsLength: xdsl.LineSectionLength[];
         mitigation: number;
         number: string;
         originalNumber?: string;
@@ -485,7 +485,7 @@ export namespace xdsl {
     }
     // interface fullName: xdsl.ResiliationTerms.ResiliationTerms
     export interface ResiliationTerms {
-        due: orderPrice;
+        due: order.Price;
         engageDate?: string;
         minResiliationDate: string;
         resiliationDate: string;
@@ -622,13 +622,13 @@ export namespace xdsl {
         }
         // interface fullName: xdsl.eligibility.Eligibility.Eligibility
         export interface Eligibility {
-            address?: xdsleligibilityAddress;
+            address?: xdsl.eligibility.Address;
             characteristics: xdsl.eligibility.LineCharacteristics;
             endpoint: xdsl.eligibility.LineEndpointEnum;
             id: string;
             infos: xdsl.eligibility.LineInfos;
             offers: xdsl.eligibility.Offer[];
-            portability: xdsleligibilityPortability;
+            portability: xdsl.eligibility.Portability;
         }
         // interface fullName: xdsl.eligibility.FiberEligibility.FiberEligibility
         export interface FiberEligibility {
@@ -644,7 +644,7 @@ export namespace xdsl {
             guaranteed: boolean;
             label: string;
             reason?: string;
-            type: xdslDslTypeEnum;
+            type: xdsl.DslTypeEnum;
             uploadRate?: number;
         }
         // interface fullName: xdsl.eligibility.FiberStreet.FiberStreet
@@ -656,10 +656,10 @@ export namespace xdsl {
         export type LandlineStatusEnum = "active" | "inactive"
         // interface fullName: xdsl.eligibility.Line.Line
         export interface Line {
-            address: xdsleligibilityAddress;
+            address: xdsl.eligibility.Address;
             contactName: string;
             lineNumber: string;
-            lineStatus: xdsleligibilityLandlineStatusEnum;
+            lineStatus: xdsl.eligibility.LandlineStatusEnum;
         }
         // interface fullName: xdsl.eligibility.LineCharacteristics.LineCharacteristics
         export interface LineCharacteristics {
@@ -677,7 +677,7 @@ export namespace xdsl {
         export interface LineInfos {
             createNeighbour: boolean;
             lineNumber?: string;
-            lineStatus?: xdsleligibilityLandlineStatusEnum;
+            lineStatus?: xdsl.eligibility.LandlineStatusEnum;
             unlistedNumber: boolean;
         }
         // interface fullName: xdsl.eligibility.LineSectionCalibration.LineSectionCalibration
@@ -704,10 +704,10 @@ export namespace xdsl {
             guaranteed: boolean;
             label: string;
             pairs?: number;
-            provider?: xdsleligibilityProviderEnum;
+            provider?: xdsl.eligibility.ProviderEnum;
             rate?: number;
-            type: xdslDslTypeEnum;
-            unbundling?: xdslDeconsolidationEnum[];
+            type: xdsl.DslTypeEnum;
+            unbundling?: xdsl.DeconsolidationEnum[];
             uploadRate?: number;
         }
         // interface fullName: xdsl.eligibility.Portability.Portability
@@ -836,7 +836,7 @@ export namespace xdsl {
             gtr: boolean;
             length: number;
             lineCapabilities?: xdsl.lineDiagnostic.LineCapabilities;
-            lineType: xdslDslTypeEnum;
+            lineType: xdsl.DslTypeEnum;
             nra?: string;
             number: string;
             operator: xdsl.lineDiagnostic.ProviderEnum;
@@ -1064,7 +1064,7 @@ export interface Xdsl{
             $get(params: {id: string}): Promise<xdsl.eligibility.Eligibility>;
             address: {
                 // POST /xdsl/eligibility/test/address
-                $post(params: {address: xdsleligibilityAddress}): Promise<xdsl.AsyncTask<xdsl.eligibility.Eligibility>>;
+                $post(params: {address: xdsl.eligibility.Address}): Promise<xdsl.AsyncTask<xdsl.eligibility.Eligibility>>;
             }
             fiber: {
                 building: {
@@ -1074,7 +1074,7 @@ export interface Xdsl{
             }
             line: {
                 // POST /xdsl/eligibility/test/line
-                $post(params: {lineNumber: string, lineStatus: xdsleligibilityLandlineStatusEnum}): Promise<xdsl.AsyncTask<xdsl.eligibility.Eligibility>>;
+                $post(params: {lineNumber: string, lineStatus: xdsl.eligibility.LandlineStatusEnum}): Promise<xdsl.AsyncTask<xdsl.eligibility.Eligibility>>;
             }
         }
     }
@@ -1154,7 +1154,7 @@ export interface Xdsl{
         // GET /xdsl/{serviceName}
         $get(): Promise<xdsl.Access>;
         // PUT /xdsl/{serviceName}
-        $put(params?: {accessName?: string, accessType?: xdslDslTypeEnum, address?: xdsl.AddressDetail, capabilities?: xdsl.AccessCapabilities, description?: string, ipv6Enabled?: boolean, lnsRateLimit?: number, monitoring?: boolean, nra?: string, packName?: string, pairsNumber?: number, role?: xdsl.AccessRoleEnum, status?: xdsl.AccessStatusEnum}): Promise<void>;
+        $put(params?: {accessName?: string, accessType?: xdsl.DslTypeEnum, address?: xdsl.AddressDetail, capabilities?: xdsl.AccessCapabilities, description?: string, ipv6Enabled?: boolean, lnsRateLimit?: number, monitoring?: boolean, nra?: string, packName?: string, pairsNumber?: number, role?: xdsl.AccessRoleEnum, status?: xdsl.AccessStatusEnum}): Promise<void>;
         addressMove: {
             extraIpRange: {
                 // GET /xdsl/{serviceName}/addressMove/extraIpRange
@@ -1864,7 +1864,7 @@ export interface Xdsl{
    * XDSL Access
    * Alter this object properties
    */
-  put(path: '/xdsl/{serviceName}'): (params: {serviceName: string, accessName?: string, accessType?: xdslDslTypeEnum, address?: xdsl.AddressDetail, capabilities?: xdsl.AccessCapabilities, description?: string, ipv6Enabled?: boolean, lnsRateLimit?: number, monitoring?: boolean, nra?: string, packName?: string, pairsNumber?: number, role?: xdsl.AccessRoleEnum, status?: xdsl.AccessStatusEnum}) => Promise<void>;
+  put(path: '/xdsl/{serviceName}'): (params: {serviceName: string, accessName?: string, accessType?: xdsl.DslTypeEnum, address?: xdsl.AddressDetail, capabilities?: xdsl.AccessCapabilities, description?: string, ipv6Enabled?: boolean, lnsRateLimit?: number, monitoring?: boolean, nra?: string, packName?: string, pairsNumber?: number, role?: xdsl.AccessRoleEnum, status?: xdsl.AccessStatusEnum}) => Promise<void>;
   /**
    * Modem
    * Alter this object properties
@@ -2139,7 +2139,7 @@ export interface Xdsl{
    * Do an eligibility for an address, if no line exist
    * Do an eligibility for an address, if no line exist
    */
-  post(path: '/xdsl/eligibility/test/address'): (params: {address: xdsleligibilityAddress}) => Promise<xdsl.AsyncTask<xdsl.eligibility.Eligibility>>;
+  post(path: '/xdsl/eligibility/test/address'): (params: {address: xdsl.eligibility.Address}) => Promise<xdsl.AsyncTask<xdsl.eligibility.Eligibility>>;
   /**
    * Perform a fiber eligibility for a building
    * Perform a fiber eligibility for a building
@@ -2149,7 +2149,7 @@ export interface Xdsl{
    * Do an eligibility for a line
    * Do an eligibility for a line
    */
-  post(path: '/xdsl/eligibility/test/line'): (params: {lineNumber: string, lineStatus: xdsleligibilityLandlineStatusEnum}) => Promise<xdsl.AsyncTask<xdsl.eligibility.Eligibility>>;
+  post(path: '/xdsl/eligibility/test/line'): (params: {lineNumber: string, lineStatus: xdsl.eligibility.LandlineStatusEnum}) => Promise<xdsl.AsyncTask<xdsl.eligibility.Eligibility>>;
   /**
    * changePassword operations
    * Change the email password
@@ -2212,13 +2212,6 @@ export interface Xdsl{
   delete(path: '/xdsl/templateModem/{name}'): (params: {name: string}) => Promise<void>;
 }
 /**
- * classic Model
- */type orderPrice = order.Price;
-type xdslDslTypeEnum = xdsl.DslTypeEnum;
-type xdslDeconsolidationEnum = xdsl.DeconsolidationEnum;
-type xdslLineSectionLength = xdsl.LineSectionLength;
-type xdsleligibilityAddress = xdsl.eligibility.Address;
-type xdsleligibilityPortability = xdsl.eligibility.Portability;
-type xdsleligibilityLandlineStatusEnum = xdsl.eligibility.LandlineStatusEnum;
-type xdsleligibilityProviderEnum = xdsl.eligibility.ProviderEnum;
+ * Extra Alias to bypass relativer namespace colitions
+ */
 type emailproObjectStateEnum = email.pro.ObjectStateEnum;

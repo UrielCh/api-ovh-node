@@ -59,7 +59,7 @@ export namespace service {
             endDate?: string;
             id?: number;
             lastUpdate?: string;
-            price: orderPrice;
+            price: order.Price;
             serviceId: number;
         }
         export namespace transaction {
@@ -67,7 +67,7 @@ export namespace service {
             export interface Element {
                 details: service.consumption.transaction.Element.Detail[];
                 planCode: string;
-                price: orderPrice;
+                price: order.Price;
                 quantity: number;
             }
             export namespace Element {
@@ -105,14 +105,14 @@ export namespace service {
             description?: string;
             quantity: number;
             serviceName: string;
-            totalPrice: orderPrice;
-            unitPrice: orderPrice;
+            totalPrice: order.Price;
+            unitPrice: order.Price;
         }
         // interface fullName: service.renew.RenewForecastDetailPrices.RenewForecastDetailPrices
         export interface RenewForecastDetailPrices {
-            tax: orderPrice;
-            withTax: orderPrice;
-            withoutTax: orderPrice;
+            tax: order.Price;
+            withTax: order.Price;
+            withoutTax: order.Price;
         }
         // interface fullName: service.renew.RenewOrder.RenewOrder
         export interface RenewOrder {
@@ -121,15 +121,15 @@ export namespace service {
             orderId: number;
             password: string;
             pdfUrl: string;
-            priceWithTax: orderPrice;
-            priceWithoutTax: orderPrice;
+            priceWithTax: order.Price;
+            priceWithoutTax: order.Price;
             retractionDate?: string;
-            tax: orderPrice;
+            tax: order.Price;
             url: string;
         }
         // interface fullName: service.renew.RenewStrategy.RenewStrategy
         export interface RenewStrategy {
-            price: orderPrice;
+            price: order.Price;
             priceInUcents: number;
             services: number[];
             servicesDetails: service.renew.Service[];
@@ -239,6 +239,3 @@ export interface Service{
    */
   post(path: '/service/{serviceId}/terminate'): (params: {serviceId: number}) => Promise<void>;
 }
-/**
- * classic Model
- */type orderPrice = order.Price;

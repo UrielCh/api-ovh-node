@@ -1583,6 +1583,3 @@ export interface Dbaas{
    */
   delete(path: '/dbaas/logs/{serviceName}/token/{tokenId}'): (params: {serviceName: string, tokenId: string}) => Promise<dbaas.logs.Operation>;
 }
-/**
- * classic Model
- */

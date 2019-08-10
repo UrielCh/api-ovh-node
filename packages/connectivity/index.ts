@@ -376,6 +376,3 @@ export interface Connectivity{
    */
   post(path: '/connectivity/eligibility/test/otp'): (params: {otp: string}) => Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
 }
-/**
- * classic Model
- */

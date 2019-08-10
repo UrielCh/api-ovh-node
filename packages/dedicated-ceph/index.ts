@@ -54,12 +54,11 @@ export namespace dedicated {
         }
         // interface fullName: dedicated.ceph.response.response
         export interface response {
-            backup: boolean;
-            minActiveReplicas: number;
+            createDate: string;
+            finishDate?: string;
             name: string;
-            poolType: dedicated.ceph.poolGet.response.poolTypeEnum;
-            replicaCount: number;
-            serviceName: string;
+            state?: dedicated.ceph.taskGet.response.stateEnum;
+            type: string;
         }
         export namespace taskGet {
             export namespace response {
@@ -343,6 +342,3 @@ export interface Dedicated{
    */
   delete(path: '/dedicated/ceph/{serviceName}/user/{userName}/pool/{poolName}'): (params: {poolName: string, serviceName: string, userName: string}) => Promise<string>;
 }
-/**
- * classic Model
- */

@@ -308,6 +308,3 @@ export interface Dedicated{
    */
   delete(path: '/dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}'): (params: {ipBlock: string, serviceName: string}) => Promise<dedicated.server.Task>;
 }
-/**
- * classic Model
- */

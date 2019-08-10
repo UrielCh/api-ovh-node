@@ -511,6 +511,3 @@ export interface Cluster{
    */
   delete(path: '/cluster/hadoop/{serviceName}/user/{username}'): (params: {serviceName: string, username: string}) => Promise<cluster.hadoop.Task>;
 }
-/**
- * classic Model
- */

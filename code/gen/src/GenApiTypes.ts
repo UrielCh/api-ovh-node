@@ -20,6 +20,7 @@ export interface CacheModel {
     _alias?: string;
     _namespace?: string;
     _model?: ModelsProp;
+    _parent?: CacheModel;
     [key: string]: ModelsProp | string | CacheModel | undefined;
 }
 
@@ -195,7 +196,7 @@ export default class GenApiTypes {
         let current: CacheModel = root;
         for (const ns of path) {
             if (!current[ns]) {
-                current[ns] = <CacheModel>{ _namespace: ns };
+                current[ns] = <CacheModel>{ _namespace: ns, _parent: current };
             }
             current = <CacheModel>current[ns];
         }
@@ -232,7 +233,7 @@ export default class GenApiTypes {
                 //console.log('colision', current[id]);
                 id = <string>aliasName.split('.').pop();
                 model.id = id;
-                current[id] = <CacheModel>{ _name: id, _alias: aliasName, _model: model };
+                current[id] = <CacheModel>{ _name: id, _alias: aliasName, _model: model, _parent: current  };
                 // console.log('colition To', current[id]);
             } else {
                 old._name = id;
@@ -240,7 +241,7 @@ export default class GenApiTypes {
                 old._model = model;
             }
         } else {
-            current[id] = <CacheModel>{ _name: id, _alias: aliasName, _model: model };
+            current[id] = <CacheModel>{ _name: id, _alias: aliasName, _model: model, _parent: current  };
         }
     }
 

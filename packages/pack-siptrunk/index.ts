@@ -101,6 +101,3 @@ export interface Pack{
    */
   post(path: '/pack/siptrunk/{packName}/changeContact'): (params: {packName: string, contactAdmin?: string, contactBilling?: string, contactTech?: string}) => Promise<number[]>;
 }
-/**
- * classic Model
- */

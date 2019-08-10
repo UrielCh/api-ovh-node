@@ -265,6 +265,3 @@ export interface License{
    */
   delete(path: '/license/office/{serviceName}/user/{activationEmail}'): (params: {activationEmail: string, serviceName: string}) => Promise<license.office.OfficeTask>;
 }
-/**
- * classic Model
- */

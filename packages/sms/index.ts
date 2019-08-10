@@ -1248,6 +1248,3 @@ export interface Sms{
    */
   delete(path: '/sms/{serviceName}/virtualNumbers/{number}/outgoing/{id}'): (params: {id: number, number: string, serviceName: string}) => Promise<void>;
 }
-/**
- * classic Model
- */

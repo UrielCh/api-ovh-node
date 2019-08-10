@@ -276,6 +276,3 @@ export interface License{
    */
   delete(path: '/license/plesk/{serviceName}/option/{label}'): (params: {label: license.OptionLabel, serviceName: string}) => Promise<license.Task>;
 }
-/**
- * classic Model
- */

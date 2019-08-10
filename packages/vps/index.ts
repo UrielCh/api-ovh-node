@@ -1006,6 +1006,3 @@ export interface Vps{
    */
   delete(path: '/vps/{serviceName}/veeam/restoredBackup'): (params: {serviceName: string}) => Promise<vps.Task>;
 }
-/**
- * classic Model
- */

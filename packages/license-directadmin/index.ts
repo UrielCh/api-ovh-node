@@ -232,6 +232,3 @@ export interface License{
    */
   post(path: '/license/directadmin/{serviceName}/terminate'): (params: {serviceName: string}) => Promise<string>;
 }
-/**
- * classic Model
- */

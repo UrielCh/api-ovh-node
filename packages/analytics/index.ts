@@ -293,6 +293,3 @@ export interface Analytics{
    */
   post(path: '/analytics/platforms/{serviceName}/terminate'): (params: {serviceName: string}) => Promise<string>;
 }
-/**
- * classic Model
- */

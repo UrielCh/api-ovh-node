@@ -33,10 +33,10 @@ export namespace services {
             description: string;
             periodEnd?: string;
             periodStart?: string;
-            price: orderPrice;
+            price: order.Price;
             quantity: number;
             serviceName: string;
-            totalPrice: orderPrice;
+            totalPrice: order.Price;
             type?: services.billing.InvoiceLineTypeEnum;
         }
         // type fullname: services.billing.InvoiceLineTypeEnum
@@ -119,7 +119,7 @@ export namespace services {
         // interface fullName: services.terminate.TerminationFees.TerminationFees
         export interface TerminationFees {
             durationLeft: string;
-            fees: orderPrice;
+            fees: order.Price;
         }
         // type fullname: services.terminate.TerminationFutureUseEnum
         export type TerminationFutureUseEnum = "SUBSCRIBE_AN_OTHER_SERVICE" | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR" | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR" | "NOT_REPLACING_SERVICE" | "OTHER"
@@ -173,6 +173,3 @@ export interface Services{
    */
   get(path: '/services/{serviceId}/billing/engagement'): (params: {serviceId: number}) => Promise<services.billing.engagement.Engagement>;
 }
-/**
- * classic Model
- */type orderPrice = order.Price;

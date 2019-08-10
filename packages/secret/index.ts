@@ -34,6 +34,3 @@ export interface Secret{
    */
   post(path: '/secret/retrieve'): (params: {id: string}) => Promise<secret.Secret>;
 }
-/**
- * classic Model
- */

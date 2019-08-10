@@ -2949,5 +2949,6 @@ export interface Cloud{
   delete(path: '/cloud/project/{serviceName}/volume/snapshot/{snapshotId}'): (params: {serviceName: string, snapshotId: string}) => Promise<void>;
 }
 /**
- * classic Model
- */type orderPrice = order.Price;
+ * Extra Alias to bypass relativer namespace colitions
+ */
+type orderPrice = order.Price;

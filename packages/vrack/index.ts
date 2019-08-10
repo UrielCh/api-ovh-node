@@ -65,7 +65,7 @@ export namespace vrack {
         lastUpdate?: string;
         orderId?: number;
         serviceName?: string;
-        status: vrack.TaskStatusEnum;
+        status: vrackTaskStatusEnum;
         targetDomain?: string;
         todoDate?: string;
     }
@@ -102,7 +102,7 @@ export namespace vrack {
     export interface ip {
         gateway?: string;
         ip: string;
-        zone?: vrack.VrackZoneEnum;
+        zone?: vrackVrackZoneEnum;
     }
     // interface fullName: vrack.iplb.iplb
     export interface iplb {
@@ -253,7 +253,7 @@ export interface Vrack{
                 $get(): Promise<vrack.ip>;
                 announceInZone: {
                     // POST /vrack/{serviceName}/ip/{ip}/announceInZone
-                    $post(params: {zone: vrack.VrackZoneEnum}): Promise<vrack.Task>;
+                    $post(params: {zone: vrackVrackZoneEnum}): Promise<vrack.Task>;
                 }
                 availableZone: {
                     // GET /vrack/{serviceName}/ip/{ip}/availableZone
@@ -483,7 +483,7 @@ export interface Vrack{
    * announceInZone operations
    * Announce IP to zone for vrack
    */
-  post(path: '/vrack/{serviceName}/ip/{ip}/announceInZone'): (params: {ip: string, serviceName: string, zone: vrack.VrackZoneEnum}) => Promise<vrack.Task>;
+  post(path: '/vrack/{serviceName}/ip/{ip}/announceInZone'): (params: {ip: string, serviceName: string, zone: vrackVrackZoneEnum}) => Promise<vrack.Task>;
   /**
    * List the vrack.iplb objects
    * add an ipLoadbalancing to this vrack
@@ -531,5 +531,8 @@ export interface Vrack{
   delete(path: '/vrack/{serviceName}/legacyVrack/{legacyVrack}'): (params: {legacyVrack: string, serviceName: string}) => Promise<vrack.Task>;
 }
 /**
- * classic Model
+ * Extra Alias to bypass relativer namespace colitions
  */
+type vrackAllowedDedicatedServerInterfaces[] = vrack.AllowedDedicatedServerInterfaces[];
+type vrackTaskStatusEnum = vrack.TaskStatusEnum;
+type vrackVrackZoneEnum = vrack.VrackZoneEnum;

@@ -1749,6 +1749,3 @@ export interface Email{
    */
   delete(path: '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendOnBehalfTo/{allowedAccountId}'): (params: {allowedAccountId: number, exchangeService: string, organizationName: string, sharedEmailAddress: string}) => Promise<email.exchange.Task>;
 }
-/**
- * classic Model
- */

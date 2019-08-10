@@ -19,17 +19,17 @@ export namespace deskaas {
         lastModificationDate?: string;
         name: string;
         progress: number;
-        state: deskaas.TaskStateEnum;
+        state: deskaasTaskStateEnum;
         taskId: number;
     }
     // type fullname: deskaas.TaskStateEnum
     export type TaskStateEnum = "canceled" | "doing" | "done" | "error" | "fixing" | "toCancel" | "toCreate" | "todo" | "unknown" | "waitingForChilds" | "waitingTodo"
     // interface fullName: deskaas.User.User
     export interface User {
-        activationState: deskaas.user.ActivationStateEnum;
+        activationState: deskaasuserActivationStateEnum;
         email: string;
         name: string;
-        state: deskaas.user.StateEnum;
+        state: deskaasuserStateEnum;
         userId: number;
     }
     // interface fullName: deskaas.deskaas.deskaas
@@ -42,7 +42,7 @@ export namespace deskaas {
         ram: complexType.UnitAndValue<number>;
         reference: string;
         serviceName: string;
-        state: deskaas.StateEnum;
+        state: deskaasStateEnum;
         url?: string;
         vcpu: number;
     }
@@ -154,7 +154,7 @@ export interface Deskaas{
         }
         task: {
             // GET /deskaas/{serviceName}/task
-            $get(params?: {state?: deskaas.TaskStateEnum}): Promise<number[]>;
+            $get(params?: {state?: deskaasTaskStateEnum}): Promise<number[]>;
             $(taskId: number): {
                 // GET /deskaas/{serviceName}/task/{taskId}
                 $get(): Promise<deskaas.Task>;
@@ -181,7 +181,7 @@ export interface Deskaas{
             }
             task: {
                 // GET /deskaas/{serviceName}/user/task
-                $get(params?: {state?: deskaas.TaskStateEnum}): Promise<number[]>;
+                $get(params?: {state?: deskaasTaskStateEnum}): Promise<number[]>;
                 $(taskId: number): {
                     // GET /deskaas/{serviceName}/user/task/{taskId}
                     $get(): Promise<deskaas.Task>;
@@ -214,7 +214,7 @@ export interface Deskaas{
    * List the deskaas.Task objects
    * Tasks associated with this Desktop As A Service
    */
-  get(path: '/deskaas/{serviceName}/task'): (params: {serviceName: string, state?: deskaas.TaskStateEnum}) => Promise<number[]>;
+  get(path: '/deskaas/{serviceName}/task'): (params: {serviceName: string, state?: deskaasTaskStateEnum}) => Promise<number[]>;
   /**
    * Operation on a Desktop As A Service component
    * Get this object properties
@@ -229,7 +229,7 @@ export interface Deskaas{
    * List the deskaas.Task objects
    * Tasks associated with this User
    */
-  get(path: '/deskaas/{serviceName}/user/task'): (params: {serviceName: string, state?: deskaas.TaskStateEnum}) => Promise<number[]>;
+  get(path: '/deskaas/{serviceName}/user/task'): (params: {serviceName: string, state?: deskaasTaskStateEnum}) => Promise<number[]>;
   /**
    * Operation on a Desktop As A Service component
    * Get this object properties
@@ -292,5 +292,9 @@ export interface Deskaas{
   post(path: '/deskaas/{serviceName}/user/changeProperties'): (params: {serviceName: string, email?: string}) => Promise<deskaas.Task>;
 }
 /**
- * classic Model
+ * Extra Alias to bypass relativer namespace colitions
  */
+type deskaasTaskStateEnum = deskaas.TaskStateEnum;
+type deskaasuserActivationStateEnum = deskaas.user.ActivationStateEnum;
+type deskaasuserStateEnum = deskaas.user.StateEnum;
+type deskaasStateEnum = deskaas.StateEnum;

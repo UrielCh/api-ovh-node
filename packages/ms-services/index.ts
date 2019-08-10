@@ -704,6 +704,3 @@ export interface MsServices{
    */
   delete(path: '/msServices/{serviceName}/upnSuffix/{suffix}'): (params: {serviceName: string, suffix: string}) => Promise<msServices.Task>;
 }
-/**
- * classic Model
- */

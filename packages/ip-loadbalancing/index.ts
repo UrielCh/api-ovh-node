@@ -1422,6 +1422,3 @@ export interface IpLoadbalancing{
    */
   delete(path: '/ipLoadbalancing/{serviceName}/vrack/network/{vrackNetworkId}'): (params: {serviceName: string, vrackNetworkId: number}) => Promise<void>;
 }
-/**
- * classic Model
- */

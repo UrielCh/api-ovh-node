@@ -28,14 +28,14 @@ export namespace paas {
             generated: string;
             items: paas.timeseries.ConsumptionItem[];
             to: string;
-            total: orderPrice;
+            total: order.Price;
         }
         // interface fullName: paas.timeseries.ConsumptionItem.ConsumptionItem
         export interface ConsumptionItem {
             metricName: tsaas.MetricNameEnum;
-            price: orderPrice;
+            price: order.Price;
             quantity: complexType.UnitAndValue<number>;
-            unitPrice: orderPrice;
+            unitPrice: order.Price;
         }
         // interface fullName: paas.timeseries.Key.Key
         export interface Key {
@@ -264,6 +264,3 @@ export interface Paas{
    */
   delete(path: '/paas/timeseries/{serviceName}/key/{keyId}'): (params: {keyId: string, serviceName: string}) => Promise<boolean>;
 }
-/**
- * classic Model
- */type orderPrice = order.Price;

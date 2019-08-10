@@ -175,6 +175,3 @@ export interface License{
    */
   post(path: '/license/cloudLinux/{serviceName}/terminate'): (params: {serviceName: string}) => Promise<string>;
 }
-/**
- * classic Model
- */

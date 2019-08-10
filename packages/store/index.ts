@@ -314,6 +314,3 @@ export interface Store{
    */
   delete(path: '/store/partner/{partnerId}/product/{productId}/document/{documentId}'): (params: {documentId: string, partnerId: string, productId: string}) => Promise<string[]>;
 }
-/**
- * classic Model
- */

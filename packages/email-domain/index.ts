@@ -54,7 +54,7 @@ export namespace domain {
     export namespace zone {
         // interface fullName: domain.zone.Record.Record
         export interface Record {
-            fieldType: zoneNamedResolutionFieldTypeEnum;
+            fieldType: zone.NamedResolutionFieldTypeEnum;
             id: number;
             subDomain?: string;
             target: string;
@@ -119,11 +119,11 @@ export namespace email {
             linkTo?: string;
             migratedMXPlanServiceName?: string;
             offer?: string;
-            status: domainDomainStatusEnum;
+            status: domain.DomainStatusEnum;
         }
         // interface fullName: email.domain.Filter.Filter
         export interface Filter {
-            action?: domainDomainFilterActionEnum;
+            action?: domain.DomainFilterActionEnum;
             actionParam?: string;
             active: boolean;
             domain: string;
@@ -134,11 +134,11 @@ export namespace email {
         // interface fullName: email.domain.MailingList.MailingList
         export interface MailingList {
             id: number;
-            language?: domainDomainMlLanguageEnum;
+            language?: domain.DomainMlLanguageEnum;
             name: string;
             nbSubscribers?: number;
             nbSubscribersUpdateDate?: string;
-            options: domainDomainMlOptionsStruct;
+            options: domain.DomainMlOptionsStruct;
             ownerEmail: string;
             replyTo: string;
         }
@@ -208,7 +208,7 @@ export namespace email {
         export interface Rule {
             header: string;
             id: number;
-            operand: domainDomainFilterOperandEnum;
+            operand: domain.DomainFilterOperandEnum;
             value: string;
         }
         // interface fullName: email.domain.Subscriber.Subscriber
@@ -232,11 +232,11 @@ export namespace email {
             date: string;
             domain: string;
             id: number;
-            language: domainDomainMlLanguageEnum;
+            language: domain.DomainMlLanguageEnum;
         }
         // interface fullName: email.domain.TaskPop.TaskPop
         export interface TaskPop {
-            action: domainDomainPopActionEnum;
+            action: domain.DomainPopActionEnum;
             date: string;
             domain: string;
             id: number;
@@ -245,11 +245,11 @@ export namespace email {
         // interface fullName: email.domain.TaskSpecialAccount.TaskSpecialAccount
         export interface TaskSpecialAccount {
             account: string;
-            action: domainDomainSpecialAccountActionEnum;
+            action: domain.DomainSpecialAccountActionEnum;
             date: string;
             domain: string;
             id: number;
-            type: domainDomainSpecialAccountTypeEnum;
+            type: domain.DomainSpecialAccountTypeEnum;
         }
     }
 }
@@ -323,7 +323,7 @@ export interface Email{
                     // GET /email/domain/delegatedAccount/{email}/filter
                     $get(): Promise<string[]>;
                     // POST /email/domain/delegatedAccount/{email}/filter
-                    $post(params: {action: domainDomainFilterActionEnum, actionParam?: string, active: boolean, header: string, name: string, operand: domainDomainFilterOperandEnum, priority: number, value: string}): Promise<email.domain.TaskFilter>;
+                    $post(params: {action: domain.DomainFilterActionEnum, actionParam?: string, active: boolean, header: string, name: string, operand: domain.DomainFilterOperandEnum, priority: number, value: string}): Promise<email.domain.TaskFilter>;
                     $(name: string): {
                         // DELETE /email/domain/delegatedAccount/{email}/filter/{name}
                         $delete(): Promise<email.domain.TaskFilter[]>;
@@ -341,7 +341,7 @@ export interface Email{
                             // GET /email/domain/delegatedAccount/{email}/filter/{name}/rule
                             $get(): Promise<number[]>;
                             // POST /email/domain/delegatedAccount/{email}/filter/{name}/rule
-                            $post(params: {header: string, operand: domainDomainFilterOperandEnum, value: string}): Promise<email.domain.TaskFilter>;
+                            $post(params: {header: string, operand: domain.DomainFilterOperandEnum, value: string}): Promise<email.domain.TaskFilter>;
                             $(id: number): {
                                 // DELETE /email/domain/delegatedAccount/{email}/filter/{name}/rule/{id}
                                 $delete(): Promise<email.domain.TaskFilter[]>;
@@ -410,7 +410,7 @@ export interface Email{
                         // GET /email/domain/{domain}/account/{accountName}/filter
                         $get(): Promise<string[]>;
                         // POST /email/domain/{domain}/account/{accountName}/filter
-                        $post(params: {action: domainDomainFilterActionEnum, actionParam?: string, active: boolean, header: string, name: string, operand: domainDomainFilterOperandEnum, priority: number, value: string}): Promise<email.domain.TaskFilter>;
+                        $post(params: {action: domain.DomainFilterActionEnum, actionParam?: string, active: boolean, header: string, name: string, operand: domain.DomainFilterOperandEnum, priority: number, value: string}): Promise<email.domain.TaskFilter>;
                         $(name: string): {
                             // DELETE /email/domain/{domain}/account/{accountName}/filter/{name}
                             $delete(): Promise<email.domain.TaskFilter[]>;
@@ -428,7 +428,7 @@ export interface Email{
                                 // GET /email/domain/{domain}/account/{accountName}/filter/{name}/rule
                                 $get(): Promise<number[]>;
                                 // POST /email/domain/{domain}/account/{accountName}/filter/{name}/rule
-                                $post(params: {header: string, operand: domainDomainFilterOperandEnum, value: string}): Promise<email.domain.TaskFilter>;
+                                $post(params: {header: string, operand: domain.DomainFilterOperandEnum, value: string}): Promise<email.domain.TaskFilter>;
                                 $(id: number): {
                                     // DELETE /email/domain/{domain}/account/{accountName}/filter/{name}/rule/{id}
                                     $delete(): Promise<email.domain.TaskFilter[]>;
@@ -508,17 +508,17 @@ export interface Email{
                 // GET /email/domain/{domain}/mailingList
                 $get(params?: {name?: string}): Promise<string[]>;
                 // POST /email/domain/{domain}/mailingList
-                $post(params: {language: domainDomainMlLanguageEnum, name: string, options: domainDomainMlOptionsStruct, ownerEmail: string, replyTo?: string}): Promise<email.domain.TaskMl>;
+                $post(params: {language: domain.DomainMlLanguageEnum, name: string, options: domain.DomainMlOptionsStruct, ownerEmail: string, replyTo?: string}): Promise<email.domain.TaskMl>;
                 $(name: string): {
                     // DELETE /email/domain/{domain}/mailingList/{name}
                     $delete(): Promise<email.domain.TaskMl>;
                     // GET /email/domain/{domain}/mailingList/{name}
                     $get(): Promise<email.domain.MailingList>;
                     // PUT /email/domain/{domain}/mailingList/{name}
-                    $put(params?: {id?: number, language?: domainDomainMlLanguageEnum, name?: string, nbSubscribers?: number, nbSubscribersUpdateDate?: string, options?: domainDomainMlOptionsStruct, ownerEmail?: string, replyTo?: string}): Promise<void>;
+                    $put(params?: {id?: number, language?: domain.DomainMlLanguageEnum, name?: string, nbSubscribers?: number, nbSubscribersUpdateDate?: string, options?: domain.DomainMlOptionsStruct, ownerEmail?: string, replyTo?: string}): Promise<void>;
                     changeOptions: {
                         // POST /email/domain/{domain}/mailingList/{name}/changeOptions
-                        $post(params: {options: domainDomainMlOptionsStruct}): Promise<email.domain.TaskMl>;
+                        $post(params: {options: domain.DomainMlOptionsStruct}): Promise<email.domain.TaskMl>;
                     }
                     moderator: {
                         // GET /email/domain/{domain}/mailingList/{name}/moderator
@@ -920,7 +920,7 @@ export interface Email{
    * Mailing List
    * Alter this object properties
    */
-  put(path: '/email/domain/{domain}/mailingList/{name}'): (params: {domain: string, name: string, id?: number, language?: domainDomainMlLanguageEnum, nbSubscribers?: number, nbSubscribersUpdateDate?: string, options?: domainDomainMlOptionsStruct, ownerEmail?: string, replyTo?: string}) => Promise<void>;
+  put(path: '/email/domain/{domain}/mailingList/{name}'): (params: {domain: string, name: string, id?: number, language?: domain.DomainMlLanguageEnum, nbSubscribers?: number, nbSubscribersUpdateDate?: string, options?: domain.DomainMlOptionsStruct, ownerEmail?: string, replyTo?: string}) => Promise<void>;
   /**
    * Responder
    * Alter this object properties
@@ -960,7 +960,7 @@ export interface Email{
    * List the email.domain.Filter objects
    * Create new filter for account
    */
-  post(path: '/email/domain/{domain}/account/{accountName}/filter'): (params: {accountName: string, domain: string, action: domainDomainFilterActionEnum, actionParam?: string, active: boolean, header: string, name: string, operand: domainDomainFilterOperandEnum, priority: number, value: string}) => Promise<email.domain.TaskFilter>;
+  post(path: '/email/domain/{domain}/account/{accountName}/filter'): (params: {accountName: string, domain: string, action: domain.DomainFilterActionEnum, actionParam?: string, active: boolean, header: string, name: string, operand: domain.DomainFilterOperandEnum, priority: number, value: string}) => Promise<email.domain.TaskFilter>;
   /**
    * changeActivity operations
    * Change filter activity
@@ -975,7 +975,7 @@ export interface Email{
    * List the email.domain.Rule objects
    * Create new rule for filter
    */
-  post(path: '/email/domain/{domain}/account/{accountName}/filter/{name}/rule'): (params: {accountName: string, domain: string, name: string, header: string, operand: domainDomainFilterOperandEnum, value: string}) => Promise<email.domain.TaskFilter>;
+  post(path: '/email/domain/{domain}/account/{accountName}/filter/{name}/rule'): (params: {accountName: string, domain: string, name: string, header: string, operand: domain.DomainFilterOperandEnum, value: string}) => Promise<email.domain.TaskFilter>;
   /**
    * migrate operations
    * Migrate account to destination account
@@ -1010,12 +1010,12 @@ export interface Email{
    * List the email.domain.MailingList objects
    * Create new mailingList
    */
-  post(path: '/email/domain/{domain}/mailingList'): (params: {domain: string, language: domainDomainMlLanguageEnum, name: string, options: domainDomainMlOptionsStruct, ownerEmail: string, replyTo?: string}) => Promise<email.domain.TaskMl>;
+  post(path: '/email/domain/{domain}/mailingList'): (params: {domain: string, language: domain.DomainMlLanguageEnum, name: string, options: domain.DomainMlOptionsStruct, ownerEmail: string, replyTo?: string}) => Promise<email.domain.TaskMl>;
   /**
    * changeOptions operations
    * Change mailing list options
    */
-  post(path: '/email/domain/{domain}/mailingList/{name}/changeOptions'): (params: {domain: string, name: string, options: domainDomainMlOptionsStruct}) => Promise<email.domain.TaskMl>;
+  post(path: '/email/domain/{domain}/mailingList/{name}/changeOptions'): (params: {domain: string, name: string, options: domain.DomainMlOptionsStruct}) => Promise<email.domain.TaskMl>;
   /**
    * List the email.domain.Moderator objects
    * Add moderator to mailing list
@@ -1065,7 +1065,7 @@ export interface Email{
    * List the email.domain.Filter objects
    * Create new filter for account
    */
-  post(path: '/email/domain/delegatedAccount/{email}/filter'): (params: {email: string, action: domainDomainFilterActionEnum, actionParam?: string, active: boolean, header: string, name: string, operand: domainDomainFilterOperandEnum, priority: number, value: string}) => Promise<email.domain.TaskFilter>;
+  post(path: '/email/domain/delegatedAccount/{email}/filter'): (params: {email: string, action: domain.DomainFilterActionEnum, actionParam?: string, active: boolean, header: string, name: string, operand: domain.DomainFilterOperandEnum, priority: number, value: string}) => Promise<email.domain.TaskFilter>;
   /**
    * changeActivity operations
    * Change filter activity
@@ -1080,7 +1080,7 @@ export interface Email{
    * List the email.domain.Rule objects
    * Create new rule for filter
    */
-  post(path: '/email/domain/delegatedAccount/{email}/filter/{name}/rule'): (params: {email: string, name: string, header: string, operand: domainDomainFilterOperandEnum, value: string}) => Promise<email.domain.TaskFilter>;
+  post(path: '/email/domain/delegatedAccount/{email}/filter/{name}/rule'): (params: {email: string, name: string, header: string, operand: domain.DomainFilterOperandEnum, value: string}) => Promise<email.domain.TaskFilter>;
   /**
    * Responder of account
    * Create new responder in server
@@ -1162,14 +1162,3 @@ export interface Email{
    */
   delete(path: '/email/domain/delegatedAccount/{email}/responder'): (params: {email: string}) => Promise<email.domain.TaskSpecialAccount>;
 }
-/**
- * classic Model
- */type zoneNamedResolutionFieldTypeEnum = zone.NamedResolutionFieldTypeEnum;
-type domainDomainStatusEnum = domain.DomainStatusEnum;
-type domainDomainFilterActionEnum = domain.DomainFilterActionEnum;
-type domainDomainMlLanguageEnum = domain.DomainMlLanguageEnum;
-type domainDomainMlOptionsStruct = domain.DomainMlOptionsStruct;
-type domainDomainFilterOperandEnum = domain.DomainFilterOperandEnum;
-type domainDomainPopActionEnum = domain.DomainPopActionEnum;
-type domainDomainSpecialAccountActionEnum = domain.DomainSpecialAccountActionEnum;
-type domainDomainSpecialAccountTypeEnum = domain.DomainSpecialAccountTypeEnum;

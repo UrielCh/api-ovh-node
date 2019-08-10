@@ -1227,6 +1227,3 @@ export interface Ip{
    */
   delete(path: '/ip/loadBalancing/{serviceName}/portsRedirection/{srcPort}'): (params: {serviceName: string, srcPort: ip.LoadBalancingAdditionalPortEnum}) => Promise<ip.LoadBalancingTask>;
 }
-/**
- * classic Model
- */

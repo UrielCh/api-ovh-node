@@ -385,6 +385,3 @@ export interface Router{
    */
   delete(path: '/router/{serviceName}/vpn/{id}'): (params: {id: number, serviceName: string}) => Promise<router.Task>;
 }
-/**
- * classic Model
- */

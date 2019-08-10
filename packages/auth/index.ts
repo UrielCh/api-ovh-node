@@ -84,6 +84,3 @@ export interface Auth{
    */
   post(path: '/auth/logout'): () => Promise<void>;
 }
-/**
- * classic Model
- */

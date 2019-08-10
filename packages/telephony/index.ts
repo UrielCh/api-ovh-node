@@ -84,7 +84,7 @@ export namespace spare {
         export interface TelephonySpare {
             brand: string;
             macAddress: string;
-            protocol: telephonyProtocolEnum;
+            protocol: telephony.ProtocolEnum;
         }
     }
 }
@@ -107,7 +107,7 @@ export namespace telephony {
     export interface AccessoryOffer {
         description?: string;
         name: string;
-        price: orderPrice;
+        price: order.Price;
         url?: string;
     }
     // type fullname: telephony.AntihackActionEnum
@@ -124,14 +124,14 @@ export namespace telephony {
     export type BillStatusEnum = "doing" | "done" | "error" | "todo"
     // interface fullName: telephony.BillingAccount.BillingAccount
     export interface BillingAccount {
-        allowedOutplan: orderPrice;
+        allowedOutplan: order.Price;
         billingAccount: string;
-        creditThreshold: orderPrice;
-        currentOutplan: orderPrice;
+        creditThreshold: order.Price;
+        currentOutplan: order.Price;
         description: string;
         hiddenExternalNumber: boolean;
         overrideDisplayedNumber: boolean;
-        securityDeposit: orderPrice;
+        securityDeposit: order.Price;
         status: telephony.BillingAccountStatusEnum;
         trusted: boolean;
     }
@@ -359,12 +359,12 @@ export namespace telephony {
     export interface DetailedRateCodeInformation {
         cancelLimitDatetime?: string;
         effectiveDatetime?: string;
-        pricePerCallWithoutTax: orderPrice;
-        pricePerMinuteWithoutTax: orderPrice;
+        pricePerCallWithoutTax: order.Price;
+        pricePerMinuteWithoutTax: order.Price;
         rateCode: string;
-        repaymentPricePerCallWithoutTax: orderPrice;
-        repaymentPricePerMinuteWithoutTax: orderPrice;
-        updateRateCodePriceWithoutTax?: orderPrice;
+        repaymentPricePerCallWithoutTax: order.Price;
+        repaymentPricePerMinuteWithoutTax: order.Price;
+        updateRateCodePriceWithoutTax?: order.Price;
     }
     // interface fullName: telephony.DiagnosticReport.DiagnosticReport
     export interface DiagnosticReport {
@@ -593,7 +593,7 @@ export namespace telephony {
         consumptionId: number;
         creationDatetime: string;
         pages: number;
-        priceWithoutTax: orderPrice;
+        priceWithoutTax: order.Price;
         wayType: telephony.FaxConsumptionWayTypeEnum;
     }
     // type fullname: telephony.FaxConsumptionWayTypeEnum
@@ -649,27 +649,27 @@ export namespace telephony {
     export interface HardwareOffer {
         description?: string;
         name: string;
-        price: orderPrice;
+        price: order.Price;
         url?: string;
     }
     // interface fullName: telephony.HistoryConsumption.HistoryConsumption
     export interface HistoryConsumption {
         date: string;
-        price: orderPrice;
-        priceOutplan: orderPrice;
+        price: order.Price;
+        priceOutplan: order.Price;
         status: telephony.BillStatusEnum;
     }
     // interface fullName: telephony.HistoryRepaymentConsumption.HistoryRepaymentConsumption
     export interface HistoryRepaymentConsumption {
         billingNumber: string;
         date: string;
-        price: orderPrice;
+        price: order.Price;
         status: telephony.BillStatusEnum;
     }
     // interface fullName: telephony.HistoryTollfreeConsumption.HistoryTollfreeConsumption
     export interface HistoryTollfreeConsumption {
         date: string;
-        price: orderPrice;
+        price: order.Price;
         status: telephony.BillStatusEnum;
     }
     // interface fullName: telephony.Line.Line
@@ -703,7 +703,7 @@ export namespace telephony {
     export interface LineOffer {
         description: string;
         name: string;
-        price?: orderPrice;
+        price?: order.Price;
     }
     // interface fullName: telephony.LineOffersAndContracts.LineOffersAndContracts
     export interface LineOffersAndContracts {
@@ -759,15 +759,15 @@ export namespace telephony {
         brand: string;
         description: string;
         maxline: number;
-        price: orderPrice;
-        protocol: telephonyProtocolEnum;
+        price: order.Price;
+        protocol: telephony.ProtocolEnum;
     }
     // interface fullName: telephony.LinePhoneAssociable.LinePhoneAssociable
     export interface LinePhoneAssociable {
         associatedLines: telephony.LinePhoneAssociableConfiguredLines[];
         brand: string;
         maxLines: number;
-        protocol: telephonyProtocolEnum;
+        protocol: telephony.ProtocolEnum;
     }
     // interface fullName: telephony.LinePhoneAssociableConfiguredLines.LinePhoneAssociableConfiguredLines
     export interface LinePhoneAssociableConfiguredLines {
@@ -1062,7 +1062,7 @@ export namespace telephony {
         maxline: number;
         mgcpIpRestriction?: string;
         phoneConfiguration: telephony.PhoneConfigurationProperty[];
-        protocol: telephonyProtocolEnum;
+        protocol: telephony.ProtocolEnum;
         userPassword?: string;
     }
     // type fullname: telephony.PhoneConfigurationLevelEnum
@@ -1192,7 +1192,7 @@ export namespace telephony {
         duration: number;
         hangupNature?: string;
         planType: telephony.VoiceConsumptionPlanTypeEnum;
-        priceWithoutTax: orderPrice;
+        priceWithoutTax: order.Price;
         wayType: telephony.VoiceConsumptionWayTypeEnum;
     }
     // type fullname: telephony.PropertyEnum
@@ -1202,8 +1202,8 @@ export namespace telephony {
     // interface fullName: telephony.RateCodeInformation.RateCodeInformation
     export interface RateCodeInformation {
         code: string;
-        pricePerCallWithoutTax: orderPrice;
-        pricePerMinuteWithoutTax: orderPrice;
+        pricePerCallWithoutTax: order.Price;
+        pricePerMinuteWithoutTax: order.Price;
     }
     // type fullname: telephony.RealtimeEventDirection
     export type RealtimeEventDirection = "incoming" | "outgoing"
@@ -1403,7 +1403,7 @@ export namespace telephony {
     export interface TelephonyService {
         country: telephony.NumberCountryEnum;
         countryCode: telephony.NumberCountryCodeEnum;
-        currentOutplan: orderPrice;
+        currentOutplan: order.Price;
         description: string;
         featureType: telephony.TypeEnum;
         getPublicOffer: telephony.LineOffer;
@@ -1500,13 +1500,13 @@ export namespace telephony {
     export interface TrunkSimultaneousPack {
         channels: number;
         quantity: number;
-        unitPrice: orderPrice;
+        unitPrice: order.Price;
     }
     // interface fullName: telephony.TrunkSimultaneousPacksRepartition.TrunkSimultaneousPacksRepartition
     export interface TrunkSimultaneousPacksRepartition {
         optimizedChannelsQuantity: number;
         packsRepartition: telephony.TrunkSimultaneousPack[];
-        totalPrice: orderPrice;
+        totalPrice: order.Price;
     }
     // type fullname: telephony.TypeEnum
     export type TypeEnum = "cloudHunting" | "cloudIvr" | "conference" | "contactCenterSolution" | "contactCenterSolutionExpert" | "ddi" | "easyHunting" | "easyPabx" | "empty" | "fax" | "freefax" | "mgcp" | "miniPabx" | "oldConference" | "plugAndFax" | "redirect" | "sip" | "svi" | "voicefax" | "voicemail" | "vxml"
@@ -1525,7 +1525,7 @@ export namespace telephony {
         duration: number;
         hangupNature?: string;
         planType: telephony.VoiceConsumptionPlanTypeEnum;
-        priceWithoutTax: orderPrice;
+        priceWithoutTax: order.Price;
         wayType: telephony.VoiceConsumptionWayTypeEnum;
     }
     // type fullname: telephony.VoiceConsumptionDestinationTypeEnum
@@ -1798,7 +1798,7 @@ export interface Telephony{
         // GET /telephony/{billingAccount}
         $get(): Promise<telephony.BillingAccount>;
         // PUT /telephony/{billingAccount}
-        $put(params?: {allowedOutplan?: orderPrice, billingAccount?: string, creditThreshold?: orderPrice, currentOutplan?: orderPrice, description?: string, hiddenExternalNumber?: boolean, overrideDisplayedNumber?: boolean, securityDeposit?: orderPrice, status?: telephony.BillingAccountStatusEnum, trusted?: boolean}): Promise<void>;
+        $put(params?: {allowedOutplan?: order.Price, billingAccount?: string, creditThreshold?: order.Price, currentOutplan?: order.Price, description?: string, hiddenExternalNumber?: boolean, overrideDisplayedNumber?: boolean, securityDeposit?: order.Price, status?: telephony.BillingAccountStatusEnum, trusted?: boolean}): Promise<void>;
         abbreviatedNumber: {
             // GET /telephony/{billingAccount}/abbreviatedNumber
             $get(): Promise<number[]>;
@@ -2527,7 +2527,7 @@ export interface Telephony{
                     // GET /telephony/{billingAccount}/line/{serviceName}/phone
                     $get(): Promise<telephony.Phone>;
                     // PUT /telephony/{billingAccount}/line/{serviceName}/phone
-                    $put(params?: {brand?: string, description?: string, macAddress?: string, maxline?: number, mgcpIpRestriction?: string, phoneConfiguration?: telephony.PhoneConfigurationProperty[], protocol?: telephonyProtocolEnum, userPassword?: string}): Promise<void>;
+                    $put(params?: {brand?: string, description?: string, macAddress?: string, maxline?: number, mgcpIpRestriction?: string, phoneConfiguration?: telephony.PhoneConfigurationProperty[], protocol?: telephony.ProtocolEnum, userPassword?: string}): Promise<void>;
                     adminCredentials: {
                         // GET /telephony/{billingAccount}/line/{serviceName}/phone/adminCredentials
                         $get(): Promise<telephony.PhoneCredentials>;
@@ -3284,7 +3284,7 @@ export interface Telephony{
                 // GET /telephony/{billingAccount}/service/{serviceName}
                 $get(): Promise<telephony.TelephonyService>;
                 // PUT /telephony/{billingAccount}/service/{serviceName}
-                $put(params?: {country?: telephony.NumberCountryEnum, countryCode?: telephony.NumberCountryCodeEnum, currentOutplan?: orderPrice, description?: string, featureType?: telephony.TypeEnum, getPublicOffer?: telephony.LineOffer, hasFaxCapabilities?: boolean, offers?: string[], properties?: telephony.PropertyEnum[], rio?: string, serviceName?: string, serviceType?: telephony.TypeServiceEnum, simultaneousLines?: number}): Promise<void>;
+                $put(params?: {country?: telephony.NumberCountryEnum, countryCode?: telephony.NumberCountryCodeEnum, currentOutplan?: order.Price, description?: string, featureType?: telephony.TypeEnum, getPublicOffer?: telephony.LineOffer, hasFaxCapabilities?: boolean, offers?: string[], properties?: telephony.PropertyEnum[], rio?: string, serviceName?: string, serviceType?: telephony.TypeServiceEnum, simultaneousLines?: number}): Promise<void>;
                 cancelTermination: {
                     // POST /telephony/{billingAccount}/service/{serviceName}/cancelTermination
                     $post(): Promise<void>;
@@ -5013,7 +5013,7 @@ export interface Telephony{
    * Billing Account
    * Alter this object properties
    */
-  put(path: '/telephony/{billingAccount}'): (params: {billingAccount: string, allowedOutplan?: orderPrice, creditThreshold?: orderPrice, currentOutplan?: orderPrice, description?: string, hiddenExternalNumber?: boolean, overrideDisplayedNumber?: boolean, securityDeposit?: orderPrice, status?: telephony.BillingAccountStatusEnum, trusted?: boolean}) => Promise<void>;
+  put(path: '/telephony/{billingAccount}'): (params: {billingAccount: string, allowedOutplan?: order.Price, creditThreshold?: order.Price, currentOutplan?: order.Price, description?: string, hiddenExternalNumber?: boolean, overrideDisplayedNumber?: boolean, securityDeposit?: order.Price, status?: telephony.BillingAccountStatusEnum, trusted?: boolean}) => Promise<void>;
   /**
    * Abbreviated number
    * Alter this object properties
@@ -5138,7 +5138,7 @@ export interface Telephony{
    * Plug & Phone
    * Alter this object properties
    */
-  put(path: '/telephony/{billingAccount}/line/{serviceName}/phone'): (params: {billingAccount: string, serviceName: string, brand?: string, description?: string, macAddress?: string, maxline?: number, mgcpIpRestriction?: string, phoneConfiguration?: telephony.PhoneConfigurationProperty[], protocol?: telephonyProtocolEnum, userPassword?: string}) => Promise<void>;
+  put(path: '/telephony/{billingAccount}/line/{serviceName}/phone'): (params: {billingAccount: string, serviceName: string, brand?: string, description?: string, macAddress?: string, maxline?: number, mgcpIpRestriction?: string, phoneConfiguration?: telephony.PhoneConfigurationProperty[], protocol?: telephony.ProtocolEnum, userPassword?: string}) => Promise<void>;
   /**
    * Plug & Phone function key
    * Alter this object properties
@@ -5303,7 +5303,7 @@ export interface Telephony{
    * Telephony service
    * Alter this object properties
    */
-  put(path: '/telephony/{billingAccount}/service/{serviceName}'): (params: {billingAccount: string, serviceName: string, country?: telephony.NumberCountryEnum, countryCode?: telephony.NumberCountryCodeEnum, currentOutplan?: orderPrice, description?: string, featureType?: telephony.TypeEnum, getPublicOffer?: telephony.LineOffer, hasFaxCapabilities?: boolean, offers?: string[], properties?: telephony.PropertyEnum[], rio?: string, serviceType?: telephony.TypeServiceEnum, simultaneousLines?: number}) => Promise<void>;
+  put(path: '/telephony/{billingAccount}/service/{serviceName}'): (params: {billingAccount: string, serviceName: string, country?: telephony.NumberCountryEnum, countryCode?: telephony.NumberCountryCodeEnum, currentOutplan?: order.Price, description?: string, featureType?: telephony.TypeEnum, getPublicOffer?: telephony.LineOffer, hasFaxCapabilities?: boolean, offers?: string[], properties?: telephony.PropertyEnum[], rio?: string, serviceType?: telephony.TypeServiceEnum, simultaneousLines?: number}) => Promise<void>;
   /**
    * Directory Informations
    * Alter this object properties
@@ -6435,7 +6435,3 @@ export interface Telephony{
    */
   delete(path: '/telephony/spare/{spare}'): (params: {spare: string}) => Promise<void>;
 }
-/**
- * classic Model
- */type telephonyProtocolEnum = telephony.ProtocolEnum;
-type orderPrice = order.Price;

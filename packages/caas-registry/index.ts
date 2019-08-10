@@ -372,6 +372,3 @@ export interface Caas{
    */
   delete(path: '/caas/registry/{serviceName}/users/{userId}'): (params: {serviceName: string, userId: string}) => Promise<void>;
 }
-/**
- * classic Model
- */

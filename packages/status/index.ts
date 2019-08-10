@@ -64,6 +64,3 @@ export interface Status{
    */
   get(path: '/status/task'): (params?: {impact?: ovhstatus.task.TaskImpactEnum, status?: ovhstatus.task.TaskStatusEnum, type?: ovhstatus.task.TaskTypeEnum}) => Promise<status.Task.Task[]>;
 }
-/**
- * classic Model
- */

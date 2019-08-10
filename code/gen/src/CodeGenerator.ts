@@ -3,41 +3,12 @@ import { indentGen, protectModelField, className, protectJsonKey, rawRemapNode, 
 import { Parameter, Schema, FieldProp, API } from './schema';
 import { EOL } from 'os';
 
-
-let commonNSColision: { [key: string]: string } = {
-    'order.Price': 'orderPrice',
-    'zone.NamedResolutionFieldTypeEnum': 'zoneNamedResolutionFieldTypeEnum',
-    'domain.DomainStatusEnum': 'domainDomainStatusEnum',
-    'domain.DomainMlLanguageEnum': 'domainDomainMlLanguageEnum',
-    'domain.DomainMlOptionsStruct': 'domainDomainMlOptionsStruct',
-    'domain.DomainFilterActionEnum': 'domainDomainFilterActionEnum',
-    'domain.DomainFilterOperandEnum': 'domainDomainFilterOperandEnum',
-    'domain.DomainSpecialAccountActionEnum': 'domainDomainSpecialAccountActionEnum',
-    'domain.DomainPopActionEnum': 'domainDomainPopActionEnum',
-    'domain.DomainSpecialAccountTypeEnum': 'domainDomainSpecialAccountTypeEnum',
-    'zone.RedirectionTypeEnum': 'zoneRedirectionTypeEnum',
-    'xdsl.DslTypeEnum': 'xdslDslTypeEnum',
-    'xdsl.eligibility.Address': 'xdsleligibilityAddress',
-    'xdsl.eligibility.BookMeetingSlot': 'xdsleligibilityBookMeetingSlot',
-    'xdsl.eligibility.LandlineStatusEnum': 'xdsleligibilityLandlineStatusEnum',
-    'xdsl.DeconsolidationEnum': 'xdslDeconsolidationEnum',
-    'xdsl.LineSectionLength': 'xdslLineSectionLength',
-    'xdsl.eligibility.Portability': 'xdsleligibilityPortability',
-    'xdsl.eligibility.MeetingSlots': 'xdsleligibilityMeetingSlots',
-    'xdsl.eligibility.ProviderEnum': 'xdsleligibilityProviderEnum',
-    'email.pro.ObjectStateEnum': 'emailproObjectStateEnum',
-    'veeamEnterprise.TaskStateEnum': 'veeamEnterpriseTaskStateEnum',
-    'telephony.ProtocolEnum': 'telephonyProtocolEnum',
-    'payment.method.IntegrationType': 'paymentMethodIntegrationType',
-}
-
 export class CodeGenerator {
     api: string;
     gen: GenApiTypes;
     schema?: Schema;
-    NSCollision = new Set<string>();
-    // allFullTypes = [] as string[];
-    // allFullInterface = [] as string[];
+    //NSCollision = new Set<string>();
+    NSColision: { [key: string]: string } = {};
 
     constructor(api: string) {
         this.api = api;
@@ -50,20 +21,6 @@ export class CodeGenerator {
         // Add extra ROOT NameSpace
         //let code = `import { OvhWrapper, OvhRequestable, OvhParamType, buildOvhProxy } from '@ovh-api/common';${EOL}${EOL}/**${EOL} * START API ${this.api} Models${EOL} */${EOL}`;
         let code = `import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';${EOL}${EOL}/**${EOL} * START API ${this.api} Models${EOL} */${EOL}`;
-
-        /*
-        let models = Object.keys(this.schema.models).sort((a, b) => a.length - b.length)
-        console.log(models);
-        for (let i = 0; i < models.length; i++)
-            for (let j = (i + 1); j < models.length; j++) {
-                let type = models[i];
-                let tested = models[j];
-                if (tested.endsWith(type)) {
-                    commonNSColision[type] = type.replace(/\./g, '');
-                    console.log(`colison ${tested} endWith ${type} => ${commonNSColision[type]}`)
-                }
-            }
-        */
 
         code = this.dumpModel(0, this.gen.models, code, '');
 
@@ -86,10 +43,14 @@ export class CodeGenerator {
 
         code += `/**${EOL} * Api Proxy model${EOL} */`
         code += this.dumpApiHarmony(0, this.gen.apis, `// Apis harmony${EOL}`);
-        code += `/**${EOL} * classic Model${EOL} */`
         // extra alias fo bypass namespace colision errors
-        for (let type of this.NSCollision) {
-            code += `type ${commonNSColision[type]} = ${type};${EOL}`
+        const collisions = Object.keys(this.NSColision);
+        if (collisions.length) {
+            code += `/**${EOL} * Extra Alias to bypass relativer namespace colitions${EOL} */${EOL}`
+        }
+        for (let type of collisions) {
+            // this.NSColision[rawType];
+            code += `type ${this.NSColision[type]} = ${type};${EOL}`
         }
 
         return code;
@@ -116,9 +77,9 @@ export class CodeGenerator {
             //    if (!commonNSColision[rawType])
             //        commonNSColision[rawType] = formatUpperCamlCase(rawType);
             //}
-            let colistion = commonNSColision[rawType];
+            let colistion = this.NSColision[rawType];
             if (colistion) {
-                this.NSCollision.add(rawType);
+                // this.NSCollision.add(rawType);
                 if (isArray)
                     type = colistion + '[]';
                 else
@@ -128,7 +89,7 @@ export class CodeGenerator {
         return filterReservedKw(type);
     }
 
-    reservedField = new Set(['_alias', '_model', '_name', '__propo__', '_namespace'])
+    reservedField = new Set(['_alias', '_model', '_name', '__propo__', '_namespace', '_parent'])
 
     /**
      * @param depth 
@@ -163,11 +124,19 @@ export class CodeGenerator {
                 code += `${ident0}export interface ${name}${generic} {${EOL}`;
                 for (const pName of props) {
                     const prop = model.properties[pName];
-                    // console.log(prop);
                     code += `${ident0}    ${protectModelField(pName)}`;
                     if (!prop.required && prop.canBeNull)
                         code += '?';
-                    code += ': ' + this.typeFromParameter(prop);
+                    let type = this.typeFromParameter(prop);
+                    const prefix = type.replace(/^([^\.]+)\..+$/, '$1');
+                    if (prefix !== type) {
+                        if (~cache._model.namespace.indexOf(`.${prefix}.`) || (cache._parent && cache._parent[prefix])) {
+                            // enable protection
+                            this.NSColision[type] = type.replace(/\./g, '');
+                            type = this.typeFromParameter(prop);
+                        }
+                    }
+                    code += ': ' + type;
                     code += `;${EOL}`;
                 }
                 code += `${ident0}}${EOL}`;

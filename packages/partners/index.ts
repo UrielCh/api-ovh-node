@@ -339,6 +339,3 @@ export interface Partners{
    */
   delete(path: '/partners/register/company/{companyId}/contact/{contactId}'): (params: {companyId: string, contactId: string}) => Promise<string>;
 }
-/**
- * classic Model
- */

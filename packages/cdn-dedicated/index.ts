@@ -454,6 +454,3 @@ export interface Cdn{
    */
   delete(path: '/cdn/dedicated/{serviceName}/ssl'): (params: {serviceName: string}) => Promise<cdnanycast.Task>;
 }
-/**
- * classic Model
- */

@@ -288,6 +288,3 @@ export interface Dbaas{
    */
   delete(path: '/dbaas/queue/{serviceName}/topic/{topicId}'): (params: {serviceName: string, topicId: string}) => Promise<void>;
 }
-/**
- * classic Model
- */

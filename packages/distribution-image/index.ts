@@ -65,6 +65,3 @@ export interface Distribution{
    */
   get(path: '/distribution/image/{serviceType}/{imageName}'): (params: {imageName: string, serviceType: distribution.image.service}) => Promise<distribution.image>;
 }
-/**
- * classic Model
- */

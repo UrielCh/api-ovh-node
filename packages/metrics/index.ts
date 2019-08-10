@@ -263,6 +263,3 @@ export interface Metrics{
    */
   delete(path: '/metrics/{serviceName}/token/{tokenId}'): (params: {serviceName: string, tokenId: string}) => Promise<void>;
 }
-/**
- * classic Model
- */

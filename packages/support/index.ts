@@ -145,6 +145,3 @@ export interface Support{
    */
   post(path: '/support/tickets/create'): (params: {body: string, category?: support.TicketCategoryEnum, product?: support.TicketProductEnum, serviceName?: string, subcategory?: support.TicketSubCategoryEnum, subject: string, type: support.TicketTypeEnum}) => Promise<support.NewMessageInfo>;
 }
-/**
- * classic Model
- */

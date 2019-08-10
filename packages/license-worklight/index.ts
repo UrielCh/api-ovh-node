@@ -217,6 +217,3 @@ export interface License{
    */
   post(path: '/license/worklight/{serviceName}/terminate'): (params: {serviceName: string}) => Promise<string>;
 }
-/**
- * classic Model
- */

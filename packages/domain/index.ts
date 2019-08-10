@@ -278,7 +278,7 @@ export namespace domain {
         }
         // interface fullName: domain.zone.Record.Record
         export interface Record {
-            fieldType: zoneNamedResolutionFieldTypeEnum;
+            fieldType: zone.NamedResolutionFieldTypeEnum;
             id: number;
             subDomain?: string;
             target: string;
@@ -293,7 +293,7 @@ export namespace domain {
             subDomain?: string;
             target: string;
             title?: string;
-            type: zoneRedirectionTypeEnum;
+            type: zone.RedirectionTypeEnum;
             zone: string;
         }
         // interface fullName: domain.zone.Soa.Soa
@@ -545,30 +545,30 @@ export interface Domain{
             }
             record: {
                 // GET /domain/zone/{zoneName}/record
-                $get(params?: {fieldType?: zoneNamedResolutionFieldTypeEnum, subDomain?: string}): Promise<number[]>;
+                $get(params?: {fieldType?: zone.NamedResolutionFieldTypeEnum, subDomain?: string}): Promise<number[]>;
                 // POST /domain/zone/{zoneName}/record
-                $post(params: {fieldType: zoneNamedResolutionFieldTypeEnum, subDomain?: string, target: string, ttl?: number}): Promise<domain.zone.Record>;
+                $post(params: {fieldType: zone.NamedResolutionFieldTypeEnum, subDomain?: string, target: string, ttl?: number}): Promise<domain.zone.Record>;
                 $(id: number): {
                     // DELETE /domain/zone/{zoneName}/record/{id}
                     $delete(): Promise<void>;
                     // GET /domain/zone/{zoneName}/record/{id}
                     $get(): Promise<domain.zone.Record>;
                     // PUT /domain/zone/{zoneName}/record/{id}
-                    $put(params?: {fieldType?: zoneNamedResolutionFieldTypeEnum, id?: number, subDomain?: string, target?: string, ttl?: number, zone?: string}): Promise<void>;
+                    $put(params?: {fieldType?: zone.NamedResolutionFieldTypeEnum, id?: number, subDomain?: string, target?: string, ttl?: number, zone?: string}): Promise<void>;
                 };
             }
             redirection: {
                 // GET /domain/zone/{zoneName}/redirection
                 $get(params?: {subDomain?: string}): Promise<number[]>;
                 // POST /domain/zone/{zoneName}/redirection
-                $post(params: {description?: string, keywords?: string, subDomain?: string, target: string, title?: string, type: zoneRedirectionTypeEnum}): Promise<domain.zone.Redirection>;
+                $post(params: {description?: string, keywords?: string, subDomain?: string, target: string, title?: string, type: zone.RedirectionTypeEnum}): Promise<domain.zone.Redirection>;
                 $(id: number): {
                     // DELETE /domain/zone/{zoneName}/redirection/{id}
                     $delete(): Promise<void>;
                     // GET /domain/zone/{zoneName}/redirection/{id}
                     $get(): Promise<domain.zone.Redirection>;
                     // PUT /domain/zone/{zoneName}/redirection/{id}
-                    $put(params?: {description?: string, id?: number, keywords?: string, subDomain?: string, target?: string, title?: string, type?: zoneRedirectionTypeEnum, zone?: string}): Promise<void>;
+                    $put(params?: {description?: string, id?: number, keywords?: string, subDomain?: string, target?: string, title?: string, type?: zone.RedirectionTypeEnum, zone?: string}): Promise<void>;
                 };
             }
             refresh: {
@@ -994,7 +994,7 @@ export interface Domain{
    * List the domain.zone.Record objects
    * Records of the zone
    */
-  get(path: '/domain/zone/{zoneName}/record'): (params: {zoneName: string, fieldType?: zoneNamedResolutionFieldTypeEnum, subDomain?: string}) => Promise<number[]>;
+  get(path: '/domain/zone/{zoneName}/record'): (params: {zoneName: string, fieldType?: zone.NamedResolutionFieldTypeEnum, subDomain?: string}) => Promise<number[]>;
   /**
    * Zone resource records
    * Get this object properties
@@ -1074,12 +1074,12 @@ export interface Domain{
    * Zone resource records
    * Alter this object properties
    */
-  put(path: '/domain/zone/{zoneName}/record/{id}'): (params: {id: number, zoneName: string, fieldType?: zoneNamedResolutionFieldTypeEnum, subDomain?: string, target?: string, ttl?: number, zone?: string}) => Promise<void>;
+  put(path: '/domain/zone/{zoneName}/record/{id}'): (params: {id: number, zoneName: string, fieldType?: zone.NamedResolutionFieldTypeEnum, subDomain?: string, target?: string, ttl?: number, zone?: string}) => Promise<void>;
   /**
    * Redirection
    * Alter this object properties
    */
-  put(path: '/domain/zone/{zoneName}/redirection/{id}'): (params: {id: number, zoneName: string, description?: string, keywords?: string, subDomain?: string, target?: string, title?: string, type?: zoneRedirectionTypeEnum, zone?: string}) => Promise<void>;
+  put(path: '/domain/zone/{zoneName}/redirection/{id}'): (params: {id: number, zoneName: string, description?: string, keywords?: string, subDomain?: string, target?: string, title?: string, type?: zone.RedirectionTypeEnum, zone?: string}) => Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
@@ -1229,12 +1229,12 @@ export interface Domain{
    * List the domain.zone.Record objects
    * Create a new DNS record (Don't forget to refresh the zone)
    */
-  post(path: '/domain/zone/{zoneName}/record'): (params: {zoneName: string, fieldType: zoneNamedResolutionFieldTypeEnum, subDomain?: string, target: string, ttl?: number}) => Promise<domain.zone.Record>;
+  post(path: '/domain/zone/{zoneName}/record'): (params: {zoneName: string, fieldType: zone.NamedResolutionFieldTypeEnum, subDomain?: string, target: string, ttl?: number}) => Promise<domain.zone.Record>;
   /**
    * List the domain.zone.Redirection objects
    * Create a new redirection (Don't forget to refresh the zone)
    */
-  post(path: '/domain/zone/{zoneName}/redirection'): (params: {zoneName: string, description?: string, keywords?: string, subDomain?: string, target: string, title?: string, type: zoneRedirectionTypeEnum}) => Promise<domain.zone.Redirection>;
+  post(path: '/domain/zone/{zoneName}/redirection'): (params: {zoneName: string, description?: string, keywords?: string, subDomain?: string, target: string, title?: string, type: zone.RedirectionTypeEnum}) => Promise<domain.zone.Redirection>;
   /**
    * refresh operations
    * Apply zone modification on DNS servers
@@ -1316,7 +1316,3 @@ export interface Domain{
    */
   delete(path: '/domain/zone/{zoneName}/redirection/{id}'): (params: {id: number, zoneName: string}) => Promise<void>;
 }
-/**
- * classic Model
- */type zoneNamedResolutionFieldTypeEnum = zone.NamedResolutionFieldTypeEnum;
-type zoneRedirectionTypeEnum = zone.RedirectionTypeEnum;

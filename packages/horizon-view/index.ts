@@ -506,6 +506,3 @@ export interface HorizonView{
    */
   delete(path: '/horizonView/{serviceName}/dedicatedHorizon/customerUser/{username}'): (params: {serviceName: string, username: string}) => Promise<horizonView.Task[]>;
 }
-/**
- * classic Model
- */

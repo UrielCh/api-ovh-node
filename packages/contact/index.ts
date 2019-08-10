@@ -55,6 +55,3 @@ export interface Contact{
    */
   post(path: '/contact/form/send'): (params: {form: complexType.SafeKeyValue<string>[], type: string}) => Promise<void>;
 }
-/**
- * classic Model
- */

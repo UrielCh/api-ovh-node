@@ -265,6 +265,3 @@ export interface License{
    */
   delete(path: '/license/virtuozzo/{serviceName}/option/{label}'): (params: {label: license.OptionLabel, serviceName: string}) => Promise<license.Task>;
 }
-/**
- * classic Model
- */

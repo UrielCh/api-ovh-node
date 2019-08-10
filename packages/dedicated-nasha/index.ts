@@ -493,6 +493,3 @@ export interface Dedicated{
    */
   delete(path: '/dedicated/nasha/{serviceName}/vrack'): (params: {serviceName: string}) => Promise<dedicated.nasTask.Task>;
 }
-/**
- * classic Model
- */

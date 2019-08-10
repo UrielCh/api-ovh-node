@@ -273,6 +273,3 @@ export interface Dedicated{
    */
   delete(path: '/dedicated/nas/{serviceName}/partition/{partitionName}/quota/{uid}'): (params: {partitionName: string, serviceName: string, uid: number}) => Promise<dedicated.nasTask.Task>;
 }
-/**
- * classic Model
- */

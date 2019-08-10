@@ -9398,6 +9398,3 @@ export interface Price{
    */
   get(path: '/price/xdsl/options/line/{lineAction}'): (params: {lineAction: price.Xdsl.Options.LineEnum}) => Promise<order.Price>;
 }
-/**
- * classic Model
- */

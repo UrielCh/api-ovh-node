@@ -82,6 +82,3 @@ export interface Supply{
    */
   post(path: '/supply/mondialRelay'): (params: {address?: string, city?: string, country: coreTypes.CountryEnum, zipcode?: string}) => Promise<supply.MondialRelayReturn>;
 }
-/**
- * classic Model
- */

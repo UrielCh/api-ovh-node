@@ -751,6 +751,3 @@ export interface Hosting{
    */
   delete(path: '/hosting/privateDatabase/{serviceName}/whitelist/{ip}'): (params: {ip: string, serviceName: string}) => Promise<hosting.privateDatabase.task>;
 }
-/**
- * classic Model
- */

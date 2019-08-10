@@ -775,7 +775,7 @@ export namespace secondaryDns {
     }
     // interface fullName: secondaryDns.SecondaryDNSCheckField.SecondaryDNSCheckField
     export interface SecondaryDNSCheckField {
-        fieldType: zoneNamedResolutionFieldTypeEnum;
+        fieldType: zone.NamedResolutionFieldTypeEnum;
         fieldValue: string;
         subDomain: string;
     }
@@ -2197,6 +2197,3 @@ export interface Dedicated{
    */
   delete(path: '/dedicated/server/{serviceName}/vrack/{vrack}'): (params: {serviceName: string, vrack: string}) => Promise<vrack.Task>;
 }
-/**
- * classic Model
- */type zoneNamedResolutionFieldTypeEnum = zone.NamedResolutionFieldTypeEnum;

@@ -247,6 +247,3 @@ export interface Kube{
    */
   delete(path: '/kube/{serviceName}/publiccloud/node/{nodeId}'): (params: {nodeId: string, serviceName: string}) => Promise<void>;
 }
-/**
- * classic Model
- */

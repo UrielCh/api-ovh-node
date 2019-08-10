@@ -221,6 +221,3 @@ export interface VeeamCloudConnect{
    */
   delete(path: '/veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}'): (params: {inventoryName: string, serviceName: string}) => Promise<veeamCloudConnect.Task[]>;
 }
-/**
- * classic Model
- */

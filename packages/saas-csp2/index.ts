@@ -312,6 +312,3 @@ export interface Saas{
    */
   delete(path: '/saas/csp2/{serviceName}/subscription/{id}'): (params: {id: number, serviceName: string}) => Promise<saas.csp2.OfficeTask>;
 }
-/**
- * classic Model
- */

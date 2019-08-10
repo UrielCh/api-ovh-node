@@ -33,7 +33,7 @@ export namespace email {
             spamAndVirusConfiguration: email.pro.spamAndVirusConfiguration;
             spamDetected: boolean;
             spamTicketNumber?: number;
-            state: emailproObjectStateEnum;
+            state: email.pro.ObjectStateEnum;
             taskPendingId: number;
         }
         // interface fullName: email.mxplan.AccountAlias.AccountAlias
@@ -84,7 +84,7 @@ export namespace email {
             name: string;
             srvIsValid: boolean;
             srvRecord: string[];
-            state: emailproObjectStateEnum;
+            state: email.pro.ObjectStateEnum;
             taskPendingId: number;
             type: email.pro.DomainTypeEnum;
         }
@@ -98,7 +98,7 @@ export namespace email {
             id: number;
             initials?: string;
             lastName?: string;
-            state: emailproObjectStateEnum;
+            state: email.pro.ObjectStateEnum;
             taskPendingId: number;
         }
         // interface fullName: email.mxplan.Server.Server
@@ -220,7 +220,7 @@ export interface Email{
                     // GET /email/mxplan/{service}/account/{email}
                     $get(): Promise<email.mxplan.Account>;
                     // PUT /email/mxplan/{service}/account/{email}
-                    $put(params?: {SAMAccountName?: string, configured?: boolean, creationDate?: string, currentUsage?: number, deleteAtExpiration?: boolean, displayName?: string, domain?: string, expirationDate?: string, expirationOutlookDate?: string, firstName?: string, hiddenFromGAL?: boolean, id?: number, initial?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, lastUpdateDate?: string, login?: string, mailingFilter?: email.pro.MailingFilterEnum[], passwordLastUpdate?: string, primaryEmailAddress?: string, quota?: number, renewPeriod?: email.pro.renewPeriodEnum, spamAndVirusConfiguration?: email.pro.spamAndVirusConfiguration, spamDetected?: boolean, spamTicketNumber?: number, state?: emailproObjectStateEnum, taskPendingId?: number}): Promise<void>;
+                    $put(params?: {SAMAccountName?: string, configured?: boolean, creationDate?: string, currentUsage?: number, deleteAtExpiration?: boolean, displayName?: string, domain?: string, expirationDate?: string, expirationOutlookDate?: string, firstName?: string, hiddenFromGAL?: boolean, id?: number, initial?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, lastUpdateDate?: string, login?: string, mailingFilter?: email.pro.MailingFilterEnum[], passwordLastUpdate?: string, primaryEmailAddress?: string, quota?: number, renewPeriod?: email.pro.renewPeriodEnum, spamAndVirusConfiguration?: email.pro.spamAndVirusConfiguration, spamDetected?: boolean, spamTicketNumber?: number, state?: email.pro.ObjectStateEnum, taskPendingId?: number}): Promise<void>;
                     alias: {
                         // GET /email/mxplan/{service}/account/{email}/alias
                         $get(): Promise<string[]>;
@@ -295,12 +295,12 @@ export interface Email{
             }
             domain: {
                 // GET /email/mxplan/{service}/domain
-                $get(params?: {state?: emailproObjectStateEnum}): Promise<string[]>;
+                $get(params?: {state?: email.pro.ObjectStateEnum}): Promise<string[]>;
                 $(domainName: string): {
                     // GET /email/mxplan/{service}/domain/{domainName}
                     $get(): Promise<email.mxplan.Domain>;
                     // PUT /email/mxplan/{service}/domain/{domainName}
-                    $put(params?: {cnameToCheck?: string, domainAliases?: string[], domainValidated?: boolean, isAliasDomain?: boolean, mxIsValid?: boolean, mxRecord?: string[], mxRelay?: string, name?: string, srvIsValid?: boolean, srvRecord?: string[], state?: emailproObjectStateEnum, taskPendingId?: number, type?: email.pro.DomainTypeEnum}): Promise<void>;
+                    $put(params?: {cnameToCheck?: string, domainAliases?: string[], domainValidated?: boolean, isAliasDomain?: boolean, mxIsValid?: boolean, mxRecord?: string[], mxRelay?: string, name?: string, srvIsValid?: boolean, srvRecord?: string[], state?: email.pro.ObjectStateEnum, taskPendingId?: number, type?: email.pro.DomainTypeEnum}): Promise<void>;
                     disclaimer: {
                         // DELETE /email/mxplan/{service}/domain/{domainName}/disclaimer
                         $delete(): Promise<email.pro.Task>;
@@ -328,7 +328,7 @@ export interface Email{
                     // GET /email/mxplan/{service}/externalContact/{externalEmailAddress}
                     $get(): Promise<email.mxplan.ExternalContact>;
                     // PUT /email/mxplan/{service}/externalContact/{externalEmailAddress}
-                    $put(params?: {creationDate?: string, displayName?: string, externalEmailAddress?: string, firstName?: string, hiddenFromGAL?: boolean, id?: number, initials?: string, lastName?: string, state?: emailproObjectStateEnum, taskPendingId?: number}): Promise<void>;
+                    $put(params?: {creationDate?: string, displayName?: string, externalEmailAddress?: string, firstName?: string, hiddenFromGAL?: boolean, id?: number, initials?: string, lastName?: string, state?: email.pro.ObjectStateEnum, taskPendingId?: number}): Promise<void>;
                 };
             }
             server: {
@@ -434,7 +434,7 @@ export interface Email{
    * List the email.mxplan.Domain objects
    * Domains associated to this service
    */
-  get(path: '/email/mxplan/{service}/domain'): (params: {service: string, state?: emailproObjectStateEnum}) => Promise<string[]>;
+  get(path: '/email/mxplan/{service}/domain'): (params: {service: string, state?: email.pro.ObjectStateEnum}) => Promise<string[]>;
   /**
    * Domain
    * Get this object properties
@@ -484,12 +484,12 @@ export interface Email{
    * Mailbox
    * Alter this object properties
    */
-  put(path: '/email/mxplan/{service}/account/{email}'): (params: {email: string, service: string, SAMAccountName?: string, configured?: boolean, creationDate?: string, currentUsage?: number, deleteAtExpiration?: boolean, displayName?: string, domain?: string, expirationDate?: string, expirationOutlookDate?: string, firstName?: string, hiddenFromGAL?: boolean, id?: number, initial?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, lastUpdateDate?: string, login?: string, mailingFilter?: email.pro.MailingFilterEnum[], passwordLastUpdate?: string, primaryEmailAddress?: string, quota?: number, renewPeriod?: email.pro.renewPeriodEnum, spamAndVirusConfiguration?: email.pro.spamAndVirusConfiguration, spamDetected?: boolean, spamTicketNumber?: number, state?: emailproObjectStateEnum, taskPendingId?: number}) => Promise<void>;
+  put(path: '/email/mxplan/{service}/account/{email}'): (params: {email: string, service: string, SAMAccountName?: string, configured?: boolean, creationDate?: string, currentUsage?: number, deleteAtExpiration?: boolean, displayName?: string, domain?: string, expirationDate?: string, expirationOutlookDate?: string, firstName?: string, hiddenFromGAL?: boolean, id?: number, initial?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, lastUpdateDate?: string, login?: string, mailingFilter?: email.pro.MailingFilterEnum[], passwordLastUpdate?: string, primaryEmailAddress?: string, quota?: number, renewPeriod?: email.pro.renewPeriodEnum, spamAndVirusConfiguration?: email.pro.spamAndVirusConfiguration, spamDetected?: boolean, spamTicketNumber?: number, state?: email.pro.ObjectStateEnum, taskPendingId?: number}) => Promise<void>;
   /**
    * Domain
    * Alter this object properties
    */
-  put(path: '/email/mxplan/{service}/domain/{domainName}'): (params: {domainName: string, service: string, cnameToCheck?: string, domainAliases?: string[], domainValidated?: boolean, isAliasDomain?: boolean, mxIsValid?: boolean, mxRecord?: string[], mxRelay?: string, name?: string, srvIsValid?: boolean, srvRecord?: string[], state?: emailproObjectStateEnum, taskPendingId?: number, type?: email.pro.DomainTypeEnum}) => Promise<void>;
+  put(path: '/email/mxplan/{service}/domain/{domainName}'): (params: {domainName: string, service: string, cnameToCheck?: string, domainAliases?: string[], domainValidated?: boolean, isAliasDomain?: boolean, mxIsValid?: boolean, mxRecord?: string[], mxRelay?: string, name?: string, srvIsValid?: boolean, srvRecord?: string[], state?: email.pro.ObjectStateEnum, taskPendingId?: number, type?: email.pro.DomainTypeEnum}) => Promise<void>;
   /**
    * disclaimer
    * Alter this object properties
@@ -499,7 +499,7 @@ export interface Email{
    * External contact for this mxplan service
    * Alter this object properties
    */
-  put(path: '/email/mxplan/{service}/externalContact/{externalEmailAddress}'): (params: {externalEmailAddress: string, service: string, creationDate?: string, displayName?: string, firstName?: string, hiddenFromGAL?: boolean, id?: number, initials?: string, lastName?: string, state?: emailproObjectStateEnum, taskPendingId?: number}) => Promise<void>;
+  put(path: '/email/mxplan/{service}/externalContact/{externalEmailAddress}'): (params: {externalEmailAddress: string, service: string, creationDate?: string, displayName?: string, firstName?: string, hiddenFromGAL?: boolean, id?: number, initials?: string, lastName?: string, state?: email.pro.ObjectStateEnum, taskPendingId?: number}) => Promise<void>;
   /**
    * List the email.mxplan.AccountAlias objects
    * Create new alias
@@ -581,6 +581,3 @@ export interface Email{
    */
   delete(path: '/email/mxplan/{service}/externalContact/{externalEmailAddress}'): (params: {externalEmailAddress: string, service: string}) => Promise<email.pro.Task>;
 }
-/**
- * classic Model
- */type emailproObjectStateEnum = email.pro.ObjectStateEnum;

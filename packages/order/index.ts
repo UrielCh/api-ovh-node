@@ -266,16 +266,16 @@ export namespace order {
         detailType?: order.OrderDetailTypeEnum;
         domain: string;
         quantity: number;
-        totalPrice: orderPrice;
-        unitPrice: orderPrice;
+        totalPrice: order.Price;
+        unitPrice: order.Price;
     }
     // type fullname: order.OrderDetailTypeEnum
     export type OrderDetailTypeEnum = "ACCESSORY" | "CAUTION" | "CHOOSED" | "CONSUMPTION" | "CREATION" | "DELIVERY" | "DURATION" | "GIFT" | "INSTALLATION" | "LICENSE" | "MUTE" | "OTHER" | "OUTPLAN" | "QUANTITY" | "REFUND" | "RENEW" | "SPECIAL" | "SWITCH" | "TRANSFER" | "VOUCHER"
     // interface fullName: order.OrderPrices.OrderPrices
     export interface OrderPrices {
-        tax: orderPrice;
-        withTax: orderPrice;
-        withoutTax: orderPrice;
+        tax: order.Price;
+        withTax: order.Price;
+        withoutTax: order.Price;
     }
     // interface fullName: order.Price.Price
     export interface Price {
@@ -421,7 +421,7 @@ export namespace order {
             maximumRepeat?: number;
             minimumQuantity: number;
             minimumRepeat: number;
-            price: orderPrice;
+            price: order.Price;
             priceInUcents: number;
             pricingMode: string;
             pricingType: order.cart.GenericProductPricingTypeEnum;
@@ -460,7 +460,7 @@ export namespace order {
         // interface fullName: order.cart.Price.Price
         export interface Price {
             label: order.cart.PriceLabelEnum;
-            price: orderPrice;
+            price: order.Price;
         }
         // type fullname: order.cart.PriceLabelEnum
         export type PriceLabelEnum = "PRICE" | "DISCOUNT" | "FEE" | "TOTAL" | "RENEW"
@@ -533,7 +533,7 @@ export namespace order {
             minimumQuantity: number;
             minimumRepeat: number;
             mustBeCompleted: boolean;
-            price: orderPrice;
+            price: order.Price;
             priceCapInUcents?: number;
             priceInUcents: number;
             pricingStrategy: string;
@@ -6587,6 +6587,3 @@ export interface Order{
    */
   delete(path: '/order/cart/{cartId}/item/{itemId}/configuration/{configurationId}'): (params: {cartId: string, configurationId: number, itemId: number}) => Promise<void>;
 }
-/**
- * classic Model
- */type orderPrice = order.Price;

@@ -227,6 +227,3 @@ export interface Freefax{
    */
   post(path: '/freefax/{serviceName}/voicemail/changeRouting'): (params: {serviceName: string, routing: telephony.VoicefaxRoutingEnum}) => Promise<void>;
 }
-/**
- * classic Model
- */

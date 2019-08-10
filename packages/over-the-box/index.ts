@@ -23,12 +23,12 @@ export namespace overTheBox {
     }
     // interface fullName: overTheBox.AvailableMigrationOffer.AvailableMigrationOffer
     export interface AvailableMigrationOffer {
-        currentOfferPrice: orderPrice;
+        currentOfferPrice: order.Price;
         description: string;
         engagementMonths: number;
         hardwareAvailable: boolean;
         offer: string;
-        price: orderPrice;
+        price: order.Price;
     }
     // interface fullName: overTheBox.Backup.Backup
     export interface Backup {
@@ -452,6 +452,3 @@ export interface OverTheBox{
    */
   delete(path: '/overTheBox/{serviceName}/remoteAccesses/{remoteAccessId}'): (params: {remoteAccessId: string, serviceName: string}) => Promise<void>;
 }
-/**
- * classic Model
- */type orderPrice = order.Price;

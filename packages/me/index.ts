@@ -823,7 +823,7 @@ export namespace me {
             // interface fullName: me.payment.method.AvailablePaymentMethod.AvailablePaymentMethod
             export interface AvailablePaymentMethod {
                 icon: me.payment.method.Icon;
-                integration: paymentMethodIntegrationType;
+                integration: paymentmethodIntegrationType;
                 oneshot: boolean;
                 paymentType: string;
                 registerable: boolean;
@@ -867,7 +867,7 @@ export namespace me {
                 export interface ValidationResult {
                     paymentMethodId: number;
                     url?: string;
-                    validationType: paymentMethodIntegrationType;
+                    validationType: paymentmethodIntegrationType;
                 }
             }
             // interface fullName: me.payment.method.Transaction.Transaction
@@ -1275,7 +1275,7 @@ export namespace payment {
         // interface fullName: payment.method.AvailablePaymentMethod.AvailablePaymentMethod
         export interface AvailablePaymentMethod {
             icon: payment.method.Icon;
-            integration: paymentMethodIntegrationType;
+            integration: paymentmethodIntegrationType;
             oneshot: boolean;
             paymentType: string;
             registerable: boolean;
@@ -1299,7 +1299,7 @@ export namespace telephony {
     export interface DefaultIpRestriction {
         id: number;
         subnet: string;
-        type: telephonyProtocolEnum;
+        type: telephony.ProtocolEnum;
     }
     // interface fullName: telephony.LineDescriptionSettings.LineDescriptionSettings
     export interface LineDescriptionSettings {
@@ -2374,7 +2374,7 @@ export interface Me{
             // GET /me/telephony/defaultIpRestriction
             $get(): Promise<number[]>;
             // POST /me/telephony/defaultIpRestriction
-            $post(params: {subnet: string, type: telephonyProtocolEnum}): Promise<telephony.DefaultIpRestriction>;
+            $post(params: {subnet: string, type: telephony.ProtocolEnum}): Promise<telephony.DefaultIpRestriction>;
             $(id: number): {
                 // DELETE /me/telephony/defaultIpRestriction/{id}
                 $delete(): Promise<void>;
@@ -3807,7 +3807,7 @@ export interface Me{
    * List the telephony.DefaultIpRestriction objects
    * Create a default IP restriction for your future VoIP lines
    */
-  post(path: '/me/telephony/defaultIpRestriction'): (params: {subnet: string, type: telephonyProtocolEnum}) => Promise<telephony.DefaultIpRestriction>;
+  post(path: '/me/telephony/defaultIpRestriction'): (params: {subnet: string, type: telephony.ProtocolEnum}) => Promise<telephony.DefaultIpRestriction>;
   /**
    * settings operations
    * Change the telephony settings linked to the customer account
@@ -3940,7 +3940,7 @@ export interface Me{
   delete(path: '/me/telephony/defaultIpRestriction/{id}'): (params: {id: number}) => Promise<void>;
 }
 /**
- * classic Model
- */type orderPrice = order.Price;
-type paymentMethodIntegrationType = payment.method.IntegrationType;
-type telephonyProtocolEnum = telephony.ProtocolEnum;
+ * Extra Alias to bypass relativer namespace colitions
+ */
+type orderPrice = order.Price;
+type paymentmethodIntegrationType = payment.method.IntegrationType;

@@ -40,6 +40,14 @@ export namespace order {
 }
 export namespace pack {
     export namespace xdsl {
+        // interface fullName: pack.xdsl.AsyncTask.AsyncTask
+        export interface AsyncTask<T> {
+            error?: string;
+            result?: T;
+            status: pack.xdsl.AsyncTaskStatusEnum;
+        }
+        // type fullname: pack.xdsl.AsyncTaskStatusEnum
+        export type AsyncTaskStatusEnum = "error" | "ok" | "pending"
         // type fullname: pack.xdsl.DomainActionEnum
         export type DomainActionEnum = "create" | "trade" | "transfer"
         // interface fullName: pack.xdsl.ExchangeAccountService.ExchangeAccountService
@@ -65,7 +73,7 @@ export namespace pack {
             capabilities: pack.xdsl.PackCapabilities;
             description?: string;
             offerDescription: string;
-            offerPrice: orderPrice;
+            offerPrice: order.Price;
             packName: string;
         }
         // interface fullName: pack.xdsl.PackCapabilities.PackCapabilities
@@ -79,7 +87,7 @@ export namespace pack {
             description: string;
             number: string;
             packname: string;
-            type: xdslDslTypeEnum;
+            type: xdsl.DslTypeEnum;
         }
         // interface fullName: pack.xdsl.ResiliationFollowUpDetail.ResiliationFollowUpDetail
         export interface ResiliationFollowUpDetail {
@@ -97,7 +105,7 @@ export namespace pack {
         }
         // interface fullName: pack.xdsl.ResiliationTerms.ResiliationTerms
         export interface ResiliationTerms {
-            due: orderPrice;
+            due: order.Price;
             engageDate?: string;
             minResiliationDate: string;
             resiliationDate: string;
@@ -156,13 +164,13 @@ export namespace pack {
         // interface fullName: pack.xdsl.UnpackTerms.UnpackTerms
         export interface UnpackTerms {
             isAllowed: boolean;
-            price: orderPrice;
+            price: order.Price;
             renewPeriod: number;
-            renewPrice: orderPrice;
+            renewPrice: order.Price;
         }
         // interface fullName: pack.xdsl.VoIPHardware.VoIPHardware
         export interface VoIPHardware {
-            deposit?: orderPrice;
+            deposit?: order.Price;
             image?: string;
             label: string;
             max?: number;
@@ -206,13 +214,13 @@ export namespace pack {
                 address: xdsleligibilityAddress;
                 estimatedDownload: number;
                 estimatedUpload: number;
-                lineSectionsLength: xdslLineSectionLength[];
+                lineSectionsLength: xdsl.LineSectionLength[];
                 lineStatus: xdsleligibilityLandlineStatusEnum;
                 meetingSlots?: xdsleligibilityMeetingSlots;
                 nra: string;
                 offerCode: string;
                 portability: xdsleligibilityPortability;
-                price: orderPrice;
+                price: order.Price;
                 provider: xdsleligibilityProviderEnum;
                 reseller: boolean;
                 syncDownload: number;
@@ -226,20 +234,20 @@ export namespace pack {
             export interface MigrationOffer {
                 contractList: string[];
                 contracts: order.Contract[];
-                currentOfferPrice: orderPrice;
+                currentOfferPrice: order.Price;
                 description: string;
-                due?: orderPrice;
+                due?: order.Price;
                 engageMonths?: number;
                 engagementMonths: number[];
-                firstYearPromo?: orderPrice;
-                installFees?: orderPrice;
+                firstYearPromo?: order.Price;
+                installFees?: order.Price;
                 modemMacToReturn?: string;
-                modemRental?: orderPrice;
+                modemRental?: order.Price;
                 needModem: boolean;
                 needNewModem: boolean;
                 offerName: string;
                 options: pack.xdsl.migration.OfferAvailableOption[];
-                price: orderPrice;
+                price: order.Price;
                 subServicesToDelete: pack.xdsl.migration.SubServiceToDelete[];
                 url: string;
             }
@@ -254,7 +262,7 @@ export namespace pack {
                 included: number;
                 name: string;
                 optional: number;
-                optionalPrice?: orderPrice;
+                optionalPrice?: order.Price;
             }
             // interface fullName: pack.xdsl.migration.OfferOption.OfferOption
             export interface OfferOption {
@@ -276,7 +284,7 @@ export namespace pack {
         export namespace promotionCode {
             // interface fullName: pack.xdsl.promotionCode.Capabilities.Capabilities
             export interface Capabilities {
-                amount: orderPrice;
+                amount: order.Price;
                 canGenerate: boolean;
                 engagement: number;
                 reasonCodes: pack.xdsl.promotionCode.ReasonCodes[];
@@ -319,14 +327,6 @@ export namespace services {
     }
 }
 export namespace xdsl {
-    // interface fullName: xdsl.AsyncTask.AsyncTask
-    export interface AsyncTask<T> {
-        error?: string;
-        result?: T;
-        status: xdsl.AsyncTaskStatusEnum;
-    }
-    // type fullname: xdsl.AsyncTaskStatusEnum
-    export type AsyncTaskStatusEnum = "error" | "ok" | "pending"
     // type fullname: xdsl.DeconsolidationEnum
     export type DeconsolidationEnum = "createNeighbour" | "creation" | "creationNeighbour" | "partial" | "total"
     // type fullname: xdsl.DslTypeEnum
@@ -423,19 +423,19 @@ export interface Pack{
             // GET /pack/xdsl/{packName}
             $get(): Promise<pack.xdsl.PackAdsl>;
             // PUT /pack/xdsl/{packName}
-            $put(params?: {capabilities?: pack.xdsl.PackCapabilities, description?: string, offerDescription?: string, offerPrice?: orderPrice, packName?: string}): Promise<void>;
+            $put(params?: {capabilities?: pack.xdsl.PackCapabilities, description?: string, offerDescription?: string, offerPrice?: order.Price, packName?: string}): Promise<void>;
             addressMove: {
                 eligibility: {
                     // POST /pack/xdsl/{packName}/addressMove/eligibility
-                    $post(params?: {address?: xdsleligibilityAddress, lineNumber?: string}): Promise<xdsl.AsyncTask<pack.xdsl.addressMove.Eligibility>>;
+                    $post(params?: {address?: xdsleligibilityAddress, lineNumber?: string}): Promise<pack.xdsl.AsyncTask<pack.xdsl.addressMove.Eligibility>>;
                 }
                 move: {
                     // POST /pack/xdsl/{packName}/addressMove/move
-                    $post(params: {creation?: pack.xdsl.addressMove.Creation, keepCurrentNumber: boolean, landline?: pack.xdsl.addressMove.Landline, moveOutDate?: string, offerCode: string, provider?: xdsleligibilityProviderEnum}): Promise<xdsl.AsyncTask<number>>;
+                    $post(params: {creation?: pack.xdsl.addressMove.Creation, keepCurrentNumber: boolean, landline?: pack.xdsl.addressMove.Landline, moveOutDate?: string, offerCode: string, provider?: xdsleligibilityProviderEnum}): Promise<pack.xdsl.AsyncTask<number>>;
                 }
                 moveFtth: {
                     // POST /pack/xdsl/{packName}/addressMove/moveFtth
-                    $post(params: {buildingReference: string, floor: string, moveOutDate?: string, otp: boolean, otpReference?: string, stair: string}): Promise<xdsl.AsyncTask<number>>;
+                    $post(params: {buildingReference: string, floor: string, moveOutDate?: string, otp: boolean, otpReference?: string, stair: string}): Promise<pack.xdsl.AsyncTask<number>>;
                 }
             }
             canCancelResiliation: {
@@ -557,7 +557,7 @@ export interface Pack{
                         $get(): Promise<pack.xdsl.Hubic>;
                         details: {
                             // GET /pack/xdsl/{packName}/hubic/services/{domain}/details
-                            $get(): Promise<xdsl.AsyncTask<xdsl.hubic.HubicDetailsResponse>>;
+                            $get(): Promise<pack.xdsl.AsyncTask<xdsl.hubic.HubicDetailsResponse>>;
                         }
                     };
                 }
@@ -569,7 +569,7 @@ export interface Pack{
                 }
                 offers: {
                     // POST /pack/xdsl/{packName}/migration/offers
-                    $post(): Promise<xdsl.AsyncTask<pack.xdsl.migration.MigrationOfferResponse>>;
+                    $post(): Promise<pack.xdsl.AsyncTask<pack.xdsl.migration.MigrationOfferResponse>>;
                 }
                 servicesToDelete: {
                     // POST /pack/xdsl/{packName}/migration/servicesToDelete
@@ -826,7 +826,7 @@ export interface Pack{
    * details operations
    * Details associated to a voucher
    */
-  get(path: '/pack/xdsl/{packName}/hubic/services/{domain}/details'): (params: {domain: string, packName: string}) => Promise<xdsl.AsyncTask<xdsl.hubic.HubicDetailsResponse>>;
+  get(path: '/pack/xdsl/{packName}/hubic/services/{domain}/details'): (params: {domain: string, packName: string}) => Promise<pack.xdsl.AsyncTask<xdsl.hubic.HubicDetailsResponse>>;
   /**
    * capabilities operations
    * Get informations about the promotion code generation
@@ -951,7 +951,7 @@ export interface Pack{
    * Pack of xDSL services
    * Alter this object properties
    */
-  put(path: '/pack/xdsl/{packName}'): (params: {packName: string, capabilities?: pack.xdsl.PackCapabilities, description?: string, offerDescription?: string, offerPrice?: orderPrice}) => Promise<void>;
+  put(path: '/pack/xdsl/{packName}'): (params: {packName: string, capabilities?: pack.xdsl.PackCapabilities, description?: string, offerDescription?: string, offerPrice?: order.Price}) => Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
@@ -961,17 +961,17 @@ export interface Pack{
    * eligibility operations
    * Eligibility to move the access
    */
-  post(path: '/pack/xdsl/{packName}/addressMove/eligibility'): (params: {packName: string, address?: xdsleligibilityAddress, lineNumber?: string}) => Promise<xdsl.AsyncTask<pack.xdsl.addressMove.Eligibility>>;
+  post(path: '/pack/xdsl/{packName}/addressMove/eligibility'): (params: {packName: string, address?: xdsleligibilityAddress, lineNumber?: string}) => Promise<pack.xdsl.AsyncTask<pack.xdsl.addressMove.Eligibility>>;
   /**
    * move operations
    * Move the Xdsl access to another address
    */
-  post(path: '/pack/xdsl/{packName}/addressMove/move'): (params: {packName: string, creation?: pack.xdsl.addressMove.Creation, keepCurrentNumber: boolean, landline?: pack.xdsl.addressMove.Landline, moveOutDate?: string, offerCode: string, provider?: xdsleligibilityProviderEnum}) => Promise<xdsl.AsyncTask<number>>;
+  post(path: '/pack/xdsl/{packName}/addressMove/move'): (params: {packName: string, creation?: pack.xdsl.addressMove.Creation, keepCurrentNumber: boolean, landline?: pack.xdsl.addressMove.Landline, moveOutDate?: string, offerCode: string, provider?: xdsleligibilityProviderEnum}) => Promise<pack.xdsl.AsyncTask<number>>;
   /**
    * moveFtth operations
    * Move the FTTH access to another address
    */
-  post(path: '/pack/xdsl/{packName}/addressMove/moveFtth'): (params: {packName: string, buildingReference: string, floor: string, moveOutDate?: string, otp: boolean, otpReference?: string, stair: string}) => Promise<xdsl.AsyncTask<number>>;
+  post(path: '/pack/xdsl/{packName}/addressMove/moveFtth'): (params: {packName: string, buildingReference: string, floor: string, moveOutDate?: string, otp: boolean, otpReference?: string, stair: string}) => Promise<pack.xdsl.AsyncTask<number>>;
   /**
    * cancelResiliation operations
    * Cancel the ongoing resiliation
@@ -1016,7 +1016,7 @@ export interface Pack{
    * offers operations
    * Get the possibilities of migration offers available
    */
-  post(path: '/pack/xdsl/{packName}/migration/offers'): (params: {packName: string}) => Promise<xdsl.AsyncTask<pack.xdsl.migration.MigrationOfferResponse>>;
+  post(path: '/pack/xdsl/{packName}/migration/offers'): (params: {packName: string}) => Promise<pack.xdsl.AsyncTask<pack.xdsl.migration.MigrationOfferResponse>>;
   /**
    * servicesToDelete operations
    * Calculate services to delete with new offer and options
@@ -1059,14 +1059,14 @@ export interface Pack{
   post(path: '/pack/xdsl/{packName}/voipLine/services'): (params: {packName: string, hardwareNames: string[], mondialRelayId?: string, shippingId?: string}) => Promise<pack.xdsl.VoIPLineOrder>;
 }
 /**
- * classic Model
- */type orderPrice = order.Price;
-type xdslDslTypeEnum = xdsl.DslTypeEnum;
+ * Extra Alias to bypass relativer namespace colitions
+ */
 type xdsleligibilityAddress = xdsl.eligibility.Address;
 type xdsleligibilityBookMeetingSlot = xdsl.eligibility.BookMeetingSlot;
 type xdsleligibilityPortability = xdsl.eligibility.Portability;
 type xdsleligibilityLandlineStatusEnum = xdsl.eligibility.LandlineStatusEnum;
 type xdslDeconsolidationEnum = xdsl.DeconsolidationEnum;
-type xdslLineSectionLength = xdsl.LineSectionLength;
+type xdslLineSectionLength[] = xdsl.LineSectionLength[];
 type xdsleligibilityMeetingSlots = xdsl.eligibility.MeetingSlots;
 type xdsleligibilityProviderEnum = xdsl.eligibility.ProviderEnum;
+type xdslDslTypeEnum = xdsl.DslTypeEnum;

@@ -296,6 +296,3 @@ export interface Cdn{
    */
   delete(path: '/cdn/website/{serviceName}/zone/domains/{domain}'): (params: {domain: string, serviceName: string}) => Promise<cdn.website.Task>;
 }
-/**
- * classic Model
- */

@@ -259,6 +259,3 @@ export interface Hosting{
    */
   post(path: '/hosting/reseller/{serviceName}/snapshot/{snapshotId}/restore'): (params: {serviceName: string, snapshotId: string}) => Promise<string>;
 }
-/**
- * classic Model
- */

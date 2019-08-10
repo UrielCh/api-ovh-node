@@ -311,6 +311,3 @@ export interface SslGateway{
    */
   delete(path: '/sslGateway/{serviceName}/server/{id}'): (params: {id: number, serviceName: string}) => Promise<void>;
 }
-/**
- * classic Model
- */
