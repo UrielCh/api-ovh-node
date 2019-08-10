@@ -7,32 +7,31 @@ export namespace dedicated {
     export namespace ceph {
         export namespace aclGet {
             export namespace response {
-                //dedicated.ceph.aclGet.response.familyEnum
+                // type fullname: dedicated.ceph.aclGet.response.familyEnum
                 export type familyEnum = "IPV4" | "IPV6"
             }
         }
         export namespace aclList {
             export namespace response {
-                //dedicated.ceph.aclList.response.familyEnum
+                // type fullname: dedicated.ceph.aclList.response.familyEnum
                 export type familyEnum = "IPV4" | "IPV6"
             }
         }
         export namespace clusterGet {
             export namespace response {
-                //dedicated.ceph.clusterGet.response.crushTunablesEnum
+                // type fullname: dedicated.ceph.clusterGet.response.crushTunablesEnum
                 export type crushTunablesEnum = "OPTIMAL" | "DEFAULT" | "LEGACY" | "BOBTAIL" | "ARGONAUT" | "FIREFLY" | "HAMMER" | "JEWEL"
-                //dedicated.ceph.clusterGet.response.stateEnum
+                // type fullname: dedicated.ceph.clusterGet.response.stateEnum
                 export type stateEnum = "ACTIVE" | "SUSPENDED"
-                //dedicated.ceph.clusterGet.response.statusEnum
+                // type fullname: dedicated.ceph.clusterGet.response.statusEnum
                 export type statusEnum = "CREATING" | "INSTALLED" | "DELETING" | "DELETED" | "TASK_IN_PROGRESS"
             }
         }
         export namespace clusterUpdate {
-            //dedicated.ceph.clusterUpdate.crushTunablesEnum
+            // type fullname: dedicated.ceph.clusterUpdate.crushTunablesEnum
             export type crushTunablesEnum = "OPTIMAL" | "DEFAULT" | "LEGACY" | "BOBTAIL" | "ARGONAUT" | "FIREFLY" | "HAMMER" | "JEWEL"
         }
-        //dedicated.ceph.permissions
-        // fullName: dedicated.ceph.permissions.permissions
+        // interface fullName: dedicated.ceph.permissions.permissions
         export interface permissions {
             classRead: boolean;
             classWrite: boolean;
@@ -43,36 +42,35 @@ export namespace dedicated {
         }
         export namespace poolGet {
             export namespace response {
-                //dedicated.ceph.poolGet.response.poolTypeEnum
+                // type fullname: dedicated.ceph.poolGet.response.poolTypeEnum
                 export type poolTypeEnum = "REPLICATED" | "ERASURE_CODED"
             }
         }
         export namespace poolList {
             export namespace response {
-                //dedicated.ceph.poolList.response.poolTypeEnum
+                // type fullname: dedicated.ceph.poolList.response.poolTypeEnum
                 export type poolTypeEnum = "REPLICATED" | "ERASURE_CODED"
             }
         }
-        //dedicated.ceph.response
-        // fullName: dedicated.ceph.response.response
+        // interface fullName: dedicated.ceph.response.response
         export interface response {
-            createDate: string;
-            finishDate?: string;
+            backup: boolean;
+            minActiveReplicas: number;
             name: string;
-            state?: dedicated.ceph.taskGet.response.stateEnum;
-            type: string;
+            poolType: dedicated.ceph.poolGet.response.poolTypeEnum;
+            replicaCount: number;
+            serviceName: string;
         }
         export namespace taskGet {
             export namespace response {
-                //dedicated.ceph.taskGet.response.stateEnum
+                // type fullname: dedicated.ceph.taskGet.response.stateEnum
                 export type stateEnum = "IN PROGRESS" | "DONE" | "FAILED"
             }
         }
     }
 }
 export namespace service {
-    //service.RenewType
-    // fullName: service.RenewType.RenewType
+    // interface fullName: service.RenewType.RenewType
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -80,18 +78,17 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    //service.RenewalTypeEnum
+    // type fullname: service.RenewalTypeEnum
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    //service.StateEnum
+    // type fullname: service.StateEnum
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
-    //service.TerminationFutureUseEnum
+    // type fullname: service.TerminationFutureUseEnum
     export type TerminationFutureUseEnum = "NOT_REPLACING_SERVICE" | "OTHER" | "SUBSCRIBE_AN_OTHER_SERVICE" | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR" | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
-    //service.TerminationReasonEnum
+    // type fullname: service.TerminationReasonEnum
     export type TerminationReasonEnum = "FEATURES_DONT_SUIT_ME" | "LACK_OF_PERFORMANCES" | "MIGRATED_TO_ANOTHER_OVH_PRODUCT" | "MIGRATED_TO_COMPETITOR" | "NOT_NEEDED_ANYMORE" | "NOT_RELIABLE" | "NO_ANSWER" | "OTHER" | "TOO_EXPENSIVE" | "TOO_HARD_TO_USE" | "UNSATIFIED_BY_CUSTOMER_SUPPORT"
 }
 export namespace services {
-    //services.Service
-    // fullName: services.Service.Service
+    // interface fullName: services.Service.Service
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;

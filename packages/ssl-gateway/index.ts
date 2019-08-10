@@ -4,8 +4,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /sslGateway Models
  */
 export namespace service {
-    //service.RenewType
-    // fullName: service.RenewType.RenewType
+    // interface fullName: service.RenewType.RenewType
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -13,18 +12,17 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    //service.RenewalTypeEnum
+    // type fullname: service.RenewalTypeEnum
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    //service.StateEnum
+    // type fullname: service.StateEnum
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
-    //service.TerminationFutureUseEnum
+    // type fullname: service.TerminationFutureUseEnum
     export type TerminationFutureUseEnum = "NOT_REPLACING_SERVICE" | "OTHER" | "SUBSCRIBE_AN_OTHER_SERVICE" | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR" | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
-    //service.TerminationReasonEnum
+    // type fullname: service.TerminationReasonEnum
     export type TerminationReasonEnum = "FEATURES_DONT_SUIT_ME" | "LACK_OF_PERFORMANCES" | "MIGRATED_TO_ANOTHER_OVH_PRODUCT" | "MIGRATED_TO_COMPETITOR" | "NOT_NEEDED_ANYMORE" | "NOT_RELIABLE" | "NO_ANSWER" | "OTHER" | "TOO_EXPENSIVE" | "TOO_HARD_TO_USE" | "UNSATIFIED_BY_CUSTOMER_SUPPORT"
 }
 export namespace services {
-    //services.Service
-    // fullName: services.Service.Service
+    // interface fullName: services.Service.Service
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;
@@ -42,45 +40,40 @@ export namespace services {
     }
 }
 export namespace sslGateway {
-    //sslGateway.Domain
-    // fullName: sslGateway.Domain.Domain
+    // interface fullName: sslGateway.Domain.Domain
     export interface Domain {
         domain: string;
         id: number;
         state: sslGateway.DomainStateEnum;
     }
-    //sslGateway.DomainStateEnum
+    // type fullname: sslGateway.DomainStateEnum
     export type DomainStateEnum = "creating" | "deleted" | "deleting" | "http-only" | "internal" | "ok"
-    //sslGateway.EligibilityStatus
-    // fullName: sslGateway.EligibilityStatus.EligibilityStatus
+    // interface fullName: sslGateway.EligibilityStatus.EligibilityStatus
     export interface EligibilityStatus {
         domain: string;
         ip6s: string[];
         ips: string[];
         isHostedByOvh: boolean;
     }
-    //sslGateway.NatIps
-    // fullName: sslGateway.NatIps.NatIps
+    // interface fullName: sslGateway.NatIps.NatIps
     export interface NatIps {
         ip: string[];
         zone: string;
     }
-    //sslGateway.OfferEnum
+    // type fullname: sslGateway.OfferEnum
     export type OfferEnum = "advanced" | "enterprise" | "free" | "internal"
-    //sslGateway.Server
-    // fullName: sslGateway.Server.Server
+    // interface fullName: sslGateway.Server.Server
     export interface Server {
         address: string;
         id: number;
         port: number;
         state: sslGateway.ServerStateEnum;
     }
-    //sslGateway.ServerStateEnum
+    // type fullname: sslGateway.ServerStateEnum
     export type ServerStateEnum = "creating" | "deleted" | "deleting" | "internal" | "ok" | "updating"
-    //sslGateway.SslConfigurationEnum
+    // type fullname: sslGateway.SslConfigurationEnum
     export type SslConfigurationEnum = "intermediate" | "internal" | "modern"
-    //sslGateway.SslGateway
-    // fullName: sslGateway.SslGateway.SslGateway
+    // interface fullName: sslGateway.SslGateway.SslGateway
     export interface SslGateway {
         allowedSource?: string[];
         displayName?: string;
@@ -97,10 +90,9 @@ export namespace sslGateway {
         state: sslGateway.StateEnum;
         zones: string[];
     }
-    //sslGateway.StateEnum
+    // type fullname: sslGateway.StateEnum
     export type StateEnum = "creating" | "deleted" | "deleting" | "http-only" | "internal" | "ok" | "suspended" | "upgrading"
-    //sslGateway.Task
-    // fullName: sslGateway.Task.Task
+    // interface fullName: sslGateway.Task.Task
     export interface Task {
         action: sslGateway.TaskActionEnum;
         creationDate: string;
@@ -108,9 +100,9 @@ export namespace sslGateway {
         progress: number;
         status: sslGateway.TaskStatusEnum;
     }
-    //sslGateway.TaskActionEnum
+    // type fullname: sslGateway.TaskActionEnum
     export type TaskActionEnum = "addDomain" | "addPaidCertificate" | "addServer" | "createService" | "deleteDomain" | "deleteServer" | "deleteService" | "internalTask" | "updateServer" | "updateService" | "upgrade"
-    //sslGateway.TaskStatusEnum
+    // type fullname: sslGateway.TaskStatusEnum
     export type TaskStatusEnum = "blocked" | "cancelled" | "doing" | "done" | "error" | "paused" | "todo"
 }
 

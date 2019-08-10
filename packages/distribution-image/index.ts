@@ -4,8 +4,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /distribution/image Models
  */
 export namespace distribution {
-    //distribution.image
-    // fullName: distribution.image.image
+    // interface fullName: distribution.image.image
     export interface image {
         name: string;
         packages: distribution.image.pakage[];
@@ -13,23 +12,21 @@ export namespace distribution {
         service: distribution.image.service;
     }
     export namespace image {
-        //distribution.image.package
-        // fullName: distribution.image.package.pakage
+        // interface fullName: distribution.image.package.pakage
         export interface pakage {
             alias: string;
             name: string;
             version: string;
         }
-        //distribution.image.properties
-        // fullName: distribution.image.properties.properties
+        // interface fullName: distribution.image.properties.properties
         export interface properties {
             category: distribution.image.properties.category;
         }
         export namespace properties {
-            //distribution.image.properties.category
+            // type fullname: distribution.image.properties.category
             export type category = "none" | "bare" | "panel" | "cms" | "development" | "desktop"
         }
-        //distribution.image.service
+        // type fullname: distribution.image.service
         export type service = "vps" | "dedicated" | "cloud" | "dedicatedCloud"
     }
 }

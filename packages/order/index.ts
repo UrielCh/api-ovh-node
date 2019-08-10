@@ -5,122 +5,119 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  */
 export namespace cdn {
     export namespace webstorage {
-        //cdn.webstorage.OrderStorageEnum
+        // type fullname: cdn.webstorage.OrderStorageEnum
         export type OrderStorageEnum = "100GB" | "10TB" | "1TB" | "500GB" | "50TB" | "5TB"
-        //cdn.webstorage.OrderTrafficEnum
+        // type fullname: cdn.webstorage.OrderTrafficEnum
         export type OrderTrafficEnum = 1 | 10 | 100 | 1000 | 10000
     }
 }
 export namespace cdnanycast {
-    //cdnanycast.OrderCacheRuleEnum
+    // type fullname: cdnanycast.OrderCacheRuleEnum
     export type OrderCacheRuleEnum = 100 | 1000
-    //cdnanycast.OrderQuotaEnum
+    // type fullname: cdnanycast.OrderQuotaEnum
     export type OrderQuotaEnum = 1 | 10 | 100 | 1000
 }
 export namespace complexType {
-    //complexType.SafeKeyValue
-    // fullName: complexType.SafeKeyValue.SafeKeyValue
+    // interface fullName: complexType.SafeKeyValue.SafeKeyValue
     export interface SafeKeyValue<T> {
         key: string;
         value: T;
     }
-    //complexType.UnitAndValue
-    // fullName: complexType.UnitAndValue.UnitAndValue
+    // interface fullName: complexType.UnitAndValue.UnitAndValue
     export interface UnitAndValue<T> {
         unit: string;
         value: T;
     }
 }
 export namespace coreTypes {
-    //coreTypes.CountryEnum
+    // type fullname: coreTypes.CountryEnum
     export type CountryEnum = "ac" | "ad" | "ae" | "af" | "ag" | "ai" | "al" | "am" | "an" | "ao" | "aq" | "ar" | "as" | "at" | "au" | "aw" | "ax" | "az" | "ba" | "bb" | "bd" | "be" | "bf" | "bg" | "bh" | "bi" | "bj" | "bl" | "bm" | "bn" | "bo" | "bq" | "br" | "bs" | "bt" | "bv" | "bw" | "by" | "bz" | "ca" | "cc" | "cd" | "cf" | "cg" | "ch" | "ci" | "ck" | "cl" | "cm" | "cn" | "co" | "cr" | "cs" | "cu" | "cv" | "cw" | "cx" | "cy" | "cz" | "de" | "dj" | "dk" | "dm" | "do" | "dz" | "ec" | "ee" | "eg" | "eh" | "er" | "es" | "et" | "fc" | "fd" | "fi" | "fj" | "fk" | "fm" | "fo" | "fr" | "fx" | "ga" | "gb" | "gd" | "ge" | "gf" | "gg" | "gh" | "gi" | "gl" | "gm" | "gn" | "gp" | "gq" | "gr" | "gs" | "gt" | "gu" | "gw" | "gy" | "hk" | "hm" | "hn" | "hr" | "ht" | "hu" | "id" | "ie" | "il" | "im" | "in" | "io" | "iq" | "ir" | "is" | "it" | "je" | "jm" | "jo" | "jp" | "ke" | "kg" | "kh" | "ki" | "km" | "kn" | "kp" | "kr" | "kw" | "ky" | "kz" | "la" | "lb" | "lc" | "li" | "lk" | "lr" | "ls" | "lt" | "lu" | "lv" | "ly" | "ma" | "mc" | "md" | "me" | "mf" | "mg" | "mh" | "mk" | "ml" | "mm" | "mn" | "mo" | "mp" | "mq" | "mr" | "ms" | "mt" | "mu" | "mv" | "mw" | "mx" | "my" | "mz" | "na" | "nc" | "ne" | "nf" | "ng" | "ni" | "nl" | "no" | "np" | "nr" | "nu" | "nz" | "om" | "pa" | "pe" | "pf" | "pg" | "ph" | "pk" | "pl" | "pm" | "pn" | "pr" | "ps" | "pt" | "pw" | "py" | "qa" | "qc" | "re" | "ro" | "rs" | "ru" | "rw" | "sa" | "sb" | "sc" | "sd" | "se" | "sg" | "sh" | "si" | "sj" | "sk" | "sl" | "sm" | "sn" | "so" | "sr" | "ss" | "st" | "sv" | "sx" | "sy" | "sz" | "tc" | "td" | "tf" | "tg" | "th" | "tj" | "tk" | "tl" | "tm" | "tn" | "to" | "tp" | "tr" | "tt" | "tv" | "tw" | "tz" | "ua" | "ug" | "uk" | "um" | "us" | "uy" | "uz" | "va" | "vc" | "ve" | "vg" | "vi" | "vn" | "vu" | "we" | "wf" | "ws" | "ye" | "yt" | "yu" | "za" | "zm" | "zw"
 }
 export namespace dedicated {
-    //dedicated.NasHAOfferEnum
+    // type fullname: dedicated.NasHAOfferEnum
     export type NasHAOfferEnum = "1200g" | "13200g" | "19200g" | "2400g" | "26400g" | "3600g" | "7200g"
-    //dedicated.NasHAZoneEnum
+    // type fullname: dedicated.NasHAZoneEnum
     export type NasHAZoneEnum = "bhs" | "rbx" | "sbg"
     export namespace housing {
-        //dedicated.housing.HaRoutingOfferEnum
+        // type fullname: dedicated.housing.HaRoutingOfferEnum
         export type HaRoutingOfferEnum = "ha2x2" | "ha2x4"
     }
     export namespace server {
-        //dedicated.server.BackupStorageCapacityEnum
+        // type fullname: dedicated.server.BackupStorageCapacityEnum
         export type BackupStorageCapacityEnum = 1000 | 10000 | 500 | 5000
-        //dedicated.server.BandwidthOrderEnum
+        // type fullname: dedicated.server.BandwidthOrderEnum
         export type BandwidthOrderEnum = 1000 | 2000 | 3000
-        //dedicated.server.BandwidthOrderTypeEnum
+        // type fullname: dedicated.server.BandwidthOrderTypeEnum
         export type BandwidthOrderTypeEnum = "platinum" | "premium" | "ultimate"
-        //dedicated.server.BandwidthvRackOrderEnum
+        // type fullname: dedicated.server.BandwidthvRackOrderEnum
         export type BandwidthvRackOrderEnum = 1000 | 3000
-        //dedicated.server.FirewallModelEnum
+        // type fullname: dedicated.server.FirewallModelEnum
         export type FirewallModelEnum = "asa5505" | "asa5510" | "asa5520"
-        //dedicated.server.IpBlockSizeEnum
+        // type fullname: dedicated.server.IpBlockSizeEnum
         export type IpBlockSizeEnum = 1 | 128 | 16 | 256 | 32 | 4 | 64 | 8
-        //dedicated.server.IpCountryEnum
+        // type fullname: dedicated.server.IpCountryEnum
         export type IpCountryEnum = "au" | "be" | "ca" | "cz" | "de" | "es" | "fi" | "fr" | "ie" | "it" | "lt" | "nl" | "pl" | "pt" | "sg" | "uk" | "us"
-        //dedicated.server.IpStaticCountryEnum
+        // type fullname: dedicated.server.IpStaticCountryEnum
         export type IpStaticCountryEnum = "be" | "cz" | "de" | "es" | "fi" | "fr" | "ie" | "it" | "lt" | "nl" | "pl" | "pt" | "uk"
-        //dedicated.server.IpTypeOrderableEnum
+        // type fullname: dedicated.server.IpTypeOrderableEnum
         export type IpTypeOrderableEnum = "failover" | "static" | "unshielded"
-        //dedicated.server.OrderableSysFeatureEnum
+        // type fullname: dedicated.server.OrderableSysFeatureEnum
         export type OrderableSysFeatureEnum = "backupProtocol" | "monitoring"
-        //dedicated.server.SupportLevelOrderableEnum
+        // type fullname: dedicated.server.SupportLevelOrderableEnum
         export type SupportLevelOrderableEnum = "critical" | "fastpath" | "gs"
-        //dedicated.server.TrafficOrderEnum
+        // type fullname: dedicated.server.TrafficOrderEnum
         export type TrafficOrderEnum = "100Mbps-Unlimited" | "250Mbps-Unlimited" | "500Mbps-Unlimited"
-        //dedicated.server.UsbKeyCapacityEnum
+        // type fullname: dedicated.server.UsbKeyCapacityEnum
         export type UsbKeyCapacityEnum = 128 | 16 | 256 | 32 | 64
     }
 }
 export namespace dedicatedCloud {
-    //dedicatedCloud.AdditionalBandwidthEnum
+    // type fullname: dedicatedCloud.AdditionalBandwidthEnum
     export type AdditionalBandwidthEnum = "1500"
-    //dedicatedCloud.IpCountriesEnum
+    // type fullname: dedicatedCloud.IpCountriesEnum
     export type IpCountriesEnum = "be" | "ca" | "ch" | "cz" | "de" | "es" | "fi" | "fr" | "gb" | "ie" | "it" | "lt" | "nl" | "pl" | "pt" | "us"
-    //dedicatedCloud.OrderableIpBlockRangeEnum
+    // type fullname: dedicatedCloud.OrderableIpBlockRangeEnum
     export type OrderableIpBlockRangeEnum = "24" | "25" | "26" | "27" | "28"
     export namespace ressources {
-        //dedicatedCloud.ressources.UpgradeRessourceTypeEnum
+        // type fullname: dedicatedCloud.ressources.UpgradeRessourceTypeEnum
         export type UpgradeRessourceTypeEnum = "account" | "all" | "filer" | "host"
-        //dedicatedCloud.ressources.UpgradeTypeEnum
+        // type fullname: dedicatedCloud.ressources.UpgradeTypeEnum
         export type UpgradeTypeEnum = "demoToMonthly" | "freeSpareToHourly" | "hourlyToMonthly"
     }
 }
 export namespace email {
     export namespace domain {
-        //email.domain.OfferEnum
+        // type fullname: email.domain.OfferEnum
         export type OfferEnum = "100" | "25" | "5" | "FULL"
     }
     export namespace exchange {
-        //email.exchange.OutlookVersionEnum
+        // type fullname: email.exchange.OutlookVersionEnum
         export type OutlookVersionEnum = "mac_x86_2011" | "mac_x86_2016" | "windows_x64_2013" | "windows_x64_2016" | "windows_x86_2013" | "windows_x86_2016"
-        //email.exchange.OvhLicenceEnum
+        // type fullname: email.exchange.OvhLicenceEnum
         export type OvhLicenceEnum = "basic" | "enterprise" | "standard"
-        //email.exchange.accountQuotaEnum
+        // type fullname: email.exchange.accountQuotaEnum
         export type accountQuotaEnum = 300 | 50
     }
 }
 export namespace freefax {
-    //freefax.QuantityEnum
+    // type fullname: freefax.QuantityEnum
     export type QuantityEnum = 10 | 100 | 1000 | 10000 | 100000 | 200 | 2000 | 50 | 500 | 5000
 }
 export namespace hosting {
     export namespace PrivateDatabase {
-        //hosting.PrivateDatabase.AvailableRamSizeEnum
+        // type fullname: hosting.PrivateDatabase.AvailableRamSizeEnum
         export type AvailableRamSizeEnum = "1024" | "2048" | "4096" | "512"
-        //hosting.PrivateDatabase.DatacenterEnum
+        // type fullname: hosting.PrivateDatabase.DatacenterEnum
         export type DatacenterEnum = "gra1" | "gra2" | "p19"
-        //hosting.PrivateDatabase.OfferEnum
+        // type fullname: hosting.PrivateDatabase.OfferEnum
         export type OfferEnum = "classic" | "public"
-        //hosting.PrivateDatabase.OrderableVersionEnum
+        // type fullname: hosting.PrivateDatabase.OrderableVersionEnum
         export type OrderableVersionEnum = "mariadb_10.1" | "mariadb_10.2" | "mongodb_3.4" | "mongodb_4.0" | "mysql_5.5" | "mysql_5.6" | "mysql_5.7" | "postgresql_10" | "postgresql_11" | "postgresql_9.4" | "postgresql_9.5" | "postgresql_9.6" | "redis_3.2" | "redis_4.0"
     }
     export namespace web {
-        //hosting.web.BandwidthOfferEnum
+        // type fullname: hosting.web.BandwidthOfferEnum
         export type BandwidthOfferEnum = 10 | 100 | 1000 | 10000 | 20 | 250 | 30 | 40 | 50 | 500
-        //hosting.web.Capabilities
-        // fullName: hosting.web.Capabilities.Capabilities
+        // interface fullName: hosting.web.Capabilities.Capabilities
         export interface Capabilities {
             attachedDomains: number;
             crontab: boolean;
@@ -140,48 +137,44 @@ export namespace hosting {
             ssh: boolean;
             traffic?: complexType.UnitAndValue<number>;
         }
-        //hosting.web.CdnOfferEnum
+        // type fullname: hosting.web.CdnOfferEnum
         export type CdnOfferEnum = "CDN_BUSINESS" | "CDN_BUSINESS_FREE"
-        //hosting.web.CreationEmailCapabilities
-        // fullName: hosting.web.CreationEmailCapabilities.CreationEmailCapabilities
+        // interface fullName: hosting.web.CreationEmailCapabilities.CreationEmailCapabilities
         export interface CreationEmailCapabilities {
             available: number;
             quota: complexType.UnitAndValue<number>;
         }
-        //hosting.web.CronLanguageAvailable
-        // fullName: hosting.web.CronLanguageAvailable.CronLanguageAvailable
+        // interface fullName: hosting.web.CronLanguageAvailable.CronLanguageAvailable
         export interface CronLanguageAvailable {
             nodejs: hosting.web.NodejsVersionAvailableEnum[];
             php: hosting.web.PhpVersionAvailableEnum[];
             python: hosting.web.PythonVersionAvailableEnum[];
             ruby: hosting.web.RubyVersionAvailableEnum[];
         }
-        //hosting.web.DiskType
-        // fullName: hosting.web.DiskType.DiskType
+        // interface fullName: hosting.web.DiskType.DiskType
         export interface DiskType {
             type: hosting.web.DiskTypeEnum;
             unit: string;
             value: number;
         }
-        //hosting.web.DiskTypeEnum
+        // type fullname: hosting.web.DiskTypeEnum
         export type DiskTypeEnum = "HDD" | "SSD"
-        //hosting.web.DnsZoneEnum
+        // type fullname: hosting.web.DnsZoneEnum
         export type DnsZoneEnum = "NO_CHANGE" | "RESET_ALL" | "RESET_ONLY_A" | "RESET_ONLY_MX"
-        //hosting.web.HighLightEnum
+        // type fullname: hosting.web.HighLightEnum
         export type HighLightEnum = "best-seller" | "new"
-        //hosting.web.NodejsVersionAvailableEnum
+        // type fullname: hosting.web.NodejsVersionAvailableEnum
         export type NodejsVersionAvailableEnum = "nodejs-10" | "nodejs-11" | "nodejs-8" | "nodejs-9"
-        //hosting.web.OfferEnum
+        // type fullname: hosting.web.OfferEnum
         export type OfferEnum = "CLOUDWEB_1" | "CLOUDWEB_2" | "CLOUDWEB_3" | "KS" | "PERFORMANCE_1" | "PERFORMANCE_2" | "PERFORMANCE_3" | "PERFORMANCE_4" | "PERSO" | "PRO" | "START"
-        //hosting.web.PhpVersionAvailableEnum
+        // type fullname: hosting.web.PhpVersionAvailableEnum
         export type PhpVersionAvailableEnum = "phpfpm-5.6" | "phpfpm-7.0" | "phpfpm-7.1" | "phpfpm-7.2" | "phpfpm-7.3"
-        //hosting.web.PythonVersionAvailableEnum
+        // type fullname: hosting.web.PythonVersionAvailableEnum
         export type PythonVersionAvailableEnum = "python-2" | "python-3"
-        //hosting.web.RubyVersionAvailableEnum
+        // type fullname: hosting.web.RubyVersionAvailableEnum
         export type RubyVersionAvailableEnum = "ruby-2.4" | "ruby-2.5" | "ruby-2.6"
         export namespace database {
-            //hosting.web.database.CreationDatabaseCapabilities
-            // fullName: hosting.web.database.CreationDatabaseCapabilities.CreationDatabaseCapabilities
+            // interface fullName: hosting.web.database.CreationDatabaseCapabilities.CreationDatabaseCapabilities
             export interface CreationDatabaseCapabilities {
                 available: number;
                 engines: hosting.web.database.DatabaseTypeEnum[];
@@ -189,79 +182,77 @@ export namespace hosting {
                 quota: complexType.UnitAndValue<number>;
                 type: hosting.web.database.DatabaseCapabilitiesTypeEnum;
             }
-            //hosting.web.database.DatabaseCapabilitiesTypeEnum
+            // type fullname: hosting.web.database.DatabaseCapabilitiesTypeEnum
             export type DatabaseCapabilitiesTypeEnum = "extraSqlPerso" | "local" | "privateDatabase" | "sqlLocal" | "sqlPerso" | "sqlPro"
-            //hosting.web.database.DatabaseIsolationEnum
+            // type fullname: hosting.web.database.DatabaseIsolationEnum
             export type DatabaseIsolationEnum = "dedicated" | "local" | "shared"
-            //hosting.web.database.DatabaseTypeEnum
+            // type fullname: hosting.web.database.DatabaseTypeEnum
             export type DatabaseTypeEnum = "mariadb" | "mongodb" | "mysql" | "postgresql" | "redis"
-            //hosting.web.database.SqlPersoOfferEnum
+            // type fullname: hosting.web.database.SqlPersoOfferEnum
             export type SqlPersoOfferEnum = "SQLPERSO_1_BASES_400_MB" | "SQLPERSO_1_BASES_800_MB" | "SQLPERSO_20_BASES_100_MB" | "SQLPERSO_20_BASES_200_MB" | "SQLPERSO_2_BASES_400_MB" | "SQLPERSO_2_BASES_800_MB" | "SQLPERSO_50_BASES_100_MB" | "SQLPERSO_50_BASES_200_MB" | "SQLPERSO_5_BASES_100_MB" | "SQLPERSO_5_BASES_200_MB" | "SQLPERSO_5_BASES_400_MB" | "SQLPERSO_5_BASES_800_MB"
         }
         export namespace module {
-            //hosting.web.module.OrderableNameEnum
+            // type fullname: hosting.web.module.OrderableNameEnum
             export type OrderableNameEnum = "DRUPAL" | "JOOMLA" | "PRESTASHOP" | "WORDPRESS"
         }
         export namespace order {
-            //hosting.web.order.MxPlanEnum
+            // type fullname: hosting.web.order.MxPlanEnum
             export type MxPlanEnum = "005" | "025" | "100" | "delete" | "full"
         }
     }
 }
 export namespace license {
-    //license.CloudLinuxVersionEnum
+    // type fullname: license.CloudLinuxVersionEnum
     export type CloudLinuxVersionEnum = "SINGLE" | "WITH_CPANEL" | "WITH_PLESK12" | "cloudlinux-license"
-    //license.LicenseTypeEnum
+    // type fullname: license.LicenseTypeEnum
     export type LicenseTypeEnum = "dedicated" | "dedicatedCloud" | "dedicatedFailover" | "failover" | "vm" | "vps" | "vps_ceph" | "vps_classic" | "vps_cloud" | "vps_cloud_2016" | "vps_ssd"
-    //license.OrderableAntispamEnum
+    // type fullname: license.OrderableAntispamEnum
     export type OrderableAntispamEnum = "SPAM_ASSASSIN"
-    //license.OrderableAntivirusEnum
+    // type fullname: license.OrderableAntivirusEnum
     export type OrderableAntivirusEnum = "DR_WEB" | "KASPERSKY_UNLIMITED_MAILBOXES" | "kaspersky"
-    //license.OrderableCpanelVersionEnum
+    // type fullname: license.OrderableCpanelVersionEnum
     export type OrderableCpanelVersionEnum = "VERSION_11_FOR_LINUX" | "VERSION_11_FOR_VIRTUOZZO" | "VERSION_11_FOR_VPS" | "cpanel-license-version-11" | "cpanel-license-version-11-for-virtuozzo" | "cpanel-license-version-11-for-vps"
-    //license.OrderableDirectAdminVersionEnum
+    // type fullname: license.OrderableDirectAdminVersionEnum
     export type OrderableDirectAdminVersionEnum = "DIRECTADMIN_1" | "directadmin-license"
-    //license.OrderablePleskDomainNumberEnum
+    // type fullname: license.OrderablePleskDomainNumberEnum
     export type OrderablePleskDomainNumberEnum = "10" | "100" | "30" | "300" | "hostingsuite" | "unlimited"
-    //license.OrderablePleskLanguagePackEnum
+    // type fullname: license.OrderablePleskLanguagePackEnum
     export type OrderablePleskLanguagePackEnum = "1" | "1-extra-language-for-plesk12" | "2" | "2-extra-languages-for-plesk12" | "3" | "3-extra-languages-for-plesk12" | "4" | "4-extra-languages-for-plesk12" | "5" | "5-extra-languages-for-plesk12" | "unlimited" | "unlimited-extra-languages-for-plesk12"
-    //license.OrderableVirtuozzoContainerNumberEnum
+    // type fullname: license.OrderableVirtuozzoContainerNumberEnum
     export type OrderableVirtuozzoContainerNumberEnum = "2_CPU_001_CONTAINER" | "2_CPU_003_CONTAINER" | "2_CPU_010_CONTAINER" | "2_CPU_030_CONTAINER" | "2_CPU_060_CONTAINER" | "2_CPU_100_CONTAINER"
-    //license.OrderableVirtuozzoVersionEnum
+    // type fullname: license.OrderableVirtuozzoVersionEnum
     export type OrderableVirtuozzoVersionEnum = "VIRTUOZZO_CONTAINERS_4_FOR_LINUX" | "VIRTUOZZO_CONTAINERS_4_FOR_WINDOWS" | "virtuozzo-4" | "virtuozzo-4-for-windows"
-    //license.PleskApplicationSetEnum
+    // type fullname: license.PleskApplicationSetEnum
     export type PleskApplicationSetEnum = "applicationpack" | "developerpack" | "power-pack-for-plesk12" | "powerpack"
-    //license.PleskVersionEnum
+    // type fullname: license.PleskVersionEnum
     export type PleskVersionEnum = "PLESK_10_AND_LATER" | "PLESK_10_AND_LATER_FOR_KVM" | "PLESK_10_AND_LATER_FOR_VMWARE" | "PLESK_10_AND_LATER_FOR_VZ" | "PLESK_10_AND_LATER_FOR_WIN" | "PLESK_10_AND_LATER_FOR_WIN_FOR_VMWARE" | "PLESK_10_AND_LATER_FOR_WIN_FOR_VZ" | "PLESK_10_AND_LATER_FOR_WIN_FOR_XEN" | "PLESK_10_AND_LATER_FOR_XEN" | "PLESK_12_VPS_WEB_ADMIN" | "PLESK_12_VPS_WEB_APP" | "PLESK_12_VPS_WEB_HOST" | "PLESK_12_VPS_WEB_HOST_CLNX" | "PLESK_12_VPS_WEB_PRO" | "PLESK_12_VPS_WEB_PRO_CLNX" | "PLESK_12_WEB_ADMIN" | "PLESK_12_WEB_APP" | "PLESK_12_WEB_HOST" | "PLESK_12_WEB_HOST_CLNX" | "PLESK_12_WEB_PRO" | "PLESK_12_WEB_PRO_CLNX" | "PLESK_75_RELOADED" | "PLESK_80" | "PLESK_80_FOR_VZ" | "PLESK_81_FOR_WIN" | "PLESK_9" | "PLESK_95" | "PLESK_95_FOR_VZ" | "PLESK_95_FOR_WIN" | "PLESK_9_FOR_VZ" | "PLESK_9_FOR_WIN" | "PLESK_ONYX_VPS_WEB_ADMIN" | "PLESK_ONYX_VPS_WEB_APP" | "PLESK_ONYX_VPS_WEB_HOST" | "PLESK_ONYX_VPS_WEB_HOST_CLNX" | "PLESK_ONYX_VPS_WEB_PRO" | "PLESK_ONYX_VPS_WEB_PRO_CLNX" | "PLESK_ONYX_WEB_ADMIN" | "PLESK_ONYX_WEB_APP" | "PLESK_ONYX_WEB_HOST" | "PLESK_ONYX_WEB_HOST_CLNX" | "PLESK_ONYX_WEB_PRO" | "PLESK_ONYX_WEB_PRO_CLNX" | "plesk-12-webadmin-for-vps" | "plesk-12-webhost" | "plesk-12-webhost-for-vps" | "plesk-12-webpro" | "plesk-12-webpro-for-vps"
-    //license.SqlServerVersionEnum
+    // type fullname: license.SqlServerVersionEnum
     export type SqlServerVersionEnum = "SQL_SERVER_2008_STANDARD_EDITION_2_CPU" | "SQL_SERVER_2008_STANDARD_EDITION_4_CPU" | "SQL_SERVER_2008_WEB_EDITION_2_CPU" | "SQL_SERVER_2008_WEB_EDITION_4_CPU" | "SQL_SERVER_2012_STANDARD_EDITION_10_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_12_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_16_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_18_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_20_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_24_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_2_CPU" | "SQL_SERVER_2012_STANDARD_EDITION_32_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_4_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_6_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_8_CORES" | "SQL_SERVER_2012_WEB_EDITION_10_CORES" | "SQL_SERVER_2012_WEB_EDITION_12_CORES" | "SQL_SERVER_2012_WEB_EDITION_16_CORES" | "SQL_SERVER_2012_WEB_EDITION_18_CORES" | "SQL_SERVER_2012_WEB_EDITION_20_CORES" | "SQL_SERVER_2012_WEB_EDITION_24_CORES" | "SQL_SERVER_2012_WEB_EDITION_32_CORES" | "SQL_SERVER_2012_WEB_EDITION_4_CORES" | "SQL_SERVER_2012_WEB_EDITION_6_CORES" | "SQL_SERVER_2012_WEB_EDITION_8_CORES" | "SQL_SERVER_2014_STANDARD_EDITION_10_CORES" | "SQL_SERVER_2014_STANDARD_EDITION_12_CORES" | "SQL_SERVER_2014_STANDARD_EDITION_16_CORES" | "SQL_SERVER_2014_STANDARD_EDITION_18_CORES" | "SQL_SERVER_2014_STANDARD_EDITION_20_CORES" | "SQL_SERVER_2014_STANDARD_EDITION_24_CORES" | "SQL_SERVER_2014_STANDARD_EDITION_4_CORES" | "SQL_SERVER_2014_STANDARD_EDITION_6_CORES" | "SQL_SERVER_2014_STANDARD_EDITION_8_CORES" | "SQL_SERVER_2014_WEB_EDITION_10_CORES" | "SQL_SERVER_2014_WEB_EDITION_12_CORES" | "SQL_SERVER_2014_WEB_EDITION_16_CORES" | "SQL_SERVER_2014_WEB_EDITION_18_CORES" | "SQL_SERVER_2014_WEB_EDITION_20_CORES" | "SQL_SERVER_2014_WEB_EDITION_24_CORES" | "SQL_SERVER_2014_WEB_EDITION_4_CORES" | "SQL_SERVER_2014_WEB_EDITION_6_CORES" | "SQL_SERVER_2014_WEB_EDITION_8_CORES" | "SQL_SERVER_2016_STANDARD_EDITION_10_CORES" | "SQL_SERVER_2016_STANDARD_EDITION_12_CORES" | "SQL_SERVER_2016_STANDARD_EDITION_14_CORES" | "SQL_SERVER_2016_STANDARD_EDITION_16_CORES" | "SQL_SERVER_2016_STANDARD_EDITION_4_CORES" | "SQL_SERVER_2016_STANDARD_EDITION_6_CORES" | "SQL_SERVER_2016_STANDARD_EDITION_8_CORES" | "SQL_SERVER_2016_WEB_EDITION_10_CORES" | "SQL_SERVER_2016_WEB_EDITION_12_CORES" | "SQL_SERVER_2016_WEB_EDITION_14_CORES" | "SQL_SERVER_2016_WEB_EDITION_16_CORES" | "SQL_SERVER_2016_WEB_EDITION_4_CORES" | "SQL_SERVER_2016_WEB_EDITION_6_CORES" | "SQL_SERVER_2016_WEB_EDITION_8_CORES" | "SQL_SERVER_2017_STANDARD_EDITION_10_CORES" | "SQL_SERVER_2017_STANDARD_EDITION_12_CORES" | "SQL_SERVER_2017_STANDARD_EDITION_14_CORES" | "SQL_SERVER_2017_STANDARD_EDITION_16_CORES" | "SQL_SERVER_2017_STANDARD_EDITION_18_CORES" | "SQL_SERVER_2017_STANDARD_EDITION_20_CORES" | "SQL_SERVER_2017_STANDARD_EDITION_22_CORES" | "SQL_SERVER_2017_STANDARD_EDITION_24_CORES" | "SQL_SERVER_2017_STANDARD_EDITION_26_CORES" | "SQL_SERVER_2017_STANDARD_EDITION_28_CORES" | "SQL_SERVER_2017_STANDARD_EDITION_30_CORES" | "SQL_SERVER_2017_STANDARD_EDITION_32_CORES" | "SQL_SERVER_2017_STANDARD_EDITION_4_CORES" | "SQL_SERVER_2017_STANDARD_EDITION_6_CORES" | "SQL_SERVER_2017_STANDARD_EDITION_8_CORES" | "SQL_SERVER_2017_WEB_EDITION_10_CORES" | "SQL_SERVER_2017_WEB_EDITION_12_CORES" | "SQL_SERVER_2017_WEB_EDITION_14_CORES" | "SQL_SERVER_2017_WEB_EDITION_16_CORES" | "SQL_SERVER_2017_WEB_EDITION_18_CORES" | "SQL_SERVER_2017_WEB_EDITION_20_CORES" | "SQL_SERVER_2017_WEB_EDITION_22_CORES" | "SQL_SERVER_2017_WEB_EDITION_24_CORES" | "SQL_SERVER_2017_WEB_EDITION_26_CORES" | "SQL_SERVER_2017_WEB_EDITION_28_CORES" | "SQL_SERVER_2017_WEB_EDITION_30_CORES" | "SQL_SERVER_2017_WEB_EDITION_32_CORES" | "SQL_SERVER_2017_WEB_EDITION_4_CORES" | "SQL_SERVER_2017_WEB_EDITION_6_CORES" | "SQL_SERVER_2017_WEB_EDITION_8_CORES" | "sql-server-2008-license-standard-edition-2-cpu" | "sql-server-2008-license-standard-edition-4-cpu" | "sql-server-2008-license-web-edition-2-cpu" | "sql-server-2008-license-web-edition-4-cpu" | "sql-server-2012-license-standard-edition-10-cores" | "sql-server-2012-license-standard-edition-12-cores" | "sql-server-2012-license-standard-edition-16-cores" | "sql-server-2012-license-standard-edition-18-cores" | "sql-server-2012-license-standard-edition-2-cpu" | "sql-server-2012-license-standard-edition-20-cores" | "sql-server-2012-license-standard-edition-24-cores" | "sql-server-2012-license-standard-edition-32-cores" | "sql-server-2012-license-standard-edition-4-cores" | "sql-server-2012-license-standard-edition-6-cores" | "sql-server-2012-license-standard-edition-8-cores" | "sql-server-2012-license-web-edition-10-cores" | "sql-server-2012-license-web-edition-12-cores" | "sql-server-2012-license-web-edition-16-cores" | "sql-server-2012-license-web-edition-18-cores" | "sql-server-2012-license-web-edition-20-cores" | "sql-server-2012-license-web-edition-24-cores" | "sql-server-2012-license-web-edition-32-cores" | "sql-server-2012-license-web-edition-4-cores" | "sql-server-2012-license-web-edition-6-cores" | "sql-server-2012-license-web-edition-8-cores" | "sql-server-2014-license-standard-edition-10-cores" | "sql-server-2014-license-standard-edition-12-cores" | "sql-server-2014-license-standard-edition-16-cores" | "sql-server-2014-license-standard-edition-18-cores" | "sql-server-2014-license-standard-edition-20-cores" | "sql-server-2014-license-standard-edition-24-cores" | "sql-server-2014-license-standard-edition-4-cores" | "sql-server-2014-license-standard-edition-6-cores" | "sql-server-2014-license-standard-edition-8-cores" | "sql-server-2014-license-web-edition-10-cores" | "sql-server-2014-license-web-edition-12-cores" | "sql-server-2014-license-web-edition-16-cores" | "sql-server-2014-license-web-edition-18-cores" | "sql-server-2014-license-web-edition-20-cores" | "sql-server-2014-license-web-edition-24-cores" | "sql-server-2014-license-web-edition-4-cores" | "sql-server-2014-license-web-edition-6-cores" | "sql-server-2014-license-web-edition-8-cores" | "sql-server-2016-license-standard-edition-10-cores" | "sql-server-2016-license-standard-edition-12-cores" | "sql-server-2016-license-standard-edition-14-cores" | "sql-server-2016-license-standard-edition-16-cores" | "sql-server-2016-license-standard-edition-4-cores" | "sql-server-2016-license-standard-edition-6-cores" | "sql-server-2016-license-standard-edition-8-cores" | "sql-server-2016-license-web-edition-10-cores" | "sql-server-2016-license-web-edition-12-cores" | "sql-server-2016-license-web-edition-14-cores" | "sql-server-2016-license-web-edition-16-cores" | "sql-server-2016-license-web-edition-4-cores" | "sql-server-2016-license-web-edition-6-cores" | "sql-server-2016-license-web-edition-8-cores" | "sql-server-2017-license-standard-edition-10-cores" | "sql-server-2017-license-standard-edition-12-cores" | "sql-server-2017-license-standard-edition-14-cores" | "sql-server-2017-license-standard-edition-16-cores" | "sql-server-2017-license-standard-edition-18-cores" | "sql-server-2017-license-standard-edition-20-cores" | "sql-server-2017-license-standard-edition-22-cores" | "sql-server-2017-license-standard-edition-24-cores" | "sql-server-2017-license-standard-edition-26-cores" | "sql-server-2017-license-standard-edition-28-cores" | "sql-server-2017-license-standard-edition-30-cores" | "sql-server-2017-license-standard-edition-32-cores" | "sql-server-2017-license-standard-edition-4-cores" | "sql-server-2017-license-standard-edition-6-cores" | "sql-server-2017-license-standard-edition-8-cores" | "sql-server-2017-license-web-edition-10-cores" | "sql-server-2017-license-web-edition-12-cores" | "sql-server-2017-license-web-edition-14-cores" | "sql-server-2017-license-web-edition-16-cores" | "sql-server-2017-license-web-edition-18-cores" | "sql-server-2017-license-web-edition-20-cores" | "sql-server-2017-license-web-edition-22-cores" | "sql-server-2017-license-web-edition-24-cores" | "sql-server-2017-license-web-edition-26-cores" | "sql-server-2017-license-web-edition-28-cores" | "sql-server-2017-license-web-edition-30-cores" | "sql-server-2017-license-web-edition-32-cores" | "sql-server-2017-license-web-edition-4-cores" | "sql-server-2017-license-web-edition-6-cores" | "sql-server-2017-license-web-edition-8-cores"
-    //license.WindowsOsVersionEnum
+    // type fullname: license.WindowsOsVersionEnum
     export type WindowsOsVersionEnum = "WINDOWS_SERVER_2003_ENTERPRISE_EDITION" | "WINDOWS_SERVER_2003_ENTERPRISE_EDITION_2_CPU" | "WINDOWS_SERVER_2003_STANDARD_EDITION" | "WINDOWS_SERVER_2003_WEB_EDITION" | "WINDOWS_SERVER_2003_WEB_EDITION_2_CPU" | "WINDOWS_SERVER_2003_WEB_ENHANCED_EDITION" | "WINDOWS_SERVER_2003_WEB_STANDARD_EDITION" | "WINDOWS_SERVER_2003_WEB_STANDARD_EDITION_2_CPU" | "WINDOWS_SERVER_2008_DATACENTER_EDITION" | "WINDOWS_SERVER_2008_DATACENTER_EDITION_2_CPU" | "WINDOWS_SERVER_2008_DATACENTER_EDITION_4_CPU" | "WINDOWS_SERVER_2008_ENTERPRISE_EDITION" | "WINDOWS_SERVER_2008_ENTERPRISE_EDITION_2_CPU" | "WINDOWS_SERVER_2008_ENTERPRISE_EDITION_4_CPU" | "WINDOWS_SERVER_2008_STANDARD_EDITION" | "WINDOWS_SERVER_2008_STANDARD_EDITION_2_CPU" | "WINDOWS_SERVER_2008_STANDARD_EDITION_4_CPU" | "WINDOWS_SERVER_2008_WEB_EDITION" | "WINDOWS_SERVER_2008_WEB_EDITION_2_CPU" | "WINDOWS_SERVER_2008_WEB_EDITION_4_CPU" | "WINDOWS_SERVER_2008_WEB_STANDARD_EDITION" | "WINDOWS_SERVER_2012_DATACENTER_EDITION" | "WINDOWS_SERVER_2012_DATACENTER_EDITION_2_CPU" | "WINDOWS_SERVER_2012_DATACENTER_EDITION_4_CPU" | "WINDOWS_SERVER_2012_ENTERPRISE_EDITION" | "WINDOWS_SERVER_2012_ENTERPRISE_EDITION_2_CPU" | "WINDOWS_SERVER_2012_STANDARD_EDITION" | "WINDOWS_SERVER_2012_STANDARD_EDITION_2_CPU" | "WINDOWS_SERVER_2012_STANDARD_EDITION_4_CPU" | "WINDOWS_SERVER_2012_WEB_EDITION" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_1_CPU_10_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_1_CPU_12_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_1_CPU_14_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_1_CPU_16_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_1_CPU_18_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_1_CPU_20_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_1_CPU_22_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_1_CPU_24_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_1_CPU_8_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_2_CPU_10_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_2_CPU_12_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_2_CPU_14_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_2_CPU_16_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_2_CPU_18_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_2_CPU_20_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_2_CPU_22_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_2_CPU_24_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_2_CPU_8_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_4_CPU_10_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_4_CPU_12_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_4_CPU_14_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_4_CPU_16_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_4_CPU_18_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_4_CPU_20_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_4_CPU_22_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_4_CPU_24_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_4_CPU_8_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_1_CPU_10_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_1_CPU_12_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_1_CPU_14_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_1_CPU_16_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_1_CPU_18_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_1_CPU_20_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_1_CPU_22_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_1_CPU_24_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_1_CPU_8_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_2_CPU_10_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_2_CPU_12_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_2_CPU_14_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_2_CPU_16_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_2_CPU_18_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_2_CPU_20_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_2_CPU_22_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_2_CPU_24_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_2_CPU_8_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_4_CPU_10_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_4_CPU_12_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_4_CPU_14_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_4_CPU_16_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_4_CPU_18_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_4_CPU_20_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_4_CPU_22_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_4_CPU_24_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_4_CPU_8_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_10_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_12_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_14_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_16_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_18_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_20_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_22_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_24_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_26_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_28_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_30_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_32_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_34_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_36_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_38_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_40_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_42_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_44_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_46_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_48_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_50_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_52_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_54_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_56_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_58_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_60_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_62_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_64_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_8_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_10_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_12_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_14_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_16_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_18_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_20_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_22_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_24_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_26_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_28_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_30_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_32_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_34_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_36_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_38_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_40_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_42_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_44_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_46_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_48_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_50_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_52_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_54_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_56_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_58_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_60_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_62_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_64_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_8_CORES" | "windows-server-2008-license-datacenter-edition-1-cpu" | "windows-server-2008-license-datacenter-edition-2-cpu" | "windows-server-2008-license-datacenter-edition-4-cpu" | "windows-server-2008-license-enterprise-edition-1-cpu" | "windows-server-2008-license-enterprise-edition-2-cpu" | "windows-server-2008-license-enterprise-edition-4-cpu" | "windows-server-2008-license-standard-edition-1-cpu" | "windows-server-2008-license-standard-edition-2-cpu" | "windows-server-2008-license-standard-edition-4-cpu" | "windows-server-2008-license-web-edition-1-cpu" | "windows-server-2008-license-web-edition-2-cpu" | "windows-server-2008-license-web-edition-4-cpu" | "windows-server-2012-license-datacenter-edition-1-cpu" | "windows-server-2012-license-datacenter-edition-2-cpu" | "windows-server-2012-license-datacenter-edition-4-cpu" | "windows-server-2012-license-standard-edition-1-cpu" | "windows-server-2012-license-standard-edition-2-cpu" | "windows-server-2012-license-standard-edition-4-cpu" | "windows-server-2016-license-datacenter-edition-1-cpu-10-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-12-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-14-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-16-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-18-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-20-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-22-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-24-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-8-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-10-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-12-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-14-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-16-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-18-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-20-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-22-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-24-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-8-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-10-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-12-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-14-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-16-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-18-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-20-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-22-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-24-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-8-cores" | "windows-server-2016-license-standard-edition-1-cpu-10-cores" | "windows-server-2016-license-standard-edition-1-cpu-12-cores" | "windows-server-2016-license-standard-edition-1-cpu-14-cores" | "windows-server-2016-license-standard-edition-1-cpu-16-cores" | "windows-server-2016-license-standard-edition-1-cpu-18-cores" | "windows-server-2016-license-standard-edition-1-cpu-20-cores" | "windows-server-2016-license-standard-edition-1-cpu-22-cores" | "windows-server-2016-license-standard-edition-1-cpu-24-cores" | "windows-server-2016-license-standard-edition-1-cpu-8-cores" | "windows-server-2016-license-standard-edition-2-cpu-10-cores" | "windows-server-2016-license-standard-edition-2-cpu-12-cores" | "windows-server-2016-license-standard-edition-2-cpu-14-cores" | "windows-server-2016-license-standard-edition-2-cpu-16-cores" | "windows-server-2016-license-standard-edition-2-cpu-18-cores" | "windows-server-2016-license-standard-edition-2-cpu-20-cores" | "windows-server-2016-license-standard-edition-2-cpu-22-cores" | "windows-server-2016-license-standard-edition-2-cpu-24-cores" | "windows-server-2016-license-standard-edition-2-cpu-8-cores" | "windows-server-2016-license-standard-edition-4-cpu-10-cores" | "windows-server-2016-license-standard-edition-4-cpu-12-cores" | "windows-server-2016-license-standard-edition-4-cpu-14-cores" | "windows-server-2016-license-standard-edition-4-cpu-16-cores" | "windows-server-2016-license-standard-edition-4-cpu-18-cores" | "windows-server-2016-license-standard-edition-4-cpu-20-cores" | "windows-server-2016-license-standard-edition-4-cpu-22-cores" | "windows-server-2016-license-standard-edition-4-cpu-24-cores" | "windows-server-2016-license-standard-edition-4-cpu-8-cores" | "windows-server-2019-license-datacenter-edition-10-cores" | "windows-server-2019-license-datacenter-edition-12-cores" | "windows-server-2019-license-datacenter-edition-14-cores" | "windows-server-2019-license-datacenter-edition-16-cores" | "windows-server-2019-license-datacenter-edition-18-cores" | "windows-server-2019-license-datacenter-edition-20-cores" | "windows-server-2019-license-datacenter-edition-22-cores" | "windows-server-2019-license-datacenter-edition-24-cores" | "windows-server-2019-license-datacenter-edition-26-cores" | "windows-server-2019-license-datacenter-edition-28-cores" | "windows-server-2019-license-datacenter-edition-30-cores" | "windows-server-2019-license-datacenter-edition-32-cores" | "windows-server-2019-license-datacenter-edition-34-cores" | "windows-server-2019-license-datacenter-edition-36-cores" | "windows-server-2019-license-datacenter-edition-38-cores" | "windows-server-2019-license-datacenter-edition-40-cores" | "windows-server-2019-license-datacenter-edition-42-cores" | "windows-server-2019-license-datacenter-edition-44-cores" | "windows-server-2019-license-datacenter-edition-46-cores" | "windows-server-2019-license-datacenter-edition-48-cores" | "windows-server-2019-license-datacenter-edition-50-cores" | "windows-server-2019-license-datacenter-edition-52-cores" | "windows-server-2019-license-datacenter-edition-54-cores" | "windows-server-2019-license-datacenter-edition-56-cores" | "windows-server-2019-license-datacenter-edition-58-cores" | "windows-server-2019-license-datacenter-edition-60-cores" | "windows-server-2019-license-datacenter-edition-62-cores" | "windows-server-2019-license-datacenter-edition-64-cores" | "windows-server-2019-license-datacenter-edition-8-cores" | "windows-server-2019-license-standard-edition-10-cores" | "windows-server-2019-license-standard-edition-12-cores" | "windows-server-2019-license-standard-edition-14-cores" | "windows-server-2019-license-standard-edition-16-cores" | "windows-server-2019-license-standard-edition-18-cores" | "windows-server-2019-license-standard-edition-20-cores" | "windows-server-2019-license-standard-edition-22-cores" | "windows-server-2019-license-standard-edition-24-cores" | "windows-server-2019-license-standard-edition-26-cores" | "windows-server-2019-license-standard-edition-28-cores" | "windows-server-2019-license-standard-edition-30-cores" | "windows-server-2019-license-standard-edition-32-cores" | "windows-server-2019-license-standard-edition-34-cores" | "windows-server-2019-license-standard-edition-36-cores" | "windows-server-2019-license-standard-edition-38-cores" | "windows-server-2019-license-standard-edition-40-cores" | "windows-server-2019-license-standard-edition-42-cores" | "windows-server-2019-license-standard-edition-44-cores" | "windows-server-2019-license-standard-edition-46-cores" | "windows-server-2019-license-standard-edition-48-cores" | "windows-server-2019-license-standard-edition-50-cores" | "windows-server-2019-license-standard-edition-52-cores" | "windows-server-2019-license-standard-edition-54-cores" | "windows-server-2019-license-standard-edition-56-cores" | "windows-server-2019-license-standard-edition-58-cores" | "windows-server-2019-license-standard-edition-60-cores" | "windows-server-2019-license-standard-edition-62-cores" | "windows-server-2019-license-standard-edition-64-cores" | "windows-server-2019-license-standard-edition-8-cores"
-    //license.WindowsSqlVersionEnum
+    // type fullname: license.WindowsSqlVersionEnum
     export type WindowsSqlVersionEnum = "SQL_SERVER_2008_STANDARD_EDITION" | "SQL_SERVER_2008_STANDARD_EDITION_2_CPU" | "SQL_SERVER_2008_WEB_EDITION" | "SQL_SERVER_2008_WEB_EDITION_2_CPU" | "SQL_SERVER_2012_STANDARD_EDITION" | "SQL_SERVER_2012_STANDARD_EDITION_12_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_16_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_18_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_20_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_24_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_2_CPU" | "SQL_SERVER_2012_STANDARD_EDITION_32_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_4_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_6_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_8_CORES" | "SQL_SERVER_2012_WEB_EDITION_12_CORES" | "SQL_SERVER_2012_WEB_EDITION_16_CORES" | "SQL_SERVER_2012_WEB_EDITION_18_CORES" | "SQL_SERVER_2012_WEB_EDITION_20_CORES" | "SQL_SERVER_2012_WEB_EDITION_24_CORES" | "SQL_SERVER_2012_WEB_EDITION_32_CORES" | "SQL_SERVER_2012_WEB_EDITION_4_CORES" | "SQL_SERVER_2012_WEB_EDITION_6_CORES" | "SQL_SERVER_2012_WEB_EDITION_8_CORES"
-    //license.WorkLightVersionEnum
+    // type fullname: license.WorkLightVersionEnum
     export type WorkLightVersionEnum = "VERSION-6.1U.1CPU" | "VERSION-6.1U.2CPU" | "VERSION-6.2U.1CPU" | "VERSION-6.2U.2CPU" | "VERSION-6.EVALUATION" | "worklight-license-version-6-1cpu-1u" | "worklight-license-version-6-1cpu-2u" | "worklight-license-version-6-2cpu-1u" | "worklight-license-version-6-2cpu-2u"
 }
 export namespace nichandle {
-    //nichandle.CountryEnum
+    // type fullname: nichandle.CountryEnum
     export type CountryEnum = "AC" | "AD" | "AE" | "AF" | "AG" | "AI" | "AL" | "AM" | "AO" | "AQ" | "AR" | "AS" | "AT" | "AU" | "AW" | "AX" | "AZ" | "BA" | "BB" | "BD" | "BE" | "BF" | "BG" | "BH" | "BI" | "BJ" | "BL" | "BM" | "BN" | "BO" | "BQ" | "BR" | "BS" | "BT" | "BW" | "BY" | "BZ" | "CA" | "CC" | "CD" | "CF" | "CG" | "CH" | "CI" | "CK" | "CL" | "CM" | "CN" | "CO" | "CR" | "CU" | "CV" | "CW" | "CX" | "CY" | "CZ" | "DE" | "DG" | "DJ" | "DK" | "DM" | "DO" | "DZ" | "EA" | "EC" | "EE" | "EG" | "EH" | "ER" | "ES" | "ET" | "FI" | "FJ" | "FK" | "FM" | "FO" | "FR" | "GA" | "GB" | "GD" | "GE" | "GF" | "GG" | "GH" | "GI" | "GL" | "GM" | "GN" | "GP" | "GQ" | "GR" | "GS" | "GT" | "GU" | "GW" | "GY" | "HK" | "HN" | "HR" | "HT" | "HU" | "IC" | "ID" | "IE" | "IL" | "IM" | "IN" | "IO" | "IQ" | "IR" | "IS" | "IT" | "JE" | "JM" | "JO" | "JP" | "KE" | "KG" | "KH" | "KI" | "KM" | "KN" | "KP" | "KR" | "KW" | "KY" | "KZ" | "LA" | "LB" | "LC" | "LI" | "LK" | "LR" | "LS" | "LT" | "LU" | "LV" | "LY" | "MA" | "MC" | "MD" | "ME" | "MF" | "MG" | "MH" | "MK" | "ML" | "MM" | "MN" | "MO" | "MP" | "MQ" | "MR" | "MS" | "MT" | "MU" | "MV" | "MW" | "MX" | "MY" | "MZ" | "NA" | "NC" | "NE" | "NF" | "NG" | "NI" | "NL" | "NO" | "NP" | "NR" | "NU" | "NZ" | "OM" | "PA" | "PE" | "PF" | "PG" | "PH" | "PK" | "PL" | "PM" | "PN" | "PR" | "PS" | "PT" | "PW" | "PY" | "QA" | "RE" | "RO" | "RS" | "RU" | "RW" | "SA" | "SB" | "SC" | "SD" | "SE" | "SG" | "SH" | "SI" | "SJ" | "SK" | "SL" | "SM" | "SN" | "SO" | "SR" | "SS" | "ST" | "SV" | "SX" | "SY" | "SZ" | "TA" | "TC" | "TD" | "TF" | "TG" | "TH" | "TJ" | "TK" | "TL" | "TM" | "TN" | "TO" | "TR" | "TT" | "TV" | "TW" | "TZ" | "UA" | "UG" | "UM" | "UNKNOWN" | "US" | "UY" | "UZ" | "VA" | "VC" | "VE" | "VG" | "VI" | "VN" | "VU" | "WF" | "WS" | "XK" | "YE" | "YT" | "ZA" | "ZM" | "ZW"
-    //nichandle.LegalFormEnum
+    // type fullname: nichandle.LegalFormEnum
     export type LegalFormEnum = "administration" | "association" | "corporation" | "individual" | "other" | "personalcorporation"
-    //nichandle.OvhSubsidiaryEnum
+    // type fullname: nichandle.OvhSubsidiaryEnum
     export type OvhSubsidiaryEnum = "CZ" | "DE" | "ES" | "EU" | "FI" | "FR" | "GB" | "IE" | "IT" | "LT" | "MA" | "NL" | "PL" | "PT" | "SN" | "TN"
 }
 export namespace order {
-    //order.Contract
-    // fullName: order.Contract.Contract
+    // interface fullName: order.Contract.Contract
     export interface Contract {
         content: string;
         name: string;
         url: string;
     }
-    //order.CurrencyCodeEnum
+    // type fullname: order.CurrencyCodeEnum
     export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
-    //order.Order
-    // fullName: order.Order.Order
+    // interface fullName: order.Order.Order
     export interface Order {
         contracts: order.Contract[];
         details: order.OrderDetail[];
@@ -269,8 +260,7 @@ export namespace order {
         prices: order.OrderPrices;
         url?: string;
     }
-    //order.OrderDetail
-    // fullName: order.OrderDetail.OrderDetail
+    // interface fullName: order.OrderDetail.OrderDetail
     export interface OrderDetail {
         description: string;
         detailType?: order.OrderDetailTypeEnum;
@@ -279,25 +269,22 @@ export namespace order {
         totalPrice: orderPrice;
         unitPrice: orderPrice;
     }
-    //order.OrderDetailTypeEnum
+    // type fullname: order.OrderDetailTypeEnum
     export type OrderDetailTypeEnum = "ACCESSORY" | "CAUTION" | "CHOOSED" | "CONSUMPTION" | "CREATION" | "DELIVERY" | "DURATION" | "GIFT" | "INSTALLATION" | "LICENSE" | "MUTE" | "OTHER" | "OUTPLAN" | "QUANTITY" | "REFUND" | "RENEW" | "SPECIAL" | "SWITCH" | "TRANSFER" | "VOUCHER"
-    //order.OrderPrices
-    // fullName: order.OrderPrices.OrderPrices
+    // interface fullName: order.OrderPrices.OrderPrices
     export interface OrderPrices {
         tax: orderPrice;
         withTax: orderPrice;
         withoutTax: orderPrice;
     }
-    //order.Price
-    // fullName: order.Price.Price
+    // interface fullName: order.Price.Price
     export interface Price {
         currencyCode: order.CurrencyCodeEnum;
         text: string;
         value: number;
     }
     export namespace cart {
-        //order.cart.Cart
-        // fullName: order.cart.Cart.Cart
+        // interface fullName: order.cart.Cart.Cart
         export interface Cart {
             cartId: string;
             description: string;
@@ -305,41 +292,35 @@ export namespace order {
             items: number[];
             readOnly: boolean;
         }
-        //order.cart.Checkout
-        // fullName: order.cart.Checkout.Checkout
+        // interface fullName: order.cart.Checkout.Checkout
         export interface Checkout {
             autoPayWithPreferredPaymentMethod: boolean;
             waiveRetractationPeriod: boolean;
         }
-        //order.cart.ConfigurationItem
-        // fullName: order.cart.ConfigurationItem.ConfigurationItem
+        // interface fullName: order.cart.ConfigurationItem.ConfigurationItem
         export interface ConfigurationItem {
             id: number;
             label: string;
             value: string;
         }
-        //order.cart.ConfigurationRequirements
-        // fullName: order.cart.ConfigurationRequirements.ConfigurationRequirements
+        // interface fullName: order.cart.ConfigurationRequirements.ConfigurationRequirements
         export interface ConfigurationRequirements {
             fields?: string[];
             label: string;
             required: boolean;
             type: string;
         }
-        //order.cart.CouponCreation
-        // fullName: order.cart.CouponCreation.CouponCreation
+        // interface fullName: order.cart.CouponCreation.CouponCreation
         export interface CouponCreation {
             coupon: string;
         }
-        //order.cart.Creation
-        // fullName: order.cart.Creation.Creation
+        // interface fullName: order.cart.Creation.Creation
         export interface Creation {
             description: string;
             expire: string;
             ovhSubsidiary: nichandle.OvhSubsidiaryEnum;
         }
-        //order.cart.DomainPacksCreation
-        // fullName: order.cart.DomainPacksCreation.DomainPacksCreation
+        // interface fullName: order.cart.DomainPacksCreation.DomainPacksCreation
         export interface DomainPacksCreation {
             domain: string;
             duration: string;
@@ -347,41 +328,35 @@ export namespace order {
             pricingMode: string;
             quantity: number;
         }
-        //order.cart.DomainPacksDescription
-        // fullName: order.cart.DomainPacksDescription.DomainPacksDescription
+        // interface fullName: order.cart.DomainPacksDescription.DomainPacksDescription
         export interface DomainPacksDescription {
             domains: order.cart.DomainPacksDescriptionItem[];
         }
-        //order.cart.DomainPacksDescriptionItem
-        // fullName: order.cart.DomainPacksDescriptionItem.DomainPacksDescriptionItem
+        // interface fullName: order.cart.DomainPacksDescriptionItem.DomainPacksDescriptionItem
         export interface DomainPacksDescriptionItem {
             available: boolean;
             domain: string;
         }
-        //order.cart.DomainPacksProductInformation
-        // fullName: order.cart.DomainPacksProductInformation.DomainPacksProductInformation
+        // interface fullName: order.cart.DomainPacksProductInformation.DomainPacksProductInformation
         export interface DomainPacksProductInformation {
             description: order.cart.DomainPacksDescription;
             planCode: string;
             prices: order.cart.GenericProductPricing[];
         }
-        //order.cart.DomainSettings
-        // fullName: order.cart.DomainSettings.DomainSettings
+        // interface fullName: order.cart.DomainSettings.DomainSettings
         export interface DomainSettings {
             domain: string;
         }
-        //order.cart.DurationUnitEnum
+        // type fullname: order.cart.DurationUnitEnum
         export type DurationUnitEnum = "month" | "day" | "none"
-        //order.cart.GenericDedicatedCreation
-        // fullName: order.cart.GenericDedicatedCreation.GenericDedicatedCreation
+        // interface fullName: order.cart.GenericDedicatedCreation.GenericDedicatedCreation
         export interface GenericDedicatedCreation {
             duration: string;
             planCode: string;
             pricingMode: string;
             quantity: number;
         }
-        //order.cart.GenericDedicatedOptionsCreation
-        // fullName: order.cart.GenericDedicatedOptionsCreation.GenericDedicatedOptionsCreation
+        // interface fullName: order.cart.GenericDedicatedOptionsCreation.GenericDedicatedOptionsCreation
         export interface GenericDedicatedOptionsCreation {
             duration: string;
             itemId: number;
@@ -389,16 +364,14 @@ export namespace order {
             pricingMode: string;
             quantity: number;
         }
-        //order.cart.GenericDomainCreation
-        // fullName: order.cart.GenericDomainCreation.GenericDomainCreation
+        // interface fullName: order.cart.GenericDomainCreation.GenericDomainCreation
         export interface GenericDomainCreation {
             domain: string;
             duration?: string;
             offerId?: string;
             quantity?: number;
         }
-        //order.cart.GenericDomainOptionsCreation
-        // fullName: order.cart.GenericDomainOptionsCreation.GenericDomainOptionsCreation
+        // interface fullName: order.cart.GenericDomainOptionsCreation.GenericDomainOptionsCreation
         export interface GenericDomainOptionsCreation {
             duration: string;
             itemId: number;
@@ -406,8 +379,7 @@ export namespace order {
             pricingMode: string;
             quantity: number;
         }
-        //order.cart.GenericOptionCreation
-        // fullName: order.cart.GenericOptionCreation.GenericOptionCreation
+        // interface fullName: order.cart.GenericOptionCreation.GenericOptionCreation
         export interface GenericOptionCreation {
             duration: string;
             itemId: number;
@@ -415,8 +387,7 @@ export namespace order {
             pricingMode: string;
             quantity: number;
         }
-        //order.cart.GenericOptionDefinition
-        // fullName: order.cart.GenericOptionDefinition.GenericOptionDefinition
+        // interface fullName: order.cart.GenericOptionDefinition.GenericOptionDefinition
         export interface GenericOptionDefinition {
             exclusive: boolean;
             family: string;
@@ -426,24 +397,21 @@ export namespace order {
             productName: string;
             productType: order.cart.GenericProductTypeEnum;
         }
-        //order.cart.GenericProductCreation
-        // fullName: order.cart.GenericProductCreation.GenericProductCreation
+        // interface fullName: order.cart.GenericProductCreation.GenericProductCreation
         export interface GenericProductCreation {
             duration: string;
             planCode: string;
             pricingMode: string;
             quantity: number;
         }
-        //order.cart.GenericProductDefinition
-        // fullName: order.cart.GenericProductDefinition.GenericProductDefinition
+        // interface fullName: order.cart.GenericProductDefinition.GenericProductDefinition
         export interface GenericProductDefinition {
             planCode: string;
             prices: order.cart.GenericProductPricing[];
             productName: string;
             productType: order.cart.GenericProductTypeEnum;
         }
-        //order.cart.GenericProductPricing
-        // fullName: order.cart.GenericProductPricing.GenericProductPricing
+        // interface fullName: order.cart.GenericProductPricing.GenericProductPricing
         export interface GenericProductPricing {
             capacities: order.cart.GenericProductPricingCapacitiesEnum[];
             description: string;
@@ -458,16 +426,15 @@ export namespace order {
             pricingMode: string;
             pricingType: order.cart.GenericProductPricingTypeEnum;
         }
-        //order.cart.GenericProductPricingCapacitiesEnum
+        // type fullname: order.cart.GenericProductPricingCapacitiesEnum
         export type GenericProductPricingCapacitiesEnum = "installation" | "renew" | "upgrade" | "downgrade"
-        //order.cart.GenericProductPricingStrategyEnum
+        // type fullname: order.cart.GenericProductPricingStrategyEnum
         export type GenericProductPricingStrategyEnum = "stairstep" | "volume" | "tiered"
-        //order.cart.GenericProductPricingTypeEnum
+        // type fullname: order.cart.GenericProductPricingTypeEnum
         export type GenericProductPricingTypeEnum = "rental" | "consumption" | "purchase"
-        //order.cart.GenericProductTypeEnum
+        // type fullname: order.cart.GenericProductTypeEnum
         export type GenericProductTypeEnum = "delivery" | "deposit" | "shipping" | "cloud_service" | "saas_license" | "storage" | "domain"
-        //order.cart.Item
-        // fullName: order.cart.Item.Item
+        // interface fullName: order.cart.Item.Item
         export interface Item {
             cartId: string;
             configurations?: number[];
@@ -480,28 +447,24 @@ export namespace order {
             productId: string;
             settings: order.cart.DomainSettings;
         }
-        //order.cart.ItemConfigurationCreation
-        // fullName: order.cart.ItemConfigurationCreation.ItemConfigurationCreation
+        // interface fullName: order.cart.ItemConfigurationCreation.ItemConfigurationCreation
         export interface ItemConfigurationCreation {
             label: string;
             value: string;
         }
-        //order.cart.ItemUpdate
-        // fullName: order.cart.ItemUpdate.ItemUpdate
+        // interface fullName: order.cart.ItemUpdate.ItemUpdate
         export interface ItemUpdate {
             duration: string;
             quantity: number;
         }
-        //order.cart.Price
-        // fullName: order.cart.Price.Price
+        // interface fullName: order.cart.Price.Price
         export interface Price {
             label: order.cart.PriceLabelEnum;
             price: orderPrice;
         }
-        //order.cart.PriceLabelEnum
+        // type fullname: order.cart.PriceLabelEnum
         export type PriceLabelEnum = "PRICE" | "DISCOUNT" | "FEE" | "TOTAL" | "RENEW"
-        //order.cart.ProductInformation
-        // fullName: order.cart.ProductInformation.ProductInformation
+        // interface fullName: order.cart.ProductInformation.ProductInformation
         export interface ProductInformation {
             configurations: order.cart.ConfigurationRequirements[];
             deliveryTime: string;
@@ -514,14 +477,12 @@ export namespace order {
             productId: string;
             quantityMax: number;
         }
-        //order.cart.Update
-        // fullName: order.cart.Update.Update
+        // interface fullName: order.cart.Update.Update
         export interface Update {
             description: string;
             expire: string;
         }
-        //order.cart.WebHostingProductInformation
-        // fullName: order.cart.WebHostingProductInformation.WebHostingProductInformation
+        // interface fullName: order.cart.WebHostingProductInformation.WebHostingProductInformation
         export interface WebHostingProductInformation {
             description: hosting.web.Capabilities;
             planCode: string;
@@ -529,29 +490,25 @@ export namespace order {
         }
     }
     export namespace catalog {
-        //order.catalog.AddonItem
-        // fullName: order.catalog.AddonItem.AddonItem
+        // interface fullName: order.catalog.AddonItem.AddonItem
         export interface AddonItem {
             addons: order.catalog.AddonOffer[];
             exclusive: boolean;
             family: string;
             mandatory: boolean;
         }
-        //order.catalog.AddonOffer
-        // fullName: order.catalog.AddonOffer.AddonOffer
+        // interface fullName: order.catalog.AddonOffer.AddonOffer
         export interface AddonOffer {
             invoiceName: string;
             plan: order.catalog.ProductPlan;
         }
-        //order.catalog.Catalog
-        // fullName: order.catalog.Catalog.Catalog
+        // interface fullName: order.catalog.Catalog.Catalog
         export interface Catalog {
             catalogId: number;
             merchantCode: string;
             plansFamily: order.catalog.PlansItem[];
         }
-        //order.catalog.ConfigurationItem
-        // fullName: order.catalog.ConfigurationItem.ConfigurationItem
+        // interface fullName: order.catalog.ConfigurationItem.ConfigurationItem
         export interface ConfigurationItem {
             defaultValue?: string;
             isCustom: boolean;
@@ -559,14 +516,12 @@ export namespace order {
             name: string;
             values: string[];
         }
-        //order.catalog.PlansItem
-        // fullName: order.catalog.PlansItem.PlansItem
+        // interface fullName: order.catalog.PlansItem.PlansItem
         export interface PlansItem {
             family: string;
             plans: order.catalog.ProductPlan[];
         }
-        //order.catalog.Pricing
-        // fullName: order.catalog.Pricing.Pricing
+        // interface fullName: order.catalog.Pricing.Pricing
         export interface Pricing {
             capacities: string[];
             commitment: number;
@@ -583,28 +538,24 @@ export namespace order {
             priceInUcents: number;
             pricingStrategy: string;
         }
-        //order.catalog.PricingDefault
-        // fullName: order.catalog.PricingDefault.PricingDefault
+        // interface fullName: order.catalog.PricingDefault.PricingDefault
         export interface PricingDefault {
             default: order.catalog.Pricing[];
         }
-        //order.catalog.Product
-        // fullName: order.catalog.Product.Product
+        // interface fullName: order.catalog.Product.Product
         export interface Product {
             configurations: order.catalog.ConfigurationItem[];
             description: string;
             name: string;
             technicalDetails?: complexType.SafeKeyValue<string>[];
         }
-        //order.catalog.ProductOfferDetails
-        // fullName: order.catalog.ProductOfferDetails.ProductOfferDetails
+        // interface fullName: order.catalog.ProductOfferDetails.ProductOfferDetails
         export interface ProductOfferDetails {
             metadatas: complexType.SafeKeyValue<string>[];
             pricings: order.catalog.PricingDefault;
             product: order.catalog.Product;
         }
-        //order.catalog.ProductPlan
-        // fullName: order.catalog.ProductPlan.ProductPlan
+        // interface fullName: order.catalog.ProductPlan.ProductPlan
         export interface ProductPlan {
             addonsFamily: order.catalog.AddonItem[];
             consumptionBillingStrategy?: string;
@@ -614,8 +565,7 @@ export namespace order {
             pricingType: string;
         }
         export namespace pcc {
-            //order.catalog.pcc.Catalog
-            // fullName: order.catalog.pcc.Catalog.Catalog
+            // interface fullName: order.catalog.pcc.Catalog.Catalog
             export interface Catalog {
                 catalogId: number;
                 catalogName: string;
@@ -623,15 +573,13 @@ export namespace order {
                 merchantCode: string;
                 plans: order.catalog.ProductPlan[];
             }
-            //order.catalog.pcc.CommercialRange
-            // fullName: order.catalog.pcc.CommercialRange.CommercialRange
+            // interface fullName: order.catalog.pcc.CommercialRange.CommercialRange
             export interface CommercialRange {
                 datacenters: order.catalog.pcc.Datacenter[];
                 defaultZone: string;
                 name: string;
             }
-            //order.catalog.pcc.Datacenter
-            // fullName: order.catalog.pcc.Datacenter.Datacenter
+            // interface fullName: order.catalog.pcc.Datacenter.Datacenter
             export interface Datacenter {
                 cityCode: string;
                 cityName: string;
@@ -646,8 +594,7 @@ export namespace order {
                 zoneFullName: string;
                 zoneName: string;
             }
-            //order.catalog.pcc.Host
-            // fullName: order.catalog.pcc.Host.Host
+            // interface fullName: order.catalog.pcc.Host.Host
             export interface Host {
                 name: string;
                 onInitialOrder: boolean;
@@ -656,8 +603,7 @@ export namespace order {
                 specifications: order.catalog.pcc.HostSpecifications;
                 storagesPack: string[];
             }
-            //order.catalog.pcc.HostCpuSpecifications
-            // fullName: order.catalog.pcc.HostCpuSpecifications.HostCpuSpecifications
+            // interface fullName: order.catalog.pcc.HostCpuSpecifications.HostCpuSpecifications
             export interface HostCpuSpecifications {
                 cores: number;
                 frequency: complexType.UnitAndValue<number>;
@@ -666,26 +612,22 @@ export namespace order {
                 socket: number;
                 threads: number;
             }
-            //order.catalog.pcc.HostMemorySpecifications
-            // fullName: order.catalog.pcc.HostMemorySpecifications.HostMemorySpecifications
+            // interface fullName: order.catalog.pcc.HostMemorySpecifications.HostMemorySpecifications
             export interface HostMemorySpecifications {
                 ram: complexType.UnitAndValue<number>;
             }
-            //order.catalog.pcc.HostNetworkSpecifications
-            // fullName: order.catalog.pcc.HostNetworkSpecifications.HostNetworkSpecifications
+            // interface fullName: order.catalog.pcc.HostNetworkSpecifications.HostNetworkSpecifications
             export interface HostNetworkSpecifications {
                 nics: number;
                 speed: complexType.UnitAndValue<number>;
             }
-            //order.catalog.pcc.HostSpecifications
-            // fullName: order.catalog.pcc.HostSpecifications.HostSpecifications
+            // interface fullName: order.catalog.pcc.HostSpecifications.HostSpecifications
             export interface HostSpecifications {
                 cpu: order.catalog.pcc.HostCpuSpecifications;
                 memory: order.catalog.pcc.HostMemorySpecifications;
                 network: order.catalog.pcc.HostNetworkSpecifications[];
             }
-            //order.catalog.pcc.Hypervisor
-            // fullName: order.catalog.pcc.Hypervisor.Hypervisor
+            // interface fullName: order.catalog.pcc.Hypervisor.Hypervisor
             export interface Hypervisor {
                 hosts: order.catalog.pcc.Host[];
                 name: string;
@@ -696,8 +638,7 @@ export namespace order {
                 storages: order.catalog.pcc.Storage[];
                 type: string;
             }
-            //order.catalog.pcc.Option
-            // fullName: order.catalog.pcc.Option.Option
+            // interface fullName: order.catalog.pcc.Option.Option
             export interface Option {
                 maxInitialQuantity: number;
                 name: string;
@@ -706,23 +647,20 @@ export namespace order {
                 planCode: string;
                 type: string;
             }
-            //order.catalog.pcc.ServicePack
-            // fullName: order.catalog.pcc.ServicePack.ServicePack
+            // interface fullName: order.catalog.pcc.ServicePack.ServicePack
             export interface ServicePack {
                 name: string;
                 options: order.catalog.pcc.ServicePackOption[];
                 planCode: string;
                 upgradableTo: string[];
             }
-            //order.catalog.pcc.ServicePackOption
-            // fullName: order.catalog.pcc.ServicePackOption.ServicePackOption
+            // interface fullName: order.catalog.pcc.ServicePackOption.ServicePackOption
             export interface ServicePackOption {
                 name: string;
                 planCode: string;
                 type: string;
             }
-            //order.catalog.pcc.Storage
-            // fullName: order.catalog.pcc.Storage.Storage
+            // interface fullName: order.catalog.pcc.Storage.Storage
             export interface Storage {
                 name: string;
                 onInitialOrder: boolean;
@@ -730,16 +668,14 @@ export namespace order {
                 planCode: string;
                 specifications: order.catalog.pcc.StorageSpecifications;
             }
-            //order.catalog.pcc.StorageSpecifications
-            // fullName: order.catalog.pcc.StorageSpecifications.StorageSpecifications
+            // interface fullName: order.catalog.pcc.StorageSpecifications.StorageSpecifications
             export interface StorageSpecifications {
                 size: complexType.UnitAndValue<number>;
                 type: string;
             }
         }
         export namespace privateCloud {
-            //order.catalog.privateCloud.Capabilities
-            // fullName: order.catalog.privateCloud.Capabilities.Capabilities
+            // interface fullName: order.catalog.privateCloud.Capabilities.Capabilities
             export interface Capabilities {
                 hds: boolean;
                 hipaa: boolean;
@@ -747,8 +683,7 @@ export namespace order {
                 pcidss: boolean;
                 vrops: boolean;
             }
-            //order.catalog.privateCloud.CapabilitiesListing
-            // fullName: order.catalog.privateCloud.CapabilitiesListing.CapabilitiesListing
+            // interface fullName: order.catalog.privateCloud.CapabilitiesListing.CapabilitiesListing
             export interface CapabilitiesListing {
                 '2016v1': order.catalog.privateCloud.Capabilities;
                 '2016v2': order.catalog.privateCloud.Capabilities;
@@ -759,8 +694,7 @@ export namespace order {
                 '2016v7': order.catalog.privateCloud.Capabilities;
                 default: order.catalog.privateCloud.Capabilities;
             }
-            //order.catalog.privateCloud.Catalog
-            // fullName: order.catalog.privateCloud.Catalog.Catalog
+            // interface fullName: order.catalog.privateCloud.Catalog.Catalog
             export interface Catalog {
                 catalogId: number;
                 catalogName: string;
@@ -770,8 +704,7 @@ export namespace order {
                 options: order.catalog.privateCloud.CapabilitiesListing;
                 zones: order.catalog.privateCloud.ZonesListing;
             }
-            //order.catalog.privateCloud.Zone
-            // fullName: order.catalog.privateCloud.Zone.Zone
+            // interface fullName: order.catalog.privateCloud.Zone.Zone
             export interface Zone {
                 cityName: string;
                 country: string;
@@ -780,8 +713,7 @@ export namespace order {
                 internalName: string;
                 plans: order.catalog.ProductPlan[];
             }
-            //order.catalog.privateCloud.ZonesListing
-            // fullName: order.catalog.privateCloud.ZonesListing.ZonesListing
+            // interface fullName: order.catalog.privateCloud.ZonesListing.ZonesListing
             export interface ZonesListing {
                 bhs: order.catalog.privateCloud.Zone;
                 eri: order.catalog.privateCloud.Zone;
@@ -792,8 +724,7 @@ export namespace order {
             }
         }
         export namespace publik {
-            //order.catalog.publik.AddonFamily
-            // fullName: order.catalog.publik.AddonFamily.AddonFamily
+            // interface fullName: order.catalog.publik.AddonFamily.AddonFamily
             export interface AddonFamily {
                 addons: string[];
                 default?: string;
@@ -801,8 +732,7 @@ export namespace order {
                 mandatory: boolean;
                 name: string;
             }
-            //order.catalog.publik.Catalog
-            // fullName: order.catalog.publik.Catalog.Catalog
+            // interface fullName: order.catalog.publik.Catalog.Catalog
             export interface Catalog {
                 addons: order.catalog.publik.Plan[];
                 catalogId: number;
@@ -811,16 +741,14 @@ export namespace order {
                 plans: order.catalog.publik.Plan[];
                 products: order.catalog.publik.Product[];
             }
-            //order.catalog.publik.Configuration
-            // fullName: order.catalog.publik.Configuration.Configuration
+            // interface fullName: order.catalog.publik.Configuration.Configuration
             export interface Configuration {
                 isCustom: boolean;
                 isMandatory: boolean;
                 name: string;
                 values: string[];
             }
-            //order.catalog.publik.DedicatedServerCatalog
-            // fullName: order.catalog.publik.DedicatedServerCatalog.DedicatedServerCatalog
+            // interface fullName: order.catalog.publik.DedicatedServerCatalog.DedicatedServerCatalog
             export interface DedicatedServerCatalog {
                 addons: order.catalog.publik.Plan[];
                 catalogId: number;
@@ -829,20 +757,17 @@ export namespace order {
                 plans: order.catalog.publik.Plan[];
                 products: order.catalog.publik.DedicatedServerProduct[];
             }
-            //order.catalog.publik.DedicatedServerProduct
-            // fullName: order.catalog.publik.DedicatedServerProduct.DedicatedServerProduct
+            // interface fullName: order.catalog.publik.DedicatedServerProduct.DedicatedServerProduct
             export interface DedicatedServerProduct {
                 blobs?: order.catalog.publik.DedicatedServerProductBlob;
                 description: string;
                 name: string;
             }
-            //order.catalog.publik.DedicatedServerProductBlob
-            // fullName: order.catalog.publik.DedicatedServerProductBlob.DedicatedServerProductBlob
+            // interface fullName: order.catalog.publik.DedicatedServerProductBlob.DedicatedServerProductBlob
             export interface DedicatedServerProductBlob {
                 technical?: order.catalog.publik.DedicatedServerProductBlobTechnical;
             }
-            //order.catalog.publik.DedicatedServerProductBlobTechnical
-            // fullName: order.catalog.publik.DedicatedServerProductBlobTechnical.DedicatedServerProductBlobTechnical
+            // interface fullName: order.catalog.publik.DedicatedServerProductBlobTechnical.DedicatedServerProductBlobTechnical
             export interface DedicatedServerProductBlobTechnical {
                 bandwidth?: order.catalog.publik.DedicatedServerProductBlobTechnicalNetwork;
                 cpu?: order.catalog.publik.DedicatedServerProductBlobTechnicalCPU;
@@ -852,8 +777,7 @@ export namespace order {
                 storage?: order.catalog.publik.DedicatedServerProductBlobTechnicalStorage;
                 vrack?: order.catalog.publik.DedicatedServerProductBlobTechnicalNetwork;
             }
-            //order.catalog.publik.DedicatedServerProductBlobTechnicalCPU
-            // fullName: order.catalog.publik.DedicatedServerProductBlobTechnicalCPU.DedicatedServerProductBlobTechnicalCPU
+            // interface fullName: order.catalog.publik.DedicatedServerProductBlobTechnicalCPU.DedicatedServerProductBlobTechnicalCPU
             export interface DedicatedServerProductBlobTechnicalCPU {
                 boost: number;
                 brand: string;
@@ -863,8 +787,7 @@ export namespace order {
                 score: number;
                 threads: number;
             }
-            //order.catalog.publik.DedicatedServerProductBlobTechnicalDisk
-            // fullName: order.catalog.publik.DedicatedServerProductBlobTechnicalDisk.DedicatedServerProductBlobTechnicalDisk
+            // interface fullName: order.catalog.publik.DedicatedServerProductBlobTechnicalDisk.DedicatedServerProductBlobTechnicalDisk
             export interface DedicatedServerProductBlobTechnicalDisk {
                 capacity: number;
                 interface: string;
@@ -872,55 +795,47 @@ export namespace order {
                 specs: string;
                 technology: string;
             }
-            //order.catalog.publik.DedicatedServerProductBlobTechnicalFrame
-            // fullName: order.catalog.publik.DedicatedServerProductBlobTechnicalFrame.DedicatedServerProductBlobTechnicalFrame
+            // interface fullName: order.catalog.publik.DedicatedServerProductBlobTechnicalFrame.DedicatedServerProductBlobTechnicalFrame
             export interface DedicatedServerProductBlobTechnicalFrame {
                 model: string;
                 size: string;
             }
-            //order.catalog.publik.DedicatedServerProductBlobTechnicalGPU
-            // fullName: order.catalog.publik.DedicatedServerProductBlobTechnicalGPU.DedicatedServerProductBlobTechnicalGPU
+            // interface fullName: order.catalog.publik.DedicatedServerProductBlobTechnicalGPU.DedicatedServerProductBlobTechnicalGPU
             export interface DedicatedServerProductBlobTechnicalGPU {
                 memory: number;
             }
-            //order.catalog.publik.DedicatedServerProductBlobTechnicalMemory
-            // fullName: order.catalog.publik.DedicatedServerProductBlobTechnicalMemory.DedicatedServerProductBlobTechnicalMemory
+            // interface fullName: order.catalog.publik.DedicatedServerProductBlobTechnicalMemory.DedicatedServerProductBlobTechnicalMemory
             export interface DedicatedServerProductBlobTechnicalMemory {
                 ecc: boolean;
                 frequency: number;
                 ramType: string;
                 size: number;
             }
-            //order.catalog.publik.DedicatedServerProductBlobTechnicalNetwork
-            // fullName: order.catalog.publik.DedicatedServerProductBlobTechnicalNetwork.DedicatedServerProductBlobTechnicalNetwork
+            // interface fullName: order.catalog.publik.DedicatedServerProductBlobTechnicalNetwork.DedicatedServerProductBlobTechnicalNetwork
             export interface DedicatedServerProductBlobTechnicalNetwork {
                 burst?: number;
                 guaranteed: boolean;
                 level: number;
                 limit?: number;
             }
-            //order.catalog.publik.DedicatedServerProductBlobTechnicalServer
-            // fullName: order.catalog.publik.DedicatedServerProductBlobTechnicalServer.DedicatedServerProductBlobTechnicalServer
+            // interface fullName: order.catalog.publik.DedicatedServerProductBlobTechnicalServer.DedicatedServerProductBlobTechnicalServer
             export interface DedicatedServerProductBlobTechnicalServer {
                 cpu: order.catalog.publik.DedicatedServerProductBlobTechnicalCPU;
                 frame: order.catalog.publik.DedicatedServerProductBlobTechnicalFrame;
                 range: string;
             }
-            //order.catalog.publik.DedicatedServerProductBlobTechnicalStorage
-            // fullName: order.catalog.publik.DedicatedServerProductBlobTechnicalStorage.DedicatedServerProductBlobTechnicalStorage
+            // interface fullName: order.catalog.publik.DedicatedServerProductBlobTechnicalStorage.DedicatedServerProductBlobTechnicalStorage
             export interface DedicatedServerProductBlobTechnicalStorage {
                 disks: order.catalog.publik.DedicatedServerProductBlobTechnicalDisk[];
                 raid: string;
             }
-            //order.catalog.publik.Locale
-            // fullName: order.catalog.publik.Locale.Locale
+            // interface fullName: order.catalog.publik.Locale.Locale
             export interface Locale {
                 currencyCode: order.CurrencyCodeEnum;
                 subsidiary: nichandle.OvhSubsidiaryEnum;
                 taxRate: number;
             }
-            //order.catalog.publik.Plan
-            // fullName: order.catalog.publik.Plan.Plan
+            // interface fullName: order.catalog.publik.Plan.Plan
             export interface Plan {
                 addonFamilies: order.catalog.publik.AddonFamily[];
                 configurations: order.catalog.publik.Configuration[];
@@ -931,13 +846,11 @@ export namespace order {
                 pricings: order.catalog.publik.Pricing[];
                 product: string;
             }
-            //order.catalog.publik.PlanFamily
-            // fullName: order.catalog.publik.PlanFamily.PlanFamily
+            // interface fullName: order.catalog.publik.PlanFamily.PlanFamily
             export interface PlanFamily {
                 name: string;
             }
-            //order.catalog.publik.Pricing
-            // fullName: order.catalog.publik.Pricing.Pricing
+            // interface fullName: order.catalog.publik.Pricing.Pricing
             export interface Pricing {
                 capacities: order.cart.GenericProductPricingCapacitiesEnum[];
                 commitment: number;
@@ -954,14 +867,12 @@ export namespace order {
                 tax: number;
                 type: order.cart.GenericProductPricingTypeEnum;
             }
-            //order.catalog.publik.PricingMinMax
-            // fullName: order.catalog.publik.PricingMinMax.PricingMinMax
+            // interface fullName: order.catalog.publik.PricingMinMax.PricingMinMax
             export interface PricingMinMax {
                 max?: number;
                 min: number;
             }
-            //order.catalog.publik.Product
-            // fullName: order.catalog.publik.Product.Product
+            // interface fullName: order.catalog.publik.Product.Product
             export interface Product {
                 description: string;
                 name: string;
@@ -969,26 +880,23 @@ export namespace order {
         }
     }
     export namespace upgrade {
-        //order.upgrade.Operation
-        // fullName: order.upgrade.Operation.Operation
+        // interface fullName: order.upgrade.Operation.Operation
         export interface Operation {
             id: number;
             product: order.upgrade.OperationProduct;
             status: order.upgrade.OperationStatusEnum;
             type: order.upgrade.OperationTypeEnum;
         }
-        //order.upgrade.OperationProduct
-        // fullName: order.upgrade.OperationProduct.OperationProduct
+        // interface fullName: order.upgrade.OperationProduct.OperationProduct
         export interface OperationProduct {
             description: string;
             name: string;
         }
-        //order.upgrade.OperationStatusEnum
+        // type fullname: order.upgrade.OperationStatusEnum
         export type OperationStatusEnum = "TODO" | "DOING" | "DONE" | "ERROR" | "DELAYED" | "CANCELLED" | "SCHEDULED"
-        //order.upgrade.OperationTypeEnum
+        // type fullname: order.upgrade.OperationTypeEnum
         export type OperationTypeEnum = "UPGRADE"
-        //order.upgrade.order_upgrade_OperationAndOrder
-        // fullName: order.upgrade.order_upgrade_OperationAndOrder.order_upgrade_OperationAndOrder
+        // interface fullName: order.upgrade.order_upgrade_OperationAndOrder.order_upgrade_OperationAndOrder
         export interface order_upgrade_OperationAndOrder {
             operation?: order.upgrade.Operation;
             order?: order.Order;
@@ -996,55 +904,55 @@ export namespace order {
     }
 }
 export namespace overTheBox {
-    //overTheBox.ShippingMethodEnum
+    // type fullname: overTheBox.ShippingMethodEnum
     export type ShippingMethodEnum = "dhl" | "mondialRelay"
 }
 export namespace telephony {
-    //telephony.LineTypeEnum
+    // type fullname: telephony.LineTypeEnum
     export type LineTypeEnum = "geographic" | "nogeographic"
-    //telephony.NumberCountryEnum
+    // type fullname: telephony.NumberCountryEnum
     export type NumberCountryEnum = "be" | "ch" | "de" | "es" | "fr" | "gb" | "it" | "uk"
-    //telephony.NumberOffer
+    // type fullname: telephony.NumberOffer
     export type NumberOffer = "alias" | "didsOnly"
-    //telephony.NumberPoolEnum
+    // type fullname: telephony.NumberPoolEnum
     export type NumberPoolEnum = 10 | 100 | 50
-    //telephony.NumberSpecialTypologyEnum
+    // type fullname: telephony.NumberSpecialTypologyEnum
     export type NumberSpecialTypologyEnum = "be_adults" | "be_content" | "be_games" | "be_general" | "be_relaxing" | "fr_access" | "fr_adults" | "fr_announced" | "fr_conferencing" | "fr_contentsAuto" | "fr_contentsManual" | "fr_games" | "fr_linking" | "fr_m2m" | "fr_relationship"
-    //telephony.SecurityDepositAmountsEnum
+    // type fullname: telephony.SecurityDepositAmountsEnum
     export type SecurityDepositAmountsEnum = 10 | 100 | 1000 | 10000 | 20 | 200 | 2000 | 30 | 300 | 3000 | 40 | 400 | 4000 | 50 | 500 | 5000
     export namespace portability {
-        //telephony.portability.CountriesAvailable
+        // type fullname: telephony.portability.CountriesAvailable
         export type CountriesAvailable = "belgium" | "france" | "switzerland"
-        //telephony.portability.NumberType
+        // type fullname: telephony.portability.NumberType
         export type NumberType = "landline" | "special"
-        //telephony.portability.OfferType
+        // type fullname: telephony.portability.OfferType
         export type OfferType = "company" | "individual"
-        //telephony.portability.SocialReason
+        // type fullname: telephony.portability.SocialReason
         export type SocialReason = "corporation" | "individual" | "professional"
-        //telephony.portability.SpecialNumberCategoryEnum
+        // type fullname: telephony.portability.SpecialNumberCategoryEnum
         export type SpecialNumberCategoryEnum = "access" | "adults" | "announced" | "be_adults" | "be_content" | "be_games" | "be_general" | "be_relaxing" | "conferencing" | "contentsAuto" | "contentsManual" | "directory" | "games" | "linking" | "m2m" | "relationship"
     }
 }
 export namespace veeamCloudConnect {
-    //veeamCloudConnect.Offer
+    // type fullname: veeamCloudConnect.Offer
     export type Offer = "advanced" | "demo" | "starter"
 }
 export namespace vps {
-    //vps.PleskLicenseDomainNumberEnum
+    // type fullname: vps.PleskLicenseDomainNumberEnum
     export type PleskLicenseDomainNumberEnum = "10" | "100" | "300" | "hostingsuite"
     export namespace additionalDisk {
-        //vps.additionalDisk.AdditionalDiskSizeEnum
+        // type fullname: vps.additionalDisk.AdditionalDiskSizeEnum
         export type AdditionalDiskSizeEnum = "100" | "200" | "50" | "500"
     }
     export namespace ip {
-        //vps.ip.GeolocationEnum
+        // type fullname: vps.ip.GeolocationEnum
         export type GeolocationEnum = "au" | "be" | "ca" | "cz" | "de" | "es" | "fi" | "fr" | "ie" | "it" | "lt" | "nl" | "pl" | "pt" | "sg" | "uk" | "us"
     }
 }
 export namespace vrack {
-    //vrack.BlockCountryEnum
+    // type fullname: vrack.BlockCountryEnum
     export type BlockCountryEnum = "be" | "cz" | "de" | "es" | "fi" | "fr" | "ie" | "it" | "lt" | "nl" | "pl" | "pt" | "uk"
-    //vrack.BlockSizeEnum
+    // type fullname: vrack.BlockSizeEnum
     export type BlockSizeEnum = "128" | "16" | "256" | "32" | "4" | "64" | "8"
 }
 

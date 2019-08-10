@@ -4,21 +4,18 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /hosting/web Models
  */
 export namespace complexType {
-    //complexType.ChartSerie
-    // fullName: complexType.ChartSerie.ChartSerie
+    // interface fullName: complexType.ChartSerie.ChartSerie
     export interface ChartSerie<T> {
         serieName: string;
         unit: string;
         values: T[];
     }
-    //complexType.ChartTimestampValue
-    // fullName: complexType.ChartTimestampValue.ChartTimestampValue
+    // interface fullName: complexType.ChartTimestampValue.ChartTimestampValue
     export interface ChartTimestampValue {
         timestamp: number;
         value?: number;
     }
-    //complexType.UnitAndValue
-    // fullName: complexType.UnitAndValue.UnitAndValue
+    // interface fullName: complexType.UnitAndValue.UnitAndValue
     export interface UnitAndValue<T> {
         unit: string;
         value: T;
@@ -26,26 +23,23 @@ export namespace complexType {
 }
 export namespace hosting {
     export namespace PrivateDatabase {
-        //hosting.PrivateDatabase.AvailableRamSizeEnum
+        // type fullname: hosting.PrivateDatabase.AvailableRamSizeEnum
         export type AvailableRamSizeEnum = "1024" | "2048" | "4096" | "512"
-        //hosting.PrivateDatabase.OrderableVersionEnum
+        // type fullname: hosting.PrivateDatabase.OrderableVersionEnum
         export type OrderableVersionEnum = "mariadb_10.1" | "mariadb_10.2" | "mongodb_3.4" | "mongodb_4.0" | "mysql_5.5" | "mysql_5.6" | "mysql_5.7" | "postgresql_10" | "postgresql_11" | "postgresql_9.4" | "postgresql_9.5" | "postgresql_9.6" | "redis_3.2" | "redis_4.0"
     }
     export namespace web {
-        //hosting.web.Address
-        // fullName: hosting.web.Address.Address
+        // interface fullName: hosting.web.Address.Address
         export interface Address {
             port: number;
             url: string;
         }
-        //hosting.web.AvailableOfferStruct
-        // fullName: hosting.web.AvailableOfferStruct.AvailableOfferStruct
+        // interface fullName: hosting.web.AvailableOfferStruct.AvailableOfferStruct
         export interface AvailableOfferStruct {
             offer: hosting.web.OfferEnum;
             price: orderPrice;
         }
-        //hosting.web.Capabilities
-        // fullName: hosting.web.Capabilities.Capabilities
+        // interface fullName: hosting.web.Capabilities.Capabilities
         export interface Capabilities {
             attachedDomains: number;
             crontab: boolean;
@@ -65,44 +59,39 @@ export namespace hosting {
             ssh: boolean;
             traffic?: complexType.UnitAndValue<number>;
         }
-        //hosting.web.CountriesIp
-        // fullName: hosting.web.CountriesIp.CountriesIp
+        // interface fullName: hosting.web.CountriesIp.CountriesIp
         export interface CountriesIp {
             country: hosting.web.CountryEnum;
             ip: string;
             ipv6?: string;
         }
-        //hosting.web.CountryEnum
+        // type fullname: hosting.web.CountryEnum
         export type CountryEnum = "BE" | "CZ" | "DE" | "ES" | "FI" | "FR" | "IE" | "IT" | "LT" | "NL" | "PL" | "PT" | "UK"
-        //hosting.web.CreationEmailCapabilities
-        // fullName: hosting.web.CreationEmailCapabilities.CreationEmailCapabilities
+        // interface fullName: hosting.web.CreationEmailCapabilities.CreationEmailCapabilities
         export interface CreationEmailCapabilities {
             available: number;
             quota: complexType.UnitAndValue<number>;
         }
-        //hosting.web.CronLanguageAvailable
-        // fullName: hosting.web.CronLanguageAvailable.CronLanguageAvailable
+        // interface fullName: hosting.web.CronLanguageAvailable.CronLanguageAvailable
         export interface CronLanguageAvailable {
             nodejs: hosting.web.NodejsVersionAvailableEnum[];
             php: hosting.web.PhpVersionAvailableEnum[];
             python: hosting.web.PythonVersionAvailableEnum[];
             ruby: hosting.web.RubyVersionAvailableEnum[];
         }
-        //hosting.web.DatacenterEnum
+        // type fullname: hosting.web.DatacenterEnum
         export type DatacenterEnum = "gra1" | "gra2" | "p19"
-        //hosting.web.DiskType
-        // fullName: hosting.web.DiskType.DiskType
+        // interface fullName: hosting.web.DiskType.DiskType
         export interface DiskType {
             type: hosting.web.DiskTypeEnum;
             unit: string;
             value: number;
         }
-        //hosting.web.DiskTypeEnum
+        // type fullname: hosting.web.DiskTypeEnum
         export type DiskTypeEnum = "HDD" | "SSD"
-        //hosting.web.HighLightEnum
+        // type fullname: hosting.web.HighLightEnum
         export type HighLightEnum = "best-seller" | "new"
-        //hosting.web.ModuleList
-        // fullName: hosting.web.ModuleList.ModuleList
+        // interface fullName: hosting.web.ModuleList.ModuleList
         export interface ModuleList {
             active: boolean;
             adminNameType: hosting.web.module.AdminNameTypeEnum;
@@ -118,34 +107,32 @@ export namespace hosting {
             upgradeFrom: number[];
             version: string;
         }
-        //hosting.web.NodejsVersionAvailableEnum
+        // type fullname: hosting.web.NodejsVersionAvailableEnum
         export type NodejsVersionAvailableEnum = "nodejs-10" | "nodejs-11" | "nodejs-8" | "nodejs-9"
-        //hosting.web.OfferCapabilitiesEnum
+        // type fullname: hosting.web.OfferCapabilitiesEnum
         export type OfferCapabilitiesEnum = "1000gp" | "20gp" | "240gp" | "240pack" | "240plan" | "300gp" | "60gp" | "720pack" | "720plan" | "90pack" | "90plan" | "CLOUDWEB_1" | "CLOUDWEB_2" | "CLOUDWEB_3" | "KS" | "PERFORMANCE_1" | "PERFORMANCE_2" | "PERFORMANCE_3" | "PERFORMANCE_4" | "PERSO" | "PRO" | "START" | "business" | "cloudweb1" | "cloudweb2" | "cloudweb3" | "cloudwebbetax1" | "depro2012" | "deprol2012" | "deproxl2012" | "deproxxl2012" | "destart2012" | "destartl2012" | "destartxl2012" | "domainpack" | "itbusiness2012" | "itperso2012" | "itpremium2012" | "kimsufi2015" | "mailpack" | "mailplan" | "mediapack" | "mediaplan" | "ovhpro1To" | "ovhpro2To" | "ovhpro5To" | "paas2014beta" | "perf2014x1" | "perf2014x2" | "perf2014x3" | "perf2014x4" | "perso2010" | "perso2014" | "premium" | "pro2010" | "pro2014" | "start10g" | "start10m" | "start1g" | "start1ges" | "start1m" | "start5g" | "starter" | "xxlpack" | "xxlplan"
-        //hosting.web.OfferEnum
+        // type fullname: hosting.web.OfferEnum
         export type OfferEnum = "CLOUDWEB_1" | "CLOUDWEB_2" | "CLOUDWEB_3" | "KS" | "PERFORMANCE_1" | "PERFORMANCE_2" | "PERFORMANCE_3" | "PERFORMANCE_4" | "PERSO" | "PRO" | "START"
-        //hosting.web.OperatingSystemEnum
+        // type fullname: hosting.web.OperatingSystemEnum
         export type OperatingSystemEnum = "linux"
-        //hosting.web.PhpVersion
-        // fullName: hosting.web.PhpVersion.PhpVersion
+        // interface fullName: hosting.web.PhpVersion.PhpVersion
         export interface PhpVersion {
             support: hosting.web.PhpVersionStateEnum;
             version: string;
         }
-        //hosting.web.PhpVersionAvailableEnum
+        // type fullname: hosting.web.PhpVersionAvailableEnum
         export type PhpVersionAvailableEnum = "phpfpm-5.6" | "phpfpm-7.0" | "phpfpm-7.1" | "phpfpm-7.2" | "phpfpm-7.3"
-        //hosting.web.PhpVersionStateEnum
+        // type fullname: hosting.web.PhpVersionStateEnum
         export type PhpVersionStateEnum = "BETA" | "END_OF_LIFE" | "SECURITY_FIXES" | "SUPPORTED"
-        //hosting.web.PythonVersionAvailableEnum
+        // type fullname: hosting.web.PythonVersionAvailableEnum
         export type PythonVersionAvailableEnum = "python-2" | "python-3"
-        //hosting.web.RequestActionEnum
+        // type fullname: hosting.web.RequestActionEnum
         export type RequestActionEnum = "CHECK_QUOTA" | "FLUSH_CACHE" | "SCAN_ANTIHACK"
-        //hosting.web.ResourceEnum
+        // type fullname: hosting.web.ResourceEnum
         export type ResourceEnum = "bestEffort" | "cloud" | "dedicated" | "shared"
-        //hosting.web.RubyVersionAvailableEnum
+        // type fullname: hosting.web.RubyVersionAvailableEnum
         export type RubyVersionAvailableEnum = "ruby-2.4" | "ruby-2.5" | "ruby-2.6"
-        //hosting.web.Service
-        // fullName: hosting.web.Service.Service
+        // interface fullName: hosting.web.Service.Service
         export interface Service {
             availableBoostOffer: hosting.web.AvailableOfferStruct[];
             boostOffer?: hosting.web.OfferCapabilitiesEnum;
@@ -178,21 +165,19 @@ export namespace hosting {
             trafficQuotaUsed?: complexType.UnitAndValue<number>;
             updates: string[];
         }
-        //hosting.web.ServiceAccess
-        // fullName: hosting.web.ServiceAccess.ServiceAccess
+        // interface fullName: hosting.web.ServiceAccess.ServiceAccess
         export interface ServiceAccess {
             ftp: hosting.web.Address;
             http: hosting.web.Address;
             ssh: hosting.web.Address;
         }
-        //hosting.web.StateEnum
+        // type fullname: hosting.web.StateEnum
         export type StateEnum = "active" | "bloqued" | "maintenance"
-        //hosting.web.StatisticsPeriodEnum
+        // type fullname: hosting.web.StatisticsPeriodEnum
         export type StatisticsPeriodEnum = "daily" | "monthly" | "weekly" | "yearly"
-        //hosting.web.StatisticsTypeEnum
+        // type fullname: hosting.web.StatisticsTypeEnum
         export type StatisticsTypeEnum = "in.ftpCommands" | "in.httpHits" | "in.httpMeanResponseTime" | "out.tcpConn" | "sys.cpuUsage" | "sys.workerSpawnOverload"
-        //hosting.web.attachedDomain
-        // fullName: hosting.web.attachedDomain.attachedDomain
+        // interface fullName: hosting.web.attachedDomain.attachedDomain
         export interface attachedDomain {
             cdn: hosting.web.attachedDomain.CdnEnum;
             domain: string;
@@ -206,27 +191,25 @@ export namespace hosting {
             taskId?: number;
         }
         export namespace attachedDomain {
-            //hosting.web.attachedDomain.CdnEnum
+            // type fullname: hosting.web.attachedDomain.CdnEnum
             export type CdnEnum = "active" | "none"
-            //hosting.web.attachedDomain.FirewallEnum
+            // type fullname: hosting.web.attachedDomain.FirewallEnum
             export type FirewallEnum = "active" | "none"
-            //hosting.web.attachedDomain.StatusEnum
+            // type fullname: hosting.web.attachedDomain.StatusEnum
             export type StatusEnum = "created" | "creating" | "deleting" | "updating"
         }
         export namespace backup {
-            //hosting.web.backup.TypeEnum
+            // type fullname: hosting.web.backup.TypeEnum
             export type TypeEnum = "daily.1" | "daily.2" | "daily.3" | "weekly.1" | "weekly.2"
         }
-        //hosting.web.boostHistory
-        // fullName: hosting.web.boostHistory.boostHistory
+        // interface fullName: hosting.web.boostHistory.boostHistory
         export interface boostHistory {
             accountId: string;
             boostOffer?: hosting.web.OfferCapabilitiesEnum;
             date: string;
             offer: hosting.web.OfferCapabilitiesEnum;
         }
-        //hosting.web.cdn
-        // fullName: hosting.web.cdn.cdn
+        // interface fullName: hosting.web.cdn.cdn
         export interface cdn {
             domain: string;
             free: boolean;
@@ -236,11 +219,10 @@ export namespace hosting {
             version: string;
         }
         export namespace cdn {
-            //hosting.web.cdn.StatusEnum
+            // type fullname: hosting.web.cdn.StatusEnum
             export type StatusEnum = "created" | "creating" | "deleting" | "flushing"
         }
-        //hosting.web.cron
-        // fullName: hosting.web.cron.cron
+        // interface fullName: hosting.web.cron.cron
         export interface cron {
             command: string;
             description?: string;
@@ -251,13 +233,12 @@ export namespace hosting {
             status: hosting.web.cron.StatusEnum;
         }
         export namespace cron {
-            //hosting.web.cron.LanguageEnum
+            // type fullname: hosting.web.cron.LanguageEnum
             export type LanguageEnum = "node10" | "node11" | "node8" | "node9" | "other" | "php4" | "php5.2" | "php5.3" | "php5.4" | "php5.5" | "php5.6" | "php7.0" | "php7.1" | "php7.2" | "php7.3" | "python2" | "python3" | "ruby2.4" | "ruby2.5" | "ruby2.6"
-            //hosting.web.cron.StatusEnum
+            // type fullname: hosting.web.cron.StatusEnum
             export type StatusEnum = "disabled" | "enabled" | "suspended"
         }
-        //hosting.web.database
-        // fullName: hosting.web.database.database
+        // interface fullName: hosting.web.database.database
         export interface database {
             dumps: number;
             guiURL?: string;
@@ -277,14 +258,12 @@ export namespace hosting {
             versionSupport: hosting.web.database.SupportedVersionEnum;
         }
         export namespace database {
-            //hosting.web.database.AvailableVersionStruct
-            // fullName: hosting.web.database.AvailableVersionStruct.AvailableVersionStruct
+            // interface fullName: hosting.web.database.AvailableVersionStruct.AvailableVersionStruct
             export interface AvailableVersionStruct {
                 default: hosting.web.database.VersionEnum;
                 list: hosting.web.database.VersionEnum[];
             }
-            //hosting.web.database.CreationDatabaseCapabilities
-            // fullName: hosting.web.database.CreationDatabaseCapabilities.CreationDatabaseCapabilities
+            // interface fullName: hosting.web.database.CreationDatabaseCapabilities.CreationDatabaseCapabilities
             export interface CreationDatabaseCapabilities {
                 available: number;
                 engines: hosting.web.database.DatabaseTypeEnum[];
@@ -292,8 +271,7 @@ export namespace hosting {
                 quota: complexType.UnitAndValue<number>;
                 type: hosting.web.database.DatabaseCapabilitiesTypeEnum;
             }
-            //hosting.web.database.DatabaseCapabilities
-            // fullName: hosting.web.database.DatabaseCapabilities.DatabaseCapabilities
+            // interface fullName: hosting.web.database.DatabaseCapabilities.DatabaseCapabilities
             export interface DatabaseCapabilities {
                 changePassword: boolean;
                 changeRight: boolean;
@@ -305,37 +283,36 @@ export namespace hosting {
                 optimize: boolean;
                 restore: boolean;
             }
-            //hosting.web.database.DatabaseCapabilitiesTypeEnum
+            // type fullname: hosting.web.database.DatabaseCapabilitiesTypeEnum
             export type DatabaseCapabilitiesTypeEnum = "extraSqlPerso" | "local" | "privateDatabase" | "sqlLocal" | "sqlPerso" | "sqlPro"
-            //hosting.web.database.DatabaseIsolationEnum
+            // type fullname: hosting.web.database.DatabaseIsolationEnum
             export type DatabaseIsolationEnum = "dedicated" | "local" | "shared"
-            //hosting.web.database.DatabaseTypeEnum
+            // type fullname: hosting.web.database.DatabaseTypeEnum
             export type DatabaseTypeEnum = "mariadb" | "mongodb" | "mysql" | "postgresql" | "redis"
-            //hosting.web.database.ExtraSqlQuotaEnum
+            // type fullname: hosting.web.database.ExtraSqlQuotaEnum
             export type ExtraSqlQuotaEnum = 100 | 200 | 25 | 400 | 800
-            //hosting.web.database.ModeEnum
+            // type fullname: hosting.web.database.ModeEnum
             export type ModeEnum = "besteffort" | "classic" | "module"
-            //hosting.web.database.RequestActionEnum
+            // type fullname: hosting.web.database.RequestActionEnum
             export type RequestActionEnum = "CHECK_QUOTA"
-            //hosting.web.database.StateEnum
+            // type fullname: hosting.web.database.StateEnum
             export type StateEnum = "close" | "ok" | "readonly"
-            //hosting.web.database.StatisticsTypeEnum
+            // type fullname: hosting.web.database.StatisticsTypeEnum
             export type StatisticsTypeEnum = "statement" | "statementMeanTime"
-            //hosting.web.database.StatusEnum
+            // type fullname: hosting.web.database.StatusEnum
             export type StatusEnum = "checking" | "created" | "creating" | "deleting" | "dumping" | "importing" | "locked" | "optimizing" | "restoring" | "updating"
-            //hosting.web.database.SupportedVersionEnum
+            // type fullname: hosting.web.database.SupportedVersionEnum
             export type SupportedVersionEnum = "beta" | "deprecated" | "stable"
-            //hosting.web.database.VersionEnum
+            // type fullname: hosting.web.database.VersionEnum
             export type VersionEnum = "3.4" | "4.0" | "5.1" | "5.5" | "5.6" | "8.4"
             export namespace dump {
-                //hosting.web.database.dump.DateEnum
+                // type fullname: hosting.web.database.dump.DateEnum
                 export type DateEnum = "daily.1" | "now" | "weekly.1"
-                //hosting.web.database.dump.StatusEnum
+                // type fullname: hosting.web.database.dump.StatusEnum
                 export type StatusEnum = "created" | "creating" | "deleting"
             }
         }
-        //hosting.web.database_dump
-        // fullName: hosting.web.database_dump.database_dump
+        // interface fullName: hosting.web.database_dump.database_dump
         export interface database_dump {
             creationDate: string;
             deletionDate: string;
@@ -345,8 +322,7 @@ export namespace hosting {
             type: hosting.web.database.dump.DateEnum;
             url?: string;
         }
-        //hosting.web.dump
-        // fullName: hosting.web.dump.dump
+        // interface fullName: hosting.web.dump.dump
         export interface dump {
             creationDate: string;
             databaseName: string;
@@ -358,8 +334,7 @@ export namespace hosting {
             type: hosting.web.database.dump.DateEnum;
             url?: string;
         }
-        //hosting.web.email
-        // fullName: hosting.web.email.email
+        // interface fullName: hosting.web.email.email
         export interface email {
             bounce: number;
             email?: string;
@@ -368,8 +343,7 @@ export namespace hosting {
             sentToday: number;
             state: hosting.web.mail.StateEnum;
         }
-        //hosting.web.envVar
-        // fullName: hosting.web.envVar.envVar
+        // interface fullName: hosting.web.envVar.envVar
         export interface envVar {
             key: string;
             status: hosting.web.envVar.StatusEnum;
@@ -378,13 +352,12 @@ export namespace hosting {
             value: string;
         }
         export namespace envVar {
-            //hosting.web.envVar.StatusEnum
+            // type fullname: hosting.web.envVar.StatusEnum
             export type StatusEnum = "created" | "creating" | "deleting" | "updating"
-            //hosting.web.envVar.TypeEnum
+            // type fullname: hosting.web.envVar.TypeEnum
             export type TypeEnum = "integer" | "password" | "string"
         }
-        //hosting.web.extrasqlperso
-        // fullName: hosting.web.extrasqlperso.extrasqlperso
+        // interface fullName: hosting.web.extrasqlperso.extrasqlperso
         export interface extrasqlperso {
             database: number;
             name: string;
@@ -392,25 +365,23 @@ export namespace hosting {
             status: string;
             taskId?: number;
         }
-        //hosting.web.freedom
-        // fullName: hosting.web.freedom.freedom
+        // interface fullName: hosting.web.freedom.freedom
         export interface freedom {
             domain: string;
             status: hosting.web.freedom.StatusEnum;
             type: string;
         }
         export namespace freedom {
-            //hosting.web.freedom.StatusEnum
+            // type fullname: hosting.web.freedom.StatusEnum
             export type StatusEnum = "blockedByCustomer" | "blockedBySystem" | "ok" | "preset"
         }
         export namespace hostedssl {
-            //hosting.web.hostedssl.ReportValueEnum
+            // type fullname: hosting.web.hostedssl.ReportValueEnum
             export type ReportValueEnum = "completed" | "in-progress" | "non-completed" | "non-required" | "not-applicable" | "not-provided"
-            //hosting.web.hostedssl.StatusEnum
+            // type fullname: hosting.web.hostedssl.StatusEnum
             export type StatusEnum = "created" | "creating" | "deleting" | "importing" | "regenerating"
         }
-        //hosting.web.indy
-        // fullName: hosting.web.indy.indy
+        // interface fullName: hosting.web.indy.indy
         export interface indy {
             attachedDomains: string[];
             home: string;
@@ -418,33 +389,29 @@ export namespace hosting {
             state: hosting.web.user.StateEnum;
         }
         export namespace localSeo {
-            //hosting.web.localSeo.DirectoriesList
-            // fullName: hosting.web.localSeo.DirectoriesList.DirectoriesList
+            // interface fullName: hosting.web.localSeo.DirectoriesList.DirectoriesList
             export interface DirectoriesList {
                 navigationSystems: hosting.web.localSeo.Directory[];
                 searchEngines: hosting.web.localSeo.Directory[];
                 socialNetworks: hosting.web.localSeo.Directory[];
             }
-            //hosting.web.localSeo.Directory
-            // fullName: hosting.web.localSeo.Directory.Directory
+            // interface fullName: hosting.web.localSeo.Directory.Directory
             export interface Directory {
                 code: string;
                 displayName: string;
             }
-            //hosting.web.localSeo.EmailAvailability
-            // fullName: hosting.web.localSeo.EmailAvailability.EmailAvailability
+            // interface fullName: hosting.web.localSeo.EmailAvailability.EmailAvailability
             export interface EmailAvailability {
                 availability: hosting.web.localSeo.account.EmailAvailabilityEnum;
                 serviceName?: string;
             }
-            //hosting.web.localSeo.FieldStatusEnum
+            // type fullname: hosting.web.localSeo.FieldStatusEnum
             export type FieldStatusEnum = "MATCH" | "MISMATCH" | "MISSING" | "NOT_APPLICABLE" | "PRESENT"
-            //hosting.web.localSeo.FlowStatusEnum
+            // type fullname: hosting.web.localSeo.FlowStatusEnum
             export type FlowStatusEnum = "ALL_INFORMATION_SUBMITTED" | "DONT_REMOVE" | "INACTIVE" | "MANUALLY_DEACTIVATED" | "NEEDS_REVIEW" | "NOT_SUPPORTED" | "NO_ACTION_NEEDED" | "REMOVAL_NEEDED" | "REMOVAL_REVIEW_NEEDED" | "REMOVAL_SUBMITTED" | "REMOVED" | "SUBMISSION_NEEDED" | "WAITING_DIRECTORY_ACTION" | "WAITING_USER_ACTION"
-            //hosting.web.localSeo.ListingStatusEnum
+            // type fullname: hosting.web.localSeo.ListingStatusEnum
             export type ListingStatusEnum = "IN_SYNC" | "NOT_FOUND" | "NOT_IN_SYNC" | "NOT_SUPPORTED" | "NO_ONLINE_LISTING" | "TECHNICAL_PROBLEMS"
-            //hosting.web.localSeo.SearchData
-            // fullName: hosting.web.localSeo.SearchData.SearchData
+            // interface fullName: hosting.web.localSeo.SearchData.SearchData
             export interface SearchData {
                 city: string;
                 country: string;
@@ -456,14 +423,12 @@ export namespace hosting {
                 token: string;
                 zip: string;
             }
-            //hosting.web.localSeo.VisibilityCheckResponse
-            // fullName: hosting.web.localSeo.VisibilityCheckResponse.VisibilityCheckResponse
+            // interface fullName: hosting.web.localSeo.VisibilityCheckResponse.VisibilityCheckResponse
             export interface VisibilityCheckResponse {
                 alreadyManaged?: boolean;
                 searchData: hosting.web.localSeo.SearchData;
             }
-            //hosting.web.localSeo.VisibilityCheckResultResponse
-            // fullName: hosting.web.localSeo.VisibilityCheckResultResponse.VisibilityCheckResultResponse
+            // interface fullName: hosting.web.localSeo.VisibilityCheckResultResponse.VisibilityCheckResultResponse
             export interface VisibilityCheckResultResponse {
                 city?: string;
                 cityStatus?: hosting.web.localSeo.FieldStatusEnum;
@@ -497,22 +462,21 @@ export namespace hosting {
                 zipStatus?: hosting.web.localSeo.FieldStatusEnum;
             }
             export namespace account {
-                //hosting.web.localSeo.account.EmailAvailabilityEnum
+                // type fullname: hosting.web.localSeo.account.EmailAvailabilityEnum
                 export type EmailAvailabilityEnum = "available" | "merge" | "nic" | "taken"
-                //hosting.web.localSeo.account.StatusEnum
+                // type fullname: hosting.web.localSeo.account.StatusEnum
                 export type StatusEnum = "created" | "creating" | "deleting" | "updating"
             }
             export namespace location {
-                //hosting.web.localSeo.location.CountryEnum
+                // type fullname: hosting.web.localSeo.location.CountryEnum
                 export type CountryEnum = "FR"
-                //hosting.web.localSeo.location.OfferEnum
+                // type fullname: hosting.web.localSeo.location.OfferEnum
                 export type OfferEnum = "normal"
-                //hosting.web.localSeo.location.StatusEnum
+                // type fullname: hosting.web.localSeo.location.StatusEnum
                 export type StatusEnum = "created" | "creating" | "deleting" | "updating"
             }
         }
-        //hosting.web.localSeo_account
-        // fullName: hosting.web.localSeo_account.localSeo_account
+        // interface fullName: hosting.web.localSeo_account.localSeo_account
         export interface localSeo_account {
             creationDate: string;
             email: string;
@@ -521,8 +485,7 @@ export namespace hosting {
             status: hosting.web.localSeo.account.StatusEnum;
             taskId?: number;
         }
-        //hosting.web.localSeo_location
-        // fullName: hosting.web.localSeo_location.localSeo_location
+        // interface fullName: hosting.web.localSeo_location.localSeo_location
         export interface localSeo_location {
             accountId?: number;
             address?: string;
@@ -536,26 +499,23 @@ export namespace hosting {
             taskId?: number;
         }
         export namespace mail {
-            //hosting.web.mail.ActionEnum
+            // type fullname: hosting.web.mail.ActionEnum
             export type ActionEnum = "BLOCK" | "PURGE" | "UNBLOCK"
-            //hosting.web.mail.Bounce
-            // fullName: hosting.web.mail.Bounce.Bounce
+            // interface fullName: hosting.web.mail.Bounce.Bounce
             export interface Bounce {
                 date: string;
                 message?: string;
                 to?: string;
             }
-            //hosting.web.mail.StateEnum
+            // type fullname: hosting.web.mail.StateEnum
             export type StateEnum = "bounce" | "force" | "ko" | "ok" | "purging" | "spam"
-            //hosting.web.mail.VolumeHistory
-            // fullName: hosting.web.mail.VolumeHistory.VolumeHistory
+            // interface fullName: hosting.web.mail.VolumeHistory.VolumeHistory
             export interface VolumeHistory {
                 date: string;
                 volume?: number;
             }
         }
-        //hosting.web.module
-        // fullName: hosting.web.module.module
+        // interface fullName: hosting.web.module.module
         export interface module {
             adminFolder: string;
             adminName: string;
@@ -571,12 +531,11 @@ export namespace hosting {
             taskId?: number;
         }
         export namespace module {
-            //hosting.web.module.AdminNameTypeEnum
+            // type fullname: hosting.web.module.AdminNameTypeEnum
             export type AdminNameTypeEnum = "email" | "string"
-            //hosting.web.module.BranchEnum
+            // type fullname: hosting.web.module.BranchEnum
             export type BranchEnum = "old" | "stable" | "testing"
-            //hosting.web.module.DependencyType
-            // fullName: hosting.web.module.DependencyType.DependencyType
+            // interface fullName: hosting.web.module.DependencyType.DependencyType
             export interface DependencyType {
                 name?: string;
                 password?: string;
@@ -586,15 +545,14 @@ export namespace hosting {
                 type: hosting.web.module.DependencyTypeEnum;
                 user?: string;
             }
-            //hosting.web.module.DependencyTypeEnum
+            // type fullname: hosting.web.module.DependencyTypeEnum
             export type DependencyTypeEnum = "mysql"
-            //hosting.web.module.LanguageEnum
+            // type fullname: hosting.web.module.LanguageEnum
             export type LanguageEnum = "cz" | "de" | "en" | "es" | "fi" | "fr" | "it" | "lt" | "nl" | "pl" | "pt"
-            //hosting.web.module.StatusEnum
+            // type fullname: hosting.web.module.StatusEnum
             export type StatusEnum = "created" | "creating" | "deleting" | "updating"
         }
-        //hosting.web.ovhConfig
-        // fullName: hosting.web.ovhConfig.ovhConfig
+        // interface fullName: hosting.web.ovhConfig.ovhConfig
         export interface ovhConfig {
             container: string;
             creationDate: string;
@@ -610,25 +568,24 @@ export namespace hosting {
             taskId?: number;
         }
         export namespace ovhConfig {
-            //hosting.web.ovhConfig.AvailableEngineVersionEnum
+            // type fullname: hosting.web.ovhConfig.AvailableEngineVersionEnum
             export type AvailableEngineVersionEnum = "5.4" | "5.5" | "5.6" | "7.0" | "7.1" | "7.2" | "7.3"
-            //hosting.web.ovhConfig.EngineNameEnum
+            // type fullname: hosting.web.ovhConfig.EngineNameEnum
             export type EngineNameEnum = "php" | "phpcgi"
-            //hosting.web.ovhConfig.EngineVersionEnum
+            // type fullname: hosting.web.ovhConfig.EngineVersionEnum
             export type EngineVersionEnum = "4.4" | "5.0" | "5.1" | "5.2" | "5.3" | "5.4" | "5.5" | "5.6" | "7.0" | "7.1" | "7.2" | "7.3" | "AUTO"
-            //hosting.web.ovhConfig.EnvironmentEnum
+            // type fullname: hosting.web.ovhConfig.EnvironmentEnum
             export type EnvironmentEnum = "development" | "production"
-            //hosting.web.ovhConfig.HttpFirewallEnum
+            // type fullname: hosting.web.ovhConfig.HttpFirewallEnum
             export type HttpFirewallEnum = "none" | "security"
-            //hosting.web.ovhConfig.StatusEnum
+            // type fullname: hosting.web.ovhConfig.StatusEnum
             export type StatusEnum = "created" | "rollbacking" | "updating"
         }
         export namespace ovhconfig {
-            //hosting.web.ovhconfig.ContainerEnum
+            // type fullname: hosting.web.ovhconfig.ContainerEnum
             export type ContainerEnum = "jessie.i386" | "legacy" | "stable" | "testing"
         }
-        //hosting.web.ownLogs
-        // fullName: hosting.web.ownLogs.ownLogs
+        // interface fullName: hosting.web.ownLogs.ownLogs
         export interface ownLogs {
             fqdn: string;
             id: number;
@@ -636,11 +593,10 @@ export namespace hosting {
             taskId?: number;
         }
         export namespace ownLogs {
-            //hosting.web.ownLogs.StatusEnum
+            // type fullname: hosting.web.ownLogs.StatusEnum
             export type StatusEnum = "created" | "creating" | "deleting"
         }
-        //hosting.web.runtime
-        // fullName: hosting.web.runtime.runtime
+        // interface fullName: hosting.web.runtime.runtime
         export interface runtime {
             appBootstrap?: string;
             appEnv: hosting.web.runtime.EnvEnum;
@@ -656,15 +612,14 @@ export namespace hosting {
             type: hosting.web.runtime.TypeEnum;
         }
         export namespace runtime {
-            //hosting.web.runtime.EnvEnum
+            // type fullname: hosting.web.runtime.EnvEnum
             export type EnvEnum = "development" | "production"
-            //hosting.web.runtime.StateEnum
+            // type fullname: hosting.web.runtime.StateEnum
             export type StateEnum = "created" | "creating" | "deleting" | "updating"
-            //hosting.web.runtime.TypeEnum
+            // type fullname: hosting.web.runtime.TypeEnum
             export type TypeEnum = "nodejs-10" | "nodejs-11" | "nodejs-8" | "nodejs-9" | "phpfpm-5.6" | "phpfpm-7.0" | "phpfpm-7.1" | "phpfpm-7.2" | "phpfpm-7.3" | "python-2" | "python-3" | "ruby-2.4" | "ruby-2.5" | "ruby-2.6"
         }
-        //hosting.web.ssl
-        // fullName: hosting.web.ssl.ssl
+        // interface fullName: hosting.web.ssl.ssl
         export interface ssl {
             isReportable: boolean;
             provider: string;
@@ -673,8 +628,7 @@ export namespace hosting {
             taskId?: number;
             type: string;
         }
-        //hosting.web.ssl_report
-        // fullName: hosting.web.ssl_report.ssl_report
+        // interface fullName: hosting.web.ssl_report.ssl_report
         export interface ssl_report {
             certificateSigningRequestStatus: hosting.web.hostedssl.ReportValueEnum;
             domainControlValidationStatus: hosting.web.hostedssl.ReportValueEnum;
@@ -684,8 +638,7 @@ export namespace hosting {
             termsAndConditionsAcceptanceStatus: hosting.web.hostedssl.ReportValueEnum;
             tradeNameVerificationStatus: hosting.web.hostedssl.ReportValueEnum;
         }
-        //hosting.web.task
-        // fullName: hosting.web.task.task
+        // interface fullName: hosting.web.task.task
         export interface task {
             doneDate?: string;
             function: string;
@@ -697,13 +650,12 @@ export namespace hosting {
             status: hosting.web.task.StatusEnum;
         }
         export namespace task {
-            //hosting.web.task.ObjectTypeEnum
+            // type fullname: hosting.web.task.ObjectTypeEnum
             export type ObjectTypeEnum = "Abuse" | "AttachedDomain" | "BlockedIp" | "Cdn" | "Cron" | "Database" | "Dump" | "EnvVar" | "Filerz" | "Hostedssl" | "Hosting" | "Indy" | "Infra" | "Minor" | "Module" | "Other" | "OvhConfig" | "OvhOrg" | "OwnLogs" | "Runtime" | "Scan" | "Sqlperso" | "User" | "UserLogs" | "Web" | "Webd"
-            //hosting.web.task.StatusEnum
+            // type fullname: hosting.web.task.StatusEnum
             export type StatusEnum = "cancelled" | "doing" | "done" | "error" | "init" | "todo"
         }
-        //hosting.web.user
-        // fullName: hosting.web.user.user
+        // interface fullName: hosting.web.user.user
         export interface user {
             home: string;
             isPrimaryAccount: boolean;
@@ -715,28 +667,25 @@ export namespace hosting {
             taskId?: number;
         }
         export namespace user {
-            //hosting.web.user.Credentials
-            // fullName: hosting.web.user.Credentials.Credentials
+            // interface fullName: hosting.web.user.Credentials.Credentials
             export interface Credentials {
                 port: number;
                 url: string;
                 user: string;
             }
-            //hosting.web.user.ServiceCredentials
-            // fullName: hosting.web.user.ServiceCredentials.ServiceCredentials
+            // interface fullName: hosting.web.user.ServiceCredentials.ServiceCredentials
             export interface ServiceCredentials {
                 ftp: hosting.web.user.Credentials;
                 ssh: hosting.web.user.Credentials;
             }
-            //hosting.web.user.SshStateEnum
+            // type fullname: hosting.web.user.SshStateEnum
             export type SshStateEnum = "active" | "none" | "sftponly"
-            //hosting.web.user.StateEnum
+            // type fullname: hosting.web.user.StateEnum
             export type StateEnum = "off" | "rw"
-            //hosting.web.user.StatusEnum
+            // type fullname: hosting.web.user.StatusEnum
             export type StatusEnum = "created" | "creating" | "deleting" | "updating"
         }
-        //hosting.web.userLogs
-        // fullName: hosting.web.userLogs.userLogs
+        // interface fullName: hosting.web.userLogs.userLogs
         export interface userLogs {
             creationDate: string;
             description?: string;
@@ -746,16 +695,15 @@ export namespace hosting {
             taskId?: number;
         }
         export namespace userLogs {
-            //hosting.web.userLogs.StatusEnum
+            // type fullname: hosting.web.userLogs.StatusEnum
             export type StatusEnum = "created" | "creating" | "deleting" | "updating"
         }
     }
 }
 export namespace order {
-    //order.CurrencyCodeEnum
+    // type fullname: order.CurrencyCodeEnum
     export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
-    //order.Price
-    // fullName: order.Price.Price
+    // interface fullName: order.Price.Price
     export interface Price {
         currencyCode: order.CurrencyCodeEnum;
         text: string;
@@ -763,8 +711,7 @@ export namespace order {
     }
 }
 export namespace service {
-    //service.RenewType
-    // fullName: service.RenewType.RenewType
+    // interface fullName: service.RenewType.RenewType
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -772,18 +719,17 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    //service.RenewalTypeEnum
+    // type fullname: service.RenewalTypeEnum
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    //service.StateEnum
+    // type fullname: service.StateEnum
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
-    //service.TerminationFutureUseEnum
+    // type fullname: service.TerminationFutureUseEnum
     export type TerminationFutureUseEnum = "NOT_REPLACING_SERVICE" | "OTHER" | "SUBSCRIBE_AN_OTHER_SERVICE" | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR" | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
-    //service.TerminationReasonEnum
+    // type fullname: service.TerminationReasonEnum
     export type TerminationReasonEnum = "FEATURES_DONT_SUIT_ME" | "LACK_OF_PERFORMANCES" | "MIGRATED_TO_ANOTHER_OVH_PRODUCT" | "MIGRATED_TO_COMPETITOR" | "NOT_NEEDED_ANYMORE" | "NOT_RELIABLE" | "NO_ANSWER" | "OTHER" | "TOO_EXPENSIVE" | "TOO_HARD_TO_USE" | "UNSATIFIED_BY_CUSTOMER_SUPPORT"
 }
 export namespace services {
-    //services.Service
-    // fullName: services.Service.Service
+    // interface fullName: services.Service.Service
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;

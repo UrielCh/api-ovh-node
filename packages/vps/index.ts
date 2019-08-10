@@ -4,33 +4,30 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /vps Models
  */
 export namespace complexType {
-    //complexType.UnitAndValue
-    // fullName: complexType.UnitAndValue.UnitAndValue
+    // interface fullName: complexType.UnitAndValue.UnitAndValue
     export interface UnitAndValue<T> {
         unit: string;
         value: T;
     }
-    //complexType.UnitAndValues
-    // fullName: complexType.UnitAndValues.UnitAndValues
+    // interface fullName: complexType.UnitAndValues.UnitAndValues
     export interface UnitAndValues<T> {
         unit: string;
         values: T[];
     }
 }
 export namespace coreTypes {
-    //coreTypes.CountryEnum
+    // type fullname: coreTypes.CountryEnum
     export type CountryEnum = "ac" | "ad" | "ae" | "af" | "ag" | "ai" | "al" | "am" | "an" | "ao" | "aq" | "ar" | "as" | "at" | "au" | "aw" | "ax" | "az" | "ba" | "bb" | "bd" | "be" | "bf" | "bg" | "bh" | "bi" | "bj" | "bl" | "bm" | "bn" | "bo" | "bq" | "br" | "bs" | "bt" | "bv" | "bw" | "by" | "bz" | "ca" | "cc" | "cd" | "cf" | "cg" | "ch" | "ci" | "ck" | "cl" | "cm" | "cn" | "co" | "cr" | "cs" | "cu" | "cv" | "cw" | "cx" | "cy" | "cz" | "de" | "dj" | "dk" | "dm" | "do" | "dz" | "ec" | "ee" | "eg" | "eh" | "er" | "es" | "et" | "fc" | "fd" | "fi" | "fj" | "fk" | "fm" | "fo" | "fr" | "fx" | "ga" | "gb" | "gd" | "ge" | "gf" | "gg" | "gh" | "gi" | "gl" | "gm" | "gn" | "gp" | "gq" | "gr" | "gs" | "gt" | "gu" | "gw" | "gy" | "hk" | "hm" | "hn" | "hr" | "ht" | "hu" | "id" | "ie" | "il" | "im" | "in" | "io" | "iq" | "ir" | "is" | "it" | "je" | "jm" | "jo" | "jp" | "ke" | "kg" | "kh" | "ki" | "km" | "kn" | "kp" | "kr" | "kw" | "ky" | "kz" | "la" | "lb" | "lc" | "li" | "lk" | "lr" | "ls" | "lt" | "lu" | "lv" | "ly" | "ma" | "mc" | "md" | "me" | "mf" | "mg" | "mh" | "mk" | "ml" | "mm" | "mn" | "mo" | "mp" | "mq" | "mr" | "ms" | "mt" | "mu" | "mv" | "mw" | "mx" | "my" | "mz" | "na" | "nc" | "ne" | "nf" | "ng" | "ni" | "nl" | "no" | "np" | "nr" | "nu" | "nz" | "om" | "pa" | "pe" | "pf" | "pg" | "ph" | "pk" | "pl" | "pm" | "pn" | "pr" | "ps" | "pt" | "pw" | "py" | "qa" | "qc" | "re" | "ro" | "rs" | "ru" | "rw" | "sa" | "sb" | "sc" | "sd" | "se" | "sg" | "sh" | "si" | "sj" | "sk" | "sl" | "sm" | "sn" | "so" | "sr" | "ss" | "st" | "sv" | "sx" | "sy" | "sz" | "tc" | "td" | "tf" | "tg" | "th" | "tj" | "tk" | "tl" | "tm" | "tn" | "to" | "tp" | "tr" | "tt" | "tv" | "tw" | "tz" | "ua" | "ug" | "uk" | "um" | "us" | "uy" | "uz" | "va" | "vc" | "ve" | "vg" | "vi" | "vn" | "vu" | "we" | "wf" | "ws" | "ye" | "yt" | "yu" | "za" | "zm" | "zw"
-    //coreTypes.IpVersionEnum
+    // type fullname: coreTypes.IpVersionEnum
     export type IpVersionEnum = "v4" | "v6"
 }
 export namespace dedicated {
-    //dedicated.TaskFunctionEnum
+    // type fullname: dedicated.TaskFunctionEnum
     export type TaskFunctionEnum = "addVirtualMac" | "addWindowSplaFromExistingSerial" | "applyBackupFtpAcls" | "applyBackupFtpQuota" | "bypassAntiDDosGame" | "changePasswordBackupFTP" | "changeRipeOrg" | "checkAndReleaseIp" | "createBackupFTP" | "createOrUpdateRipeOrg" | "createPrivateNetwork" | "disableFirewall" | "enableFirewall" | "genericMoveFloatingIp" | "hardReboot" | "migrateBackupFTP" | "moveFloatingIp" | "moveVirtualMac" | "rebootPower8To" | "reinstallServer" | "releaseIp" | "removeBackupFTP" | "removeVirtualMac" | "requestAccessIPMI" | "resetIPMI" | "resetIPMISession" | "testIPMIhttp" | "testIPMIpassword" | "testIPMIping" | "virtualMacAdd" | "virtualMacDelete"
-    //dedicated.TaskStatusEnum
+    // type fullname: dedicated.TaskStatusEnum
     export type TaskStatusEnum = "cancelled" | "customerError" | "doing" | "done" | "init" | "ovhError" | "todo"
     export namespace server {
-        //dedicated.server.BackupFtpAcl
-        // fullName: dedicated.server.BackupFtpAcl.BackupFtpAcl
+        // interface fullName: dedicated.server.BackupFtpAcl.BackupFtpAcl
         export interface BackupFtpAcl {
             cifs: boolean;
             ftp: boolean;
@@ -39,8 +36,7 @@ export namespace dedicated {
             lastUpdate: string;
             nfs: boolean;
         }
-        //dedicated.server.Task
-        // fullName: dedicated.server.Task.Task
+        // interface fullName: dedicated.server.Task.Task
         export interface Task {
             comment?: string;
             doneDate?: string;
@@ -53,20 +49,18 @@ export namespace dedicated {
     }
 }
 export namespace nichandle {
-    //nichandle.CountryEnum
+    // type fullname: nichandle.CountryEnum
     export type CountryEnum = "AC" | "AD" | "AE" | "AF" | "AG" | "AI" | "AL" | "AM" | "AO" | "AQ" | "AR" | "AS" | "AT" | "AU" | "AW" | "AX" | "AZ" | "BA" | "BB" | "BD" | "BE" | "BF" | "BG" | "BH" | "BI" | "BJ" | "BL" | "BM" | "BN" | "BO" | "BQ" | "BR" | "BS" | "BT" | "BW" | "BY" | "BZ" | "CA" | "CC" | "CD" | "CF" | "CG" | "CH" | "CI" | "CK" | "CL" | "CM" | "CN" | "CO" | "CR" | "CU" | "CV" | "CW" | "CX" | "CY" | "CZ" | "DE" | "DG" | "DJ" | "DK" | "DM" | "DO" | "DZ" | "EA" | "EC" | "EE" | "EG" | "EH" | "ER" | "ES" | "ET" | "FI" | "FJ" | "FK" | "FM" | "FO" | "FR" | "GA" | "GB" | "GD" | "GE" | "GF" | "GG" | "GH" | "GI" | "GL" | "GM" | "GN" | "GP" | "GQ" | "GR" | "GS" | "GT" | "GU" | "GW" | "GY" | "HK" | "HN" | "HR" | "HT" | "HU" | "IC" | "ID" | "IE" | "IL" | "IM" | "IN" | "IO" | "IQ" | "IR" | "IS" | "IT" | "JE" | "JM" | "JO" | "JP" | "KE" | "KG" | "KH" | "KI" | "KM" | "KN" | "KP" | "KR" | "KW" | "KY" | "KZ" | "LA" | "LB" | "LC" | "LI" | "LK" | "LR" | "LS" | "LT" | "LU" | "LV" | "LY" | "MA" | "MC" | "MD" | "ME" | "MF" | "MG" | "MH" | "MK" | "ML" | "MM" | "MN" | "MO" | "MP" | "MQ" | "MR" | "MS" | "MT" | "MU" | "MV" | "MW" | "MX" | "MY" | "MZ" | "NA" | "NC" | "NE" | "NF" | "NG" | "NI" | "NL" | "NO" | "NP" | "NR" | "NU" | "NZ" | "OM" | "PA" | "PE" | "PF" | "PG" | "PH" | "PK" | "PL" | "PM" | "PN" | "PR" | "PS" | "PT" | "PW" | "PY" | "QA" | "RE" | "RO" | "RS" | "RU" | "RW" | "SA" | "SB" | "SC" | "SD" | "SE" | "SG" | "SH" | "SI" | "SJ" | "SK" | "SL" | "SM" | "SN" | "SO" | "SR" | "SS" | "ST" | "SV" | "SX" | "SY" | "SZ" | "TA" | "TC" | "TD" | "TF" | "TG" | "TH" | "TJ" | "TK" | "TL" | "TM" | "TN" | "TO" | "TR" | "TT" | "TV" | "TW" | "TZ" | "UA" | "UG" | "UM" | "UNKNOWN" | "US" | "UY" | "UZ" | "VA" | "VC" | "VE" | "VG" | "VI" | "VN" | "VU" | "WF" | "WS" | "XK" | "YE" | "YT" | "ZA" | "ZM" | "ZW"
 }
 export namespace secondaryDns {
-    //secondaryDns.SecondaryDNS
-    // fullName: secondaryDns.SecondaryDNS.SecondaryDNS
+    // interface fullName: secondaryDns.SecondaryDNS.SecondaryDNS
     export interface SecondaryDNS {
         creationDate: string;
         dns: string;
         domain: string;
         ipMaster: string;
     }
-    //secondaryDns.SecondaryDNSNameServer
-    // fullName: secondaryDns.SecondaryDNSNameServer.SecondaryDNSNameServer
+    // interface fullName: secondaryDns.SecondaryDNSNameServer.SecondaryDNSNameServer
     export interface SecondaryDNSNameServer {
         hostname: string;
         ip: string;
@@ -74,8 +68,7 @@ export namespace secondaryDns {
     }
 }
 export namespace service {
-    //service.RenewType
-    // fullName: service.RenewType.RenewType
+    // interface fullName: service.RenewType.RenewType
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -83,18 +76,17 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    //service.RenewalTypeEnum
+    // type fullname: service.RenewalTypeEnum
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    //service.StateEnum
+    // type fullname: service.StateEnum
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
-    //service.TerminationFutureUseEnum
+    // type fullname: service.TerminationFutureUseEnum
     export type TerminationFutureUseEnum = "NOT_REPLACING_SERVICE" | "OTHER" | "SUBSCRIBE_AN_OTHER_SERVICE" | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR" | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
-    //service.TerminationReasonEnum
+    // type fullname: service.TerminationReasonEnum
     export type TerminationReasonEnum = "FEATURES_DONT_SUIT_ME" | "LACK_OF_PERFORMANCES" | "MIGRATED_TO_ANOTHER_OVH_PRODUCT" | "MIGRATED_TO_COMPETITOR" | "NOT_NEEDED_ANYMORE" | "NOT_RELIABLE" | "NO_ANSWER" | "OTHER" | "TOO_EXPENSIVE" | "TOO_HARD_TO_USE" | "UNSATIFIED_BY_CUSTOMER_SUPPORT"
 }
 export namespace services {
-    //services.Service
-    // fullName: services.Service.Service
+    // interface fullName: services.Service.Service
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;
@@ -112,14 +104,12 @@ export namespace services {
     }
 }
 export namespace vps {
-    //vps.AutomatedBackup
-    // fullName: vps.AutomatedBackup.AutomatedBackup
+    // interface fullName: vps.AutomatedBackup.AutomatedBackup
     export interface AutomatedBackup {
         schedule?: string;
         state: vps.BackupStateEnum;
     }
-    //vps.BackupFtp
-    // fullName: vps.BackupFtp.BackupFtp
+    // interface fullName: vps.BackupFtp.BackupFtp
     export interface BackupFtp {
         ftpBackupName: string;
         quota?: complexType.UnitAndValue<number>;
@@ -127,16 +117,14 @@ export namespace vps {
         type: string;
         usage?: complexType.UnitAndValue<number>;
     }
-    //vps.BackupStateEnum
+    // type fullname: vps.BackupStateEnum
     export type BackupStateEnum = "disabled" | "enabled"
-    //vps.Datacenter
-    // fullName: vps.Datacenter.Datacenter
+    // interface fullName: vps.Datacenter.Datacenter
     export interface Datacenter {
         longName: string;
         name: string;
     }
-    //vps.Disk
-    // fullName: vps.Disk.Disk
+    // interface fullName: vps.Disk.Disk
     export interface Disk {
         bandwidthLimit: number;
         id: number;
@@ -146,14 +134,12 @@ export namespace vps {
         state: vps.disk.StateEnum;
         type: vps.disk.TypeEnum;
     }
-    //vps.Image
-    // fullName: vps.Image.Image
+    // interface fullName: vps.Image.Image
     export interface Image {
         id: string;
         name: string;
     }
-    //vps.Ip
-    // fullName: vps.Ip.Ip
+    // interface fullName: vps.Ip.Ip
     export interface Ip {
         gateway?: string;
         geolocation: vps.ip.GeolocationEnum;
@@ -163,8 +149,7 @@ export namespace vps {
         type: vps.ip.TypeEnum;
         version: coreTypes.IpVersionEnum;
     }
-    //vps.Model
-    // fullName: vps.Model.Model
+    // interface fullName: vps.Model.Model
     export interface Model {
         availableOptions: vps.VpsOptionEnum[];
         datacenter: string[];
@@ -176,48 +161,43 @@ export namespace vps {
         vcore: number;
         version: vps.VpsVersionEnum;
     }
-    //vps.Option
-    // fullName: vps.Option.Option
+    // interface fullName: vps.Option.Option
     export interface Option {
         option: vps.VpsOptionEnum;
         state: vps.VpsOptionStateEnum;
     }
-    //vps.RestoreStateEnum
+    // type fullname: vps.RestoreStateEnum
     export type RestoreStateEnum = "available" | "restored" | "restoring"
-    //vps.RestoreTypeEnum
+    // type fullname: vps.RestoreTypeEnum
     export type RestoreTypeEnum = "file" | "full"
-    //vps.Snapshot
-    // fullName: vps.Snapshot.Snapshot
+    // interface fullName: vps.Snapshot.Snapshot
     export interface Snapshot {
         creationDate: string;
         description: string;
     }
-    //vps.Software
-    // fullName: vps.Software.Software
+    // interface fullName: vps.Software.Software
     export interface Software {
         id: number;
         name: string;
         status: vps.SoftwareStatusEnum;
         type: vps.SoftwareTypeEnum;
     }
-    //vps.SoftwareStatusEnum
+    // type fullname: vps.SoftwareStatusEnum
     export type SoftwareStatusEnum = "deprecated" | "stable" | "testing"
-    //vps.SoftwareTypeEnum
+    // type fullname: vps.SoftwareTypeEnum
     export type SoftwareTypeEnum = "database" | "environment" | "webserver"
-    //vps.Task
-    // fullName: vps.Task.Task
+    // interface fullName: vps.Task.Task
     export interface Task {
         id: number;
         progress: number;
         state: vps.TaskStateEnum;
         type: vps.TaskTypeEnum;
     }
-    //vps.TaskStateEnum
+    // type fullname: vps.TaskStateEnum
     export type TaskStateEnum = "blocked" | "cancelled" | "doing" | "done" | "error" | "paused" | "todo" | "waitingAck"
-    //vps.TaskTypeEnum
+    // type fullname: vps.TaskTypeEnum
     export type TaskTypeEnum = "addVeeamBackupJob" | "changeRootPassword" | "createSnapshot" | "deleteSnapshot" | "deliverVm" | "getConsoleUrl" | "internalTask" | "openConsoleAccess" | "provisioningAdditionalIp" | "reOpenVm" | "rebootVm" | "reinstallVm" | "removeVeeamBackup" | "restoreFullVeeamBackup" | "restoreVeeamBackup" | "restoreVm" | "revertSnapshot" | "setMonitoring" | "setNetboot" | "startVm" | "stopVm" | "upgradeVm"
-    //vps.Template
-    // fullName: vps.Template.Template
+    // interface fullName: vps.Template.Template
     export interface Template {
         availableLanguage: string[];
         bitFormat: vps.TemplateBitFormatEnum;
@@ -226,10 +206,9 @@ export namespace vps {
         locale: string;
         name: string;
     }
-    //vps.TemplateBitFormatEnum
+    // type fullname: vps.TemplateBitFormatEnum
     export type TemplateBitFormatEnum = 32 | 64
-    //vps.VPS
-    // fullName: vps.VPS.VPS
+    // interface fullName: vps.VPS.VPS
     export interface VPS {
         cluster: string;
         displayName?: string;
@@ -245,59 +224,53 @@ export namespace vps {
         vcore: number;
         zone: string;
     }
-    //vps.Veeam
-    // fullName: vps.Veeam.Veeam
+    // interface fullName: vps.Veeam.Veeam
     export interface Veeam {
         backup: boolean;
     }
-    //vps.Vnc
-    // fullName: vps.Vnc.Vnc
+    // interface fullName: vps.Vnc.Vnc
     export interface Vnc {
         host: string;
         password: string;
         port: number;
     }
-    //vps.VncProtocolEnum
+    // type fullname: vps.VncProtocolEnum
     export type VncProtocolEnum = "VNC" | "VNCOverWebSocket"
-    //vps.VpsBillingVersion
-    // fullName: vps.VpsBillingVersion.VpsBillingVersion
+    // interface fullName: vps.VpsBillingVersion.VpsBillingVersion
     export interface VpsBillingVersion {
         version: number;
     }
-    //vps.VpsKeymapEnum
+    // type fullname: vps.VpsKeymapEnum
     export type VpsKeymapEnum = "fr" | "us"
-    //vps.VpsMonitoringPeriodEnum
+    // type fullname: vps.VpsMonitoringPeriodEnum
     export type VpsMonitoringPeriodEnum = "lastday" | "lastmonth" | "lastweek" | "lastyear" | "today"
-    //vps.VpsNetbootEnum
+    // type fullname: vps.VpsNetbootEnum
     export type VpsNetbootEnum = "local" | "rescue"
-    //vps.VpsOfferEnum
+    // type fullname: vps.VpsOfferEnum
     export type VpsOfferEnum = "beta-classic" | "classic" | "cloud" | "cloudram" | "game-classic" | "lowlat" | "ssd"
-    //vps.VpsOptionEnum
+    // type fullname: vps.VpsOptionEnum
     export type VpsOptionEnum = "additionalDisk" | "automatedBackup" | "cpanel" | "ftpbackup" | "plesk" | "snapshot" | "veeam" | "windows"
-    //vps.VpsOptionStateEnum
+    // type fullname: vps.VpsOptionStateEnum
     export type VpsOptionStateEnum = "released" | "subscribed"
-    //vps.VpsStateEnum
+    // type fullname: vps.VpsStateEnum
     export type VpsStateEnum = "installing" | "maintenance" | "rebooting" | "running" | "stopped" | "stopping" | "upgrading"
-    //vps.VpsStatisticTypeEnum
+    // type fullname: vps.VpsStatisticTypeEnum
     export type VpsStatisticTypeEnum = "cpu:iowait" | "cpu:max" | "cpu:nice" | "cpu:sys" | "cpu:used" | "cpu:user" | "mem:max" | "mem:used" | "net:rx" | "net:tx"
-    //vps.VpsTimestampValue
-    // fullName: vps.VpsTimestampValue.VpsTimestampValue
+    // interface fullName: vps.VpsTimestampValue.VpsTimestampValue
     export interface VpsTimestampValue {
         timestamp: number;
         value?: number;
     }
-    //vps.VpsVersionEnum
+    // type fullname: vps.VpsVersionEnum
     export type VpsVersionEnum = "2013v1" | "2014v1" | "2015v1" | "2017v1" | "2017v2" | "2017v3" | "2018v1" | "2018v2" | "2019v1"
     export namespace automatedBackup {
-        //vps.automatedBackup.Attached
-        // fullName: vps.automatedBackup.Attached.Attached
+        // interface fullName: vps.automatedBackup.Attached.Attached
         export interface Attached {
             access: vps.automatedBackup.attached.Infos;
             restorePoint: string;
         }
         export namespace attached {
-            //vps.automatedBackup.attached.Infos
-            // fullName: vps.automatedBackup.attached.Infos.Infos
+            // interface fullName: vps.automatedBackup.attached.Infos.Infos
             export interface Infos {
                 additionalDisk?: string;
                 nfs?: string;
@@ -306,18 +279,17 @@ export namespace vps {
         }
     }
     export namespace disk {
-        //vps.disk.StateEnum
+        // type fullname: vps.disk.StateEnum
         export type StateEnum = "connected" | "disconnected" | "pending"
-        //vps.disk.StatisticTypeEnum
+        // type fullname: vps.disk.StatisticTypeEnum
         export type StatisticTypeEnum = "max" | "used"
-        //vps.disk.TypeEnum
+        // type fullname: vps.disk.TypeEnum
         export type TypeEnum = "additional" | "primary"
     }
     export namespace ip {
-        //vps.ip.GeolocationEnum
+        // type fullname: vps.ip.GeolocationEnum
         export type GeolocationEnum = "au" | "be" | "ca" | "cz" | "de" | "es" | "fi" | "fr" | "ie" | "it" | "lt" | "nl" | "pl" | "pt" | "sg" | "uk" | "us"
-        //vps.ip.ServiceStatus
-        // fullName: vps.ip.ServiceStatus.ServiceStatus
+        // interface fullName: vps.ip.ServiceStatus.ServiceStatus
         export interface ServiceStatus {
             dns: vps.ip.ServiceStatusService;
             http: vps.ip.ServiceStatusService;
@@ -327,48 +299,43 @@ export namespace vps {
             ssh: vps.ip.ServiceStatusService;
             tools?: vps.ip.ServiceStatusStateEnum;
         }
-        //vps.ip.ServiceStatusService
-        // fullName: vps.ip.ServiceStatusService.ServiceStatusService
+        // interface fullName: vps.ip.ServiceStatusService.ServiceStatusService
         export interface ServiceStatusService {
             port: number;
             state: vps.ip.ServiceStatusStateEnum;
         }
-        //vps.ip.ServiceStatusStateEnum
+        // type fullname: vps.ip.ServiceStatusStateEnum
         export type ServiceStatusStateEnum = "down" | "up"
-        //vps.ip.TypeEnum
+        // type fullname: vps.ip.TypeEnum
         export type TypeEnum = "additional" | "primary"
     }
     export namespace migration {
-        //vps.migration.Migration
-        // fullName: vps.migration.Migration.Migration
+        // interface fullName: vps.migration.Migration.Migration
         export interface Migration {
             date: string;
             id: string;
         }
     }
     export namespace veeam {
-        //vps.veeam.ExportTypeEnum
+        // type fullname: vps.veeam.ExportTypeEnum
         export type ExportTypeEnum = "nfs" | "smb"
-        //vps.veeam.Infos
-        // fullName: vps.veeam.Infos.Infos
+        // interface fullName: vps.veeam.Infos.Infos
         export interface Infos {
             nfs: string;
             smb: string;
         }
-        //vps.veeam.RestorePoint
-        // fullName: vps.veeam.RestorePoint.RestorePoint
+        // interface fullName: vps.veeam.RestorePoint.RestorePoint
         export interface RestorePoint {
             creationTime: string;
             id: number;
         }
-        //vps.veeam.RestoredBackup
-        // fullName: vps.veeam.RestoredBackup.RestoredBackup
+        // interface fullName: vps.veeam.RestoredBackup.RestoredBackup
         export interface RestoredBackup {
             accessInfos: vps.veeam.Infos;
             restorePointId: number;
             state: vps.veeam.StateEnum;
         }
-        //vps.veeam.StateEnum
+        // type fullname: vps.veeam.StateEnum
         export type StateEnum = "mounted" | "restoring" | "unmounted" | "unmounting"
     }
 }

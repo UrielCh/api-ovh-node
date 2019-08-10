@@ -4,16 +4,14 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /veeamCloudConnect Models
  */
 export namespace complexType {
-    //complexType.UnitAndValue
-    // fullName: complexType.UnitAndValue.UnitAndValue
+    // interface fullName: complexType.UnitAndValue.UnitAndValue
     export interface UnitAndValue<T> {
         unit: string;
         value: T;
     }
 }
 export namespace service {
-    //service.RenewType
-    // fullName: service.RenewType.RenewType
+    // interface fullName: service.RenewType.RenewType
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -21,14 +19,13 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    //service.RenewalTypeEnum
+    // type fullname: service.RenewalTypeEnum
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    //service.StateEnum
+    // type fullname: service.StateEnum
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
 }
 export namespace services {
-    //services.Service
-    // fullName: services.Service.Service
+    // interface fullName: services.Service.Service
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;
@@ -46,16 +43,14 @@ export namespace services {
     }
 }
 export namespace veeamCloudConnect {
-    //veeamCloudConnect.Account
-    // fullName: veeamCloudConnect.Account.Account
+    // interface fullName: veeamCloudConnect.Account.Account
     export interface Account {
         location: veeamCloudConnect.Location;
         productOffer: veeamCloudConnect.Offer;
         serviceName: string;
         vmCount?: number;
     }
-    //veeamCloudConnect.BackupRepository
-    // fullName: veeamCloudConnect.BackupRepository.BackupRepository
+    // interface fullName: veeamCloudConnect.BackupRepository.BackupRepository
     export interface BackupRepository {
         inventoryName: string;
         quota: complexType.UnitAndValue<number>;
@@ -64,14 +59,13 @@ export namespace veeamCloudConnect {
         state: veeamCloudConnect.BackupRepositoryStateEnum;
         usage?: number;
     }
-    //veeamCloudConnect.BackupRepositoryStateEnum
+    // type fullname: veeamCloudConnect.BackupRepositoryStateEnum
     export type BackupRepositoryStateEnum = "configuring" | "delivered" | "disabled" | "disabling" | "error" | "migrating" | "removing"
-    //veeamCloudConnect.Location
+    // type fullname: veeamCloudConnect.Location
     export type Location = "bhs1" | "rbx2" | "sbg1"
-    //veeamCloudConnect.Offer
+    // type fullname: veeamCloudConnect.Offer
     export type Offer = "advanced" | "demo" | "starter"
-    //veeamCloudConnect.Task
-    // fullName: veeamCloudConnect.Task.Task
+    // interface fullName: veeamCloudConnect.Task.Task
     export interface Task {
         endDate?: string;
         name: string;
@@ -80,10 +74,9 @@ export namespace veeamCloudConnect {
         state: veeamCloudConnect.TaskStateEnum;
         taskId: number;
     }
-    //veeamCloudConnect.TaskStateEnum
+    // type fullname: veeamCloudConnect.TaskStateEnum
     export type TaskStateEnum = "canceled" | "doing" | "done" | "error" | "fixing" | "problem" | "toCreate" | "todo" | "unknown" | "waitingTodo"
-    //veeamCloudConnect.offerCapabilities
-    // fullName: veeamCloudConnect.offerCapabilities.offerCapabilities
+    // interface fullName: veeamCloudConnect.offerCapabilities.offerCapabilities
     export interface offerCapabilities {
         defaultQuota: number;
         maxQuota: number;

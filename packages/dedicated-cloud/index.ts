@@ -4,30 +4,27 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /dedicatedCloud Models
  */
 export namespace complexType {
-    //complexType.UnitAndValue
-    // fullName: complexType.UnitAndValue.UnitAndValue
+    // interface fullName: complexType.UnitAndValue.UnitAndValue
     export interface UnitAndValue<T> {
         unit: string;
         value: T;
     }
 }
 export namespace coreTypes {
-    //coreTypes.CountryEnum
+    // type fullname: coreTypes.CountryEnum
     export type CountryEnum = "ac" | "ad" | "ae" | "af" | "ag" | "ai" | "al" | "am" | "an" | "ao" | "aq" | "ar" | "as" | "at" | "au" | "aw" | "ax" | "az" | "ba" | "bb" | "bd" | "be" | "bf" | "bg" | "bh" | "bi" | "bj" | "bl" | "bm" | "bn" | "bo" | "bq" | "br" | "bs" | "bt" | "bv" | "bw" | "by" | "bz" | "ca" | "cc" | "cd" | "cf" | "cg" | "ch" | "ci" | "ck" | "cl" | "cm" | "cn" | "co" | "cr" | "cs" | "cu" | "cv" | "cw" | "cx" | "cy" | "cz" | "de" | "dj" | "dk" | "dm" | "do" | "dz" | "ec" | "ee" | "eg" | "eh" | "er" | "es" | "et" | "fc" | "fd" | "fi" | "fj" | "fk" | "fm" | "fo" | "fr" | "fx" | "ga" | "gb" | "gd" | "ge" | "gf" | "gg" | "gh" | "gi" | "gl" | "gm" | "gn" | "gp" | "gq" | "gr" | "gs" | "gt" | "gu" | "gw" | "gy" | "hk" | "hm" | "hn" | "hr" | "ht" | "hu" | "id" | "ie" | "il" | "im" | "in" | "io" | "iq" | "ir" | "is" | "it" | "je" | "jm" | "jo" | "jp" | "ke" | "kg" | "kh" | "ki" | "km" | "kn" | "kp" | "kr" | "kw" | "ky" | "kz" | "la" | "lb" | "lc" | "li" | "lk" | "lr" | "ls" | "lt" | "lu" | "lv" | "ly" | "ma" | "mc" | "md" | "me" | "mf" | "mg" | "mh" | "mk" | "ml" | "mm" | "mn" | "mo" | "mp" | "mq" | "mr" | "ms" | "mt" | "mu" | "mv" | "mw" | "mx" | "my" | "mz" | "na" | "nc" | "ne" | "nf" | "ng" | "ni" | "nl" | "no" | "np" | "nr" | "nu" | "nz" | "om" | "pa" | "pe" | "pf" | "pg" | "ph" | "pk" | "pl" | "pm" | "pn" | "pr" | "ps" | "pt" | "pw" | "py" | "qa" | "qc" | "re" | "ro" | "rs" | "ru" | "rw" | "sa" | "sb" | "sc" | "sd" | "se" | "sg" | "sh" | "si" | "sj" | "sk" | "sl" | "sm" | "sn" | "so" | "sr" | "ss" | "st" | "sv" | "sx" | "sy" | "sz" | "tc" | "td" | "tf" | "tg" | "th" | "tj" | "tk" | "tl" | "tm" | "tn" | "to" | "tp" | "tr" | "tt" | "tv" | "tw" | "tz" | "ua" | "ug" | "uk" | "um" | "us" | "uy" | "uz" | "va" | "vc" | "ve" | "vg" | "vi" | "vn" | "vu" | "we" | "wf" | "ws" | "ye" | "yt" | "yu" | "za" | "zm" | "zw"
 }
 export namespace dedicatedCloud {
-    //dedicatedCloud.AllowedNetwork
-    // fullName: dedicatedCloud.AllowedNetwork.AllowedNetwork
+    // interface fullName: dedicatedCloud.AllowedNetwork.AllowedNetwork
     export interface AllowedNetwork {
         description?: string;
         network: string;
         networkAccessId: number;
         state: dedicatedCloud.AllowedNetworkStateEnum;
     }
-    //dedicatedCloud.AllowedNetworkStateEnum
+    // type fullname: dedicatedCloud.AllowedNetworkStateEnum
     export type AllowedNetworkStateEnum = "allowed" | "toDelete" | "toUpdate"
-    //dedicatedCloud.Backup
-    // fullName: dedicatedCloud.Backup.Backup
+    // interface fullName: dedicatedCloud.Backup.Backup
     export interface Backup {
         backupDurationInReport?: boolean;
         backupOffer?: dedicatedCloud.backup.OfferTypeEnum;
@@ -42,8 +39,7 @@ export namespace dedicatedCloud {
         state: dedicatedCloud.BackupStateEnum;
         vmwareVmId?: string;
     }
-    //dedicatedCloud.BackupJob
-    // fullName: dedicatedCloud.BackupJob.BackupJob
+    // interface fullName: dedicatedCloud.BackupJob.BackupJob
     export interface BackupJob {
         allocatedDisk?: number;
         backupDays?: dedicatedCloud.backup.BackupDaysEnum[];
@@ -53,14 +49,13 @@ export namespace dedicatedCloud {
         state: dedicatedCloud.backup.StateEnum;
         vmName?: string;
     }
-    //dedicatedCloud.BackupStateEnum
+    // type fullname: dedicatedCloud.BackupStateEnum
     export type BackupStateEnum = "disabled" | "disabling" | "enabled" | "enabling" | "error" | "removing"
-    //dedicatedCloud.BillingTypeEnum
+    // type fullname: dedicatedCloud.BillingTypeEnum
     export type BillingTypeEnum = "demo" | "monthly"
-    //dedicatedCloud.BlockRegisterEnum
+    // type fullname: dedicatedCloud.BlockRegisterEnum
     export type BlockRegisterEnum = "arin" | "ripe"
-    //dedicatedCloud.Capabilities
-    // fullName: dedicatedCloud.Capabilities.Capabilities
+    // interface fullName: dedicatedCloud.Capabilities.Capabilities
     export interface Capabilities {
         addRessourceRightStatus: dedicatedCloud.capabilities.FeatureStatusEnum;
         backupStatus: dedicatedCloud.capabilities.FeatureStatusEnum;
@@ -70,10 +65,9 @@ export namespace dedicatedCloud {
         upgradable: boolean;
         userAccessPolicyStatus: dedicatedCloud.capabilities.FeatureStatusEnum;
     }
-    //dedicatedCloud.CommercialNameEnum
+    // type fullname: dedicatedCloud.CommercialNameEnum
     export type CommercialNameEnum = "DC" | "DC-ANCIENT" | "DC-ANCIENT-HDS" | "DC-ANCIENT-HIPAA" | "DC-ANCIENT-NSX" | "DC-ANCIENT-NSX-VROPS" | "DC-ANCIENT-PCIDSS" | "DC-ANCIENT-UNKNOWN" | "DC-ANCIENT-VROPS" | "DC-HDS" | "DC-HIPAA" | "DC-LEGACY" | "DC-LEGACY-HDS" | "DC-LEGACY-HIPAA" | "DC-LEGACY-NSX" | "DC-LEGACY-NSX-VROPS" | "DC-LEGACY-PCIDSS" | "DC-LEGACY-UNKNOWN" | "DC-LEGACY-VROPS" | "DC-NSX" | "DC-NSX-VROPS" | "DC-PCIDSS" | "DC-UNKNOWN" | "DC-VROPS" | "SDDC" | "SDDC-HDS" | "SDDC-HIPAA" | "SDDC-LEGACY" | "SDDC-LEGACY-HDS" | "SDDC-LEGACY-HIPAA" | "SDDC-LEGACY-PCIDSS" | "SDDC-LEGACY-UNKNOWN" | "SDDC-LEGACY-VROPS" | "SDDC-LEGACY-VROPS-WITHOUT-NSX" | "SDDC-LEGACY-WITHOUT-NSX" | "SDDC-PCIDSS" | "SDDC-UNKNOWN" | "SDDC-VROPS" | "SDDC-VROPS-WITHOUT-NSX" | "SDDC-WITHOUT-NSX" | "UNKNOWN" | "UNKNOWN-HDS" | "UNKNOWN-HIPAA" | "UNKNOWN-NSX" | "UNKNOWN-NSX-VROPS" | "UNKNOWN-PCIDSS" | "UNKNOWN-UNKNOWN" | "UNKNOWN-VROPS"
-    //dedicatedCloud.CommercialRange
-    // fullName: dedicatedCloud.CommercialRange.CommercialRange
+    // interface fullName: dedicatedCloud.CommercialRange.CommercialRange
     export interface CommercialRange {
         allowedHypervisorVersions: dedicatedCloud.HypervisorVersionEnum[];
         allowedNetworkRoles: dedicatedCloud.right.NetworkRoleEnum[];
@@ -81,8 +75,7 @@ export namespace dedicatedCloud {
         dedicatedCloudVersion: string;
         range?: string;
     }
-    //dedicatedCloud.Datacenter
-    // fullName: dedicatedCloud.Datacenter.Datacenter
+    // interface fullName: dedicatedCloud.Datacenter.Datacenter
     export interface Datacenter {
         commercialName: dedicatedCloud.CommercialNameEnum;
         commercialRangeName: string;
@@ -93,13 +86,11 @@ export namespace dedicatedCloud {
         name: string;
         version: string;
     }
-    //dedicatedCloud.Federation
-    // fullName: dedicatedCloud.Federation.Federation
+    // interface fullName: dedicatedCloud.Federation.Federation
     export interface Federation {
         state: dedicatedCloud.option.StateEnum;
     }
-    //dedicatedCloud.FederationAccessNetwork
-    // fullName: dedicatedCloud.FederationAccessNetwork.FederationAccessNetwork
+    // interface fullName: dedicatedCloud.FederationAccessNetwork.FederationAccessNetwork
     export interface FederationAccessNetwork {
         activeDirectoryId: number;
         baseDnForGroups: string;
@@ -113,8 +104,7 @@ export namespace dedicatedCloud {
         state: dedicatedCloud.optionAccessNetwork.StateEnum;
         username: string;
     }
-    //dedicatedCloud.Filer
-    // fullName: dedicatedCloud.Filer.Filer
+    // interface fullName: dedicatedCloud.Filer.Filer
     export interface Filer {
         billingType: dedicatedCloud.ressources.BillingTypeEnum;
         filerId: number;
@@ -128,27 +118,23 @@ export namespace dedicatedCloud {
         state: dedicatedCloud.filer.StateEnum;
         vmTotal?: number;
     }
-    //dedicatedCloud.GenerationEnum
+    // type fullname: dedicatedCloud.GenerationEnum
     export type GenerationEnum = "1.0" | "2.0"
-    //dedicatedCloud.Hcx
-    // fullName: dedicatedCloud.Hcx.Hcx
+    // interface fullName: dedicatedCloud.Hcx.Hcx
     export interface Hcx {
         build?: string;
         state: dedicatedCloud.option.StateEnum;
         version?: string;
     }
-    //dedicatedCloud.Hds
-    // fullName: dedicatedCloud.Hds.Hds
+    // interface fullName: dedicatedCloud.Hds.Hds
     export interface Hds {
         state: dedicatedCloud.option.StateEnum;
     }
-    //dedicatedCloud.Hipaa
-    // fullName: dedicatedCloud.Hipaa.Hipaa
+    // interface fullName: dedicatedCloud.Hipaa.Hipaa
     export interface Hipaa {
         state: dedicatedCloud.option.StateEnum;
     }
-    //dedicatedCloud.Host
-    // fullName: dedicatedCloud.Host.Host
+    // interface fullName: dedicatedCloud.Host.Host
     export interface Host {
         billingType: dedicatedCloud.ressources.BillingTypeEnum;
         clusterName?: string;
@@ -172,36 +158,31 @@ export namespace dedicatedCloud {
         vmTotal?: number;
         vmVcpuTotal?: number;
     }
-    //dedicatedCloud.HostProfile
-    // fullName: dedicatedCloud.HostProfile.HostProfile
+    // interface fullName: dedicatedCloud.HostProfile.HostProfile
     export interface HostProfile {
         id: number;
         name: string;
     }
-    //dedicatedCloud.HostStockHypervisor
-    // fullName: dedicatedCloud.HostStockHypervisor.HostStockHypervisor
+    // interface fullName: dedicatedCloud.HostStockHypervisor.HostStockHypervisor
     export interface HostStockHypervisor {
         value: number;
         version: string;
     }
-    //dedicatedCloud.HostStockProcGen
-    // fullName: dedicatedCloud.HostStockProcGen.HostStockProcGen
+    // interface fullName: dedicatedCloud.HostStockProcGen.HostStockProcGen
     export interface HostStockProcGen {
         cpuGeneration: string;
         value: dedicatedCloud.HostStockHypervisor[];
     }
-    //dedicatedCloud.HostStockProfile
-    // fullName: dedicatedCloud.HostStockProfile.HostStockProfile
+    // interface fullName: dedicatedCloud.HostStockProfile.HostStockProfile
     export interface HostStockProfile {
         id: number;
         name: string;
         ref: string;
         value: dedicatedCloud.HostStockProcGen[];
     }
-    //dedicatedCloud.HypervisorVersionEnum
+    // type fullname: dedicatedCloud.HypervisorVersionEnum
     export type HypervisorVersionEnum = "4.1" | "5.0" | "5.1" | "5.5" | "6.0" | "6.5" | "hv3.1" | "hvdc3.1" | "nc1.0"
-    //dedicatedCloud.Ip
-    // fullName: dedicatedCloud.Ip.Ip
+    // interface fullName: dedicatedCloud.Ip.Ip
     export interface Ip {
         country: string;
         description: string;
@@ -210,26 +191,23 @@ export namespace dedicatedCloud {
         register: dedicatedCloud.BlockRegisterEnum;
         vlanNumber: number;
     }
-    //dedicatedCloud.IpCountriesEnum
+    // type fullname: dedicatedCloud.IpCountriesEnum
     export type IpCountriesEnum = "be" | "ca" | "ch" | "cz" | "de" | "es" | "fi" | "fr" | "gb" | "ie" | "it" | "lt" | "nl" | "pl" | "pt" | "us"
-    //dedicatedCloud.IpDetails
-    // fullName: dedicatedCloud.IpDetails.IpDetails
+    // interface fullName: dedicatedCloud.IpDetails.IpDetails
     export interface IpDetails {
         ip: string;
         reverse?: string;
         usage: dedicatedCloud.ipUsageEnum;
         usageDetails?: string;
     }
-    //dedicatedCloud.ManagementInterfaceEnum
+    // type fullname: dedicatedCloud.ManagementInterfaceEnum
     export type ManagementInterfaceEnum = "azure" | "openstack" | "systemcenter" | "vcloud" | "vcsa" | "vsphere"
-    //dedicatedCloud.Nsx
-    // fullName: dedicatedCloud.Nsx.Nsx
+    // interface fullName: dedicatedCloud.Nsx.Nsx
     export interface Nsx {
         state: dedicatedCloud.option.StateEnum;
         url?: string;
     }
-    //dedicatedCloud.ObjectRight
-    // fullName: dedicatedCloud.ObjectRight.ObjectRight
+    // interface fullName: dedicatedCloud.ObjectRight.ObjectRight
     export interface ObjectRight {
         name: string;
         objectRightId: number;
@@ -238,41 +216,35 @@ export namespace dedicatedCloud {
         type: dedicatedCloud.right.UserObjectRightTypeEnum;
         vmwareObjectId: string;
     }
-    //dedicatedCloud.Os
-    // fullName: dedicatedCloud.Os.Os
+    // interface fullName: dedicatedCloud.Os.Os
     export interface Os {
         fullName: string;
         lastModificationDate: string;
         shortName: string;
     }
-    //dedicatedCloud.PccStockProfile
-    // fullName: dedicatedCloud.PccStockProfile.PccStockProfile
+    // interface fullName: dedicatedCloud.PccStockProfile.PccStockProfile
     export interface PccStockProfile {
         count: number;
         mode: string;
         realVersion: string;
     }
-    //dedicatedCloud.PccZone
-    // fullName: dedicatedCloud.PccZone.PccZone
+    // interface fullName: dedicatedCloud.PccZone.PccZone
     export interface PccZone {
         id: number;
         pccZone: string;
     }
-    //dedicatedCloud.PciDss
-    // fullName: dedicatedCloud.PciDss.PciDss
+    // interface fullName: dedicatedCloud.PciDss.PciDss
     export interface PciDss {
         state: dedicatedCloud.option.StateEnum;
     }
-    //dedicatedCloud.PrivateGateway
-    // fullName: dedicatedCloud.PrivateGateway.PrivateGateway
+    // interface fullName: dedicatedCloud.PrivateGateway.PrivateGateway
     export interface PrivateGateway {
         customerIp?: string;
         customerNetmask?: string;
         customerPortGroup?: string;
         state: dedicatedCloud.option.StateEnum;
     }
-    //dedicatedCloud.RestorePoint
-    // fullName: dedicatedCloud.RestorePoint.RestorePoint
+    // interface fullName: dedicatedCloud.RestorePoint.RestorePoint
     export interface RestorePoint {
         creationTime?: string;
         isCorrupted: boolean;
@@ -280,8 +252,7 @@ export namespace dedicatedCloud {
         restorePointSize: complexType.UnitAndValue<number>;
         type?: dedicatedCloud.backup.BackupTypeEnum;
     }
-    //dedicatedCloud.Right
-    // fullName: dedicatedCloud.Right.Right
+    // interface fullName: dedicatedCloud.Right.Right
     export interface Right {
         canAddRessource: boolean;
         datacenterId: number;
@@ -290,8 +261,7 @@ export namespace dedicatedCloud {
         rightId: number;
         vmNetworkRole: dedicatedCloud.right.VmNetworkRoleEnum;
     }
-    //dedicatedCloud.Robot
-    // fullName: dedicatedCloud.Robot.Robot
+    // interface fullName: dedicatedCloud.Robot.Robot
     export interface Robot {
         criticity: string;
         description?: string;
@@ -299,16 +269,14 @@ export namespace dedicatedCloud {
         name: string;
         type: string;
     }
-    //dedicatedCloud.ServicePack
-    // fullName: dedicatedCloud.ServicePack.ServicePack
+    // interface fullName: dedicatedCloud.ServicePack.ServicePack
     export interface ServicePack {
         name: string;
         options: string[];
     }
-    //dedicatedCloud.StateEnum
+    // type fullname: dedicatedCloud.StateEnum
     export type StateEnum = "available" | "delivered" | "disabled" | "disabling" | "error" | "migrating" | "provisionning" | "recycling" | "reserved" | "toDisable" | "toProvision" | "toRecycle" | "toRemove" | "toUnprovision" | "unprovisionning"
-    //dedicatedCloud.Task
-    // fullName: dedicatedCloud.Task.Task
+    // interface fullName: dedicatedCloud.Task.Task
     export interface Task {
         createdBy?: string;
         createdFrom?: string;
@@ -333,12 +301,11 @@ export namespace dedicatedCloud {
         userId?: number;
         vlanId?: number;
     }
-    //dedicatedCloud.TaskStateEnum
+    // type fullname: dedicatedCloud.TaskStateEnum
     export type TaskStateEnum = "canceled" | "doing" | "done" | "error" | "fixing" | "toCancel" | "toCreate" | "todo" | "unknown" | "waitingForChilds" | "waitingTodo"
-    //dedicatedCloud.TwoFAWhitelistStateEnum
+    // type fullname: dedicatedCloud.TwoFAWhitelistStateEnum
     export type TwoFAWhitelistStateEnum = "enabled" | "enabling" | "error" | "migrating" | "removed" | "removing"
-    //dedicatedCloud.User
-    // fullName: dedicatedCloud.User.User
+    // interface fullName: dedicatedCloud.User.User
     export interface User {
         activationState?: dedicatedCloud.user.ActivationStateEnum;
         canManageIpFailOvers: boolean;
@@ -358,17 +325,15 @@ export namespace dedicatedCloud {
         state: dedicatedCloud.user.StateEnum;
         userId: number;
     }
-    //dedicatedCloud.UserAccessPolicyEnum
+    // type fullname: dedicatedCloud.UserAccessPolicyEnum
     export type UserAccessPolicyEnum = "filtered" | "open"
-    //dedicatedCloud.UserLogoutPolicyEnum
+    // type fullname: dedicatedCloud.UserLogoutPolicyEnum
     export type UserLogoutPolicyEnum = "first" | "last"
-    //dedicatedCloud.VMEncryption
-    // fullName: dedicatedCloud.VMEncryption.VMEncryption
+    // interface fullName: dedicatedCloud.VMEncryption.VMEncryption
     export interface VMEncryption {
         state: dedicatedCloud.option.StateEnum;
     }
-    //dedicatedCloud.VMEncryptionAccessNetwork
-    // fullName: dedicatedCloud.VMEncryptionAccessNetwork.VMEncryptionAccessNetwork
+    // interface fullName: dedicatedCloud.VMEncryptionAccessNetwork.VMEncryptionAccessNetwork
     export interface VMEncryptionAccessNetwork {
         description: string;
         ip: string;
@@ -377,22 +342,19 @@ export namespace dedicatedCloud {
         sslThumbprint: string;
         state: dedicatedCloud.optionAccessNetwork.StateEnum;
     }
-    //dedicatedCloud.Vendor
-    // fullName: dedicatedCloud.Vendor.Vendor
+    // interface fullName: dedicatedCloud.Vendor.Vendor
     export interface Vendor {
         vendorName: string;
     }
-    //dedicatedCloud.VendorObjectTypeEnum
+    // type fullname: dedicatedCloud.VendorObjectTypeEnum
     export type VendorObjectTypeEnum = "cluster" | "datacenter" | "filer" | "host" | "vm"
-    //dedicatedCloud.Version
-    // fullName: dedicatedCloud.Version.Version
+    // interface fullName: dedicatedCloud.Version.Version
     export interface Version {
         build: string;
         major: string;
         minor: string;
     }
-    //dedicatedCloud.Vlan
-    // fullName: dedicatedCloud.Vlan.Vlan
+    // interface fullName: dedicatedCloud.Vlan.Vlan
     export interface Vlan {
         name: string;
         routingRateLimit: string;
@@ -401,8 +363,7 @@ export namespace dedicatedCloud {
         vlanId: number;
         vlanNumber: number;
     }
-    //dedicatedCloud.Vm
-    // fullName: dedicatedCloud.Vm.Vm
+    // interface fullName: dedicatedCloud.Vm.Vm
     export interface Vm {
         backup?: dedicatedCloud.backup.Backup;
         cdroms?: dedicatedCloud.virtualMachineCdrom[];
@@ -439,22 +400,19 @@ export namespace dedicatedCloud {
         writePerSecond?: number;
         writeRate?: number;
     }
-    //dedicatedCloud.Vrops
-    // fullName: dedicatedCloud.Vrops.Vrops
+    // interface fullName: dedicatedCloud.Vrops.Vrops
     export interface Vrops {
         state: dedicatedCloud.option.StateEnum;
         url?: string;
     }
-    //dedicatedCloud.ZpoolStockProfile
-    // fullName: dedicatedCloud.ZpoolStockProfile.ZpoolStockProfile
+    // interface fullName: dedicatedCloud.ZpoolStockProfile.ZpoolStockProfile
     export interface ZpoolStockProfile {
         minimumAvailability: string;
         profile: string;
         realCount: number;
     }
     export namespace backup {
-        //dedicatedCloud.backup.Backup
-        // fullName: dedicatedCloud.backup.Backup.Backup
+        // interface fullName: dedicatedCloud.backup.Backup.Backup
         export interface Backup {
             allocatedDisk?: number;
             backupDays?: dedicatedCloud.backup.BackupDaysEnum[];
@@ -469,16 +427,15 @@ export namespace dedicatedCloud {
             retentionTime?: number;
             state?: dedicatedCloud.backup.StateEnum;
         }
-        //dedicatedCloud.backup.BackupDaysEnum
+        // type fullname: dedicatedCloud.backup.BackupDaysEnum
         export type BackupDaysEnum = "Friday" | "Monday" | "Saturday" | "Sunday" | "Thursday" | "Tuesday" | "Wednesday"
-        //dedicatedCloud.backup.BackupTypeEnum
+        // type fullname: dedicatedCloud.backup.BackupTypeEnum
         export type BackupTypeEnum = "full" | "incremental"
-        //dedicatedCloud.backup.JobStateEnum
+        // type fullname: dedicatedCloud.backup.JobStateEnum
         export type JobStateEnum = "failed" | "running" | "stopped" | "stopping" | "success" | "unknown" | "warning"
-        //dedicatedCloud.backup.OfferTypeEnum
+        // type fullname: dedicatedCloud.backup.OfferTypeEnum
         export type OfferTypeEnum = "advanced" | "backup" | "classic" | "legacy"
-        //dedicatedCloud.backup.RestorePoint
-        // fullName: dedicatedCloud.backup.RestorePoint.RestorePoint
+        // interface fullName: dedicatedCloud.backup.RestorePoint.RestorePoint
         export interface RestorePoint {
             creationTime?: string;
             isCorrupted?: boolean;
@@ -486,15 +443,14 @@ export namespace dedicatedCloud {
             size?: complexType.UnitAndValue<number>;
             type?: dedicatedCloud.backup.BackupTypeEnum;
         }
-        //dedicatedCloud.backup.StateEnum
+        // type fullname: dedicatedCloud.backup.StateEnum
         export type StateEnum = "deleting" | "delivered" | "disabled" | "disabling" | "enabling" | "error" | "migrating" | "pending" | "removed" | "stopping" | "toCreate" | "toDelete" | "toDisable" | "toEnable" | "toStop" | "unknown"
     }
     export namespace capabilities {
-        //dedicatedCloud.capabilities.FeatureStatusEnum
+        // type fullname: dedicatedCloud.capabilities.FeatureStatusEnum
         export type FeatureStatusEnum = "active" | "comingSoon" | "no"
     }
-    //dedicatedCloud.dedicatedCloud
-    // fullName: dedicatedCloud.dedicatedCloud.dedicatedCloud
+    // interface fullName: dedicatedCloud.dedicatedCloud.dedicatedCloud
     export interface dedicatedCloud {
         advancedSecurity: boolean;
         bandwidth: string;
@@ -519,18 +475,16 @@ export namespace dedicatedCloud {
         webInterfaceUrl: string;
     }
     export namespace disasterRecovery {
-        //dedicatedCloud.disasterRecovery.DrpTypeEnum
+        // type fullname: dedicatedCloud.disasterRecovery.DrpTypeEnum
         export type DrpTypeEnum = "onPremise" | "ovh"
-        //dedicatedCloud.disasterRecovery.LocalSiteDetails
-        // fullName: dedicatedCloud.disasterRecovery.LocalSiteDetails.LocalSiteDetails
+        // interface fullName: dedicatedCloud.disasterRecovery.LocalSiteDetails.LocalSiteDetails
         export interface LocalSiteDetails {
             role: dedicatedCloud.disasterRecovery.SiteRoleEnum;
             type: dedicatedCloud.disasterRecovery.SiteTypeEnum;
             zertoVersion: string;
             zvmIp?: string;
         }
-        //dedicatedCloud.disasterRecovery.Profile
-        // fullName: dedicatedCloud.disasterRecovery.Profile.Profile
+        // interface fullName: dedicatedCloud.disasterRecovery.Profile.Profile
         export interface Profile {
             drpType?: dedicatedCloud.disasterRecovery.DrpTypeEnum;
             localSiteInformation?: dedicatedCloud.disasterRecovery.LocalSiteDetails;
@@ -538,8 +492,7 @@ export namespace dedicatedCloud {
             state: dedicatedCloud.StateEnum;
             systemVersion: string;
         }
-        //dedicatedCloud.disasterRecovery.RemoteSiteDetails
-        // fullName: dedicatedCloud.disasterRecovery.RemoteSiteDetails.RemoteSiteDetails
+        // interface fullName: dedicatedCloud.disasterRecovery.RemoteSiteDetails.RemoteSiteDetails
         export interface RemoteSiteDetails {
             datacenterId?: number;
             datacenterName?: string;
@@ -554,75 +507,68 @@ export namespace dedicatedCloud {
             vpnConfigState?: dedicatedCloud.disasterRecovery.VpnConfigStateEnum;
             zertoVersion?: string;
         }
-        //dedicatedCloud.disasterRecovery.SiteRoleEnum
+        // type fullname: dedicatedCloud.disasterRecovery.SiteRoleEnum
         export type SiteRoleEnum = "primary" | "secondary" | "single"
-        //dedicatedCloud.disasterRecovery.SiteTypeEnum
+        // type fullname: dedicatedCloud.disasterRecovery.SiteTypeEnum
         export type SiteTypeEnum = "onPremise" | "ovhPrivateCloud"
-        //dedicatedCloud.disasterRecovery.VpnConfigStateEnum
+        // type fullname: dedicatedCloud.disasterRecovery.VpnConfigStateEnum
         export type VpnConfigStateEnum = "configured" | "configuring" | "error" | "notConfigured" | "tunnelError"
     }
     export namespace filer {
-        //dedicatedCloud.filer.HourlyConsumption
-        // fullName: dedicatedCloud.filer.HourlyConsumption.HourlyConsumption
+        // interface fullName: dedicatedCloud.filer.HourlyConsumption.HourlyConsumption
         export interface HourlyConsumption {
             consumption: complexType.UnitAndValue<number>;
             lastUpdate: string;
         }
-        //dedicatedCloud.filer.Profile
-        // fullName: dedicatedCloud.filer.Profile.Profile
+        // interface fullName: dedicatedCloud.filer.Profile.Profile
         export interface Profile {
             fullName: string;
             name: string;
             size: complexType.UnitAndValue<number>;
         }
-        //dedicatedCloud.filer.StateEnum
+        // type fullname: dedicatedCloud.filer.StateEnum
         export type StateEnum = "adding" | "delivered" | "error" | "removing" | "unknown"
     }
     export namespace host {
-        //dedicatedCloud.host.HourlyConsumption
-        // fullName: dedicatedCloud.host.HourlyConsumption.HourlyConsumption
+        // interface fullName: dedicatedCloud.host.HourlyConsumption.HourlyConsumption
         export interface HourlyConsumption {
             consumption: complexType.UnitAndValue<number>;
             lastUpdate: string;
         }
-        //dedicatedCloud.host.Profile
-        // fullName: dedicatedCloud.host.Profile.Profile
+        // interface fullName: dedicatedCloud.host.Profile.Profile
         export interface Profile {
             core: string;
             cpu: complexType.UnitAndValue<number>;
             name: string;
             ram: complexType.UnitAndValue<number>;
         }
-        //dedicatedCloud.host.StateEnum
+        // type fullname: dedicatedCloud.host.StateEnum
         export type StateEnum = "adding" | "delivered" | "error" | "removing" | "unknown"
     }
-    //dedicatedCloud.hostSystemConnectionState
+    // type fullname: dedicatedCloud.hostSystemConnectionState
     export type hostSystemConnectionState = "connected" | "disconnected" | "notResponding"
-    //dedicatedCloud.ipUsageEnum
+    // type fullname: dedicatedCloud.ipUsageEnum
     export type ipUsageEnum = "reserved" | "vm"
-    //dedicatedCloud.metricsToken
-    // fullName: dedicatedCloud.metricsToken.metricsToken
+    // interface fullName: dedicatedCloud.metricsToken.metricsToken
     export interface metricsToken {
         opentsdbEndpoint: string;
         token: string;
         warpEndpoint: string;
     }
     export namespace option {
-        //dedicatedCloud.option.StateEnum
+        // type fullname: dedicatedCloud.option.StateEnum
         export type StateEnum = "disabled" | "disabling" | "enabled" | "enabling" | "error" | "migrating" | "unknown"
     }
     export namespace optionAccessNetwork {
-        //dedicatedCloud.optionAccessNetwork.StateEnum
+        // type fullname: dedicatedCloud.optionAccessNetwork.StateEnum
         export type StateEnum = "creating" | "deleting" | "delivered" | "error" | "toCreate" | "toDelete" | "toUpdate" | "unknown" | "updating"
     }
-    //dedicatedCloud.optionCompatibility
-    // fullName: dedicatedCloud.optionCompatibility.optionCompatibility
+    // interface fullName: dedicatedCloud.optionCompatibility.optionCompatibility
     export interface optionCompatibility {
         newCommercialVersion: string;
         oldCommercialVersion: string;
     }
-    //dedicatedCloud.passwordPolicy
-    // fullName: dedicatedCloud.passwordPolicy.passwordPolicy
+    // interface fullName: dedicatedCloud.passwordPolicy.passwordPolicy
     export interface passwordPolicy {
         deniedChars: string[];
         digitMandatory: boolean;
@@ -635,13 +581,11 @@ export namespace dedicatedCloud {
         uppercaseLetterMandatory: boolean;
         validityPeriod: number;
     }
-    //dedicatedCloud.resourceNewPrices
-    // fullName: dedicatedCloud.resourceNewPrices.resourceNewPrices
+    // interface fullName: dedicatedCloud.resourceNewPrices.resourceNewPrices
     export interface resourceNewPrices {
         resources?: dedicatedCloud.resourceNewPricesEntry[];
     }
-    //dedicatedCloud.resourceNewPricesEntry
-    // fullName: dedicatedCloud.resourceNewPricesEntry.resourceNewPricesEntry
+    // interface fullName: dedicatedCloud.resourceNewPricesEntry.resourceNewPricesEntry
     export interface resourceNewPricesEntry {
         billingType: dedicatedCloud.ressources.BillingTypeEnum;
         changed: boolean;
@@ -651,33 +595,31 @@ export namespace dedicatedCloud {
         resourceType: dedicatedCloud.ressources.ResourceTypeEnum;
     }
     export namespace ressources {
-        //dedicatedCloud.ressources.BillingTypeEnum
+        // type fullname: dedicatedCloud.ressources.BillingTypeEnum
         export type BillingTypeEnum = "freeSpare" | "hourly" | "monthly" | "undefined"
-        //dedicatedCloud.ressources.ResourceTypeEnum
+        // type fullname: dedicatedCloud.ressources.ResourceTypeEnum
         export type ResourceTypeEnum = "host" | "storage"
     }
     export namespace right {
-        //dedicatedCloud.right.NetworkRoleEnum
+        // type fullname: dedicatedCloud.right.NetworkRoleEnum
         export type NetworkRoleEnum = "admin" | "manager" | "noAccess" | "readonly"
-        //dedicatedCloud.right.RightEnum
+        // type fullname: dedicatedCloud.right.RightEnum
         export type RightEnum = "admin" | "disabled" | "readonly" | "readwrite"
-        //dedicatedCloud.right.UserObjectRightTypeEnum
+        // type fullname: dedicatedCloud.right.UserObjectRightTypeEnum
         export type UserObjectRightTypeEnum = "cluster" | "datastore" | "dvportgroup" | "folder" | "pool" | "vm"
-        //dedicatedCloud.right.VmNetworkRoleEnum
+        // type fullname: dedicatedCloud.right.VmNetworkRoleEnum
         export type VmNetworkRoleEnum = "admin" | "noAccess" | "readonly"
     }
-    //dedicatedCloud.servicePackEnum
+    // type fullname: dedicatedCloud.servicePackEnum
     export type servicePackEnum = "default" | "hds" | "hipaa" | "legacy" | "nsx" | "nsx-and-vrops" | "pcidss" | "vrops"
-    //dedicatedCloud.servicePackStateEnum
+    // type fullname: dedicatedCloud.servicePackStateEnum
     export type servicePackStateEnum = "activating" | "active" | "error" | "waitingForCustomer"
-    //dedicatedCloud.servicePackStatus
-    // fullName: dedicatedCloud.servicePackStatus.servicePackStatus
+    // interface fullName: dedicatedCloud.servicePackStatus.servicePackStatus
     export interface servicePackStatus {
         name: dedicatedCloud.servicePackEnum;
         state: dedicatedCloud.servicePackStateEnum;
     }
-    //dedicatedCloud.twoFAWhitelist
-    // fullName: dedicatedCloud.twoFAWhitelist.twoFAWhitelist
+    // interface fullName: dedicatedCloud.twoFAWhitelist.twoFAWhitelist
     export interface twoFAWhitelist {
         description: string;
         id: number;
@@ -685,14 +627,13 @@ export namespace dedicatedCloud {
         state: dedicatedCloud.TwoFAWhitelistStateEnum;
     }
     export namespace user {
-        //dedicatedCloud.user.ActivationStateEnum
+        // type fullname: dedicatedCloud.user.ActivationStateEnum
         export type ActivationStateEnum = "disabled" | "disabling" | "enabled" | "enabling" | "toDisable" | "toEnable"
-        //dedicatedCloud.user.StateEnum
+        // type fullname: dedicatedCloud.user.StateEnum
         export type StateEnum = "creating" | "deleting" | "delivered" | "error"
     }
     export namespace vendor {
-        //dedicatedCloud.vendor.OvhId
-        // fullName: dedicatedCloud.vendor.OvhId.OvhId
+        // interface fullName: dedicatedCloud.vendor.OvhId.OvhId
         export interface OvhId {
             datacenterId?: number;
             filerId?: number;
@@ -700,39 +641,35 @@ export namespace dedicatedCloud {
             vmId?: number;
         }
     }
-    //dedicatedCloud.virtualDeviceConnectInfoStatus
+    // type fullname: dedicatedCloud.virtualDeviceConnectInfoStatus
     export type virtualDeviceConnectInfoStatus = "ok" | "recoverableError" | "unrecoverableError" | "untried"
-    //dedicatedCloud.virtualMachineCdrom
-    // fullName: dedicatedCloud.virtualMachineCdrom.virtualMachineCdrom
+    // interface fullName: dedicatedCloud.virtualMachineCdrom.virtualMachineCdrom
     export interface virtualMachineCdrom {
         connected?: boolean;
         iso?: string;
     }
-    //dedicatedCloud.virtualMachineFaultToleranceState
+    // type fullname: dedicatedCloud.virtualMachineFaultToleranceState
     export type virtualMachineFaultToleranceState = "disabled" | "enabled" | "needSecondary" | "notConfigured" | "running" | "starting"
-    //dedicatedCloud.virtualMachinePowerState
+    // type fullname: dedicatedCloud.virtualMachinePowerState
     export type virtualMachinePowerState = "deleted" | "poweredOff" | "poweredOn" | "suspended"
     export namespace vlan {
-        //dedicatedCloud.vlan.StateEnum
+        // type fullname: dedicatedCloud.vlan.StateEnum
         export type StateEnum = "available" | "delivered" | "disabled" | "error" | "removing" | "reserved"
-        //dedicatedCloud.vlan.TypeEnum
+        // type fullname: dedicatedCloud.vlan.TypeEnum
         export type TypeEnum = "admin" | "free" | "paid"
     }
-    //dedicatedCloud.vmFiler
-    // fullName: dedicatedCloud.vmFiler.vmFiler
+    // interface fullName: dedicatedCloud.vmFiler.vmFiler
     export interface vmFiler {
         committed: number;
         disks: dedicatedCloud.vmFilerDisk[];
         name: string;
     }
-    //dedicatedCloud.vmFilerDisk
-    // fullName: dedicatedCloud.vmFilerDisk.vmFilerDisk
+    // interface fullName: dedicatedCloud.vmFilerDisk.vmFilerDisk
     export interface vmFilerDisk {
         capacity: number;
         id: string;
     }
-    //dedicatedCloud.vmNetwork
-    // fullName: dedicatedCloud.vmNetwork.vmNetwork
+    // interface fullName: dedicatedCloud.vmNetwork.vmNetwork
     export interface vmNetwork {
         allowGuestControl: boolean;
         backing: dedicatedCloud.vmNetworkBacking;
@@ -743,8 +680,7 @@ export namespace dedicatedCloud {
         startConnected: boolean;
         status: dedicatedCloud.virtualDeviceConnectInfoStatus;
     }
-    //dedicatedCloud.vmNetworkBacking
-    // fullName: dedicatedCloud.vmNetworkBacking.vmNetworkBacking
+    // interface fullName: dedicatedCloud.vmNetworkBacking.vmNetworkBacking
     export interface vmNetworkBacking {
         deviceName?: string;
         portGroupKey?: string;
@@ -754,14 +690,13 @@ export namespace dedicatedCloud {
         useAutoDetect?: boolean;
         valueMoref?: string;
     }
-    //dedicatedCloud.vmNetworkBackingTypeEnum
+    // type fullname: dedicatedCloud.vmNetworkBackingTypeEnum
     export type vmNetworkBackingTypeEnum = "DVS" | "VSS"
 }
 export namespace order {
-    //order.CurrencyCodeEnum
+    // type fullname: order.CurrencyCodeEnum
     export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
-    //order.Price
-    // fullName: order.Price.Price
+    // interface fullName: order.Price.Price
     export interface Price {
         currencyCode: order.CurrencyCodeEnum;
         text: string;
@@ -769,8 +704,7 @@ export namespace order {
     }
 }
 export namespace service {
-    //service.RenewType
-    // fullName: service.RenewType.RenewType
+    // interface fullName: service.RenewType.RenewType
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -778,18 +712,17 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    //service.RenewalTypeEnum
+    // type fullname: service.RenewalTypeEnum
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    //service.StateEnum
+    // type fullname: service.StateEnum
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
-    //service.TerminationFutureUseEnum
+    // type fullname: service.TerminationFutureUseEnum
     export type TerminationFutureUseEnum = "NOT_REPLACING_SERVICE" | "OTHER" | "SUBSCRIBE_AN_OTHER_SERVICE" | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR" | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
-    //service.TerminationReasonEnum
+    // type fullname: service.TerminationReasonEnum
     export type TerminationReasonEnum = "FEATURES_DONT_SUIT_ME" | "LACK_OF_PERFORMANCES" | "MIGRATED_TO_ANOTHER_OVH_PRODUCT" | "MIGRATED_TO_COMPETITOR" | "NOT_NEEDED_ANYMORE" | "NOT_RELIABLE" | "NO_ANSWER" | "OTHER" | "TOO_EXPENSIVE" | "TOO_HARD_TO_USE" | "UNSATIFIED_BY_CUSTOMER_SUPPORT"
 }
 export namespace services {
-    //services.Service
-    // fullName: services.Service.Service
+    // interface fullName: services.Service.Service
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;
@@ -807,8 +740,7 @@ export namespace services {
     }
 }
 export namespace vrack {
-    //vrack.Task
-    // fullName: vrack.Task.Task
+    // interface fullName: vrack.Task.Task
     export interface Task {
         function: string;
         id: number;
@@ -819,10 +751,9 @@ export namespace vrack {
         targetDomain?: string;
         todoDate?: string;
     }
-    //vrack.TaskStatusEnum
+    // type fullname: vrack.TaskStatusEnum
     export type TaskStatusEnum = "cancelled" | "doing" | "done" | "init" | "todo"
-    //vrack.dedicatedCloud
-    // fullName: vrack.dedicatedCloud.dedicatedCloud
+    // interface fullName: vrack.dedicatedCloud.dedicatedCloud
     export interface dedicatedCloud {
         dedicatedCloud: string;
         vlanId?: number;

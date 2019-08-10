@@ -4,31 +4,27 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /horizonView Models
  */
 export namespace horizonView {
-    //horizonView.AccessPointTypeEnum
+    // type fullname: horizonView.AccessPointTypeEnum
     export type AccessPointTypeEnum = "privateAccessPoint" | "publicAccessPoint"
-    //horizonView.CustomerNetwork
-    // fullName: horizonView.CustomerNetwork.CustomerNetwork
+    // interface fullName: horizonView.CustomerNetwork.CustomerNetwork
     export interface CustomerNetwork {
         customerNetworkId: number;
         name: string;
         network: string;
     }
-    //horizonView.CustomerNetworkPool
-    // fullName: horizonView.CustomerNetworkPool.CustomerNetworkPool
+    // interface fullName: horizonView.CustomerNetworkPool.CustomerNetworkPool
     export interface CustomerNetworkPool {
         customerNetworkId: number;
         name: string;
         network: string;
     }
-    //horizonView.CustomerUser
-    // fullName: horizonView.CustomerUser.CustomerUser
+    // interface fullName: horizonView.CustomerUser.CustomerUser
     export interface CustomerUser {
         email?: string;
         id: number;
         username: string;
     }
-    //horizonView.Datacenter
-    // fullName: horizonView.Datacenter.Datacenter
+    // interface fullName: horizonView.Datacenter.Datacenter
     export interface Datacenter {
         activeDirectoryIP: string;
         adminDomain: string;
@@ -41,8 +37,7 @@ export namespace horizonView {
         name: string;
         serviceName: string;
     }
-    //horizonView.DedicatedHorizon
-    // fullName: horizonView.DedicatedHorizon.DedicatedHorizon
+    // interface fullName: horizonView.DedicatedHorizon.DedicatedHorizon
     export interface DedicatedHorizon {
         masterZone: horizonView.Zone;
         privateCloudName: string;
@@ -52,8 +47,7 @@ export namespace horizonView {
         storageAccelerator: boolean;
         version: string;
     }
-    //horizonView.DomainTrust
-    // fullName: horizonView.DomainTrust.DomainTrust
+    // interface fullName: horizonView.DomainTrust.DomainTrust
     export interface DomainTrust {
         activeDirectoryIP: string;
         dns1?: string;
@@ -61,8 +55,7 @@ export namespace horizonView {
         domain: string;
         domainTrustId: number;
     }
-    //horizonView.Pool
-    // fullName: horizonView.Pool.Pool
+    // interface fullName: horizonView.Pool.Pool
     export interface Pool {
         accessPointId: number;
         dhcpNetmask: string;
@@ -75,12 +68,11 @@ export namespace horizonView {
         twoFA: boolean;
         type: horizonView.PoolType;
     }
-    //horizonView.PoolType
+    // type fullname: horizonView.PoolType
     export type PoolType = "hybridPool" | "privatePool" | "publicPool"
-    //horizonView.StateEnum
+    // type fullname: horizonView.StateEnum
     export type StateEnum = "available" | "creating" | "delivered" | "disabled" | "error" | "reserved"
-    //horizonView.Task
-    // fullName: horizonView.Task.Task
+    // interface fullName: horizonView.Task.Task
     export interface Task {
         description?: string;
         lastModificationDate?: string;
@@ -89,19 +81,17 @@ export namespace horizonView {
         state: horizonView.TaskStateEnum;
         taskId: number;
     }
-    //horizonView.TaskStateEnum
+    // type fullname: horizonView.TaskStateEnum
     export type TaskStateEnum = "canceled" | "doing" | "done" | "error" | "fixing" | "toCancel" | "toCreate" | "todo" | "unknown" | "waitingForChilds" | "waitingTodo"
-    //horizonView.User
-    // fullName: horizonView.User.User
+    // interface fullName: horizonView.User.User
     export interface User {
         username: string;
     }
-    //horizonView.Zone
+    // type fullname: horizonView.Zone
     export type Zone = "Beauharnois" | "Roubaix" | "Strasbourg"
 }
 export namespace service {
-    //service.RenewType
-    // fullName: service.RenewType.RenewType
+    // interface fullName: service.RenewType.RenewType
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -109,18 +99,17 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    //service.RenewalTypeEnum
+    // type fullname: service.RenewalTypeEnum
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    //service.StateEnum
+    // type fullname: service.StateEnum
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
-    //service.TerminationFutureUseEnum
+    // type fullname: service.TerminationFutureUseEnum
     export type TerminationFutureUseEnum = "NOT_REPLACING_SERVICE" | "OTHER" | "SUBSCRIBE_AN_OTHER_SERVICE" | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR" | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
-    //service.TerminationReasonEnum
+    // type fullname: service.TerminationReasonEnum
     export type TerminationReasonEnum = "FEATURES_DONT_SUIT_ME" | "LACK_OF_PERFORMANCES" | "MIGRATED_TO_ANOTHER_OVH_PRODUCT" | "MIGRATED_TO_COMPETITOR" | "NOT_NEEDED_ANYMORE" | "NOT_RELIABLE" | "NO_ANSWER" | "OTHER" | "TOO_EXPENSIVE" | "TOO_HARD_TO_USE" | "UNSATIFIED_BY_CUSTOMER_SUPPORT"
 }
 export namespace services {
-    //services.Service
-    // fullName: services.Service.Service
+    // interface fullName: services.Service.Service
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;

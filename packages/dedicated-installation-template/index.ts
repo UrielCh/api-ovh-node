@@ -4,22 +4,20 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /dedicated/installationTemplate Models
  */
 export namespace complexType {
-    //complexType.UnitAndValue
-    // fullName: complexType.UnitAndValue.UnitAndValue
+    // interface fullName: complexType.UnitAndValue.UnitAndValue
     export interface UnitAndValue<T> {
         unit: string;
         value: T;
     }
 }
 export namespace dedicated {
-    //dedicated.TemplateOsFileSystemEnum
+    // type fullname: dedicated.TemplateOsFileSystemEnum
     export type TemplateOsFileSystemEnum = "btrfs" | "ext3" | "ext4" | "ntfs" | "reiserfs" | "swap" | "ufs" | "xfs" | "zfs"
-    //dedicated.TemplateOsHardwareRaidEnum
+    // type fullname: dedicated.TemplateOsHardwareRaidEnum
     export type TemplateOsHardwareRaidEnum = "raid0" | "raid1" | "raid10" | "raid5" | "raid50" | "raid6" | "raid60"
-    //dedicated.TemplateOsLanguageEnum
+    // type fullname: dedicated.TemplateOsLanguageEnum
     export type TemplateOsLanguageEnum = "ar" | "bg" | "cs" | "da" | "de" | "el" | "en" | "es" | "et" | "fi" | "fr" | "he" | "hr" | "hu" | "it" | "ja" | "ko" | "lt" | "lv" | "nb" | "nl" | "no" | "pl" | "pt" | "ro" | "ru" | "sk" | "sl" | "sr" | "sv" | "th" | "tr" | "tu" | "uk" | "zh-Hans-CN" | "zh-Hans-HK"
-    //dedicated.TemplateOsProperties
-    // fullName: dedicated.TemplateOsProperties.TemplateOsProperties
+    // interface fullName: dedicated.TemplateOsProperties.TemplateOsProperties
     export interface TemplateOsProperties {
         changeLog?: string;
         customHostname?: string;
@@ -29,15 +27,14 @@ export namespace dedicated {
         sshKeyName?: string;
         useDistributionKernel?: boolean;
     }
-    //dedicated.TemplateOsTypeEnum
+    // type fullname: dedicated.TemplateOsTypeEnum
     export type TemplateOsTypeEnum = "bsd" | "linux" | "solaris" | "windows"
-    //dedicated.TemplateOsUsageEnum
+    // type fullname: dedicated.TemplateOsUsageEnum
     export type TemplateOsUsageEnum = "basic" | "customer" | "hosting" | "other" | "readyToUse" | "virtualisation"
-    //dedicated.TemplatePartitionTypeEnum
+    // type fullname: dedicated.TemplatePartitionTypeEnum
     export type TemplatePartitionTypeEnum = "logical" | "lv" | "primary"
     export namespace installationTemplate {
-        //dedicated.installationTemplate.Templates
-        // fullName: dedicated.installationTemplate.Templates.Templates
+        // interface fullName: dedicated.installationTemplate.Templates.Templates
         export interface Templates {
             availableLanguages: dedicated.TemplateOsLanguageEnum[];
             beta?: boolean;
@@ -60,22 +57,19 @@ export namespace dedicated {
             supportsUEFI?: dedicated.server.SupportsUEFIEnum;
             templateName: string;
         }
-        //dedicated.installationTemplate.hardwareRaid
-        // fullName: dedicated.installationTemplate.hardwareRaid.hardwareRaid
+        // interface fullName: dedicated.installationTemplate.hardwareRaid.hardwareRaid
         export interface hardwareRaid {
             disks: string[];
             mode: dedicated.TemplateOsHardwareRaidEnum;
             name: string;
             step: number;
         }
-        //dedicated.installationTemplate.templatePartitioningSchemes
-        // fullName: dedicated.installationTemplate.templatePartitioningSchemes.templatePartitioningSchemes
+        // interface fullName: dedicated.installationTemplate.templatePartitioningSchemes.templatePartitioningSchemes
         export interface templatePartitioningSchemes {
             name: string;
             priority: number;
         }
-        //dedicated.installationTemplate.templatePartitions
-        // fullName: dedicated.installationTemplate.templatePartitions.templatePartitions
+        // interface fullName: dedicated.installationTemplate.templatePartitions.templatePartitions
         export interface templatePartitions {
             filesystem: dedicated.TemplateOsFileSystemEnum;
             mountpoint: string;
@@ -87,11 +81,11 @@ export namespace dedicated {
         }
     }
     export namespace server {
-        //dedicated.server.BitFormatEnum
+        // type fullname: dedicated.server.BitFormatEnum
         export type BitFormatEnum = 32 | 64
-        //dedicated.server.PartitionRaidEnum
+        // type fullname: dedicated.server.PartitionRaidEnum
         export type PartitionRaidEnum = "0" | "1" | "10" | "5" | "6"
-        //dedicated.server.SupportsUEFIEnum
+        // type fullname: dedicated.server.SupportsUEFIEnum
         export type SupportsUEFIEnum = "no" | "only" | "yes"
     }
 }

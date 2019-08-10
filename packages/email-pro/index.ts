@@ -5,8 +5,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  */
 export namespace email {
     export namespace pro {
-        //email.pro.Account
-        // fullName: email.pro.Account.Account
+        // interface fullName: email.pro.Account.Account
         export interface Account {
             SAMAccountName?: string;
             configured: boolean;
@@ -37,15 +36,13 @@ export namespace email {
             state: emailproObjectStateEnum;
             taskPendingId: number;
         }
-        //email.pro.AccountAlias
-        // fullName: email.pro.AccountAlias.AccountAlias
+        // interface fullName: email.pro.AccountAlias.AccountAlias
         export interface AccountAlias {
             alias: string;
             creationDate: string;
             taskPendingId: number;
         }
-        //email.pro.AccountDiagnosis
-        // fullName: email.pro.AccountDiagnosis.AccountDiagnosis
+        // interface fullName: email.pro.AccountDiagnosis.AccountDiagnosis
         export interface AccountDiagnosis {
             canReceiveEmail: boolean;
             canSendEmail: boolean;
@@ -57,31 +54,27 @@ export namespace email {
             isSuspended: boolean;
             lastCheck: string;
         }
-        //email.pro.AccountFullAccess
-        // fullName: email.pro.AccountFullAccess.AccountFullAccess
+        // interface fullName: email.pro.AccountFullAccess.AccountFullAccess
         export interface AccountFullAccess {
             allowedAccountId: number;
             creationDate: string;
             taskPendingId: number;
         }
-        //email.pro.AccountSendAs
-        // fullName: email.pro.AccountSendAs.AccountSendAs
+        // interface fullName: email.pro.AccountSendAs.AccountSendAs
         export interface AccountSendAs {
             allowedAccountId: number;
             creationDate: string;
             taskPendingId: number;
         }
-        //email.pro.AccountSendOnBehalfTo
-        // fullName: email.pro.AccountSendOnBehalfTo.AccountSendOnBehalfTo
+        // interface fullName: email.pro.AccountSendOnBehalfTo.AccountSendOnBehalfTo
         export interface AccountSendOnBehalfTo {
             allowedAccountId: number;
             creationDate: string;
             taskPendingId: number;
         }
-        //email.pro.DisclaimerAttributeEnum
+        // type fullname: email.pro.DisclaimerAttributeEnum
         export type DisclaimerAttributeEnum = "City" | "Company" | "Country" | "Department" | "DisplayName" | "Email" | "FaxNumber" | "FirstName" | "HomePhoneNumber" | "Initials" | "LastName" | "Manager" | "MobileNumber" | "Notes" | "Office" | "OtherFaxNumber" | "OtherHomePhoneNumber" | "OtherPhoneNumber" | "PagerNumber" | "PhoneNumber" | "State" | "Street" | "Title" | "UserLogonName" | "ZipCode"
-        //email.pro.Domain
-        // fullName: email.pro.Domain.Domain
+        // interface fullName: email.pro.Domain.Domain
         export interface Domain {
             cnameToCheck?: string;
             domainAliases: string[];
@@ -97,10 +90,9 @@ export namespace email {
             taskPendingId: number;
             type: email.pro.DomainTypeEnum;
         }
-        //email.pro.DomainTypeEnum
+        // type fullname: email.pro.DomainTypeEnum
         export type DomainTypeEnum = "authoritative" | "nonAuthoritative"
-        //email.pro.ExternalContact
-        // fullName: email.pro.ExternalContact.ExternalContact
+        // interface fullName: email.pro.ExternalContact.ExternalContact
         export interface ExternalContact {
             creationDate: string;
             displayName: string;
@@ -113,12 +105,11 @@ export namespace email {
             state: emailproObjectStateEnum;
             taskPendingId: number;
         }
-        //email.pro.MailingFilterEnum
+        // type fullname: email.pro.MailingFilterEnum
         export type MailingFilterEnum = "vaderetro"
-        //email.pro.ObjectStateEnum
+        // type fullname: email.pro.ObjectStateEnum
         export type ObjectStateEnum = "creating" | "deleting" | "ok" | "reopening" | "suspended" | "suspending" | "unknown"
-        //email.pro.Server
-        // fullName: email.pro.Server.Server
+        // interface fullName: email.pro.Server.Server
         export interface Server {
             currentDiskUsage?: number;
             diskSize?: number;
@@ -132,10 +123,9 @@ export namespace email {
             taskPendingId: number;
             version?: number;
         }
-        //email.pro.ServerStateEnum
+        // type fullname: email.pro.ServerStateEnum
         export type ServerStateEnum = "configurationPending" | "notConfigured" | "ok"
-        //email.pro.Service
-        // fullName: email.pro.Service.Service
+        // interface fullName: email.pro.Service.Service
         export interface Service {
             complexityEnabled: boolean;
             displayName?: string;
@@ -156,12 +146,11 @@ export namespace email {
             taskPendingId: number;
             webUrl?: string;
         }
-        //email.pro.ServiceOfferEnum
+        // type fullname: email.pro.ServiceOfferEnum
         export type ServiceOfferEnum = "emailpro"
-        //email.pro.ServiceStateEnum
+        // type fullname: email.pro.ServiceStateEnum
         export type ServiceStateEnum = "creating" | "deleting" | "inMaintenance" | "ok" | "reopening" | "suspended" | "suspending"
-        //email.pro.Task
-        // fullName: email.pro.Task.Task
+        // interface fullName: email.pro.Task.Task
         export interface Task {
             finishDate?: string;
             function: email.pro.TaskFunctionEnum;
@@ -169,12 +158,11 @@ export namespace email {
             status: email.pro.TaskStatusEnum;
             todoDate: string;
         }
-        //email.pro.TaskFunctionEnum
+        // type fullname: email.pro.TaskFunctionEnum
         export type TaskFunctionEnum = "addAccount" | "addAlias" | "addDomain" | "addDomainDisclaimer" | "addExternalContact" | "addFullAccess" | "addSendAs" | "addSendOnBehalfTo" | "addServiceAuthorizedIp" | "changeHostname" | "changePassword" | "configureCustomer" | "deleteAccount" | "deleteAlias" | "deleteDomain" | "deleteDomainDisclaimer" | "deleteExternalContact" | "deleteFullAccess" | "deleteSendAs" | "deleteSendOnBehalfTo" | "deleteService" | "deleteServiceAuthorizedIp" | "diagnoseAccount" | "expandDrive" | "installServer" | "maintenance" | "migrateAccountViaOMM" | "migrationAccount" | "migrationDisclaimer" | "migrationExternalContact" | "migrationHistory" | "migrationService" | "reOpenAccount" | "setAccount" | "setAlias" | "setDns" | "setDomain" | "setDomainDisclaimer" | "setExternalContact" | "setService" | "suspendAccount" | "suspendService" | "unknown" | "unsuspendAccount" | "unsuspendService"
-        //email.pro.TaskStatusEnum
+        // type fullname: email.pro.TaskStatusEnum
         export type TaskStatusEnum = "cancelled" | "doing" | "done" | "error" | "todo"
-        //email.pro.disclaimer
-        // fullName: email.pro.disclaimer.disclaimer
+        // interface fullName: email.pro.disclaimer.disclaimer
         export interface disclaimer {
             content: string;
             creationDate: string;
@@ -182,10 +170,9 @@ export namespace email {
             outsideOnly: boolean;
             taskPendingId: number;
         }
-        //email.pro.renewPeriodEnum
+        // type fullname: email.pro.renewPeriodEnum
         export type renewPeriodEnum = "monthly" | "yearly"
-        //email.pro.spamAndVirusConfiguration
-        // fullName: email.pro.spamAndVirusConfiguration.spamAndVirusConfiguration
+        // interface fullName: email.pro.spamAndVirusConfiguration.spamAndVirusConfiguration
         export interface spamAndVirusConfiguration {
             checkDKIM: boolean;
             checkSPF: boolean;
@@ -198,8 +185,7 @@ export namespace email {
     }
 }
 export namespace service {
-    //service.RenewType
-    // fullName: service.RenewType.RenewType
+    // interface fullName: service.RenewType.RenewType
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -207,14 +193,13 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    //service.RenewalTypeEnum
+    // type fullname: service.RenewalTypeEnum
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    //service.StateEnum
+    // type fullname: service.StateEnum
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
 }
 export namespace services {
-    //services.Service
-    // fullName: services.Service.Service
+    // interface fullName: services.Service.Service
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;

@@ -4,8 +4,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /store Models
  */
 export namespace MarketPlace {
-    //MarketPlace.Document
-    // fullName: MarketPlace.Document.Document
+    // interface fullName: MarketPlace.Document.Document
     export interface Document {
         creationDate?: string;
         getUrl?: string;
@@ -15,8 +14,7 @@ export namespace MarketPlace {
         size?: string;
         tags?: complexType.SafeKeyValue<string>[];
     }
-    //MarketPlace.Partner
-    // fullName: MarketPlace.Partner.Partner
+    // interface fullName: MarketPlace.Partner.Partner
     export interface Partner {
         category?: string;
         city?: string;
@@ -37,8 +35,7 @@ export namespace MarketPlace {
     }
 }
 export namespace MarketPlaceContact {
-    //MarketPlaceContact.Contact
-    // fullName: MarketPlaceContact.Contact.Contact
+    // interface fullName: MarketPlaceContact.Contact.Contact
     export interface Contact {
         city?: string;
         country?: string;
@@ -54,8 +51,7 @@ export namespace MarketPlaceContact {
     }
 }
 export namespace MarketPlacePartnerProduct {
-    //MarketPlacePartnerProduct.edit_response
-    // fullName: MarketPlacePartnerProduct.edit_response.edit_response
+    // interface fullName: MarketPlacePartnerProduct.edit_response.edit_response
     export interface edit_response {
         category: string;
         description: string;
@@ -64,8 +60,7 @@ export namespace MarketPlacePartnerProduct {
     }
 }
 export namespace complexType {
-    //complexType.SafeKeyValue
-    // fullName: complexType.SafeKeyValue.SafeKeyValue
+    // interface fullName: complexType.SafeKeyValue.SafeKeyValue
     export interface SafeKeyValue<T> {
         key: string;
         value: T;

@@ -4,29 +4,26 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /saas/csp2 Models
  */
 export namespace msServices {
-    //msServices.LicensePeriodEnum
+    // type fullname: msServices.LicensePeriodEnum
     export type LicensePeriodEnum = "lastMonth" | "lastQuarter" | "lastWeek" | "lastYear"
 }
 export namespace saas {
     export namespace csp2 {
-        //saas.csp2.BillingStatistics
-        // fullName: saas.csp2.BillingStatistics.BillingStatistics
+        // interface fullName: saas.csp2.BillingStatistics.BillingStatistics
         export interface BillingStatistics {
             endDate: string;
             lines: saas.csp2.BillingStatisticsLine[];
             startDate: string;
         }
-        //saas.csp2.BillingStatisticsLine
-        // fullName: saas.csp2.BillingStatisticsLine.BillingStatisticsLine
+        // interface fullName: saas.csp2.BillingStatisticsLine.BillingStatisticsLine
         export interface BillingStatisticsLine {
             licenceId: number;
             licenceName: string;
             peakCount: number;
         }
-        //saas.csp2.LicenseTypeEnum
+        // type fullname: saas.csp2.LicenseTypeEnum
         export type LicenseTypeEnum = "ADDON" | "NON-SPECIFIC"
-        //saas.csp2.OfficeLicence
-        // fullName: saas.csp2.OfficeLicence.OfficeLicence
+        // interface fullName: saas.csp2.OfficeLicence.OfficeLicence
         export interface OfficeLicence {
             id: number;
             licenceType: saas.csp2.LicenseTypeEnum;
@@ -35,8 +32,7 @@ export namespace saas {
             newSeatsAllowed: boolean;
             newSubscriptionsAllowed: boolean;
         }
-        //saas.csp2.OfficeSubscription
-        // fullName: saas.csp2.OfficeSubscription.OfficeSubscription
+        // interface fullName: saas.csp2.OfficeSubscription.OfficeSubscription
         export interface OfficeSubscription {
             creationDate: string;
             id: number;
@@ -46,8 +42,7 @@ export namespace saas {
             status: string;
             taskPendingId: number;
         }
-        //saas.csp2.OfficeTask
-        // fullName: saas.csp2.OfficeTask.OfficeTask
+        // interface fullName: saas.csp2.OfficeTask.OfficeTask
         export interface OfficeTask {
             finishDate?: string;
             function: string;
@@ -55,8 +50,7 @@ export namespace saas {
             status: saas.csp2.TaskStatusEnum;
             todoDate: string;
         }
-        //saas.csp2.OfficeTenant
-        // fullName: saas.csp2.OfficeTenant.OfficeTenant
+        // interface fullName: saas.csp2.OfficeTenant.OfficeTenant
         export interface OfficeTenant {
             address: string;
             city: string;
@@ -70,31 +64,28 @@ export namespace saas {
             status: saas.csp2.ServiceStateEnum;
             zipCode: string;
         }
-        //saas.csp2.ServiceStateEnum
+        // type fullname: saas.csp2.ServiceStateEnum
         export type ServiceStateEnum = "creating" | "inMaintenance" | "ok" | "suspended"
-        //saas.csp2.Statistics
-        // fullName: saas.csp2.Statistics.Statistics
+        // interface fullName: saas.csp2.Statistics.Statistics
         export interface Statistics {
             date: string;
             lines: saas.csp2.StatisticsLine[];
         }
-        //saas.csp2.StatisticsLine
-        // fullName: saas.csp2.StatisticsLine.StatisticsLine
+        // interface fullName: saas.csp2.StatisticsLine.StatisticsLine
         export interface StatisticsLine {
             endOfDayCount: number;
             licenceId: number;
             licenceName: string;
             peakCount: number;
         }
-        //saas.csp2.SupportedServiceEnum
+        // type fullname: saas.csp2.SupportedServiceEnum
         export type SupportedServiceEnum = "Email" | "Intune" | "OfficeCommunicationsOnline"
-        //saas.csp2.TaskStatusEnum
+        // type fullname: saas.csp2.TaskStatusEnum
         export type TaskStatusEnum = "cancelled" | "doing" | "done" | "error" | "todo"
     }
 }
 export namespace service {
-    //service.RenewType
-    // fullName: service.RenewType.RenewType
+    // interface fullName: service.RenewType.RenewType
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -102,14 +93,13 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    //service.RenewalTypeEnum
+    // type fullname: service.RenewalTypeEnum
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    //service.StateEnum
+    // type fullname: service.StateEnum
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
 }
 export namespace services {
-    //services.Service
-    // fullName: services.Service.Service
+    // interface fullName: services.Service.Service
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;

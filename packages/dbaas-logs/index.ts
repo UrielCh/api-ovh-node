@@ -5,8 +5,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  */
 export namespace dbaas {
     export namespace logs {
-        //dbaas.logs.Alias
-        // fullName: dbaas.logs.Alias.Alias
+        // interface fullName: dbaas.logs.Alias.Alias
         export interface Alias {
             aliasId: string;
             createdAt: string;
@@ -17,14 +16,12 @@ export namespace dbaas {
             optionId?: string;
             updatedAt?: string;
         }
-        //dbaas.logs.AllowedNetwork
-        // fullName: dbaas.logs.AllowedNetwork.AllowedNetwork
+        // interface fullName: dbaas.logs.AllowedNetwork.AllowedNetwork
         export interface AllowedNetwork {
             allowedNetworkId: string;
             network: string;
         }
-        //dbaas.logs.Archive
-        // fullName: dbaas.logs.Archive.Archive
+        // interface fullName: dbaas.logs.Archive.Archive
         export interface Archive {
             archiveId: string;
             createdAt?: string;
@@ -35,16 +32,14 @@ export namespace dbaas {
             sha256: string;
             size: number;
         }
-        //dbaas.logs.ArchiveRetrievalStateEnum
+        // type fullname: dbaas.logs.ArchiveRetrievalStateEnum
         export type ArchiveRetrievalStateEnum = "sealed" | "unsealing" | "unsealed"
-        //dbaas.logs.ArchiveUrl
-        // fullName: dbaas.logs.ArchiveUrl.ArchiveUrl
+        // interface fullName: dbaas.logs.ArchiveUrl.ArchiveUrl
         export interface ArchiveUrl {
             expirationDate: string;
             url: string;
         }
-        //dbaas.logs.Cluster
-        // fullName: dbaas.logs.Cluster.Cluster
+        // interface fullName: dbaas.logs.Cluster.Cluster
         export interface Cluster {
             clusterId: string;
             clusterType: dbaas.logs.ClusterClusterTypeEnum;
@@ -55,27 +50,24 @@ export namespace dbaas {
             isUnlocked: boolean;
             region: dbaas.logs.ClusterRegionEnum;
         }
-        //dbaas.logs.ClusterAllowedNetwork
-        // fullName: dbaas.logs.ClusterAllowedNetwork.ClusterAllowedNetwork
+        // interface fullName: dbaas.logs.ClusterAllowedNetwork.ClusterAllowedNetwork
         export interface ClusterAllowedNetwork {
             allowedNetworkId: string;
             flowType: dbaas.logs.ClusterAllowedNetworkFlowTypeEnum;
             network: string;
         }
-        //dbaas.logs.ClusterAllowedNetworkCreation
-        // fullName: dbaas.logs.ClusterAllowedNetworkCreation.ClusterAllowedNetworkCreation
+        // interface fullName: dbaas.logs.ClusterAllowedNetworkCreation.ClusterAllowedNetworkCreation
         export interface ClusterAllowedNetworkCreation {
             flowType: dbaas.logs.ClusterAllowedNetworkFlowTypeEnum;
             network: string;
         }
-        //dbaas.logs.ClusterAllowedNetworkFlowTypeEnum
+        // type fullname: dbaas.logs.ClusterAllowedNetworkFlowTypeEnum
         export type ClusterAllowedNetworkFlowTypeEnum = "QUERY" | "DIRECT_INPUT" | "ALL"
-        //dbaas.logs.ClusterClusterTypeEnum
+        // type fullname: dbaas.logs.ClusterClusterTypeEnum
         export type ClusterClusterTypeEnum = "TRIAL" | "PRO" | "DEDICATED"
-        //dbaas.logs.ClusterRegionEnum
+        // type fullname: dbaas.logs.ClusterRegionEnum
         export type ClusterRegionEnum = "GRA" | "RBX" | "BHS" | "SBG" | "P-19"
-        //dbaas.logs.Dashboard
-        // fullName: dbaas.logs.Dashboard.Dashboard
+        // interface fullName: dbaas.logs.Dashboard.Dashboard
         export interface Dashboard {
             createdAt: string;
             dashboardId: string;
@@ -86,28 +78,25 @@ export namespace dbaas {
             title: string;
             updatedAt?: string;
         }
-        //dbaas.logs.Engine
-        // fullName: dbaas.logs.Engine.Engine
+        // interface fullName: dbaas.logs.Engine.Engine
         export interface Engine {
             engineId: string;
             isDeprecated: boolean;
             name: dbaas.logs.EngineNameEnum;
             version: string;
         }
-        //dbaas.logs.EngineNameEnum
+        // type fullname: dbaas.logs.EngineNameEnum
         export type EngineNameEnum = "FLOWGGER" | "LOGSTASH" | "TEST"
-        //dbaas.logs.FlowggerConfiguration
-        // fullName: dbaas.logs.FlowggerConfiguration.FlowggerConfiguration
+        // interface fullName: dbaas.logs.FlowggerConfiguration.FlowggerConfiguration
         export interface FlowggerConfiguration {
             logFormat: dbaas.logs.FlowggerConfigurationLogFormatEnum;
             logFraming: dbaas.logs.FlowggerConfigurationLogFramingEnum;
         }
-        //dbaas.logs.FlowggerConfigurationLogFormatEnum
+        // type fullname: dbaas.logs.FlowggerConfigurationLogFormatEnum
         export type FlowggerConfigurationLogFormatEnum = "RFC5424" | "LTSV" | "GELF" | "CAPNP"
-        //dbaas.logs.FlowggerConfigurationLogFramingEnum
+        // type fullname: dbaas.logs.FlowggerConfigurationLogFramingEnum
         export type FlowggerConfigurationLogFramingEnum = "LINE" | "NUL" | "SYSLEN" | "CAPNP"
-        //dbaas.logs.Helper
-        // fullName: dbaas.logs.Helper.Helper
+        // interface fullName: dbaas.logs.Helper.Helper
         export interface Helper {
             description: string;
             engineId: string;
@@ -115,16 +104,14 @@ export namespace dbaas {
             sections: dbaas.logs.HelperSection[];
             title: string;
         }
-        //dbaas.logs.HelperSection
-        // fullName: dbaas.logs.HelperSection.HelperSection
+        // interface fullName: dbaas.logs.HelperSection.HelperSection
         export interface HelperSection {
             content: string;
             name: dbaas.logs.HelperSectionNameEnum;
         }
-        //dbaas.logs.HelperSectionNameEnum
+        // type fullname: dbaas.logs.HelperSectionNameEnum
         export type HelperSectionNameEnum = "LOGSTASH_INPUT" | "LOGSTASH_FILTER" | "LOGSTASH_PATTERN"
-        //dbaas.logs.Index
-        // fullName: dbaas.logs.Index.Index
+        // interface fullName: dbaas.logs.Index.Index
         export interface Index {
             alertNotifyEnabled?: boolean;
             createdAt: string;
@@ -137,8 +124,7 @@ export namespace dbaas {
             optionId?: string;
             updatedAt?: string;
         }
-        //dbaas.logs.Input
-        // fullName: dbaas.logs.Input.Input
+        // interface fullName: dbaas.logs.Input.Input
         export interface Input {
             autoSelectOption?: boolean;
             createdAt: string;
@@ -157,34 +143,29 @@ export namespace dbaas {
             title: string;
             updatedAt?: string;
         }
-        //dbaas.logs.InputAction
-        // fullName: dbaas.logs.InputAction.InputAction
+        // interface fullName: dbaas.logs.InputAction.InputAction
         export interface InputAction {
             isAllowed: boolean;
             type: dbaas.logs.InputActionTypeEnum;
         }
-        //dbaas.logs.InputActionTypeEnum
+        // type fullname: dbaas.logs.InputActionTypeEnum
         export type InputActionTypeEnum = "END" | "LOG" | "START" | "TEST" | "DESTROY" | "RESTART"
-        //dbaas.logs.InputAllowedNetworkCreation
-        // fullName: dbaas.logs.InputAllowedNetworkCreation.InputAllowedNetworkCreation
+        // interface fullName: dbaas.logs.InputAllowedNetworkCreation.InputAllowedNetworkCreation
         export interface InputAllowedNetworkCreation {
             network: string;
         }
-        //dbaas.logs.InputConfigurationFlowggerUpdate
-        // fullName: dbaas.logs.InputConfigurationFlowggerUpdate.InputConfigurationFlowggerUpdate
+        // interface fullName: dbaas.logs.InputConfigurationFlowggerUpdate.InputConfigurationFlowggerUpdate
         export interface InputConfigurationFlowggerUpdate {
             logFormat: dbaas.logs.FlowggerConfigurationLogFormatEnum;
             logFraming: dbaas.logs.FlowggerConfigurationLogFramingEnum;
         }
-        //dbaas.logs.InputConfigurationLogstashUpdate
-        // fullName: dbaas.logs.InputConfigurationLogstashUpdate.InputConfigurationLogstashUpdate
+        // interface fullName: dbaas.logs.InputConfigurationLogstashUpdate.InputConfigurationLogstashUpdate
         export interface InputConfigurationLogstashUpdate {
             filterSection?: string;
             inputSection: string;
             patternSection?: string;
         }
-        //dbaas.logs.InputCreation
-        // fullName: dbaas.logs.InputCreation.InputCreation
+        // interface fullName: dbaas.logs.InputCreation.InputCreation
         export interface InputCreation {
             autoSelectOption?: boolean;
             description: string;
@@ -195,10 +176,9 @@ export namespace dbaas {
             streamId: string;
             title: string;
         }
-        //dbaas.logs.InputStatusEnum
+        // type fullname: dbaas.logs.InputStatusEnum
         export type InputStatusEnum = "INIT" | "PENDING" | "RUNNING" | "PROCESSING"
-        //dbaas.logs.InputUpdate
-        // fullName: dbaas.logs.InputUpdate.InputUpdate
+        // interface fullName: dbaas.logs.InputUpdate.InputUpdate
         export interface InputUpdate {
             description: string;
             engineId: string;
@@ -208,22 +188,19 @@ export namespace dbaas {
             streamId: string;
             title: string;
         }
-        //dbaas.logs.LogstashConfiguration
-        // fullName: dbaas.logs.LogstashConfiguration.LogstashConfiguration
+        // interface fullName: dbaas.logs.LogstashConfiguration.LogstashConfiguration
         export interface LogstashConfiguration {
             filterSection?: string;
             inputSection: string;
             patternSection?: string;
         }
-        //dbaas.logs.Member
-        // fullName: dbaas.logs.Member.Member
+        // interface fullName: dbaas.logs.Member.Member
         export interface Member {
             createdAt: string;
             note?: string;
             username: string;
         }
-        //dbaas.logs.Offer
-        // fullName: dbaas.logs.Offer.Offer
+        // interface fullName: dbaas.logs.Offer.Offer
         export interface Offer {
             curNbAlias: number;
             curNbDashboard: number;
@@ -241,8 +218,7 @@ export namespace dbaas {
             reference: string;
             retention?: number;
         }
-        //dbaas.logs.Operation
-        // fullName: dbaas.logs.Operation.Operation
+        // interface fullName: dbaas.logs.Operation.Operation
         export interface Operation {
             aliasId?: string;
             createdAt: string;
@@ -256,10 +232,9 @@ export namespace dbaas {
             streamId?: string;
             updatedAt?: string;
         }
-        //dbaas.logs.OperationStateEnum
+        // type fullname: dbaas.logs.OperationStateEnum
         export type OperationStateEnum = "PENDING" | "RECEIVED" | "STARTED" | "SUCCESS" | "FAILURE" | "REVOKED" | "RETRY" | "RUNNING"
-        //dbaas.logs.Option
-        // fullName: dbaas.logs.Option.Option
+        // interface fullName: dbaas.logs.Option.Option
         export interface Option {
             createdAt: string;
             curNbAlias: number;
@@ -280,34 +255,29 @@ export namespace dbaas {
             state: dbaas.logs.OptionStateEnum;
             updatedAt?: string;
         }
-        //dbaas.logs.OptionStateEnum
+        // type fullname: dbaas.logs.OptionStateEnum
         export type OptionStateEnum = "ENABLED" | "DISABLED"
-        //dbaas.logs.OutputElasticsearchAliasCreation
-        // fullName: dbaas.logs.OutputElasticsearchAliasCreation.OutputElasticsearchAliasCreation
+        // interface fullName: dbaas.logs.OutputElasticsearchAliasCreation.OutputElasticsearchAliasCreation
         export interface OutputElasticsearchAliasCreation {
             autoSelectOption?: boolean;
             description: string;
             optionId?: string;
             suffix: string;
         }
-        //dbaas.logs.OutputElasticsearchAliasIndexCreation
-        // fullName: dbaas.logs.OutputElasticsearchAliasIndexCreation.OutputElasticsearchAliasIndexCreation
+        // interface fullName: dbaas.logs.OutputElasticsearchAliasIndexCreation.OutputElasticsearchAliasIndexCreation
         export interface OutputElasticsearchAliasIndexCreation {
             indexId: string;
         }
-        //dbaas.logs.OutputElasticsearchAliasStreamCreation
-        // fullName: dbaas.logs.OutputElasticsearchAliasStreamCreation.OutputElasticsearchAliasStreamCreation
+        // interface fullName: dbaas.logs.OutputElasticsearchAliasStreamCreation.OutputElasticsearchAliasStreamCreation
         export interface OutputElasticsearchAliasStreamCreation {
             streamId: string;
         }
-        //dbaas.logs.OutputElasticsearchAliasUpdate
-        // fullName: dbaas.logs.OutputElasticsearchAliasUpdate.OutputElasticsearchAliasUpdate
+        // interface fullName: dbaas.logs.OutputElasticsearchAliasUpdate.OutputElasticsearchAliasUpdate
         export interface OutputElasticsearchAliasUpdate {
             description: string;
             optionId?: string;
         }
-        //dbaas.logs.OutputElasticsearchIndexCreation
-        // fullName: dbaas.logs.OutputElasticsearchIndexCreation.OutputElasticsearchIndexCreation
+        // interface fullName: dbaas.logs.OutputElasticsearchIndexCreation.OutputElasticsearchIndexCreation
         export interface OutputElasticsearchIndexCreation {
             alertNotifyEnabled?: boolean;
             autoSelectOption?: boolean;
@@ -315,22 +285,19 @@ export namespace dbaas {
             optionId?: string;
             suffix: string;
         }
-        //dbaas.logs.OutputElasticsearchIndexUpdate
-        // fullName: dbaas.logs.OutputElasticsearchIndexUpdate.OutputElasticsearchIndexUpdate
+        // interface fullName: dbaas.logs.OutputElasticsearchIndexUpdate.OutputElasticsearchIndexUpdate
         export interface OutputElasticsearchIndexUpdate {
             alertNotifyEnabled?: boolean;
             description: string;
         }
-        //dbaas.logs.OutputGraylogDashboardCreation
-        // fullName: dbaas.logs.OutputGraylogDashboardCreation.OutputGraylogDashboardCreation
+        // interface fullName: dbaas.logs.OutputGraylogDashboardCreation.OutputGraylogDashboardCreation
         export interface OutputGraylogDashboardCreation {
             autoSelectOption?: boolean;
             description: string;
             optionId?: string;
             title: string;
         }
-        //dbaas.logs.OutputGraylogDashboardDuplicateCreation
-        // fullName: dbaas.logs.OutputGraylogDashboardDuplicateCreation.OutputGraylogDashboardDuplicateCreation
+        // interface fullName: dbaas.logs.OutputGraylogDashboardDuplicateCreation.OutputGraylogDashboardDuplicateCreation
         export interface OutputGraylogDashboardDuplicateCreation {
             autoSelectOption?: boolean;
             description: string;
@@ -338,15 +305,13 @@ export namespace dbaas {
             streamId?: string;
             title: string;
         }
-        //dbaas.logs.OutputGraylogDashboardUpdate
-        // fullName: dbaas.logs.OutputGraylogDashboardUpdate.OutputGraylogDashboardUpdate
+        // interface fullName: dbaas.logs.OutputGraylogDashboardUpdate.OutputGraylogDashboardUpdate
         export interface OutputGraylogDashboardUpdate {
             description: string;
             optionId?: string;
             title: string;
         }
-        //dbaas.logs.OutputGraylogStreamAlertCreation
-        // fullName: dbaas.logs.OutputGraylogStreamAlertCreation.OutputGraylogStreamAlertCreation
+        // interface fullName: dbaas.logs.OutputGraylogStreamAlertCreation.OutputGraylogStreamAlertCreation
         export interface OutputGraylogStreamAlertCreation {
             backlog: number;
             conditionType?: dbaas.logs.StreamAlertConditionConditionTypeEnum;
@@ -361,8 +326,7 @@ export namespace dbaas {
             title: string;
             value?: string;
         }
-        //dbaas.logs.OutputGraylogStreamAlertUpdate
-        // fullName: dbaas.logs.OutputGraylogStreamAlertUpdate.OutputGraylogStreamAlertUpdate
+        // interface fullName: dbaas.logs.OutputGraylogStreamAlertUpdate.OutputGraylogStreamAlertUpdate
         export interface OutputGraylogStreamAlertUpdate {
             backlog: number;
             conditionType?: dbaas.logs.StreamAlertConditionConditionTypeEnum;
@@ -377,8 +341,7 @@ export namespace dbaas {
             title: string;
             value?: string;
         }
-        //dbaas.logs.OutputGraylogStreamCreation
-        // fullName: dbaas.logs.OutputGraylogStreamCreation.OutputGraylogStreamCreation
+        // interface fullName: dbaas.logs.OutputGraylogStreamCreation.OutputGraylogStreamCreation
         export interface OutputGraylogStreamCreation {
             autoSelectOption?: boolean;
             coldStorageCompression?: dbaas.logs.StreamColdStorageCompressionEnum;
@@ -394,16 +357,14 @@ export namespace dbaas {
             title: string;
             webSocketEnabled?: boolean;
         }
-        //dbaas.logs.OutputGraylogStreamRuleCreation
-        // fullName: dbaas.logs.OutputGraylogStreamRuleCreation.OutputGraylogStreamRuleCreation
+        // interface fullName: dbaas.logs.OutputGraylogStreamRuleCreation.OutputGraylogStreamRuleCreation
         export interface OutputGraylogStreamRuleCreation {
             field: string;
             isInverted?: boolean;
             operator: dbaas.logs.StreamRuleOperatorEnum;
             value: string;
         }
-        //dbaas.logs.OutputGraylogStreamUpdate
-        // fullName: dbaas.logs.OutputGraylogStreamUpdate.OutputGraylogStreamUpdate
+        // interface fullName: dbaas.logs.OutputGraylogStreamUpdate.OutputGraylogStreamUpdate
         export interface OutputGraylogStreamUpdate {
             coldStorageCompression?: dbaas.logs.StreamColdStorageCompressionEnum;
             coldStorageContent?: dbaas.logs.StreamColdStorageContentEnum;
@@ -417,8 +378,7 @@ export namespace dbaas {
             title: string;
             webSocketEnabled?: boolean;
         }
-        //dbaas.logs.Permission
-        // fullName: dbaas.logs.Permission.Permission
+        // interface fullName: dbaas.logs.Permission.Permission
         export interface Permission {
             aliasId?: string;
             dashboardId?: string;
@@ -427,14 +387,13 @@ export namespace dbaas {
             permissionType?: dbaas.logs.PermissionTypeEnum;
             streamId?: string;
         }
-        //dbaas.logs.PermissionDashboardPermissionTypeEnum
+        // type fullname: dbaas.logs.PermissionDashboardPermissionTypeEnum
         export type PermissionDashboardPermissionTypeEnum = "READ_ONLY" | "READ_WRITE"
-        //dbaas.logs.PermissionIndexPermissionTypeEnum
+        // type fullname: dbaas.logs.PermissionIndexPermissionTypeEnum
         export type PermissionIndexPermissionTypeEnum = "READ_ONLY" | "READ_WRITE"
-        //dbaas.logs.PermissionTypeEnum
+        // type fullname: dbaas.logs.PermissionTypeEnum
         export type PermissionTypeEnum = "READ_ONLY" | "READ_WRITE"
-        //dbaas.logs.PublicOffer
-        // fullName: dbaas.logs.PublicOffer.PublicOffer
+        // interface fullName: dbaas.logs.PublicOffer.PublicOffer
         export interface PublicOffer {
             esStorage: number;
             maxNbAlias: number;
@@ -445,8 +404,7 @@ export namespace dbaas {
             maxNbStream: number;
             reference: string;
         }
-        //dbaas.logs.Quota
-        // fullName: dbaas.logs.Quota.Quota
+        // interface fullName: dbaas.logs.Quota.Quota
         export interface Quota {
             curNbAlias: number;
             curNbDashboard: number;
@@ -461,8 +419,7 @@ export namespace dbaas {
             maxNbRole: number;
             maxNbStream: number;
         }
-        //dbaas.logs.Role
-        // fullName: dbaas.logs.Role.Role
+        // interface fullName: dbaas.logs.Role.Role
         export interface Role {
             createdAt: string;
             description: string;
@@ -471,56 +428,47 @@ export namespace dbaas {
             roleId: string;
             updatedAt?: string;
         }
-        //dbaas.logs.RoleCreation
-        // fullName: dbaas.logs.RoleCreation.RoleCreation
+        // interface fullName: dbaas.logs.RoleCreation.RoleCreation
         export interface RoleCreation {
             autoSelectOption?: boolean;
             description: string;
             name: string;
             optionId?: string;
         }
-        //dbaas.logs.RoleMemberCreation
-        // fullName: dbaas.logs.RoleMemberCreation.RoleMemberCreation
+        // interface fullName: dbaas.logs.RoleMemberCreation.RoleMemberCreation
         export interface RoleMemberCreation {
             note?: string;
             username: string;
         }
-        //dbaas.logs.RoleMemberUpdate
-        // fullName: dbaas.logs.RoleMemberUpdate.RoleMemberUpdate
+        // interface fullName: dbaas.logs.RoleMemberUpdate.RoleMemberUpdate
         export interface RoleMemberUpdate {
             note?: string;
         }
-        //dbaas.logs.RolePermissionAliasCreation
-        // fullName: dbaas.logs.RolePermissionAliasCreation.RolePermissionAliasCreation
+        // interface fullName: dbaas.logs.RolePermissionAliasCreation.RolePermissionAliasCreation
         export interface RolePermissionAliasCreation {
             aliasId: string;
         }
-        //dbaas.logs.RolePermissionDashboardCreation
-        // fullName: dbaas.logs.RolePermissionDashboardCreation.RolePermissionDashboardCreation
+        // interface fullName: dbaas.logs.RolePermissionDashboardCreation.RolePermissionDashboardCreation
         export interface RolePermissionDashboardCreation {
             dashboardId: string;
             permissionType?: dbaas.logs.PermissionDashboardPermissionTypeEnum;
         }
-        //dbaas.logs.RolePermissionIndexCreation
-        // fullName: dbaas.logs.RolePermissionIndexCreation.RolePermissionIndexCreation
+        // interface fullName: dbaas.logs.RolePermissionIndexCreation.RolePermissionIndexCreation
         export interface RolePermissionIndexCreation {
             indexId: string;
             permissionType?: dbaas.logs.PermissionIndexPermissionTypeEnum;
         }
-        //dbaas.logs.RolePermissionStreamCreation
-        // fullName: dbaas.logs.RolePermissionStreamCreation.RolePermissionStreamCreation
+        // interface fullName: dbaas.logs.RolePermissionStreamCreation.RolePermissionStreamCreation
         export interface RolePermissionStreamCreation {
             streamId: string;
         }
-        //dbaas.logs.RoleUpdate
-        // fullName: dbaas.logs.RoleUpdate.RoleUpdate
+        // interface fullName: dbaas.logs.RoleUpdate.RoleUpdate
         export interface RoleUpdate {
             description: string;
             name: string;
             optionId?: string;
         }
-        //dbaas.logs.Service
-        // fullName: dbaas.logs.Service.Service
+        // interface fullName: dbaas.logs.Service.Service
         export interface Service {
             createdAt: string;
             displayName?: string;
@@ -530,16 +478,14 @@ export namespace dbaas {
             updatedAt?: string;
             username: string;
         }
-        //dbaas.logs.ServiceMetric
-        // fullName: dbaas.logs.ServiceMetric.ServiceMetric
+        // interface fullName: dbaas.logs.ServiceMetric.ServiceMetric
         export interface ServiceMetric {
             host: string;
             token: string;
         }
-        //dbaas.logs.ServiceStateEnum
+        // type fullname: dbaas.logs.ServiceStateEnum
         export type ServiceStateEnum = "INIT" | "TO_CONFIG" | "ENABLED" | "DISABLED"
-        //dbaas.logs.Stream
-        // fullName: dbaas.logs.Stream.Stream
+        // interface fullName: dbaas.logs.Stream.Stream
         export interface Stream {
             canAlert: boolean;
             coldStorageCompression?: dbaas.logs.StreamColdStorageCompressionEnum;
@@ -561,8 +507,7 @@ export namespace dbaas {
             updatedAt?: string;
             webSocketEnabled?: boolean;
         }
-        //dbaas.logs.StreamAlertCondition
-        // fullName: dbaas.logs.StreamAlertCondition.StreamAlertCondition
+        // interface fullName: dbaas.logs.StreamAlertCondition.StreamAlertCondition
         export interface StreamAlertCondition {
             alertId: string;
             backlog: number;
@@ -578,20 +523,19 @@ export namespace dbaas {
             title: string;
             value?: string;
         }
-        //dbaas.logs.StreamAlertConditionConditionTypeEnum
+        // type fullname: dbaas.logs.StreamAlertConditionConditionTypeEnum
         export type StreamAlertConditionConditionTypeEnum = "MESSAGE_COUNT" | "FIELD_VALUE" | "FIELD_CONTENT_VALUE"
-        //dbaas.logs.StreamAlertConditionConstraintTypeEnum
+        // type fullname: dbaas.logs.StreamAlertConditionConstraintTypeEnum
         export type StreamAlertConditionConstraintTypeEnum = "MEAN" | "MIN" | "MAX" | "SUM" | "STDDEV"
-        //dbaas.logs.StreamAlertConditionThresholdTypeEnum
+        // type fullname: dbaas.logs.StreamAlertConditionThresholdTypeEnum
         export type StreamAlertConditionThresholdTypeEnum = "MORE" | "LESS" | "LOWER" | "HIGHER"
-        //dbaas.logs.StreamColdStorageCompressionEnum
+        // type fullname: dbaas.logs.StreamColdStorageCompressionEnum
         export type StreamColdStorageCompressionEnum = "LZMA" | "GZIP" | "DEFLATED" | "ZSTD"
-        //dbaas.logs.StreamColdStorageContentEnum
+        // type fullname: dbaas.logs.StreamColdStorageContentEnum
         export type StreamColdStorageContentEnum = "ALL" | "GELF" | "PLAIN"
-        //dbaas.logs.StreamColdStorageTargetEnum
+        // type fullname: dbaas.logs.StreamColdStorageTargetEnum
         export type StreamColdStorageTargetEnum = "PCA" | "PCS"
-        //dbaas.logs.StreamRule
-        // fullName: dbaas.logs.StreamRule.StreamRule
+        // interface fullName: dbaas.logs.StreamRule.StreamRule
         export interface StreamRule {
             field: string;
             isInverted?: boolean;
@@ -599,23 +543,20 @@ export namespace dbaas {
             ruleId: string;
             value: string;
         }
-        //dbaas.logs.StreamRuleOperatorEnum
+        // type fullname: dbaas.logs.StreamRuleOperatorEnum
         export type StreamRuleOperatorEnum = "MATCH_EXACTLY" | "GREATER_THAN" | "SMALLER_THAN" | "FIELD_PRESENCE"
-        //dbaas.logs.TemporaryLogsLink
-        // fullName: dbaas.logs.TemporaryLogsLink.TemporaryLogsLink
+        // interface fullName: dbaas.logs.TemporaryLogsLink.TemporaryLogsLink
         export interface TemporaryLogsLink {
             expirationDate: string;
             url: string;
         }
-        //dbaas.logs.TestResult
-        // fullName: dbaas.logs.TestResult.TestResult
+        // interface fullName: dbaas.logs.TestResult.TestResult
         export interface TestResult {
             stderr?: string;
             stdout?: string;
             updatedAt?: string;
         }
-        //dbaas.logs.Token
-        // fullName: dbaas.logs.Token.Token
+        // interface fullName: dbaas.logs.Token.Token
         export interface Token {
             clusterId?: string;
             createdAt: string;
@@ -624,36 +565,31 @@ export namespace dbaas {
             updatedAt?: string;
             value: string;
         }
-        //dbaas.logs.TokenCreation
-        // fullName: dbaas.logs.TokenCreation.TokenCreation
+        // interface fullName: dbaas.logs.TokenCreation.TokenCreation
         export interface TokenCreation {
             clusterId?: string;
             name: string;
         }
-        //dbaas.logs.Update
-        // fullName: dbaas.logs.Update.Update
+        // interface fullName: dbaas.logs.Update.Update
         export interface Update {
             displayName?: string;
             isCapped?: boolean;
         }
-        //dbaas.logs.Url
-        // fullName: dbaas.logs.Url.Url
+        // interface fullName: dbaas.logs.Url.Url
         export interface Url {
             address: string;
             type: dbaas.logs.UrlTypeEnum;
         }
-        //dbaas.logs.UrlTypeEnum
+        // type fullname: dbaas.logs.UrlTypeEnum
         export type UrlTypeEnum = "GRAYLOG_WEBUI" | "GRAYLOG_API" | "ELASTICSEARCH_API" | "KIBANA_WEBUI" | "CONSOLE" | "WEB_SOCKET" | "SERVICE_DOMAIN" | "TCP_TLS_GELF" | "TCP_GELF" | "UDP_GELF" | "TCP_TLS_RFC5424" | "TCP_RFC5424" | "UDP_RFC5424" | "TCP_TLS_LTSV_LINE" | "TCP_TLS_LTSV_NUL" | "TCP_LTSV_LINE" | "TCP_LTSV_NUL" | "TCP_TLS_CAP_N_PROTO" | "TCP_CAP_N_PROTO" | "UDP_LTSV_NUL" | "UDP_LTSV_LINE" | "UDP_CAP_N_PROTO" | "HTTP_GELF" | "HTTP_TLS_GELF" | "TCP_BEATS" | "TCP_TLS_BEATS"
-        //dbaas.logs.UserChangePasswordCreation
-        // fullName: dbaas.logs.UserChangePasswordCreation.UserChangePasswordCreation
+        // interface fullName: dbaas.logs.UserChangePasswordCreation.UserChangePasswordCreation
         export interface UserChangePasswordCreation {
             password: string;
         }
     }
 }
 export namespace service {
-    //service.RenewType
-    // fullName: service.RenewType.RenewType
+    // interface fullName: service.RenewType.RenewType
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -661,14 +597,13 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    //service.RenewalTypeEnum
+    // type fullname: service.RenewalTypeEnum
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    //service.StateEnum
+    // type fullname: service.StateEnum
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
 }
 export namespace services {
-    //services.Service
-    // fullName: services.Service.Service
+    // interface fullName: services.Service.Service
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;

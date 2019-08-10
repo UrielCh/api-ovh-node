@@ -4,12 +4,11 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /sms Models
  */
 export namespace reference {
-    //reference.CountryEnum
+    // type fullname: reference.CountryEnum
     export type CountryEnum = "all" | "ca" | "cz" | "de" | "en" | "es" | "fi" | "fr" | "gb" | "ie" | "it" | "lt" | "ma" | "nl" | "pl" | "pp" | "pt" | "qc" | "ru" | "sk" | "sn" | "tn" | "we"
 }
 export namespace service {
-    //service.RenewType
-    // fullName: service.RenewType.RenewType
+    // interface fullName: service.RenewType.RenewType
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -17,14 +16,13 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    //service.RenewalTypeEnum
+    // type fullname: service.RenewalTypeEnum
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    //service.StateEnum
+    // type fullname: service.StateEnum
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
 }
 export namespace services {
-    //services.Service
-    // fullName: services.Service.Service
+    // interface fullName: services.Service.Service
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;
@@ -42,8 +40,7 @@ export namespace services {
     }
 }
 export namespace sms {
-    //sms.Account
-    // fullName: sms.Account.Account
+    // interface fullName: sms.Account.Account
     export interface Account {
         automaticRecreditAmount?: sms.PackQuantityAutomaticRecreditEnum;
         callBack?: string;
@@ -58,39 +55,35 @@ export namespace sms {
         templates: sms.Templates;
         userQuantityWithQuota: number;
     }
-    //sms.AlertThreshold
-    // fullName: sms.AlertThreshold.AlertThreshold
+    // interface fullName: sms.AlertThreshold.AlertThreshold
     export interface AlertThreshold {
         alertEmail: string;
         alertNumber: string;
         alertThreshold: number;
         support: sms.SupportEnum;
     }
-    //sms.Blacklist
-    // fullName: sms.Blacklist.Blacklist
+    // interface fullName: sms.Blacklist.Blacklist
     export interface Blacklist {
         dateCreation: string;
         number: string;
     }
-    //sms.CharsetEnum
+    // type fullname: sms.CharsetEnum
     export type CharsetEnum = "UTF-8"
-    //sms.ChatAccess
-    // fullName: sms.ChatAccess.ChatAccess
+    // interface fullName: sms.ChatAccess.ChatAccess
     export interface ChatAccess {
         creationDate: string;
         id: number;
         url: string;
     }
-    //sms.ClassEnum
+    // type fullname: sms.ClassEnum
     export type ClassEnum = "flash" | "phoneDisplay" | "sim" | "toolkit"
-    //sms.CodingEnum
+    // type fullname: sms.CodingEnum
     export type CodingEnum = "7bit" | "8bit"
-    //sms.CountryEnum
+    // type fullname: sms.CountryEnum
     export type CountryEnum = "ag" | "ai" | "all" | "an" | "ar" | "at" | "au" | "aw" | "ba" | "bb" | "be" | "bg" | "bh" | "bm" | "bo" | "br" | "bz" | "ch" | "cl" | "cn" | "co" | "cr" | "cu" | "cy" | "cz" | "de" | "dk" | "dm" | "dz" | "ec" | "ee" | "eg" | "es" | "fi" | "fr" | "gb" | "gd" | "gp" | "gr" | "gy" | "hk" | "hn" | "hr" | "ht" | "hu" | "id" | "ie" | "il" | "in" | "is" | "it" | "jm" | "jo" | "jp" | "kr" | "kw" | "ky" | "lb" | "lc" | "lt" | "lu" | "lv" | "ma" | "me" | "mq" | "ms" | "mt" | "my" | "nc" | "ng" | "nl" | "no" | "nz" | "pa" | "pe" | "pf" | "ph" | "pk" | "pl" | "pt" | "py" | "re" | "ro" | "rs" | "ru" | "sa" | "se" | "sg" | "si" | "sk" | "sr" | "tc" | "th" | "tn" | "tr" | "tt" | "tw" | "ua" | "uy" | "vc" | "ve" | "vg" | "vn" | "za"
-    //sms.DocumentWayTypeEnum
+    // type fullname: sms.DocumentWayTypeEnum
     export type DocumentWayTypeEnum = "incoming" | "outgoing"
-    //sms.Exception
-    // fullName: sms.Exception.Exception
+    // interface fullName: sms.Exception.Exception
     export interface Exception {
         countrySuffixe: string;
         messages: string[];
@@ -98,8 +91,7 @@ export namespace sms {
         restrictionCode: sms.RestrictionCodeEnum;
         substitution?: string;
     }
-    //sms.Hlr
-    // fullName: sms.Hlr.Hlr
+    // interface fullName: sms.Hlr.Hlr
     export interface Hlr {
         country: string;
         countryCode: string;
@@ -107,8 +99,7 @@ export namespace sms {
         operator: string;
         region: string;
     }
-    //sms.HlrLookupNumber
-    // fullName: sms.HlrLookupNumber.HlrLookupNumber
+    // interface fullName: sms.HlrLookupNumber.HlrLookupNumber
     export interface HlrLookupNumber {
         datetime: string;
         id: number;
@@ -120,10 +111,9 @@ export namespace sms {
         status: sms.HlrStatuses;
         valid: boolean;
     }
-    //sms.HlrStatuses
+    // type fullname: sms.HlrStatuses
     export type HlrStatuses = "doing" | "done" | "error" | "todo"
-    //sms.Incoming
-    // fullName: sms.Incoming.Incoming
+    // interface fullName: sms.Incoming.Incoming
     export interface Incoming {
         creationDatetime: string;
         credits: number;
@@ -132,8 +122,7 @@ export namespace sms {
         sender: string;
         tag: string;
     }
-    //sms.Job
-    // fullName: sms.Job.Job
+    // interface fullName: sms.Job.Job
     export interface Job {
         creationDatetime: string;
         credits: number;
@@ -147,8 +136,7 @@ export namespace sms {
         receiver: string;
         sender: string;
     }
-    //sms.Outgoing
-    // fullName: sms.Outgoing.Outgoing
+    // interface fullName: sms.Outgoing.Outgoing
     export interface Outgoing {
         creationDatetime: string;
         credits: number;
@@ -164,8 +152,7 @@ export namespace sms {
         tag: string;
         tariffCode: string;
     }
-    //sms.PackOffer
-    // fullName: sms.PackOffer.PackOffer
+    // interface fullName: sms.PackOffer.PackOffer
     export interface PackOffer {
         countryDestination: string;
         giftPrice?: number;
@@ -176,19 +163,17 @@ export namespace sms {
         smsQuantity: number;
         totalPrice?: number;
     }
-    //sms.PackQuantityAutomaticRecreditEnum
+    // type fullname: sms.PackQuantityAutomaticRecreditEnum
     export type PackQuantityAutomaticRecreditEnum = 100 | 1000 | 10000 | 200 | 250 | 500 | 5000
-    //sms.PackQuantityEnum
+    // type fullname: sms.PackQuantityEnum
     export type PackQuantityEnum = 100 | 1000 | 10000 | 100000 | 1000000 | 200 | 250 | 2500 | 25000 | 500 | 5000 | 50000
-    //sms.Phonebook
-    // fullName: sms.Phonebook.Phonebook
+    // interface fullName: sms.Phonebook.Phonebook
     export interface Phonebook {
         bookKey: string;
         name: string;
         phoneKey: string;
     }
-    //sms.PhonebookContact
-    // fullName: sms.PhonebookContact.PhonebookContact
+    // interface fullName: sms.PhonebookContact.PhonebookContact
     export interface PhonebookContact {
         group: string;
         homeMobile?: string;
@@ -199,27 +184,24 @@ export namespace sms {
         workMobile?: string;
         workPhone?: string;
     }
-    //sms.PriorityEnum
+    // type fullname: sms.PriorityEnum
     export type PriorityEnum = "high" | "low" | "medium" | "veryLow"
-    //sms.PttDetails
-    // fullName: sms.PttDetails.PttDetails
+    // interface fullName: sms.PttDetails.PttDetails
     export interface PttDetails {
         comment: string;
         description: string;
         duration: sms.PttDurationTypeEnum;
     }
-    //sms.PttDurationTypeEnum
+    // type fullname: sms.PttDurationTypeEnum
     export type PttDurationTypeEnum = "indeterminated" | "permanent" | "temporary"
-    //sms.Quota
-    // fullName: sms.Quota.Quota
+    // interface fullName: sms.Quota.Quota
     export interface Quota {
         quotaLeft: number;
         quotaStatus: sms.QuotaStatusUserEnum;
     }
-    //sms.QuotaStatusUserEnum
+    // type fullname: sms.QuotaStatusUserEnum
     export type QuotaStatusUserEnum = "active" | "inactive"
-    //sms.Receiver
-    // fullName: sms.Receiver.Receiver
+    // interface fullName: sms.Receiver.Receiver
     export interface Receiver {
         autoUpdate: boolean;
         canAutoUpdate: boolean;
@@ -228,16 +210,14 @@ export namespace sms {
         records: number;
         slotId: number;
     }
-    //sms.ReceiversAsynchronousCleanReport
-    // fullName: sms.ReceiversAsynchronousCleanReport.ReceiversAsynchronousCleanReport
+    // interface fullName: sms.ReceiversAsynchronousCleanReport.ReceiversAsynchronousCleanReport
     export interface ReceiversAsynchronousCleanReport {
         taskId: number;
         totalCreditsRemoved: number;
     }
-    //sms.RefererSenderEnum
+    // type fullname: sms.RefererSenderEnum
     export type RefererSenderEnum = "custom" | "domain" | "line" | "nic" | "owner" | "virtual"
-    //sms.Response
-    // fullName: sms.Response.Response
+    // interface fullName: sms.Response.Response
     export interface Response {
         cgiUrl?: string;
         responseType: sms.ResponseTypeEnum;
@@ -245,21 +225,19 @@ export namespace sms {
         trackingDefaultSmsSender?: string;
         trackingOptions?: sms.ResponseTrackingOptions[];
     }
-    //sms.ResponseTrackingMediaEnum
+    // type fullname: sms.ResponseTrackingMediaEnum
     export type ResponseTrackingMediaEnum = "email" | "sms" | "voice"
-    //sms.ResponseTrackingOptions
-    // fullName: sms.ResponseTrackingOptions.ResponseTrackingOptions
+    // interface fullName: sms.ResponseTrackingOptions.ResponseTrackingOptions
     export interface ResponseTrackingOptions {
         media: sms.ResponseTrackingMediaEnum;
         sender: string;
         target: string;
     }
-    //sms.ResponseTypeEnum
+    // type fullname: sms.ResponseTypeEnum
     export type ResponseTypeEnum = "cgi" | "none" | "text"
-    //sms.RestrictionCodeEnum
+    // type fullname: sms.RestrictionCodeEnum
     export type RestrictionCodeEnum = "ALPHA" | "BAD_DLR" | "BLOCKED" | "CODING" | "DLR" | "FLASHONLY" | "MSISDN"
-    //sms.Sender
-    // fullName: sms.Sender.Sender
+    // interface fullName: sms.Sender.Sender
     export interface Sender {
         comment?: string;
         description: string;
@@ -269,38 +247,34 @@ export namespace sms {
         type?: sms.TypeSenderEnum;
         validationMedia?: string;
     }
-    //sms.SenderAvailable
-    // fullName: sms.SenderAvailable.SenderAvailable
+    // interface fullName: sms.SenderAvailable.SenderAvailable
     export interface SenderAvailable {
         referer: sms.SenderRefererEnum;
         sender: string;
     }
-    //sms.SenderRefererEnum
+    // type fullname: sms.SenderRefererEnum
     export type SenderRefererEnum = "domain" | "nichandle"
-    //sms.SmsSendingReport
-    // fullName: sms.SmsSendingReport.SmsSendingReport
+    // interface fullName: sms.SmsSendingReport.SmsSendingReport
     export interface SmsSendingReport {
         ids: number[];
         invalidReceivers: string[];
         totalCreditsRemoved: number;
         validReceivers: string[];
     }
-    //sms.StatusAccountEnum
+    // type fullname: sms.StatusAccountEnum
     export type StatusAccountEnum = "disable" | "enable"
-    //sms.StatusSenderEnum
+    // type fullname: sms.StatusSenderEnum
     export type StatusSenderEnum = "disable" | "enable" | "refused" | "waitingValidation"
-    //sms.SupportEnum
+    // type fullname: sms.SupportEnum
     export type SupportEnum = "both" | "mail" | "sms"
-    //sms.Task
-    // fullName: sms.Task.Task
+    // interface fullName: sms.Task.Task
     export interface Task {
         function: sms.TodoGeneralPublicFunctionsEnum;
         status: telephony.TaskStatusEnum;
         step: sms.TodoGeneralPublicStepsEnum;
         taskId: number;
     }
-    //sms.TemplateControl
-    // fullName: sms.TemplateControl.TemplateControl
+    // interface fullName: sms.TemplateControl.TemplateControl
     export interface TemplateControl {
         activity: sms.TypeTemplateEnum;
         comment: string;
@@ -310,8 +284,7 @@ export namespace sms {
         name: string;
         status: sms.StatusSenderEnum;
     }
-    //sms.Templates
-    // fullName: sms.Templates.Templates
+    // interface fullName: sms.Templates.Templates
     export interface Templates {
         customizedEmailMode: boolean;
         customizedSmsMode: boolean;
@@ -320,16 +293,15 @@ export namespace sms {
         emailSubject?: string;
         smsBody?: string;
     }
-    //sms.TodoGeneralPublicFunctionsEnum
+    // type fullname: sms.TodoGeneralPublicFunctionsEnum
     export type TodoGeneralPublicFunctionsEnum = "cleanSmsReceivers"
-    //sms.TodoGeneralPublicStepsEnum
+    // type fullname: sms.TodoGeneralPublicStepsEnum
     export type TodoGeneralPublicStepsEnum = "checkOrder" | "createHlrs" | "finishing" | "sendMailReport" | "starting" | "waitForHlrs"
-    //sms.TypeSenderEnum
+    // type fullname: sms.TypeSenderEnum
     export type TypeSenderEnum = "alpha" | "numeric" | "virtual"
-    //sms.TypeTemplateEnum
+    // type fullname: sms.TypeTemplateEnum
     export type TypeTemplateEnum = "alerting" | "authentification" | "transactional"
-    //sms.User
-    // fullName: sms.User.User
+    // interface fullName: sms.User.User
     export interface User {
         alertThresholdInformations: sms.AlertThreshold;
         callBack?: string;
@@ -339,22 +311,19 @@ export namespace sms {
         quotaInformations: sms.Quota;
         stopCallBack?: string;
     }
-    //sms.VirtualNumber
-    // fullName: sms.VirtualNumber.VirtualNumber
+    // interface fullName: sms.VirtualNumber.VirtualNumber
     export interface VirtualNumber {
         countryCode: sms.VirtualNumberIsoCountryCodeEnum;
         number: string;
     }
-    //sms.VirtualNumberGenericService
-    // fullName: sms.VirtualNumberGenericService.VirtualNumberGenericService
+    // interface fullName: sms.VirtualNumberGenericService.VirtualNumberGenericService
     export interface VirtualNumberGenericService {
         countryCode: sms.VirtualNumberIsoCountryCodeEnum;
         number: string;
     }
-    //sms.VirtualNumberIsoCountryCodeEnum
+    // type fullname: sms.VirtualNumberIsoCountryCodeEnum
     export type VirtualNumberIsoCountryCodeEnum = "be" | "ch" | "de" | "es" | "fr" | "uk"
-    //sms.VirtualNumberJob
-    // fullName: sms.VirtualNumberJob.VirtualNumberJob
+    // interface fullName: sms.VirtualNumberJob.VirtualNumberJob
     export interface VirtualNumberJob {
         creationDatetime: string;
         credits: number;
@@ -369,20 +338,18 @@ export namespace sms {
     }
 }
 export namespace telephony {
-    //telephony.ContactsExportFormatsEnum
+    // type fullname: telephony.ContactsExportFormatsEnum
     export type ContactsExportFormatsEnum = "csv"
-    //telephony.PcsFile
-    // fullName: telephony.PcsFile.PcsFile
+    // interface fullName: telephony.PcsFile.PcsFile
     export interface PcsFile {
         filename: string;
         status: telephony.PcsFileStatusEnum;
         url: string;
         urlExpirationDatetime: string;
     }
-    //telephony.PcsFileStatusEnum
+    // type fullname: telephony.PcsFileStatusEnum
     export type PcsFileStatusEnum = "doing" | "done" | "error" | "todo"
-    //telephony.Task
-    // fullName: telephony.Task.Task
+    // interface fullName: telephony.Task.Task
     export interface Task {
         action: string;
         message?: string;
@@ -391,7 +358,7 @@ export namespace telephony {
         status: telephony.TaskStatusEnum;
         taskId: number;
     }
-    //telephony.TaskStatusEnum
+    // type fullname: telephony.TaskStatusEnum
     export type TaskStatusEnum = "doing" | "done" | "error" | "pause" | "todo"
 }
 

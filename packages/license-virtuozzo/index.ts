@@ -4,20 +4,18 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /license/virtuozzo Models
  */
 export namespace license {
-    //license.ActionType
+    // type fullname: license.ActionType
     export type ActionType = "addWindowFromExistingSerial" | "changeIp" | "changeOs" | "installLicense" | "optionUpgrade" | "releaseOption" | "versionUpgrade"
-    //license.ChangeIpMessageEnum
+    // type fullname: license.ChangeIpMessageEnum
     export type ChangeIpMessageEnum = "OK" | "destinationNotAllowed" | "licenseAlreadyExists" | "notAllowedToHandleThis" | "notSameType" | "sameIp" | "versionNotAllowed"
-    //license.ChangeIpStatus
-    // fullName: license.ChangeIpStatus.ChangeIpStatus
+    // interface fullName: license.ChangeIpStatus.ChangeIpStatus
     export interface ChangeIpStatus {
         message: license.ChangeIpMessageEnum;
         success: boolean;
     }
-    //license.LicenseTypeEnum
+    // type fullname: license.LicenseTypeEnum
     export type LicenseTypeEnum = "dedicated" | "dedicatedCloud" | "dedicatedFailover" | "failover" | "vm" | "vps" | "vps_ceph" | "vps_classic" | "vps_cloud" | "vps_cloud_2016" | "vps_ssd"
-    //license.Option
-    // fullName: license.Option.Option
+    // interface fullName: license.Option.Option
     export interface Option {
         amount?: string;
         canBeDeleted: boolean;
@@ -25,25 +23,23 @@ export namespace license {
         label: license.OptionLabel;
         version?: string;
     }
-    //license.OptionLabel
+    // type fullname: license.OptionLabel
     export type OptionLabel = "ANTISPAM_SPAMASSASSIN" | "ANTIVIRUS_DRWEB" | "ANTIVIRUS_KASPERSKY" | "DOMAINS" | "LANGUAGE_PACK" | "POWERPACK" | "SQL_SERVER" | "VIRTUOZZO_CONTAINERS"
-    //license.OrderableVirtuozzoCompatibilityInfos
-    // fullName: license.OrderableVirtuozzoCompatibilityInfos.OrderableVirtuozzoCompatibilityInfos
+    // interface fullName: license.OrderableVirtuozzoCompatibilityInfos.OrderableVirtuozzoCompatibilityInfos
     export interface OrderableVirtuozzoCompatibilityInfos {
         compliantContainers: license.OrderableVirtuozzoContainerNumberEnum[];
         potentialProblems: license.PotentialProblemVirtuozzoEnum[];
         version: license.OrderableVirtuozzoVersionEnum;
     }
-    //license.OrderableVirtuozzoContainerNumberEnum
+    // type fullname: license.OrderableVirtuozzoContainerNumberEnum
     export type OrderableVirtuozzoContainerNumberEnum = "2_CPU_001_CONTAINER" | "2_CPU_003_CONTAINER" | "2_CPU_010_CONTAINER" | "2_CPU_030_CONTAINER" | "2_CPU_060_CONTAINER" | "2_CPU_100_CONTAINER"
-    //license.OrderableVirtuozzoVersionEnum
+    // type fullname: license.OrderableVirtuozzoVersionEnum
     export type OrderableVirtuozzoVersionEnum = "VIRTUOZZO_CONTAINERS_4_FOR_LINUX" | "VIRTUOZZO_CONTAINERS_4_FOR_WINDOWS" | "virtuozzo-4" | "virtuozzo-4-for-windows"
-    //license.PotentialProblemVirtuozzoEnum
+    // type fullname: license.PotentialProblemVirtuozzoEnum
     export type PotentialProblemVirtuozzoEnum = "isLinuxOs" | "isOsVirtuozzo4Like" | "isWindowsOs"
-    //license.StateEnum
+    // type fullname: license.StateEnum
     export type StateEnum = "ok" | "released" | "terminated" | "toDeliver"
-    //license.Task
-    // fullName: license.Task.Task
+    // interface fullName: license.Task.Task
     export interface Task {
         action: license.ActionType;
         doneDate?: string;
@@ -53,21 +49,19 @@ export namespace license {
         taskId: number;
         todoDate: string;
     }
-    //license.TaskStateEnum
+    // type fullname: license.TaskStateEnum
     export type TaskStateEnum = "cancelled" | "doing" | "done" | "error" | "todo"
-    //license.VirtuozzoContainerNumberEnum
+    // type fullname: license.VirtuozzoContainerNumberEnum
     export type VirtuozzoContainerNumberEnum = "2_CPU_001_CONTAINER" | "2_CPU_003_CONTAINER" | "2_CPU_010_CONTAINER" | "2_CPU_030_CONTAINER" | "2_CPU_060_CONTAINER" | "2_CPU_100_CONTAINER"
-    //license.VirtuozzoOrderConfiguration
-    // fullName: license.VirtuozzoOrderConfiguration.VirtuozzoOrderConfiguration
+    // interface fullName: license.VirtuozzoOrderConfiguration.VirtuozzoOrderConfiguration
     export interface VirtuozzoOrderConfiguration {
         orderableVersions: license.OrderableVirtuozzoCompatibilityInfos[];
         serviceType: license.LicenseTypeEnum;
     }
-    //license.VirtuozzoVersionEnum
+    // type fullname: license.VirtuozzoVersionEnum
     export type VirtuozzoVersionEnum = "VIRTUOZZO_CONTAINERS_4_FOR_LINUX" | "VIRTUOZZO_CONTAINERS_4_FOR_WINDOWS"
     export namespace virtuozzo {
-        //license.virtuozzo.Virtuozzo
-        // fullName: license.virtuozzo.Virtuozzo.Virtuozzo
+        // interface fullName: license.virtuozzo.Virtuozzo.Virtuozzo
         export interface Virtuozzo {
             containerNumber: license.VirtuozzoContainerNumberEnum;
             creation: string;
@@ -83,8 +77,7 @@ export namespace license {
     }
 }
 export namespace service {
-    //service.RenewType
-    // fullName: service.RenewType.RenewType
+    // interface fullName: service.RenewType.RenewType
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -92,18 +85,17 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    //service.RenewalTypeEnum
+    // type fullname: service.RenewalTypeEnum
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    //service.StateEnum
+    // type fullname: service.StateEnum
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
-    //service.TerminationFutureUseEnum
+    // type fullname: service.TerminationFutureUseEnum
     export type TerminationFutureUseEnum = "NOT_REPLACING_SERVICE" | "OTHER" | "SUBSCRIBE_AN_OTHER_SERVICE" | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR" | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
-    //service.TerminationReasonEnum
+    // type fullname: service.TerminationReasonEnum
     export type TerminationReasonEnum = "FEATURES_DONT_SUIT_ME" | "LACK_OF_PERFORMANCES" | "MIGRATED_TO_ANOTHER_OVH_PRODUCT" | "MIGRATED_TO_COMPETITOR" | "NOT_NEEDED_ANYMORE" | "NOT_RELIABLE" | "NO_ANSWER" | "OTHER" | "TOO_EXPENSIVE" | "TOO_HARD_TO_USE" | "UNSATIFIED_BY_CUSTOMER_SUPPORT"
 }
 export namespace services {
-    //services.Service
-    // fullName: services.Service.Service
+    // interface fullName: services.Service.Service
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;

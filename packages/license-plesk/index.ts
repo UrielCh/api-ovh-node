@@ -4,22 +4,20 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /license/plesk Models
  */
 export namespace license {
-    //license.ActionType
+    // type fullname: license.ActionType
     export type ActionType = "addWindowFromExistingSerial" | "changeIp" | "changeOs" | "installLicense" | "optionUpgrade" | "releaseOption" | "versionUpgrade"
-    //license.ChangeIpMessageEnum
+    // type fullname: license.ChangeIpMessageEnum
     export type ChangeIpMessageEnum = "OK" | "destinationNotAllowed" | "licenseAlreadyExists" | "notAllowedToHandleThis" | "notSameType" | "sameIp" | "versionNotAllowed"
-    //license.ChangeIpStatus
-    // fullName: license.ChangeIpStatus.ChangeIpStatus
+    // interface fullName: license.ChangeIpStatus.ChangeIpStatus
     export interface ChangeIpStatus {
         message: license.ChangeIpMessageEnum;
         success: boolean;
     }
-    //license.DomainNumberEnum
+    // type fullname: license.DomainNumberEnum
     export type DomainNumberEnum = "0" | "1" | "10" | "100" | "30" | "300" | "unlimited"
-    //license.LicenseTypeEnum
+    // type fullname: license.LicenseTypeEnum
     export type LicenseTypeEnum = "dedicated" | "dedicatedCloud" | "dedicatedFailover" | "failover" | "vm" | "vps" | "vps_ceph" | "vps_classic" | "vps_cloud" | "vps_cloud_2016" | "vps_ssd"
-    //license.Option
-    // fullName: license.Option.Option
+    // interface fullName: license.Option.Option
     export interface Option {
         amount?: string;
         canBeDeleted: boolean;
@@ -27,12 +25,11 @@ export namespace license {
         label: license.OptionLabel;
         version?: string;
     }
-    //license.OptionLabel
+    // type fullname: license.OptionLabel
     export type OptionLabel = "ANTISPAM_SPAMASSASSIN" | "ANTIVIRUS_DRWEB" | "ANTIVIRUS_KASPERSKY" | "DOMAINS" | "LANGUAGE_PACK" | "POWERPACK" | "SQL_SERVER" | "VIRTUOZZO_CONTAINERS"
-    //license.OrderableAntivirusEnum
+    // type fullname: license.OrderableAntivirusEnum
     export type OrderableAntivirusEnum = "DR_WEB" | "KASPERSKY_UNLIMITED_MAILBOXES" | "kaspersky"
-    //license.OrderablePleskCompatibilityInfos
-    // fullName: license.OrderablePleskCompatibilityInfos.OrderablePleskCompatibilityInfos
+    // interface fullName: license.OrderablePleskCompatibilityInfos.OrderablePleskCompatibilityInfos
     export interface OrderablePleskCompatibilityInfos {
         canHavePowerPack: boolean;
         canHaveResellerManagement: boolean;
@@ -44,26 +41,24 @@ export namespace license {
         potentialProblems: license.PotentialProblemPleskEnum[];
         version: license.PleskVersionEnum;
     }
-    //license.OrderablePleskDomainNumberEnum
+    // type fullname: license.OrderablePleskDomainNumberEnum
     export type OrderablePleskDomainNumberEnum = "10" | "100" | "30" | "300" | "hostingsuite" | "unlimited"
-    //license.OrderablePleskLanguagePackEnum
+    // type fullname: license.OrderablePleskLanguagePackEnum
     export type OrderablePleskLanguagePackEnum = "1" | "1-extra-language-for-plesk12" | "2" | "2-extra-languages-for-plesk12" | "3" | "3-extra-languages-for-plesk12" | "4" | "4-extra-languages-for-plesk12" | "5" | "5-extra-languages-for-plesk12" | "unlimited" | "unlimited-extra-languages-for-plesk12"
-    //license.PleskApplicationSetEnum
+    // type fullname: license.PleskApplicationSetEnum
     export type PleskApplicationSetEnum = "applicationpack" | "developerpack" | "power-pack-for-plesk12" | "powerpack"
-    //license.PleskOrderConfiguration
-    // fullName: license.PleskOrderConfiguration.PleskOrderConfiguration
+    // interface fullName: license.PleskOrderConfiguration.PleskOrderConfiguration
     export interface PleskOrderConfiguration {
         orderableVersions: license.OrderablePleskCompatibilityInfos[];
         serviceType: license.LicenseTypeEnum;
     }
-    //license.PleskVersionEnum
+    // type fullname: license.PleskVersionEnum
     export type PleskVersionEnum = "PLESK_10_AND_LATER" | "PLESK_10_AND_LATER_FOR_KVM" | "PLESK_10_AND_LATER_FOR_VMWARE" | "PLESK_10_AND_LATER_FOR_VZ" | "PLESK_10_AND_LATER_FOR_WIN" | "PLESK_10_AND_LATER_FOR_WIN_FOR_VMWARE" | "PLESK_10_AND_LATER_FOR_WIN_FOR_VZ" | "PLESK_10_AND_LATER_FOR_WIN_FOR_XEN" | "PLESK_10_AND_LATER_FOR_XEN" | "PLESK_12_VPS_WEB_ADMIN" | "PLESK_12_VPS_WEB_APP" | "PLESK_12_VPS_WEB_HOST" | "PLESK_12_VPS_WEB_HOST_CLNX" | "PLESK_12_VPS_WEB_PRO" | "PLESK_12_VPS_WEB_PRO_CLNX" | "PLESK_12_WEB_ADMIN" | "PLESK_12_WEB_APP" | "PLESK_12_WEB_HOST" | "PLESK_12_WEB_HOST_CLNX" | "PLESK_12_WEB_PRO" | "PLESK_12_WEB_PRO_CLNX" | "PLESK_75_RELOADED" | "PLESK_80" | "PLESK_80_FOR_VZ" | "PLESK_81_FOR_WIN" | "PLESK_9" | "PLESK_95" | "PLESK_95_FOR_VZ" | "PLESK_95_FOR_WIN" | "PLESK_9_FOR_VZ" | "PLESK_9_FOR_WIN" | "PLESK_ONYX_VPS_WEB_ADMIN" | "PLESK_ONYX_VPS_WEB_APP" | "PLESK_ONYX_VPS_WEB_HOST" | "PLESK_ONYX_VPS_WEB_HOST_CLNX" | "PLESK_ONYX_VPS_WEB_PRO" | "PLESK_ONYX_VPS_WEB_PRO_CLNX" | "PLESK_ONYX_WEB_ADMIN" | "PLESK_ONYX_WEB_APP" | "PLESK_ONYX_WEB_HOST" | "PLESK_ONYX_WEB_HOST_CLNX" | "PLESK_ONYX_WEB_PRO" | "PLESK_ONYX_WEB_PRO_CLNX" | "plesk-12-webadmin-for-vps" | "plesk-12-webhost" | "plesk-12-webhost-for-vps" | "plesk-12-webpro" | "plesk-12-webpro-for-vps"
-    //license.PotentialProblemPleskEnum
+    // type fullname: license.PotentialProblemPleskEnum
     export type PotentialProblemPleskEnum = "isHostOsHyperVLike" | "isHostOsVMwareLike" | "isHostOsVirtuozzo4Like" | "isHostOsXenLike" | "isLinuxOs" | "isOsCloudLinux" | "isOsPlesk10andLater" | "isOsPlesk12" | "isOsPleskOnyx" | "isWindowsOs"
-    //license.StateEnum
+    // type fullname: license.StateEnum
     export type StateEnum = "ok" | "released" | "terminated" | "toDeliver"
-    //license.Task
-    // fullName: license.Task.Task
+    // interface fullName: license.Task.Task
     export interface Task {
         action: license.ActionType;
         doneDate?: string;
@@ -73,11 +68,10 @@ export namespace license {
         taskId: number;
         todoDate: string;
     }
-    //license.TaskStateEnum
+    // type fullname: license.TaskStateEnum
     export type TaskStateEnum = "cancelled" | "doing" | "done" | "error" | "todo"
     export namespace plesk {
-        //license.plesk.Plesk
-        // fullName: license.plesk.Plesk.Plesk
+        // interface fullName: license.plesk.Plesk.Plesk
         export interface Plesk {
             creation: string;
             deleteAtExpiration: boolean;
@@ -94,8 +88,7 @@ export namespace license {
     }
 }
 export namespace service {
-    //service.RenewType
-    // fullName: service.RenewType.RenewType
+    // interface fullName: service.RenewType.RenewType
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -103,18 +96,17 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    //service.RenewalTypeEnum
+    // type fullname: service.RenewalTypeEnum
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    //service.StateEnum
+    // type fullname: service.StateEnum
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
-    //service.TerminationFutureUseEnum
+    // type fullname: service.TerminationFutureUseEnum
     export type TerminationFutureUseEnum = "NOT_REPLACING_SERVICE" | "OTHER" | "SUBSCRIBE_AN_OTHER_SERVICE" | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR" | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
-    //service.TerminationReasonEnum
+    // type fullname: service.TerminationReasonEnum
     export type TerminationReasonEnum = "FEATURES_DONT_SUIT_ME" | "LACK_OF_PERFORMANCES" | "MIGRATED_TO_ANOTHER_OVH_PRODUCT" | "MIGRATED_TO_COMPETITOR" | "NOT_NEEDED_ANYMORE" | "NOT_RELIABLE" | "NO_ANSWER" | "OTHER" | "TOO_EXPENSIVE" | "TOO_HARD_TO_USE" | "UNSATIFIED_BY_CUSTOMER_SUPPORT"
 }
 export namespace services {
-    //services.Service
-    // fullName: services.Service.Service
+    // interface fullName: services.Service.Service
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;

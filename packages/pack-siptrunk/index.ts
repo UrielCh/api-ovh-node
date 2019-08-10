@@ -5,16 +5,14 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  */
 export namespace pack {
     export namespace siptrunk {
-        //pack.siptrunk.PackSipTrunk
-        // fullName: pack.siptrunk.PackSipTrunk.PackSipTrunk
+        // interface fullName: pack.siptrunk.PackSipTrunk.PackSipTrunk
         export interface PackSipTrunk {
             packName: string;
         }
     }
 }
 export namespace service {
-    //service.RenewType
-    // fullName: service.RenewType.RenewType
+    // interface fullName: service.RenewType.RenewType
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -22,14 +20,13 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    //service.RenewalTypeEnum
+    // type fullname: service.RenewalTypeEnum
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    //service.StateEnum
+    // type fullname: service.StateEnum
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
 }
 export namespace services {
-    //services.Service
-    // fullName: services.Service.Service
+    // interface fullName: services.Service.Service
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;

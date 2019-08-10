@@ -4,8 +4,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /analytics Models
  */
 export namespace analytics {
-    //analytics.Cluster
-    // fullName: analytics.Cluster.Cluster
+    // interface fullName: analytics.Cluster.Cluster
     export interface Cluster {
         analyticsProjectId?: string;
         clusterName?: string;
@@ -19,25 +18,22 @@ export namespace analytics {
         serviceName: string;
         status: analytics.Status;
     }
-    //analytics.Component
-    // fullName: analytics.Component.Component
+    // interface fullName: analytics.Component.Component
     export interface Component {
         name: string;
         version: string;
     }
-    //analytics.Status
+    // type fullname: analytics.Status
     export type Status = "PENDING" | "IN_PROGRESS" | "SUCCEEDED" | "FAILED" | "DONE" | "ERROR" | "UNKNOWN" | "OK" | "TO_DEPLOY" | "DEPLOYING" | "DEPLOYED" | "TO_DESTROY" | "DESTROYED" | "INITIALIZED"
     export namespace cluster {
-        //analytics.cluster.Activity
-        // fullName: analytics.cluster.Activity.Activity
+        // interface fullName: analytics.cluster.Activity.Activity
         export interface Activity {
             description: string;
             status: analytics.Status;
             timestamp: string;
             user?: string;
         }
-        //analytics.cluster.Deploy
-        // fullName: analytics.cluster.Deploy.Deploy
+        // interface fullName: analytics.cluster.Deploy.Deploy
         export interface Deploy {
             clusterName: string;
             clusterType: string;
@@ -53,13 +49,11 @@ export namespace analytics {
             osToken: string;
             sshPublicKey: string;
         }
-        //analytics.cluster.Destroy
-        // fullName: analytics.cluster.Destroy.Destroy
+        // interface fullName: analytics.cluster.Destroy.Destroy
         export interface Destroy {
             osToken: string;
         }
-        //analytics.cluster.Node
-        // fullName: analytics.cluster.Node.Node
+        // interface fullName: analytics.cluster.Node.Node
         export interface Node {
             deploymentEndDate?: string;
             deploymentStartDate?: string;
@@ -73,8 +67,7 @@ export namespace analytics {
             storage?: number;
         }
         export namespace deploy {
-            //analytics.cluster.deploy.Status
-            // fullName: analytics.cluster.deploy.Status.Status
+            // interface fullName: analytics.cluster.deploy.Status.Status
             export interface Status {
                 percentage: number;
                 status: analytics.Status;
@@ -83,8 +76,7 @@ export namespace analytics {
         }
     }
     export namespace node {
-        //analytics.node.Capability
-        // fullName: analytics.node.Capability.Capability
+        // interface fullName: analytics.node.Capability.Capability
         export interface Capability {
             instanceMax: number;
             instanceMin: number;
@@ -92,18 +84,16 @@ export namespace analytics {
             rawStorageMaxGb: number;
             rawStorageMinGb: number;
         }
-        //analytics.node.Deploy
-        // fullName: analytics.node.Deploy.Deploy
+        // interface fullName: analytics.node.Deploy.Deploy
         export interface Deploy {
             nodeFlavor: string;
             nodeType: analytics.node.Type;
         }
-        //analytics.node.Type
+        // type fullname: analytics.node.Type
         export type Type = "MASTER" | "SLAVE" | "EDGE" | "UTILITY"
     }
     export namespace platform {
-        //analytics.platform.Capability
-        // fullName: analytics.platform.Capability.Capability
+        // interface fullName: analytics.platform.Capability.Capability
         export interface Capability {
             availableRegion: string[];
             bastionNode: analytics.node.Capability;
@@ -118,8 +108,7 @@ export namespace analytics {
             workerNode: analytics.node.Capability;
         }
         export namespace Capability {
-            //analytics.platform.Capability.Requirement
-            // fullName: analytics.platform.Capability.Requirement.Requirement
+            // interface fullName: analytics.platform.Capability.Requirement.Requirement
             export interface Requirement {
                 display: boolean;
                 fieldName: string;
@@ -128,8 +117,7 @@ export namespace analytics {
     }
 }
 export namespace service {
-    //service.RenewType
-    // fullName: service.RenewType.RenewType
+    // interface fullName: service.RenewType.RenewType
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -137,18 +125,17 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    //service.RenewalTypeEnum
+    // type fullname: service.RenewalTypeEnum
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    //service.StateEnum
+    // type fullname: service.StateEnum
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
-    //service.TerminationFutureUseEnum
+    // type fullname: service.TerminationFutureUseEnum
     export type TerminationFutureUseEnum = "NOT_REPLACING_SERVICE" | "OTHER" | "SUBSCRIBE_AN_OTHER_SERVICE" | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR" | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
-    //service.TerminationReasonEnum
+    // type fullname: service.TerminationReasonEnum
     export type TerminationReasonEnum = "FEATURES_DONT_SUIT_ME" | "LACK_OF_PERFORMANCES" | "MIGRATED_TO_ANOTHER_OVH_PRODUCT" | "MIGRATED_TO_COMPETITOR" | "NOT_NEEDED_ANYMORE" | "NOT_RELIABLE" | "NO_ANSWER" | "OTHER" | "TOO_EXPENSIVE" | "TOO_HARD_TO_USE" | "UNSATIFIED_BY_CUSTOMER_SUPPORT"
 }
 export namespace services {
-    //services.Service
-    // fullName: services.Service.Service
+    // interface fullName: services.Service.Service
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;

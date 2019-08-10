@@ -4,18 +4,16 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /service Models
  */
 export namespace complexType {
-    //complexType.SafeKeyValue
-    // fullName: complexType.SafeKeyValue.SafeKeyValue
+    // interface fullName: complexType.SafeKeyValue.SafeKeyValue
     export interface SafeKeyValue<T> {
         key: string;
         value: T;
     }
 }
 export namespace order {
-    //order.CurrencyCodeEnum
+    // type fullname: order.CurrencyCodeEnum
     export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
-    //order.Price
-    // fullName: order.Price.Price
+    // interface fullName: order.Price.Price
     export interface Price {
         currencyCode: order.CurrencyCodeEnum;
         text: string;
@@ -23,16 +21,14 @@ export namespace order {
     }
 }
 export namespace service {
-    //service.BillingStateEnum
+    // type fullname: service.BillingStateEnum
     export type BillingStateEnum = "expired" | "ok" | "pending" | "unpaid"
-    //service.Plan
-    // fullName: service.Plan.Plan
+    // interface fullName: service.Plan.Plan
     export interface Plan {
         code?: string;
         product: service.plan.Product;
     }
-    //service.Renew
-    // fullName: service.Renew.Renew
+    // interface fullName: service.Renew.Renew
     export interface Renew {
         dayOfMonth?: number;
         interval?: service.renew.Interval;
@@ -40,25 +36,22 @@ export namespace service {
         possibleIntervals?: service.renew.Interval[];
         possibleModes: service.renew.Mode[];
     }
-    //service.Resource
-    // fullName: service.Resource.Resource
+    // interface fullName: service.Resource.Resource
     export interface Resource {
         displayName: string;
         name?: string;
         state?: service.ResourceStateEnum;
     }
-    //service.ResourceStateEnum
+    // type fullname: service.ResourceStateEnum
     export type ResourceStateEnum = "deleted" | "deleting" | "ok" | "opening" | "suspended" | "suspending" | "toDelete" | "toOpen" | "toSuspend"
-    //service.Route
-    // fullName: service.Route.Route
+    // interface fullName: service.Route.Route
     export interface Route {
         path?: string;
         url?: string;
         vars: complexType.SafeKeyValue<string>[];
     }
     export namespace consumption {
-        //service.consumption.Transaction
-        // fullName: service.consumption.Transaction.Transaction
+        // interface fullName: service.consumption.Transaction.Transaction
         export interface Transaction {
             beginDate: string;
             creationDate?: string;
@@ -70,8 +63,7 @@ export namespace service {
             serviceId: number;
         }
         export namespace transaction {
-            //service.consumption.transaction.Element
-            // fullName: service.consumption.transaction.Element.Element
+            // interface fullName: service.consumption.transaction.Element.Element
             export interface Element {
                 details: service.consumption.transaction.Element.Detail[];
                 planCode: string;
@@ -79,8 +71,7 @@ export namespace service {
                 quantity: number;
             }
             export namespace Element {
-                //service.consumption.transaction.Element.Detail
-                // fullName: service.consumption.transaction.Element.Detail.Detail
+                // interface fullName: service.consumption.transaction.Element.Detail.Detail
                 export interface Detail {
                     quantity: number;
                     unique_id?: string;
@@ -89,31 +80,27 @@ export namespace service {
         }
     }
     export namespace plan {
-        //service.plan.Product
-        // fullName: service.plan.Product.Product
+        // interface fullName: service.plan.Product.Product
         export interface Product {
             name?: string;
         }
     }
     export namespace renew {
-        //service.renew.Interval
+        // type fullname: service.renew.Interval
         export type Interval = "P1M" | "P1Y" | "P2Y" | "P3M" | "P3Y" | "P6M"
-        //service.renew.Mode
+        // type fullname: service.renew.Mode
         export type Mode = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "deleteAtEndEngagement" | "deleteAtExpiration" | "manual" | "oneShot" | "option"
-        //service.renew.RenewDescription
-        // fullName: service.renew.RenewDescription.RenewDescription
+        // interface fullName: service.renew.RenewDescription.RenewDescription
         export interface RenewDescription {
             renewPeriod: string;
             strategies: service.renew.RenewStrategy[];
         }
-        //service.renew.RenewForecast
-        // fullName: service.renew.RenewForecast.RenewForecast
+        // interface fullName: service.renew.RenewForecast.RenewForecast
         export interface RenewForecast {
             details: service.renew.RenewForecastDetail[];
             prices: service.renew.RenewForecastDetailPrices;
         }
-        //service.renew.RenewForecastDetail
-        // fullName: service.renew.RenewForecastDetail.RenewForecastDetail
+        // interface fullName: service.renew.RenewForecastDetail.RenewForecastDetail
         export interface RenewForecastDetail {
             description?: string;
             quantity: number;
@@ -121,15 +108,13 @@ export namespace service {
             totalPrice: orderPrice;
             unitPrice: orderPrice;
         }
-        //service.renew.RenewForecastDetailPrices
-        // fullName: service.renew.RenewForecastDetailPrices.RenewForecastDetailPrices
+        // interface fullName: service.renew.RenewForecastDetailPrices.RenewForecastDetailPrices
         export interface RenewForecastDetailPrices {
             tax: orderPrice;
             withTax: orderPrice;
             withoutTax: orderPrice;
         }
-        //service.renew.RenewOrder
-        // fullName: service.renew.RenewOrder.RenewOrder
+        // interface fullName: service.renew.RenewOrder.RenewOrder
         export interface RenewOrder {
             date?: string;
             expirationDate?: string;
@@ -142,16 +127,14 @@ export namespace service {
             tax: orderPrice;
             url: string;
         }
-        //service.renew.RenewStrategy
-        // fullName: service.renew.RenewStrategy.RenewStrategy
+        // interface fullName: service.renew.RenewStrategy.RenewStrategy
         export interface RenewStrategy {
             price: orderPrice;
             priceInUcents: number;
             services: number[];
             servicesDetails: service.renew.Service[];
         }
-        //service.renew.Service
-        // fullName: service.renew.Service.Service
+        // interface fullName: service.renew.Service.Service
         export interface Service {
             serviceId: number;
             serviceName: string;
@@ -160,8 +143,7 @@ export namespace service {
     }
 }
 export namespace serviceList {
-    //serviceList.Service
-    // fullName: serviceList.Service.Service
+    // interface fullName: serviceList.Service.Service
     export interface Service {
         creationDate: string;
         details: complexType.SafeKeyValue<string>[];

@@ -4,37 +4,33 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /dedicated/housing Models
  */
 export namespace complexType {
-    //complexType.UnitAndValue
-    // fullName: complexType.UnitAndValue.UnitAndValue
+    // interface fullName: complexType.UnitAndValue.UnitAndValue
     export interface UnitAndValue<T> {
         unit: string;
         value: T;
     }
 }
 export namespace dedicated {
-    //dedicated.TaskFunctionEnum
+    // type fullname: dedicated.TaskFunctionEnum
     export type TaskFunctionEnum = "addVirtualMac" | "addWindowSplaFromExistingSerial" | "applyBackupFtpAcls" | "applyBackupFtpQuota" | "bypassAntiDDosGame" | "changePasswordBackupFTP" | "changeRipeOrg" | "checkAndReleaseIp" | "createBackupFTP" | "createOrUpdateRipeOrg" | "createPrivateNetwork" | "disableFirewall" | "enableFirewall" | "genericMoveFloatingIp" | "hardReboot" | "migrateBackupFTP" | "moveFloatingIp" | "moveVirtualMac" | "rebootPower8To" | "reinstallServer" | "releaseIp" | "removeBackupFTP" | "removeVirtualMac" | "requestAccessIPMI" | "resetIPMI" | "resetIPMISession" | "testIPMIhttp" | "testIPMIpassword" | "testIPMIping" | "virtualMacAdd" | "virtualMacDelete"
-    //dedicated.TaskStatusEnum
+    // type fullname: dedicated.TaskStatusEnum
     export type TaskStatusEnum = "cancelled" | "customerError" | "doing" | "done" | "init" | "ovhError" | "todo"
     export namespace housing {
-        //dedicated.housing.ApcOrderable
-        // fullName: dedicated.housing.ApcOrderable.ApcOrderable
+        // interface fullName: dedicated.housing.ApcOrderable.ApcOrderable
         export interface ApcOrderable {
             free: boolean;
             orderable: boolean;
         }
-        //dedicated.housing.DatacenterEnum
+        // type fullname: dedicated.housing.DatacenterEnum
         export type DatacenterEnum = "gsw" | "pdc1"
-        //dedicated.housing.HaRoutingOfferEnum
+        // type fullname: dedicated.housing.HaRoutingOfferEnum
         export type HaRoutingOfferEnum = "ha2x2" | "ha2x4"
-        //dedicated.housing.HaRoutingOrderable
-        // fullName: dedicated.housing.HaRoutingOrderable.HaRoutingOrderable
+        // interface fullName: dedicated.housing.HaRoutingOrderable.HaRoutingOrderable
         export interface HaRoutingOrderable {
             offer: dedicated.housing.HaRoutingOfferEnum[];
             orderable: boolean;
         }
-        //dedicated.housing.Housing
-        // fullName: dedicated.housing.Housing.Housing
+        // interface fullName: dedicated.housing.Housing.Housing
         export interface Housing {
             datacenter?: dedicated.housing.DatacenterEnum;
             name: string;
@@ -43,35 +39,30 @@ export namespace dedicated {
             rack: string;
             securityCode: string;
         }
-        //dedicated.housing.IpInfo
-        // fullName: dedicated.housing.IpInfo.IpInfo
+        // interface fullName: dedicated.housing.IpInfo.IpInfo
         export interface IpInfo {
             gateway?: string;
             network: string;
             reservedAddresses?: string[];
         }
-        //dedicated.housing.LinkInfo
-        // fullName: dedicated.housing.LinkInfo.LinkInfo
+        // interface fullName: dedicated.housing.LinkInfo.LinkInfo
         export interface LinkInfo {
             port: string;
             router: string;
         }
-        //dedicated.housing.NetworkInfo
-        // fullName: dedicated.housing.NetworkInfo.NetworkInfo
+        // interface fullName: dedicated.housing.NetworkInfo.NetworkInfo
         export interface NetworkInfo {
             ipv4?: dedicated.housing.IpInfo;
             ipv6?: dedicated.housing.IpInfo;
             link?: dedicated.housing.LinkInfo;
         }
-        //dedicated.housing.Options
-        // fullName: dedicated.housing.Options.Options
+        // interface fullName: dedicated.housing.Options.Options
         export interface Options {
             apcCount: number;
             handsneyes: boolean;
             highAvailabilityRouting: string;
         }
-        //dedicated.housing.Task
-        // fullName: dedicated.housing.Task.Task
+        // interface fullName: dedicated.housing.Task.Task
         export interface Task {
             comment?: string;
             doneDate?: string;
@@ -81,12 +72,11 @@ export namespace dedicated {
             status: dedicated.TaskStatusEnum;
             taskId: number;
         }
-        //dedicated.housing.TaskFunctionEnum
+        // type fullname: dedicated.housing.TaskFunctionEnum
         export type TaskFunctionEnum = "applyBackupFtpAcls" | "applyBackupFtpQuota" | "changePasswordBackupFTP" | "createBackupFTP" | "migrateBackupFTP" | "removeBackupFTP"
     }
     export namespace server {
-        //dedicated.server.BackupFtp
-        // fullName: dedicated.server.BackupFtp.BackupFtp
+        // interface fullName: dedicated.server.BackupFtp.BackupFtp
         export interface BackupFtp {
             ftpBackupName: string;
             quota?: complexType.UnitAndValue<number>;
@@ -94,8 +84,7 @@ export namespace dedicated {
             type: dedicated.server.BackupStorageTypeEnum;
             usage?: complexType.UnitAndValue<number>;
         }
-        //dedicated.server.BackupFtpAcl
-        // fullName: dedicated.server.BackupFtpAcl.BackupFtpAcl
+        // interface fullName: dedicated.server.BackupFtpAcl.BackupFtpAcl
         export interface BackupFtpAcl {
             cifs: boolean;
             ftp: boolean;
@@ -104,10 +93,9 @@ export namespace dedicated {
             lastUpdate: string;
             nfs: boolean;
         }
-        //dedicated.server.BackupStorageTypeEnum
+        // type fullname: dedicated.server.BackupStorageTypeEnum
         export type BackupStorageTypeEnum = "included" | "storage"
-        //dedicated.server.Task
-        // fullName: dedicated.server.Task.Task
+        // interface fullName: dedicated.server.Task.Task
         export interface Task {
             comment?: string;
             doneDate?: string;
@@ -120,8 +108,7 @@ export namespace dedicated {
     }
 }
 export namespace service {
-    //service.RenewType
-    // fullName: service.RenewType.RenewType
+    // interface fullName: service.RenewType.RenewType
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -129,14 +116,13 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    //service.RenewalTypeEnum
+    // type fullname: service.RenewalTypeEnum
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    //service.StateEnum
+    // type fullname: service.StateEnum
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
 }
 export namespace services {
-    //services.Service
-    // fullName: services.Service.Service
+    // interface fullName: services.Service.Service
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;

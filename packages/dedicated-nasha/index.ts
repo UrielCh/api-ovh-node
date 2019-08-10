@@ -4,37 +4,33 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /dedicated/nasha Models
  */
 export namespace complexType {
-    //complexType.UnitAndValue
-    // fullName: complexType.UnitAndValue.UnitAndValue
+    // interface fullName: complexType.UnitAndValue.UnitAndValue
     export interface UnitAndValue<T> {
         unit: string;
         value: T;
     }
 }
 export namespace dedicated {
-    //dedicated.NasHAAvailabilities
-    // fullName: dedicated.NasHAAvailabilities.NasHAAvailabilities
+    // interface fullName: dedicated.NasHAAvailabilities.NasHAAvailabilities
     export interface NasHAAvailabilities {
         datacenters: dedicated.NasHAAvailabilityDatacenter[];
         offer: dedicated.NasHAOfferEnum;
     }
-    //dedicated.NasHAAvailabilityDatacenter
-    // fullName: dedicated.NasHAAvailabilityDatacenter.NasHAAvailabilityDatacenter
+    // interface fullName: dedicated.NasHAAvailabilityDatacenter.NasHAAvailabilityDatacenter
     export interface NasHAAvailabilityDatacenter {
         availability: dedicated.NasHAAvailabilityEnum;
         datacenter: dedicated.NasHAZoneEnum;
     }
-    //dedicated.NasHAAvailabilityEnum
+    // type fullname: dedicated.NasHAAvailabilityEnum
     export type NasHAAvailabilityEnum = "1H" | "240H" | "24H" | "72H" | "unknown"
-    //dedicated.NasHAOfferEnum
+    // type fullname: dedicated.NasHAOfferEnum
     export type NasHAOfferEnum = "1200g" | "13200g" | "19200g" | "2400g" | "26400g" | "3600g" | "7200g"
-    //dedicated.NasHAZoneEnum
+    // type fullname: dedicated.NasHAZoneEnum
     export type NasHAZoneEnum = "bhs" | "rbx" | "sbg"
-    //dedicated.TaskStatusEnum
+    // type fullname: dedicated.TaskStatusEnum
     export type TaskStatusEnum = "cancelled" | "customerError" | "doing" | "done" | "init" | "ovhError" | "todo"
     export namespace nasTask {
-        //dedicated.nasTask.Task
-        // fullName: dedicated.nasTask.Task.Task
+        // interface fullName: dedicated.nasTask.Task.Task
         export interface Task {
             details?: string;
             doneDate?: string;
@@ -48,15 +44,13 @@ export namespace dedicated {
         }
     }
     export namespace nasha {
-        //dedicated.nasha.Access
-        // fullName: dedicated.nasha.Access.Access
+        // interface fullName: dedicated.nasha.Access.Access
         export interface Access {
             accessId: number;
             ip: string;
             type: dedicated.storage.AclTypeEnum;
         }
-        //dedicated.nasha.Partition
-        // fullName: dedicated.nasha.Partition.Partition
+        // interface fullName: dedicated.nasha.Partition.Partition
         export interface Partition {
             partitionCapacity?: number;
             partitionName: string;
@@ -64,19 +58,16 @@ export namespace dedicated {
             size: number;
             usedBySnapshots?: number;
         }
-        //dedicated.nasha.Quota
-        // fullName: dedicated.nasha.Quota.Quota
+        // interface fullName: dedicated.nasha.Quota.Quota
         export interface Quota {
             size: number;
             uid: number;
         }
-        //dedicated.nasha.Snapshot
-        // fullName: dedicated.nasha.Snapshot.Snapshot
+        // interface fullName: dedicated.nasha.Snapshot.Snapshot
         export interface Snapshot {
             snapshotType: dedicated.storage.SnapshotEnum;
         }
-        //dedicated.nasha.Storage
-        // fullName: dedicated.nasha.Storage.Storage
+        // interface fullName: dedicated.nasha.Storage.Storage
         export interface Storage {
             canCreatePartition: boolean;
             customName?: string;
@@ -87,22 +78,19 @@ export namespace dedicated {
             zpoolCapacity: number;
             zpoolSize: number;
         }
-        //dedicated.nasha.Vrack
-        // fullName: dedicated.nasha.Vrack.Vrack
+        // interface fullName: dedicated.nasha.Vrack.Vrack
         export interface Vrack {
             id: number;
             serviceIp: string;
             type: string;
             vrackName: string;
         }
-        //dedicated.nasha.customSnap
-        // fullName: dedicated.nasha.customSnap.customSnap
+        // interface fullName: dedicated.nasha.customSnap.customSnap
         export interface customSnap {
             expiration?: string;
             name: string;
         }
-        //dedicated.nasha.options
-        // fullName: dedicated.nasha.options.options
+        // interface fullName: dedicated.nasha.options.options
         export interface options {
             atime: string;
             id: number;
@@ -111,29 +99,28 @@ export namespace dedicated {
         }
     }
     export namespace storage {
-        //dedicated.storage.AclTypeEnum
+        // type fullname: dedicated.storage.AclTypeEnum
         export type AclTypeEnum = "readonly" | "readwrite"
-        //dedicated.storage.AtimeEnum
+        // type fullname: dedicated.storage.AtimeEnum
         export type AtimeEnum = "off" | "on"
-        //dedicated.storage.NasUsageTypeEnum
+        // type fullname: dedicated.storage.NasUsageTypeEnum
         export type NasUsageTypeEnum = "size" | "used" | "usedbysnapshots"
-        //dedicated.storage.PartitionUsageTypeEnum
+        // type fullname: dedicated.storage.PartitionUsageTypeEnum
         export type PartitionUsageTypeEnum = "size" | "used" | "usedbysnapshots"
-        //dedicated.storage.ProtocolEnum
+        // type fullname: dedicated.storage.ProtocolEnum
         export type ProtocolEnum = "CIFS" | "NFS" | "NFS_CIFS"
-        //dedicated.storage.RecordSizeEnum
+        // type fullname: dedicated.storage.RecordSizeEnum
         export type RecordSizeEnum = "131072" | "16384" | "32768" | "4096" | "65536" | "8192"
-        //dedicated.storage.SnapshotEnum
+        // type fullname: dedicated.storage.SnapshotEnum
         export type SnapshotEnum = "day-1" | "day-2" | "day-3" | "day-7" | "hour-1" | "hour-6"
-        //dedicated.storage.SyncEnum
+        // type fullname: dedicated.storage.SyncEnum
         export type SyncEnum = "always" | "disabled" | "standard"
-        //dedicated.storage.TaskFunctionEnum
+        // type fullname: dedicated.storage.TaskFunctionEnum
         export type TaskFunctionEnum = "backupRecursiveDestroy" | "clusterLeclercAclUpdate" | "clusterLeclercChangeServiceIp" | "clusterLeclercCustomSnapCreate" | "clusterLeclercCustomSnapDelete" | "clusterLeclercDeleteSnapshotDirectory" | "clusterLeclercDestroyNasContainer" | "clusterLeclercPartitionAdd" | "clusterLeclercPartitionDelete" | "clusterLeclercPartitionUpdate" | "clusterLeclercQuotaUpdate" | "clusterLeclercSetupNasContainer" | "clusterLeclercSnapshotUpdate" | "clusterLeclercZfsOptions" | "nasAclUpdate" | "nasDeleteSnapshotDirectory" | "nasPartitionAdd" | "nasPartitionDelete" | "nasPartitionUpdate" | "nasQuotaUpdate" | "remoteBackupRecursiveDestroy"
     }
 }
 export namespace service {
-    //service.RenewType
-    // fullName: service.RenewType.RenewType
+    // interface fullName: service.RenewType.RenewType
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -141,18 +128,17 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    //service.RenewalTypeEnum
+    // type fullname: service.RenewalTypeEnum
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    //service.StateEnum
+    // type fullname: service.StateEnum
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
-    //service.TerminationFutureUseEnum
+    // type fullname: service.TerminationFutureUseEnum
     export type TerminationFutureUseEnum = "NOT_REPLACING_SERVICE" | "OTHER" | "SUBSCRIBE_AN_OTHER_SERVICE" | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR" | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
-    //service.TerminationReasonEnum
+    // type fullname: service.TerminationReasonEnum
     export type TerminationReasonEnum = "FEATURES_DONT_SUIT_ME" | "LACK_OF_PERFORMANCES" | "MIGRATED_TO_ANOTHER_OVH_PRODUCT" | "MIGRATED_TO_COMPETITOR" | "NOT_NEEDED_ANYMORE" | "NOT_RELIABLE" | "NO_ANSWER" | "OTHER" | "TOO_EXPENSIVE" | "TOO_HARD_TO_USE" | "UNSATIFIED_BY_CUSTOMER_SUPPORT"
 }
 export namespace services {
-    //services.Service
-    // fullName: services.Service.Service
+    // interface fullName: services.Service.Service
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;

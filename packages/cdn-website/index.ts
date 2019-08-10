@@ -5,57 +5,51 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  */
 export namespace cdn {
     export namespace website {
-        //cdn.website.Backend
-        // fullName: cdn.website.Backend.Backend
+        // interface fullName: cdn.website.Backend.Backend
         export interface Backend {
             ipv4: string;
             status: cdn.website.BackendStatusEnum;
         }
-        //cdn.website.BackendStatusEnum
+        // type fullname: cdn.website.BackendStatusEnum
         export type BackendStatusEnum = "creating" | "error" | "on" | "removing"
-        //cdn.website.Domain
-        // fullName: cdn.website.Domain.Domain
+        // interface fullName: cdn.website.Domain.Domain
         export interface Domain {
             domain: string;
             status: cdn.website.DomainStatusEnum;
         }
-        //cdn.website.DomainStatusEnum
+        // type fullname: cdn.website.DomainStatusEnum
         export type DomainStatusEnum = "error" | "on" | "removing"
-        //cdn.website.DomainZoneStatusEnum
+        // type fullname: cdn.website.DomainZoneStatusEnum
         export type DomainZoneStatusEnum = "error" | "on" | "removing"
-        //cdn.website.StatsDataType
-        // fullName: cdn.website.StatsDataType.StatsDataType
+        // interface fullName: cdn.website.StatsDataType.StatsDataType
         export interface StatsDataType {
             date: string;
             value: number;
         }
-        //cdn.website.StatsPeriodEnum
+        // type fullname: cdn.website.StatsPeriodEnum
         export type StatsPeriodEnum = "day" | "month" | "week"
-        //cdn.website.StatsTypeEnum
+        // type fullname: cdn.website.StatsTypeEnum
         export type StatsTypeEnum = "backend" | "cdn"
-        //cdn.website.StatsValueEnum
+        // type fullname: cdn.website.StatsValueEnum
         export type StatsValueEnum = "bandwidth" | "request"
-        //cdn.website.Task
-        // fullName: cdn.website.Task.Task
+        // interface fullName: cdn.website.Task.Task
         export interface Task {
             comment?: string;
             function: cdn.website.TaskFunctionEnum;
             status: cdn.website.TaskStateEnum;
             taskId: number;
         }
-        //cdn.website.TaskFunctionEnum
+        // type fullname: cdn.website.TaskFunctionEnum
         export type TaskFunctionEnum = "flushAll" | "installBackend" | "removeBackend" | "removeDomain" | "removeZone"
-        //cdn.website.TaskStateEnum
+        // type fullname: cdn.website.TaskStateEnum
         export type TaskStateEnum = "cancelled" | "doing" | "done" | "error" | "todo"
-        //cdn.website.Website
-        // fullName: cdn.website.Website.Website
+        // interface fullName: cdn.website.Website.Website
         export interface Website {
             anycast: string;
             offer: string;
             service: string;
         }
-        //cdn.website.Zone
-        // fullName: cdn.website.Zone.Zone
+        // interface fullName: cdn.website.Zone.Zone
         export interface Zone {
             status: cdn.website.DomainZoneStatusEnum;
             zone: string;
@@ -63,8 +57,7 @@ export namespace cdn {
     }
 }
 export namespace service {
-    //service.RenewType
-    // fullName: service.RenewType.RenewType
+    // interface fullName: service.RenewType.RenewType
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -72,14 +65,13 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    //service.RenewalTypeEnum
+    // type fullname: service.RenewalTypeEnum
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    //service.StateEnum
+    // type fullname: service.StateEnum
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
 }
 export namespace services {
-    //services.Service
-    // fullName: services.Service.Service
+    // interface fullName: services.Service.Service
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;

@@ -5,8 +5,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  */
 export namespace dbaas {
     export namespace queue {
-        //dbaas.queue.App
-        // fullName: dbaas.queue.App.App
+        // interface fullName: dbaas.queue.App.App
         export interface App {
             humanId: string;
             id: string;
@@ -14,68 +13,59 @@ export namespace dbaas {
             regionId: string;
             status: dbaas.queue.AppStatus;
         }
-        //dbaas.queue.AppConfiguration
-        // fullName: dbaas.queue.AppConfiguration.AppConfiguration
+        // interface fullName: dbaas.queue.AppConfiguration.AppConfiguration
         export interface AppConfiguration {
             app: dbaas.queue.App;
             metricsAccount: dbaas.queue.MetricsAccount;
             roles: dbaas.queue.Role[];
             users: dbaas.queue.UserWithPassword[];
         }
-        //dbaas.queue.AppStatus
+        // type fullname: dbaas.queue.AppStatus
         export type AppStatus = "not_configured" | "active" | "deleted"
-        //dbaas.queue.Key
-        // fullName: dbaas.queue.Key.Key
+        // interface fullName: dbaas.queue.Key.Key
         export interface Key {
             humanAppId: string;
             id: string;
             name: string;
         }
-        //dbaas.queue.KeyWithSecret
-        // fullName: dbaas.queue.KeyWithSecret.KeyWithSecret
+        // interface fullName: dbaas.queue.KeyWithSecret.KeyWithSecret
         export interface KeyWithSecret {
             humanAppId: string;
             id: string;
             name: string;
             secret: string;
         }
-        //dbaas.queue.MetricsAccount
-        // fullName: dbaas.queue.MetricsAccount.MetricsAccount
+        // interface fullName: dbaas.queue.MetricsAccount.MetricsAccount
         export interface MetricsAccount {
             host: string;
             token: string;
         }
-        //dbaas.queue.Region
-        // fullName: dbaas.queue.Region.Region
+        // interface fullName: dbaas.queue.Region.Region
         export interface Region {
             id: string;
             name: string;
             url: string;
         }
-        //dbaas.queue.Role
-        // fullName: dbaas.queue.Role.Role
+        // interface fullName: dbaas.queue.Role.Role
         export interface Role {
             autoCreateAcl: boolean;
             name: string;
             readAcl: string[];
             writeAcl: string[];
         }
-        //dbaas.queue.Topic
-        // fullName: dbaas.queue.Topic.Topic
+        // interface fullName: dbaas.queue.Topic.Topic
         export interface Topic {
             id: string;
             partitions: number;
             replicationFactor: number;
         }
-        //dbaas.queue.User
-        // fullName: dbaas.queue.User.User
+        // interface fullName: dbaas.queue.User.User
         export interface User {
             id: string;
             name: string;
             roles: string[];
         }
-        //dbaas.queue.UserWithPassword
-        // fullName: dbaas.queue.UserWithPassword.UserWithPassword
+        // interface fullName: dbaas.queue.UserWithPassword.UserWithPassword
         export interface UserWithPassword {
             id: string;
             name: string;
@@ -85,8 +75,7 @@ export namespace dbaas {
     }
 }
 export namespace service {
-    //service.RenewType
-    // fullName: service.RenewType.RenewType
+    // interface fullName: service.RenewType.RenewType
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -94,14 +83,13 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    //service.RenewalTypeEnum
+    // type fullname: service.RenewalTypeEnum
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    //service.StateEnum
+    // type fullname: service.StateEnum
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
 }
 export namespace services {
-    //services.Service
-    // fullName: services.Service.Service
+    // interface fullName: services.Service.Service
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;

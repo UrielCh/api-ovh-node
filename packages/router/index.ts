@@ -4,8 +4,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /router Models
  */
 export namespace router {
-    //router.Dnat
-    // fullName: router.Dnat.Dnat
+    // interface fullName: router.Dnat.Dnat
     export interface Dnat {
         destinationPort?: number;
         id: number;
@@ -15,10 +14,9 @@ export namespace router {
         sourceNet?: string;
         status: router.StatusEnum;
     }
-    //router.IpStatusEnum
+    // type fullname: router.IpStatusEnum
     export type IpStatusEnum = "blacklisted" | "deleted" | "free" | "installing" | "ok" | "quarantined" | "removing" | "suspended"
-    //router.Network
-    // fullName: router.Network.Network
+    // interface fullName: router.Network.Network
     export interface Network {
         creationDate: string;
         description?: string;
@@ -27,12 +25,11 @@ export namespace router {
         status: router.IpStatusEnum;
         vlanTag?: number;
     }
-    //router.PrivLinkReqActionEnum
+    // type fullname: router.PrivLinkReqActionEnum
     export type PrivLinkReqActionEnum = "accept" | "cancel" | "reject"
-    //router.PrivLinkReqStatusEnum
+    // type fullname: router.PrivLinkReqStatusEnum
     export type PrivLinkReqStatusEnum = "accepted" | "cancelled" | "error" | "pending" | "rejected"
-    //router.PrivateLink
-    // fullName: router.PrivateLink.PrivateLink
+    // interface fullName: router.PrivateLink.PrivateLink
     export interface PrivateLink {
         creationDate: string;
         id: number;
@@ -40,31 +37,27 @@ export namespace router {
         peerServiceName: string;
         status: router.StatusEnum;
     }
-    //router.PrivateLinkRequest
-    // fullName: router.PrivateLinkRequest.PrivateLinkRequest
+    // interface fullName: router.PrivateLinkRequest.PrivateLinkRequest
     export interface PrivateLinkRequest {
         creationDate: string;
         status: router.PrivLinkReqStatusEnum;
     }
-    //router.PrivateLinkRoute
-    // fullName: router.PrivateLinkRoute.PrivateLinkRoute
+    // interface fullName: router.PrivateLinkRoute.PrivateLinkRoute
     export interface PrivateLinkRoute {
         creationDate: string;
         id: number;
         network: string;
         status: router.StatusEnum;
     }
-    //router.ProtocolEnum
+    // type fullname: router.ProtocolEnum
     export type ProtocolEnum = "any" | "tcp" | "udp"
-    //router.Router
-    // fullName: router.Router.Router
+    // interface fullName: router.Router.Router
     export interface Router {
         name: string;
         service: string;
         status: router.StatusEnum;
     }
-    //router.Snat
-    // fullName: router.Snat.Snat
+    // interface fullName: router.Snat.Snat
     export interface Snat {
         destinationNet?: string;
         destinationPort?: number;
@@ -74,10 +67,9 @@ export namespace router {
         protocol: router.ProtocolEnum;
         status: router.StatusEnum;
     }
-    //router.StatusEnum
+    // type fullname: router.StatusEnum
     export type StatusEnum = "creating" | "error" | "off" | "on" | "removing" | "suspended"
-    //router.Task
-    // fullName: router.Task.Task
+    // interface fullName: router.Task.Task
     export interface Task {
         creationDate: string;
         finishDate?: string;
@@ -85,12 +77,11 @@ export namespace router {
         id: number;
         status: router.TaskStatusEnum;
     }
-    //router.TaskFunctionEnum
+    // type fullname: router.TaskFunctionEnum
     export type TaskFunctionEnum = "addDnat" | "addDnatMaster" | "addNetwork" | "addNetworkMaster" | "addPrivateLink" | "addPrivateLinkMaster" | "addPrivateLinkRoute" | "addPrivateLinkRouteMaster" | "addSnat" | "addSnatMaster" | "delDnat" | "delDnatMaster" | "delNetwork" | "delNetworkMaster" | "delPrivateLink" | "delPrivateLinkMaster" | "delPrivateLinkRoute" | "delPrivateLinkRouteMaster" | "delSnat" | "delSnatMaster" | "vpnCreation" | "vpnDeletion" | "vpnSetConfig" | "vpnSetConfigMaster" | "vpnSetSecrets" | "vpnSetSecretsMaster"
-    //router.TaskStatusEnum
+    // type fullname: router.TaskStatusEnum
     export type TaskStatusEnum = "cancelled" | "doing" | "done" | "error" | "todo"
-    //router.Vpn
-    // fullName: router.Vpn.Vpn
+    // interface fullName: router.Vpn.Vpn
     export interface Vpn {
         clientIp?: string;
         clientPrivNet: string;
@@ -100,8 +91,7 @@ export namespace router {
     }
 }
 export namespace service {
-    //service.RenewType
-    // fullName: service.RenewType.RenewType
+    // interface fullName: service.RenewType.RenewType
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -109,18 +99,17 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    //service.RenewalTypeEnum
+    // type fullname: service.RenewalTypeEnum
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    //service.StateEnum
+    // type fullname: service.StateEnum
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
-    //service.TerminationFutureUseEnum
+    // type fullname: service.TerminationFutureUseEnum
     export type TerminationFutureUseEnum = "NOT_REPLACING_SERVICE" | "OTHER" | "SUBSCRIBE_AN_OTHER_SERVICE" | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR" | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
-    //service.TerminationReasonEnum
+    // type fullname: service.TerminationReasonEnum
     export type TerminationReasonEnum = "FEATURES_DONT_SUIT_ME" | "LACK_OF_PERFORMANCES" | "MIGRATED_TO_ANOTHER_OVH_PRODUCT" | "MIGRATED_TO_COMPETITOR" | "NOT_NEEDED_ANYMORE" | "NOT_RELIABLE" | "NO_ANSWER" | "OTHER" | "TOO_EXPENSIVE" | "TOO_HARD_TO_USE" | "UNSATIFIED_BY_CUSTOMER_SUPPORT"
 }
 export namespace services {
-    //services.Service
-    // fullName: services.Service.Service
+    // interface fullName: services.Service.Service
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;

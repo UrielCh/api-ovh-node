@@ -5,14 +5,12 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  */
 export namespace hosting {
     export namespace reseller {
-        //hosting.reseller.metaType
-        // fullName: hosting.reseller.metaType.metaType
+        // interface fullName: hosting.reseller.metaType.metaType
         export interface metaType {
             email: string;
             region: string;
         }
-        //hosting.reseller.product
-        // fullName: hosting.reseller.product.product
+        // interface fullName: hosting.reseller.product.product
         export interface product {
             action?: string;
             ip?: string;
@@ -23,8 +21,7 @@ export namespace hosting {
             typeDetail: hosting.reseller.productType;
             url?: string;
         }
-        //hosting.reseller.productType
-        // fullName: hosting.reseller.productType.productType
+        // interface fullName: hosting.reseller.productType.productType
         export interface productType {
             consumers: number;
             cpu: string;
@@ -36,25 +33,23 @@ export namespace hosting {
             vCores: number;
             websites: number;
         }
-        //hosting.reseller.resellerTypeEnum
+        // type fullname: hosting.reseller.resellerTypeEnum
         export type resellerTypeEnum = "TYPE1" | "TYPE2" | "TYPE3" | "TYPE4" | "TYPE5"
     }
 }
 export namespace reseller {
-    //reseller.pleskLanguageTypeEnum
+    // type fullname: reseller.pleskLanguageTypeEnum
     export type pleskLanguageTypeEnum = "ar" | "zh-CN" | "zh-TW" | "cs-CZ" | "da-DK" | "nl-NL" | "en-US" | "fi-FI" | "fr-FR" | "de-DE" | "el-GR" | "he-IL" | "hu-HU" | "id-ID" | "it-IT" | "ja-JP" | "ko-KR" | "ms-MY" | "nb-NO" | "pl-PL" | "pt-BR" | "pt-PT" | "ro-RO" | "ru-RU" | "es-ES" | "sv-SE" | "tl-PH" | "th-TH" | "tr-TR" | "uk-UA" | "vi-VN"
-    //reseller.snapshot
-    // fullName: reseller.snapshot.snapshot
+    // interface fullName: reseller.snapshot.snapshot
     export interface snapshot {
         creationDate: string;
         id: string;
         snashotName: string;
         type: reseller.snapshotTypeEnum;
     }
-    //reseller.snapshotTypeEnum
+    // type fullname: reseller.snapshotTypeEnum
     export type snapshotTypeEnum = "automatic" | "manual"
-    //reseller.task
-    // fullName: reseller.task.task
+    // interface fullName: reseller.task.task
     export interface task {
         currentStep: string;
         expectedDoneDate?: string;
@@ -65,12 +60,11 @@ export namespace reseller {
         taskName: string;
         taskStatus: reseller.taskTypeEnum;
     }
-    //reseller.taskTypeEnum
+    // type fullname: reseller.taskTypeEnum
     export type taskTypeEnum = "done" | "error" | "doing" | "todo" | "unknown"
 }
 export namespace service {
-    //service.RenewType
-    // fullName: service.RenewType.RenewType
+    // interface fullName: service.RenewType.RenewType
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -78,14 +72,13 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    //service.RenewalTypeEnum
+    // type fullname: service.RenewalTypeEnum
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    //service.StateEnum
+    // type fullname: service.StateEnum
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
 }
 export namespace services {
-    //services.Service
-    // fullName: services.Service.Service
+    // interface fullName: services.Service.Service
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;

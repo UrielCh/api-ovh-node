@@ -5,19 +5,17 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  */
 export namespace license {
     export namespace office {
-        //license.office.DomainStateEnum
+        // type fullname: license.office.DomainStateEnum
         export type DomainStateEnum = "ok" | "unverified"
-        //license.office.LicenceEnum
+        // type fullname: license.office.LicenceEnum
         export type LicenceEnum = "officeBusiness" | "officeProPlus"
-        //license.office.OfficeDomain
-        // fullName: license.office.OfficeDomain.OfficeDomain
+        // interface fullName: license.office.OfficeDomain.OfficeDomain
         export interface OfficeDomain {
             domainName: string;
             status: license.office.DomainStateEnum;
             txtEntry: string;
         }
-        //license.office.OfficeSubscription
-        // fullName: license.office.OfficeSubscription.OfficeSubscription
+        // interface fullName: license.office.OfficeSubscription.OfficeSubscription
         export interface OfficeSubscription {
             creationDate: string;
             id: number;
@@ -27,8 +25,7 @@ export namespace license {
             status: string;
             taskPendingId: number;
         }
-        //license.office.OfficeTask
-        // fullName: license.office.OfficeTask.OfficeTask
+        // interface fullName: license.office.OfficeTask.OfficeTask
         export interface OfficeTask {
             finishDate?: string;
             function: string;
@@ -36,8 +33,7 @@ export namespace license {
             status: license.office.TaskStatusEnum;
             todoDate: string;
         }
-        //license.office.OfficeTenant
-        // fullName: license.office.OfficeTenant.OfficeTenant
+        // interface fullName: license.office.OfficeTenant.OfficeTenant
         export interface OfficeTenant {
             address: string;
             city: string;
@@ -50,8 +46,7 @@ export namespace license {
             status: license.office.ServiceStateEnum;
             zipCode: string;
         }
-        //license.office.OfficeUser
-        // fullName: license.office.OfficeUser.OfficeUser
+        // interface fullName: license.office.OfficeUser.OfficeUser
         export interface OfficeUser {
             activationEmail: string;
             deleteAtExpiration: boolean;
@@ -62,39 +57,35 @@ export namespace license {
             status: license.office.UserStateEnum;
             taskPendingId: number;
         }
-        //license.office.ServiceStateEnum
+        // type fullname: license.office.ServiceStateEnum
         export type ServiceStateEnum = "creating" | "inMaintenance" | "ok" | "suspended"
-        //license.office.ServiceTypeEnum
+        // type fullname: license.office.ServiceTypeEnum
         export type ServiceTypeEnum = "payAsYouGo" | "prepaid"
-        //license.office.Statistic
-        // fullName: license.office.Statistic.Statistic
+        // interface fullName: license.office.Statistic.Statistic
         export interface Statistic {
             available: number;
             licenseId: number;
             used: number;
         }
-        //license.office.Statistics
-        // fullName: license.office.Statistics.Statistics
+        // interface fullName: license.office.Statistics.Statistics
         export interface Statistics {
             date: string;
             lines: license.office.StatisticsLine[];
         }
-        //license.office.StatisticsLine
-        // fullName: license.office.StatisticsLine.StatisticsLine
+        // interface fullName: license.office.StatisticsLine.StatisticsLine
         export interface StatisticsLine {
             endOfDayCount: number;
             licenceType: license.office.LicenceEnum;
             peakCount: number;
         }
-        //license.office.TaskStatusEnum
+        // type fullname: license.office.TaskStatusEnum
         export type TaskStatusEnum = "cancelled" | "doing" | "done" | "error" | "todo"
-        //license.office.UserStateEnum
+        // type fullname: license.office.UserStateEnum
         export type UserStateEnum = "creating" | "deleting" | "ok"
     }
 }
 export namespace service {
-    //service.RenewType
-    // fullName: service.RenewType.RenewType
+    // interface fullName: service.RenewType.RenewType
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -102,14 +93,13 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    //service.RenewalTypeEnum
+    // type fullname: service.RenewalTypeEnum
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    //service.StateEnum
+    // type fullname: service.StateEnum
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
 }
 export namespace services {
-    //services.Service
-    // fullName: services.Service.Service
+    // interface fullName: services.Service.Service
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;

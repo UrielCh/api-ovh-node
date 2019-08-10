@@ -4,17 +4,15 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /dedicated/nas Models
  */
 export namespace dedicated {
-    //dedicated.TaskStatusEnum
+    // type fullname: dedicated.TaskStatusEnum
     export type TaskStatusEnum = "cancelled" | "customerError" | "doing" | "done" | "init" | "ovhError" | "todo"
     export namespace nas {
-        //dedicated.nas.Access
-        // fullName: dedicated.nas.Access.Access
+        // interface fullName: dedicated.nas.Access.Access
         export interface Access {
             accessId: number;
             ip: string;
         }
-        //dedicated.nas.Nas
-        // fullName: dedicated.nas.Nas.Nas
+        // interface fullName: dedicated.nas.Nas.Nas
         export interface Nas {
             canCreatePartition: boolean;
             customName?: string;
@@ -24,23 +22,20 @@ export namespace dedicated {
             serviceName: string;
             zpoolSize: number;
         }
-        //dedicated.nas.Partition
-        // fullName: dedicated.nas.Partition.Partition
+        // interface fullName: dedicated.nas.Partition.Partition
         export interface Partition {
             partitionName: string;
             protocol: dedicated.storage.ProtocolEnum;
             size: number;
         }
-        //dedicated.nas.Quota
-        // fullName: dedicated.nas.Quota.Quota
+        // interface fullName: dedicated.nas.Quota.Quota
         export interface Quota {
             size: number;
             uid: number;
         }
     }
     export namespace nasTask {
-        //dedicated.nasTask.Task
-        // fullName: dedicated.nasTask.Task.Task
+        // interface fullName: dedicated.nasTask.Task.Task
         export interface Task {
             details?: string;
             doneDate?: string;
@@ -54,15 +49,14 @@ export namespace dedicated {
         }
     }
     export namespace storage {
-        //dedicated.storage.ProtocolEnum
+        // type fullname: dedicated.storage.ProtocolEnum
         export type ProtocolEnum = "CIFS" | "NFS" | "NFS_CIFS"
-        //dedicated.storage.TaskFunctionEnum
+        // type fullname: dedicated.storage.TaskFunctionEnum
         export type TaskFunctionEnum = "backupRecursiveDestroy" | "clusterLeclercAclUpdate" | "clusterLeclercChangeServiceIp" | "clusterLeclercCustomSnapCreate" | "clusterLeclercCustomSnapDelete" | "clusterLeclercDeleteSnapshotDirectory" | "clusterLeclercDestroyNasContainer" | "clusterLeclercPartitionAdd" | "clusterLeclercPartitionDelete" | "clusterLeclercPartitionUpdate" | "clusterLeclercQuotaUpdate" | "clusterLeclercSetupNasContainer" | "clusterLeclercSnapshotUpdate" | "clusterLeclercZfsOptions" | "nasAclUpdate" | "nasDeleteSnapshotDirectory" | "nasPartitionAdd" | "nasPartitionDelete" | "nasPartitionUpdate" | "nasQuotaUpdate" | "remoteBackupRecursiveDestroy"
     }
 }
 export namespace service {
-    //service.RenewType
-    // fullName: service.RenewType.RenewType
+    // interface fullName: service.RenewType.RenewType
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -70,14 +64,13 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    //service.RenewalTypeEnum
+    // type fullname: service.RenewalTypeEnum
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    //service.StateEnum
+    // type fullname: service.StateEnum
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
 }
 export namespace services {
-    //services.Service
-    // fullName: services.Service.Service
+    // interface fullName: services.Service.Service
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;

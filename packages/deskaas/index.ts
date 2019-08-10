@@ -4,18 +4,16 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /deskaas Models
  */
 export namespace complexType {
-    //complexType.UnitAndValue
-    // fullName: complexType.UnitAndValue.UnitAndValue
+    // interface fullName: complexType.UnitAndValue.UnitAndValue
     export interface UnitAndValue<T> {
         unit: string;
         value: T;
     }
 }
 export namespace deskaas {
-    //deskaas.StateEnum
+    // type fullname: deskaas.StateEnum
     export type StateEnum = "available" | "delivered" | "disabled" | "error" | "reserved"
-    //deskaas.Task
-    // fullName: deskaas.Task.Task
+    // interface fullName: deskaas.Task.Task
     export interface Task {
         description?: string;
         lastModificationDate?: string;
@@ -24,10 +22,9 @@ export namespace deskaas {
         state: deskaas.TaskStateEnum;
         taskId: number;
     }
-    //deskaas.TaskStateEnum
+    // type fullname: deskaas.TaskStateEnum
     export type TaskStateEnum = "canceled" | "doing" | "done" | "error" | "fixing" | "toCancel" | "toCreate" | "todo" | "unknown" | "waitingForChilds" | "waitingTodo"
-    //deskaas.User
-    // fullName: deskaas.User.User
+    // interface fullName: deskaas.User.User
     export interface User {
         activationState: deskaas.user.ActivationStateEnum;
         email: string;
@@ -35,8 +32,7 @@ export namespace deskaas {
         state: deskaas.user.StateEnum;
         userId: number;
     }
-    //deskaas.deskaas
-    // fullName: deskaas.deskaas.deskaas
+    // interface fullName: deskaas.deskaas.deskaas
     export interface deskaas {
         alias: string;
         dataDisk: complexType.UnitAndValue<number>;
@@ -50,8 +46,7 @@ export namespace deskaas {
         url?: string;
         vcpu: number;
     }
-    //deskaas.passwordPolicy
-    // fullName: deskaas.passwordPolicy.passwordPolicy
+    // interface fullName: deskaas.passwordPolicy.passwordPolicy
     export interface passwordPolicy {
         deniedChars: string[];
         digitMandatory: boolean;
@@ -63,15 +58,14 @@ export namespace deskaas {
         uppercaseLetterMandatory: boolean;
     }
     export namespace user {
-        //deskaas.user.ActivationStateEnum
+        // type fullname: deskaas.user.ActivationStateEnum
         export type ActivationStateEnum = "disabled" | "disabling" | "enabled" | "enabling" | "toDisable" | "toEnable"
-        //deskaas.user.StateEnum
+        // type fullname: deskaas.user.StateEnum
         export type StateEnum = "creating" | "deleting" | "delivered" | "error"
     }
 }
 export namespace service {
-    //service.RenewType
-    // fullName: service.RenewType.RenewType
+    // interface fullName: service.RenewType.RenewType
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -79,18 +73,17 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    //service.RenewalTypeEnum
+    // type fullname: service.RenewalTypeEnum
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    //service.StateEnum
+    // type fullname: service.StateEnum
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
-    //service.TerminationFutureUseEnum
+    // type fullname: service.TerminationFutureUseEnum
     export type TerminationFutureUseEnum = "NOT_REPLACING_SERVICE" | "OTHER" | "SUBSCRIBE_AN_OTHER_SERVICE" | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR" | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
-    //service.TerminationReasonEnum
+    // type fullname: service.TerminationReasonEnum
     export type TerminationReasonEnum = "FEATURES_DONT_SUIT_ME" | "LACK_OF_PERFORMANCES" | "MIGRATED_TO_ANOTHER_OVH_PRODUCT" | "MIGRATED_TO_COMPETITOR" | "NOT_NEEDED_ANYMORE" | "NOT_RELIABLE" | "NO_ANSWER" | "OTHER" | "TOO_EXPENSIVE" | "TOO_HARD_TO_USE" | "UNSATIFIED_BY_CUSTOMER_SUPPORT"
 }
 export namespace services {
-    //services.Service
-    // fullName: services.Service.Service
+    // interface fullName: services.Service.Service
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;

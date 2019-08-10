@@ -4,8 +4,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /caas/registry Models
  */
 export namespace registry {
-    //registry.image
-    // fullName: registry.image.image
+    // interface fullName: registry.image.image
     export interface image {
         createdAt: string;
         id: string;
@@ -15,21 +14,18 @@ export namespace registry {
         updatedAt: string;
     }
     export namespace image {
-        //registry.image.status
+        // type fullname: registry.image.status
         export type status = "DELETING" | "DEPLOYING" | "ERROR" | "OK"
     }
-    //registry.inputImage
-    // fullName: registry.inputImage.inputImage
+    // interface fullName: registry.inputImage.inputImage
     export interface inputImage {
         public: boolean;
     }
-    //registry.inputNamespace
-    // fullName: registry.inputNamespace.inputNamespace
+    // interface fullName: registry.inputNamespace.inputNamespace
     export interface inputNamespace {
         name: string;
     }
-    //registry.inputPermissions
-    // fullName: registry.inputPermissions.inputPermissions
+    // interface fullName: registry.inputPermissions.inputPermissions
     export interface inputPermissions {
         canRead: boolean;
         canWrite: boolean;
@@ -37,13 +33,11 @@ export namespace registry {
         status: registry.permission.status;
         userId: string;
     }
-    //registry.inputUser
-    // fullName: registry.inputUser.inputUser
+    // interface fullName: registry.inputUser.inputUser
     export interface inputUser {
         description: string;
     }
-    //registry.namespace
-    // fullName: registry.namespace.namespace
+    // interface fullName: registry.namespace.namespace
     export interface namespace {
         createdAt: string;
         id: string;
@@ -52,15 +46,14 @@ export namespace registry {
         updatedAt: string;
     }
     export namespace namespace {
-        //registry.namespace.status
+        // type fullname: registry.namespace.status
         export type status = "DELETING" | "DEPLOYING" | "ERROR" | "OK"
     }
     export namespace permission {
-        //registry.permission.status
+        // type fullname: registry.permission.status
         export type status = "DELETING" | "DEPLOYING" | "ERROR" | "OK"
     }
-    //registry.permissions
-    // fullName: registry.permissions.permissions
+    // interface fullName: registry.permissions.permissions
     export interface permissions {
         canRead: boolean;
         canWrite: boolean;
@@ -71,8 +64,7 @@ export namespace registry {
         updatedAt: string;
         userId: string;
     }
-    //registry.service
-    // fullName: registry.service.service
+    // interface fullName: registry.service.service
     export interface service {
         createdAt: string;
         endpoint: string;
@@ -82,16 +74,14 @@ export namespace registry {
         updatedAt: string;
         zone: string;
     }
-    //registry.tag
-    // fullName: registry.tag.tag
+    // interface fullName: registry.tag.tag
     export interface tag {
         createdAt: string;
         id: string;
         name: string;
         updatedAt: string;
     }
-    //registry.user
-    // fullName: registry.user.user
+    // interface fullName: registry.user.user
     export interface user {
         createdAt: string;
         description: boolean;
@@ -101,13 +91,12 @@ export namespace registry {
         username: string;
     }
     export namespace user {
-        //registry.user.status
+        // type fullname: registry.user.status
         export type status = "DELETING" | "DEPLOYING" | "ERROR" | "OK"
     }
 }
 export namespace service {
-    //service.RenewType
-    // fullName: service.RenewType.RenewType
+    // interface fullName: service.RenewType.RenewType
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -115,14 +104,13 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    //service.RenewalTypeEnum
+    // type fullname: service.RenewalTypeEnum
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    //service.StateEnum
+    // type fullname: service.StateEnum
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
 }
 export namespace services {
-    //services.Service
-    // fullName: services.Service.Service
+    // interface fullName: services.Service.Service
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;

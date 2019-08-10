@@ -4,21 +4,18 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /hpcspot Models
  */
 export namespace complexType {
-    //complexType.UnitAndValue
-    // fullName: complexType.UnitAndValue.UnitAndValue
+    // interface fullName: complexType.UnitAndValue.UnitAndValue
     export interface UnitAndValue<T> {
         unit: string;
         value: T;
     }
 }
 export namespace hpcspot {
-    //hpcspot.Account
-    // fullName: hpcspot.Account.Account
+    // interface fullName: hpcspot.Account.Account
     export interface Account {
         name: string;
     }
-    //hpcspot.Consumption
-    // fullName: hpcspot.Consumption.Consumption
+    // interface fullName: hpcspot.Consumption.Consumption
     export interface Consumption {
         description?: string;
         hpcspotItemEndDate: string;
@@ -30,14 +27,13 @@ export namespace hpcspot {
         reference: hpcspot.ConsumptionReferenceEnum;
         type: hpcspot.ConsumptionTypeEnum;
     }
-    //hpcspot.ConsumptionReferenceEnum
+    // type fullname: hpcspot.ConsumptionReferenceEnum
     export type ConsumptionReferenceEnum = "12core.60gb.quadrok4000" | "16core.64gb" | "1core.4gb" | "1core.4gb.quadrok4000" | "2core.8gb" | "2core.8gb.quadrok4000" | "4core.15gb" | "4core.15gb.quadrok4000" | "4core.32gb" | "8core.30gb" | "8core.30gb.quadrok4000" | "8core.32gb.1teslak20"
-    //hpcspot.ConsumptionTypeEnum
+    // type fullname: hpcspot.ConsumptionTypeEnum
     export type ConsumptionTypeEnum = "job" | "reservation" | "session"
 }
 export namespace service {
-    //service.RenewType
-    // fullName: service.RenewType.RenewType
+    // interface fullName: service.RenewType.RenewType
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -45,14 +41,13 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    //service.RenewalTypeEnum
+    // type fullname: service.RenewalTypeEnum
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    //service.StateEnum
+    // type fullname: service.StateEnum
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
 }
 export namespace services {
-    //services.Service
-    // fullName: services.Service.Service
+    // interface fullName: services.Service.Service
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;

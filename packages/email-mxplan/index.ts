@@ -5,8 +5,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  */
 export namespace email {
     export namespace mxplan {
-        //email.mxplan.Account
-        // fullName: email.mxplan.Account.Account
+        // interface fullName: email.mxplan.Account.Account
         export interface Account {
             SAMAccountName?: string;
             configured: boolean;
@@ -37,15 +36,13 @@ export namespace email {
             state: emailproObjectStateEnum;
             taskPendingId: number;
         }
-        //email.mxplan.AccountAlias
-        // fullName: email.mxplan.AccountAlias.AccountAlias
+        // interface fullName: email.mxplan.AccountAlias.AccountAlias
         export interface AccountAlias {
             alias: string;
             creationDate: string;
             taskPendingId: number;
         }
-        //email.mxplan.AccountDiagnosis
-        // fullName: email.mxplan.AccountDiagnosis.AccountDiagnosis
+        // interface fullName: email.mxplan.AccountDiagnosis.AccountDiagnosis
         export interface AccountDiagnosis {
             canReceiveEmail: boolean;
             canSendEmail: boolean;
@@ -57,29 +54,25 @@ export namespace email {
             isSuspended: boolean;
             lastCheck: string;
         }
-        //email.mxplan.AccountFullAccess
-        // fullName: email.mxplan.AccountFullAccess.AccountFullAccess
+        // interface fullName: email.mxplan.AccountFullAccess.AccountFullAccess
         export interface AccountFullAccess {
             allowedAccountId: number;
             creationDate: string;
             taskPendingId: number;
         }
-        //email.mxplan.AccountSendAs
-        // fullName: email.mxplan.AccountSendAs.AccountSendAs
+        // interface fullName: email.mxplan.AccountSendAs.AccountSendAs
         export interface AccountSendAs {
             allowedAccountId: number;
             creationDate: string;
             taskPendingId: number;
         }
-        //email.mxplan.AccountSendOnBehalfTo
-        // fullName: email.mxplan.AccountSendOnBehalfTo.AccountSendOnBehalfTo
+        // interface fullName: email.mxplan.AccountSendOnBehalfTo.AccountSendOnBehalfTo
         export interface AccountSendOnBehalfTo {
             allowedAccountId: number;
             creationDate: string;
             taskPendingId: number;
         }
-        //email.mxplan.Domain
-        // fullName: email.mxplan.Domain.Domain
+        // interface fullName: email.mxplan.Domain.Domain
         export interface Domain {
             cnameToCheck?: string;
             domainAliases: string[];
@@ -95,8 +88,7 @@ export namespace email {
             taskPendingId: number;
             type: email.pro.DomainTypeEnum;
         }
-        //email.mxplan.ExternalContact
-        // fullName: email.mxplan.ExternalContact.ExternalContact
+        // interface fullName: email.mxplan.ExternalContact.ExternalContact
         export interface ExternalContact {
             creationDate: string;
             displayName: string;
@@ -109,8 +101,7 @@ export namespace email {
             state: emailproObjectStateEnum;
             taskPendingId: number;
         }
-        //email.mxplan.Server
-        // fullName: email.mxplan.Server.Server
+        // interface fullName: email.mxplan.Server.Server
         export interface Server {
             currentDiskUsage?: number;
             diskSize?: number;
@@ -124,8 +115,7 @@ export namespace email {
             taskPendingId: number;
             version?: number;
         }
-        //email.mxplan.Service
-        // fullName: email.mxplan.Service.Service
+        // interface fullName: email.mxplan.Service.Service
         export interface Service {
             complexityEnabled: boolean;
             displayName?: string;
@@ -146,29 +136,27 @@ export namespace email {
             taskPendingId: number;
             webUrl?: string;
         }
-        //email.mxplan.ServiceOfferEnum
+        // type fullname: email.mxplan.ServiceOfferEnum
         export type ServiceOfferEnum = "MXPLAN"
-        //email.mxplan.accountCapabilities
-        // fullName: email.mxplan.accountCapabilities.accountCapabilities
+        // interface fullName: email.mxplan.accountCapabilities.accountCapabilities
         export interface accountCapabilities {
             quotas?: number[];
         }
     }
     export namespace pro {
-        //email.pro.DisclaimerAttributeEnum
+        // type fullname: email.pro.DisclaimerAttributeEnum
         export type DisclaimerAttributeEnum = "City" | "Company" | "Country" | "Department" | "DisplayName" | "Email" | "FaxNumber" | "FirstName" | "HomePhoneNumber" | "Initials" | "LastName" | "Manager" | "MobileNumber" | "Notes" | "Office" | "OtherFaxNumber" | "OtherHomePhoneNumber" | "OtherPhoneNumber" | "PagerNumber" | "PhoneNumber" | "State" | "Street" | "Title" | "UserLogonName" | "ZipCode"
-        //email.pro.DomainTypeEnum
+        // type fullname: email.pro.DomainTypeEnum
         export type DomainTypeEnum = "authoritative" | "nonAuthoritative"
-        //email.pro.MailingFilterEnum
+        // type fullname: email.pro.MailingFilterEnum
         export type MailingFilterEnum = "vaderetro"
-        //email.pro.ObjectStateEnum
+        // type fullname: email.pro.ObjectStateEnum
         export type ObjectStateEnum = "creating" | "deleting" | "ok" | "reopening" | "suspended" | "suspending" | "unknown"
-        //email.pro.ServerStateEnum
+        // type fullname: email.pro.ServerStateEnum
         export type ServerStateEnum = "configurationPending" | "notConfigured" | "ok"
-        //email.pro.ServiceStateEnum
+        // type fullname: email.pro.ServiceStateEnum
         export type ServiceStateEnum = "creating" | "deleting" | "inMaintenance" | "ok" | "reopening" | "suspended" | "suspending"
-        //email.pro.Task
-        // fullName: email.pro.Task.Task
+        // interface fullName: email.pro.Task.Task
         export interface Task {
             finishDate?: string;
             function: email.pro.TaskFunctionEnum;
@@ -176,12 +164,11 @@ export namespace email {
             status: email.pro.TaskStatusEnum;
             todoDate: string;
         }
-        //email.pro.TaskFunctionEnum
+        // type fullname: email.pro.TaskFunctionEnum
         export type TaskFunctionEnum = "addAccount" | "addAlias" | "addDomain" | "addDomainDisclaimer" | "addExternalContact" | "addFullAccess" | "addSendAs" | "addSendOnBehalfTo" | "addServiceAuthorizedIp" | "changeHostname" | "changePassword" | "configureCustomer" | "deleteAccount" | "deleteAlias" | "deleteDomain" | "deleteDomainDisclaimer" | "deleteExternalContact" | "deleteFullAccess" | "deleteSendAs" | "deleteSendOnBehalfTo" | "deleteService" | "deleteServiceAuthorizedIp" | "diagnoseAccount" | "expandDrive" | "installServer" | "maintenance" | "migrateAccountViaOMM" | "migrationAccount" | "migrationDisclaimer" | "migrationExternalContact" | "migrationHistory" | "migrationService" | "reOpenAccount" | "setAccount" | "setAlias" | "setDns" | "setDomain" | "setDomainDisclaimer" | "setExternalContact" | "setService" | "suspendAccount" | "suspendService" | "unknown" | "unsuspendAccount" | "unsuspendService"
-        //email.pro.TaskStatusEnum
+        // type fullname: email.pro.TaskStatusEnum
         export type TaskStatusEnum = "cancelled" | "doing" | "done" | "error" | "todo"
-        //email.pro.disclaimer
-        // fullName: email.pro.disclaimer.disclaimer
+        // interface fullName: email.pro.disclaimer.disclaimer
         export interface disclaimer {
             content: string;
             creationDate: string;
@@ -189,10 +176,9 @@ export namespace email {
             outsideOnly: boolean;
             taskPendingId: number;
         }
-        //email.pro.renewPeriodEnum
+        // type fullname: email.pro.renewPeriodEnum
         export type renewPeriodEnum = "monthly" | "yearly"
-        //email.pro.spamAndVirusConfiguration
-        // fullName: email.pro.spamAndVirusConfiguration.spamAndVirusConfiguration
+        // interface fullName: email.pro.spamAndVirusConfiguration.spamAndVirusConfiguration
         export interface spamAndVirusConfiguration {
             checkDKIM: boolean;
             checkSPF: boolean;

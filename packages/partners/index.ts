@@ -4,13 +4,11 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /partners Models
  */
 export namespace Partner {
-    //Partner.Application
-    // fullName: Partner.Application.Application
+    // interface fullName: Partner.Application.Application
     export interface Application {
         tieringLevel: string;
     }
-    //Partner.Company
-    // fullName: Partner.Company.Company
+    // interface fullName: Partner.Company.Company
     export interface Company {
         OVHCertifications: Partner.OVHCertifications;
         OVHCustomersAdvised: string;
@@ -43,8 +41,7 @@ export namespace Partner {
         website: string;
         zipCode: string;
     }
-    //Partner.Contact
-    // fullName: Partner.Contact.Contact
+    // interface fullName: Partner.Contact.Contact
     export interface Contact {
         email: string;
         facebook?: string;
@@ -57,30 +54,26 @@ export namespace Partner {
         role: string;
         twitter?: string;
     }
-    //Partner.Nic
-    // fullName: Partner.Nic.Nic
+    // interface fullName: Partner.Nic.Nic
     export interface Nic {
         nic: string;
     }
-    //Partner.OVHCertifications
-    // fullName: Partner.OVHCertifications.OVHCertifications
+    // interface fullName: Partner.OVHCertifications.OVHCertifications
     export interface OVHCertifications {
         advanced?: string;
         business?: string;
         technical?: string;
     }
-    //Partner.OVHCustomersAdvisedEnum
+    // type fullname: Partner.OVHCustomersAdvisedEnum
     export type OVHCustomersAdvisedEnum = "none" | "one" | "from2To3" | "from4To5" | "moreThan5"
-    //Partner.OVHProductsUsed
-    // fullName: Partner.OVHProductsUsed.OVHProductsUsed
+    // interface fullName: Partner.OVHProductsUsed.OVHProductsUsed
     export interface OVHProductsUsed {
         cloud: Partner.OVHProductsUsedCloud;
         mobileHosting: Partner.OVHProductsUsedMobileHosting;
         telecom: Partner.OVHProductsUsedTelecom;
         web: Partner.OVHProductsUsedWeb;
     }
-    //Partner.OVHProductsUsedCloud
-    // fullName: Partner.OVHProductsUsedCloud.OVHProductsUsedCloud
+    // interface fullName: Partner.OVHProductsUsedCloud.OVHProductsUsedCloud
     export interface OVHProductsUsedCloud {
         cloudDesktop: boolean;
         cloudDesktopInfrastructure: boolean;
@@ -92,14 +85,12 @@ export namespace Partner {
         vps: boolean;
         vrack: boolean;
     }
-    //Partner.OVHProductsUsedMobileHosting
-    // fullName: Partner.OVHProductsUsedMobileHosting.OVHProductsUsedMobileHosting
+    // interface fullName: Partner.OVHProductsUsedMobileHosting.OVHProductsUsedMobileHosting
     export interface OVHProductsUsedMobileHosting {
         logs: boolean;
         metrics: boolean;
     }
-    //Partner.OVHProductsUsedTelecom
-    // fullName: Partner.OVHProductsUsedTelecom.OVHProductsUsedTelecom
+    // interface fullName: Partner.OVHProductsUsedTelecom.OVHProductsUsedTelecom
     export interface OVHProductsUsedTelecom {
         dsl: boolean;
         fax: boolean;
@@ -107,8 +98,7 @@ export namespace Partner {
         sms: boolean;
         voip: boolean;
     }
-    //Partner.OVHProductsUsedWeb
-    // fullName: Partner.OVHProductsUsedWeb.OVHProductsUsedWeb
+    // interface fullName: Partner.OVHProductsUsedWeb.OVHProductsUsedWeb
     export interface OVHProductsUsedWeb {
         domainName: boolean;
         exchange: boolean;
@@ -116,8 +106,7 @@ export namespace Partner {
         sharepoint: boolean;
         webHosting: boolean;
     }
-    //Partner.activitySectors
-    // fullName: Partner.activitySectors.activitySectors
+    // interface fullName: Partner.activitySectors.activitySectors
     export interface activitySectors {
         bankInsuranceFinance: boolean;
         businessServiceOrIndividuals: boolean;
@@ -135,8 +124,7 @@ export namespace Partner {
         videoGames: boolean;
         webAgency: boolean;
     }
-    //Partner.clientKinds
-    // fullName: Partner.clientKinds.clientKinds
+    // interface fullName: Partner.clientKinds.clientKinds
     export interface clientKinds {
         association: boolean;
         individual: boolean;
@@ -146,20 +134,18 @@ export namespace Partner {
         publicSector: boolean;
         startup: boolean;
     }
-    //Partner.companyStatusEnum
+    // type fullname: Partner.companyStatusEnum
     export type companyStatusEnum = "draft" | "submitted" | "validated" | "rejected"
-    //Partner.employeesNumberEnum
+    // type fullname: Partner.employeesNumberEnum
     export type employeesNumberEnum = "from1To10" | "from11To50" | "from51To100" | "from101To500" | "moreThan500"
-    //Partner.expertisesChoices
-    // fullName: Partner.expertisesChoices.expertisesChoices
+    // interface fullName: Partner.expertisesChoices.expertisesChoices
     export interface expertisesChoices {
         consulting: Partner.expertisesChoicesConsulting;
         installationAndIntegration: Partner.expertisesChoicesInstallationAndIntegration;
         outsourcingAndMaintenance: Partner.expertisesChoicesOutsourcingAndMaintenance;
         softwareAndDevelopment: Partner.expertisesChoicesSoftwareAndDevelopment;
     }
-    //Partner.expertisesChoicesConsulting
-    // fullName: Partner.expertisesChoicesConsulting.expertisesChoicesConsulting
+    // interface fullName: Partner.expertisesChoicesConsulting.expertisesChoicesConsulting
     export interface expertisesChoicesConsulting {
         ITSecurity: boolean;
         auditAndConsulting: boolean;
@@ -167,31 +153,27 @@ export namespace Partner {
         marketingCommerceAndCommunication: boolean;
         searchEngineOptimization: boolean;
     }
-    //Partner.expertisesChoicesInstallationAndIntegration
-    // fullName: Partner.expertisesChoicesInstallationAndIntegration.expertisesChoicesInstallationAndIntegration
+    // interface fullName: Partner.expertisesChoicesInstallationAndIntegration.expertisesChoicesInstallationAndIntegration
     export interface expertisesChoicesInstallationAndIntegration {
         cloudInfrastructure: boolean;
         networkEquipment: boolean;
         peripheralsAndMobilitySolutions: boolean;
         telecomEquipmentAndInfrastructure: boolean;
     }
-    //Partner.expertisesChoicesOutsourcingAndMaintenance
-    // fullName: Partner.expertisesChoicesOutsourcingAndMaintenance.expertisesChoicesOutsourcingAndMaintenance
+    // interface fullName: Partner.expertisesChoicesOutsourcingAndMaintenance.expertisesChoicesOutsourcingAndMaintenance
     export interface expertisesChoicesOutsourcingAndMaintenance {
         cmputerSupport: boolean;
         maintenanceOfNetworkEquipment: boolean;
         outsourcing: boolean;
     }
-    //Partner.expertisesChoicesSoftwareAndDevelopment
-    // fullName: Partner.expertisesChoicesSoftwareAndDevelopment.expertisesChoicesSoftwareAndDevelopment
+    // interface fullName: Partner.expertisesChoicesSoftwareAndDevelopment.expertisesChoicesSoftwareAndDevelopment
     export interface expertisesChoicesSoftwareAndDevelopment {
         adviceAndexpertises: boolean;
         maintenanceOrApplicationManagement: boolean;
         networkEquipment: boolean;
         softwareSolutions: boolean;
     }
-    //Partner.externalCertifications
-    // fullName: Partner.externalCertifications.externalCertifications
+    // interface fullName: Partner.externalCertifications.externalCertifications
     export interface externalCertifications {
         aws: boolean;
         cisco: boolean;
@@ -200,10 +182,9 @@ export namespace Partner {
         other?: string;
         vmware: boolean;
     }
-    //Partner.knowledgeResourcesRangeEnum
+    // type fullname: Partner.knowledgeResourcesRangeEnum
     export type knowledgeResourcesRangeEnum = "none" | "from1To3" | "from4To10" | "moreThan10"
-    //Partner.partnerKnowledges
-    // fullName: Partner.partnerKnowledges.partnerKnowledges
+    // interface fullName: Partner.partnerKnowledges.partnerKnowledges
     export interface partnerKnowledges {
         events: boolean;
         forum: boolean;
@@ -213,8 +194,7 @@ export namespace Partner {
         socialNetwork: boolean;
         website: boolean;
     }
-    //Partner.productCountries
-    // fullName: Partner.productCountries.productCountries
+    // interface fullName: Partner.productCountries.productCountries
     export interface productCountries {
         australia: boolean;
         brazil: boolean;
@@ -237,15 +217,15 @@ export namespace Partner {
         tunisia: boolean;
         uk: boolean;
     }
-    //Partner.revenueRangeEnum
+    // type fullname: Partner.revenueRangeEnum
     export type revenueRangeEnum = "lessThan50000Euros" | "from50000To500000Euros" | "from500000To5000000Euros" | "moreThan5000000Euros" | "IDoNotWishToDiscloseThisInformation"
-    //Partner.technicalAdvancedResourcesRangeEnum
+    // type fullname: Partner.technicalAdvancedResourcesRangeEnum
     export type technicalAdvancedResourcesRangeEnum = "none" | "from1To3" | "from4To10" | "moreThan10"
-    //Partner.technicalExpertResourcesRangeEnum
+    // type fullname: Partner.technicalExpertResourcesRangeEnum
     export type technicalExpertResourcesRangeEnum = "none" | "from1To3" | "from4To10" | "moreThan10"
 }
 export namespace nichandle {
-    //nichandle.CountryEnum
+    // type fullname: nichandle.CountryEnum
     export type CountryEnum = "AC" | "AD" | "AE" | "AF" | "AG" | "AI" | "AL" | "AM" | "AO" | "AQ" | "AR" | "AS" | "AT" | "AU" | "AW" | "AX" | "AZ" | "BA" | "BB" | "BD" | "BE" | "BF" | "BG" | "BH" | "BI" | "BJ" | "BL" | "BM" | "BN" | "BO" | "BQ" | "BR" | "BS" | "BT" | "BW" | "BY" | "BZ" | "CA" | "CC" | "CD" | "CF" | "CG" | "CH" | "CI" | "CK" | "CL" | "CM" | "CN" | "CO" | "CR" | "CU" | "CV" | "CW" | "CX" | "CY" | "CZ" | "DE" | "DG" | "DJ" | "DK" | "DM" | "DO" | "DZ" | "EA" | "EC" | "EE" | "EG" | "EH" | "ER" | "ES" | "ET" | "FI" | "FJ" | "FK" | "FM" | "FO" | "FR" | "GA" | "GB" | "GD" | "GE" | "GF" | "GG" | "GH" | "GI" | "GL" | "GM" | "GN" | "GP" | "GQ" | "GR" | "GS" | "GT" | "GU" | "GW" | "GY" | "HK" | "HN" | "HR" | "HT" | "HU" | "IC" | "ID" | "IE" | "IL" | "IM" | "IN" | "IO" | "IQ" | "IR" | "IS" | "IT" | "JE" | "JM" | "JO" | "JP" | "KE" | "KG" | "KH" | "KI" | "KM" | "KN" | "KP" | "KR" | "KW" | "KY" | "KZ" | "LA" | "LB" | "LC" | "LI" | "LK" | "LR" | "LS" | "LT" | "LU" | "LV" | "LY" | "MA" | "MC" | "MD" | "ME" | "MF" | "MG" | "MH" | "MK" | "ML" | "MM" | "MN" | "MO" | "MP" | "MQ" | "MR" | "MS" | "MT" | "MU" | "MV" | "MW" | "MX" | "MY" | "MZ" | "NA" | "NC" | "NE" | "NF" | "NG" | "NI" | "NL" | "NO" | "NP" | "NR" | "NU" | "NZ" | "OM" | "PA" | "PE" | "PF" | "PG" | "PH" | "PK" | "PL" | "PM" | "PN" | "PR" | "PS" | "PT" | "PW" | "PY" | "QA" | "RE" | "RO" | "RS" | "RU" | "RW" | "SA" | "SB" | "SC" | "SD" | "SE" | "SG" | "SH" | "SI" | "SJ" | "SK" | "SL" | "SM" | "SN" | "SO" | "SR" | "SS" | "ST" | "SV" | "SX" | "SY" | "SZ" | "TA" | "TC" | "TD" | "TF" | "TG" | "TH" | "TJ" | "TK" | "TL" | "TM" | "TN" | "TO" | "TR" | "TT" | "TV" | "TW" | "TZ" | "UA" | "UG" | "UM" | "UNKNOWN" | "US" | "UY" | "UZ" | "VA" | "VC" | "VE" | "VG" | "VI" | "VN" | "VU" | "WF" | "WS" | "XK" | "YE" | "YT" | "ZA" | "ZM" | "ZW"
 }
 

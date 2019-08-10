@@ -4,8 +4,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /support Models
  */
 export namespace support {
-    //support.Message
-    // fullName: support.Message.Message
+    // interface fullName: support.Message.Message
     export interface Message {
         body: string;
         creationDate: string;
@@ -14,17 +13,15 @@ export namespace support {
         ticketId: number;
         updateDate: string;
     }
-    //support.MessageSenderEnum
+    // type fullname: support.MessageSenderEnum
     export type MessageSenderEnum = "customer" | "support"
-    //support.NewMessageInfo
-    // fullName: support.NewMessageInfo.NewMessageInfo
+    // interface fullName: support.NewMessageInfo.NewMessageInfo
     export interface NewMessageInfo {
         messageId: number;
         ticketId: number;
         ticketNumber: number;
     }
-    //support.Ticket
-    // fullName: support.Ticket.Ticket
+    // interface fullName: support.Ticket.Ticket
     export interface Ticket {
         accountId: string;
         canBeClosed: boolean;
@@ -41,15 +38,15 @@ export namespace support {
         type: support.TicketTypeEnum;
         updateDate: string;
     }
-    //support.TicketCategoryEnum
+    // type fullname: support.TicketCategoryEnum
     export type TicketCategoryEnum = "assistance" | "billing" | "incident"
-    //support.TicketProductEnum
+    // type fullname: support.TicketProductEnum
     export type TicketProductEnum = "adsl" | "cdn" | "dedicated" | "dedicated-billing" | "dedicated-other" | "dedicatedcloud" | "domain" | "exchange" | "fax" | "hosting" | "housing" | "iaas" | "mail" | "network" | "publiccloud" | "sms" | "ssl" | "storage" | "telecom-billing" | "telecom-other" | "voip" | "vps" | "web-billing" | "web-other"
-    //support.TicketStatusEnum
+    // type fullname: support.TicketStatusEnum
     export type TicketStatusEnum = "closed" | "open" | "unknown"
-    //support.TicketSubCategoryEnum
+    // type fullname: support.TicketSubCategoryEnum
     export type TicketSubCategoryEnum = "alerts" | "autorenew" | "bill" | "down" | "inProgress" | "new" | "other" | "perfs" | "start" | "usage"
-    //support.TicketTypeEnum
+    // type fullname: support.TicketTypeEnum
     export type TicketTypeEnum = "criticalIntervention" | "genericRequest"
 }
 

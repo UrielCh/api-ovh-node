@@ -4,43 +4,39 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /xdsl Models
  */
 export namespace complexType {
-    //complexType.UnitAndValue
-    // fullName: complexType.UnitAndValue.UnitAndValue
+    // interface fullName: complexType.UnitAndValue.UnitAndValue
     export interface UnitAndValue<T> {
         unit: string;
         value: T;
     }
-    //complexType.UnitAndValues
-    // fullName: complexType.UnitAndValues.UnitAndValues
+    // interface fullName: complexType.UnitAndValues.UnitAndValues
     export interface UnitAndValues<T> {
         unit: string;
         values: T[];
     }
 }
 export namespace coreTypes {
-    //coreTypes.CountryEnum
+    // type fullname: coreTypes.CountryEnum
     export type CountryEnum = "ac" | "ad" | "ae" | "af" | "ag" | "ai" | "al" | "am" | "an" | "ao" | "aq" | "ar" | "as" | "at" | "au" | "aw" | "ax" | "az" | "ba" | "bb" | "bd" | "be" | "bf" | "bg" | "bh" | "bi" | "bj" | "bl" | "bm" | "bn" | "bo" | "bq" | "br" | "bs" | "bt" | "bv" | "bw" | "by" | "bz" | "ca" | "cc" | "cd" | "cf" | "cg" | "ch" | "ci" | "ck" | "cl" | "cm" | "cn" | "co" | "cr" | "cs" | "cu" | "cv" | "cw" | "cx" | "cy" | "cz" | "de" | "dj" | "dk" | "dm" | "do" | "dz" | "ec" | "ee" | "eg" | "eh" | "er" | "es" | "et" | "fc" | "fd" | "fi" | "fj" | "fk" | "fm" | "fo" | "fr" | "fx" | "ga" | "gb" | "gd" | "ge" | "gf" | "gg" | "gh" | "gi" | "gl" | "gm" | "gn" | "gp" | "gq" | "gr" | "gs" | "gt" | "gu" | "gw" | "gy" | "hk" | "hm" | "hn" | "hr" | "ht" | "hu" | "id" | "ie" | "il" | "im" | "in" | "io" | "iq" | "ir" | "is" | "it" | "je" | "jm" | "jo" | "jp" | "ke" | "kg" | "kh" | "ki" | "km" | "kn" | "kp" | "kr" | "kw" | "ky" | "kz" | "la" | "lb" | "lc" | "li" | "lk" | "lr" | "ls" | "lt" | "lu" | "lv" | "ly" | "ma" | "mc" | "md" | "me" | "mf" | "mg" | "mh" | "mk" | "ml" | "mm" | "mn" | "mo" | "mp" | "mq" | "mr" | "ms" | "mt" | "mu" | "mv" | "mw" | "mx" | "my" | "mz" | "na" | "nc" | "ne" | "nf" | "ng" | "ni" | "nl" | "no" | "np" | "nr" | "nu" | "nz" | "om" | "pa" | "pe" | "pf" | "pg" | "ph" | "pk" | "pl" | "pm" | "pn" | "pr" | "ps" | "pt" | "pw" | "py" | "qa" | "qc" | "re" | "ro" | "rs" | "ru" | "rw" | "sa" | "sb" | "sc" | "sd" | "se" | "sg" | "sh" | "si" | "sj" | "sk" | "sl" | "sm" | "sn" | "so" | "sr" | "ss" | "st" | "sv" | "sx" | "sy" | "sz" | "tc" | "td" | "tf" | "tg" | "th" | "tj" | "tk" | "tl" | "tm" | "tn" | "to" | "tp" | "tr" | "tt" | "tv" | "tw" | "tz" | "ua" | "ug" | "uk" | "um" | "us" | "uy" | "uz" | "va" | "vc" | "ve" | "vg" | "vi" | "vn" | "vu" | "we" | "wf" | "ws" | "ye" | "yt" | "yu" | "za" | "zm" | "zw"
-    //coreTypes.IpVersionEnum
+    // type fullname: coreTypes.IpVersionEnum
     export type IpVersionEnum = "v4" | "v6"
 }
 export namespace email {
     export namespace pro {
-        //email.pro.ObjectStateEnum
+        // type fullname: email.pro.ObjectStateEnum
         export type ObjectStateEnum = "creating" | "deleting" | "ok" | "reopening" | "suspended" | "suspending" | "unknown"
     }
 }
 export namespace order {
-    //order.Contract
-    // fullName: order.Contract.Contract
+    // interface fullName: order.Contract.Contract
     export interface Contract {
         content: string;
         name: string;
         url: string;
     }
-    //order.CurrencyCodeEnum
+    // type fullname: order.CurrencyCodeEnum
     export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
-    //order.Order
-    // fullName: order.Order.Order
+    // interface fullName: order.Order.Order
     export interface Order {
         contracts: order.Contract[];
         details: order.OrderDetail[];
@@ -48,8 +44,7 @@ export namespace order {
         prices: order.OrderPrices;
         url?: string;
     }
-    //order.OrderDetail
-    // fullName: order.OrderDetail.OrderDetail
+    // interface fullName: order.OrderDetail.OrderDetail
     export interface OrderDetail {
         description: string;
         detailType?: order.OrderDetailTypeEnum;
@@ -58,17 +53,15 @@ export namespace order {
         totalPrice: orderPrice;
         unitPrice: orderPrice;
     }
-    //order.OrderDetailTypeEnum
+    // type fullname: order.OrderDetailTypeEnum
     export type OrderDetailTypeEnum = "ACCESSORY" | "CAUTION" | "CHOOSED" | "CONSUMPTION" | "CREATION" | "DELIVERY" | "DURATION" | "GIFT" | "INSTALLATION" | "LICENSE" | "MUTE" | "OTHER" | "OUTPLAN" | "QUANTITY" | "REFUND" | "RENEW" | "SPECIAL" | "SWITCH" | "TRANSFER" | "VOUCHER"
-    //order.OrderPrices
-    // fullName: order.OrderPrices.OrderPrices
+    // interface fullName: order.OrderPrices.OrderPrices
     export interface OrderPrices {
         tax: orderPrice;
         withTax: orderPrice;
         withoutTax: orderPrice;
     }
-    //order.Price
-    // fullName: order.Price.Price
+    // interface fullName: order.Price.Price
     export interface Price {
         currencyCode: order.CurrencyCodeEnum;
         text: string;
@@ -76,8 +69,7 @@ export namespace order {
     }
 }
 export namespace service {
-    //service.RenewType
-    // fullName: service.RenewType.RenewType
+    // interface fullName: service.RenewType.RenewType
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -85,14 +77,13 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    //service.RenewalTypeEnum
+    // type fullname: service.RenewalTypeEnum
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    //service.StateEnum
+    // type fullname: service.StateEnum
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
 }
 export namespace services {
-    //services.Service
-    // fullName: services.Service.Service
+    // interface fullName: services.Service.Service
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;
@@ -111,8 +102,7 @@ export namespace services {
 }
 export namespace spare {
     export namespace xdsl {
-        //spare.xdsl.XdslSpare
-        // fullName: spare.xdsl.XdslSpare.XdslSpare
+        // interface fullName: spare.xdsl.XdslSpare.XdslSpare
         export interface XdslSpare {
             brand: string;
             macAddress: string;
@@ -120,8 +110,7 @@ export namespace spare {
     }
 }
 export namespace telephony {
-    //telephony.Contact
-    // fullName: telephony.Contact.Contact
+    // interface fullName: telephony.Contact.Contact
     export interface Contact {
         address?: string;
         city?: string;
@@ -133,8 +122,7 @@ export namespace telephony {
         phone?: string;
         zip?: string;
     }
-    //telephony.Rma
-    // fullName: telephony.Rma.Rma
+    // interface fullName: telephony.Rma.Rma
     export interface Rma {
         cancellable: boolean;
         creationDatetime: string;
@@ -151,14 +139,13 @@ export namespace telephony {
         terminationDatetime?: string;
         type: telephony.RmaTypeEnum;
     }
-    //telephony.RmaOfferTypeEnum
+    // type fullname: telephony.RmaOfferTypeEnum
     export type RmaOfferTypeEnum = "deposit" | "loan" | "purchase"
-    //telephony.RmaReplaceTypeEnum
+    // type fullname: telephony.RmaReplaceTypeEnum
     export type RmaReplaceTypeEnum = "changePhone" | "phoneRestitution" | "undefined"
-    //telephony.RmaStatusEnum
+    // type fullname: telephony.RmaStatusEnum
     export type RmaStatusEnum = "closed" | "open" | "received"
-    //telephony.RmaStep
-    // fullName: telephony.RmaStep.RmaStep
+    // interface fullName: telephony.RmaStep.RmaStep
     export interface RmaStep {
         description: string;
         doneDate?: string;
@@ -166,16 +153,15 @@ export namespace telephony {
         name: telephony.RmaStepNameEnum;
         status: telephony.RmaStepStatusEnum;
     }
-    //telephony.RmaStepNameEnum
+    // type fullname: telephony.RmaStepNameEnum
     export type RmaStepNameEnum = "dispatchJustification" | "equipmentSending" | "equipmentTesting" | "opening" | "parcelReception" | "parcelValidation" | "validation"
-    //telephony.RmaStepStatusEnum
+    // type fullname: telephony.RmaStepStatusEnum
     export type RmaStepStatusEnum = "done" | "todo"
-    //telephony.RmaTypeEnum
+    // type fullname: telephony.RmaTypeEnum
     export type RmaTypeEnum = "after sale equipment service exchange" | "after sale phone service exchange" | "equipment restitution" | "fast exchange" | "old merchandise reception before exchange" | "phone restitution" | "resends due to shipping lost by the carrier" | "resends due to shipping not withdraw" | "specific return merchandise authorisation" | "termination" | "unknown"
 }
 export namespace xdsl {
-    //xdsl.Access
-    // fullName: xdsl.Access.Access
+    // interface fullName: xdsl.Access.Access
     export interface Access {
         accessName: string;
         accessType: xdslDslTypeEnum;
@@ -191,8 +177,7 @@ export namespace xdsl {
         role: xdsl.AccessRoleEnum;
         status: xdsl.AccessStatusEnum;
     }
-    //xdsl.AccessCapabilities
-    // fullName: xdsl.AccessCapabilities.AccessCapabilities
+    // interface fullName: xdsl.AccessCapabilities.AccessCapabilities
     export interface AccessCapabilities {
         canApplyLnsRateLimit: boolean;
         canChangeDslamProfile: boolean;
@@ -201,8 +186,7 @@ export namespace xdsl {
         canResetDslamPort: boolean;
         hasDslamPort: boolean;
     }
-    //xdsl.AccessDiagnostic
-    // fullName: xdsl.AccessDiagnostic.AccessDiagnostic
+    // interface fullName: xdsl.AccessDiagnostic.AccessDiagnostic
     export interface AccessDiagnostic {
         capabilities: xdsl.AccessDiagnosticCapabilities;
         diagnosticTime: string;
@@ -213,8 +197,7 @@ export namespace xdsl {
         ping?: boolean;
         remaining: number;
     }
-    //xdsl.AccessDiagnosticCapabilities
-    // fullName: xdsl.AccessDiagnosticCapabilities.AccessDiagnosticCapabilities
+    // interface fullName: xdsl.AccessDiagnosticCapabilities.AccessDiagnosticCapabilities
     export interface AccessDiagnosticCapabilities {
         incident: boolean;
         isActiveOnLns: boolean;
@@ -224,14 +207,13 @@ export namespace xdsl {
         proposedProfileId: boolean;
         sync: boolean;
     }
-    //xdsl.AccessRoleEnum
+    // type fullname: xdsl.AccessRoleEnum
     export type AccessRoleEnum = "backup" | "main"
-    //xdsl.AccessStatisticsTypeEnum
+    // type fullname: xdsl.AccessStatisticsTypeEnum
     export type AccessStatisticsTypeEnum = "ping" | "traffic:download" | "traffic:upload"
-    //xdsl.AccessStatusEnum
+    // type fullname: xdsl.AccessStatusEnum
     export type AccessStatusEnum = "active" | "cancelled" | "close" | "deleting" | "doing" | "migration" | "slamming" | "upgradeOffer"
-    //xdsl.AddressDetail
-    // fullName: xdsl.AddressDetail.AddressDetail
+    // interface fullName: xdsl.AddressDetail.AddressDetail
     export interface AddressDetail {
         building?: string;
         city: string;
@@ -247,32 +229,28 @@ export namespace xdsl {
         street: string;
         zipCode: string;
     }
-    //xdsl.AntiSpam
-    // fullName: xdsl.AntiSpam.AntiSpam
+    // interface fullName: xdsl.AntiSpam.AntiSpam
     export interface AntiSpam {
         date: string;
         ip: string;
         lastSpamDetected: string;
         status: xdsl.antiSpam.AntiSpamStatusEnum;
     }
-    //xdsl.AsyncTask
-    // fullName: xdsl.AsyncTask.AsyncTask
+    // interface fullName: xdsl.AsyncTask.AsyncTask
     export interface AsyncTask<T> {
         error?: string;
         result?: T;
         status: xdsl.AsyncTaskStatusEnum;
     }
-    //xdsl.AsyncTaskArray
-    // fullName: xdsl.AsyncTaskArray.AsyncTaskArray
+    // interface fullName: xdsl.AsyncTaskArray.AsyncTaskArray
     export interface AsyncTaskArray<T> {
         error?: string;
         result?: T[];
         status: xdsl.AsyncTaskStatusEnum;
     }
-    //xdsl.AsyncTaskStatusEnum
+    // type fullname: xdsl.AsyncTaskStatusEnum
     export type AsyncTaskStatusEnum = "error" | "ok" | "pending"
-    //xdsl.DHCP
-    // fullName: xdsl.DHCP.DHCP
+    // interface fullName: xdsl.DHCP.DHCP
     export interface DHCP {
         defaultGateway: string;
         dhcpName: string;
@@ -286,25 +264,22 @@ export namespace xdsl {
         subnetMask: string;
         taskId?: number;
     }
-    //xdsl.DHCPStaticAddress
-    // fullName: xdsl.DHCPStaticAddress.DHCPStaticAddress
+    // interface fullName: xdsl.DHCPStaticAddress.DHCPStaticAddress
     export interface DHCPStaticAddress {
         IPAddress: string;
         MACAddress: string;
         name?: string;
         taskId?: number;
     }
-    //xdsl.DeconsolidationEnum
+    // type fullname: xdsl.DeconsolidationEnum
     export type DeconsolidationEnum = "createNeighbour" | "creation" | "creationNeighbour" | "partial" | "total"
-    //xdsl.DeconsolidationTerms
-    // fullName: xdsl.DeconsolidationTerms.DeconsolidationTerms
+    // interface fullName: xdsl.DeconsolidationTerms.DeconsolidationTerms
     export interface DeconsolidationTerms {
         engagement: number;
         monthlyPrice: orderPrice;
         price: orderPrice;
     }
-    //xdsl.DeviceModemInfo
-    // fullName: xdsl.DeviceModemInfo.DeviceModemInfo
+    // interface fullName: xdsl.DeviceModemInfo.DeviceModemInfo
     export interface DeviceModemInfo {
         brand: string;
         ip: string;
@@ -317,46 +292,41 @@ export namespace xdsl {
         serial: string;
         softVersion: string;
     }
-    //xdsl.DslTypeEnum
+    // type fullname: xdsl.DslTypeEnum
     export type DslTypeEnum = "adsl" | "ftth" | "sdsl" | "vdsl"
-    //xdsl.DslamLineProfile
-    // fullName: xdsl.DslamLineProfile.DslamLineProfile
+    // interface fullName: xdsl.DslamLineProfile.DslamLineProfile
     export interface DslamLineProfile {
         id: number;
         isCurrent: boolean;
         name: string;
     }
-    //xdsl.DslamPort
-    // fullName: xdsl.DslamPort.DslamPort
+    // interface fullName: xdsl.DslamPort.DslamPort
     export interface DslamPort {
         lastDesyncDate?: string;
         lastSyncDate?: string;
         profile?: xdsl.DslamLineProfile;
         status: xdsl.DslamPortStatusEnum;
     }
-    //xdsl.DslamPortLog
-    // fullName: xdsl.DslamPortLog.DslamPortLog
+    // interface fullName: xdsl.DslamPortLog.DslamPortLog
     export interface DslamPortLog {
         date: string;
         lastOccurrenceDate: string;
         message: string;
         numberOfOccurrences: number;
     }
-    //xdsl.DslamPortStatusEnum
+    // type fullname: xdsl.DslamPortStatusEnum
     export type DslamPortStatusEnum = "activated" | "deactivated" | "outofsync"
-    //xdsl.ExtraIpRangeMove
-    // fullName: xdsl.ExtraIpRangeMove.ExtraIpRangeMove
+    // interface fullName: xdsl.ExtraIpRangeMove.ExtraIpRangeMove
     export interface ExtraIpRangeMove {
         date: string;
         ipRange: string;
         moveTo: string;
     }
-    //xdsl.FaultRepairTimeEnum
+    // type fullname: xdsl.FaultRepairTimeEnum
     export type FaultRepairTimeEnum = "4HNO" | "4HO" | "NORMAL"
-    //xdsl.GtrEnum
+    // type fullname: xdsl.GtrEnum
     export type GtrEnum = "4hno" | "4ho" | "none"
-    //xdsl.IP
-    // fullName: xdsl.IP.IP
+    // interface fullName: xdsl.IP.IP
     export interface IP {
         dnsList: string[];
         ip: string;
@@ -364,8 +334,7 @@ export namespace xdsl {
         status: xdsl.IpStatusEnum;
         version: coreTypes.IpVersionEnum;
     }
-    //xdsl.Incident
-    // fullName: xdsl.Incident.Incident
+    // interface fullName: xdsl.Incident.Incident
     export interface Incident {
         comment: string;
         creationDate: string;
@@ -376,10 +345,9 @@ export namespace xdsl {
         operators: xdsl.OperatorTypeEnum[];
         taskId?: number;
     }
-    //xdsl.IpStatusEnum
+    // type fullname: xdsl.IpStatusEnum
     export type IpStatusEnum = "active" | "close" | "toDelete"
-    //xdsl.LAN
-    // fullName: xdsl.LAN.LAN
+    // interface fullName: xdsl.LAN.LAN
     export interface LAN {
         IPAddress: string;
         addressingType: xdsl.xdslModemConfig.AddressingTypeEnum;
@@ -387,15 +355,13 @@ export namespace xdsl {
         subnetMask: string;
         taskId?: number;
     }
-    //xdsl.LandlineConcentrationPoint
-    // fullName: xdsl.LandlineConcentrationPoint.LandlineConcentrationPoint
+    // interface fullName: xdsl.LandlineConcentrationPoint.LandlineConcentrationPoint
     export interface LandlineConcentrationPoint {
         lineHead: string;
         lineInitialSection: number;
         lineInitialSectionPair: number;
     }
-    //xdsl.Line
-    // fullName: xdsl.Line.Line
+    // interface fullName: xdsl.Line.Line
     export interface Line {
         concentrationPoint?: xdsl.LandlineConcentrationPoint;
         deconsolidation: xdslDeconsolidationEnum;
@@ -410,8 +376,7 @@ export namespace xdsl {
         syncDown?: number;
         syncUp?: number;
     }
-    //xdsl.LineDiagnostic
-    // fullName: xdsl.LineDiagnostic.LineDiagnostic
+    // interface fullName: xdsl.LineDiagnostic.LineDiagnostic
     export interface LineDiagnostic {
         lineTest?: xdsl.LineTestEnum;
         lineTestTime?: string;
@@ -419,18 +384,16 @@ export namespace xdsl {
         proposedProfileId?: number;
         sync: boolean;
     }
-    //xdsl.LineSectionLength
-    // fullName: xdsl.LineSectionLength.LineSectionLength
+    // interface fullName: xdsl.LineSectionLength.LineSectionLength
     export interface LineSectionLength {
         diameter: number;
         length: number;
     }
-    //xdsl.LineStatisticsTypeEnum
+    // type fullname: xdsl.LineStatisticsTypeEnum
     export type LineStatisticsTypeEnum = "attenuation:download" | "attenuation:upload" | "snr:download" | "snr:upload" | "synchronization:download" | "synchronization:upload"
-    //xdsl.LineTestEnum
+    // type fullname: xdsl.LineTestEnum
     export type LineTestEnum = "actionPending" | "customerSideProblem" | "error" | "noProblem" | "ovhSideProblem"
-    //xdsl.Modem
-    // fullName: xdsl.Modem.Modem
+    // interface fullName: xdsl.Modem.Modem
     export interface Modem {
         brandName: string;
         capabilities: xdsl.ModemCapabilities;
@@ -444,8 +407,7 @@ export namespace xdsl {
         model: string;
         mtuSize?: xdsl.xdslModemConfig.MTUSizeEnum;
     }
-    //xdsl.ModemCapabilities
-    // fullName: xdsl.ModemCapabilities.ModemCapabilities
+    // interface fullName: xdsl.ModemCapabilities.ModemCapabilities
     export interface ModemCapabilities {
         canBeManagedByOvh: boolean;
         canChangeBridgeMode: boolean;
@@ -463,14 +425,12 @@ export namespace xdsl {
         canRefreshConnectedDevices: boolean;
         canReset: boolean;
     }
-    //xdsl.ModemInfo
-    // fullName: xdsl.ModemInfo.ModemInfo
+    // interface fullName: xdsl.ModemInfo.ModemInfo
     export interface ModemInfo {
         device: xdsl.DeviceModemInfo;
         statistics: xdsl.StatsModemInfo;
     }
-    //xdsl.MonitoringNotification
-    // fullName: xdsl.MonitoringNotification.MonitoringNotification
+    // interface fullName: xdsl.MonitoringNotification.MonitoringNotification
     export interface MonitoringNotification {
         allowIncident: boolean;
         downThreshold: number;
@@ -482,16 +442,14 @@ export namespace xdsl {
         smsAccount?: string;
         type: xdsl.monitoringNotifications.TypeEnum;
     }
-    //xdsl.OperatorTypeEnum
+    // type fullname: xdsl.OperatorTypeEnum
     export type OperatorTypeEnum = "collect" | "kosc" | "ovh"
-    //xdsl.PendingAction
-    // fullName: xdsl.PendingAction.PendingAction
+    // interface fullName: xdsl.PendingAction.PendingAction
     export interface PendingAction {
         action: string;
         dateTodo: string;
     }
-    //xdsl.PortMapping
-    // fullName: xdsl.PortMapping.PortMapping
+    // interface fullName: xdsl.PortMapping.PortMapping
     export interface PortMapping {
         allowedRemoteIp?: string;
         description?: string;
@@ -504,32 +462,28 @@ export namespace xdsl {
         protocol: xdsl.xdslModemConfig.ProtocolTypeEnum;
         taskId?: number;
     }
-    //xdsl.RadiusConnectionLog
-    // fullName: xdsl.RadiusConnectionLog.RadiusConnectionLog
+    // interface fullName: xdsl.RadiusConnectionLog.RadiusConnectionLog
     export interface RadiusConnectionLog {
         date: string;
         login: string;
         message: string;
         state: string;
     }
-    //xdsl.ResiliationFollowUpDetail
-    // fullName: xdsl.ResiliationFollowUpDetail.ResiliationFollowUpDetail
+    // interface fullName: xdsl.ResiliationFollowUpDetail.ResiliationFollowUpDetail
     export interface ResiliationFollowUpDetail {
         dateTodo: string;
         needModemReturn: boolean;
         registrationDate: string;
         status: string;
     }
-    //xdsl.ResiliationReasonEnum
+    // type fullname: xdsl.ResiliationReasonEnum
     export type ResiliationReasonEnum = "addressMove" | "billingProblems" | "cessationOfActivity" | "changeOfTerms" | "ftth" | "goToCompetitor" | "other" | "technicalProblems"
-    //xdsl.ResiliationSurvey
-    // fullName: xdsl.ResiliationSurvey.ResiliationSurvey
+    // interface fullName: xdsl.ResiliationSurvey.ResiliationSurvey
     export interface ResiliationSurvey {
         comment?: string;
         type: xdsl.ResiliationReasonEnum;
     }
-    //xdsl.ResiliationTerms
-    // fullName: xdsl.ResiliationTerms.ResiliationTerms
+    // interface fullName: xdsl.ResiliationTerms.ResiliationTerms
     export interface ResiliationTerms {
         due: orderPrice;
         engageDate?: string;
@@ -537,12 +491,11 @@ export namespace xdsl {
         resiliationDate: string;
         resiliationReasons: xdsl.ResiliationReasonEnum[];
     }
-    //xdsl.ServiceStatusEnum
+    // type fullname: xdsl.ServiceStatusEnum
     export type ServiceStatusEnum = "disabled" | "enabled"
-    //xdsl.StatisticsPeriodEnum
+    // type fullname: xdsl.StatisticsPeriodEnum
     export type StatisticsPeriodEnum = "daily" | "monthly" | "preview" | "weekly" | "yearly"
-    //xdsl.StatsModemInfo
-    // fullName: xdsl.StatsModemInfo.StatsModemInfo
+    // interface fullName: xdsl.StatsModemInfo.StatsModemInfo
     export interface StatsModemInfo {
         connectionUptime: number;
         crcError: number;
@@ -558,8 +511,7 @@ export namespace xdsl {
         upstreamMargin: number;
         upstreamSync: number;
     }
-    //xdsl.Task
-    // fullName: xdsl.Task.Task
+    // interface fullName: xdsl.Task.Task
     export interface Task {
         function: string;
         id: number;
@@ -567,10 +519,9 @@ export namespace xdsl {
         todoDate: string;
         updateDate: string;
     }
-    //xdsl.TaskStatusEnum
+    // type fullname: xdsl.TaskStatusEnum
     export type TaskStatusEnum = "cancelled" | "doing" | "done" | "error" | "problem" | "todo"
-    //xdsl.TemplateModem
-    // fullName: xdsl.TemplateModem.TemplateModem
+    // interface fullName: xdsl.TemplateModem.TemplateModem
     export interface TemplateModem {
         DHCP: xdsl.templateModem.DHCP[];
         LAN: xdsl.templateModem.LAN[];
@@ -583,14 +534,12 @@ export namespace xdsl {
         parametersToIgnore?: xdsl.templateModem.ParametersToIgnore;
         portMapping: xdsl.templateModem.PortMapping[];
     }
-    //xdsl.TimestampAndValue
-    // fullName: xdsl.TimestampAndValue.TimestampAndValue
+    // interface fullName: xdsl.TimestampAndValue.TimestampAndValue
     export interface TimestampAndValue {
         timestamp: number;
         value?: number;
     }
-    //xdsl.WLAN
-    // fullName: xdsl.WLAN.WLAN
+    // interface fullName: xdsl.WLAN.WLAN
     export interface WLAN {
         SSID: string;
         SSIDAdvertisementEnabled: boolean;
@@ -605,30 +554,27 @@ export namespace xdsl {
         taskId?: number;
         wifiName: string;
     }
-    //xdsl.WLANFrequencyEnum
+    // type fullname: xdsl.WLANFrequencyEnum
     export type WLANFrequencyEnum = "2.4GHz" | "5GHz"
     export namespace antiSpam {
-        //xdsl.antiSpam.AntiSpamStatusEnum
+        // type fullname: xdsl.antiSpam.AntiSpamStatusEnum
         export type AntiSpamStatusEnum = "block" | "done" | "new" | "unblock" | "warn"
-        //xdsl.antiSpam.EvidencesInfo
-        // fullName: xdsl.antiSpam.EvidencesInfo.EvidencesInfo
+        // interface fullName: xdsl.antiSpam.EvidencesInfo.EvidencesInfo
         export interface EvidencesInfo {
             error?: string;
             result?: xdsl.antiSpam.EvidencesInfoDetail[];
             status: xdsl.antiSpam.EvidencesInfoStatusEnum;
         }
-        //xdsl.antiSpam.EvidencesInfoDetail
-        // fullName: xdsl.antiSpam.EvidencesInfoDetail.EvidencesInfoDetail
+        // interface fullName: xdsl.antiSpam.EvidencesInfoDetail.EvidencesInfoDetail
         export interface EvidencesInfoDetail {
             date: string;
             filename: string;
             url: string;
         }
-        //xdsl.antiSpam.EvidencesInfoStatusEnum
+        // type fullname: xdsl.antiSpam.EvidencesInfoStatusEnum
         export type EvidencesInfoStatusEnum = "error" | "ok" | "pending"
     }
-    //xdsl.connectedDevice
-    // fullName: xdsl.connectedDevice.connectedDevice
+    // interface fullName: xdsl.connectedDevice.connectedDevice
     export interface connectedDevice {
         active: boolean;
         addressSource: xdsl.xdslModemConfig.ConnectedDeviceAddressSourceEnum;
@@ -640,8 +586,7 @@ export namespace xdsl {
         macAddress: string;
     }
     export namespace eligibility {
-        //xdsl.eligibility.Address
-        // fullName: xdsl.eligibility.Address.Address
+        // interface fullName: xdsl.eligibility.Address.Address
         export interface Address {
             building?: string;
             city: xdsl.eligibility.City;
@@ -654,32 +599,28 @@ export namespace xdsl {
             street?: xdsl.eligibility.Street;
             streetNumber?: string;
         }
-        //xdsl.eligibility.Building
-        // fullName: xdsl.eligibility.Building.Building
+        // interface fullName: xdsl.eligibility.Building.Building
         export interface Building {
             name: string;
             nro: string;
             reference: string;
             type: xdsl.eligibility.BuildingTypeEnum;
         }
-        //xdsl.eligibility.BuildingTypeEnum
+        // type fullname: xdsl.eligibility.BuildingTypeEnum
         export type BuildingTypeEnum = "BUILDING" | "HOUSE"
-        //xdsl.eligibility.City
-        // fullName: xdsl.eligibility.City.City
+        // interface fullName: xdsl.eligibility.City.City
         export interface City {
             inseeCode: string;
             locality?: string;
             name: string;
             zipCode: string;
         }
-        //xdsl.eligibility.CodeAndMessage
-        // fullName: xdsl.eligibility.CodeAndMessage.CodeAndMessage
+        // interface fullName: xdsl.eligibility.CodeAndMessage.CodeAndMessage
         export interface CodeAndMessage {
             code: string;
             message: string;
         }
-        //xdsl.eligibility.Eligibility
-        // fullName: xdsl.eligibility.Eligibility.Eligibility
+        // interface fullName: xdsl.eligibility.Eligibility.Eligibility
         export interface Eligibility {
             address?: xdsleligibilityAddress;
             characteristics: xdsl.eligibility.LineCharacteristics;
@@ -689,14 +630,12 @@ export namespace xdsl {
             offers: xdsl.eligibility.Offer[];
             portability: xdsleligibilityPortability;
         }
-        //xdsl.eligibility.FiberEligibility
-        // fullName: xdsl.eligibility.FiberEligibility.FiberEligibility
+        // interface fullName: xdsl.eligibility.FiberEligibility.FiberEligibility
         export interface FiberEligibility {
             id: string;
             offers: xdsl.eligibility.FiberOffer[];
         }
-        //xdsl.eligibility.FiberOffer
-        // fullName: xdsl.eligibility.FiberOffer.FiberOffer
+        // interface fullName: xdsl.eligibility.FiberOffer.FiberOffer
         export interface FiberOffer {
             availibilityDate?: string;
             downloadRate?: number;
@@ -708,24 +647,21 @@ export namespace xdsl {
             type: xdslDslTypeEnum;
             uploadRate?: number;
         }
-        //xdsl.eligibility.FiberStreet
-        // fullName: xdsl.eligibility.FiberStreet.FiberStreet
+        // interface fullName: xdsl.eligibility.FiberStreet.FiberStreet
         export interface FiberStreet {
             streetCode: string;
             streetName: string;
         }
-        //xdsl.eligibility.LandlineStatusEnum
+        // type fullname: xdsl.eligibility.LandlineStatusEnum
         export type LandlineStatusEnum = "active" | "inactive"
-        //xdsl.eligibility.Line
-        // fullName: xdsl.eligibility.Line.Line
+        // interface fullName: xdsl.eligibility.Line.Line
         export interface Line {
             address: xdsleligibilityAddress;
             contactName: string;
             lineNumber: string;
             lineStatus: xdsleligibilityLandlineStatusEnum;
         }
-        //xdsl.eligibility.LineCharacteristics
-        // fullName: xdsl.eligibility.LineCharacteristics.LineCharacteristics
+        // interface fullName: xdsl.eligibility.LineCharacteristics.LineCharacteristics
         export interface LineCharacteristics {
             calibration: xdsl.eligibility.LineSectionCalibration[];
             desaturationFreePairs: number;
@@ -735,37 +671,32 @@ export namespace xdsl {
             mitigationSdsl: number;
             nra: string;
         }
-        //xdsl.eligibility.LineEndpointEnum
+        // type fullname: xdsl.eligibility.LineEndpointEnum
         export type LineEndpointEnum = "address" | "line"
-        //xdsl.eligibility.LineInfos
-        // fullName: xdsl.eligibility.LineInfos.LineInfos
+        // interface fullName: xdsl.eligibility.LineInfos.LineInfos
         export interface LineInfos {
             createNeighbour: boolean;
             lineNumber?: string;
             lineStatus?: xdsleligibilityLandlineStatusEnum;
             unlistedNumber: boolean;
         }
-        //xdsl.eligibility.LineSectionCalibration
-        // fullName: xdsl.eligibility.LineSectionCalibration.LineSectionCalibration
+        // interface fullName: xdsl.eligibility.LineSectionCalibration.LineSectionCalibration
         export interface LineSectionCalibration {
             diameter: number;
             length: number;
         }
-        //xdsl.eligibility.MeetingSlot
-        // fullName: xdsl.eligibility.MeetingSlot.MeetingSlot
+        // interface fullName: xdsl.eligibility.MeetingSlot.MeetingSlot
         export interface MeetingSlot {
             endDate: string;
             startDate: string;
             uiCode: string;
         }
-        //xdsl.eligibility.MeetingSlots
-        // fullName: xdsl.eligibility.MeetingSlots.MeetingSlots
+        // interface fullName: xdsl.eligibility.MeetingSlots.MeetingSlots
         export interface MeetingSlots {
             canBookFakeMeeting: boolean;
             meetingSlots: xdsl.eligibility.MeetingSlot[];
         }
-        //xdsl.eligibility.Offer
-        // fullName: xdsl.eligibility.Offer.Offer
+        // interface fullName: xdsl.eligibility.Offer.Offer
         export interface Offer {
             desaturation?: boolean;
             downloadRate?: number;
@@ -779,18 +710,16 @@ export namespace xdsl {
             unbundling?: xdslDeconsolidationEnum[];
             uploadRate?: number;
         }
-        //xdsl.eligibility.Portability
-        // fullName: xdsl.eligibility.Portability.Portability
+        // interface fullName: xdsl.eligibility.Portability.Portability
         export interface Portability {
             comments: xdsl.eligibility.CodeAndMessage[];
             eligible: boolean;
             underCondition: boolean;
             warnings: xdsl.eligibility.CodeAndMessage[];
         }
-        //xdsl.eligibility.ProviderEnum
+        // type fullname: xdsl.eligibility.ProviderEnum
         export type ProviderEnum = "axione" | "ft" | "kosc" | "ovh" | "sfr"
-        //xdsl.eligibility.Street
-        // fullName: xdsl.eligibility.Street.Street
+        // interface fullName: xdsl.eligibility.Street.Street
         export interface Street {
             name: string;
             rivoliCode: string;
@@ -798,21 +727,19 @@ export namespace xdsl {
     }
     export namespace email {
         export namespace pro {
-            //xdsl.email.pro.Task
-            // fullName: xdsl.email.pro.Task.Task
+            // interface fullName: xdsl.email.pro.Task.Task
             export interface Task {
                 finishDate?: string;
                 function: string;
                 status: xdsl.email.pro.TaskStatusEnum;
                 todoDate: string;
             }
-            //xdsl.email.pro.TaskStatusEnum
+            // type fullname: xdsl.email.pro.TaskStatusEnum
             export type TaskStatusEnum = "cancelled" | "doing" | "done" | "error" | "todo"
         }
     }
     export namespace lineDiagnostic {
-        //xdsl.lineDiagnostic.Answers
-        // fullName: xdsl.lineDiagnostic.Answers.Answers
+        // interface fullName: xdsl.lineDiagnostic.Answers.Answers
         export interface Answers {
             bandwidthTestUnit?: xdsl.lineDiagnostic.BandwidthTestUnitEnum;
             comment?: string;
@@ -842,10 +769,9 @@ export namespace xdsl {
             startMorningHours?: string;
             uploadBandwidthTest?: number;
         }
-        //xdsl.lineDiagnostic.BandwidthTestUnitEnum
+        // type fullname: xdsl.lineDiagnostic.BandwidthTestUnitEnum
         export type BandwidthTestUnitEnum = "Kbps" | "Mbps"
-        //xdsl.lineDiagnostic.ConnectionInformations
-        // fullName: xdsl.lineDiagnostic.ConnectionInformations.ConnectionInformations
+        // interface fullName: xdsl.lineDiagnostic.ConnectionInformations.ConnectionInformations
         export interface ConnectionInformations {
             crcError?: number;
             downstreamAttenuation?: number;
@@ -857,24 +783,21 @@ export namespace xdsl {
             upstreamMargin?: number;
             upstreamSync?: number;
         }
-        //xdsl.lineDiagnostic.CustomerActionToDo
-        // fullName: xdsl.lineDiagnostic.CustomerActionToDo.CustomerActionToDo
+        // interface fullName: xdsl.lineDiagnostic.CustomerActionToDo.CustomerActionToDo
         export interface CustomerActionToDo {
             description: string;
             name: xdsl.lineDiagnostic.CustomerActionsEnum;
         }
-        //xdsl.lineDiagnostic.CustomerActionsEnum
+        // type fullname: xdsl.lineDiagnostic.CustomerActionsEnum
         export type CustomerActionsEnum = "bePreparedToCheckModemSynchronization" | "changeDslFilterAndPlugInDti" | "changeExtensionCable" | "changeProfile" | "checkConnectionCable" | "checkConnectionLoginAndParameters" | "checkFilter" | "connectModemToOtherPlugs" | "neutralTest" | "rebootModem" | "resetModem" | "unplugEveryModems" | "unplugModem"
-        //xdsl.lineDiagnostic.Diagnostic
-        // fullName: xdsl.lineDiagnostic.Diagnostic.Diagnostic
+        // interface fullName: xdsl.lineDiagnostic.Diagnostic.Diagnostic
         export interface Diagnostic {
             data: xdsl.lineDiagnostic.DiagnosticData;
             faultType: xdsl.lineDiagnostic.FaultTypeEnum;
             id: number;
             status: xdsl.lineDiagnostic.DiagnosticStatusEnum;
         }
-        //xdsl.lineDiagnostic.DiagnosticData
-        // fullName: xdsl.lineDiagnostic.DiagnosticData.DiagnosticData
+        // interface fullName: xdsl.lineDiagnostic.DiagnosticData.DiagnosticData
         export interface DiagnosticData {
             actionsDone: xdsl.lineDiagnostic.CustomerActionsEnum[];
             actionsToDo: xdsl.lineDiagnostic.CustomerActionToDo[];
@@ -890,20 +813,18 @@ export namespace xdsl {
             timeout: number;
             toAnswer: xdsl.lineDiagnostic.Question[];
         }
-        //xdsl.lineDiagnostic.DiagnosticStatusEnum
+        // type fullname: xdsl.lineDiagnostic.DiagnosticStatusEnum
         export type DiagnosticStatusEnum = "cancelled" | "connectionProblem" | "genericIncidentPending" | "haveToConnectModemOnTheRightPlug" | "init" | "interventionRequested" | "noBandwidthFault" | "noProblemAnymore" | "noSyncFaultDiagnosticRequired" | "problem" | "resolvedAfterTests" | "sleeping" | "validationRefused" | "waitingHuman" | "waitingRobot" | "waitingValidation"
-        //xdsl.lineDiagnostic.FaultTypeEnum
+        // type fullname: xdsl.lineDiagnostic.FaultTypeEnum
         export type FaultTypeEnum = "alignment" | "noSync" | "syncLossOrLowBandwidth" | "unknown"
-        //xdsl.lineDiagnostic.LineCapabilities
-        // fullName: xdsl.lineDiagnostic.LineCapabilities.LineCapabilities
+        // interface fullName: xdsl.lineDiagnostic.LineCapabilities.LineCapabilities
         export interface LineCapabilities {
             down?: number;
             mitigation?: string;
             ping?: number;
             up?: number;
         }
-        //xdsl.lineDiagnostic.LineDetails
-        // fullName: xdsl.lineDiagnostic.LineDetails.LineDetails
+        // interface fullName: xdsl.lineDiagnostic.LineDetails.LineDetails
         export interface LineDetails {
             accessName: string;
             accessPing?: boolean;
@@ -921,19 +842,17 @@ export namespace xdsl {
             operator: xdsl.lineDiagnostic.ProviderEnum;
             sections?: xdsl.lineDiagnostic.Section[];
         }
-        //xdsl.lineDiagnostic.PossibleValue
-        // fullName: xdsl.lineDiagnostic.PossibleValue.PossibleValue
+        // interface fullName: xdsl.lineDiagnostic.PossibleValue.PossibleValue
         export interface PossibleValue {
             id?: number;
             label?: string;
             value?: string;
         }
-        //xdsl.lineDiagnostic.ProblemTypeEnum
+        // type fullname: xdsl.lineDiagnostic.ProblemTypeEnum
         export type ProblemTypeEnum = "lowBandwidth" | "syncLoss"
-        //xdsl.lineDiagnostic.ProviderEnum
+        // type fullname: xdsl.lineDiagnostic.ProviderEnum
         export type ProviderEnum = "axione" | "ft" | "ftBySfr" | "kosc" | "koscDeg" | "ovh" | "sfr"
-        //xdsl.lineDiagnostic.Question
-        // fullName: xdsl.lineDiagnostic.Question.Question
+        // interface fullName: xdsl.lineDiagnostic.Question.Question
         export interface Question {
             defaultValue?: string;
             description: string;
@@ -943,20 +862,18 @@ export namespace xdsl {
             required?: boolean;
             type: string;
         }
-        //xdsl.lineDiagnostic.QuestionsEnum
+        // type fullname: xdsl.lineDiagnostic.QuestionsEnum
         export type QuestionsEnum = "bandwidthTestUnit" | "comment" | "conditionsAccepted" | "contactPhone" | "datetimeOfAppearance" | "downloadBandwidthTest" | "endAfternoonHours" | "endMorningHours" | "followBySms" | "hasModemKeptSynchronization" | "idAppointment" | "individualSite" | "modemIsSynchronized" | "modemMac" | "modemStillSynchronized" | "modemType" | "ovhTicket" | "problemType" | "resolvedAfterTests" | "secureSite" | "severalInternetConnections" | "siteClosedDays" | "siteDigicode" | "siteOpening" | "startAfternoonHours" | "startMorningHours" | "uploadBandwidthTest"
-        //xdsl.lineDiagnostic.RobotActionsEnum
+        // type fullname: xdsl.lineDiagnostic.RobotActionsEnum
         export type RobotActionsEnum = "alignmentLockTest" | "alignmentResetTest" | "alignmentTestResult" | "checkCustomerTicket" | "checkIfAccessPing" | "checkIfResolvedAfterConnectionTests" | "checkIfResolvedAfterInstallationCheck" | "checkIfResolvedAfterTests" | "checkIfSeveralConnections" | "checkInstallation" | "checkProblem" | "checkSynchronizationWithoutOtherModems" | "customerPrelocChecks" | "findProblem" | "installationCheck" | "lockUnlock" | "needToRequestMonitoring" | "needToRequestOperatorIntervention" | "needToRequestOvhIntervention" | "requestMonitoring" | "requestOperatorIntervention" | "requestOvhIntervention" | "seltTest"
-        //xdsl.lineDiagnostic.Section
-        // fullName: xdsl.lineDiagnostic.Section.Section
+        // interface fullName: xdsl.lineDiagnostic.Section.Section
         export interface Section {
             length: number;
             section: number;
         }
-        //xdsl.lineDiagnostic.SeltPrelocEnum
+        // type fullname: xdsl.lineDiagnostic.SeltPrelocEnum
         export type SeltPrelocEnum = "CUST" | "DSLAM" | "LINE" | "RE"
-        //xdsl.lineDiagnostic.SeltResult
-        // fullName: xdsl.lineDiagnostic.SeltResult.SeltResult
+        // interface fullName: xdsl.lineDiagnostic.SeltResult.SeltResult
         export interface SeltResult {
             date?: string;
             distance?: number;
@@ -964,22 +881,21 @@ export namespace xdsl {
             state?: xdsl.lineDiagnostic.SeltStateEnum;
             status?: xdsl.lineDiagnostic.SeltStatusEnum;
         }
-        //xdsl.lineDiagnostic.SeltStateEnum
+        // type fullname: xdsl.lineDiagnostic.SeltStateEnum
         export type SeltStateEnum = "open" | "short" | "synced" | "unknown"
-        //xdsl.lineDiagnostic.SeltStatusEnum
+        // type fullname: xdsl.lineDiagnostic.SeltStatusEnum
         export type SeltStatusEnum = "failed" | "notAvailable" | "ok"
     }
     export namespace monitoringNotifications {
-        //xdsl.monitoringNotifications.FrequencyEnum
+        // type fullname: xdsl.monitoringNotifications.FrequencyEnum
         export type FrequencyEnum = "1h" | "5m" | "6h" | "once"
-        //xdsl.monitoringNotifications.TypeEnum
+        // type fullname: xdsl.monitoringNotifications.TypeEnum
         export type TypeEnum = "mail" | "sms"
     }
     export namespace orderFollowup {
-        //xdsl.orderFollowup.DurationUnitEnum
+        // type fullname: xdsl.orderFollowup.DurationUnitEnum
         export type DurationUnitEnum = "day" | "hour" | "minute"
-        //xdsl.orderFollowup.Step
-        // fullName: xdsl.orderFollowup.Step.Step
+        // interface fullName: xdsl.orderFollowup.Step.Step
         export interface Step {
             comments: string[];
             doneDate?: string;
@@ -988,14 +904,13 @@ export namespace xdsl {
             name: xdsl.orderFollowup.StepNameEnum;
             status: xdsl.orderFollowup.StepStatusEnum;
         }
-        //xdsl.orderFollowup.StepNameEnum
+        // type fullname: xdsl.orderFollowup.StepNameEnum
         export type StepNameEnum = "accessIsOperational" | "checkInfrastructure" | "configureAccessOnOVH" | "orderPayed" | "orderReceived" | "orderTreatment" | "sendModem" | "sendOrderToProvider" | "setupCustomerPremisesEquipment" | "waitingForProviderInstallReport" | "waitingForWithdrawalPeriodToBeOver"
-        //xdsl.orderFollowup.StepStatusEnum
+        // type fullname: xdsl.orderFollowup.StepStatusEnum
         export type StepStatusEnum = "doing" | "done" | "error" | "todo" | "waitingCustomer"
     }
     export namespace templateModem {
-        //xdsl.templateModem.DHCP
-        // fullName: xdsl.templateModem.DHCP.DHCP
+        // interface fullName: xdsl.templateModem.DHCP.DHCP
         export interface DHCP {
             defaultGateway: string;
             dhcpName: string;
@@ -1008,16 +923,14 @@ export namespace xdsl {
             startAddress: string;
             subnetMask: string;
         }
-        //xdsl.templateModem.LAN
-        // fullName: xdsl.templateModem.LAN.LAN
+        // interface fullName: xdsl.templateModem.LAN.LAN
         export interface LAN {
             IPAddress: string;
             addressingType: xdsl.xdslModemConfig.AddressingTypeEnum;
             lanName: string;
             subnetMask: string;
         }
-        //xdsl.templateModem.ParametersToIgnore
-        // fullName: xdsl.templateModem.ParametersToIgnore.ParametersToIgnore
+        // interface fullName: xdsl.templateModem.ParametersToIgnore.ParametersToIgnore
         export interface ParametersToIgnore {
             LANandDHCP?: boolean;
             WLANList?: string[];
@@ -1025,8 +938,7 @@ export namespace xdsl {
             mtuSize?: boolean;
             portMappingList?: string[];
         }
-        //xdsl.templateModem.PortMapping
-        // fullName: xdsl.templateModem.PortMapping.PortMapping
+        // interface fullName: xdsl.templateModem.PortMapping.PortMapping
         export interface PortMapping {
             allowedRemoteIp?: string;
             description?: string;
@@ -1037,10 +949,9 @@ export namespace xdsl {
             name: string;
             protocol: xdsl.xdslModemConfig.ProtocolTypeEnum;
         }
-        //xdsl.templateModem.SecurityTypeEnum
+        // type fullname: xdsl.templateModem.SecurityTypeEnum
         export type SecurityTypeEnum = "None" | "WPA" | "WPA2" | "WPAandWPA2"
-        //xdsl.templateModem.WLAN
-        // fullName: xdsl.templateModem.WLAN.WLAN
+        // interface fullName: xdsl.templateModem.WLAN.WLAN
         export interface WLAN {
             SSID: string;
             SSIDAdvertisementEnabled: boolean;
@@ -1055,8 +966,7 @@ export namespace xdsl {
             wifiName: string;
         }
     }
-    //xdsl.xdslEmailPro
-    // fullName: xdsl.xdslEmailPro.xdslEmailPro
+    // interface fullName: xdsl.xdslEmailPro.xdslEmailPro
     export interface xdslEmailPro {
         currentUsage: complexType.UnitAndValue<number>;
         displayName?: string;
@@ -1075,21 +985,21 @@ export namespace xdsl {
         taskPendingId?: number;
     }
     export namespace xdslModemConfig {
-        //xdsl.xdslModemConfig.AddressingTypeEnum
+        // type fullname: xdsl.xdslModemConfig.AddressingTypeEnum
         export type AddressingTypeEnum = "DHCP" | "Static"
-        //xdsl.xdslModemConfig.ChannelModeEnum
+        // type fullname: xdsl.xdslModemConfig.ChannelModeEnum
         export type ChannelModeEnum = "Auto" | "Manual"
-        //xdsl.xdslModemConfig.ConnectedDeviceAddressSourceEnum
+        // type fullname: xdsl.xdslModemConfig.ConnectedDeviceAddressSourceEnum
         export type ConnectedDeviceAddressSourceEnum = "DHCP" | "Static" | "Unknown"
-        //xdsl.xdslModemConfig.EasyFirewallLevelEnum
+        // type fullname: xdsl.xdslModemConfig.EasyFirewallLevelEnum
         export type EasyFirewallLevelEnum = "BlockAll" | "Disabled" | "Normal"
-        //xdsl.xdslModemConfig.FrequencyEnum
+        // type fullname: xdsl.xdslModemConfig.FrequencyEnum
         export type FrequencyEnum = "2.4GHz" | "5GHz"
-        //xdsl.xdslModemConfig.MTUSizeEnum
+        // type fullname: xdsl.xdslModemConfig.MTUSizeEnum
         export type MTUSizeEnum = 1432 | 1456 | 1492
-        //xdsl.xdslModemConfig.ProtocolTypeEnum
+        // type fullname: xdsl.xdslModemConfig.ProtocolTypeEnum
         export type ProtocolTypeEnum = "TCP" | "UDP"
-        //xdsl.xdslModemConfig.SecurityTypeEnum
+        // type fullname: xdsl.xdslModemConfig.SecurityTypeEnum
         export type SecurityTypeEnum = "None" | "WEP" | "WPA" | "WPA2" | "WPAandWPA2"
     }
 }

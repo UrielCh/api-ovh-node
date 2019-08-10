@@ -4,39 +4,35 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /license/directadmin Models
  */
 export namespace license {
-    //license.ActionType
+    // type fullname: license.ActionType
     export type ActionType = "addWindowFromExistingSerial" | "changeIp" | "changeOs" | "installLicense" | "optionUpgrade" | "releaseOption" | "versionUpgrade"
-    //license.ChangeIpMessageEnum
+    // type fullname: license.ChangeIpMessageEnum
     export type ChangeIpMessageEnum = "OK" | "destinationNotAllowed" | "licenseAlreadyExists" | "notAllowedToHandleThis" | "notSameType" | "sameIp" | "versionNotAllowed"
-    //license.ChangeIpStatus
-    // fullName: license.ChangeIpStatus.ChangeIpStatus
+    // interface fullName: license.ChangeIpStatus.ChangeIpStatus
     export interface ChangeIpStatus {
         message: license.ChangeIpMessageEnum;
         success: boolean;
     }
-    //license.DirectAdminOrderConfiguration
-    // fullName: license.DirectAdminOrderConfiguration.DirectAdminOrderConfiguration
+    // interface fullName: license.DirectAdminOrderConfiguration.DirectAdminOrderConfiguration
     export interface DirectAdminOrderConfiguration {
         orderableVersions: license.OrderableDirectAdminCompatibilityInfos[];
         serviceType: license.LicenseTypeEnum;
     }
-    //license.DirectAdminOsEnum
+    // type fullname: license.DirectAdminOsEnum
     export type DirectAdminOsEnum = "CentOs_5.0_32" | "CentOs_5.0_64" | "CentOs_6_32" | "CentOs_6_64" | "CentOs_7_64" | "Debian_5.0_32" | "Debian_5.0_64" | "Debian_6.0_32" | "Debian_6.0_64" | "Debian_7.0_32" | "Debian_7.0_64" | "Debian_8.0_64" | "FreeBSD_7.x_32" | "FreeBSD_7.x_64" | "FreeBSD_8.x_64" | "FreeBSD_9.x_64"
-    //license.DirectAdminVersionEnum
+    // type fullname: license.DirectAdminVersionEnum
     export type DirectAdminVersionEnum = "DIRECTADMIN_1" | "directadmin-license"
-    //license.LicenseTypeEnum
+    // type fullname: license.LicenseTypeEnum
     export type LicenseTypeEnum = "dedicated" | "dedicatedCloud" | "dedicatedFailover" | "failover" | "vm" | "vps" | "vps_ceph" | "vps_classic" | "vps_cloud" | "vps_cloud_2016" | "vps_ssd"
-    //license.OrderableDirectAdminCompatibilityInfos
-    // fullName: license.OrderableDirectAdminCompatibilityInfos.OrderableDirectAdminCompatibilityInfos
+    // interface fullName: license.OrderableDirectAdminCompatibilityInfos.OrderableDirectAdminCompatibilityInfos
     export interface OrderableDirectAdminCompatibilityInfos {
         version: license.OrderableDirectAdminVersionEnum;
     }
-    //license.OrderableDirectAdminVersionEnum
+    // type fullname: license.OrderableDirectAdminVersionEnum
     export type OrderableDirectAdminVersionEnum = "DIRECTADMIN_1" | "directadmin-license"
-    //license.StateEnum
+    // type fullname: license.StateEnum
     export type StateEnum = "ok" | "released" | "terminated" | "toDeliver"
-    //license.Task
-    // fullName: license.Task.Task
+    // interface fullName: license.Task.Task
     export interface Task {
         action: license.ActionType;
         doneDate?: string;
@@ -46,11 +42,10 @@ export namespace license {
         taskId: number;
         todoDate: string;
     }
-    //license.TaskStateEnum
+    // type fullname: license.TaskStateEnum
     export type TaskStateEnum = "cancelled" | "doing" | "done" | "error" | "todo"
     export namespace directadmin {
-        //license.directadmin.DirectAdmin
-        // fullName: license.directadmin.DirectAdmin.DirectAdmin
+        // interface fullName: license.directadmin.DirectAdmin.DirectAdmin
         export interface DirectAdmin {
             clientId: number;
             creation: string;
@@ -65,8 +60,7 @@ export namespace license {
     }
 }
 export namespace service {
-    //service.RenewType
-    // fullName: service.RenewType.RenewType
+    // interface fullName: service.RenewType.RenewType
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -74,18 +68,17 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    //service.RenewalTypeEnum
+    // type fullname: service.RenewalTypeEnum
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    //service.StateEnum
+    // type fullname: service.StateEnum
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
-    //service.TerminationFutureUseEnum
+    // type fullname: service.TerminationFutureUseEnum
     export type TerminationFutureUseEnum = "NOT_REPLACING_SERVICE" | "OTHER" | "SUBSCRIBE_AN_OTHER_SERVICE" | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR" | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
-    //service.TerminationReasonEnum
+    // type fullname: service.TerminationReasonEnum
     export type TerminationReasonEnum = "FEATURES_DONT_SUIT_ME" | "LACK_OF_PERFORMANCES" | "MIGRATED_TO_ANOTHER_OVH_PRODUCT" | "MIGRATED_TO_COMPETITOR" | "NOT_NEEDED_ANYMORE" | "NOT_RELIABLE" | "NO_ANSWER" | "OTHER" | "TOO_EXPENSIVE" | "TOO_HARD_TO_USE" | "UNSATIFIED_BY_CUSTOMER_SUPPORT"
 }
 export namespace services {
-    //services.Service
-    // fullName: services.Service.Service
+    // interface fullName: services.Service.Service
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;

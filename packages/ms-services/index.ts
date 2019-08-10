@@ -4,8 +4,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /msServices Models
  */
 export namespace msServices {
-    //msServices.Account
-    // fullName: msServices.Account.Account
+    // interface fullName: msServices.Account.Account
     export interface Account {
         SAMAccountName?: string;
         creationDate?: string;
@@ -23,8 +22,7 @@ export namespace msServices {
         taskPendingId: number;
         userPrincipalName: string;
     }
-    //msServices.ActiveDirectoryOrganizationalUnit
-    // fullName: msServices.ActiveDirectoryOrganizationalUnit.ActiveDirectoryOrganizationalUnit
+    // interface fullName: msServices.ActiveDirectoryOrganizationalUnit.ActiveDirectoryOrganizationalUnit
     export interface ActiveDirectoryOrganizationalUnit {
         complexityEnabled: boolean;
         lockoutDuration: number;
@@ -38,14 +36,12 @@ export namespace msServices {
         state: msServices.ServiceStateEnum;
         taskPendingId: number;
     }
-    //msServices.ActiveDirectorySyncClientUrl
-    // fullName: msServices.ActiveDirectorySyncClientUrl.ActiveDirectorySyncClientUrl
+    // interface fullName: msServices.ActiveDirectorySyncClientUrl.ActiveDirectorySyncClientUrl
     export interface ActiveDirectorySyncClientUrl {
         expiration: string;
         url: string;
     }
-    //msServices.ExchangeInformation
-    // fullName: msServices.ExchangeInformation.ExchangeInformation
+    // interface fullName: msServices.ExchangeInformation.ExchangeInformation
     export interface ExchangeInformation {
         accountLicense: msServices.ExchangeLicenceEnum;
         configured: boolean;
@@ -73,10 +69,9 @@ export namespace msServices {
         state: msServices.ObjectStateEnum;
         taskPendingId: number;
     }
-    //msServices.ExchangeLicenceEnum
+    // type fullname: msServices.ExchangeLicenceEnum
     export type ExchangeLicenceEnum = "basic" | "enterprise" | "standard"
-    //msServices.ExchangeService
-    // fullName: msServices.ExchangeService.ExchangeService
+    // interface fullName: msServices.ExchangeService.ExchangeService
     export interface ExchangeService {
         displayName?: string;
         domain: string;
@@ -89,41 +84,37 @@ export namespace msServices {
         state: msServices.ServiceStateEnum;
         taskPendingId: number;
     }
-    //msServices.LicensePeriodEnum
+    // type fullname: msServices.LicensePeriodEnum
     export type LicensePeriodEnum = "lastMonth" | "lastQuarter" | "lastWeek" | "lastYear"
-    //msServices.MailingFilterEnum
+    // type fullname: msServices.MailingFilterEnum
     export type MailingFilterEnum = "vaderetro"
-    //msServices.MfaInformation
-    // fullName: msServices.MfaInformation.MfaInformation
+    // interface fullName: msServices.MfaInformation.MfaInformation
     export interface MfaInformation {
         activated: boolean;
         state: msServices.ObjectStateEnum;
         taskPendingId: number;
     }
-    //msServices.ObjectStateEnum
+    // type fullname: msServices.ObjectStateEnum
     export type ObjectStateEnum = "creating" | "deleting" | "modifying" | "ok" | "reopening" | "suspended" | "suspending"
-    //msServices.RenewPeriodEnum
+    // type fullname: msServices.RenewPeriodEnum
     export type RenewPeriodEnum = "monthly" | "yearly"
-    //msServices.ServiceOfferEnum
+    // type fullname: msServices.ServiceOfferEnum
     export type ServiceOfferEnum = "dedicated" | "dedicatedCluster" | "hosted" | "provider"
-    //msServices.ServiceStateEnum
+    // type fullname: msServices.ServiceStateEnum
     export type ServiceStateEnum = "creating" | "deleting" | "inMaintenance" | "ok" | "reopening" | "suspended" | "suspending"
-    //msServices.SharepointAccountAccessRightsEnum
+    // type fullname: msServices.SharepointAccountAccessRightsEnum
     export type SharepointAccountAccessRightsEnum = "administrator" | "user"
-    //msServices.SharepointAccountLicense
-    // fullName: msServices.SharepointAccountLicense.SharepointAccountLicense
+    // interface fullName: msServices.SharepointAccountLicense.SharepointAccountLicense
     export interface SharepointAccountLicense {
         license: msServices.SharepointLicenseEnum;
         licenseQuantity: number;
     }
-    //msServices.SharepointDailyLicense
-    // fullName: msServices.SharepointDailyLicense.SharepointDailyLicense
+    // interface fullName: msServices.SharepointDailyLicense.SharepointDailyLicense
     export interface SharepointDailyLicense {
         accountLicense: msServices.SharepointAccountLicense[];
         date: string;
     }
-    //msServices.SharepointInformation
-    // fullName: msServices.SharepointInformation.SharepointInformation
+    // interface fullName: msServices.SharepointInformation.SharepointInformation
     export interface SharepointInformation {
         accessRights: msServices.SharepointAccountAccessRightsEnum;
         activeDirectoryAccountId: number;
@@ -137,10 +128,9 @@ export namespace msServices {
         state: msServices.ObjectStateEnum;
         taskPendingId: number;
     }
-    //msServices.SharepointLicenseEnum
+    // type fullname: msServices.SharepointLicenseEnum
     export type SharepointLicenseEnum = "foundation" | "standard"
-    //msServices.SharepointService
-    // fullName: msServices.SharepointService.SharepointService
+    // interface fullName: msServices.SharepointService.SharepointService
     export interface SharepointService {
         currentUsage?: number;
         displayName?: string;
@@ -152,15 +142,13 @@ export namespace msServices {
         taskPendingId: number;
         url?: string;
     }
-    //msServices.SharepointServiceInfo
-    // fullName: msServices.SharepointServiceInfo.SharepointServiceInfo
+    // interface fullName: msServices.SharepointServiceInfo.SharepointServiceInfo
     export interface SharepointServiceInfo {
         domain: string;
     }
-    //msServices.SharepointServiceOfferEnum
+    // type fullname: msServices.SharepointServiceOfferEnum
     export type SharepointServiceOfferEnum = "hosted" | "provider"
-    //msServices.SpamAndVirusConfiguration
-    // fullName: msServices.SpamAndVirusConfiguration.SpamAndVirusConfiguration
+    // interface fullName: msServices.SpamAndVirusConfiguration.SpamAndVirusConfiguration
     export interface SpamAndVirusConfiguration {
         checkDKIM: boolean;
         checkSPF: boolean;
@@ -170,36 +158,31 @@ export namespace msServices {
         tagSpam: boolean;
         tagVirus: boolean;
     }
-    //msServices.SyncAccountLicense
-    // fullName: msServices.SyncAccountLicense.SyncAccountLicense
+    // interface fullName: msServices.SyncAccountLicense.SyncAccountLicense
     export interface SyncAccountLicense {
         license: msServices.SyncLicenseEnum;
         licenseQuantity: number;
     }
-    //msServices.SyncDailyLicense
-    // fullName: msServices.SyncDailyLicense.SyncDailyLicense
+    // interface fullName: msServices.SyncDailyLicense.SyncDailyLicense
     export interface SyncDailyLicense {
         accountLicense: msServices.SyncAccountLicense[];
         date: string;
     }
-    //msServices.SyncInformation
-    // fullName: msServices.SyncInformation.SyncInformation
+    // interface fullName: msServices.SyncInformation.SyncInformation
     export interface SyncInformation {
         configured: boolean;
         license: msServices.SyncLicenseEnum;
         state: msServices.ObjectStateEnum;
         taskPendingId: number;
     }
-    //msServices.SyncLicenseEnum
+    // type fullname: msServices.SyncLicenseEnum
     export type SyncLicenseEnum = "standard" | "standardFree"
-    //msServices.SyncService
-    // fullName: msServices.SyncService.SyncService
+    // interface fullName: msServices.SyncService.SyncService
     export interface SyncService {
         state: msServices.ServiceStateEnum;
         taskPendingId: number;
     }
-    //msServices.Task
-    // fullName: msServices.Task.Task
+    // interface fullName: msServices.Task.Task
     export interface Task {
         finishDate?: string;
         function: msServices.TaskFunctionEnum;
@@ -207,14 +190,13 @@ export namespace msServices {
         status: msServices.TaskStatusEnum;
         todoDate: string;
     }
-    //msServices.TaskFunctionEnum
+    // type fullname: msServices.TaskFunctionEnum
     export type TaskFunctionEnum = "activateADSync" | "activateSharepoint" | "addADAccount" | "addADOU" | "addADSyncAccount" | "addADUPNSuffix" | "changeADPassword" | "changeADSyncPassword" | "deactivateADSync" | "delADOU" | "deleteADAccount" | "deleteADSyncAccount" | "deleteADUPNSuffix" | "disableADAccountMfa" | "disableADAccountMfaTemporary" | "enableADAccountMfa" | "enableADSyncAccount" | "generateADSyncClientUrl" | "resetADAccountMfa" | "setADAccount" | "setPasswordPolicy"
-    //msServices.TaskStatusEnum
+    // type fullname: msServices.TaskStatusEnum
     export type TaskStatusEnum = "cancelled" | "doing" | "done" | "error" | "todo"
-    //msServices.UPNStateEnum
+    // type fullname: msServices.UPNStateEnum
     export type UPNStateEnum = "creating" | "deleting" | "ok"
-    //msServices.exchangeTask
-    // fullName: msServices.exchangeTask.exchangeTask
+    // interface fullName: msServices.exchangeTask.exchangeTask
     export interface exchangeTask {
         finishDate?: string;
         function: string;
@@ -222,8 +204,7 @@ export namespace msServices {
         status: msServices.TaskStatusEnum;
         todoDate: string;
     }
-    //msServices.sharepointTask
-    // fullName: msServices.sharepointTask.sharepointTask
+    // interface fullName: msServices.sharepointTask.sharepointTask
     export interface sharepointTask {
         finishDate?: string;
         function: string;
@@ -231,8 +212,7 @@ export namespace msServices {
         status: msServices.TaskStatusEnum;
         todoDate: string;
     }
-    //msServices.upnSuffix
-    // fullName: msServices.upnSuffix.upnSuffix
+    // interface fullName: msServices.upnSuffix.upnSuffix
     export interface upnSuffix {
         cnameToCheck?: string;
         ownershipValidated: boolean;
@@ -242,8 +222,7 @@ export namespace msServices {
     }
 }
 export namespace service {
-    //service.RenewType
-    // fullName: service.RenewType.RenewType
+    // interface fullName: service.RenewType.RenewType
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -251,14 +230,13 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    //service.RenewalTypeEnum
+    // type fullname: service.RenewalTypeEnum
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    //service.StateEnum
+    // type fullname: service.StateEnum
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
 }
 export namespace services {
-    //services.Service
-    // fullName: services.Service.Service
+    // interface fullName: services.Service.Service
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;

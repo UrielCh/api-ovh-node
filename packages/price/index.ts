@@ -4,10 +4,9 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /price Models
  */
 export namespace order {
-    //order.CurrencyCodeEnum
+    // type fullname: order.CurrencyCodeEnum
     export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
-    //order.Price
-    // fullName: order.Price.Price
+    // interface fullName: order.Price.Price
     export interface Price {
         currencyCode: order.CurrencyCodeEnum;
         text: string;
@@ -17,19 +16,19 @@ export namespace order {
 export namespace price {
     export namespace Dedicated {
         export namespace Nasha {
-            //price.Dedicated.Nasha.ModelEnum
+            // type fullname: price.Dedicated.Nasha.ModelEnum
             export type ModelEnum = "1200g" | "13200g" | "19200g" | "2400g" | "26400g" | "3600g" | "7200g"
         }
         export namespace Server {
-            //price.Dedicated.Server.AntiDDoSProEnum
+            // type fullname: price.Dedicated.Server.AntiDDoSProEnum
             export type AntiDDoSProEnum = "sk"
-            //price.Dedicated.Server.BackupStorageEnum
+            // type fullname: price.Dedicated.Server.BackupStorageEnum
             export type BackupStorageEnum = "1000" | "10000" | "500" | "5000"
-            //price.Dedicated.Server.FirewallEnum
+            // type fullname: price.Dedicated.Server.FirewallEnum
             export type FirewallEnum = "asa5505" | "asa5510" | "asa5520"
-            //price.Dedicated.Server.IpEnum
+            // type fullname: price.Dedicated.Server.IpEnum
             export type IpEnum = "kimsufi" | "parking"
-            //price.Dedicated.Server.ProfessionalUseEnum
+            // type fullname: price.Dedicated.Server.ProfessionalUseEnum
             export type ProfessionalUseEnum = "bhg" | "eg" | "hg" | "mg" | "sp"
         }
     }
@@ -37,43 +36,43 @@ export namespace price {
         export namespace _2013v1 {
             export namespace Bhs1a {
                 export namespace Filer {
-                    //price.DedicatedCloud._2013v1.Bhs1a.Filer.HourlyEnum
+                    // type fullname: price.DedicatedCloud._2013v1.Bhs1a.Filer.HourlyEnum
                     export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200g-GB" | "nfs-3300-GB" | "nfs-3600-GB" | "nfs-6600-GB"
-                    //price.DedicatedCloud._2013v1.Bhs1a.Filer.MonthlyEnum
+                    // type fullname: price.DedicatedCloud._2013v1.Bhs1a.Filer.MonthlyEnum
                     export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-3300-GB" | "nfs-3600-GB" | "nfs-6600-GB"
                 }
                 export namespace Host {
-                    //price.DedicatedCloud._2013v1.Bhs1a.Host.HourlyEnum
+                    // type fullname: price.DedicatedCloud._2013v1.Bhs1a.Host.HourlyEnum
                     export type HourlyEnum = "L" | "L+" | "L++" | "L2" | "L2+" | "M" | "S" | "S++" | "XL" | "XL+"
-                    //price.DedicatedCloud._2013v1.Bhs1a.Host.MonthlyEnum
+                    // type fullname: price.DedicatedCloud._2013v1.Bhs1a.Host.MonthlyEnum
                     export type MonthlyEnum = "L" | "L+" | "L++" | "L2" | "L2+" | "M" | "S" | "S++" | "XL" | "XL+"
                 }
             }
             export namespace Rbx2a {
                 export namespace Filer {
-                    //price.DedicatedCloud._2013v1.Rbx2a.Filer.HourlyEnum
+                    // type fullname: price.DedicatedCloud._2013v1.Rbx2a.Filer.HourlyEnum
                     export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200g-GB" | "nfs-3300-GB" | "nfs-3600-GB" | "nfs-6600-GB"
-                    //price.DedicatedCloud._2013v1.Rbx2a.Filer.MonthlyEnum
+                    // type fullname: price.DedicatedCloud._2013v1.Rbx2a.Filer.MonthlyEnum
                     export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-3300-GB" | "nfs-3600-GB" | "nfs-6600-GB"
                 }
                 export namespace Host {
-                    //price.DedicatedCloud._2013v1.Rbx2a.Host.HourlyEnum
+                    // type fullname: price.DedicatedCloud._2013v1.Rbx2a.Host.HourlyEnum
                     export type HourlyEnum = "L" | "L+" | "L++" | "L2" | "L2+" | "M" | "S" | "S++" | "XL" | "XL+"
-                    //price.DedicatedCloud._2013v1.Rbx2a.Host.MonthlyEnum
+                    // type fullname: price.DedicatedCloud._2013v1.Rbx2a.Host.MonthlyEnum
                     export type MonthlyEnum = "L" | "L+" | "L++" | "L2" | "L2+" | "M" | "S" | "S++" | "XL" | "XL+"
                 }
             }
             export namespace Sbg1a {
                 export namespace Filer {
-                    //price.DedicatedCloud._2013v1.Sbg1a.Filer.HourlyEnum
+                    // type fullname: price.DedicatedCloud._2013v1.Sbg1a.Filer.HourlyEnum
                     export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200g-GB" | "nfs-3300-GB" | "nfs-3600-GB" | "nfs-6600-GB"
-                    //price.DedicatedCloud._2013v1.Sbg1a.Filer.MonthlyEnum
+                    // type fullname: price.DedicatedCloud._2013v1.Sbg1a.Filer.MonthlyEnum
                     export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-3300-GB" | "nfs-3600-GB" | "nfs-6600-GB"
                 }
                 export namespace Host {
-                    //price.DedicatedCloud._2013v1.Sbg1a.Host.HourlyEnum
+                    // type fullname: price.DedicatedCloud._2013v1.Sbg1a.Host.HourlyEnum
                     export type HourlyEnum = "L" | "L+" | "L++" | "L2" | "L2+" | "M" | "S" | "S++" | "XL" | "XL+"
-                    //price.DedicatedCloud._2013v1.Sbg1a.Host.MonthlyEnum
+                    // type fullname: price.DedicatedCloud._2013v1.Sbg1a.Host.MonthlyEnum
                     export type MonthlyEnum = "L" | "L+" | "L++" | "L2" | "L2+" | "M" | "S" | "S++" | "XL" | "XL+"
                 }
             }
@@ -82,29 +81,29 @@ export namespace price {
             export namespace Bhs1a {
                 export namespace Enterprise {
                     export namespace Filer {
-                        //price.DedicatedCloud._2014v1.Bhs1a.Enterprise.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2014v1.Bhs1a.Enterprise.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2014v1.Bhs1a.Enterprise.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2014v1.Bhs1a.Enterprise.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2014v1.Bhs1a.Enterprise.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2014v1.Bhs1a.Enterprise.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2014v1.Bhs1a.Enterprise.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2014v1.Bhs1a.Enterprise.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2014v1.Bhs1a.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2014v1.Bhs1a.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2014v1.Bhs1a.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2014v1.Bhs1a.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2014v1.Bhs1a.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2014v1.Bhs1a.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2014v1.Bhs1a.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2014v1.Bhs1a.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
@@ -112,29 +111,29 @@ export namespace price {
             export namespace Rbx2a {
                 export namespace Enterprise {
                     export namespace Filer {
-                        //price.DedicatedCloud._2014v1.Rbx2a.Enterprise.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2014v1.Rbx2a.Enterprise.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2014v1.Rbx2a.Enterprise.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2014v1.Rbx2a.Enterprise.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2014v1.Rbx2a.Enterprise.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2014v1.Rbx2a.Enterprise.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2014v1.Rbx2a.Enterprise.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2014v1.Rbx2a.Enterprise.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2014v1.Rbx2a.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2014v1.Rbx2a.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2014v1.Rbx2a.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2014v1.Rbx2a.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2014v1.Rbx2a.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2014v1.Rbx2a.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2014v1.Rbx2a.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2014v1.Rbx2a.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
@@ -142,29 +141,29 @@ export namespace price {
             export namespace Rbx2b {
                 export namespace Enterprise {
                     export namespace Filer {
-                        //price.DedicatedCloud._2014v1.Rbx2b.Enterprise.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2014v1.Rbx2b.Enterprise.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2014v1.Rbx2b.Enterprise.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2014v1.Rbx2b.Enterprise.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2014v1.Rbx2b.Enterprise.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2014v1.Rbx2b.Enterprise.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2014v1.Rbx2b.Enterprise.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2014v1.Rbx2b.Enterprise.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2014v1.Rbx2b.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2014v1.Rbx2b.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2014v1.Rbx2b.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2014v1.Rbx2b.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2014v1.Rbx2b.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2014v1.Rbx2b.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2014v1.Rbx2b.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2014v1.Rbx2b.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
@@ -172,29 +171,29 @@ export namespace price {
             export namespace Sbg1a {
                 export namespace Enterprise {
                     export namespace Filer {
-                        //price.DedicatedCloud._2014v1.Sbg1a.Enterprise.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2014v1.Sbg1a.Enterprise.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2014v1.Sbg1a.Enterprise.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2014v1.Sbg1a.Enterprise.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2014v1.Sbg1a.Enterprise.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2014v1.Sbg1a.Enterprise.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2014v1.Sbg1a.Enterprise.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2014v1.Sbg1a.Enterprise.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2014v1.Sbg1a.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2014v1.Sbg1a.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2014v1.Sbg1a.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2014v1.Sbg1a.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2014v1.Sbg1a.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2014v1.Sbg1a.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2014v1.Sbg1a.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2014v1.Sbg1a.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
@@ -204,29 +203,29 @@ export namespace price {
             export namespace Bhs1a {
                 export namespace Enterprise {
                     export namespace Filer {
-                        //price.DedicatedCloud._2014v2.Bhs1a.Enterprise.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2014v2.Bhs1a.Enterprise.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2014v2.Bhs1a.Enterprise.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2014v2.Bhs1a.Enterprise.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2014v2.Bhs1a.Enterprise.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2014v2.Bhs1a.Enterprise.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2014v2.Bhs1a.Enterprise.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2014v2.Bhs1a.Enterprise.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2014v2.Bhs1a.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2014v2.Bhs1a.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2014v2.Bhs1a.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2014v2.Bhs1a.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2014v2.Bhs1a.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2014v2.Bhs1a.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2014v2.Bhs1a.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2014v2.Bhs1a.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
@@ -234,29 +233,29 @@ export namespace price {
             export namespace Rbx2a {
                 export namespace Enterprise {
                     export namespace Filer {
-                        //price.DedicatedCloud._2014v2.Rbx2a.Enterprise.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2014v2.Rbx2a.Enterprise.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2014v2.Rbx2a.Enterprise.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2014v2.Rbx2a.Enterprise.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2014v2.Rbx2a.Enterprise.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2014v2.Rbx2a.Enterprise.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2014v2.Rbx2a.Enterprise.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2014v2.Rbx2a.Enterprise.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2014v2.Rbx2a.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2014v2.Rbx2a.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2014v2.Rbx2a.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2014v2.Rbx2a.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2014v2.Rbx2a.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2014v2.Rbx2a.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2014v2.Rbx2a.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2014v2.Rbx2a.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
@@ -264,29 +263,29 @@ export namespace price {
             export namespace Rbx2b {
                 export namespace Enterprise {
                     export namespace Filer {
-                        //price.DedicatedCloud._2014v2.Rbx2b.Enterprise.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2014v2.Rbx2b.Enterprise.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2014v2.Rbx2b.Enterprise.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2014v2.Rbx2b.Enterprise.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2014v2.Rbx2b.Enterprise.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2014v2.Rbx2b.Enterprise.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2014v2.Rbx2b.Enterprise.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2014v2.Rbx2b.Enterprise.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2014v2.Rbx2b.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2014v2.Rbx2b.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2014v2.Rbx2b.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2014v2.Rbx2b.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2014v2.Rbx2b.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2014v2.Rbx2b.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2014v2.Rbx2b.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2014v2.Rbx2b.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
@@ -294,29 +293,29 @@ export namespace price {
             export namespace Sbg1a {
                 export namespace Enterprise {
                     export namespace Filer {
-                        //price.DedicatedCloud._2014v2.Sbg1a.Enterprise.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2014v2.Sbg1a.Enterprise.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2014v2.Sbg1a.Enterprise.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2014v2.Sbg1a.Enterprise.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2014v2.Sbg1a.Enterprise.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2014v2.Sbg1a.Enterprise.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2014v2.Sbg1a.Enterprise.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2014v2.Sbg1a.Enterprise.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2014v2.Sbg1a.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2014v2.Sbg1a.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2014v2.Sbg1a.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2014v2.Sbg1a.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2014v2.Sbg1a.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2014v2.Sbg1a.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2014v2.Sbg1a.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2014v2.Sbg1a.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
@@ -326,29 +325,29 @@ export namespace price {
             export namespace Bhs1a {
                 export namespace Enterprise {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v1.Bhs1a.Enterprise.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v1.Bhs1a.Enterprise.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v1.Bhs1a.Enterprise.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v1.Bhs1a.Enterprise.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v1.Bhs1a.Enterprise.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v1.Bhs1a.Enterprise.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v1.Bhs1a.Enterprise.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v1.Bhs1a.Enterprise.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v1.Bhs1a.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v1.Bhs1a.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v1.Bhs1a.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v1.Bhs1a.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v1.Bhs1a.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v1.Bhs1a.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v1.Bhs1a.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v1.Bhs1a.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
@@ -356,29 +355,29 @@ export namespace price {
             export namespace Rbx2a {
                 export namespace Enterprise {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v1.Rbx2a.Enterprise.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v1.Rbx2a.Enterprise.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v1.Rbx2a.Enterprise.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v1.Rbx2a.Enterprise.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v1.Rbx2a.Enterprise.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v1.Rbx2a.Enterprise.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v1.Rbx2a.Enterprise.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v1.Rbx2a.Enterprise.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v1.Rbx2a.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v1.Rbx2a.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v1.Rbx2a.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v1.Rbx2a.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v1.Rbx2a.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v1.Rbx2a.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v1.Rbx2a.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v1.Rbx2a.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
@@ -386,29 +385,29 @@ export namespace price {
             export namespace Rbx2b {
                 export namespace Enterprise {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v1.Rbx2b.Enterprise.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v1.Rbx2b.Enterprise.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v1.Rbx2b.Enterprise.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v1.Rbx2b.Enterprise.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v1.Rbx2b.Enterprise.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v1.Rbx2b.Enterprise.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v1.Rbx2b.Enterprise.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v1.Rbx2b.Enterprise.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v1.Rbx2b.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v1.Rbx2b.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v1.Rbx2b.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v1.Rbx2b.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v1.Rbx2b.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v1.Rbx2b.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v1.Rbx2b.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v1.Rbx2b.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
@@ -416,29 +415,29 @@ export namespace price {
             export namespace Sbg1a {
                 export namespace Enterprise {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v1.Sbg1a.Enterprise.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v1.Sbg1a.Enterprise.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v1.Sbg1a.Enterprise.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v1.Sbg1a.Enterprise.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v1.Sbg1a.Enterprise.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v1.Sbg1a.Enterprise.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v1.Sbg1a.Enterprise.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v1.Sbg1a.Enterprise.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v1.Sbg1a.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v1.Sbg1a.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v1.Sbg1a.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v1.Sbg1a.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v1.Sbg1a.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v1.Sbg1a.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v1.Sbg1a.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v1.Sbg1a.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
@@ -448,29 +447,29 @@ export namespace price {
             export namespace Bhs1a {
                 export namespace Enterprise {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v2.Bhs1a.Enterprise.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v2.Bhs1a.Enterprise.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v2.Bhs1a.Enterprise.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v2.Bhs1a.Enterprise.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v2.Bhs1a.Enterprise.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v2.Bhs1a.Enterprise.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v2.Bhs1a.Enterprise.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v2.Bhs1a.Enterprise.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v2.Bhs1a.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v2.Bhs1a.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v2.Bhs1a.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v2.Bhs1a.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v2.Bhs1a.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v2.Bhs1a.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v2.Bhs1a.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v2.Bhs1a.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
@@ -478,29 +477,29 @@ export namespace price {
             export namespace Rbx2a {
                 export namespace Enterprise {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v2.Rbx2a.Enterprise.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v2.Rbx2a.Enterprise.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v2.Rbx2a.Enterprise.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v2.Rbx2a.Enterprise.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v2.Rbx2a.Enterprise.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v2.Rbx2a.Enterprise.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v2.Rbx2a.Enterprise.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v2.Rbx2a.Enterprise.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v2.Rbx2a.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v2.Rbx2a.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v2.Rbx2a.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v2.Rbx2a.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v2.Rbx2a.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v2.Rbx2a.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v2.Rbx2a.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v2.Rbx2a.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
@@ -508,29 +507,29 @@ export namespace price {
             export namespace Rbx2b {
                 export namespace Enterprise {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v2.Rbx2b.Enterprise.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v2.Rbx2b.Enterprise.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v2.Rbx2b.Enterprise.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v2.Rbx2b.Enterprise.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v2.Rbx2b.Enterprise.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v2.Rbx2b.Enterprise.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v2.Rbx2b.Enterprise.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v2.Rbx2b.Enterprise.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v2.Rbx2b.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v2.Rbx2b.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v2.Rbx2b.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v2.Rbx2b.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v2.Rbx2b.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v2.Rbx2b.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v2.Rbx2b.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v2.Rbx2b.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
@@ -538,29 +537,29 @@ export namespace price {
             export namespace Sbg1a {
                 export namespace Enterprise {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v2.Sbg1a.Enterprise.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v2.Sbg1a.Enterprise.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v2.Sbg1a.Enterprise.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v2.Sbg1a.Enterprise.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v2.Sbg1a.Enterprise.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v2.Sbg1a.Enterprise.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v2.Sbg1a.Enterprise.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v2.Sbg1a.Enterprise.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v2.Sbg1a.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v2.Sbg1a.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v2.Sbg1a.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v2.Sbg1a.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v2.Sbg1a.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v2.Sbg1a.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v2.Sbg1a.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v2.Sbg1a.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
@@ -570,29 +569,29 @@ export namespace price {
             export namespace Bhs1a {
                 export namespace Enterprise {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v3.Bhs1a.Enterprise.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v3.Bhs1a.Enterprise.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v3.Bhs1a.Enterprise.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v3.Bhs1a.Enterprise.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v3.Bhs1a.Enterprise.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v3.Bhs1a.Enterprise.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v3.Bhs1a.Enterprise.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v3.Bhs1a.Enterprise.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v3.Bhs1a.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v3.Bhs1a.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v3.Bhs1a.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v3.Bhs1a.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v3.Bhs1a.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v3.Bhs1a.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v3.Bhs1a.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v3.Bhs1a.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
@@ -600,29 +599,29 @@ export namespace price {
             export namespace Rbx2a {
                 export namespace Enterprise {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v3.Rbx2a.Enterprise.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v3.Rbx2a.Enterprise.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v3.Rbx2a.Enterprise.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v3.Rbx2a.Enterprise.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v3.Rbx2a.Enterprise.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v3.Rbx2a.Enterprise.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v3.Rbx2a.Enterprise.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v3.Rbx2a.Enterprise.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v3.Rbx2a.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v3.Rbx2a.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v3.Rbx2a.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v3.Rbx2a.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v3.Rbx2a.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v3.Rbx2a.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v3.Rbx2a.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v3.Rbx2a.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
@@ -630,29 +629,29 @@ export namespace price {
             export namespace Rbx2b {
                 export namespace Enterprise {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v3.Rbx2b.Enterprise.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v3.Rbx2b.Enterprise.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v3.Rbx2b.Enterprise.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v3.Rbx2b.Enterprise.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v3.Rbx2b.Enterprise.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v3.Rbx2b.Enterprise.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v3.Rbx2b.Enterprise.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v3.Rbx2b.Enterprise.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v3.Rbx2b.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v3.Rbx2b.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v3.Rbx2b.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v3.Rbx2b.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v3.Rbx2b.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v3.Rbx2b.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v3.Rbx2b.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v3.Rbx2b.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
@@ -660,29 +659,29 @@ export namespace price {
             export namespace Sbg1a {
                 export namespace Enterprise {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v3.Sbg1a.Enterprise.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v3.Sbg1a.Enterprise.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v3.Sbg1a.Enterprise.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v3.Sbg1a.Enterprise.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v3.Sbg1a.Enterprise.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v3.Sbg1a.Enterprise.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v3.Sbg1a.Enterprise.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v3.Sbg1a.Enterprise.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v3.Sbg1a.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v3.Sbg1a.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v3.Sbg1a.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v3.Sbg1a.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v3.Sbg1a.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v3.Sbg1a.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v3.Sbg1a.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v3.Sbg1a.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
@@ -692,29 +691,29 @@ export namespace price {
             export namespace Bhs1a {
                 export namespace Enterprise {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v4.Bhs1a.Enterprise.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v4.Bhs1a.Enterprise.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v4.Bhs1a.Enterprise.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v4.Bhs1a.Enterprise.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v4.Bhs1a.Enterprise.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v4.Bhs1a.Enterprise.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v4.Bhs1a.Enterprise.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v4.Bhs1a.Enterprise.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v4.Bhs1a.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v4.Bhs1a.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v4.Bhs1a.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v4.Bhs1a.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v4.Bhs1a.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v4.Bhs1a.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v4.Bhs1a.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v4.Bhs1a.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
@@ -722,29 +721,29 @@ export namespace price {
             export namespace Rbx2a {
                 export namespace Enterprise {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v4.Rbx2a.Enterprise.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v4.Rbx2a.Enterprise.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v4.Rbx2a.Enterprise.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v4.Rbx2a.Enterprise.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v4.Rbx2a.Enterprise.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v4.Rbx2a.Enterprise.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v4.Rbx2a.Enterprise.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v4.Rbx2a.Enterprise.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v4.Rbx2a.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v4.Rbx2a.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v4.Rbx2a.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v4.Rbx2a.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v4.Rbx2a.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v4.Rbx2a.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v4.Rbx2a.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v4.Rbx2a.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
@@ -752,29 +751,29 @@ export namespace price {
             export namespace Rbx2b {
                 export namespace Enterprise {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v4.Rbx2b.Enterprise.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v4.Rbx2b.Enterprise.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v4.Rbx2b.Enterprise.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v4.Rbx2b.Enterprise.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v4.Rbx2b.Enterprise.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v4.Rbx2b.Enterprise.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v4.Rbx2b.Enterprise.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v4.Rbx2b.Enterprise.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v4.Rbx2b.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v4.Rbx2b.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v4.Rbx2b.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v4.Rbx2b.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v4.Rbx2b.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v4.Rbx2b.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v4.Rbx2b.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v4.Rbx2b.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
@@ -782,29 +781,29 @@ export namespace price {
             export namespace Sbg1a {
                 export namespace Enterprise {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v4.Sbg1a.Enterprise.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v4.Sbg1a.Enterprise.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v4.Sbg1a.Enterprise.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v4.Sbg1a.Enterprise.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v4.Sbg1a.Enterprise.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v4.Sbg1a.Enterprise.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v4.Sbg1a.Enterprise.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v4.Sbg1a.Enterprise.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v4.Sbg1a.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v4.Sbg1a.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v4.Sbg1a.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v4.Sbg1a.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v4.Sbg1a.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v4.Sbg1a.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v4.Sbg1a.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v4.Sbg1a.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
@@ -814,29 +813,29 @@ export namespace price {
             export namespace Bhs1a {
                 export namespace Enterprise {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v5.Bhs1a.Enterprise.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v5.Bhs1a.Enterprise.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v5.Bhs1a.Enterprise.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v5.Bhs1a.Enterprise.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v5.Bhs1a.Enterprise.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v5.Bhs1a.Enterprise.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v5.Bhs1a.Enterprise.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v5.Bhs1a.Enterprise.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v5.Bhs1a.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v5.Bhs1a.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v5.Bhs1a.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v5.Bhs1a.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v5.Bhs1a.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v5.Bhs1a.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v5.Bhs1a.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v5.Bhs1a.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
@@ -844,29 +843,29 @@ export namespace price {
             export namespace Rbx2a {
                 export namespace Enterprise {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v5.Rbx2a.Enterprise.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v5.Rbx2a.Enterprise.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v5.Rbx2a.Enterprise.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v5.Rbx2a.Enterprise.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v5.Rbx2a.Enterprise.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v5.Rbx2a.Enterprise.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v5.Rbx2a.Enterprise.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v5.Rbx2a.Enterprise.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v5.Rbx2a.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v5.Rbx2a.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v5.Rbx2a.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v5.Rbx2a.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v5.Rbx2a.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v5.Rbx2a.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v5.Rbx2a.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v5.Rbx2a.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
@@ -874,29 +873,29 @@ export namespace price {
             export namespace Rbx2b {
                 export namespace Enterprise {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v5.Rbx2b.Enterprise.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v5.Rbx2b.Enterprise.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v5.Rbx2b.Enterprise.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v5.Rbx2b.Enterprise.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v5.Rbx2b.Enterprise.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v5.Rbx2b.Enterprise.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v5.Rbx2b.Enterprise.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v5.Rbx2b.Enterprise.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v5.Rbx2b.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v5.Rbx2b.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v5.Rbx2b.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v5.Rbx2b.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v5.Rbx2b.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v5.Rbx2b.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v5.Rbx2b.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v5.Rbx2b.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
@@ -904,29 +903,29 @@ export namespace price {
             export namespace Sbg1a {
                 export namespace Enterprise {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v5.Sbg1a.Enterprise.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v5.Sbg1a.Enterprise.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v5.Sbg1a.Enterprise.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v5.Sbg1a.Enterprise.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v5.Sbg1a.Enterprise.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v5.Sbg1a.Enterprise.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v5.Sbg1a.Enterprise.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v5.Sbg1a.Enterprise.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v5.Sbg1a.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v5.Sbg1a.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v5.Sbg1a.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v5.Sbg1a.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v5.Sbg1a.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v5.Sbg1a.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v5.Sbg1a.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v5.Sbg1a.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
@@ -936,29 +935,29 @@ export namespace price {
             export namespace Bhs1a {
                 export namespace Enterprise {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v6.Bhs1a.Enterprise.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v6.Bhs1a.Enterprise.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v6.Bhs1a.Enterprise.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v6.Bhs1a.Enterprise.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v6.Bhs1a.Enterprise.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v6.Bhs1a.Enterprise.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v6.Bhs1a.Enterprise.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v6.Bhs1a.Enterprise.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v6.Bhs1a.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v6.Bhs1a.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v6.Bhs1a.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v6.Bhs1a.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v6.Bhs1a.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v6.Bhs1a.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v6.Bhs1a.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v6.Bhs1a.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
@@ -966,29 +965,29 @@ export namespace price {
             export namespace Rbx2a {
                 export namespace Enterprise {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v6.Rbx2a.Enterprise.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v6.Rbx2a.Enterprise.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v6.Rbx2a.Enterprise.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v6.Rbx2a.Enterprise.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v6.Rbx2a.Enterprise.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v6.Rbx2a.Enterprise.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v6.Rbx2a.Enterprise.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v6.Rbx2a.Enterprise.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v6.Rbx2a.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v6.Rbx2a.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v6.Rbx2a.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v6.Rbx2a.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v6.Rbx2a.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v6.Rbx2a.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v6.Rbx2a.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v6.Rbx2a.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
@@ -996,29 +995,29 @@ export namespace price {
             export namespace Rbx2b {
                 export namespace Enterprise {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v6.Rbx2b.Enterprise.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v6.Rbx2b.Enterprise.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v6.Rbx2b.Enterprise.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v6.Rbx2b.Enterprise.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v6.Rbx2b.Enterprise.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v6.Rbx2b.Enterprise.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v6.Rbx2b.Enterprise.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v6.Rbx2b.Enterprise.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v6.Rbx2b.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v6.Rbx2b.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v6.Rbx2b.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v6.Rbx2b.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v6.Rbx2b.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v6.Rbx2b.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v6.Rbx2b.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v6.Rbx2b.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
@@ -1026,29 +1025,29 @@ export namespace price {
             export namespace Sbg1a {
                 export namespace Enterprise {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v6.Sbg1a.Enterprise.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v6.Sbg1a.Enterprise.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v6.Sbg1a.Enterprise.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v6.Sbg1a.Enterprise.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v6.Sbg1a.Enterprise.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v6.Sbg1a.Enterprise.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v6.Sbg1a.Enterprise.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v6.Sbg1a.Enterprise.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v6.Sbg1a.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v6.Sbg1a.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v6.Sbg1a.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v6.Sbg1a.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v6.Sbg1a.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v6.Sbg1a.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v6.Sbg1a.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v6.Sbg1a.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
@@ -1058,29 +1057,29 @@ export namespace price {
             export namespace Bhs1a {
                 export namespace Enterprise {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v7.Bhs1a.Enterprise.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v7.Bhs1a.Enterprise.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v7.Bhs1a.Enterprise.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v7.Bhs1a.Enterprise.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v7.Bhs1a.Enterprise.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v7.Bhs1a.Enterprise.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v7.Bhs1a.Enterprise.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v7.Bhs1a.Enterprise.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v7.Bhs1a.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v7.Bhs1a.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v7.Bhs1a.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v7.Bhs1a.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v7.Bhs1a.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v7.Bhs1a.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v7.Bhs1a.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v7.Bhs1a.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
@@ -1088,29 +1087,29 @@ export namespace price {
             export namespace Rbx2a {
                 export namespace Enterprise {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v7.Rbx2a.Enterprise.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v7.Rbx2a.Enterprise.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v7.Rbx2a.Enterprise.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v7.Rbx2a.Enterprise.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v7.Rbx2a.Enterprise.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v7.Rbx2a.Enterprise.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v7.Rbx2a.Enterprise.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v7.Rbx2a.Enterprise.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v7.Rbx2a.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v7.Rbx2a.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v7.Rbx2a.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v7.Rbx2a.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v7.Rbx2a.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v7.Rbx2a.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v7.Rbx2a.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v7.Rbx2a.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
@@ -1118,29 +1117,29 @@ export namespace price {
             export namespace Rbx2b {
                 export namespace Enterprise {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v7.Rbx2b.Enterprise.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v7.Rbx2b.Enterprise.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v7.Rbx2b.Enterprise.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v7.Rbx2b.Enterprise.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v7.Rbx2b.Enterprise.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v7.Rbx2b.Enterprise.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v7.Rbx2b.Enterprise.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v7.Rbx2b.Enterprise.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v7.Rbx2b.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v7.Rbx2b.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v7.Rbx2b.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v7.Rbx2b.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v7.Rbx2b.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v7.Rbx2b.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v7.Rbx2b.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v7.Rbx2b.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
@@ -1148,29 +1147,29 @@ export namespace price {
             export namespace Sbg1a {
                 export namespace Enterprise {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v7.Sbg1a.Enterprise.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v7.Sbg1a.Enterprise.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v7.Sbg1a.Enterprise.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v7.Sbg1a.Enterprise.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v7.Sbg1a.Enterprise.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v7.Sbg1a.Enterprise.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v7.Sbg1a.Enterprise.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v7.Sbg1a.Enterprise.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2016v7.Sbg1a.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v7.Sbg1a.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2016v7.Sbg1a.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v7.Sbg1a.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2016v7.Sbg1a.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2016v7.Sbg1a.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
-                        //price.DedicatedCloud._2016v7.Sbg1a.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2016v7.Sbg1a.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "L" | "L+" | "M" | "XL" | "XL+"
                     }
                 }
@@ -1180,15 +1179,15 @@ export namespace price {
             export namespace Bhs1a {
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2018v1.Bhs1a.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v1.Bhs1a.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2018v1.Bhs1a.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v1.Bhs1a.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2018v1.Bhs1a.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v1.Bhs1a.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
-                        //price.DedicatedCloud._2018v1.Bhs1a.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v1.Bhs1a.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
                 }
@@ -1196,15 +1195,15 @@ export namespace price {
             export namespace Eri1c {
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2018v1.Eri1c.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v1.Eri1c.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2018v1.Eri1c.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v1.Eri1c.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2018v1.Eri1c.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v1.Eri1c.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
-                        //price.DedicatedCloud._2018v1.Eri1c.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v1.Eri1c.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
                 }
@@ -1212,15 +1211,15 @@ export namespace price {
             export namespace Lim1c {
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2018v1.Lim1c.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v1.Lim1c.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2018v1.Lim1c.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v1.Lim1c.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2018v1.Lim1c.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v1.Lim1c.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
-                        //price.DedicatedCloud._2018v1.Lim1c.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v1.Lim1c.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
                 }
@@ -1228,15 +1227,15 @@ export namespace price {
             export namespace Rbx2a {
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2018v1.Rbx2a.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v1.Rbx2a.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2018v1.Rbx2a.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v1.Rbx2a.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2018v1.Rbx2a.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v1.Rbx2a.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
-                        //price.DedicatedCloud._2018v1.Rbx2a.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v1.Rbx2a.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
                 }
@@ -1244,15 +1243,15 @@ export namespace price {
             export namespace Rbx2b {
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2018v1.Rbx2b.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v1.Rbx2b.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2018v1.Rbx2b.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v1.Rbx2b.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2018v1.Rbx2b.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v1.Rbx2b.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
-                        //price.DedicatedCloud._2018v1.Rbx2b.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v1.Rbx2b.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
                 }
@@ -1260,15 +1259,15 @@ export namespace price {
             export namespace Sbg1a {
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2018v1.Sbg1a.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v1.Sbg1a.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2018v1.Sbg1a.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v1.Sbg1a.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2018v1.Sbg1a.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v1.Sbg1a.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
-                        //price.DedicatedCloud._2018v1.Sbg1a.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v1.Sbg1a.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
                 }
@@ -1276,15 +1275,15 @@ export namespace price {
             export namespace Waw1c {
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2018v1.Waw1c.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v1.Waw1c.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2018v1.Waw1c.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v1.Waw1c.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2018v1.Waw1c.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v1.Waw1c.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
-                        //price.DedicatedCloud._2018v1.Waw1c.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v1.Waw1c.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
                 }
@@ -1294,15 +1293,15 @@ export namespace price {
             export namespace Bhs1a {
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2018v2.Bhs1a.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v2.Bhs1a.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2018v2.Bhs1a.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v2.Bhs1a.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2018v2.Bhs1a.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v2.Bhs1a.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
-                        //price.DedicatedCloud._2018v2.Bhs1a.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v2.Bhs1a.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
                 }
@@ -1310,15 +1309,15 @@ export namespace price {
             export namespace Eri1c {
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2018v2.Eri1c.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v2.Eri1c.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2018v2.Eri1c.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v2.Eri1c.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2018v2.Eri1c.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v2.Eri1c.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
-                        //price.DedicatedCloud._2018v2.Eri1c.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v2.Eri1c.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
                 }
@@ -1326,15 +1325,15 @@ export namespace price {
             export namespace Lim1c {
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2018v2.Lim1c.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v2.Lim1c.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2018v2.Lim1c.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v2.Lim1c.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2018v2.Lim1c.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v2.Lim1c.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
-                        //price.DedicatedCloud._2018v2.Lim1c.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v2.Lim1c.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
                 }
@@ -1342,15 +1341,15 @@ export namespace price {
             export namespace Rbx2a {
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2018v2.Rbx2a.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v2.Rbx2a.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2018v2.Rbx2a.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v2.Rbx2a.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2018v2.Rbx2a.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v2.Rbx2a.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
-                        //price.DedicatedCloud._2018v2.Rbx2a.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v2.Rbx2a.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
                 }
@@ -1358,15 +1357,15 @@ export namespace price {
             export namespace Rbx2b {
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2018v2.Rbx2b.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v2.Rbx2b.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2018v2.Rbx2b.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v2.Rbx2b.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2018v2.Rbx2b.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v2.Rbx2b.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
-                        //price.DedicatedCloud._2018v2.Rbx2b.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v2.Rbx2b.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
                 }
@@ -1374,15 +1373,15 @@ export namespace price {
             export namespace Sbg1a {
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2018v2.Sbg1a.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v2.Sbg1a.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2018v2.Sbg1a.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v2.Sbg1a.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2018v2.Sbg1a.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v2.Sbg1a.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
-                        //price.DedicatedCloud._2018v2.Sbg1a.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v2.Sbg1a.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
                 }
@@ -1390,15 +1389,15 @@ export namespace price {
             export namespace Waw1c {
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2018v2.Waw1c.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v2.Waw1c.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2018v2.Waw1c.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v2.Waw1c.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2018v2.Waw1c.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v2.Waw1c.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
-                        //price.DedicatedCloud._2018v2.Waw1c.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v2.Waw1c.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
                 }
@@ -1408,15 +1407,15 @@ export namespace price {
             export namespace Bhs1a {
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2018v3.Bhs1a.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v3.Bhs1a.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2018v3.Bhs1a.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v3.Bhs1a.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2018v3.Bhs1a.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v3.Bhs1a.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
-                        //price.DedicatedCloud._2018v3.Bhs1a.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v3.Bhs1a.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
                 }
@@ -1424,15 +1423,15 @@ export namespace price {
             export namespace Eri1c {
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2018v3.Eri1c.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v3.Eri1c.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2018v3.Eri1c.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v3.Eri1c.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2018v3.Eri1c.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v3.Eri1c.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
-                        //price.DedicatedCloud._2018v3.Eri1c.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v3.Eri1c.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
                 }
@@ -1440,15 +1439,15 @@ export namespace price {
             export namespace Lim1c {
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2018v3.Lim1c.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v3.Lim1c.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2018v3.Lim1c.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v3.Lim1c.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2018v3.Lim1c.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v3.Lim1c.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
-                        //price.DedicatedCloud._2018v3.Lim1c.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v3.Lim1c.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
                 }
@@ -1456,15 +1455,15 @@ export namespace price {
             export namespace Rbx2a {
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2018v3.Rbx2a.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v3.Rbx2a.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2018v3.Rbx2a.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v3.Rbx2a.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2018v3.Rbx2a.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v3.Rbx2a.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
-                        //price.DedicatedCloud._2018v3.Rbx2a.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v3.Rbx2a.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
                 }
@@ -1472,15 +1471,15 @@ export namespace price {
             export namespace Rbx2b {
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2018v3.Rbx2b.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v3.Rbx2b.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2018v3.Rbx2b.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v3.Rbx2b.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2018v3.Rbx2b.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v3.Rbx2b.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
-                        //price.DedicatedCloud._2018v3.Rbx2b.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v3.Rbx2b.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
                 }
@@ -1488,15 +1487,15 @@ export namespace price {
             export namespace Sbg1a {
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2018v3.Sbg1a.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v3.Sbg1a.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2018v3.Sbg1a.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v3.Sbg1a.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2018v3.Sbg1a.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v3.Sbg1a.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
-                        //price.DedicatedCloud._2018v3.Sbg1a.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v3.Sbg1a.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
                 }
@@ -1504,15 +1503,15 @@ export namespace price {
             export namespace Waw1c {
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2018v3.Waw1c.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v3.Waw1c.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2018v3.Waw1c.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v3.Waw1c.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2018v3.Waw1c.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v3.Waw1c.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
-                        //price.DedicatedCloud._2018v3.Waw1c.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v3.Waw1c.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
                 }
@@ -1522,15 +1521,15 @@ export namespace price {
             export namespace Bhs1a {
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2018v4.Bhs1a.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v4.Bhs1a.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2018v4.Bhs1a.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v4.Bhs1a.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2018v4.Bhs1a.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v4.Bhs1a.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
-                        //price.DedicatedCloud._2018v4.Bhs1a.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v4.Bhs1a.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
                 }
@@ -1538,15 +1537,15 @@ export namespace price {
             export namespace Eri1c {
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2018v4.Eri1c.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v4.Eri1c.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2018v4.Eri1c.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v4.Eri1c.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2018v4.Eri1c.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v4.Eri1c.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
-                        //price.DedicatedCloud._2018v4.Eri1c.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v4.Eri1c.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
                 }
@@ -1554,15 +1553,15 @@ export namespace price {
             export namespace Lim1c {
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2018v4.Lim1c.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v4.Lim1c.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2018v4.Lim1c.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v4.Lim1c.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2018v4.Lim1c.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v4.Lim1c.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
-                        //price.DedicatedCloud._2018v4.Lim1c.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v4.Lim1c.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
                 }
@@ -1570,15 +1569,15 @@ export namespace price {
             export namespace Rbx2a {
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2018v4.Rbx2a.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v4.Rbx2a.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2018v4.Rbx2a.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v4.Rbx2a.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2018v4.Rbx2a.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v4.Rbx2a.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
-                        //price.DedicatedCloud._2018v4.Rbx2a.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v4.Rbx2a.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
                 }
@@ -1586,15 +1585,15 @@ export namespace price {
             export namespace Rbx2b {
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2018v4.Rbx2b.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v4.Rbx2b.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2018v4.Rbx2b.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v4.Rbx2b.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2018v4.Rbx2b.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v4.Rbx2b.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
-                        //price.DedicatedCloud._2018v4.Rbx2b.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v4.Rbx2b.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
                 }
@@ -1602,15 +1601,15 @@ export namespace price {
             export namespace Sbg1a {
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2018v4.Sbg1a.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v4.Sbg1a.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2018v4.Sbg1a.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v4.Sbg1a.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2018v4.Sbg1a.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v4.Sbg1a.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
-                        //price.DedicatedCloud._2018v4.Sbg1a.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v4.Sbg1a.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
                 }
@@ -1618,15 +1617,15 @@ export namespace price {
             export namespace Waw1c {
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2018v4.Waw1c.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v4.Waw1c.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2018v4.Waw1c.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v4.Waw1c.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2018v4.Waw1c.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v4.Waw1c.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
-                        //price.DedicatedCloud._2018v4.Waw1c.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v4.Waw1c.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
                 }
@@ -1636,15 +1635,15 @@ export namespace price {
             export namespace Bhs1a {
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2018v5.Bhs1a.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v5.Bhs1a.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2018v5.Bhs1a.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v5.Bhs1a.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2018v5.Bhs1a.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v5.Bhs1a.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
-                        //price.DedicatedCloud._2018v5.Bhs1a.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v5.Bhs1a.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
                 }
@@ -1652,15 +1651,15 @@ export namespace price {
             export namespace Eri1c {
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2018v5.Eri1c.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v5.Eri1c.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2018v5.Eri1c.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v5.Eri1c.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2018v5.Eri1c.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v5.Eri1c.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
-                        //price.DedicatedCloud._2018v5.Eri1c.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v5.Eri1c.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
                 }
@@ -1668,15 +1667,15 @@ export namespace price {
             export namespace Lim1c {
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2018v5.Lim1c.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v5.Lim1c.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2018v5.Lim1c.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v5.Lim1c.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2018v5.Lim1c.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v5.Lim1c.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
-                        //price.DedicatedCloud._2018v5.Lim1c.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v5.Lim1c.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
                 }
@@ -1684,15 +1683,15 @@ export namespace price {
             export namespace Rbx2a {
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2018v5.Rbx2a.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v5.Rbx2a.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2018v5.Rbx2a.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v5.Rbx2a.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2018v5.Rbx2a.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v5.Rbx2a.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
-                        //price.DedicatedCloud._2018v5.Rbx2a.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v5.Rbx2a.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
                 }
@@ -1700,15 +1699,15 @@ export namespace price {
             export namespace Rbx2b {
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2018v5.Rbx2b.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v5.Rbx2b.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2018v5.Rbx2b.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v5.Rbx2b.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2018v5.Rbx2b.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v5.Rbx2b.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
-                        //price.DedicatedCloud._2018v5.Rbx2b.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v5.Rbx2b.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
                 }
@@ -1716,15 +1715,15 @@ export namespace price {
             export namespace Sbg1a {
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2018v5.Sbg1a.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v5.Sbg1a.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2018v5.Sbg1a.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v5.Sbg1a.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2018v5.Sbg1a.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v5.Sbg1a.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
-                        //price.DedicatedCloud._2018v5.Sbg1a.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v5.Sbg1a.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
                 }
@@ -1732,15 +1731,15 @@ export namespace price {
             export namespace Waw1c {
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2018v5.Waw1c.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v5.Waw1c.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2018v5.Waw1c.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v5.Waw1c.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2018v5.Waw1c.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v5.Waw1c.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
-                        //price.DedicatedCloud._2018v5.Waw1c.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v5.Waw1c.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
                 }
@@ -1750,15 +1749,15 @@ export namespace price {
             export namespace Bhs1a {
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2018v6.Bhs1a.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v6.Bhs1a.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2018v6.Bhs1a.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v6.Bhs1a.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2018v6.Bhs1a.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v6.Bhs1a.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
-                        //price.DedicatedCloud._2018v6.Bhs1a.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v6.Bhs1a.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
                 }
@@ -1766,15 +1765,15 @@ export namespace price {
             export namespace Eri1c {
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2018v6.Eri1c.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v6.Eri1c.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2018v6.Eri1c.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v6.Eri1c.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2018v6.Eri1c.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v6.Eri1c.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
-                        //price.DedicatedCloud._2018v6.Eri1c.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v6.Eri1c.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
                 }
@@ -1782,15 +1781,15 @@ export namespace price {
             export namespace Lim1c {
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2018v6.Lim1c.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v6.Lim1c.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2018v6.Lim1c.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v6.Lim1c.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2018v6.Lim1c.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v6.Lim1c.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
-                        //price.DedicatedCloud._2018v6.Lim1c.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v6.Lim1c.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
                 }
@@ -1798,15 +1797,15 @@ export namespace price {
             export namespace Rbx2a {
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2018v6.Rbx2a.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v6.Rbx2a.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2018v6.Rbx2a.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v6.Rbx2a.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2018v6.Rbx2a.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v6.Rbx2a.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
-                        //price.DedicatedCloud._2018v6.Rbx2a.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v6.Rbx2a.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
                 }
@@ -1814,15 +1813,15 @@ export namespace price {
             export namespace Rbx2b {
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2018v6.Rbx2b.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v6.Rbx2b.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2018v6.Rbx2b.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v6.Rbx2b.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2018v6.Rbx2b.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v6.Rbx2b.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
-                        //price.DedicatedCloud._2018v6.Rbx2b.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v6.Rbx2b.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
                 }
@@ -1830,15 +1829,15 @@ export namespace price {
             export namespace Sbg1a {
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2018v6.Sbg1a.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v6.Sbg1a.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2018v6.Sbg1a.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v6.Sbg1a.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2018v6.Sbg1a.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v6.Sbg1a.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
-                        //price.DedicatedCloud._2018v6.Sbg1a.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v6.Sbg1a.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
                 }
@@ -1846,15 +1845,15 @@ export namespace price {
             export namespace Waw1c {
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2018v6.Waw1c.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v6.Waw1c.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2018v6.Waw1c.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v6.Waw1c.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2018v6.Waw1c.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v6.Waw1c.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
-                        //price.DedicatedCloud._2018v6.Waw1c.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v6.Waw1c.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
                 }
@@ -1864,15 +1863,15 @@ export namespace price {
             export namespace Bhs1a {
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2018v7.Bhs1a.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v7.Bhs1a.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2018v7.Bhs1a.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v7.Bhs1a.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2018v7.Bhs1a.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v7.Bhs1a.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
-                        //price.DedicatedCloud._2018v7.Bhs1a.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v7.Bhs1a.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
                 }
@@ -1880,15 +1879,15 @@ export namespace price {
             export namespace Eri1c {
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2018v7.Eri1c.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v7.Eri1c.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2018v7.Eri1c.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v7.Eri1c.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2018v7.Eri1c.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v7.Eri1c.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
-                        //price.DedicatedCloud._2018v7.Eri1c.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v7.Eri1c.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
                 }
@@ -1896,15 +1895,15 @@ export namespace price {
             export namespace Lim1c {
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2018v7.Lim1c.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v7.Lim1c.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2018v7.Lim1c.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v7.Lim1c.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2018v7.Lim1c.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v7.Lim1c.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
-                        //price.DedicatedCloud._2018v7.Lim1c.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v7.Lim1c.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
                 }
@@ -1912,15 +1911,15 @@ export namespace price {
             export namespace Rbx2a {
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2018v7.Rbx2a.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v7.Rbx2a.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2018v7.Rbx2a.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v7.Rbx2a.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2018v7.Rbx2a.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v7.Rbx2a.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
-                        //price.DedicatedCloud._2018v7.Rbx2a.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v7.Rbx2a.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
                 }
@@ -1928,15 +1927,15 @@ export namespace price {
             export namespace Rbx2b {
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2018v7.Rbx2b.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v7.Rbx2b.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2018v7.Rbx2b.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v7.Rbx2b.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2018v7.Rbx2b.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v7.Rbx2b.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
-                        //price.DedicatedCloud._2018v7.Rbx2b.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v7.Rbx2b.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
                 }
@@ -1944,15 +1943,15 @@ export namespace price {
             export namespace Sbg1a {
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2018v7.Sbg1a.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v7.Sbg1a.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2018v7.Sbg1a.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v7.Sbg1a.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2018v7.Sbg1a.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v7.Sbg1a.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
-                        //price.DedicatedCloud._2018v7.Sbg1a.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v7.Sbg1a.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
                 }
@@ -1960,15 +1959,15 @@ export namespace price {
             export namespace Waw1c {
                 export namespace Infrastructure {
                     export namespace Filer {
-                        //price.DedicatedCloud._2018v7.Waw1c.Infrastructure.Filer.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v7.Waw1c.Infrastructure.Filer.HourlyEnum
                         export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
-                        //price.DedicatedCloud._2018v7.Waw1c.Infrastructure.Filer.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v7.Waw1c.Infrastructure.Filer.MonthlyEnum
                         export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
                     }
                     export namespace Host {
-                        //price.DedicatedCloud._2018v7.Waw1c.Infrastructure.Host.HourlyEnum
+                        // type fullname: price.DedicatedCloud._2018v7.Waw1c.Infrastructure.Host.HourlyEnum
                         export type HourlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
-                        //price.DedicatedCloud._2018v7.Waw1c.Infrastructure.Host.MonthlyEnum
+                        // type fullname: price.DedicatedCloud._2018v7.Waw1c.Infrastructure.Host.MonthlyEnum
                         export type MonthlyEnum = "SDDC-128" | "SDDC-16" | "SDDC-256" | "SDDC-512" | "SDDC-64" | "SDDCVSAN-256" | "SDDCVSAN-512"
                     }
                 }
@@ -1977,225 +1976,225 @@ export namespace price {
     }
     export namespace Domain {
         export namespace Zone {
-            //price.Domain.Zone.OptionEnum
+            // type fullname: price.Domain.Zone.OptionEnum
             export type OptionEnum = "dnsAnycast"
         }
     }
     export namespace Email {
         export namespace Exchange {
-            //price.Email.Exchange.OfferEnum
+            // type fullname: price.Email.Exchange.OfferEnum
             export type OfferEnum = "hosted"
         }
     }
     export namespace Hosting {
-        //price.Hosting.PrivateDatabaseEnum
+        // type fullname: price.Hosting.PrivateDatabaseEnum
         export type PrivateDatabaseEnum = "mysql_4.1_1024" | "mysql_4.1_128" | "mysql_4.1_256" | "mysql_4.1_512" | "mysql_5.0_1024" | "mysql_5.0_128" | "mysql_5.0_256" | "mysql_5.0_512" | "mysql_5.1_1024" | "mysql_5.1_128" | "mysql_5.1_256" | "mysql_5.1_512" | "mysql_5.5_1024" | "mysql_5.5_128" | "mysql_5.5_256" | "mysql_5.5_512"
         export namespace Web {
-            //price.Hosting.Web.CdnEnum
+            // type fullname: price.Hosting.Web.CdnEnum
             export type CdnEnum = "CDN_BUSINESS"
-            //price.Hosting.Web.ExtraSqlPersoEnum
+            // type fullname: price.Hosting.Web.ExtraSqlPersoEnum
             export type ExtraSqlPersoEnum = "SQLPERSO_1_BASES_400_MB" | "SQLPERSO_1_BASES_800_MB" | "SQLPERSO_20_BASES_100_MB" | "SQLPERSO_20_BASES_200_MB" | "SQLPERSO_2_BASES_400_MB" | "SQLPERSO_2_BASES_800_MB" | "SQLPERSO_50_BASES_100_MB" | "SQLPERSO_50_BASES_200_MB" | "SQLPERSO_5_BASES_100_MB" | "SQLPERSO_5_BASES_200_MB" | "SQLPERSO_5_BASES_400_MB" | "SQLPERSO_5_BASES_800_MB"
-            //price.Hosting.Web.SslEnum
+            // type fullname: price.Hosting.Web.SslEnum
             export type SslEnum = "HOSTEDSSL"
         }
     }
     export namespace Hpcspot {
         export namespace Account {
-            //price.Hpcspot.Account.SubscriptionEnum
+            // type fullname: price.Hpcspot.Account.SubscriptionEnum
             export type SubscriptionEnum = "HPCSPOT"
         }
         export namespace Consumption {
-            //price.Hpcspot.Consumption.JobEnum
+            // type fullname: price.Hpcspot.Consumption.JobEnum
             export type JobEnum = "16core.64gb" | "4core.32gb" | "8core.32gb"
-            //price.Hpcspot.Consumption.ReservationEnum
+            // type fullname: price.Hpcspot.Consumption.ReservationEnum
             export type ReservationEnum = "12core.60gb.quadrok400" | "1core.4gb" | "1core.4gb.quadrok4000" | "2core.8gb" | "2core.8gb.quadrok4000" | "4core.15gb" | "4core.15gb.quadrok4000" | "8core.30gb" | "8core.30gb.quadrok4000"
-            //price.Hpcspot.Consumption.SessionEnum
+            // type fullname: price.Hpcspot.Consumption.SessionEnum
             export type SessionEnum = "16core.64gb" | "4core.32gb" | "8core.32gb"
         }
     }
     export namespace License {
-        //price.License.OfficeEnum
+        // type fullname: price.License.OfficeEnum
         export type OfficeEnum = "officeBusiness" | "officeProPlus"
     }
     export namespace OverTheBox {
-        //price.OverTheBox.OfferEnum
+        // type fullname: price.OverTheBox.OfferEnum
         export type OfferEnum = "plus.v1"
     }
     export namespace Pack {
         export namespace Xdsl {
-            //price.Pack.Xdsl.InstallationEnum
+            // type fullname: price.Pack.Xdsl.InstallationEnum
             export type InstallationEnum = "enterprise" | "express" | "expressLite"
-            //price.Pack.Xdsl.OffersEnum
+            // type fullname: price.Pack.Xdsl.OffersEnum
             export type OffersEnum = "enterprise" | "express" | "expressLite"
-            //price.Pack.Xdsl.OptionsEnum
+            // type fullname: price.Pack.Xdsl.OptionsEnum
             export type OptionsEnum = "enterpriseGtr" | "vdslFt"
         }
     }
     export namespace Saas {
         export namespace Csp2 {
-            //price.Saas.Csp2.LicenseEnum
+            // type fullname: price.Saas.Csp2.LicenseEnum
             export type LicenseEnum = "AzureActiveDirectoryBasic" | "AzureActiveDirectoryPremiumP1" | "Business" | "BusinessEssentials" | "BusinessPremium" | "EnterpriseE1" | "EnterpriseE3" | "EnterpriseK1" | "ExchangeOnlinePlan1" | "ProPlus" | "ProjectOnline" | "ProjectOnlineProfessional" | "VisioPro"
         }
     }
     export namespace Telephony {
-        //price.Telephony.OfferEnum
+        // type fullname: price.Telephony.OfferEnum
         export type OfferEnum = "discovery" | "enterprise" | "enterpriseMobile" | "resellerEnterprise" | "resellerEnterpriseMobile"
     }
     export namespace Vps {
         export namespace Classic {
-            //price.Vps.Classic.ModelEnum
+            // type fullname: price.Vps.Classic.ModelEnum
             export type ModelEnum = "model1" | "model2" | "model3" | "model4" | "model5" | "model6"
         }
         export namespace Cloud {
-            //price.Vps.Cloud.ModelEnum
+            // type fullname: price.Vps.Cloud.ModelEnum
             export type ModelEnum = "model1" | "model2" | "model3" | "model4" | "model5" | "model6"
-            //price.Vps.Cloud.OptionEnum
+            // type fullname: price.Vps.Cloud.OptionEnum
             export type OptionEnum = "ftpbackup" | "ip" | "snapshot" | "veeam"
         }
         export namespace Lowlat {
-            //price.Vps.Lowlat.ModelEnum
+            // type fullname: price.Vps.Lowlat.ModelEnum
             export type ModelEnum = "model1" | "model2" | "model3"
         }
         export namespace _2013v1 {
             export namespace Classic {
-                //price.Vps._2013v1.Classic.ModelEnum
+                // type fullname: price.Vps._2013v1.Classic.ModelEnum
                 export type ModelEnum = "model1" | "model2" | "model3" | "model4" | "model5" | "model6"
             }
             export namespace Cloud {
-                //price.Vps._2013v1.Cloud.ModelEnum
+                // type fullname: price.Vps._2013v1.Cloud.ModelEnum
                 export type ModelEnum = "model1" | "model2" | "model3" | "model4" | "model5" | "model6"
-                //price.Vps._2013v1.Cloud.OptionEnum
+                // type fullname: price.Vps._2013v1.Cloud.OptionEnum
                 export type OptionEnum = "ftpbackup" | "ip" | "snapshot" | "veeam"
             }
             export namespace Lowlat {
-                //price.Vps._2013v1.Lowlat.ModelEnum
+                // type fullname: price.Vps._2013v1.Lowlat.ModelEnum
                 export type ModelEnum = "model1" | "model2" | "model3"
             }
         }
         export namespace _2014v1 {
             export namespace Classic {
-                //price.Vps._2014v1.Classic.ModelEnum
+                // type fullname: price.Vps._2014v1.Classic.ModelEnum
                 export type ModelEnum = "model1" | "model2" | "model3" | "model4"
             }
             export namespace Cloud {
-                //price.Vps._2014v1.Cloud.ModelEnum
+                // type fullname: price.Vps._2014v1.Cloud.ModelEnum
                 export type ModelEnum = "model1" | "model2" | "model3" | "model4"
-                //price.Vps._2014v1.Cloud.OptionEnum
+                // type fullname: price.Vps._2014v1.Cloud.OptionEnum
                 export type OptionEnum = "ftpbackup" | "ip" | "snapshot" | "veeam"
             }
         }
         export namespace _2015v1 {
             export namespace Cloud {
-                //price.Vps._2015v1.Cloud.ModelEnum
+                // type fullname: price.Vps._2015v1.Cloud.ModelEnum
                 export type ModelEnum = "model1" | "model2" | "model3"
-                //price.Vps._2015v1.Cloud.OptionEnum
+                // type fullname: price.Vps._2015v1.Cloud.OptionEnum
                 export type OptionEnum = "additionalDisk100" | "additionalDisk200" | "additionalDisk50" | "additionalDisk500" | "automatedBackup" | "ftpbackup" | "ip" | "snapshot"
             }
             export namespace Cloudram {
-                //price.Vps._2015v1.Cloudram.ModelEnum
+                // type fullname: price.Vps._2015v1.Cloudram.ModelEnum
                 export type ModelEnum = "model1" | "model2" | "model3"
-                //price.Vps._2015v1.Cloudram.OptionEnum
+                // type fullname: price.Vps._2015v1.Cloudram.OptionEnum
                 export type OptionEnum = "additionalDisk100" | "additionalDisk200" | "additionalDisk50" | "additionalDisk500" | "automatedBackup" | "ftpbackup" | "ip" | "snapshot"
             }
             export namespace Ssd {
-                //price.Vps._2015v1.Ssd.ModelEnum
+                // type fullname: price.Vps._2015v1.Ssd.ModelEnum
                 export type ModelEnum = "model1" | "model2" | "model3"
-                //price.Vps._2015v1.Ssd.OptionEnum
+                // type fullname: price.Vps._2015v1.Ssd.OptionEnum
                 export type OptionEnum = "additionalDisk100" | "additionalDisk200" | "additionalDisk50" | "additionalDisk500" | "ip" | "snapshot"
             }
         }
         export namespace _2017v1 {
             export namespace Ssd {
-                //price.Vps._2017v1.Ssd.ModelEnum
+                // type fullname: price.Vps._2017v1.Ssd.ModelEnum
                 export type ModelEnum = "model1" | "model2" | "model3" | "model4"
-                //price.Vps._2017v1.Ssd.OptionEnum
+                // type fullname: price.Vps._2017v1.Ssd.OptionEnum
                 export type OptionEnum = "ip"
             }
         }
         export namespace _2017v2 {
             export namespace Cloud {
-                //price.Vps._2017v2.Cloud.ModelEnum
+                // type fullname: price.Vps._2017v2.Cloud.ModelEnum
                 export type ModelEnum = "model1" | "model2" | "model3"
-                //price.Vps._2017v2.Cloud.OptionEnum
+                // type fullname: price.Vps._2017v2.Cloud.OptionEnum
                 export type OptionEnum = "additionalDisk100" | "additionalDisk200" | "additionalDisk50" | "additionalDisk500" | "automatedBackup" | "ftpbackup" | "ip" | "snapshot"
             }
             export namespace Cloudram {
-                //price.Vps._2017v2.Cloudram.ModelEnum
+                // type fullname: price.Vps._2017v2.Cloudram.ModelEnum
                 export type ModelEnum = "model1" | "model2" | "model3"
-                //price.Vps._2017v2.Cloudram.OptionEnum
+                // type fullname: price.Vps._2017v2.Cloudram.OptionEnum
                 export type OptionEnum = "additionalDisk100" | "additionalDisk200" | "additionalDisk50" | "additionalDisk500" | "automatedBackup" | "ftpbackup" | "ip" | "snapshot"
             }
             export namespace Ssd {
-                //price.Vps._2017v2.Ssd.ModelEnum
+                // type fullname: price.Vps._2017v2.Ssd.ModelEnum
                 export type ModelEnum = "model1" | "model2" | "model3"
-                //price.Vps._2017v2.Ssd.OptionEnum
+                // type fullname: price.Vps._2017v2.Ssd.OptionEnum
                 export type OptionEnum = "additionalDisk100" | "additionalDisk200" | "additionalDisk50" | "additionalDisk500" | "ip" | "snapshot"
             }
         }
         export namespace _2017v3 {
             export namespace Cloud {
-                //price.Vps._2017v3.Cloud.ModelEnum
+                // type fullname: price.Vps._2017v3.Cloud.ModelEnum
                 export type ModelEnum = "model1" | "model2" | "model3"
-                //price.Vps._2017v3.Cloud.OptionEnum
+                // type fullname: price.Vps._2017v3.Cloud.OptionEnum
                 export type OptionEnum = "additionalDisk100" | "additionalDisk200" | "additionalDisk50" | "additionalDisk500" | "automatedBackup" | "ftpbackup" | "ip" | "snapshot"
             }
             export namespace Cloudram {
-                //price.Vps._2017v3.Cloudram.ModelEnum
+                // type fullname: price.Vps._2017v3.Cloudram.ModelEnum
                 export type ModelEnum = "model1" | "model2" | "model3"
-                //price.Vps._2017v3.Cloudram.OptionEnum
+                // type fullname: price.Vps._2017v3.Cloudram.OptionEnum
                 export type OptionEnum = "additionalDisk100" | "additionalDisk200" | "additionalDisk50" | "additionalDisk500" | "automatedBackup" | "ftpbackup" | "ip" | "snapshot"
             }
             export namespace Ssd {
-                //price.Vps._2017v3.Ssd.ModelEnum
+                // type fullname: price.Vps._2017v3.Ssd.ModelEnum
                 export type ModelEnum = "model1" | "model2" | "model3"
-                //price.Vps._2017v3.Ssd.OptionEnum
+                // type fullname: price.Vps._2017v3.Ssd.OptionEnum
                 export type OptionEnum = "additionalDisk100" | "additionalDisk200" | "additionalDisk50" | "additionalDisk500" | "ip" | "snapshot"
             }
         }
         export namespace _2018v1 {
             export namespace Cloud {
-                //price.Vps._2018v1.Cloud.ModelEnum
+                // type fullname: price.Vps._2018v1.Cloud.ModelEnum
                 export type ModelEnum = "model1" | "model2" | "model3"
-                //price.Vps._2018v1.Cloud.OptionEnum
+                // type fullname: price.Vps._2018v1.Cloud.OptionEnum
                 export type OptionEnum = "additionalDisk100" | "additionalDisk200" | "additionalDisk50" | "additionalDisk500" | "automatedBackup" | "ftpbackup" | "ip" | "snapshot"
             }
             export namespace Cloudram {
-                //price.Vps._2018v1.Cloudram.ModelEnum
+                // type fullname: price.Vps._2018v1.Cloudram.ModelEnum
                 export type ModelEnum = "model1" | "model2" | "model3"
-                //price.Vps._2018v1.Cloudram.OptionEnum
+                // type fullname: price.Vps._2018v1.Cloudram.OptionEnum
                 export type OptionEnum = "additionalDisk100" | "additionalDisk200" | "additionalDisk50" | "additionalDisk500" | "automatedBackup" | "ftpbackup" | "ip" | "snapshot"
             }
             export namespace Ssd {
-                //price.Vps._2018v1.Ssd.ModelEnum
+                // type fullname: price.Vps._2018v1.Ssd.ModelEnum
                 export type ModelEnum = "model1" | "model2" | "model3"
-                //price.Vps._2018v1.Ssd.OptionEnum
+                // type fullname: price.Vps._2018v1.Ssd.OptionEnum
                 export type OptionEnum = "additionalDisk100" | "additionalDisk200" | "additionalDisk50" | "additionalDisk500" | "ip" | "snapshot"
             }
         }
         export namespace _2018v2 {
             export namespace Ssd {
-                //price.Vps._2018v2.Ssd.ModelEnum
+                // type fullname: price.Vps._2018v2.Ssd.ModelEnum
                 export type ModelEnum = "model1" | "model2" | "model3" | "model4"
-                //price.Vps._2018v2.Ssd.OptionEnum
+                // type fullname: price.Vps._2018v2.Ssd.OptionEnum
                 export type OptionEnum = "ip"
             }
         }
     }
     export namespace Xdsl {
         export namespace AddressMove {
-            //price.Xdsl.AddressMove.FeeEnum
+            // type fullname: price.Xdsl.AddressMove.FeeEnum
             export type FeeEnum = "keepPortability"
         }
-        //price.Xdsl.InstallationEnum
+        // type fullname: price.Xdsl.InstallationEnum
         export type InstallationEnum = "backup"
-        //price.Xdsl.OffersEnum
+        // type fullname: price.Xdsl.OffersEnum
         export type OffersEnum = "backup"
         export namespace Options {
-            //price.Xdsl.Options.InstallationEnum
+            // type fullname: price.Xdsl.Options.InstallationEnum
             export type InstallationEnum = "ipv4"
-            //price.Xdsl.Options.Ipv4Enum
+            // type fullname: price.Xdsl.Options.Ipv4Enum
             export type Ipv4Enum = "29"
-            //price.Xdsl.Options.LineEnum
+            // type fullname: price.Xdsl.Options.LineEnum
             export type LineEnum = "creation" | "partialToTotal"
         }
     }

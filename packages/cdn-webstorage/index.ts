@@ -5,37 +5,33 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  */
 export namespace cdn {
     export namespace webstorage {
-        //cdn.webstorage.Account
-        // fullName: cdn.webstorage.Account.Account
+        // interface fullName: cdn.webstorage.Account.Account
         export interface Account {
             domain: string;
             server: string;
             storageLimit: number;
             storageUsage: number;
         }
-        //cdn.webstorage.AccountCredentials
-        // fullName: cdn.webstorage.AccountCredentials.AccountCredentials
+        // interface fullName: cdn.webstorage.AccountCredentials.AccountCredentials
         export interface AccountCredentials {
             endpoint: string;
             login: string;
             password: string;
             tenant: string;
         }
-        //cdn.webstorage.StatsDataType
-        // fullName: cdn.webstorage.StatsDataType.StatsDataType
+        // interface fullName: cdn.webstorage.StatsDataType.StatsDataType
         export interface StatsDataType {
             date: string;
             value: number;
         }
-        //cdn.webstorage.StatsPeriodEnum
+        // type fullname: cdn.webstorage.StatsPeriodEnum
         export type StatsPeriodEnum = "day" | "month" | "week"
-        //cdn.webstorage.StatsTypeEnum
+        // type fullname: cdn.webstorage.StatsTypeEnum
         export type StatsTypeEnum = "backend" | "cdn" | "quota"
     }
 }
 export namespace service {
-    //service.RenewType
-    // fullName: service.RenewType.RenewType
+    // interface fullName: service.RenewType.RenewType
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -43,14 +39,13 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    //service.RenewalTypeEnum
+    // type fullname: service.RenewalTypeEnum
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    //service.StateEnum
+    // type fullname: service.StateEnum
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
 }
 export namespace services {
-    //services.Service
-    // fullName: services.Service.Service
+    // interface fullName: services.Service.Service
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;

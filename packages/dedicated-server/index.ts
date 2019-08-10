@@ -4,39 +4,34 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /dedicated/server Models
  */
 export namespace complexType {
-    //complexType.ChartReturn
-    // fullName: complexType.ChartReturn.ChartReturn
+    // interface fullName: complexType.ChartReturn.ChartReturn
     export interface ChartReturn {
         unit?: string;
         values?: complexType.ChartTimestampValue[];
     }
-    //complexType.ChartTimestampValue
-    // fullName: complexType.ChartTimestampValue.ChartTimestampValue
+    // interface fullName: complexType.ChartTimestampValue.ChartTimestampValue
     export interface ChartTimestampValue {
         timestamp: number;
         value?: number;
     }
-    //complexType.UnitAndValue
-    // fullName: complexType.UnitAndValue.UnitAndValue
+    // interface fullName: complexType.UnitAndValue.UnitAndValue
     export interface UnitAndValue<T> {
         unit: string;
         value: T;
     }
 }
 export namespace coreTypes {
-    //coreTypes.CountryEnum
+    // type fullname: coreTypes.CountryEnum
     export type CountryEnum = "ac" | "ad" | "ae" | "af" | "ag" | "ai" | "al" | "am" | "an" | "ao" | "aq" | "ar" | "as" | "at" | "au" | "aw" | "ax" | "az" | "ba" | "bb" | "bd" | "be" | "bf" | "bg" | "bh" | "bi" | "bj" | "bl" | "bm" | "bn" | "bo" | "bq" | "br" | "bs" | "bt" | "bv" | "bw" | "by" | "bz" | "ca" | "cc" | "cd" | "cf" | "cg" | "ch" | "ci" | "ck" | "cl" | "cm" | "cn" | "co" | "cr" | "cs" | "cu" | "cv" | "cw" | "cx" | "cy" | "cz" | "de" | "dj" | "dk" | "dm" | "do" | "dz" | "ec" | "ee" | "eg" | "eh" | "er" | "es" | "et" | "fc" | "fd" | "fi" | "fj" | "fk" | "fm" | "fo" | "fr" | "fx" | "ga" | "gb" | "gd" | "ge" | "gf" | "gg" | "gh" | "gi" | "gl" | "gm" | "gn" | "gp" | "gq" | "gr" | "gs" | "gt" | "gu" | "gw" | "gy" | "hk" | "hm" | "hn" | "hr" | "ht" | "hu" | "id" | "ie" | "il" | "im" | "in" | "io" | "iq" | "ir" | "is" | "it" | "je" | "jm" | "jo" | "jp" | "ke" | "kg" | "kh" | "ki" | "km" | "kn" | "kp" | "kr" | "kw" | "ky" | "kz" | "la" | "lb" | "lc" | "li" | "lk" | "lr" | "ls" | "lt" | "lu" | "lv" | "ly" | "ma" | "mc" | "md" | "me" | "mf" | "mg" | "mh" | "mk" | "ml" | "mm" | "mn" | "mo" | "mp" | "mq" | "mr" | "ms" | "mt" | "mu" | "mv" | "mw" | "mx" | "my" | "mz" | "na" | "nc" | "ne" | "nf" | "ng" | "ni" | "nl" | "no" | "np" | "nr" | "nu" | "nz" | "om" | "pa" | "pe" | "pf" | "pg" | "ph" | "pk" | "pl" | "pm" | "pn" | "pr" | "ps" | "pt" | "pw" | "py" | "qa" | "qc" | "re" | "ro" | "rs" | "ru" | "rw" | "sa" | "sb" | "sc" | "sd" | "se" | "sg" | "sh" | "si" | "sj" | "sk" | "sl" | "sm" | "sn" | "so" | "sr" | "ss" | "st" | "sv" | "sx" | "sy" | "sz" | "tc" | "td" | "tf" | "tg" | "th" | "tj" | "tk" | "tl" | "tm" | "tn" | "to" | "tp" | "tr" | "tt" | "tv" | "tw" | "tz" | "ua" | "ug" | "uk" | "um" | "us" | "uy" | "uz" | "va" | "vc" | "ve" | "vg" | "vi" | "vn" | "vu" | "we" | "wf" | "ws" | "ye" | "yt" | "yu" | "za" | "zm" | "zw"
 }
 export namespace dedicated {
-    //dedicated.Availabilities
-    // fullName: dedicated.Availabilities.Availabilities
+    // interface fullName: dedicated.Availabilities.Availabilities
     export interface Availabilities {
         datacenters: dedicated.AvailabilityDatacenter[];
         hardware?: string;
         region?: dedicated.AvailabilityRegionEnum;
     }
-    //dedicated.AvailabilitiesRaw
-    // fullName: dedicated.AvailabilitiesRaw.AvailabilitiesRaw
+    // interface fullName: dedicated.AvailabilitiesRaw.AvailabilitiesRaw
     export interface AvailabilitiesRaw {
         availability: dedicated.AvailabilityEnum;
         available: number;
@@ -51,32 +46,28 @@ export namespace dedicated {
         trueAvailable4H: number;
         zone: dedicated.AvailabilityRegionEnum;
     }
-    //dedicated.AvailabilityDatacenter
-    // fullName: dedicated.AvailabilityDatacenter.AvailabilityDatacenter
+    // interface fullName: dedicated.AvailabilityDatacenter.AvailabilityDatacenter
     export interface AvailabilityDatacenter {
         availability: dedicated.AvailabilityEnum;
         datacenter: dedicated.AvailabilityDatacenterEnum;
     }
-    //dedicated.AvailabilityDatacenterEnum
+    // type fullname: dedicated.AvailabilityDatacenterEnum
     export type AvailabilityDatacenterEnum = "bhs" | "default" | "fra" | "gra" | "hil" | "lon" | "rbx" | "rbx-hz" | "sbg" | "sgp" | "syd" | "vin" | "waw"
-    //dedicated.AvailabilityEnum
+    // type fullname: dedicated.AvailabilityEnum
     export type AvailabilityEnum = "1H-high" | "1H-low" | "240H" | "24H" | "72H" | "unavailable" | "unknown"
-    //dedicated.AvailabilityRegionEnum
+    // type fullname: dedicated.AvailabilityRegionEnum
     export type AvailabilityRegionEnum = "europe" | "northAmerica"
-    //dedicated.BinaryFirewall
-    // fullName: dedicated.BinaryFirewall.BinaryFirewall
+    // interface fullName: dedicated.BinaryFirewall.BinaryFirewall
     export interface BinaryFirewall {
         asa: string[];
         asdm: string[];
         type: dedicated.ProfileFirewallEnum;
     }
-    //dedicated.BinaryFirewallLink
-    // fullName: dedicated.BinaryFirewallLink.BinaryFirewallLink
+    // interface fullName: dedicated.BinaryFirewallLink.BinaryFirewallLink
     export interface BinaryFirewallLink {
         url: string;
     }
-    //dedicated.DatacenterAvailability
-    // fullName: dedicated.DatacenterAvailability.DatacenterAvailability
+    // interface fullName: dedicated.DatacenterAvailability.DatacenterAvailability
     export interface DatacenterAvailability {
         datacenters: dedicated.AvailabilityDatacenter[];
         fqn: string;
@@ -85,51 +76,47 @@ export namespace dedicated {
         server: string;
         storage?: string;
     }
-    //dedicated.DatacenterEnum
+    // type fullname: dedicated.DatacenterEnum
     export type DatacenterEnum = "bhs1" | "bhs2" | "bhs3" | "bhs4" | "bhs5" | "bhs6" | "bhs7" | "dc1" | "eri1" | "gra1" | "gra2" | "gsw" | "hil1" | "lim1" | "p19" | "rbx-hz" | "rbx1" | "rbx2" | "rbx3" | "rbx4" | "rbx5" | "rbx6" | "rbx7" | "sbg1" | "sbg2" | "sbg3" | "sbg4" | "sgp1" | "syd1" | "vin1" | "waw1"
-    //dedicated.OsAvailabilitiesEnum
+    // type fullname: dedicated.OsAvailabilitiesEnum
     export type OsAvailabilitiesEnum = "archlinux-installer_64" | "centos5_64" | "centos6-cpanel-latest_64" | "centos6-ovh_64" | "centos6-plesk12_64" | "centos6_64" | "centos7-cpanel-latest_64" | "centos7-directadmin_64" | "centos7-fpga-accelize_64" | "centos7-fpga-intel-opencl_64" | "centos7-plesk125_64" | "centos7-plesk12_64" | "centos7-plesk17_64" | "centos7_64" | "cloudlinux6_64" | "cloudlinux7_64" | "coreos-alpha_64" | "coreos_64" | "debian7-ispconfig3_64" | "debian7-minecraft_64" | "debian7-plesk12_64" | "debian7_64" | "debian8-ispconfig3_64" | "debian8-plesk125_64" | "debian8_64" | "debian8_armhf_32" | "debian9-ispconfig3_64" | "debian9_64" | "debian9_armhf_32" | "dgx1-os-3_64" | "esxi51_64" | "esxi55_64" | "esxi5_64" | "esxi60_64" | "esxi65_64" | "fedora26_64" | "fedora27_64" | "freebsd10-zfs_64" | "freebsd10_64" | "freebsd11-zfs_64" | "gentoo11_64" | "openmediavault3_armhf_32" | "openmediavault_armhf_32" | "opensuse42_64" | "proxmox4-zfs_64" | "proxmox4_64" | "proxmox5-zfs_64" | "proxmox5_64" | "slackware14_64" | "smartos_64" | "solusvm-master-vz_64" | "solusvm-slave-vz_64" | "ubuntu1404-plesk125_64" | "ubuntu1404-server_64" | "ubuntu1510-server_arm64_64" | "ubuntu1510-server_ppc64el_64" | "ubuntu1604-desktop_64" | "ubuntu1604-server_64" | "ubuntu1604-server_armhf_32" | "ubuntu1604-server_ppc64el_64" | "ubuntu1710-server_64" | "win2008r2-dc-virtuozzo46_64" | "win2008r2-dc_64" | "win2008r2-ent-plesk10_64" | "win2008r2-ent-plesk11_64" | "win2008r2-ent-plesk12_64" | "win2008r2-ent-sp2010found_64" | "win2008r2-ent-virtuozzo46_64" | "win2008r2-ent_64" | "win2008r2-std-plesk11_64" | "win2008r2-std-plesk12_64" | "win2008r2-std-sp2010found_64" | "win2008r2-std_64" | "win2008r2-web-plesk11_64" | "win2008r2-web-plesk12_64" | "win2008r2-web-sp2010found_64" | "win2008r2-web_64" | "win2008r2core-dc_64" | "win2008r2core-ent_64" | "win2008r2core-hyperv_64" | "win2008r2core-std_64" | "win2008r2core-web_64" | "win2012-dc_64" | "win2012-hyperv3_64" | "win2012-std-plesk11_64" | "win2012-std-plesk12_64" | "win2012-std_64" | "win2012r2-dc_64" | "win2012r2-hyperv3_64" | "win2012r2-std-plesk12_64" | "win2012r2-std_64" | "win2016-dc_64" | "win2016-std_64" | "win81-pro-sysprep_64" | "xenserver6_64"
-    //dedicated.ProfileFirewallEnum
+    // type fullname: dedicated.ProfileFirewallEnum
     export type ProfileFirewallEnum = "cisco.asa5505" | "cisco.asa5510" | "cisco.asa5520"
-    //dedicated.StatusEnum
+    // type fullname: dedicated.StatusEnum
     export type StatusEnum = "disable" | "enable"
-    //dedicated.TaskFunctionEnum
+    // type fullname: dedicated.TaskFunctionEnum
     export type TaskFunctionEnum = "addVirtualMac" | "addWindowSplaFromExistingSerial" | "applyBackupFtpAcls" | "applyBackupFtpQuota" | "bypassAntiDDosGame" | "changePasswordBackupFTP" | "changeRipeOrg" | "checkAndReleaseIp" | "createBackupFTP" | "createOrUpdateRipeOrg" | "createPrivateNetwork" | "disableFirewall" | "enableFirewall" | "genericMoveFloatingIp" | "hardReboot" | "migrateBackupFTP" | "moveFloatingIp" | "moveVirtualMac" | "rebootPower8To" | "reinstallServer" | "releaseIp" | "removeBackupFTP" | "removeVirtualMac" | "requestAccessIPMI" | "resetIPMI" | "resetIPMISession" | "testIPMIhttp" | "testIPMIpassword" | "testIPMIping" | "virtualMacAdd" | "virtualMacDelete"
-    //dedicated.TaskStatusEnum
+    // type fullname: dedicated.TaskStatusEnum
     export type TaskStatusEnum = "cancelled" | "customerError" | "doing" | "done" | "init" | "ovhError" | "todo"
     export namespace networkInterfaceController {
-        //dedicated.networkInterfaceController.NetworkInterfaceController
-        // fullName: dedicated.networkInterfaceController.NetworkInterfaceController.NetworkInterfaceController
+        // interface fullName: dedicated.networkInterfaceController.NetworkInterfaceController.NetworkInterfaceController
         export interface NetworkInterfaceController {
             linkType: dedicated.networkInterfaceController.NetworkInterfaceControllerLinkTypeEnum;
             mac: string;
         }
-        //dedicated.networkInterfaceController.NetworkInterfaceControllerLinkTypeEnum
+        // type fullname: dedicated.networkInterfaceController.NetworkInterfaceControllerLinkTypeEnum
         export type NetworkInterfaceControllerLinkTypeEnum = "private" | "public"
     }
     export namespace server {
-        //dedicated.server.Access
-        // fullName: dedicated.server.Access.Access
+        // interface fullName: dedicated.server.Access.Access
         export interface Access {
             password: string;
             type: dedicated.server.AccessTypeEnum;
             url?: string;
             user?: string;
         }
-        //dedicated.server.AccessTypeEnum
+        // type fullname: dedicated.server.AccessTypeEnum
         export type AccessTypeEnum = "DIRECTADMIN_PANEL" | "PLESK_PANEL" | "PROXMOX_PANEL" | "RDP" | "SQL_SERVER" | "SSH" | "WEB_PANEL"
-        //dedicated.server.AlertLanguageEnum
+        // type fullname: dedicated.server.AlertLanguageEnum
         export type AlertLanguageEnum = "cz" | "de" | "en" | "es" | "fi" | "fr" | "it" | "lt" | "nl" | "pl" | "pt"
-        //dedicated.server.BackupCloud
-        // fullName: dedicated.server.BackupCloud.BackupCloud
+        // interface fullName: dedicated.server.BackupCloud.BackupCloud
         export interface BackupCloud {
             agreements?: number[];
             archive?: dedicated.server.backup.BackupContainer;
             status: dedicated.server.backup.BackupStatus;
             storage?: dedicated.server.backup.BackupContainer;
         }
-        //dedicated.server.BackupFtp
-        // fullName: dedicated.server.BackupFtp.BackupFtp
+        // interface fullName: dedicated.server.BackupFtp.BackupFtp
         export interface BackupFtp {
             ftpBackupName: string;
             quota?: complexType.UnitAndValue<number>;
@@ -137,8 +124,7 @@ export namespace dedicated {
             type: dedicated.server.BackupStorageTypeEnum;
             usage?: complexType.UnitAndValue<number>;
         }
-        //dedicated.server.BackupFtpAcl
-        // fullName: dedicated.server.BackupFtpAcl.BackupFtpAcl
+        // interface fullName: dedicated.server.BackupFtpAcl.BackupFtpAcl
         export interface BackupFtpAcl {
             cifs: boolean;
             ftp: boolean;
@@ -147,66 +133,60 @@ export namespace dedicated {
             lastUpdate: string;
             nfs: boolean;
         }
-        //dedicated.server.BackupStorageCapacityEnum
+        // type fullname: dedicated.server.BackupStorageCapacityEnum
         export type BackupStorageCapacityEnum = 1000 | 10000 | 500 | 5000
-        //dedicated.server.BackupStorageOrderable
-        // fullName: dedicated.server.BackupStorageOrderable.BackupStorageOrderable
+        // interface fullName: dedicated.server.BackupStorageOrderable.BackupStorageOrderable
         export interface BackupStorageOrderable {
             capacities?: dedicated.server.BackupStorageCapacityEnum[];
             orderable: boolean;
         }
-        //dedicated.server.BackupStorageTypeEnum
+        // type fullname: dedicated.server.BackupStorageTypeEnum
         export type BackupStorageTypeEnum = "included" | "storage"
-        //dedicated.server.BandwidthDetails
-        // fullName: dedicated.server.BandwidthDetails.BandwidthDetails
+        // interface fullName: dedicated.server.BandwidthDetails.BandwidthDetails
         export interface BandwidthDetails {
             InternetToOvh?: complexType.UnitAndValue<number>;
             OvhToInternet?: complexType.UnitAndValue<number>;
             OvhToOvh?: complexType.UnitAndValue<number>;
             type?: dedicated.server.BandwidthTypeEnum;
         }
-        //dedicated.server.BandwidthOrderEnum
+        // type fullname: dedicated.server.BandwidthOrderEnum
         export type BandwidthOrderEnum = 1000 | 2000 | 3000
-        //dedicated.server.BandwidthOrderable
-        // fullName: dedicated.server.BandwidthOrderable.BandwidthOrderable
+        // interface fullName: dedicated.server.BandwidthOrderable.BandwidthOrderable
         export interface BandwidthOrderable {
             orderable: boolean;
             platinum?: dedicated.server.BandwidthOrderEnum[];
             premium?: dedicated.server.BandwidthOrderEnum[];
             ultimate?: dedicated.server.BandwidthOrderEnum[];
         }
-        //dedicated.server.BandwidthTypeEnum
+        // type fullname: dedicated.server.BandwidthTypeEnum
         export type BandwidthTypeEnum = "included" | "platinum" | "premium" | "standard" | "ultimate"
-        //dedicated.server.BandwidthvRackDetails
-        // fullName: dedicated.server.BandwidthvRackDetails.BandwidthvRackDetails
+        // interface fullName: dedicated.server.BandwidthvRackDetails.BandwidthvRackDetails
         export interface BandwidthvRackDetails {
             bandwidth?: complexType.UnitAndValue<number>;
             type?: dedicated.server.BandwidthvRackTypeEnum;
         }
-        //dedicated.server.BandwidthvRackOrderEnum
+        // type fullname: dedicated.server.BandwidthvRackOrderEnum
         export type BandwidthvRackOrderEnum = 1000 | 3000
-        //dedicated.server.BandwidthvRackOrderable
-        // fullName: dedicated.server.BandwidthvRackOrderable.BandwidthvRackOrderable
+        // interface fullName: dedicated.server.BandwidthvRackOrderable.BandwidthvRackOrderable
         export interface BandwidthvRackOrderable {
             orderable: boolean;
             vrack?: dedicated.server.BandwidthvRackOrderEnum[];
         }
-        //dedicated.server.BandwidthvRackTypeEnum
+        // type fullname: dedicated.server.BandwidthvRackTypeEnum
         export type BandwidthvRackTypeEnum = "included" | "standard"
-        //dedicated.server.BootModeEnum
+        // type fullname: dedicated.server.BootModeEnum
         export type BootModeEnum = "legacy" | "uefi" | "uefi-legacy"
-        //dedicated.server.BootOptionEnum
+        // type fullname: dedicated.server.BootOptionEnum
         export type BootOptionEnum = "cpufamily" | "grsec" | "ipv6" | "smp"
-        //dedicated.server.BootTypeEnum
+        // type fullname: dedicated.server.BootTypeEnum
         export type BootTypeEnum = "harddisk" | "internal" | "ipxeCustomerScript" | "network" | "rescue"
-        //dedicated.server.BurstStatusEnum
+        // type fullname: dedicated.server.BurstStatusEnum
         export type BurstStatusEnum = "active" | "inactive" | "inactiveLocked"
-        //dedicated.server.CacheTTLEnum
+        // type fullname: dedicated.server.CacheTTLEnum
         export type CacheTTLEnum = 1 | 10 | 15 | 3 | 5
-        //dedicated.server.CpuFamilyEnum
+        // type fullname: dedicated.server.CpuFamilyEnum
         export type CpuFamilyEnum = "arm64" | "armhf32" | "ppc64" | "x86" | "x86-ht" | "x86_64"
-        //dedicated.server.Dedicated
-        // fullName: dedicated.server.Dedicated.Dedicated
+        // interface fullName: dedicated.server.Dedicated.Dedicated
         export interface Dedicated {
             bootId?: number;
             commercialRange?: string;
@@ -225,10 +205,9 @@ export namespace dedicated {
             state: dedicated.server.StateEnum;
             supportLevel: dedicated.server.SupportLevelEnum;
         }
-        //dedicated.server.DiskTypeEnum
+        // type fullname: dedicated.server.DiskTypeEnum
         export type DiskTypeEnum = "NVMe" | "SAS" | "SATA" | "SSD" | "Unknown"
-        //dedicated.server.Firewall
-        // fullName: dedicated.server.Firewall.Firewall
+        // interface fullName: dedicated.server.Firewall.Firewall
         export interface Firewall {
             enabled: boolean;
             firewall: string;
@@ -236,14 +215,13 @@ export namespace dedicated {
             mode: dedicated.server.FirewallModeEnum;
             model?: dedicated.server.FirewallModelEnum;
         }
-        //dedicated.server.FirewallModeEnum
+        // type fullname: dedicated.server.FirewallModeEnum
         export type FirewallModeEnum = "routed" | "transparent"
-        //dedicated.server.FirewallModelEnum
+        // type fullname: dedicated.server.FirewallModelEnum
         export type FirewallModelEnum = "asa5505" | "asa5510" | "asa5520"
-        //dedicated.server.FormFactorEnum
+        // type fullname: dedicated.server.FormFactorEnum
         export type FormFactorEnum = "0.25u" | "0.5u" | "1u" | "2u" | "3u" | "4u"
-        //dedicated.server.HardwareRaidConfiguration
-        // fullName: dedicated.server.HardwareRaidConfiguration.HardwareRaidConfiguration
+        // interface fullName: dedicated.server.HardwareRaidConfiguration.HardwareRaidConfiguration
         export interface HardwareRaidConfiguration {
             capacity: complexType.UnitAndValue<number>;
             diskCount: number;
@@ -253,33 +231,28 @@ export namespace dedicated {
             name: string;
             type: string;
         }
-        //dedicated.server.HardwareRaidController
-        // fullName: dedicated.server.HardwareRaidController.HardwareRaidController
+        // interface fullName: dedicated.server.HardwareRaidController.HardwareRaidController
         export interface HardwareRaidController {
             disks: dedicated.server.HardwareRaidDiskGroup[];
             model: string;
             type: string;
         }
-        //dedicated.server.HardwareRaidDiskGroup
-        // fullName: dedicated.server.HardwareRaidDiskGroup.HardwareRaidDiskGroup
+        // interface fullName: dedicated.server.HardwareRaidDiskGroup.HardwareRaidDiskGroup
         export interface HardwareRaidDiskGroup {
             capacity: complexType.UnitAndValue<number>;
             names: string[];
             speed: complexType.UnitAndValue<string>;
             type: dedicated.server.DiskTypeEnum;
         }
-        //dedicated.server.HardwareRaidProfile
-        // fullName: dedicated.server.HardwareRaidProfile.HardwareRaidProfile
+        // interface fullName: dedicated.server.HardwareRaidProfile.HardwareRaidProfile
         export interface HardwareRaidProfile {
             controllers: dedicated.server.HardwareRaidController[];
         }
-        //dedicated.server.HardwareRaidSize
-        // fullName: dedicated.server.HardwareRaidSize.HardwareRaidSize
+        // interface fullName: dedicated.server.HardwareRaidSize.HardwareRaidSize
         export interface HardwareRaidSize {
             configurations: dedicated.server.HardwareRaidConfiguration[];
         }
-        //dedicated.server.HardwareSpecifications
-        // fullName: dedicated.server.HardwareSpecifications.HardwareSpecifications
+        // interface fullName: dedicated.server.HardwareSpecifications.HardwareSpecifications
         export interface HardwareSpecifications {
             bootMode: dedicated.server.BootModeEnum;
             coresPerProcessor?: number;
@@ -297,8 +270,7 @@ export namespace dedicated {
             threadsPerProcessor?: number;
             usbKeys?: complexType.UnitAndValue<number>[];
         }
-        //dedicated.server.HardwareSpecificationsDisk
-        // fullName: dedicated.server.HardwareSpecificationsDisk.HardwareSpecificationsDisk
+        // interface fullName: dedicated.server.HardwareSpecificationsDisk.HardwareSpecificationsDisk
         export interface HardwareSpecificationsDisk {
             defaultHardwareRaidSize?: complexType.UnitAndValue<number>;
             defaultHardwareRaidType?: dedicated.server.HardwareSpecificationsRaidHardEnum;
@@ -309,18 +281,16 @@ export namespace dedicated {
             numberOfDisks?: number;
             raidController?: string;
         }
-        //dedicated.server.HardwareSpecificationsExpansionCard
-        // fullName: dedicated.server.HardwareSpecificationsExpansionCard.HardwareSpecificationsExpansionCard
+        // interface fullName: dedicated.server.HardwareSpecificationsExpansionCard.HardwareSpecificationsExpansionCard
         export interface HardwareSpecificationsExpansionCard {
             description: string;
             type: dedicated.server.HardwareSpecificationsExpansionCardTypeEnum;
         }
-        //dedicated.server.HardwareSpecificationsExpansionCardTypeEnum
+        // type fullname: dedicated.server.HardwareSpecificationsExpansionCardTypeEnum
         export type HardwareSpecificationsExpansionCardTypeEnum = "fpga" | "gpu"
-        //dedicated.server.HardwareSpecificationsRaidHardEnum
+        // type fullname: dedicated.server.HardwareSpecificationsRaidHardEnum
         export type HardwareSpecificationsRaidHardEnum = "raid0" | "raid1" | "raid10" | "raid1E" | "raid5" | "raid50" | "raid6" | "raid60"
-        //dedicated.server.InstallCustom
-        // fullName: dedicated.server.InstallCustom.InstallCustom
+        // interface fullName: dedicated.server.InstallCustom.InstallCustom
         export interface InstallCustom {
             customHostname?: string;
             diskGroupId?: number;
@@ -335,46 +305,40 @@ export namespace dedicated {
             useDistribKernel?: boolean;
             useSpla?: boolean;
         }
-        //dedicated.server.InstallTemplate
-        // fullName: dedicated.server.InstallTemplate.InstallTemplate
+        // interface fullName: dedicated.server.InstallTemplate.InstallTemplate
         export interface InstallTemplate {
             ovh?: string[];
             personal?: string[];
         }
-        //dedicated.server.InstallationProgressStatus
-        // fullName: dedicated.server.InstallationProgressStatus.InstallationProgressStatus
+        // interface fullName: dedicated.server.InstallationProgressStatus.InstallationProgressStatus
         export interface InstallationProgressStatus {
             elapsedTime: number;
             progress?: dedicated.server.InstallationProgressSteps[];
         }
-        //dedicated.server.InstallationProgressStatusEnum
+        // type fullname: dedicated.server.InstallationProgressStatusEnum
         export type InstallationProgressStatusEnum = "doing" | "done" | "error" | "expired" | "idle" | "pending" | "stopping" | "todo"
-        //dedicated.server.InstallationProgressSteps
-        // fullName: dedicated.server.InstallationProgressSteps.InstallationProgressSteps
+        // interface fullName: dedicated.server.InstallationProgressSteps.InstallationProgressSteps
         export interface InstallationProgressSteps {
             comment: string;
             error?: string;
             status: dedicated.server.InstallationProgressStatusEnum;
         }
-        //dedicated.server.Intervention
-        // fullName: dedicated.server.Intervention.Intervention
+        // interface fullName: dedicated.server.Intervention.Intervention
         export interface Intervention {
             date?: string;
             interventionId: number;
             type?: string;
         }
-        //dedicated.server.IpBlockSizeEnum
+        // type fullname: dedicated.server.IpBlockSizeEnum
         export type IpBlockSizeEnum = 1 | 128 | 16 | 256 | 32 | 4 | 64 | 8
-        //dedicated.server.IpCountryEnum
+        // type fullname: dedicated.server.IpCountryEnum
         export type IpCountryEnum = "au" | "be" | "ca" | "cz" | "de" | "es" | "fi" | "fr" | "ie" | "it" | "lt" | "nl" | "pl" | "pt" | "sg" | "uk" | "us"
-        //dedicated.server.IpOrderable
-        // fullName: dedicated.server.IpOrderable.IpOrderable
+        // interface fullName: dedicated.server.IpOrderable.IpOrderable
         export interface IpOrderable {
             ipv4?: dedicated.server.IpOrderableDetails[];
             ipv6?: dedicated.server.IpOrderableDetails[];
         }
-        //dedicated.server.IpOrderableDetails
-        // fullName: dedicated.server.IpOrderableDetails.IpOrderableDetails
+        // interface fullName: dedicated.server.IpOrderableDetails.IpOrderableDetails
         export interface IpOrderableDetails {
             blockSizes: dedicated.server.IpBlockSizeEnum[];
             included: boolean;
@@ -383,62 +347,55 @@ export namespace dedicated {
             optionRequired?: dedicated.server.OptionRequiredEnum;
             type: dedicated.server.IpTypeOrderableEnum;
         }
-        //dedicated.server.IpTypeOrderableEnum
+        // type fullname: dedicated.server.IpTypeOrderableEnum
         export type IpTypeOrderableEnum = "failover" | "static" | "unshielded"
-        //dedicated.server.Ipmi
-        // fullName: dedicated.server.Ipmi.Ipmi
+        // interface fullName: dedicated.server.Ipmi.Ipmi
         export interface Ipmi {
             activated: boolean;
             supportedFeatures: dedicated.server.IpmiSupportedFeatures;
         }
-        //dedicated.server.IpmiAccessTypeEnum
+        // type fullname: dedicated.server.IpmiAccessTypeEnum
         export type IpmiAccessTypeEnum = "kvmipHtml5URL" | "kvmipJnlp" | "serialOverLanSshKey" | "serialOverLanURL"
-        //dedicated.server.IpmiAccessValue
-        // fullName: dedicated.server.IpmiAccessValue.IpmiAccessValue
+        // interface fullName: dedicated.server.IpmiAccessValue.IpmiAccessValue
         export interface IpmiAccessValue {
             expiration?: string;
             value?: string;
         }
-        //dedicated.server.IpmiSupportedFeatures
-        // fullName: dedicated.server.IpmiSupportedFeatures.IpmiSupportedFeatures
+        // interface fullName: dedicated.server.IpmiSupportedFeatures.IpmiSupportedFeatures
         export interface IpmiSupportedFeatures {
             kvmipHtml5URL: boolean;
             kvmipJnlp: boolean;
             serialOverLanSshKey: boolean;
             serialOverLanURL: boolean;
         }
-        //dedicated.server.IpmiTestResult
-        // fullName: dedicated.server.IpmiTestResult.IpmiTestResult
+        // interface fullName: dedicated.server.IpmiTestResult.IpmiTestResult
         export interface IpmiTestResult {
             date?: string;
             status?: string;
         }
-        //dedicated.server.IpmiTestTypeEnum
+        // type fullname: dedicated.server.IpmiTestTypeEnum
         export type IpmiTestTypeEnum = "http" | "password" | "ping"
-        //dedicated.server.MonitoringIntervalEnum
+        // type fullname: dedicated.server.MonitoringIntervalEnum
         export type MonitoringIntervalEnum = "1800" | "21600" | "300" | "3600"
-        //dedicated.server.MonitoringProtocolEnum
+        // type fullname: dedicated.server.MonitoringProtocolEnum
         export type MonitoringProtocolEnum = "DNS" | "FTP" | "HTTP" | "IMAP" | "POP" | "SMTP" | "SSH" | "openTCP"
-        //dedicated.server.MrtgPeriodEnum
+        // type fullname: dedicated.server.MrtgPeriodEnum
         export type MrtgPeriodEnum = "daily" | "hourly" | "monthly" | "weekly" | "yearly"
-        //dedicated.server.MrtgTimestampValue
-        // fullName: dedicated.server.MrtgTimestampValue.MrtgTimestampValue
+        // interface fullName: dedicated.server.MrtgTimestampValue.MrtgTimestampValue
         export interface MrtgTimestampValue {
             timestamp: number;
             value?: complexType.UnitAndValue<number>;
         }
-        //dedicated.server.MrtgTypeEnum
+        // type fullname: dedicated.server.MrtgTypeEnum
         export type MrtgTypeEnum = "errors:download" | "errors:upload" | "packets:download" | "packets:upload" | "traffic:download" | "traffic:upload"
-        //dedicated.server.Netboot
-        // fullName: dedicated.server.Netboot.Netboot
+        // interface fullName: dedicated.server.Netboot.Netboot
         export interface Netboot {
             bootId: number;
             bootType: dedicated.server.BootTypeEnum;
             description: string;
             kernel: string;
         }
-        //dedicated.server.NetworkSpecifications
-        // fullName: dedicated.server.NetworkSpecifications.NetworkSpecifications
+        // interface fullName: dedicated.server.NetworkSpecifications.NetworkSpecifications
         export interface NetworkSpecifications {
             bandwidth?: dedicated.server.BandwidthDetails;
             connection?: complexType.UnitAndValue<number>;
@@ -447,59 +404,52 @@ export namespace dedicated {
             traffic?: dedicated.server.TrafficDetails;
             vrack?: dedicated.server.BandwidthvRackDetails;
         }
-        //dedicated.server.Option
-        // fullName: dedicated.server.Option.Option
+        // interface fullName: dedicated.server.Option.Option
         export interface Option {
             option: dedicated.server.OptionEnum;
             state: dedicated.server.OptionStateEnum;
         }
-        //dedicated.server.OptionEnum
+        // type fullname: dedicated.server.OptionEnum
         export type OptionEnum = "BACKUPPROTOCOL" | "BANDWIDTH" | "BANDWIDTH_VRACK" | "TRAFFIC" | "TRAFFIC_DISCOVER" | "TUNING" | "TUNING_FIREWALL" | "TUNING_KVM" | "USB_KVM_IP"
-        //dedicated.server.OptionRequiredEnum
+        // type fullname: dedicated.server.OptionRequiredEnum
         export type OptionRequiredEnum = "professionalUse"
-        //dedicated.server.OptionStateEnum
+        // type fullname: dedicated.server.OptionStateEnum
         export type OptionStateEnum = "released" | "subscribed"
-        //dedicated.server.OrderableSysFeatureEnum
+        // type fullname: dedicated.server.OrderableSysFeatureEnum
         export type OrderableSysFeatureEnum = "backupProtocol" | "monitoring"
-        //dedicated.server.RoutingDetails
-        // fullName: dedicated.server.RoutingDetails.RoutingDetails
+        // interface fullName: dedicated.server.RoutingDetails.RoutingDetails
         export interface RoutingDetails {
             ipv4?: dedicated.server.RoutingDetailsIpv4;
             ipv6?: dedicated.server.RoutingDetailsIpv6;
         }
-        //dedicated.server.RoutingDetailsIpv4
-        // fullName: dedicated.server.RoutingDetailsIpv4.RoutingDetailsIpv4
+        // interface fullName: dedicated.server.RoutingDetailsIpv4.RoutingDetailsIpv4
         export interface RoutingDetailsIpv4 {
             gateway?: string;
             ip?: string;
             network?: string;
         }
-        //dedicated.server.RoutingDetailsIpv6
-        // fullName: dedicated.server.RoutingDetailsIpv6.RoutingDetailsIpv6
+        // interface fullName: dedicated.server.RoutingDetailsIpv6.RoutingDetailsIpv6
         export interface RoutingDetailsIpv6 {
             gateway?: string;
             ip?: string;
             network?: string;
         }
-        //dedicated.server.Rtm
-        // fullName: dedicated.server.Rtm.Rtm
+        // interface fullName: dedicated.server.Rtm.Rtm
         export interface Rtm {
             currentVersion?: string;
             installedVersion?: string;
             needsUpdate: boolean;
         }
-        //dedicated.server.RtmChartPeriodEnum
+        // type fullname: dedicated.server.RtmChartPeriodEnum
         export type RtmChartPeriodEnum = "daily" | "monthly" | "weekly" | "yearly"
-        //dedicated.server.RtmChartTypeEnum
+        // type fullname: dedicated.server.RtmChartTypeEnum
         export type RtmChartTypeEnum = "cpu" | "loadavg1" | "loadavg15" | "loadavg5" | "memory" | "processCount" | "processRunning" | "swap"
-        //dedicated.server.RtmCommandSize
-        // fullName: dedicated.server.RtmCommandSize.RtmCommandSize
+        // interface fullName: dedicated.server.RtmCommandSize.RtmCommandSize
         export interface RtmCommandSize {
             command?: string;
             memory?: complexType.UnitAndValue<number>;
         }
-        //dedicated.server.RtmConnection
-        // fullName: dedicated.server.RtmConnection.RtmConnection
+        // interface fullName: dedicated.server.RtmConnection.RtmConnection
         export interface RtmConnection {
             cmdline?: string;
             domain?: string;
@@ -511,24 +461,21 @@ export namespace dedicated {
             uid?: number;
             username?: string;
         }
-        //dedicated.server.RtmCpu
-        // fullName: dedicated.server.RtmCpu.RtmCpu
+        // interface fullName: dedicated.server.RtmCpu.RtmCpu
         export interface RtmCpu {
             cache?: complexType.UnitAndValue<number>;
             core?: number;
             freq?: complexType.UnitAndValue<number>;
             name?: string;
         }
-        //dedicated.server.RtmDisk
-        // fullName: dedicated.server.RtmDisk.RtmDisk
+        // interface fullName: dedicated.server.RtmDisk.RtmDisk
         export interface RtmDisk {
             capacity?: complexType.UnitAndValue<number>;
             disk: string;
             model?: string;
             temperature?: complexType.UnitAndValue<number>;
         }
-        //dedicated.server.RtmDiskSmart
-        // fullName: dedicated.server.RtmDiskSmart.RtmDiskSmart
+        // interface fullName: dedicated.server.RtmDiskSmart.RtmDiskSmart
         export interface RtmDiskSmart {
             current_pending_sector?: number;
             multizone_error_rate?: number;
@@ -541,8 +488,7 @@ export namespace dedicated {
             uncorrected_read_errors?: number;
             uncorrected_write_errors?: number;
         }
-        //dedicated.server.RtmLoad
-        // fullName: dedicated.server.RtmLoad.RtmLoad
+        // interface fullName: dedicated.server.RtmLoad.RtmLoad
         export interface RtmLoad {
             cpu?: complexType.UnitAndValue<number>;
             loadavg1?: number;
@@ -554,48 +500,41 @@ export namespace dedicated {
             swap?: complexType.UnitAndValue<number>;
             uptime?: number;
         }
-        //dedicated.server.RtmMemory
-        // fullName: dedicated.server.RtmMemory.RtmMemory
+        // interface fullName: dedicated.server.RtmMemory.RtmMemory
         export interface RtmMemory {
             capacity?: complexType.UnitAndValue<number>;
             slot?: string;
         }
-        //dedicated.server.RtmMotherboardHw
-        // fullName: dedicated.server.RtmMotherboardHw.RtmMotherboardHw
+        // interface fullName: dedicated.server.RtmMotherboardHw.RtmMotherboardHw
         export interface RtmMotherboardHw {
             manufacturer?: string;
             name?: string;
         }
-        //dedicated.server.RtmOs
-        // fullName: dedicated.server.RtmOs.RtmOs
+        // interface fullName: dedicated.server.RtmOs.RtmOs
         export interface RtmOs {
             kernelRelease?: string;
             kernelVersion?: string;
             release?: string;
         }
-        //dedicated.server.RtmPartition
-        // fullName: dedicated.server.RtmPartition.RtmPartition
+        // interface fullName: dedicated.server.RtmPartition.RtmPartition
         export interface RtmPartition {
             inodeUsage?: complexType.UnitAndValue<number>;
             mountPoint?: string;
             partition: string;
             usage?: complexType.UnitAndValue<number>;
         }
-        //dedicated.server.RtmPci
-        // fullName: dedicated.server.RtmPci.RtmPci
+        // interface fullName: dedicated.server.RtmPci.RtmPci
         export interface RtmPci {
             bus?: string;
             device?: string;
         }
-        //dedicated.server.RtmRaid
-        // fullName: dedicated.server.RtmRaid.RtmRaid
+        // interface fullName: dedicated.server.RtmRaid.RtmRaid
         export interface RtmRaid {
             unit: string;
         }
-        //dedicated.server.RtmRaidStatusEnum
+        // type fullname: dedicated.server.RtmRaidStatusEnum
         export type RtmRaidStatusEnum = "KO" | "OK" | "REBUILDING" | "UNKNOWN"
-        //dedicated.server.RtmRaidVolume
-        // fullName: dedicated.server.RtmRaidVolume.RtmRaidVolume
+        // interface fullName: dedicated.server.RtmRaidVolume.RtmRaidVolume
         export interface RtmRaidVolume {
             capacity?: complexType.UnitAndValue<number>;
             chunks?: string;
@@ -608,8 +547,7 @@ export namespace dedicated {
             type?: string;
             volume?: string;
         }
-        //dedicated.server.RtmRaidVolumePort
-        // fullName: dedicated.server.RtmRaidVolumePort.RtmRaidVolumePort
+        // interface fullName: dedicated.server.RtmRaidVolumePort.RtmRaidVolumePort
         export interface RtmRaidVolumePort {
             capacity?: complexType.UnitAndValue<number>;
             disk?: string;
@@ -619,41 +557,36 @@ export namespace dedicated {
             status?: dedicated.server.RtmRaidStatusEnum;
             syncprogress?: string;
         }
-        //dedicated.server.ServerBurst
-        // fullName: dedicated.server.ServerBurst.ServerBurst
+        // interface fullName: dedicated.server.ServerBurst.ServerBurst
         export interface ServerBurst {
             capacity?: complexType.UnitAndValue<number>;
             status: dedicated.server.BurstStatusEnum;
         }
-        //dedicated.server.SplaStatusEnum
+        // type fullname: dedicated.server.SplaStatusEnum
         export type SplaStatusEnum = "terminated" | "used" | "waitingToCheck"
-        //dedicated.server.SplaTypeEnum
+        // type fullname: dedicated.server.SplaTypeEnum
         export type SplaTypeEnum = "os" | "sqlstd" | "sqlweb"
-        //dedicated.server.StateEnum
+        // type fullname: dedicated.server.StateEnum
         export type StateEnum = "error" | "hacked" | "hackedBlocked" | "ok"
-        //dedicated.server.SupportLevelEnum
+        // type fullname: dedicated.server.SupportLevelEnum
         export type SupportLevelEnum = "critical" | "fastpath" | "gs" | "pro"
-        //dedicated.server.SupportLevelOrderable
-        // fullName: dedicated.server.SupportLevelOrderable.SupportLevelOrderable
+        // interface fullName: dedicated.server.SupportLevelOrderable.SupportLevelOrderable
         export interface SupportLevelOrderable {
             levels?: dedicated.server.SupportLevelOrderableEnum[];
             orderable: boolean;
         }
-        //dedicated.server.SupportLevelOrderableEnum
+        // type fullname: dedicated.server.SupportLevelOrderableEnum
         export type SupportLevelOrderableEnum = "critical" | "fastpath" | "gs"
-        //dedicated.server.SupportReplaceHddInfo
-        // fullName: dedicated.server.SupportReplaceHddInfo.SupportReplaceHddInfo
+        // interface fullName: dedicated.server.SupportReplaceHddInfo.SupportReplaceHddInfo
         export interface SupportReplaceHddInfo {
             disk_serial: string;
             slot_id?: number;
         }
-        //dedicated.server.SwitchingDetails
-        // fullName: dedicated.server.SwitchingDetails.SwitchingDetails
+        // interface fullName: dedicated.server.SwitchingDetails.SwitchingDetails
         export interface SwitchingDetails {
             name?: string;
         }
-        //dedicated.server.Task
-        // fullName: dedicated.server.Task.Task
+        // interface fullName: dedicated.server.Task.Task
         export interface Task {
             comment?: string;
             doneDate?: string;
@@ -663,13 +596,11 @@ export namespace dedicated {
             status: dedicated.TaskStatusEnum;
             taskId: number;
         }
-        //dedicated.server.TemplateCaps
-        // fullName: dedicated.server.TemplateCaps.TemplateCaps
+        // interface fullName: dedicated.server.TemplateCaps.TemplateCaps
         export interface TemplateCaps {
             hybridSupport: boolean;
         }
-        //dedicated.server.TrafficDetails
-        // fullName: dedicated.server.TrafficDetails.TrafficDetails
+        // interface fullName: dedicated.server.TrafficDetails.TrafficDetails
         export interface TrafficDetails {
             inputQuotaSize?: complexType.UnitAndValue<number>;
             inputQuotaUsed?: complexType.UnitAndValue<number>;
@@ -678,41 +609,36 @@ export namespace dedicated {
             outputQuotaUsed?: complexType.UnitAndValue<number>;
             resetQuotaDate?: string;
         }
-        //dedicated.server.TrafficOrderEnum
+        // type fullname: dedicated.server.TrafficOrderEnum
         export type TrafficOrderEnum = "100Mbps-Unlimited" | "250Mbps-Unlimited" | "500Mbps-Unlimited"
-        //dedicated.server.TrafficOrderable
-        // fullName: dedicated.server.TrafficOrderable.TrafficOrderable
+        // interface fullName: dedicated.server.TrafficOrderable.TrafficOrderable
         export interface TrafficOrderable {
             orderable: boolean;
             traffic?: dedicated.server.TrafficOrderEnum[];
         }
-        //dedicated.server.UsbKeyCapacityEnum
+        // type fullname: dedicated.server.UsbKeyCapacityEnum
         export type UsbKeyCapacityEnum = 128 | 16 | 256 | 32 | 64
-        //dedicated.server.UsbKeyOrderableDetails
-        // fullName: dedicated.server.UsbKeyOrderableDetails.UsbKeyOrderableDetails
+        // interface fullName: dedicated.server.UsbKeyOrderableDetails.UsbKeyOrderableDetails
         export interface UsbKeyOrderableDetails {
             capacity: dedicated.server.UsbKeyCapacityEnum[];
             number: number;
             optionRequired?: dedicated.server.OptionRequiredEnum;
             orderable: boolean;
         }
-        //dedicated.server.VirtualMac
-        // fullName: dedicated.server.VirtualMac.VirtualMac
+        // interface fullName: dedicated.server.VirtualMac.VirtualMac
         export interface VirtualMac {
             macAddress: string;
             type: dedicated.server.VmacTypeEnum;
         }
-        //dedicated.server.VirtualMacManagement
-        // fullName: dedicated.server.VirtualMacManagement.VirtualMacManagement
+        // interface fullName: dedicated.server.VirtualMacManagement.VirtualMacManagement
         export interface VirtualMacManagement {
             ipAddress: string;
             virtualMachineName: string;
         }
-        //dedicated.server.VmacTypeEnum
+        // type fullname: dedicated.server.VmacTypeEnum
         export type VmacTypeEnum = "ovh" | "vmware"
         export namespace backup {
-            //dedicated.server.backup.BackupContainer
-            // fullName: dedicated.server.backup.BackupContainer.BackupContainer
+            // interface fullName: dedicated.server.backup.BackupContainer.BackupContainer
             export interface BackupContainer {
                 cloudProject?: dedicated.server.backup.BackupProject;
                 id?: string;
@@ -722,82 +648,71 @@ export namespace dedicated {
                 sftp?: dedicated.server.backup.BackupSftp;
                 swift?: dedicated.server.backup.BackupSwift;
             }
-            //dedicated.server.backup.BackupOffer
-            // fullName: dedicated.server.backup.BackupOffer.BackupOffer
+            // interface fullName: dedicated.server.backup.BackupOffer.BackupOffer
             export interface BackupOffer {
                 maxArchive?: complexType.UnitAndValue<number>;
                 maxBandwidthArchive?: complexType.UnitAndValue<number>;
                 maxBandwidthStorage?: complexType.UnitAndValue<number>;
                 maxStorage?: complexType.UnitAndValue<number>;
             }
-            //dedicated.server.backup.BackupPassword
-            // fullName: dedicated.server.backup.BackupPassword.BackupPassword
+            // interface fullName: dedicated.server.backup.BackupPassword.BackupPassword
             export interface BackupPassword {
                 sftpArchive?: string;
                 sftpStorage?: string;
                 swiftArchive?: string;
                 swiftStorage?: string;
             }
-            //dedicated.server.backup.BackupProject
-            // fullName: dedicated.server.backup.BackupProject.BackupProject
+            // interface fullName: dedicated.server.backup.BackupProject.BackupProject
             export interface BackupProject {
                 description?: string;
                 projectId?: string;
             }
-            //dedicated.server.backup.BackupQuota
-            // fullName: dedicated.server.backup.BackupQuota.BackupQuota
+            // interface fullName: dedicated.server.backup.BackupQuota.BackupQuota
             export interface BackupQuota {
                 maxBandwidth?: complexType.UnitAndValue<number>;
                 maxStorage?: complexType.UnitAndValue<number>;
                 storageUsed?: complexType.UnitAndValue<number>;
                 usagePercent?: number;
             }
-            //dedicated.server.backup.BackupSftp
-            // fullName: dedicated.server.backup.BackupSftp.BackupSftp
+            // interface fullName: dedicated.server.backup.BackupSftp.BackupSftp
             export interface BackupSftp {
                 password?: string;
                 url?: string;
                 username?: string;
             }
-            //dedicated.server.backup.BackupStatus
-            // fullName: dedicated.server.backup.BackupStatus.BackupStatus
+            // interface fullName: dedicated.server.backup.BackupStatus.BackupStatus
             export interface BackupStatus {
                 code: dedicated.server.backup.BackupStatusCodeEnum;
                 reason?: string;
             }
-            //dedicated.server.backup.BackupStatusCodeEnum
+            // type fullname: dedicated.server.backup.BackupStatusCodeEnum
             export type BackupStatusCodeEnum = "DELETING" | "ERROR" | "OK" | "SUSPENDED" | "SUSPENDING" | "UNKNOWN" | "WAITING_AGREEMENTS_VALIDATION"
-            //dedicated.server.backup.BackupSwift
-            // fullName: dedicated.server.backup.BackupSwift.BackupSwift
+            // interface fullName: dedicated.server.backup.BackupSwift.BackupSwift
             export interface BackupSwift {
                 authUrl?: string;
                 password?: string;
                 username?: string;
             }
         }
-        //dedicated.server.emailAlert
-        // fullName: dedicated.server.emailAlert.emailAlert
+        // interface fullName: dedicated.server.emailAlert.emailAlert
         export interface emailAlert {
             alertId: number;
             email: string;
             enabled: boolean;
             language: dedicated.server.AlertLanguageEnum;
         }
-        //dedicated.server.kvm
-        // fullName: dedicated.server.kvm.kvm
+        // interface fullName: dedicated.server.kvm.kvm
         export interface kvm {
             expiration: string;
             ip?: string;
             name: string;
         }
-        //dedicated.server.netbootOption
-        // fullName: dedicated.server.netbootOption.netbootOption
+        // interface fullName: dedicated.server.netbootOption.netbootOption
         export interface netbootOption {
             option: dedicated.server.BootOptionEnum;
             value: string;
         }
-        //dedicated.server.serviceMonitoring
-        // fullName: dedicated.server.serviceMonitoring.serviceMonitoring
+        // interface fullName: dedicated.server.serviceMonitoring.serviceMonitoring
         export interface serviceMonitoring {
             challengeText?: string;
             enabled: boolean;
@@ -808,8 +723,7 @@ export namespace dedicated {
             protocol: dedicated.server.MonitoringProtocolEnum;
             url?: string;
         }
-        //dedicated.server.smsAlert
-        // fullName: dedicated.server.smsAlert.smsAlert
+        // interface fullName: dedicated.server.smsAlert.smsAlert
         export interface smsAlert {
             alertId: number;
             enabled: boolean;
@@ -819,8 +733,7 @@ export namespace dedicated {
             smsAccount: string;
             toHour?: number;
         }
-        //dedicated.server.spla
-        // fullName: dedicated.server.spla.spla
+        // interface fullName: dedicated.server.spla.spla
         export interface spla {
             id: number;
             lastUpdate: string;
@@ -830,8 +743,7 @@ export namespace dedicated {
         }
     }
     export namespace virtualNetworkInterface {
-        //dedicated.virtualNetworkInterface.VirtualNetworkInterface
-        // fullName: dedicated.virtualNetworkInterface.VirtualNetworkInterface.VirtualNetworkInterface
+        // interface fullName: dedicated.virtualNetworkInterface.VirtualNetworkInterface.VirtualNetworkInterface
         export interface VirtualNetworkInterface {
             mode: dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum;
             name: string;
@@ -839,38 +751,35 @@ export namespace dedicated {
             uuid: string;
             vrack?: string;
         }
-        //dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum
+        // type fullname: dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum
         export type VirtualNetworkInterfaceModeEnum = "public" | "vrack"
     }
 }
 export namespace license {
-    //license.WindowsOsVersionEnum
+    // type fullname: license.WindowsOsVersionEnum
     export type WindowsOsVersionEnum = "WINDOWS_SERVER_2003_ENTERPRISE_EDITION" | "WINDOWS_SERVER_2003_ENTERPRISE_EDITION_2_CPU" | "WINDOWS_SERVER_2003_STANDARD_EDITION" | "WINDOWS_SERVER_2003_WEB_EDITION" | "WINDOWS_SERVER_2003_WEB_EDITION_2_CPU" | "WINDOWS_SERVER_2003_WEB_ENHANCED_EDITION" | "WINDOWS_SERVER_2003_WEB_STANDARD_EDITION" | "WINDOWS_SERVER_2003_WEB_STANDARD_EDITION_2_CPU" | "WINDOWS_SERVER_2008_DATACENTER_EDITION" | "WINDOWS_SERVER_2008_DATACENTER_EDITION_2_CPU" | "WINDOWS_SERVER_2008_DATACENTER_EDITION_4_CPU" | "WINDOWS_SERVER_2008_ENTERPRISE_EDITION" | "WINDOWS_SERVER_2008_ENTERPRISE_EDITION_2_CPU" | "WINDOWS_SERVER_2008_ENTERPRISE_EDITION_4_CPU" | "WINDOWS_SERVER_2008_STANDARD_EDITION" | "WINDOWS_SERVER_2008_STANDARD_EDITION_2_CPU" | "WINDOWS_SERVER_2008_STANDARD_EDITION_4_CPU" | "WINDOWS_SERVER_2008_WEB_EDITION" | "WINDOWS_SERVER_2008_WEB_EDITION_2_CPU" | "WINDOWS_SERVER_2008_WEB_EDITION_4_CPU" | "WINDOWS_SERVER_2008_WEB_STANDARD_EDITION" | "WINDOWS_SERVER_2012_DATACENTER_EDITION" | "WINDOWS_SERVER_2012_DATACENTER_EDITION_2_CPU" | "WINDOWS_SERVER_2012_DATACENTER_EDITION_4_CPU" | "WINDOWS_SERVER_2012_ENTERPRISE_EDITION" | "WINDOWS_SERVER_2012_ENTERPRISE_EDITION_2_CPU" | "WINDOWS_SERVER_2012_STANDARD_EDITION" | "WINDOWS_SERVER_2012_STANDARD_EDITION_2_CPU" | "WINDOWS_SERVER_2012_STANDARD_EDITION_4_CPU" | "WINDOWS_SERVER_2012_WEB_EDITION" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_1_CPU_10_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_1_CPU_12_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_1_CPU_14_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_1_CPU_16_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_1_CPU_18_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_1_CPU_20_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_1_CPU_22_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_1_CPU_24_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_1_CPU_8_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_2_CPU_10_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_2_CPU_12_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_2_CPU_14_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_2_CPU_16_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_2_CPU_18_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_2_CPU_20_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_2_CPU_22_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_2_CPU_24_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_2_CPU_8_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_4_CPU_10_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_4_CPU_12_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_4_CPU_14_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_4_CPU_16_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_4_CPU_18_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_4_CPU_20_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_4_CPU_22_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_4_CPU_24_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_4_CPU_8_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_1_CPU_10_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_1_CPU_12_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_1_CPU_14_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_1_CPU_16_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_1_CPU_18_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_1_CPU_20_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_1_CPU_22_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_1_CPU_24_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_1_CPU_8_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_2_CPU_10_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_2_CPU_12_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_2_CPU_14_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_2_CPU_16_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_2_CPU_18_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_2_CPU_20_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_2_CPU_22_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_2_CPU_24_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_2_CPU_8_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_4_CPU_10_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_4_CPU_12_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_4_CPU_14_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_4_CPU_16_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_4_CPU_18_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_4_CPU_20_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_4_CPU_22_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_4_CPU_24_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_4_CPU_8_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_10_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_12_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_14_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_16_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_18_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_20_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_22_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_24_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_26_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_28_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_30_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_32_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_34_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_36_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_38_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_40_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_42_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_44_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_46_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_48_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_50_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_52_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_54_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_56_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_58_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_60_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_62_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_64_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_8_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_10_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_12_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_14_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_16_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_18_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_20_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_22_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_24_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_26_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_28_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_30_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_32_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_34_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_36_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_38_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_40_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_42_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_44_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_46_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_48_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_50_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_52_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_54_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_56_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_58_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_60_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_62_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_64_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_8_CORES" | "windows-server-2008-license-datacenter-edition-1-cpu" | "windows-server-2008-license-datacenter-edition-2-cpu" | "windows-server-2008-license-datacenter-edition-4-cpu" | "windows-server-2008-license-enterprise-edition-1-cpu" | "windows-server-2008-license-enterprise-edition-2-cpu" | "windows-server-2008-license-enterprise-edition-4-cpu" | "windows-server-2008-license-standard-edition-1-cpu" | "windows-server-2008-license-standard-edition-2-cpu" | "windows-server-2008-license-standard-edition-4-cpu" | "windows-server-2008-license-web-edition-1-cpu" | "windows-server-2008-license-web-edition-2-cpu" | "windows-server-2008-license-web-edition-4-cpu" | "windows-server-2012-license-datacenter-edition-1-cpu" | "windows-server-2012-license-datacenter-edition-2-cpu" | "windows-server-2012-license-datacenter-edition-4-cpu" | "windows-server-2012-license-standard-edition-1-cpu" | "windows-server-2012-license-standard-edition-2-cpu" | "windows-server-2012-license-standard-edition-4-cpu" | "windows-server-2016-license-datacenter-edition-1-cpu-10-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-12-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-14-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-16-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-18-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-20-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-22-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-24-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-8-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-10-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-12-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-14-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-16-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-18-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-20-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-22-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-24-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-8-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-10-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-12-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-14-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-16-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-18-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-20-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-22-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-24-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-8-cores" | "windows-server-2016-license-standard-edition-1-cpu-10-cores" | "windows-server-2016-license-standard-edition-1-cpu-12-cores" | "windows-server-2016-license-standard-edition-1-cpu-14-cores" | "windows-server-2016-license-standard-edition-1-cpu-16-cores" | "windows-server-2016-license-standard-edition-1-cpu-18-cores" | "windows-server-2016-license-standard-edition-1-cpu-20-cores" | "windows-server-2016-license-standard-edition-1-cpu-22-cores" | "windows-server-2016-license-standard-edition-1-cpu-24-cores" | "windows-server-2016-license-standard-edition-1-cpu-8-cores" | "windows-server-2016-license-standard-edition-2-cpu-10-cores" | "windows-server-2016-license-standard-edition-2-cpu-12-cores" | "windows-server-2016-license-standard-edition-2-cpu-14-cores" | "windows-server-2016-license-standard-edition-2-cpu-16-cores" | "windows-server-2016-license-standard-edition-2-cpu-18-cores" | "windows-server-2016-license-standard-edition-2-cpu-20-cores" | "windows-server-2016-license-standard-edition-2-cpu-22-cores" | "windows-server-2016-license-standard-edition-2-cpu-24-cores" | "windows-server-2016-license-standard-edition-2-cpu-8-cores" | "windows-server-2016-license-standard-edition-4-cpu-10-cores" | "windows-server-2016-license-standard-edition-4-cpu-12-cores" | "windows-server-2016-license-standard-edition-4-cpu-14-cores" | "windows-server-2016-license-standard-edition-4-cpu-16-cores" | "windows-server-2016-license-standard-edition-4-cpu-18-cores" | "windows-server-2016-license-standard-edition-4-cpu-20-cores" | "windows-server-2016-license-standard-edition-4-cpu-22-cores" | "windows-server-2016-license-standard-edition-4-cpu-24-cores" | "windows-server-2016-license-standard-edition-4-cpu-8-cores" | "windows-server-2019-license-datacenter-edition-10-cores" | "windows-server-2019-license-datacenter-edition-12-cores" | "windows-server-2019-license-datacenter-edition-14-cores" | "windows-server-2019-license-datacenter-edition-16-cores" | "windows-server-2019-license-datacenter-edition-18-cores" | "windows-server-2019-license-datacenter-edition-20-cores" | "windows-server-2019-license-datacenter-edition-22-cores" | "windows-server-2019-license-datacenter-edition-24-cores" | "windows-server-2019-license-datacenter-edition-26-cores" | "windows-server-2019-license-datacenter-edition-28-cores" | "windows-server-2019-license-datacenter-edition-30-cores" | "windows-server-2019-license-datacenter-edition-32-cores" | "windows-server-2019-license-datacenter-edition-34-cores" | "windows-server-2019-license-datacenter-edition-36-cores" | "windows-server-2019-license-datacenter-edition-38-cores" | "windows-server-2019-license-datacenter-edition-40-cores" | "windows-server-2019-license-datacenter-edition-42-cores" | "windows-server-2019-license-datacenter-edition-44-cores" | "windows-server-2019-license-datacenter-edition-46-cores" | "windows-server-2019-license-datacenter-edition-48-cores" | "windows-server-2019-license-datacenter-edition-50-cores" | "windows-server-2019-license-datacenter-edition-52-cores" | "windows-server-2019-license-datacenter-edition-54-cores" | "windows-server-2019-license-datacenter-edition-56-cores" | "windows-server-2019-license-datacenter-edition-58-cores" | "windows-server-2019-license-datacenter-edition-60-cores" | "windows-server-2019-license-datacenter-edition-62-cores" | "windows-server-2019-license-datacenter-edition-64-cores" | "windows-server-2019-license-datacenter-edition-8-cores" | "windows-server-2019-license-standard-edition-10-cores" | "windows-server-2019-license-standard-edition-12-cores" | "windows-server-2019-license-standard-edition-14-cores" | "windows-server-2019-license-standard-edition-16-cores" | "windows-server-2019-license-standard-edition-18-cores" | "windows-server-2019-license-standard-edition-20-cores" | "windows-server-2019-license-standard-edition-22-cores" | "windows-server-2019-license-standard-edition-24-cores" | "windows-server-2019-license-standard-edition-26-cores" | "windows-server-2019-license-standard-edition-28-cores" | "windows-server-2019-license-standard-edition-30-cores" | "windows-server-2019-license-standard-edition-32-cores" | "windows-server-2019-license-standard-edition-34-cores" | "windows-server-2019-license-standard-edition-36-cores" | "windows-server-2019-license-standard-edition-38-cores" | "windows-server-2019-license-standard-edition-40-cores" | "windows-server-2019-license-standard-edition-42-cores" | "windows-server-2019-license-standard-edition-44-cores" | "windows-server-2019-license-standard-edition-46-cores" | "windows-server-2019-license-standard-edition-48-cores" | "windows-server-2019-license-standard-edition-50-cores" | "windows-server-2019-license-standard-edition-52-cores" | "windows-server-2019-license-standard-edition-54-cores" | "windows-server-2019-license-standard-edition-56-cores" | "windows-server-2019-license-standard-edition-58-cores" | "windows-server-2019-license-standard-edition-60-cores" | "windows-server-2019-license-standard-edition-62-cores" | "windows-server-2019-license-standard-edition-64-cores" | "windows-server-2019-license-standard-edition-8-cores"
-    //license.WindowsSqlVersionEnum
+    // type fullname: license.WindowsSqlVersionEnum
     export type WindowsSqlVersionEnum = "SQL_SERVER_2008_STANDARD_EDITION" | "SQL_SERVER_2008_STANDARD_EDITION_2_CPU" | "SQL_SERVER_2008_WEB_EDITION" | "SQL_SERVER_2008_WEB_EDITION_2_CPU" | "SQL_SERVER_2012_STANDARD_EDITION" | "SQL_SERVER_2012_STANDARD_EDITION_12_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_16_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_18_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_20_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_24_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_2_CPU" | "SQL_SERVER_2012_STANDARD_EDITION_32_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_4_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_6_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_8_CORES" | "SQL_SERVER_2012_WEB_EDITION_12_CORES" | "SQL_SERVER_2012_WEB_EDITION_16_CORES" | "SQL_SERVER_2012_WEB_EDITION_18_CORES" | "SQL_SERVER_2012_WEB_EDITION_20_CORES" | "SQL_SERVER_2012_WEB_EDITION_24_CORES" | "SQL_SERVER_2012_WEB_EDITION_32_CORES" | "SQL_SERVER_2012_WEB_EDITION_4_CORES" | "SQL_SERVER_2012_WEB_EDITION_6_CORES" | "SQL_SERVER_2012_WEB_EDITION_8_CORES"
 }
 export namespace nichandle {
-    //nichandle.OvhSubsidiaryEnum
+    // type fullname: nichandle.OvhSubsidiaryEnum
     export type OvhSubsidiaryEnum = "ASIA" | "AU" | "CA" | "CZ" | "DE" | "ES" | "EU" | "FI" | "FR" | "GB" | "IE" | "IT" | "LT" | "MA" | "NL" | "PL" | "PT" | "QC" | "SG" | "SN" | "TN" | "US" | "WE" | "WS"
 }
 export namespace secondaryDns {
-    //secondaryDns.SecondaryDNS
-    // fullName: secondaryDns.SecondaryDNS.SecondaryDNS
+    // interface fullName: secondaryDns.SecondaryDNS.SecondaryDNS
     export interface SecondaryDNS {
         creationDate: string;
         dns: string;
         domain: string;
         ipMaster: string;
     }
-    //secondaryDns.SecondaryDNSCheckField
-    // fullName: secondaryDns.SecondaryDNSCheckField.SecondaryDNSCheckField
+    // interface fullName: secondaryDns.SecondaryDNSCheckField.SecondaryDNSCheckField
     export interface SecondaryDNSCheckField {
         fieldType: zoneNamedResolutionFieldTypeEnum;
         fieldValue: string;
         subDomain: string;
     }
-    //secondaryDns.SecondaryDNSNameServer
-    // fullName: secondaryDns.SecondaryDNSNameServer.SecondaryDNSNameServer
+    // interface fullName: secondaryDns.SecondaryDNSNameServer.SecondaryDNSNameServer
     export interface SecondaryDNSNameServer {
         hostname: string;
         ip: string;
@@ -878,8 +787,7 @@ export namespace secondaryDns {
     }
 }
 export namespace service {
-    //service.RenewType
-    // fullName: service.RenewType.RenewType
+    // interface fullName: service.RenewType.RenewType
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -887,18 +795,17 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    //service.RenewalTypeEnum
+    // type fullname: service.RenewalTypeEnum
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    //service.StateEnum
+    // type fullname: service.StateEnum
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
-    //service.TerminationFutureUseEnum
+    // type fullname: service.TerminationFutureUseEnum
     export type TerminationFutureUseEnum = "NOT_REPLACING_SERVICE" | "OTHER" | "SUBSCRIBE_AN_OTHER_SERVICE" | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR" | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
-    //service.TerminationReasonEnum
+    // type fullname: service.TerminationReasonEnum
     export type TerminationReasonEnum = "FEATURES_DONT_SUIT_ME" | "LACK_OF_PERFORMANCES" | "MIGRATED_TO_ANOTHER_OVH_PRODUCT" | "MIGRATED_TO_COMPETITOR" | "NOT_NEEDED_ANYMORE" | "NOT_RELIABLE" | "NO_ANSWER" | "OTHER" | "TOO_EXPENSIVE" | "TOO_HARD_TO_USE" | "UNSATIFIED_BY_CUSTOMER_SUPPORT"
 }
 export namespace services {
-    //services.Service
-    // fullName: services.Service.Service
+    // interface fullName: services.Service.Service
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;
@@ -916,8 +823,7 @@ export namespace services {
     }
 }
 export namespace support {
-    //support.NewMessageInfo
-    // fullName: support.NewMessageInfo.NewMessageInfo
+    // interface fullName: support.NewMessageInfo.NewMessageInfo
     export interface NewMessageInfo {
         messageId: number;
         ticketId: number;
@@ -925,8 +831,7 @@ export namespace support {
     }
 }
 export namespace vrack {
-    //vrack.Task
-    // fullName: vrack.Task.Task
+    // interface fullName: vrack.Task.Task
     export interface Task {
         function: string;
         id: number;
@@ -937,17 +842,16 @@ export namespace vrack {
         targetDomain?: string;
         todoDate?: string;
     }
-    //vrack.TaskStatusEnum
+    // type fullname: vrack.TaskStatusEnum
     export type TaskStatusEnum = "cancelled" | "doing" | "done" | "init" | "todo"
-    //vrack.dedicatedServer
-    // fullName: vrack.dedicatedServer.dedicatedServer
+    // interface fullName: vrack.dedicatedServer.dedicatedServer
     export interface dedicatedServer {
         dedicatedServer: string;
         vrack: string;
     }
 }
 export namespace zone {
-    //zone.NamedResolutionFieldTypeEnum
+    // type fullname: zone.NamedResolutionFieldTypeEnum
     export type NamedResolutionFieldTypeEnum = "A" | "AAAA" | "CAA" | "CNAME" | "DKIM" | "DMARC" | "LOC" | "MX" | "NAPTR" | "NS" | "PTR" | "SPF" | "SRV" | "SSHFP" | "TLSA" | "TXT"
 }
 

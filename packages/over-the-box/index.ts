@@ -4,10 +4,9 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /overTheBox Models
  */
 export namespace order {
-    //order.CurrencyCodeEnum
+    // type fullname: order.CurrencyCodeEnum
     export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
-    //order.Price
-    // fullName: order.Price.Price
+    // interface fullName: order.Price.Price
     export interface Price {
         currencyCode: order.CurrencyCodeEnum;
         text: string;
@@ -15,16 +14,14 @@ export namespace order {
     }
 }
 export namespace overTheBox {
-    //overTheBox.ActionStatusEnum
+    // type fullname: overTheBox.ActionStatusEnum
     export type ActionStatusEnum = "doing" | "done" | "error" | "todo"
-    //overTheBox.AvailableDeviceAction
-    // fullName: overTheBox.AvailableDeviceAction.AvailableDeviceAction
+    // interface fullName: overTheBox.AvailableDeviceAction.AvailableDeviceAction
     export interface AvailableDeviceAction {
         description: string;
         name: string;
     }
-    //overTheBox.AvailableMigrationOffer
-    // fullName: overTheBox.AvailableMigrationOffer.AvailableMigrationOffer
+    // interface fullName: overTheBox.AvailableMigrationOffer.AvailableMigrationOffer
     export interface AvailableMigrationOffer {
         currentOfferPrice: orderPrice;
         description: string;
@@ -33,15 +30,13 @@ export namespace overTheBox {
         offer: string;
         price: orderPrice;
     }
-    //overTheBox.Backup
-    // fullName: overTheBox.Backup.Backup
+    // interface fullName: overTheBox.Backup.Backup
     export interface Backup {
         backupId: string;
         createdAt: string;
         deviceActionId?: string;
     }
-    //overTheBox.Device
-    // fullName: overTheBox.Device.Device
+    // interface fullName: overTheBox.Device.Device
     export interface Device {
         activated: boolean;
         deviceId: string;
@@ -51,8 +46,7 @@ export namespace overTheBox {
         systemVersion: string;
         version: string;
     }
-    //overTheBox.DeviceAction
-    // fullName: overTheBox.DeviceAction.DeviceAction
+    // interface fullName: overTheBox.DeviceAction.DeviceAction
     export interface DeviceAction {
         actionId: string;
         createdAt: string;
@@ -62,15 +56,13 @@ export namespace overTheBox {
         todoDate: string;
         updatedAt: string;
     }
-    //overTheBox.DeviceForRegistration
-    // fullName: overTheBox.DeviceForRegistration.DeviceForRegistration
+    // interface fullName: overTheBox.DeviceForRegistration.DeviceForRegistration
     export interface DeviceForRegistration {
         activated: boolean;
         deviceId: string;
         lastSeen: string;
     }
-    //overTheBox.DeviceInterface
-    // fullName: overTheBox.DeviceInterface.DeviceInterface
+    // interface fullName: overTheBox.DeviceInterface.DeviceInterface
     export interface DeviceInterface {
         device?: string;
         dnsServers?: string[];
@@ -81,17 +73,15 @@ export namespace overTheBox {
         netmask?: string;
         publicIp?: string;
     }
-    //overTheBox.GraphEndpoint
-    // fullName: overTheBox.GraphEndpoint.GraphEndpoint
+    // interface fullName: overTheBox.GraphEndpoint.GraphEndpoint
     export interface GraphEndpoint {
         host: string;
         readToken: string;
         readTokenID: string;
     }
-    //overTheBox.MultipathStatusEnum
+    // type fullname: overTheBox.MultipathStatusEnum
     export type MultipathStatusEnum = "backup" | "handover" | "master" | "off" | "on"
-    //overTheBox.RemoteAccess
-    // fullName: overTheBox.RemoteAccess.RemoteAccess
+    // interface fullName: overTheBox.RemoteAccess.RemoteAccess
     export interface RemoteAccess {
         accepted: boolean;
         askDate: string;
@@ -103,23 +93,20 @@ export namespace overTheBox {
         remoteUserInfos: overTheBox.RemoteAccessUserInfos;
         status: overTheBox.RemoteAccessStatusEnum;
     }
-    //overTheBox.RemoteAccessConnectionInfos
-    // fullName: overTheBox.RemoteAccessConnectionInfos.RemoteAccessConnectionInfos
+    // interface fullName: overTheBox.RemoteAccessConnectionInfos.RemoteAccessConnectionInfos
     export interface RemoteAccessConnectionInfos {
         ip?: string;
         port?: number;
     }
-    //overTheBox.RemoteAccessStatusEnum
+    // type fullname: overTheBox.RemoteAccessStatusEnum
     export type RemoteAccessStatusEnum = "active" | "creating" | "deleted" | "deleting" | "pendingValidation" | "toDelete"
-    //overTheBox.RemoteAccessUserInfos
-    // fullName: overTheBox.RemoteAccessUserInfos.RemoteAccessUserInfos
+    // interface fullName: overTheBox.RemoteAccessUserInfos.RemoteAccessUserInfos
     export interface RemoteAccessUserInfos {
         ip: string;
         publicKey?: string;
         user: string;
     }
-    //overTheBox.Service
-    // fullName: overTheBox.Service.Service
+    // interface fullName: overTheBox.Service.Service
     export interface Service {
         SOCKSProxyEnabled: boolean;
         customerDescription?: string;
@@ -129,35 +116,32 @@ export namespace overTheBox {
         status: overTheBox.ServiceStatusEnum;
         tunnelMode: overTheBox.TunnelModeEnum;
     }
-    //overTheBox.ServiceStatusEnum
+    // type fullname: overTheBox.ServiceStatusEnum
     export type ServiceStatusEnum = "active" | "creating" | "deleted" | "suspended" | "toCreate" | "toDelete"
-    //overTheBox.Task
-    // fullName: overTheBox.Task.Task
+    // interface fullName: overTheBox.Task.Task
     export interface Task {
         name: string;
         status: overTheBox.TaskStatusEnum;
         taskId: string;
     }
-    //overTheBox.TaskStatusEnum
+    // type fullname: overTheBox.TaskStatusEnum
     export type TaskStatusEnum = "doing" | "done" | "error" | "todo"
-    //overTheBox.TemporaryLogsLink
-    // fullName: overTheBox.TemporaryLogsLink.TemporaryLogsLink
+    // interface fullName: overTheBox.TemporaryLogsLink.TemporaryLogsLink
     export interface TemporaryLogsLink {
         expirationDate: string;
         url: string;
     }
-    //overTheBox.TunnelModeEnum
+    // type fullname: overTheBox.TunnelModeEnum
     export type TunnelModeEnum = "glorytun" | "glorytun_hybrid" | "glorytun_mud"
 }
 export namespace price {
     export namespace OverTheBox {
-        //price.OverTheBox.OfferEnum
+        // type fullname: price.OverTheBox.OfferEnum
         export type OfferEnum = "plus.v1"
     }
 }
 export namespace service {
-    //service.RenewType
-    // fullName: service.RenewType.RenewType
+    // interface fullName: service.RenewType.RenewType
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -165,14 +149,13 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    //service.RenewalTypeEnum
+    // type fullname: service.RenewalTypeEnum
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    //service.StateEnum
+    // type fullname: service.StateEnum
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
 }
 export namespace services {
-    //services.Service
-    // fullName: services.Service.Service
+    // interface fullName: services.Service.Service
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;

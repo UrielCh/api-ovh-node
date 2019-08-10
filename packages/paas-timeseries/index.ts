@@ -4,18 +4,16 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /paas/timeseries Models
  */
 export namespace complexType {
-    //complexType.UnitAndValue
-    // fullName: complexType.UnitAndValue.UnitAndValue
+    // interface fullName: complexType.UnitAndValue.UnitAndValue
     export interface UnitAndValue<T> {
         unit: string;
         value: T;
     }
 }
 export namespace order {
-    //order.CurrencyCodeEnum
+    // type fullname: order.CurrencyCodeEnum
     export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
-    //order.Price
-    // fullName: order.Price.Price
+    // interface fullName: order.Price.Price
     export interface Price {
         currencyCode: order.CurrencyCodeEnum;
         text: string;
@@ -24,8 +22,7 @@ export namespace order {
 }
 export namespace paas {
     export namespace timeseries {
-        //paas.timeseries.Consumption
-        // fullName: paas.timeseries.Consumption.Consumption
+        // interface fullName: paas.timeseries.Consumption.Consumption
         export interface Consumption {
             from: string;
             generated: string;
@@ -33,16 +30,14 @@ export namespace paas {
             to: string;
             total: orderPrice;
         }
-        //paas.timeseries.ConsumptionItem
-        // fullName: paas.timeseries.ConsumptionItem.ConsumptionItem
+        // interface fullName: paas.timeseries.ConsumptionItem.ConsumptionItem
         export interface ConsumptionItem {
             metricName: tsaas.MetricNameEnum;
             price: orderPrice;
             quantity: complexType.UnitAndValue<number>;
             unitPrice: orderPrice;
         }
-        //paas.timeseries.Key
-        // fullName: paas.timeseries.Key.Key
+        // interface fullName: paas.timeseries.Key.Key
         export interface Key {
             description: string;
             id: string;
@@ -50,30 +45,26 @@ export namespace paas {
             secret: string;
             tags: paas.timeseries.Tag[];
         }
-        //paas.timeseries.Project
-        // fullName: paas.timeseries.Project.Project
+        // interface fullName: paas.timeseries.Project.Project
         export interface Project {
             description?: string;
             displayName: string;
             region: paas.timeseries.Region;
             serviceName: string;
         }
-        //paas.timeseries.Quota
-        // fullName: paas.timeseries.Quota.Quota
+        // interface fullName: paas.timeseries.Quota.Quota
         export interface Quota {
             current: number;
             max: number;
             type: tsaas.QuotaTypeEnum;
         }
-        //paas.timeseries.Region
-        // fullName: paas.timeseries.Region.Region
+        // interface fullName: paas.timeseries.Region.Region
         export interface Region {
             displayName: string;
             id: string;
             url: string;
         }
-        //paas.timeseries.Tag
-        // fullName: paas.timeseries.Tag.Tag
+        // interface fullName: paas.timeseries.Tag.Tag
         export interface Tag {
             key: string;
             value: string;
@@ -81,8 +72,7 @@ export namespace paas {
     }
 }
 export namespace service {
-    //service.RenewType
-    // fullName: service.RenewType.RenewType
+    // interface fullName: service.RenewType.RenewType
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -90,14 +80,13 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    //service.RenewalTypeEnum
+    // type fullname: service.RenewalTypeEnum
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    //service.StateEnum
+    // type fullname: service.StateEnum
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
 }
 export namespace services {
-    //services.Service
-    // fullName: services.Service.Service
+    // interface fullName: services.Service.Service
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;
@@ -115,8 +104,7 @@ export namespace services {
     }
 }
 export namespace timeseries {
-    //timeseries.Project
-    // fullName: timeseries.Project.Project
+    // interface fullName: timeseries.Project.Project
     export interface Project {
         description?: string;
         displayName?: string;
@@ -125,15 +113,15 @@ export namespace timeseries {
         serviceName: string;
         status?: timeseries.StatusTypeEnum;
     }
-    //timeseries.StatusTypeEnum
+    // type fullname: timeseries.StatusTypeEnum
     export type StatusTypeEnum = "ACTIVE" | "CREATION" | "DELETED" | "UNCONFIGURED"
 }
 export namespace tsaas {
-    //tsaas.MetricNameEnum
+    // type fullname: tsaas.MetricNameEnum
     export type MetricNameEnum = "storage" | "input" | "output"
-    //tsaas.PermissionEnum
+    // type fullname: tsaas.PermissionEnum
     export type PermissionEnum = "READ" | "WRITE"
-    //tsaas.QuotaTypeEnum
+    // type fullname: tsaas.QuotaTypeEnum
     export type QuotaTypeEnum = "ddp" | "mads"
 }
 

@@ -4,65 +4,55 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /metrics Models
  */
 export namespace metrics {
-    //metrics.LookupTokenCreation
-    // fullName: metrics.LookupTokenCreation.LookupTokenCreation
+    // interface fullName: metrics.LookupTokenCreation.LookupTokenCreation
     export interface LookupTokenCreation {
         accessToken: string;
     }
-    //metrics.QuotaUpdate
-    // fullName: metrics.QuotaUpdate.QuotaUpdate
+    // interface fullName: metrics.QuotaUpdate.QuotaUpdate
     export interface QuotaUpdate {
         quota: number;
     }
-    //metrics.TokenCreation
-    // fullName: metrics.TokenCreation.TokenCreation
+    // interface fullName: metrics.TokenCreation.TokenCreation
     export interface TokenCreation {
         description?: string;
         labels?: metrics.api.Label[];
         permission: metrics.api.PermissionEnum;
     }
-    //metrics.TokenUpdate
-    // fullName: metrics.TokenUpdate.TokenUpdate
+    // interface fullName: metrics.TokenUpdate.TokenUpdate
     export interface TokenUpdate {
         description?: string;
     }
-    //metrics.Update
-    // fullName: metrics.Update.Update
+    // interface fullName: metrics.Update.Update
     export interface Update {
         description?: string;
     }
     export namespace api {
-        //metrics.api.Consumption
-        // fullName: metrics.api.Consumption.Consumption
+        // interface fullName: metrics.api.Consumption.Consumption
         export interface Consumption {
             ddp: number;
             mads: number;
         }
-        //metrics.api.Label
-        // fullName: metrics.api.Label.Label
+        // interface fullName: metrics.api.Label.Label
         export interface Label {
             key: string;
             value: string;
         }
-        //metrics.api.OfferTypeEnum
+        // type fullname: metrics.api.OfferTypeEnum
         export type OfferTypeEnum = "cloud" | "live"
-        //metrics.api.Option
-        // fullName: metrics.api.Option.Option
+        // interface fullName: metrics.api.Option.Option
         export interface Option {
             ddp: number;
             lastModification: string;
             mads: number;
         }
-        //metrics.api.PermissionEnum
+        // type fullname: metrics.api.PermissionEnum
         export type PermissionEnum = "read" | "write"
-        //metrics.api.Region
-        // fullName: metrics.api.Region.Region
+        // interface fullName: metrics.api.Region.Region
         export interface Region {
             description: string;
             name: string;
         }
-        //metrics.api.Service
-        // fullName: metrics.api.Service.Service
+        // interface fullName: metrics.api.Service.Service
         export interface Service {
             description: string;
             name: string;
@@ -73,10 +63,9 @@ export namespace metrics {
             status: metrics.api.ServiceStatusEnum;
             type: metrics.api.OfferTypeEnum;
         }
-        //metrics.api.ServiceStatusEnum
+        // type fullname: metrics.api.ServiceStatusEnum
         export type ServiceStatusEnum = "new" | "alive" | "disabled" | "dead"
-        //metrics.api.Token
-        // fullName: metrics.api.Token.Token
+        // interface fullName: metrics.api.Token.Token
         export interface Token {
             access: string;
             createdAt: string;
@@ -90,8 +79,7 @@ export namespace metrics {
     }
 }
 export namespace service {
-    //service.RenewType
-    // fullName: service.RenewType.RenewType
+    // interface fullName: service.RenewType.RenewType
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -99,18 +87,17 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    //service.RenewalTypeEnum
+    // type fullname: service.RenewalTypeEnum
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    //service.StateEnum
+    // type fullname: service.StateEnum
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
-    //service.TerminationFutureUseEnum
+    // type fullname: service.TerminationFutureUseEnum
     export type TerminationFutureUseEnum = "NOT_REPLACING_SERVICE" | "OTHER" | "SUBSCRIBE_AN_OTHER_SERVICE" | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR" | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
-    //service.TerminationReasonEnum
+    // type fullname: service.TerminationReasonEnum
     export type TerminationReasonEnum = "FEATURES_DONT_SUIT_ME" | "LACK_OF_PERFORMANCES" | "MIGRATED_TO_ANOTHER_OVH_PRODUCT" | "MIGRATED_TO_COMPETITOR" | "NOT_NEEDED_ANYMORE" | "NOT_RELIABLE" | "NO_ANSWER" | "OTHER" | "TOO_EXPENSIVE" | "TOO_HARD_TO_USE" | "UNSATIFIED_BY_CUSTOMER_SUPPORT"
 }
 export namespace services {
-    //services.Service
-    // fullName: services.Service.Service
+    // interface fullName: services.Service.Service
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;

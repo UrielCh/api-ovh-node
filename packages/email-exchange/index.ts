@@ -5,8 +5,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  */
 export namespace email {
     export namespace exchange {
-        //email.exchange.Account
-        // fullName: email.exchange.Account.Account
+        // interface fullName: email.exchange.Account.Account
         export interface Account {
             SAMAccountName?: string;
             accountLicense: email.exchange.OvhLicenceEnum;
@@ -47,27 +46,24 @@ export namespace email {
             state: email.exchange.ObjectStateEnum;
             taskPendingId: number;
         }
-        //email.exchange.AccountLicense
-        // fullName: email.exchange.AccountLicense.AccountLicense
+        // interface fullName: email.exchange.AccountLicense.AccountLicense
         export interface AccountLicense {
             license: email.exchange.OvhLicenceEnum;
             licenseQuantity: number;
         }
-        //email.exchange.ActiveSyncPolicyEnum
+        // type fullname: email.exchange.ActiveSyncPolicyEnum
         export type ActiveSyncPolicyEnum = "allow" | "block" | "quarantine"
-        //email.exchange.DailyLicense
-        // fullName: email.exchange.DailyLicense.DailyLicense
+        // interface fullName: email.exchange.DailyLicense.DailyLicense
         export interface DailyLicense {
             accountLicense: email.exchange.AccountLicense[];
             date: string;
             outlookQuantity: number;
         }
-        //email.exchange.DeviceActiveSyncStateEnum
+        // type fullname: email.exchange.DeviceActiveSyncStateEnum
         export type DeviceActiveSyncStateEnum = "allowed" | "blocked" | "deviceDiscovery" | "quarantined"
-        //email.exchange.DisclaimerAttributeEnum
+        // type fullname: email.exchange.DisclaimerAttributeEnum
         export type DisclaimerAttributeEnum = "City" | "Company" | "Country" | "Department" | "DisplayName" | "Email" | "FaxNumber" | "FirstName" | "HomePhoneNumber" | "Initials" | "LastName" | "Manager" | "MobileNumber" | "Notes" | "Office" | "OtherFaxNumber" | "OtherHomePhoneNumber" | "OtherPhoneNumber" | "PagerNumber" | "PhoneNumber" | "State" | "Street" | "Title" | "UserLogonName" | "ZipCode"
-        //email.exchange.Domain
-        // fullName: email.exchange.Domain.Domain
+        // interface fullName: email.exchange.Domain.Domain
         export interface Domain {
             cnameToCheck?: string;
             domainAliases: string[];
@@ -85,10 +81,9 @@ export namespace email {
             taskPendingId: number;
             type: email.exchange.DomainTypeEnum;
         }
-        //email.exchange.DomainTypeEnum
+        // type fullname: email.exchange.DomainTypeEnum
         export type DomainTypeEnum = "authoritative" | "nonAuthoritative"
-        //email.exchange.ExchangeService
-        // fullName: email.exchange.ExchangeService.ExchangeService
+        // interface fullName: email.exchange.ExchangeService.ExchangeService
         export interface ExchangeService {
             complexityEnabled: boolean;
             displayName?: string;
@@ -111,62 +106,56 @@ export namespace email {
             taskPendingId: number;
             webUrl?: string;
         }
-        //email.exchange.Export
-        // fullName: email.exchange.Export.Export
+        // interface fullName: email.exchange.Export.Export
         export interface Export {
             creationDate: string;
             percentComplete: number;
             taskPendingId: number;
         }
-        //email.exchange.ExportUrl
-        // fullName: email.exchange.ExportUrl.ExportUrl
+        // interface fullName: email.exchange.ExportUrl.ExportUrl
         export interface ExportUrl {
             expiration: string;
             url: string;
         }
-        //email.exchange.LanguageEnum
+        // type fullname: email.exchange.LanguageEnum
         export type LanguageEnum = "ar" | "bg" | "cz" | "da" | "de" | "el" | "en" | "es" | "et" | "fi" | "fr" | "he" | "hi" | "hr" | "hu" | "id" | "in" | "it" | "ja" | "ko" | "kz" | "lt" | "lv" | "ms" | "nb" | "nl" | "pl" | "pt" | "pt-BR" | "ro" | "rs" | "ru" | "sk" | "sl" | "sv" | "th" | "tr" | "uk" | "vi" | "zh-CN"
-        //email.exchange.MailingFilterEnum
+        // type fullname: email.exchange.MailingFilterEnum
         export type MailingFilterEnum = "vaderetro"
-        //email.exchange.MailingListDepartRestrictionEnum
+        // type fullname: email.exchange.MailingListDepartRestrictionEnum
         export type MailingListDepartRestrictionEnum = "closed" | "open"
-        //email.exchange.MailingListJoinRestrictionEnum
+        // type fullname: email.exchange.MailingListJoinRestrictionEnum
         export type MailingListJoinRestrictionEnum = "approvalRequired" | "closed" | "open"
-        //email.exchange.ObjectStateEnum
+        // type fullname: email.exchange.ObjectStateEnum
         export type ObjectStateEnum = "creating" | "deleting" | "internalMigration" | "ok" | "reopening" | "suspended" | "suspending"
-        //email.exchange.OutlookUrl
-        // fullName: email.exchange.OutlookUrl.OutlookUrl
+        // interface fullName: email.exchange.OutlookUrl.OutlookUrl
         export interface OutlookUrl {
             expiration: string;
             serial: string;
             url: string;
         }
-        //email.exchange.OutlookVersionEnum
+        // type fullname: email.exchange.OutlookVersionEnum
         export type OutlookVersionEnum = "mac_x86_2011" | "mac_x86_2016" | "windows_x64_2013" | "windows_x64_2016" | "windows_x86_2013" | "windows_x86_2016"
-        //email.exchange.OutlookVersions
-        // fullName: email.exchange.OutlookVersions.OutlookVersions
+        // interface fullName: email.exchange.OutlookVersions.OutlookVersions
         export interface OutlookVersions {
             outlookLanguage: email.exchange.LanguageEnum;
             outlookVersion: email.exchange.OutlookVersionEnum;
             status: boolean;
         }
-        //email.exchange.OvhLicenceEnum
+        // type fullname: email.exchange.OvhLicenceEnum
         export type OvhLicenceEnum = "basic" | "enterprise" | "standard"
-        //email.exchange.PublicFolderQuota
-        // fullName: email.exchange.PublicFolderQuota.PublicFolderQuota
+        // interface fullName: email.exchange.PublicFolderQuota.PublicFolderQuota
         export interface PublicFolderQuota {
             quotaLimit: number;
             quotaReserved: number;
             quotaUsed: number;
         }
-        //email.exchange.PublicFolderRightTypeEnum
+        // type fullname: email.exchange.PublicFolderRightTypeEnum
         export type PublicFolderRightTypeEnum = "editor" | "none" | "reviewer"
-        //email.exchange.PublicFolderTypeEnum
+        // type fullname: email.exchange.PublicFolderTypeEnum
         export type PublicFolderTypeEnum = "calendar" | "contacts" | "plain" | "tasks"
-        //email.exchange.ResourceTypeEnum
+        // type fullname: email.exchange.ResourceTypeEnum
         export type ResourceTypeEnum = "equipment" | "room"
-        //email.exchange.Server
-        // fullName: email.exchange.Server.Server
+        // interface fullName: email.exchange.Server.Server
         export interface Server {
             commercialVersion: email.exchange.exchangeCommercialVersionEnum;
             currentDiskUsage?: number;
@@ -183,23 +172,21 @@ export namespace email {
             taskPendingId: number;
             version?: number;
         }
-        //email.exchange.ServerStateEnum
+        // type fullname: email.exchange.ServerStateEnum
         export type ServerStateEnum = "configurationPending" | "notConfigured" | "ok"
-        //email.exchange.ServiceOfferEnum
+        // type fullname: email.exchange.ServiceOfferEnum
         export type ServiceOfferEnum = "dedicated" | "dedicatedCluster" | "hosted" | "provider"
-        //email.exchange.ServiceStateEnum
+        // type fullname: email.exchange.ServiceStateEnum
         export type ServiceStateEnum = "inMaintenance" | "ok" | "suspended"
-        //email.exchange.SharedAccountQuota
-        // fullName: email.exchange.SharedAccountQuota.SharedAccountQuota
+        // interface fullName: email.exchange.SharedAccountQuota.SharedAccountQuota
         export interface SharedAccountQuota {
             quotaLimit: number;
             quotaReserved: number;
             quotaUsed: number;
         }
-        //email.exchange.ShowMeetingDetailsEnum
+        // type fullname: email.exchange.ShowMeetingDetailsEnum
         export type ShowMeetingDetailsEnum = "availabilityOnly" | "limitedDetails" | "reviewer"
-        //email.exchange.Task
-        // fullName: email.exchange.Task.Task
+        // interface fullName: email.exchange.Task.Task
         export interface Task {
             finishDate?: string;
             function: email.exchange.TaskFunctionEnum;
@@ -207,16 +194,15 @@ export namespace email {
             status: email.exchange.TaskStatusEnum;
             todoDate: string;
         }
-        //email.exchange.TaskFunctionEnum
+        // type fullname: email.exchange.TaskFunctionEnum
         export type TaskFunctionEnum = "activateSharepoint" | "addAccount" | "addAccountArchive" | "addActiveSyncMailNotification" | "addAlias" | "addDistributionGroup" | "addDistributionGroupManager" | "addDistributionGroupMember" | "addDistributionGroupSendAs" | "addDistributionGroupSendOnBehalfTo" | "addDomain" | "addDomainDisclaimer" | "addExchangeServiceAuthorizedIp" | "addExportPstRequest" | "addExternalContact" | "addFullAccess" | "addOutlookLicense" | "addPublicFolder" | "addPublicFolderPermission" | "addResourceAccount" | "addResourceDelegate" | "addSendAs" | "addSendOnBehalfTo" | "addSharedAccount" | "addSharedAccountFullAccess" | "addSharedAccountSendAs" | "addSharedAccountSendOnBehalfTo" | "changeHostname" | "changePassword" | "clearDataOnDevice" | "cloneTemplateExchangePrivate" | "configureExchangeCustomer" | "deleteAccount" | "deleteAccountArchive" | "deleteActiveSyncMailNotification" | "deleteAlias" | "deleteDistributionGroup" | "deleteDistributionGroupManager" | "deleteDistributionGroupMember" | "deleteDistributionGroupSendAs" | "deleteDistributionGroupSendOnBehalfTo" | "deleteDomain" | "deleteDomainDisclaimer" | "deleteExchangeService" | "deleteExchangeServiceAuthorizedIp" | "deleteExportPstRequest" | "deleteExternalContact" | "deleteFullAccess" | "deleteOutlookLicense" | "deletePublicFolder" | "deletePublicFolderPermission" | "deleteResourceAccount" | "deleteResourceDelegate" | "deleteSendAs" | "deleteSendOnBehalfTo" | "deleteSharedAccount" | "deleteSharedAccountFullAccess" | "deleteSharedAccountSendAs" | "deleteSharedAccountSendOnBehalfTo" | "destroyPrivateVm" | "diagnoseAccount" | "expandDrive" | "generateOutlookUrl" | "generatePstUrl" | "installExchange" | "installSSL" | "maintenance" | "migrationAccount" | "migrationDisclaimer" | "migrationExternalContact" | "migrationHistory" | "migrationMailingList" | "migrationResourceAccount" | "migrationService" | "reOpenHostedAccount" | "reOpenOutlookLicense" | "reOpenPrivateAccount" | "reOpenPrivateVm" | "setAccount" | "setAccountArchive" | "setAlias" | "setDistributionGroup" | "setDns" | "setDomain" | "setDomainDisclaimer" | "setExchangeAccountProtocol" | "setExchangeServiceDevice" | "setExternalContact" | "setPublicFolder" | "setPublicFolderPermission" | "setResourceAccount" | "setService" | "setSharedAccount" | "suspendAccount" | "suspendExchangeService" | "suspendHostedAccount" | "suspendOutlookLicense" | "suspendPrivateAccount" | "suspendPrivateVm" | "unsuspendAccount" | "unsuspendExchangeService" | "unsuspendHostedAccount" | "updateExchangeServiceDevice" | "upgrade2016"
-        //email.exchange.TaskStatusEnum
+        // type fullname: email.exchange.TaskStatusEnum
         export type TaskStatusEnum = "cancelled" | "doing" | "done" | "error" | "todo"
-        //email.exchange.activeSyncNotificationStateEnum
+        // type fullname: email.exchange.activeSyncNotificationStateEnum
         export type activeSyncNotificationStateEnum = "creating" | "deleting" | "ok"
-        //email.exchange.authorizedIpStatusEnum
+        // type fullname: email.exchange.authorizedIpStatusEnum
         export type authorizedIpStatusEnum = "creating" | "deleting" | "ok"
-        //email.exchange.disclaimer
-        // fullName: email.exchange.disclaimer.disclaimer
+        // interface fullName: email.exchange.disclaimer.disclaimer
         export interface disclaimer {
             content: string;
             creationDate: string;
@@ -224,15 +210,13 @@ export namespace email {
             outsideOnly: boolean;
             taskPendingId: number;
         }
-        //email.exchange.exchangeAccountAlias
-        // fullName: email.exchange.exchangeAccountAlias.exchangeAccountAlias
+        // interface fullName: email.exchange.exchangeAccountAlias.exchangeAccountAlias
         export interface exchangeAccountAlias {
             alias: string;
             creationDate: string;
             taskPendingId: number;
         }
-        //email.exchange.exchangeAccountArchive
-        // fullName: email.exchange.exchangeAccountArchive.exchangeAccountArchive
+        // interface fullName: email.exchange.exchangeAccountArchive.exchangeAccountArchive
         export interface exchangeAccountArchive {
             creationDate: string;
             currentUsage?: number;
@@ -241,8 +225,7 @@ export namespace email {
             state: email.exchange.ObjectStateEnum;
             taskPendingId?: number;
         }
-        //email.exchange.exchangeAccountDiagnosis
-        // fullName: email.exchange.exchangeAccountDiagnosis.exchangeAccountDiagnosis
+        // interface fullName: email.exchange.exchangeAccountDiagnosis.exchangeAccountDiagnosis
         export interface exchangeAccountDiagnosis {
             canReceiveEmail: boolean;
             canSendEmail: boolean;
@@ -254,15 +237,13 @@ export namespace email {
             isSuspended: boolean;
             lastCheck: string;
         }
-        //email.exchange.exchangeAccountFullAccess
-        // fullName: email.exchange.exchangeAccountFullAccess.exchangeAccountFullAccess
+        // interface fullName: email.exchange.exchangeAccountFullAccess.exchangeAccountFullAccess
         export interface exchangeAccountFullAccess {
             allowedAccountId: number;
             creationDate: string;
             taskPendingId: number;
         }
-        //email.exchange.exchangeAccountProtocol
-        // fullName: email.exchange.exchangeAccountProtocol.exchangeAccountProtocol
+        // interface fullName: email.exchange.exchangeAccountProtocol.exchangeAccountProtocol
         export interface exchangeAccountProtocol {
             IMAP: boolean;
             POP: boolean;
@@ -272,32 +253,28 @@ export namespace email {
             taskPendingId: number;
             webMail: boolean;
         }
-        //email.exchange.exchangeAccountSendAs
-        // fullName: email.exchange.exchangeAccountSendAs.exchangeAccountSendAs
+        // interface fullName: email.exchange.exchangeAccountSendAs.exchangeAccountSendAs
         export interface exchangeAccountSendAs {
             allowedAccountId: number;
             creationDate: string;
             taskPendingId: number;
         }
-        //email.exchange.exchangeAccountSendOnBehalfTo
-        // fullName: email.exchange.exchangeAccountSendOnBehalfTo.exchangeAccountSendOnBehalfTo
+        // interface fullName: email.exchange.exchangeAccountSendOnBehalfTo.exchangeAccountSendOnBehalfTo
         export interface exchangeAccountSendOnBehalfTo {
             allowedAccountId: number;
             creationDate: string;
             taskPendingId: number;
         }
-        //email.exchange.exchangeCommercialVersionEnum
+        // type fullname: email.exchange.exchangeCommercialVersionEnum
         export type exchangeCommercialVersionEnum = "2010" | "2013" | "2016"
-        //email.exchange.exchangeDistributionGroupManager
-        // fullName: email.exchange.exchangeDistributionGroupManager.exchangeDistributionGroupManager
+        // interface fullName: email.exchange.exchangeDistributionGroupManager.exchangeDistributionGroupManager
         export interface exchangeDistributionGroupManager {
             creationDate: string;
             managerAccountId: number;
             managerEmailAddress: string;
             taskPendingId: number;
         }
-        //email.exchange.exchangeDistributionGroupMember
-        // fullName: email.exchange.exchangeDistributionGroupMember.exchangeDistributionGroupMember
+        // interface fullName: email.exchange.exchangeDistributionGroupMember.exchangeDistributionGroupMember
         export interface exchangeDistributionGroupMember {
             creationDate: string;
             memberAccountId?: number;
@@ -305,22 +282,19 @@ export namespace email {
             memberEmailAddress: string;
             taskPendingId: number;
         }
-        //email.exchange.exchangeDistributionGroupSendAs
-        // fullName: email.exchange.exchangeDistributionGroupSendAs.exchangeDistributionGroupSendAs
+        // interface fullName: email.exchange.exchangeDistributionGroupSendAs.exchangeDistributionGroupSendAs
         export interface exchangeDistributionGroupSendAs {
             allowedAccountId: number;
             creationDate: string;
             taskPendingId: number;
         }
-        //email.exchange.exchangeDistributionGroupSendOnBehalfTo
-        // fullName: email.exchange.exchangeDistributionGroupSendOnBehalfTo.exchangeDistributionGroupSendOnBehalfTo
+        // interface fullName: email.exchange.exchangeDistributionGroupSendOnBehalfTo.exchangeDistributionGroupSendOnBehalfTo
         export interface exchangeDistributionGroupSendOnBehalfTo {
             allowedAccountId: number;
             creationDate: string;
             taskPendingId: number;
         }
-        //email.exchange.exchangeExternalContact
-        // fullName: email.exchange.exchangeExternalContact.exchangeExternalContact
+        // interface fullName: email.exchange.exchangeExternalContact.exchangeExternalContact
         export interface exchangeExternalContact {
             creationDate: string;
             displayName: string;
@@ -334,15 +308,13 @@ export namespace email {
             state: email.exchange.ObjectStateEnum;
             taskPendingId: number;
         }
-        //email.exchange.exchangeMailingListAlias
-        // fullName: email.exchange.exchangeMailingListAlias.exchangeMailingListAlias
+        // interface fullName: email.exchange.exchangeMailingListAlias.exchangeMailingListAlias
         export interface exchangeMailingListAlias {
             alias: string;
             creationDate: string;
             taskPendingId: number;
         }
-        //email.exchange.exchangePublicFolderPermission
-        // fullName: email.exchange.exchangePublicFolderPermission.exchangePublicFolderPermission
+        // interface fullName: email.exchange.exchangePublicFolderPermission.exchangePublicFolderPermission
         export interface exchangePublicFolderPermission {
             accessRights: email.exchange.PublicFolderRightTypeEnum;
             allowedAccountId: number;
@@ -350,31 +322,27 @@ export namespace email {
             state: email.exchange.ObjectStateEnum;
             taskPendingId: number;
         }
-        //email.exchange.exchangeResourceAccountDelegate
-        // fullName: email.exchange.exchangeResourceAccountDelegate.exchangeResourceAccountDelegate
+        // interface fullName: email.exchange.exchangeResourceAccountDelegate.exchangeResourceAccountDelegate
         export interface exchangeResourceAccountDelegate {
             allowedAccountId: number;
             creationDate?: string;
             delegateEmailAddress: string;
             taskPendingId: number;
         }
-        //email.exchange.exchangeServiceActiveSyncNotification
-        // fullName: email.exchange.exchangeServiceActiveSyncNotification.exchangeServiceActiveSyncNotification
+        // interface fullName: email.exchange.exchangeServiceActiveSyncNotification.exchangeServiceActiveSyncNotification
         export interface exchangeServiceActiveSyncNotification {
             creationDate: string;
             notifiedAccountId: number;
             primaryEmailAddress: string;
             state: email.exchange.activeSyncNotificationStateEnum;
         }
-        //email.exchange.exchangeServiceAuthorizedIp
-        // fullName: email.exchange.exchangeServiceAuthorizedIp.exchangeServiceAuthorizedIp
+        // interface fullName: email.exchange.exchangeServiceAuthorizedIp.exchangeServiceAuthorizedIp
         export interface exchangeServiceAuthorizedIp {
             creationDate: string;
             ip: string;
             status: email.exchange.authorizedIpStatusEnum;
         }
-        //email.exchange.exchangeServiceDevice
-        // fullName: email.exchange.exchangeServiceDevice.exchangeServiceDevice
+        // interface fullName: email.exchange.exchangeServiceDevice.exchangeServiceDevice
         export interface exchangeServiceDevice {
             IMEI: string;
             creationDate: string;
@@ -386,8 +354,7 @@ export namespace email {
             lastUpdate?: string;
             taskPendingId: number;
         }
-        //email.exchange.exchangeServiceProtocol
-        // fullName: email.exchange.exchangeServiceProtocol.exchangeServiceProtocol
+        // interface fullName: email.exchange.exchangeServiceProtocol.exchangeServiceProtocol
         export interface exchangeServiceProtocol {
             IMAP: boolean;
             POP: boolean;
@@ -398,29 +365,25 @@ export namespace email {
             taskPendingId: number;
             webMail: boolean;
         }
-        //email.exchange.exchangeSharedAccountFullAccess
-        // fullName: email.exchange.exchangeSharedAccountFullAccess.exchangeSharedAccountFullAccess
+        // interface fullName: email.exchange.exchangeSharedAccountFullAccess.exchangeSharedAccountFullAccess
         export interface exchangeSharedAccountFullAccess {
             allowedAccountId: number;
             creationDate: string;
             taskPendingId: number;
         }
-        //email.exchange.exchangeSharedAccountSendAs
-        // fullName: email.exchange.exchangeSharedAccountSendAs.exchangeSharedAccountSendAs
+        // interface fullName: email.exchange.exchangeSharedAccountSendAs.exchangeSharedAccountSendAs
         export interface exchangeSharedAccountSendAs {
             allowedAccountId: number;
             creationDate: string;
             taskPendingId: number;
         }
-        //email.exchange.exchangeSharedAccountSendOnBehalfTo
-        // fullName: email.exchange.exchangeSharedAccountSendOnBehalfTo.exchangeSharedAccountSendOnBehalfTo
+        // interface fullName: email.exchange.exchangeSharedAccountSendOnBehalfTo.exchangeSharedAccountSendOnBehalfTo
         export interface exchangeSharedAccountSendOnBehalfTo {
             allowedAccountId: number;
             creationDate: string;
             taskPendingId: number;
         }
-        //email.exchange.mailingList
-        // fullName: email.exchange.mailingList.mailingList
+        // interface fullName: email.exchange.mailingList.mailingList
         export interface mailingList {
             creationDate: string;
             departRestriction: email.exchange.MailingListDepartRestrictionEnum;
@@ -437,8 +400,7 @@ export namespace email {
             state: email.exchange.ObjectStateEnum;
             taskPendingId: number;
         }
-        //email.exchange.publicFolder
-        // fullName: email.exchange.publicFolder.publicFolder
+        // interface fullName: email.exchange.publicFolder.publicFolder
         export interface publicFolder {
             anonymousPermission: email.exchange.PublicFolderRightTypeEnum;
             creationDate?: string;
@@ -456,10 +418,9 @@ export namespace email {
             totalItemSize?: number;
             type: email.exchange.PublicFolderTypeEnum;
         }
-        //email.exchange.renewPeriodEnum
+        // type fullname: email.exchange.renewPeriodEnum
         export type renewPeriodEnum = "monthly" | "yearly"
-        //email.exchange.resourceAccount
-        // fullName: email.exchange.resourceAccount.resourceAccount
+        // interface fullName: email.exchange.resourceAccount.resourceAccount
         export interface resourceAccount {
             addOrganizerToSubject: boolean;
             allowConflict: boolean;
@@ -477,8 +438,7 @@ export namespace email {
             taskPendingId: number;
             type: email.exchange.ResourceTypeEnum;
         }
-        //email.exchange.sharedAccount
-        // fullName: email.exchange.sharedAccount.sharedAccount
+        // interface fullName: email.exchange.sharedAccount.sharedAccount
         export interface sharedAccount {
             creationDate?: string;
             currentUsage?: number;
@@ -498,8 +458,7 @@ export namespace email {
             state: email.exchange.ObjectStateEnum;
             taskPendingId: number;
         }
-        //email.exchange.spamAndVirusConfiguration
-        // fullName: email.exchange.spamAndVirusConfiguration.spamAndVirusConfiguration
+        // interface fullName: email.exchange.spamAndVirusConfiguration.spamAndVirusConfiguration
         export interface spamAndVirusConfiguration {
             checkDKIM: boolean;
             checkSPF: boolean;
@@ -512,8 +471,7 @@ export namespace email {
     }
 }
 export namespace service {
-    //service.RenewType
-    // fullName: service.RenewType.RenewType
+    // interface fullName: service.RenewType.RenewType
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -521,14 +479,13 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    //service.RenewalTypeEnum
+    // type fullname: service.RenewalTypeEnum
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    //service.StateEnum
+    // type fullname: service.StateEnum
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
 }
 export namespace services {
-    //services.Service
-    // fullName: services.Service.Service
+    // interface fullName: services.Service.Service
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;

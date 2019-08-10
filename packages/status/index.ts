@@ -5,26 +5,24 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  */
 export namespace ovhstatus {
     export namespace task {
-        //ovhstatus.task.TaskImpactEnum
+        // type fullname: ovhstatus.task.TaskImpactEnum
         export type TaskImpactEnum = "partialUnavailability" | "fullUnavailability" | "downtime" | "none" | "unknown"
-        //ovhstatus.task.TaskStatusEnum
+        // type fullname: ovhstatus.task.TaskStatusEnum
         export type TaskStatusEnum = "planned" | "inProgress" | "finished"
-        //ovhstatus.task.TaskTypeEnum
+        // type fullname: ovhstatus.task.TaskTypeEnum
         export type TaskTypeEnum = "incident" | "maintenance" | "upgrade"
     }
 }
 export namespace status {
     export namespace Reply {
-        //status.Reply.Reply
-        // fullName: status.Reply.Reply.Reply
+        // interface fullName: status.Reply.Reply.Reply
         export interface Reply {
             comment: string;
             date: string;
         }
     }
     export namespace Task {
-        //status.Task.Task
-        // fullName: status.Task.Task.Task
+        // interface fullName: status.Task.Task.Task
         export interface Task {
             category: string;
             endDate?: string;

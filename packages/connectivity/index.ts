@@ -4,13 +4,12 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /connectivity Models
  */
 export namespace connectivity {
-    //connectivity.OperatorEnum
+    // type fullname: connectivity.OperatorEnum
     export type OperatorEnum = "OVH" | "KOSC" | "SFR" | "ORANGE" | "AXIONE"
     export namespace eligibility {
-        //connectivity.eligibility.ActivationTypeEnum
+        // type fullname: connectivity.eligibility.ActivationTypeEnum
         export type ActivationTypeEnum = "activate" | "create" | "createNeighbour"
-        //connectivity.eligibility.Address
-        // fullName: connectivity.eligibility.Address.Address
+        // interface fullName: connectivity.eligibility.Address.Address
         export interface Address {
             building?: string;
             city: string;
@@ -25,8 +24,7 @@ export namespace connectivity {
             streetNumber?: string;
             zipCode: string;
         }
-        //connectivity.eligibility.Building
-        // fullName: connectivity.eligibility.Building.Building
+        // interface fullName: connectivity.eligibility.Building.Building
         export interface Building {
             name: string;
             nro?: string;
@@ -34,24 +32,21 @@ export namespace connectivity {
             stairs: connectivity.eligibility.BuildingStair[];
             type: connectivity.eligibility.BuildingTypeEnum;
         }
-        //connectivity.eligibility.BuildingStair
-        // fullName: connectivity.eligibility.BuildingStair.BuildingStair
+        // interface fullName: connectivity.eligibility.BuildingStair.BuildingStair
         export interface BuildingStair {
             floors: string[];
             stair: string;
         }
-        //connectivity.eligibility.BuildingTypeEnum
+        // type fullname: connectivity.eligibility.BuildingTypeEnum
         export type BuildingTypeEnum = "BUILDING" | "HOUSE"
-        //connectivity.eligibility.City
-        // fullName: connectivity.eligibility.City.City
+        // interface fullName: connectivity.eligibility.City.City
         export interface City {
             city: string;
             inseeCode: string;
             locality?: string;
             zipCode: string;
         }
-        //connectivity.eligibility.CopperInfo
-        // fullName: connectivity.eligibility.CopperInfo.CopperInfo
+        // interface fullName: connectivity.eligibility.CopperInfo.CopperInfo
         export interface CopperInfo {
             availablePairs?: number;
             maxAvailablePairs?: number;
@@ -61,15 +56,13 @@ export namespace connectivity {
             underConstruction?: boolean;
             unlistedNumber: boolean;
         }
-        //connectivity.eligibility.EligibilityTest
-        // fullName: connectivity.eligibility.EligibilityTest.EligibilityTest
+        // interface fullName: connectivity.eligibility.EligibilityTest.EligibilityTest
         export interface EligibilityTest {
             eligibilityReference: string;
             endpoint: connectivity.eligibility.Endpoint;
             offers: connectivity.eligibility.Offer[];
         }
-        //connectivity.eligibility.Endpoint
-        // fullName: connectivity.eligibility.Endpoint.Endpoint
+        // interface fullName: connectivity.eligibility.Endpoint.Endpoint
         export interface Endpoint {
             address: connectivity.eligibility.Address;
             copperInfo?: connectivity.eligibility.CopperInfo;
@@ -78,10 +71,9 @@ export namespace connectivity {
             reference: string;
             referenceType: connectivity.eligibility.EndpointReferenceTypeEnum;
         }
-        //connectivity.eligibility.EndpointReferenceTypeEnum
+        // type fullname: connectivity.eligibility.EndpointReferenceTypeEnum
         export type EndpointReferenceTypeEnum = "building" | "lineNumber" | "otp"
-        //connectivity.eligibility.FiberInfo
-        // fullName: connectivity.eligibility.FiberInfo.FiberInfo
+        // interface fullName: connectivity.eligibility.FiberInfo.FiberInfo
         export interface FiberInfo {
             buildingName: string;
             buildingReference: string;
@@ -90,45 +82,39 @@ export namespace connectivity {
             operatorCode: string;
             operatorName: string;
         }
-        //connectivity.eligibility.Line
-        // fullName: connectivity.eligibility.Line.Line
+        // interface fullName: connectivity.eligibility.Line.Line
         export interface Line {
             address: connectivity.eligibility.Address;
             copperInfo: connectivity.eligibility.CopperInfo;
             lineNumber: string;
         }
-        //connectivity.eligibility.LineStatusEnum
+        // type fullname: connectivity.eligibility.LineStatusEnum
         export type LineStatusEnum = "active" | "inactive"
-        //connectivity.eligibility.MeetingSlot
-        // fullName: connectivity.eligibility.MeetingSlot.MeetingSlot
+        // interface fullName: connectivity.eligibility.MeetingSlot.MeetingSlot
         export interface MeetingSlot {
             endDate: string;
             startDate: string;
             uiCode: string;
         }
-        //connectivity.eligibility.Meetings
-        // fullName: connectivity.eligibility.Meetings.Meetings
+        // interface fullName: connectivity.eligibility.Meetings.Meetings
         export interface Meetings {
             canBookFakeMeeting: boolean;
             meetingSlots: connectivity.eligibility.MeetingSlot[];
         }
-        //connectivity.eligibility.Message
-        // fullName: connectivity.eligibility.Message.Message
+        // interface fullName: connectivity.eligibility.Message.Message
         export interface Message {
             availabilityDate?: string;
             code: connectivity.eligibility.MessageCodeEnum;
             message: string;
         }
-        //connectivity.eligibility.MessageCodeEnum
+        // type fullname: connectivity.eligibility.MessageCodeEnum
         export type MessageCodeEnum = "2006" | "2011" | "2102" | "2103" | "2104" | "2105" | "3009" | "3011" | "3012" | "3013" | "3014" | "3031" | "3040" | "3041" | "3043" | "3044" | "3045" | "3046" | "3047" | "3048" | "3049" | "ATTENUATION_LIMIT" | "COMPATIBILITY_CHECK" | "COPPER_NOT_AVAILABLE" | "COPPER_NOT_YET_AVAILABLE" | "DELAY_30" | "DELAY_7" | "EXTERNAL_WS_UNREACHABLE" | "FIBER_NOT_AVAILABLE" | "FIBER_NOT_DEPLOYED_IN_BUILDING" | "FIBER_NOT_YET_AVAILABLE" | "FIBER_NOT_YET_DEPLOYED" | "INCOMPATIBLE_LOCAL_LOOP" | "NETWORK_SATURATED" | "OTP_NOT_CONNECTABLE" | "OTP_NOT_MARKETABLE" | "PAIRS_SATURATION" | "PRODUCT_NOT_AVAILABLE" | "PRODUCT_NOT_YET_AVAILABLE" | "TOO_MUCH_ATTENUATION" | "UNCERTAIN_DATA"
-        //connectivity.eligibility.Offer
-        // fullName: connectivity.eligibility.Offer.Offer
+        // interface fullName: connectivity.eligibility.Offer.Offer
         export interface Offer {
             eligibility: connectivity.eligibility.OfferEligibility;
             product: connectivity.eligibility.OfferProduct;
         }
-        //connectivity.eligibility.OfferEligibility
-        // fullName: connectivity.eligibility.OfferEligibility.OfferEligibility
+        // interface fullName: connectivity.eligibility.OfferEligibility.OfferEligibility
         export interface OfferEligibility {
             activationTypes: connectivity.eligibility.ActivationTypeEnum[];
             eligible: boolean;
@@ -137,8 +123,7 @@ export namespace connectivity {
             reasons: connectivity.eligibility.Message[];
             underConditions: connectivity.eligibility.Message[];
         }
-        //connectivity.eligibility.OfferProduct
-        // fullName: connectivity.eligibility.OfferProduct.OfferProduct
+        // interface fullName: connectivity.eligibility.OfferProduct.OfferProduct
         export interface OfferProduct {
             code: string;
             downloadRate: number;
@@ -151,44 +136,39 @@ export namespace connectivity {
             unbundlingType?: connectivity.eligibility.OfferProductUnbundlingTypeEnum;
             uploadRate: number;
         }
-        //connectivity.eligibility.OfferProductProviderEnum
+        // type fullname: connectivity.eligibility.OfferProductProviderEnum
         export type OfferProductProviderEnum = "AXIONE" | "KOSC" | "ORANGE" | "SFR"
-        //connectivity.eligibility.OfferProductTypeEnum
+        // type fullname: connectivity.eligibility.OfferProductTypeEnum
         export type OfferProductTypeEnum = "ADSL" | "FTTH" | "SDSL" | "VDSL"
-        //connectivity.eligibility.OfferProductUnbundlingTypeEnum
+        // type fullname: connectivity.eligibility.OfferProductUnbundlingTypeEnum
         export type OfferProductUnbundlingTypeEnum = "full" | "partial"
-        //connectivity.eligibility.Portability
-        // fullName: connectivity.eligibility.Portability.Portability
+        // interface fullName: connectivity.eligibility.Portability.Portability
         export interface Portability {
             eligibility: connectivity.eligibility.PortabilityEligibility;
             quarantineEndDate?: string;
             type?: connectivity.eligibility.PortabilityTypeEnum;
         }
-        //connectivity.eligibility.PortabilityEligibility
-        // fullName: connectivity.eligibility.PortabilityEligibility.PortabilityEligibility
+        // interface fullName: connectivity.eligibility.PortabilityEligibility.PortabilityEligibility
         export interface PortabilityEligibility {
             eligible: boolean;
             reasons: connectivity.eligibility.Message[];
             underConditions: connectivity.eligibility.Message[];
         }
-        //connectivity.eligibility.PortabilityTypeEnum
+        // type fullname: connectivity.eligibility.PortabilityTypeEnum
         export type PortabilityTypeEnum = "portin" | "portinback" | "portout" | "subsequent" | "subsquentportin"
-        //connectivity.eligibility.SectionLength
-        // fullName: connectivity.eligibility.SectionLength.SectionLength
+        // interface fullName: connectivity.eligibility.SectionLength.SectionLength
         export interface SectionLength {
             diameter: number;
             length: number;
         }
-        //connectivity.eligibility.Street
-        // fullName: connectivity.eligibility.Street.Street
+        // interface fullName: connectivity.eligibility.Street.Street
         export interface Street {
             streetCode: string;
             streetName: string;
         }
     }
     export namespace monitoring {
-        //connectivity.monitoring.GenericIncident
-        // fullName: connectivity.monitoring.GenericIncident.GenericIncident
+        // interface fullName: connectivity.monitoring.GenericIncident.GenericIncident
         export interface GenericIncident {
             comment?: string;
             creationDate: string;
@@ -200,26 +180,24 @@ export namespace connectivity {
             status: connectivity.monitoring.GenericIncidentStatusEnum;
             taskId?: number;
         }
-        //connectivity.monitoring.GenericIncidentStatusEnum
+        // type fullname: connectivity.monitoring.GenericIncidentStatusEnum
         export type GenericIncidentStatusEnum = "detected" | "validated" | "closed"
     }
 }
 export namespace xdsl {
-    //xdsl.AsyncTask
-    // fullName: xdsl.AsyncTask.AsyncTask
+    // interface fullName: xdsl.AsyncTask.AsyncTask
     export interface AsyncTask<T> {
         error?: string;
         result?: T;
         status: xdsl.AsyncTaskStatusEnum;
     }
-    //xdsl.AsyncTaskArray
-    // fullName: xdsl.AsyncTaskArray.AsyncTaskArray
+    // interface fullName: xdsl.AsyncTaskArray.AsyncTaskArray
     export interface AsyncTaskArray<T> {
         error?: string;
         result?: T[];
         status: xdsl.AsyncTaskStatusEnum;
     }
-    //xdsl.AsyncTaskStatusEnum
+    // type fullname: xdsl.AsyncTaskStatusEnum
     export type AsyncTaskStatusEnum = "error" | "ok" | "pending"
 }
 

@@ -4,8 +4,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /vrack Models
  */
 export namespace complexType {
-    //complexType.UnitAndValue
-    // fullName: complexType.UnitAndValue.UnitAndValue
+    // interface fullName: complexType.UnitAndValue.UnitAndValue
     export interface UnitAndValue<T> {
         unit: string;
         value: T;
@@ -13,25 +12,23 @@ export namespace complexType {
 }
 export namespace dedicated {
     export namespace server {
-        //dedicated.server.MrtgPeriodEnum
+        // type fullname: dedicated.server.MrtgPeriodEnum
         export type MrtgPeriodEnum = "daily" | "hourly" | "monthly" | "weekly" | "yearly"
-        //dedicated.server.MrtgTimestampValue
-        // fullName: dedicated.server.MrtgTimestampValue.MrtgTimestampValue
+        // interface fullName: dedicated.server.MrtgTimestampValue.MrtgTimestampValue
         export interface MrtgTimestampValue {
             timestamp: number;
             value?: complexType.UnitAndValue<number>;
         }
-        //dedicated.server.MrtgTypeEnum
+        // type fullname: dedicated.server.MrtgTypeEnum
         export type MrtgTypeEnum = "errors:download" | "errors:upload" | "packets:download" | "packets:upload" | "traffic:download" | "traffic:upload"
     }
 }
 export namespace service {
-    //service.StateEnum
+    // type fullname: service.StateEnum
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
 }
 export namespace services {
-    //services.NonExpiringService
-    // fullName: services.NonExpiringService.NonExpiringService
+    // interface fullName: services.NonExpiringService.NonExpiringService
     export interface NonExpiringService {
         contactAdmin: string;
         contactBilling: string;
@@ -43,15 +40,13 @@ export namespace services {
     }
 }
 export namespace vrack {
-    //vrack.AllowedDedicatedServerInterfaces
-    // fullName: vrack.AllowedDedicatedServerInterfaces.AllowedDedicatedServerInterfaces
+    // interface fullName: vrack.AllowedDedicatedServerInterfaces.AllowedDedicatedServerInterfaces
     export interface AllowedDedicatedServerInterfaces {
         dedicatedServer: string;
         dedicatedServerInterface: string;
         name: string;
     }
-    //vrack.AllowedServices
-    // fullName: vrack.AllowedServices.AllowedServices
+    // interface fullName: vrack.AllowedServices.AllowedServices
     export interface AllowedServices {
         cloudProject?: string[];
         dedicatedCloud?: string[];
@@ -63,8 +58,7 @@ export namespace vrack {
         ipLoadbalancing?: string[];
         legacyVrack?: string[];
     }
-    //vrack.Task
-    // fullName: vrack.Task.Task
+    // interface fullName: vrack.Task.Task
     export interface Task {
         function: string;
         id: number;
@@ -75,79 +69,67 @@ export namespace vrack {
         targetDomain?: string;
         todoDate?: string;
     }
-    //vrack.TaskStatusEnum
+    // type fullname: vrack.TaskStatusEnum
     export type TaskStatusEnum = "cancelled" | "doing" | "done" | "init" | "todo"
-    //vrack.VrackZoneEnum
+    // type fullname: vrack.VrackZoneEnum
     export type VrackZoneEnum = "bhs" | "fra1" | "gra" | "lon1" | "pdx1" | "rbx" | "sbg" | "sgp1" | "syd1" | "was1" | "waw"
-    //vrack.cloudProject
-    // fullName: vrack.cloudProject.cloudProject
+    // interface fullName: vrack.cloudProject.cloudProject
     export interface cloudProject {
         project: string;
         vrack: string;
     }
-    //vrack.dedicatedCloud
-    // fullName: vrack.dedicatedCloud.dedicatedCloud
+    // interface fullName: vrack.dedicatedCloud.dedicatedCloud
     export interface dedicatedCloud {
         dedicatedCloud: string;
         vlanId?: number;
         vrack: string;
     }
-    //vrack.dedicatedConnect
-    // fullName: vrack.dedicatedConnect.dedicatedConnect
+    // interface fullName: vrack.dedicatedConnect.dedicatedConnect
     export interface dedicatedConnect {
         name: string;
     }
-    //vrack.dedicatedServer
-    // fullName: vrack.dedicatedServer.dedicatedServer
+    // interface fullName: vrack.dedicatedServer.dedicatedServer
     export interface dedicatedServer {
         dedicatedServer: string;
         vrack: string;
     }
-    //vrack.dedicatedServerInterface
-    // fullName: vrack.dedicatedServerInterface.dedicatedServerInterface
+    // interface fullName: vrack.dedicatedServerInterface.dedicatedServerInterface
     export interface dedicatedServerInterface {
         dedicatedServerInterface: string;
         vrack: string;
     }
-    //vrack.ip
-    // fullName: vrack.ip.ip
+    // interface fullName: vrack.ip.ip
     export interface ip {
         gateway?: string;
         ip: string;
         zone?: vrack.VrackZoneEnum;
     }
-    //vrack.iplb
-    // fullName: vrack.iplb.iplb
+    // interface fullName: vrack.iplb.iplb
     export interface iplb {
         ipLoadbalancing: string;
         vrack: string;
     }
-    //vrack.legacyVrack
-    // fullName: vrack.legacyVrack.legacyVrack
+    // interface fullName: vrack.legacyVrack.legacyVrack
     export interface legacyVrack {
         legacyVrack: string;
         vlanId: number;
     }
-    //vrack.nasha
-    // fullName: vrack.nasha.nasha
+    // interface fullName: vrack.nasha.nasha
     export interface nasha {
         serviceIp: string;
         zpool: string;
     }
-    //vrack.pccDatacenter
-    // fullName: vrack.pccDatacenter.pccDatacenter
+    // interface fullName: vrack.pccDatacenter.pccDatacenter
     export interface pccDatacenter {
         datacenter: string;
         dedicatedCloud: string;
         vrack: string;
     }
-    //vrack.publicRoutingOption
-    // fullName: vrack.publicRoutingOption.publicRoutingOption
+    // interface fullName: vrack.publicRoutingOption.publicRoutingOption
     export interface publicRoutingOption {
         bandwidth?: number;
     }
-    //vrack.vrack
-    // fullName: vrack.vrack.vrack
+    // interface fullName: vrack.vrack.vrack
     export interface vrack {
         description: string;
         name: string;

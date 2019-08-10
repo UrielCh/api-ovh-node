@@ -4,10 +4,9 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /ipLoadbalancing Models
  */
 export namespace ipLoadbalancing {
-    //ipLoadbalancing.BackendCustomerServerStatusEnum
+    // type fullname: ipLoadbalancing.BackendCustomerServerStatusEnum
     export type BackendCustomerServerStatusEnum = "active" | "inactive"
-    //ipLoadbalancing.BackendProbe
-    // fullName: ipLoadbalancing.BackendProbe.BackendProbe
+    // interface fullName: ipLoadbalancing.BackendProbe.BackendProbe
     export interface BackendProbe {
         forceSsl?: boolean;
         interval?: number;
@@ -19,31 +18,27 @@ export namespace ipLoadbalancing {
         type?: ipLoadbalancing.ProbeTypeEnum;
         url?: string;
     }
-    //ipLoadbalancing.BalanceHTTPEnum
+    // type fullname: ipLoadbalancing.BalanceHTTPEnum
     export type BalanceHTTPEnum = "first" | "leastconn" | "roundrobin" | "source" | "uri"
-    //ipLoadbalancing.BalanceTCPEnum
+    // type fullname: ipLoadbalancing.BalanceTCPEnum
     export type BalanceTCPEnum = "first" | "leastconn" | "roundrobin" | "source"
-    //ipLoadbalancing.DefinedFarm
-    // fullName: ipLoadbalancing.DefinedFarm.DefinedFarm
+    // interface fullName: ipLoadbalancing.DefinedFarm.DefinedFarm
     export interface DefinedFarm {
         id: number;
         type: string;
     }
-    //ipLoadbalancing.DefinedFrontend
-    // fullName: ipLoadbalancing.DefinedFrontend.DefinedFrontend
+    // interface fullName: ipLoadbalancing.DefinedFrontend.DefinedFrontend
     export interface DefinedFrontend {
         id: number;
         type: string;
     }
-    //ipLoadbalancing.DefinedRoute
-    // fullName: ipLoadbalancing.DefinedRoute.DefinedRoute
+    // interface fullName: ipLoadbalancing.DefinedRoute.DefinedRoute
     export interface DefinedRoute {
         displayName?: string;
         routeId: number;
         type: string;
     }
-    //ipLoadbalancing.FarmAvailableProbe
-    // fullName: ipLoadbalancing.FarmAvailableProbe.FarmAvailableProbe
+    // interface fullName: ipLoadbalancing.FarmAvailableProbe.FarmAvailableProbe
     export interface FarmAvailableProbe {
         matches: string[];
         method?: string[];
@@ -52,16 +47,14 @@ export namespace ipLoadbalancing {
         type: string;
         url: boolean;
     }
-    //ipLoadbalancing.InstancesState
-    // fullName: ipLoadbalancing.InstancesState.InstancesState
+    // interface fullName: ipLoadbalancing.InstancesState.InstancesState
     export interface InstancesState {
         internalId: number;
         lastUpdateDate: string;
         state: string;
         zone: string;
     }
-    //ipLoadbalancing.Ip
-    // fullName: ipLoadbalancing.Ip.Ip
+    // interface fullName: ipLoadbalancing.Ip.Ip
     export interface Ip {
         displayName?: string;
         ipLoadbalancing: string;
@@ -77,37 +70,33 @@ export namespace ipLoadbalancing {
         vrackName?: string;
         zone: string[];
     }
-    //ipLoadbalancing.IpStateEnum
+    // type fullname: ipLoadbalancing.IpStateEnum
     export type IpStateEnum = "blacklisted" | "deleted" | "free" | "ok" | "quarantined" | "suspended"
-    //ipLoadbalancing.NatIps
-    // fullName: ipLoadbalancing.NatIps.NatIps
+    // interface fullName: ipLoadbalancing.NatIps.NatIps
     export interface NatIps {
         ip: string[];
         zone: string;
     }
-    //ipLoadbalancing.OrderableZone
-    // fullName: ipLoadbalancing.OrderableZone.OrderableZone
+    // interface fullName: ipLoadbalancing.OrderableZone.OrderableZone
     export interface OrderableZone {
         name: string;
         planCode: string;
     }
-    //ipLoadbalancing.PendingChanges
-    // fullName: ipLoadbalancing.PendingChanges.PendingChanges
+    // interface fullName: ipLoadbalancing.PendingChanges.PendingChanges
     export interface PendingChanges {
         number: number;
         zone: string;
     }
-    //ipLoadbalancing.ProbeExpectMatchEnum
+    // type fullname: ipLoadbalancing.ProbeExpectMatchEnum
     export type ProbeExpectMatchEnum = "contains" | "default" | "internal" | "matches" | "status"
-    //ipLoadbalancing.ProbeMethodEnum
+    // type fullname: ipLoadbalancing.ProbeMethodEnum
     export type ProbeMethodEnum = "GET" | "HEAD" | "OPTIONS" | "internal"
-    //ipLoadbalancing.ProbeTypeEnum
+    // type fullname: ipLoadbalancing.ProbeTypeEnum
     export type ProbeTypeEnum = "http" | "internal" | "mysql" | "oco" | "pgsql" | "smtp" | "tcp"
-    //ipLoadbalancing.ProxyProtocolVersionEnum
+    // type fullname: ipLoadbalancing.ProxyProtocolVersionEnum
     export type ProxyProtocolVersionEnum = "v1" | "v2" | "v2-ssl" | "v2-ssl-cn"
     export namespace Quota {
-        //ipLoadbalancing.Quota.Quota
-        // fullName: ipLoadbalancing.Quota.Quota.Quota
+        // interface fullName: ipLoadbalancing.Quota.Quota.Quota
         export interface Quota {
             alert?: number;
             included?: number;
@@ -118,8 +107,7 @@ export namespace ipLoadbalancing {
         }
     }
     export namespace QuotaHistory {
-        //ipLoadbalancing.QuotaHistory.QuotaHistory
-        // fullName: ipLoadbalancing.QuotaHistory.QuotaHistory.QuotaHistory
+        // interface fullName: ipLoadbalancing.QuotaHistory.QuotaHistory.QuotaHistory
         export interface QuotaHistory {
             historizedDate: string;
             id: number;
@@ -129,16 +117,14 @@ export namespace ipLoadbalancing {
             zone: string;
         }
     }
-    //ipLoadbalancing.RouteAvailableAction
-    // fullName: ipLoadbalancing.RouteAvailableAction.RouteAvailableAction
+    // interface fullName: ipLoadbalancing.RouteAvailableAction.RouteAvailableAction
     export interface RouteAvailableAction {
         destination?: string;
         name: string;
         status?: number[];
         type: string;
     }
-    //ipLoadbalancing.RouteAvailableRule
-    // fullName: ipLoadbalancing.RouteAvailableRule.RouteAvailableRule
+    // interface fullName: ipLoadbalancing.RouteAvailableRule.RouteAvailableRule
     export interface RouteAvailableRule {
         enum?: string[];
         hasSubField: boolean;
@@ -148,8 +134,7 @@ export namespace ipLoadbalancing {
         type: string;
     }
     export namespace RouteHttp {
-        //ipLoadbalancing.RouteHttp.RouteHttp
-        // fullName: ipLoadbalancing.RouteHttp.RouteHttp.RouteHttp
+        // interface fullName: ipLoadbalancing.RouteHttp.RouteHttp.RouteHttp
         export interface RouteHttp {
             action: ipLoadbalancing.RouteHttpAction;
             displayName?: string;
@@ -160,15 +145,13 @@ export namespace ipLoadbalancing {
             weight: number;
         }
     }
-    //ipLoadbalancing.RouteHttpAction
-    // fullName: ipLoadbalancing.RouteHttpAction.RouteHttpAction
+    // interface fullName: ipLoadbalancing.RouteHttpAction.RouteHttpAction
     export interface RouteHttpAction {
         status?: number;
         target?: string;
         type: string;
     }
-    //ipLoadbalancing.RouteRule
-    // fullName: ipLoadbalancing.RouteRule.RouteRule
+    // interface fullName: ipLoadbalancing.RouteRule.RouteRule
     export interface RouteRule {
         field: string;
         match: ipLoadbalancing.RouteRuleMatchesEnum;
@@ -178,8 +161,7 @@ export namespace ipLoadbalancing {
         subField?: string;
     }
     export namespace RouteRule {
-        //ipLoadbalancing.RouteRule.RouteRule
-        // fullName: ipLoadbalancing.RouteRule.RouteRule.RouteRule
+        // interface fullName: ipLoadbalancing.RouteRule.RouteRule.RouteRule
         export interface RouteRule {
             displayName?: string;
             field: string;
@@ -190,13 +172,12 @@ export namespace ipLoadbalancing {
             subField?: string;
         }
     }
-    //ipLoadbalancing.RouteRuleMatchesEnum
+    // type fullname: ipLoadbalancing.RouteRuleMatchesEnum
     export type RouteRuleMatchesEnum = "contains" | "endswith" | "exists" | "in" | "internal" | "is" | "matches" | "startswith"
-    //ipLoadbalancing.RouteStatusEnum
+    // type fullname: ipLoadbalancing.RouteStatusEnum
     export type RouteStatusEnum = "creating" | "deleting" | "internal" | "ok" | "updating"
     export namespace RouteTcp {
-        //ipLoadbalancing.RouteTcp.RouteTcp
-        // fullName: ipLoadbalancing.RouteTcp.RouteTcp.RouteTcp
+        // interface fullName: ipLoadbalancing.RouteTcp.RouteTcp.RouteTcp
         export interface RouteTcp {
             action: ipLoadbalancing.RouteTcpAction;
             displayName?: string;
@@ -207,14 +188,12 @@ export namespace ipLoadbalancing {
             weight: number;
         }
     }
-    //ipLoadbalancing.RouteTcpAction
-    // fullName: ipLoadbalancing.RouteTcpAction.RouteTcpAction
+    // interface fullName: ipLoadbalancing.RouteTcpAction.RouteTcpAction
     export interface RouteTcpAction {
         target?: string;
         type: string;
     }
-    //ipLoadbalancing.ServerState
-    // fullName: ipLoadbalancing.ServerState.ServerState
+    // interface fullName: ipLoadbalancing.ServerState.ServerState
     export interface ServerState {
         checkCode?: string;
         checkStatus?: string;
@@ -224,8 +203,7 @@ export namespace ipLoadbalancing {
         status?: string;
     }
     export namespace Ssl {
-        //ipLoadbalancing.Ssl.Ssl
-        // fullName: ipLoadbalancing.Ssl.Ssl.Ssl
+        // interface fullName: ipLoadbalancing.Ssl.Ssl.Ssl
         export interface Ssl {
             displayName?: string;
             expireDate: string;
@@ -237,25 +215,23 @@ export namespace ipLoadbalancing {
             type?: ipLoadbalancing.SslTypeEnum;
         }
     }
-    //ipLoadbalancing.SslConfigurationEnum
+    // type fullname: ipLoadbalancing.SslConfigurationEnum
     export type SslConfigurationEnum = "intermediate" | "modern"
-    //ipLoadbalancing.SslTypeEnum
+    // type fullname: ipLoadbalancing.SslTypeEnum
     export type SslTypeEnum = "built" | "built_not_routed" | "custom"
-    //ipLoadbalancing.Status
-    // fullName: ipLoadbalancing.Status.Status
+    // interface fullName: ipLoadbalancing.Status.Status
     export interface Status {
         farms: ipLoadbalancing.status.Component;
         frontends: ipLoadbalancing.status.Component;
         servers: ipLoadbalancing.status.Component;
         service: ipLoadbalancing.status.Service;
     }
-    //ipLoadbalancing.StickinessHTTPEnum
+    // type fullname: ipLoadbalancing.StickinessHTTPEnum
     export type StickinessHTTPEnum = "cookie" | "sourceIp"
-    //ipLoadbalancing.StickinessTCPEnum
+    // type fullname: ipLoadbalancing.StickinessTCPEnum
     export type StickinessTCPEnum = "sourceIp"
     export namespace Task {
-        //ipLoadbalancing.Task.Task
-        // fullName: ipLoadbalancing.Task.Task.Task
+        // interface fullName: ipLoadbalancing.Task.Task.Task
         export interface Task {
             action: ipLoadbalancing.TaskActionEnum;
             creationDate: string;
@@ -266,20 +242,18 @@ export namespace ipLoadbalancing {
             zones: string[];
         }
     }
-    //ipLoadbalancing.TaskActionEnum
+    // type fullname: ipLoadbalancing.TaskActionEnum
     export type TaskActionEnum = "deleteIplb" | "deployIplb" | "install" | "installIplb" | "installZone" | "orderFreeCertificate" | "orderPaidCertificate" | "orderSsl" | "refreshIplb" | "releaseIplb" | "releaseIplbZone" | "reopenIplb" | "suspendIplb" | "suspendZone" | "switchToIplbNextGenerationApi" | "vrackAttach" | "vrackDetach"
-    //ipLoadbalancing.TaskStatusEnum
+    // type fullname: ipLoadbalancing.TaskStatusEnum
     export type TaskStatusEnum = "blocked" | "cancelled" | "doing" | "done" | "error" | "todo"
-    //ipLoadbalancing.VrackInformation
-    // fullName: ipLoadbalancing.VrackInformation.VrackInformation
+    // interface fullName: ipLoadbalancing.VrackInformation.VrackInformation
     export interface VrackInformation {
         state: ipLoadbalancing.VrackStateEnum;
         task: number[];
         vrackName?: string;
     }
     export namespace VrackNetwork {
-        //ipLoadbalancing.VrackNetwork.VrackNetwork
-        // fullName: ipLoadbalancing.VrackNetwork.VrackNetwork.VrackNetwork
+        // interface fullName: ipLoadbalancing.VrackNetwork.VrackNetwork.VrackNetwork
         export interface VrackNetwork {
             displayName?: string;
             farmId: ipLoadbalancing.DefinedFarm[];
@@ -289,25 +263,22 @@ export namespace ipLoadbalancing {
             vrackNetworkId: number;
         }
     }
-    //ipLoadbalancing.VrackNetworkCreationRules
-    // fullName: ipLoadbalancing.VrackNetworkCreationRules.VrackNetworkCreationRules
+    // interface fullName: ipLoadbalancing.VrackNetworkCreationRules.VrackNetworkCreationRules
     export interface VrackNetworkCreationRules {
         minNatIps: number;
         remainingNetworks: number;
         vrackName: string;
     }
-    //ipLoadbalancing.VrackStateEnum
+    // type fullname: ipLoadbalancing.VrackStateEnum
     export type VrackStateEnum = "activating" | "active" | "deactivating" | "inactive"
-    //ipLoadbalancing.VrackTransparentGateways
-    // fullName: ipLoadbalancing.VrackTransparentGateways.VrackTransparentGateways
+    // interface fullName: ipLoadbalancing.VrackTransparentGateways.VrackTransparentGateways
     export interface VrackTransparentGateways {
         address: string;
         gateway: string;
         vlan: number;
     }
     export namespace VrackTransparentIp {
-        //ipLoadbalancing.VrackTransparentIp.VrackTransparentIp
-        // fullName: ipLoadbalancing.VrackTransparentIp.VrackTransparentIp.VrackTransparentIp
+        // interface fullName: ipLoadbalancing.VrackTransparentIp.VrackTransparentIp.VrackTransparentIp
         export interface VrackTransparentIp {
             address: string;
             farmId: number;
@@ -317,16 +288,14 @@ export namespace ipLoadbalancing {
         }
     }
     export namespace Zone {
-        //ipLoadbalancing.Zone.Zone
-        // fullName: ipLoadbalancing.Zone.Zone.Zone
+        // interface fullName: ipLoadbalancing.Zone.Zone.Zone
         export interface Zone {
             name: string;
             state: string;
         }
     }
     export namespace backendHttp {
-        //ipLoadbalancing.backendHttp.BackendHttp
-        // fullName: ipLoadbalancing.backendHttp.BackendHttp.BackendHttp
+        // interface fullName: ipLoadbalancing.backendHttp.BackendHttp.BackendHttp
         export interface BackendHttp {
             balance?: ipLoadbalancing.BalanceHTTPEnum;
             displayName?: string;
@@ -339,8 +308,7 @@ export namespace ipLoadbalancing {
         }
     }
     export namespace backendHttpCustomerServer {
-        //ipLoadbalancing.backendHttpCustomerServer.BackendHTTPServer
-        // fullName: ipLoadbalancing.backendHttpCustomerServer.BackendHTTPServer.BackendHTTPServer
+        // interface fullName: ipLoadbalancing.backendHttpCustomerServer.BackendHTTPServer.BackendHTTPServer
         export interface BackendHTTPServer {
             address: string;
             backendId: number;
@@ -359,8 +327,7 @@ export namespace ipLoadbalancing {
         }
     }
     export namespace backendTcp {
-        //ipLoadbalancing.backendTcp.BackendTcp
-        // fullName: ipLoadbalancing.backendTcp.BackendTcp.BackendTcp
+        // interface fullName: ipLoadbalancing.backendTcp.BackendTcp.BackendTcp
         export interface BackendTcp {
             balance?: ipLoadbalancing.BalanceTCPEnum;
             displayName?: string;
@@ -373,8 +340,7 @@ export namespace ipLoadbalancing {
         }
     }
     export namespace backendTcpCustomerServer {
-        //ipLoadbalancing.backendTcpCustomerServer.BackendTCPServer
-        // fullName: ipLoadbalancing.backendTcpCustomerServer.BackendTCPServer.BackendTCPServer
+        // interface fullName: ipLoadbalancing.backendTcpCustomerServer.BackendTCPServer.BackendTCPServer
         export interface BackendTCPServer {
             address: string;
             backendId: number;
@@ -392,8 +358,7 @@ export namespace ipLoadbalancing {
         }
     }
     export namespace backendUdp {
-        //ipLoadbalancing.backendUdp.BackendUdp
-        // fullName: ipLoadbalancing.backendUdp.BackendUdp.BackendUdp
+        // interface fullName: ipLoadbalancing.backendUdp.BackendUdp.BackendUdp
         export interface BackendUdp {
             displayName?: string;
             farmId: number;
@@ -403,8 +368,7 @@ export namespace ipLoadbalancing {
         }
     }
     export namespace backendUdpCustomerServer {
-        //ipLoadbalancing.backendUdpCustomerServer.BackendUDPServer
-        // fullName: ipLoadbalancing.backendUdpCustomerServer.BackendUDPServer.BackendUDPServer
+        // interface fullName: ipLoadbalancing.backendUdpCustomerServer.BackendUDPServer.BackendUDPServer
         export interface BackendUDPServer {
             address: string;
             backendId: number;
@@ -415,8 +379,7 @@ export namespace ipLoadbalancing {
         }
     }
     export namespace frontendHttp {
-        //ipLoadbalancing.frontendHttp.FrontendHttp
-        // fullName: ipLoadbalancing.frontendHttp.FrontendHttp.FrontendHttp
+        // interface fullName: ipLoadbalancing.frontendHttp.FrontendHttp.FrontendHttp
         export interface FrontendHttp {
             allowedSource?: string[];
             dedicatedIpfo?: string[];
@@ -434,8 +397,7 @@ export namespace ipLoadbalancing {
         }
     }
     export namespace frontendTcp {
-        //ipLoadbalancing.frontendTcp.FrontendTcp
-        // fullName: ipLoadbalancing.frontendTcp.FrontendTcp.FrontendTcp
+        // interface fullName: ipLoadbalancing.frontendTcp.FrontendTcp.FrontendTcp
         export interface FrontendTcp {
             allowedSource?: string[];
             dedicatedIpfo?: string[];
@@ -450,8 +412,7 @@ export namespace ipLoadbalancing {
         }
     }
     export namespace frontendUdp {
-        //ipLoadbalancing.frontendUdp.FrontendUdp
-        // fullName: ipLoadbalancing.frontendUdp.FrontendUdp.FrontendUdp
+        // interface fullName: ipLoadbalancing.frontendUdp.FrontendUdp.FrontendUdp
         export interface FrontendUdp {
             dedicatedIpfo?: string[];
             defaultFarmId?: number;
@@ -463,32 +424,28 @@ export namespace ipLoadbalancing {
         }
     }
     export namespace status {
-        //ipLoadbalancing.status.Component
-        // fullName: ipLoadbalancing.status.Component.Component
+        // interface fullName: ipLoadbalancing.status.Component.Component
         export interface Component {
             status: ipLoadbalancing.status.ComponentStatus;
             total: number;
         }
-        //ipLoadbalancing.status.ComponentStatus
-        // fullName: ipLoadbalancing.status.ComponentStatus.ComponentStatus
+        // interface fullName: ipLoadbalancing.status.ComponentStatus.ComponentStatus
         export interface ComponentStatus {
             error: number;
             ok: number;
             unknown: number;
             warn: number;
         }
-        //ipLoadbalancing.status.Enum
+        // type fullname: ipLoadbalancing.status.Enum
         export type Enum = "error" | "ok" | "unknown" | "warn"
-        //ipLoadbalancing.status.Service
-        // fullName: ipLoadbalancing.status.Service.Service
+        // interface fullName: ipLoadbalancing.status.Service.Service
         export interface Service {
             status: ipLoadbalancing.status.Enum;
         }
     }
 }
 export namespace service {
-    //service.RenewType
-    // fullName: service.RenewType.RenewType
+    // interface fullName: service.RenewType.RenewType
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -496,18 +453,17 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    //service.RenewalTypeEnum
+    // type fullname: service.RenewalTypeEnum
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    //service.StateEnum
+    // type fullname: service.StateEnum
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
-    //service.TerminationFutureUseEnum
+    // type fullname: service.TerminationFutureUseEnum
     export type TerminationFutureUseEnum = "NOT_REPLACING_SERVICE" | "OTHER" | "SUBSCRIBE_AN_OTHER_SERVICE" | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR" | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
-    //service.TerminationReasonEnum
+    // type fullname: service.TerminationReasonEnum
     export type TerminationReasonEnum = "FEATURES_DONT_SUIT_ME" | "LACK_OF_PERFORMANCES" | "MIGRATED_TO_ANOTHER_OVH_PRODUCT" | "MIGRATED_TO_COMPETITOR" | "NOT_NEEDED_ANYMORE" | "NOT_RELIABLE" | "NO_ANSWER" | "OTHER" | "TOO_EXPENSIVE" | "TOO_HARD_TO_USE" | "UNSATIFIED_BY_CUSTOMER_SUPPORT"
 }
 export namespace services {
-    //services.Service
-    // fullName: services.Service.Service
+    // interface fullName: services.Service.Service
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;

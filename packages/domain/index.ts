@@ -4,28 +4,26 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /domain Models
  */
 export namespace dnssec {
-    //dnssec.DnssecStatusEnum
+    // type fullname: dnssec.DnssecStatusEnum
     export type DnssecStatusEnum = "disableInProgress" | "disabled" | "enableInProgress" | "enabled"
-    //dnssec.Key
-    // fullName: dnssec.Key.Key
+    // interface fullName: dnssec.Key.Key
     export interface Key {
         algorithm: dnssec.KeyAlgorithmEnum;
         flags: dnssec.KeyFlagEnum;
         publicKey: string;
         tag: number;
     }
-    //dnssec.KeyAlgorithmEnum
+    // type fullname: dnssec.KeyAlgorithmEnum
     export type KeyAlgorithmEnum = 10 | 13 | 14 | 3 | 5 | 6 | 7 | 8
-    //dnssec.KeyFlagEnum
+    // type fullname: dnssec.KeyFlagEnum
     export type KeyFlagEnum = 256 | 257
-    //dnssec.KeyStatusEnum
+    // type fullname: dnssec.KeyStatusEnum
     export type KeyStatusEnum = "active" | "generated" | "published" | "removed" | "retired" | "revoked"
 }
 export namespace domain {
-    //domain.ContactAllTypesEnum
+    // type fullname: domain.ContactAllTypesEnum
     export type ContactAllTypesEnum = "admin" | "all" | "billing" | "owner" | "tech"
-    //domain.CurrentNameServer
-    // fullName: domain.CurrentNameServer.CurrentNameServer
+    // interface fullName: domain.CurrentNameServer.CurrentNameServer
     export interface CurrentNameServer {
         host: string;
         id: number;
@@ -33,8 +31,7 @@ export namespace domain {
         isUsed: boolean;
         toDelete: boolean;
     }
-    //domain.DnssecKey
-    // fullName: domain.DnssecKey.DnssecKey
+    // interface fullName: domain.DnssecKey.DnssecKey
     export interface DnssecKey {
         algorithm: dnssec.KeyAlgorithmEnum;
         flags: dnssec.KeyFlagEnum;
@@ -43,8 +40,7 @@ export namespace domain {
         status: dnssec.KeyStatusEnum;
         tag: number;
     }
-    //domain.Domain
-    // fullName: domain.Domain.Domain
+    // interface fullName: domain.Domain.Domain
     export interface Domain {
         dnssecSupported: boolean;
         domain: string;
@@ -58,64 +54,57 @@ export namespace domain {
         transferLockStatus: domain.DomainLockStatusEnum;
         whoisOwner: string;
     }
-    //domain.DomainContactTypeEnum
+    // type fullname: domain.DomainContactTypeEnum
     export type DomainContactTypeEnum = "admin" | "billing" | "owner" | "tech"
-    //domain.DomainLockStatusEnum
+    // type fullname: domain.DomainLockStatusEnum
     export type DomainLockStatusEnum = "locked" | "locking" | "unavailable" | "unlocked" | "unlocking"
-    //domain.DomainNs
-    // fullName: domain.DomainNs.DomainNs
+    // interface fullName: domain.DomainNs.DomainNs
     export interface DomainNs {
         host: string;
         ip?: string;
     }
-    //domain.DomainNsStateEnum
+    // type fullname: domain.DomainNsStateEnum
     export type DomainNsStateEnum = "ko" | "ok"
-    //domain.DomainNsStatus
-    // fullName: domain.DomainNsStatus.DomainNsStatus
+    // interface fullName: domain.DomainNsStatus.DomainNsStatus
     export interface DomainNsStatus {
         state: domain.DomainNsStateEnum;
         type: domain.DomainNsTypeEnum;
         usedSince?: string;
     }
-    //domain.DomainNsTypeEnum
+    // type fullname: domain.DomainNsTypeEnum
     export type DomainNsTypeEnum = "external" | "hosted"
-    //domain.DomainOptionEnum
+    // type fullname: domain.DomainOptionEnum
     export type DomainOptionEnum = "dnsAnycast"
-    //domain.DomainOptionStateEnum
+    // type fullname: domain.DomainOptionStateEnum
     export type DomainOptionStateEnum = "released" | "subscribed"
-    //domain.GlueRecord
-    // fullName: domain.GlueRecord.GlueRecord
+    // interface fullName: domain.GlueRecord.GlueRecord
     export interface GlueRecord {
         host: string;
         ips: string[];
     }
-    //domain.OfferEnum
+    // type fullname: domain.OfferEnum
     export type OfferEnum = "diamond" | "gold" | "platinum"
-    //domain.OperationStatusEnum
+    // type fullname: domain.OperationStatusEnum
     export type OperationStatusEnum = "cancelled" | "doing" | "done" | "error" | "todo"
-    //domain.OptinFieldsEnum
+    // type fullname: domain.OptinFieldsEnum
     export type OptinFieldsEnum = "address" | "city" | "country" | "email" | "fax" | "name" | "organisation" | "phone" | "province" | "zip"
-    //domain.Option
-    // fullName: domain.Option.Option
+    // interface fullName: domain.Option.Option
     export interface Option {
         option: domain.DomainOptionEnum;
         state: domain.DomainOptionStateEnum;
     }
-    //domain.Owo
-    // fullName: domain.Owo.Owo
+    // interface fullName: domain.Owo.Owo
     export interface Owo {
         field: domain.WhoisObfuscatorFieldsEnum;
     }
-    //domain.ParentService
-    // fullName: domain.ParentService.ParentService
+    // interface fullName: domain.ParentService.ParentService
     export interface ParentService {
         name: string;
         type: domain.ParentServiceTypeEnum;
     }
-    //domain.ParentServiceTypeEnum
+    // type fullname: domain.ParentServiceTypeEnum
     export type ParentServiceTypeEnum = "/allDom"
-    //domain.Rule
-    // fullName: domain.Rule.Rule
+    // interface fullName: domain.Rule.Rule
     export interface Rule {
         allowedValues?: string[];
         description: string;
@@ -125,8 +114,7 @@ export namespace domain {
         required?: boolean;
         type: string;
     }
-    //domain.Task
-    // fullName: domain.Task.Task
+    // interface fullName: domain.Task.Task
     export interface Task {
         canAccelerate: boolean;
         canCancel: boolean;
@@ -140,39 +128,34 @@ export namespace domain {
         status: domain.OperationStatusEnum;
         todoDate: string;
     }
-    //domain.UkRegistrar
-    // fullName: domain.UkRegistrar.UkRegistrar
+    // interface fullName: domain.UkRegistrar.UkRegistrar
     export interface UkRegistrar {
         name: string;
         tag: string;
     }
-    //domain.WhoisObfuscatorFieldsEnum
+    // type fullname: domain.WhoisObfuscatorFieldsEnum
     export type WhoisObfuscatorFieldsEnum = "address" | "email" | "phone"
     export namespace configurations {
-        //domain.configurations.ObfuscatedEmails
-        // fullName: domain.configurations.ObfuscatedEmails.ObfuscatedEmails
+        // interface fullName: domain.configurations.ObfuscatedEmails.ObfuscatedEmails
         export interface ObfuscatedEmails {
             type: domain.ContactAllTypesEnum;
             value: string;
         }
-        //domain.configurations.Optin
-        // fullName: domain.configurations.Optin.Optin
+        // interface fullName: domain.configurations.Optin.Optin
         export interface Optin {
             fields: domain.OptinFieldsEnum[];
             type: domain.ContactAllTypesEnum;
         }
     }
     export namespace data {
-        //domain.data.AfnicCorporationTrademarkContact
-        // fullName: domain.data.AfnicCorporationTrademarkContact.AfnicCorporationTrademarkContact
+        // interface fullName: domain.data.AfnicCorporationTrademarkContact.AfnicCorporationTrademarkContact
         export interface AfnicCorporationTrademarkContact {
             contactId: number;
             id: number;
             inpiNumber: string;
             inpiTrademarkOwner: string;
         }
-        //domain.data.AssociationContact
-        // fullName: domain.data.AssociationContact.AssociationContact
+        // interface fullName: domain.data.AssociationContact.AssociationContact
         export interface AssociationContact {
             contactId: number;
             declarationDate: string;
@@ -181,8 +164,7 @@ export namespace domain {
             publicationNumber: string;
             publicationPageNumber: string;
         }
-        //domain.data.ProContact
-        // fullName: domain.data.ProContact.ProContact
+        // interface fullName: domain.data.ProContact.ProContact
         export interface ProContact {
             authority: string;
             authorityWebsite: string;
@@ -190,8 +172,7 @@ export namespace domain {
             jobDescription: string;
             licenseNumber: string;
         }
-        //domain.data.Smd
-        // fullName: domain.data.Smd.Smd
+        // interface fullName: domain.data.Smd.Smd
         export interface Smd {
             data: string;
             id: number;
@@ -200,15 +181,13 @@ export namespace domain {
             protectedLabels: domain.data.SmdLabel[];
             smdId?: string;
         }
-        //domain.data.SmdLabel
-        // fullName: domain.data.SmdLabel.SmdLabel
+        // interface fullName: domain.data.SmdLabel.SmdLabel
         export interface SmdLabel {
             label: string;
             trademark: string;
         }
         export namespace claimNotice {
-            //domain.data.claimNotice.Address
-            // fullName: domain.data.claimNotice.Address.Address
+            // interface fullName: domain.data.claimNotice.Address.Address
             export interface Address {
                 city?: string;
                 countryCode?: nichandle.CountryEnum;
@@ -220,8 +199,7 @@ export namespace domain {
                 voice?: string;
                 voiceExtension?: string;
             }
-            //domain.data.claimNotice.ClaimNotice
-            // fullName: domain.data.claimNotice.ClaimNotice.ClaimNotice
+            // interface fullName: domain.data.claimNotice.ClaimNotice.ClaimNotice
             export interface ClaimNotice {
                 claims?: domain.data.claimNotice.ClaimNoticeDecision[];
                 endingDate: string;
@@ -230,8 +208,7 @@ export namespace domain {
                 startingDate?: string;
                 type?: domain.data.claimNotice.ClaimNoticeTypeEnum;
             }
-            //domain.data.claimNotice.ClaimNoticeDecision
-            // fullName: domain.data.claimNotice.ClaimNoticeDecision.ClaimNoticeDecision
+            // interface fullName: domain.data.claimNotice.ClaimNoticeDecision.ClaimNoticeDecision
             export interface ClaimNoticeDecision {
                 classifications: domain.data.claimNotice.Classification[];
                 courtDecisions: domain.data.claimNotice.CourtDecision[];
@@ -243,16 +220,14 @@ export namespace domain {
                 trademarkHolders: domain.data.claimNotice.Contact[];
                 trademarkUDRP: domain.data.claimNotice.UDRP[];
             }
-            //domain.data.claimNotice.ClaimNoticeTypeEnum
+            // type fullname: domain.data.claimNotice.ClaimNoticeTypeEnum
             export type ClaimNoticeTypeEnum = "UK" | "TRADEMARK"
-            //domain.data.claimNotice.Classification
-            // fullName: domain.data.claimNotice.Classification.Classification
+            // interface fullName: domain.data.claimNotice.Classification.Classification
             export interface Classification {
                 description: string;
                 number: string;
             }
-            //domain.data.claimNotice.Contact
-            // fullName: domain.data.claimNotice.Contact.Contact
+            // interface fullName: domain.data.claimNotice.Contact.Contact
             export interface Contact {
                 address: domain.data.claimNotice.Address;
                 email?: string;
@@ -261,16 +236,14 @@ export namespace domain {
                 organisation?: string;
                 type?: string;
             }
-            //domain.data.claimNotice.CourtDecision
-            // fullName: domain.data.claimNotice.CourtDecision.CourtDecision
+            // interface fullName: domain.data.claimNotice.CourtDecision.CourtDecision
             export interface CourtDecision {
                 countryCode: string;
                 courtName: string;
                 referenceNumber: string;
                 regions: string[];
             }
-            //domain.data.claimNotice.UDRP
-            // fullName: domain.data.claimNotice.UDRP.UDRP
+            // interface fullName: domain.data.claimNotice.UDRP.UDRP
             export interface UDRP {
                 caseNumber: string;
                 udrpProvider: string;
@@ -278,28 +251,24 @@ export namespace domain {
         }
     }
     export namespace rules {
-        //domain.rules.Optin
-        // fullName: domain.rules.Optin.Optin
+        // interface fullName: domain.rules.Optin.Optin
         export interface Optin {
             fields: domain.OptinFieldsEnum[];
             type: domain.ContactAllTypesEnum;
         }
     }
     export namespace zone {
-        //domain.zone.Dnssec
-        // fullName: domain.zone.Dnssec.Dnssec
+        // interface fullName: domain.zone.Dnssec.Dnssec
         export interface Dnssec {
             status: dnssec.DnssecStatusEnum;
         }
-        //domain.zone.DynHostLogin
-        // fullName: domain.zone.DynHostLogin.DynHostLogin
+        // interface fullName: domain.zone.DynHostLogin.DynHostLogin
         export interface DynHostLogin {
             login: string;
             subDomain: string;
             zone: string;
         }
-        //domain.zone.DynHostRecord
-        // fullName: domain.zone.DynHostRecord.DynHostRecord
+        // interface fullName: domain.zone.DynHostRecord.DynHostRecord
         export interface DynHostRecord {
             id: number;
             ip: string;
@@ -307,8 +276,7 @@ export namespace domain {
             ttl?: number;
             zone: string;
         }
-        //domain.zone.Record
-        // fullName: domain.zone.Record.Record
+        // interface fullName: domain.zone.Record.Record
         export interface Record {
             fieldType: zoneNamedResolutionFieldTypeEnum;
             id: number;
@@ -317,8 +285,7 @@ export namespace domain {
             ttl?: number;
             zone: string;
         }
-        //domain.zone.Redirection
-        // fullName: domain.zone.Redirection.Redirection
+        // interface fullName: domain.zone.Redirection.Redirection
         export interface Redirection {
             description?: string;
             id: number;
@@ -329,8 +296,7 @@ export namespace domain {
             type: zoneRedirectionTypeEnum;
             zone: string;
         }
-        //domain.zone.Soa
-        // fullName: domain.zone.Soa.Soa
+        // interface fullName: domain.zone.Soa.Soa
         export interface Soa {
             email: string;
             expire: number;
@@ -340,8 +306,7 @@ export namespace domain {
             server: string;
             ttl: number;
         }
-        //domain.zone.Task
-        // fullName: domain.zone.Task.Task
+        // interface fullName: domain.zone.Task.Task
         export interface Task {
             canAccelerate: boolean;
             canCancel: boolean;
@@ -355,8 +320,7 @@ export namespace domain {
             status: domain.OperationStatusEnum;
             todoDate: string;
         }
-        //domain.zone.Zone
-        // fullName: domain.zone.Zone.Zone
+        // interface fullName: domain.zone.Zone.Zone
         export interface Zone {
             dnssecSupported: boolean;
             hasDnsAnycast: boolean;
@@ -364,8 +328,7 @@ export namespace domain {
             name: string;
             nameServers: string[];
         }
-        //domain.zone.ZoneRestorePoint
-        // fullName: domain.zone.ZoneRestorePoint.ZoneRestorePoint
+        // interface fullName: domain.zone.ZoneRestorePoint.ZoneRestorePoint
         export interface ZoneRestorePoint {
             creationDate: string;
             zoneFileUrl: string;
@@ -373,12 +336,11 @@ export namespace domain {
     }
 }
 export namespace nichandle {
-    //nichandle.CountryEnum
+    // type fullname: nichandle.CountryEnum
     export type CountryEnum = "AC" | "AD" | "AE" | "AF" | "AG" | "AI" | "AL" | "AM" | "AO" | "AQ" | "AR" | "AS" | "AT" | "AU" | "AW" | "AX" | "AZ" | "BA" | "BB" | "BD" | "BE" | "BF" | "BG" | "BH" | "BI" | "BJ" | "BL" | "BM" | "BN" | "BO" | "BQ" | "BR" | "BS" | "BT" | "BW" | "BY" | "BZ" | "CA" | "CC" | "CD" | "CF" | "CG" | "CH" | "CI" | "CK" | "CL" | "CM" | "CN" | "CO" | "CR" | "CU" | "CV" | "CW" | "CX" | "CY" | "CZ" | "DE" | "DG" | "DJ" | "DK" | "DM" | "DO" | "DZ" | "EA" | "EC" | "EE" | "EG" | "EH" | "ER" | "ES" | "ET" | "FI" | "FJ" | "FK" | "FM" | "FO" | "FR" | "GA" | "GB" | "GD" | "GE" | "GF" | "GG" | "GH" | "GI" | "GL" | "GM" | "GN" | "GP" | "GQ" | "GR" | "GS" | "GT" | "GU" | "GW" | "GY" | "HK" | "HN" | "HR" | "HT" | "HU" | "IC" | "ID" | "IE" | "IL" | "IM" | "IN" | "IO" | "IQ" | "IR" | "IS" | "IT" | "JE" | "JM" | "JO" | "JP" | "KE" | "KG" | "KH" | "KI" | "KM" | "KN" | "KP" | "KR" | "KW" | "KY" | "KZ" | "LA" | "LB" | "LC" | "LI" | "LK" | "LR" | "LS" | "LT" | "LU" | "LV" | "LY" | "MA" | "MC" | "MD" | "ME" | "MF" | "MG" | "MH" | "MK" | "ML" | "MM" | "MN" | "MO" | "MP" | "MQ" | "MR" | "MS" | "MT" | "MU" | "MV" | "MW" | "MX" | "MY" | "MZ" | "NA" | "NC" | "NE" | "NF" | "NG" | "NI" | "NL" | "NO" | "NP" | "NR" | "NU" | "NZ" | "OM" | "PA" | "PE" | "PF" | "PG" | "PH" | "PK" | "PL" | "PM" | "PN" | "PR" | "PS" | "PT" | "PW" | "PY" | "QA" | "RE" | "RO" | "RS" | "RU" | "RW" | "SA" | "SB" | "SC" | "SD" | "SE" | "SG" | "SH" | "SI" | "SJ" | "SK" | "SL" | "SM" | "SN" | "SO" | "SR" | "SS" | "ST" | "SV" | "SX" | "SY" | "SZ" | "TA" | "TC" | "TD" | "TF" | "TG" | "TH" | "TJ" | "TK" | "TL" | "TM" | "TN" | "TO" | "TR" | "TT" | "TV" | "TW" | "TZ" | "UA" | "UG" | "UM" | "UNKNOWN" | "US" | "UY" | "UZ" | "VA" | "VC" | "VE" | "VG" | "VI" | "VN" | "VU" | "WF" | "WS" | "XK" | "YE" | "YT" | "ZA" | "ZM" | "ZW"
 }
 export namespace service {
-    //service.RenewType
-    // fullName: service.RenewType.RenewType
+    // interface fullName: service.RenewType.RenewType
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -386,18 +348,17 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    //service.RenewalTypeEnum
+    // type fullname: service.RenewalTypeEnum
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    //service.StateEnum
+    // type fullname: service.StateEnum
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
-    //service.TerminationFutureUseEnum
+    // type fullname: service.TerminationFutureUseEnum
     export type TerminationFutureUseEnum = "NOT_REPLACING_SERVICE" | "OTHER" | "SUBSCRIBE_AN_OTHER_SERVICE" | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR" | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
-    //service.TerminationReasonEnum
+    // type fullname: service.TerminationReasonEnum
     export type TerminationReasonEnum = "FEATURES_DONT_SUIT_ME" | "LACK_OF_PERFORMANCES" | "MIGRATED_TO_ANOTHER_OVH_PRODUCT" | "MIGRATED_TO_COMPETITOR" | "NOT_NEEDED_ANYMORE" | "NOT_RELIABLE" | "NO_ANSWER" | "OTHER" | "TOO_EXPENSIVE" | "TOO_HARD_TO_USE" | "UNSATIFIED_BY_CUSTOMER_SUPPORT"
 }
 export namespace services {
-    //services.Service
-    // fullName: services.Service.Service
+    // interface fullName: services.Service.Service
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;
@@ -415,20 +376,18 @@ export namespace services {
     }
 }
 export namespace zone {
-    //zone.NamedResolutionFieldTypeEnum
+    // type fullname: zone.NamedResolutionFieldTypeEnum
     export type NamedResolutionFieldTypeEnum = "A" | "AAAA" | "CAA" | "CNAME" | "DKIM" | "DMARC" | "LOC" | "MX" | "NAPTR" | "NS" | "PTR" | "SPF" | "SRV" | "SSHFP" | "TLSA" | "TXT"
-    //zone.RedirectionTypeEnum
+    // type fullname: zone.RedirectionTypeEnum
     export type RedirectionTypeEnum = "invisible" | "visible" | "visiblePermanent"
-    //zone.ResetRecord
-    // fullName: zone.ResetRecord.ResetRecord
+    // interface fullName: zone.ResetRecord.ResetRecord
     export interface ResetRecord {
         fieldType: zone.ResettableNamedResolutionFieldTypeEnum;
         target: string;
     }
-    //zone.ResettableNamedResolutionFieldTypeEnum
+    // type fullname: zone.ResettableNamedResolutionFieldTypeEnum
     export type ResettableNamedResolutionFieldTypeEnum = "A" | "MX"
-    //zone.Status
-    // fullName: zone.Status.Status
+    // interface fullName: zone.Status.Status
     export interface Status {
         errors?: string[];
         isDeployed: boolean;

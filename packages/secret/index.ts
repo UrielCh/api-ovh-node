@@ -4,8 +4,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /secret Models
  */
 export namespace secret {
-    //secret.Secret
-    // fullName: secret.Secret.Secret
+    // interface fullName: secret.Secret.Secret
     export interface Secret {
         expiration: string;
         secret: string;

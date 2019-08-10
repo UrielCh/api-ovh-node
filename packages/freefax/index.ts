@@ -4,14 +4,12 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /freefax Models
  */
 export namespace freefax {
-    //freefax.BalanceInformations
-    // fullName: freefax.BalanceInformations.BalanceInformations
+    // interface fullName: freefax.BalanceInformations.BalanceInformations
     export interface BalanceInformations {
         faxs: number;
         points: number;
     }
-    //freefax.FreefaxProperties
-    // fullName: freefax.FreefaxProperties.FreefaxProperties
+    // interface fullName: freefax.FreefaxProperties.FreefaxProperties
     export interface FreefaxProperties {
         faxMaxCall: telephony.FaxSendingTries;
         faxQuality: telephony.FaxQualityEnum;
@@ -23,8 +21,7 @@ export namespace freefax {
     }
 }
 export namespace service {
-    //service.RenewType
-    // fullName: service.RenewType.RenewType
+    // interface fullName: service.RenewType.RenewType
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -32,14 +29,13 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    //service.RenewalTypeEnum
+    // type fullname: service.RenewalTypeEnum
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    //service.StateEnum
+    // type fullname: service.StateEnum
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
 }
 export namespace services {
-    //services.Service
-    // fullName: services.Service.Service
+    // interface fullName: services.Service.Service
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;
@@ -57,32 +53,29 @@ export namespace services {
     }
 }
 export namespace telephony {
-    //telephony.FaxQualityEnum
+    // type fullname: telephony.FaxQualityEnum
     export type FaxQualityEnum = "best" | "high" | "normal"
-    //telephony.FaxSendingTries
+    // type fullname: telephony.FaxSendingTries
     export type FaxSendingTries = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
-    //telephony.ServiceVoicemailAudioFormatEnum
+    // type fullname: telephony.ServiceVoicemailAudioFormatEnum
     export type ServiceVoicemailAudioFormatEnum = "aiff" | "au" | "flac" | "mp3" | "ogg" | "wav"
-    //telephony.ServiceVoicemailMailOptionEnum
+    // type fullname: telephony.ServiceVoicemailMailOptionEnum
     export type ServiceVoicemailMailOptionEnum = "attachment" | "simple"
-    //telephony.ServiceVoicemailNotifications
-    // fullName: telephony.ServiceVoicemailNotifications.ServiceVoicemailNotifications
+    // interface fullName: telephony.ServiceVoicemailNotifications.ServiceVoicemailNotifications
     export interface ServiceVoicemailNotifications {
         email: string;
         type: telephony.ServiceVoicemailMailOptionEnum;
     }
-    //telephony.VoicefaxRoutingEnum
+    // type fullname: telephony.VoicefaxRoutingEnum
     export type VoicefaxRoutingEnum = "fax" | "voicemail"
-    //telephony.VoicemailGreetingEnum
+    // type fullname: telephony.VoicemailGreetingEnum
     export type VoicemailGreetingEnum = "default" | "full" | "short"
-    //telephony.VoicemailNumbers
-    // fullName: telephony.VoicemailNumbers.VoicemailNumbers
+    // interface fullName: telephony.VoicemailNumbers.VoicemailNumbers
     export interface VoicemailNumbers {
         external: string;
         internal: string;
     }
-    //telephony.VoicemailProperties
-    // fullName: telephony.VoicemailProperties.VoicemailProperties
+    // interface fullName: telephony.VoicemailProperties.VoicemailProperties
     export interface VoicemailProperties {
         annouceMessage: string;
         audioFormat: telephony.ServiceVoicemailAudioFormatEnum;

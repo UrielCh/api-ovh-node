@@ -4,8 +4,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /ssl Models
  */
 export namespace service {
-    //service.RenewType
-    // fullName: service.RenewType.RenewType
+    // interface fullName: service.RenewType.RenewType
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -13,14 +12,13 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    //service.RenewalTypeEnum
+    // type fullname: service.RenewalTypeEnum
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    //service.StateEnum
+    // type fullname: service.StateEnum
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
 }
 export namespace services {
-    //services.Service
-    // fullName: services.Service.Service
+    // interface fullName: services.Service.Service
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;
@@ -38,8 +36,7 @@ export namespace services {
     }
 }
 export namespace ssl {
-    //ssl.Certificate
-    // fullName: ssl.Certificate.Certificate
+    // interface fullName: ssl.Certificate.Certificate
     export interface Certificate {
         authority: ssl.CertificateAuthorityEnum;
         certificate?: string;
@@ -53,14 +50,13 @@ export namespace ssl {
         validityEnd?: string;
         validityStart?: string;
     }
-    //ssl.CertificateAuthorityEnum
+    // type fullname: ssl.CertificateAuthorityEnum
     export type CertificateAuthorityEnum = "comodo" | "sectigo"
-    //ssl.CertificateStatusEnum
+    // type fullname: ssl.CertificateStatusEnum
     export type CertificateStatusEnum = "creating" | "error" | "ok" | "validating"
-    //ssl.CertificateTypeEnum
+    // type fullname: ssl.CertificateTypeEnum
     export type CertificateTypeEnum = "DV" | "EV" | "OV"
-    //ssl.Operation
-    // fullName: ssl.Operation.Operation
+    // interface fullName: ssl.Operation.Operation
     export interface Operation {
         doneDate?: string;
         function: ssl.OperationFunctionEnum;
@@ -69,9 +65,9 @@ export namespace ssl {
         status: ssl.OperationStatusEnum;
         taskId: number;
     }
-    //ssl.OperationFunctionEnum
+    // type fullname: ssl.OperationFunctionEnum
     export type OperationFunctionEnum = "createCertificate"
-    //ssl.OperationStatusEnum
+    // type fullname: ssl.OperationStatusEnum
     export type OperationStatusEnum = "cancelled" | "doing" | "done" | "error" | "todo"
 }
 

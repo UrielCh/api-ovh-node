@@ -4,10 +4,9 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /newAccount Models
  */
 export namespace nichandle {
-    //nichandle.CountryEnum
+    // type fullname: nichandle.CountryEnum
     export type CountryEnum = "AC" | "AD" | "AE" | "AF" | "AG" | "AI" | "AL" | "AM" | "AO" | "AQ" | "AR" | "AS" | "AT" | "AU" | "AW" | "AX" | "AZ" | "BA" | "BB" | "BD" | "BE" | "BF" | "BG" | "BH" | "BI" | "BJ" | "BL" | "BM" | "BN" | "BO" | "BQ" | "BR" | "BS" | "BT" | "BW" | "BY" | "BZ" | "CA" | "CC" | "CD" | "CF" | "CG" | "CH" | "CI" | "CK" | "CL" | "CM" | "CN" | "CO" | "CR" | "CU" | "CV" | "CW" | "CX" | "CY" | "CZ" | "DE" | "DG" | "DJ" | "DK" | "DM" | "DO" | "DZ" | "EA" | "EC" | "EE" | "EG" | "EH" | "ER" | "ES" | "ET" | "FI" | "FJ" | "FK" | "FM" | "FO" | "FR" | "GA" | "GB" | "GD" | "GE" | "GF" | "GG" | "GH" | "GI" | "GL" | "GM" | "GN" | "GP" | "GQ" | "GR" | "GS" | "GT" | "GU" | "GW" | "GY" | "HK" | "HN" | "HR" | "HT" | "HU" | "IC" | "ID" | "IE" | "IL" | "IM" | "IN" | "IO" | "IQ" | "IR" | "IS" | "IT" | "JE" | "JM" | "JO" | "JP" | "KE" | "KG" | "KH" | "KI" | "KM" | "KN" | "KP" | "KR" | "KW" | "KY" | "KZ" | "LA" | "LB" | "LC" | "LI" | "LK" | "LR" | "LS" | "LT" | "LU" | "LV" | "LY" | "MA" | "MC" | "MD" | "ME" | "MF" | "MG" | "MH" | "MK" | "ML" | "MM" | "MN" | "MO" | "MP" | "MQ" | "MR" | "MS" | "MT" | "MU" | "MV" | "MW" | "MX" | "MY" | "MZ" | "NA" | "NC" | "NE" | "NF" | "NG" | "NI" | "NL" | "NO" | "NP" | "NR" | "NU" | "NZ" | "OM" | "PA" | "PE" | "PF" | "PG" | "PH" | "PK" | "PL" | "PM" | "PN" | "PR" | "PS" | "PT" | "PW" | "PY" | "QA" | "RE" | "RO" | "RS" | "RU" | "RW" | "SA" | "SB" | "SC" | "SD" | "SE" | "SG" | "SH" | "SI" | "SJ" | "SK" | "SL" | "SM" | "SN" | "SO" | "SR" | "SS" | "ST" | "SV" | "SX" | "SY" | "SZ" | "TA" | "TC" | "TD" | "TF" | "TG" | "TH" | "TJ" | "TK" | "TL" | "TM" | "TN" | "TO" | "TR" | "TT" | "TV" | "TW" | "TZ" | "UA" | "UG" | "UM" | "UNKNOWN" | "US" | "UY" | "UZ" | "VA" | "VC" | "VE" | "VG" | "VI" | "VN" | "VU" | "WF" | "WS" | "XK" | "YE" | "YT" | "ZA" | "ZM" | "ZW"
-    //nichandle.CreationRule
-    // fullName: nichandle.CreationRule.CreationRule
+    // interface fullName: nichandle.CreationRule.CreationRule
     export interface CreationRule {
         defaultValue?: string;
         examples?: string[];
@@ -17,8 +16,7 @@ export namespace nichandle {
         prefix?: string;
         regularExpression?: string;
     }
-    //nichandle.CreationRules
-    // fullName: nichandle.CreationRules.CreationRules
+    // interface fullName: nichandle.CreationRules.CreationRules
     export interface CreationRules {
         address: nichandle.CreationRule;
         area: nichandle.CreationRule;
@@ -46,28 +44,26 @@ export namespace nichandle {
         vat: nichandle.CreationRule;
         zip: nichandle.CreationRule;
     }
-    //nichandle.CreationRulesActionEnum
+    // type fullname: nichandle.CreationRulesActionEnum
     export type CreationRulesActionEnum = "create" | "update"
-    //nichandle.GenderEnum
+    // type fullname: nichandle.GenderEnum
     export type GenderEnum = "female" | "male"
-    //nichandle.LanguageEnum
+    // type fullname: nichandle.LanguageEnum
     export type LanguageEnum = "cs_CZ" | "de_DE" | "en_AU" | "en_CA" | "en_GB" | "en_IE" | "en_US" | "es_ES" | "fi_FI" | "fr_CA" | "fr_FR" | "fr_MA" | "fr_SN" | "fr_TN" | "it_IT" | "lt_LT" | "nl_NL" | "pl_PL" | "pt_PT"
-    //nichandle.LegalFormEnum
+    // type fullname: nichandle.LegalFormEnum
     export type LegalFormEnum = "administration" | "association" | "corporation" | "individual" | "other" | "personalcorporation"
-    //nichandle.NewAccountAndToken
-    // fullName: nichandle.NewAccountAndToken.NewAccountAndToken
+    // interface fullName: nichandle.NewAccountAndToken.NewAccountAndToken
     export interface NewAccountAndToken {
         consumerKey?: string;
         ovhIdentifier: string;
     }
-    //nichandle.OvhCompanyEnum
+    // type fullname: nichandle.OvhCompanyEnum
     export type OvhCompanyEnum = "kimsufi" | "ovh" | "soyoustart"
-    //nichandle.OvhSubsidiaryEnum
+    // type fullname: nichandle.OvhSubsidiaryEnum
     export type OvhSubsidiaryEnum = "ASIA" | "AU" | "CA" | "CZ" | "DE" | "ES" | "EU" | "FI" | "FR" | "GB" | "IE" | "IT" | "LT" | "MA" | "NL" | "PL" | "PT" | "QC" | "SG" | "SN" | "TN" | "US" | "WE" | "WS"
 }
 export namespace order {
-    //order.Contract
-    // fullName: order.Contract.Contract
+    // interface fullName: order.Contract.Contract
     export interface Contract {
         content: string;
         name: string;

@@ -5,8 +5,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  */
 export namespace connectivity {
     export namespace eligibility {
-        //connectivity.eligibility.Building
-        // fullName: connectivity.eligibility.Building.Building
+        // interface fullName: connectivity.eligibility.Building.Building
         export interface Building {
             name: string;
             nro?: string;
@@ -14,28 +13,25 @@ export namespace connectivity {
             stairs: connectivity.eligibility.BuildingStair[];
             type: connectivity.eligibility.BuildingTypeEnum;
         }
-        //connectivity.eligibility.BuildingStair
-        // fullName: connectivity.eligibility.BuildingStair.BuildingStair
+        // interface fullName: connectivity.eligibility.BuildingStair.BuildingStair
         export interface BuildingStair {
             floors: string[];
             stair: string;
         }
-        //connectivity.eligibility.BuildingTypeEnum
+        // type fullname: connectivity.eligibility.BuildingTypeEnum
         export type BuildingTypeEnum = "BUILDING" | "HOUSE"
     }
 }
 export namespace order {
-    //order.Contract
-    // fullName: order.Contract.Contract
+    // interface fullName: order.Contract.Contract
     export interface Contract {
         content: string;
         name: string;
         url: string;
     }
-    //order.CurrencyCodeEnum
+    // type fullname: order.CurrencyCodeEnum
     export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
-    //order.Price
-    // fullName: order.Price.Price
+    // interface fullName: order.Price.Price
     export interface Price {
         currencyCode: order.CurrencyCodeEnum;
         text: string;
@@ -44,31 +40,19 @@ export namespace order {
 }
 export namespace pack {
     export namespace xdsl {
-        //pack.xdsl.AsyncTask
-        // fullName: pack.xdsl.AsyncTask.AsyncTask
-        export interface AsyncTask<T> {
-            error?: string;
-            result?: T;
-            status: pack.xdsl.AsyncTaskStatusEnum;
-        }
-        //pack.xdsl.AsyncTaskStatusEnum
-        export type AsyncTaskStatusEnum = "error" | "ok" | "pending"
-        //pack.xdsl.DomainActionEnum
+        // type fullname: pack.xdsl.DomainActionEnum
         export type DomainActionEnum = "create" | "trade" | "transfer"
-        //pack.xdsl.ExchangeAccountService
-        // fullName: pack.xdsl.ExchangeAccountService.ExchangeAccountService
+        // interface fullName: pack.xdsl.ExchangeAccountService.ExchangeAccountService
         export interface ExchangeAccountService {
             domain: string;
             exchangeService: string;
             organizationName: string;
         }
-        //pack.xdsl.ExchangeLiteService
-        // fullName: pack.xdsl.ExchangeLiteService.ExchangeLiteService
+        // interface fullName: pack.xdsl.ExchangeLiteService.ExchangeLiteService
         export interface ExchangeLiteService {
             domain: string;
         }
-        //pack.xdsl.Hubic
-        // fullName: pack.xdsl.Hubic.Hubic
+        // interface fullName: pack.xdsl.Hubic.Hubic
         export interface Hubic {
             bytes: number;
             domain: string;
@@ -76,8 +60,7 @@ export namespace pack {
             size: string;
             voucher?: string;
         }
-        //pack.xdsl.PackAdsl
-        // fullName: pack.xdsl.PackAdsl.PackAdsl
+        // interface fullName: pack.xdsl.PackAdsl.PackAdsl
         export interface PackAdsl {
             capabilities: pack.xdsl.PackCapabilities;
             description?: string;
@@ -85,14 +68,12 @@ export namespace pack {
             offerPrice: orderPrice;
             packName: string;
         }
-        //pack.xdsl.PackCapabilities
-        // fullName: pack.xdsl.PackCapabilities.PackCapabilities
+        // interface fullName: pack.xdsl.PackCapabilities.PackCapabilities
         export interface PackCapabilities {
             canMoveAddress: boolean;
             isLegacyOffer: boolean;
         }
-        //pack.xdsl.PackDetail
-        // fullName: pack.xdsl.PackDetail.PackDetail
+        // interface fullName: pack.xdsl.PackDetail.PackDetail
         export interface PackDetail {
             accessname: string;
             description: string;
@@ -100,24 +81,21 @@ export namespace pack {
             packname: string;
             type: xdslDslTypeEnum;
         }
-        //pack.xdsl.ResiliationFollowUpDetail
-        // fullName: pack.xdsl.ResiliationFollowUpDetail.ResiliationFollowUpDetail
+        // interface fullName: pack.xdsl.ResiliationFollowUpDetail.ResiliationFollowUpDetail
         export interface ResiliationFollowUpDetail {
             dateTodo: string;
             needModemReturn: boolean;
             registrationDate: string;
             status: string;
         }
-        //pack.xdsl.ResiliationReasonEnum
+        // type fullname: pack.xdsl.ResiliationReasonEnum
         export type ResiliationReasonEnum = "addressMove" | "billingProblems" | "cessationOfActivity" | "changeOfTerms" | "ftth" | "goToCompetitor" | "other" | "technicalProblems"
-        //pack.xdsl.ResiliationSurvey
-        // fullName: pack.xdsl.ResiliationSurvey.ResiliationSurvey
+        // interface fullName: pack.xdsl.ResiliationSurvey.ResiliationSurvey
         export interface ResiliationSurvey {
             comment?: string;
             type: pack.xdsl.ResiliationReasonEnum;
         }
-        //pack.xdsl.ResiliationTerms
-        // fullName: pack.xdsl.ResiliationTerms.ResiliationTerms
+        // interface fullName: pack.xdsl.ResiliationTerms.ResiliationTerms
         export interface ResiliationTerms {
             due: orderPrice;
             engageDate?: string;
@@ -125,25 +103,22 @@ export namespace pack {
             resiliationDate: string;
             resiliationReasons: pack.xdsl.ResiliationReasonEnum[];
         }
-        //pack.xdsl.Service
-        // fullName: pack.xdsl.Service.Service
+        // interface fullName: pack.xdsl.Service.Service
         export interface Service {
             domain: string;
             id: number;
             type: pack.xdsl.ServiceNameEnum;
         }
-        //pack.xdsl.ServiceInformation
-        // fullName: pack.xdsl.ServiceInformation.ServiceInformation
+        // interface fullName: pack.xdsl.ServiceInformation.ServiceInformation
         export interface ServiceInformation {
             inCreation: number;
             name: pack.xdsl.ServiceNameEnum;
             total: number;
             used: number;
         }
-        //pack.xdsl.ServiceNameEnum
+        // type fullname: pack.xdsl.ServiceNameEnum
         export type ServiceNameEnum = "domain" | "emailPro" | "exchangeAccount" | "exchangeIndividual" | "exchangeLite" | "exchangeOrganization" | "hostedEmail" | "hubic" | "modem" | "overTheBoxHardware" | "overTheBoxService" | "siteBuilderFull" | "siteBuilderStart" | "voipAlias" | "voipBillingAccount" | "voipEcoFax" | "voipLine" | "xdslAccess"
-        //pack.xdsl.ShippingAddress
-        // fullName: pack.xdsl.ShippingAddress.ShippingAddress
+        // interface fullName: pack.xdsl.ShippingAddress.ShippingAddress
         export interface ShippingAddress {
             address: string;
             cityName: string;
@@ -153,16 +128,14 @@ export namespace pack {
             shippingId: string;
             zipCode: string;
         }
-        //pack.xdsl.ShippingAddressContextEnum
+        // type fullname: pack.xdsl.ShippingAddressContextEnum
         export type ShippingAddressContextEnum = "migration" | "voipLine"
-        //pack.xdsl.SiteBuilderDomain
-        // fullName: pack.xdsl.SiteBuilderDomain.SiteBuilderDomain
+        // interface fullName: pack.xdsl.SiteBuilderDomain.SiteBuilderDomain
         export interface SiteBuilderDomain {
             defaultSubDomain: string;
             domain: string;
         }
-        //pack.xdsl.SiteBuilderTemplate
-        // fullName: pack.xdsl.SiteBuilderTemplate.SiteBuilderTemplate
+        // interface fullName: pack.xdsl.SiteBuilderTemplate.SiteBuilderTemplate
         export interface SiteBuilderTemplate {
             bkId: number;
             id: number;
@@ -171,26 +144,23 @@ export namespace pack {
             reference: string;
             thumbImage: string;
         }
-        //pack.xdsl.Task
-        // fullName: pack.xdsl.Task.Task
+        // interface fullName: pack.xdsl.Task.Task
         export interface Task {
             function: string;
             id: number;
             status: pack.xdsl.TaskStatusEnum;
             updateDate: string;
         }
-        //pack.xdsl.TaskStatusEnum
+        // type fullname: pack.xdsl.TaskStatusEnum
         export type TaskStatusEnum = "cancelled" | "doing" | "done" | "error" | "problem" | "todo"
-        //pack.xdsl.UnpackTerms
-        // fullName: pack.xdsl.UnpackTerms.UnpackTerms
+        // interface fullName: pack.xdsl.UnpackTerms.UnpackTerms
         export interface UnpackTerms {
             isAllowed: boolean;
             price: orderPrice;
             renewPeriod: number;
             renewPrice: orderPrice;
         }
-        //pack.xdsl.VoIPHardware
-        // fullName: pack.xdsl.VoIPHardware.VoIPHardware
+        // interface fullName: pack.xdsl.VoIPHardware.VoIPHardware
         export interface VoIPHardware {
             deposit?: orderPrice;
             image?: string;
@@ -200,35 +170,30 @@ export namespace pack {
             needShipping: boolean;
             url?: string;
         }
-        //pack.xdsl.VoIPLineOrder
-        // fullName: pack.xdsl.VoIPLineOrder.VoIPLineOrder
+        // interface fullName: pack.xdsl.VoIPLineOrder.VoIPLineOrder
         export interface VoIPLineOrder {
             needPayment: boolean;
             orderId: number;
             orderUrl: string;
             taskIds: number[];
         }
-        //pack.xdsl.VoipLineService
-        // fullName: pack.xdsl.VoipLineService.VoipLineService
+        // interface fullName: pack.xdsl.VoipLineService.VoipLineService
         export interface VoipLineService {
             billingAccount: string;
             domain: string;
         }
         export namespace addressMove {
-            //pack.xdsl.addressMove.Creation
-            // fullName: pack.xdsl.addressMove.Creation.Creation
+            // interface fullName: pack.xdsl.addressMove.Creation.Creation
             export interface Creation {
                 address: xdsleligibilityAddress;
                 meeting: xdsleligibilityBookMeetingSlot;
             }
-            //pack.xdsl.addressMove.Eligibility
-            // fullName: pack.xdsl.addressMove.Eligibility.Eligibility
+            // interface fullName: pack.xdsl.addressMove.Eligibility.Eligibility
             export interface Eligibility {
                 keepCurrentPortability?: xdsleligibilityPortability;
                 offers: pack.xdsl.addressMove.Offer[];
             }
-            //pack.xdsl.addressMove.Landline
-            // fullName: pack.xdsl.addressMove.Landline.Landline
+            // interface fullName: pack.xdsl.addressMove.Landline.Landline
             export interface Landline {
                 lineNumber: string;
                 portLineNumber: boolean;
@@ -236,8 +201,7 @@ export namespace pack {
                 status: xdsleligibilityLandlineStatusEnum;
                 unbundling: xdslDeconsolidationEnum;
             }
-            //pack.xdsl.addressMove.Offer
-            // fullName: pack.xdsl.addressMove.Offer.Offer
+            // interface fullName: pack.xdsl.addressMove.Offer.Offer
             export interface Offer {
                 address: xdsleligibilityAddress;
                 estimatedDownload: number;
@@ -258,8 +222,7 @@ export namespace pack {
             }
         }
         export namespace migration {
-            //pack.xdsl.migration.MigrationOffer
-            // fullName: pack.xdsl.migration.MigrationOffer.MigrationOffer
+            // interface fullName: pack.xdsl.migration.MigrationOffer.MigrationOffer
             export interface MigrationOffer {
                 contractList: string[];
                 contracts: order.Contract[];
@@ -280,14 +243,12 @@ export namespace pack {
                 subServicesToDelete: pack.xdsl.migration.SubServiceToDelete[];
                 url: string;
             }
-            //pack.xdsl.migration.MigrationOfferResponse
-            // fullName: pack.xdsl.migration.MigrationOfferResponse.MigrationOfferResponse
+            // interface fullName: pack.xdsl.migration.MigrationOfferResponse.MigrationOfferResponse
             export interface MigrationOfferResponse {
                 buildings: connectivity.eligibility.Building[];
                 offers: pack.xdsl.migration.MigrationOffer[];
             }
-            //pack.xdsl.migration.OfferAvailableOption
-            // fullName: pack.xdsl.migration.OfferAvailableOption.OfferAvailableOption
+            // interface fullName: pack.xdsl.migration.OfferAvailableOption.OfferAvailableOption
             export interface OfferAvailableOption {
                 duration: number;
                 included: number;
@@ -295,20 +256,17 @@ export namespace pack {
                 optional: number;
                 optionalPrice?: orderPrice;
             }
-            //pack.xdsl.migration.OfferOption
-            // fullName: pack.xdsl.migration.OfferOption.OfferOption
+            // interface fullName: pack.xdsl.migration.OfferOption.OfferOption
             export interface OfferOption {
                 name: string;
                 quantity: number;
             }
-            //pack.xdsl.migration.OfferServiceToDelete
-            // fullName: pack.xdsl.migration.OfferServiceToDelete.OfferServiceToDelete
+            // interface fullName: pack.xdsl.migration.OfferServiceToDelete.OfferServiceToDelete
             export interface OfferServiceToDelete {
                 service: string;
                 type: pack.xdsl.ServiceNameEnum;
             }
-            //pack.xdsl.migration.SubServiceToDelete
-            // fullName: pack.xdsl.migration.SubServiceToDelete.SubServiceToDelete
+            // interface fullName: pack.xdsl.migration.SubServiceToDelete.SubServiceToDelete
             export interface SubServiceToDelete {
                 numberToDelete: number;
                 services: string[];
@@ -316,22 +274,20 @@ export namespace pack {
             }
         }
         export namespace promotionCode {
-            //pack.xdsl.promotionCode.Capabilities
-            // fullName: pack.xdsl.promotionCode.Capabilities.Capabilities
+            // interface fullName: pack.xdsl.promotionCode.Capabilities.Capabilities
             export interface Capabilities {
                 amount: orderPrice;
                 canGenerate: boolean;
                 engagement: number;
                 reasonCodes: pack.xdsl.promotionCode.ReasonCodes[];
             }
-            //pack.xdsl.promotionCode.ReasonCodes
+            // type fullname: pack.xdsl.promotionCode.ReasonCodes
             export type ReasonCodes = "noMoreAvailable" | "offerNotCompatible" | "serviceNotInOkState" | "stillEngaged" | "taskInProgress"
         }
     }
 }
 export namespace service {
-    //service.RenewType
-    // fullName: service.RenewType.RenewType
+    // interface fullName: service.RenewType.RenewType
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -339,14 +295,13 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    //service.RenewalTypeEnum
+    // type fullname: service.RenewalTypeEnum
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    //service.StateEnum
+    // type fullname: service.StateEnum
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
 }
 export namespace services {
-    //services.Service
-    // fullName: services.Service.Service
+    // interface fullName: services.Service.Service
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;
@@ -364,19 +319,25 @@ export namespace services {
     }
 }
 export namespace xdsl {
-    //xdsl.DeconsolidationEnum
+    // interface fullName: xdsl.AsyncTask.AsyncTask
+    export interface AsyncTask<T> {
+        error?: string;
+        result?: T;
+        status: xdsl.AsyncTaskStatusEnum;
+    }
+    // type fullname: xdsl.AsyncTaskStatusEnum
+    export type AsyncTaskStatusEnum = "error" | "ok" | "pending"
+    // type fullname: xdsl.DeconsolidationEnum
     export type DeconsolidationEnum = "createNeighbour" | "creation" | "creationNeighbour" | "partial" | "total"
-    //xdsl.DslTypeEnum
+    // type fullname: xdsl.DslTypeEnum
     export type DslTypeEnum = "adsl" | "ftth" | "sdsl" | "vdsl"
-    //xdsl.LineSectionLength
-    // fullName: xdsl.LineSectionLength.LineSectionLength
+    // interface fullName: xdsl.LineSectionLength.LineSectionLength
     export interface LineSectionLength {
         diameter: number;
         length: number;
     }
     export namespace eligibility {
-        //xdsl.eligibility.Address
-        // fullName: xdsl.eligibility.Address.Address
+        // interface fullName: xdsl.eligibility.Address.Address
         export interface Address {
             building?: string;
             city: xdsl.eligibility.City;
@@ -389,62 +350,54 @@ export namespace xdsl {
             street?: xdsl.eligibility.Street;
             streetNumber?: string;
         }
-        //xdsl.eligibility.BookMeetingSlot
-        // fullName: xdsl.eligibility.BookMeetingSlot.BookMeetingSlot
+        // interface fullName: xdsl.eligibility.BookMeetingSlot.BookMeetingSlot
         export interface BookMeetingSlot {
             fakeMeeting: boolean;
             meetingSlot?: xdsl.eligibility.MeetingSlot;
             name: string;
         }
-        //xdsl.eligibility.City
-        // fullName: xdsl.eligibility.City.City
+        // interface fullName: xdsl.eligibility.City.City
         export interface City {
             inseeCode: string;
             locality?: string;
             name: string;
             zipCode: string;
         }
-        //xdsl.eligibility.CodeAndMessage
-        // fullName: xdsl.eligibility.CodeAndMessage.CodeAndMessage
+        // interface fullName: xdsl.eligibility.CodeAndMessage.CodeAndMessage
         export interface CodeAndMessage {
             code: string;
             message: string;
         }
-        //xdsl.eligibility.LandlineStatusEnum
+        // type fullname: xdsl.eligibility.LandlineStatusEnum
         export type LandlineStatusEnum = "active" | "inactive"
-        //xdsl.eligibility.MeetingSlot
-        // fullName: xdsl.eligibility.MeetingSlot.MeetingSlot
+        // interface fullName: xdsl.eligibility.MeetingSlot.MeetingSlot
         export interface MeetingSlot {
             endDate: string;
             startDate: string;
             uiCode: string;
         }
-        //xdsl.eligibility.MeetingSlots
-        // fullName: xdsl.eligibility.MeetingSlots.MeetingSlots
+        // interface fullName: xdsl.eligibility.MeetingSlots.MeetingSlots
         export interface MeetingSlots {
             canBookFakeMeeting: boolean;
             meetingSlots: xdsl.eligibility.MeetingSlot[];
         }
-        //xdsl.eligibility.Portability
-        // fullName: xdsl.eligibility.Portability.Portability
+        // interface fullName: xdsl.eligibility.Portability.Portability
         export interface Portability {
             comments: xdsl.eligibility.CodeAndMessage[];
             eligible: boolean;
             underCondition: boolean;
             warnings: xdsl.eligibility.CodeAndMessage[];
         }
-        //xdsl.eligibility.ProviderEnum
+        // type fullname: xdsl.eligibility.ProviderEnum
         export type ProviderEnum = "axione" | "ft" | "kosc" | "ovh" | "sfr"
-        //xdsl.eligibility.Street
-        // fullName: xdsl.eligibility.Street.Street
+        // interface fullName: xdsl.eligibility.Street.Street
         export interface Street {
             name: string;
             rivoliCode: string;
         }
     }
     export namespace hubic {
-        //xdsl.hubic.HubicDetailsResponse
-        // fullName: xdsl.hubic.HubicDetailsResponse.HubicDetailsResponse
+        // interface fullName: xdsl.hubic.HubicDetailsResponse.HubicDetailsResponse
         export interface HubicDetailsResponse {
             email: string;
         }
@@ -474,15 +427,15 @@ export interface Pack{
             addressMove: {
                 eligibility: {
                     // POST /pack/xdsl/{packName}/addressMove/eligibility
-                    $post(params?: {address?: xdsleligibilityAddress, lineNumber?: string}): Promise<pack.xdsl.AsyncTask<pack.xdsl.addressMove.Eligibility>>;
+                    $post(params?: {address?: xdsleligibilityAddress, lineNumber?: string}): Promise<xdsl.AsyncTask<pack.xdsl.addressMove.Eligibility>>;
                 }
                 move: {
                     // POST /pack/xdsl/{packName}/addressMove/move
-                    $post(params: {creation?: pack.xdsl.addressMove.Creation, keepCurrentNumber: boolean, landline?: pack.xdsl.addressMove.Landline, moveOutDate?: string, offerCode: string, provider?: xdsleligibilityProviderEnum}): Promise<pack.xdsl.AsyncTask<number>>;
+                    $post(params: {creation?: pack.xdsl.addressMove.Creation, keepCurrentNumber: boolean, landline?: pack.xdsl.addressMove.Landline, moveOutDate?: string, offerCode: string, provider?: xdsleligibilityProviderEnum}): Promise<xdsl.AsyncTask<number>>;
                 }
                 moveFtth: {
                     // POST /pack/xdsl/{packName}/addressMove/moveFtth
-                    $post(params: {buildingReference: string, floor: string, moveOutDate?: string, otp: boolean, otpReference?: string, stair: string}): Promise<pack.xdsl.AsyncTask<number>>;
+                    $post(params: {buildingReference: string, floor: string, moveOutDate?: string, otp: boolean, otpReference?: string, stair: string}): Promise<xdsl.AsyncTask<number>>;
                 }
             }
             canCancelResiliation: {
@@ -604,7 +557,7 @@ export interface Pack{
                         $get(): Promise<pack.xdsl.Hubic>;
                         details: {
                             // GET /pack/xdsl/{packName}/hubic/services/{domain}/details
-                            $get(): Promise<pack.xdsl.AsyncTask<xdsl.hubic.HubicDetailsResponse>>;
+                            $get(): Promise<xdsl.AsyncTask<xdsl.hubic.HubicDetailsResponse>>;
                         }
                     };
                 }
@@ -616,7 +569,7 @@ export interface Pack{
                 }
                 offers: {
                     // POST /pack/xdsl/{packName}/migration/offers
-                    $post(): Promise<pack.xdsl.AsyncTask<pack.xdsl.migration.MigrationOfferResponse>>;
+                    $post(): Promise<xdsl.AsyncTask<pack.xdsl.migration.MigrationOfferResponse>>;
                 }
                 servicesToDelete: {
                     // POST /pack/xdsl/{packName}/migration/servicesToDelete
@@ -873,7 +826,7 @@ export interface Pack{
    * details operations
    * Details associated to a voucher
    */
-  get(path: '/pack/xdsl/{packName}/hubic/services/{domain}/details'): (params: {domain: string, packName: string}) => Promise<pack.xdsl.AsyncTask<xdsl.hubic.HubicDetailsResponse>>;
+  get(path: '/pack/xdsl/{packName}/hubic/services/{domain}/details'): (params: {domain: string, packName: string}) => Promise<xdsl.AsyncTask<xdsl.hubic.HubicDetailsResponse>>;
   /**
    * capabilities operations
    * Get informations about the promotion code generation
@@ -1008,17 +961,17 @@ export interface Pack{
    * eligibility operations
    * Eligibility to move the access
    */
-  post(path: '/pack/xdsl/{packName}/addressMove/eligibility'): (params: {packName: string, address?: xdsleligibilityAddress, lineNumber?: string}) => Promise<pack.xdsl.AsyncTask<pack.xdsl.addressMove.Eligibility>>;
+  post(path: '/pack/xdsl/{packName}/addressMove/eligibility'): (params: {packName: string, address?: xdsleligibilityAddress, lineNumber?: string}) => Promise<xdsl.AsyncTask<pack.xdsl.addressMove.Eligibility>>;
   /**
    * move operations
    * Move the Xdsl access to another address
    */
-  post(path: '/pack/xdsl/{packName}/addressMove/move'): (params: {packName: string, creation?: pack.xdsl.addressMove.Creation, keepCurrentNumber: boolean, landline?: pack.xdsl.addressMove.Landline, moveOutDate?: string, offerCode: string, provider?: xdsleligibilityProviderEnum}) => Promise<pack.xdsl.AsyncTask<number>>;
+  post(path: '/pack/xdsl/{packName}/addressMove/move'): (params: {packName: string, creation?: pack.xdsl.addressMove.Creation, keepCurrentNumber: boolean, landline?: pack.xdsl.addressMove.Landline, moveOutDate?: string, offerCode: string, provider?: xdsleligibilityProviderEnum}) => Promise<xdsl.AsyncTask<number>>;
   /**
    * moveFtth operations
    * Move the FTTH access to another address
    */
-  post(path: '/pack/xdsl/{packName}/addressMove/moveFtth'): (params: {packName: string, buildingReference: string, floor: string, moveOutDate?: string, otp: boolean, otpReference?: string, stair: string}) => Promise<pack.xdsl.AsyncTask<number>>;
+  post(path: '/pack/xdsl/{packName}/addressMove/moveFtth'): (params: {packName: string, buildingReference: string, floor: string, moveOutDate?: string, otp: boolean, otpReference?: string, stair: string}) => Promise<xdsl.AsyncTask<number>>;
   /**
    * cancelResiliation operations
    * Cancel the ongoing resiliation
@@ -1063,7 +1016,7 @@ export interface Pack{
    * offers operations
    * Get the possibilities of migration offers available
    */
-  post(path: '/pack/xdsl/{packName}/migration/offers'): (params: {packName: string}) => Promise<pack.xdsl.AsyncTask<pack.xdsl.migration.MigrationOfferResponse>>;
+  post(path: '/pack/xdsl/{packName}/migration/offers'): (params: {packName: string}) => Promise<xdsl.AsyncTask<pack.xdsl.migration.MigrationOfferResponse>>;
   /**
    * servicesToDelete operations
    * Calculate services to delete with new offer and options

@@ -4,8 +4,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /vip Models
  */
 export namespace service {
-    //service.RenewType
-    // fullName: service.RenewType.RenewType
+    // interface fullName: service.RenewType.RenewType
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -13,14 +12,13 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    //service.RenewalTypeEnum
+    // type fullname: service.RenewalTypeEnum
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    //service.StateEnum
+    // type fullname: service.StateEnum
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
 }
 export namespace services {
-    //services.Service
-    // fullName: services.Service.Service
+    // interface fullName: services.Service.Service
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;
@@ -38,13 +36,12 @@ export namespace services {
     }
 }
 export namespace vip {
-    //vip.SupportVip
-    // fullName: vip.SupportVip.SupportVip
+    // interface fullName: vip.SupportVip.SupportVip
     export interface SupportVip {
         serviceName: string;
         universe: vip.UniverseEnum[];
     }
-    //vip.UniverseEnum
+    // type fullname: vip.UniverseEnum
     export type UniverseEnum = "cloud" | "dedicated" | "telecom" | "web"
 }
 

@@ -4,8 +4,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /cdn/dedicated Models
  */
 export namespace cdnanycast {
-    //cdnanycast.Anycast
-    // fullName: cdnanycast.Anycast.Anycast
+    // interface fullName: cdnanycast.Anycast.Anycast
     export interface Anycast {
         anycast: string;
         backendLimit: number;
@@ -17,13 +16,11 @@ export namespace cdnanycast {
         quota: number;
         service: string;
     }
-    //cdnanycast.Backend
-    // fullName: cdnanycast.Backend.Backend
+    // interface fullName: cdnanycast.Backend.Backend
     export interface Backend {
         ip: string;
     }
-    //cdnanycast.CacheRule
-    // fullName: cdnanycast.CacheRule.CacheRule
+    // interface fullName: cdnanycast.CacheRule.CacheRule
     export interface CacheRule {
         cacheRuleId: number;
         cacheType: cdnanycast.CacheRuleCacheTypeEnum;
@@ -33,14 +30,13 @@ export namespace cdnanycast {
         status: cdnanycast.CacheRuleStatusEnum;
         ttl: number;
     }
-    //cdnanycast.CacheRuleCacheTypeEnum
+    // type fullname: cdnanycast.CacheRuleCacheTypeEnum
     export type CacheRuleCacheTypeEnum = "forceCache" | "noCache"
-    //cdnanycast.CacheRuleFileTypeEnum
+    // type fullname: cdnanycast.CacheRuleFileTypeEnum
     export type CacheRuleFileTypeEnum = "extension" | "file" | "folder"
-    //cdnanycast.CacheRuleStatusEnum
+    // type fullname: cdnanycast.CacheRuleStatusEnum
     export type CacheRuleStatusEnum = "creating" | "deleting" | "error" | "off" | "on" | "updating"
-    //cdnanycast.Domain
-    // fullName: cdnanycast.Domain.Domain
+    // interface fullName: cdnanycast.Domain.Domain
     export interface Domain {
         cacheRuleUse: number;
         cname: string;
@@ -48,28 +44,25 @@ export namespace cdnanycast {
         status: cdnanycast.DomainStatusEnum;
         type: cdnanycast.DomainTypeEnum;
     }
-    //cdnanycast.DomainStatusEnum
+    // type fullname: cdnanycast.DomainStatusEnum
     export type DomainStatusEnum = "error" | "off" | "on" | "removing"
-    //cdnanycast.DomainTypeEnum
+    // type fullname: cdnanycast.DomainTypeEnum
     export type DomainTypeEnum = "plain" | "ssl"
-    //cdnanycast.LogsURL
-    // fullName: cdnanycast.LogsURL.LogsURL
+    // interface fullName: cdnanycast.LogsURL.LogsURL
     export interface LogsURL {
         expirationDate: string;
         url: string;
     }
-    //cdnanycast.Pop
-    // fullName: cdnanycast.Pop.Pop
+    // interface fullName: cdnanycast.Pop.Pop
     export interface Pop {
         city: string;
         comment: string;
         name: string;
         status: cdnanycast.PopStatusEnum;
     }
-    //cdnanycast.PopStatusEnum
+    // type fullname: cdnanycast.PopStatusEnum
     export type PopStatusEnum = "down" | "ok" | "rerouted" | "unknown"
-    //cdnanycast.Ssl
-    // fullName: cdnanycast.Ssl.Ssl
+    // interface fullName: cdnanycast.Ssl.Ssl
     export interface Ssl {
         certificateProvider: string;
         certificateValidFrom?: string;
@@ -78,36 +71,33 @@ export namespace cdnanycast {
         name: string;
         status: cdnanycast.SslStateEnum;
     }
-    //cdnanycast.SslStateEnum
+    // type fullname: cdnanycast.SslStateEnum
     export type SslStateEnum = "checking" | "creating" | "error" | "off" | "on" | "removing" | "updating" | "uploading"
-    //cdnanycast.StatsDataType
-    // fullName: cdnanycast.StatsDataType.StatsDataType
+    // interface fullName: cdnanycast.StatsDataType.StatsDataType
     export interface StatsDataType {
         date: string;
         value?: number;
     }
-    //cdnanycast.StatsPeriodEnum
+    // type fullname: cdnanycast.StatsPeriodEnum
     export type StatsPeriodEnum = "day" | "month" | "week"
-    //cdnanycast.StatsTypeEnum
+    // type fullname: cdnanycast.StatsTypeEnum
     export type StatsTypeEnum = "backend" | "cdn" | "threat"
-    //cdnanycast.StatsValueEnum
+    // type fullname: cdnanycast.StatsValueEnum
     export type StatsValueEnum = "bandwidth" | "request"
-    //cdnanycast.Task
-    // fullName: cdnanycast.Task.Task
+    // interface fullName: cdnanycast.Task.Task
     export interface Task {
         comment?: string;
         function: cdnanycast.TaskFunctionEnum;
         status: cdnanycast.TaskStateEnum;
         taskId: number;
     }
-    //cdnanycast.TaskFunctionEnum
+    // type fullname: cdnanycast.TaskFunctionEnum
     export type TaskFunctionEnum = "flush" | "flushAll" | "generateSsl" | "installSsl" | "reinstallSsl" | "removeDomain" | "uninstallSsl" | "updateCacheRule"
-    //cdnanycast.TaskStateEnum
+    // type fullname: cdnanycast.TaskStateEnum
     export type TaskStateEnum = "cancelled" | "doing" | "done" | "error" | "todo"
 }
 export namespace service {
-    //service.RenewType
-    // fullName: service.RenewType.RenewType
+    // interface fullName: service.RenewType.RenewType
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -115,14 +105,13 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    //service.RenewalTypeEnum
+    // type fullname: service.RenewalTypeEnum
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    //service.StateEnum
+    // type fullname: service.StateEnum
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
 }
 export namespace services {
-    //services.Service
-    // fullName: services.Service.Service
+    // interface fullName: services.Service.Service
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;

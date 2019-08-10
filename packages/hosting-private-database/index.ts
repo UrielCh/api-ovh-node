@@ -4,14 +4,12 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /hosting/privateDatabase Models
  */
 export namespace complexType {
-    //complexType.SafeKeyValue
-    // fullName: complexType.SafeKeyValue.SafeKeyValue
+    // interface fullName: complexType.SafeKeyValue.SafeKeyValue
     export interface SafeKeyValue<T> {
         key: string;
         value: T;
     }
-    //complexType.UnitAndValue
-    // fullName: complexType.UnitAndValue.UnitAndValue
+    // interface fullName: complexType.UnitAndValue.UnitAndValue
     export interface UnitAndValue<T> {
         unit: string;
         value: T;
@@ -19,20 +17,18 @@ export namespace complexType {
 }
 export namespace hosting {
     export namespace PrivateDatabase {
-        //hosting.PrivateDatabase.AvailableOrderCapacities
-        // fullName: hosting.PrivateDatabase.AvailableOrderCapacities.AvailableOrderCapacities
+        // interface fullName: hosting.PrivateDatabase.AvailableOrderCapacities.AvailableOrderCapacities
         export interface AvailableOrderCapacities {
             datacenter: hosting.PrivateDatabase.DatacenterEnum[];
             offer: hosting.PrivateDatabase.OfferEnum;
             ram: hosting.PrivateDatabase.AvailableRamSizeEnum[];
             version: hosting.PrivateDatabase.AvailableVersionEnum[];
         }
-        //hosting.PrivateDatabase.AvailableRamSizeEnum
+        // type fullname: hosting.PrivateDatabase.AvailableRamSizeEnum
         export type AvailableRamSizeEnum = "1024" | "2048" | "4096" | "512"
-        //hosting.PrivateDatabase.AvailableVersionEnum
+        // type fullname: hosting.PrivateDatabase.AvailableVersionEnum
         export type AvailableVersionEnum = "mariadb_10.1" | "mariadb_10.2" | "mongodb_3.4" | "mongodb_4.0" | "mysql_4.1" | "mysql_5.0" | "mysql_5.1" | "mysql_5.5" | "mysql_5.6" | "mysql_5.7" | "postgresql_10" | "postgresql_11" | "postgresql_9.4" | "postgresql_9.5" | "postgresql_9.6" | "redis_3.2" | "redis_4.0"
-        //hosting.PrivateDatabase.Capability
-        // fullName: hosting.PrivateDatabase.Capability.Capability
+        // interface fullName: hosting.PrivateDatabase.Capability.Capability
         export interface Capability {
             create: boolean;
             delete: boolean;
@@ -40,8 +36,7 @@ export namespace hosting {
             update: boolean;
         }
         export namespace Configuration {
-            //hosting.PrivateDatabase.Configuration.Detail
-            // fullName: hosting.PrivateDatabase.Configuration.Detail.Detail
+            // interface fullName: hosting.PrivateDatabase.Configuration.Detail.Detail
             export interface Detail {
                 availableValues: string[];
                 defaultValue: string;
@@ -52,54 +47,49 @@ export namespace hosting {
                 unit?: string;
                 value: string;
             }
-            //hosting.PrivateDatabase.Configuration.DetailType
+            // type fullname: hosting.PrivateDatabase.Configuration.DetailType
             export type DetailType = "boolean" | "number" | "string"
-            //hosting.PrivateDatabase.Configuration.Status
+            // type fullname: hosting.PrivateDatabase.Configuration.Status
             export type Status = "applied" | "updating"
         }
         export namespace Database {
             export namespace Extension {
-                //hosting.PrivateDatabase.Database.Extension.Status
+                // type fullname: hosting.PrivateDatabase.Database.Extension.Status
                 export type Status = "disabled" | "disabling" | "enabled" | "enabling"
             }
-            //hosting.PrivateDatabase.Database.User
-            // fullName: hosting.PrivateDatabase.Database.User.User
+            // interface fullName: hosting.PrivateDatabase.Database.User.User
             export interface User {
                 grantId: number;
                 grantType: hosting.PrivateDatabase.grant.GrantEnum;
                 userName: string;
             }
         }
-        //hosting.PrivateDatabase.DatacenterEnum
+        // type fullname: hosting.PrivateDatabase.DatacenterEnum
         export type DatacenterEnum = "gra1" | "gra2" | "p19"
-        //hosting.PrivateDatabase.GraphEndpoint
-        // fullName: hosting.PrivateDatabase.GraphEndpoint.GraphEndpoint
+        // interface fullName: hosting.PrivateDatabase.GraphEndpoint.GraphEndpoint
         export interface GraphEndpoint {
             host: string;
             readToken: string;
             readTokenId: string;
         }
-        //hosting.PrivateDatabase.OfferEnum
+        // type fullname: hosting.PrivateDatabase.OfferEnum
         export type OfferEnum = "classic" | "public"
-        //hosting.PrivateDatabase.Oom
-        // fullName: hosting.PrivateDatabase.Oom.Oom
+        // interface fullName: hosting.PrivateDatabase.Oom.Oom
         export interface Oom {
             date: string;
             sizeReached: number;
         }
-        //hosting.PrivateDatabase.StateEnum
+        // type fullname: hosting.PrivateDatabase.StateEnum
         export type StateEnum = "detached" | "restartPending" | "startPending" | "started" | "stopPending" | "stopped"
-        //hosting.PrivateDatabase.TemporaryLogsLink
-        // fullName: hosting.PrivateDatabase.TemporaryLogsLink.TemporaryLogsLink
+        // interface fullName: hosting.PrivateDatabase.TemporaryLogsLink.TemporaryLogsLink
         export interface TemporaryLogsLink {
             expirationDate: string;
             url: string;
         }
-        //hosting.PrivateDatabase.TypeEnum
+        // type fullname: hosting.PrivateDatabase.TypeEnum
         export type TypeEnum = "mariadb" | "mongodb" | "mysql" | "postgresql" | "redis"
         export namespace User {
-            //hosting.PrivateDatabase.User.Database
-            // fullName: hosting.PrivateDatabase.User.Database.Database
+            // interface fullName: hosting.PrivateDatabase.User.Database.Database
             export interface Database {
                 databaseName: string;
                 grantId: number;
@@ -107,31 +97,29 @@ export namespace hosting {
             }
         }
         export namespace Whitelist {
-            //hosting.PrivateDatabase.Whitelist.Status
+            // type fullname: hosting.PrivateDatabase.Whitelist.Status
             export type Status = "created" | "creating" | "deleting" | "updating"
         }
         export namespace grant {
-            //hosting.PrivateDatabase.grant.GrantEnum
+            // type fullname: hosting.PrivateDatabase.grant.GrantEnum
             export type GrantEnum = "admin" | "none" | "ro" | "rw"
         }
         export namespace task {
-            //hosting.PrivateDatabase.task.FunctionEnum
+            // type fullname: hosting.PrivateDatabase.task.FunctionEnum
             export type FunctionEnum = "boot" | "changeFtpPassword" | "changeRam" | "changeRootPassword" | "changeVersion" | "configuration/update" | "create" | "database/create" | "database/delete" | "database/dump" | "database/dump/delete" | "database/extension/create" | "database/extension/delete" | "database/import" | "database/restore" | "database/wizard" | "delete" | "grant/create" | "grant/delete" | "grant/update" | "halt" | "install" | "refresh" | "reopen" | "restart" | "restore" | "start" | "stop" | "suspend" | "user/changePassword" | "user/create" | "user/delete" | "whitelist/create" | "whitelist/delete" | "whitelist/update"
-            //hosting.PrivateDatabase.task.StatusEnum
+            // type fullname: hosting.PrivateDatabase.task.StatusEnum
             export type StatusEnum = "cancelled" | "doing" | "done" | "error" | "init" | "todo"
         }
     }
     export namespace privateDatabase {
-        //hosting.privateDatabase.Configuration
-        // fullName: hosting.privateDatabase.Configuration.Configuration
+        // interface fullName: hosting.privateDatabase.Configuration.Configuration
         export interface Configuration {
             details: hosting.PrivateDatabase.Configuration.Detail[];
             lastUpdate: string;
             status: hosting.PrivateDatabase.Configuration.Status;
             taskId?: string;
         }
-        //hosting.privateDatabase.Service
-        // fullName: hosting.privateDatabase.Service.Service
+        // interface fullName: hosting.privateDatabase.Service.Service
         export interface Service {
             capabilities: hosting.PrivateDatabase.Capability[];
             cpu: number;
@@ -158,8 +146,7 @@ export namespace hosting {
             version: hosting.PrivateDatabase.AvailableVersionEnum;
             versionNumber: number;
         }
-        //hosting.privateDatabase.database
-        // fullName: hosting.privateDatabase.database.database
+        // interface fullName: hosting.privateDatabase.database.database
         export interface database {
             backupTime?: string;
             creationDate: string;
@@ -167,8 +154,7 @@ export namespace hosting {
             quotaUsed: complexType.UnitAndValue<number>;
             users: hosting.PrivateDatabase.Database.User[];
         }
-        //hosting.privateDatabase.database_dump
-        // fullName: hosting.privateDatabase.database_dump.database_dump
+        // interface fullName: hosting.privateDatabase.database_dump.database_dump
         export interface database_dump {
             creationDate: string;
             databaseName: string;
@@ -176,16 +162,14 @@ export namespace hosting {
             id: number;
             url: string;
         }
-        //hosting.privateDatabase.database_extension
-        // fullName: hosting.privateDatabase.database_extension.database_extension
+        // interface fullName: hosting.privateDatabase.database_extension.database_extension
         export interface database_extension {
             description: string;
             extensionName: string;
             requiredExtensions: string[];
             status: hosting.PrivateDatabase.Database.Extension.Status;
         }
-        //hosting.privateDatabase.dump
-        // fullName: hosting.privateDatabase.dump.dump
+        // interface fullName: hosting.privateDatabase.dump.dump
         export interface dump {
             creationDate: string;
             databaseName: string;
@@ -194,15 +178,13 @@ export namespace hosting {
             orphan: boolean;
             url: string;
         }
-        //hosting.privateDatabase.grant
-        // fullName: hosting.privateDatabase.grant.grant
+        // interface fullName: hosting.privateDatabase.grant.grant
         export interface grant {
             creationDate: string;
             databaseName: string;
             grant: hosting.PrivateDatabase.grant.GrantEnum;
         }
-        //hosting.privateDatabase.task
-        // fullName: hosting.privateDatabase.task.task
+        // interface fullName: hosting.privateDatabase.task.task
         export interface task {
             databaseName?: string;
             doneDate?: string;
@@ -214,15 +196,13 @@ export namespace hosting {
             status: hosting.PrivateDatabase.task.StatusEnum;
             userName?: string;
         }
-        //hosting.privateDatabase.user
-        // fullName: hosting.privateDatabase.user.user
+        // interface fullName: hosting.privateDatabase.user.user
         export interface user {
             creationDate: string;
             databases: hosting.PrivateDatabase.User.Database[];
             userName: string;
         }
-        //hosting.privateDatabase.whitelist
-        // fullName: hosting.privateDatabase.whitelist.whitelist
+        // interface fullName: hosting.privateDatabase.whitelist.whitelist
         export interface whitelist {
             creationDate: string;
             ip: string;
@@ -236,8 +216,7 @@ export namespace hosting {
     }
 }
 export namespace service {
-    //service.RenewType
-    // fullName: service.RenewType.RenewType
+    // interface fullName: service.RenewType.RenewType
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -245,18 +224,17 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    //service.RenewalTypeEnum
+    // type fullname: service.RenewalTypeEnum
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    //service.StateEnum
+    // type fullname: service.StateEnum
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
-    //service.TerminationFutureUseEnum
+    // type fullname: service.TerminationFutureUseEnum
     export type TerminationFutureUseEnum = "NOT_REPLACING_SERVICE" | "OTHER" | "SUBSCRIBE_AN_OTHER_SERVICE" | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR" | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
-    //service.TerminationReasonEnum
+    // type fullname: service.TerminationReasonEnum
     export type TerminationReasonEnum = "FEATURES_DONT_SUIT_ME" | "LACK_OF_PERFORMANCES" | "MIGRATED_TO_ANOTHER_OVH_PRODUCT" | "MIGRATED_TO_COMPETITOR" | "NOT_NEEDED_ANYMORE" | "NOT_RELIABLE" | "NO_ANSWER" | "OTHER" | "TOO_EXPENSIVE" | "TOO_HARD_TO_USE" | "UNSATIFIED_BY_CUSTOMER_SUPPORT"
 }
 export namespace services {
-    //services.Service
-    // fullName: services.Service.Service
+    // interface fullName: services.Service.Service
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;

@@ -4,30 +4,27 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /email/domain Models
  */
 export namespace domain {
-    //domain.DomainFilterActionEnum
+    // type fullname: domain.DomainFilterActionEnum
     export type DomainFilterActionEnum = "accept" | "account" | "delete" | "redirect"
-    //domain.DomainFilterOperandEnum
+    // type fullname: domain.DomainFilterOperandEnum
     export type DomainFilterOperandEnum = "checkspf" | "contains" | "noContains"
-    //domain.DomainMXFilterEnum
+    // type fullname: domain.DomainMXFilterEnum
     export type DomainMXFilterEnum = "CUSTOM" | "FULL_FILTERING" | "NO_FILTERING" | "REDIRECT" | "SIMPLE_FILTERING"
-    //domain.DomainMlLanguageEnum
+    // type fullname: domain.DomainMlLanguageEnum
     export type DomainMlLanguageEnum = "de" | "en" | "es" | "fr" | "it" | "nl" | "pl" | "pt"
-    //domain.DomainMlLimits
-    // fullName: domain.DomainMlLimits.DomainMlLimits
+    // interface fullName: domain.DomainMlLimits.DomainMlLimits
     export interface DomainMlLimits {
         subscribers: number;
     }
-    //domain.DomainMlOptionsStruct
-    // fullName: domain.DomainMlOptionsStruct.DomainMlOptionsStruct
+    // interface fullName: domain.DomainMlOptionsStruct.DomainMlOptionsStruct
     export interface DomainMlOptionsStruct {
         moderatorMessage: boolean;
         subscribeByModerator: boolean;
         usersPostOnly: boolean;
     }
-    //domain.DomainPopActionEnum
+    // type fullname: domain.DomainPopActionEnum
     export type DomainPopActionEnum = "addAccount" | "changeAccount" | "changePassword" | "deleteAccount" | "internalMigration" | "migration" | "temporaryTask" | "unknown"
-    //domain.DomainQuota
-    // fullName: domain.DomainQuota.DomainQuota
+    // interface fullName: domain.DomainQuota.DomainQuota
     export interface DomainQuota {
         account: number;
         alias: number;
@@ -35,30 +32,27 @@ export namespace domain {
         redirection: number;
         responder: number;
     }
-    //domain.DomainSpecialAccountActionEnum
+    // type fullname: domain.DomainSpecialAccountActionEnum
     export type DomainSpecialAccountActionEnum = "add" | "change" | "delete"
-    //domain.DomainSpecialAccountTypeEnum
+    // type fullname: domain.DomainSpecialAccountTypeEnum
     export type DomainSpecialAccountTypeEnum = "25g" | "alias" | "delete" | "filter" | "forward" | "responder"
-    //domain.DomainStatusEnum
+    // type fullname: domain.DomainStatusEnum
     export type DomainStatusEnum = "close" | "ok" | "readOnly" | "unknown"
-    //domain.DomainSummary
-    // fullName: domain.DomainSummary.DomainSummary
+    // interface fullName: domain.DomainSummary.DomainSummary
     export interface DomainSummary {
         account: number;
         mailingList: number;
         redirection: number;
         responder: number;
     }
-    //domain.DomainUsageAccountStruct
-    // fullName: domain.DomainUsageAccountStruct.DomainUsageAccountStruct
+    // interface fullName: domain.DomainUsageAccountStruct.DomainUsageAccountStruct
     export interface DomainUsageAccountStruct {
         date?: string;
         emailCount?: number;
         quota?: number;
     }
     export namespace zone {
-        //domain.zone.Record
-        // fullName: domain.zone.Record.Record
+        // interface fullName: domain.zone.Record.Record
         export interface Record {
             fieldType: zoneNamedResolutionFieldTypeEnum;
             id: number;
@@ -71,8 +65,7 @@ export namespace domain {
 }
 export namespace email {
     export namespace domain {
-        //email.domain.Account
-        // fullName: email.domain.Account.Account
+        // interface fullName: email.domain.Account.Account
         export interface Account {
             accountName: string;
             description: string;
@@ -81,8 +74,7 @@ export namespace email {
             isBlocked: boolean;
             size: number;
         }
-        //email.domain.AccountDelegated
-        // fullName: email.domain.AccountDelegated.AccountDelegated
+        // interface fullName: email.domain.AccountDelegated.AccountDelegated
         export interface AccountDelegated {
             accountName: string;
             allowedAccountSize?: number[];
@@ -92,18 +84,15 @@ export namespace email {
             isBlocked: boolean;
             size: number;
         }
-        //email.domain.Acl
-        // fullName: email.domain.Acl.Acl
+        // interface fullName: email.domain.Acl.Acl
         export interface Acl {
             accountId: string;
         }
-        //email.domain.Delegation
-        // fullName: email.domain.Delegation.Delegation
+        // interface fullName: email.domain.Delegation.Delegation
         export interface Delegation {
             accountId: string;
         }
-        //email.domain.Diagnose
-        // fullName: email.domain.Diagnose.Diagnose
+        // interface fullName: email.domain.Diagnose.Diagnose
         export interface Diagnose {
             date: string;
             function: email.domain.DomainDiagnoseFunctionEnum;
@@ -112,18 +101,16 @@ export namespace email {
             result?: email.domain.DomainDiagnoseResultEnum;
             trace?: email.domain.DomainDiagnoseTraceStruct<email.domain.DomainDiagnoseResultEnum>[];
         }
-        //email.domain.DomainDiagnoseFunctionEnum
+        // type fullname: email.domain.DomainDiagnoseFunctionEnum
         export type DomainDiagnoseFunctionEnum = "MX"
-        //email.domain.DomainDiagnoseResultEnum
+        // type fullname: email.domain.DomainDiagnoseResultEnum
         export type DomainDiagnoseResultEnum = "CUSTOM" | "DEPRECATED" | "KO" | "OK"
-        //email.domain.DomainDiagnoseTraceStruct
-        // fullName: email.domain.DomainDiagnoseTraceStruct.DomainDiagnoseTraceStruct
+        // interface fullName: email.domain.DomainDiagnoseTraceStruct.DomainDiagnoseTraceStruct
         export interface DomainDiagnoseTraceStruct<T> {
             result: T;
             test: string;
         }
-        //email.domain.DomainService
-        // fullName: email.domain.DomainService.DomainService
+        // interface fullName: email.domain.DomainService.DomainService
         export interface DomainService {
             allowedAccountSize?: number[];
             creationDate?: string;
@@ -134,8 +121,7 @@ export namespace email {
             offer?: string;
             status: domainDomainStatusEnum;
         }
-        //email.domain.Filter
-        // fullName: email.domain.Filter.Filter
+        // interface fullName: email.domain.Filter.Filter
         export interface Filter {
             action?: domainDomainFilterActionEnum;
             actionParam?: string;
@@ -145,8 +131,7 @@ export namespace email {
             pop: string;
             priority: number;
         }
-        //email.domain.MailingList
-        // fullName: email.domain.MailingList.MailingList
+        // interface fullName: email.domain.MailingList.MailingList
         export interface MailingList {
             id: number;
             language?: domainDomainMlLanguageEnum;
@@ -157,22 +142,19 @@ export namespace email {
             ownerEmail: string;
             replyTo: string;
         }
-        //email.domain.MigrationAccount
-        // fullName: email.domain.MigrationAccount.MigrationAccount
+        // interface fullName: email.domain.MigrationAccount.MigrationAccount
         export interface MigrationAccount {
             destinationEmailAddress: string;
             quota: number;
         }
-        //email.domain.MigrationCheckCodeEnum
+        // type fullname: email.domain.MigrationCheckCodeEnum
         export type MigrationCheckCodeEnum = "ACCOUNT_EMPTY" | "ACCOUNT_INPROGRESS" | "DELEGATION_EXIST" | "DOMAIN_EMPTY" | "FILTER_EXIST" | "FORWARD_EXIST" | "FORWARD_LOCAL" | "MAILINGLIST_EXIST" | "MAILINGLIST_INPROGRESS" | "MAILPROXY_BAD_INFRA" | "MAILPROXY_EMPTY" | "MAILPROXY_INPROGRESS" | "MAILPROXY_RESERVATION" | "REDIRECTION_INPROGRESS" | "RESPONDER_EXIST" | "RESPONDER_INPROGRESS" | "UNKNOW"
-        //email.domain.MigrationCheckResultStruct
-        // fullName: email.domain.MigrationCheckResultStruct.MigrationCheckResultStruct
+        // interface fullName: email.domain.MigrationCheckResultStruct.MigrationCheckResultStruct
         export interface MigrationCheckResultStruct {
             code: email.domain.MigrationCheckCodeEnum;
             details?: string;
         }
-        //email.domain.MigrationCheckStruct
-        // fullName: email.domain.MigrationCheckStruct.MigrationCheckStruct
+        // interface fullName: email.domain.MigrationCheckStruct.MigrationCheckStruct
         export interface MigrationCheckStruct {
             alias?: string[];
             error?: email.domain.MigrationCheckResultStruct[];
@@ -180,8 +162,7 @@ export namespace email {
             forward?: string[];
             warning?: email.domain.MigrationCheckResultStruct[];
         }
-        //email.domain.MigrationService
-        // fullName: email.domain.MigrationService.MigrationService
+        // interface fullName: email.domain.MigrationService.MigrationService
         export interface MigrationService {
             contactAdmin: string;
             contactBilling: string;
@@ -191,24 +172,21 @@ export namespace email {
             expiration: string;
             type: email.domain.MigrationServiceType;
         }
-        //email.domain.MigrationServiceType
+        // type fullname: email.domain.MigrationServiceType
         export type MigrationServiceType = "EMAIL PRO" | "HOSTED EXCHANGE" | "PRIVATE EXCHANGE" | "PROVIDER EXCHANGE"
-        //email.domain.Moderator
-        // fullName: email.domain.Moderator.Moderator
+        // interface fullName: email.domain.Moderator.Moderator
         export interface Moderator {
             domain: string;
             email: string;
             mailinglist: string;
         }
-        //email.domain.RedirectionGlobal
-        // fullName: email.domain.RedirectionGlobal.RedirectionGlobal
+        // interface fullName: email.domain.RedirectionGlobal.RedirectionGlobal
         export interface RedirectionGlobal {
             from: string;
             id: string;
             to: string;
         }
-        //email.domain.Responder
-        // fullName: email.domain.Responder.Responder
+        // interface fullName: email.domain.Responder.Responder
         export interface Responder {
             account: string;
             content: string;
@@ -217,8 +195,7 @@ export namespace email {
             from?: string;
             to?: string;
         }
-        //email.domain.ResponderAccount
-        // fullName: email.domain.ResponderAccount.ResponderAccount
+        // interface fullName: email.domain.ResponderAccount.ResponderAccount
         export interface ResponderAccount {
             account: string;
             content: string;
@@ -227,23 +204,20 @@ export namespace email {
             from?: string;
             to?: string;
         }
-        //email.domain.Rule
-        // fullName: email.domain.Rule.Rule
+        // interface fullName: email.domain.Rule.Rule
         export interface Rule {
             header: string;
             id: number;
             operand: domainDomainFilterOperandEnum;
             value: string;
         }
-        //email.domain.Subscriber
-        // fullName: email.domain.Subscriber.Subscriber
+        // interface fullName: email.domain.Subscriber.Subscriber
         export interface Subscriber {
             domain: string;
             email: string;
             mailinglist: string;
         }
-        //email.domain.TaskFilter
-        // fullName: email.domain.TaskFilter.TaskFilter
+        // interface fullName: email.domain.TaskFilter.TaskFilter
         export interface TaskFilter {
             account: string;
             action: string;
@@ -251,8 +225,7 @@ export namespace email {
             id: number;
             timestamp: string;
         }
-        //email.domain.TaskMl
-        // fullName: email.domain.TaskMl.TaskMl
+        // interface fullName: email.domain.TaskMl.TaskMl
         export interface TaskMl {
             account: string;
             action: string;
@@ -261,8 +234,7 @@ export namespace email {
             id: number;
             language: domainDomainMlLanguageEnum;
         }
-        //email.domain.TaskPop
-        // fullName: email.domain.TaskPop.TaskPop
+        // interface fullName: email.domain.TaskPop.TaskPop
         export interface TaskPop {
             action: domainDomainPopActionEnum;
             date: string;
@@ -270,8 +242,7 @@ export namespace email {
             id: number;
             name: string;
         }
-        //email.domain.TaskSpecialAccount
-        // fullName: email.domain.TaskSpecialAccount.TaskSpecialAccount
+        // interface fullName: email.domain.TaskSpecialAccount.TaskSpecialAccount
         export interface TaskSpecialAccount {
             account: string;
             action: domainDomainSpecialAccountActionEnum;
@@ -283,8 +254,7 @@ export namespace email {
     }
 }
 export namespace service {
-    //service.RenewType
-    // fullName: service.RenewType.RenewType
+    // interface fullName: service.RenewType.RenewType
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -292,16 +262,15 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    //service.RenewalTypeEnum
+    // type fullname: service.RenewalTypeEnum
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    //service.StateEnum
+    // type fullname: service.StateEnum
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
-    //service.TerminationReasonEnum
+    // type fullname: service.TerminationReasonEnum
     export type TerminationReasonEnum = "FEATURES_DONT_SUIT_ME" | "LACK_OF_PERFORMANCES" | "MIGRATED_TO_ANOTHER_OVH_PRODUCT" | "MIGRATED_TO_COMPETITOR" | "NOT_NEEDED_ANYMORE" | "NOT_RELIABLE" | "NO_ANSWER" | "OTHER" | "TOO_EXPENSIVE" | "TOO_HARD_TO_USE" | "UNSATIFIED_BY_CUSTOMER_SUPPORT"
 }
 export namespace services {
-    //services.Service
-    // fullName: services.Service.Service
+    // interface fullName: services.Service.Service
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;
@@ -319,7 +288,7 @@ export namespace services {
     }
 }
 export namespace zone {
-    //zone.NamedResolutionFieldTypeEnum
+    // type fullname: zone.NamedResolutionFieldTypeEnum
     export type NamedResolutionFieldTypeEnum = "A" | "AAAA" | "CAA" | "CNAME" | "DKIM" | "DMARC" | "LOC" | "MX" | "NAPTR" | "NS" | "PTR" | "SPF" | "SRV" | "SSHFP" | "TLSA" | "TXT"
 }
 

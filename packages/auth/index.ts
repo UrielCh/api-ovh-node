@@ -4,8 +4,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /auth Models
  */
 export namespace api {
-    //api.Credential
-    // fullName: api.Credential.Credential
+    // interface fullName: api.Credential.Credential
     export interface Credential {
         applicationId: number;
         creation: string;
@@ -18,22 +17,20 @@ export namespace api {
     }
 }
 export namespace auth {
-    //auth.AccessRule
-    // fullName: auth.AccessRule.AccessRule
+    // interface fullName: auth.AccessRule.AccessRule
     export interface AccessRule {
         method: auth.MethodEnum;
         path: string;
     }
-    //auth.Credential
-    // fullName: auth.Credential.Credential
+    // interface fullName: auth.Credential.Credential
     export interface Credential {
         consumerKey: string;
         state: auth.CredentialStateEnum;
         validationUrl?: string;
     }
-    //auth.CredentialStateEnum
+    // type fullname: auth.CredentialStateEnum
     export type CredentialStateEnum = "expired" | "pendingValidation" | "refused" | "validated"
-    //auth.MethodEnum
+    // type fullname: auth.MethodEnum
     export type MethodEnum = "DELETE" | "GET" | "POST" | "PUT"
 }
 

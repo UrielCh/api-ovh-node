@@ -5,28 +5,25 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  */
 export namespace cluster {
     export namespace hadoop {
-        //cluster.hadoop.BillingNameEnum
+        // type fullname: cluster.hadoop.BillingNameEnum
         export type BillingNameEnum = "100-small" | "200-cpu-1" | "220-cpu-3" | "300-disk-1" | "310-disk-3" | "900-vm-1"
-        //cluster.hadoop.ClusterConsumption
-        // fullName: cluster.hadoop.ClusterConsumption.ClusterConsumption
+        // interface fullName: cluster.hadoop.ClusterConsumption.ClusterConsumption
         export interface ClusterConsumption {
             quantity: complexType.UnitAndValue<number>;
         }
-        //cluster.hadoop.ClusterServiceNameEnum
+        // type fullname: cluster.hadoop.ClusterServiceNameEnum
         export type ClusterServiceNameEnum = "HBase" | "HDFS" | "HUE" | "Hive" | "Oozie" | "Solr" | "Spark" | "Sqoop" | "YARN" | "ZooKeeper"
-        //cluster.hadoop.ClusterStateEnum
+        // type fullname: cluster.hadoop.ClusterStateEnum
         export type ClusterStateEnum = "created" | "creating" | "deleted" | "deleting" | "delivered" | "delivering" | "toDeliver"
-        //cluster.hadoop.NetworkAcl
-        // fullName: cluster.hadoop.NetworkAcl.NetworkAcl
+        // interface fullName: cluster.hadoop.NetworkAcl.NetworkAcl
         export interface NetworkAcl {
             block: string;
             description?: string;
             state: cluster.hadoop.NetworkAclStateEnum;
         }
-        //cluster.hadoop.NetworkAclStateEnum
+        // type fullname: cluster.hadoop.NetworkAclStateEnum
         export type NetworkAclStateEnum = "disabled" | "enabled" | "pending"
-        //cluster.hadoop.Node
-        // fullName: cluster.hadoop.Node.Node
+        // interface fullName: cluster.hadoop.Node.Node
         export interface Node {
             billingProfileName: cluster.hadoop.BillingNameEnum;
             hostname: string;
@@ -35,8 +32,7 @@ export namespace cluster {
             softwareProfile: cluster.hadoop.NodeProfileEnum;
             state: cluster.hadoop.NodeStateEnum;
         }
-        //cluster.hadoop.NodeBillingProfile
-        // fullName: cluster.hadoop.NodeBillingProfile.NodeBillingProfile
+        // interface fullName: cluster.hadoop.NodeBillingProfile.NodeBillingProfile
         export interface NodeBillingProfile {
             CPUFrequency: complexType.UnitAndValue<number>;
             diskCapacity: complexType.UnitAndValue<number>;
@@ -46,50 +42,44 @@ export namespace cluster {
             nodeProfile: string;
             ramQuantity: complexType.UnitAndValue<number>;
         }
-        //cluster.hadoop.NodeConsumption
-        // fullName: cluster.hadoop.NodeConsumption.NodeConsumption
+        // interface fullName: cluster.hadoop.NodeConsumption.NodeConsumption
         export interface NodeConsumption {
             hostname: string;
             nodeProfile: cluster.hadoop.BillingNameEnum;
             quantity: complexType.UnitAndValue<number>;
         }
-        //cluster.hadoop.NodeProfileEnum
+        // type fullname: cluster.hadoop.NodeProfileEnum
         export type NodeProfileEnum = "ApplicationServer" | "BasicNode" | "ClouderaManager" | "MasterServer" | "SecondaryServer"
-        //cluster.hadoop.NodeStateEnum
+        // type fullname: cluster.hadoop.NodeStateEnum
         export type NodeStateEnum = "available" | "delivered" | "toDeploy" | "unavailable"
-        //cluster.hadoop.OperationStateEnum
+        // type fullname: cluster.hadoop.OperationStateEnum
         export type OperationStateEnum = "cancelled" | "doing" | "done" | "error" | "todo"
-        //cluster.hadoop.OrderInformations
-        // fullName: cluster.hadoop.OrderInformations.OrderInformations
+        // interface fullName: cluster.hadoop.OrderInformations.OrderInformations
         export interface OrderInformations {
             maximumOrderableNodes: number;
             minimumOrderableNodes: number;
         }
-        //cluster.hadoop.Role
-        // fullName: cluster.hadoop.Role.Role
+        // interface fullName: cluster.hadoop.Role.Role
         export interface Role {
             id: number;
             type: cluster.hadoop.RoleTypeEnum;
         }
-        //cluster.hadoop.RoleTypeEnum
+        // type fullname: cluster.hadoop.RoleTypeEnum
         export type RoleTypeEnum = "cloudera_manager" | "data_node" | "elasticsearch_server" | "hbase_master" | "hbase_region_server" | "hive_server2" | "hue" | "impala_daemon" | "impala_server" | "map_reduce_history_server" | "name_node" | "oozie_server" | "open_tsdb" | "secondary_name_node" | "solr_server" | "spark_master" | "spark_worker" | "sqoop_server" | "yarn_node_manager" | "yarn_resource_manager" | "zoo_keeper"
-        //cluster.hadoop.Task
-        // fullName: cluster.hadoop.Task.Task
+        // interface fullName: cluster.hadoop.Task.Task
         export interface Task {
             name: string;
             status: cluster.hadoop.OperationStateEnum;
             taskId: number;
         }
-        //cluster.hadoop.User
-        // fullName: cluster.hadoop.User.User
+        // interface fullName: cluster.hadoop.User.User
         export interface User {
             clouderaManager: boolean;
             httpFrontend: boolean;
             hue: boolean;
             username: string;
         }
-        //cluster.hadoop.hadoop
-        // fullName: cluster.hadoop.hadoop.hadoop
+        // interface fullName: cluster.hadoop.hadoop.hadoop
         export interface hadoop {
             clouderaVersion: string;
             maxOrderableNodes: number;
@@ -99,16 +89,14 @@ export namespace cluster {
     }
 }
 export namespace complexType {
-    //complexType.UnitAndValue
-    // fullName: complexType.UnitAndValue.UnitAndValue
+    // interface fullName: complexType.UnitAndValue.UnitAndValue
     export interface UnitAndValue<T> {
         unit: string;
         value: T;
     }
 }
 export namespace service {
-    //service.RenewType
-    // fullName: service.RenewType.RenewType
+    // interface fullName: service.RenewType.RenewType
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -116,14 +104,13 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    //service.RenewalTypeEnum
+    // type fullname: service.RenewalTypeEnum
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    //service.StateEnum
+    // type fullname: service.StateEnum
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
 }
 export namespace services {
-    //services.Service
-    // fullName: services.Service.Service
+    // interface fullName: services.Service.Service
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;

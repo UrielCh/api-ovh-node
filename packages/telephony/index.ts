@@ -4,47 +4,42 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /telephony Models
  */
 export namespace complexType {
-    //complexType.Range
-    // fullName: complexType.Range.Range
+    // interface fullName: complexType.Range.Range
     export interface Range<T> {
         from: T;
         to: T;
     }
-    //complexType.SafeKeyValue
-    // fullName: complexType.SafeKeyValue.SafeKeyValue
+    // interface fullName: complexType.SafeKeyValue.SafeKeyValue
     export interface SafeKeyValue<T> {
         key: string;
         value: T;
     }
-    //complexType.UnitAndValues
-    // fullName: complexType.UnitAndValues.UnitAndValues
+    // interface fullName: complexType.UnitAndValues.UnitAndValues
     export interface UnitAndValues<T> {
         unit: string;
         values: T[];
     }
 }
 export namespace coreTypes {
-    //coreTypes.CountryEnum
+    // type fullname: coreTypes.CountryEnum
     export type CountryEnum = "ac" | "ad" | "ae" | "af" | "ag" | "ai" | "al" | "am" | "an" | "ao" | "aq" | "ar" | "as" | "at" | "au" | "aw" | "ax" | "az" | "ba" | "bb" | "bd" | "be" | "bf" | "bg" | "bh" | "bi" | "bj" | "bl" | "bm" | "bn" | "bo" | "bq" | "br" | "bs" | "bt" | "bv" | "bw" | "by" | "bz" | "ca" | "cc" | "cd" | "cf" | "cg" | "ch" | "ci" | "ck" | "cl" | "cm" | "cn" | "co" | "cr" | "cs" | "cu" | "cv" | "cw" | "cx" | "cy" | "cz" | "de" | "dj" | "dk" | "dm" | "do" | "dz" | "ec" | "ee" | "eg" | "eh" | "er" | "es" | "et" | "fc" | "fd" | "fi" | "fj" | "fk" | "fm" | "fo" | "fr" | "fx" | "ga" | "gb" | "gd" | "ge" | "gf" | "gg" | "gh" | "gi" | "gl" | "gm" | "gn" | "gp" | "gq" | "gr" | "gs" | "gt" | "gu" | "gw" | "gy" | "hk" | "hm" | "hn" | "hr" | "ht" | "hu" | "id" | "ie" | "il" | "im" | "in" | "io" | "iq" | "ir" | "is" | "it" | "je" | "jm" | "jo" | "jp" | "ke" | "kg" | "kh" | "ki" | "km" | "kn" | "kp" | "kr" | "kw" | "ky" | "kz" | "la" | "lb" | "lc" | "li" | "lk" | "lr" | "ls" | "lt" | "lu" | "lv" | "ly" | "ma" | "mc" | "md" | "me" | "mf" | "mg" | "mh" | "mk" | "ml" | "mm" | "mn" | "mo" | "mp" | "mq" | "mr" | "ms" | "mt" | "mu" | "mv" | "mw" | "mx" | "my" | "mz" | "na" | "nc" | "ne" | "nf" | "ng" | "ni" | "nl" | "no" | "np" | "nr" | "nu" | "nz" | "om" | "pa" | "pe" | "pf" | "pg" | "ph" | "pk" | "pl" | "pm" | "pn" | "pr" | "ps" | "pt" | "pw" | "py" | "qa" | "qc" | "re" | "ro" | "rs" | "ru" | "rw" | "sa" | "sb" | "sc" | "sd" | "se" | "sg" | "sh" | "si" | "sj" | "sk" | "sl" | "sm" | "sn" | "so" | "sr" | "ss" | "st" | "sv" | "sx" | "sy" | "sz" | "tc" | "td" | "tf" | "tg" | "th" | "tj" | "tk" | "tl" | "tm" | "tn" | "to" | "tp" | "tr" | "tt" | "tv" | "tw" | "tz" | "ua" | "ug" | "uk" | "um" | "us" | "uy" | "uz" | "va" | "vc" | "ve" | "vg" | "vi" | "vn" | "vu" | "we" | "wf" | "ws" | "ye" | "yt" | "yu" | "za" | "zm" | "zw"
-    //coreTypes.TimeZoneEnum
+    // type fullname: coreTypes.TimeZoneEnum
     export type TimeZoneEnum = "Africa/Abidjan" | "Africa/Accra" | "Africa/Addis_Ababa" | "Africa/Algiers" | "Africa/Asmara" | "Africa/Bamako" | "Africa/Bangui" | "Africa/Banjul" | "Africa/Bissau" | "Africa/Blantyre" | "Africa/Brazzaville" | "Africa/Bujumbura" | "Africa/Cairo" | "Africa/Casablanca" | "Africa/Ceuta" | "Africa/Conakry" | "Africa/Dakar" | "Africa/Dar_es_Salaam" | "Africa/Djibouti" | "Africa/Douala" | "Africa/El_Aaiun" | "Africa/Freetown" | "Africa/Gaborone" | "Africa/Harare" | "Africa/Johannesburg" | "Africa/Juba" | "Africa/Kampala" | "Africa/Khartoum" | "Africa/Kigali" | "Africa/Kinshasa" | "Africa/Lagos" | "Africa/Libreville" | "Africa/Lome" | "Africa/Luanda" | "Africa/Lubumbashi" | "Africa/Lusaka" | "Africa/Malabo" | "Africa/Maputo" | "Africa/Maseru" | "Africa/Mbabane" | "Africa/Mogadishu" | "Africa/Monrovia" | "Africa/Nairobi" | "Africa/Ndjamena" | "Africa/Niamey" | "Africa/Nouakchott" | "Africa/Ouagadougou" | "Africa/Porto-Novo" | "Africa/Sao_Tome" | "Africa/Tripoli" | "Africa/Tunis" | "Africa/Windhoek" | "America/Adak" | "America/Anchorage" | "America/Anguilla" | "America/Antigua" | "America/Araguaina" | "America/Argentina/Buenos_Aires" | "America/Argentina/Catamarca" | "America/Argentina/Cordoba" | "America/Argentina/Jujuy" | "America/Argentina/La_Rioja" | "America/Argentina/Mendoza" | "America/Argentina/Rio_Gallegos" | "America/Argentina/Salta" | "America/Argentina/San_Juan" | "America/Argentina/San_Luis" | "America/Argentina/Tucuman" | "America/Argentina/Ushuaia" | "America/Aruba" | "America/Asuncion" | "America/Atikokan" | "America/Bahia" | "America/Bahia_Banderas" | "America/Barbados" | "America/Belem" | "America/Belize" | "America/Blanc-Sablon" | "America/Boa_Vista" | "America/Bogota" | "America/Boise" | "America/Cambridge_Bay" | "America/Campo_Grande" | "America/Cancun" | "America/Caracas" | "America/Cayenne" | "America/Cayman" | "America/Chicago" | "America/Chihuahua" | "America/Costa_Rica" | "America/Creston" | "America/Cuiaba" | "America/Curacao" | "America/Danmarkshavn" | "America/Dawson" | "America/Dawson_Creek" | "America/Denver" | "America/Detroit" | "America/Dominica" | "America/Edmonton" | "America/Eirunepe" | "America/El_Salvador" | "America/Fortaleza" | "America/Glace_Bay" | "America/Godthab" | "America/Goose_Bay" | "America/Grand_Turk" | "America/Grenada" | "America/Guadeloupe" | "America/Guatemala" | "America/Guayaquil" | "America/Guyana" | "America/Halifax" | "America/Havana" | "America/Hermosillo" | "America/Indiana/Indianapolis" | "America/Indiana/Knox" | "America/Indiana/Marengo" | "America/Indiana/Petersburg" | "America/Indiana/Tell_City" | "America/Indiana/Vevay" | "America/Indiana/Vincennes" | "America/Indiana/Winamac" | "America/Inuvik" | "America/Iqaluit" | "America/Jamaica" | "America/Juneau" | "America/Kentucky/Louisville" | "America/Kentucky/Monticello" | "America/Kralendijk" | "America/La_Paz" | "America/Lima" | "America/Los_Angeles" | "America/Lower_Princes" | "America/Maceio" | "America/Managua" | "America/Manaus" | "America/Marigot" | "America/Martinique" | "America/Matamoros" | "America/Mazatlan" | "America/Menominee" | "America/Merida" | "America/Metlakatla" | "America/Mexico_City" | "America/Miquelon" | "America/Moncton" | "America/Monterrey" | "America/Montevideo" | "America/Montserrat" | "America/Nassau" | "America/New_York" | "America/Nipigon" | "America/Nome" | "America/Noronha" | "America/North_Dakota/Beulah" | "America/North_Dakota/Center" | "America/North_Dakota/New_Salem" | "America/Ojinaga" | "America/Panama" | "America/Pangnirtung" | "America/Paramaribo" | "America/Phoenix" | "America/Port-au-Prince" | "America/Port_of_Spain" | "America/Porto_Velho" | "America/Puerto_Rico" | "America/Rainy_River" | "America/Rankin_Inlet" | "America/Recife" | "America/Regina" | "America/Resolute" | "America/Rio_Branco" | "America/Santa_Isabel" | "America/Santarem" | "America/Santiago" | "America/Santo_Domingo" | "America/Sao_Paulo" | "America/Scoresbysund" | "America/Sitka" | "America/St_Barthelemy" | "America/St_Johns" | "America/St_Kitts" | "America/St_Lucia" | "America/St_Thomas" | "America/St_Vincent" | "America/Swift_Current" | "America/Tegucigalpa" | "America/Thule" | "America/Thunder_Bay" | "America/Tijuana" | "America/Toronto" | "America/Tortola" | "America/Vancouver" | "America/Whitehorse" | "America/Winnipeg" | "America/Yakutat" | "America/Yellowknife" | "Antarctica/Casey" | "Antarctica/Davis" | "Antarctica/DumontDUrville" | "Antarctica/Macquarie" | "Antarctica/Mawson" | "Antarctica/McMurdo" | "Antarctica/Palmer" | "Antarctica/Rothera" | "Antarctica/Syowa" | "Antarctica/Troll" | "Antarctica/Vostok" | "Arctic/Longyearbyen" | "Asia/Aden" | "Asia/Almaty" | "Asia/Amman" | "Asia/Anadyr" | "Asia/Aqtau" | "Asia/Aqtobe" | "Asia/Ashgabat" | "Asia/Baghdad" | "Asia/Bahrain" | "Asia/Baku" | "Asia/Bangkok" | "Asia/Beirut" | "Asia/Bishkek" | "Asia/Brunei" | "Asia/Chita" | "Asia/Choibalsan" | "Asia/Colombo" | "Asia/Damascus" | "Asia/Dhaka" | "Asia/Dili" | "Asia/Dubai" | "Asia/Dushanbe" | "Asia/Gaza" | "Asia/Hebron" | "Asia/Ho_Chi_Minh" | "Asia/Hong_Kong" | "Asia/Hovd" | "Asia/Irkutsk" | "Asia/Jakarta" | "Asia/Jayapura" | "Asia/Jerusalem" | "Asia/Kabul" | "Asia/Kamchatka" | "Asia/Karachi" | "Asia/Kathmandu" | "Asia/Khandyga" | "Asia/Kolkata" | "Asia/Krasnoyarsk" | "Asia/Kuala_Lumpur" | "Asia/Kuching" | "Asia/Kuwait" | "Asia/Macau" | "Asia/Magadan" | "Asia/Makassar" | "Asia/Manila" | "Asia/Muscat" | "Asia/Nicosia" | "Asia/Novokuznetsk" | "Asia/Novosibirsk" | "Asia/Omsk" | "Asia/Oral" | "Asia/Phnom_Penh" | "Asia/Pontianak" | "Asia/Pyongyang" | "Asia/Qatar" | "Asia/Qyzylorda" | "Asia/Rangoon" | "Asia/Riyadh" | "Asia/Sakhalin" | "Asia/Samarkand" | "Asia/Seoul" | "Asia/Shanghai" | "Asia/Singapore" | "Asia/Srednekolymsk" | "Asia/Taipei" | "Asia/Tashkent" | "Asia/Tbilisi" | "Asia/Tehran" | "Asia/Thimphu" | "Asia/Tokyo" | "Asia/Ulaanbaatar" | "Asia/Urumqi" | "Asia/Ust-Nera" | "Asia/Vientiane" | "Asia/Vladivostok" | "Asia/Yakutsk" | "Asia/Yekaterinburg" | "Asia/Yerevan" | "Atlantic/Azores" | "Atlantic/Bermuda" | "Atlantic/Canary" | "Atlantic/Cape_Verde" | "Atlantic/Faroe" | "Atlantic/Madeira" | "Atlantic/Reykjavik" | "Atlantic/South_Georgia" | "Atlantic/St_Helena" | "Atlantic/Stanley" | "Australia/Adelaide" | "Australia/Brisbane" | "Australia/Broken_Hill" | "Australia/Currie" | "Australia/Darwin" | "Australia/Eucla" | "Australia/Hobart" | "Australia/Lindeman" | "Australia/Lord_Howe" | "Australia/Melbourne" | "Australia/Perth" | "Australia/Sydney" | "Europe/Amsterdam" | "Europe/Andorra" | "Europe/Athens" | "Europe/Belgrade" | "Europe/Berlin" | "Europe/Bratislava" | "Europe/Brussels" | "Europe/Bucharest" | "Europe/Budapest" | "Europe/Busingen" | "Europe/Chisinau" | "Europe/Copenhagen" | "Europe/Dublin" | "Europe/Gibraltar" | "Europe/Guernsey" | "Europe/Helsinki" | "Europe/Isle_of_Man" | "Europe/Istanbul" | "Europe/Jersey" | "Europe/Kaliningrad" | "Europe/Kiev" | "Europe/Lisbon" | "Europe/Ljubljana" | "Europe/London" | "Europe/Luxembourg" | "Europe/Madrid" | "Europe/Malta" | "Europe/Mariehamn" | "Europe/Minsk" | "Europe/Monaco" | "Europe/Moscow" | "Europe/Oslo" | "Europe/Paris" | "Europe/Podgorica" | "Europe/Prague" | "Europe/Riga" | "Europe/Rome" | "Europe/Samara" | "Europe/San_Marino" | "Europe/Sarajevo" | "Europe/Simferopol" | "Europe/Skopje" | "Europe/Sofia" | "Europe/Stockholm" | "Europe/Tallinn" | "Europe/Tirane" | "Europe/Uzhgorod" | "Europe/Vaduz" | "Europe/Vatican" | "Europe/Vienna" | "Europe/Vilnius" | "Europe/Volgograd" | "Europe/Warsaw" | "Europe/Zagreb" | "Europe/Zaporozhye" | "Europe/Zurich" | "Indian/Antananarivo" | "Indian/Chagos" | "Indian/Christmas" | "Indian/Cocos" | "Indian/Comoro" | "Indian/Kerguelen" | "Indian/Mahe" | "Indian/Maldives" | "Indian/Mauritius" | "Indian/Mayotte" | "Indian/Reunion" | "Pacific/Apia" | "Pacific/Auckland" | "Pacific/Bougainville" | "Pacific/Chatham" | "Pacific/Chuuk" | "Pacific/Easter" | "Pacific/Efate" | "Pacific/Enderbury" | "Pacific/Fakaofo" | "Pacific/Fiji" | "Pacific/Funafuti" | "Pacific/Galapagos" | "Pacific/Gambier" | "Pacific/Guadalcanal" | "Pacific/Guam" | "Pacific/Honolulu" | "Pacific/Johnston" | "Pacific/Kiritimati" | "Pacific/Kosrae" | "Pacific/Kwajalein" | "Pacific/Majuro" | "Pacific/Marquesas" | "Pacific/Midway" | "Pacific/Nauru" | "Pacific/Niue" | "Pacific/Norfolk" | "Pacific/Noumea" | "Pacific/Pago_Pago" | "Pacific/Palau" | "Pacific/Pitcairn" | "Pacific/Pohnpei" | "Pacific/Port_Moresby" | "Pacific/Rarotonga" | "Pacific/Saipan" | "Pacific/Tahiti" | "Pacific/Tarawa" | "Pacific/Tongatapu" | "Pacific/Wake" | "Pacific/Wallis"
 }
 export namespace nichandle {
-    //nichandle.GenderEnum
+    // type fullname: nichandle.GenderEnum
     export type GenderEnum = "female" | "male"
 }
 export namespace order {
-    //order.Contract
-    // fullName: order.Contract.Contract
+    // interface fullName: order.Contract.Contract
     export interface Contract {
         content: string;
         name: string;
         url: string;
     }
-    //order.CurrencyCodeEnum
+    // type fullname: order.CurrencyCodeEnum
     export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
-    //order.Price
-    // fullName: order.Price.Price
+    // interface fullName: order.Price.Price
     export interface Price {
         currencyCode: order.CurrencyCodeEnum;
         text: string;
@@ -52,8 +47,7 @@ export namespace order {
     }
 }
 export namespace service {
-    //service.RenewType
-    // fullName: service.RenewType.RenewType
+    // interface fullName: service.RenewType.RenewType
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -61,14 +55,13 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    //service.RenewalTypeEnum
+    // type fullname: service.RenewalTypeEnum
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    //service.StateEnum
+    // type fullname: service.StateEnum
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
 }
 export namespace services {
-    //services.Service
-    // fullName: services.Service.Service
+    // interface fullName: services.Service.Service
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;
@@ -87,8 +80,7 @@ export namespace services {
 }
 export namespace spare {
     export namespace telephony {
-        //spare.telephony.TelephonySpare
-        // fullName: spare.telephony.TelephonySpare.TelephonySpare
+        // interface fullName: spare.telephony.TelephonySpare.TelephonySpare
         export interface TelephonySpare {
             brand: string;
             macAddress: string;
@@ -97,45 +89,40 @@ export namespace spare {
     }
 }
 export namespace telephony {
-    //telephony.AbbreviatedNumber
-    // fullName: telephony.AbbreviatedNumber.AbbreviatedNumber
+    // interface fullName: telephony.AbbreviatedNumber.AbbreviatedNumber
     export interface AbbreviatedNumber {
         abbreviatedNumber: number;
         destinationNumber: string;
         name: string;
         surname: string;
     }
-    //telephony.AbbreviatedNumberGroup
-    // fullName: telephony.AbbreviatedNumberGroup.AbbreviatedNumberGroup
+    // interface fullName: telephony.AbbreviatedNumberGroup.AbbreviatedNumberGroup
     export interface AbbreviatedNumberGroup {
         abbreviatedNumber: number;
         destinationNumber: string;
         name: string;
         surname: string;
     }
-    //telephony.AccessoryOffer
-    // fullName: telephony.AccessoryOffer.AccessoryOffer
+    // interface fullName: telephony.AccessoryOffer.AccessoryOffer
     export interface AccessoryOffer {
         description?: string;
         name: string;
         price: orderPrice;
         url?: string;
     }
-    //telephony.AntihackActionEnum
+    // type fullname: telephony.AntihackActionEnum
     export type AntihackActionEnum = "AUTHORIZE_ALL" | "AUTHORIZE_ONE_NUMBER" | "BLOCK_ALL" | "BLOCK_ONE_NUMBER"
-    //telephony.BannerAccess
-    // fullName: telephony.BannerAccess.BannerAccess
+    // interface fullName: telephony.BannerAccess.BannerAccess
     export interface BannerAccess {
         creationDate: string;
         id: number;
         url: string;
     }
-    //telephony.BillDocument
+    // type fullname: telephony.BillDocument
     export type BillDocument = "csv" | "pdf" | "received.csv" | "xml"
-    //telephony.BillStatusEnum
+    // type fullname: telephony.BillStatusEnum
     export type BillStatusEnum = "doing" | "done" | "error" | "todo"
-    //telephony.BillingAccount
-    // fullName: telephony.BillingAccount.BillingAccount
+    // interface fullName: telephony.BillingAccount.BillingAccount
     export interface BillingAccount {
         allowedOutplan: orderPrice;
         billingAccount: string;
@@ -148,10 +135,9 @@ export namespace telephony {
         status: telephony.BillingAccountStatusEnum;
         trusted: boolean;
     }
-    //telephony.BillingAccountStatusEnum
+    // type fullname: telephony.BillingAccountStatusEnum
     export type BillingAccountStatusEnum = "closed" | "deleted" | "enabled" | "expired"
-    //telephony.CallDiagnosticCallQuality
-    // fullName: telephony.CallDiagnosticCallQuality.CallDiagnosticCallQuality
+    // interface fullName: telephony.CallDiagnosticCallQuality.CallDiagnosticCallQuality
     export interface CallDiagnosticCallQuality {
         callId: string;
         codec: telephony.CallDiagnosticCodecEnum;
@@ -167,40 +153,35 @@ export namespace telephony {
         rtpLost: number;
         timestamp: string;
     }
-    //telephony.CallDiagnosticCauseEnum
+    // type fullname: telephony.CallDiagnosticCauseEnum
     export type CallDiagnosticCauseEnum = "1" | "10" | "11" | "12" | "13" | "14" | "15" | "16" | "1a" | "1b" | "1c" | "1d" | "1e" | "1f" | "2" | "22" | "26" | "27" | "28" | "29" | "2a" | "2b" | "2c" | "2e" | "2f" | "3" | "30" | "31" | "32" | "33" | "34" | "35" | "37" | "39" | "3a" | "3e" | "3f" | "4" | "41" | "42" | "45" | "46" | "4f" | "5" | "51" | "52" | "53" | "54" | "55" | "56" | "57" | "58" | "5a" | "5b" | "5f" | "6" | "60" | "61" | "62" | "63" | "64" | "65" | "66" | "67" | "6e" | "6f" | "7" | "7f" | "8" | "9"
-    //telephony.CallDiagnosticCdrs
-    // fullName: telephony.CallDiagnosticCdrs.CallDiagnosticCdrs
+    // interface fullName: telephony.CallDiagnosticCdrs.CallDiagnosticCdrs
     export interface CallDiagnosticCdrs {
         basic: telephony.CallDiagnosticCdrsBasic;
         timestamp: string;
     }
-    //telephony.CallDiagnosticCdrsBasic
-    // fullName: telephony.CallDiagnosticCdrsBasic.CallDiagnosticCdrsBasic
+    // interface fullName: telephony.CallDiagnosticCdrsBasic.CallDiagnosticCdrsBasic
     export interface CallDiagnosticCdrsBasic {
         cause: telephony.CallDiagnosticCauseEnum;
         causeDescription: string;
         releaseLocation: telephony.ReleaseLocationEnum;
     }
-    //telephony.CallDiagnosticCodecEnum
+    // type fullname: telephony.CallDiagnosticCodecEnum
     export type CallDiagnosticCodecEnum = "G722" | "G729" | "PCMA" | "PCMU"
-    //telephony.CallDiagnosticReporting
-    // fullName: telephony.CallDiagnosticReporting.CallDiagnosticReporting
+    // interface fullName: telephony.CallDiagnosticReporting.CallDiagnosticReporting
     export interface CallDiagnosticReporting {
         message: string;
     }
-    //telephony.CallDiagnosticSip
-    // fullName: telephony.CallDiagnosticSip.CallDiagnosticSip
+    // interface fullName: telephony.CallDiagnosticSip.CallDiagnosticSip
     export interface CallDiagnosticSip {
         headers: string;
         requestMethod?: string;
         response?: string;
         timestamp: string;
     }
-    //telephony.CallDiagnosticStatusEnum
+    // type fullname: telephony.CallDiagnosticStatusEnum
     export type CallDiagnosticStatusEnum = "doing" | "done" | "error" | "todo"
-    //telephony.CallDiagnostics
-    // fullName: telephony.CallDiagnostics.CallDiagnostics
+    // interface fullName: telephony.CallDiagnostics.CallDiagnostics
     export interface CallDiagnostics {
         callQuality: telephony.CallDiagnosticCallQuality[];
         cdrs: telephony.CallDiagnosticCdrs[];
@@ -208,8 +189,7 @@ export namespace telephony {
         sip: telephony.CallDiagnosticSip[];
         status: telephony.CallDiagnosticStatusEnum;
     }
-    //telephony.CallsGenerated
-    // fullName: telephony.CallsGenerated.CallsGenerated
+    // interface fullName: telephony.CallsGenerated.CallsGenerated
     export interface CallsGenerated {
         answerDatetime?: string;
         application?: string;
@@ -226,19 +206,17 @@ export namespace telephony {
         transferFrom?: string;
         uuid: string;
     }
-    //telephony.CallsGeneratorDialplanEnum
+    // type fullname: telephony.CallsGeneratorDialplanEnum
     export type CallsGeneratorDialplanEnum = "PlayAudioFile" | "PlayAudioFileAndTransferCall" | "ReadText" | "RequestAppointmentConfirmation" | "RequestAppointmentConfirmationWithTransfer"
-    //telephony.CallsGeneratorHangupCauseEnum
+    // type fullname: telephony.CallsGeneratorHangupCauseEnum
     export type CallsGeneratorHangupCauseEnum = "AccessInformationDiscarded" | "AllottedTimeout" | "AttendedTransfer" | "BlindTransfer" | "CallAwardedbeing" | "ChannelTypeNotImplemented" | "ChannelUnacceptable" | "CodeSip403BearerCapabilityNotAuthorized" | "CodeSip403IncomingCallsBarred" | "CodeSip403OutgoingCallsBarred" | "CodeSip404NoRouteToDestination" | "CodeSip404NoRouteToSpecifiedTransitNetwork" | "CodeSip404UnallocatedNumber" | "CodeSip408NoUserResponding" | "CodeSip410NumberChanged" | "CodeSip410RedirectionToNewDestination" | "CodeSip480NoAnswerFromUser" | "CodeSip480NormalUnspecified" | "CodeSip480SubscriberAbsent" | "CodeSip483ExchangeRoutingError" | "CodeSip484InvalidNumberFormatAddressIncomplete" | "CodeSip486UserBusy" | "CodeSip487OriginatorCancel" | "CodeSip488IncompatibleDestination" | "CodeSip488bearerCapabilityNotImplemented" | "CodeSip501FacilitiesRejected" | "CodeSip501RequestedFacilityNotImplemented" | "CodeSip501ServiceOrOptionNotImplementedUnspecified" | "CodeSip502DestinationOutOfOrder" | "CodeSip503BearerCapabilityNotPresentlyAvailable" | "CodeSip503NetworkOutOfOrder" | "CodeSip503NoCircuitChannelAvailable" | "CodeSip503RequestedCircuitOrChannelNotAvailable" | "CodeSip503SwitchingEquipmentCongestion" | "CodeSip503TemporaryFailure" | "CodeSip504RecoveryOnTimerExpiry" | "CodeSip603CallRejected" | "Crash" | "GatewayDown" | "InformationElementOrParameterNonExistentOrNotImplemented" | "InterworkingUnspecified" | "InvalidCallReferenceValue" | "InvalidInformationElementContents" | "InvalidMessageUnspecified" | "LoseRace" | "ManagerRequest" | "MandatoryInformationElementIsMissing" | "MediaTimeout" | "MessageNotCompatibleWithCallState" | "MessageNotCompatibleWithCallStateOrMessageTypeNonExistentOrNotImplemented" | "MessageTypeNonExistentOrNotImplemented" | "NormalCallClearing" | "ParameterNonExistentOrNotImplementedPassedOnNationalUse" | "PickedOff" | "PreEmpted" | "ProgressTimeout" | "ProtocolErrorUnspecified" | "RequestedFacilityNotSubscribed" | "ResponseToStatusInquiry" | "ServiceOrOptionNotAvailableUnspecified" | "SystemShutdown" | "UnknownOrCallUnfinished" | "UnspecifiedNoOtherCauseCodesApplicable" | "UserChallenge" | "UserNotRegistered"
-    //telephony.CarrierSip
-    // fullName: telephony.CarrierSip.CarrierSip
+    // interface fullName: telephony.CarrierSip.CarrierSip
     export interface CarrierSip {
         description: string;
         serviceName: string;
         serviceType: telephony.TypeServiceEnum;
     }
-    //telephony.CarrierSipCustomerEndpoint
-    // fullName: telephony.CarrierSipCustomerEndpoint.CarrierSipCustomerEndpoint
+    // interface fullName: telephony.CarrierSipCustomerEndpoint.CarrierSipCustomerEndpoint
     export interface CarrierSipCustomerEndpoint {
         id: number;
         ip: string;
@@ -247,39 +225,34 @@ export namespace telephony {
         protocol: telephony.CarrierSipEndpointProtocolEnum;
         weight: number;
     }
-    //telephony.CarrierSipDetails
-    // fullName: telephony.CarrierSipDetails.CarrierSipDetails
+    // interface fullName: telephony.CarrierSipDetails.CarrierSipDetails
     export interface CarrierSipDetails {
         description: string;
         maxCallsPerSecond: number;
         maxConcurrentCalls: number;
     }
-    //telephony.CarrierSipEndpointProtocolEnum
+    // type fullname: telephony.CarrierSipEndpointProtocolEnum
     export type CarrierSipEndpointProtocolEnum = "tcp" | "tls" | "udp"
-    //telephony.City
-    // fullName: telephony.City.City
+    // interface fullName: telephony.City.City
     export interface City {
         administrationCode?: string;
         name: string;
         zipCode: string;
     }
-    //telephony.Click2CallUser
-    // fullName: telephony.Click2CallUser.Click2CallUser
+    // interface fullName: telephony.Click2CallUser.Click2CallUser
     export interface Click2CallUser {
         creationDateTime: string;
         id: number;
         login: string;
     }
-    //telephony.Conference
-    // fullName: telephony.Conference.Conference
+    // interface fullName: telephony.Conference.Conference
     export interface Conference {
         description: string;
         offers: string[];
         serviceName: string;
         serviceType: telephony.TypeServiceEnum;
     }
-    //telephony.ConferenceHistory
-    // fullName: telephony.ConferenceHistory.ConferenceHistory
+    // interface fullName: telephony.ConferenceHistory.ConferenceHistory
     export interface ConferenceHistory {
         countConnections: number;
         countParticipants: number;
@@ -290,24 +263,21 @@ export namespace telephony {
         id: number;
         recordUrl?: string;
     }
-    //telephony.ConferenceHistoryEvent
-    // fullName: telephony.ConferenceHistoryEvent.ConferenceHistoryEvent
+    // interface fullName: telephony.ConferenceHistoryEvent.ConferenceHistoryEvent
     export interface ConferenceHistoryEvent {
         callerid: string;
         date: string;
         type: string;
     }
-    //telephony.ConferenceInformations
-    // fullName: telephony.ConferenceInformations.ConferenceInformations
+    // interface fullName: telephony.ConferenceInformations.ConferenceInformations
     export interface ConferenceInformations {
         dateStart: string;
         locked: boolean;
         membersCount: number;
     }
-    //telephony.ConferenceLanguageEnum
+    // type fullname: telephony.ConferenceLanguageEnum
     export type ConferenceLanguageEnum = "de" | "en" | "es" | "fr" | "it"
-    //telephony.ConferenceParticipants
-    // fullName: telephony.ConferenceParticipants.ConferenceParticipants
+    // interface fullName: telephony.ConferenceParticipants.ConferenceParticipants
     export interface ConferenceParticipants {
         arrivalDateTime: string;
         callerName: string;
@@ -319,8 +289,7 @@ export namespace telephony {
         speak: boolean;
         talking: boolean;
     }
-    //telephony.ConferenceProperties
-    // fullName: telephony.ConferenceProperties.ConferenceProperties
+    // interface fullName: telephony.ConferenceProperties.ConferenceProperties
     export interface ConferenceProperties {
         announceFile: boolean;
         announceFilename?: string;
@@ -335,27 +304,24 @@ export namespace telephony {
         reportStatus: telephony.ConferenceReportStatusEnum;
         whiteLabelReport: boolean;
     }
-    //telephony.ConferenceReportStatusEnum
+    // type fullname: telephony.ConferenceReportStatusEnum
     export type ConferenceReportStatusEnum = "customer" | "none" | "other"
-    //telephony.ConferenceWebAccess
-    // fullName: telephony.ConferenceWebAccess.ConferenceWebAccess
+    // interface fullName: telephony.ConferenceWebAccess.ConferenceWebAccess
     export interface ConferenceWebAccess {
         id: number;
         type: telephony.ConferenceWebAccessTypeEnum;
         url: string;
     }
-    //telephony.ConferenceWebAccessTypeEnum
+    // type fullname: telephony.ConferenceWebAccessTypeEnum
     export type ConferenceWebAccessTypeEnum = "read" | "write"
-    //telephony.ConsumptionThreshold
-    // fullName: telephony.ConsumptionThreshold.ConsumptionThreshold
+    // interface fullName: telephony.ConsumptionThreshold.ConsumptionThreshold
     export interface ConsumptionThreshold {
         block: telephony.OutplanNotificationBlockEnum;
         id: number;
         notifyEmail: string;
         percentage: number;
     }
-    //telephony.Contact
-    // fullName: telephony.Contact.Contact
+    // interface fullName: telephony.Contact.Contact
     export interface Contact {
         address?: string;
         city?: string;
@@ -367,16 +333,14 @@ export namespace telephony {
         phone?: string;
         zip?: string;
     }
-    //telephony.ContactsExportFormatsEnum
+    // type fullname: telephony.ContactsExportFormatsEnum
     export type ContactsExportFormatsEnum = "csv"
-    //telephony.DatetimeAndIpvalue
-    // fullName: telephony.DatetimeAndIpvalue.DatetimeAndIpvalue
+    // interface fullName: telephony.DatetimeAndIpvalue.DatetimeAndIpvalue
     export interface DatetimeAndIpvalue {
         datetime: string;
         ip?: string;
     }
-    //telephony.Ddi
-    // fullName: telephony.Ddi.Ddi
+    // interface fullName: telephony.Ddi.Ddi
     export interface Ddi {
         description: string;
         destination?: string;
@@ -384,16 +348,14 @@ export namespace telephony {
         serviceName: string;
         serviceType: telephony.TypeServiceEnum;
     }
-    //telephony.DefaultSipDomains
-    // fullName: telephony.DefaultSipDomains.DefaultSipDomains
+    // interface fullName: telephony.DefaultSipDomains.DefaultSipDomains
     export interface DefaultSipDomains {
         country: telephony.NumberCountryEnum;
         currentDomain: string;
         list: string[];
         productType: telephony.SipDomainProductTypeEnum;
     }
-    //telephony.DetailedRateCodeInformation
-    // fullName: telephony.DetailedRateCodeInformation.DetailedRateCodeInformation
+    // interface fullName: telephony.DetailedRateCodeInformation.DetailedRateCodeInformation
     export interface DetailedRateCodeInformation {
         cancelLimitDatetime?: string;
         effectiveDatetime?: string;
@@ -404,8 +366,7 @@ export namespace telephony {
         repaymentPricePerMinuteWithoutTax: orderPrice;
         updateRateCodePriceWithoutTax?: orderPrice;
     }
-    //telephony.DiagnosticReport
-    // fullName: telephony.DiagnosticReport.DiagnosticReport
+    // interface fullName: telephony.DiagnosticReport.DiagnosticReport
     export interface DiagnosticReport {
         callId: string;
         category: telephony.DiagnosticReportCategoryEnum;
@@ -415,14 +376,13 @@ export namespace telephony {
         name: string;
         report: string;
     }
-    //telephony.DiagnosticReportCategoryEnum
+    // type fullname: telephony.DiagnosticReportCategoryEnum
     export type DiagnosticReportCategoryEnum = "dpi" | "signal"
-    //telephony.DiagnosticReportIndexEnum
+    // type fullname: telephony.DiagnosticReportIndexEnum
     export type DiagnosticReportIndexEnum = "2 days ago" | "3 days ago" | "today" | "yesterday"
-    //telephony.DiagnosticReportLevelEnum
+    // type fullname: telephony.DiagnosticReportLevelEnum
     export type DiagnosticReportLevelEnum = "debug" | "error" | "info" | "warn"
-    //telephony.DirectoryHeadingPJ
-    // fullName: telephony.DirectoryHeadingPJ.DirectoryHeadingPJ
+    // interface fullName: telephony.DirectoryHeadingPJ.DirectoryHeadingPJ
     export interface DirectoryHeadingPJ {
         apeCode: string;
         apeDescription: string;
@@ -430,8 +390,7 @@ export namespace telephony {
         directoryServiceDescription: string;
         notification: string;
     }
-    //telephony.DirectoryInfo
-    // fullName: telephony.DirectoryInfo.DirectoryInfo
+    // interface fullName: telephony.DirectoryInfo.DirectoryInfo
     export interface DirectoryInfo {
         PJSocialNomination: string;
         address: string;
@@ -472,14 +431,12 @@ export namespace telephony {
         wayNumberExtra: string;
         wayType: string;
     }
-    //telephony.DirectoryWayType
-    // fullName: telephony.DirectoryWayType.DirectoryWayType
+    // interface fullName: telephony.DirectoryWayType.DirectoryWayType
     export interface DirectoryWayType {
         abbreviatedName: string;
         wayName: string;
     }
-    //telephony.EasyHunting
-    // fullName: telephony.EasyHunting.EasyHunting
+    // interface fullName: telephony.EasyHunting.EasyHunting
     export interface EasyHunting {
         anonymousRejection: boolean;
         description: string;
@@ -497,23 +454,20 @@ export namespace telephony {
         toneOnOpening?: number;
         voicemail?: string;
     }
-    //telephony.EasyHuntingScreenListsConditions
-    // fullName: telephony.EasyHuntingScreenListsConditions.EasyHuntingScreenListsConditions
+    // interface fullName: telephony.EasyHuntingScreenListsConditions.EasyHuntingScreenListsConditions
     export interface EasyHuntingScreenListsConditions {
         callerIdNumber?: string;
         conditionId: number;
         destinationNumber?: string;
         screenListType: telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum;
     }
-    //telephony.EasyHuntingScreenListsConditionsSettings
-    // fullName: telephony.EasyHuntingScreenListsConditionsSettings.EasyHuntingScreenListsConditionsSettings
+    // interface fullName: telephony.EasyHuntingScreenListsConditionsSettings.EasyHuntingScreenListsConditionsSettings
     export interface EasyHuntingScreenListsConditionsSettings {
         status: telephony.EasyHuntingScreenListsConditionsStatusEnum;
     }
-    //telephony.EasyHuntingScreenListsConditionsStatusEnum
+    // type fullname: telephony.EasyHuntingScreenListsConditionsStatusEnum
     export type EasyHuntingScreenListsConditionsStatusEnum = "disabled" | "incomingBlackList" | "incomingWhiteList"
-    //telephony.EasyHuntingTimeConditions
-    // fullName: telephony.EasyHuntingTimeConditions.EasyHuntingTimeConditions
+    // interface fullName: telephony.EasyHuntingTimeConditions.EasyHuntingTimeConditions
     export interface EasyHuntingTimeConditions {
         conditionId: number;
         policy: telephony.TimeConditionsPolicyEnum;
@@ -521,8 +475,7 @@ export namespace telephony {
         timeTo: string;
         weekDay: telephony.OvhPabxDialplanExtensionConditionTimeWeekDayEnum;
     }
-    //telephony.EasyHuntingTimeConditionsSettings
-    // fullName: telephony.EasyHuntingTimeConditionsSettings.EasyHuntingTimeConditionsSettings
+    // interface fullName: telephony.EasyHuntingTimeConditionsSettings.EasyHuntingTimeConditionsSettings
     export interface EasyHuntingTimeConditionsSettings {
         enable: boolean;
         slot1Number?: string;
@@ -534,28 +487,25 @@ export namespace telephony {
         unavailableNumber?: string;
         unavailableType?: telephony.TimeConditionsSettingsForwardTypeEnum;
     }
-    //telephony.EasyMiniPabxHuntingAgent
-    // fullName: telephony.EasyMiniPabxHuntingAgent.EasyMiniPabxHuntingAgent
+    // interface fullName: telephony.EasyMiniPabxHuntingAgent.EasyMiniPabxHuntingAgent
     export interface EasyMiniPabxHuntingAgent {
         agentNumber: string;
         logged: boolean;
         noReplyTimer: number;
         position: number;
     }
-    //telephony.EasyMiniPabxHuntingPatternEnum
+    // type fullname: telephony.EasyMiniPabxHuntingPatternEnum
     export type EasyMiniPabxHuntingPatternEnum = "all-at-once" | "cumulated" | "sequential"
-    //telephony.EasyMiniPabxHuntingStrategyEnum
+    // type fullname: telephony.EasyMiniPabxHuntingStrategyEnum
     export type EasyMiniPabxHuntingStrategyEnum = "cyclic" | "leastIdleSinceLastCall" | "linear" | "mostIdleSinceLastCall" | "mostIdleSinceLogging" | "parallel" | "random"
-    //telephony.EasyPabx
-    // fullName: telephony.EasyPabx.EasyPabx
+    // interface fullName: telephony.EasyPabx.EasyPabx
     export interface EasyPabx {
         description: string;
         featureType: telephony.TypeEnum;
         serviceName: string;
         serviceType: telephony.TypeServiceEnum;
     }
-    //telephony.EasyPabxHunting
-    // fullName: telephony.EasyPabxHunting.EasyPabxHunting
+    // interface fullName: telephony.EasyPabxHunting.EasyPabxHunting
     export interface EasyPabxHunting {
         anonymousCallRejection: boolean;
         name: string;
@@ -571,8 +521,7 @@ export namespace telephony {
         toneRingbackSoundId?: number;
         voicemail?: string;
     }
-    //telephony.EntrepriseNumberInformations
-    // fullName: telephony.EntrepriseNumberInformations.EntrepriseNumberInformations
+    // interface fullName: telephony.EntrepriseNumberInformations.EntrepriseNumberInformations
     export interface EntrepriseNumberInformations {
         address?: string;
         ape?: string;
@@ -582,14 +531,12 @@ export namespace telephony {
         name: string;
         siren?: string;
     }
-    //telephony.EntrepriseNumberInformationsTask
-    // fullName: telephony.EntrepriseNumberInformationsTask.EntrepriseNumberInformationsTask
+    // interface fullName: telephony.EntrepriseNumberInformationsTask.EntrepriseNumberInformationsTask
     export interface EntrepriseNumberInformationsTask {
         informations: telephony.EntrepriseNumberInformations;
         status: telephony.TaskStatusEnum;
     }
-    //telephony.Event
-    // fullName: telephony.Event.Event
+    // interface fullName: telephony.Event.Event
     export interface Event {
         calledIdentifier: string;
         callingIdentifier: string;
@@ -600,19 +547,16 @@ export namespace telephony {
         id: string;
         protocol: telephony.RealtimeEventProtocol;
     }
-    //telephony.EventCallback
-    // fullName: telephony.EventCallback.EventCallback
+    // interface fullName: telephony.EventCallback.EventCallback
     export interface EventCallback {
         emailError?: string;
         url?: string;
     }
-    //telephony.EventToken
-    // fullName: telephony.EventToken.EventToken
+    // interface fullName: telephony.EventToken.EventToken
     export interface EventToken {
         token: string;
     }
-    //telephony.Fax
-    // fullName: telephony.Fax.Fax
+    // interface fullName: telephony.Fax.Fax
     export interface Fax {
         description: string;
         notifications?: telephony.LineNotificationsOptions;
@@ -620,8 +564,7 @@ export namespace telephony {
         serviceName: string;
         serviceType: telephony.TypeServiceEnum;
     }
-    //telephony.FaxCampaign
-    // fullName: telephony.FaxCampaign.FaxCampaign
+    // interface fullName: telephony.FaxCampaign.FaxCampaign
     export interface FaxCampaign {
         countFailed: number;
         countSuccess: number;
@@ -633,19 +576,17 @@ export namespace telephony {
         reference: string;
         status: string;
     }
-    //telephony.FaxCampaignDetail
-    // fullName: telephony.FaxCampaignDetail.FaxCampaignDetail
+    // interface fullName: telephony.FaxCampaignDetail.FaxCampaignDetail
     export interface FaxCampaignDetail {
         failed: string[];
         success: string[];
         todo: string[];
     }
-    //telephony.FaxCampaignRecipientsTypeEnum
+    // type fullname: telephony.FaxCampaignRecipientsTypeEnum
     export type FaxCampaignRecipientsTypeEnum = "document" | "list"
-    //telephony.FaxCampaignSendTypeEnum
+    // type fullname: telephony.FaxCampaignSendTypeEnum
     export type FaxCampaignSendTypeEnum = "automatic" | "manual" | "scheduled"
-    //telephony.FaxConsumption
-    // fullName: telephony.FaxConsumption.FaxConsumption
+    // interface fullName: telephony.FaxConsumption.FaxConsumption
     export interface FaxConsumption {
         called?: string;
         calling?: string;
@@ -655,12 +596,11 @@ export namespace telephony {
         priceWithoutTax: orderPrice;
         wayType: telephony.FaxConsumptionWayTypeEnum;
     }
-    //telephony.FaxConsumptionWayTypeEnum
+    // type fullname: telephony.FaxConsumptionWayTypeEnum
     export type FaxConsumptionWayTypeEnum = "received" | "sent"
-    //telephony.FaxMailFormatEnum
+    // type fullname: telephony.FaxMailFormatEnum
     export type FaxMailFormatEnum = "html" | "text"
-    //telephony.FaxProperties
-    // fullName: telephony.FaxProperties.FaxProperties
+    // interface fullName: telephony.FaxProperties.FaxProperties
     export interface FaxProperties {
         callNumber: string;
         countryCode: string;
@@ -675,10 +615,9 @@ export namespace telephony {
         rejectAnonymous: boolean;
         sender: string;
     }
-    //telephony.FaxQualityEnum
+    // type fullname: telephony.FaxQualityEnum
     export type FaxQualityEnum = "best" | "high" | "normal"
-    //telephony.FaxScreen
-    // fullName: telephony.FaxScreen.FaxScreen
+    // interface fullName: telephony.FaxScreen.FaxScreen
     export interface FaxScreen {
         blacklistedNumbers?: string[];
         blacklistedTSI?: string[];
@@ -689,12 +628,11 @@ export namespace telephony {
         whitelistedNumbers?: string[];
         whitelistedTSI?: string[];
     }
-    //telephony.FaxScreenListTypeEnum
+    // type fullname: telephony.FaxScreenListTypeEnum
     export type FaxScreenListTypeEnum = "" | "blacklist" | "no" | "whitelist"
-    //telephony.FaxSendingTries
+    // type fullname: telephony.FaxSendingTries
     export type FaxSendingTries = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
-    //telephony.FunctionKey
-    // fullName: telephony.FunctionKey.FunctionKey
+    // interface fullName: telephony.FunctionKey.FunctionKey
     export interface FunctionKey {
         default?: string;
         function?: string;
@@ -703,44 +641,38 @@ export namespace telephony {
         parameter?: string;
         type: string;
     }
-    //telephony.GenericScreen
-    // fullName: telephony.GenericScreen.GenericScreen
+    // interface fullName: telephony.GenericScreen.GenericScreen
     export interface GenericScreen {
         serviceName: string;
     }
-    //telephony.HardwareOffer
-    // fullName: telephony.HardwareOffer.HardwareOffer
+    // interface fullName: telephony.HardwareOffer.HardwareOffer
     export interface HardwareOffer {
         description?: string;
         name: string;
         price: orderPrice;
         url?: string;
     }
-    //telephony.HistoryConsumption
-    // fullName: telephony.HistoryConsumption.HistoryConsumption
+    // interface fullName: telephony.HistoryConsumption.HistoryConsumption
     export interface HistoryConsumption {
         date: string;
         price: orderPrice;
         priceOutplan: orderPrice;
         status: telephony.BillStatusEnum;
     }
-    //telephony.HistoryRepaymentConsumption
-    // fullName: telephony.HistoryRepaymentConsumption.HistoryRepaymentConsumption
+    // interface fullName: telephony.HistoryRepaymentConsumption.HistoryRepaymentConsumption
     export interface HistoryRepaymentConsumption {
         billingNumber: string;
         date: string;
         price: orderPrice;
         status: telephony.BillStatusEnum;
     }
-    //telephony.HistoryTollfreeConsumption
-    // fullName: telephony.HistoryTollfreeConsumption.HistoryTollfreeConsumption
+    // interface fullName: telephony.HistoryTollfreeConsumption.HistoryTollfreeConsumption
     export interface HistoryTollfreeConsumption {
         date: string;
         price: orderPrice;
         status: telephony.BillStatusEnum;
     }
-    //telephony.Line
-    // fullName: telephony.Line.Line
+    // interface fullName: telephony.Line.Line
     export interface Line {
         canChangePassword: boolean;
         description: string;
@@ -753,43 +685,38 @@ export namespace telephony {
         serviceType: telephony.TypeServiceEnum;
         simultaneousLines: number;
     }
-    //telephony.LineBlockingMode
+    // type fullname: telephony.LineBlockingMode
     export type LineBlockingMode = "both" | "incoming" | "outgoing"
-    //telephony.LineNotificationsLogsFrequencyEnum
+    // type fullname: telephony.LineNotificationsLogsFrequencyEnum
     export type LineNotificationsLogsFrequencyEnum = "Never" | "Once a day" | "Twice a day"
-    //telephony.LineNotificationsLogsOptions
-    // fullName: telephony.LineNotificationsLogsOptions.LineNotificationsLogsOptions
+    // interface fullName: telephony.LineNotificationsLogsOptions.LineNotificationsLogsOptions
     export interface LineNotificationsLogsOptions {
         email?: string;
         frequency?: telephony.LineNotificationsLogsFrequencyEnum;
         sendIfNull?: boolean;
     }
-    //telephony.LineNotificationsOptions
-    // fullName: telephony.LineNotificationsOptions.LineNotificationsOptions
+    // interface fullName: telephony.LineNotificationsOptions.LineNotificationsOptions
     export interface LineNotificationsOptions {
         logs?: telephony.LineNotificationsLogsOptions;
     }
-    //telephony.LineOffer
-    // fullName: telephony.LineOffer.LineOffer
+    // interface fullName: telephony.LineOffer.LineOffer
     export interface LineOffer {
         description: string;
         name: string;
         price?: orderPrice;
     }
-    //telephony.LineOffersAndContracts
-    // fullName: telephony.LineOffersAndContracts.LineOffersAndContracts
+    // interface fullName: telephony.LineOffersAndContracts.LineOffersAndContracts
     export interface LineOffersAndContracts {
         contracts: order.Contract[];
         offers: telephony.LineOffer[];
     }
-    //telephony.LineOptionForwardNatureTypeEnum
+    // type fullname: telephony.LineOptionForwardNatureTypeEnum
     export type LineOptionForwardNatureTypeEnum = "fax" | "number" | "voicemail"
-    //telephony.LineOptionIntercomEnum
+    // type fullname: telephony.LineOptionIntercomEnum
     export type LineOptionIntercomEnum = "no" | "prefixed" | "yes"
-    //telephony.LineOptionLanguageEnum
+    // type fullname: telephony.LineOptionLanguageEnum
     export type LineOptionLanguageEnum = "Dutch" | "English (UK)" | "French" | "French (BE)" | "German" | "Italian" | "Spanish"
-    //telephony.LineOptions
-    // fullName: telephony.LineOptions.LineOptions
+    // interface fullName: telephony.LineOptions.LineOptions
     export interface LineOptions {
         absentSubscriber: boolean;
         anonymousCallRejection: boolean;
@@ -827,8 +754,7 @@ export namespace telephony {
         voicemailExternalNumber: string;
         voicemailInternalNumber: string;
     }
-    //telephony.LinePhone
-    // fullName: telephony.LinePhone.LinePhone
+    // interface fullName: telephony.LinePhone.LinePhone
     export interface LinePhone {
         brand: string;
         description: string;
@@ -836,32 +762,28 @@ export namespace telephony {
         price: orderPrice;
         protocol: telephonyProtocolEnum;
     }
-    //telephony.LinePhoneAssociable
-    // fullName: telephony.LinePhoneAssociable.LinePhoneAssociable
+    // interface fullName: telephony.LinePhoneAssociable.LinePhoneAssociable
     export interface LinePhoneAssociable {
         associatedLines: telephony.LinePhoneAssociableConfiguredLines[];
         brand: string;
         maxLines: number;
         protocol: telephonyProtocolEnum;
     }
-    //telephony.LinePhoneAssociableConfiguredLines
-    // fullName: telephony.LinePhoneAssociableConfiguredLines.LinePhoneAssociableConfiguredLines
+    // interface fullName: telephony.LinePhoneAssociableConfiguredLines.LinePhoneAssociableConfiguredLines
     export interface LinePhoneAssociableConfiguredLines {
         description: string;
         serviceName: string;
     }
-    //telephony.LineStatisticsTypeEnum
+    // type fullname: telephony.LineStatisticsTypeEnum
     export type LineStatisticsTypeEnum = "maxDelay" | "maxJitter" | "rtpMos" | "sumRtpLost"
-    //telephony.MiniPabx
-    // fullName: telephony.MiniPabx.MiniPabx
+    // interface fullName: telephony.MiniPabx.MiniPabx
     export interface MiniPabx {
         description: string;
         featureType: telephony.TypeEnum;
         serviceName: string;
         serviceType: telephony.TypeServiceEnum;
     }
-    //telephony.MiniPabxHunting
-    // fullName: telephony.MiniPabxHunting.MiniPabxHunting
+    // interface fullName: telephony.MiniPabxHunting.MiniPabxHunting
     export interface MiniPabxHunting {
         anonymousCallRejection: boolean;
         name: string;
@@ -877,8 +799,7 @@ export namespace telephony {
         toneRingback: boolean;
         toneRingbackSoundId?: number;
     }
-    //telephony.Number
-    // fullName: telephony.Number.Number
+    // interface fullName: telephony.Number.Number
     export interface Number {
         description: string;
         featureType: telephony.TypeEnum;
@@ -886,12 +807,11 @@ export namespace telephony {
         serviceName: string;
         serviceType: telephony.TypeServiceEnum;
     }
-    //telephony.NumberCountryCodeEnum
+    // type fullname: telephony.NumberCountryCodeEnum
     export type NumberCountryCodeEnum = 32 | 33 | 34 | 39 | 41 | 44 | 49
-    //telephony.NumberCountryEnum
+    // type fullname: telephony.NumberCountryEnum
     export type NumberCountryEnum = "be" | "ch" | "de" | "es" | "fr" | "gb" | "it" | "uk"
-    //telephony.NumberDetailedZone
-    // fullName: telephony.NumberDetailedZone.NumberDetailedZone
+    // interface fullName: telephony.NumberDetailedZone.NumberDetailedZone
     export interface NumberDetailedZone {
         askedCity?: string;
         city: string;
@@ -904,19 +824,17 @@ export namespace telephony {
         zipCode?: string;
         zneList: string[];
     }
-    //telephony.NumberDetailedZoneMatchingCriteriaEnum
+    // type fullname: telephony.NumberDetailedZoneMatchingCriteriaEnum
     export type NumberDetailedZoneMatchingCriteriaEnum = "city" | "internationalNumber" | "number" | "zne"
-    //telephony.NumberDetailedZoneTypeEnum
+    // type fullname: telephony.NumberDetailedZoneTypeEnum
     export type NumberDetailedZoneTypeEnum = "geographic" | "non-geographic" | "special"
-    //telephony.NumberTypeEnum
+    // type fullname: telephony.NumberTypeEnum
     export type NumberTypeEnum = "geographic" | "nogeographic" | "special"
-    //telephony.OfferChange
-    // fullName: telephony.OfferChange.OfferChange
+    // interface fullName: telephony.OfferChange.OfferChange
     export interface OfferChange {
         offer: string;
     }
-    //telephony.OfferTask
-    // fullName: telephony.OfferTask.OfferTask
+    // interface fullName: telephony.OfferTask.OfferTask
     export interface OfferTask {
         action: telephony.OfferTaskActionEnum;
         executionDate: string;
@@ -924,14 +842,13 @@ export namespace telephony {
         taskId: number;
         type: telephony.OfferTaskTypeEnum;
     }
-    //telephony.OfferTaskActionEnum
+    // type fullname: telephony.OfferTaskActionEnum
     export type OfferTaskActionEnum = "convertToAlias" | "convertToSip" | "migrateToNewVoicemail" | "removeSimltaneousLines" | "switchServer" | "termination" | "updateFirmware" | "upgrade"
-    //telephony.OfferTaskTypeEnum
+    // type fullname: telephony.OfferTaskTypeEnum
     export type OfferTaskTypeEnum = "line" | "offer" | "option" | "phone"
-    //telephony.OutplanNotificationBlockEnum
+    // type fullname: telephony.OutplanNotificationBlockEnum
     export type OutplanNotificationBlockEnum = "blockAllCalls" | "blockIncomingCalls" | "blockOutgoingCalls" | "none"
-    //telephony.OvhPabx
-    // fullName: telephony.OvhPabx.OvhPabx
+    // interface fullName: telephony.OvhPabx.OvhPabx
     export interface OvhPabx {
         description: string;
         featureType: telephony.TypeEnum;
@@ -939,16 +856,14 @@ export namespace telephony {
         serviceName: string;
         serviceType: telephony.TypeServiceEnum;
     }
-    //telephony.OvhPabxCustomStatus
-    // fullName: telephony.OvhPabxCustomStatus.OvhPabxCustomStatus
+    // interface fullName: telephony.OvhPabxCustomStatus.OvhPabxCustomStatus
     export interface OvhPabxCustomStatus {
         color?: string;
         description?: string;
         id: number;
         name: string;
     }
-    //telephony.OvhPabxDialplan
-    // fullName: telephony.OvhPabxDialplan.OvhPabxDialplan
+    // interface fullName: telephony.OvhPabxDialplan.OvhPabxDialplan
     export interface OvhPabxDialplan {
         anonymousRejection: boolean;
         dialplanId: number;
@@ -957,8 +872,7 @@ export namespace telephony {
         showCallerNumber: telephony.OvhPabxDialplanNumberPresentationEnum;
         transferTimeout: number;
     }
-    //telephony.OvhPabxDialplanExtension
-    // fullName: telephony.OvhPabxDialplanExtension.OvhPabxDialplanExtension
+    // interface fullName: telephony.OvhPabxDialplanExtension.OvhPabxDialplanExtension
     export interface OvhPabxDialplanExtension {
         enabled: boolean;
         extensionId: number;
@@ -966,28 +880,25 @@ export namespace telephony {
         schedulerCategory?: telephony.SchedulerCategoryEnum;
         screenListType?: telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum;
     }
-    //telephony.OvhPabxDialplanExtensionConditionScreenList
-    // fullName: telephony.OvhPabxDialplanExtensionConditionScreenList.OvhPabxDialplanExtensionConditionScreenList
+    // interface fullName: telephony.OvhPabxDialplanExtensionConditionScreenList.OvhPabxDialplanExtensionConditionScreenList
     export interface OvhPabxDialplanExtensionConditionScreenList {
         callerIdNumber?: string;
         conditionId: number;
         destinationNumber?: string;
         screenListType?: telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum;
     }
-    //telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum
+    // type fullname: telephony.OvhPabxDialplanExtensionConditionScreenListTypeEnum
     export type OvhPabxDialplanExtensionConditionScreenListTypeEnum = "destinationBlackList" | "destinationWhiteList" | "incomingBlackList" | "incomingWhiteList"
-    //telephony.OvhPabxDialplanExtensionConditionTime
-    // fullName: telephony.OvhPabxDialplanExtensionConditionTime.OvhPabxDialplanExtensionConditionTime
+    // interface fullName: telephony.OvhPabxDialplanExtensionConditionTime.OvhPabxDialplanExtensionConditionTime
     export interface OvhPabxDialplanExtensionConditionTime {
         conditionId: number;
         timeFrom: string;
         timeTo: string;
         weekDay: telephony.OvhPabxDialplanExtensionConditionTimeWeekDayEnum;
     }
-    //telephony.OvhPabxDialplanExtensionConditionTimeWeekDayEnum
+    // type fullname: telephony.OvhPabxDialplanExtensionConditionTimeWeekDayEnum
     export type OvhPabxDialplanExtensionConditionTimeWeekDayEnum = "friday" | "monday" | "saturday" | "sunday" | "thursday" | "tuesday" | "wednesday"
-    //telephony.OvhPabxDialplanExtensionRule
-    // fullName: telephony.OvhPabxDialplanExtensionRule.OvhPabxDialplanExtensionRule
+    // interface fullName: telephony.OvhPabxDialplanExtensionRule.OvhPabxDialplanExtensionRule
     export interface OvhPabxDialplanExtensionRule {
         action: telephony.OvhPabxDialplanExtensionRuleActionEnum;
         actionParam?: string;
@@ -995,20 +906,18 @@ export namespace telephony {
         position: number;
         ruleId: number;
     }
-    //telephony.OvhPabxDialplanExtensionRuleActionEnum
+    // type fullname: telephony.OvhPabxDialplanExtensionRuleActionEnum
     export type OvhPabxDialplanExtensionRuleActionEnum = "bridge" | "endless_playback" | "hangup" | "hunting" | "ivr" | "playback" | "readDtmf" | "setCallerName" | "sleep" | "tts" | "voicemail"
-    //telephony.OvhPabxDialplanNumberPresentationEnum
+    // type fullname: telephony.OvhPabxDialplanNumberPresentationEnum
     export type OvhPabxDialplanNumberPresentationEnum = "alias" | "both" | "caller"
-    //telephony.OvhPabxHunting
-    // fullName: telephony.OvhPabxHunting.OvhPabxHunting
+    // interface fullName: telephony.OvhPabxHunting.OvhPabxHunting
     export interface OvhPabxHunting {
         crmUrlTemplate?: string;
         g729?: boolean;
         name: string;
         statusIvrEnabled: boolean;
     }
-    //telephony.OvhPabxHuntingAgent
-    // fullName: telephony.OvhPabxHuntingAgent.OvhPabxHuntingAgent
+    // interface fullName: telephony.OvhPabxHuntingAgent.OvhPabxHuntingAgent
     export interface OvhPabxHuntingAgent {
         agentId: number;
         breakStatus?: number;
@@ -1020,31 +929,28 @@ export namespace telephony {
         type: telephony.OvhPabxHuntingAgentTypeEnum;
         wrapUpTime: number;
     }
-    //telephony.OvhPabxHuntingAgentLiveStatus
-    // fullName: telephony.OvhPabxHuntingAgentLiveStatus.OvhPabxHuntingAgentLiveStatus
+    // interface fullName: telephony.OvhPabxHuntingAgentLiveStatus.OvhPabxHuntingAgentLiveStatus
     export interface OvhPabxHuntingAgentLiveStatus {
         answeredCalls: number;
         lastStatusChange: string;
         status: telephony.OvhPabxHuntingLiveAgentStatusEnum;
         totalCallDuration: number;
     }
-    //telephony.OvhPabxHuntingAgentQueue
-    // fullName: telephony.OvhPabxHuntingAgentQueue.OvhPabxHuntingAgentQueue
+    // interface fullName: telephony.OvhPabxHuntingAgentQueue.OvhPabxHuntingAgentQueue
     export interface OvhPabxHuntingAgentQueue {
         agentId: number;
         position: number;
         queueId: number;
     }
-    //telephony.OvhPabxHuntingAgentStatusEnum
+    // type fullname: telephony.OvhPabxHuntingAgentStatusEnum
     export type OvhPabxHuntingAgentStatusEnum = "available" | "loggedOut" | "onBreak"
-    //telephony.OvhPabxHuntingAgentTypeEnum
+    // type fullname: telephony.OvhPabxHuntingAgentTypeEnum
     export type OvhPabxHuntingAgentTypeEnum = "external" | "internal"
-    //telephony.OvhPabxHuntingLiveAgentStatusEnum
+    // type fullname: telephony.OvhPabxHuntingLiveAgentStatusEnum
     export type OvhPabxHuntingLiveAgentStatusEnum = "inAQueueCall" | "loggedOut" | "onBreak" | "receiving" | "waiting"
-    //telephony.OvhPabxHuntingLiveCallsStateEnum
+    // type fullname: telephony.OvhPabxHuntingLiveCallsStateEnum
     export type OvhPabxHuntingLiveCallsStateEnum = "Answered" | "Waiting"
-    //telephony.OvhPabxHuntingQueue
-    // fullName: telephony.OvhPabxHuntingQueue.OvhPabxHuntingQueue
+    // interface fullName: telephony.OvhPabxHuntingQueue.OvhPabxHuntingQueue
     export interface OvhPabxHuntingQueue {
         actionOnClosure?: telephony.OvhPabxQueueActionEnum;
         actionOnClosureParam?: string;
@@ -1062,8 +968,7 @@ export namespace telephony {
         soundOnHold?: number;
         strategy: telephony.OvhPabxHuntingQueueStrategyEnum;
     }
-    //telephony.OvhPabxHuntingQueueLiveCalls
-    // fullName: telephony.OvhPabxHuntingQueueLiveCalls.OvhPabxHuntingQueueLiveCalls
+    // interface fullName: telephony.OvhPabxHuntingQueueLiveCalls.OvhPabxHuntingQueueLiveCalls
     export interface OvhPabxHuntingQueueLiveCalls {
         agent: string;
         answered?: string;
@@ -1077,8 +982,7 @@ export namespace telephony {
         queue: string;
         state: telephony.OvhPabxHuntingLiveCallsStateEnum;
     }
-    //telephony.OvhPabxHuntingQueueLiveStatistics
-    // fullName: telephony.OvhPabxHuntingQueueLiveStatistics.OvhPabxHuntingQueueLiveStatistics
+    // interface fullName: telephony.OvhPabxHuntingQueueLiveStatistics.OvhPabxHuntingQueueLiveStatistics
     export interface OvhPabxHuntingQueueLiveStatistics {
         callsAnswered: number;
         callsLost: number;
@@ -1087,16 +991,15 @@ export namespace telephony {
         totalCallDuration: number;
         totalWaitingDuration: number;
     }
-    //telephony.OvhPabxHuntingQueueRecordDisablingDigitEnum
+    // type fullname: telephony.OvhPabxHuntingQueueRecordDisablingDigitEnum
     export type OvhPabxHuntingQueueRecordDisablingDigitEnum = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
-    //telephony.OvhPabxHuntingQueueRecordDisablingLanguageEnum
+    // type fullname: telephony.OvhPabxHuntingQueueRecordDisablingLanguageEnum
     export type OvhPabxHuntingQueueRecordDisablingLanguageEnum = "english" | "french"
-    //telephony.OvhPabxHuntingQueueStrategyEnum
+    // type fullname: telephony.OvhPabxHuntingQueueStrategyEnum
     export type OvhPabxHuntingQueueStrategyEnum = "cumulationByAgentOrder" | "longestHangupAgent" | "longestIdleAgent" | "random" | "ringAll" | "roundRobin" | "sequentiallyByAgentOrder"
-    //telephony.OvhPabxIvrMenuEntryActionEnum
+    // type fullname: telephony.OvhPabxIvrMenuEntryActionEnum
     export type OvhPabxIvrMenuEntryActionEnum = "bridge" | "callcenter" | "menuBack" | "menuExit" | "menuSub" | "menuTop" | "playback" | "readDtmf" | "setCallerName"
-    //telephony.OvhPabxMenu
-    // fullName: telephony.OvhPabxMenu.OvhPabxMenu
+    // interface fullName: telephony.OvhPabxMenu.OvhPabxMenu
     export interface OvhPabxMenu {
         greetSound?: number;
         greetSoundTts?: number;
@@ -1105,8 +1008,7 @@ export namespace telephony {
         menuId: number;
         name: string;
     }
-    //telephony.OvhPabxMenuEntry
-    // fullName: telephony.OvhPabxMenuEntry.OvhPabxMenuEntry
+    // interface fullName: telephony.OvhPabxMenuEntry.OvhPabxMenuEntry
     export interface OvhPabxMenuEntry {
         action: telephony.OvhPabxIvrMenuEntryActionEnum;
         actionParam: string;
@@ -1114,10 +1016,9 @@ export namespace telephony {
         entryId: number;
         position: number;
     }
-    //telephony.OvhPabxQueueActionEnum
+    // type fullname: telephony.OvhPabxQueueActionEnum
     export type OvhPabxQueueActionEnum = "playback" | "voicemail"
-    //telephony.OvhPabxRecord
-    // fullName: telephony.OvhPabxRecord.OvhPabxRecord
+    // interface fullName: telephony.OvhPabxRecord.OvhPabxRecord
     export interface OvhPabxRecord {
         agent?: string;
         callEnd?: string;
@@ -1129,35 +1030,31 @@ export namespace telephony {
         fileUrl: string;
         id: number;
     }
-    //telephony.OvhPabxSound
-    // fullName: telephony.OvhPabxSound.OvhPabxSound
+    // interface fullName: telephony.OvhPabxSound.OvhPabxSound
     export interface OvhPabxSound {
         name: string;
         soundId: number;
     }
-    //telephony.OvhPabxTts
-    // fullName: telephony.OvhPabxTts.OvhPabxTts
+    // interface fullName: telephony.OvhPabxTts.OvhPabxTts
     export interface OvhPabxTts {
         id: number;
         text: string;
         voice: telephony.OvhPabxTtsVoiceEnum;
     }
-    //telephony.OvhPabxTtsVoiceEnum
+    // type fullname: telephony.OvhPabxTtsVoiceEnum
     export type OvhPabxTtsVoiceEnum = "Bruce" | "Helene" | "Jenny" | "Loic"
-    //telephony.OvhPabxWhisperingModeEnum
+    // type fullname: telephony.OvhPabxWhisperingModeEnum
     export type OvhPabxWhisperingModeEnum = "Whisper to agent only" | "Whisper to all participants"
-    //telephony.PcsFile
-    // fullName: telephony.PcsFile.PcsFile
+    // interface fullName: telephony.PcsFile.PcsFile
     export interface PcsFile {
         filename: string;
         status: telephony.PcsFileStatusEnum;
         url: string;
         urlExpirationDatetime: string;
     }
-    //telephony.PcsFileStatusEnum
+    // type fullname: telephony.PcsFileStatusEnum
     export type PcsFileStatusEnum = "doing" | "done" | "error" | "todo"
-    //telephony.Phone
-    // fullName: telephony.Phone.Phone
+    // interface fullName: telephony.Phone.Phone
     export interface Phone {
         brand: string;
         description: string;
@@ -1168,10 +1065,9 @@ export namespace telephony {
         protocol: telephonyProtocolEnum;
         userPassword?: string;
     }
-    //telephony.PhoneConfigurationLevelEnum
+    // type fullname: telephony.PhoneConfigurationLevelEnum
     export type PhoneConfigurationLevelEnum = "admin" | "expert"
-    //telephony.PhoneConfigurationProperty
-    // fullName: telephony.PhoneConfigurationProperty.PhoneConfigurationProperty
+    // interface fullName: telephony.PhoneConfigurationProperty.PhoneConfigurationProperty
     export interface PhoneConfigurationProperty {
         default?: string;
         description?: string;
@@ -1184,24 +1080,21 @@ export namespace telephony {
         type?: telephony.PhoneConfigurationTypeEnum;
         value?: string;
     }
-    //telephony.PhoneConfigurationTypeEnum
+    // type fullname: telephony.PhoneConfigurationTypeEnum
     export type PhoneConfigurationTypeEnum = "boolean" | "enum" | "hidden" | "ipv4" | "numeric" | "string"
-    //telephony.PhoneCredentials
-    // fullName: telephony.PhoneCredentials.PhoneCredentials
+    // interface fullName: telephony.PhoneCredentials.PhoneCredentials
     export interface PhoneCredentials {
         login?: string;
         password: string;
     }
-    //telephony.Phonebook
-    // fullName: telephony.Phonebook.Phonebook
+    // interface fullName: telephony.Phonebook.Phonebook
     export interface Phonebook {
         bookKey: string;
         isReadonly: boolean;
         name: string;
         phoneKey: string;
     }
-    //telephony.PhonebookContact
-    // fullName: telephony.PhonebookContact.PhonebookContact
+    // interface fullName: telephony.PhonebookContact.PhonebookContact
     export interface PhonebookContact {
         group: string;
         homeMobile?: string;
@@ -1212,14 +1105,12 @@ export namespace telephony {
         workMobile?: string;
         workPhone?: string;
     }
-    //telephony.PhonebookMaster
-    // fullName: telephony.PhonebookMaster.PhonebookMaster
+    // interface fullName: telephony.PhonebookMaster.PhonebookMaster
     export interface PhonebookMaster {
         bookKey: string;
         name: string;
     }
-    //telephony.Portability
-    // fullName: telephony.Portability.Portability
+    // interface fullName: telephony.Portability.Portability
     export interface Portability {
         billingAccount: string;
         creationDate: string;
@@ -1234,10 +1125,9 @@ export namespace telephony {
         orderId: number;
         portabilityCountry: telephony.PortabilityCountryEnum;
     }
-    //telephony.PortabilityCountryEnum
+    // type fullname: telephony.PortabilityCountryEnum
     export type PortabilityCountryEnum = "belgium" | "france" | "switzerland"
-    //telephony.PortabilityCustomerInfos
-    // fullName: telephony.PortabilityCustomerInfos.PortabilityCustomerInfos
+    // interface fullName: telephony.PortabilityCustomerInfos.PortabilityCustomerInfos
     export interface PortabilityCustomerInfos {
         building?: string;
         city: string;
@@ -1250,8 +1140,7 @@ export namespace telephony {
         streetNumber: string;
         zip: string;
     }
-    //telephony.PortabilityDocument
-    // fullName: telephony.PortabilityDocument.PortabilityDocument
+    // interface fullName: telephony.PortabilityDocument.PortabilityDocument
     export interface PortabilityDocument {
         description?: string;
         documentId: number;
@@ -1260,14 +1149,12 @@ export namespace telephony {
         putUrl?: string;
         size: number;
     }
-    //telephony.PortabilityFixErrorPossibleParameters
-    // fullName: telephony.PortabilityFixErrorPossibleParameters.PortabilityFixErrorPossibleParameters
+    // interface fullName: telephony.PortabilityFixErrorPossibleParameters.PortabilityFixErrorPossibleParameters
     export interface PortabilityFixErrorPossibleParameters {
         mandatoryParameters: string[];
         optionalParameters: string[];
     }
-    //telephony.PortabilityStep
-    // fullName: telephony.PortabilityStep.PortabilityStep
+    // interface fullName: telephony.PortabilityStep.PortabilityStep
     export interface PortabilityStep {
         description?: string;
         doneDate?: string;
@@ -1276,27 +1163,24 @@ export namespace telephony {
         name: telephony.PortabilityStepNameEnum;
         status: telephony.PortabilityStepStatusEnum;
     }
-    //telephony.PortabilityStepDuration
-    // fullName: telephony.PortabilityStepDuration.PortabilityStepDuration
+    // interface fullName: telephony.PortabilityStepDuration.PortabilityStepDuration
     export interface PortabilityStepDuration {
         quantity: number;
         unit: telephony.PortabilityStepDurationUnitEnum;
     }
-    //telephony.PortabilityStepDurationUnitEnum
+    // type fullname: telephony.PortabilityStepDurationUnitEnum
     export type PortabilityStepDurationUnitEnum = "NA" | "day" | "hour" | "openday"
-    //telephony.PortabilityStepInfos
-    // fullName: telephony.PortabilityStepInfos.PortabilityStepInfos
+    // interface fullName: telephony.PortabilityStepInfos.PortabilityStepInfos
     export interface PortabilityStepInfos {
         lastProposedDate?: string;
         reason?: string;
         reasonType?: string;
     }
-    //telephony.PortabilityStepNameEnum
+    // type fullname: telephony.PortabilityStepNameEnum
     export type PortabilityStepNameEnum = "acknowledgmentReceivedFromOperator" | "belgiumPortabilityRequestCreated" | "belgiumPortabilityRequestExecutionAcked" | "belgiumPortabilityRequestExecutionAsked" | "belgiumPortabilityRequestExecutionCompleted" | "belgiumPortabilityRequestValidated" | "belgiumPortabilityRequestWaitingUntilExec" | "customerFormReceived" | "customerFormSent" | "customerFormValidated" | "finalReportReceivedFromOperator" | "intermediateReportReceivedFromOperator" | "numberActivation" | "requestSentToOperator" | "sDASequenceReceivedFromOperator"
-    //telephony.PortabilityStepStatusEnum
+    // type fullname: telephony.PortabilityStepStatusEnum
     export type PortabilityStepStatusEnum = "cancelled" | "doing" | "done" | "error" | "hold" | "todo"
-    //telephony.PreviousVoiceConsumption
-    // fullName: telephony.PreviousVoiceConsumption.PreviousVoiceConsumption
+    // interface fullName: telephony.PreviousVoiceConsumption.PreviousVoiceConsumption
     export interface PreviousVoiceConsumption {
         called?: string;
         calling?: string;
@@ -1311,25 +1195,23 @@ export namespace telephony {
         priceWithoutTax: orderPrice;
         wayType: telephony.VoiceConsumptionWayTypeEnum;
     }
-    //telephony.PropertyEnum
+    // type fullname: telephony.PropertyEnum
     export type PropertyEnum = "xdsl"
-    //telephony.ProtocolEnum
+    // type fullname: telephony.ProtocolEnum
     export type ProtocolEnum = "mgcp" | "sip"
-    //telephony.RateCodeInformation
-    // fullName: telephony.RateCodeInformation.RateCodeInformation
+    // interface fullName: telephony.RateCodeInformation.RateCodeInformation
     export interface RateCodeInformation {
         code: string;
         pricePerCallWithoutTax: orderPrice;
         pricePerMinuteWithoutTax: orderPrice;
     }
-    //telephony.RealtimeEventDirection
+    // type fullname: telephony.RealtimeEventDirection
     export type RealtimeEventDirection = "incoming" | "outgoing"
-    //telephony.RealtimeEventProtocol
+    // type fullname: telephony.RealtimeEventProtocol
     export type RealtimeEventProtocol = "mgcp" | "sip"
-    //telephony.RealtimeEventType
+    // type fullname: telephony.RealtimeEventType
     export type RealtimeEventType = "end_calling" | "end_hold" | "end_ringing" | "start_calling" | "start_hold" | "start_ringing"
-    //telephony.Redirect
-    // fullName: telephony.Redirect.Redirect
+    // interface fullName: telephony.Redirect.Redirect
     export interface Redirect {
         description: string;
         destination?: string;
@@ -1337,8 +1219,7 @@ export namespace telephony {
         serviceName: string;
         serviceType: telephony.TypeServiceEnum;
     }
-    //telephony.RegistrationInformations
-    // fullName: telephony.RegistrationInformations.RegistrationInformations
+    // interface fullName: telephony.RegistrationInformations.RegistrationInformations
     export interface RegistrationInformations {
         datetime: string;
         domain?: string;
@@ -1348,10 +1229,9 @@ export namespace telephony {
         port?: number;
         userAgent?: string;
     }
-    //telephony.ReleaseLocationEnum
+    // type fullname: telephony.ReleaseLocationEnum
     export type ReleaseLocationEnum = "backward" | "forward" | "local"
-    //telephony.RepaymentConsumption
-    // fullName: telephony.RepaymentConsumption.RepaymentConsumption
+    // interface fullName: telephony.RepaymentConsumption.RepaymentConsumption
     export interface RepaymentConsumption {
         called?: string;
         calling?: string;
@@ -1363,23 +1243,20 @@ export namespace telephony {
         price?: number;
         repayable?: boolean;
     }
-    //telephony.ResetPhoneCodeInfo
-    // fullName: telephony.ResetPhoneCodeInfo.ResetPhoneCodeInfo
+    // interface fullName: telephony.ResetPhoneCodeInfo.ResetPhoneCodeInfo
     export interface ResetPhoneCodeInfo {
         activationCode?: string;
         keyBook?: string;
         serverURL?: string;
     }
-    //telephony.ResetPhoneInfo
-    // fullName: telephony.ResetPhoneInfo.ResetPhoneInfo
+    // interface fullName: telephony.ResetPhoneInfo.ResetPhoneInfo
     export interface ResetPhoneInfo {
         resetCodeInfo?: telephony.ResetPhoneCodeInfo;
         resetPhoneMethod: telephony.ResetPhoneMethodEnum;
     }
-    //telephony.ResetPhoneMethodEnum
+    // type fullname: telephony.ResetPhoneMethodEnum
     export type ResetPhoneMethodEnum = "code" | "http"
-    //telephony.Rma
-    // fullName: telephony.Rma.Rma
+    // interface fullName: telephony.Rma.Rma
     export interface Rma {
         cancellable: boolean;
         creationDatetime: string;
@@ -1396,21 +1273,19 @@ export namespace telephony {
         terminationDatetime?: string;
         type: telephony.RmaTypeEnum;
     }
-    //telephony.RmaOfferTypeEnum
+    // type fullname: telephony.RmaOfferTypeEnum
     export type RmaOfferTypeEnum = "deposit" | "loan" | "purchase"
-    //telephony.RmaPublicTypeEnum
+    // type fullname: telephony.RmaPublicTypeEnum
     export type RmaPublicTypeEnum = "change to another phone/equipment (restitution first and shipping then)" | "restitution but keep the service enable"
-    //telephony.RmaReplaceTypeEnum
+    // type fullname: telephony.RmaReplaceTypeEnum
     export type RmaReplaceTypeEnum = "changePhone" | "phoneRestitution" | "undefined"
-    //telephony.RmaReturn
-    // fullName: telephony.RmaReturn.RmaReturn
+    // interface fullName: telephony.RmaReturn.RmaReturn
     export interface RmaReturn {
         id: string;
     }
-    //telephony.RmaStatusEnum
+    // type fullname: telephony.RmaStatusEnum
     export type RmaStatusEnum = "closed" | "open" | "received"
-    //telephony.RmaStep
-    // fullName: telephony.RmaStep.RmaStep
+    // interface fullName: telephony.RmaStep.RmaStep
     export interface RmaStep {
         description: string;
         doneDate?: string;
@@ -1418,28 +1293,25 @@ export namespace telephony {
         name: telephony.RmaStepNameEnum;
         status: telephony.RmaStepStatusEnum;
     }
-    //telephony.RmaStepNameEnum
+    // type fullname: telephony.RmaStepNameEnum
     export type RmaStepNameEnum = "dispatchJustification" | "equipmentSending" | "equipmentTesting" | "opening" | "parcelReception" | "parcelValidation" | "validation"
-    //telephony.RmaStepStatusEnum
+    // type fullname: telephony.RmaStepStatusEnum
     export type RmaStepStatusEnum = "done" | "todo"
-    //telephony.RmaTypeEnum
+    // type fullname: telephony.RmaTypeEnum
     export type RmaTypeEnum = "after sale equipment service exchange" | "after sale phone service exchange" | "equipment restitution" | "fast exchange" | "old merchandise reception before exchange" | "phone restitution" | "resends due to shipping lost by the carrier" | "resends due to shipping not withdraw" | "specific return merchandise authorisation" | "termination" | "unknown"
-    //telephony.Rsva
-    // fullName: telephony.Rsva.Rsva
+    // interface fullName: telephony.Rsva.Rsva
     export interface Rsva {
         serviceName: string;
         typology?: telephony.portability.SpecialNumberCategoryEnum;
     }
-    //telephony.Scheduler
-    // fullName: telephony.Scheduler.Scheduler
+    // interface fullName: telephony.Scheduler.Scheduler
     export interface Scheduler {
         serviceName: string;
         timeZone: telephony.timeZone;
     }
-    //telephony.SchedulerCategoryEnum
+    // type fullname: telephony.SchedulerCategoryEnum
     export type SchedulerCategoryEnum = "holidays" | "scheduler1" | "scheduler2" | "scheduler3"
-    //telephony.SchedulerEvent
-    // fullName: telephony.SchedulerEvent.SchedulerEvent
+    // interface fullName: telephony.SchedulerEvent.SchedulerEvent
     export interface SchedulerEvent {
         categories: telephony.SchedulerCategoryEnum;
         dateEnd: string;
@@ -1448,15 +1320,13 @@ export namespace telephony {
         title: string;
         uid: string;
     }
-    //telephony.Screen
-    // fullName: telephony.Screen.Screen
+    // interface fullName: telephony.Screen.Screen
     export interface Screen {
         incomingScreenList: telephony.ScreenListChoosingEnum;
         outgoingScreenList: telephony.ScreenListChoosingEnum;
         serviceName: string;
     }
-    //telephony.ScreenList
-    // fullName: telephony.ScreenList.ScreenList
+    // interface fullName: telephony.ScreenList.ScreenList
     export interface ScreenList {
         callNumber: string;
         id: number;
@@ -1464,24 +1334,22 @@ export namespace telephony {
         status: string;
         type: telephony.ScreenListTypeEnum;
     }
-    //telephony.ScreenListChoosingEnum
+    // type fullname: telephony.ScreenListChoosingEnum
     export type ScreenListChoosingEnum = "blacklist" | "disabled" | "whitelist"
-    //telephony.ScreenListNatureEnum
+    // type fullname: telephony.ScreenListNatureEnum
     export type ScreenListNatureEnum = "fax" | "international" | "services" | "special" | "voicemail"
-    //telephony.ScreenListTypeEnum
+    // type fullname: telephony.ScreenListTypeEnum
     export type ScreenListTypeEnum = "incomingBlackList" | "incomingWhiteList" | "outgoingBlackList" | "outgoingWhiteList"
-    //telephony.ServiceVoicemailAudioFormatEnum
+    // type fullname: telephony.ServiceVoicemailAudioFormatEnum
     export type ServiceVoicemailAudioFormatEnum = "aiff" | "au" | "flac" | "mp3" | "ogg" | "wav"
-    //telephony.ServiceVoicemailMailOptionEnum
+    // type fullname: telephony.ServiceVoicemailMailOptionEnum
     export type ServiceVoicemailMailOptionEnum = "attachment" | "simple"
-    //telephony.ServiceVoicemailNotifications
-    // fullName: telephony.ServiceVoicemailNotifications.ServiceVoicemailNotifications
+    // interface fullName: telephony.ServiceVoicemailNotifications.ServiceVoicemailNotifications
     export interface ServiceVoicemailNotifications {
         email: string;
         type: telephony.ServiceVoicemailMailOptionEnum;
     }
-    //telephony.SimultaneousChannelsDetails
-    // fullName: telephony.SimultaneousChannelsDetails.SimultaneousChannelsDetails
+    // interface fullName: telephony.SimultaneousChannelsDetails.SimultaneousChannelsDetails
     export interface SimultaneousChannelsDetails {
         basic: number;
         current: number;
@@ -1489,10 +1357,9 @@ export namespace telephony {
         maximum: number;
         toBeDeleted: number;
     }
-    //telephony.SipDomainProductTypeEnum
+    // type fullname: telephony.SipDomainProductTypeEnum
     export type SipDomainProductTypeEnum = "sip" | "trunk"
-    //telephony.Sound
-    // fullName: telephony.Sound.Sound
+    // interface fullName: telephony.Sound.Sound
     export interface Sound {
         creationDate: string;
         description?: string;
@@ -1502,16 +1369,14 @@ export namespace telephony {
         putUrl?: string;
         size: number;
     }
-    //telephony.SpecificNumber
-    // fullName: telephony.SpecificNumber.SpecificNumber
+    // interface fullName: telephony.SpecificNumber.SpecificNumber
     export interface SpecificNumber {
         isPremium: boolean;
         number: string;
     }
-    //telephony.StatisticsTimeframeEnum
+    // type fullname: telephony.StatisticsTimeframeEnum
     export type StatisticsTimeframeEnum = "daily" | "hourly" | "monthly" | "weekly" | "yearly"
-    //telephony.Task
-    // fullName: telephony.Task.Task
+    // interface fullName: telephony.Task.Task
     export interface Task {
         action: string;
         message?: string;
@@ -1520,24 +1385,21 @@ export namespace telephony {
         status: telephony.TaskStatusEnum;
         taskId: number;
     }
-    //telephony.TaskStatusEnum
+    // type fullname: telephony.TaskStatusEnum
     export type TaskStatusEnum = "doing" | "done" | "error" | "pause" | "todo"
-    //telephony.TelephonyGenericService
-    // fullName: telephony.TelephonyGenericService.TelephonyGenericService
+    // interface fullName: telephony.TelephonyGenericService.TelephonyGenericService
     export interface TelephonyGenericService {
         serviceName: string;
     }
-    //telephony.TelephonySearchService
-    // fullName: telephony.TelephonySearchService.TelephonySearchService
+    // interface fullName: telephony.TelephonySearchService.TelephonySearchService
     export interface TelephonySearchService {
         billingAccount?: string;
         domain: string;
         type: telephony.TelephonySearchServiceTypeEnum;
     }
-    //telephony.TelephonySearchServiceTypeEnum
+    // type fullname: telephony.TelephonySearchServiceTypeEnum
     export type TelephonySearchServiceTypeEnum = "alias" | "line"
-    //telephony.TelephonyService
-    // fullName: telephony.TelephonyService.TelephonyService
+    // interface fullName: telephony.TelephonyService.TelephonyService
     export interface TelephonyService {
         country: telephony.NumberCountryEnum;
         countryCode: telephony.NumberCountryCodeEnum;
@@ -1553,16 +1415,14 @@ export namespace telephony {
         serviceType: telephony.TypeServiceEnum;
         simultaneousLines: number;
     }
-    //telephony.TemporaryLogsLink
-    // fullName: telephony.TemporaryLogsLink.TemporaryLogsLink
+    // interface fullName: telephony.TemporaryLogsLink.TemporaryLogsLink
     export interface TemporaryLogsLink {
         expirationDate: string;
         url: string;
     }
-    //telephony.TerminationReasonEnum
+    // type fullname: telephony.TerminationReasonEnum
     export type TerminationReasonEnum = "addresseMove" | "billingDifficulties" | "cessationOfActivity" | "missingOptions" | "moveToCompetitor" | "other" | "plugAndPhoneDifficulties" | "technicalDifficulties"
-    //telephony.TimeCondition
-    // fullName: telephony.TimeCondition.TimeCondition
+    // interface fullName: telephony.TimeCondition.TimeCondition
     export interface TimeCondition {
         day: telephony.TimeConditionsDayEnum;
         hourBegin: string;
@@ -1571,8 +1431,7 @@ export namespace telephony {
         policy: telephony.TimeConditionsPolicyEnum;
         status: string;
     }
-    //telephony.TimeConditionOptions
-    // fullName: telephony.TimeConditionOptions.TimeConditionOptions
+    // interface fullName: telephony.TimeConditionOptions.TimeConditionOptions
     export interface TimeConditionOptions {
         slot1Number: string;
         slot1Type: telephony.TimeConditionsSlotTypeEnum;
@@ -1585,83 +1444,75 @@ export namespace telephony {
         unavailableNumber: string;
         unavailableType: telephony.TimeConditionsSlotTypeEnum;
     }
-    //telephony.TimeConditionsDayEnum
+    // type fullname: telephony.TimeConditionsDayEnum
     export type TimeConditionsDayEnum = "friday" | "holiday" | "monday" | "saturday" | "sunday" | "thursday" | "tuesday" | "wednesday"
-    //telephony.TimeConditionsGlobalStatusEnum
+    // type fullname: telephony.TimeConditionsGlobalStatusEnum
     export type TimeConditionsGlobalStatusEnum = "deleted" | "disabled" | "enabled"
-    //telephony.TimeConditionsPolicyEnum
+    // type fullname: telephony.TimeConditionsPolicyEnum
     export type TimeConditionsPolicyEnum = "available" | "slot1" | "slot2" | "slot3"
-    //telephony.TimeConditionsSettingsForwardTypeEnum
+    // type fullname: telephony.TimeConditionsSettingsForwardTypeEnum
     export type TimeConditionsSettingsForwardTypeEnum = "number" | "voicemail"
-    //telephony.TimeConditionsSlotTypeEnum
+    // type fullname: telephony.TimeConditionsSlotTypeEnum
     export type TimeConditionsSlotTypeEnum = "number" | "voicemail"
-    //telephony.TimeConditionsTimeoutEnum
+    // type fullname: telephony.TimeConditionsTimeoutEnum
     export type TimeConditionsTimeoutEnum = 10 | 15 | 20 | 25 | 30 | 35 | 40 | 45 | 5 | 50 | 55 | 60 | 65 | 70 | 75 | 80 | 85 | 90
-    //telephony.TimestampAndValue
-    // fullName: telephony.TimestampAndValue.TimestampAndValue
+    // interface fullName: telephony.TimestampAndValue.TimestampAndValue
     export interface TimestampAndValue {
         timestamp: number;
         value?: number;
     }
-    //telephony.TokenExpirationEnum
+    // type fullname: telephony.TokenExpirationEnum
     export type TokenExpirationEnum = "1 day" | "1 hour" | "30 days" | "5 minutes" | "unlimited"
-    //telephony.Tones
-    // fullName: telephony.Tones.Tones
+    // interface fullName: telephony.Tones.Tones
     export interface Tones {
         callWaiting: telephony.TonesEnum;
         endCall: telephony.TonesEnum;
         onHold: telephony.TonesOnHoldEnum;
         ringback: telephony.TonesEnum;
     }
-    //telephony.TonesEnum
+    // type fullname: telephony.TonesEnum
     export type TonesEnum = "Custom sound" | "None"
-    //telephony.TonesOnHoldEnum
+    // type fullname: telephony.TonesOnHoldEnum
     export type TonesOnHoldEnum = "Custom sound" | "None" | "Predefined 1" | "Predefined 2"
-    //telephony.TonesTypeEnum
+    // type fullname: telephony.TonesTypeEnum
     export type TonesTypeEnum = "callWaiting" | "endCall" | "onHold" | "ringback"
-    //telephony.Trunk
-    // fullName: telephony.Trunk.Trunk
+    // interface fullName: telephony.Trunk.Trunk
     export interface Trunk {
         description: string;
         serviceName: string;
         serviceType: telephony.TypeServiceEnum;
     }
-    //telephony.TrunkExternalDisplayedNumber
-    // fullName: telephony.TrunkExternalDisplayedNumber.TrunkExternalDisplayedNumber
+    // interface fullName: telephony.TrunkExternalDisplayedNumber.TrunkExternalDisplayedNumber
     export interface TrunkExternalDisplayedNumber {
         createdAt: string;
         number: string;
         status: telephony.TrunkExternalDisplayedNumberStatusEnum;
         validatedAt?: string;
     }
-    //telephony.TrunkExternalDisplayedNumberStatusEnum
+    // type fullname: telephony.TrunkExternalDisplayedNumberStatusEnum
     export type TrunkExternalDisplayedNumberStatusEnum = "enabled" | "refused" | "toDelete" | "waitingValidation"
-    //telephony.TrunkExternalDisplayedNumberValidation
-    // fullName: telephony.TrunkExternalDisplayedNumberValidation.TrunkExternalDisplayedNumberValidation
+    // interface fullName: telephony.TrunkExternalDisplayedNumberValidation.TrunkExternalDisplayedNumberValidation
     export interface TrunkExternalDisplayedNumberValidation {
         phoneCallTaskId: number;
         validationCode: string;
     }
-    //telephony.TrunkSimultaneousPack
-    // fullName: telephony.TrunkSimultaneousPack.TrunkSimultaneousPack
+    // interface fullName: telephony.TrunkSimultaneousPack.TrunkSimultaneousPack
     export interface TrunkSimultaneousPack {
         channels: number;
         quantity: number;
         unitPrice: orderPrice;
     }
-    //telephony.TrunkSimultaneousPacksRepartition
-    // fullName: telephony.TrunkSimultaneousPacksRepartition.TrunkSimultaneousPacksRepartition
+    // interface fullName: telephony.TrunkSimultaneousPacksRepartition.TrunkSimultaneousPacksRepartition
     export interface TrunkSimultaneousPacksRepartition {
         optimizedChannelsQuantity: number;
         packsRepartition: telephony.TrunkSimultaneousPack[];
         totalPrice: orderPrice;
     }
-    //telephony.TypeEnum
+    // type fullname: telephony.TypeEnum
     export type TypeEnum = "cloudHunting" | "cloudIvr" | "conference" | "contactCenterSolution" | "contactCenterSolutionExpert" | "ddi" | "easyHunting" | "easyPabx" | "empty" | "fax" | "freefax" | "mgcp" | "miniPabx" | "oldConference" | "plugAndFax" | "redirect" | "sip" | "svi" | "voicefax" | "voicemail" | "vxml"
-    //telephony.TypeServiceEnum
+    // type fullname: telephony.TypeServiceEnum
     export type TypeServiceEnum = "alias" | "line"
-    //telephony.VoiceConsumption
-    // fullName: telephony.VoiceConsumption.VoiceConsumption
+    // interface fullName: telephony.VoiceConsumption.VoiceConsumption
     export interface VoiceConsumption {
         called?: string;
         calling?: string;
@@ -1677,37 +1528,34 @@ export namespace telephony {
         priceWithoutTax: orderPrice;
         wayType: telephony.VoiceConsumptionWayTypeEnum;
     }
-    //telephony.VoiceConsumptionDestinationTypeEnum
+    // type fullname: telephony.VoiceConsumptionDestinationTypeEnum
     export type VoiceConsumptionDestinationTypeEnum = "landline" | "mobile" | "special"
-    //telephony.VoiceConsumptionPlanTypeEnum
+    // type fullname: telephony.VoiceConsumptionPlanTypeEnum
     export type VoiceConsumptionPlanTypeEnum = "outplan" | "priceplan"
-    //telephony.VoiceConsumptionWayTypeEnum
+    // type fullname: telephony.VoiceConsumptionWayTypeEnum
     export type VoiceConsumptionWayTypeEnum = "incoming" | "outgoing" | "transfer"
-    //telephony.VoicefaxRoutingEnum
+    // type fullname: telephony.VoicefaxRoutingEnum
     export type VoicefaxRoutingEnum = "fax" | "voicemail"
-    //telephony.Voicemail
-    // fullName: telephony.Voicemail.Voicemail
+    // interface fullName: telephony.Voicemail.Voicemail
     export interface Voicemail {
         description: string;
         offers: string[];
         serviceName: string;
         serviceType: telephony.TypeServiceEnum;
     }
-    //telephony.VoicemailGreetingEnum
+    // type fullname: telephony.VoicemailGreetingEnum
     export type VoicemailGreetingEnum = "default" | "full" | "short"
-    //telephony.VoicemailGreetings
-    // fullName: telephony.VoicemailGreetings.VoicemailGreetings
+    // interface fullName: telephony.VoicemailGreetings.VoicemailGreetings
     export interface VoicemailGreetings {
         callee: string;
         dir: telephony.VoicemailMessageFolderGreetingEnum;
         id: number;
     }
-    //telephony.VoicemailMessageFolderDirectoryEnum
+    // type fullname: telephony.VoicemailMessageFolderDirectoryEnum
     export type VoicemailMessageFolderDirectoryEnum = "family" | "friends" | "inbox" | "old" | "urgent" | "work"
-    //telephony.VoicemailMessageFolderGreetingEnum
+    // type fullname: telephony.VoicemailMessageFolderGreetingEnum
     export type VoicemailMessageFolderGreetingEnum = "busy" | "greet" | "temp" | "unavail"
-    //telephony.VoicemailMessages
-    // fullName: telephony.VoicemailMessages.VoicemailMessages
+    // interface fullName: telephony.VoicemailMessages.VoicemailMessages
     export interface VoicemailMessages {
         callee: string;
         caller: string;
@@ -1716,14 +1564,12 @@ export namespace telephony {
         duration: number;
         id: number;
     }
-    //telephony.VoicemailNumbers
-    // fullName: telephony.VoicemailNumbers.VoicemailNumbers
+    // interface fullName: telephony.VoicemailNumbers.VoicemailNumbers
     export interface VoicemailNumbers {
         external: string;
         internal: string;
     }
-    //telephony.VoicemailProperties
-    // fullName: telephony.VoicemailProperties.VoicemailProperties
+    // interface fullName: telephony.VoicemailProperties.VoicemailProperties
     export interface VoicemailProperties {
         annouceMessage: string;
         audioFormat: telephony.ServiceVoicemailAudioFormatEnum;
@@ -1741,28 +1587,25 @@ export namespace telephony {
         temporaryGreetingSoundId?: number;
         unreadMessages: number;
     }
-    //telephony.Vxml
-    // fullName: telephony.Vxml.Vxml
+    // interface fullName: telephony.Vxml.Vxml
     export interface Vxml {
         description: string;
         offers: string[];
         serviceName: string;
         serviceType: telephony.TypeServiceEnum;
     }
-    //telephony.VxmlProperties
-    // fullName: telephony.VxmlProperties.VxmlProperties
+    // interface fullName: telephony.VxmlProperties.VxmlProperties
     export interface VxmlProperties {
         url: string;
         urlRecord: string;
     }
     export namespace portability {
-        //telephony.portability.SpecialNumberCategoryEnum
+        // type fullname: telephony.portability.SpecialNumberCategoryEnum
         export type SpecialNumberCategoryEnum = "access" | "adults" | "announced" | "be_adults" | "be_content" | "be_games" | "be_general" | "be_relaxing" | "conferencing" | "contentsAuto" | "contentsManual" | "directory" | "games" | "linking" | "m2m" | "relationship"
     }
-    //telephony.timeZone
+    // type fullname: telephony.timeZone
     export type timeZone = "Europe/Berlin" | "Europe/Brussels" | "Europe/London" | "Europe/Madrid" | "Europe/Paris" | "Europe/Zurich"
-    //telephony.trafficExtract
-    // fullName: telephony.trafficExtract.trafficExtract
+    // interface fullName: telephony.trafficExtract.trafficExtract
     export interface trafficExtract {
         dateEnd: string;
         dateStart: string;

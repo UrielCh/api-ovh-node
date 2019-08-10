@@ -4,8 +4,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /kube Models
  */
 export namespace kube {
-    //kube.Cluster
-    // fullName: kube.Cluster.Cluster
+    // interface fullName: kube.Cluster.Cluster
     export interface Cluster {
         controlPlaneIsUpToDate: boolean;
         createdAt: string;
@@ -19,15 +18,13 @@ export namespace kube {
         url: string;
         version: string;
     }
-    //kube.ClusterStatus
+    // type fullname: kube.ClusterStatus
     export type ClusterStatus = "INSTALLING" | "UPDATING" | "RESETTING" | "SUSPENDING" | "REOPENING" | "DELETING" | "SUSPENDED" | "ERROR" | "USER_ERROR" | "USER_QUOTA_ERROR" | "READY"
-    //kube.Kubeconfig
-    // fullName: kube.Kubeconfig.Kubeconfig
+    // interface fullName: kube.Kubeconfig.Kubeconfig
     export interface Kubeconfig {
         content: string;
     }
-    //kube.Node
-    // fullName: kube.Node.Node
+    // interface fullName: kube.Node.Node
     export interface Node {
         createdAt: string;
         flavor: string;
@@ -40,24 +37,22 @@ export namespace kube {
         updatedAt: string;
         version: string;
     }
-    //kube.NodeStatus
+    // type fullname: kube.NodeStatus
     export type NodeStatus = "INSTALLING" | "UPDATING" | "RESETTING" | "SUSPENDING" | "REOPENING" | "DELETING" | "SUSPENDED" | "ERROR" | "USER_ERROR" | "USER_QUOTA_ERROR" | "USER_NODE_NOT_FOUND_ERROR" | "USER_NODE_SUSPENDED_SERVICE" | "READY"
-    //kube.PublicCloudProject
-    // fullName: kube.PublicCloudProject.PublicCloudProject
+    // interface fullName: kube.PublicCloudProject.PublicCloudProject
     export interface PublicCloudProject {
         projectId: string;
         region: string;
     }
-    //kube.ResetWorkerNodesPolicy
+    // type fullname: kube.ResetWorkerNodesPolicy
     export type ResetWorkerNodesPolicy = "reinstall" | "delete"
-    //kube.UpdatePolicy
+    // type fullname: kube.UpdatePolicy
     export type UpdatePolicy = "ALWAYS_UPDATE" | "MINIMAL_DOWNTIME" | "NEVER_UPDATE"
-    //kube.Version
+    // type fullname: kube.Version
     export type Version = "1.11" | "1.12" | "1.13" | "1.14" | "1.15"
 }
 export namespace service {
-    //service.RenewType
-    // fullName: service.RenewType.RenewType
+    // interface fullName: service.RenewType.RenewType
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -65,18 +60,17 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    //service.RenewalTypeEnum
+    // type fullname: service.RenewalTypeEnum
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    //service.StateEnum
+    // type fullname: service.StateEnum
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
-    //service.TerminationFutureUseEnum
+    // type fullname: service.TerminationFutureUseEnum
     export type TerminationFutureUseEnum = "NOT_REPLACING_SERVICE" | "OTHER" | "SUBSCRIBE_AN_OTHER_SERVICE" | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR" | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
-    //service.TerminationReasonEnum
+    // type fullname: service.TerminationReasonEnum
     export type TerminationReasonEnum = "FEATURES_DONT_SUIT_ME" | "LACK_OF_PERFORMANCES" | "MIGRATED_TO_ANOTHER_OVH_PRODUCT" | "MIGRATED_TO_COMPETITOR" | "NOT_NEEDED_ANYMORE" | "NOT_RELIABLE" | "NO_ANSWER" | "OTHER" | "TOO_EXPENSIVE" | "TOO_HARD_TO_USE" | "UNSATIFIED_BY_CUSTOMER_SUPPORT"
 }
 export namespace services {
-    //services.Service
-    // fullName: services.Service.Service
+    // interface fullName: services.Service.Service
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;

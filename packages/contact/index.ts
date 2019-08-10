@@ -4,22 +4,19 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /contact Models
  */
 export namespace complexType {
-    //complexType.SafeKeyValue
-    // fullName: complexType.SafeKeyValue.SafeKeyValue
+    // interface fullName: complexType.SafeKeyValue.SafeKeyValue
     export interface SafeKeyValue<T> {
         key: string;
         value: T;
     }
 }
 export namespace contact {
-    //contact.FormCharacteristic
-    // fullName: contact.FormCharacteristic.FormCharacteristic
+    // interface fullName: contact.FormCharacteristic.FormCharacteristic
     export interface FormCharacteristic {
         keys: contact.KeyFormCharacteristic[];
         type: string;
     }
-    //contact.KeyFormCharacteristic
-    // fullName: contact.KeyFormCharacteristic.KeyFormCharacteristic
+    // interface fullName: contact.KeyFormCharacteristic.KeyFormCharacteristic
     export interface KeyFormCharacteristic {
         key: string;
         required: boolean;

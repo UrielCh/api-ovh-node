@@ -5,14 +5,12 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  */
 export namespace docker {
     export namespace framework {
-        //docker.framework.password
-        // fullName: docker.framework.password.password
+        // interface fullName: docker.framework.password.password
         export interface password {
             password: string;
         }
     }
-    //docker.slave
-    // fullName: docker.slave.slave
+    // interface fullName: docker.slave.slave
     export interface slave {
         createdAt: string;
         flavorId: string;
@@ -25,8 +23,7 @@ export namespace docker {
         updatedAt: string;
     }
     export namespace slave {
-        //docker.slave.flavor
-        // fullName: docker.slave.flavor.flavor
+        // interface fullName: docker.slave.flavor.flavor
         export interface flavor {
             bandwidth: number;
             cpus: number;
@@ -37,8 +34,7 @@ export namespace docker {
             ram: number;
         }
         export namespace framework {
-            //docker.slave.framework.app
-            // fullName: docker.slave.framework.app.app
+            // interface fullName: docker.slave.framework.app.app
             export interface app {
                 cpu?: number;
                 env: docker.slave.framework.app.environment[];
@@ -51,21 +47,18 @@ export namespace docker {
                 volumes: docker.slave.framework.app.volume[];
             }
             export namespace app {
-                //docker.slave.framework.app.environment
-                // fullName: docker.slave.framework.app.environment.environment
+                // interface fullName: docker.slave.framework.app.environment.environment
                 export interface environment {
                     key?: string;
                     value?: string;
                 }
-                //docker.slave.framework.app.port
-                // fullName: docker.slave.framework.app.port.port
+                // interface fullName: docker.slave.framework.app.port.port
                 export interface port {
                     containerPort?: number;
                     hostPort?: number;
                     protocol?: string;
                 }
-                //docker.slave.framework.app.volume
-                // fullName: docker.slave.framework.app.volume.volume
+                // interface fullName: docker.slave.framework.app.volume.volume
                 export interface volume {
                     containerPath?: number;
                     hostPath?: number;
@@ -73,31 +66,27 @@ export namespace docker {
                 }
             }
         }
-        //docker.slave.metrics
-        // fullName: docker.slave.metrics.metrics
+        // interface fullName: docker.slave.metrics.metrics
         export interface metrics {
             resources: docker.slave.metrics.resources;
             usedResources: docker.slave.metrics.usedResources;
         }
         export namespace metrics {
-            //docker.slave.metrics.resources
-            // fullName: docker.slave.metrics.resources.resources
+            // interface fullName: docker.slave.metrics.resources.resources
             export interface resources {
                 cpu?: number;
                 mem?: number;
             }
-            //docker.slave.metrics.usedResources
-            // fullName: docker.slave.metrics.usedResources.usedResources
+            // interface fullName: docker.slave.metrics.usedResources.usedResources
             export interface usedResources {
                 cpu?: number;
                 mem?: number;
             }
         }
-        //docker.slave.status
+        // type fullname: docker.slave.status
         export type status = "blocked" | "created" | "creating"
     }
-    //docker.stack
-    // fullName: docker.stack.stack
+    // interface fullName: docker.stack.stack
     export interface stack {
         cluster?: string;
         createdAt: string;
@@ -108,26 +97,22 @@ export namespace docker {
         updatedAt: string;
     }
     export namespace stack {
-        //docker.stack.customSsl
-        // fullName: docker.stack.customSsl.customSsl
+        // interface fullName: docker.stack.customSsl.customSsl
         export interface customSsl {
             certificate: string;
             createdAt: string;
             updatedAt: string;
         }
-        //docker.stack.customSslMessage
-        // fullName: docker.stack.customSslMessage.customSslMessage
+        // interface fullName: docker.stack.customSslMessage.customSslMessage
         export interface customSslMessage {
             message: string;
         }
-        //docker.stack.inputCustomSsl
-        // fullName: docker.stack.inputCustomSsl.inputCustomSsl
+        // interface fullName: docker.stack.inputCustomSsl.inputCustomSsl
         export interface inputCustomSsl {
             certificate: string;
             key: string;
         }
-        //docker.stack.registryCredentials
-        // fullName: docker.stack.registryCredentials.registryCredentials
+        // interface fullName: docker.stack.registryCredentials.registryCredentials
         export interface registryCredentials {
             createdAt: string;
             registryUrl: string;
@@ -137,8 +122,7 @@ export namespace docker {
     }
 }
 export namespace service {
-    //service.RenewType
-    // fullName: service.RenewType.RenewType
+    // interface fullName: service.RenewType.RenewType
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -146,14 +130,13 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    //service.RenewalTypeEnum
+    // type fullname: service.RenewalTypeEnum
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    //service.StateEnum
+    // type fullname: service.StateEnum
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
 }
 export namespace services {
-    //services.Service
-    // fullName: services.Service.Service
+    // interface fullName: services.Service.Service
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;
@@ -171,8 +154,7 @@ export namespace services {
     }
 }
 export namespace stack {
-    //stack.framework
-    // fullName: stack.framework.framework
+    // interface fullName: stack.framework.framework
     export interface framework {
         accessUrl: string;
         createdAt: string;
@@ -181,8 +163,7 @@ export namespace stack {
         updatedAt: string;
     }
     export namespace framework {
-        //stack.framework.application
-        // fullName: stack.framework.application.application
+        // interface fullName: stack.framework.application.application
         export interface application {
             apps: docker.slave.framework.app[];
         }
