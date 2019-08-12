@@ -82,6 +82,9 @@ export interface OvhApiEvent {
     once(ev: 'debug', listener: (txt: string) => void): this;
 }
 
+/**
+ * Main ovh api connector
+ */
 export default class OvhApi extends EventEmitter implements OvhRequestable, OvhApiEvent {
     appKey: string;
     appSecret: string;
@@ -97,8 +100,10 @@ export default class OvhApi extends EventEmitter implements OvhRequestable, OvhA
 
     constructor(params: OvhParams) {
         super();
-        this.appKey = params.appKey || 'qCLhWaDgfbAkbuzN';
-        this.appSecret = params.appSecret || '8moT8ezpp5kaK2mBSEyazP1oQfEvMPu0';
+        // Application Name: api-ovh-node
+        // Application Description: api-ovh-node default key
+        this.appKey = params.appKey || 'bIYf2Ji3u5Qm93JZ';
+        this.appSecret = params.appSecret || 'MGqfOgkblLhj1GOefKULD3ljnWitUwBW';
         this.consumerKey = params.consumerKey || null;
         this.timeout = params.timeout;
         this.apiTimeDiff = params.apiTimeDiff || null;
