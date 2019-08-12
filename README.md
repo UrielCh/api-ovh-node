@@ -7,7 +7,7 @@
 
 ## Samples
 
-Find all sample [here](https://github.com/UrielCh/api-ovh-node/tree/master/samples)
+Find all samples [here](https://github.com/UrielCh/api-ovh-node/tree/master/samples)
 
 ### Interactive mode with no Credential
 
@@ -46,25 +46,4 @@ api.get('/me').then(console.log);
 api.$get().then(console.log);
 ```
 
-### Same thing with a credential using the [official Ovh api](https://github.com/ovh/node-ovh)
-
-Create your first application tokens here: [here](https://api.ovh.com/createToken/?GET=/me)
-
-```typescript
-import ApiMe from '@ovh-api/me';
-import Ovh from require(ovh);
-
-// Create your first application tokens here: https://api.ovh.com/createToken/?GET=/me
-const config = {
-    appKey: String(process.env.APP_KEY),
-    appSecret: String(process.env.APP_SECRET),
-    consumerKey: String(process.env.CONSUMER_KEY)
-};
-const ovh = new Ovh(config);
-const api = ApiMe(ovh);
-api.get('/me').then(console.log);
-// or
-api.$get().then(console.log);
-```
-
-For more sample see [samples](https://github.com/UrielCh/api-ovh-node/tree/master/code/sample)
+For more samples see [samples](https://github.com/UrielCh/api-ovh-node/tree/master/code/sample)

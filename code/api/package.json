@@ -17,8 +17,8 @@
     "open": "^6.4.0"
   },
   "devDependencies": {
-    "@ovh-api/me": "^2.0.5",
-    "@types/chai": "^4.1.7",
+    "@ovh-api/me": "^2.0.6",
+    "@types/chai": "^4.2.0",
     "@types/mocha": "^5.2.7",
     "@types/open": "^6.2.1",
     "chai": "^4.2.0",
