@@ -111,7 +111,7 @@ export namespace dedicatedCloud {
         fullProfile: string;
         name: string;
         profile: string;
-        size: complexTypeUnitAndValuenumber;
+        size: complexType.UnitAndValue<number>;
         spaceFree?: number;
         spaceProvisionned?: number;
         spaceUsed?: number;
@@ -139,7 +139,7 @@ export namespace dedicatedCloud {
         billingType: dedicatedCloudressourcesBillingTypeEnum;
         clusterName?: string;
         connectionState?: dedicatedCloudhostSystemConnectionState;
-        cpu: complexTypeUnitAndValuenumber;
+        cpu: complexType.UnitAndValue<number>;
         cpuMax?: number;
         cpuMaxCore?: number;
         cpuNum?: number;
@@ -152,7 +152,7 @@ export namespace dedicatedCloud {
         profile: string;
         profileCode: string;
         rack: string;
-        ram: complexTypeUnitAndValuenumber;
+        ram: complexType.UnitAndValue<number>;
         state: dedicatedCloudhostStateEnum;
         uptime?: number;
         vmTotal?: number;
@@ -249,7 +249,7 @@ export namespace dedicatedCloud {
         creationTime?: string;
         isCorrupted: boolean;
         restorePointId: number;
-        restorePointSize: complexTypeUnitAndValuenumber;
+        restorePointSize: complexType.UnitAndValue<number>;
         type?: dedicatedCloudbackupBackupTypeEnum;
     }
     // interface fullName: dedicatedCloud.Right.Right
@@ -418,10 +418,10 @@ export namespace dedicatedCloud {
             backupDays?: dedicatedCloudbackupBackupDaysEnum[];
             encryption?: boolean;
             lastCreationTime?: string;
-            lastDuration?: complexTypeUnitAndValuenumber;
+            lastDuration?: complexType.UnitAndValue<number>;
             lastResult?: dedicatedCloudbackupJobStateEnum;
             lastSuccessfulCreationTime?: string;
-            lastSuccessfulDuration?: complexTypeUnitAndValuenumber;
+            lastSuccessfulDuration?: complexType.UnitAndValue<number>;
             offerType?: dedicatedCloudbackupOfferTypeEnum;
             restorePoints?: dedicatedCloudbackupRestorePoint[];
             retentionTime?: number;
@@ -440,7 +440,7 @@ export namespace dedicatedCloud {
             creationTime?: string;
             isCorrupted?: boolean;
             restorePointId: number;
-            size?: complexTypeUnitAndValuenumber;
+            size?: complexType.UnitAndValue<number>;
             type?: dedicatedCloudbackupBackupTypeEnum;
         }
         // type fullname: dedicatedCloud.backup.StateEnum
@@ -517,14 +517,14 @@ export namespace dedicatedCloud {
     export namespace filer {
         // interface fullName: dedicatedCloud.filer.HourlyConsumption.HourlyConsumption
         export interface HourlyConsumption {
-            consumption: complexTypeUnitAndValuenumber;
+            consumption: complexType.UnitAndValue<number>;
             lastUpdate: string;
         }
         // interface fullName: dedicatedCloud.filer.Profile.Profile
         export interface Profile {
             fullName: string;
             name: string;
-            size: complexTypeUnitAndValuenumber;
+            size: complexType.UnitAndValue<number>;
         }
         // type fullname: dedicatedCloud.filer.StateEnum
         export type StateEnum = "adding" | "delivered" | "error" | "removing" | "unknown"
@@ -532,15 +532,15 @@ export namespace dedicatedCloud {
     export namespace host {
         // interface fullName: dedicatedCloud.host.HourlyConsumption.HourlyConsumption
         export interface HourlyConsumption {
-            consumption: complexTypeUnitAndValuenumber;
+            consumption: complexType.UnitAndValue<number>;
             lastUpdate: string;
         }
         // interface fullName: dedicatedCloud.host.Profile.Profile
         export interface Profile {
             core: string;
-            cpu: complexTypeUnitAndValuenumber;
+            cpu: complexType.UnitAndValue<number>;
             name: string;
-            ram: complexTypeUnitAndValuenumber;
+            ram: complexType.UnitAndValue<number>;
         }
         // type fullname: dedicatedCloud.host.StateEnum
         export type StateEnum = "adding" | "delivered" | "error" | "removing" | "unknown"
@@ -590,8 +590,8 @@ export namespace dedicatedCloud {
         billingType: dedicatedCloudressourcesBillingTypeEnum;
         changed: boolean;
         name: string;
-        newPrice: orderPrice;
-        oldPrice: orderPrice;
+        newPrice: order.Price;
+        oldPrice: order.Price;
         resourceType: dedicatedCloudressourcesResourceTypeEnum;
     }
     export namespace ressources {
@@ -698,7 +698,7 @@ export namespace order {
     export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
     // interface fullName: order.Price.Price
     export interface Price {
-        currencyCode: orderCurrencyCodeEnum;
+        currencyCode: order.CurrencyCodeEnum;
         text: string;
         value: number;
     }
@@ -733,10 +733,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: serviceRenewType;
-        renewalType: serviceRenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: serviceStateEnum;
+        status: service.StateEnum;
     }
 }
 export namespace vrack {
@@ -747,7 +747,7 @@ export namespace vrack {
         lastUpdate?: string;
         orderId?: number;
         serviceName?: string;
-        status: vrackTaskStatusEnum;
+        status: vrack.TaskStatusEnum;
         targetDomain?: string;
         todoDate?: string;
     }
@@ -1332,7 +1332,7 @@ export interface DedicatedCloud{
             // GET /dedicatedCloud/{serviceName}/serviceInfos
             $get(): Promise<services.Service>;
             // PUT /dedicatedCloud/{serviceName}/serviceInfos
-            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}): Promise<void>;
+            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
         }
         servicePack: {
             // GET /dedicatedCloud/{serviceName}/servicePack
@@ -2072,7 +2072,7 @@ export interface DedicatedCloud{
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/dedicatedCloud/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}) => Promise<void>;
+  put(path: '/dedicatedCloud/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
   /**
    * Private Cloud User right
    * Alter this object properties
@@ -2529,7 +2529,6 @@ type dedicatedCloudCommercialNameEnum = dedicatedCloud.CommercialNameEnum;
 type dedicatedCloudoptionStateEnum = dedicatedCloud.option.StateEnum;
 type dedicatedCloudoptionAccessNetworkStateEnum = dedicatedCloud.optionAccessNetwork.StateEnum;
 type dedicatedCloudressourcesBillingTypeEnum = dedicatedCloud.ressources.BillingTypeEnum;
-type complexTypeUnitAndValuenumber = complexType.UnitAndValue<number>;
 type dedicatedCloudfilerStateEnum = dedicatedCloud.filer.StateEnum;
 type dedicatedCloudhostSystemConnectionState = dedicatedCloud.hostSystemConnectionState;
 type dedicatedCloudhostStateEnum = dedicatedCloud.host.StateEnum;
@@ -2568,7 +2567,6 @@ type dedicatedClouddisasterRecoveryLocalSiteDetails = dedicatedCloud.disasterRec
 type dedicatedClouddisasterRecoveryRemoteSiteDetails = dedicatedCloud.disasterRecovery.RemoteSiteDetails;
 type dedicatedClouddisasterRecoveryVpnConfigStateEnum = dedicatedCloud.disasterRecovery.VpnConfigStateEnum;
 type dedicatedCloudresourceNewPricesEntry = dedicatedCloud.resourceNewPricesEntry;
-type orderPrice = order.Price;
 type dedicatedCloudressourcesResourceTypeEnum = dedicatedCloud.ressources.ResourceTypeEnum;
 type dedicatedCloudservicePackEnum = dedicatedCloud.servicePackEnum;
 type dedicatedCloudservicePackStateEnum = dedicatedCloud.servicePackStateEnum;
@@ -2577,8 +2575,3 @@ type dedicatedCloudvmFilerDisk = dedicatedCloud.vmFilerDisk;
 type dedicatedCloudvmNetworkBacking = dedicatedCloud.vmNetworkBacking;
 type dedicatedCloudvirtualDeviceConnectInfoStatus = dedicatedCloud.virtualDeviceConnectInfoStatus;
 type dedicatedCloudvmNetworkBackingTypeEnum = dedicatedCloud.vmNetworkBackingTypeEnum;
-type orderCurrencyCodeEnum = order.CurrencyCodeEnum;
-type serviceRenewType = service.RenewType;
-type serviceRenewalTypeEnum = service.RenewalTypeEnum;
-type serviceStateEnum = service.StateEnum;
-type vrackTaskStatusEnum = vrack.TaskStatusEnum;

@@ -18,7 +18,7 @@ export namespace msServices {
         lastName?: string;
         lastUpdateDate?: string;
         passwordLastUpdate?: string;
-        state: msServicesObjectStateEnum;
+        state: msServices.ObjectStateEnum;
         taskPendingId: number;
         userPrincipalName: string;
     }
@@ -33,7 +33,7 @@ export namespace msServices {
         minPasswordLength?: number;
         name: string;
         officeTenantServiceName?: string;
-        state: msServicesServiceStateEnum;
+        state: msServices.ServiceStateEnum;
         taskPendingId: number;
     }
     // interface fullName: msServices.ActiveDirectorySyncClientUrl.ActiveDirectorySyncClientUrl
@@ -43,7 +43,7 @@ export namespace msServices {
     }
     // interface fullName: msServices.ExchangeInformation.ExchangeInformation
     export interface ExchangeInformation {
-        accountLicense: msServicesExchangeLicenceEnum;
+        accountLicense: msServices.ExchangeLicenceEnum;
         configured: boolean;
         creationDate?: string;
         currentUsage?: number;
@@ -56,17 +56,17 @@ export namespace msServices {
         id: number;
         litigation: boolean;
         litigationPeriod?: number;
-        mailingFilter?: msServicesMailingFilterEnum[];
+        mailingFilter?: msServices.MailingFilterEnum[];
         outlookLicense: boolean;
         owaLimited: boolean;
         primaryEmailAddress: string;
         quota: number;
-        renewOutlookPeriod?: msServicesRenewPeriodEnum;
-        renewPeriod?: msServicesRenewPeriodEnum;
-        spamAndVirusConfiguration: msServicesSpamAndVirusConfiguration;
+        renewOutlookPeriod?: msServices.RenewPeriodEnum;
+        renewPeriod?: msServices.RenewPeriodEnum;
+        spamAndVirusConfiguration: msServices.SpamAndVirusConfiguration;
         spamDetected: boolean;
         spamTicketNumber?: number;
-        state: msServicesObjectStateEnum;
+        state: msServices.ObjectStateEnum;
         taskPendingId: number;
     }
     // type fullname: msServices.ExchangeLicenceEnum
@@ -78,10 +78,10 @@ export namespace msServices {
         hostname?: string;
         maxReceiveSize: number;
         maxSendSize: number;
-        offer: msServicesServiceOfferEnum;
-        spamAndVirusConfiguration: msServicesSpamAndVirusConfiguration;
+        offer: msServices.ServiceOfferEnum;
+        spamAndVirusConfiguration: msServices.SpamAndVirusConfiguration;
         sslExpirationDate?: string;
-        state: msServicesServiceStateEnum;
+        state: msServices.ServiceStateEnum;
         taskPendingId: number;
     }
     // type fullname: msServices.LicensePeriodEnum
@@ -91,7 +91,7 @@ export namespace msServices {
     // interface fullName: msServices.MfaInformation.MfaInformation
     export interface MfaInformation {
         activated: boolean;
-        state: msServicesObjectStateEnum;
+        state: msServices.ObjectStateEnum;
         taskPendingId: number;
     }
     // type fullname: msServices.ObjectStateEnum
@@ -106,26 +106,26 @@ export namespace msServices {
     export type SharepointAccountAccessRightsEnum = "administrator" | "user"
     // interface fullName: msServices.SharepointAccountLicense.SharepointAccountLicense
     export interface SharepointAccountLicense {
-        license: msServicesSharepointLicenseEnum;
+        license: msServices.SharepointLicenseEnum;
         licenseQuantity: number;
     }
     // interface fullName: msServices.SharepointDailyLicense.SharepointDailyLicense
     export interface SharepointDailyLicense {
-        accountLicense: msServicesSharepointAccountLicense[];
+        accountLicense: msServices.SharepointAccountLicense[];
         date: string;
     }
     // interface fullName: msServices.SharepointInformation.SharepointInformation
     export interface SharepointInformation {
-        accessRights: msServicesSharepointAccountAccessRightsEnum;
+        accessRights: msServices.SharepointAccountAccessRightsEnum;
         activeDirectoryAccountId: number;
         configured: boolean;
         currentUsage?: number;
         deleteAtExpiration?: boolean;
         id: number;
-        license: msServicesSharepointLicenseEnum;
+        license: msServices.SharepointLicenseEnum;
         officeLicense: boolean;
         quota: number;
-        state: msServicesObjectStateEnum;
+        state: msServices.ObjectStateEnum;
         taskPendingId: number;
     }
     // type fullname: msServices.SharepointLicenseEnum
@@ -136,9 +136,9 @@ export namespace msServices {
         displayName?: string;
         domain: string;
         farmUrl: string;
-        offer: msServicesSharepointServiceOfferEnum;
+        offer: msServices.SharepointServiceOfferEnum;
         quota: number;
-        state: msServicesServiceStateEnum;
+        state: msServices.ServiceStateEnum;
         taskPendingId: number;
         url?: string;
     }
@@ -160,34 +160,34 @@ export namespace msServices {
     }
     // interface fullName: msServices.SyncAccountLicense.SyncAccountLicense
     export interface SyncAccountLicense {
-        license: msServicesSyncLicenseEnum;
+        license: msServices.SyncLicenseEnum;
         licenseQuantity: number;
     }
     // interface fullName: msServices.SyncDailyLicense.SyncDailyLicense
     export interface SyncDailyLicense {
-        accountLicense: msServicesSyncAccountLicense[];
+        accountLicense: msServices.SyncAccountLicense[];
         date: string;
     }
     // interface fullName: msServices.SyncInformation.SyncInformation
     export interface SyncInformation {
         configured: boolean;
-        license: msServicesSyncLicenseEnum;
-        state: msServicesObjectStateEnum;
+        license: msServices.SyncLicenseEnum;
+        state: msServices.ObjectStateEnum;
         taskPendingId: number;
     }
     // type fullname: msServices.SyncLicenseEnum
     export type SyncLicenseEnum = "standard" | "standardFree"
     // interface fullName: msServices.SyncService.SyncService
     export interface SyncService {
-        state: msServicesServiceStateEnum;
+        state: msServices.ServiceStateEnum;
         taskPendingId: number;
     }
     // interface fullName: msServices.Task.Task
     export interface Task {
         finishDate?: string;
-        function: msServicesTaskFunctionEnum;
+        function: msServices.TaskFunctionEnum;
         id: number;
-        status: msServicesTaskStatusEnum;
+        status: msServices.TaskStatusEnum;
         todoDate: string;
     }
     // type fullname: msServices.TaskFunctionEnum
@@ -201,7 +201,7 @@ export namespace msServices {
         finishDate?: string;
         function: string;
         id: number;
-        status: msServicesTaskStatusEnum;
+        status: msServices.TaskStatusEnum;
         todoDate: string;
     }
     // interface fullName: msServices.sharepointTask.sharepointTask
@@ -209,14 +209,14 @@ export namespace msServices {
         finishDate?: string;
         function: string;
         id: number;
-        status: msServicesTaskStatusEnum;
+        status: msServices.TaskStatusEnum;
         todoDate: string;
     }
     // interface fullName: msServices.upnSuffix.upnSuffix
     export interface upnSuffix {
         cnameToCheck?: string;
         ownershipValidated: boolean;
-        state: msServicesUPNStateEnum;
+        state: msServices.UPNStateEnum;
         suffix: string;
         taskPendingId: number;
     }
@@ -247,10 +247,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: serviceRenewType;
-        renewalType: serviceRenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: serviceStateEnum;
+        status: service.StateEnum;
     }
 }
 
@@ -278,7 +278,7 @@ export interface MsServices{
                 // GET /msServices/sharepoint/{domain}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /msServices/sharepoint/{domain}/serviceInfos
-                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}): Promise<void>;
+                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
         };
     }
@@ -286,7 +286,7 @@ export interface MsServices{
         // GET /msServices/{serviceName}
         $get(): Promise<msServices.ActiveDirectoryOrganizationalUnit>;
         // PUT /msServices/{serviceName}
-        $put(params?: {complexityEnabled?: boolean, lockoutDuration?: number, lockoutObservationWindow?: number, lockoutThreshold?: number, maxPasswordAge?: number, minPasswordAge?: number, minPasswordLength?: number, name?: string, officeTenantServiceName?: string, state?: msServicesServiceStateEnum, taskPendingId?: number}): Promise<void>;
+        $put(params?: {complexityEnabled?: boolean, lockoutDuration?: number, lockoutObservationWindow?: number, lockoutThreshold?: number, maxPasswordAge?: number, minPasswordAge?: number, minPasswordLength?: number, name?: string, officeTenantServiceName?: string, state?: msServices.ServiceStateEnum, taskPendingId?: number}): Promise<void>;
         account: {
             // GET /msServices/{serviceName}/account
             $get(params?: {id?: number, userPrincipalName?: string}): Promise<string[]>;
@@ -294,7 +294,7 @@ export interface MsServices{
                 // GET /msServices/{serviceName}/account/{userPrincipalName}
                 $get(): Promise<msServices.Account>;
                 // PUT /msServices/{serviceName}/account/{userPrincipalName}
-                $put(params?: {SAMAccountName?: string, creationDate?: string, displayName?: string, firstName?: string, guid?: string, id?: number, initials?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, lastUpdateDate?: string, passwordLastUpdate?: string, state?: msServicesObjectStateEnum, taskPendingId?: number, userPrincipalName?: string}): Promise<void>;
+                $put(params?: {SAMAccountName?: string, creationDate?: string, displayName?: string, firstName?: string, guid?: string, id?: number, initials?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, lastUpdateDate?: string, passwordLastUpdate?: string, state?: msServices.ObjectStateEnum, taskPendingId?: number, userPrincipalName?: string}): Promise<void>;
                 changePassword: {
                     // POST /msServices/{serviceName}/account/{userPrincipalName}/changePassword
                     $post(params: {password: string}): Promise<msServices.Task>;
@@ -303,7 +303,7 @@ export interface MsServices{
                     // GET /msServices/{serviceName}/account/{userPrincipalName}/exchange
                     $get(): Promise<msServices.ExchangeInformation>;
                     // PUT /msServices/{serviceName}/account/{userPrincipalName}/exchange
-                    $put(params?: {accountLicense?: msServicesExchangeLicenceEnum, configured?: boolean, creationDate?: string, currentUsage?: number, deleteAtExpiration?: boolean, deleteOutlookAtExpiration?: boolean, exchangeGuid?: string, expirationDate?: string, expirationOutlookDate?: string, hiddenFromGAL?: boolean, id?: number, litigation?: boolean, litigationPeriod?: number, mailingFilter?: msServicesMailingFilterEnum[], outlookLicense?: boolean, owaLimited?: boolean, primaryEmailAddress?: string, quota?: number, renewOutlookPeriod?: msServicesRenewPeriodEnum, renewPeriod?: msServicesRenewPeriodEnum, spamAndVirusConfiguration?: msServicesSpamAndVirusConfiguration, spamDetected?: boolean, spamTicketNumber?: number, state?: msServicesObjectStateEnum, taskPendingId?: number}): Promise<void>;
+                    $put(params?: {accountLicense?: msServices.ExchangeLicenceEnum, configured?: boolean, creationDate?: string, currentUsage?: number, deleteAtExpiration?: boolean, deleteOutlookAtExpiration?: boolean, exchangeGuid?: string, expirationDate?: string, expirationOutlookDate?: string, hiddenFromGAL?: boolean, id?: number, litigation?: boolean, litigationPeriod?: number, mailingFilter?: msServices.MailingFilterEnum[], outlookLicense?: boolean, owaLimited?: boolean, primaryEmailAddress?: string, quota?: number, renewOutlookPeriod?: msServices.RenewPeriodEnum, renewPeriod?: msServices.RenewPeriodEnum, spamAndVirusConfiguration?: msServices.SpamAndVirusConfiguration, spamDetected?: boolean, spamTicketNumber?: number, state?: msServices.ObjectStateEnum, taskPendingId?: number}): Promise<void>;
                     configure: {
                         // POST /msServices/{serviceName}/account/{userPrincipalName}/exchange/configure
                         $post(): Promise<msServices.exchangeTask>;
@@ -333,7 +333,7 @@ export interface MsServices{
                     // GET /msServices/{serviceName}/account/{userPrincipalName}/sharepoint
                     $get(): Promise<msServices.SharepointInformation>;
                     // PUT /msServices/{serviceName}/account/{userPrincipalName}/sharepoint
-                    $put(params?: {accessRights?: msServicesSharepointAccountAccessRightsEnum, activeDirectoryAccountId?: number, configured?: boolean, currentUsage?: number, deleteAtExpiration?: boolean, id?: number, license?: msServicesSharepointLicenseEnum, officeLicense?: boolean, quota?: number, state?: msServicesObjectStateEnum, taskPendingId?: number}): Promise<void>;
+                    $put(params?: {accessRights?: msServices.SharepointAccountAccessRightsEnum, activeDirectoryAccountId?: number, configured?: boolean, currentUsage?: number, deleteAtExpiration?: boolean, id?: number, license?: msServices.SharepointLicenseEnum, officeLicense?: boolean, quota?: number, state?: msServices.ObjectStateEnum, taskPendingId?: number}): Promise<void>;
                     clearSpace: {
                         // POST /msServices/{serviceName}/account/{userPrincipalName}/sharepoint/clearSpace
                         $post(): Promise<msServices.sharepointTask>;
@@ -349,7 +349,7 @@ export interface MsServices{
                     // GET /msServices/{serviceName}/account/{userPrincipalName}/sync
                     $get(): Promise<msServices.SyncInformation>;
                     // POST /msServices/{serviceName}/account/{userPrincipalName}/sync
-                    $post(params: {license: msServicesSyncLicenseEnum}): Promise<msServices.Task>;
+                    $post(params: {license: msServices.SyncLicenseEnum}): Promise<msServices.Task>;
                     configure: {
                         // POST /msServices/{serviceName}/account/{userPrincipalName}/sync/configure
                         $post(): Promise<msServices.Task>;
@@ -361,7 +361,7 @@ export interface MsServices{
             // GET /msServices/{serviceName}/exchange
             $get(): Promise<msServices.ExchangeService>;
             // PUT /msServices/{serviceName}/exchange
-            $put(params?: {displayName?: string, domain?: string, hostname?: string, maxReceiveSize?: number, maxSendSize?: number, offer?: msServicesServiceOfferEnum, spamAndVirusConfiguration?: msServicesSpamAndVirusConfiguration, sslExpirationDate?: string, state?: msServicesServiceStateEnum, taskPendingId?: number}): Promise<void>;
+            $put(params?: {displayName?: string, domain?: string, hostname?: string, maxReceiveSize?: number, maxSendSize?: number, offer?: msServices.ServiceOfferEnum, spamAndVirusConfiguration?: msServices.SpamAndVirusConfiguration, sslExpirationDate?: string, state?: msServices.ServiceStateEnum, taskPendingId?: number}): Promise<void>;
             billingMigrated: {
                 // GET /msServices/{serviceName}/exchange/billingMigrated
                 $get(): Promise<boolean>;
@@ -379,14 +379,14 @@ export interface MsServices{
             // GET /msServices/{serviceName}/sharepoint
             $get(): Promise<msServices.SharepointService>;
             // PUT /msServices/{serviceName}/sharepoint
-            $put(params?: {currentUsage?: number, displayName?: string, domain?: string, farmUrl?: string, offer?: msServicesSharepointServiceOfferEnum, quota?: number, state?: msServicesServiceStateEnum, taskPendingId?: number, url?: string}): Promise<void>;
+            $put(params?: {currentUsage?: number, displayName?: string, domain?: string, farmUrl?: string, offer?: msServices.SharepointServiceOfferEnum, quota?: number, state?: msServices.ServiceStateEnum, taskPendingId?: number, url?: string}): Promise<void>;
             billingMigrated: {
                 // GET /msServices/{serviceName}/sharepoint/billingMigrated
                 $get(): Promise<boolean>;
             }
             license: {
                 // GET /msServices/{serviceName}/sharepoint/license
-                $get(params: {license?: msServicesSharepointLicenseEnum, period: msServices.LicensePeriodEnum}): Promise<msServices.SharepointDailyLicense[]>;
+                $get(params: {license?: msServices.SharepointLicenseEnum, period: msServices.LicensePeriodEnum}): Promise<msServices.SharepointDailyLicense[]>;
             }
             restoreAdminRights: {
                 // POST /msServices/{serviceName}/sharepoint/restoreAdminRights
@@ -394,7 +394,7 @@ export interface MsServices{
             }
             task: {
                 // GET /msServices/{serviceName}/sharepoint/task
-                $get(params?: {function_?: string, status?: msServicesTaskStatusEnum}): Promise<number[]>;
+                $get(params?: {function_?: string, status?: msServices.TaskStatusEnum}): Promise<number[]>;
                 $(id: number): {
                     // GET /msServices/{serviceName}/sharepoint/task/{id}
                     $get(): Promise<msServices.sharepointTask>;
@@ -418,12 +418,12 @@ export interface MsServices{
             }
             license: {
                 // GET /msServices/{serviceName}/sync/license
-                $get(params: {license?: msServicesSyncLicenseEnum, period: msServices.LicensePeriodEnum}): Promise<msServices.SyncDailyLicense[]>;
+                $get(params: {license?: msServices.SyncLicenseEnum, period: msServices.LicensePeriodEnum}): Promise<msServices.SyncDailyLicense[]>;
             }
         }
         task: {
             // GET /msServices/{serviceName}/task
-            $get(params?: {function_?: msServicesTaskFunctionEnum, status?: msServicesTaskStatusEnum}): Promise<number[]>;
+            $get(params?: {function_?: msServices.TaskFunctionEnum, status?: msServices.TaskStatusEnum}): Promise<number[]>;
             $(id: number): {
                 // GET /msServices/{serviceName}/task/{id}
                 $get(): Promise<msServices.Task>;
@@ -517,12 +517,12 @@ export interface MsServices{
    * license operations
    * Get active licenses for specific period of time
    */
-  get(path: '/msServices/{serviceName}/sharepoint/license'): (params: {serviceName: string, license?: msServicesSharepointLicenseEnum, period: msServices.LicensePeriodEnum}) => Promise<msServices.SharepointDailyLicense[]>;
+  get(path: '/msServices/{serviceName}/sharepoint/license'): (params: {serviceName: string, license?: msServices.SharepointLicenseEnum, period: msServices.LicensePeriodEnum}) => Promise<msServices.SharepointDailyLicense[]>;
   /**
    * List the msServices.sharepointTask objects
    * Pending actions
    */
-  get(path: '/msServices/{serviceName}/sharepoint/task'): (params: {serviceName: string, function_?: string, status?: msServicesTaskStatusEnum}) => Promise<number[]>;
+  get(path: '/msServices/{serviceName}/sharepoint/task'): (params: {serviceName: string, function_?: string, status?: msServices.TaskStatusEnum}) => Promise<number[]>;
   /**
    * Sharepoint task details
    * Get this object properties
@@ -542,12 +542,12 @@ export interface MsServices{
    * license operations
    * Get active licenses for specific period of time
    */
-  get(path: '/msServices/{serviceName}/sync/license'): (params: {serviceName: string, license?: msServicesSyncLicenseEnum, period: msServices.LicensePeriodEnum}) => Promise<msServices.SyncDailyLicense[]>;
+  get(path: '/msServices/{serviceName}/sync/license'): (params: {serviceName: string, license?: msServices.SyncLicenseEnum, period: msServices.LicensePeriodEnum}) => Promise<msServices.SyncDailyLicense[]>;
   /**
    * List the msServices.Task objects
    * Pending actions
    */
-  get(path: '/msServices/{serviceName}/task'): (params: {serviceName: string, function_?: msServicesTaskFunctionEnum, status?: msServicesTaskStatusEnum}) => Promise<number[]>;
+  get(path: '/msServices/{serviceName}/task'): (params: {serviceName: string, function_?: msServices.TaskFunctionEnum, status?: msServices.TaskStatusEnum}) => Promise<number[]>;
   /**
    * Active Directory task details
    * Get this object properties
@@ -582,37 +582,37 @@ export interface MsServices{
    * Active Directory organizational unit
    * Alter this object properties
    */
-  put(path: '/msServices/{serviceName}'): (params: {serviceName: string, complexityEnabled?: boolean, lockoutDuration?: number, lockoutObservationWindow?: number, lockoutThreshold?: number, maxPasswordAge?: number, minPasswordAge?: number, minPasswordLength?: number, name?: string, officeTenantServiceName?: string, state?: msServicesServiceStateEnum, taskPendingId?: number}) => Promise<void>;
+  put(path: '/msServices/{serviceName}'): (params: {serviceName: string, complexityEnabled?: boolean, lockoutDuration?: number, lockoutObservationWindow?: number, lockoutThreshold?: number, maxPasswordAge?: number, minPasswordAge?: number, minPasswordLength?: number, name?: string, officeTenantServiceName?: string, state?: msServices.ServiceStateEnum, taskPendingId?: number}) => Promise<void>;
   /**
    * Active Directory Account
    * Alter this object properties
    */
-  put(path: '/msServices/{serviceName}/account/{userPrincipalName}'): (params: {serviceName: string, userPrincipalName: string, SAMAccountName?: string, creationDate?: string, displayName?: string, firstName?: string, guid?: string, id?: number, initials?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, lastUpdateDate?: string, passwordLastUpdate?: string, state?: msServicesObjectStateEnum, taskPendingId?: number}) => Promise<void>;
+  put(path: '/msServices/{serviceName}/account/{userPrincipalName}'): (params: {serviceName: string, userPrincipalName: string, SAMAccountName?: string, creationDate?: string, displayName?: string, firstName?: string, guid?: string, id?: number, initials?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, lastUpdateDate?: string, passwordLastUpdate?: string, state?: msServices.ObjectStateEnum, taskPendingId?: number}) => Promise<void>;
   /**
    * Exchange mailbox information
    * Alter this object properties
    */
-  put(path: '/msServices/{serviceName}/account/{userPrincipalName}/exchange'): (params: {serviceName: string, userPrincipalName: string, accountLicense?: msServicesExchangeLicenceEnum, configured?: boolean, creationDate?: string, currentUsage?: number, deleteAtExpiration?: boolean, deleteOutlookAtExpiration?: boolean, exchangeGuid?: string, expirationDate?: string, expirationOutlookDate?: string, hiddenFromGAL?: boolean, id?: number, litigation?: boolean, litigationPeriod?: number, mailingFilter?: msServicesMailingFilterEnum[], outlookLicense?: boolean, owaLimited?: boolean, primaryEmailAddress?: string, quota?: number, renewOutlookPeriod?: msServicesRenewPeriodEnum, renewPeriod?: msServicesRenewPeriodEnum, spamAndVirusConfiguration?: msServicesSpamAndVirusConfiguration, spamDetected?: boolean, spamTicketNumber?: number, state?: msServicesObjectStateEnum, taskPendingId?: number}) => Promise<void>;
+  put(path: '/msServices/{serviceName}/account/{userPrincipalName}/exchange'): (params: {serviceName: string, userPrincipalName: string, accountLicense?: msServices.ExchangeLicenceEnum, configured?: boolean, creationDate?: string, currentUsage?: number, deleteAtExpiration?: boolean, deleteOutlookAtExpiration?: boolean, exchangeGuid?: string, expirationDate?: string, expirationOutlookDate?: string, hiddenFromGAL?: boolean, id?: number, litigation?: boolean, litigationPeriod?: number, mailingFilter?: msServices.MailingFilterEnum[], outlookLicense?: boolean, owaLimited?: boolean, primaryEmailAddress?: string, quota?: number, renewOutlookPeriod?: msServices.RenewPeriodEnum, renewPeriod?: msServices.RenewPeriodEnum, spamAndVirusConfiguration?: msServices.SpamAndVirusConfiguration, spamDetected?: boolean, spamTicketNumber?: number, state?: msServices.ObjectStateEnum, taskPendingId?: number}) => Promise<void>;
   /**
    * Sharepoint account information
    * Alter this object properties
    */
-  put(path: '/msServices/{serviceName}/account/{userPrincipalName}/sharepoint'): (params: {serviceName: string, userPrincipalName: string, accessRights?: msServicesSharepointAccountAccessRightsEnum, activeDirectoryAccountId?: number, configured?: boolean, currentUsage?: number, deleteAtExpiration?: boolean, id?: number, license?: msServicesSharepointLicenseEnum, officeLicense?: boolean, quota?: number, state?: msServicesObjectStateEnum, taskPendingId?: number}) => Promise<void>;
+  put(path: '/msServices/{serviceName}/account/{userPrincipalName}/sharepoint'): (params: {serviceName: string, userPrincipalName: string, accessRights?: msServices.SharepointAccountAccessRightsEnum, activeDirectoryAccountId?: number, configured?: boolean, currentUsage?: number, deleteAtExpiration?: boolean, id?: number, license?: msServices.SharepointLicenseEnum, officeLicense?: boolean, quota?: number, state?: msServices.ObjectStateEnum, taskPendingId?: number}) => Promise<void>;
   /**
    * Exchange service
    * Alter this object properties
    */
-  put(path: '/msServices/{serviceName}/exchange'): (params: {serviceName: string, displayName?: string, domain?: string, hostname?: string, maxReceiveSize?: number, maxSendSize?: number, offer?: msServicesServiceOfferEnum, spamAndVirusConfiguration?: msServicesSpamAndVirusConfiguration, sslExpirationDate?: string, state?: msServicesServiceStateEnum, taskPendingId?: number}) => Promise<void>;
+  put(path: '/msServices/{serviceName}/exchange'): (params: {serviceName: string, displayName?: string, domain?: string, hostname?: string, maxReceiveSize?: number, maxSendSize?: number, offer?: msServices.ServiceOfferEnum, spamAndVirusConfiguration?: msServices.SpamAndVirusConfiguration, sslExpirationDate?: string, state?: msServices.ServiceStateEnum, taskPendingId?: number}) => Promise<void>;
   /**
    * Sharepoint service
    * Alter this object properties
    */
-  put(path: '/msServices/{serviceName}/sharepoint'): (params: {serviceName: string, currentUsage?: number, displayName?: string, domain?: string, farmUrl?: string, offer?: msServicesSharepointServiceOfferEnum, quota?: number, state?: msServicesServiceStateEnum, taskPendingId?: number, url?: string}) => Promise<void>;
+  put(path: '/msServices/{serviceName}/sharepoint'): (params: {serviceName: string, currentUsage?: number, displayName?: string, domain?: string, farmUrl?: string, offer?: msServices.SharepointServiceOfferEnum, quota?: number, state?: msServices.ServiceStateEnum, taskPendingId?: number, url?: string}) => Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/msServices/sharepoint/{domain}/serviceInfos'): (params: {domain: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}) => Promise<void>;
+  put(path: '/msServices/sharepoint/{domain}/serviceInfos'): (params: {domain: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
   /**
    * changePassword operations
    * Change account password
@@ -657,7 +657,7 @@ export interface MsServices{
    * Sync account information
    * Create new sync account
    */
-  post(path: '/msServices/{serviceName}/account/{userPrincipalName}/sync'): (params: {serviceName: string, userPrincipalName: string, license: msServicesSyncLicenseEnum}) => Promise<msServices.Task>;
+  post(path: '/msServices/{serviceName}/account/{userPrincipalName}/sync'): (params: {serviceName: string, userPrincipalName: string, license: msServices.SyncLicenseEnum}) => Promise<msServices.Task>;
   /**
    * configure operations
    * Configure sync account to be operational
@@ -704,25 +704,3 @@ export interface MsServices{
    */
   delete(path: '/msServices/{serviceName}/upnSuffix/{suffix}'): (params: {serviceName: string, suffix: string}) => Promise<msServices.Task>;
 }
-/**
- * Extra Alias to bypass relativer namespace colitions
- */
-type msServicesObjectStateEnum = msServices.ObjectStateEnum;
-type msServicesServiceStateEnum = msServices.ServiceStateEnum;
-type msServicesExchangeLicenceEnum = msServices.ExchangeLicenceEnum;
-type msServicesMailingFilterEnum = msServices.MailingFilterEnum;
-type msServicesRenewPeriodEnum = msServices.RenewPeriodEnum;
-type msServicesSpamAndVirusConfiguration = msServices.SpamAndVirusConfiguration;
-type msServicesServiceOfferEnum = msServices.ServiceOfferEnum;
-type msServicesSharepointLicenseEnum = msServices.SharepointLicenseEnum;
-type msServicesSharepointAccountLicense = msServices.SharepointAccountLicense;
-type msServicesSharepointAccountAccessRightsEnum = msServices.SharepointAccountAccessRightsEnum;
-type msServicesSharepointServiceOfferEnum = msServices.SharepointServiceOfferEnum;
-type msServicesSyncLicenseEnum = msServices.SyncLicenseEnum;
-type msServicesSyncAccountLicense = msServices.SyncAccountLicense;
-type msServicesTaskFunctionEnum = msServices.TaskFunctionEnum;
-type msServicesTaskStatusEnum = msServices.TaskStatusEnum;
-type msServicesUPNStateEnum = msServices.UPNStateEnum;
-type serviceRenewType = service.RenewType;
-type serviceRenewalTypeEnum = service.RenewalTypeEnum;
-type serviceStateEnum = service.StateEnum;

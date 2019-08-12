@@ -15,8 +15,8 @@ export namespace metrics {
     // interface fullName: metrics.TokenCreation.TokenCreation
     export interface TokenCreation {
         description?: string;
-        labels?: metricsapiLabel[];
-        permission: metricsapiPermissionEnum;
+        labels?: metrics.api.Label[];
+        permission: metrics.api.PermissionEnum;
     }
     // interface fullName: metrics.TokenUpdate.TokenUpdate
     export interface TokenUpdate {
@@ -57,11 +57,11 @@ export namespace metrics {
             description: string;
             name: string;
             offer: string;
-            quota: metricsapiOption;
-            region: metricsapiRegion;
+            quota: metrics.api.Option;
+            region: metrics.api.Region;
             shouldUpgrade: boolean;
-            status: metricsapiServiceStatusEnum;
-            type: metricsapiOfferTypeEnum;
+            status: metrics.api.ServiceStatusEnum;
+            type: metrics.api.OfferTypeEnum;
         }
         // type fullname: metrics.api.ServiceStatusEnum
         export type ServiceStatusEnum = "new" | "alive" | "disabled" | "dead"
@@ -73,8 +73,8 @@ export namespace metrics {
             expiredAt: string;
             id: string;
             isRevoked: boolean;
-            labels: metricsapiLabel[];
-            type: metricsapiPermissionEnum;
+            labels: metrics.api.Label[];
+            type: metrics.api.PermissionEnum;
         }
     }
 }
@@ -108,10 +108,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: serviceRenewType;
-        renewalType: serviceRenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: serviceStateEnum;
+        status: service.StateEnum;
     }
 }
 
@@ -160,7 +160,7 @@ export interface Metrics{
             // GET /metrics/{serviceName}/serviceInfos
             $get(): Promise<services.Service>;
             // PUT /metrics/{serviceName}/serviceInfos
-            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}): Promise<void>;
+            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
         }
         terminate: {
             // POST /metrics/{serviceName}/terminate
@@ -170,7 +170,7 @@ export interface Metrics{
             // GET /metrics/{serviceName}/token
             $get(): Promise<string[]>;
             // POST /metrics/{serviceName}/token
-            $post(params: {description?: string, labels?: metricsapiLabel[], permission: metricsapiPermissionEnum}): Promise<metrics.api.Token>;
+            $post(params: {description?: string, labels?: metrics.api.Label[], permission: metrics.api.PermissionEnum}): Promise<metrics.api.Token>;
             $(tokenId: string): {
                 // DELETE /metrics/{serviceName}/token/{tokenId}
                 $delete(): Promise<void>;
@@ -226,7 +226,7 @@ export interface Metrics{
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/metrics/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}) => Promise<void>;
+  put(path: '/metrics/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
   /**
    * Missing description
    * Modify a token
@@ -256,22 +256,10 @@ export interface Metrics{
    * Missing description
    * Create a token
    */
-  post(path: '/metrics/{serviceName}/token'): (params: {serviceName: string, description?: string, labels?: metricsapiLabel[], permission: metricsapiPermissionEnum}) => Promise<metrics.api.Token>;
+  post(path: '/metrics/{serviceName}/token'): (params: {serviceName: string, description?: string, labels?: metrics.api.Label[], permission: metrics.api.PermissionEnum}) => Promise<metrics.api.Token>;
   /**
    * Missing description
    * Revoke a token
    */
   delete(path: '/metrics/{serviceName}/token/{tokenId}'): (params: {serviceName: string, tokenId: string}) => Promise<void>;
 }
-/**
- * Extra Alias to bypass relativer namespace colitions
- */
-type metricsapiLabel = metrics.api.Label;
-type metricsapiPermissionEnum = metrics.api.PermissionEnum;
-type metricsapiOption = metrics.api.Option;
-type metricsapiRegion = metrics.api.Region;
-type metricsapiServiceStatusEnum = metrics.api.ServiceStatusEnum;
-type metricsapiOfferTypeEnum = metrics.api.OfferTypeEnum;
-type serviceRenewType = service.RenewType;
-type serviceRenewalTypeEnum = service.RenewalTypeEnum;
-type serviceStateEnum = service.StateEnum;

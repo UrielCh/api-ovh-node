@@ -10,13 +10,13 @@ export namespace license {
     export type ChangeIpMessageEnum = "OK" | "destinationNotAllowed" | "licenseAlreadyExists" | "notAllowedToHandleThis" | "notSameType" | "sameIp" | "versionNotAllowed"
     // interface fullName: license.ChangeIpStatus.ChangeIpStatus
     export interface ChangeIpStatus {
-        message: licenseChangeIpMessageEnum;
+        message: license.ChangeIpMessageEnum;
         success: boolean;
     }
     // interface fullName: license.DirectAdminOrderConfiguration.DirectAdminOrderConfiguration
     export interface DirectAdminOrderConfiguration {
-        orderableVersions: licenseOrderableDirectAdminCompatibilityInfos[];
-        serviceType: licenseLicenseTypeEnum;
+        orderableVersions: license.OrderableDirectAdminCompatibilityInfos[];
+        serviceType: license.LicenseTypeEnum;
     }
     // type fullname: license.DirectAdminOsEnum
     export type DirectAdminOsEnum = "CentOs_5.0_32" | "CentOs_5.0_64" | "CentOs_6_32" | "CentOs_6_64" | "CentOs_7_64" | "Debian_5.0_32" | "Debian_5.0_64" | "Debian_6.0_32" | "Debian_6.0_64" | "Debian_7.0_32" | "Debian_7.0_64" | "Debian_8.0_64" | "FreeBSD_7.x_32" | "FreeBSD_7.x_64" | "FreeBSD_8.x_64" | "FreeBSD_9.x_64"
@@ -26,7 +26,7 @@ export namespace license {
     export type LicenseTypeEnum = "dedicated" | "dedicatedCloud" | "dedicatedFailover" | "failover" | "vm" | "vps" | "vps_ceph" | "vps_classic" | "vps_cloud" | "vps_cloud_2016" | "vps_ssd"
     // interface fullName: license.OrderableDirectAdminCompatibilityInfos.OrderableDirectAdminCompatibilityInfos
     export interface OrderableDirectAdminCompatibilityInfos {
-        version: licenseOrderableDirectAdminVersionEnum;
+        version: license.OrderableDirectAdminVersionEnum;
     }
     // type fullname: license.OrderableDirectAdminVersionEnum
     export type OrderableDirectAdminVersionEnum = "DIRECTADMIN_1" | "directadmin-license"
@@ -34,11 +34,11 @@ export namespace license {
     export type StateEnum = "ok" | "released" | "terminated" | "toDeliver"
     // interface fullName: license.Task.Task
     export interface Task {
-        action: licenseActionType;
+        action: license.ActionType;
         doneDate?: string;
         lastUpdate: string;
         name: string;
-        status: licenseTaskStateEnum;
+        status: license.TaskStateEnum;
         taskId: number;
         todoDate: string;
     }
@@ -53,9 +53,9 @@ export namespace license {
             domain: string;
             ip: string;
             licenseId: string;
-            os: licenseDirectAdminOsEnum;
-            status: licenseStateEnum;
-            version: licenseDirectAdminVersionEnum;
+            os: license.DirectAdminOsEnum;
+            status: license.StateEnum;
+            version: license.DirectAdminVersionEnum;
         }
     }
 }
@@ -89,10 +89,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: serviceRenewType;
-        renewalType: serviceRenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: serviceStateEnum;
+        status: service.StateEnum;
     }
 }
 
@@ -119,7 +119,7 @@ export interface License{
             // GET /license/directadmin/{serviceName}
             $get(): Promise<license.directadmin.DirectAdmin>;
             // PUT /license/directadmin/{serviceName}
-            $put(params?: {clientId?: number, creation?: string, deleteAtExpiration?: boolean, domain?: string, ip?: string, licenseId?: string, os?: licenseDirectAdminOsEnum, status?: licenseStateEnum, version?: licenseDirectAdminVersionEnum}): Promise<void>;
+            $put(params?: {clientId?: number, creation?: string, deleteAtExpiration?: boolean, domain?: string, ip?: string, licenseId?: string, os?: license.DirectAdminOsEnum, status?: license.StateEnum, version?: license.DirectAdminVersionEnum}): Promise<void>;
             allowedDestinationIp: {
                 // GET /license/directadmin/{serviceName}/allowedDestinationIp
                 $get(): Promise<string[]>;
@@ -134,7 +134,7 @@ export interface License{
             }
             changeOs: {
                 // POST /license/directadmin/{serviceName}/changeOs
-                $post(params: {os: licenseDirectAdminOsEnum}): Promise<license.Task>;
+                $post(params: {os: license.DirectAdminOsEnum}): Promise<license.Task>;
             }
             confirmTermination: {
                 // POST /license/directadmin/{serviceName}/confirmTermination
@@ -144,11 +144,11 @@ export interface License{
                 // GET /license/directadmin/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /license/directadmin/{serviceName}/serviceInfos
-                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}): Promise<void>;
+                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
             tasks: {
                 // GET /license/directadmin/{serviceName}/tasks
-                $get(params?: {action?: licenseActionType, status?: licenseTaskStateEnum}): Promise<number[]>;
+                $get(params?: {action?: license.ActionType, status?: license.TaskStateEnum}): Promise<number[]>;
                 $(taskId: number): {
                     // GET /license/directadmin/{serviceName}/tasks/{taskId}
                     $get(): Promise<license.Task>;
@@ -190,7 +190,7 @@ export interface License{
    * List the license.Task objects
    * tasks linked to this license
    */
-  get(path: '/license/directadmin/{serviceName}/tasks'): (params: {serviceName: string, action?: licenseActionType, status?: licenseTaskStateEnum}) => Promise<number[]>;
+  get(path: '/license/directadmin/{serviceName}/tasks'): (params: {serviceName: string, action?: license.ActionType, status?: license.TaskStateEnum}) => Promise<number[]>;
   /**
    * licenses Todos
    * Get this object properties
@@ -205,12 +205,12 @@ export interface License{
    * Your DirectAdmin license
    * Alter this object properties
    */
-  put(path: '/license/directadmin/{serviceName}'): (params: {serviceName: string, clientId?: number, creation?: string, deleteAtExpiration?: boolean, domain?: string, ip?: string, licenseId?: string, os?: licenseDirectAdminOsEnum, status?: licenseStateEnum, version?: licenseDirectAdminVersionEnum}) => Promise<void>;
+  put(path: '/license/directadmin/{serviceName}'): (params: {serviceName: string, clientId?: number, creation?: string, deleteAtExpiration?: boolean, domain?: string, ip?: string, licenseId?: string, os?: license.DirectAdminOsEnum, status?: license.StateEnum, version?: license.DirectAdminVersionEnum}) => Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/license/directadmin/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}) => Promise<void>;
+  put(path: '/license/directadmin/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
   /**
    * changeIp operations
    * Move this license to another Ip
@@ -220,7 +220,7 @@ export interface License{
    * changeOs operations
    * Change the Operating System for a license
    */
-  post(path: '/license/directadmin/{serviceName}/changeOs'): (params: {serviceName: string, os: licenseDirectAdminOsEnum}) => Promise<license.Task>;
+  post(path: '/license/directadmin/{serviceName}/changeOs'): (params: {serviceName: string, os: license.DirectAdminOsEnum}) => Promise<license.Task>;
   /**
    * Confirm termination of your service
    * Confirm termination of your service
@@ -232,18 +232,3 @@ export interface License{
    */
   post(path: '/license/directadmin/{serviceName}/terminate'): (params: {serviceName: string}) => Promise<string>;
 }
-/**
- * Extra Alias to bypass relativer namespace colitions
- */
-type licenseChangeIpMessageEnum = license.ChangeIpMessageEnum;
-type licenseOrderableDirectAdminCompatibilityInfos = license.OrderableDirectAdminCompatibilityInfos;
-type licenseLicenseTypeEnum = license.LicenseTypeEnum;
-type licenseOrderableDirectAdminVersionEnum = license.OrderableDirectAdminVersionEnum;
-type licenseActionType = license.ActionType;
-type licenseTaskStateEnum = license.TaskStateEnum;
-type licenseDirectAdminOsEnum = license.DirectAdminOsEnum;
-type licenseStateEnum = license.StateEnum;
-type licenseDirectAdminVersionEnum = license.DirectAdminVersionEnum;
-type serviceRenewType = service.RenewType;
-type serviceRenewalTypeEnum = service.RenewalTypeEnum;
-type serviceStateEnum = service.StateEnum;

@@ -20,7 +20,7 @@ export namespace ip {
         creationDate: string;
         id: number;
         ipOnAntiphishing: string;
-        state: ipAntiphishingStateEnum;
+        state: ip.AntiphishingStateEnum;
         urlPhishing: string;
     }
     // type fullname: ip.AntiphishingStateEnum
@@ -30,7 +30,7 @@ export namespace ip {
         blockedSince: string;
         ipBlocked: string;
         logs?: string;
-        state: ipArpStateEnum;
+        state: ip.ArpStateEnum;
         time: number;
     }
     // type fullname: ip.ArpStateEnum
@@ -40,7 +40,7 @@ export namespace ip {
         blockedSince: string;
         ipBlocked: string;
         logs?: string;
-        state: ipBlockedIpStateEnum;
+        state: ip.BlockedIpStateEnum;
         time: number;
     }
     // type fullname: ip.BlockedIpStateEnum
@@ -52,12 +52,12 @@ export namespace ip {
     }
     // interface fullName: ip.Destinations.Destinations
     export interface Destinations {
-        cloudProject?: ipDestination[];
-        dedicatedCloud?: ipDestination[];
-        dedicatedServer?: ipDestination[];
-        hostingReseller?: ipDestination[];
-        ipLoadbalancing?: ipDestination[];
-        vps?: ipDestination[];
+        cloudProject?: ip.Destination[];
+        dedicatedCloud?: ip.Destination[];
+        dedicatedServer?: ip.Destination[];
+        hostingReseller?: ip.Destination[];
+        ipLoadbalancing?: ip.Destination[];
+        vps?: ip.Destination[];
     }
     // type fullname: ip.FirewallActionEnum
     export type FirewallActionEnum = "deny" | "permit"
@@ -65,27 +65,27 @@ export namespace ip {
     export interface FirewallIp {
         enabled: boolean;
         ipOnFirewall: string;
-        state: ipFirewallStateEnum;
+        state: ip.FirewallStateEnum;
     }
     // interface fullName: ip.FirewallNetworkRule.FirewallNetworkRule
     export interface FirewallNetworkRule {
-        action: ipFirewallActionEnum;
+        action: ip.FirewallActionEnum;
         creationDate: string;
         destination: string;
         destinationPort?: string;
         fragments?: boolean;
-        protocol: ipFirewallProtocolEnum;
+        protocol: ip.FirewallProtocolEnum;
         rule: string;
         sequence: number;
         source: string;
         sourcePort?: string;
-        state: ipFirewallRuleStateEnum;
+        state: ip.FirewallRuleStateEnum;
         tcpOption?: string;
     }
     // interface fullName: ip.FirewallOptionTCP.FirewallOptionTCP
     export interface FirewallOptionTCP {
         fragments?: boolean;
-        option?: ipFirewallTCPOptionEnum;
+        option?: ip.FirewallTCPOptionEnum;
     }
     // type fullname: ip.FirewallProtocolEnum
     export type FirewallProtocolEnum = "ah" | "esp" | "gre" | "icmp" | "ipv4" | "tcp" | "udp"
@@ -101,14 +101,14 @@ export namespace ip {
     export interface GameMitigation {
         firewallModeEnabled: boolean;
         ipOnGame: string;
-        state: ipGameMitigationStateEnum;
+        state: ip.GameMitigationStateEnum;
     }
     // interface fullName: ip.GameMitigationRule.GameMitigationRule
     export interface GameMitigationRule {
         id: number;
-        ports: complexTypeRangenumber;
-        protocol: ipGameMitigationRuleProtocolEnum;
-        state: ipGameMitigationRuleStateEnum;
+        ports: complexType.Range<number>;
+        protocol: ip.GameMitigationRuleProtocolEnum;
+        state: ip.GameMitigationRuleStateEnum;
     }
     // type fullname: ip.GameMitigationRuleProtocolEnum
     export type GameMitigationRuleProtocolEnum = "arkSurvivalEvolved" | "arma" | "gtaMultiTheftAutoSanAndreas" | "gtaSanAndreasMultiplayerMod" | "hl2Source" | "minecraftPocketEdition" | "minecraftQuery" | "mumble" | "other" | "rust" | "teamspeak2" | "teamspeak3" | "trackmaniaShootmania"
@@ -119,12 +119,12 @@ export namespace ip {
     // interface fullName: ip.Ip.Ip
     export interface Ip {
         canBeTerminated: boolean;
-        country?: coreTypesCountryEnum;
+        country?: coreTypes.CountryEnum;
         description?: string;
         ip: string;
         organisationId?: string;
-        routedTo?: ipRoutedTo;
-        type: ipIpTypeEnum;
+        routedTo?: ip.RoutedTo;
+        type: ip.IpTypeEnum;
     }
     // interface fullName: ip.IpMigrationToken.IpMigrationToken
     export interface IpMigrationToken {
@@ -134,12 +134,12 @@ export namespace ip {
     // interface fullName: ip.IpTask.IpTask
     export interface IpTask {
         comment?: string;
-        destination?: ipRoutedTo;
+        destination?: ip.RoutedTo;
         doneDate?: string;
-        function: ipTaskFunctionEnum;
+        function: ip.TaskFunctionEnum;
         lastUpdate?: string;
         startDate: string;
-        status: ipTaskStatusEnum;
+        status: ip.TaskStatusEnum;
         taskId: number;
     }
     // type fullname: ip.IpTypeEnum
@@ -150,9 +150,9 @@ export namespace ip {
     export interface LoadBalancingBackendIp {
         backend: string;
         mainBackendIp?: string;
-        probe: ipLoadBalancingBackendProbeEnum;
+        probe: ip.LoadBalancingBackendProbeEnum;
         weight: number;
-        zone: ipLoadBalancingZoneEnum;
+        zone: ip.LoadBalancingZoneEnum;
     }
     // type fullname: ip.LoadBalancingBackendProbeEnum
     export type LoadBalancingBackendProbeEnum = "http" | "icmp" | "none" | "oco"
@@ -160,16 +160,16 @@ export namespace ip {
     export interface LoadBalancingIp {
         ipLoadBalancing: string;
         serviceName: string;
-        ssl: ipLoadBalancingSslEnum;
-        state: ipLoadBalancingStateEnum;
-        stickiness: ipLoadBalancingStickinessEnum;
-        zone: ipLoadBalancingZoneEnum[];
+        ssl: ip.LoadBalancingSslEnum;
+        state: ip.LoadBalancingStateEnum;
+        stickiness: ip.LoadBalancingStickinessEnum;
+        zone: ip.LoadBalancingZoneEnum[];
     }
     export namespace LoadBalancingIp {
         // interface fullName: ip.LoadBalancingIp.LoadBalancingPort.LoadBalancingPort
         export interface LoadBalancingPort {
             dstPort: number;
-            srcPort: ipLoadBalancingAdditionalPortEnum;
+            srcPort: ip.LoadBalancingAdditionalPortEnum;
         }
     }
     // type fullname: ip.LoadBalancingSslEnum
@@ -180,7 +180,7 @@ export namespace ip {
     export type LoadBalancingStickinessEnum = "cookie" | "none" | "sourceIp"
     // interface fullName: ip.LoadBalancingTask.LoadBalancingTask
     export interface LoadBalancingTask {
-        action: ipLoadBalancingTaskActionEnum;
+        action: ip.LoadBalancingTaskActionEnum;
         creationDate: string;
         id: number;
         status: string;
@@ -202,8 +202,8 @@ export namespace ip {
         fragments?: boolean;
         icmpCode?: number;
         icmpType?: number;
-        in?: ipMitigationTraffic;
-        out?: ipMitigationTraffic;
+        in?: ip.MitigationTraffic;
+        out?: ip.MitigationTraffic;
         protocol?: number;
         srcPort?: number;
         syn?: boolean;
@@ -213,13 +213,13 @@ export namespace ip {
         auto: boolean;
         ipOnMitigation: string;
         permanent: boolean;
-        state: ipMitigationStateEnum;
+        state: ip.MitigationStateEnum;
     }
     // interface fullName: ip.MitigationProfile.MitigationProfile
     export interface MitigationProfile {
-        autoMitigationTimeOut: ipMitigationProfileAutoMitigationTimeOutEnum;
+        autoMitigationTimeOut: ip.MitigationProfileAutoMitigationTimeOutEnum;
         ipMitigationProfile: string;
-        state: ipMitigationProfileStateEnum;
+        state: ip.MitigationProfileStateEnum;
     }
     // type fullname: ip.MitigationProfileAutoMitigationTimeOutEnum
     export type MitigationProfileAutoMitigationTimeOutEnum = 0 | 15 | 1560 | 360 | 60
@@ -229,8 +229,8 @@ export namespace ip {
     export type MitigationStateEnum = "creationPending" | "ok" | "removalPending"
     // interface fullName: ip.MitigationStats.MitigationStats
     export interface MitigationStats {
-        in?: ipMitigationTraffic;
-        out?: ipMitigationTraffic;
+        in?: ip.MitigationTraffic;
+        out?: ip.MitigationTraffic;
         timestamp: number;
     }
     // type fullname: ip.MitigationStatsScaleEnum
@@ -261,18 +261,18 @@ export namespace ip {
     // interface fullName: ip.ServiceIp.ServiceIp
     export interface ServiceIp {
         canBeTerminated: boolean;
-        country?: coreTypesCountryEnum;
+        country?: coreTypes.CountryEnum;
         description?: string;
         ip: string;
         organisationId?: string;
-        routedTo?: ipRoutedTo;
-        type: ipIpTypeEnum;
+        routedTo?: ip.RoutedTo;
+        type: ip.IpTypeEnum;
     }
     // interface fullName: ip.SpamIp.SpamIp
     export interface SpamIp {
         date: string;
         ipSpamming: string;
-        state: ipSpamStateEnum;
+        state: ip.SpamStateEnum;
         time: number;
     }
     // type fullname: ip.SpamStateEnum
@@ -280,7 +280,7 @@ export namespace ip {
     // interface fullName: ip.SpamStats.SpamStats
     export interface SpamStats {
         averageSpamscore?: number;
-        detectedSpams?: ipSpamTarget[];
+        detectedSpams?: ip.SpamTarget[];
         numberOfSpams: number;
         timestamp: number;
         total: number;
@@ -301,12 +301,12 @@ export namespace ipLoadbalancing {
     export namespace Task {
         // interface fullName: ipLoadbalancing.Task.Task.Task
         export interface Task {
-            action: ipLoadbalancingTaskActionEnum;
+            action: ipLoadbalancing.TaskActionEnum;
             creationDate: string;
             doneDate?: string;
             id: number;
             progress: number;
-            status: ipLoadbalancingTaskStatusEnum;
+            status: ipLoadbalancing.TaskStatusEnum;
             zones: string[];
         }
     }
@@ -342,7 +342,7 @@ export namespace services {
         creation: string;
         domain: string;
         serviceId: number;
-        status: serviceStateEnum;
+        status: service.StateEnum;
     }
     // interface fullName: services.Service.Service
     export interface Service {
@@ -355,10 +355,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: serviceRenewType;
-        renewalType: serviceRenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: serviceStateEnum;
+        status: service.StateEnum;
     }
 }
 
@@ -375,7 +375,7 @@ export default proxyIp;
 // path /ip
 export interface Ip{
     // GET /ip
-    $get(params?: {description?: string, ip?: string, routedTo_serviceName?: string, type?: ipIpTypeEnum}): Promise<string[]>;
+    $get(params?: {description?: string, ip?: string, routedTo_serviceName?: string, type?: ip.IpTypeEnum}): Promise<string[]>;
     loadBalancing: {
         // GET /ip/loadBalancing
         $get(): Promise<string[]>;
@@ -390,14 +390,14 @@ export interface Ip{
                 // GET /ip/loadBalancing/{serviceName}/backend
                 $get(): Promise<string[]>;
                 // POST /ip/loadBalancing/{serviceName}/backend
-                $post(params: {ipBackend: string, probe: ipLoadBalancingBackendProbeEnum, weight?: number}): Promise<ip.LoadBalancingTask>;
+                $post(params: {ipBackend: string, probe: ip.LoadBalancingBackendProbeEnum, weight?: number}): Promise<ip.LoadBalancingTask>;
                 $(backend: string): {
                     // DELETE /ip/loadBalancing/{serviceName}/backend/{backend}
                     $delete(): Promise<ip.LoadBalancingTask>;
                     // GET /ip/loadBalancing/{serviceName}/backend/{backend}
                     $get(): Promise<ip.LoadBalancingBackendIp>;
                     // PUT /ip/loadBalancing/{serviceName}/backend/{backend}
-                    $put(params?: {backend?: string, mainBackendIp?: string, probe?: ipLoadBalancingBackendProbeEnum, weight?: number, zone?: ipLoadBalancingZoneEnum}): Promise<void>;
+                    $put(params?: {backend?: string, mainBackendIp?: string, probe?: ip.LoadBalancingBackendProbeEnum, weight?: number, zone?: ip.LoadBalancingZoneEnum}): Promise<void>;
                     backupState: {
                         // POST /ip/loadBalancing/{serviceName}/backend/{backend}/backupState
                         $post(params: {backupStateSet: boolean, mainBackendIp?: string}): Promise<ip.LoadBalancingTask>;
@@ -414,13 +414,13 @@ export interface Ip{
             }
             internalNatIp: {
                 // GET /ip/loadBalancing/{serviceName}/internalNatIp
-                $get(params: {zone: ipLoadBalancingZoneEnum}): Promise<string>;
+                $get(params: {zone: ip.LoadBalancingZoneEnum}): Promise<string>;
             }
             portsRedirection: {
                 // GET /ip/loadBalancing/{serviceName}/portsRedirection
                 $get(): Promise<ip.LoadBalancingAdditionalPortEnum[]>;
                 // POST /ip/loadBalancing/{serviceName}/portsRedirection
-                $post(params?: {dstPort?: number, srcPort?: ipLoadBalancingAdditionalPortEnum}): Promise<ip.LoadBalancingTask>;
+                $post(params?: {dstPort?: number, srcPort?: ip.LoadBalancingAdditionalPortEnum}): Promise<ip.LoadBalancingTask>;
                 $(srcPort: ip.LoadBalancingAdditionalPortEnum): {
                     // DELETE /ip/loadBalancing/{serviceName}/portsRedirection/{srcPort}
                     $delete(): Promise<ip.LoadBalancingTask>;
@@ -430,7 +430,7 @@ export interface Ip{
             }
             probeIp: {
                 // GET /ip/loadBalancing/{serviceName}/probeIp
-                $get(params: {zone: ipLoadBalancingZoneEnum}): Promise<string[]>;
+                $get(params: {zone: ip.LoadBalancingZoneEnum}): Promise<string[]>;
             }
             restoreSsl: {
                 // POST /ip/loadBalancing/{serviceName}/restoreSsl
@@ -440,11 +440,11 @@ export interface Ip{
                 // GET /ip/loadBalancing/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /ip/loadBalancing/{serviceName}/serviceInfos
-                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}): Promise<void>;
+                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
             stickiness: {
                 // POST /ip/loadBalancing/{serviceName}/stickiness
-                $post(params: {stickiness: ipLoadBalancingStickinessEnum}): Promise<ip.LoadBalancingTask>;
+                $post(params: {stickiness: ip.LoadBalancingStickinessEnum}): Promise<ip.LoadBalancingTask>;
             }
             switchToIplbNextGenerationApi: {
                 // POST /ip/loadBalancing/{serviceName}/switchToIplbNextGenerationApi
@@ -467,7 +467,7 @@ export interface Ip{
             // GET /ip/service/{serviceName}
             $get(): Promise<ip.ServiceIp>;
             // PUT /ip/service/{serviceName}
-            $put(params?: {canBeTerminated?: boolean, country?: coreTypesCountryEnum, description?: string, ip?: string, organisationId?: string, routedTo?: ipRoutedTo, type?: ipIpTypeEnum}): Promise<void>;
+            $put(params?: {canBeTerminated?: boolean, country?: coreTypes.CountryEnum, description?: string, ip?: string, organisationId?: string, routedTo?: ip.RoutedTo, type?: ip.IpTypeEnum}): Promise<void>;
             changeContact: {
                 // POST /ip/service/{serviceName}/changeContact
                 $post(params?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
@@ -490,10 +490,10 @@ export interface Ip{
         // GET /ip/{ip}
         $get(): Promise<ip.Ip>;
         // PUT /ip/{ip}
-        $put(params?: {canBeTerminated?: boolean, country?: coreTypesCountryEnum, description?: string, ip?: string, organisationId?: string, routedTo?: ipRoutedTo, type?: ipIpTypeEnum}): Promise<void>;
+        $put(params?: {canBeTerminated?: boolean, country?: coreTypes.CountryEnum, description?: string, ip?: string, organisationId?: string, routedTo?: ip.RoutedTo, type?: ip.IpTypeEnum}): Promise<void>;
         antihack: {
             // GET /ip/{ip}/antihack
-            $get(params?: {state?: ipBlockedIpStateEnum}): Promise<string[]>;
+            $get(params?: {state?: ip.BlockedIpStateEnum}): Promise<string[]>;
             $(ipBlocked: string): {
                 // GET /ip/{ip}/antihack/{ipBlocked}
                 $get(): Promise<ip.BlockedIp>;
@@ -505,7 +505,7 @@ export interface Ip{
         }
         arp: {
             // GET /ip/{ip}/arp
-            $get(params?: {state?: ipArpStateEnum}): Promise<string[]>;
+            $get(params?: {state?: ip.ArpStateEnum}): Promise<string[]>;
             $(ipBlocked: string): {
                 // GET /ip/{ip}/arp/{ipBlocked}
                 $get(): Promise<ip.ArpBlockedIp>;
@@ -533,7 +533,7 @@ export interface Ip{
         }
         firewall: {
             // GET /ip/{ip}/firewall
-            $get(params?: {enabled?: boolean, state?: ipFirewallStateEnum}): Promise<string[]>;
+            $get(params?: {enabled?: boolean, state?: ip.FirewallStateEnum}): Promise<string[]>;
             // POST /ip/{ip}/firewall
             $post(params: {ipOnFirewall: string}): Promise<ip.FirewallIp>;
             $(ipOnFirewall: string): {
@@ -542,12 +542,12 @@ export interface Ip{
                 // GET /ip/{ip}/firewall/{ipOnFirewall}
                 $get(): Promise<ip.FirewallIp>;
                 // PUT /ip/{ip}/firewall/{ipOnFirewall}
-                $put(params?: {enabled?: boolean, ipOnFirewall?: string, state?: ipFirewallStateEnum}): Promise<void>;
+                $put(params?: {enabled?: boolean, ipOnFirewall?: string, state?: ip.FirewallStateEnum}): Promise<void>;
                 rule: {
                     // GET /ip/{ip}/firewall/{ipOnFirewall}/rule
-                    $get(params?: {state?: ipFirewallRuleStateEnum}): Promise<number[]>;
+                    $get(params?: {state?: ip.FirewallRuleStateEnum}): Promise<number[]>;
                     // POST /ip/{ip}/firewall/{ipOnFirewall}/rule
-                    $post(params: {action: ipFirewallActionEnum, destinationPort?: number, protocol: ipFirewallProtocolEnum, sequence: ip.FirewallSequenceRangeEnum, source?: string, sourcePort?: number, tcpOption?: ip.FirewallOptionTCP}): Promise<ip.FirewallNetworkRule>;
+                    $post(params: {action: ip.FirewallActionEnum, destinationPort?: number, protocol: ip.FirewallProtocolEnum, sequence: ip.FirewallSequenceRangeEnum, source?: string, sourcePort?: number, tcpOption?: ip.FirewallOptionTCP}): Promise<ip.FirewallNetworkRule>;
                     $(sequence: number): {
                         // DELETE /ip/{ip}/firewall/{ipOnFirewall}/rule/{sequence}
                         $delete(): Promise<ip.FirewallNetworkRule>;
@@ -564,12 +564,12 @@ export interface Ip{
                 // GET /ip/{ip}/game/{ipOnGame}
                 $get(): Promise<ip.GameMitigation>;
                 // PUT /ip/{ip}/game/{ipOnGame}
-                $put(params?: {firewallModeEnabled?: boolean, ipOnGame?: string, state?: ipGameMitigationStateEnum}): Promise<void>;
+                $put(params?: {firewallModeEnabled?: boolean, ipOnGame?: string, state?: ip.GameMitigationStateEnum}): Promise<void>;
                 rule: {
                     // GET /ip/{ip}/game/{ipOnGame}/rule
                     $get(): Promise<number[]>;
                     // POST /ip/{ip}/game/{ipOnGame}/rule
-                    $post(params: {ports: complexTypeRangenumber, protocol: ipGameMitigationRuleProtocolEnum}): Promise<ip.GameMitigationRule>;
+                    $post(params: {ports: complexType.Range<number>, protocol: ip.GameMitigationRuleProtocolEnum}): Promise<ip.GameMitigationRule>;
                     $(id: number): {
                         // DELETE /ip/{ip}/game/{ipOnGame}/rule/{id}
                         $delete(): Promise<ip.GameMitigationRule>;
@@ -621,7 +621,7 @@ export interface Ip{
         }
         mitigation: {
             // GET /ip/{ip}/mitigation
-            $get(params?: {auto?: boolean, state?: ipMitigationStateEnum}): Promise<string[]>;
+            $get(params?: {auto?: boolean, state?: ip.MitigationStateEnum}): Promise<string[]>;
             // POST /ip/{ip}/mitigation
             $post(params: {ipOnMitigation: string}): Promise<ip.MitigationIp>;
             $(ipOnMitigation: string): {
@@ -630,7 +630,7 @@ export interface Ip{
                 // GET /ip/{ip}/mitigation/{ipOnMitigation}
                 $get(): Promise<ip.MitigationIp>;
                 // PUT /ip/{ip}/mitigation/{ipOnMitigation}
-                $put(params?: {auto?: boolean, ipOnMitigation?: string, permanent?: boolean, state?: ipMitigationStateEnum}): Promise<void>;
+                $put(params?: {auto?: boolean, ipOnMitigation?: string, permanent?: boolean, state?: ip.MitigationStateEnum}): Promise<void>;
                 stats: {
                     // GET /ip/{ip}/mitigation/{ipOnMitigation}/stats
                     $get(params: {from: string, scale: ip.MitigationStatsScaleEnum, to: string}): Promise<ip.MitigationStats[]>;
@@ -645,14 +645,14 @@ export interface Ip{
             // GET /ip/{ip}/mitigationProfiles
             $get(): Promise<string[]>;
             // POST /ip/{ip}/mitigationProfiles
-            $post(params: {autoMitigationTimeOut: ipMitigationProfileAutoMitigationTimeOutEnum, ipMitigationProfile: string}): Promise<ip.MitigationProfile>;
+            $post(params: {autoMitigationTimeOut: ip.MitigationProfileAutoMitigationTimeOutEnum, ipMitigationProfile: string}): Promise<ip.MitigationProfile>;
             $(ipMitigationProfile: string): {
                 // DELETE /ip/{ip}/mitigationProfiles/{ipMitigationProfile}
                 $delete(): Promise<void>;
                 // GET /ip/{ip}/mitigationProfiles/{ipMitigationProfile}
                 $get(): Promise<ip.MitigationProfile>;
                 // PUT /ip/{ip}/mitigationProfiles/{ipMitigationProfile}
-                $put(params?: {autoMitigationTimeOut?: ipMitigationProfileAutoMitigationTimeOutEnum, ipMitigationProfile?: string, state?: ipMitigationProfileStateEnum}): Promise<void>;
+                $put(params?: {autoMitigationTimeOut?: ip.MitigationProfileAutoMitigationTimeOutEnum, ipMitigationProfile?: string, state?: ip.MitigationProfileStateEnum}): Promise<void>;
             };
         }
         move: {
@@ -667,7 +667,7 @@ export interface Ip{
         }
         phishing: {
             // GET /ip/{ip}/phishing
-            $get(params?: {ipOnAntiphishing?: string, state?: ipAntiphishingStateEnum}): Promise<number[]>;
+            $get(params?: {ipOnAntiphishing?: string, state?: ip.AntiphishingStateEnum}): Promise<number[]>;
             $(id: number): {
                 // GET /ip/{ip}/phishing/{id}
                 $get(): Promise<ip.Antiphishing>;
@@ -693,7 +693,7 @@ export interface Ip{
         }
         spam: {
             // GET /ip/{ip}/spam
-            $get(params?: {state?: ipSpamStateEnum}): Promise<string[]>;
+            $get(params?: {state?: ip.SpamStateEnum}): Promise<string[]>;
             $(ipSpamming: string): {
                 // GET /ip/{ip}/spam/{ipSpamming}
                 $get(): Promise<ip.SpamIp>;
@@ -709,7 +709,7 @@ export interface Ip{
         }
         task: {
             // GET /ip/{ip}/task
-            $get(params?: {function_?: ipTaskFunctionEnum, status?: ipTaskStatusEnum}): Promise<number[]>;
+            $get(params?: {function_?: ip.TaskFunctionEnum, status?: ip.TaskStatusEnum}): Promise<number[]>;
             $(taskId: number): {
                 // GET /ip/{ip}/task/{taskId}
                 $get(): Promise<ip.IpTask>;
@@ -725,7 +725,7 @@ export interface Ip{
    * List the ip.Ip objects
    * Your OVH IPs
    */
-  get(path: '/ip'): (params?: {description?: string, ip?: string, routedTo_serviceName?: string, type?: ipIpTypeEnum}) => Promise<string[]>;
+  get(path: '/ip'): (params?: {description?: string, ip?: string, routedTo_serviceName?: string, type?: ip.IpTypeEnum}) => Promise<string[]>;
   /**
    * Your IP
    * Get this object properties
@@ -735,7 +735,7 @@ export interface Ip{
    * List the ip.BlockedIp objects
    * Anti-Hack blocked IP
    */
-  get(path: '/ip/{ip}/antihack'): (params: {ip: string, state?: ipBlockedIpStateEnum}) => Promise<string[]>;
+  get(path: '/ip/{ip}/antihack'): (params: {ip: string, state?: ip.BlockedIpStateEnum}) => Promise<string[]>;
   /**
    * Blocked IP information
    * Get this object properties
@@ -745,7 +745,7 @@ export interface Ip{
    * List the ip.ArpBlockedIp objects
    * ARP blocked IP
    */
-  get(path: '/ip/{ip}/arp'): (params: {ip: string, state?: ipArpStateEnum}) => Promise<string[]>;
+  get(path: '/ip/{ip}/arp'): (params: {ip: string, state?: ip.ArpStateEnum}) => Promise<string[]>;
   /**
    * ARP blocked IP information
    * Get this object properties
@@ -765,7 +765,7 @@ export interface Ip{
    * List the ip.FirewallIp objects
    * Ip under firewall
    */
-  get(path: '/ip/{ip}/firewall'): (params: {ip: string, enabled?: boolean, state?: ipFirewallStateEnum}) => Promise<string[]>;
+  get(path: '/ip/{ip}/firewall'): (params: {ip: string, enabled?: boolean, state?: ip.FirewallStateEnum}) => Promise<string[]>;
   /**
    * Your IP on firewall
    * Get this object properties
@@ -775,7 +775,7 @@ export interface Ip{
    * List the ip.FirewallNetworkRule objects
    * Rules for this IP
    */
-  get(path: '/ip/{ip}/firewall/{ipOnFirewall}/rule'): (params: {ip: string, ipOnFirewall: string, state?: ipFirewallRuleStateEnum}) => Promise<number[]>;
+  get(path: '/ip/{ip}/firewall/{ipOnFirewall}/rule'): (params: {ip: string, ipOnFirewall: string, state?: ip.FirewallRuleStateEnum}) => Promise<number[]>;
   /**
    * Rule on ip
    * Get this object properties
@@ -850,7 +850,7 @@ export interface Ip{
    * List the ip.MitigationIp objects
    * Ip under mitigation
    */
-  get(path: '/ip/{ip}/mitigation'): (params: {ip: string, auto?: boolean, state?: ipMitigationStateEnum}) => Promise<string[]>;
+  get(path: '/ip/{ip}/mitigation'): (params: {ip: string, auto?: boolean, state?: ip.MitigationStateEnum}) => Promise<string[]>;
   /**
    * Your IP on mitigation
    * Get this object properties
@@ -885,7 +885,7 @@ export interface Ip{
    * List the ip.Antiphishing objects
    * Ip under anti-phishing
    */
-  get(path: '/ip/{ip}/phishing'): (params: {ip: string, ipOnAntiphishing?: string, state?: ipAntiphishingStateEnum}) => Promise<number[]>;
+  get(path: '/ip/{ip}/phishing'): (params: {ip: string, ipOnAntiphishing?: string, state?: ip.AntiphishingStateEnum}) => Promise<number[]>;
   /**
    * Phishing URLs hosted on your IP
    * Get this object properties
@@ -910,7 +910,7 @@ export interface Ip{
    * List the ip.SpamIp objects
    * Ip spamming
    */
-  get(path: '/ip/{ip}/spam'): (params: {ip: string, state?: ipSpamStateEnum}) => Promise<string[]>;
+  get(path: '/ip/{ip}/spam'): (params: {ip: string, state?: ip.SpamStateEnum}) => Promise<string[]>;
   /**
    * Your IP spam stats
    * Get this object properties
@@ -925,7 +925,7 @@ export interface Ip{
    * List the ip.IpTask objects
    * IP tasks
    */
-  get(path: '/ip/{ip}/task'): (params: {ip: string, function_?: ipTaskFunctionEnum, status?: ipTaskStatusEnum}) => Promise<number[]>;
+  get(path: '/ip/{ip}/task'): (params: {ip: string, function_?: ip.TaskFunctionEnum, status?: ip.TaskStatusEnum}) => Promise<number[]>;
   /**
    * IP tasks
    * Get this object properties
@@ -960,7 +960,7 @@ export interface Ip{
    * internalNatIp operations
    * Ip subnet used by OVH to nat requests on your ip lb to your backends. You must ensure that your backends are not part of a network that overlap with this one.
    */
-  get(path: '/ip/loadBalancing/{serviceName}/internalNatIp'): (params: {serviceName: string, zone: ipLoadBalancingZoneEnum}) => Promise<string>;
+  get(path: '/ip/loadBalancing/{serviceName}/internalNatIp'): (params: {serviceName: string, zone: ip.LoadBalancingZoneEnum}) => Promise<string>;
   /**
    * List the portsRedirection objects
    * Get all srcPort
@@ -970,12 +970,12 @@ export interface Ip{
    * Port redirections
    * Get the value for the given srcPort
    */
-  get(path: '/ip/loadBalancing/{serviceName}/portsRedirection/{srcPort}'): (params: {serviceName: string, srcPort: ipLoadBalancingAdditionalPortEnum}) => Promise<ip.LoadBalancingIp.LoadBalancingPort>;
+  get(path: '/ip/loadBalancing/{serviceName}/portsRedirection/{srcPort}'): (params: {serviceName: string, srcPort: ip.LoadBalancingAdditionalPortEnum}) => Promise<ip.LoadBalancingIp.LoadBalancingPort>;
   /**
    * probeIp operations
    * Ip subnet used to send probes to your backends
    */
-  get(path: '/ip/loadBalancing/{serviceName}/probeIp'): (params: {serviceName: string, zone: ipLoadBalancingZoneEnum}) => Promise<string[]>;
+  get(path: '/ip/loadBalancing/{serviceName}/probeIp'): (params: {serviceName: string, zone: ip.LoadBalancingZoneEnum}) => Promise<string[]>;
   /**
    * Details about a Service
    * Get this object properties
@@ -1010,27 +1010,27 @@ export interface Ip{
    * Your IP
    * Alter this object properties
    */
-  put(path: '/ip/{ip}'): (params: {ip: string, canBeTerminated?: boolean, country?: coreTypesCountryEnum, description?: string, organisationId?: string, routedTo?: ipRoutedTo, type?: ipIpTypeEnum}) => Promise<void>;
+  put(path: '/ip/{ip}'): (params: {ip: string, canBeTerminated?: boolean, country?: coreTypes.CountryEnum, description?: string, organisationId?: string, routedTo?: ip.RoutedTo, type?: ip.IpTypeEnum}) => Promise<void>;
   /**
    * Your IP on firewall
    * Alter this object properties
    */
-  put(path: '/ip/{ip}/firewall/{ipOnFirewall}'): (params: {ip: string, ipOnFirewall: string, enabled?: boolean, state?: ipFirewallStateEnum}) => Promise<void>;
+  put(path: '/ip/{ip}/firewall/{ipOnFirewall}'): (params: {ip: string, ipOnFirewall: string, enabled?: boolean, state?: ip.FirewallStateEnum}) => Promise<void>;
   /**
    * GAME Anti-DDoS
    * Alter this object properties
    */
-  put(path: '/ip/{ip}/game/{ipOnGame}'): (params: {ip: string, ipOnGame: string, firewallModeEnabled?: boolean, state?: ipGameMitigationStateEnum}) => Promise<void>;
+  put(path: '/ip/{ip}/game/{ipOnGame}'): (params: {ip: string, ipOnGame: string, firewallModeEnabled?: boolean, state?: ip.GameMitigationStateEnum}) => Promise<void>;
   /**
    * Your IP on mitigation
    * Alter this object properties
    */
-  put(path: '/ip/{ip}/mitigation/{ipOnMitigation}'): (params: {ip: string, ipOnMitigation: string, auto?: boolean, permanent?: boolean, state?: ipMitigationStateEnum}) => Promise<void>;
+  put(path: '/ip/{ip}/mitigation/{ipOnMitigation}'): (params: {ip: string, ipOnMitigation: string, auto?: boolean, permanent?: boolean, state?: ip.MitigationStateEnum}) => Promise<void>;
   /**
    * Mitigation profile for your ip
    * Alter this object properties
    */
-  put(path: '/ip/{ip}/mitigationProfiles/{ipMitigationProfile}'): (params: {ip: string, ipMitigationProfile: string, autoMitigationTimeOut?: ipMitigationProfileAutoMitigationTimeOutEnum, state?: ipMitigationProfileStateEnum}) => Promise<void>;
+  put(path: '/ip/{ip}/mitigationProfiles/{ipMitigationProfile}'): (params: {ip: string, ipMitigationProfile: string, autoMitigationTimeOut?: ip.MitigationProfileAutoMitigationTimeOutEnum, state?: ip.MitigationProfileStateEnum}) => Promise<void>;
   /**
    * IP block RIPE informations
    * Alter this object properties
@@ -1040,17 +1040,17 @@ export interface Ip{
    * Backends attached to your IP load balancing
    * Alter this object properties
    */
-  put(path: '/ip/loadBalancing/{serviceName}/backend/{backend}'): (params: {backend: string, serviceName: string, mainBackendIp?: string, probe?: ipLoadBalancingBackendProbeEnum, weight?: number, zone?: ipLoadBalancingZoneEnum}) => Promise<void>;
+  put(path: '/ip/loadBalancing/{serviceName}/backend/{backend}'): (params: {backend: string, serviceName: string, mainBackendIp?: string, probe?: ip.LoadBalancingBackendProbeEnum, weight?: number, zone?: ip.LoadBalancingZoneEnum}) => Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/ip/loadBalancing/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}) => Promise<void>;
+  put(path: '/ip/loadBalancing/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
   /**
    * Your IP linked to service
    * Alter this object properties
    */
-  put(path: '/ip/service/{serviceName}'): (params: {serviceName: string, canBeTerminated?: boolean, country?: coreTypesCountryEnum, description?: string, ip?: string, organisationId?: string, routedTo?: ipRoutedTo, type?: ipIpTypeEnum}) => Promise<void>;
+  put(path: '/ip/service/{serviceName}'): (params: {serviceName: string, canBeTerminated?: boolean, country?: coreTypes.CountryEnum, description?: string, ip?: string, organisationId?: string, routedTo?: ip.RoutedTo, type?: ip.IpTypeEnum}) => Promise<void>;
   /**
    * unblock operations
    * Unblock this IP
@@ -1080,12 +1080,12 @@ export interface Ip{
    * List the ip.FirewallNetworkRule objects
    * AntiDDOS option. Add new rule on your IP
    */
-  post(path: '/ip/{ip}/firewall/{ipOnFirewall}/rule'): (params: {ip: string, ipOnFirewall: string, action: ipFirewallActionEnum, destinationPort?: number, protocol: ipFirewallProtocolEnum, sequence: ip.FirewallSequenceRangeEnum, source?: string, sourcePort?: number, tcpOption?: ip.FirewallOptionTCP}) => Promise<ip.FirewallNetworkRule>;
+  post(path: '/ip/{ip}/firewall/{ipOnFirewall}/rule'): (params: {ip: string, ipOnFirewall: string, action: ip.FirewallActionEnum, destinationPort?: number, protocol: ip.FirewallProtocolEnum, sequence: ip.FirewallSequenceRangeEnum, source?: string, sourcePort?: number, tcpOption?: ip.FirewallOptionTCP}) => Promise<ip.FirewallNetworkRule>;
   /**
    * List the ip.GameMitigationRule objects
    * Add new rule on your IP
    */
-  post(path: '/ip/{ip}/game/{ipOnGame}/rule'): (params: {ip: string, ipOnGame: string, ports: complexTypeRangenumber, protocol: ipGameMitigationRuleProtocolEnum}) => Promise<ip.GameMitigationRule>;
+  post(path: '/ip/{ip}/game/{ipOnGame}/rule'): (params: {ip: string, ipOnGame: string, ports: complexType.Range<number>, protocol: ip.GameMitigationRuleProtocolEnum}) => Promise<ip.GameMitigationRule>;
   /**
    * IP migration to OVH
    * Generate a migration token
@@ -1100,7 +1100,7 @@ export interface Ip{
    * List the ip.MitigationProfile objects
    * Create new profile for one of your ip
    */
-  post(path: '/ip/{ip}/mitigationProfiles'): (params: {ip: string, autoMitigationTimeOut: ipMitigationProfileAutoMitigationTimeOutEnum, ipMitigationProfile: string}) => Promise<ip.MitigationProfile>;
+  post(path: '/ip/{ip}/mitigationProfiles'): (params: {ip: string, autoMitigationTimeOut: ip.MitigationProfileAutoMitigationTimeOutEnum, ipMitigationProfile: string}) => Promise<ip.MitigationProfile>;
   /**
    * move operations
    * Move this IP to another service
@@ -1130,7 +1130,7 @@ export interface Ip{
    * List the ip.LoadBalancingBackendIp objects
    * Add a new backend on your IP load balancing
    */
-  post(path: '/ip/loadBalancing/{serviceName}/backend'): (params: {serviceName: string, ipBackend: string, probe: ipLoadBalancingBackendProbeEnum, weight?: number}) => Promise<ip.LoadBalancingTask>;
+  post(path: '/ip/loadBalancing/{serviceName}/backend'): (params: {serviceName: string, ipBackend: string, probe: ip.LoadBalancingBackendProbeEnum, weight?: number}) => Promise<ip.LoadBalancingTask>;
   /**
    * backupState operations
    * Set or unset the backend as a backup of another backend. Requests will be directed to the backup only if the main backend is in probe fail
@@ -1150,7 +1150,7 @@ export interface Ip{
    * List the portsRedirection objects
    * Add a new port redirection
    */
-  post(path: '/ip/loadBalancing/{serviceName}/portsRedirection'): (params: {serviceName: string, dstPort?: number, srcPort?: ipLoadBalancingAdditionalPortEnum}) => Promise<ip.LoadBalancingTask>;
+  post(path: '/ip/loadBalancing/{serviceName}/portsRedirection'): (params: {serviceName: string, dstPort?: number, srcPort?: ip.LoadBalancingAdditionalPortEnum}) => Promise<ip.LoadBalancingTask>;
   /**
    * restoreSsl operations
    * Restore OVH' ssl certificate on your IP load balancing. Ssl option is needed to use this url. (A DCV mail will be sent to postmaster@your-domain.abc)
@@ -1160,7 +1160,7 @@ export interface Ip{
    * stickiness operations
    * Set Stickiness type. 'ipSource' will stick clients to a backend by their source ip, 'cookie' will stick them by inserting a cookie, 'none' is to set no stickiness
    */
-  post(path: '/ip/loadBalancing/{serviceName}/stickiness'): (params: {serviceName: string, stickiness: ipLoadBalancingStickinessEnum}) => Promise<ip.LoadBalancingTask>;
+  post(path: '/ip/loadBalancing/{serviceName}/stickiness'): (params: {serviceName: string, stickiness: ip.LoadBalancingStickinessEnum}) => Promise<ip.LoadBalancingTask>;
   /**
    * switchToIplbNextGenerationApi operations
    * Switch to ipLoadbalancing next-gen API. Benefits : additionnals probes, DDOS protection.
@@ -1225,44 +1225,5 @@ export interface Ip{
    * Port redirections
    * Delete a port redirection
    */
-  delete(path: '/ip/loadBalancing/{serviceName}/portsRedirection/{srcPort}'): (params: {serviceName: string, srcPort: ipLoadBalancingAdditionalPortEnum}) => Promise<ip.LoadBalancingTask>;
+  delete(path: '/ip/loadBalancing/{serviceName}/portsRedirection/{srcPort}'): (params: {serviceName: string, srcPort: ip.LoadBalancingAdditionalPortEnum}) => Promise<ip.LoadBalancingTask>;
 }
-/**
- * Extra Alias to bypass relativer namespace colitions
- */
-type ipAntiphishingStateEnum = ip.AntiphishingStateEnum;
-type ipArpStateEnum = ip.ArpStateEnum;
-type ipBlockedIpStateEnum = ip.BlockedIpStateEnum;
-type ipDestination = ip.Destination;
-type ipFirewallStateEnum = ip.FirewallStateEnum;
-type ipFirewallActionEnum = ip.FirewallActionEnum;
-type ipFirewallProtocolEnum = ip.FirewallProtocolEnum;
-type ipFirewallRuleStateEnum = ip.FirewallRuleStateEnum;
-type ipFirewallTCPOptionEnum = ip.FirewallTCPOptionEnum;
-type ipGameMitigationStateEnum = ip.GameMitigationStateEnum;
-type complexTypeRangenumber = complexType.Range<number>;
-type ipGameMitigationRuleProtocolEnum = ip.GameMitigationRuleProtocolEnum;
-type ipGameMitigationRuleStateEnum = ip.GameMitigationRuleStateEnum;
-type coreTypesCountryEnum = coreTypes.CountryEnum;
-type ipRoutedTo = ip.RoutedTo;
-type ipIpTypeEnum = ip.IpTypeEnum;
-type ipTaskFunctionEnum = ip.TaskFunctionEnum;
-type ipTaskStatusEnum = ip.TaskStatusEnum;
-type ipLoadBalancingBackendProbeEnum = ip.LoadBalancingBackendProbeEnum;
-type ipLoadBalancingZoneEnum = ip.LoadBalancingZoneEnum;
-type ipLoadBalancingSslEnum = ip.LoadBalancingSslEnum;
-type ipLoadBalancingStateEnum = ip.LoadBalancingStateEnum;
-type ipLoadBalancingStickinessEnum = ip.LoadBalancingStickinessEnum;
-type ipLoadBalancingAdditionalPortEnum = ip.LoadBalancingAdditionalPortEnum;
-type ipLoadBalancingTaskActionEnum = ip.LoadBalancingTaskActionEnum;
-type ipMitigationTraffic = ip.MitigationTraffic;
-type ipMitigationStateEnum = ip.MitigationStateEnum;
-type ipMitigationProfileAutoMitigationTimeOutEnum = ip.MitigationProfileAutoMitigationTimeOutEnum;
-type ipMitigationProfileStateEnum = ip.MitigationProfileStateEnum;
-type ipSpamStateEnum = ip.SpamStateEnum;
-type ipSpamTarget = ip.SpamTarget;
-type ipLoadbalancingTaskActionEnum = ipLoadbalancing.TaskActionEnum;
-type ipLoadbalancingTaskStatusEnum = ipLoadbalancing.TaskStatusEnum;
-type serviceStateEnum = service.StateEnum;
-type serviceRenewType = service.RenewType;
-type serviceRenewalTypeEnum = service.RenewalTypeEnum;

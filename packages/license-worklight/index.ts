@@ -10,24 +10,24 @@ export namespace license {
     export type ChangeIpMessageEnum = "OK" | "destinationNotAllowed" | "licenseAlreadyExists" | "notAllowedToHandleThis" | "notSameType" | "sameIp" | "versionNotAllowed"
     // interface fullName: license.ChangeIpStatus.ChangeIpStatus
     export interface ChangeIpStatus {
-        message: licenseChangeIpMessageEnum;
+        message: license.ChangeIpMessageEnum;
         success: boolean;
     }
     // type fullname: license.LicenseTypeEnum
     export type LicenseTypeEnum = "dedicated" | "dedicatedCloud" | "dedicatedFailover" | "failover" | "vm" | "vps" | "vps_ceph" | "vps_classic" | "vps_cloud" | "vps_cloud_2016" | "vps_ssd"
     // interface fullName: license.OrderableWorkLightCompatibilityInfos.OrderableWorkLightCompatibilityInfos
     export interface OrderableWorkLightCompatibilityInfos {
-        version: licenseWorkLightVersionEnum;
+        version: license.WorkLightVersionEnum;
     }
     // type fullname: license.StateEnum
     export type StateEnum = "ok" | "released" | "terminated" | "toDeliver"
     // interface fullName: license.Task.Task
     export interface Task {
-        action: licenseActionType;
+        action: license.ActionType;
         doneDate?: string;
         lastUpdate: string;
         name: string;
-        status: licenseTaskStateEnum;
+        status: license.TaskStateEnum;
         taskId: number;
         todoDate: string;
     }
@@ -35,8 +35,8 @@ export namespace license {
     export type TaskStateEnum = "cancelled" | "doing" | "done" | "error" | "todo"
     // interface fullName: license.WorkLightOrderConfiguration.WorkLightOrderConfiguration
     export interface WorkLightOrderConfiguration {
-        orderableVersions: licenseOrderableWorkLightCompatibilityInfos[];
-        serviceType: licenseLicenseTypeEnum;
+        orderableVersions: license.OrderableWorkLightCompatibilityInfos[];
+        serviceType: license.LicenseTypeEnum;
     }
     // type fullname: license.WorkLightVersionEnum
     export type WorkLightVersionEnum = "VERSION-6.1U.1CPU" | "VERSION-6.1U.2CPU" | "VERSION-6.2U.1CPU" | "VERSION-6.2U.2CPU" | "VERSION-6.EVALUATION" | "worklight-license-version-6-1cpu-1u" | "worklight-license-version-6-1cpu-2u" | "worklight-license-version-6-2cpu-1u" | "worklight-license-version-6-2cpu-2u"
@@ -48,8 +48,8 @@ export namespace license {
             domain: string;
             ip: string;
             licenseId: string;
-            status: licenseStateEnum;
-            version: licenseWorkLightVersionEnum;
+            status: license.StateEnum;
+            version: license.WorkLightVersionEnum;
         }
     }
 }
@@ -83,10 +83,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: serviceRenewType;
-        renewalType: serviceRenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: serviceStateEnum;
+        status: service.StateEnum;
     }
 }
 
@@ -113,7 +113,7 @@ export interface License{
             // GET /license/worklight/{serviceName}
             $get(): Promise<license.worklight.WorkLight>;
             // PUT /license/worklight/{serviceName}
-            $put(params?: {creation?: string, deleteAtExpiration?: boolean, domain?: string, ip?: string, licenseId?: string, status?: licenseStateEnum, version?: licenseWorkLightVersionEnum}): Promise<void>;
+            $put(params?: {creation?: string, deleteAtExpiration?: boolean, domain?: string, ip?: string, licenseId?: string, status?: license.StateEnum, version?: license.WorkLightVersionEnum}): Promise<void>;
             allowedDestinationIp: {
                 // GET /license/worklight/{serviceName}/allowedDestinationIp
                 $get(): Promise<string[]>;
@@ -134,11 +134,11 @@ export interface License{
                 // GET /license/worklight/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /license/worklight/{serviceName}/serviceInfos
-                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}): Promise<void>;
+                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
             tasks: {
                 // GET /license/worklight/{serviceName}/tasks
-                $get(params?: {action?: licenseActionType, status?: licenseTaskStateEnum}): Promise<number[]>;
+                $get(params?: {action?: license.ActionType, status?: license.TaskStateEnum}): Promise<number[]>;
                 $(taskId: number): {
                     // GET /license/worklight/{serviceName}/tasks/{taskId}
                     $get(): Promise<license.Task>;
@@ -180,7 +180,7 @@ export interface License{
    * List the license.Task objects
    * Tasks linked to this license
    */
-  get(path: '/license/worklight/{serviceName}/tasks'): (params: {serviceName: string, action?: licenseActionType, status?: licenseTaskStateEnum}) => Promise<number[]>;
+  get(path: '/license/worklight/{serviceName}/tasks'): (params: {serviceName: string, action?: license.ActionType, status?: license.TaskStateEnum}) => Promise<number[]>;
   /**
    * licenses Todos
    * Get this object properties
@@ -195,12 +195,12 @@ export interface License{
    * Your WorkLight license
    * Alter this object properties
    */
-  put(path: '/license/worklight/{serviceName}'): (params: {serviceName: string, creation?: string, deleteAtExpiration?: boolean, domain?: string, ip?: string, licenseId?: string, status?: licenseStateEnum, version?: licenseWorkLightVersionEnum}) => Promise<void>;
+  put(path: '/license/worklight/{serviceName}'): (params: {serviceName: string, creation?: string, deleteAtExpiration?: boolean, domain?: string, ip?: string, licenseId?: string, status?: license.StateEnum, version?: license.WorkLightVersionEnum}) => Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/license/worklight/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}) => Promise<void>;
+  put(path: '/license/worklight/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
   /**
    * changeIp operations
    * Move this license to another Ip
@@ -217,16 +217,3 @@ export interface License{
    */
   post(path: '/license/worklight/{serviceName}/terminate'): (params: {serviceName: string}) => Promise<string>;
 }
-/**
- * Extra Alias to bypass relativer namespace colitions
- */
-type licenseChangeIpMessageEnum = license.ChangeIpMessageEnum;
-type licenseWorkLightVersionEnum = license.WorkLightVersionEnum;
-type licenseActionType = license.ActionType;
-type licenseTaskStateEnum = license.TaskStateEnum;
-type licenseOrderableWorkLightCompatibilityInfos = license.OrderableWorkLightCompatibilityInfos;
-type licenseLicenseTypeEnum = license.LicenseTypeEnum;
-type licenseStateEnum = license.StateEnum;
-type serviceRenewType = service.RenewType;
-type serviceRenewalTypeEnum = service.RenewalTypeEnum;
-type serviceStateEnum = service.StateEnum;

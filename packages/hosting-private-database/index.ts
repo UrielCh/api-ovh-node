@@ -19,10 +19,10 @@ export namespace hosting {
     export namespace PrivateDatabase {
         // interface fullName: hosting.PrivateDatabase.AvailableOrderCapacities.AvailableOrderCapacities
         export interface AvailableOrderCapacities {
-            datacenter: hostingPrivateDatabaseDatacenterEnum[];
-            offer: hostingPrivateDatabaseOfferEnum;
-            ram: hostingPrivateDatabaseAvailableRamSizeEnum[];
-            version: hostingPrivateDatabaseAvailableVersionEnum[];
+            datacenter: hosting.PrivateDatabase.DatacenterEnum[];
+            offer: hosting.PrivateDatabase.OfferEnum;
+            ram: hosting.PrivateDatabase.AvailableRamSizeEnum[];
+            version: hosting.PrivateDatabase.AvailableVersionEnum[];
         }
         // type fullname: hosting.PrivateDatabase.AvailableRamSizeEnum
         export type AvailableRamSizeEnum = "1024" | "2048" | "4096" | "512"
@@ -43,7 +43,7 @@ export namespace hosting {
                 description: string;
                 key: string;
                 lastUpdate: string;
-                type: hostingPrivateDatabaseConfigurationDetailType;
+                type: hosting.PrivateDatabase.Configuration.DetailType;
                 unit?: string;
                 value: string;
             }
@@ -60,7 +60,7 @@ export namespace hosting {
             // interface fullName: hosting.PrivateDatabase.Database.User.User
             export interface User {
                 grantId: number;
-                grantType: hostingPrivateDatabasegrantGrantEnum;
+                grantType: hosting.PrivateDatabase.grant.GrantEnum;
                 userName: string;
             }
         }
@@ -93,7 +93,7 @@ export namespace hosting {
             export interface Database {
                 databaseName: string;
                 grantId: number;
-                grantType: hostingPrivateDatabasegrantGrantEnum;
+                grantType: hosting.PrivateDatabase.grant.GrantEnum;
             }
         }
         export namespace Whitelist {
@@ -114,36 +114,36 @@ export namespace hosting {
     export namespace privateDatabase {
         // interface fullName: hosting.privateDatabase.Configuration.Configuration
         export interface Configuration {
-            details: hostingPrivateDatabaseConfigurationDetail[];
+            details: hosting.PrivateDatabase.Configuration.Detail[];
             lastUpdate: string;
-            status: hostingPrivateDatabaseConfigurationStatus;
+            status: hosting.PrivateDatabase.Configuration.Status;
             taskId?: string;
         }
         // interface fullName: hosting.privateDatabase.Service.Service
         export interface Service {
-            capabilities: hostingPrivateDatabaseCapability[];
+            capabilities: hosting.PrivateDatabase.Capability[];
             cpu: number;
-            datacenter: hostingPrivateDatabaseDatacenterEnum;
+            datacenter: hosting.PrivateDatabase.DatacenterEnum;
             displayName?: string;
-            graphEndpoint?: hostingPrivateDatabaseGraphEndpoint;
+            graphEndpoint?: hosting.PrivateDatabase.GraphEndpoint;
             guiURL?: string;
             hostname?: string;
             hostnameFtp?: string;
             infrastructure: string;
             ip?: string;
             lastCheck: string;
-            offer: hostingPrivateDatabaseOfferEnum;
+            offer: hosting.PrivateDatabase.OfferEnum;
             port: number;
             portFtp?: number;
-            quotaSize: complexTypeUnitAndValuenumber;
-            quotaUsed: complexTypeUnitAndValuenumber;
-            ram: complexTypeUnitAndValuenumber;
+            quotaSize: complexType.UnitAndValue<number>;
+            quotaUsed: complexType.UnitAndValue<number>;
+            ram: complexType.UnitAndValue<number>;
             server?: string;
             serviceName: string;
-            state: hostingPrivateDatabaseStateEnum;
+            state: hosting.PrivateDatabase.StateEnum;
             tlsCa?: string;
-            type: hostingPrivateDatabaseTypeEnum;
-            version: hostingPrivateDatabaseAvailableVersionEnum;
+            type: hosting.PrivateDatabase.TypeEnum;
+            version: hosting.PrivateDatabase.AvailableVersionEnum;
             versionNumber: number;
         }
         // interface fullName: hosting.privateDatabase.database.database
@@ -151,8 +151,8 @@ export namespace hosting {
             backupTime?: string;
             creationDate: string;
             databaseName: string;
-            quotaUsed: complexTypeUnitAndValuenumber;
-            users: hostingPrivateDatabaseDatabaseUser[];
+            quotaUsed: complexType.UnitAndValue<number>;
+            users: hosting.PrivateDatabase.Database.User[];
         }
         // interface fullName: hosting.privateDatabase.database_dump.database_dump
         export interface database_dump {
@@ -167,7 +167,7 @@ export namespace hosting {
             description: string;
             extensionName: string;
             requiredExtensions: string[];
-            status: hostingPrivateDatabaseDatabaseExtensionStatus;
+            status: hosting.PrivateDatabase.Database.Extension.Status;
         }
         // interface fullName: hosting.privateDatabase.dump.dump
         export interface dump {
@@ -182,24 +182,24 @@ export namespace hosting {
         export interface grant {
             creationDate: string;
             databaseName: string;
-            grant: hostingPrivateDatabasegrantGrantEnum;
+            grant: hosting.PrivateDatabase.grant.GrantEnum;
         }
         // interface fullName: hosting.privateDatabase.task.task
         export interface task {
             databaseName?: string;
             doneDate?: string;
             dumpId?: number;
-            function: hostingPrivateDatabasetaskFunctionEnum;
+            function: hosting.PrivateDatabase.task.FunctionEnum;
             id: number;
             lastUpdate?: string;
             startDate: string;
-            status: hostingPrivateDatabasetaskStatusEnum;
+            status: hosting.PrivateDatabase.task.StatusEnum;
             userName?: string;
         }
         // interface fullName: hosting.privateDatabase.user.user
         export interface user {
             creationDate: string;
-            databases: hostingPrivateDatabaseUserDatabase[];
+            databases: hosting.PrivateDatabase.User.Database[];
             userName: string;
         }
         // interface fullName: hosting.privateDatabase.whitelist.whitelist
@@ -210,7 +210,7 @@ export namespace hosting {
             name?: string;
             service: boolean;
             sftp: boolean;
-            status: hostingPrivateDatabaseWhitelistStatus;
+            status: hosting.PrivateDatabase.Whitelist.Status;
             taskId?: string;
         }
     }
@@ -245,10 +245,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: serviceRenewType;
-        renewalType: serviceRenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: serviceStateEnum;
+        status: service.StateEnum;
     }
 }
 
@@ -269,13 +269,13 @@ export interface Hosting{
         $get(): Promise<string[]>;
         availableOrderCapacities: {
             // GET /hosting/privateDatabase/availableOrderCapacities
-            $get(params: {offer: hostingPrivateDatabaseOfferEnum}): Promise<hosting.PrivateDatabase.AvailableOrderCapacities>;
+            $get(params: {offer: hosting.PrivateDatabase.OfferEnum}): Promise<hosting.PrivateDatabase.AvailableOrderCapacities>;
         }
         $(serviceName: string): {
             // GET /hosting/privateDatabase/{serviceName}
             $get(): Promise<hosting.privateDatabase.Service>;
             // PUT /hosting/privateDatabase/{serviceName}
-            $put(params?: {capabilities?: hostingPrivateDatabaseCapability[], cpu?: number, datacenter?: hostingPrivateDatabaseDatacenterEnum, displayName?: string, graphEndpoint?: hostingPrivateDatabaseGraphEndpoint, guiURL?: string, hostname?: string, hostnameFtp?: string, infrastructure?: string, ip?: string, lastCheck?: string, offer?: hostingPrivateDatabaseOfferEnum, port?: number, portFtp?: number, quotaSize?: complexTypeUnitAndValuenumber, quotaUsed?: complexTypeUnitAndValuenumber, ram?: complexTypeUnitAndValuenumber, server?: string, serviceName?: string, state?: hostingPrivateDatabaseStateEnum, tlsCa?: string, type?: hostingPrivateDatabaseTypeEnum, version?: hostingPrivateDatabaseAvailableVersionEnum, versionNumber?: number}): Promise<void>;
+            $put(params?: {capabilities?: hosting.PrivateDatabase.Capability[], cpu?: number, datacenter?: hosting.PrivateDatabase.DatacenterEnum, displayName?: string, graphEndpoint?: hosting.PrivateDatabase.GraphEndpoint, guiURL?: string, hostname?: string, hostnameFtp?: string, infrastructure?: string, ip?: string, lastCheck?: string, offer?: hosting.PrivateDatabase.OfferEnum, port?: number, portFtp?: number, quotaSize?: complexType.UnitAndValue<number>, quotaUsed?: complexType.UnitAndValue<number>, ram?: complexType.UnitAndValue<number>, server?: string, serviceName?: string, state?: hosting.PrivateDatabase.StateEnum, tlsCa?: string, type?: hosting.PrivateDatabase.TypeEnum, version?: hosting.PrivateDatabase.AvailableVersionEnum, versionNumber?: number}): Promise<void>;
             availableVersions: {
                 // GET /hosting/privateDatabase/{serviceName}/availableVersions
                 $get(): Promise<hosting.PrivateDatabase.AvailableVersionEnum[]>;
@@ -290,7 +290,7 @@ export interface Hosting{
             }
             changeVersion: {
                 // POST /hosting/privateDatabase/{serviceName}/changeVersion
-                $post(params: {version: hostingPrivateDatabaseAvailableVersionEnum}): Promise<hosting.privateDatabase.task>;
+                $post(params: {version: hosting.PrivateDatabase.AvailableVersionEnum}): Promise<hosting.privateDatabase.task>;
             }
             config: {
                 // GET /hosting/privateDatabase/{serviceName}/config
@@ -332,7 +332,7 @@ export interface Hosting{
                     }
                     extension: {
                         // GET /hosting/privateDatabase/{serviceName}/database/{databaseName}/extension
-                        $get(params?: {extensionName?: string, status?: hostingPrivateDatabaseDatabaseExtensionStatus}): Promise<string[]>;
+                        $get(params?: {extensionName?: string, status?: hosting.PrivateDatabase.Database.Extension.Status}): Promise<string[]>;
                         $(extensionName: string): {
                             // GET /hosting/privateDatabase/{serviceName}/database/{databaseName}/extension/{extensionName}
                             $get(): Promise<hosting.privateDatabase.database_extension>;
@@ -354,7 +354,7 @@ export interface Hosting{
             }
             databaseWizard: {
                 // POST /hosting/privateDatabase/{serviceName}/databaseWizard
-                $post(params: {databaseName: string, grant: hostingPrivateDatabasegrantGrantEnum, password: string, userName: string}): Promise<hosting.privateDatabase.task>;
+                $post(params: {databaseName: string, grant: hosting.PrivateDatabase.grant.GrantEnum, password: string, userName: string}): Promise<hosting.privateDatabase.task>;
             }
             dump: {
                 // GET /hosting/privateDatabase/{serviceName}/dump
@@ -390,7 +390,7 @@ export interface Hosting{
                 // GET /hosting/privateDatabase/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /hosting/privateDatabase/{serviceName}/serviceInfos
-                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}): Promise<void>;
+                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
             start: {
                 // POST /hosting/privateDatabase/{serviceName}/start
@@ -402,7 +402,7 @@ export interface Hosting{
             }
             tasks: {
                 // GET /hosting/privateDatabase/{serviceName}/tasks
-                $get(params?: {function_?: hostingPrivateDatabasetaskFunctionEnum, status?: hostingPrivateDatabasetaskStatusEnum}): Promise<number[]>;
+                $get(params?: {function_?: hosting.PrivateDatabase.task.FunctionEnum, status?: hosting.PrivateDatabase.task.StatusEnum}): Promise<number[]>;
                 $(id: number): {
                     // GET /hosting/privateDatabase/{serviceName}/tasks/{id}
                     $get(): Promise<hosting.privateDatabase.task>;
@@ -430,7 +430,7 @@ export interface Hosting{
                         // GET /hosting/privateDatabase/{serviceName}/user/{userName}/grant
                         $get(): Promise<string[]>;
                         // POST /hosting/privateDatabase/{serviceName}/user/{userName}/grant
-                        $post(params: {databaseName: string, grant: hostingPrivateDatabasegrantGrantEnum}): Promise<hosting.privateDatabase.task>;
+                        $post(params: {databaseName: string, grant: hosting.PrivateDatabase.grant.GrantEnum}): Promise<hosting.privateDatabase.task>;
                         $(databaseName: string): {
                             // DELETE /hosting/privateDatabase/{serviceName}/user/{userName}/grant/{databaseName}
                             $delete(): Promise<hosting.privateDatabase.task>;
@@ -438,7 +438,7 @@ export interface Hosting{
                             $get(): Promise<hosting.privateDatabase.grant>;
                             update: {
                                 // POST /hosting/privateDatabase/{serviceName}/user/{userName}/grant/{databaseName}/update
-                                $post(params: {grant: hostingPrivateDatabasegrantGrantEnum}): Promise<hosting.privateDatabase.task>;
+                                $post(params: {grant: hosting.PrivateDatabase.grant.GrantEnum}): Promise<hosting.privateDatabase.task>;
                             }
                         };
                     }
@@ -459,7 +459,7 @@ export interface Hosting{
                     // GET /hosting/privateDatabase/{serviceName}/whitelist/{ip}
                     $get(): Promise<hosting.privateDatabase.whitelist>;
                     // PUT /hosting/privateDatabase/{serviceName}/whitelist/{ip}
-                    $put(params?: {creationDate?: string, ip?: string, lastUpdate?: string, name?: string, service?: boolean, sftp?: boolean, status?: hostingPrivateDatabaseWhitelistStatus, taskId?: string}): Promise<void>;
+                    $put(params?: {creationDate?: string, ip?: string, lastUpdate?: string, name?: string, service?: boolean, sftp?: boolean, status?: hosting.PrivateDatabase.Whitelist.Status, taskId?: string}): Promise<void>;
                 };
             }
         };
@@ -509,7 +509,7 @@ export interface Hosting{
    * List the hosting.privateDatabase.database.extension objects
    * Extensions linked to your database
    */
-  get(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}/extension'): (params: {databaseName: string, serviceName: string, extensionName?: string, status?: hostingPrivateDatabaseDatabaseExtensionStatus}) => Promise<string[]>;
+  get(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}/extension'): (params: {databaseName: string, serviceName: string, extensionName?: string, status?: hosting.PrivateDatabase.Database.Extension.Status}) => Promise<string[]>;
   /**
    * Databases extension
    * Get this object properties
@@ -539,7 +539,7 @@ export interface Hosting{
    * List the hosting.privateDatabase.task objects
    * Tasks attached to your private database service
    */
-  get(path: '/hosting/privateDatabase/{serviceName}/tasks'): (params: {serviceName: string, function_?: hostingPrivateDatabasetaskFunctionEnum, status?: hostingPrivateDatabasetaskStatusEnum}) => Promise<number[]>;
+  get(path: '/hosting/privateDatabase/{serviceName}/tasks'): (params: {serviceName: string, function_?: hosting.PrivateDatabase.task.FunctionEnum, status?: hosting.PrivateDatabase.task.StatusEnum}) => Promise<number[]>;
   /**
    * Tasks
    * Get this object properties
@@ -584,22 +584,22 @@ export interface Hosting{
    * Get available order capacitie
    * Get available order capacitie
    */
-  get(path: '/hosting/privateDatabase/availableOrderCapacities'): (params: {offer: hostingPrivateDatabaseOfferEnum}) => Promise<hosting.PrivateDatabase.AvailableOrderCapacities>;
+  get(path: '/hosting/privateDatabase/availableOrderCapacities'): (params: {offer: hosting.PrivateDatabase.OfferEnum}) => Promise<hosting.PrivateDatabase.AvailableOrderCapacities>;
   /**
    * Private database
    * Alter this object properties
    */
-  put(path: '/hosting/privateDatabase/{serviceName}'): (params: {serviceName: string, capabilities?: hostingPrivateDatabaseCapability[], cpu?: number, datacenter?: hostingPrivateDatabaseDatacenterEnum, displayName?: string, graphEndpoint?: hostingPrivateDatabaseGraphEndpoint, guiURL?: string, hostname?: string, hostnameFtp?: string, infrastructure?: string, ip?: string, lastCheck?: string, offer?: hostingPrivateDatabaseOfferEnum, port?: number, portFtp?: number, quotaSize?: complexTypeUnitAndValuenumber, quotaUsed?: complexTypeUnitAndValuenumber, ram?: complexTypeUnitAndValuenumber, server?: string, state?: hostingPrivateDatabaseStateEnum, tlsCa?: string, type?: hostingPrivateDatabaseTypeEnum, version?: hostingPrivateDatabaseAvailableVersionEnum, versionNumber?: number}) => Promise<void>;
+  put(path: '/hosting/privateDatabase/{serviceName}'): (params: {serviceName: string, capabilities?: hosting.PrivateDatabase.Capability[], cpu?: number, datacenter?: hosting.PrivateDatabase.DatacenterEnum, displayName?: string, graphEndpoint?: hosting.PrivateDatabase.GraphEndpoint, guiURL?: string, hostname?: string, hostnameFtp?: string, infrastructure?: string, ip?: string, lastCheck?: string, offer?: hosting.PrivateDatabase.OfferEnum, port?: number, portFtp?: number, quotaSize?: complexType.UnitAndValue<number>, quotaUsed?: complexType.UnitAndValue<number>, ram?: complexType.UnitAndValue<number>, server?: string, state?: hosting.PrivateDatabase.StateEnum, tlsCa?: string, type?: hosting.PrivateDatabase.TypeEnum, version?: hosting.PrivateDatabase.AvailableVersionEnum, versionNumber?: number}) => Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/hosting/privateDatabase/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}) => Promise<void>;
+  put(path: '/hosting/privateDatabase/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
   /**
    * IP whitelisting for your instance
    * Alter this object properties
    */
-  put(path: '/hosting/privateDatabase/{serviceName}/whitelist/{ip}'): (params: {ip: string, serviceName: string, creationDate?: string, lastUpdate?: string, name?: string, service?: boolean, sftp?: boolean, status?: hostingPrivateDatabaseWhitelistStatus, taskId?: string}) => Promise<void>;
+  put(path: '/hosting/privateDatabase/{serviceName}/whitelist/{ip}'): (params: {ip: string, serviceName: string, creationDate?: string, lastUpdate?: string, name?: string, service?: boolean, sftp?: boolean, status?: hosting.PrivateDatabase.Whitelist.Status, taskId?: string}) => Promise<void>;
   /**
    * Change the contacts of this service
    * Launch a contact change procedure
@@ -614,7 +614,7 @@ export interface Hosting{
    * changeVersion operations
    * Change the private database engine version
    */
-  post(path: '/hosting/privateDatabase/{serviceName}/changeVersion'): (params: {serviceName: string, version: hostingPrivateDatabaseAvailableVersionEnum}) => Promise<hosting.privateDatabase.task>;
+  post(path: '/hosting/privateDatabase/{serviceName}/changeVersion'): (params: {serviceName: string, version: hosting.PrivateDatabase.AvailableVersionEnum}) => Promise<hosting.privateDatabase.task>;
   /**
    * update operations
    * Update the configuration
@@ -659,7 +659,7 @@ export interface Hosting{
    * databaseWizard operations
    * Create a new database/user and grant it
    */
-  post(path: '/hosting/privateDatabase/{serviceName}/databaseWizard'): (params: {serviceName: string, databaseName: string, grant: hostingPrivateDatabasegrantGrantEnum, password: string, userName: string}) => Promise<hosting.privateDatabase.task>;
+  post(path: '/hosting/privateDatabase/{serviceName}/databaseWizard'): (params: {serviceName: string, databaseName: string, grant: hosting.PrivateDatabase.grant.GrantEnum, password: string, userName: string}) => Promise<hosting.privateDatabase.task>;
   /**
    * restore operations
    * Request the restore from this dump
@@ -709,12 +709,12 @@ export interface Hosting{
    * List the hosting.privateDatabase.grant objects
    * Add grant on a database
    */
-  post(path: '/hosting/privateDatabase/{serviceName}/user/{userName}/grant'): (params: {serviceName: string, userName: string, databaseName: string, grant: hostingPrivateDatabasegrantGrantEnum}) => Promise<hosting.privateDatabase.task>;
+  post(path: '/hosting/privateDatabase/{serviceName}/user/{userName}/grant'): (params: {serviceName: string, userName: string, databaseName: string, grant: hosting.PrivateDatabase.grant.GrantEnum}) => Promise<hosting.privateDatabase.task>;
   /**
    * update operations
    * Update user grant
    */
-  post(path: '/hosting/privateDatabase/{serviceName}/user/{userName}/grant/{databaseName}/update'): (params: {databaseName: string, serviceName: string, userName: string, grant: hostingPrivateDatabasegrantGrantEnum}) => Promise<hosting.privateDatabase.task>;
+  post(path: '/hosting/privateDatabase/{serviceName}/user/{userName}/grant/{databaseName}/update'): (params: {databaseName: string, serviceName: string, userName: string, grant: hosting.PrivateDatabase.grant.GrantEnum}) => Promise<hosting.privateDatabase.task>;
   /**
    * List the hosting.privateDatabase.whitelist objects
    * Create a new IP whitelist
@@ -751,28 +751,3 @@ export interface Hosting{
    */
   delete(path: '/hosting/privateDatabase/{serviceName}/whitelist/{ip}'): (params: {ip: string, serviceName: string}) => Promise<hosting.privateDatabase.task>;
 }
-/**
- * Extra Alias to bypass relativer namespace colitions
- */
-type hostingPrivateDatabaseDatacenterEnum = hosting.PrivateDatabase.DatacenterEnum;
-type hostingPrivateDatabaseOfferEnum = hosting.PrivateDatabase.OfferEnum;
-type hostingPrivateDatabaseAvailableRamSizeEnum = hosting.PrivateDatabase.AvailableRamSizeEnum;
-type hostingPrivateDatabaseAvailableVersionEnum = hosting.PrivateDatabase.AvailableVersionEnum;
-type hostingPrivateDatabaseConfigurationDetailType = hosting.PrivateDatabase.Configuration.DetailType;
-type hostingPrivateDatabasegrantGrantEnum = hosting.PrivateDatabase.grant.GrantEnum;
-type hostingPrivateDatabaseConfigurationDetail = hosting.PrivateDatabase.Configuration.Detail;
-type hostingPrivateDatabaseConfigurationStatus = hosting.PrivateDatabase.Configuration.Status;
-type hostingPrivateDatabaseCapability = hosting.PrivateDatabase.Capability;
-type hostingPrivateDatabaseGraphEndpoint = hosting.PrivateDatabase.GraphEndpoint;
-type complexTypeUnitAndValuenumber = complexType.UnitAndValue<number>;
-type hostingPrivateDatabaseStateEnum = hosting.PrivateDatabase.StateEnum;
-type hostingPrivateDatabaseTypeEnum = hosting.PrivateDatabase.TypeEnum;
-type hostingPrivateDatabaseDatabaseUser = hosting.PrivateDatabase.Database.User;
-type hostingPrivateDatabaseDatabaseExtensionStatus = hosting.PrivateDatabase.Database.Extension.Status;
-type hostingPrivateDatabasetaskFunctionEnum = hosting.PrivateDatabase.task.FunctionEnum;
-type hostingPrivateDatabasetaskStatusEnum = hosting.PrivateDatabase.task.StatusEnum;
-type hostingPrivateDatabaseUserDatabase = hosting.PrivateDatabase.User.Database;
-type hostingPrivateDatabaseWhitelistStatus = hosting.PrivateDatabase.Whitelist.Status;
-type serviceRenewType = service.RenewType;
-type serviceRenewalTypeEnum = service.RenewalTypeEnum;
-type serviceStateEnum = service.StateEnum;

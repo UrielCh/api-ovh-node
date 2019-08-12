@@ -8,7 +8,7 @@ export namespace email {
         // interface fullName: email.exchange.Account.Account
         export interface Account {
             SAMAccountName?: string;
-            accountLicense: emailexchangeOvhLicenceEnum;
+            accountLicense: email.exchange.OvhLicenceEnum;
             company?: string;
             configured: boolean;
             creationDate?: string;
@@ -32,30 +32,30 @@ export namespace email {
             litigation: boolean;
             litigationPeriod?: number;
             login: string;
-            mailingFilter?: emailexchangeMailingFilterEnum[];
+            mailingFilter?: email.exchange.MailingFilterEnum[];
             outlookLicense: boolean;
             owaLimited: boolean;
             passwordLastUpdate?: string;
             primaryEmailAddress: string;
             quota: number;
-            renewOutlookPeriod?: emailexchangerenewPeriodEnum;
-            renewPeriod?: emailexchangerenewPeriodEnum;
-            spamAndVirusConfiguration: emailexchangespamAndVirusConfiguration;
+            renewOutlookPeriod?: email.exchange.renewPeriodEnum;
+            renewPeriod?: email.exchange.renewPeriodEnum;
+            spamAndVirusConfiguration: email.exchange.spamAndVirusConfiguration;
             spamDetected: boolean;
             spamTicketNumber?: number;
-            state: emailexchangeObjectStateEnum;
+            state: email.exchange.ObjectStateEnum;
             taskPendingId: number;
         }
         // interface fullName: email.exchange.AccountLicense.AccountLicense
         export interface AccountLicense {
-            license: emailexchangeOvhLicenceEnum;
+            license: email.exchange.OvhLicenceEnum;
             licenseQuantity: number;
         }
         // type fullname: email.exchange.ActiveSyncPolicyEnum
         export type ActiveSyncPolicyEnum = "allow" | "block" | "quarantine"
         // interface fullName: email.exchange.DailyLicense.DailyLicense
         export interface DailyLicense {
-            accountLicense: emailexchangeAccountLicense[];
+            accountLicense: email.exchange.AccountLicense[];
             date: string;
             outlookQuantity: number;
         }
@@ -77,9 +77,9 @@ export namespace email {
             organization2010?: string;
             srvIsValid: boolean;
             srvRecord?: string[];
-            state: emailexchangeObjectStateEnum;
+            state: email.exchange.ObjectStateEnum;
             taskPendingId: number;
-            type: emailexchangeDomainTypeEnum;
+            type: email.exchange.DomainTypeEnum;
         }
         // type fullname: email.exchange.DomainTypeEnum
         export type DomainTypeEnum = "authoritative" | "nonAuthoritative"
@@ -98,11 +98,11 @@ export namespace email {
             maxSendSize: number;
             minPasswordAge?: number;
             minPasswordLength?: number;
-            offer: emailexchangeServiceOfferEnum;
+            offer: email.exchange.ServiceOfferEnum;
             passwordHistoryCount?: number;
-            spamAndVirusConfiguration: emailexchangespamAndVirusConfiguration;
+            spamAndVirusConfiguration: email.exchange.spamAndVirusConfiguration;
             sslExpirationDate?: string;
-            state: emailexchangeServiceStateEnum;
+            state: email.exchange.ServiceStateEnum;
             taskPendingId: number;
             webUrl?: string;
         }
@@ -137,8 +137,8 @@ export namespace email {
         export type OutlookVersionEnum = "mac_x86_2011" | "mac_x86_2016" | "windows_x64_2013" | "windows_x64_2016" | "windows_x86_2013" | "windows_x86_2016"
         // interface fullName: email.exchange.OutlookVersions.OutlookVersions
         export interface OutlookVersions {
-            outlookLanguage: emailexchangeLanguageEnum;
-            outlookVersion: emailexchangeOutlookVersionEnum;
+            outlookLanguage: email.exchange.LanguageEnum;
+            outlookVersion: email.exchange.OutlookVersionEnum;
             status: boolean;
         }
         // type fullname: email.exchange.OvhLicenceEnum
@@ -157,7 +157,7 @@ export namespace email {
         export type ResourceTypeEnum = "equipment" | "room"
         // interface fullName: email.exchange.Server.Server
         export interface Server {
-            commercialVersion: emailexchangeexchangeCommercialVersionEnum;
+            commercialVersion: email.exchange.exchangeCommercialVersionEnum;
             currentDiskUsage?: number;
             diskSize?: number;
             individual2010: boolean;
@@ -168,7 +168,7 @@ export namespace email {
             isPtrV6Valid: boolean;
             isPtrValid: boolean;
             owaMfa: boolean;
-            state: emailexchangeServerStateEnum;
+            state: email.exchange.ServerStateEnum;
             taskPendingId: number;
             version?: number;
         }
@@ -189,9 +189,9 @@ export namespace email {
         // interface fullName: email.exchange.Task.Task
         export interface Task {
             finishDate?: string;
-            function: emailexchangeTaskFunctionEnum;
+            function: email.exchange.TaskFunctionEnum;
             id: number;
-            status: emailexchangeTaskStatusEnum;
+            status: email.exchange.TaskStatusEnum;
             todoDate: string;
         }
         // type fullname: email.exchange.TaskFunctionEnum
@@ -222,7 +222,7 @@ export namespace email {
             currentUsage?: number;
             guid?: string;
             quota: number;
-            state: emailexchangeObjectStateEnum;
+            state: email.exchange.ObjectStateEnum;
             taskPendingId?: number;
         }
         // interface fullName: email.exchange.exchangeAccountDiagnosis.exchangeAccountDiagnosis
@@ -305,7 +305,7 @@ export namespace email {
             initials?: string;
             lastName?: string;
             organization2010?: string;
-            state: emailexchangeObjectStateEnum;
+            state: email.exchange.ObjectStateEnum;
             taskPendingId: number;
         }
         // interface fullName: email.exchange.exchangeMailingListAlias.exchangeMailingListAlias
@@ -316,10 +316,10 @@ export namespace email {
         }
         // interface fullName: email.exchange.exchangePublicFolderPermission.exchangePublicFolderPermission
         export interface exchangePublicFolderPermission {
-            accessRights: emailexchangePublicFolderRightTypeEnum;
+            accessRights: email.exchange.PublicFolderRightTypeEnum;
             allowedAccountId: number;
             creationDate: string;
-            state: emailexchangeObjectStateEnum;
+            state: email.exchange.ObjectStateEnum;
             taskPendingId: number;
         }
         // interface fullName: email.exchange.exchangeResourceAccountDelegate.exchangeResourceAccountDelegate
@@ -334,13 +334,13 @@ export namespace email {
             creationDate: string;
             notifiedAccountId: number;
             primaryEmailAddress: string;
-            state: emailexchangeactiveSyncNotificationStateEnum;
+            state: email.exchange.activeSyncNotificationStateEnum;
         }
         // interface fullName: email.exchange.exchangeServiceAuthorizedIp.exchangeServiceAuthorizedIp
         export interface exchangeServiceAuthorizedIp {
             creationDate: string;
             ip: string;
-            status: emailexchangeauthorizedIpStatusEnum;
+            status: email.exchange.authorizedIpStatusEnum;
         }
         // interface fullName: email.exchange.exchangeServiceDevice.exchangeServiceDevice
         export interface exchangeServiceDevice {
@@ -348,7 +348,7 @@ export namespace email {
             creationDate: string;
             deviceId: string;
             deviceModel: string;
-            deviceState: emailexchangeDeviceActiveSyncStateEnum;
+            deviceState: email.exchange.DeviceActiveSyncStateEnum;
             guid: string;
             identity: string;
             lastUpdate?: string;
@@ -359,7 +359,7 @@ export namespace email {
             IMAP: boolean;
             POP: boolean;
             activeSync: boolean;
-            activeSyncPolicy: emailexchangeActiveSyncPolicyEnum;
+            activeSyncPolicy: email.exchange.ActiveSyncPolicyEnum;
             creationDate: string;
             lastUpdate?: string;
             taskPendingId: number;
@@ -386,10 +386,10 @@ export namespace email {
         // interface fullName: email.exchange.mailingList.mailingList
         export interface mailingList {
             creationDate: string;
-            departRestriction: emailexchangeMailingListDepartRestrictionEnum;
+            departRestriction: email.exchange.MailingListDepartRestrictionEnum;
             displayName?: string;
             hiddenFromGAL: boolean;
-            joinRestriction: emailexchangeMailingListJoinRestrictionEnum;
+            joinRestriction: email.exchange.MailingListJoinRestrictionEnum;
             lastUpdateDate?: string;
             mailingListAddress: string;
             maxReceiveSize?: number;
@@ -397,14 +397,14 @@ export namespace email {
             senderAuthentification: boolean;
             spamDetected: boolean;
             spamTicketNumber?: number;
-            state: emailexchangeObjectStateEnum;
+            state: email.exchange.ObjectStateEnum;
             taskPendingId: number;
         }
         // interface fullName: email.exchange.publicFolder.publicFolder
         export interface publicFolder {
-            anonymousPermission: emailexchangePublicFolderRightTypeEnum;
+            anonymousPermission: email.exchange.PublicFolderRightTypeEnum;
             creationDate?: string;
-            defaultPermission: emailexchangePublicFolderRightTypeEnum;
+            defaultPermission: email.exchange.PublicFolderRightTypeEnum;
             hasSubFolders?: boolean;
             itemCount?: number;
             lastAccessTime?: string;
@@ -413,10 +413,10 @@ export namespace email {
             lastUserModificationTime?: string;
             path: string;
             quota: number;
-            state: emailexchangeObjectStateEnum;
+            state: email.exchange.ObjectStateEnum;
             taskPendingId: number;
             totalItemSize?: number;
-            type: emailexchangePublicFolderTypeEnum;
+            type: email.exchange.PublicFolderTypeEnum;
         }
         // type fullname: email.exchange.renewPeriodEnum
         export type renewPeriodEnum = "monthly" | "yearly"
@@ -433,10 +433,10 @@ export namespace email {
             location: string;
             maximumDuration: number;
             resourceEmailAddress: string;
-            showMeetingDetails: emailexchangeShowMeetingDetailsEnum;
-            state: emailexchangeObjectStateEnum;
+            showMeetingDetails: email.exchange.ShowMeetingDetailsEnum;
+            state: email.exchange.ObjectStateEnum;
             taskPendingId: number;
-            type: emailexchangeResourceTypeEnum;
+            type: email.exchange.ResourceTypeEnum;
         }
         // interface fullName: email.exchange.sharedAccount.sharedAccount
         export interface sharedAccount {
@@ -450,12 +450,12 @@ export namespace email {
             lastLogoffDate?: string;
             lastLogonDate?: string;
             lastName?: string;
-            mailingFilter?: emailexchangeMailingFilterEnum[];
+            mailingFilter?: email.exchange.MailingFilterEnum[];
             quota: number;
             sharedEmailAddress: string;
             spamDetected: boolean;
             spamTicketNumber?: number;
-            state: emailexchangeObjectStateEnum;
+            state: email.exchange.ObjectStateEnum;
             taskPendingId: number;
         }
         // interface fullName: email.exchange.spamAndVirusConfiguration.spamAndVirusConfiguration
@@ -496,10 +496,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: serviceRenewType;
-        renewalType: serviceRenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: serviceStateEnum;
+        status: service.StateEnum;
     }
 }
 
@@ -526,19 +526,19 @@ export interface Email{
                     // GET /email/exchange/{organizationName}/service/{exchangeService}
                     $get(): Promise<email.exchange.ExchangeService>;
                     // PUT /email/exchange/{organizationName}/service/{exchangeService}
-                    $put(params?: {complexityEnabled?: boolean, displayName?: string, domain?: string, hostname?: string, lastUpdateDate?: string, lockoutDuration?: number, lockoutObservationWindow?: number, lockoutThreshold?: number, maxPasswordAge?: number, maxReceiveSize?: number, maxSendSize?: number, minPasswordAge?: number, minPasswordLength?: number, offer?: emailexchangeServiceOfferEnum, passwordHistoryCount?: number, spamAndVirusConfiguration?: emailexchangespamAndVirusConfiguration, sslExpirationDate?: string, state?: emailexchangeServiceStateEnum, taskPendingId?: number, webUrl?: string}): Promise<void>;
+                    $put(params?: {complexityEnabled?: boolean, displayName?: string, domain?: string, hostname?: string, lastUpdateDate?: string, lockoutDuration?: number, lockoutObservationWindow?: number, lockoutThreshold?: number, maxPasswordAge?: number, maxReceiveSize?: number, maxSendSize?: number, minPasswordAge?: number, minPasswordLength?: number, offer?: email.exchange.ServiceOfferEnum, passwordHistoryCount?: number, spamAndVirusConfiguration?: email.exchange.spamAndVirusConfiguration, sslExpirationDate?: string, state?: email.exchange.ServiceStateEnum, taskPendingId?: number, webUrl?: string}): Promise<void>;
                     account: {
                         // GET /email/exchange/{organizationName}/service/{exchangeService}/account
-                        $get(params?: {accountLicense?: emailexchangeOvhLicenceEnum, id?: number, primaryEmailAddress?: string}): Promise<string[]>;
+                        $get(params?: {accountLicense?: email.exchange.OvhLicenceEnum, id?: number, primaryEmailAddress?: string}): Promise<string[]>;
                         // POST /email/exchange/{organizationName}/service/{exchangeService}/account
-                        $post(params: {company?: string, displayName?: string, domain: string, firstName?: string, hiddenFromGAL?: boolean, initials?: string, lastName?: string, license: emailexchangeOvhLicenceEnum, litigation?: boolean, litigationPeriod?: number, login: string, mailingFilter?: emailexchangeMailingFilterEnum[], outlookLicense?: boolean, password: string, SAMAccountName?: string, spamAndVirusConfiguration?: emailexchangespamAndVirusConfiguration}): Promise<email.exchange.Task>;
+                        $post(params: {company?: string, displayName?: string, domain: string, firstName?: string, hiddenFromGAL?: boolean, initials?: string, lastName?: string, license: email.exchange.OvhLicenceEnum, litigation?: boolean, litigationPeriod?: number, login: string, mailingFilter?: email.exchange.MailingFilterEnum[], outlookLicense?: boolean, password: string, SAMAccountName?: string, spamAndVirusConfiguration?: email.exchange.spamAndVirusConfiguration}): Promise<email.exchange.Task>;
                         $(primaryEmailAddress: string): {
                             // DELETE /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}
                             $delete(): Promise<email.exchange.Task>;
                             // GET /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}
                             $get(): Promise<email.exchange.Account>;
                             // PUT /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}
-                            $put(params?: {SAMAccountName?: string, accountLicense?: emailexchangeOvhLicenceEnum, company?: string, configured?: boolean, creationDate?: string, currentUsage?: number, deleteAtExpiration?: boolean, deleteOutlookAtExpiration?: boolean, displayName?: string, domain?: string, exchangeGuid?: string, expirationDate?: string, expirationOutlookDate?: string, firstName?: string, guid?: string, hiddenFromGAL?: boolean, id?: number, initial?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, lastUpdateDate?: string, litigation?: boolean, litigationPeriod?: number, login?: string, mailingFilter?: emailexchangeMailingFilterEnum[], outlookLicense?: boolean, owaLimited?: boolean, passwordLastUpdate?: string, primaryEmailAddress?: string, quota?: number, renewOutlookPeriod?: emailexchangerenewPeriodEnum, renewPeriod?: emailexchangerenewPeriodEnum, spamAndVirusConfiguration?: emailexchangespamAndVirusConfiguration, spamDetected?: boolean, spamTicketNumber?: number, state?: emailexchangeObjectStateEnum, taskPendingId?: number}): Promise<void>;
+                            $put(params?: {SAMAccountName?: string, accountLicense?: email.exchange.OvhLicenceEnum, company?: string, configured?: boolean, creationDate?: string, currentUsage?: number, deleteAtExpiration?: boolean, deleteOutlookAtExpiration?: boolean, displayName?: string, domain?: string, exchangeGuid?: string, expirationDate?: string, expirationOutlookDate?: string, firstName?: string, guid?: string, hiddenFromGAL?: boolean, id?: number, initial?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, lastUpdateDate?: string, litigation?: boolean, litigationPeriod?: number, login?: string, mailingFilter?: email.exchange.MailingFilterEnum[], outlookLicense?: boolean, owaLimited?: boolean, passwordLastUpdate?: string, primaryEmailAddress?: string, quota?: number, renewOutlookPeriod?: email.exchange.renewPeriodEnum, renewPeriod?: email.exchange.renewPeriodEnum, spamAndVirusConfiguration?: email.exchange.spamAndVirusConfiguration, spamDetected?: boolean, spamTicketNumber?: number, state?: email.exchange.ObjectStateEnum, taskPendingId?: number}): Promise<void>;
                             alias: {
                                 // GET /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/alias
                                 $get(): Promise<string[]>;
@@ -559,7 +559,7 @@ export interface Email{
                                 // POST /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/archive
                                 $post(params?: {quota?: number}): Promise<email.exchange.Task>;
                                 // PUT /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/archive
-                                $put(params?: {creationDate?: string, currentUsage?: number, guid?: string, quota?: number, state?: emailexchangeObjectStateEnum, taskPendingId?: number}): Promise<void>;
+                                $put(params?: {creationDate?: string, currentUsage?: number, guid?: string, quota?: number, state?: email.exchange.ObjectStateEnum, taskPendingId?: number}): Promise<void>;
                             }
                             changePassword: {
                                 // POST /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/changePassword
@@ -601,7 +601,7 @@ export interface Email{
                                 // GET /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/outlookURL
                                 $get(): Promise<email.exchange.OutlookUrl>;
                                 // POST /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/outlookURL
-                                $post(params: {language: emailexchangeLanguageEnum, version: emailexchangeOutlookVersionEnum}): Promise<email.exchange.Task>;
+                                $post(params: {language: email.exchange.LanguageEnum, version: email.exchange.OutlookVersionEnum}): Promise<email.exchange.Task>;
                             }
                             protocol: {
                                 // GET /email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/protocol
@@ -661,12 +661,12 @@ export interface Email{
                     }
                     device: {
                         // GET /email/exchange/{organizationName}/service/{exchangeService}/device
-                        $get(params?: {deviceState?: emailexchangeDeviceActiveSyncStateEnum, identity?: string, IMEI?: string}): Promise<string[]>;
+                        $get(params?: {deviceState?: email.exchange.DeviceActiveSyncStateEnum, identity?: string, IMEI?: string}): Promise<string[]>;
                         $(identity: string): {
                             // GET /email/exchange/{organizationName}/service/{exchangeService}/device/{identity}
                             $get(): Promise<email.exchange.exchangeServiceDevice>;
                             // PUT /email/exchange/{organizationName}/service/{exchangeService}/device/{identity}
-                            $put(params?: {IMEI?: string, creationDate?: string, deviceId?: string, deviceModel?: string, deviceState?: emailexchangeDeviceActiveSyncStateEnum, guid?: string, identity?: string, lastUpdate?: string, taskPendingId?: number}): Promise<void>;
+                            $put(params?: {IMEI?: string, creationDate?: string, deviceId?: string, deviceModel?: string, deviceState?: email.exchange.DeviceActiveSyncStateEnum, guid?: string, identity?: string, lastUpdate?: string, taskPendingId?: number}): Promise<void>;
                             clearDevice: {
                                 // POST /email/exchange/{organizationName}/service/{exchangeService}/device/{identity}/clearDevice
                                 $post(): Promise<email.exchange.Task>;
@@ -675,16 +675,16 @@ export interface Email{
                     }
                     domain: {
                         // GET /email/exchange/{organizationName}/service/{exchangeService}/domain
-                        $get(params?: {main?: boolean, state?: emailexchangeObjectStateEnum}): Promise<string[]>;
+                        $get(params?: {main?: boolean, state?: email.exchange.ObjectStateEnum}): Promise<string[]>;
                         // POST /email/exchange/{organizationName}/service/{exchangeService}/domain
-                        $post(params: {configureAutodiscover?: boolean, configureMx?: boolean, main?: boolean, mxRelay?: string, name: string, organization2010?: string, type: emailexchangeDomainTypeEnum}): Promise<email.exchange.Task>;
+                        $post(params: {configureAutodiscover?: boolean, configureMx?: boolean, main?: boolean, mxRelay?: string, name: string, organization2010?: string, type: email.exchange.DomainTypeEnum}): Promise<email.exchange.Task>;
                         $(domainName: string): {
                             // DELETE /email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}
                             $delete(): Promise<email.exchange.Task>;
                             // GET /email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}
                             $get(): Promise<email.exchange.Domain>;
                             // PUT /email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}
-                            $put(params?: {cnameToCheck?: string, domainAliases?: string[], domainValidated?: boolean, isAliasDomain?: boolean, main?: boolean, mxIsValid?: boolean, mxRecord?: string[], mxRelay?: string, name?: string, organization2010?: string, srvIsValid?: boolean, srvRecord?: string[], state?: emailexchangeObjectStateEnum, taskPendingId?: number, type?: emailexchangeDomainTypeEnum}): Promise<void>;
+                            $put(params?: {cnameToCheck?: string, domainAliases?: string[], domainValidated?: boolean, isAliasDomain?: boolean, main?: boolean, mxIsValid?: boolean, mxRecord?: string[], mxRelay?: string, name?: string, organization2010?: string, srvIsValid?: boolean, srvRecord?: string[], state?: email.exchange.ObjectStateEnum, taskPendingId?: number, type?: email.exchange.DomainTypeEnum}): Promise<void>;
                             disclaimer: {
                                 // DELETE /email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}/disclaimer
                                 $delete(): Promise<email.exchange.Task>;
@@ -712,25 +712,25 @@ export interface Email{
                             // GET /email/exchange/{organizationName}/service/{exchangeService}/externalContact/{externalEmailAddress}
                             $get(): Promise<email.exchange.exchangeExternalContact>;
                             // PUT /email/exchange/{organizationName}/service/{exchangeService}/externalContact/{externalEmailAddress}
-                            $put(params?: {creationDate?: string, displayName?: string, externalEmailAddress?: string, firstName?: string, hiddenFromGAL?: boolean, id?: number, initials?: string, lastName?: string, organization2010?: string, state?: emailexchangeObjectStateEnum, taskPendingId?: number}): Promise<void>;
+                            $put(params?: {creationDate?: string, displayName?: string, externalEmailAddress?: string, firstName?: string, hiddenFromGAL?: boolean, id?: number, initials?: string, lastName?: string, organization2010?: string, state?: email.exchange.ObjectStateEnum, taskPendingId?: number}): Promise<void>;
                         };
                     }
                     license: {
                         // GET /email/exchange/{organizationName}/service/{exchangeService}/license
-                        $get(params?: {fromDate?: string, license?: emailexchangeOvhLicenceEnum, toDate?: string}): Promise<email.exchange.DailyLicense[]>;
+                        $get(params?: {fromDate?: string, license?: email.exchange.OvhLicenceEnum, toDate?: string}): Promise<email.exchange.DailyLicense[]>;
                     }
                     mailingList: {
                         // GET /email/exchange/{organizationName}/service/{exchangeService}/mailingList
                         $get(params?: {mailingListAddress?: string}): Promise<string[]>;
                         // POST /email/exchange/{organizationName}/service/{exchangeService}/mailingList
-                        $post(params: {departRestriction: emailexchangeMailingListDepartRestrictionEnum, displayName?: string, hiddenFromGAL?: boolean, joinRestriction: emailexchangeMailingListJoinRestrictionEnum, mailingListAddress: string, maxReceiveSize?: number, maxSendSize?: number, senderAuthentification?: boolean}): Promise<email.exchange.Task>;
+                        $post(params: {departRestriction: email.exchange.MailingListDepartRestrictionEnum, displayName?: string, hiddenFromGAL?: boolean, joinRestriction: email.exchange.MailingListJoinRestrictionEnum, mailingListAddress: string, maxReceiveSize?: number, maxSendSize?: number, senderAuthentification?: boolean}): Promise<email.exchange.Task>;
                         $(mailingListAddress: string): {
                             // DELETE /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}
                             $delete(): Promise<email.exchange.Task>;
                             // GET /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}
                             $get(): Promise<email.exchange.mailingList>;
                             // PUT /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}
-                            $put(params?: {creationDate?: string, departRestriction?: emailexchangeMailingListDepartRestrictionEnum, displayName?: string, hiddenFromGAL?: boolean, joinRestriction?: emailexchangeMailingListJoinRestrictionEnum, lastUpdateDate?: string, mailingListAddress?: string, maxReceiveSize?: number, maxSendSize?: number, senderAuthentification?: boolean, spamDetected?: boolean, spamTicketNumber?: number, state?: emailexchangeObjectStateEnum, taskPendingId?: number}): Promise<void>;
+                            $put(params?: {creationDate?: string, departRestriction?: email.exchange.MailingListDepartRestrictionEnum, displayName?: string, hiddenFromGAL?: boolean, joinRestriction?: email.exchange.MailingListJoinRestrictionEnum, lastUpdateDate?: string, mailingListAddress?: string, maxReceiveSize?: number, maxSendSize?: number, senderAuthentification?: boolean, spamDetected?: boolean, spamTicketNumber?: number, state?: email.exchange.ObjectStateEnum, taskPendingId?: number}): Promise<void>;
                             alias: {
                                 // GET /email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}/alias
                                 $get(): Promise<string[]>;
@@ -811,13 +811,13 @@ export interface Email{
                     }
                     outlookAvailability: {
                         // GET /email/exchange/{organizationName}/service/{exchangeService}/outlookAvailability
-                        $get(params?: {outlookLanguage?: emailexchangeLanguageEnum, outlookVersion?: emailexchangeOutlookVersionEnum}): Promise<email.exchange.OutlookVersions[]>;
+                        $get(params?: {outlookLanguage?: email.exchange.LanguageEnum, outlookVersion?: email.exchange.OutlookVersionEnum}): Promise<email.exchange.OutlookVersions[]>;
                     }
                     protocol: {
                         // GET /email/exchange/{organizationName}/service/{exchangeService}/protocol
                         $get(): Promise<email.exchange.exchangeServiceProtocol>;
                         // PUT /email/exchange/{organizationName}/service/{exchangeService}/protocol
-                        $put(params?: {IMAP?: boolean, POP?: boolean, activeSync?: boolean, activeSyncPolicy?: emailexchangeActiveSyncPolicyEnum, creationDate?: string, lastUpdate?: string, taskPendingId?: number, webMail?: boolean}): Promise<void>;
+                        $put(params?: {IMAP?: boolean, POP?: boolean, activeSync?: boolean, activeSyncPolicy?: email.exchange.ActiveSyncPolicyEnum, creationDate?: string, lastUpdate?: string, taskPendingId?: number, webMail?: boolean}): Promise<void>;
                         activeSyncMailNotification: {
                             // GET /email/exchange/{organizationName}/service/{exchangeService}/protocol/activeSyncMailNotification
                             $get(): Promise<number[]>;
@@ -835,26 +835,26 @@ export interface Email{
                         // GET /email/exchange/{organizationName}/service/{exchangeService}/publicFolder
                         $get(params?: {path?: string}): Promise<string[]>;
                         // POST /email/exchange/{organizationName}/service/{exchangeService}/publicFolder
-                        $post(params: {anonymousPermission?: emailexchangePublicFolderRightTypeEnum, defaultPermission?: emailexchangePublicFolderRightTypeEnum, path: string, quota: number, type: emailexchangePublicFolderTypeEnum}): Promise<email.exchange.Task>;
+                        $post(params: {anonymousPermission?: email.exchange.PublicFolderRightTypeEnum, defaultPermission?: email.exchange.PublicFolderRightTypeEnum, path: string, quota: number, type: email.exchange.PublicFolderTypeEnum}): Promise<email.exchange.Task>;
                         $(path: string): {
                             // DELETE /email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}
                             $delete(): Promise<email.exchange.Task>;
                             // GET /email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}
                             $get(): Promise<email.exchange.publicFolder>;
                             // PUT /email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}
-                            $put(params?: {anonymousPermission?: emailexchangePublicFolderRightTypeEnum, creationDate?: string, defaultPermission?: emailexchangePublicFolderRightTypeEnum, hasSubFolders?: boolean, itemCount?: number, lastAccessTime?: string, lastModificationTime?: string, lastUserAccessTime?: string, lastUserModificationTime?: string, path?: string, quota?: number, state?: emailexchangeObjectStateEnum, taskPendingId?: number, totalItemSize?: number, type?: emailexchangePublicFolderTypeEnum}): Promise<void>;
+                            $put(params?: {anonymousPermission?: email.exchange.PublicFolderRightTypeEnum, creationDate?: string, defaultPermission?: email.exchange.PublicFolderRightTypeEnum, hasSubFolders?: boolean, itemCount?: number, lastAccessTime?: string, lastModificationTime?: string, lastUserAccessTime?: string, lastUserModificationTime?: string, path?: string, quota?: number, state?: email.exchange.ObjectStateEnum, taskPendingId?: number, totalItemSize?: number, type?: email.exchange.PublicFolderTypeEnum}): Promise<void>;
                             permission: {
                                 // GET /email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission
                                 $get(): Promise<number[]>;
                                 // POST /email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission
-                                $post(params: {accessRights: emailexchangePublicFolderRightTypeEnum, allowedAccountId: number}): Promise<email.exchange.Task>;
+                                $post(params: {accessRights: email.exchange.PublicFolderRightTypeEnum, allowedAccountId: number}): Promise<email.exchange.Task>;
                                 $(allowedAccountId: number): {
                                     // DELETE /email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission/{allowedAccountId}
                                     $delete(): Promise<email.exchange.Task>;
                                     // GET /email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission/{allowedAccountId}
                                     $get(): Promise<email.exchange.exchangePublicFolderPermission>;
                                     // PUT /email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission/{allowedAccountId}
-                                    $put(params?: {accessRights?: emailexchangePublicFolderRightTypeEnum, allowedAccountId?: number, creationDate?: string, state?: emailexchangeObjectStateEnum, taskPendingId?: number}): Promise<void>;
+                                    $put(params?: {accessRights?: email.exchange.PublicFolderRightTypeEnum, allowedAccountId?: number, creationDate?: string, state?: email.exchange.ObjectStateEnum, taskPendingId?: number}): Promise<void>;
                                 };
                             }
                         };
@@ -871,14 +871,14 @@ export interface Email{
                         // GET /email/exchange/{organizationName}/service/{exchangeService}/resourceAccount
                         $get(params?: {resourceEmailAddress?: string}): Promise<string[]>;
                         // POST /email/exchange/{organizationName}/service/{exchangeService}/resourceAccount
-                        $post(params: {addOrganizerToSubject?: boolean, allowConflict?: boolean, bookingWindow?: number, capacity: number, deleteComments?: boolean, deleteSubject?: boolean, displayName?: string, location?: string, maximumDuration?: number, resourceEmailAddress: string, showMeetingDetails?: emailexchangeShowMeetingDetailsEnum, type: emailexchangeResourceTypeEnum}): Promise<email.exchange.Task>;
+                        $post(params: {addOrganizerToSubject?: boolean, allowConflict?: boolean, bookingWindow?: number, capacity: number, deleteComments?: boolean, deleteSubject?: boolean, displayName?: string, location?: string, maximumDuration?: number, resourceEmailAddress: string, showMeetingDetails?: email.exchange.ShowMeetingDetailsEnum, type: email.exchange.ResourceTypeEnum}): Promise<email.exchange.Task>;
                         $(resourceEmailAddress: string): {
                             // DELETE /email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}
                             $delete(): Promise<email.exchange.Task>;
                             // GET /email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}
                             $get(): Promise<email.exchange.resourceAccount>;
                             // PUT /email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}
-                            $put(params?: {addOrganizerToSubject?: boolean, allowConflict?: boolean, bookingWindow?: number, capacity?: number, creationDate?: string, deleteComments?: boolean, deleteSubject?: boolean, displayName?: string, location?: string, maximumDuration?: number, resourceEmailAddress?: string, showMeetingDetails?: emailexchangeShowMeetingDetailsEnum, state?: emailexchangeObjectStateEnum, taskPendingId?: number, type?: emailexchangeResourceTypeEnum}): Promise<void>;
+                            $put(params?: {addOrganizerToSubject?: boolean, allowConflict?: boolean, bookingWindow?: number, capacity?: number, creationDate?: string, deleteComments?: boolean, deleteSubject?: boolean, displayName?: string, location?: string, maximumDuration?: number, resourceEmailAddress?: string, showMeetingDetails?: email.exchange.ShowMeetingDetailsEnum, state?: email.exchange.ObjectStateEnum, taskPendingId?: number, type?: email.exchange.ResourceTypeEnum}): Promise<void>;
                             delegate: {
                                 // GET /email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}/delegate
                                 $get(): Promise<number[]>;
@@ -897,26 +897,26 @@ export interface Email{
                         // GET /email/exchange/{organizationName}/service/{exchangeService}/server
                         $get(): Promise<email.exchange.Server>;
                         // PUT /email/exchange/{organizationName}/service/{exchangeService}/server
-                        $put(params?: {commercialVersion?: emailexchangeexchangeCommercialVersionEnum, currentDiskUsage?: number, diskSize?: number, individual2010?: boolean, ip?: string, ipV6?: string, isAValid?: boolean, isAaaaValid?: boolean, isPtrV6Valid?: boolean, isPtrValid?: boolean, owaMfa?: boolean, state?: emailexchangeServerStateEnum, taskPendingId?: number, version?: number}): Promise<void>;
+                        $put(params?: {commercialVersion?: email.exchange.exchangeCommercialVersionEnum, currentDiskUsage?: number, diskSize?: number, individual2010?: boolean, ip?: string, ipV6?: string, isAValid?: boolean, isAaaaValid?: boolean, isPtrV6Valid?: boolean, isPtrValid?: boolean, owaMfa?: boolean, state?: email.exchange.ServerStateEnum, taskPendingId?: number, version?: number}): Promise<void>;
                     }
                     serviceInfos: {
                         // GET /email/exchange/{organizationName}/service/{exchangeService}/serviceInfos
                         $get(): Promise<services.Service>;
                         // PUT /email/exchange/{organizationName}/service/{exchangeService}/serviceInfos
-                        $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}): Promise<void>;
+                        $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
                     }
                     sharedAccount: {
                         // GET /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount
                         $get(params?: {sharedEmailAddress?: string}): Promise<string[]>;
                         // POST /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount
-                        $post(params: {displayName?: string, firstName?: string, hiddenFromGAL?: boolean, initials?: string, lastName?: string, mailingFilter?: emailexchangeMailingFilterEnum[], quota: number, sharedEmailAddress: string}): Promise<email.exchange.Task>;
+                        $post(params: {displayName?: string, firstName?: string, hiddenFromGAL?: boolean, initials?: string, lastName?: string, mailingFilter?: email.exchange.MailingFilterEnum[], quota: number, sharedEmailAddress: string}): Promise<email.exchange.Task>;
                         $(sharedEmailAddress: string): {
                             // DELETE /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}
                             $delete(): Promise<email.exchange.Task>;
                             // GET /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}
                             $get(): Promise<email.exchange.sharedAccount>;
                             // PUT /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}
-                            $put(params?: {creationDate?: string, currentUsage?: number, displayName?: string, firstName?: string, hiddenFromGAL?: boolean, id?: number, initials?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, mailingFilter?: emailexchangeMailingFilterEnum[], quota?: number, sharedEmailAddress?: string, spamDetected?: boolean, spamTicketNumber?: number, state?: emailexchangeObjectStateEnum, taskPendingId?: number}): Promise<void>;
+                            $put(params?: {creationDate?: string, currentUsage?: number, displayName?: string, firstName?: string, hiddenFromGAL?: boolean, id?: number, initials?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, mailingFilter?: email.exchange.MailingFilterEnum[], quota?: number, sharedEmailAddress?: string, spamDetected?: boolean, spamTicketNumber?: number, state?: email.exchange.ObjectStateEnum, taskPendingId?: number}): Promise<void>;
                             fullAccess: {
                                 // GET /email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/fullAccess
                                 $get(): Promise<number[]>;
@@ -1007,7 +1007,7 @@ export interface Email{
    * List the email.exchange.Account objects
    * Accounts associated to this exchange service
    */
-  get(path: '/email/exchange/{organizationName}/service/{exchangeService}/account'): (params: {exchangeService: string, organizationName: string, accountLicense?: emailexchangeOvhLicenceEnum, id?: number, primaryEmailAddress?: string}) => Promise<string[]>;
+  get(path: '/email/exchange/{organizationName}/service/{exchangeService}/account'): (params: {exchangeService: string, organizationName: string, accountLicense?: email.exchange.OvhLicenceEnum, id?: number, primaryEmailAddress?: string}) => Promise<string[]>;
   /**
    * Exchange mailbox
    * Get this object properties
@@ -1102,7 +1102,7 @@ export interface Email{
    * List the email.exchange.exchangeServiceDevice objects
    * List of your ActiveSync devices registered on this Exchange service
    */
-  get(path: '/email/exchange/{organizationName}/service/{exchangeService}/device'): (params: {exchangeService: string, organizationName: string, deviceState?: emailexchangeDeviceActiveSyncStateEnum, identity?: string, IMEI?: string}) => Promise<string[]>;
+  get(path: '/email/exchange/{organizationName}/service/{exchangeService}/device'): (params: {exchangeService: string, organizationName: string, deviceState?: email.exchange.DeviceActiveSyncStateEnum, identity?: string, IMEI?: string}) => Promise<string[]>;
   /**
    * Get the list of your ActiveSync devices registered on this Exchange service
    * Get this object properties
@@ -1112,7 +1112,7 @@ export interface Email{
    * List the email.exchange.Domain objects
    * Domains associated to this service
    */
-  get(path: '/email/exchange/{organizationName}/service/{exchangeService}/domain'): (params: {exchangeService: string, organizationName: string, main?: boolean, state?: emailexchangeObjectStateEnum}) => Promise<string[]>;
+  get(path: '/email/exchange/{organizationName}/service/{exchangeService}/domain'): (params: {exchangeService: string, organizationName: string, main?: boolean, state?: email.exchange.ObjectStateEnum}) => Promise<string[]>;
   /**
    * Exchange domain
    * Get this object properties
@@ -1142,7 +1142,7 @@ export interface Email{
    * license operations
    * Get active licenses for specific period of time
    */
-  get(path: '/email/exchange/{organizationName}/service/{exchangeService}/license'): (params: {exchangeService: string, organizationName: string, fromDate?: string, license?: emailexchangeOvhLicenceEnum, toDate?: string}) => Promise<email.exchange.DailyLicense[]>;
+  get(path: '/email/exchange/{organizationName}/service/{exchangeService}/license'): (params: {exchangeService: string, organizationName: string, fromDate?: string, license?: email.exchange.OvhLicenceEnum, toDate?: string}) => Promise<email.exchange.DailyLicense[]>;
   /**
    * List the email.exchange.mailingList objects
    * Mailing list for this service
@@ -1217,7 +1217,7 @@ export interface Email{
    * outlookAvailability operations
    * Show available outlooks
    */
-  get(path: '/email/exchange/{organizationName}/service/{exchangeService}/outlookAvailability'): (params: {exchangeService: string, organizationName: string, outlookLanguage?: emailexchangeLanguageEnum, outlookVersion?: emailexchangeOutlookVersionEnum}) => Promise<email.exchange.OutlookVersions[]>;
+  get(path: '/email/exchange/{organizationName}/service/{exchangeService}/outlookAvailability'): (params: {exchangeService: string, organizationName: string, outlookLanguage?: email.exchange.LanguageEnum, outlookVersion?: email.exchange.OutlookVersionEnum}) => Promise<email.exchange.OutlookVersions[]>;
   /**
    * Protocol access policy for this Exchange service
    * Get this object properties
@@ -1357,17 +1357,17 @@ export interface Email{
    * Exchange service
    * Alter this object properties
    */
-  put(path: '/email/exchange/{organizationName}/service/{exchangeService}'): (params: {exchangeService: string, organizationName: string, complexityEnabled?: boolean, displayName?: string, domain?: string, hostname?: string, lastUpdateDate?: string, lockoutDuration?: number, lockoutObservationWindow?: number, lockoutThreshold?: number, maxPasswordAge?: number, maxReceiveSize?: number, maxSendSize?: number, minPasswordAge?: number, minPasswordLength?: number, offer?: emailexchangeServiceOfferEnum, passwordHistoryCount?: number, spamAndVirusConfiguration?: emailexchangespamAndVirusConfiguration, sslExpirationDate?: string, state?: emailexchangeServiceStateEnum, taskPendingId?: number, webUrl?: string}) => Promise<void>;
+  put(path: '/email/exchange/{organizationName}/service/{exchangeService}'): (params: {exchangeService: string, organizationName: string, complexityEnabled?: boolean, displayName?: string, domain?: string, hostname?: string, lastUpdateDate?: string, lockoutDuration?: number, lockoutObservationWindow?: number, lockoutThreshold?: number, maxPasswordAge?: number, maxReceiveSize?: number, maxSendSize?: number, minPasswordAge?: number, minPasswordLength?: number, offer?: email.exchange.ServiceOfferEnum, passwordHistoryCount?: number, spamAndVirusConfiguration?: email.exchange.spamAndVirusConfiguration, sslExpirationDate?: string, state?: email.exchange.ServiceStateEnum, taskPendingId?: number, webUrl?: string}) => Promise<void>;
   /**
    * Exchange mailbox
    * Alter this object properties
    */
-  put(path: '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}'): (params: {exchangeService: string, organizationName: string, primaryEmailAddress: string, SAMAccountName?: string, accountLicense?: emailexchangeOvhLicenceEnum, company?: string, configured?: boolean, creationDate?: string, currentUsage?: number, deleteAtExpiration?: boolean, deleteOutlookAtExpiration?: boolean, displayName?: string, domain?: string, exchangeGuid?: string, expirationDate?: string, expirationOutlookDate?: string, firstName?: string, guid?: string, hiddenFromGAL?: boolean, id?: number, initial?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, lastUpdateDate?: string, litigation?: boolean, litigationPeriod?: number, login?: string, mailingFilter?: emailexchangeMailingFilterEnum[], outlookLicense?: boolean, owaLimited?: boolean, passwordLastUpdate?: string, quota?: number, renewOutlookPeriod?: emailexchangerenewPeriodEnum, renewPeriod?: emailexchangerenewPeriodEnum, spamAndVirusConfiguration?: emailexchangespamAndVirusConfiguration, spamDetected?: boolean, spamTicketNumber?: number, state?: emailexchangeObjectStateEnum, taskPendingId?: number}) => Promise<void>;
+  put(path: '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}'): (params: {exchangeService: string, organizationName: string, primaryEmailAddress: string, SAMAccountName?: string, accountLicense?: email.exchange.OvhLicenceEnum, company?: string, configured?: boolean, creationDate?: string, currentUsage?: number, deleteAtExpiration?: boolean, deleteOutlookAtExpiration?: boolean, displayName?: string, domain?: string, exchangeGuid?: string, expirationDate?: string, expirationOutlookDate?: string, firstName?: string, guid?: string, hiddenFromGAL?: boolean, id?: number, initial?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, lastUpdateDate?: string, litigation?: boolean, litigationPeriod?: number, login?: string, mailingFilter?: email.exchange.MailingFilterEnum[], outlookLicense?: boolean, owaLimited?: boolean, passwordLastUpdate?: string, quota?: number, renewOutlookPeriod?: email.exchange.renewPeriodEnum, renewPeriod?: email.exchange.renewPeriodEnum, spamAndVirusConfiguration?: email.exchange.spamAndVirusConfiguration, spamDetected?: boolean, spamTicketNumber?: number, state?: email.exchange.ObjectStateEnum, taskPendingId?: number}) => Promise<void>;
   /**
    * Exchange Account Archive
    * Alter this object properties
    */
-  put(path: '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/archive'): (params: {exchangeService: string, organizationName: string, primaryEmailAddress: string, creationDate?: string, currentUsage?: number, guid?: string, quota?: number, state?: emailexchangeObjectStateEnum, taskPendingId?: number}) => Promise<void>;
+  put(path: '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/archive'): (params: {exchangeService: string, organizationName: string, primaryEmailAddress: string, creationDate?: string, currentUsage?: number, guid?: string, quota?: number, state?: email.exchange.ObjectStateEnum, taskPendingId?: number}) => Promise<void>;
   /**
    * Get protocol status on that mailbox
    * Alter this object properties
@@ -1377,12 +1377,12 @@ export interface Email{
    * Get the list of your ActiveSync devices registered on this Exchange service
    * Alter this object properties
    */
-  put(path: '/email/exchange/{organizationName}/service/{exchangeService}/device/{identity}'): (params: {exchangeService: string, identity: string, organizationName: string, IMEI?: string, creationDate?: string, deviceId?: string, deviceModel?: string, deviceState?: emailexchangeDeviceActiveSyncStateEnum, guid?: string, lastUpdate?: string, taskPendingId?: number}) => Promise<void>;
+  put(path: '/email/exchange/{organizationName}/service/{exchangeService}/device/{identity}'): (params: {exchangeService: string, identity: string, organizationName: string, IMEI?: string, creationDate?: string, deviceId?: string, deviceModel?: string, deviceState?: email.exchange.DeviceActiveSyncStateEnum, guid?: string, lastUpdate?: string, taskPendingId?: number}) => Promise<void>;
   /**
    * Exchange domain
    * Alter this object properties
    */
-  put(path: '/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}'): (params: {domainName: string, exchangeService: string, organizationName: string, cnameToCheck?: string, domainAliases?: string[], domainValidated?: boolean, isAliasDomain?: boolean, main?: boolean, mxIsValid?: boolean, mxRecord?: string[], mxRelay?: string, name?: string, organization2010?: string, srvIsValid?: boolean, srvRecord?: string[], state?: emailexchangeObjectStateEnum, taskPendingId?: number, type?: emailexchangeDomainTypeEnum}) => Promise<void>;
+  put(path: '/email/exchange/{organizationName}/service/{exchangeService}/domain/{domainName}'): (params: {domainName: string, exchangeService: string, organizationName: string, cnameToCheck?: string, domainAliases?: string[], domainValidated?: boolean, isAliasDomain?: boolean, main?: boolean, mxIsValid?: boolean, mxRecord?: string[], mxRelay?: string, name?: string, organization2010?: string, srvIsValid?: boolean, srvRecord?: string[], state?: email.exchange.ObjectStateEnum, taskPendingId?: number, type?: email.exchange.DomainTypeEnum}) => Promise<void>;
   /**
    * Exchange organization disclaimer
    * Alter this object properties
@@ -1392,52 +1392,52 @@ export interface Email{
    * External contact for this exchange service
    * Alter this object properties
    */
-  put(path: '/email/exchange/{organizationName}/service/{exchangeService}/externalContact/{externalEmailAddress}'): (params: {exchangeService: string, externalEmailAddress: string, organizationName: string, creationDate?: string, displayName?: string, firstName?: string, hiddenFromGAL?: boolean, id?: number, initials?: string, lastName?: string, organization2010?: string, state?: emailexchangeObjectStateEnum, taskPendingId?: number}) => Promise<void>;
+  put(path: '/email/exchange/{organizationName}/service/{exchangeService}/externalContact/{externalEmailAddress}'): (params: {exchangeService: string, externalEmailAddress: string, organizationName: string, creationDate?: string, displayName?: string, firstName?: string, hiddenFromGAL?: boolean, id?: number, initials?: string, lastName?: string, organization2010?: string, state?: email.exchange.ObjectStateEnum, taskPendingId?: number}) => Promise<void>;
   /**
    * Mailing list
    * Alter this object properties
    */
-  put(path: '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}'): (params: {exchangeService: string, mailingListAddress: string, organizationName: string, creationDate?: string, departRestriction?: emailexchangeMailingListDepartRestrictionEnum, displayName?: string, hiddenFromGAL?: boolean, joinRestriction?: emailexchangeMailingListJoinRestrictionEnum, lastUpdateDate?: string, maxReceiveSize?: number, maxSendSize?: number, senderAuthentification?: boolean, spamDetected?: boolean, spamTicketNumber?: number, state?: emailexchangeObjectStateEnum, taskPendingId?: number}) => Promise<void>;
+  put(path: '/email/exchange/{organizationName}/service/{exchangeService}/mailingList/{mailingListAddress}'): (params: {exchangeService: string, mailingListAddress: string, organizationName: string, creationDate?: string, departRestriction?: email.exchange.MailingListDepartRestrictionEnum, displayName?: string, hiddenFromGAL?: boolean, joinRestriction?: email.exchange.MailingListJoinRestrictionEnum, lastUpdateDate?: string, maxReceiveSize?: number, maxSendSize?: number, senderAuthentification?: boolean, spamDetected?: boolean, spamTicketNumber?: number, state?: email.exchange.ObjectStateEnum, taskPendingId?: number}) => Promise<void>;
   /**
    * Protocol access policy for this Exchange service
    * Alter this object properties
    */
-  put(path: '/email/exchange/{organizationName}/service/{exchangeService}/protocol'): (params: {exchangeService: string, organizationName: string, IMAP?: boolean, POP?: boolean, activeSync?: boolean, activeSyncPolicy?: emailexchangeActiveSyncPolicyEnum, creationDate?: string, lastUpdate?: string, taskPendingId?: number, webMail?: boolean}) => Promise<void>;
+  put(path: '/email/exchange/{organizationName}/service/{exchangeService}/protocol'): (params: {exchangeService: string, organizationName: string, IMAP?: boolean, POP?: boolean, activeSync?: boolean, activeSyncPolicy?: email.exchange.ActiveSyncPolicyEnum, creationDate?: string, lastUpdate?: string, taskPendingId?: number, webMail?: boolean}) => Promise<void>;
   /**
    * Exchange organization public folder
    * Alter this object properties
    */
-  put(path: '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}'): (params: {exchangeService: string, organizationName: string, path: string, anonymousPermission?: emailexchangePublicFolderRightTypeEnum, creationDate?: string, defaultPermission?: emailexchangePublicFolderRightTypeEnum, hasSubFolders?: boolean, itemCount?: number, lastAccessTime?: string, lastModificationTime?: string, lastUserAccessTime?: string, lastUserModificationTime?: string, quota?: number, state?: emailexchangeObjectStateEnum, taskPendingId?: number, totalItemSize?: number, type?: emailexchangePublicFolderTypeEnum}) => Promise<void>;
+  put(path: '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}'): (params: {exchangeService: string, organizationName: string, path: string, anonymousPermission?: email.exchange.PublicFolderRightTypeEnum, creationDate?: string, defaultPermission?: email.exchange.PublicFolderRightTypeEnum, hasSubFolders?: boolean, itemCount?: number, lastAccessTime?: string, lastModificationTime?: string, lastUserAccessTime?: string, lastUserModificationTime?: string, quota?: number, state?: email.exchange.ObjectStateEnum, taskPendingId?: number, totalItemSize?: number, type?: email.exchange.PublicFolderTypeEnum}) => Promise<void>;
   /**
    * Exchange organization public folder permission
    * Alter this object properties
    */
-  put(path: '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission/{allowedAccountId}'): (params: {allowedAccountId: number, exchangeService: string, organizationName: string, path: string, accessRights?: emailexchangePublicFolderRightTypeEnum, creationDate?: string, state?: emailexchangeObjectStateEnum, taskPendingId?: number}) => Promise<void>;
+  put(path: '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission/{allowedAccountId}'): (params: {allowedAccountId: number, exchangeService: string, organizationName: string, path: string, accessRights?: email.exchange.PublicFolderRightTypeEnum, creationDate?: string, state?: email.exchange.ObjectStateEnum, taskPendingId?: number}) => Promise<void>;
   /**
    * Exchange resource account
    * Alter this object properties
    */
-  put(path: '/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}'): (params: {exchangeService: string, organizationName: string, resourceEmailAddress: string, addOrganizerToSubject?: boolean, allowConflict?: boolean, bookingWindow?: number, capacity?: number, creationDate?: string, deleteComments?: boolean, deleteSubject?: boolean, displayName?: string, location?: string, maximumDuration?: number, showMeetingDetails?: emailexchangeShowMeetingDetailsEnum, state?: emailexchangeObjectStateEnum, taskPendingId?: number, type?: emailexchangeResourceTypeEnum}) => Promise<void>;
+  put(path: '/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount/{resourceEmailAddress}'): (params: {exchangeService: string, organizationName: string, resourceEmailAddress: string, addOrganizerToSubject?: boolean, allowConflict?: boolean, bookingWindow?: number, capacity?: number, creationDate?: string, deleteComments?: boolean, deleteSubject?: boolean, displayName?: string, location?: string, maximumDuration?: number, showMeetingDetails?: email.exchange.ShowMeetingDetailsEnum, state?: email.exchange.ObjectStateEnum, taskPendingId?: number, type?: email.exchange.ResourceTypeEnum}) => Promise<void>;
   /**
    * Exchange server
    * Alter this object properties
    */
-  put(path: '/email/exchange/{organizationName}/service/{exchangeService}/server'): (params: {exchangeService: string, organizationName: string, commercialVersion?: emailexchangeexchangeCommercialVersionEnum, currentDiskUsage?: number, diskSize?: number, individual2010?: boolean, ip?: string, ipV6?: string, isAValid?: boolean, isAaaaValid?: boolean, isPtrV6Valid?: boolean, isPtrValid?: boolean, owaMfa?: boolean, state?: emailexchangeServerStateEnum, taskPendingId?: number, version?: number}) => Promise<void>;
+  put(path: '/email/exchange/{organizationName}/service/{exchangeService}/server'): (params: {exchangeService: string, organizationName: string, commercialVersion?: email.exchange.exchangeCommercialVersionEnum, currentDiskUsage?: number, diskSize?: number, individual2010?: boolean, ip?: string, ipV6?: string, isAValid?: boolean, isAaaaValid?: boolean, isPtrV6Valid?: boolean, isPtrValid?: boolean, owaMfa?: boolean, state?: email.exchange.ServerStateEnum, taskPendingId?: number, version?: number}) => Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/email/exchange/{organizationName}/service/{exchangeService}/serviceInfos'): (params: {exchangeService: string, organizationName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}) => Promise<void>;
+  put(path: '/email/exchange/{organizationName}/service/{exchangeService}/serviceInfos'): (params: {exchangeService: string, organizationName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
   /**
    * Exchange shared mailbox
    * Alter this object properties
    */
-  put(path: '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}'): (params: {exchangeService: string, organizationName: string, sharedEmailAddress: string, creationDate?: string, currentUsage?: number, displayName?: string, firstName?: string, hiddenFromGAL?: boolean, id?: number, initials?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, mailingFilter?: emailexchangeMailingFilterEnum[], quota?: number, spamDetected?: boolean, spamTicketNumber?: number, state?: emailexchangeObjectStateEnum, taskPendingId?: number}) => Promise<void>;
+  put(path: '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}'): (params: {exchangeService: string, organizationName: string, sharedEmailAddress: string, creationDate?: string, currentUsage?: number, displayName?: string, firstName?: string, hiddenFromGAL?: boolean, id?: number, initials?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, mailingFilter?: email.exchange.MailingFilterEnum[], quota?: number, spamDetected?: boolean, spamTicketNumber?: number, state?: email.exchange.ObjectStateEnum, taskPendingId?: number}) => Promise<void>;
   /**
    * List the email.exchange.Account objects
    * Create new mailbox in exchange server
    */
-  post(path: '/email/exchange/{organizationName}/service/{exchangeService}/account'): (params: {exchangeService: string, organizationName: string, company?: string, displayName?: string, domain: string, firstName?: string, hiddenFromGAL?: boolean, initials?: string, lastName?: string, license: emailexchangeOvhLicenceEnum, litigation?: boolean, litigationPeriod?: number, login: string, mailingFilter?: emailexchangeMailingFilterEnum[], outlookLicense?: boolean, password: string, SAMAccountName?: string, spamAndVirusConfiguration?: emailexchangespamAndVirusConfiguration}) => Promise<email.exchange.Task>;
+  post(path: '/email/exchange/{organizationName}/service/{exchangeService}/account'): (params: {exchangeService: string, organizationName: string, company?: string, displayName?: string, domain: string, firstName?: string, hiddenFromGAL?: boolean, initials?: string, lastName?: string, license: email.exchange.OvhLicenceEnum, litigation?: boolean, litigationPeriod?: number, login: string, mailingFilter?: email.exchange.MailingFilterEnum[], outlookLicense?: boolean, password: string, SAMAccountName?: string, spamAndVirusConfiguration?: email.exchange.spamAndVirusConfiguration}) => Promise<email.exchange.Task>;
   /**
    * List the email.exchange.exchangeAccountAlias objects
    * Create new alias
@@ -1477,7 +1477,7 @@ export interface Email{
    * Outlook url
    * Generate outlook url
    */
-  post(path: '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/outlookURL'): (params: {exchangeService: string, organizationName: string, primaryEmailAddress: string, language: emailexchangeLanguageEnum, version: emailexchangeOutlookVersionEnum}) => Promise<email.exchange.Task>;
+  post(path: '/email/exchange/{organizationName}/service/{exchangeService}/account/{primaryEmailAddress}/outlookURL'): (params: {exchangeService: string, organizationName: string, primaryEmailAddress: string, language: email.exchange.LanguageEnum, version: email.exchange.OutlookVersionEnum}) => Promise<email.exchange.Task>;
   /**
    * List the email.exchange.exchangeAccountSendAs objects
    * Allow another user to send mails from this mailbox
@@ -1512,7 +1512,7 @@ export interface Email{
    * List the email.exchange.Domain objects
    * Create new domain in exchange services
    */
-  post(path: '/email/exchange/{organizationName}/service/{exchangeService}/domain'): (params: {exchangeService: string, organizationName: string, configureAutodiscover?: boolean, configureMx?: boolean, main?: boolean, mxRelay?: string, name: string, organization2010?: string, type: emailexchangeDomainTypeEnum}) => Promise<email.exchange.Task>;
+  post(path: '/email/exchange/{organizationName}/service/{exchangeService}/domain'): (params: {exchangeService: string, organizationName: string, configureAutodiscover?: boolean, configureMx?: boolean, main?: boolean, mxRelay?: string, name: string, organization2010?: string, type: email.exchange.DomainTypeEnum}) => Promise<email.exchange.Task>;
   /**
    * Exchange organization disclaimer
    * Create organization disclaimer of each email
@@ -1527,7 +1527,7 @@ export interface Email{
    * List the email.exchange.mailingList objects
    * Add mailing list
    */
-  post(path: '/email/exchange/{organizationName}/service/{exchangeService}/mailingList'): (params: {exchangeService: string, organizationName: string, departRestriction: emailexchangeMailingListDepartRestrictionEnum, displayName?: string, hiddenFromGAL?: boolean, joinRestriction: emailexchangeMailingListJoinRestrictionEnum, mailingListAddress: string, maxReceiveSize?: number, maxSendSize?: number, senderAuthentification?: boolean}) => Promise<email.exchange.Task>;
+  post(path: '/email/exchange/{organizationName}/service/{exchangeService}/mailingList'): (params: {exchangeService: string, organizationName: string, departRestriction: email.exchange.MailingListDepartRestrictionEnum, displayName?: string, hiddenFromGAL?: boolean, joinRestriction: email.exchange.MailingListJoinRestrictionEnum, mailingListAddress: string, maxReceiveSize?: number, maxSendSize?: number, senderAuthentification?: boolean}) => Promise<email.exchange.Task>;
   /**
    * List the email.exchange.exchangeMailingListAlias objects
    * Create new alias
@@ -1567,12 +1567,12 @@ export interface Email{
    * List the email.exchange.publicFolder objects
    * Create organization public folder
    */
-  post(path: '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder'): (params: {exchangeService: string, organizationName: string, anonymousPermission?: emailexchangePublicFolderRightTypeEnum, defaultPermission?: emailexchangePublicFolderRightTypeEnum, path: string, quota: number, type: emailexchangePublicFolderTypeEnum}) => Promise<email.exchange.Task>;
+  post(path: '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder'): (params: {exchangeService: string, organizationName: string, anonymousPermission?: email.exchange.PublicFolderRightTypeEnum, defaultPermission?: email.exchange.PublicFolderRightTypeEnum, path: string, quota: number, type: email.exchange.PublicFolderTypeEnum}) => Promise<email.exchange.Task>;
   /**
    * List the email.exchange.exchangePublicFolderPermission objects
    * Create public folder permission
    */
-  post(path: '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission'): (params: {exchangeService: string, organizationName: string, path: string, accessRights: emailexchangePublicFolderRightTypeEnum, allowedAccountId: number}) => Promise<email.exchange.Task>;
+  post(path: '/email/exchange/{organizationName}/service/{exchangeService}/publicFolder/{path}/permission'): (params: {exchangeService: string, organizationName: string, path: string, accessRights: email.exchange.PublicFolderRightTypeEnum, allowedAccountId: number}) => Promise<email.exchange.Task>;
   /**
    * renewSSL operations
    * Renew SSL if it will expire in next 30 days
@@ -1582,7 +1582,7 @@ export interface Email{
    * List the email.exchange.resourceAccount objects
    * create new resource account in exchange server
    */
-  post(path: '/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount'): (params: {exchangeService: string, organizationName: string, addOrganizerToSubject?: boolean, allowConflict?: boolean, bookingWindow?: number, capacity: number, deleteComments?: boolean, deleteSubject?: boolean, displayName?: string, location?: string, maximumDuration?: number, resourceEmailAddress: string, showMeetingDetails?: emailexchangeShowMeetingDetailsEnum, type: emailexchangeResourceTypeEnum}) => Promise<email.exchange.Task>;
+  post(path: '/email/exchange/{organizationName}/service/{exchangeService}/resourceAccount'): (params: {exchangeService: string, organizationName: string, addOrganizerToSubject?: boolean, allowConflict?: boolean, bookingWindow?: number, capacity: number, deleteComments?: boolean, deleteSubject?: boolean, displayName?: string, location?: string, maximumDuration?: number, resourceEmailAddress: string, showMeetingDetails?: email.exchange.ShowMeetingDetailsEnum, type: email.exchange.ResourceTypeEnum}) => Promise<email.exchange.Task>;
   /**
    * List the email.exchange.exchangeResourceAccountDelegate objects
    * add new resource account delegate in exchange server
@@ -1592,7 +1592,7 @@ export interface Email{
    * List the email.exchange.sharedAccount objects
    * Create new shared mailbox in exchange server
    */
-  post(path: '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount'): (params: {exchangeService: string, organizationName: string, displayName?: string, firstName?: string, hiddenFromGAL?: boolean, initials?: string, lastName?: string, mailingFilter?: emailexchangeMailingFilterEnum[], quota: number, sharedEmailAddress: string}) => Promise<email.exchange.Task>;
+  post(path: '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount'): (params: {exchangeService: string, organizationName: string, displayName?: string, firstName?: string, hiddenFromGAL?: boolean, initials?: string, lastName?: string, mailingFilter?: email.exchange.MailingFilterEnum[], quota: number, sharedEmailAddress: string}) => Promise<email.exchange.Task>;
   /**
    * List the email.exchange.exchangeSharedAccountFullAccess objects
    * Allow full access to a user
@@ -1749,34 +1749,3 @@ export interface Email{
    */
   delete(path: '/email/exchange/{organizationName}/service/{exchangeService}/sharedAccount/{sharedEmailAddress}/sendOnBehalfTo/{allowedAccountId}'): (params: {allowedAccountId: number, exchangeService: string, organizationName: string, sharedEmailAddress: string}) => Promise<email.exchange.Task>;
 }
-/**
- * Extra Alias to bypass relativer namespace colitions
- */
-type emailexchangeOvhLicenceEnum = email.exchange.OvhLicenceEnum;
-type emailexchangeMailingFilterEnum = email.exchange.MailingFilterEnum;
-type emailexchangerenewPeriodEnum = email.exchange.renewPeriodEnum;
-type emailexchangespamAndVirusConfiguration = email.exchange.spamAndVirusConfiguration;
-type emailexchangeObjectStateEnum = email.exchange.ObjectStateEnum;
-type emailexchangeAccountLicense = email.exchange.AccountLicense;
-type emailexchangeDomainTypeEnum = email.exchange.DomainTypeEnum;
-type emailexchangeServiceOfferEnum = email.exchange.ServiceOfferEnum;
-type emailexchangeServiceStateEnum = email.exchange.ServiceStateEnum;
-type emailexchangeLanguageEnum = email.exchange.LanguageEnum;
-type emailexchangeOutlookVersionEnum = email.exchange.OutlookVersionEnum;
-type emailexchangeexchangeCommercialVersionEnum = email.exchange.exchangeCommercialVersionEnum;
-type emailexchangeServerStateEnum = email.exchange.ServerStateEnum;
-type emailexchangeTaskFunctionEnum = email.exchange.TaskFunctionEnum;
-type emailexchangeTaskStatusEnum = email.exchange.TaskStatusEnum;
-type emailexchangePublicFolderRightTypeEnum = email.exchange.PublicFolderRightTypeEnum;
-type emailexchangeactiveSyncNotificationStateEnum = email.exchange.activeSyncNotificationStateEnum;
-type emailexchangeauthorizedIpStatusEnum = email.exchange.authorizedIpStatusEnum;
-type emailexchangeDeviceActiveSyncStateEnum = email.exchange.DeviceActiveSyncStateEnum;
-type emailexchangeActiveSyncPolicyEnum = email.exchange.ActiveSyncPolicyEnum;
-type emailexchangeMailingListDepartRestrictionEnum = email.exchange.MailingListDepartRestrictionEnum;
-type emailexchangeMailingListJoinRestrictionEnum = email.exchange.MailingListJoinRestrictionEnum;
-type emailexchangePublicFolderTypeEnum = email.exchange.PublicFolderTypeEnum;
-type emailexchangeShowMeetingDetailsEnum = email.exchange.ShowMeetingDetailsEnum;
-type emailexchangeResourceTypeEnum = email.exchange.ResourceTypeEnum;
-type serviceRenewType = service.RenewType;
-type serviceRenewalTypeEnum = service.RenewalTypeEnum;
-type serviceStateEnum = service.StateEnum;

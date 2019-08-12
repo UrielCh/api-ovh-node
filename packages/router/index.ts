@@ -10,9 +10,9 @@ export namespace router {
         id: number;
         newDestinationNet: string;
         newDestinationPort?: number;
-        protocol: routerProtocolEnum;
+        protocol: router.ProtocolEnum;
         sourceNet?: string;
-        status: routerStatusEnum;
+        status: router.StatusEnum;
     }
     // type fullname: router.IpStatusEnum
     export type IpStatusEnum = "blacklisted" | "deleted" | "free" | "installing" | "ok" | "quarantined" | "removing" | "suspended"
@@ -22,7 +22,7 @@ export namespace router {
         description?: string;
         id: number;
         ipNet: string;
-        status: routerIpStatusEnum;
+        status: router.IpStatusEnum;
         vlanTag?: number;
     }
     // type fullname: router.PrivLinkReqActionEnum
@@ -35,19 +35,19 @@ export namespace router {
         id: number;
         name: string;
         peerServiceName: string;
-        status: routerStatusEnum;
+        status: router.StatusEnum;
     }
     // interface fullName: router.PrivateLinkRequest.PrivateLinkRequest
     export interface PrivateLinkRequest {
         creationDate: string;
-        status: routerPrivLinkReqStatusEnum;
+        status: router.PrivLinkReqStatusEnum;
     }
     // interface fullName: router.PrivateLinkRoute.PrivateLinkRoute
     export interface PrivateLinkRoute {
         creationDate: string;
         id: number;
         network: string;
-        status: routerStatusEnum;
+        status: router.StatusEnum;
     }
     // type fullname: router.ProtocolEnum
     export type ProtocolEnum = "any" | "tcp" | "udp"
@@ -55,7 +55,7 @@ export namespace router {
     export interface Router {
         name: string;
         service: string;
-        status: routerStatusEnum;
+        status: router.StatusEnum;
     }
     // interface fullName: router.Snat.Snat
     export interface Snat {
@@ -64,8 +64,8 @@ export namespace router {
         id: number;
         newSourceNet: string;
         newSourcePort?: number;
-        protocol: routerProtocolEnum;
-        status: routerStatusEnum;
+        protocol: router.ProtocolEnum;
+        status: router.StatusEnum;
     }
     // type fullname: router.StatusEnum
     export type StatusEnum = "creating" | "error" | "off" | "on" | "removing" | "suspended"
@@ -73,9 +73,9 @@ export namespace router {
     export interface Task {
         creationDate: string;
         finishDate?: string;
-        function: routerTaskFunctionEnum;
+        function: router.TaskFunctionEnum;
         id: number;
-        status: routerTaskStatusEnum;
+        status: router.TaskStatusEnum;
     }
     // type fullname: router.TaskFunctionEnum
     export type TaskFunctionEnum = "addDnat" | "addDnatMaster" | "addNetwork" | "addNetworkMaster" | "addPrivateLink" | "addPrivateLinkMaster" | "addPrivateLinkRoute" | "addPrivateLinkRouteMaster" | "addSnat" | "addSnatMaster" | "delDnat" | "delDnatMaster" | "delNetwork" | "delNetworkMaster" | "delPrivateLink" | "delPrivateLinkMaster" | "delPrivateLinkRoute" | "delPrivateLinkRouteMaster" | "delSnat" | "delSnatMaster" | "vpnCreation" | "vpnDeletion" | "vpnSetConfig" | "vpnSetConfigMaster" | "vpnSetSecrets" | "vpnSetSecretsMaster"
@@ -120,10 +120,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: serviceRenewType;
-        renewalType: serviceRenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: serviceStateEnum;
+        status: service.StateEnum;
     }
 }
 
@@ -159,7 +159,7 @@ export interface Router{
                 // GET /router/{serviceName}/network/{ipNet}
                 $get(): Promise<router.Network>;
                 // PUT /router/{serviceName}/network/{ipNet}
-                $put(params?: {creationDate?: string, description?: string, id?: number, ipNet?: string, status?: routerIpStatusEnum, vlanTag?: number}): Promise<void>;
+                $put(params?: {creationDate?: string, description?: string, id?: number, ipNet?: string, status?: router.IpStatusEnum, vlanTag?: number}): Promise<void>;
             };
         }
         privateLink: {
@@ -173,7 +173,7 @@ export interface Router{
                 // GET /router/{serviceName}/privateLink/{peerServiceName}
                 $get(): Promise<router.PrivateLink>;
                 // PUT /router/{serviceName}/privateLink/{peerServiceName}
-                $put(params?: {creationDate?: string, id?: number, name?: string, peerServiceName?: string, status?: routerStatusEnum}): Promise<void>;
+                $put(params?: {creationDate?: string, id?: number, name?: string, peerServiceName?: string, status?: router.StatusEnum}): Promise<void>;
                 request: {
                     // GET /router/{serviceName}/privateLink/{peerServiceName}/request
                     $get(): Promise<router.PrivateLinkRequest>;
@@ -200,11 +200,11 @@ export interface Router{
             // GET /router/{serviceName}/serviceInfos
             $get(): Promise<services.Service>;
             // PUT /router/{serviceName}/serviceInfos
-            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}): Promise<void>;
+            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
         }
         task: {
             // GET /router/{serviceName}/task
-            $get(params?: {function_?: routerTaskFunctionEnum, status?: routerTaskStatusEnum}): Promise<number[]>;
+            $get(params?: {function_?: router.TaskFunctionEnum, status?: router.TaskStatusEnum}): Promise<number[]>;
             $(id: number): {
                 // GET /router/{serviceName}/task/{id}
                 $get(): Promise<router.Task>;
@@ -288,7 +288,7 @@ export interface Router{
    * List the router.Task objects
    * Tasks for this Router
    */
-  get(path: '/router/{serviceName}/task'): (params: {serviceName: string, function_?: routerTaskFunctionEnum, status?: routerTaskStatusEnum}) => Promise<number[]>;
+  get(path: '/router/{serviceName}/task'): (params: {serviceName: string, function_?: router.TaskFunctionEnum, status?: router.TaskStatusEnum}) => Promise<number[]>;
   /**
    * Task
    * Get this object properties
@@ -308,17 +308,17 @@ export interface Router{
    * Network
    * Alter this object properties
    */
-  put(path: '/router/{serviceName}/network/{ipNet}'): (params: {ipNet: string, serviceName: string, creationDate?: string, description?: string, id?: number, status?: routerIpStatusEnum, vlanTag?: number}) => Promise<void>;
+  put(path: '/router/{serviceName}/network/{ipNet}'): (params: {ipNet: string, serviceName: string, creationDate?: string, description?: string, id?: number, status?: router.IpStatusEnum, vlanTag?: number}) => Promise<void>;
   /**
    * Private Link to another service
    * Alter this object properties
    */
-  put(path: '/router/{serviceName}/privateLink/{peerServiceName}'): (params: {peerServiceName: string, serviceName: string, creationDate?: string, id?: number, name?: string, status?: routerStatusEnum}) => Promise<void>;
+  put(path: '/router/{serviceName}/privateLink/{peerServiceName}'): (params: {peerServiceName: string, serviceName: string, creationDate?: string, id?: number, name?: string, status?: router.StatusEnum}) => Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/router/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}) => Promise<void>;
+  put(path: '/router/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
   /**
    * Virtual Private Network
    * Alter this object properties
@@ -385,15 +385,3 @@ export interface Router{
    */
   delete(path: '/router/{serviceName}/vpn/{id}'): (params: {id: number, serviceName: string}) => Promise<router.Task>;
 }
-/**
- * Extra Alias to bypass relativer namespace colitions
- */
-type routerProtocolEnum = router.ProtocolEnum;
-type routerStatusEnum = router.StatusEnum;
-type routerIpStatusEnum = router.IpStatusEnum;
-type routerPrivLinkReqStatusEnum = router.PrivLinkReqStatusEnum;
-type routerTaskFunctionEnum = router.TaskFunctionEnum;
-type routerTaskStatusEnum = router.TaskStatusEnum;
-type serviceRenewType = service.RenewType;
-type serviceRenewalTypeEnum = service.RenewalTypeEnum;
-type serviceStateEnum = service.StateEnum;

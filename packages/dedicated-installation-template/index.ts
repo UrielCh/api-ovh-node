@@ -36,17 +36,17 @@ export namespace dedicated {
     export namespace installationTemplate {
         // interface fullName: dedicated.installationTemplate.Templates.Templates
         export interface Templates {
-            availableLanguages: dedicatedTemplateOsLanguageEnum[];
+            availableLanguages: dedicated.TemplateOsLanguageEnum[];
             beta?: boolean;
-            bitFormat: dedicatedserverBitFormatEnum;
-            category: dedicatedTemplateOsUsageEnum;
-            customization?: dedicatedTemplateOsProperties;
-            defaultLanguage: dedicatedTemplateOsLanguageEnum;
+            bitFormat: dedicated.server.BitFormatEnum;
+            category: dedicated.TemplateOsUsageEnum;
+            customization?: dedicated.TemplateOsProperties;
+            defaultLanguage: dedicated.TemplateOsLanguageEnum;
             deprecated?: boolean;
             description: string;
             distribution: string;
-            family: dedicatedTemplateOsTypeEnum;
-            filesystems: dedicatedTemplateOsFileSystemEnum[];
+            family: dedicated.TemplateOsTypeEnum;
+            filesystems: dedicated.TemplateOsFileSystemEnum[];
             hardRaidConfiguration?: boolean;
             lastModification?: string;
             lvmReady?: boolean;
@@ -54,13 +54,13 @@ export namespace dedicated {
             supportsGptLabel?: boolean;
             supportsRTM: boolean;
             supportsSqlServer?: boolean;
-            supportsUEFI?: dedicatedserverSupportsUEFIEnum;
+            supportsUEFI?: dedicated.server.SupportsUEFIEnum;
             templateName: string;
         }
         // interface fullName: dedicated.installationTemplate.hardwareRaid.hardwareRaid
         export interface hardwareRaid {
             disks: string[];
-            mode: dedicatedTemplateOsHardwareRaidEnum;
+            mode: dedicated.TemplateOsHardwareRaidEnum;
             name: string;
             step: number;
         }
@@ -71,12 +71,12 @@ export namespace dedicated {
         }
         // interface fullName: dedicated.installationTemplate.templatePartitions.templatePartitions
         export interface templatePartitions {
-            filesystem: dedicatedTemplateOsFileSystemEnum;
+            filesystem: dedicated.TemplateOsFileSystemEnum;
             mountpoint: string;
             order: number;
-            raid?: dedicatedserverPartitionRaidEnum;
-            size: complexTypeUnitAndValuenumber;
-            type: dedicatedTemplatePartitionTypeEnum;
+            raid?: dedicated.server.PartitionRaidEnum;
+            size: complexType.UnitAndValue<number>;
+            type: dedicated.TemplatePartitionTypeEnum;
             volumeName?: string;
         }
     }
@@ -176,17 +176,3 @@ export interface Dedicated{
    */
   get(path: '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}'): (params: {mountpoint: string, schemeName: string, templateName: string}) => Promise<dedicated.installationTemplate.templatePartitions>;
 }
-/**
- * Extra Alias to bypass relativer namespace colitions
- */
-type dedicatedTemplateOsLanguageEnum = dedicated.TemplateOsLanguageEnum;
-type dedicatedserverBitFormatEnum = dedicated.server.BitFormatEnum;
-type dedicatedTemplateOsUsageEnum = dedicated.TemplateOsUsageEnum;
-type dedicatedTemplateOsProperties = dedicated.TemplateOsProperties;
-type dedicatedTemplateOsTypeEnum = dedicated.TemplateOsTypeEnum;
-type dedicatedTemplateOsFileSystemEnum = dedicated.TemplateOsFileSystemEnum;
-type dedicatedserverSupportsUEFIEnum = dedicated.server.SupportsUEFIEnum;
-type dedicatedTemplateOsHardwareRaidEnum = dedicated.TemplateOsHardwareRaidEnum;
-type dedicatedserverPartitionRaidEnum = dedicated.server.PartitionRaidEnum;
-type complexTypeUnitAndValuenumber = complexType.UnitAndValue<number>;
-type dedicatedTemplatePartitionTypeEnum = dedicated.TemplatePartitionTypeEnum;

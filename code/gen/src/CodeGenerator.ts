@@ -7,8 +7,7 @@ export class CodeGenerator {
     api: string;
     gen: GenApiTypes;
     schema?: Schema;
-    //NSCollision = new Set<string>();
-    NSColision: { [key: string]: string } = {};
+    NSCollision: { [key: string]: string } = {};
 
     constructor(api: string) {
         this.api = api;
@@ -35,13 +34,13 @@ export class CodeGenerator {
         code += `/**${EOL} * Api Proxy model${EOL} */`
         code += this.dumpApiHarmony(0, this.gen.apis, `// Apis harmony${EOL}`);
         // extra alias fo bypass namespace colision errors
-        const collisions = Object.keys(this.NSColision);
+        const collisions = Object.keys(this.NSCollision);
         if (collisions.length) {
             code += `/**${EOL} * Extra Alias to bypass relativer namespace colitions${EOL} */${EOL}`
         }
         for (let type of collisions) {
             // this.NSColision[rawType];
-            code += `type ${this.NSColision[type]} = ${type};${EOL}`
+            code += `type ${this.NSCollision[type]} = ${type};${EOL}`
         }
 
         return code;
@@ -68,7 +67,7 @@ export class CodeGenerator {
             //    if (!commonNSColision[rawType])
             //        commonNSColision[rawType] = formatUpperCamlCase(rawType);
             //}
-            let colistion = this.NSColision[rawType];
+            let colistion = this.NSCollision[rawType];
             if (colistion) {
                 // this.NSCollision.add(rawType);
                 if (isArray)
@@ -125,6 +124,9 @@ export class CodeGenerator {
                         // const parents = new Set() as Set<string>;
                         let parent = cache._parent
                         while (parent) {
+                            // ignore root level
+                            if (!parent._parent)
+                                break;
                             if (parent[prefix]) {
                                 inParents = true;
                                 break;
@@ -146,7 +148,7 @@ export class CodeGenerator {
 
                             //type = type.replace(/<.*>/, '');
                             // enable protection
-                            this.NSColision[type] = alias;
+                            this.NSCollision[type] = alias;
                             type = this.typeFromParameter(prop);
                         }
                     }

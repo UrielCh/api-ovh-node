@@ -7,8 +7,8 @@ export namespace allDom {
     // interface fullName: allDom.AllDom.AllDom
     export interface AllDom {
         name: string;
-        offer: domainOfferEnum;
-        type: allDomTypeEnum;
+        offer: domain.OfferEnum;
+        type: allDom.TypeEnum;
     }
     // interface fullName: allDom.AllDomDomain.AllDomDomain
     export interface AllDomDomain {
@@ -47,10 +47,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: serviceRenewType;
-        renewalType: serviceRenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: serviceStateEnum;
+        status: service.StateEnum;
     }
 }
 
@@ -83,7 +83,7 @@ export interface AllDom{
             // GET /allDom/{serviceName}/serviceInfos
             $get(): Promise<services.Service>;
             // PUT /allDom/{serviceName}/serviceInfos
-            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}): Promise<void>;
+            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
         }
     };
 // Api
@@ -116,13 +116,5 @@ export interface AllDom{
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/allDom/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}) => Promise<void>;
+  put(path: '/allDom/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
 }
-/**
- * Extra Alias to bypass relativer namespace colitions
- */
-type domainOfferEnum = domain.OfferEnum;
-type allDomTypeEnum = allDom.TypeEnum;
-type serviceRenewType = service.RenewType;
-type serviceRenewalTypeEnum = service.RenewalTypeEnum;
-type serviceStateEnum = service.StateEnum;

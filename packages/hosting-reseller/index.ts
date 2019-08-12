@@ -14,11 +14,11 @@ export namespace hosting {
         export interface product {
             action?: string;
             ip?: string;
-            meta: hostingresellermetaType;
+            meta: hosting.reseller.metaType;
             progress?: number;
             status: string;
-            type: hostingresellerresellerTypeEnum;
-            typeDetail: hostingresellerproductType;
+            type: hosting.reseller.resellerTypeEnum;
+            typeDetail: hosting.reseller.productType;
             url?: string;
         }
         // interface fullName: hosting.reseller.productType.productType
@@ -45,7 +45,7 @@ export namespace reseller {
         creationDate: string;
         id: string;
         snashotName: string;
-        type: resellersnapshotTypeEnum;
+        type: reseller.snapshotTypeEnum;
     }
     // type fullname: reseller.snapshotTypeEnum
     export type snapshotTypeEnum = "automatic" | "manual"
@@ -58,7 +58,7 @@ export namespace reseller {
         productDomain: string;
         progress: number;
         taskName: string;
-        taskStatus: resellertaskTypeEnum;
+        taskStatus: reseller.taskTypeEnum;
     }
     // type fullname: reseller.taskTypeEnum
     export type taskTypeEnum = "done" | "error" | "doing" | "todo" | "unknown"
@@ -89,10 +89,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: serviceRenewType;
-        renewalType: serviceRenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: serviceStateEnum;
+        status: service.StateEnum;
     }
 }
 
@@ -146,7 +146,7 @@ export interface Hosting{
                 // GET /hosting/reseller/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /hosting/reseller/{serviceName}/serviceInfos
-                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}): Promise<void>;
+                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
             snapshot: {
                 // GET /hosting/reseller/{serviceName}/snapshot
@@ -217,7 +217,7 @@ export interface Hosting{
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/hosting/reseller/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}) => Promise<void>;
+  put(path: '/hosting/reseller/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
   /**
    * Change the contacts of this service
    * Launch a contact change procedure
@@ -259,14 +259,3 @@ export interface Hosting{
    */
   post(path: '/hosting/reseller/{serviceName}/snapshot/{snapshotId}/restore'): (params: {serviceName: string, snapshotId: string}) => Promise<string>;
 }
-/**
- * Extra Alias to bypass relativer namespace colitions
- */
-type hostingresellermetaType = hosting.reseller.metaType;
-type hostingresellerresellerTypeEnum = hosting.reseller.resellerTypeEnum;
-type hostingresellerproductType = hosting.reseller.productType;
-type resellersnapshotTypeEnum = reseller.snapshotTypeEnum;
-type resellertaskTypeEnum = reseller.taskTypeEnum;
-type serviceRenewType = service.RenewType;
-type serviceRenewalTypeEnum = service.RenewalTypeEnum;
-type serviceStateEnum = service.StateEnum;

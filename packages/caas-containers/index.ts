@@ -15,11 +15,11 @@ export namespace docker {
         createdAt: string;
         flavorId: string;
         id: string;
-        metrics: dockerslavemetrics;
+        metrics: docker.slave.metrics;
         name: string;
         region: string;
         stack: string;
-        state: dockerslavestatus;
+        state: docker.slave.status;
         updatedAt: string;
     }
     export namespace slave {
@@ -37,14 +37,14 @@ export namespace docker {
             // interface fullName: docker.slave.framework.app.app
             export interface app {
                 cpu?: number;
-                env: dockerslaveframeworkappenvironment[];
+                env: docker.slave.framework.app.environment[];
                 id?: string;
                 image?: string;
                 instances?: number;
                 mem?: number;
-                ports: dockerslaveframeworkappport[];
+                ports: docker.slave.framework.app.port[];
                 status?: string;
-                volumes: dockerslaveframeworkappvolume[];
+                volumes: docker.slave.framework.app.volume[];
             }
             export namespace app {
                 // interface fullName: docker.slave.framework.app.environment.environment
@@ -68,8 +68,8 @@ export namespace docker {
         }
         // interface fullName: docker.slave.metrics.metrics
         export interface metrics {
-            resources: dockerslavemetricsresources;
-            usedResources: dockerslavemetricsusedResources;
+            resources: docker.slave.metrics.resources;
+            usedResources: docker.slave.metrics.usedResources;
         }
         export namespace metrics {
             // interface fullName: docker.slave.metrics.resources.resources
@@ -91,7 +91,7 @@ export namespace docker {
         cluster?: string;
         createdAt: string;
         loadBalancer: string;
-        metrics: dockerslavemetrics;
+        metrics: docker.slave.metrics;
         name: string;
         slaves: string[];
         updatedAt: string;
@@ -147,10 +147,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: serviceRenewType;
-        renewalType: serviceRenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: serviceStateEnum;
+        status: service.StateEnum;
     }
 }
 export namespace stack {
@@ -165,7 +165,7 @@ export namespace stack {
     export namespace framework {
         // interface fullName: stack.framework.application.application
         export interface application {
-            apps: dockerslaveframeworkapp[];
+            apps: docker.slave.framework.app[];
         }
     }
 }
@@ -242,7 +242,7 @@ export interface Caas{
                 // GET /caas/containers/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /caas/containers/{serviceName}/serviceInfos
-                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}): Promise<void>;
+                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
             slaves: {
                 // GET /caas/containers/{serviceName}/slaves
@@ -347,7 +347,7 @@ export interface Caas{
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/caas/containers/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}) => Promise<void>;
+  put(path: '/caas/containers/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
   /**
    * Missing description
    * Update the custom SSL certificate and private
@@ -374,17 +374,3 @@ export interface Caas{
    */
   delete(path: '/caas/containers/{serviceName}/ssl'): (params: {serviceName: string}) => Promise<docker.stack.customSslMessage>;
 }
-/**
- * Extra Alias to bypass relativer namespace colitions
- */
-type dockerslavemetrics = docker.slave.metrics;
-type dockerslavestatus = docker.slave.status;
-type dockerslaveframeworkappenvironment = docker.slave.framework.app.environment;
-type dockerslaveframeworkappport = docker.slave.framework.app.port;
-type dockerslaveframeworkappvolume = docker.slave.framework.app.volume;
-type dockerslavemetricsresources = docker.slave.metrics.resources;
-type dockerslavemetricsusedResources = docker.slave.metrics.usedResources;
-type serviceRenewType = service.RenewType;
-type serviceRenewalTypeEnum = service.RenewalTypeEnum;
-type serviceStateEnum = service.StateEnum;
-type dockerslaveframeworkapp = docker.slave.framework.app;

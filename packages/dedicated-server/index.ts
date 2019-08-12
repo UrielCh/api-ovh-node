@@ -7,7 +7,7 @@ export namespace complexType {
     // interface fullName: complexType.ChartReturn.ChartReturn
     export interface ChartReturn {
         unit?: string;
-        values?: complexTypeChartTimestampValue[];
+        values?: complexType.ChartTimestampValue[];
     }
     // interface fullName: complexType.ChartTimestampValue.ChartTimestampValue
     export interface ChartTimestampValue {
@@ -27,13 +27,13 @@ export namespace coreTypes {
 export namespace dedicated {
     // interface fullName: dedicated.Availabilities.Availabilities
     export interface Availabilities {
-        datacenters: dedicatedAvailabilityDatacenter[];
+        datacenters: dedicated.AvailabilityDatacenter[];
         hardware?: string;
-        region?: dedicatedAvailabilityRegionEnum;
+        region?: dedicated.AvailabilityRegionEnum;
     }
     // interface fullName: dedicated.AvailabilitiesRaw.AvailabilitiesRaw
     export interface AvailabilitiesRaw {
-        availability: dedicatedAvailabilityEnum;
+        availability: dedicated.AvailabilityEnum;
         available: number;
         incomingDatacenter: number;
         lastRule?: string;
@@ -44,12 +44,12 @@ export namespace dedicated {
         trueAvailable: number;
         trueAvailable24H: number;
         trueAvailable4H: number;
-        zone: dedicatedAvailabilityRegionEnum;
+        zone: dedicated.AvailabilityRegionEnum;
     }
     // interface fullName: dedicated.AvailabilityDatacenter.AvailabilityDatacenter
     export interface AvailabilityDatacenter {
-        availability: dedicatedAvailabilityEnum;
-        datacenter: dedicatedAvailabilityDatacenterEnum;
+        availability: dedicated.AvailabilityEnum;
+        datacenter: dedicated.AvailabilityDatacenterEnum;
     }
     // type fullname: dedicated.AvailabilityDatacenterEnum
     export type AvailabilityDatacenterEnum = "bhs" | "default" | "fra" | "gra" | "hil" | "lon" | "rbx" | "rbx-hz" | "sbg" | "sgp" | "syd" | "vin" | "waw"
@@ -61,7 +61,7 @@ export namespace dedicated {
     export interface BinaryFirewall {
         asa: string[];
         asdm: string[];
-        type: dedicatedProfileFirewallEnum;
+        type: dedicated.ProfileFirewallEnum;
     }
     // interface fullName: dedicated.BinaryFirewallLink.BinaryFirewallLink
     export interface BinaryFirewallLink {
@@ -69,7 +69,7 @@ export namespace dedicated {
     }
     // interface fullName: dedicated.DatacenterAvailability.DatacenterAvailability
     export interface DatacenterAvailability {
-        datacenters: dedicatedAvailabilityDatacenter[];
+        datacenters: dedicated.AvailabilityDatacenter[];
         fqn: string;
         memory?: string;
         planCode: string;
@@ -91,7 +91,7 @@ export namespace dedicated {
     export namespace networkInterfaceController {
         // interface fullName: dedicated.networkInterfaceController.NetworkInterfaceController.NetworkInterfaceController
         export interface NetworkInterfaceController {
-            linkType: dedicatednetworkInterfaceControllerNetworkInterfaceControllerLinkTypeEnum;
+            linkType: dedicated.networkInterfaceController.NetworkInterfaceControllerLinkTypeEnum;
             mac: string;
         }
         // type fullname: dedicated.networkInterfaceController.NetworkInterfaceControllerLinkTypeEnum
@@ -101,7 +101,7 @@ export namespace dedicated {
         // interface fullName: dedicated.server.Access.Access
         export interface Access {
             password: string;
-            type: dedicatedserverAccessTypeEnum;
+            type: dedicated.server.AccessTypeEnum;
             url?: string;
             user?: string;
         }
@@ -112,17 +112,17 @@ export namespace dedicated {
         // interface fullName: dedicated.server.BackupCloud.BackupCloud
         export interface BackupCloud {
             agreements?: number[];
-            archive?: dedicatedserverbackupBackupContainer;
-            status: dedicatedserverbackupBackupStatus;
-            storage?: dedicatedserverbackupBackupContainer;
+            archive?: dedicated.server.backup.BackupContainer;
+            status: dedicated.server.backup.BackupStatus;
+            storage?: dedicated.server.backup.BackupContainer;
         }
         // interface fullName: dedicated.server.BackupFtp.BackupFtp
         export interface BackupFtp {
             ftpBackupName: string;
-            quota?: complexTypeUnitAndValuenumber;
+            quota?: complexType.UnitAndValue<number>;
             readOnlyDate?: string;
-            type: dedicatedserverBackupStorageTypeEnum;
-            usage?: complexTypeUnitAndValuenumber;
+            type: dedicated.server.BackupStorageTypeEnum;
+            usage?: complexType.UnitAndValue<number>;
         }
         // interface fullName: dedicated.server.BackupFtpAcl.BackupFtpAcl
         export interface BackupFtpAcl {
@@ -137,40 +137,40 @@ export namespace dedicated {
         export type BackupStorageCapacityEnum = 1000 | 10000 | 500 | 5000
         // interface fullName: dedicated.server.BackupStorageOrderable.BackupStorageOrderable
         export interface BackupStorageOrderable {
-            capacities?: dedicatedserverBackupStorageCapacityEnum[];
+            capacities?: dedicated.server.BackupStorageCapacityEnum[];
             orderable: boolean;
         }
         // type fullname: dedicated.server.BackupStorageTypeEnum
         export type BackupStorageTypeEnum = "included" | "storage"
         // interface fullName: dedicated.server.BandwidthDetails.BandwidthDetails
         export interface BandwidthDetails {
-            InternetToOvh?: complexTypeUnitAndValuenumber;
-            OvhToInternet?: complexTypeUnitAndValuenumber;
-            OvhToOvh?: complexTypeUnitAndValuenumber;
-            type?: dedicatedserverBandwidthTypeEnum;
+            InternetToOvh?: complexType.UnitAndValue<number>;
+            OvhToInternet?: complexType.UnitAndValue<number>;
+            OvhToOvh?: complexType.UnitAndValue<number>;
+            type?: dedicated.server.BandwidthTypeEnum;
         }
         // type fullname: dedicated.server.BandwidthOrderEnum
         export type BandwidthOrderEnum = 1000 | 2000 | 3000
         // interface fullName: dedicated.server.BandwidthOrderable.BandwidthOrderable
         export interface BandwidthOrderable {
             orderable: boolean;
-            platinum?: dedicatedserverBandwidthOrderEnum[];
-            premium?: dedicatedserverBandwidthOrderEnum[];
-            ultimate?: dedicatedserverBandwidthOrderEnum[];
+            platinum?: dedicated.server.BandwidthOrderEnum[];
+            premium?: dedicated.server.BandwidthOrderEnum[];
+            ultimate?: dedicated.server.BandwidthOrderEnum[];
         }
         // type fullname: dedicated.server.BandwidthTypeEnum
         export type BandwidthTypeEnum = "included" | "platinum" | "premium" | "standard" | "ultimate"
         // interface fullName: dedicated.server.BandwidthvRackDetails.BandwidthvRackDetails
         export interface BandwidthvRackDetails {
-            bandwidth?: complexTypeUnitAndValuenumber;
-            type?: dedicatedserverBandwidthvRackTypeEnum;
+            bandwidth?: complexType.UnitAndValue<number>;
+            type?: dedicated.server.BandwidthvRackTypeEnum;
         }
         // type fullname: dedicated.server.BandwidthvRackOrderEnum
         export type BandwidthvRackOrderEnum = 1000 | 3000
         // interface fullName: dedicated.server.BandwidthvRackOrderable.BandwidthvRackOrderable
         export interface BandwidthvRackOrderable {
             orderable: boolean;
-            vrack?: dedicatedserverBandwidthvRackOrderEnum[];
+            vrack?: dedicated.server.BandwidthvRackOrderEnum[];
         }
         // type fullname: dedicated.server.BandwidthvRackTypeEnum
         export type BandwidthvRackTypeEnum = "included" | "standard"
@@ -190,7 +190,7 @@ export namespace dedicated {
         export interface Dedicated {
             bootId?: number;
             commercialRange?: string;
-            datacenter: dedicatedDatacenterEnum;
+            datacenter: dedicated.DatacenterEnum;
             ip: string;
             linkSpeed?: number;
             monitoring: boolean;
@@ -202,8 +202,8 @@ export namespace dedicated {
             reverse?: string;
             rootDevice?: string;
             serverId: number;
-            state: dedicatedserverStateEnum;
-            supportLevel: dedicatedserverSupportLevelEnum;
+            state: dedicated.server.StateEnum;
+            supportLevel: dedicated.server.SupportLevelEnum;
         }
         // type fullname: dedicated.server.DiskTypeEnum
         export type DiskTypeEnum = "NVMe" | "SAS" | "SATA" | "SSD" | "Unknown"
@@ -212,8 +212,8 @@ export namespace dedicated {
             enabled: boolean;
             firewall: string;
             ip: string;
-            mode: dedicatedserverFirewallModeEnum;
-            model?: dedicatedserverFirewallModelEnum;
+            mode: dedicated.server.FirewallModeEnum;
+            model?: dedicated.server.FirewallModelEnum;
         }
         // type fullname: dedicated.server.FirewallModeEnum
         export type FirewallModeEnum = "routed" | "transparent"
@@ -223,60 +223,60 @@ export namespace dedicated {
         export type FormFactorEnum = "0.25u" | "0.5u" | "1u" | "2u" | "3u" | "4u"
         // interface fullName: dedicated.server.HardwareRaidConfiguration.HardwareRaidConfiguration
         export interface HardwareRaidConfiguration {
-            capacity: complexTypeUnitAndValuenumber;
+            capacity: complexType.UnitAndValue<number>;
             diskCount: number;
-            diskSize: complexTypeUnitAndValuenumber;
+            diskSize: complexType.UnitAndValue<number>;
             diskSpanSize: number;
-            mode: dedicatedserverHardwareSpecificationsRaidHardEnum;
+            mode: dedicated.server.HardwareSpecificationsRaidHardEnum;
             name: string;
             type: string;
         }
         // interface fullName: dedicated.server.HardwareRaidController.HardwareRaidController
         export interface HardwareRaidController {
-            disks: dedicatedserverHardwareRaidDiskGroup[];
+            disks: dedicated.server.HardwareRaidDiskGroup[];
             model: string;
             type: string;
         }
         // interface fullName: dedicated.server.HardwareRaidDiskGroup.HardwareRaidDiskGroup
         export interface HardwareRaidDiskGroup {
-            capacity: complexTypeUnitAndValuenumber;
+            capacity: complexType.UnitAndValue<number>;
             names: string[];
-            speed: complexTypeUnitAndValuestring;
-            type: dedicatedserverDiskTypeEnum;
+            speed: complexType.UnitAndValue<string>;
+            type: dedicated.server.DiskTypeEnum;
         }
         // interface fullName: dedicated.server.HardwareRaidProfile.HardwareRaidProfile
         export interface HardwareRaidProfile {
-            controllers: dedicatedserverHardwareRaidController[];
+            controllers: dedicated.server.HardwareRaidController[];
         }
         // interface fullName: dedicated.server.HardwareRaidSize.HardwareRaidSize
         export interface HardwareRaidSize {
-            configurations: dedicatedserverHardwareRaidConfiguration[];
+            configurations: dedicated.server.HardwareRaidConfiguration[];
         }
         // interface fullName: dedicated.server.HardwareSpecifications.HardwareSpecifications
         export interface HardwareSpecifications {
-            bootMode: dedicatedserverBootModeEnum;
+            bootMode: dedicated.server.BootModeEnum;
             coresPerProcessor?: number;
-            defaultHardwareRaidSize?: complexTypeUnitAndValuenumber;
-            defaultHardwareRaidType?: dedicatedserverHardwareSpecificationsRaidHardEnum;
+            defaultHardwareRaidSize?: complexType.UnitAndValue<number>;
+            defaultHardwareRaidType?: dedicated.server.HardwareSpecificationsRaidHardEnum;
             description?: string;
-            diskGroups?: dedicatedserverHardwareSpecificationsDisk[];
-            expansionCards?: dedicatedserverHardwareSpecificationsExpansionCard[];
-            formFactor?: dedicatedserverFormFactorEnum;
-            memorySize?: complexTypeUnitAndValuenumber;
+            diskGroups?: dedicated.server.HardwareSpecificationsDisk[];
+            expansionCards?: dedicated.server.HardwareSpecificationsExpansionCard[];
+            formFactor?: dedicated.server.FormFactorEnum;
+            memorySize?: complexType.UnitAndValue<number>;
             motherboard?: string;
             numberOfProcessors?: number;
-            processorArchitecture?: dedicatedserverCpuFamilyEnum;
+            processorArchitecture?: dedicated.server.CpuFamilyEnum;
             processorName?: string;
             threadsPerProcessor?: number;
-            usbKeys?: complexTypeUnitAndValuenumber[];
+            usbKeys?: complexType.UnitAndValue<number>[];
         }
         // interface fullName: dedicated.server.HardwareSpecificationsDisk.HardwareSpecificationsDisk
         export interface HardwareSpecificationsDisk {
-            defaultHardwareRaidSize?: complexTypeUnitAndValuenumber;
-            defaultHardwareRaidType?: dedicatedserverHardwareSpecificationsRaidHardEnum;
+            defaultHardwareRaidSize?: complexType.UnitAndValue<number>;
+            defaultHardwareRaidType?: dedicated.server.HardwareSpecificationsRaidHardEnum;
             description?: string;
             diskGroupId?: number;
-            diskSize?: complexTypeUnitAndValuenumber;
+            diskSize?: complexType.UnitAndValue<number>;
             diskType?: string;
             numberOfDisks?: number;
             raidController?: string;
@@ -284,7 +284,7 @@ export namespace dedicated {
         // interface fullName: dedicated.server.HardwareSpecificationsExpansionCard.HardwareSpecificationsExpansionCard
         export interface HardwareSpecificationsExpansionCard {
             description: string;
-            type: dedicatedserverHardwareSpecificationsExpansionCardTypeEnum;
+            type: dedicated.server.HardwareSpecificationsExpansionCardTypeEnum;
         }
         // type fullname: dedicated.server.HardwareSpecificationsExpansionCardTypeEnum
         export type HardwareSpecificationsExpansionCardTypeEnum = "fpga" | "gpu"
@@ -313,7 +313,7 @@ export namespace dedicated {
         // interface fullName: dedicated.server.InstallationProgressStatus.InstallationProgressStatus
         export interface InstallationProgressStatus {
             elapsedTime: number;
-            progress?: dedicatedserverInstallationProgressSteps[];
+            progress?: dedicated.server.InstallationProgressSteps[];
         }
         // type fullname: dedicated.server.InstallationProgressStatusEnum
         export type InstallationProgressStatusEnum = "doing" | "done" | "error" | "expired" | "idle" | "pending" | "stopping" | "todo"
@@ -321,7 +321,7 @@ export namespace dedicated {
         export interface InstallationProgressSteps {
             comment: string;
             error?: string;
-            status: dedicatedserverInstallationProgressStatusEnum;
+            status: dedicated.server.InstallationProgressStatusEnum;
         }
         // interface fullName: dedicated.server.Intervention.Intervention
         export interface Intervention {
@@ -335,24 +335,24 @@ export namespace dedicated {
         export type IpCountryEnum = "au" | "be" | "ca" | "cz" | "de" | "es" | "fi" | "fr" | "ie" | "it" | "lt" | "nl" | "pl" | "pt" | "sg" | "uk" | "us"
         // interface fullName: dedicated.server.IpOrderable.IpOrderable
         export interface IpOrderable {
-            ipv4?: dedicatedserverIpOrderableDetails[];
-            ipv6?: dedicatedserverIpOrderableDetails[];
+            ipv4?: dedicated.server.IpOrderableDetails[];
+            ipv6?: dedicated.server.IpOrderableDetails[];
         }
         // interface fullName: dedicated.server.IpOrderableDetails.IpOrderableDetails
         export interface IpOrderableDetails {
-            blockSizes: dedicatedserverIpBlockSizeEnum[];
+            blockSizes: dedicated.server.IpBlockSizeEnum[];
             included: boolean;
             ipNumber?: number;
             number: number;
-            optionRequired?: dedicatedserverOptionRequiredEnum;
-            type: dedicatedserverIpTypeOrderableEnum;
+            optionRequired?: dedicated.server.OptionRequiredEnum;
+            type: dedicated.server.IpTypeOrderableEnum;
         }
         // type fullname: dedicated.server.IpTypeOrderableEnum
         export type IpTypeOrderableEnum = "failover" | "static" | "unshielded"
         // interface fullName: dedicated.server.Ipmi.Ipmi
         export interface Ipmi {
             activated: boolean;
-            supportedFeatures: dedicatedserverIpmiSupportedFeatures;
+            supportedFeatures: dedicated.server.IpmiSupportedFeatures;
         }
         // type fullname: dedicated.server.IpmiAccessTypeEnum
         export type IpmiAccessTypeEnum = "kvmipHtml5URL" | "kvmipJnlp" | "serialOverLanSshKey" | "serialOverLanURL"
@@ -384,30 +384,30 @@ export namespace dedicated {
         // interface fullName: dedicated.server.MrtgTimestampValue.MrtgTimestampValue
         export interface MrtgTimestampValue {
             timestamp: number;
-            value?: complexTypeUnitAndValuenumber;
+            value?: complexType.UnitAndValue<number>;
         }
         // type fullname: dedicated.server.MrtgTypeEnum
         export type MrtgTypeEnum = "errors:download" | "errors:upload" | "packets:download" | "packets:upload" | "traffic:download" | "traffic:upload"
         // interface fullName: dedicated.server.Netboot.Netboot
         export interface Netboot {
             bootId: number;
-            bootType: dedicatedserverBootTypeEnum;
+            bootType: dedicated.server.BootTypeEnum;
             description: string;
             kernel: string;
         }
         // interface fullName: dedicated.server.NetworkSpecifications.NetworkSpecifications
         export interface NetworkSpecifications {
-            bandwidth?: dedicatedserverBandwidthDetails;
-            connection?: complexTypeUnitAndValuenumber;
-            routing?: dedicatedserverRoutingDetails;
-            switching?: dedicatedserverSwitchingDetails;
-            traffic?: dedicatedserverTrafficDetails;
-            vrack?: dedicatedserverBandwidthvRackDetails;
+            bandwidth?: dedicated.server.BandwidthDetails;
+            connection?: complexType.UnitAndValue<number>;
+            routing?: dedicated.server.RoutingDetails;
+            switching?: dedicated.server.SwitchingDetails;
+            traffic?: dedicated.server.TrafficDetails;
+            vrack?: dedicated.server.BandwidthvRackDetails;
         }
         // interface fullName: dedicated.server.Option.Option
         export interface Option {
-            option: dedicatedserverOptionEnum;
-            state: dedicatedserverOptionStateEnum;
+            option: dedicated.server.OptionEnum;
+            state: dedicated.server.OptionStateEnum;
         }
         // type fullname: dedicated.server.OptionEnum
         export type OptionEnum = "BACKUPPROTOCOL" | "BANDWIDTH" | "BANDWIDTH_VRACK" | "TRAFFIC" | "TRAFFIC_DISCOVER" | "TUNING" | "TUNING_FIREWALL" | "TUNING_KVM" | "USB_KVM_IP"
@@ -419,8 +419,8 @@ export namespace dedicated {
         export type OrderableSysFeatureEnum = "backupProtocol" | "monitoring"
         // interface fullName: dedicated.server.RoutingDetails.RoutingDetails
         export interface RoutingDetails {
-            ipv4?: dedicatedserverRoutingDetailsIpv4;
-            ipv6?: dedicatedserverRoutingDetailsIpv6;
+            ipv4?: dedicated.server.RoutingDetailsIpv4;
+            ipv6?: dedicated.server.RoutingDetailsIpv6;
         }
         // interface fullName: dedicated.server.RoutingDetailsIpv4.RoutingDetailsIpv4
         export interface RoutingDetailsIpv4 {
@@ -447,7 +447,7 @@ export namespace dedicated {
         // interface fullName: dedicated.server.RtmCommandSize.RtmCommandSize
         export interface RtmCommandSize {
             command?: string;
-            memory?: complexTypeUnitAndValuenumber;
+            memory?: complexType.UnitAndValue<number>;
         }
         // interface fullName: dedicated.server.RtmConnection.RtmConnection
         export interface RtmConnection {
@@ -463,17 +463,17 @@ export namespace dedicated {
         }
         // interface fullName: dedicated.server.RtmCpu.RtmCpu
         export interface RtmCpu {
-            cache?: complexTypeUnitAndValuenumber;
+            cache?: complexType.UnitAndValue<number>;
             core?: number;
-            freq?: complexTypeUnitAndValuenumber;
+            freq?: complexType.UnitAndValue<number>;
             name?: string;
         }
         // interface fullName: dedicated.server.RtmDisk.RtmDisk
         export interface RtmDisk {
-            capacity?: complexTypeUnitAndValuenumber;
+            capacity?: complexType.UnitAndValue<number>;
             disk: string;
             model?: string;
-            temperature?: complexTypeUnitAndValuenumber;
+            temperature?: complexType.UnitAndValue<number>;
         }
         // interface fullName: dedicated.server.RtmDiskSmart.RtmDiskSmart
         export interface RtmDiskSmart {
@@ -490,19 +490,19 @@ export namespace dedicated {
         }
         // interface fullName: dedicated.server.RtmLoad.RtmLoad
         export interface RtmLoad {
-            cpu?: complexTypeUnitAndValuenumber;
+            cpu?: complexType.UnitAndValue<number>;
             loadavg1?: number;
             loadavg15?: number;
             loadavg5?: number;
-            memory?: complexTypeUnitAndValuenumber;
+            memory?: complexType.UnitAndValue<number>;
             processCount?: number;
             processRunning?: number;
-            swap?: complexTypeUnitAndValuenumber;
+            swap?: complexType.UnitAndValue<number>;
             uptime?: number;
         }
         // interface fullName: dedicated.server.RtmMemory.RtmMemory
         export interface RtmMemory {
-            capacity?: complexTypeUnitAndValuenumber;
+            capacity?: complexType.UnitAndValue<number>;
             slot?: string;
         }
         // interface fullName: dedicated.server.RtmMotherboardHw.RtmMotherboardHw
@@ -518,10 +518,10 @@ export namespace dedicated {
         }
         // interface fullName: dedicated.server.RtmPartition.RtmPartition
         export interface RtmPartition {
-            inodeUsage?: complexTypeUnitAndValuenumber;
+            inodeUsage?: complexType.UnitAndValue<number>;
             mountPoint?: string;
             partition: string;
-            usage?: complexTypeUnitAndValuenumber;
+            usage?: complexType.UnitAndValue<number>;
         }
         // interface fullName: dedicated.server.RtmPci.RtmPci
         export interface RtmPci {
@@ -536,12 +536,12 @@ export namespace dedicated {
         export type RtmRaidStatusEnum = "KO" | "OK" | "REBUILDING" | "UNKNOWN"
         // interface fullName: dedicated.server.RtmRaidVolume.RtmRaidVolume
         export interface RtmRaidVolume {
-            capacity?: complexTypeUnitAndValuenumber;
+            capacity?: complexType.UnitAndValue<number>;
             chunks?: string;
             label?: string;
             letter?: string;
             phys?: string;
-            status?: dedicatedserverRtmRaidStatusEnum;
+            status?: dedicated.server.RtmRaidStatusEnum;
             stripe?: string;
             syncprogress?: string;
             type?: string;
@@ -549,18 +549,18 @@ export namespace dedicated {
         }
         // interface fullName: dedicated.server.RtmRaidVolumePort.RtmRaidVolumePort
         export interface RtmRaidVolumePort {
-            capacity?: complexTypeUnitAndValuenumber;
+            capacity?: complexType.UnitAndValue<number>;
             disk?: string;
             model?: string;
             port?: string;
             serial?: string;
-            status?: dedicatedserverRtmRaidStatusEnum;
+            status?: dedicated.server.RtmRaidStatusEnum;
             syncprogress?: string;
         }
         // interface fullName: dedicated.server.ServerBurst.ServerBurst
         export interface ServerBurst {
-            capacity?: complexTypeUnitAndValuenumber;
-            status: dedicatedserverBurstStatusEnum;
+            capacity?: complexType.UnitAndValue<number>;
+            status: dedicated.server.BurstStatusEnum;
         }
         // type fullname: dedicated.server.SplaStatusEnum
         export type SplaStatusEnum = "terminated" | "used" | "waitingToCheck"
@@ -572,7 +572,7 @@ export namespace dedicated {
         export type SupportLevelEnum = "critical" | "fastpath" | "gs" | "pro"
         // interface fullName: dedicated.server.SupportLevelOrderable.SupportLevelOrderable
         export interface SupportLevelOrderable {
-            levels?: dedicatedserverSupportLevelOrderableEnum[];
+            levels?: dedicated.server.SupportLevelOrderableEnum[];
             orderable: boolean;
         }
         // type fullname: dedicated.server.SupportLevelOrderableEnum
@@ -590,10 +590,10 @@ export namespace dedicated {
         export interface Task {
             comment?: string;
             doneDate?: string;
-            function: dedicatedTaskFunctionEnum;
+            function: dedicated.TaskFunctionEnum;
             lastUpdate?: string;
             startDate: string;
-            status: dedicatedTaskStatusEnum;
+            status: dedicated.TaskStatusEnum;
             taskId: number;
         }
         // interface fullName: dedicated.server.TemplateCaps.TemplateCaps
@@ -602,11 +602,11 @@ export namespace dedicated {
         }
         // interface fullName: dedicated.server.TrafficDetails.TrafficDetails
         export interface TrafficDetails {
-            inputQuotaSize?: complexTypeUnitAndValuenumber;
-            inputQuotaUsed?: complexTypeUnitAndValuenumber;
+            inputQuotaSize?: complexType.UnitAndValue<number>;
+            inputQuotaUsed?: complexType.UnitAndValue<number>;
             isThrottled?: boolean;
-            outputQuotaSize?: complexTypeUnitAndValuenumber;
-            outputQuotaUsed?: complexTypeUnitAndValuenumber;
+            outputQuotaSize?: complexType.UnitAndValue<number>;
+            outputQuotaUsed?: complexType.UnitAndValue<number>;
             resetQuotaDate?: string;
         }
         // type fullname: dedicated.server.TrafficOrderEnum
@@ -614,21 +614,21 @@ export namespace dedicated {
         // interface fullName: dedicated.server.TrafficOrderable.TrafficOrderable
         export interface TrafficOrderable {
             orderable: boolean;
-            traffic?: dedicatedserverTrafficOrderEnum[];
+            traffic?: dedicated.server.TrafficOrderEnum[];
         }
         // type fullname: dedicated.server.UsbKeyCapacityEnum
         export type UsbKeyCapacityEnum = 128 | 16 | 256 | 32 | 64
         // interface fullName: dedicated.server.UsbKeyOrderableDetails.UsbKeyOrderableDetails
         export interface UsbKeyOrderableDetails {
-            capacity: dedicatedserverUsbKeyCapacityEnum[];
+            capacity: dedicated.server.UsbKeyCapacityEnum[];
             number: number;
-            optionRequired?: dedicatedserverOptionRequiredEnum;
+            optionRequired?: dedicated.server.OptionRequiredEnum;
             orderable: boolean;
         }
         // interface fullName: dedicated.server.VirtualMac.VirtualMac
         export interface VirtualMac {
             macAddress: string;
-            type: dedicatedserverVmacTypeEnum;
+            type: dedicated.server.VmacTypeEnum;
         }
         // interface fullName: dedicated.server.VirtualMacManagement.VirtualMacManagement
         export interface VirtualMacManagement {
@@ -640,20 +640,20 @@ export namespace dedicated {
         export namespace backup {
             // interface fullName: dedicated.server.backup.BackupContainer.BackupContainer
             export interface BackupContainer {
-                cloudProject?: dedicatedserverbackupBackupProject;
+                cloudProject?: dedicated.server.backup.BackupProject;
                 id?: string;
                 name?: string;
-                quota?: dedicatedserverbackupBackupQuota;
+                quota?: dedicated.server.backup.BackupQuota;
                 region?: string;
-                sftp?: dedicatedserverbackupBackupSftp;
-                swift?: dedicatedserverbackupBackupSwift;
+                sftp?: dedicated.server.backup.BackupSftp;
+                swift?: dedicated.server.backup.BackupSwift;
             }
             // interface fullName: dedicated.server.backup.BackupOffer.BackupOffer
             export interface BackupOffer {
-                maxArchive?: complexTypeUnitAndValuenumber;
-                maxBandwidthArchive?: complexTypeUnitAndValuenumber;
-                maxBandwidthStorage?: complexTypeUnitAndValuenumber;
-                maxStorage?: complexTypeUnitAndValuenumber;
+                maxArchive?: complexType.UnitAndValue<number>;
+                maxBandwidthArchive?: complexType.UnitAndValue<number>;
+                maxBandwidthStorage?: complexType.UnitAndValue<number>;
+                maxStorage?: complexType.UnitAndValue<number>;
             }
             // interface fullName: dedicated.server.backup.BackupPassword.BackupPassword
             export interface BackupPassword {
@@ -669,9 +669,9 @@ export namespace dedicated {
             }
             // interface fullName: dedicated.server.backup.BackupQuota.BackupQuota
             export interface BackupQuota {
-                maxBandwidth?: complexTypeUnitAndValuenumber;
-                maxStorage?: complexTypeUnitAndValuenumber;
-                storageUsed?: complexTypeUnitAndValuenumber;
+                maxBandwidth?: complexType.UnitAndValue<number>;
+                maxStorage?: complexType.UnitAndValue<number>;
+                storageUsed?: complexType.UnitAndValue<number>;
                 usagePercent?: number;
             }
             // interface fullName: dedicated.server.backup.BackupSftp.BackupSftp
@@ -682,7 +682,7 @@ export namespace dedicated {
             }
             // interface fullName: dedicated.server.backup.BackupStatus.BackupStatus
             export interface BackupStatus {
-                code: dedicatedserverbackupBackupStatusCodeEnum;
+                code: dedicated.server.backup.BackupStatusCodeEnum;
                 reason?: string;
             }
             // type fullname: dedicated.server.backup.BackupStatusCodeEnum
@@ -699,7 +699,7 @@ export namespace dedicated {
             alertId: number;
             email: string;
             enabled: boolean;
-            language: dedicatedserverAlertLanguageEnum;
+            language: dedicated.server.AlertLanguageEnum;
         }
         // interface fullName: dedicated.server.kvm.kvm
         export interface kvm {
@@ -709,18 +709,18 @@ export namespace dedicated {
         }
         // interface fullName: dedicated.server.netbootOption.netbootOption
         export interface netbootOption {
-            option: dedicatedserverBootOptionEnum;
+            option: dedicated.server.BootOptionEnum;
             value: string;
         }
         // interface fullName: dedicated.server.serviceMonitoring.serviceMonitoring
         export interface serviceMonitoring {
             challengeText?: string;
             enabled: boolean;
-            interval: dedicatedserverMonitoringIntervalEnum;
+            interval: dedicated.server.MonitoringIntervalEnum;
             ip: string;
             monitoringId: number;
             port: number;
-            protocol: dedicatedserverMonitoringProtocolEnum;
+            protocol: dedicated.server.MonitoringProtocolEnum;
             url?: string;
         }
         // interface fullName: dedicated.server.smsAlert.smsAlert
@@ -728,7 +728,7 @@ export namespace dedicated {
             alertId: number;
             enabled: boolean;
             fromHour?: number;
-            language: dedicatedserverAlertLanguageEnum;
+            language: dedicated.server.AlertLanguageEnum;
             phoneNumberTo: string;
             smsAccount: string;
             toHour?: number;
@@ -738,14 +738,14 @@ export namespace dedicated {
             id: number;
             lastUpdate: string;
             serialNumber: string;
-            status: dedicatedserverSplaStatusEnum;
-            type: dedicatedserverSplaTypeEnum;
+            status: dedicated.server.SplaStatusEnum;
+            type: dedicated.server.SplaTypeEnum;
         }
     }
     export namespace virtualNetworkInterface {
         // interface fullName: dedicated.virtualNetworkInterface.VirtualNetworkInterface.VirtualNetworkInterface
         export interface VirtualNetworkInterface {
-            mode: dedicatedvirtualNetworkInterfaceVirtualNetworkInterfaceModeEnum;
+            mode: dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum;
             name: string;
             serverName: string;
             uuid: string;
@@ -775,7 +775,7 @@ export namespace secondaryDns {
     }
     // interface fullName: secondaryDns.SecondaryDNSCheckField.SecondaryDNSCheckField
     export interface SecondaryDNSCheckField {
-        fieldType: zoneNamedResolutionFieldTypeEnum;
+        fieldType: zone.NamedResolutionFieldTypeEnum;
         fieldValue: string;
         subDomain: string;
     }
@@ -816,10 +816,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: serviceRenewType;
-        renewalType: serviceRenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: serviceStateEnum;
+        status: service.StateEnum;
     }
 }
 export namespace support {
@@ -838,7 +838,7 @@ export namespace vrack {
         lastUpdate?: string;
         orderId?: number;
         serviceName?: string;
-        status: vrackTaskStatusEnum;
+        status: vrack.TaskStatusEnum;
         targetDomain?: string;
         todoDate?: string;
     }
@@ -898,7 +898,7 @@ export interface Dedicated{
             // GET /dedicated/server/{serviceName}
             $get(): Promise<dedicated.server.Dedicated>;
             // PUT /dedicated/server/{serviceName}
-            $put(params?: {bootId?: number, commercialRange?: string, datacenter?: dedicatedDatacenterEnum, ip?: string, linkSpeed?: number, monitoring?: boolean, name?: string, os?: string, professionalUse?: boolean, rack?: string, rescueMail?: string, reverse?: string, rootDevice?: string, serverId?: number, state?: dedicatedserverStateEnum, supportLevel?: dedicatedserverSupportLevelEnum}): Promise<void>;
+            $put(params?: {bootId?: number, commercialRange?: string, datacenter?: dedicated.DatacenterEnum, ip?: string, linkSpeed?: number, monitoring?: boolean, name?: string, os?: string, professionalUse?: boolean, rack?: string, rescueMail?: string, reverse?: string, rootDevice?: string, serverId?: number, state?: dedicated.server.StateEnum, supportLevel?: dedicated.server.SupportLevelEnum}): Promise<void>;
             authenticationSecret: {
                 // POST /dedicated/server/{serviceName}/authenticationSecret
                 $post(): Promise<dedicated.server.Access[]>;
@@ -909,7 +909,7 @@ export interface Dedicated{
             }
             boot: {
                 // GET /dedicated/server/{serviceName}/boot
-                $get(params?: {bootType?: dedicatedserverBootTypeEnum}): Promise<number[]>;
+                $get(params?: {bootType?: dedicated.server.BootTypeEnum}): Promise<number[]>;
                 $(bootId: number): {
                     // GET /dedicated/server/{serviceName}/boot/{bootId}
                     $get(): Promise<dedicated.server.Netboot>;
@@ -927,7 +927,7 @@ export interface Dedicated{
                 // GET /dedicated/server/{serviceName}/burst
                 $get(): Promise<dedicated.server.ServerBurst>;
                 // PUT /dedicated/server/{serviceName}/burst
-                $put(params?: {capacity?: complexTypeUnitAndValuenumber, status?: dedicatedserverBurstStatusEnum}): Promise<void>;
+                $put(params?: {capacity?: complexType.UnitAndValue<number>, status?: dedicated.server.BurstStatusEnum}): Promise<void>;
             }
             changeContact: {
                 // POST /dedicated/server/{serviceName}/changeContact
@@ -984,7 +984,7 @@ export interface Dedicated{
                     // GET /dedicated/server/{serviceName}/features/firewall
                     $get(): Promise<dedicated.server.Firewall>;
                     // PUT /dedicated/server/{serviceName}/features/firewall
-                    $put(params?: {enabled?: boolean, firewall?: string, ip?: string, mode?: dedicatedserverFirewallModeEnum, model?: dedicatedserverFirewallModelEnum}): Promise<void>;
+                    $put(params?: {enabled?: boolean, firewall?: string, ip?: string, mode?: dedicated.server.FirewallModeEnum, model?: dedicated.server.FirewallModelEnum}): Promise<void>;
                 }
                 ipmi: {
                     // GET /dedicated/server/{serviceName}/features/ipmi
@@ -1105,7 +1105,7 @@ export interface Dedicated{
             }
             networkInterfaceController: {
                 // GET /dedicated/server/{serviceName}/networkInterfaceController
-                $get(params?: {linkType?: dedicatednetworkInterfaceControllerNetworkInterfaceControllerLinkTypeEnum}): Promise<string[]>;
+                $get(params?: {linkType?: dedicated.networkInterfaceController.NetworkInterfaceControllerLinkTypeEnum}): Promise<string[]>;
                 $(mac: string): {
                     // GET /dedicated/server/{serviceName}/networkInterfaceController/{mac}
                     $get(): Promise<dedicated.networkInterfaceController.NetworkInterfaceController>;
@@ -1201,47 +1201,47 @@ export interface Dedicated{
                 // GET /dedicated/server/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /dedicated/server/{serviceName}/serviceInfos
-                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}): Promise<void>;
+                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
             serviceMonitoring: {
                 // GET /dedicated/server/{serviceName}/serviceMonitoring
                 $get(): Promise<number[]>;
                 // POST /dedicated/server/{serviceName}/serviceMonitoring
-                $post(params: {challengeText?: string, enabled: boolean, interval: dedicatedserverMonitoringIntervalEnum, ip: string, port: number, protocol: dedicatedserverMonitoringProtocolEnum, url?: string}): Promise<dedicated.server.serviceMonitoring>;
+                $post(params: {challengeText?: string, enabled: boolean, interval: dedicated.server.MonitoringIntervalEnum, ip: string, port: number, protocol: dedicated.server.MonitoringProtocolEnum, url?: string}): Promise<dedicated.server.serviceMonitoring>;
                 $(monitoringId: number): {
                     // DELETE /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}
                     $delete(): Promise<void>;
                     // GET /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}
                     $get(): Promise<dedicated.server.serviceMonitoring>;
                     // PUT /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}
-                    $put(params?: {challengeText?: string, enabled?: boolean, interval?: dedicatedserverMonitoringIntervalEnum, ip?: string, monitoringId?: number, port?: number, protocol?: dedicatedserverMonitoringProtocolEnum, url?: string}): Promise<void>;
+                    $put(params?: {challengeText?: string, enabled?: boolean, interval?: dedicated.server.MonitoringIntervalEnum, ip?: string, monitoringId?: number, port?: number, protocol?: dedicated.server.MonitoringProtocolEnum, url?: string}): Promise<void>;
                     alert: {
                         email: {
                             // GET /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email
                             $get(): Promise<number[]>;
                             // POST /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email
-                            $post(params: {email: string, language: dedicatedserverAlertLanguageEnum}): Promise<dedicated.server.emailAlert>;
+                            $post(params: {email: string, language: dedicated.server.AlertLanguageEnum}): Promise<dedicated.server.emailAlert>;
                             $(alertId: number): {
                                 // DELETE /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}
                                 $delete(): Promise<void>;
                                 // GET /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}
                                 $get(): Promise<dedicated.server.emailAlert>;
                                 // PUT /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}
-                                $put(params?: {alertId?: number, email?: string, enabled?: boolean, language?: dedicatedserverAlertLanguageEnum}): Promise<void>;
+                                $put(params?: {alertId?: number, email?: string, enabled?: boolean, language?: dedicated.server.AlertLanguageEnum}): Promise<void>;
                             };
                         }
                         sms: {
                             // GET /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms
                             $get(): Promise<number[]>;
                             // POST /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms
-                            $post(params: {fromHour?: number, language: dedicatedserverAlertLanguageEnum, phoneNumberTo: string, smsAccount: string, toHour?: number}): Promise<dedicated.server.smsAlert>;
+                            $post(params: {fromHour?: number, language: dedicated.server.AlertLanguageEnum, phoneNumberTo: string, smsAccount: string, toHour?: number}): Promise<dedicated.server.smsAlert>;
                             $(alertId: number): {
                                 // DELETE /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}
                                 $delete(): Promise<void>;
                                 // GET /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}
                                 $get(): Promise<dedicated.server.smsAlert>;
                                 // PUT /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}
-                                $put(params?: {alertId?: number, enabled?: boolean, fromHour?: number, language?: dedicatedserverAlertLanguageEnum, phoneNumberTo?: string, smsAccount?: string, toHour?: number}): Promise<void>;
+                                $put(params?: {alertId?: number, enabled?: boolean, fromHour?: number, language?: dedicated.server.AlertLanguageEnum, phoneNumberTo?: string, smsAccount?: string, toHour?: number}): Promise<void>;
                             };
                         }
                     }
@@ -1263,14 +1263,14 @@ export interface Dedicated{
             }
             spla: {
                 // GET /dedicated/server/{serviceName}/spla
-                $get(params?: {status?: dedicatedserverSplaStatusEnum, type?: dedicatedserverSplaTypeEnum}): Promise<number[]>;
+                $get(params?: {status?: dedicated.server.SplaStatusEnum, type?: dedicated.server.SplaTypeEnum}): Promise<number[]>;
                 // POST /dedicated/server/{serviceName}/spla
-                $post(params: {serialNumber: string, type: dedicatedserverSplaTypeEnum}): Promise<number>;
+                $post(params: {serialNumber: string, type: dedicated.server.SplaTypeEnum}): Promise<number>;
                 $(id: number): {
                     // GET /dedicated/server/{serviceName}/spla/{id}
                     $get(): Promise<dedicated.server.spla>;
                     // PUT /dedicated/server/{serviceName}/spla/{id}
-                    $put(params?: {id?: number, lastUpdate?: string, serialNumber?: string, status?: dedicatedserverSplaStatusEnum, type?: dedicatedserverSplaTypeEnum}): Promise<void>;
+                    $put(params?: {id?: number, lastUpdate?: string, serialNumber?: string, status?: dedicated.server.SplaStatusEnum, type?: dedicated.server.SplaTypeEnum}): Promise<void>;
                     revoke: {
                         // POST /dedicated/server/{serviceName}/spla/{id}/revoke
                         $post(): Promise<void>;
@@ -1375,7 +1375,7 @@ export interface Dedicated{
             }
             task: {
                 // GET /dedicated/server/{serviceName}/task
-                $get(params?: {function_?: dedicatedTaskFunctionEnum, status?: dedicatedTaskStatusEnum}): Promise<number[]>;
+                $get(params?: {function_?: dedicated.TaskFunctionEnum, status?: dedicated.TaskStatusEnum}): Promise<number[]>;
                 $(taskId: number): {
                     // GET /dedicated/server/{serviceName}/task/{taskId}
                     $get(): Promise<dedicated.server.Task>;
@@ -1393,7 +1393,7 @@ export interface Dedicated{
                 // GET /dedicated/server/{serviceName}/virtualMac
                 $get(): Promise<string[]>;
                 // POST /dedicated/server/{serviceName}/virtualMac
-                $post(params: {ipAddress: string, type: dedicatedserverVmacTypeEnum, virtualMachineName: string}): Promise<dedicated.server.Task>;
+                $post(params: {ipAddress: string, type: dedicated.server.VmacTypeEnum, virtualMachineName: string}): Promise<dedicated.server.Task>;
                 $(macAddress: string): {
                     // GET /dedicated/server/{serviceName}/virtualMac/{macAddress}
                     $get(): Promise<dedicated.server.VirtualMac>;
@@ -1413,7 +1413,7 @@ export interface Dedicated{
             }
             virtualNetworkInterface: {
                 // GET /dedicated/server/{serviceName}/virtualNetworkInterface
-                $get(params?: {mode?: dedicatedvirtualNetworkInterfaceVirtualNetworkInterfaceModeEnum, name?: string, vrack?: string}): Promise<string[]>;
+                $get(params?: {mode?: dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum, name?: string, vrack?: string}): Promise<string[]>;
                 $(uuid: string): {
                     // GET /dedicated/server/{serviceName}/virtualNetworkInterface/{uuid}
                     $get(): Promise<dedicated.virtualNetworkInterface.VirtualNetworkInterface>;
@@ -1455,7 +1455,7 @@ export interface Dedicated{
    * List the dedicated.server.Netboot objects
    * Server compatibles netboots
    */
-  get(path: '/dedicated/server/{serviceName}/boot'): (params: {serviceName: string, bootType?: dedicatedserverBootTypeEnum}) => Promise<number[]>;
+  get(path: '/dedicated/server/{serviceName}/boot'): (params: {serviceName: string, bootType?: dedicated.server.BootTypeEnum}) => Promise<number[]>;
   /**
    * Available boots
    * Get this object properties
@@ -1470,7 +1470,7 @@ export interface Dedicated{
    * Available boot options
    * Get this object properties
    */
-  get(path: '/dedicated/server/{serviceName}/boot/{bootId}/option/{option}'): (params: {bootId: number, option: dedicatedserverBootOptionEnum, serviceName: string}) => Promise<dedicated.server.netbootOption>;
+  get(path: '/dedicated/server/{serviceName}/boot/{bootId}/option/{option}'): (params: {bootId: number, option: dedicated.server.BootOptionEnum, serviceName: string}) => Promise<dedicated.server.netbootOption>;
   /**
    * Server bandwidth burst details
    * Get this object properties
@@ -1610,7 +1610,7 @@ export interface Dedicated{
    * List the dedicated.networkInterfaceController.NetworkInterfaceController objects
    * List server networkInterfaceController
    */
-  get(path: '/dedicated/server/{serviceName}/networkInterfaceController'): (params: {serviceName: string, linkType?: dedicatednetworkInterfaceControllerNetworkInterfaceControllerLinkTypeEnum}) => Promise<string[]>;
+  get(path: '/dedicated/server/{serviceName}/networkInterfaceController'): (params: {serviceName: string, linkType?: dedicated.networkInterfaceController.NetworkInterfaceControllerLinkTypeEnum}) => Promise<string[]>;
   /**
    * Your networkInterfaceController
    * Get this object properties
@@ -1630,7 +1630,7 @@ export interface Dedicated{
    * Information about the options of a dedicated server
    * Get this object properties
    */
-  get(path: '/dedicated/server/{serviceName}/option/{option}'): (params: {option: dedicatedserverOptionEnum, serviceName: string}) => Promise<dedicated.server.Option>;
+  get(path: '/dedicated/server/{serviceName}/option/{option}'): (params: {option: dedicated.server.OptionEnum, serviceName: string}) => Promise<dedicated.server.Option>;
   /**
    * backupStorage operations
    * Get the backup storage orderable with your server.
@@ -1760,7 +1760,7 @@ export interface Dedicated{
    * List the dedicated.server.spla objects
    * Your own SPLA licenses attached to this dedicated server
    */
-  get(path: '/dedicated/server/{serviceName}/spla'): (params: {serviceName: string, status?: dedicatedserverSplaStatusEnum, type?: dedicatedserverSplaTypeEnum}) => Promise<number[]>;
+  get(path: '/dedicated/server/{serviceName}/spla'): (params: {serviceName: string, status?: dedicated.server.SplaStatusEnum, type?: dedicated.server.SplaTypeEnum}) => Promise<number[]>;
   /**
    * SPLA licenses management
    * Get this object properties
@@ -1880,7 +1880,7 @@ export interface Dedicated{
    * List the dedicated.server.Task objects
    * Dedicated server todos
    */
-  get(path: '/dedicated/server/{serviceName}/task'): (params: {serviceName: string, function_?: dedicatedTaskFunctionEnum, status?: dedicatedTaskStatusEnum}) => Promise<number[]>;
+  get(path: '/dedicated/server/{serviceName}/task'): (params: {serviceName: string, function_?: dedicated.TaskFunctionEnum, status?: dedicated.TaskStatusEnum}) => Promise<number[]>;
   /**
    * Server tasks
    * Get this object properties
@@ -1910,7 +1910,7 @@ export interface Dedicated{
    * List the dedicated.virtualNetworkInterface.VirtualNetworkInterface objects
    * List server VirtualNetworkInterfaces
    */
-  get(path: '/dedicated/server/{serviceName}/virtualNetworkInterface'): (params: {serviceName: string, mode?: dedicatedvirtualNetworkInterfaceVirtualNetworkInterfaceModeEnum, name?: string, vrack?: string}) => Promise<string[]>;
+  get(path: '/dedicated/server/{serviceName}/virtualNetworkInterface'): (params: {serviceName: string, mode?: dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum, name?: string, vrack?: string}) => Promise<string[]>;
   /**
    * Your VirtualNetworkInterface
    * Get this object properties
@@ -1960,12 +1960,12 @@ export interface Dedicated{
    * Server informations
    * Alter this object properties
    */
-  put(path: '/dedicated/server/{serviceName}'): (params: {serviceName: string, bootId?: number, commercialRange?: string, datacenter?: dedicatedDatacenterEnum, ip?: string, linkSpeed?: number, monitoring?: boolean, name?: string, os?: string, professionalUse?: boolean, rack?: string, rescueMail?: string, reverse?: string, rootDevice?: string, serverId?: number, state?: dedicatedserverStateEnum, supportLevel?: dedicatedserverSupportLevelEnum}) => Promise<void>;
+  put(path: '/dedicated/server/{serviceName}'): (params: {serviceName: string, bootId?: number, commercialRange?: string, datacenter?: dedicated.DatacenterEnum, ip?: string, linkSpeed?: number, monitoring?: boolean, name?: string, os?: string, professionalUse?: boolean, rack?: string, rescueMail?: string, reverse?: string, rootDevice?: string, serverId?: number, state?: dedicated.server.StateEnum, supportLevel?: dedicated.server.SupportLevelEnum}) => Promise<void>;
   /**
    * Server bandwidth burst details
    * Alter this object properties
    */
-  put(path: '/dedicated/server/{serviceName}/burst'): (params: {serviceName: string, capacity?: complexTypeUnitAndValuenumber, status?: dedicatedserverBurstStatusEnum}) => Promise<void>;
+  put(path: '/dedicated/server/{serviceName}/burst'): (params: {serviceName: string, capacity?: complexType.UnitAndValue<number>, status?: dedicated.server.BurstStatusEnum}) => Promise<void>;
   /**
    * Backup Ftp ACL for this server and Backup Ftp
    * Alter this object properties
@@ -1975,7 +1975,7 @@ export interface Dedicated{
    * Firewall attached to this server
    * Alter this object properties
    */
-  put(path: '/dedicated/server/{serviceName}/features/firewall'): (params: {serviceName: string, enabled?: boolean, firewall?: string, ip?: string, mode?: dedicatedserverFirewallModeEnum, model?: dedicatedserverFirewallModelEnum}) => Promise<void>;
+  put(path: '/dedicated/server/{serviceName}/features/firewall'): (params: {serviceName: string, enabled?: boolean, firewall?: string, ip?: string, mode?: dedicated.server.FirewallModeEnum, model?: dedicated.server.FirewallModelEnum}) => Promise<void>;
   /**
    * Secondary dns infos
    * Alter this object properties
@@ -1985,27 +1985,27 @@ export interface Dedicated{
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/dedicated/server/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}) => Promise<void>;
+  put(path: '/dedicated/server/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
   /**
    * Service monitoring details
    * Alter this object properties
    */
-  put(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}'): (params: {monitoringId: number, serviceName: string, challengeText?: string, enabled?: boolean, interval?: dedicatedserverMonitoringIntervalEnum, ip?: string, port?: number, protocol?: dedicatedserverMonitoringProtocolEnum, url?: string}) => Promise<void>;
+  put(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}'): (params: {monitoringId: number, serviceName: string, challengeText?: string, enabled?: boolean, interval?: dedicated.server.MonitoringIntervalEnum, ip?: string, port?: number, protocol?: dedicated.server.MonitoringProtocolEnum, url?: string}) => Promise<void>;
   /**
    * Service monitoring Email alert
    * Alter this object properties
    */
-  put(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}'): (params: {alertId: number, monitoringId: number, serviceName: string, email?: string, enabled?: boolean, language?: dedicatedserverAlertLanguageEnum}) => Promise<void>;
+  put(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}'): (params: {alertId: number, monitoringId: number, serviceName: string, email?: string, enabled?: boolean, language?: dedicated.server.AlertLanguageEnum}) => Promise<void>;
   /**
    * Monitoring SMS alert details, This service is currently not supported for servers at BHS 
    * Alter this object properties
    */
-  put(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}'): (params: {alertId: number, monitoringId: number, serviceName: string, enabled?: boolean, fromHour?: number, language?: dedicatedserverAlertLanguageEnum, phoneNumberTo?: string, smsAccount?: string, toHour?: number}) => Promise<void>;
+  put(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}'): (params: {alertId: number, monitoringId: number, serviceName: string, enabled?: boolean, fromHour?: number, language?: dedicated.server.AlertLanguageEnum, phoneNumberTo?: string, smsAccount?: string, toHour?: number}) => Promise<void>;
   /**
    * SPLA licenses management
    * Alter this object properties
    */
-  put(path: '/dedicated/server/{serviceName}/spla/{id}'): (params: {id: number, serviceName: string, lastUpdate?: string, serialNumber?: string, status?: dedicatedserverSplaStatusEnum, type?: dedicatedserverSplaTypeEnum}) => Promise<void>;
+  put(path: '/dedicated/server/{serviceName}/spla/{id}'): (params: {id: number, serviceName: string, lastUpdate?: string, serialNumber?: string, status?: dedicated.server.SplaStatusEnum, type?: dedicated.server.SplaTypeEnum}) => Promise<void>;
   /**
    * authenticationSecret operations
    * Retrieve secret to connect to the server / application
@@ -2100,22 +2100,22 @@ export interface Dedicated{
    * List the dedicated.server.serviceMonitoring objects
    * Add a new service monitoring
    */
-  post(path: '/dedicated/server/{serviceName}/serviceMonitoring'): (params: {serviceName: string, challengeText?: string, enabled: boolean, interval: dedicatedserverMonitoringIntervalEnum, ip: string, port: number, protocol: dedicatedserverMonitoringProtocolEnum, url?: string}) => Promise<dedicated.server.serviceMonitoring>;
+  post(path: '/dedicated/server/{serviceName}/serviceMonitoring'): (params: {serviceName: string, challengeText?: string, enabled: boolean, interval: dedicated.server.MonitoringIntervalEnum, ip: string, port: number, protocol: dedicated.server.MonitoringProtocolEnum, url?: string}) => Promise<dedicated.server.serviceMonitoring>;
   /**
    * List the dedicated.server.emailAlert objects
    * Add a new email alert
    */
-  post(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email'): (params: {monitoringId: number, serviceName: string, email: string, language: dedicatedserverAlertLanguageEnum}) => Promise<dedicated.server.emailAlert>;
+  post(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email'): (params: {monitoringId: number, serviceName: string, email: string, language: dedicated.server.AlertLanguageEnum}) => Promise<dedicated.server.emailAlert>;
   /**
    * List the dedicated.server.smsAlert objects
    * Create a SMS alert
    */
-  post(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms'): (params: {monitoringId: number, serviceName: string, fromHour?: number, language: dedicatedserverAlertLanguageEnum, phoneNumberTo: string, smsAccount: string, toHour?: number}) => Promise<dedicated.server.smsAlert>;
+  post(path: '/dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms'): (params: {monitoringId: number, serviceName: string, fromHour?: number, language: dedicated.server.AlertLanguageEnum, phoneNumberTo: string, smsAccount: string, toHour?: number}) => Promise<dedicated.server.smsAlert>;
   /**
    * List the dedicated.server.spla objects
    * Add a new SPLA license
    */
-  post(path: '/dedicated/server/{serviceName}/spla'): (params: {serviceName: string, serialNumber: string, type: dedicatedserverSplaTypeEnum}) => Promise<number>;
+  post(path: '/dedicated/server/{serviceName}/spla'): (params: {serviceName: string, serialNumber: string, type: dedicated.server.SplaTypeEnum}) => Promise<number>;
   /**
    * revoke operations
    * Revoke an SPLA license
@@ -2140,7 +2140,7 @@ export interface Dedicated{
    * List the dedicated.server.VirtualMac objects
    * Add a virtual mac to an IP address
    */
-  post(path: '/dedicated/server/{serviceName}/virtualMac'): (params: {serviceName: string, ipAddress: string, type: dedicatedserverVmacTypeEnum, virtualMachineName: string}) => Promise<dedicated.server.Task>;
+  post(path: '/dedicated/server/{serviceName}/virtualMac'): (params: {serviceName: string, ipAddress: string, type: dedicated.server.VmacTypeEnum, virtualMachineName: string}) => Promise<dedicated.server.Task>;
   /**
    * List the dedicated.server.VirtualMacManagement objects
    * Add an IP to this Virtual MAC
@@ -2165,7 +2165,7 @@ export interface Dedicated{
    * Information about the options of a dedicated server
    * Release a given option
    */
-  delete(path: '/dedicated/server/{serviceName}/option/{option}'): (params: {option: dedicatedserverOptionEnum, serviceName: string}) => Promise<void>;
+  delete(path: '/dedicated/server/{serviceName}/option/{option}'): (params: {option: dedicated.server.OptionEnum, serviceName: string}) => Promise<void>;
   /**
    * Secondary dns infos
    * remove this domain
@@ -2197,82 +2197,3 @@ export interface Dedicated{
    */
   delete(path: '/dedicated/server/{serviceName}/vrack/{vrack}'): (params: {serviceName: string, vrack: string}) => Promise<vrack.Task>;
 }
-/**
- * Extra Alias to bypass relativer namespace colitions
- */
-type complexTypeChartTimestampValue = complexType.ChartTimestampValue;
-type dedicatedAvailabilityDatacenter = dedicated.AvailabilityDatacenter;
-type dedicatedAvailabilityRegionEnum = dedicated.AvailabilityRegionEnum;
-type dedicatedAvailabilityEnum = dedicated.AvailabilityEnum;
-type dedicatedAvailabilityDatacenterEnum = dedicated.AvailabilityDatacenterEnum;
-type dedicatedProfileFirewallEnum = dedicated.ProfileFirewallEnum;
-type dedicatednetworkInterfaceControllerNetworkInterfaceControllerLinkTypeEnum = dedicated.networkInterfaceController.NetworkInterfaceControllerLinkTypeEnum;
-type dedicatedserverAccessTypeEnum = dedicated.server.AccessTypeEnum;
-type dedicatedserverbackupBackupContainer = dedicated.server.backup.BackupContainer;
-type dedicatedserverbackupBackupStatus = dedicated.server.backup.BackupStatus;
-type complexTypeUnitAndValuenumber = complexType.UnitAndValue<number>;
-type dedicatedserverBackupStorageTypeEnum = dedicated.server.BackupStorageTypeEnum;
-type dedicatedserverBackupStorageCapacityEnum = dedicated.server.BackupStorageCapacityEnum;
-type dedicatedserverBandwidthTypeEnum = dedicated.server.BandwidthTypeEnum;
-type dedicatedserverBandwidthOrderEnum = dedicated.server.BandwidthOrderEnum;
-type dedicatedserverBandwidthvRackTypeEnum = dedicated.server.BandwidthvRackTypeEnum;
-type dedicatedserverBandwidthvRackOrderEnum = dedicated.server.BandwidthvRackOrderEnum;
-type dedicatedDatacenterEnum = dedicated.DatacenterEnum;
-type dedicatedserverStateEnum = dedicated.server.StateEnum;
-type dedicatedserverSupportLevelEnum = dedicated.server.SupportLevelEnum;
-type dedicatedserverFirewallModeEnum = dedicated.server.FirewallModeEnum;
-type dedicatedserverFirewallModelEnum = dedicated.server.FirewallModelEnum;
-type dedicatedserverHardwareSpecificationsRaidHardEnum = dedicated.server.HardwareSpecificationsRaidHardEnum;
-type dedicatedserverHardwareRaidDiskGroup = dedicated.server.HardwareRaidDiskGroup;
-type complexTypeUnitAndValuestring = complexType.UnitAndValue<string>;
-type dedicatedserverDiskTypeEnum = dedicated.server.DiskTypeEnum;
-type dedicatedserverHardwareRaidController = dedicated.server.HardwareRaidController;
-type dedicatedserverHardwareRaidConfiguration = dedicated.server.HardwareRaidConfiguration;
-type dedicatedserverBootModeEnum = dedicated.server.BootModeEnum;
-type dedicatedserverHardwareSpecificationsDisk = dedicated.server.HardwareSpecificationsDisk;
-type dedicatedserverHardwareSpecificationsExpansionCard = dedicated.server.HardwareSpecificationsExpansionCard;
-type dedicatedserverFormFactorEnum = dedicated.server.FormFactorEnum;
-type dedicatedserverCpuFamilyEnum = dedicated.server.CpuFamilyEnum;
-type dedicatedserverHardwareSpecificationsExpansionCardTypeEnum = dedicated.server.HardwareSpecificationsExpansionCardTypeEnum;
-type dedicatedserverInstallationProgressSteps = dedicated.server.InstallationProgressSteps;
-type dedicatedserverInstallationProgressStatusEnum = dedicated.server.InstallationProgressStatusEnum;
-type dedicatedserverIpOrderableDetails = dedicated.server.IpOrderableDetails;
-type dedicatedserverIpBlockSizeEnum = dedicated.server.IpBlockSizeEnum;
-type dedicatedserverOptionRequiredEnum = dedicated.server.OptionRequiredEnum;
-type dedicatedserverIpTypeOrderableEnum = dedicated.server.IpTypeOrderableEnum;
-type dedicatedserverIpmiSupportedFeatures = dedicated.server.IpmiSupportedFeatures;
-type dedicatedserverBootTypeEnum = dedicated.server.BootTypeEnum;
-type dedicatedserverBandwidthDetails = dedicated.server.BandwidthDetails;
-type dedicatedserverRoutingDetails = dedicated.server.RoutingDetails;
-type dedicatedserverSwitchingDetails = dedicated.server.SwitchingDetails;
-type dedicatedserverTrafficDetails = dedicated.server.TrafficDetails;
-type dedicatedserverBandwidthvRackDetails = dedicated.server.BandwidthvRackDetails;
-type dedicatedserverOptionEnum = dedicated.server.OptionEnum;
-type dedicatedserverOptionStateEnum = dedicated.server.OptionStateEnum;
-type dedicatedserverRoutingDetailsIpv4 = dedicated.server.RoutingDetailsIpv4;
-type dedicatedserverRoutingDetailsIpv6 = dedicated.server.RoutingDetailsIpv6;
-type dedicatedserverRtmRaidStatusEnum = dedicated.server.RtmRaidStatusEnum;
-type dedicatedserverBurstStatusEnum = dedicated.server.BurstStatusEnum;
-type dedicatedserverSupportLevelOrderableEnum = dedicated.server.SupportLevelOrderableEnum;
-type dedicatedTaskFunctionEnum = dedicated.TaskFunctionEnum;
-type dedicatedTaskStatusEnum = dedicated.TaskStatusEnum;
-type dedicatedserverTrafficOrderEnum = dedicated.server.TrafficOrderEnum;
-type dedicatedserverUsbKeyCapacityEnum = dedicated.server.UsbKeyCapacityEnum;
-type dedicatedserverVmacTypeEnum = dedicated.server.VmacTypeEnum;
-type dedicatedserverbackupBackupProject = dedicated.server.backup.BackupProject;
-type dedicatedserverbackupBackupQuota = dedicated.server.backup.BackupQuota;
-type dedicatedserverbackupBackupSftp = dedicated.server.backup.BackupSftp;
-type dedicatedserverbackupBackupSwift = dedicated.server.backup.BackupSwift;
-type dedicatedserverbackupBackupStatusCodeEnum = dedicated.server.backup.BackupStatusCodeEnum;
-type dedicatedserverAlertLanguageEnum = dedicated.server.AlertLanguageEnum;
-type dedicatedserverBootOptionEnum = dedicated.server.BootOptionEnum;
-type dedicatedserverMonitoringIntervalEnum = dedicated.server.MonitoringIntervalEnum;
-type dedicatedserverMonitoringProtocolEnum = dedicated.server.MonitoringProtocolEnum;
-type dedicatedserverSplaStatusEnum = dedicated.server.SplaStatusEnum;
-type dedicatedserverSplaTypeEnum = dedicated.server.SplaTypeEnum;
-type dedicatedvirtualNetworkInterfaceVirtualNetworkInterfaceModeEnum = dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum;
-type zoneNamedResolutionFieldTypeEnum = zone.NamedResolutionFieldTypeEnum;
-type serviceRenewType = service.RenewType;
-type serviceRenewalTypeEnum = service.RenewalTypeEnum;
-type serviceStateEnum = service.StateEnum;
-type vrackTaskStatusEnum = vrack.TaskStatusEnum;

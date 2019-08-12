@@ -11,14 +11,14 @@ export namespace dbaas {
             id: string;
             name: string;
             regionId: string;
-            status: dbaasqueueAppStatus;
+            status: dbaas.queue.AppStatus;
         }
         // interface fullName: dbaas.queue.AppConfiguration.AppConfiguration
         export interface AppConfiguration {
-            app: dbaasqueueApp;
-            metricsAccount: dbaasqueueMetricsAccount;
-            roles: dbaasqueueRole[];
-            users: dbaasqueueUserWithPassword[];
+            app: dbaas.queue.App;
+            metricsAccount: dbaas.queue.MetricsAccount;
+            roles: dbaas.queue.Role[];
+            users: dbaas.queue.UserWithPassword[];
         }
         // type fullname: dbaas.queue.AppStatus
         export type AppStatus = "not_configured" | "active" | "deleted"
@@ -100,10 +100,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: serviceRenewType;
-        renewalType: serviceRenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: serviceStateEnum;
+        status: service.StateEnum;
     }
 }
 
@@ -161,7 +161,7 @@ export interface Dbaas{
                 // GET /dbaas/queue/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /dbaas/queue/{serviceName}/serviceInfos
-                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}): Promise<void>;
+                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
             topic: {
                 // GET /dbaas/queue/{serviceName}/topic
@@ -276,7 +276,7 @@ export interface Dbaas{
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/dbaas/queue/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}) => Promise<void>;
+  put(path: '/dbaas/queue/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
   /**
    * User
    * Generate a new user password
@@ -288,14 +288,3 @@ export interface Dbaas{
    */
   delete(path: '/dbaas/queue/{serviceName}/topic/{topicId}'): (params: {serviceName: string, topicId: string}) => Promise<void>;
 }
-/**
- * Extra Alias to bypass relativer namespace colitions
- */
-type dbaasqueueAppStatus = dbaas.queue.AppStatus;
-type dbaasqueueApp = dbaas.queue.App;
-type dbaasqueueMetricsAccount = dbaas.queue.MetricsAccount;
-type dbaasqueueRole = dbaas.queue.Role;
-type dbaasqueueUserWithPassword = dbaas.queue.UserWithPassword;
-type serviceRenewType = service.RenewType;
-type serviceRenewalTypeEnum = service.RenewalTypeEnum;
-type serviceStateEnum = service.StateEnum;

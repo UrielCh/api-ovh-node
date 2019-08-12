@@ -12,7 +12,7 @@ export namespace kube {
         isUpToDate: boolean;
         name: string;
         nodesUrl: string;
-        status: kubeClusterStatus;
+        status: kube.ClusterStatus;
         updatePolicy: string;
         updatedAt: string;
         url: string;
@@ -33,7 +33,7 @@ export namespace kube {
         isUpToDate: boolean;
         name?: string;
         projectId: string;
-        status: kubeNodeStatus;
+        status: kube.NodeStatus;
         updatedAt: string;
         version: string;
     }
@@ -81,10 +81,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: serviceRenewType;
-        renewalType: serviceRenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: serviceStateEnum;
+        status: service.StateEnum;
     }
 }
 
@@ -145,7 +145,7 @@ export interface Kube{
             // GET /kube/{serviceName}/serviceInfos
             $get(): Promise<services.Service>;
             // PUT /kube/{serviceName}/serviceInfos
-            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}): Promise<void>;
+            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
         }
         terminate: {
             // POST /kube/{serviceName}/terminate
@@ -205,7 +205,7 @@ export interface Kube{
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/kube/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}) => Promise<void>;
+  put(path: '/kube/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
   /**
    * Manage the update policy of your cluster
    * Change the update policy of your cluster
@@ -247,11 +247,3 @@ export interface Kube{
    */
   delete(path: '/kube/{serviceName}/publiccloud/node/{nodeId}'): (params: {nodeId: string, serviceName: string}) => Promise<void>;
 }
-/**
- * Extra Alias to bypass relativer namespace colitions
- */
-type kubeClusterStatus = kube.ClusterStatus;
-type kubeNodeStatus = kube.NodeStatus;
-type serviceRenewType = service.RenewType;
-type serviceRenewalTypeEnum = service.RenewalTypeEnum;
-type serviceStateEnum = service.StateEnum;

@@ -122,38 +122,38 @@ export namespace hosting {
             attachedDomains: number;
             crontab: boolean;
             databaseEngines: number;
-            databases: hostingwebdatabaseCreationDatabaseCapabilities[];
-            disk?: hostingwebDiskType;
-            emails: hostingwebCreationEmailCapabilities;
+            databases: hosting.web.database.CreationDatabaseCapabilities[];
+            disk?: hosting.web.DiskType;
+            emails: hosting.web.CreationEmailCapabilities;
             envVars: number;
             extraUsers: number;
             filesBrowser: boolean;
-            highlight?: hostingwebHighLightEnum;
-            languages: hostingwebCronLanguageAvailable;
+            highlight?: hosting.web.HighLightEnum;
+            languages: hosting.web.CronLanguageAvailable;
             moduleOneClick: boolean;
-            privateDatabases: hostingwebdatabaseCreationDatabaseCapabilities[];
+            privateDatabases: hosting.web.database.CreationDatabaseCapabilities[];
             runtimes: number;
             sitesRecommended?: number;
             ssh: boolean;
-            traffic?: complexTypeUnitAndValuenumber;
+            traffic?: complexType.UnitAndValue<number>;
         }
         // type fullname: hosting.web.CdnOfferEnum
         export type CdnOfferEnum = "CDN_BUSINESS" | "CDN_BUSINESS_FREE"
         // interface fullName: hosting.web.CreationEmailCapabilities.CreationEmailCapabilities
         export interface CreationEmailCapabilities {
             available: number;
-            quota: complexTypeUnitAndValuenumber;
+            quota: complexType.UnitAndValue<number>;
         }
         // interface fullName: hosting.web.CronLanguageAvailable.CronLanguageAvailable
         export interface CronLanguageAvailable {
-            nodejs: hostingwebNodejsVersionAvailableEnum[];
-            php: hostingwebPhpVersionAvailableEnum[];
-            python: hostingwebPythonVersionAvailableEnum[];
-            ruby: hostingwebRubyVersionAvailableEnum[];
+            nodejs: hosting.web.NodejsVersionAvailableEnum[];
+            php: hosting.web.PhpVersionAvailableEnum[];
+            python: hosting.web.PythonVersionAvailableEnum[];
+            ruby: hosting.web.RubyVersionAvailableEnum[];
         }
         // interface fullName: hosting.web.DiskType.DiskType
         export interface DiskType {
-            type: hostingwebDiskTypeEnum;
+            type: hosting.web.DiskTypeEnum;
             unit: string;
             value: number;
         }
@@ -177,10 +177,10 @@ export namespace hosting {
             // interface fullName: hosting.web.database.CreationDatabaseCapabilities.CreationDatabaseCapabilities
             export interface CreationDatabaseCapabilities {
                 available: number;
-                engines: hostingwebdatabaseDatabaseTypeEnum[];
-                isolation: hostingwebdatabaseDatabaseIsolationEnum;
-                quota: complexTypeUnitAndValuenumber;
-                type: hostingwebdatabaseDatabaseCapabilitiesTypeEnum;
+                engines: hosting.web.database.DatabaseTypeEnum[];
+                isolation: hosting.web.database.DatabaseIsolationEnum;
+                quota: complexType.UnitAndValue<number>;
+                type: hosting.web.database.DatabaseCapabilitiesTypeEnum;
             }
             // type fullname: hosting.web.database.DatabaseCapabilitiesTypeEnum
             export type DatabaseCapabilitiesTypeEnum = "extraSqlPerso" | "local" | "privateDatabase" | "sqlLocal" | "sqlPerso" | "sqlPro"
@@ -254,32 +254,32 @@ export namespace order {
     export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
     // interface fullName: order.Order.Order
     export interface Order {
-        contracts: orderContract[];
-        details: orderOrderDetail[];
+        contracts: order.Contract[];
+        details: order.OrderDetail[];
         orderId?: number;
-        prices: orderOrderPrices;
+        prices: order.OrderPrices;
         url?: string;
     }
     // interface fullName: order.OrderDetail.OrderDetail
     export interface OrderDetail {
         description: string;
-        detailType?: orderOrderDetailTypeEnum;
+        detailType?: order.OrderDetailTypeEnum;
         domain: string;
         quantity: number;
-        totalPrice: orderPrice;
-        unitPrice: orderPrice;
+        totalPrice: order.Price;
+        unitPrice: order.Price;
     }
     // type fullname: order.OrderDetailTypeEnum
     export type OrderDetailTypeEnum = "ACCESSORY" | "CAUTION" | "CHOOSED" | "CONSUMPTION" | "CREATION" | "DELIVERY" | "DURATION" | "GIFT" | "INSTALLATION" | "LICENSE" | "MUTE" | "OTHER" | "OUTPLAN" | "QUANTITY" | "REFUND" | "RENEW" | "SPECIAL" | "SWITCH" | "TRANSFER" | "VOUCHER"
     // interface fullName: order.OrderPrices.OrderPrices
     export interface OrderPrices {
-        tax: orderPrice;
-        withTax: orderPrice;
-        withoutTax: orderPrice;
+        tax: order.Price;
+        withTax: order.Price;
+        withoutTax: order.Price;
     }
     // interface fullName: order.Price.Price
     export interface Price {
-        currencyCode: orderCurrencyCodeEnum;
+        currencyCode: order.CurrencyCodeEnum;
         text: string;
         value: number;
     }
@@ -318,7 +318,7 @@ export namespace order {
         export interface Creation {
             description: string;
             expire: string;
-            ovhSubsidiary: nichandleOvhSubsidiaryEnum;
+            ovhSubsidiary: nichandle.OvhSubsidiaryEnum;
         }
         // interface fullName: order.cart.DomainPacksCreation.DomainPacksCreation
         export interface DomainPacksCreation {
@@ -330,7 +330,7 @@ export namespace order {
         }
         // interface fullName: order.cart.DomainPacksDescription.DomainPacksDescription
         export interface DomainPacksDescription {
-            domains: ordercartDomainPacksDescriptionItem[];
+            domains: order.cart.DomainPacksDescriptionItem[];
         }
         // interface fullName: order.cart.DomainPacksDescriptionItem.DomainPacksDescriptionItem
         export interface DomainPacksDescriptionItem {
@@ -339,9 +339,9 @@ export namespace order {
         }
         // interface fullName: order.cart.DomainPacksProductInformation.DomainPacksProductInformation
         export interface DomainPacksProductInformation {
-            description: ordercartDomainPacksDescription;
+            description: order.cart.DomainPacksDescription;
             planCode: string;
-            prices: ordercartGenericProductPricing[];
+            prices: order.cart.GenericProductPricing[];
         }
         // interface fullName: order.cart.DomainSettings.DomainSettings
         export interface DomainSettings {
@@ -393,9 +393,9 @@ export namespace order {
             family: string;
             mandatory: boolean;
             planCode: string;
-            prices: ordercartGenericProductPricing[];
+            prices: order.cart.GenericProductPricing[];
             productName: string;
-            productType: ordercartGenericProductTypeEnum;
+            productType: order.cart.GenericProductTypeEnum;
         }
         // interface fullName: order.cart.GenericProductCreation.GenericProductCreation
         export interface GenericProductCreation {
@@ -407,13 +407,13 @@ export namespace order {
         // interface fullName: order.cart.GenericProductDefinition.GenericProductDefinition
         export interface GenericProductDefinition {
             planCode: string;
-            prices: ordercartGenericProductPricing[];
+            prices: order.cart.GenericProductPricing[];
             productName: string;
-            productType: ordercartGenericProductTypeEnum;
+            productType: order.cart.GenericProductTypeEnum;
         }
         // interface fullName: order.cart.GenericProductPricing.GenericProductPricing
         export interface GenericProductPricing {
-            capacities: ordercartGenericProductPricingCapacitiesEnum[];
+            capacities: order.cart.GenericProductPricingCapacitiesEnum[];
             description: string;
             duration: string;
             interval: number;
@@ -421,10 +421,10 @@ export namespace order {
             maximumRepeat?: number;
             minimumQuantity: number;
             minimumRepeat: number;
-            price: orderPrice;
+            price: order.Price;
             priceInUcents: number;
             pricingMode: string;
-            pricingType: ordercartGenericProductPricingTypeEnum;
+            pricingType: order.cart.GenericProductPricingTypeEnum;
         }
         // type fullname: order.cart.GenericProductPricingCapacitiesEnum
         export type GenericProductPricingCapacitiesEnum = "installation" | "renew" | "upgrade" | "downgrade"
@@ -443,9 +443,9 @@ export namespace order {
             offerId: string;
             options: number[];
             parentItemId?: number;
-            prices: ordercartPrice[];
+            prices: order.cart.Price[];
             productId: string;
-            settings: ordercartDomainSettings;
+            settings: order.cart.DomainSettings;
         }
         // interface fullName: order.cart.ItemConfigurationCreation.ItemConfigurationCreation
         export interface ItemConfigurationCreation {
@@ -459,20 +459,20 @@ export namespace order {
         }
         // interface fullName: order.cart.Price.Price
         export interface Price {
-            label: ordercartPriceLabelEnum;
-            price: orderPrice;
+            label: order.cart.PriceLabelEnum;
+            price: order.Price;
         }
         // type fullname: order.cart.PriceLabelEnum
         export type PriceLabelEnum = "PRICE" | "DISCOUNT" | "FEE" | "TOTAL" | "RENEW"
         // interface fullName: order.cart.ProductInformation.ProductInformation
         export interface ProductInformation {
-            configurations: ordercartConfigurationRequirements[];
+            configurations: order.cart.ConfigurationRequirements[];
             deliveryTime: string;
             duration: string[];
             offer?: string;
             orderable: boolean;
             phase: string;
-            prices?: ordercartPrice[];
+            prices?: order.cart.Price[];
             pricingMode: string;
             productId: string;
             quantityMax: number;
@@ -484,15 +484,15 @@ export namespace order {
         }
         // interface fullName: order.cart.WebHostingProductInformation.WebHostingProductInformation
         export interface WebHostingProductInformation {
-            description: hostingwebCapabilities;
+            description: hosting.web.Capabilities;
             planCode: string;
-            prices: ordercartGenericProductPricing[];
+            prices: order.cart.GenericProductPricing[];
         }
     }
     export namespace catalog {
         // interface fullName: order.catalog.AddonItem.AddonItem
         export interface AddonItem {
-            addons: ordercatalogAddonOffer[];
+            addons: order.catalog.AddonOffer[];
             exclusive: boolean;
             family: string;
             mandatory: boolean;
@@ -500,13 +500,13 @@ export namespace order {
         // interface fullName: order.catalog.AddonOffer.AddonOffer
         export interface AddonOffer {
             invoiceName: string;
-            plan: ordercatalogProductPlan;
+            plan: order.catalog.ProductPlan;
         }
         // interface fullName: order.catalog.Catalog.Catalog
         export interface Catalog {
             catalogId: number;
             merchantCode: string;
-            plansFamily: ordercatalogPlansItem[];
+            plansFamily: order.catalog.PlansItem[];
         }
         // interface fullName: order.catalog.ConfigurationItem.ConfigurationItem
         export interface ConfigurationItem {
@@ -519,7 +519,7 @@ export namespace order {
         // interface fullName: order.catalog.PlansItem.PlansItem
         export interface PlansItem {
             family: string;
-            plans: ordercatalogProductPlan[];
+            plans: order.catalog.ProductPlan[];
         }
         // interface fullName: order.catalog.Pricing.Pricing
         export interface Pricing {
@@ -533,33 +533,33 @@ export namespace order {
             minimumQuantity: number;
             minimumRepeat: number;
             mustBeCompleted: boolean;
-            price: orderPrice;
+            price: order.Price;
             priceCapInUcents?: number;
             priceInUcents: number;
             pricingStrategy: string;
         }
         // interface fullName: order.catalog.PricingDefault.PricingDefault
         export interface PricingDefault {
-            default: ordercatalogPricing[];
+            default: order.catalog.Pricing[];
         }
         // interface fullName: order.catalog.Product.Product
         export interface Product {
-            configurations: ordercatalogConfigurationItem[];
+            configurations: order.catalog.ConfigurationItem[];
             description: string;
             name: string;
-            technicalDetails?: complexTypeSafeKeyValuestring[];
+            technicalDetails?: complexType.SafeKeyValue<string>[];
         }
         // interface fullName: order.catalog.ProductOfferDetails.ProductOfferDetails
         export interface ProductOfferDetails {
-            metadatas: complexTypeSafeKeyValuestring[];
-            pricings: ordercatalogPricingDefault;
-            product: ordercatalogProduct;
+            metadatas: complexType.SafeKeyValue<string>[];
+            pricings: order.catalog.PricingDefault;
+            product: order.catalog.Product;
         }
         // interface fullName: order.catalog.ProductPlan.ProductPlan
         export interface ProductPlan {
-            addonsFamily: ordercatalogAddonItem[];
+            addonsFamily: order.catalog.AddonItem[];
             consumptionBillingStrategy?: string;
-            details: ordercatalogProductOfferDetails;
+            details: order.catalog.ProductOfferDetails;
             invoiceName: string;
             planCode: string;
             pricingType: string;
@@ -569,13 +569,13 @@ export namespace order {
             export interface Catalog {
                 catalogId: number;
                 catalogName: string;
-                commercialRanges: ordercatalogpccCommercialRange[];
+                commercialRanges: order.catalog.pcc.CommercialRange[];
                 merchantCode: string;
-                plans: ordercatalogProductPlan[];
+                plans: order.catalog.ProductPlan[];
             }
             // interface fullName: order.catalog.pcc.CommercialRange.CommercialRange
             export interface CommercialRange {
-                datacenters: ordercatalogpccDatacenter[];
+                datacenters: order.catalog.pcc.Datacenter[];
                 defaultZone: string;
                 name: string;
             }
@@ -583,9 +583,9 @@ export namespace order {
             export interface Datacenter {
                 cityCode: string;
                 cityName: string;
-                countryCode: nichandleCountryEnum;
+                countryCode: nichandle.CountryEnum;
                 defaultHypervisor: string;
-                hypervisors: ordercatalogpccHypervisor[];
+                hypervisors: order.catalog.pcc.Hypervisor[];
                 mainPlan: string;
                 orderable: boolean;
                 orderableOptions: boolean;
@@ -600,13 +600,13 @@ export namespace order {
                 onInitialOrder: boolean;
                 onUpgradeOrder: boolean;
                 planCode: string;
-                specifications: ordercatalogpccHostSpecifications;
+                specifications: order.catalog.pcc.HostSpecifications;
                 storagesPack: string[];
             }
             // interface fullName: order.catalog.pcc.HostCpuSpecifications.HostCpuSpecifications
             export interface HostCpuSpecifications {
                 cores: number;
-                frequency: complexTypeUnitAndValuenumber;
+                frequency: complexType.UnitAndValue<number>;
                 generation: string;
                 model: string;
                 socket: number;
@@ -614,28 +614,28 @@ export namespace order {
             }
             // interface fullName: order.catalog.pcc.HostMemorySpecifications.HostMemorySpecifications
             export interface HostMemorySpecifications {
-                ram: complexTypeUnitAndValuenumber;
+                ram: complexType.UnitAndValue<number>;
             }
             // interface fullName: order.catalog.pcc.HostNetworkSpecifications.HostNetworkSpecifications
             export interface HostNetworkSpecifications {
                 nics: number;
-                speed: complexTypeUnitAndValuenumber;
+                speed: complexType.UnitAndValue<number>;
             }
             // interface fullName: order.catalog.pcc.HostSpecifications.HostSpecifications
             export interface HostSpecifications {
-                cpu: ordercatalogpccHostCpuSpecifications;
-                memory: ordercatalogpccHostMemorySpecifications;
-                network: ordercatalogpccHostNetworkSpecifications[];
+                cpu: order.catalog.pcc.HostCpuSpecifications;
+                memory: order.catalog.pcc.HostMemorySpecifications;
+                network: order.catalog.pcc.HostNetworkSpecifications[];
             }
             // interface fullName: order.catalog.pcc.Hypervisor.Hypervisor
             export interface Hypervisor {
-                hosts: ordercatalogpccHost[];
+                hosts: order.catalog.pcc.Host[];
                 name: string;
-                options: ordercatalogpccOption[];
+                options: order.catalog.pcc.Option[];
                 orderable: boolean;
-                servicePacks: ordercatalogpccServicePack[];
+                servicePacks: order.catalog.pcc.ServicePack[];
                 shortName: string;
-                storages: ordercatalogpccStorage[];
+                storages: order.catalog.pcc.Storage[];
                 type: string;
             }
             // interface fullName: order.catalog.pcc.Option.Option
@@ -650,7 +650,7 @@ export namespace order {
             // interface fullName: order.catalog.pcc.ServicePack.ServicePack
             export interface ServicePack {
                 name: string;
-                options: ordercatalogpccServicePackOption[];
+                options: order.catalog.pcc.ServicePackOption[];
                 planCode: string;
                 upgradableTo: string[];
             }
@@ -666,11 +666,11 @@ export namespace order {
                 onInitialOrder: boolean;
                 onUpgradeOrder: boolean;
                 planCode: string;
-                specifications: ordercatalogpccStorageSpecifications;
+                specifications: order.catalog.pcc.StorageSpecifications;
             }
             // interface fullName: order.catalog.pcc.StorageSpecifications.StorageSpecifications
             export interface StorageSpecifications {
-                size: complexTypeUnitAndValuenumber;
+                size: complexType.UnitAndValue<number>;
                 type: string;
             }
         }
@@ -685,14 +685,14 @@ export namespace order {
             }
             // interface fullName: order.catalog.privateCloud.CapabilitiesListing.CapabilitiesListing
             export interface CapabilitiesListing {
-                '2016v1': ordercatalogprivateCloudCapabilities;
-                '2016v2': ordercatalogprivateCloudCapabilities;
-                '2016v3': ordercatalogprivateCloudCapabilities;
-                '2016v4': ordercatalogprivateCloudCapabilities;
-                '2016v5': ordercatalogprivateCloudCapabilities;
-                '2016v6': ordercatalogprivateCloudCapabilities;
-                '2016v7': ordercatalogprivateCloudCapabilities;
-                default: ordercatalogprivateCloudCapabilities;
+                '2016v1': order.catalog.privateCloud.Capabilities;
+                '2016v2': order.catalog.privateCloud.Capabilities;
+                '2016v3': order.catalog.privateCloud.Capabilities;
+                '2016v4': order.catalog.privateCloud.Capabilities;
+                '2016v5': order.catalog.privateCloud.Capabilities;
+                '2016v6': order.catalog.privateCloud.Capabilities;
+                '2016v7': order.catalog.privateCloud.Capabilities;
+                default: order.catalog.privateCloud.Capabilities;
             }
             // interface fullName: order.catalog.privateCloud.Catalog.Catalog
             export interface Catalog {
@@ -701,8 +701,8 @@ export namespace order {
                 defaultHypervisor: string;
                 defaultZone: string;
                 merchantCode: string;
-                options: ordercatalogprivateCloudCapabilitiesListing;
-                zones: ordercatalogprivateCloudZonesListing;
+                options: order.catalog.privateCloud.CapabilitiesListing;
+                zones: order.catalog.privateCloud.ZonesListing;
             }
             // interface fullName: order.catalog.privateCloud.Zone.Zone
             export interface Zone {
@@ -711,16 +711,16 @@ export namespace order {
                 defaultHypervisor: string;
                 defaultVersion: string;
                 internalName: string;
-                plans: ordercatalogProductPlan[];
+                plans: order.catalog.ProductPlan[];
             }
             // interface fullName: order.catalog.privateCloud.ZonesListing.ZonesListing
             export interface ZonesListing {
-                bhs: ordercatalogprivateCloudZone;
-                eri: ordercatalogprivateCloudZone;
-                lim: ordercatalogprivateCloudZone;
-                rbx: ordercatalogprivateCloudZone;
-                sbg: ordercatalogprivateCloudZone;
-                waw: ordercatalogprivateCloudZone;
+                bhs: order.catalog.privateCloud.Zone;
+                eri: order.catalog.privateCloud.Zone;
+                lim: order.catalog.privateCloud.Zone;
+                rbx: order.catalog.privateCloud.Zone;
+                sbg: order.catalog.privateCloud.Zone;
+                waw: order.catalog.privateCloud.Zone;
             }
         }
         export namespace publik {
@@ -734,12 +734,12 @@ export namespace order {
             }
             // interface fullName: order.catalog.publik.Catalog.Catalog
             export interface Catalog {
-                addons: ordercatalogpublikPlan[];
+                addons: order.catalog.publik.Plan[];
                 catalogId: number;
-                locale: ordercatalogpublikLocale;
-                planFamilies: ordercatalogpublikPlanFamily[];
-                plans: ordercatalogpublikPlan[];
-                products: ordercatalogpublikProduct[];
+                locale: order.catalog.publik.Locale;
+                planFamilies: order.catalog.publik.PlanFamily[];
+                plans: order.catalog.publik.Plan[];
+                products: order.catalog.publik.Product[];
             }
             // interface fullName: order.catalog.publik.Configuration.Configuration
             export interface Configuration {
@@ -750,32 +750,32 @@ export namespace order {
             }
             // interface fullName: order.catalog.publik.DedicatedServerCatalog.DedicatedServerCatalog
             export interface DedicatedServerCatalog {
-                addons: ordercatalogpublikPlan[];
+                addons: order.catalog.publik.Plan[];
                 catalogId: number;
-                locale: ordercatalogpublikLocale;
-                planFamilies: ordercatalogpublikAddonFamily[];
-                plans: ordercatalogpublikPlan[];
-                products: ordercatalogpublikDedicatedServerProduct[];
+                locale: order.catalog.publik.Locale;
+                planFamilies: order.catalog.publik.AddonFamily[];
+                plans: order.catalog.publik.Plan[];
+                products: order.catalog.publik.DedicatedServerProduct[];
             }
             // interface fullName: order.catalog.publik.DedicatedServerProduct.DedicatedServerProduct
             export interface DedicatedServerProduct {
-                blobs?: ordercatalogpublikDedicatedServerProductBlob;
+                blobs?: order.catalog.publik.DedicatedServerProductBlob;
                 description: string;
                 name: string;
             }
             // interface fullName: order.catalog.publik.DedicatedServerProductBlob.DedicatedServerProductBlob
             export interface DedicatedServerProductBlob {
-                technical?: ordercatalogpublikDedicatedServerProductBlobTechnical;
+                technical?: order.catalog.publik.DedicatedServerProductBlobTechnical;
             }
             // interface fullName: order.catalog.publik.DedicatedServerProductBlobTechnical.DedicatedServerProductBlobTechnical
             export interface DedicatedServerProductBlobTechnical {
-                bandwidth?: ordercatalogpublikDedicatedServerProductBlobTechnicalNetwork;
-                cpu?: ordercatalogpublikDedicatedServerProductBlobTechnicalCPU;
-                gpu?: ordercatalogpublikDedicatedServerProductBlobTechnicalGPU;
-                memory?: ordercatalogpublikDedicatedServerProductBlobTechnicalMemory;
-                server?: ordercatalogpublikDedicatedServerProductBlobTechnicalServer;
-                storage?: ordercatalogpublikDedicatedServerProductBlobTechnicalStorage;
-                vrack?: ordercatalogpublikDedicatedServerProductBlobTechnicalNetwork;
+                bandwidth?: order.catalog.publik.DedicatedServerProductBlobTechnicalNetwork;
+                cpu?: order.catalog.publik.DedicatedServerProductBlobTechnicalCPU;
+                gpu?: order.catalog.publik.DedicatedServerProductBlobTechnicalGPU;
+                memory?: order.catalog.publik.DedicatedServerProductBlobTechnicalMemory;
+                server?: order.catalog.publik.DedicatedServerProductBlobTechnicalServer;
+                storage?: order.catalog.publik.DedicatedServerProductBlobTechnicalStorage;
+                vrack?: order.catalog.publik.DedicatedServerProductBlobTechnicalNetwork;
             }
             // interface fullName: order.catalog.publik.DedicatedServerProductBlobTechnicalCPU.DedicatedServerProductBlobTechnicalCPU
             export interface DedicatedServerProductBlobTechnicalCPU {
@@ -820,30 +820,30 @@ export namespace order {
             }
             // interface fullName: order.catalog.publik.DedicatedServerProductBlobTechnicalServer.DedicatedServerProductBlobTechnicalServer
             export interface DedicatedServerProductBlobTechnicalServer {
-                cpu: ordercatalogpublikDedicatedServerProductBlobTechnicalCPU;
-                frame: ordercatalogpublikDedicatedServerProductBlobTechnicalFrame;
+                cpu: order.catalog.publik.DedicatedServerProductBlobTechnicalCPU;
+                frame: order.catalog.publik.DedicatedServerProductBlobTechnicalFrame;
                 range: string;
             }
             // interface fullName: order.catalog.publik.DedicatedServerProductBlobTechnicalStorage.DedicatedServerProductBlobTechnicalStorage
             export interface DedicatedServerProductBlobTechnicalStorage {
-                disks: ordercatalogpublikDedicatedServerProductBlobTechnicalDisk[];
+                disks: order.catalog.publik.DedicatedServerProductBlobTechnicalDisk[];
                 raid: string;
             }
             // interface fullName: order.catalog.publik.Locale.Locale
             export interface Locale {
-                currencyCode: orderCurrencyCodeEnum;
-                subsidiary: nichandleOvhSubsidiaryEnum;
+                currencyCode: order.CurrencyCodeEnum;
+                subsidiary: nichandle.OvhSubsidiaryEnum;
                 taxRate: number;
             }
             // interface fullName: order.catalog.publik.Plan.Plan
             export interface Plan {
-                addonFamilies: ordercatalogpublikAddonFamily[];
-                configurations: ordercatalogpublikConfiguration[];
+                addonFamilies: order.catalog.publik.AddonFamily[];
+                configurations: order.catalog.publik.Configuration[];
                 family?: string;
                 invoiceName: string;
                 planCode: string;
-                pricingType: ordercartGenericProductPricingTypeEnum;
-                pricings: ordercatalogpublikPricing[];
+                pricingType: order.cart.GenericProductPricingTypeEnum;
+                pricings: order.catalog.publik.Pricing[];
                 product: string;
             }
             // interface fullName: order.catalog.publik.PlanFamily.PlanFamily
@@ -852,20 +852,20 @@ export namespace order {
             }
             // interface fullName: order.catalog.publik.Pricing.Pricing
             export interface Pricing {
-                capacities: ordercartGenericProductPricingCapacitiesEnum[];
+                capacities: order.cart.GenericProductPricingCapacitiesEnum[];
                 commitment: number;
                 description: string;
                 interval: number;
-                intervalUnit: ordercartDurationUnitEnum;
+                intervalUnit: order.cart.DurationUnitEnum;
                 mode: string;
                 mustBeCompleted: boolean;
                 phase: number;
                 price: number;
-                quantity: ordercatalogpublikPricingMinMax;
-                repeat: ordercatalogpublikPricingMinMax;
-                strategy: ordercartGenericProductPricingStrategyEnum;
+                quantity: order.catalog.publik.PricingMinMax;
+                repeat: order.catalog.publik.PricingMinMax;
+                strategy: order.cart.GenericProductPricingStrategyEnum;
                 tax: number;
-                type: ordercartGenericProductPricingTypeEnum;
+                type: order.cart.GenericProductPricingTypeEnum;
             }
             // interface fullName: order.catalog.publik.PricingMinMax.PricingMinMax
             export interface PricingMinMax {
@@ -883,9 +883,9 @@ export namespace order {
         // interface fullName: order.upgrade.Operation.Operation
         export interface Operation {
             id: number;
-            product: orderupgradeOperationProduct;
-            status: orderupgradeOperationStatusEnum;
-            type: orderupgradeOperationTypeEnum;
+            product: order.upgrade.OperationProduct;
+            status: order.upgrade.OperationStatusEnum;
+            type: order.upgrade.OperationTypeEnum;
         }
         // interface fullName: order.upgrade.OperationProduct.OperationProduct
         export interface OperationProduct {
@@ -898,8 +898,8 @@ export namespace order {
         export type OperationTypeEnum = "UPGRADE"
         // interface fullName: order.upgrade.order_upgrade_OperationAndOrder.order_upgrade_OperationAndOrder
         export interface order_upgrade_OperationAndOrder {
-            operation?: orderupgradeOperation;
-            order?: orderOrder;
+            operation?: order.upgrade.Operation;
+            order?: order.Order;
         }
     }
 }
@@ -972,7 +972,7 @@ export interface Order{
         // GET /order/cart
         $get(params?: {description?: string}): Promise<string[]>;
         // POST /order/cart
-        $post(params: {description?: string, expire?: string, ovhSubsidiary: nichandleOvhSubsidiaryEnum}): Promise<order.cart.Cart>;
+        $post(params: {description?: string, expire?: string, ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.cart.Cart>;
         $(cartId: string): {
             // DELETE /order/cart/{cartId}
             $delete(): Promise<void>;
@@ -1856,97 +1856,97 @@ export interface Order{
             $get(): Promise<string[]>;
             cloud: {
                 // GET /order/catalog/formatted/cloud
-                $get(params: {ovhSubsidiary: nichandleOvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
+                $get(params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
             }
             dedicated: {
                 // GET /order/catalog/formatted/dedicated
-                $get(params: {ovhSubsidiary: nichandleOvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
+                $get(params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
             }
             deskaas: {
                 // GET /order/catalog/formatted/deskaas
-                $get(params: {ovhSubsidiary: nichandleOvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
+                $get(params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
             }
             discover: {
                 // GET /order/catalog/formatted/discover
-                $get(params: {ovhSubsidiary: nichandleOvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
+                $get(params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
             }
             ip: {
                 // GET /order/catalog/formatted/ip
-                $get(params: {ovhSubsidiary: nichandleOvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
+                $get(params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
             }
             licenseCloudLinux: {
                 // GET /order/catalog/formatted/licenseCloudLinux
-                $get(params: {ovhSubsidiary: nichandleOvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
+                $get(params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
             }
             licenseDirectadmin: {
                 // GET /order/catalog/formatted/licenseDirectadmin
-                $get(params: {ovhSubsidiary: nichandleOvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
+                $get(params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
             }
             licensePlesk: {
                 // GET /order/catalog/formatted/licensePlesk
-                $get(params: {ovhSubsidiary: nichandleOvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
+                $get(params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
             }
             licenseSqlServer: {
                 // GET /order/catalog/formatted/licenseSqlServer
-                $get(params: {ovhSubsidiary: nichandleOvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
+                $get(params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
             }
             licenseVirtuozzo: {
                 // GET /order/catalog/formatted/licenseVirtuozzo
-                $get(params: {ovhSubsidiary: nichandleOvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
+                $get(params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
             }
             licenseWindows: {
                 // GET /order/catalog/formatted/licenseWindows
-                $get(params: {ovhSubsidiary: nichandleOvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
+                $get(params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
             }
             licenseWorklight: {
                 // GET /order/catalog/formatted/licenseWorklight
-                $get(params: {ovhSubsidiary: nichandleOvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
+                $get(params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
             }
             licensecPanel: {
                 // GET /order/catalog/formatted/licensecPanel
-                $get(params: {ovhSubsidiary: nichandleOvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
+                $get(params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
             }
             logs: {
                 // GET /order/catalog/formatted/logs
-                $get(params: {ovhSubsidiary: nichandleOvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
+                $get(params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
             }
             privateCloud: {
                 // GET /order/catalog/formatted/privateCloud
-                $get(params: {ovhSubsidiary: nichandleOvhSubsidiaryEnum}): Promise<order.catalog.pcc.Catalog>;
+                $get(params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.pcc.Catalog>;
             }
             privateCloudCDI: {
                 // GET /order/catalog/formatted/privateCloudCDI
-                $get(params: {ovhSubsidiary: nichandleOvhSubsidiaryEnum}): Promise<order.catalog.privateCloud.Catalog>;
+                $get(params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.privateCloud.Catalog>;
             }
             privateCloudDC: {
                 // GET /order/catalog/formatted/privateCloudDC
-                $get(params: {ovhSubsidiary: nichandleOvhSubsidiaryEnum}): Promise<order.catalog.privateCloud.Catalog>;
+                $get(params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.privateCloud.Catalog>;
             }
             privateCloudReseller: {
                 // GET /order/catalog/formatted/privateCloudReseller
-                $get(params: {ovhSubsidiary: nichandleOvhSubsidiaryEnum}): Promise<order.catalog.pcc.Catalog>;
+                $get(params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.pcc.Catalog>;
             }
             privateCloudResellerEnterprise: {
                 // GET /order/catalog/formatted/privateCloudResellerEnterprise
-                $get(params: {ovhSubsidiary: nichandleOvhSubsidiaryEnum}): Promise<order.catalog.pcc.Catalog>;
+                $get(params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.pcc.Catalog>;
             }
             privateCloudSDDC: {
                 // GET /order/catalog/formatted/privateCloudSDDC
-                $get(params: {ovhSubsidiary: nichandleOvhSubsidiaryEnum}): Promise<order.catalog.privateCloud.Catalog>;
+                $get(params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.privateCloud.Catalog>;
             }
             reseller: {
                 // GET /order/catalog/formatted/reseller
-                $get(params: {ovhSubsidiary: nichandleOvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
+                $get(params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
             }
             vps: {
                 // GET /order/catalog/formatted/vps
-                $get(params: {ovhSubsidiary: nichandleOvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
+                $get(params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.Catalog>;
             }
         }
         public: {
             baremetalServers: {
                 // GET /order/catalog/public/baremetalServers
-                $get(params: {ovhSubsidiary: nichandleOvhSubsidiaryEnum}): Promise<order.catalog.publik.DedicatedServerCatalog>;
+                $get(params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.publik.DedicatedServerCatalog>;
             }
         }
     }
@@ -3990,117 +3990,117 @@ export interface Order{
    * Missing description
    * Retrieve information of Public Cloud catalog
    */
-  get(path: '/order/catalog/formatted/cloud'): (params: {ovhSubsidiary: nichandleOvhSubsidiaryEnum}) => Promise<order.catalog.Catalog>;
+  get(path: '/order/catalog/formatted/cloud'): (params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}) => Promise<order.catalog.Catalog>;
   /**
    * Missing description
    * Retrieve information of dedicated server catalog
    */
-  get(path: '/order/catalog/formatted/dedicated'): (params: {ovhSubsidiary: nichandleOvhSubsidiaryEnum}) => Promise<order.catalog.Catalog>;
+  get(path: '/order/catalog/formatted/dedicated'): (params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}) => Promise<order.catalog.Catalog>;
   /**
    * Missing description
    * Retrieve information of Desk as a service catalog
    */
-  get(path: '/order/catalog/formatted/deskaas'): (params: {ovhSubsidiary: nichandleOvhSubsidiaryEnum}) => Promise<order.catalog.Catalog>;
+  get(path: '/order/catalog/formatted/deskaas'): (params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}) => Promise<order.catalog.Catalog>;
   /**
    * Missing description
    * Retrieve information of dedicated discover offer server catalog
    */
-  get(path: '/order/catalog/formatted/discover'): (params: {ovhSubsidiary: nichandleOvhSubsidiaryEnum}) => Promise<order.catalog.Catalog>;
+  get(path: '/order/catalog/formatted/discover'): (params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}) => Promise<order.catalog.Catalog>;
   /**
    * Missing description
    * Retrieve information of IP addresses catalog
    */
-  get(path: '/order/catalog/formatted/ip'): (params: {ovhSubsidiary: nichandleOvhSubsidiaryEnum}) => Promise<order.catalog.Catalog>;
+  get(path: '/order/catalog/formatted/ip'): (params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}) => Promise<order.catalog.Catalog>;
   /**
    * Missing description
    * Retrieve information of CloudLinux licenses catalog
    */
-  get(path: '/order/catalog/formatted/licenseCloudLinux'): (params: {ovhSubsidiary: nichandleOvhSubsidiaryEnum}) => Promise<order.catalog.Catalog>;
+  get(path: '/order/catalog/formatted/licenseCloudLinux'): (params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}) => Promise<order.catalog.Catalog>;
   /**
    * Missing description
    * Retrieve information of cPanel licenses catalog
    */
-  get(path: '/order/catalog/formatted/licensecPanel'): (params: {ovhSubsidiary: nichandleOvhSubsidiaryEnum}) => Promise<order.catalog.Catalog>;
+  get(path: '/order/catalog/formatted/licensecPanel'): (params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}) => Promise<order.catalog.Catalog>;
   /**
    * Missing description
    * Retrieve information of Directadmin licenses offers catalog
    */
-  get(path: '/order/catalog/formatted/licenseDirectadmin'): (params: {ovhSubsidiary: nichandleOvhSubsidiaryEnum}) => Promise<order.catalog.Catalog>;
+  get(path: '/order/catalog/formatted/licenseDirectadmin'): (params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}) => Promise<order.catalog.Catalog>;
   /**
    * Missing description
    * Retrieve information of Plesk licenses catalog
    */
-  get(path: '/order/catalog/formatted/licensePlesk'): (params: {ovhSubsidiary: nichandleOvhSubsidiaryEnum}) => Promise<order.catalog.Catalog>;
+  get(path: '/order/catalog/formatted/licensePlesk'): (params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}) => Promise<order.catalog.Catalog>;
   /**
    * Missing description
    * Retrieve information of SqlServer licenses catalog
    */
-  get(path: '/order/catalog/formatted/licenseSqlServer'): (params: {ovhSubsidiary: nichandleOvhSubsidiaryEnum}) => Promise<order.catalog.Catalog>;
+  get(path: '/order/catalog/formatted/licenseSqlServer'): (params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}) => Promise<order.catalog.Catalog>;
   /**
    * Missing description
    * Retrieve information of Virtuozzo licenses catalog
    */
-  get(path: '/order/catalog/formatted/licenseVirtuozzo'): (params: {ovhSubsidiary: nichandleOvhSubsidiaryEnum}) => Promise<order.catalog.Catalog>;
+  get(path: '/order/catalog/formatted/licenseVirtuozzo'): (params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}) => Promise<order.catalog.Catalog>;
   /**
    * Missing description
    * Retrieve information of Windows licenses catalog
    */
-  get(path: '/order/catalog/formatted/licenseWindows'): (params: {ovhSubsidiary: nichandleOvhSubsidiaryEnum}) => Promise<order.catalog.Catalog>;
+  get(path: '/order/catalog/formatted/licenseWindows'): (params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}) => Promise<order.catalog.Catalog>;
   /**
    * Missing description
    * Retrieve information of Worklight licenses catalog
    */
-  get(path: '/order/catalog/formatted/licenseWorklight'): (params: {ovhSubsidiary: nichandleOvhSubsidiaryEnum}) => Promise<order.catalog.Catalog>;
+  get(path: '/order/catalog/formatted/licenseWorklight'): (params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}) => Promise<order.catalog.Catalog>;
   /**
    * Missing description
    * Retrieve information of Logs Data Platform catalog
    */
-  get(path: '/order/catalog/formatted/logs'): (params: {ovhSubsidiary: nichandleOvhSubsidiaryEnum}) => Promise<order.catalog.Catalog>;
+  get(path: '/order/catalog/formatted/logs'): (params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}) => Promise<order.catalog.Catalog>;
   /**
    * Missing description
    * Retrieve information of Private Cloud catalog
    */
-  get(path: '/order/catalog/formatted/privateCloud'): (params: {ovhSubsidiary: nichandleOvhSubsidiaryEnum}) => Promise<order.catalog.pcc.Catalog>;
+  get(path: '/order/catalog/formatted/privateCloud'): (params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}) => Promise<order.catalog.pcc.Catalog>;
   /**
    * Missing description
    * Retrieve information of Private Cloud CDI catalog
    */
-  get(path: '/order/catalog/formatted/privateCloudCDI'): (params: {ovhSubsidiary: nichandleOvhSubsidiaryEnum}) => Promise<order.catalog.privateCloud.Catalog>;
+  get(path: '/order/catalog/formatted/privateCloudCDI'): (params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}) => Promise<order.catalog.privateCloud.Catalog>;
   /**
    * Missing description
    * Retrieve information of Private Cloud Dedicated Cloud catalog
    */
-  get(path: '/order/catalog/formatted/privateCloudDC'): (params: {ovhSubsidiary: nichandleOvhSubsidiaryEnum}) => Promise<order.catalog.privateCloud.Catalog>;
+  get(path: '/order/catalog/formatted/privateCloudDC'): (params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}) => Promise<order.catalog.privateCloud.Catalog>;
   /**
    * Missing description
    * Retrieve information of Private Cloud Reseller catalog
    */
-  get(path: '/order/catalog/formatted/privateCloudReseller'): (params: {ovhSubsidiary: nichandleOvhSubsidiaryEnum}) => Promise<order.catalog.pcc.Catalog>;
+  get(path: '/order/catalog/formatted/privateCloudReseller'): (params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}) => Promise<order.catalog.pcc.Catalog>;
   /**
    * Missing description
    * Retrieve information of Private Cloud Reseller Enterprise catalog
    */
-  get(path: '/order/catalog/formatted/privateCloudResellerEnterprise'): (params: {ovhSubsidiary: nichandleOvhSubsidiaryEnum}) => Promise<order.catalog.pcc.Catalog>;
+  get(path: '/order/catalog/formatted/privateCloudResellerEnterprise'): (params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}) => Promise<order.catalog.pcc.Catalog>;
   /**
    * Missing description
    * Retrieve information of Private Cloud SDDC catalog
    */
-  get(path: '/order/catalog/formatted/privateCloudSDDC'): (params: {ovhSubsidiary: nichandleOvhSubsidiaryEnum}) => Promise<order.catalog.privateCloud.Catalog>;
+  get(path: '/order/catalog/formatted/privateCloudSDDC'): (params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}) => Promise<order.catalog.privateCloud.Catalog>;
   /**
    * Missing description
    * Retrieve information of Reseller catalog
    */
-  get(path: '/order/catalog/formatted/reseller'): (params: {ovhSubsidiary: nichandleOvhSubsidiaryEnum}) => Promise<order.catalog.Catalog>;
+  get(path: '/order/catalog/formatted/reseller'): (params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}) => Promise<order.catalog.Catalog>;
   /**
    * Missing description
    * Retrieve information of VPS catalog
    */
-  get(path: '/order/catalog/formatted/vps'): (params: {ovhSubsidiary: nichandleOvhSubsidiaryEnum}) => Promise<order.catalog.Catalog>;
+  get(path: '/order/catalog/formatted/vps'): (params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}) => Promise<order.catalog.Catalog>;
   /**
    * Missing description
    * Retrieve bare-metal servers catalog
    */
-  get(path: '/order/catalog/public/baremetalServers'): (params: {ovhSubsidiary: nichandleOvhSubsidiaryEnum}) => Promise<order.catalog.publik.DedicatedServerCatalog>;
+  get(path: '/order/catalog/public/baremetalServers'): (params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}) => Promise<order.catalog.publik.DedicatedServerCatalog>;
   /**
    * Operations about the CDNANYCAST service
    * List available services
@@ -5375,7 +5375,7 @@ export interface Order{
    * Missing description
    * Create a new OVH order cart
    */
-  post(path: '/order/cart'): (params: {description?: string, expire?: string, ovhSubsidiary: nichandleOvhSubsidiaryEnum}) => Promise<order.cart.Cart>;
+  post(path: '/order/cart'): (params: {description?: string, expire?: string, ovhSubsidiary: nichandle.OvhSubsidiaryEnum}) => Promise<order.cart.Cart>;
   /**
    * Create a analytics project
    * Post a new analytics item in your cart
@@ -6587,92 +6587,3 @@ export interface Order{
    */
   delete(path: '/order/cart/{cartId}/item/{itemId}/configuration/{configurationId}'): (params: {cartId: string, configurationId: number, itemId: number}) => Promise<void>;
 }
-/**
- * Extra Alias to bypass relativer namespace colitions
- */
-type hostingwebdatabaseCreationDatabaseCapabilities = hosting.web.database.CreationDatabaseCapabilities;
-type hostingwebDiskType = hosting.web.DiskType;
-type hostingwebCreationEmailCapabilities = hosting.web.CreationEmailCapabilities;
-type hostingwebHighLightEnum = hosting.web.HighLightEnum;
-type hostingwebCronLanguageAvailable = hosting.web.CronLanguageAvailable;
-type complexTypeUnitAndValuenumber = complexType.UnitAndValue<number>;
-type hostingwebNodejsVersionAvailableEnum = hosting.web.NodejsVersionAvailableEnum;
-type hostingwebPhpVersionAvailableEnum = hosting.web.PhpVersionAvailableEnum;
-type hostingwebPythonVersionAvailableEnum = hosting.web.PythonVersionAvailableEnum;
-type hostingwebRubyVersionAvailableEnum = hosting.web.RubyVersionAvailableEnum;
-type hostingwebDiskTypeEnum = hosting.web.DiskTypeEnum;
-type hostingwebdatabaseDatabaseTypeEnum = hosting.web.database.DatabaseTypeEnum;
-type hostingwebdatabaseDatabaseIsolationEnum = hosting.web.database.DatabaseIsolationEnum;
-type hostingwebdatabaseDatabaseCapabilitiesTypeEnum = hosting.web.database.DatabaseCapabilitiesTypeEnum;
-type orderContract = order.Contract;
-type orderOrderDetail = order.OrderDetail;
-type orderOrderPrices = order.OrderPrices;
-type orderOrderDetailTypeEnum = order.OrderDetailTypeEnum;
-type orderPrice = order.Price;
-type orderCurrencyCodeEnum = order.CurrencyCodeEnum;
-type nichandleOvhSubsidiaryEnum = nichandle.OvhSubsidiaryEnum;
-type ordercartDomainPacksDescriptionItem = order.cart.DomainPacksDescriptionItem;
-type ordercartDomainPacksDescription = order.cart.DomainPacksDescription;
-type ordercartGenericProductPricing = order.cart.GenericProductPricing;
-type ordercartGenericProductTypeEnum = order.cart.GenericProductTypeEnum;
-type ordercartGenericProductPricingCapacitiesEnum = order.cart.GenericProductPricingCapacitiesEnum;
-type ordercartGenericProductPricingTypeEnum = order.cart.GenericProductPricingTypeEnum;
-type ordercartPrice = order.cart.Price;
-type ordercartDomainSettings = order.cart.DomainSettings;
-type ordercartPriceLabelEnum = order.cart.PriceLabelEnum;
-type ordercartConfigurationRequirements = order.cart.ConfigurationRequirements;
-type hostingwebCapabilities = hosting.web.Capabilities;
-type ordercatalogAddonOffer = order.catalog.AddonOffer;
-type ordercatalogProductPlan = order.catalog.ProductPlan;
-type ordercatalogPlansItem = order.catalog.PlansItem;
-type ordercatalogPricing = order.catalog.Pricing;
-type ordercatalogConfigurationItem = order.catalog.ConfigurationItem;
-type complexTypeSafeKeyValuestring = complexType.SafeKeyValue<string>;
-type ordercatalogPricingDefault = order.catalog.PricingDefault;
-type ordercatalogProduct = order.catalog.Product;
-type ordercatalogAddonItem = order.catalog.AddonItem;
-type ordercatalogProductOfferDetails = order.catalog.ProductOfferDetails;
-type ordercatalogpccCommercialRange = order.catalog.pcc.CommercialRange;
-type ordercatalogpccDatacenter = order.catalog.pcc.Datacenter;
-type nichandleCountryEnum = nichandle.CountryEnum;
-type ordercatalogpccHypervisor = order.catalog.pcc.Hypervisor;
-type ordercatalogpccHostSpecifications = order.catalog.pcc.HostSpecifications;
-type ordercatalogpccHostCpuSpecifications = order.catalog.pcc.HostCpuSpecifications;
-type ordercatalogpccHostMemorySpecifications = order.catalog.pcc.HostMemorySpecifications;
-type ordercatalogpccHostNetworkSpecifications = order.catalog.pcc.HostNetworkSpecifications;
-type ordercatalogpccHost = order.catalog.pcc.Host;
-type ordercatalogpccOption = order.catalog.pcc.Option;
-type ordercatalogpccServicePack = order.catalog.pcc.ServicePack;
-type ordercatalogpccStorage = order.catalog.pcc.Storage;
-type ordercatalogpccServicePackOption = order.catalog.pcc.ServicePackOption;
-type ordercatalogpccStorageSpecifications = order.catalog.pcc.StorageSpecifications;
-type ordercatalogprivateCloudCapabilities = order.catalog.privateCloud.Capabilities;
-type ordercatalogprivateCloudCapabilitiesListing = order.catalog.privateCloud.CapabilitiesListing;
-type ordercatalogprivateCloudZonesListing = order.catalog.privateCloud.ZonesListing;
-type ordercatalogprivateCloudZone = order.catalog.privateCloud.Zone;
-type ordercatalogpublikPlan = order.catalog.publik.Plan;
-type ordercatalogpublikLocale = order.catalog.publik.Locale;
-type ordercatalogpublikPlanFamily = order.catalog.publik.PlanFamily;
-type ordercatalogpublikProduct = order.catalog.publik.Product;
-type ordercatalogpublikAddonFamily = order.catalog.publik.AddonFamily;
-type ordercatalogpublikDedicatedServerProduct = order.catalog.publik.DedicatedServerProduct;
-type ordercatalogpublikDedicatedServerProductBlob = order.catalog.publik.DedicatedServerProductBlob;
-type ordercatalogpublikDedicatedServerProductBlobTechnical = order.catalog.publik.DedicatedServerProductBlobTechnical;
-type ordercatalogpublikDedicatedServerProductBlobTechnicalNetwork = order.catalog.publik.DedicatedServerProductBlobTechnicalNetwork;
-type ordercatalogpublikDedicatedServerProductBlobTechnicalCPU = order.catalog.publik.DedicatedServerProductBlobTechnicalCPU;
-type ordercatalogpublikDedicatedServerProductBlobTechnicalGPU = order.catalog.publik.DedicatedServerProductBlobTechnicalGPU;
-type ordercatalogpublikDedicatedServerProductBlobTechnicalMemory = order.catalog.publik.DedicatedServerProductBlobTechnicalMemory;
-type ordercatalogpublikDedicatedServerProductBlobTechnicalServer = order.catalog.publik.DedicatedServerProductBlobTechnicalServer;
-type ordercatalogpublikDedicatedServerProductBlobTechnicalStorage = order.catalog.publik.DedicatedServerProductBlobTechnicalStorage;
-type ordercatalogpublikDedicatedServerProductBlobTechnicalFrame = order.catalog.publik.DedicatedServerProductBlobTechnicalFrame;
-type ordercatalogpublikDedicatedServerProductBlobTechnicalDisk = order.catalog.publik.DedicatedServerProductBlobTechnicalDisk;
-type ordercatalogpublikConfiguration = order.catalog.publik.Configuration;
-type ordercatalogpublikPricing = order.catalog.publik.Pricing;
-type ordercartDurationUnitEnum = order.cart.DurationUnitEnum;
-type ordercatalogpublikPricingMinMax = order.catalog.publik.PricingMinMax;
-type ordercartGenericProductPricingStrategyEnum = order.cart.GenericProductPricingStrategyEnum;
-type orderupgradeOperationProduct = order.upgrade.OperationProduct;
-type orderupgradeOperationStatusEnum = order.upgrade.OperationStatusEnum;
-type orderupgradeOperationTypeEnum = order.upgrade.OperationTypeEnum;
-type orderupgradeOperation = order.upgrade.Operation;
-type orderOrder = order.Order;

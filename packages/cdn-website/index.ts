@@ -8,14 +8,14 @@ export namespace cdn {
         // interface fullName: cdn.website.Backend.Backend
         export interface Backend {
             ipv4: string;
-            status: cdnwebsiteBackendStatusEnum;
+            status: cdn.website.BackendStatusEnum;
         }
         // type fullname: cdn.website.BackendStatusEnum
         export type BackendStatusEnum = "creating" | "error" | "on" | "removing"
         // interface fullName: cdn.website.Domain.Domain
         export interface Domain {
             domain: string;
-            status: cdnwebsiteDomainStatusEnum;
+            status: cdn.website.DomainStatusEnum;
         }
         // type fullname: cdn.website.DomainStatusEnum
         export type DomainStatusEnum = "error" | "on" | "removing"
@@ -35,8 +35,8 @@ export namespace cdn {
         // interface fullName: cdn.website.Task.Task
         export interface Task {
             comment?: string;
-            function: cdnwebsiteTaskFunctionEnum;
-            status: cdnwebsiteTaskStateEnum;
+            function: cdn.website.TaskFunctionEnum;
+            status: cdn.website.TaskStateEnum;
             taskId: number;
         }
         // type fullname: cdn.website.TaskFunctionEnum
@@ -51,7 +51,7 @@ export namespace cdn {
         }
         // interface fullName: cdn.website.Zone.Zone
         export interface Zone {
-            status: cdnwebsiteDomainZoneStatusEnum;
+            status: cdn.website.DomainZoneStatusEnum;
             zone: string;
         }
     }
@@ -82,10 +82,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: serviceRenewType;
-        renewalType: serviceRenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: serviceStateEnum;
+        status: service.StateEnum;
     }
 }
 
@@ -111,7 +111,7 @@ export interface Cdn{
                 // GET /cdn/website/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /cdn/website/{serviceName}/serviceInfos
-                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}): Promise<void>;
+                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
             zone: {
                 // DELETE /cdn/website/{serviceName}/zone
@@ -259,7 +259,7 @@ export interface Cdn{
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/cdn/website/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}) => Promise<void>;
+  put(path: '/cdn/website/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
   /**
    * Zone on CDN
    * Configure a zone on CDN
@@ -296,14 +296,3 @@ export interface Cdn{
    */
   delete(path: '/cdn/website/{serviceName}/zone/domains/{domain}'): (params: {domain: string, serviceName: string}) => Promise<cdn.website.Task>;
 }
-/**
- * Extra Alias to bypass relativer namespace colitions
- */
-type cdnwebsiteBackendStatusEnum = cdn.website.BackendStatusEnum;
-type cdnwebsiteDomainStatusEnum = cdn.website.DomainStatusEnum;
-type cdnwebsiteTaskFunctionEnum = cdn.website.TaskFunctionEnum;
-type cdnwebsiteTaskStateEnum = cdn.website.TaskStateEnum;
-type cdnwebsiteDomainZoneStatusEnum = cdn.website.DomainZoneStatusEnum;
-type serviceRenewType = service.RenewType;
-type serviceRenewalTypeEnum = service.RenewalTypeEnum;
-type serviceStateEnum = service.StateEnum;

@@ -12,7 +12,7 @@ export namespace MarketPlace {
         name?: string;
         putUrl?: string;
         size?: string;
-        tags?: complexTypeSafeKeyValuestring[];
+        tags?: complexType.SafeKeyValue<string>[];
     }
     // interface fullName: MarketPlace.Partner.Partner
     export interface Partner {
@@ -107,7 +107,7 @@ export interface Store{
         // GET /store/document
         $get(): Promise<MarketPlace.Document[]>;
         // POST /store/document
-        $post(params: {name: string, tags?: complexTypeSafeKeyValuestring[]}): Promise<MarketPlace.Document>;
+        $post(params: {name: string, tags?: complexType.SafeKeyValue<string>[]}): Promise<MarketPlace.Document>;
         cors: {
             // POST /store/document/cors
             $post(params: {origin: string}): Promise<void>;
@@ -252,7 +252,7 @@ export interface Store{
    * MarketPlaceDocument
    * Create a document
    */
-  post(path: '/store/document'): (params: {name: string, tags?: complexTypeSafeKeyValuestring[]}) => Promise<MarketPlace.Document>;
+  post(path: '/store/document'): (params: {name: string, tags?: complexType.SafeKeyValue<string>[]}) => Promise<MarketPlace.Document>;
   /**
    * MarketPlaceDocument
    * Add CORS support on your container
@@ -314,7 +314,3 @@ export interface Store{
    */
   delete(path: '/store/partner/{partnerId}/product/{productId}/document/{documentId}'): (params: {documentId: string, partnerId: string, productId: string}) => Promise<string[]>;
 }
-/**
- * Extra Alias to bypass relativer namespace colitions
- */
-type complexTypeSafeKeyValuestring = complexType.SafeKeyValue<string>;

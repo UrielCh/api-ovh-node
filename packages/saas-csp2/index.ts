@@ -12,7 +12,7 @@ export namespace saas {
         // interface fullName: saas.csp2.BillingStatistics.BillingStatistics
         export interface BillingStatistics {
             endDate: string;
-            lines: saascsp2BillingStatisticsLine[];
+            lines: saas.csp2.BillingStatisticsLine[];
             startDate: string;
         }
         // interface fullName: saas.csp2.BillingStatisticsLine.BillingStatisticsLine
@@ -26,7 +26,7 @@ export namespace saas {
         // interface fullName: saas.csp2.OfficeLicence.OfficeLicence
         export interface OfficeLicence {
             id: number;
-            licenceType: saascsp2LicenseTypeEnum;
+            licenceType: saas.csp2.LicenseTypeEnum;
             limit?: number;
             name: string;
             newSeatsAllowed: boolean;
@@ -47,7 +47,7 @@ export namespace saas {
             finishDate?: string;
             function: string;
             id: number;
-            status: saascsp2TaskStatusEnum;
+            status: saas.csp2.TaskStatusEnum;
             todoDate: string;
         }
         // interface fullName: saas.csp2.OfficeTenant.OfficeTenant
@@ -61,7 +61,7 @@ export namespace saas {
             lastName: string;
             phone: string;
             serviceName: string;
-            status: saascsp2ServiceStateEnum;
+            status: saas.csp2.ServiceStateEnum;
             zipCode: string;
         }
         // type fullname: saas.csp2.ServiceStateEnum
@@ -69,7 +69,7 @@ export namespace saas {
         // interface fullName: saas.csp2.Statistics.Statistics
         export interface Statistics {
             date: string;
-            lines: saascsp2StatisticsLine[];
+            lines: saas.csp2.StatisticsLine[];
         }
         // interface fullName: saas.csp2.StatisticsLine.StatisticsLine
         export interface StatisticsLine {
@@ -110,10 +110,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: serviceRenewType;
-        renewalType: serviceRenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: serviceStateEnum;
+        status: service.StateEnum;
     }
 }
 
@@ -136,7 +136,7 @@ export interface Saas{
             // GET /saas/csp2/{serviceName}
             $get(): Promise<saas.csp2.OfficeTenant>;
             // PUT /saas/csp2/{serviceName}
-            $put(params?: {address?: string, city?: string, creationDate?: string, displayName?: string, email?: string, firstName?: string, lastName?: string, phone?: string, serviceName?: string, status?: saascsp2ServiceStateEnum, zipCode?: string}): Promise<void>;
+            $put(params?: {address?: string, city?: string, creationDate?: string, displayName?: string, email?: string, firstName?: string, lastName?: string, phone?: string, serviceName?: string, status?: saas.csp2.ServiceStateEnum, zipCode?: string}): Promise<void>;
             billingPeriodPeaks: {
                 // GET /saas/csp2/{serviceName}/billingPeriodPeaks
                 $get(): Promise<saas.csp2.BillingStatistics>;
@@ -161,7 +161,7 @@ export interface Saas{
                 // GET /saas/csp2/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /saas/csp2/{serviceName}/serviceInfos
-                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}): Promise<void>;
+                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
             subscription: {
                 // GET /saas/csp2/{serviceName}/subscription
@@ -275,12 +275,12 @@ export interface Saas{
    * Office tenant
    * Alter this object properties
    */
-  put(path: '/saas/csp2/{serviceName}'): (params: {serviceName: string, address?: string, city?: string, creationDate?: string, displayName?: string, email?: string, firstName?: string, lastName?: string, phone?: string, status?: saascsp2ServiceStateEnum, zipCode?: string}) => Promise<void>;
+  put(path: '/saas/csp2/{serviceName}'): (params: {serviceName: string, address?: string, city?: string, creationDate?: string, displayName?: string, email?: string, firstName?: string, lastName?: string, phone?: string, status?: saas.csp2.ServiceStateEnum, zipCode?: string}) => Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/saas/csp2/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}) => Promise<void>;
+  put(path: '/saas/csp2/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
   /**
    * changeAdministratorPassword operations
    * Changes the tenant administrator's password
@@ -312,14 +312,3 @@ export interface Saas{
    */
   delete(path: '/saas/csp2/{serviceName}/subscription/{id}'): (params: {id: number, serviceName: string}) => Promise<saas.csp2.OfficeTask>;
 }
-/**
- * Extra Alias to bypass relativer namespace colitions
- */
-type saascsp2BillingStatisticsLine = saas.csp2.BillingStatisticsLine;
-type saascsp2LicenseTypeEnum = saas.csp2.LicenseTypeEnum;
-type saascsp2TaskStatusEnum = saas.csp2.TaskStatusEnum;
-type saascsp2ServiceStateEnum = saas.csp2.ServiceStateEnum;
-type saascsp2StatisticsLine = saas.csp2.StatisticsLine;
-type serviceRenewType = service.RenewType;
-type serviceRenewalTypeEnum = service.RenewalTypeEnum;
-type serviceStateEnum = service.StateEnum;

@@ -8,8 +8,8 @@ export namespace dnssec {
     export type DnssecStatusEnum = "disableInProgress" | "disabled" | "enableInProgress" | "enabled"
     // interface fullName: dnssec.Key.Key
     export interface Key {
-        algorithm: dnssecKeyAlgorithmEnum;
-        flags: dnssecKeyFlagEnum;
+        algorithm: dnssec.KeyAlgorithmEnum;
+        flags: dnssec.KeyFlagEnum;
         publicKey: string;
         tag: number;
     }
@@ -33,11 +33,11 @@ export namespace domain {
     }
     // interface fullName: domain.DnssecKey.DnssecKey
     export interface DnssecKey {
-        algorithm: dnssecKeyAlgorithmEnum;
-        flags: dnssecKeyFlagEnum;
+        algorithm: dnssec.KeyAlgorithmEnum;
+        flags: dnssec.KeyFlagEnum;
         id: number;
         publicKey: string;
-        status: dnssecKeyStatusEnum;
+        status: dnssec.KeyStatusEnum;
         tag: number;
     }
     // interface fullName: domain.Domain.Domain
@@ -47,11 +47,11 @@ export namespace domain {
         glueRecordIpv6Supported: boolean;
         glueRecordMultiIpSupported: boolean;
         lastUpdate: string;
-        nameServerType: domainDomainNsTypeEnum;
-        offer: domainOfferEnum;
+        nameServerType: domain.DomainNsTypeEnum;
+        offer: domain.OfferEnum;
         owoSupported: boolean;
-        parentService?: domainParentService;
-        transferLockStatus: domainDomainLockStatusEnum;
+        parentService?: domain.ParentService;
+        transferLockStatus: domain.DomainLockStatusEnum;
         whoisOwner: string;
     }
     // type fullname: domain.DomainContactTypeEnum
@@ -67,8 +67,8 @@ export namespace domain {
     export type DomainNsStateEnum = "ko" | "ok"
     // interface fullName: domain.DomainNsStatus.DomainNsStatus
     export interface DomainNsStatus {
-        state: domainDomainNsStateEnum;
-        type: domainDomainNsTypeEnum;
+        state: domain.DomainNsStateEnum;
+        type: domain.DomainNsTypeEnum;
         usedSince?: string;
     }
     // type fullname: domain.DomainNsTypeEnum
@@ -90,17 +90,17 @@ export namespace domain {
     export type OptinFieldsEnum = "address" | "city" | "country" | "email" | "fax" | "name" | "organisation" | "phone" | "province" | "zip"
     // interface fullName: domain.Option.Option
     export interface Option {
-        option: domainDomainOptionEnum;
-        state: domainDomainOptionStateEnum;
+        option: domain.DomainOptionEnum;
+        state: domain.DomainOptionStateEnum;
     }
     // interface fullName: domain.Owo.Owo
     export interface Owo {
-        field: domainWhoisObfuscatorFieldsEnum;
+        field: domain.WhoisObfuscatorFieldsEnum;
     }
     // interface fullName: domain.ParentService.ParentService
     export interface ParentService {
         name: string;
-        type: domainParentServiceTypeEnum;
+        type: domain.ParentServiceTypeEnum;
     }
     // type fullname: domain.ParentServiceTypeEnum
     export type ParentServiceTypeEnum = "/allDom"
@@ -109,7 +109,7 @@ export namespace domain {
         allowedValues?: string[];
         description: string;
         fields?: string[];
-        innerConfigurations?: domainRule[];
+        innerConfigurations?: domain.Rule[];
         label?: string;
         required?: boolean;
         type: string;
@@ -125,7 +125,7 @@ export namespace domain {
         function: string;
         id: number;
         lastUpdate: string;
-        status: domainOperationStatusEnum;
+        status: domain.OperationStatusEnum;
         todoDate: string;
     }
     // interface fullName: domain.UkRegistrar.UkRegistrar
@@ -138,13 +138,13 @@ export namespace domain {
     export namespace configurations {
         // interface fullName: domain.configurations.ObfuscatedEmails.ObfuscatedEmails
         export interface ObfuscatedEmails {
-            type: domainContactAllTypesEnum;
+            type: domain.ContactAllTypesEnum;
             value: string;
         }
         // interface fullName: domain.configurations.Optin.Optin
         export interface Optin {
-            fields: domainOptinFieldsEnum[];
-            type: domainContactAllTypesEnum;
+            fields: domain.OptinFieldsEnum[];
+            type: domain.ContactAllTypesEnum;
         }
     }
     export namespace data {
@@ -178,7 +178,7 @@ export namespace domain {
             id: number;
             notAfter?: string;
             notBefore?: string;
-            protectedLabels: domaindataSmdLabel[];
+            protectedLabels: domain.data.SmdLabel[];
             smdId?: string;
         }
         // interface fullName: domain.data.SmdLabel.SmdLabel
@@ -190,7 +190,7 @@ export namespace domain {
             // interface fullName: domain.data.claimNotice.Address.Address
             export interface Address {
                 city?: string;
-                countryCode?: nichandleCountryEnum;
+                countryCode?: nichandle.CountryEnum;
                 fax?: string;
                 faxExtension?: string;
                 postalCode?: string;
@@ -201,24 +201,24 @@ export namespace domain {
             }
             // interface fullName: domain.data.claimNotice.ClaimNotice.ClaimNotice
             export interface ClaimNotice {
-                claims?: domaindataclaimNoticeClaimNoticeDecision[];
+                claims?: domain.data.claimNotice.ClaimNoticeDecision[];
                 endingDate: string;
                 id: string;
                 label: string;
                 startingDate?: string;
-                type?: domaindataclaimNoticeClaimNoticeTypeEnum;
+                type?: domain.data.claimNotice.ClaimNoticeTypeEnum;
             }
             // interface fullName: domain.data.claimNotice.ClaimNoticeDecision.ClaimNoticeDecision
             export interface ClaimNoticeDecision {
-                classifications: domaindataclaimNoticeClassification[];
-                courtDecisions: domaindataclaimNoticeCourtDecision[];
+                classifications: domain.data.claimNotice.Classification[];
+                courtDecisions: domain.data.claimNotice.CourtDecision[];
                 goodsAndServices: string;
                 jurisdiction: string;
                 jurisdictionCountryCode: string;
                 markName: string;
-                trademarkContacts: domaindataclaimNoticeContact[];
-                trademarkHolders: domaindataclaimNoticeContact[];
-                trademarkUDRP: domaindataclaimNoticeUDRP[];
+                trademarkContacts: domain.data.claimNotice.Contact[];
+                trademarkHolders: domain.data.claimNotice.Contact[];
+                trademarkUDRP: domain.data.claimNotice.UDRP[];
             }
             // type fullname: domain.data.claimNotice.ClaimNoticeTypeEnum
             export type ClaimNoticeTypeEnum = "UK" | "TRADEMARK"
@@ -229,7 +229,7 @@ export namespace domain {
             }
             // interface fullName: domain.data.claimNotice.Contact.Contact
             export interface Contact {
-                address: domaindataclaimNoticeAddress;
+                address: domain.data.claimNotice.Address;
                 email?: string;
                 entitlement?: string;
                 name?: string;
@@ -253,14 +253,14 @@ export namespace domain {
     export namespace rules {
         // interface fullName: domain.rules.Optin.Optin
         export interface Optin {
-            fields: domainOptinFieldsEnum[];
-            type: domainContactAllTypesEnum;
+            fields: domain.OptinFieldsEnum[];
+            type: domain.ContactAllTypesEnum;
         }
     }
     export namespace zone {
         // interface fullName: domain.zone.Dnssec.Dnssec
         export interface Dnssec {
-            status: dnssecDnssecStatusEnum;
+            status: dnssec.DnssecStatusEnum;
         }
         // interface fullName: domain.zone.DynHostLogin.DynHostLogin
         export interface DynHostLogin {
@@ -317,7 +317,7 @@ export namespace domain {
             function: string;
             id: number;
             lastUpdate: string;
-            status: domainOperationStatusEnum;
+            status: domain.OperationStatusEnum;
             todoDate: string;
         }
         // interface fullName: domain.zone.Zone.Zone
@@ -369,10 +369,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: serviceRenewType;
-        renewalType: serviceRenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: serviceStateEnum;
+        status: service.StateEnum;
     }
 }
 export namespace zone {
@@ -382,7 +382,7 @@ export namespace zone {
     export type RedirectionTypeEnum = "invisible" | "visible" | "visiblePermanent"
     // interface fullName: zone.ResetRecord.ResetRecord
     export interface ResetRecord {
-        fieldType: zoneResettableNamedResolutionFieldTypeEnum;
+        fieldType: zone.ResettableNamedResolutionFieldTypeEnum;
         target: string;
     }
     // type fullname: zone.ResettableNamedResolutionFieldTypeEnum
@@ -436,7 +436,7 @@ export interface Domain{
         }
         extension: {
             // GET /domain/data/extension
-            $get(params: {country: nichandleCountryEnum}): Promise<string[]>;
+            $get(params: {country: nichandle.CountryEnum}): Promise<string[]>;
         }
         proContact: {
             // GET /domain/data/proContact
@@ -583,7 +583,7 @@ export interface Domain{
                 // GET /domain/zone/{zoneName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /domain/zone/{zoneName}/serviceInfos
-                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}): Promise<void>;
+                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
             soa: {
                 // GET /domain/zone/{zoneName}/soa
@@ -597,7 +597,7 @@ export interface Domain{
             }
             task: {
                 // GET /domain/zone/{zoneName}/task
-                $get(params?: {function_?: string, status?: domainOperationStatusEnum}): Promise<number[]>;
+                $get(params?: {function_?: string, status?: domain.OperationStatusEnum}): Promise<number[]>;
                 $(id: number): {
                     // GET /domain/zone/{zoneName}/task/{id}
                     $get(): Promise<domain.zone.Task>;
@@ -625,7 +625,7 @@ export interface Domain{
         // GET /domain/{serviceName}
         $get(): Promise<domain.Domain>;
         // PUT /domain/{serviceName}
-        $put(params?: {dnssecSupported?: boolean, domain?: string, glueRecordIpv6Supported?: boolean, glueRecordMultiIpSupported?: boolean, lastUpdate?: string, nameServerType?: domainDomainNsTypeEnum, offer?: domainOfferEnum, owoSupported?: boolean, parentService?: domainParentService, transferLockStatus?: domainDomainLockStatusEnum, whoisOwner?: string}): Promise<void>;
+        $put(params?: {dnssecSupported?: boolean, domain?: string, glueRecordIpv6Supported?: boolean, glueRecordMultiIpSupported?: boolean, lastUpdate?: string, nameServerType?: domain.DomainNsTypeEnum, offer?: domain.OfferEnum, owoSupported?: boolean, parentService?: domain.ParentService, transferLockStatus?: domain.DomainLockStatusEnum, whoisOwner?: string}): Promise<void>;
         activateZone: {
             // POST /domain/{serviceName}/activateZone
             $post(params?: {minimized?: boolean}): Promise<void>;
@@ -643,10 +643,10 @@ export interface Domain{
                 // GET /domain/{serviceName}/configurations/obfuscatedEmails
                 $get(): Promise<domain.configurations.ObfuscatedEmails[]>;
                 // PUT /domain/{serviceName}/configurations/obfuscatedEmails
-                $put(params: {contacts: domainContactAllTypesEnum[]}): Promise<domain.configurations.ObfuscatedEmails[]>;
+                $put(params: {contacts: domain.ContactAllTypesEnum[]}): Promise<domain.configurations.ObfuscatedEmails[]>;
                 refresh: {
                     // POST /domain/{serviceName}/configurations/obfuscatedEmails/refresh
-                    $post(params: {contacts: domainContactAllTypesEnum[]}): Promise<void>;
+                    $post(params: {contacts: domain.ContactAllTypesEnum[]}): Promise<void>;
                 }
             }
             optin: {
@@ -658,7 +658,7 @@ export interface Domain{
         }
         dsRecord: {
             // GET /domain/{serviceName}/dsRecord
-            $get(params?: {flags?: dnssecKeyFlagEnum, status?: dnssecKeyStatusEnum}): Promise<number[]>;
+            $get(params?: {flags?: dnssec.KeyFlagEnum, status?: dnssec.KeyStatusEnum}): Promise<number[]>;
             // POST /domain/{serviceName}/dsRecord
             $post(params: {keys: dnssec.Key[]}): Promise<domain.Task>;
             $(id: number): {
@@ -724,9 +724,9 @@ export interface Domain{
         }
         owo: {
             // GET /domain/{serviceName}/owo
-            $get(params?: {field?: domainWhoisObfuscatorFieldsEnum}): Promise<domain.WhoisObfuscatorFieldsEnum[]>;
+            $get(params?: {field?: domain.WhoisObfuscatorFieldsEnum}): Promise<domain.WhoisObfuscatorFieldsEnum[]>;
             // POST /domain/{serviceName}/owo
-            $post(params: {fields: domainWhoisObfuscatorFieldsEnum[]}): Promise<domain.WhoisObfuscatorFieldsEnum[]>;
+            $post(params: {fields: domain.WhoisObfuscatorFieldsEnum[]}): Promise<domain.WhoisObfuscatorFieldsEnum[]>;
             $(field: domain.WhoisObfuscatorFieldsEnum): {
                 // DELETE /domain/{serviceName}/owo/{field}
                 $delete(): Promise<void>;
@@ -748,11 +748,11 @@ export interface Domain{
             // GET /domain/{serviceName}/serviceInfos
             $get(): Promise<services.Service>;
             // PUT /domain/{serviceName}/serviceInfos
-            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}): Promise<void>;
+            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
         }
         task: {
             // GET /domain/{serviceName}/task
-            $get(params?: {function_?: string, status?: domainOperationStatusEnum}): Promise<number[]>;
+            $get(params?: {function_?: string, status?: domain.OperationStatusEnum}): Promise<number[]>;
             $(id: number): {
                 // GET /domain/{serviceName}/task/{id}
                 $get(): Promise<domain.Task>;
@@ -809,7 +809,7 @@ export interface Domain{
    * List the domain.DnssecKey objects
    * List of domain's DS Records
    */
-  get(path: '/domain/{serviceName}/dsRecord'): (params: {serviceName: string, flags?: dnssecKeyFlagEnum, status?: dnssecKeyStatusEnum}) => Promise<number[]>;
+  get(path: '/domain/{serviceName}/dsRecord'): (params: {serviceName: string, flags?: dnssec.KeyFlagEnum, status?: dnssec.KeyStatusEnum}) => Promise<number[]>;
   /**
    * Domain's DNSSEC Key
    * Get this object properties
@@ -844,17 +844,17 @@ export interface Domain{
    * Information about the options of a domain
    * Get this object properties
    */
-  get(path: '/domain/{serviceName}/option/{option}'): (params: {option: domainDomainOptionEnum, serviceName: string}) => Promise<domain.Option>;
+  get(path: '/domain/{serviceName}/option/{option}'): (params: {option: domain.DomainOptionEnum, serviceName: string}) => Promise<domain.Option>;
   /**
    * List the domain.Owo objects
    * List of whois obfuscators
    */
-  get(path: '/domain/{serviceName}/owo'): (params: {serviceName: string, field?: domainWhoisObfuscatorFieldsEnum}) => Promise<domain.WhoisObfuscatorFieldsEnum[]>;
+  get(path: '/domain/{serviceName}/owo'): (params: {serviceName: string, field?: domain.WhoisObfuscatorFieldsEnum}) => Promise<domain.WhoisObfuscatorFieldsEnum[]>;
   /**
    * Obfuscate whois
    * Get this object properties
    */
-  get(path: '/domain/{serviceName}/owo/{field}'): (params: {field: domainWhoisObfuscatorFieldsEnum, serviceName: string}) => Promise<domain.Owo>;
+  get(path: '/domain/{serviceName}/owo/{field}'): (params: {field: domain.WhoisObfuscatorFieldsEnum, serviceName: string}) => Promise<domain.Owo>;
   /**
    * Missing description
    * Retrieve emails obfuscation rule
@@ -874,7 +874,7 @@ export interface Domain{
    * List the domain.Task objects
    * Domain pending tasks
    */
-  get(path: '/domain/{serviceName}/task'): (params: {serviceName: string, function_?: string, status?: domainOperationStatusEnum}) => Promise<number[]>;
+  get(path: '/domain/{serviceName}/task'): (params: {serviceName: string, function_?: string, status?: domain.OperationStatusEnum}) => Promise<number[]>;
   /**
    * Tasks associated to domain
    * Get this object properties
@@ -914,7 +914,7 @@ export interface Domain{
    * Missing description
    * List all the extensions for a specific country
    */
-  get(path: '/domain/data/extension'): (params: {country: nichandleCountryEnum}) => Promise<string[]>;
+  get(path: '/domain/data/extension'): (params: {country: nichandle.CountryEnum}) => Promise<string[]>;
   /**
    * Missing description
    * Retrieve all your Pro Contact
@@ -1029,7 +1029,7 @@ export interface Domain{
    * List the domain.zone.Task objects
    * Domain pending tasks
    */
-  get(path: '/domain/zone/{zoneName}/task'): (params: {zoneName: string, function_?: string, status?: domainOperationStatusEnum}) => Promise<number[]>;
+  get(path: '/domain/zone/{zoneName}/task'): (params: {zoneName: string, function_?: string, status?: domain.OperationStatusEnum}) => Promise<number[]>;
   /**
    * Tasks associated to a zone
    * Get this object properties
@@ -1039,12 +1039,12 @@ export interface Domain{
    * Domain name administration
    * Alter this object properties
    */
-  put(path: '/domain/{serviceName}'): (params: {serviceName: string, dnssecSupported?: boolean, domain?: string, glueRecordIpv6Supported?: boolean, glueRecordMultiIpSupported?: boolean, lastUpdate?: string, nameServerType?: domainDomainNsTypeEnum, offer?: domainOfferEnum, owoSupported?: boolean, parentService?: domainParentService, transferLockStatus?: domainDomainLockStatusEnum, whoisOwner?: string}) => Promise<void>;
+  put(path: '/domain/{serviceName}'): (params: {serviceName: string, dnssecSupported?: boolean, domain?: string, glueRecordIpv6Supported?: boolean, glueRecordMultiIpSupported?: boolean, lastUpdate?: string, nameServerType?: domain.DomainNsTypeEnum, offer?: domain.OfferEnum, owoSupported?: boolean, parentService?: domain.ParentService, transferLockStatus?: domain.DomainLockStatusEnum, whoisOwner?: string}) => Promise<void>;
   /**
    * Missing description
    * Save a new obfuscated emails configuration
    */
-  put(path: '/domain/{serviceName}/configurations/obfuscatedEmails'): (params: {serviceName: string, contacts: domainContactAllTypesEnum[]}) => Promise<domain.configurations.ObfuscatedEmails[]>;
+  put(path: '/domain/{serviceName}/configurations/obfuscatedEmails'): (params: {serviceName: string, contacts: domain.ContactAllTypesEnum[]}) => Promise<domain.configurations.ObfuscatedEmails[]>;
   /**
    * Missing description
    * Save a new optin configuration
@@ -1054,7 +1054,7 @@ export interface Domain{
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/domain/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}) => Promise<void>;
+  put(path: '/domain/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
   /**
    * Missing description
    * Modify an existing SMD file
@@ -1084,7 +1084,7 @@ export interface Domain{
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/domain/zone/{zoneName}/serviceInfos'): (params: {zoneName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}) => Promise<void>;
+  put(path: '/domain/zone/{zoneName}/serviceInfos'): (params: {zoneName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
   /**
    * Zone Start Of Authority
    * Alter this object properties
@@ -1104,7 +1104,7 @@ export interface Domain{
    * Missing description
    * Refresh an obfuscated emails configuration
    */
-  post(path: '/domain/{serviceName}/configurations/obfuscatedEmails/refresh'): (params: {serviceName: string, contacts: domainContactAllTypesEnum[]}) => Promise<void>;
+  post(path: '/domain/{serviceName}/configurations/obfuscatedEmails/refresh'): (params: {serviceName: string, contacts: domain.ContactAllTypesEnum[]}) => Promise<void>;
   /**
    * List the domain.DnssecKey objects
    * Update DS records
@@ -1144,7 +1144,7 @@ export interface Domain{
    * List the domain.Owo objects
    * Add whois obfuscators
    */
-  post(path: '/domain/{serviceName}/owo'): (params: {serviceName: string, fields: domainWhoisObfuscatorFieldsEnum[]}) => Promise<domain.WhoisObfuscatorFieldsEnum[]>;
+  post(path: '/domain/{serviceName}/owo'): (params: {serviceName: string, fields: domain.WhoisObfuscatorFieldsEnum[]}) => Promise<domain.WhoisObfuscatorFieldsEnum[]>;
   /**
    * accelerate operations
    * Accelerate the task
@@ -1279,12 +1279,12 @@ export interface Domain{
    * Information about the options of a domain
    * Release a given option
    */
-  delete(path: '/domain/{serviceName}/option/{option}'): (params: {option: domainDomainOptionEnum, serviceName: string}) => Promise<void>;
+  delete(path: '/domain/{serviceName}/option/{option}'): (params: {option: domain.DomainOptionEnum, serviceName: string}) => Promise<void>;
   /**
    * Obfuscate whois
    * Delete a whois obfuscator
    */
-  delete(path: '/domain/{serviceName}/owo/{field}'): (params: {field: domainWhoisObfuscatorFieldsEnum, serviceName: string}) => Promise<void>;
+  delete(path: '/domain/{serviceName}/owo/{field}'): (params: {field: domain.WhoisObfuscatorFieldsEnum, serviceName: string}) => Promise<void>;
   /**
    * Missing description
    * Delete a SMD file
@@ -1319,35 +1319,5 @@ export interface Domain{
 /**
  * Extra Alias to bypass relativer namespace colitions
  */
-type dnssecKeyAlgorithmEnum = dnssec.KeyAlgorithmEnum;
-type dnssecKeyFlagEnum = dnssec.KeyFlagEnum;
-type dnssecKeyStatusEnum = dnssec.KeyStatusEnum;
-type domainDomainNsTypeEnum = domain.DomainNsTypeEnum;
-type domainOfferEnum = domain.OfferEnum;
-type domainParentService = domain.ParentService;
-type domainDomainLockStatusEnum = domain.DomainLockStatusEnum;
-type domainDomainNsStateEnum = domain.DomainNsStateEnum;
-type domainDomainOptionEnum = domain.DomainOptionEnum;
-type domainDomainOptionStateEnum = domain.DomainOptionStateEnum;
-type domainWhoisObfuscatorFieldsEnum = domain.WhoisObfuscatorFieldsEnum;
-type domainParentServiceTypeEnum = domain.ParentServiceTypeEnum;
-type domainRule = domain.Rule;
-type domainOperationStatusEnum = domain.OperationStatusEnum;
-type domainContactAllTypesEnum = domain.ContactAllTypesEnum;
-type domainOptinFieldsEnum = domain.OptinFieldsEnum;
-type domaindataSmdLabel = domain.data.SmdLabel;
-type nichandleCountryEnum = nichandle.CountryEnum;
-type domaindataclaimNoticeClaimNoticeDecision = domain.data.claimNotice.ClaimNoticeDecision;
-type domaindataclaimNoticeClaimNoticeTypeEnum = domain.data.claimNotice.ClaimNoticeTypeEnum;
-type domaindataclaimNoticeClassification = domain.data.claimNotice.Classification;
-type domaindataclaimNoticeCourtDecision = domain.data.claimNotice.CourtDecision;
-type domaindataclaimNoticeContact = domain.data.claimNotice.Contact;
-type domaindataclaimNoticeUDRP = domain.data.claimNotice.UDRP;
-type domaindataclaimNoticeAddress = domain.data.claimNotice.Address;
-type dnssecDnssecStatusEnum = dnssec.DnssecStatusEnum;
 type zoneNamedResolutionFieldTypeEnum = zone.NamedResolutionFieldTypeEnum;
 type zoneRedirectionTypeEnum = zone.RedirectionTypeEnum;
-type serviceRenewType = service.RenewType;
-type serviceRenewalTypeEnum = service.RenewalTypeEnum;
-type serviceStateEnum = service.StateEnum;
-type zoneResettableNamedResolutionFieldTypeEnum = zone.ResettableNamedResolutionFieldTypeEnum;

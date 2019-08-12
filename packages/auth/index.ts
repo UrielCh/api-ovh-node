@@ -12,20 +12,20 @@ export namespace api {
         expiration?: string;
         lastUse?: string;
         ovhSupport: boolean;
-        rules: authAccessRule[];
-        status: authCredentialStateEnum;
+        rules: auth.AccessRule[];
+        status: auth.CredentialStateEnum;
     }
 }
 export namespace auth {
     // interface fullName: auth.AccessRule.AccessRule
     export interface AccessRule {
-        method: authMethodEnum;
+        method: auth.MethodEnum;
         path: string;
     }
     // interface fullName: auth.Credential.Credential
     export interface Credential {
         consumerKey: string;
-        state: authCredentialStateEnum;
+        state: auth.CredentialStateEnum;
         validationUrl?: string;
     }
     // type fullname: auth.CredentialStateEnum
@@ -48,7 +48,7 @@ export default proxyAuth;
 export interface Auth{
     credential: {
         // POST /auth/credential
-        $post(params: {accessRules: authAccessRule[], redirection?: string}): Promise<auth.Credential>;
+        $post(params: {accessRules: auth.AccessRule[], redirection?: string}): Promise<auth.Credential>;
     }
     currentCredential: {
         // GET /auth/currentCredential
@@ -77,16 +77,10 @@ export interface Auth{
    * Operations with credentials
    * Request a new credential for your application
    */
-  post(path: '/auth/credential'): (params: {accessRules: authAccessRule[], redirection?: string}) => Promise<auth.Credential>;
+  post(path: '/auth/credential'): (params: {accessRules: auth.AccessRule[], redirection?: string}) => Promise<auth.Credential>;
   /**
    * Expire current credential
    * Expire current credential
    */
   post(path: '/auth/logout'): () => Promise<void>;
 }
-/**
- * Extra Alias to bypass relativer namespace colitions
- */
-type authAccessRule = auth.AccessRule;
-type authCredentialStateEnum = auth.CredentialStateEnum;
-type authMethodEnum = auth.MethodEnum;

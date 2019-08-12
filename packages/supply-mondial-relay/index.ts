@@ -12,15 +12,15 @@ export namespace supply {
     export interface MondialRelay {
         address: string;
         city: string;
-        closing?: supplyMondialRelayClosingPeriod[];
-        country: coreTypesCountryEnum;
+        closing?: supply.MondialRelayClosingPeriod[];
+        country: coreTypes.CountryEnum;
         distance?: number;
         id: string;
         lat: number;
         lng: number;
         mapUrl?: string;
         name: string;
-        opening: supplyMondialRelayOpening;
+        opening: supply.MondialRelayOpening;
         pictureUrl?: string;
         zipcode: string;
     }
@@ -36,24 +36,24 @@ export namespace supply {
     }
     // interface fullName: supply.MondialRelayOpening.MondialRelayOpening
     export interface MondialRelayOpening {
-        friday?: supplyMondialRelayDayPeriod[];
-        monday?: supplyMondialRelayDayPeriod[];
-        saturday?: supplyMondialRelayDayPeriod[];
-        sunday?: supplyMondialRelayDayPeriod[];
-        thursday?: supplyMondialRelayDayPeriod[];
-        tuesday?: supplyMondialRelayDayPeriod[];
-        wednesday?: supplyMondialRelayDayPeriod[];
+        friday?: supply.MondialRelayDayPeriod[];
+        monday?: supply.MondialRelayDayPeriod[];
+        saturday?: supply.MondialRelayDayPeriod[];
+        sunday?: supply.MondialRelayDayPeriod[];
+        thursday?: supply.MondialRelayDayPeriod[];
+        tuesday?: supply.MondialRelayDayPeriod[];
+        wednesday?: supply.MondialRelayDayPeriod[];
     }
     // interface fullName: supply.MondialRelayResult.MondialRelayResult
     export interface MondialRelayResult {
         referenceAddress: string;
-        relayPoints: supplyMondialRelay[];
+        relayPoints: supply.MondialRelay[];
     }
     // interface fullName: supply.MondialRelayReturn.MondialRelayReturn
     export interface MondialRelayReturn {
         error?: string;
-        result?: supplyMondialRelayResult;
-        status: supplyStatus;
+        result?: supply.MondialRelayResult;
+        status: supply.Status;
     }
     // type fullname: supply.Status
     export type Status = "error" | "ok" | "pending"
@@ -73,22 +73,12 @@ export default proxySupplyMondialRelay;
 export interface Supply{
     mondialRelay: {
         // POST /supply/mondialRelay
-        $post(params: {address?: string, city?: string, country: coreTypesCountryEnum, zipcode?: string}): Promise<supply.MondialRelayReturn>;
+        $post(params: {address?: string, city?: string, country: coreTypes.CountryEnum, zipcode?: string}): Promise<supply.MondialRelayReturn>;
     }
 // Api
   /**
    * Find the 10 nearest MondialRelay points from address or city.
    * Find the 10 nearest MondialRelay points from address or city.
    */
-  post(path: '/supply/mondialRelay'): (params: {address?: string, city?: string, country: coreTypesCountryEnum, zipcode?: string}) => Promise<supply.MondialRelayReturn>;
+  post(path: '/supply/mondialRelay'): (params: {address?: string, city?: string, country: coreTypes.CountryEnum, zipcode?: string}) => Promise<supply.MondialRelayReturn>;
 }
-/**
- * Extra Alias to bypass relativer namespace colitions
- */
-type supplyMondialRelayClosingPeriod = supply.MondialRelayClosingPeriod;
-type coreTypesCountryEnum = coreTypes.CountryEnum;
-type supplyMondialRelayOpening = supply.MondialRelayOpening;
-type supplyMondialRelayDayPeriod = supply.MondialRelayDayPeriod;
-type supplyMondialRelay = supply.MondialRelay;
-type supplyMondialRelayResult = supply.MondialRelayResult;
-type supplyStatus = supply.Status;

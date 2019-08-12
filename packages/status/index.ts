@@ -26,16 +26,16 @@ export namespace status {
         export interface Task {
             category: string;
             endDate?: string;
-            impact: ovhstatustaskTaskImpactEnum;
+            impact: ovhstatus.task.TaskImpactEnum;
             impactedService: string;
             progress: number;
             project: string;
             reference: string;
-            replies: statusReplyReply[];
+            replies: status.Reply.Reply[];
             startDate?: string;
-            status: ovhstatustaskTaskStatusEnum;
+            status: ovhstatus.task.TaskStatusEnum;
             title: string;
-            type: ovhstatustaskTaskTypeEnum;
+            type: ovhstatus.task.TaskTypeEnum;
             uuid: string;
         }
     }
@@ -55,19 +55,12 @@ export default proxyStatus;
 export interface Status{
     task: {
         // GET /status/task
-        $get(params?: {impact?: ovhstatustaskTaskImpactEnum, status?: ovhstatustaskTaskStatusEnum, type?: ovhstatustaskTaskTypeEnum}): Promise<status.Task.Task[]>;
+        $get(params?: {impact?: ovhstatus.task.TaskImpactEnum, status?: ovhstatus.task.TaskStatusEnum, type?: ovhstatus.task.TaskTypeEnum}): Promise<status.Task.Task[]>;
     }
 // Api
   /**
    * API to get incidents or maintenances linked to nichandle services
    * Find all the incidents or maintenances linked to your services
    */
-  get(path: '/status/task'): (params?: {impact?: ovhstatustaskTaskImpactEnum, status?: ovhstatustaskTaskStatusEnum, type?: ovhstatustaskTaskTypeEnum}) => Promise<status.Task.Task[]>;
+  get(path: '/status/task'): (params?: {impact?: ovhstatus.task.TaskImpactEnum, status?: ovhstatus.task.TaskStatusEnum, type?: ovhstatus.task.TaskTypeEnum}) => Promise<status.Task.Task[]>;
 }
-/**
- * Extra Alias to bypass relativer namespace colitions
- */
-type ovhstatustaskTaskImpactEnum = ovhstatus.task.TaskImpactEnum;
-type statusReplyReply = status.Reply.Reply;
-type ovhstatustaskTaskStatusEnum = ovhstatus.task.TaskStatusEnum;
-type ovhstatustaskTaskTypeEnum = ovhstatus.task.TaskTypeEnum;

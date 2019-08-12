@@ -28,7 +28,7 @@ export namespace dbaas {
             filename: string;
             md5: string;
             retrievalDelay: number;
-            retrievalState: dbaaslogsArchiveRetrievalStateEnum;
+            retrievalState: dbaas.logs.ArchiveRetrievalStateEnum;
             sha256: string;
             size: number;
         }
@@ -42,23 +42,23 @@ export namespace dbaas {
         // interface fullName: dbaas.logs.Cluster.Cluster
         export interface Cluster {
             clusterId: string;
-            clusterType: dbaaslogsClusterClusterTypeEnum;
+            clusterType: dbaas.logs.ClusterClusterTypeEnum;
             dedicatedInputPEM: string;
             directInputPEM: string;
             hostname: string;
             isDefault: boolean;
             isUnlocked: boolean;
-            region: dbaaslogsClusterRegionEnum;
+            region: dbaas.logs.ClusterRegionEnum;
         }
         // interface fullName: dbaas.logs.ClusterAllowedNetwork.ClusterAllowedNetwork
         export interface ClusterAllowedNetwork {
             allowedNetworkId: string;
-            flowType: dbaaslogsClusterAllowedNetworkFlowTypeEnum;
+            flowType: dbaas.logs.ClusterAllowedNetworkFlowTypeEnum;
             network: string;
         }
         // interface fullName: dbaas.logs.ClusterAllowedNetworkCreation.ClusterAllowedNetworkCreation
         export interface ClusterAllowedNetworkCreation {
-            flowType: dbaaslogsClusterAllowedNetworkFlowTypeEnum;
+            flowType: dbaas.logs.ClusterAllowedNetworkFlowTypeEnum;
             network: string;
         }
         // type fullname: dbaas.logs.ClusterAllowedNetworkFlowTypeEnum
@@ -82,15 +82,15 @@ export namespace dbaas {
         export interface Engine {
             engineId: string;
             isDeprecated: boolean;
-            name: dbaaslogsEngineNameEnum;
+            name: dbaas.logs.EngineNameEnum;
             version: string;
         }
         // type fullname: dbaas.logs.EngineNameEnum
         export type EngineNameEnum = "FLOWGGER" | "LOGSTASH" | "TEST"
         // interface fullName: dbaas.logs.FlowggerConfiguration.FlowggerConfiguration
         export interface FlowggerConfiguration {
-            logFormat: dbaaslogsFlowggerConfigurationLogFormatEnum;
-            logFraming: dbaaslogsFlowggerConfigurationLogFramingEnum;
+            logFormat: dbaas.logs.FlowggerConfigurationLogFormatEnum;
+            logFraming: dbaas.logs.FlowggerConfigurationLogFramingEnum;
         }
         // type fullname: dbaas.logs.FlowggerConfigurationLogFormatEnum
         export type FlowggerConfigurationLogFormatEnum = "RFC5424" | "LTSV" | "GELF" | "CAPNP"
@@ -101,13 +101,13 @@ export namespace dbaas {
             description: string;
             engineId: string;
             helperId: string;
-            sections: dbaaslogsHelperSection[];
+            sections: dbaas.logs.HelperSection[];
             title: string;
         }
         // interface fullName: dbaas.logs.HelperSection.HelperSection
         export interface HelperSection {
             content: string;
-            name: dbaaslogsHelperSectionNameEnum;
+            name: dbaas.logs.HelperSectionNameEnum;
         }
         // type fullname: dbaas.logs.HelperSectionNameEnum
         export type HelperSectionNameEnum = "LOGSTASH_INPUT" | "LOGSTASH_FILTER" | "LOGSTASH_PATTERN"
@@ -138,7 +138,7 @@ export namespace dbaas {
             publicAddress: string;
             singleInstanceEnabled?: boolean;
             sslCertificate: string;
-            status: dbaaslogsInputStatusEnum;
+            status: dbaas.logs.InputStatusEnum;
             streamId: string;
             title: string;
             updatedAt?: string;
@@ -146,7 +146,7 @@ export namespace dbaas {
         // interface fullName: dbaas.logs.InputAction.InputAction
         export interface InputAction {
             isAllowed: boolean;
-            type: dbaaslogsInputActionTypeEnum;
+            type: dbaas.logs.InputActionTypeEnum;
         }
         // type fullname: dbaas.logs.InputActionTypeEnum
         export type InputActionTypeEnum = "END" | "LOG" | "START" | "TEST" | "DESTROY" | "RESTART"
@@ -156,8 +156,8 @@ export namespace dbaas {
         }
         // interface fullName: dbaas.logs.InputConfigurationFlowggerUpdate.InputConfigurationFlowggerUpdate
         export interface InputConfigurationFlowggerUpdate {
-            logFormat: dbaaslogsFlowggerConfigurationLogFormatEnum;
-            logFraming: dbaaslogsFlowggerConfigurationLogFramingEnum;
+            logFormat: dbaas.logs.FlowggerConfigurationLogFormatEnum;
+            logFraming: dbaas.logs.FlowggerConfigurationLogFramingEnum;
         }
         // interface fullName: dbaas.logs.InputConfigurationLogstashUpdate.InputConfigurationLogstashUpdate
         export interface InputConfigurationLogstashUpdate {
@@ -228,7 +228,7 @@ export namespace dbaas {
             operationId: string;
             optionId?: string;
             roleId?: string;
-            state: dbaaslogsOperationStateEnum;
+            state: dbaas.logs.OperationStateEnum;
             streamId?: string;
             updatedAt?: string;
         }
@@ -252,7 +252,7 @@ export namespace dbaas {
             maxNbStream: number;
             optionId: string;
             reference: string;
-            state: dbaaslogsOptionStateEnum;
+            state: dbaas.logs.OptionStateEnum;
             updatedAt?: string;
         }
         // type fullname: dbaas.logs.OptionStateEnum
@@ -314,14 +314,14 @@ export namespace dbaas {
         // interface fullName: dbaas.logs.OutputGraylogStreamAlertCreation.OutputGraylogStreamAlertCreation
         export interface OutputGraylogStreamAlertCreation {
             backlog: number;
-            conditionType?: dbaaslogsStreamAlertConditionConditionTypeEnum;
-            constraintType?: dbaaslogsStreamAlertConditionConstraintTypeEnum;
+            conditionType?: dbaas.logs.StreamAlertConditionConditionTypeEnum;
+            constraintType?: dbaas.logs.StreamAlertConditionConstraintTypeEnum;
             field?: string;
             grace: number;
             queryFilter?: string;
             repeatNotificationsEnabled?: boolean;
             threshold?: number;
-            thresholdType?: dbaaslogsStreamAlertConditionThresholdTypeEnum;
+            thresholdType?: dbaas.logs.StreamAlertConditionThresholdTypeEnum;
             time?: number;
             title: string;
             value?: string;
@@ -329,14 +329,14 @@ export namespace dbaas {
         // interface fullName: dbaas.logs.OutputGraylogStreamAlertUpdate.OutputGraylogStreamAlertUpdate
         export interface OutputGraylogStreamAlertUpdate {
             backlog: number;
-            conditionType?: dbaaslogsStreamAlertConditionConditionTypeEnum;
-            constraintType?: dbaaslogsStreamAlertConditionConstraintTypeEnum;
+            conditionType?: dbaas.logs.StreamAlertConditionConditionTypeEnum;
+            constraintType?: dbaas.logs.StreamAlertConditionConstraintTypeEnum;
             field?: string;
             grace: number;
             queryFilter?: string;
             repeatNotificationsEnabled?: boolean;
             threshold?: number;
-            thresholdType?: dbaaslogsStreamAlertConditionThresholdTypeEnum;
+            thresholdType?: dbaas.logs.StreamAlertConditionThresholdTypeEnum;
             time?: number;
             title: string;
             value?: string;
@@ -344,12 +344,12 @@ export namespace dbaas {
         // interface fullName: dbaas.logs.OutputGraylogStreamCreation.OutputGraylogStreamCreation
         export interface OutputGraylogStreamCreation {
             autoSelectOption?: boolean;
-            coldStorageCompression?: dbaaslogsStreamColdStorageCompressionEnum;
-            coldStorageContent?: dbaaslogsStreamColdStorageContentEnum;
+            coldStorageCompression?: dbaas.logs.StreamColdStorageCompressionEnum;
+            coldStorageContent?: dbaas.logs.StreamColdStorageContentEnum;
             coldStorageEnabled?: boolean;
             coldStorageNotifyEnabled?: boolean;
             coldStorageRetention?: number;
-            coldStorageTarget?: dbaaslogsStreamColdStorageTargetEnum;
+            coldStorageTarget?: dbaas.logs.StreamColdStorageTargetEnum;
             description: string;
             indexingEnabled?: boolean;
             optionId?: string;
@@ -361,17 +361,17 @@ export namespace dbaas {
         export interface OutputGraylogStreamRuleCreation {
             field: string;
             isInverted?: boolean;
-            operator: dbaaslogsStreamRuleOperatorEnum;
+            operator: dbaas.logs.StreamRuleOperatorEnum;
             value: string;
         }
         // interface fullName: dbaas.logs.OutputGraylogStreamUpdate.OutputGraylogStreamUpdate
         export interface OutputGraylogStreamUpdate {
-            coldStorageCompression?: dbaaslogsStreamColdStorageCompressionEnum;
-            coldStorageContent?: dbaaslogsStreamColdStorageContentEnum;
+            coldStorageCompression?: dbaas.logs.StreamColdStorageCompressionEnum;
+            coldStorageContent?: dbaas.logs.StreamColdStorageContentEnum;
             coldStorageEnabled?: boolean;
             coldStorageNotifyEnabled?: boolean;
             coldStorageRetention?: number;
-            coldStorageTarget?: dbaaslogsStreamColdStorageTargetEnum;
+            coldStorageTarget?: dbaas.logs.StreamColdStorageTargetEnum;
             description: string;
             indexingEnabled?: boolean;
             optionId?: string;
@@ -384,7 +384,7 @@ export namespace dbaas {
             dashboardId?: string;
             indexId?: string;
             permissionId: string;
-            permissionType?: dbaaslogsPermissionTypeEnum;
+            permissionType?: dbaas.logs.PermissionTypeEnum;
             streamId?: string;
         }
         // type fullname: dbaas.logs.PermissionDashboardPermissionTypeEnum
@@ -451,12 +451,12 @@ export namespace dbaas {
         // interface fullName: dbaas.logs.RolePermissionDashboardCreation.RolePermissionDashboardCreation
         export interface RolePermissionDashboardCreation {
             dashboardId: string;
-            permissionType?: dbaaslogsPermissionDashboardPermissionTypeEnum;
+            permissionType?: dbaas.logs.PermissionDashboardPermissionTypeEnum;
         }
         // interface fullName: dbaas.logs.RolePermissionIndexCreation.RolePermissionIndexCreation
         export interface RolePermissionIndexCreation {
             indexId: string;
-            permissionType?: dbaaslogsPermissionIndexPermissionTypeEnum;
+            permissionType?: dbaas.logs.PermissionIndexPermissionTypeEnum;
         }
         // interface fullName: dbaas.logs.RolePermissionStreamCreation.RolePermissionStreamCreation
         export interface RolePermissionStreamCreation {
@@ -474,7 +474,7 @@ export namespace dbaas {
             displayName?: string;
             isCapped: boolean;
             serviceName: string;
-            state?: dbaaslogsServiceStateEnum;
+            state?: dbaas.logs.ServiceStateEnum;
             updatedAt?: string;
             username: string;
         }
@@ -488,12 +488,12 @@ export namespace dbaas {
         // interface fullName: dbaas.logs.Stream.Stream
         export interface Stream {
             canAlert: boolean;
-            coldStorageCompression?: dbaaslogsStreamColdStorageCompressionEnum;
-            coldStorageContent?: dbaaslogsStreamColdStorageContentEnum;
+            coldStorageCompression?: dbaas.logs.StreamColdStorageCompressionEnum;
+            coldStorageContent?: dbaas.logs.StreamColdStorageContentEnum;
             coldStorageEnabled?: boolean;
             coldStorageNotifyEnabled?: boolean;
             coldStorageRetention?: number;
-            coldStorageTarget?: dbaaslogsStreamColdStorageTargetEnum;
+            coldStorageTarget?: dbaas.logs.StreamColdStorageTargetEnum;
             createdAt: string;
             description: string;
             indexingEnabled?: boolean;
@@ -511,14 +511,14 @@ export namespace dbaas {
         export interface StreamAlertCondition {
             alertId: string;
             backlog: number;
-            conditionType?: dbaaslogsStreamAlertConditionConditionTypeEnum;
-            constraintType?: dbaaslogsStreamAlertConditionConstraintTypeEnum;
+            conditionType?: dbaas.logs.StreamAlertConditionConditionTypeEnum;
+            constraintType?: dbaas.logs.StreamAlertConditionConstraintTypeEnum;
             field?: string;
             grace: number;
             queryFilter?: string;
             repeatNotificationsEnabled?: boolean;
             threshold?: number;
-            thresholdType?: dbaaslogsStreamAlertConditionThresholdTypeEnum;
+            thresholdType?: dbaas.logs.StreamAlertConditionThresholdTypeEnum;
             time?: number;
             title: string;
             value?: string;
@@ -539,7 +539,7 @@ export namespace dbaas {
         export interface StreamRule {
             field: string;
             isInverted?: boolean;
-            operator?: dbaaslogsStreamRuleOperatorEnum;
+            operator?: dbaas.logs.StreamRuleOperatorEnum;
             ruleId: string;
             value: string;
         }
@@ -578,7 +578,7 @@ export namespace dbaas {
         // interface fullName: dbaas.logs.Url.Url
         export interface Url {
             address: string;
-            type: dbaaslogsUrlTypeEnum;
+            type: dbaas.logs.UrlTypeEnum;
         }
         // type fullname: dbaas.logs.UrlTypeEnum
         export type UrlTypeEnum = "GRAYLOG_WEBUI" | "GRAYLOG_API" | "ELASTICSEARCH_API" | "KIBANA_WEBUI" | "CONSOLE" | "WEB_SOCKET" | "SERVICE_DOMAIN" | "TCP_TLS_GELF" | "TCP_GELF" | "UDP_GELF" | "TCP_TLS_RFC5424" | "TCP_RFC5424" | "UDP_RFC5424" | "TCP_TLS_LTSV_LINE" | "TCP_TLS_LTSV_NUL" | "TCP_LTSV_LINE" | "TCP_LTSV_NUL" | "TCP_TLS_CAP_N_PROTO" | "TCP_CAP_N_PROTO" | "UDP_LTSV_NUL" | "UDP_LTSV_LINE" | "UDP_CAP_N_PROTO" | "HTTP_GELF" | "HTTP_TLS_GELF" | "TCP_BEATS" | "TCP_TLS_BEATS"
@@ -614,10 +614,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: serviceRenewType;
-        renewalType: serviceRenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: serviceStateEnum;
+        status: service.StateEnum;
     }
 }
 
@@ -679,7 +679,7 @@ export interface Dbaas{
                         // GET /dbaas/logs/{serviceName}/cluster/{clusterId}/allowedNetwork
                         $get(): Promise<string[]>;
                         // POST /dbaas/logs/{serviceName}/cluster/{clusterId}/allowedNetwork
-                        $post(params: {flowType: dbaaslogsClusterAllowedNetworkFlowTypeEnum, network: string}): Promise<dbaas.logs.Operation>;
+                        $post(params: {flowType: dbaas.logs.ClusterAllowedNetworkFlowTypeEnum, network: string}): Promise<dbaas.logs.Operation>;
                         $(allowedNetworkId: string): {
                             // DELETE /dbaas/logs/{serviceName}/cluster/{clusterId}/allowedNetwork/{allowedNetworkId}
                             $delete(): Promise<dbaas.logs.Operation>;
@@ -730,7 +730,7 @@ export interface Dbaas{
                             // GET /dbaas/logs/{serviceName}/input/{inputId}/configuration/flowgger
                             $get(): Promise<dbaas.logs.FlowggerConfiguration>;
                             // PUT /dbaas/logs/{serviceName}/input/{inputId}/configuration/flowgger
-                            $put(params: {logFormat: dbaaslogsFlowggerConfigurationLogFormatEnum, logFraming: dbaaslogsFlowggerConfigurationLogFramingEnum}): Promise<dbaas.logs.Operation>;
+                            $put(params: {logFormat: dbaas.logs.FlowggerConfigurationLogFormatEnum, logFraming: dbaas.logs.FlowggerConfigurationLogFramingEnum}): Promise<dbaas.logs.Operation>;
                         }
                         logstash: {
                             // GET /dbaas/logs/{serviceName}/input/{inputId}/configuration/logstash
@@ -877,26 +877,26 @@ export interface Dbaas{
                         // GET /dbaas/logs/{serviceName}/output/graylog/stream
                         $get(): Promise<string[]>;
                         // POST /dbaas/logs/{serviceName}/output/graylog/stream
-                        $post(params: {autoSelectOption?: boolean, coldStorageCompression?: dbaaslogsStreamColdStorageCompressionEnum, coldStorageContent?: dbaaslogsStreamColdStorageContentEnum, coldStorageEnabled?: boolean, coldStorageNotifyEnabled?: boolean, coldStorageRetention?: number, coldStorageTarget?: dbaaslogsStreamColdStorageTargetEnum, description: string, indexingEnabled?: boolean, optionId?: string, parentStreamId?: string, title: string, webSocketEnabled?: boolean}): Promise<dbaas.logs.Operation>;
+                        $post(params: {autoSelectOption?: boolean, coldStorageCompression?: dbaas.logs.StreamColdStorageCompressionEnum, coldStorageContent?: dbaas.logs.StreamColdStorageContentEnum, coldStorageEnabled?: boolean, coldStorageNotifyEnabled?: boolean, coldStorageRetention?: number, coldStorageTarget?: dbaas.logs.StreamColdStorageTargetEnum, description: string, indexingEnabled?: boolean, optionId?: string, parentStreamId?: string, title: string, webSocketEnabled?: boolean}): Promise<dbaas.logs.Operation>;
                         $(streamId: string): {
                             // DELETE /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}
                             $delete(): Promise<dbaas.logs.Operation>;
                             // GET /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}
                             $get(): Promise<dbaas.logs.Stream>;
                             // PUT /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}
-                            $put(params: {coldStorageCompression?: dbaaslogsStreamColdStorageCompressionEnum, coldStorageContent?: dbaaslogsStreamColdStorageContentEnum, coldStorageEnabled?: boolean, coldStorageNotifyEnabled?: boolean, coldStorageRetention?: number, coldStorageTarget?: dbaaslogsStreamColdStorageTargetEnum, description: string, indexingEnabled?: boolean, optionId?: string, title: string, webSocketEnabled?: boolean}): Promise<dbaas.logs.Operation>;
+                            $put(params: {coldStorageCompression?: dbaas.logs.StreamColdStorageCompressionEnum, coldStorageContent?: dbaas.logs.StreamColdStorageContentEnum, coldStorageEnabled?: boolean, coldStorageNotifyEnabled?: boolean, coldStorageRetention?: number, coldStorageTarget?: dbaas.logs.StreamColdStorageTargetEnum, description: string, indexingEnabled?: boolean, optionId?: string, title: string, webSocketEnabled?: boolean}): Promise<dbaas.logs.Operation>;
                             alert: {
                                 // GET /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert
                                 $get(): Promise<string[]>;
                                 // POST /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert
-                                $post(params: {backlog: number, conditionType?: dbaaslogsStreamAlertConditionConditionTypeEnum, constraintType?: dbaaslogsStreamAlertConditionConstraintTypeEnum, field?: string, grace: number, queryFilter?: string, repeatNotificationsEnabled?: boolean, threshold?: number, thresholdType?: dbaaslogsStreamAlertConditionThresholdTypeEnum, time?: number, title: string, value?: string}): Promise<dbaas.logs.Operation>;
+                                $post(params: {backlog: number, conditionType?: dbaas.logs.StreamAlertConditionConditionTypeEnum, constraintType?: dbaas.logs.StreamAlertConditionConstraintTypeEnum, field?: string, grace: number, queryFilter?: string, repeatNotificationsEnabled?: boolean, threshold?: number, thresholdType?: dbaas.logs.StreamAlertConditionThresholdTypeEnum, time?: number, title: string, value?: string}): Promise<dbaas.logs.Operation>;
                                 $(alertId: string): {
                                     // DELETE /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert/{alertId}
                                     $delete(): Promise<dbaas.logs.Operation>;
                                     // GET /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert/{alertId}
                                     $get(): Promise<dbaas.logs.StreamAlertCondition>;
                                     // PUT /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert/{alertId}
-                                    $put(params: {backlog: number, conditionType?: dbaaslogsStreamAlertConditionConditionTypeEnum, constraintType?: dbaaslogsStreamAlertConditionConstraintTypeEnum, field?: string, grace: number, queryFilter?: string, repeatNotificationsEnabled?: boolean, threshold?: number, thresholdType?: dbaaslogsStreamAlertConditionThresholdTypeEnum, time?: number, title: string, value?: string}): Promise<dbaas.logs.Operation>;
+                                    $put(params: {backlog: number, conditionType?: dbaas.logs.StreamAlertConditionConditionTypeEnum, constraintType?: dbaas.logs.StreamAlertConditionConstraintTypeEnum, field?: string, grace: number, queryFilter?: string, repeatNotificationsEnabled?: boolean, threshold?: number, thresholdType?: dbaas.logs.StreamAlertConditionThresholdTypeEnum, time?: number, title: string, value?: string}): Promise<dbaas.logs.Operation>;
                                 };
                             }
                             archive: {
@@ -915,7 +915,7 @@ export interface Dbaas{
                                 // GET /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule
                                 $get(): Promise<string[]>;
                                 // POST /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule
-                                $post(params: {field: string, isInverted?: boolean, operator: dbaaslogsStreamRuleOperatorEnum, value: string}): Promise<dbaas.logs.Operation>;
+                                $post(params: {field: string, isInverted?: boolean, operator: dbaas.logs.StreamRuleOperatorEnum, value: string}): Promise<dbaas.logs.Operation>;
                                 $(ruleId: string): {
                                     // DELETE /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule/{ruleId}
                                     $delete(): Promise<dbaas.logs.Operation>;
@@ -970,11 +970,11 @@ export interface Dbaas{
                         }
                         dashboard: {
                             // POST /dbaas/logs/{serviceName}/role/{roleId}/permission/dashboard
-                            $post(params: {dashboardId: string, permissionType?: dbaaslogsPermissionDashboardPermissionTypeEnum}): Promise<dbaas.logs.Operation>;
+                            $post(params: {dashboardId: string, permissionType?: dbaas.logs.PermissionDashboardPermissionTypeEnum}): Promise<dbaas.logs.Operation>;
                         }
                         index: {
                             // POST /dbaas/logs/{serviceName}/role/{roleId}/permission/index
-                            $post(params: {indexId: string, permissionType?: dbaaslogsPermissionIndexPermissionTypeEnum}): Promise<dbaas.logs.Operation>;
+                            $post(params: {indexId: string, permissionType?: dbaas.logs.PermissionIndexPermissionTypeEnum}): Promise<dbaas.logs.Operation>;
                         }
                         stream: {
                             // POST /dbaas/logs/{serviceName}/role/{roleId}/permission/stream
@@ -993,7 +993,7 @@ export interface Dbaas{
                 // GET /dbaas/logs/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /dbaas/logs/{serviceName}/serviceInfos
-                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}): Promise<void>;
+                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
             token: {
                 // GET /dbaas/logs/{serviceName}/token
@@ -1321,7 +1321,7 @@ export interface Dbaas{
    * FlowggerConfiguration
    * Update the flowgger configuration
    */
-  put(path: '/dbaas/logs/{serviceName}/input/{inputId}/configuration/flowgger'): (params: {inputId: string, serviceName: string, logFormat: dbaaslogsFlowggerConfigurationLogFormatEnum, logFraming: dbaaslogsFlowggerConfigurationLogFramingEnum}) => Promise<dbaas.logs.Operation>;
+  put(path: '/dbaas/logs/{serviceName}/input/{inputId}/configuration/flowgger'): (params: {inputId: string, serviceName: string, logFormat: dbaas.logs.FlowggerConfigurationLogFormatEnum, logFraming: dbaas.logs.FlowggerConfigurationLogFramingEnum}) => Promise<dbaas.logs.Operation>;
   /**
    * LogstashConfiguration
    * Update the logstash configuration
@@ -1346,12 +1346,12 @@ export interface Dbaas{
    * Stream
    * Update information of specified graylog stream
    */
-  put(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}'): (params: {serviceName: string, streamId: string, coldStorageCompression?: dbaaslogsStreamColdStorageCompressionEnum, coldStorageContent?: dbaaslogsStreamColdStorageContentEnum, coldStorageEnabled?: boolean, coldStorageNotifyEnabled?: boolean, coldStorageRetention?: number, coldStorageTarget?: dbaaslogsStreamColdStorageTargetEnum, description: string, indexingEnabled?: boolean, optionId?: string, title: string, webSocketEnabled?: boolean}) => Promise<dbaas.logs.Operation>;
+  put(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}'): (params: {serviceName: string, streamId: string, coldStorageCompression?: dbaas.logs.StreamColdStorageCompressionEnum, coldStorageContent?: dbaas.logs.StreamColdStorageContentEnum, coldStorageEnabled?: boolean, coldStorageNotifyEnabled?: boolean, coldStorageRetention?: number, coldStorageTarget?: dbaas.logs.StreamColdStorageTargetEnum, description: string, indexingEnabled?: boolean, optionId?: string, title: string, webSocketEnabled?: boolean}) => Promise<dbaas.logs.Operation>;
   /**
    * StreamAlert
    * Update alert information of specified graylog stream
    */
-  put(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert/{alertId}'): (params: {alertId: string, serviceName: string, streamId: string, backlog: number, conditionType?: dbaaslogsStreamAlertConditionConditionTypeEnum, constraintType?: dbaaslogsStreamAlertConditionConstraintTypeEnum, field?: string, grace: number, queryFilter?: string, repeatNotificationsEnabled?: boolean, threshold?: number, thresholdType?: dbaaslogsStreamAlertConditionThresholdTypeEnum, time?: number, title: string, value?: string}) => Promise<dbaas.logs.Operation>;
+  put(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert/{alertId}'): (params: {alertId: string, serviceName: string, streamId: string, backlog: number, conditionType?: dbaas.logs.StreamAlertConditionConditionTypeEnum, constraintType?: dbaas.logs.StreamAlertConditionConstraintTypeEnum, field?: string, grace: number, queryFilter?: string, repeatNotificationsEnabled?: boolean, threshold?: number, thresholdType?: dbaas.logs.StreamAlertConditionThresholdTypeEnum, time?: number, title: string, value?: string}) => Promise<dbaas.logs.Operation>;
   /**
    * Role
    * Update information of specified role
@@ -1366,7 +1366,7 @@ export interface Dbaas{
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/dbaas/logs/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}) => Promise<void>;
+  put(path: '/dbaas/logs/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
   /**
    * Change the contacts of this service
    * Launch a contact change procedure
@@ -1376,7 +1376,7 @@ export interface Dbaas{
    * Cluster allowed networks
    * Allow an IP to contact cluster
    */
-  post(path: '/dbaas/logs/{serviceName}/cluster/{clusterId}/allowedNetwork'): (params: {clusterId: string, serviceName: string, flowType: dbaaslogsClusterAllowedNetworkFlowTypeEnum, network: string}) => Promise<dbaas.logs.Operation>;
+  post(path: '/dbaas/logs/{serviceName}/cluster/{clusterId}/allowedNetwork'): (params: {clusterId: string, serviceName: string, flowType: dbaas.logs.ClusterAllowedNetworkFlowTypeEnum, network: string}) => Promise<dbaas.logs.Operation>;
   /**
    * Inputs
    * Register a new input object
@@ -1451,12 +1451,12 @@ export interface Dbaas{
    * Streams
    * Register a new graylog stream
    */
-  post(path: '/dbaas/logs/{serviceName}/output/graylog/stream'): (params: {serviceName: string, autoSelectOption?: boolean, coldStorageCompression?: dbaaslogsStreamColdStorageCompressionEnum, coldStorageContent?: dbaaslogsStreamColdStorageContentEnum, coldStorageEnabled?: boolean, coldStorageNotifyEnabled?: boolean, coldStorageRetention?: number, coldStorageTarget?: dbaaslogsStreamColdStorageTargetEnum, description: string, indexingEnabled?: boolean, optionId?: string, parentStreamId?: string, title: string, webSocketEnabled?: boolean}) => Promise<dbaas.logs.Operation>;
+  post(path: '/dbaas/logs/{serviceName}/output/graylog/stream'): (params: {serviceName: string, autoSelectOption?: boolean, coldStorageCompression?: dbaas.logs.StreamColdStorageCompressionEnum, coldStorageContent?: dbaas.logs.StreamColdStorageContentEnum, coldStorageEnabled?: boolean, coldStorageNotifyEnabled?: boolean, coldStorageRetention?: number, coldStorageTarget?: dbaas.logs.StreamColdStorageTargetEnum, description: string, indexingEnabled?: boolean, optionId?: string, parentStreamId?: string, title: string, webSocketEnabled?: boolean}) => Promise<dbaas.logs.Operation>;
   /**
    * StreamAlerts
    * Register a new alert on specified graylog stream
    */
-  post(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert'): (params: {serviceName: string, streamId: string, backlog: number, conditionType?: dbaaslogsStreamAlertConditionConditionTypeEnum, constraintType?: dbaaslogsStreamAlertConditionConstraintTypeEnum, field?: string, grace: number, queryFilter?: string, repeatNotificationsEnabled?: boolean, threshold?: number, thresholdType?: dbaaslogsStreamAlertConditionThresholdTypeEnum, time?: number, title: string, value?: string}) => Promise<dbaas.logs.Operation>;
+  post(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/alert'): (params: {serviceName: string, streamId: string, backlog: number, conditionType?: dbaas.logs.StreamAlertConditionConditionTypeEnum, constraintType?: dbaas.logs.StreamAlertConditionConstraintTypeEnum, field?: string, grace: number, queryFilter?: string, repeatNotificationsEnabled?: boolean, threshold?: number, thresholdType?: dbaas.logs.StreamAlertConditionThresholdTypeEnum, time?: number, title: string, value?: string}) => Promise<dbaas.logs.Operation>;
   /**
    * Streams
    * Get a public temporary URL to access the archive
@@ -1466,7 +1466,7 @@ export interface Dbaas{
    * StreamRules
    * Register a new rule on specified graylog stream
    */
-  post(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule'): (params: {serviceName: string, streamId: string, field: string, isInverted?: boolean, operator: dbaaslogsStreamRuleOperatorEnum, value: string}) => Promise<dbaas.logs.Operation>;
+  post(path: '/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/rule'): (params: {serviceName: string, streamId: string, field: string, isInverted?: boolean, operator: dbaas.logs.StreamRuleOperatorEnum, value: string}) => Promise<dbaas.logs.Operation>;
   /**
    * Roles
    * Register a new role
@@ -1486,12 +1486,12 @@ export interface Dbaas{
    * RolePermissionIndex
    * Append a graylog dashboard permission to role
    */
-  post(path: '/dbaas/logs/{serviceName}/role/{roleId}/permission/dashboard'): (params: {roleId: string, serviceName: string, dashboardId: string, permissionType?: dbaaslogsPermissionDashboardPermissionTypeEnum}) => Promise<dbaas.logs.Operation>;
+  post(path: '/dbaas/logs/{serviceName}/role/{roleId}/permission/dashboard'): (params: {roleId: string, serviceName: string, dashboardId: string, permissionType?: dbaas.logs.PermissionDashboardPermissionTypeEnum}) => Promise<dbaas.logs.Operation>;
   /**
    * RolePermissionIndex
    * Append a elasticsearch index permission to role
    */
-  post(path: '/dbaas/logs/{serviceName}/role/{roleId}/permission/index'): (params: {roleId: string, serviceName: string, indexId: string, permissionType?: dbaaslogsPermissionIndexPermissionTypeEnum}) => Promise<dbaas.logs.Operation>;
+  post(path: '/dbaas/logs/{serviceName}/role/{roleId}/permission/index'): (params: {roleId: string, serviceName: string, indexId: string, permissionType?: dbaas.logs.PermissionIndexPermissionTypeEnum}) => Promise<dbaas.logs.Operation>;
   /**
    * RolePermissionIndex
    * Append a graylog stream permission to role
@@ -1583,34 +1583,3 @@ export interface Dbaas{
    */
   delete(path: '/dbaas/logs/{serviceName}/token/{tokenId}'): (params: {serviceName: string, tokenId: string}) => Promise<dbaas.logs.Operation>;
 }
-/**
- * Extra Alias to bypass relativer namespace colitions
- */
-type dbaaslogsArchiveRetrievalStateEnum = dbaas.logs.ArchiveRetrievalStateEnum;
-type dbaaslogsClusterClusterTypeEnum = dbaas.logs.ClusterClusterTypeEnum;
-type dbaaslogsClusterRegionEnum = dbaas.logs.ClusterRegionEnum;
-type dbaaslogsClusterAllowedNetworkFlowTypeEnum = dbaas.logs.ClusterAllowedNetworkFlowTypeEnum;
-type dbaaslogsEngineNameEnum = dbaas.logs.EngineNameEnum;
-type dbaaslogsFlowggerConfigurationLogFormatEnum = dbaas.logs.FlowggerConfigurationLogFormatEnum;
-type dbaaslogsFlowggerConfigurationLogFramingEnum = dbaas.logs.FlowggerConfigurationLogFramingEnum;
-type dbaaslogsHelperSection = dbaas.logs.HelperSection;
-type dbaaslogsHelperSectionNameEnum = dbaas.logs.HelperSectionNameEnum;
-type dbaaslogsInputStatusEnum = dbaas.logs.InputStatusEnum;
-type dbaaslogsInputActionTypeEnum = dbaas.logs.InputActionTypeEnum;
-type dbaaslogsOperationStateEnum = dbaas.logs.OperationStateEnum;
-type dbaaslogsOptionStateEnum = dbaas.logs.OptionStateEnum;
-type dbaaslogsStreamAlertConditionConditionTypeEnum = dbaas.logs.StreamAlertConditionConditionTypeEnum;
-type dbaaslogsStreamAlertConditionConstraintTypeEnum = dbaas.logs.StreamAlertConditionConstraintTypeEnum;
-type dbaaslogsStreamAlertConditionThresholdTypeEnum = dbaas.logs.StreamAlertConditionThresholdTypeEnum;
-type dbaaslogsStreamColdStorageCompressionEnum = dbaas.logs.StreamColdStorageCompressionEnum;
-type dbaaslogsStreamColdStorageContentEnum = dbaas.logs.StreamColdStorageContentEnum;
-type dbaaslogsStreamColdStorageTargetEnum = dbaas.logs.StreamColdStorageTargetEnum;
-type dbaaslogsStreamRuleOperatorEnum = dbaas.logs.StreamRuleOperatorEnum;
-type dbaaslogsPermissionTypeEnum = dbaas.logs.PermissionTypeEnum;
-type dbaaslogsPermissionDashboardPermissionTypeEnum = dbaas.logs.PermissionDashboardPermissionTypeEnum;
-type dbaaslogsPermissionIndexPermissionTypeEnum = dbaas.logs.PermissionIndexPermissionTypeEnum;
-type dbaaslogsServiceStateEnum = dbaas.logs.ServiceStateEnum;
-type dbaaslogsUrlTypeEnum = dbaas.logs.UrlTypeEnum;
-type serviceRenewType = service.RenewType;
-type serviceRenewalTypeEnum = service.RenewalTypeEnum;
-type serviceStateEnum = service.StateEnum;

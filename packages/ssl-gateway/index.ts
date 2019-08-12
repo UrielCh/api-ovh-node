@@ -33,10 +33,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: serviceRenewType;
-        renewalType: serviceRenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: serviceStateEnum;
+        status: service.StateEnum;
     }
 }
 export namespace sslGateway {
@@ -44,7 +44,7 @@ export namespace sslGateway {
     export interface Domain {
         domain: string;
         id: number;
-        state: sslGatewayDomainStateEnum;
+        state: sslGateway.DomainStateEnum;
     }
     // type fullname: sslGateway.DomainStateEnum
     export type DomainStateEnum = "creating" | "deleted" | "deleting" | "http-only" | "internal" | "ok"
@@ -67,7 +67,7 @@ export namespace sslGateway {
         address: string;
         id: number;
         port: number;
-        state: sslGatewayServerStateEnum;
+        state: sslGateway.ServerStateEnum;
     }
     // type fullname: sslGateway.ServerStateEnum
     export type ServerStateEnum = "creating" | "deleted" | "deleting" | "internal" | "ok" | "updating"
@@ -82,23 +82,23 @@ export namespace sslGateway {
         ipv4: string;
         ipv6?: string;
         metricsToken?: string;
-        offer: sslGatewayOfferEnum;
+        offer: sslGateway.OfferEnum;
         reverse?: string;
         serverHttps: boolean;
         serviceName: string;
-        sslConfiguration?: sslGatewaySslConfigurationEnum;
-        state: sslGatewayStateEnum;
+        sslConfiguration?: sslGateway.SslConfigurationEnum;
+        state: sslGateway.StateEnum;
         zones: string[];
     }
     // type fullname: sslGateway.StateEnum
     export type StateEnum = "creating" | "deleted" | "deleting" | "http-only" | "internal" | "ok" | "suspended" | "upgrading"
     // interface fullName: sslGateway.Task.Task
     export interface Task {
-        action: sslGatewayTaskActionEnum;
+        action: sslGateway.TaskActionEnum;
         creationDate: string;
         id: number;
         progress: number;
-        status: sslGatewayTaskStatusEnum;
+        status: sslGateway.TaskStatusEnum;
     }
     // type fullname: sslGateway.TaskActionEnum
     export type TaskActionEnum = "addDomain" | "addPaidCertificate" | "addServer" | "createService" | "deleteDomain" | "deleteServer" | "deleteService" | "internalTask" | "updateServer" | "updateService" | "upgrade"
@@ -132,7 +132,7 @@ export interface SslGateway{
         // GET /sslGateway/{serviceName}
         $get(): Promise<sslGateway.SslGateway>;
         // PUT /sslGateway/{serviceName}
-        $put(params?: {allowedSource?: string[], displayName?: string, hsts?: boolean, httpsRedirect?: boolean, ipv4?: string, ipv6?: string, metricsToken?: string, offer?: sslGatewayOfferEnum, reverse?: string, serverHttps?: boolean, serviceName?: string, sslConfiguration?: sslGatewaySslConfigurationEnum, state?: sslGatewayStateEnum, zones?: string[]}): Promise<void>;
+        $put(params?: {allowedSource?: string[], displayName?: string, hsts?: boolean, httpsRedirect?: boolean, ipv4?: string, ipv6?: string, metricsToken?: string, offer?: sslGateway.OfferEnum, reverse?: string, serverHttps?: boolean, serviceName?: string, sslConfiguration?: sslGateway.SslConfigurationEnum, state?: sslGateway.StateEnum, zones?: string[]}): Promise<void>;
         changeContact: {
             // POST /sslGateway/{serviceName}/changeContact
             $post(params?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
@@ -172,14 +172,14 @@ export interface SslGateway{
                 // GET /sslGateway/{serviceName}/server/{id}
                 $get(): Promise<sslGateway.Server>;
                 // PUT /sslGateway/{serviceName}/server/{id}
-                $put(params?: {address?: string, id?: number, port?: number, state?: sslGatewayServerStateEnum}): Promise<void>;
+                $put(params?: {address?: string, id?: number, port?: number, state?: sslGateway.ServerStateEnum}): Promise<void>;
             };
         }
         serviceInfos: {
             // GET /sslGateway/{serviceName}/serviceInfos
             $get(): Promise<services.Service>;
             // PUT /sslGateway/{serviceName}/serviceInfos
-            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}): Promise<void>;
+            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
         }
         task: {
             // GET /sslGateway/{serviceName}/task
@@ -259,17 +259,17 @@ export interface SslGateway{
    * Your SSL Gateway
    * Alter this object properties
    */
-  put(path: '/sslGateway/{serviceName}'): (params: {serviceName: string, allowedSource?: string[], displayName?: string, hsts?: boolean, httpsRedirect?: boolean, ipv4?: string, ipv6?: string, metricsToken?: string, offer?: sslGatewayOfferEnum, reverse?: string, serverHttps?: boolean, sslConfiguration?: sslGatewaySslConfigurationEnum, state?: sslGatewayStateEnum, zones?: string[]}) => Promise<void>;
+  put(path: '/sslGateway/{serviceName}'): (params: {serviceName: string, allowedSource?: string[], displayName?: string, hsts?: boolean, httpsRedirect?: boolean, ipv4?: string, ipv6?: string, metricsToken?: string, offer?: sslGateway.OfferEnum, reverse?: string, serverHttps?: boolean, sslConfiguration?: sslGateway.SslConfigurationEnum, state?: sslGateway.StateEnum, zones?: string[]}) => Promise<void>;
   /**
    * Server attached to an SSL Gateway
    * Alter this object properties
    */
-  put(path: '/sslGateway/{serviceName}/server/{id}'): (params: {id: number, serviceName: string, address?: string, port?: number, state?: sslGatewayServerStateEnum}) => Promise<void>;
+  put(path: '/sslGateway/{serviceName}/server/{id}'): (params: {id: number, serviceName: string, address?: string, port?: number, state?: sslGateway.ServerStateEnum}) => Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/sslGateway/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}) => Promise<void>;
+  put(path: '/sslGateway/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
   /**
    * Change the contacts of this service
    * Launch a contact change procedure
@@ -311,16 +311,3 @@ export interface SslGateway{
    */
   delete(path: '/sslGateway/{serviceName}/server/{id}'): (params: {id: number, serviceName: string}) => Promise<void>;
 }
-/**
- * Extra Alias to bypass relativer namespace colitions
- */
-type serviceRenewType = service.RenewType;
-type serviceRenewalTypeEnum = service.RenewalTypeEnum;
-type serviceStateEnum = service.StateEnum;
-type sslGatewayDomainStateEnum = sslGateway.DomainStateEnum;
-type sslGatewayServerStateEnum = sslGateway.ServerStateEnum;
-type sslGatewayOfferEnum = sslGateway.OfferEnum;
-type sslGatewaySslConfigurationEnum = sslGateway.SslConfigurationEnum;
-type sslGatewayStateEnum = sslGateway.StateEnum;
-type sslGatewayTaskActionEnum = sslGateway.TaskActionEnum;
-type sslGatewayTaskStatusEnum = sslGateway.TaskStatusEnum;

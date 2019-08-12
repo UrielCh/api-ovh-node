@@ -95,11 +95,11 @@ export namespace email {
         // interface fullName: email.domain.Diagnose.Diagnose
         export interface Diagnose {
             date: string;
-            function: emaildomainDomainDiagnoseFunctionEnum;
+            function: email.domain.DomainDiagnoseFunctionEnum;
             id: number;
             name?: string;
-            result?: emaildomainDomainDiagnoseResultEnum;
-            trace?: emaildomainDomainDiagnoseTraceStructemaildomainDomainDiagnoseResultEnum[];
+            result?: email.domain.DomainDiagnoseResultEnum;
+            trace?: email.domain.DomainDiagnoseTraceStruct<email.domain.DomainDiagnoseResultEnum>[];
         }
         // type fullname: email.domain.DomainDiagnoseFunctionEnum
         export type DomainDiagnoseFunctionEnum = "MX"
@@ -151,16 +151,16 @@ export namespace email {
         export type MigrationCheckCodeEnum = "ACCOUNT_EMPTY" | "ACCOUNT_INPROGRESS" | "DELEGATION_EXIST" | "DOMAIN_EMPTY" | "FILTER_EXIST" | "FORWARD_EXIST" | "FORWARD_LOCAL" | "MAILINGLIST_EXIST" | "MAILINGLIST_INPROGRESS" | "MAILPROXY_BAD_INFRA" | "MAILPROXY_EMPTY" | "MAILPROXY_INPROGRESS" | "MAILPROXY_RESERVATION" | "REDIRECTION_INPROGRESS" | "RESPONDER_EXIST" | "RESPONDER_INPROGRESS" | "UNKNOW"
         // interface fullName: email.domain.MigrationCheckResultStruct.MigrationCheckResultStruct
         export interface MigrationCheckResultStruct {
-            code: emaildomainMigrationCheckCodeEnum;
+            code: email.domain.MigrationCheckCodeEnum;
             details?: string;
         }
         // interface fullName: email.domain.MigrationCheckStruct.MigrationCheckStruct
         export interface MigrationCheckStruct {
             alias?: string[];
-            error?: emaildomainMigrationCheckResultStruct[];
+            error?: email.domain.MigrationCheckResultStruct[];
             filter?: string[];
             forward?: string[];
-            warning?: emaildomainMigrationCheckResultStruct[];
+            warning?: email.domain.MigrationCheckResultStruct[];
         }
         // interface fullName: email.domain.MigrationService.MigrationService
         export interface MigrationService {
@@ -170,7 +170,7 @@ export namespace email {
             creation: string;
             destinationServiceName: string;
             expiration: string;
-            type: emaildomainMigrationServiceType;
+            type: email.domain.MigrationServiceType;
         }
         // type fullname: email.domain.MigrationServiceType
         export type MigrationServiceType = "EMAIL PRO" | "HOSTED EXCHANGE" | "PRIVATE EXCHANGE" | "PROVIDER EXCHANGE"
@@ -281,10 +281,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: serviceRenewType;
-        renewalType: serviceRenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: serviceStateEnum;
+        status: service.StateEnum;
     }
 }
 export namespace zone {
@@ -440,7 +440,7 @@ export interface Email{
                     }
                     migrate: {
                         // GET /email/domain/{domain}/account/{accountName}/migrate
-                        $get(params?: {type?: emaildomainMigrationServiceType}): Promise<string[]>;
+                        $get(params?: {type?: email.domain.MigrationServiceType}): Promise<string[]>;
                         $(destinationServiceName: string): {
                             // GET /email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}
                             $get(): Promise<email.domain.MigrationService>;
@@ -596,7 +596,7 @@ export interface Email{
                 // GET /email/domain/{domain}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /email/domain/{domain}/serviceInfos
-                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}): Promise<void>;
+                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
             summary: {
                 // GET /email/domain/{domain}/summary
@@ -705,7 +705,7 @@ export interface Email{
    * List the email.domain.MigrationService objects
    * Get migration service
    */
-  get(path: '/email/domain/{domain}/account/{accountName}/migrate'): (params: {accountName: string, domain: string, type?: emaildomainMigrationServiceType}) => Promise<string[]>;
+  get(path: '/email/domain/{domain}/account/{accountName}/migrate'): (params: {accountName: string, domain: string, type?: email.domain.MigrationServiceType}) => Promise<string[]>;
   /**
    * Migration service
    * Get this object properties
@@ -930,7 +930,7 @@ export interface Email{
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/email/domain/{domain}/serviceInfos'): (params: {domain: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}) => Promise<void>;
+  put(path: '/email/domain/{domain}/serviceInfos'): (params: {domain: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
   /**
    * Account List
    * Alter this object properties
@@ -1166,20 +1166,11 @@ export interface Email{
  * Extra Alias to bypass relativer namespace colitions
  */
 type zoneNamedResolutionFieldTypeEnum = zone.NamedResolutionFieldTypeEnum;
-type emaildomainDomainDiagnoseFunctionEnum = email.domain.DomainDiagnoseFunctionEnum;
-type emaildomainDomainDiagnoseResultEnum = email.domain.DomainDiagnoseResultEnum;
-type emaildomainDomainDiagnoseTraceStructemaildomainDomainDiagnoseResultEnum = email.domain.DomainDiagnoseTraceStruct<email.domain.DomainDiagnoseResultEnum>;
 type domainDomainStatusEnum = domain.DomainStatusEnum;
 type domainDomainFilterActionEnum = domain.DomainFilterActionEnum;
 type domainDomainMlLanguageEnum = domain.DomainMlLanguageEnum;
 type domainDomainMlOptionsStruct = domain.DomainMlOptionsStruct;
-type emaildomainMigrationCheckCodeEnum = email.domain.MigrationCheckCodeEnum;
-type emaildomainMigrationCheckResultStruct = email.domain.MigrationCheckResultStruct;
-type emaildomainMigrationServiceType = email.domain.MigrationServiceType;
 type domainDomainFilterOperandEnum = domain.DomainFilterOperandEnum;
 type domainDomainPopActionEnum = domain.DomainPopActionEnum;
 type domainDomainSpecialAccountActionEnum = domain.DomainSpecialAccountActionEnum;
 type domainDomainSpecialAccountTypeEnum = domain.DomainSpecialAccountTypeEnum;
-type serviceRenewType = service.RenewType;
-type serviceRenewalTypeEnum = service.RenewalTypeEnum;
-type serviceStateEnum = service.StateEnum;

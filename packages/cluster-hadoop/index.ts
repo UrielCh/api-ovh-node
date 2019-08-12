@@ -9,7 +9,7 @@ export namespace cluster {
         export type BillingNameEnum = "100-small" | "200-cpu-1" | "220-cpu-3" | "300-disk-1" | "310-disk-3" | "900-vm-1"
         // interface fullName: cluster.hadoop.ClusterConsumption.ClusterConsumption
         export interface ClusterConsumption {
-            quantity: complexTypeUnitAndValuenumber;
+            quantity: complexType.UnitAndValue<number>;
         }
         // type fullname: cluster.hadoop.ClusterServiceNameEnum
         export type ClusterServiceNameEnum = "HBase" | "HDFS" | "HUE" | "Hive" | "Oozie" | "Solr" | "Spark" | "Sqoop" | "YARN" | "ZooKeeper"
@@ -19,34 +19,34 @@ export namespace cluster {
         export interface NetworkAcl {
             block: string;
             description?: string;
-            state: clusterhadoopNetworkAclStateEnum;
+            state: cluster.hadoop.NetworkAclStateEnum;
         }
         // type fullname: cluster.hadoop.NetworkAclStateEnum
         export type NetworkAclStateEnum = "disabled" | "enabled" | "pending"
         // interface fullName: cluster.hadoop.Node.Node
         export interface Node {
-            billingProfileName: clusterhadoopBillingNameEnum;
+            billingProfileName: cluster.hadoop.BillingNameEnum;
             hostname: string;
             ip: string;
             isRemovable: boolean;
-            softwareProfile: clusterhadoopNodeProfileEnum;
-            state: clusterhadoopNodeStateEnum;
+            softwareProfile: cluster.hadoop.NodeProfileEnum;
+            state: cluster.hadoop.NodeStateEnum;
         }
         // interface fullName: cluster.hadoop.NodeBillingProfile.NodeBillingProfile
         export interface NodeBillingProfile {
-            CPUFrequency: complexTypeUnitAndValuenumber;
-            diskCapacity: complexTypeUnitAndValuenumber;
+            CPUFrequency: complexType.UnitAndValue<number>;
+            diskCapacity: complexType.UnitAndValue<number>;
             nbCPUCores: number;
             nbCPUThreads: number;
-            networkBandwidth: complexTypeUnitAndValuenumber;
+            networkBandwidth: complexType.UnitAndValue<number>;
             nodeProfile: string;
-            ramQuantity: complexTypeUnitAndValuenumber;
+            ramQuantity: complexType.UnitAndValue<number>;
         }
         // interface fullName: cluster.hadoop.NodeConsumption.NodeConsumption
         export interface NodeConsumption {
             hostname: string;
-            nodeProfile: clusterhadoopBillingNameEnum;
-            quantity: complexTypeUnitAndValuenumber;
+            nodeProfile: cluster.hadoop.BillingNameEnum;
+            quantity: complexType.UnitAndValue<number>;
         }
         // type fullname: cluster.hadoop.NodeProfileEnum
         export type NodeProfileEnum = "ApplicationServer" | "BasicNode" | "ClouderaManager" | "MasterServer" | "SecondaryServer"
@@ -62,14 +62,14 @@ export namespace cluster {
         // interface fullName: cluster.hadoop.Role.Role
         export interface Role {
             id: number;
-            type: clusterhadoopRoleTypeEnum;
+            type: cluster.hadoop.RoleTypeEnum;
         }
         // type fullname: cluster.hadoop.RoleTypeEnum
         export type RoleTypeEnum = "cloudera_manager" | "data_node" | "elasticsearch_server" | "hbase_master" | "hbase_region_server" | "hive_server2" | "hue" | "impala_daemon" | "impala_server" | "map_reduce_history_server" | "name_node" | "oozie_server" | "open_tsdb" | "secondary_name_node" | "solr_server" | "spark_master" | "spark_worker" | "sqoop_server" | "yarn_node_manager" | "yarn_resource_manager" | "zoo_keeper"
         // interface fullName: cluster.hadoop.Task.Task
         export interface Task {
             name: string;
-            status: clusterhadoopOperationStateEnum;
+            status: cluster.hadoop.OperationStateEnum;
             taskId: number;
         }
         // interface fullName: cluster.hadoop.User.User
@@ -84,7 +84,7 @@ export namespace cluster {
             clouderaVersion: string;
             maxOrderableNodes: number;
             name: string;
-            state: clusterhadoopClusterStateEnum;
+            state: cluster.hadoop.ClusterStateEnum;
         }
     }
 }
@@ -121,10 +121,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: serviceRenewType;
-        renewalType: serviceRenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: serviceStateEnum;
+        status: service.StateEnum;
     }
 }
 
@@ -169,12 +169,12 @@ export interface Cluster{
                     // GET /cluster/hadoop/{serviceName}/networkAcl/{block}
                     $get(): Promise<cluster.hadoop.NetworkAcl>;
                     // PUT /cluster/hadoop/{serviceName}/networkAcl/{block}
-                    $put(params?: {block?: string, description?: string, state?: clusterhadoopNetworkAclStateEnum}): Promise<void>;
+                    $put(params?: {block?: string, description?: string, state?: cluster.hadoop.NetworkAclStateEnum}): Promise<void>;
                 };
             }
             node: {
                 // GET /cluster/hadoop/{serviceName}/node
-                $get(params?: {softwareProfile?: clusterhadoopNodeProfileEnum}): Promise<string[]>;
+                $get(params?: {softwareProfile?: cluster.hadoop.NodeProfileEnum}): Promise<string[]>;
                 $(hostname: string): {
                     // DELETE /cluster/hadoop/{serviceName}/node/{hostname}
                     $delete(): Promise<cluster.hadoop.Task>;
@@ -192,7 +192,7 @@ export interface Cluster{
                         // GET /cluster/hadoop/{serviceName}/node/{hostname}/role
                         $get(): Promise<cluster.hadoop.RoleTypeEnum[]>;
                         // POST /cluster/hadoop/{serviceName}/node/{hostname}/role
-                        $post(params: {type: clusterhadoopRoleTypeEnum}): Promise<cluster.hadoop.Task>;
+                        $post(params: {type: cluster.hadoop.RoleTypeEnum}): Promise<cluster.hadoop.Task>;
                         $(type: cluster.hadoop.RoleTypeEnum): {
                             // DELETE /cluster/hadoop/{serviceName}/node/{hostname}/role/{type}
                             $delete(): Promise<cluster.hadoop.Task>;
@@ -252,7 +252,7 @@ export interface Cluster{
                 // GET /cluster/hadoop/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /cluster/hadoop/{serviceName}/serviceInfos
-                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}): Promise<void>;
+                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
             start: {
                 // POST /cluster/hadoop/{serviceName}/start
@@ -264,7 +264,7 @@ export interface Cluster{
             }
             task: {
                 // GET /cluster/hadoop/{serviceName}/task
-                $get(params?: {status?: clusterhadoopOperationStateEnum}): Promise<number[]>;
+                $get(params?: {status?: cluster.hadoop.OperationStateEnum}): Promise<number[]>;
                 $(taskId: number): {
                     // GET /cluster/hadoop/{serviceName}/task/{taskId}
                     $get(): Promise<cluster.hadoop.Task>;
@@ -324,7 +324,7 @@ export interface Cluster{
    * List the cluster.hadoop.Node objects
    * Nodes of the Cluster
    */
-  get(path: '/cluster/hadoop/{serviceName}/node'): (params: {serviceName: string, softwareProfile?: clusterhadoopNodeProfileEnum}) => Promise<string[]>;
+  get(path: '/cluster/hadoop/{serviceName}/node'): (params: {serviceName: string, softwareProfile?: cluster.hadoop.NodeProfileEnum}) => Promise<string[]>;
   /**
    * Physical or Virtual Node
    * Get this object properties
@@ -339,7 +339,7 @@ export interface Cluster{
    * Role (ie set of Hadoop services) of the Node
    * Get this object properties
    */
-  get(path: '/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}'): (params: {hostname: string, serviceName: string, type: clusterhadoopRoleTypeEnum}) => Promise<cluster.hadoop.Role>;
+  get(path: '/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}'): (params: {hostname: string, serviceName: string, type: cluster.hadoop.RoleTypeEnum}) => Promise<cluster.hadoop.Role>;
   /**
    * nodeBillingProfiles operations
    * Detailed description for each Node profile
@@ -364,7 +364,7 @@ export interface Cluster{
    * List the cluster.hadoop.Task objects
    * Tasks associated with this Hadoop Cluster
    */
-  get(path: '/cluster/hadoop/{serviceName}/task'): (params: {serviceName: string, status?: clusterhadoopOperationStateEnum}) => Promise<number[]>;
+  get(path: '/cluster/hadoop/{serviceName}/task'): (params: {serviceName: string, status?: cluster.hadoop.OperationStateEnum}) => Promise<number[]>;
   /**
    * Operation on a Hadoop Cluster component
    * Get this object properties
@@ -394,12 +394,12 @@ export interface Cluster{
    * ACL for allowing ip blocks to access to your cluster
    * Alter this object properties
    */
-  put(path: '/cluster/hadoop/{serviceName}/networkAcl/{block}'): (params: {block: string, serviceName: string, description?: string, state?: clusterhadoopNetworkAclStateEnum}) => Promise<void>;
+  put(path: '/cluster/hadoop/{serviceName}/networkAcl/{block}'): (params: {block: string, serviceName: string, description?: string, state?: cluster.hadoop.NetworkAclStateEnum}) => Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/cluster/hadoop/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}) => Promise<void>;
+  put(path: '/cluster/hadoop/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
   /**
    * User allowed to access interfaces on your cluster
    * Alter this object properties
@@ -424,22 +424,22 @@ export interface Cluster{
    * List the cluster.hadoop.Role objects
    * Add the Role to the Node
    */
-  post(path: '/cluster/hadoop/{serviceName}/node/{hostname}/role'): (params: {hostname: string, serviceName: string, type: clusterhadoopRoleTypeEnum}) => Promise<cluster.hadoop.Task>;
+  post(path: '/cluster/hadoop/{serviceName}/node/{hostname}/role'): (params: {hostname: string, serviceName: string, type: cluster.hadoop.RoleTypeEnum}) => Promise<cluster.hadoop.Task>;
   /**
    * restart operations
    * Restart the role on the node (THIS ACTION WILL RESTART OTHER DEPENDANT ROLES)
    */
-  post(path: '/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/restart'): (params: {hostname: string, serviceName: string, type: clusterhadoopRoleTypeEnum}) => Promise<cluster.hadoop.Task>;
+  post(path: '/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/restart'): (params: {hostname: string, serviceName: string, type: cluster.hadoop.RoleTypeEnum}) => Promise<cluster.hadoop.Task>;
   /**
    * start operations
    * Start the role on the node
    */
-  post(path: '/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/start'): (params: {hostname: string, serviceName: string, type: clusterhadoopRoleTypeEnum}) => Promise<cluster.hadoop.Task>;
+  post(path: '/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/start'): (params: {hostname: string, serviceName: string, type: cluster.hadoop.RoleTypeEnum}) => Promise<cluster.hadoop.Task>;
   /**
    * stop operations
    * Stop the role on the node (THIS ACTION WILL STOP OTHER DEPENDANT ROLES)
    */
-  post(path: '/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/stop'): (params: {hostname: string, serviceName: string, type: clusterhadoopRoleTypeEnum}) => Promise<cluster.hadoop.Task>;
+  post(path: '/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/stop'): (params: {hostname: string, serviceName: string, type: cluster.hadoop.RoleTypeEnum}) => Promise<cluster.hadoop.Task>;
   /**
    * orderNewNodeHourly operations
    * Order a new node in the cluster
@@ -504,24 +504,10 @@ export interface Cluster{
    * Role (ie set of Hadoop services) of the Node
    * Remove this Role from the Node
    */
-  delete(path: '/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}'): (params: {hostname: string, serviceName: string, type: clusterhadoopRoleTypeEnum}) => Promise<cluster.hadoop.Task>;
+  delete(path: '/cluster/hadoop/{serviceName}/node/{hostname}/role/{type}'): (params: {hostname: string, serviceName: string, type: cluster.hadoop.RoleTypeEnum}) => Promise<cluster.hadoop.Task>;
   /**
    * User allowed to access interfaces on your cluster
    * Remove this User
    */
   delete(path: '/cluster/hadoop/{serviceName}/user/{username}'): (params: {serviceName: string, username: string}) => Promise<cluster.hadoop.Task>;
 }
-/**
- * Extra Alias to bypass relativer namespace colitions
- */
-type complexTypeUnitAndValuenumber = complexType.UnitAndValue<number>;
-type clusterhadoopNetworkAclStateEnum = cluster.hadoop.NetworkAclStateEnum;
-type clusterhadoopBillingNameEnum = cluster.hadoop.BillingNameEnum;
-type clusterhadoopNodeProfileEnum = cluster.hadoop.NodeProfileEnum;
-type clusterhadoopNodeStateEnum = cluster.hadoop.NodeStateEnum;
-type clusterhadoopRoleTypeEnum = cluster.hadoop.RoleTypeEnum;
-type clusterhadoopOperationStateEnum = cluster.hadoop.OperationStateEnum;
-type clusterhadoopClusterStateEnum = cluster.hadoop.ClusterStateEnum;
-type serviceRenewType = service.RenewType;
-type serviceRenewalTypeEnum = service.RenewalTypeEnum;
-type serviceStateEnum = service.StateEnum;

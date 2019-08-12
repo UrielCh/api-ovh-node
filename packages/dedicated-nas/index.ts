@@ -25,7 +25,7 @@ export namespace dedicated {
         // interface fullName: dedicated.nas.Partition.Partition
         export interface Partition {
             partitionName: string;
-            protocol: dedicatedstorageProtocolEnum;
+            protocol: dedicated.storage.ProtocolEnum;
             size: number;
         }
         // interface fullName: dedicated.nas.Quota.Quota
@@ -40,9 +40,9 @@ export namespace dedicated {
             details?: string;
             doneDate?: string;
             lastUpdate?: string;
-            operation: dedicatedstorageTaskFunctionEnum;
+            operation: dedicated.storage.TaskFunctionEnum;
             partitionName?: string;
-            status: dedicatedTaskStatusEnum;
+            status: dedicated.TaskStatusEnum;
             storageName?: string;
             taskId: number;
             todoDate?: string;
@@ -81,10 +81,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: serviceRenewType;
-        renewalType: serviceRenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: serviceStateEnum;
+        status: service.StateEnum;
     }
 }
 
@@ -112,14 +112,14 @@ export interface Dedicated{
                 // GET /dedicated/nas/{serviceName}/partition
                 $get(): Promise<string[]>;
                 // POST /dedicated/nas/{serviceName}/partition
-                $post(params: {partitionName: string, protocol: dedicatedstorageProtocolEnum, size: number}): Promise<dedicated.nasTask.Task>;
+                $post(params: {partitionName: string, protocol: dedicated.storage.ProtocolEnum, size: number}): Promise<dedicated.nasTask.Task>;
                 $(partitionName: string): {
                     // DELETE /dedicated/nas/{serviceName}/partition/{partitionName}
                     $delete(): Promise<dedicated.nasTask.Task>;
                     // GET /dedicated/nas/{serviceName}/partition/{partitionName}
                     $get(): Promise<dedicated.nas.Partition>;
                     // PUT /dedicated/nas/{serviceName}/partition/{partitionName}
-                    $put(params?: {partitionName?: string, protocol?: dedicatedstorageProtocolEnum, size?: number}): Promise<void>;
+                    $put(params?: {partitionName?: string, protocol?: dedicated.storage.ProtocolEnum, size?: number}): Promise<void>;
                     access: {
                         // GET /dedicated/nas/{serviceName}/partition/{partitionName}/access
                         $get(): Promise<string[]>;
@@ -154,11 +154,11 @@ export interface Dedicated{
                 // GET /dedicated/nas/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /dedicated/nas/{serviceName}/serviceInfos
-                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}): Promise<void>;
+                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
             task: {
                 // GET /dedicated/nas/{serviceName}/task
-                $get(params?: {operation?: dedicatedstorageTaskFunctionEnum, status?: dedicatedTaskStatusEnum}): Promise<number[]>;
+                $get(params?: {operation?: dedicated.storage.TaskFunctionEnum, status?: dedicated.TaskStatusEnum}): Promise<number[]>;
                 $(taskId: number): {
                     // GET /dedicated/nas/{serviceName}/task/{taskId}
                     $get(): Promise<dedicated.nasTask.Task>;
@@ -221,7 +221,7 @@ export interface Dedicated{
    * List the dedicated.nasTask.Task objects
    * View task list
    */
-  get(path: '/dedicated/nas/{serviceName}/task'): (params: {serviceName: string, operation?: dedicatedstorageTaskFunctionEnum, status?: dedicatedTaskStatusEnum}) => Promise<number[]>;
+  get(path: '/dedicated/nas/{serviceName}/task'): (params: {serviceName: string, operation?: dedicated.storage.TaskFunctionEnum, status?: dedicated.TaskStatusEnum}) => Promise<number[]>;
   /**
    * Storage task
    * Get this object properties
@@ -236,17 +236,17 @@ export interface Dedicated{
    * Storage partition
    * Alter this object properties
    */
-  put(path: '/dedicated/nas/{serviceName}/partition/{partitionName}'): (params: {partitionName: string, serviceName: string, protocol?: dedicatedstorageProtocolEnum, size?: number}) => Promise<void>;
+  put(path: '/dedicated/nas/{serviceName}/partition/{partitionName}'): (params: {partitionName: string, serviceName: string, protocol?: dedicated.storage.ProtocolEnum, size?: number}) => Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/dedicated/nas/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}) => Promise<void>;
+  put(path: '/dedicated/nas/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
   /**
    * List the dedicated.nas.Partition objects
    * Create a  new partition
    */
-  post(path: '/dedicated/nas/{serviceName}/partition'): (params: {serviceName: string, partitionName: string, protocol: dedicatedstorageProtocolEnum, size: number}) => Promise<dedicated.nasTask.Task>;
+  post(path: '/dedicated/nas/{serviceName}/partition'): (params: {serviceName: string, partitionName: string, protocol: dedicated.storage.ProtocolEnum, size: number}) => Promise<dedicated.nasTask.Task>;
   /**
    * List the dedicated.nas.Access objects
    * Add an Acl to this  partition
@@ -273,12 +273,3 @@ export interface Dedicated{
    */
   delete(path: '/dedicated/nas/{serviceName}/partition/{partitionName}/quota/{uid}'): (params: {partitionName: string, serviceName: string, uid: number}) => Promise<dedicated.nasTask.Task>;
 }
-/**
- * Extra Alias to bypass relativer namespace colitions
- */
-type dedicatedstorageProtocolEnum = dedicated.storage.ProtocolEnum;
-type dedicatedstorageTaskFunctionEnum = dedicated.storage.TaskFunctionEnum;
-type dedicatedTaskStatusEnum = dedicated.TaskStatusEnum;
-type serviceRenewType = service.RenewType;
-type serviceRenewalTypeEnum = service.RenewalTypeEnum;
-type serviceStateEnum = service.StateEnum;

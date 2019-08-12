@@ -10,7 +10,7 @@ export namespace license {
     export type ChangeIpMessageEnum = "OK" | "destinationNotAllowed" | "licenseAlreadyExists" | "notAllowedToHandleThis" | "notSameType" | "sameIp" | "versionNotAllowed"
     // interface fullName: license.ChangeIpStatus.ChangeIpStatus
     export interface ChangeIpStatus {
-        message: licenseChangeIpMessageEnum;
+        message: license.ChangeIpMessageEnum;
         success: boolean;
     }
     // type fullname: license.LicenseTypeEnum
@@ -20,16 +20,16 @@ export namespace license {
         amount?: string;
         canBeDeleted: boolean;
         expirationDate: string;
-        label: licenseOptionLabel;
+        label: license.OptionLabel;
         version?: string;
     }
     // type fullname: license.OptionLabel
     export type OptionLabel = "ANTISPAM_SPAMASSASSIN" | "ANTIVIRUS_DRWEB" | "ANTIVIRUS_KASPERSKY" | "DOMAINS" | "LANGUAGE_PACK" | "POWERPACK" | "SQL_SERVER" | "VIRTUOZZO_CONTAINERS"
     // interface fullName: license.OrderableVirtuozzoCompatibilityInfos.OrderableVirtuozzoCompatibilityInfos
     export interface OrderableVirtuozzoCompatibilityInfos {
-        compliantContainers: licenseOrderableVirtuozzoContainerNumberEnum[];
-        potentialProblems: licensePotentialProblemVirtuozzoEnum[];
-        version: licenseOrderableVirtuozzoVersionEnum;
+        compliantContainers: license.OrderableVirtuozzoContainerNumberEnum[];
+        potentialProblems: license.PotentialProblemVirtuozzoEnum[];
+        version: license.OrderableVirtuozzoVersionEnum;
     }
     // type fullname: license.OrderableVirtuozzoContainerNumberEnum
     export type OrderableVirtuozzoContainerNumberEnum = "2_CPU_001_CONTAINER" | "2_CPU_003_CONTAINER" | "2_CPU_010_CONTAINER" | "2_CPU_030_CONTAINER" | "2_CPU_060_CONTAINER" | "2_CPU_100_CONTAINER"
@@ -41,11 +41,11 @@ export namespace license {
     export type StateEnum = "ok" | "released" | "terminated" | "toDeliver"
     // interface fullName: license.Task.Task
     export interface Task {
-        action: licenseActionType;
+        action: license.ActionType;
         doneDate?: string;
         lastUpdate: string;
         name: string;
-        status: licenseTaskStateEnum;
+        status: license.TaskStateEnum;
         taskId: number;
         todoDate: string;
     }
@@ -55,15 +55,15 @@ export namespace license {
     export type VirtuozzoContainerNumberEnum = "2_CPU_001_CONTAINER" | "2_CPU_003_CONTAINER" | "2_CPU_010_CONTAINER" | "2_CPU_030_CONTAINER" | "2_CPU_060_CONTAINER" | "2_CPU_100_CONTAINER"
     // interface fullName: license.VirtuozzoOrderConfiguration.VirtuozzoOrderConfiguration
     export interface VirtuozzoOrderConfiguration {
-        orderableVersions: licenseOrderableVirtuozzoCompatibilityInfos[];
-        serviceType: licenseLicenseTypeEnum;
+        orderableVersions: license.OrderableVirtuozzoCompatibilityInfos[];
+        serviceType: license.LicenseTypeEnum;
     }
     // type fullname: license.VirtuozzoVersionEnum
     export type VirtuozzoVersionEnum = "VIRTUOZZO_CONTAINERS_4_FOR_LINUX" | "VIRTUOZZO_CONTAINERS_4_FOR_WINDOWS"
     export namespace virtuozzo {
         // interface fullName: license.virtuozzo.Virtuozzo.Virtuozzo
         export interface Virtuozzo {
-            containerNumber: licenseVirtuozzoContainerNumberEnum;
+            containerNumber: license.VirtuozzoContainerNumberEnum;
             creation: string;
             deleteAtExpiration: boolean;
             domain: string;
@@ -71,8 +71,8 @@ export namespace license {
             ip: string;
             licenseId: string;
             productKey?: string;
-            status: licenseStateEnum;
-            version: licenseVirtuozzoVersionEnum;
+            status: license.StateEnum;
+            version: license.VirtuozzoVersionEnum;
         }
     }
 }
@@ -106,10 +106,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: serviceRenewType;
-        renewalType: serviceRenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: serviceStateEnum;
+        status: service.StateEnum;
     }
 }
 
@@ -136,7 +136,7 @@ export interface License{
             // GET /license/virtuozzo/{serviceName}
             $get(): Promise<license.virtuozzo.Virtuozzo>;
             // PUT /license/virtuozzo/{serviceName}
-            $put(params?: {containerNumber?: licenseVirtuozzoContainerNumberEnum, creation?: string, deleteAtExpiration?: boolean, domain?: string, informationKey?: string, ip?: string, licenseId?: string, productKey?: string, status?: licenseStateEnum, version?: licenseVirtuozzoVersionEnum}): Promise<void>;
+            $put(params?: {containerNumber?: license.VirtuozzoContainerNumberEnum, creation?: string, deleteAtExpiration?: boolean, domain?: string, informationKey?: string, ip?: string, licenseId?: string, productKey?: string, status?: license.StateEnum, version?: license.VirtuozzoVersionEnum}): Promise<void>;
             allowedDestinationIp: {
                 // GET /license/virtuozzo/{serviceName}/allowedDestinationIp
                 $get(): Promise<string[]>;
@@ -155,7 +155,7 @@ export interface License{
             }
             option: {
                 // GET /license/virtuozzo/{serviceName}/option
-                $get(params?: {label?: licenseOptionLabel}): Promise<license.OptionLabel[]>;
+                $get(params?: {label?: license.OptionLabel}): Promise<license.OptionLabel[]>;
                 $(label: license.OptionLabel): {
                     // DELETE /license/virtuozzo/{serviceName}/option/{label}
                     $delete(): Promise<license.Task>;
@@ -167,11 +167,11 @@ export interface License{
                 // GET /license/virtuozzo/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /license/virtuozzo/{serviceName}/serviceInfos
-                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}): Promise<void>;
+                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
             tasks: {
                 // GET /license/virtuozzo/{serviceName}/tasks
-                $get(params?: {action?: licenseActionType, status?: licenseTaskStateEnum}): Promise<number[]>;
+                $get(params?: {action?: license.ActionType, status?: license.TaskStateEnum}): Promise<number[]>;
                 $(taskId: number): {
                     // GET /license/virtuozzo/{serviceName}/tasks/{taskId}
                     $get(): Promise<license.Task>;
@@ -208,12 +208,12 @@ export interface License{
    * List the license.Option objects
    * Options linked to this license
    */
-  get(path: '/license/virtuozzo/{serviceName}/option'): (params: {serviceName: string, label?: licenseOptionLabel}) => Promise<license.OptionLabel[]>;
+  get(path: '/license/virtuozzo/{serviceName}/option'): (params: {serviceName: string, label?: license.OptionLabel}) => Promise<license.OptionLabel[]>;
   /**
    * Your License options
    * Get this object properties
    */
-  get(path: '/license/virtuozzo/{serviceName}/option/{label}'): (params: {label: licenseOptionLabel, serviceName: string}) => Promise<license.Option>;
+  get(path: '/license/virtuozzo/{serviceName}/option/{label}'): (params: {label: license.OptionLabel, serviceName: string}) => Promise<license.Option>;
   /**
    * Details about a Service
    * Get this object properties
@@ -223,7 +223,7 @@ export interface License{
    * List the license.Task objects
    * tasks linked to this license
    */
-  get(path: '/license/virtuozzo/{serviceName}/tasks'): (params: {serviceName: string, action?: licenseActionType, status?: licenseTaskStateEnum}) => Promise<number[]>;
+  get(path: '/license/virtuozzo/{serviceName}/tasks'): (params: {serviceName: string, action?: license.ActionType, status?: license.TaskStateEnum}) => Promise<number[]>;
   /**
    * licenses Todos
    * Get this object properties
@@ -238,12 +238,12 @@ export interface License{
    * Your Virtuozzo license
    * Alter this object properties
    */
-  put(path: '/license/virtuozzo/{serviceName}'): (params: {serviceName: string, containerNumber?: licenseVirtuozzoContainerNumberEnum, creation?: string, deleteAtExpiration?: boolean, domain?: string, informationKey?: string, ip?: string, licenseId?: string, productKey?: string, status?: licenseStateEnum, version?: licenseVirtuozzoVersionEnum}) => Promise<void>;
+  put(path: '/license/virtuozzo/{serviceName}'): (params: {serviceName: string, containerNumber?: license.VirtuozzoContainerNumberEnum, creation?: string, deleteAtExpiration?: boolean, domain?: string, informationKey?: string, ip?: string, licenseId?: string, productKey?: string, status?: license.StateEnum, version?: license.VirtuozzoVersionEnum}) => Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/license/virtuozzo/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}) => Promise<void>;
+  put(path: '/license/virtuozzo/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
   /**
    * changeIp operations
    * Move this license to another Ip
@@ -263,23 +263,5 @@ export interface License{
    * Your License options
    * release this Option
    */
-  delete(path: '/license/virtuozzo/{serviceName}/option/{label}'): (params: {label: licenseOptionLabel, serviceName: string}) => Promise<license.Task>;
+  delete(path: '/license/virtuozzo/{serviceName}/option/{label}'): (params: {label: license.OptionLabel, serviceName: string}) => Promise<license.Task>;
 }
-/**
- * Extra Alias to bypass relativer namespace colitions
- */
-type licenseChangeIpMessageEnum = license.ChangeIpMessageEnum;
-type licenseOptionLabel = license.OptionLabel;
-type licenseOrderableVirtuozzoContainerNumberEnum = license.OrderableVirtuozzoContainerNumberEnum;
-type licensePotentialProblemVirtuozzoEnum = license.PotentialProblemVirtuozzoEnum;
-type licenseOrderableVirtuozzoVersionEnum = license.OrderableVirtuozzoVersionEnum;
-type licenseActionType = license.ActionType;
-type licenseTaskStateEnum = license.TaskStateEnum;
-type licenseOrderableVirtuozzoCompatibilityInfos = license.OrderableVirtuozzoCompatibilityInfos;
-type licenseLicenseTypeEnum = license.LicenseTypeEnum;
-type licenseVirtuozzoContainerNumberEnum = license.VirtuozzoContainerNumberEnum;
-type licenseStateEnum = license.StateEnum;
-type licenseVirtuozzoVersionEnum = license.VirtuozzoVersionEnum;
-type serviceRenewType = service.RenewType;
-type serviceRenewalTypeEnum = service.RenewalTypeEnum;
-type serviceStateEnum = service.StateEnum;

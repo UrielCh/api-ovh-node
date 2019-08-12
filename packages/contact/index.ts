@@ -13,7 +13,7 @@ export namespace complexType {
 export namespace contact {
     // interface fullName: contact.FormCharacteristic.FormCharacteristic
     export interface FormCharacteristic {
-        keys: contactKeyFormCharacteristic[];
+        keys: contact.KeyFormCharacteristic[];
         type: string;
     }
     // interface fullName: contact.KeyFormCharacteristic.KeyFormCharacteristic
@@ -55,7 +55,3 @@ export interface Contact{
    */
   post(path: '/contact/form/send'): (params: {form: complexType.SafeKeyValue<string>[], type: string}) => Promise<void>;
 }
-/**
- * Extra Alias to bypass relativer namespace colitions
- */
-type contactKeyFormCharacteristic = contact.KeyFormCharacteristic;

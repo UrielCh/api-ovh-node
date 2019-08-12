@@ -54,11 +54,11 @@ export namespace dedicated {
         }
         // interface fullName: dedicated.ceph.response.response
         export interface response {
-            key: string;
-            mdsCaps: string;
-            monCaps: string;
+            backup: boolean;
+            minActiveReplicas: number;
             name: string;
-            osdCaps: string;
+            poolType: dedicated.ceph.poolList.response.poolTypeEnum;
+            replicaCount: number;
             serviceName: string;
         }
         export namespace taskGet {
@@ -99,10 +99,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: serviceRenewType;
-        renewalType: serviceRenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: serviceStateEnum;
+        status: service.StateEnum;
     }
 }
 
@@ -166,7 +166,7 @@ export interface Dedicated{
                 // GET /dedicated/ceph/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /dedicated/ceph/{serviceName}/serviceInfos
-                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}): Promise<void>;
+                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
             task: {
                 // GET /dedicated/ceph/{serviceName}/task
@@ -281,7 +281,7 @@ export interface Dedicated{
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/dedicated/ceph/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}) => Promise<void>;
+  put(path: '/dedicated/ceph/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
   /**
    * dedicated.ceph.userPoolPermList
    * Update user-pool permission for single pool
@@ -343,9 +343,3 @@ export interface Dedicated{
    */
   delete(path: '/dedicated/ceph/{serviceName}/user/{userName}/pool/{poolName}'): (params: {poolName: string, serviceName: string, userName: string}) => Promise<string>;
 }
-/**
- * Extra Alias to bypass relativer namespace colitions
- */
-type serviceRenewType = service.RenewType;
-type serviceRenewalTypeEnum = service.RenewalTypeEnum;
-type serviceStateEnum = service.StateEnum;

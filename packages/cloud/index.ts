@@ -9,14 +9,14 @@ export namespace cloud {
     // interface fullName: cloud.Acl.Acl
     export interface Acl {
         accountId: string;
-        type: cloudAclTypeEnum;
+        type: cloud.AclTypeEnum;
     }
     // type fullname: cloud.AclTypeEnum
     export type AclTypeEnum = "readOnly" | "readWrite"
     // interface fullName: cloud.Alerting.Alerting
     export interface Alerting {
         creationDate: string;
-        delay: cloudAlertingDelayEnum;
+        delay: cloud.AlertingDelayEnum;
         email: string;
         formattedMonthlyThreshold: orderPrice;
         id: string;
@@ -37,7 +37,7 @@ export namespace cloud {
     }
     // interface fullName: cloud.AvailableRegion.AvailableRegion
     export interface AvailableRegion {
-        continentCode: cloudRegionContinent;
+        continentCode: cloud.RegionContinent;
         datacenterLocation: string;
         name: string;
     }
@@ -46,7 +46,7 @@ export namespace cloud {
         backupName: string;
         createdAt: string;
         cron: string;
-        executions?: cloudExecution[];
+        executions?: cloud.Execution[];
         id: string;
         instanceId: string;
         name: string;
@@ -59,7 +59,7 @@ export namespace cloud {
     // interface fullName: cloud.Component.Component
     export interface Component {
         name: string;
-        status: cloudServiceStatus;
+        status: cloud.ServiceStatus;
     }
     // interface fullName: cloud.Credit.Credit
     export interface Credit {
@@ -70,13 +70,13 @@ export namespace cloud {
         products?: string[];
         total_credit: orderPrice;
         used_credit: orderPrice;
-        validity?: cloudcommonVoucherValidity;
+        validity?: cloud.common.VoucherValidity;
         voucher?: string;
     }
     // interface fullName: cloud.Execution.Execution
     export interface Execution {
         executedAt: string;
-        state: cloudExecutionState;
+        state: cloud.ExecutionState;
         stateInfo: string;
     }
     // type fullname: cloud.ExecutionState
@@ -100,42 +100,42 @@ export namespace cloud {
         progress: number;
         regions?: string[];
         startedAt?: string;
-        status: cloudOperationStatus;
+        status: cloud.OperationStatus;
     }
     // type fullname: cloud.OperationStatus
     export type OperationStatus = "created" | "in-progress" | "completed" | "in-error" | "unknown"
     // interface fullName: cloud.Price.Price
     export interface Price {
-        archive: cloudArchiveStoragePrice[];
-        bandwidthArchiveIn: cloudBandwidthStoragePrice[];
-        bandwidthArchiveOut: cloudBandwidthStoragePrice[];
-        bandwidthStorage: cloudBandwidthStoragePrice[];
-        instances: cloudFlavorPrice[];
+        archive: cloud.ArchiveStoragePrice[];
+        bandwidthArchiveIn: cloud.BandwidthStoragePrice[];
+        bandwidthArchiveOut: cloud.BandwidthStoragePrice[];
+        bandwidthStorage: cloud.BandwidthStoragePrice[];
+        instances: cloud.FlavorPrice[];
         projectCreation: orderPrice;
-        snapshots: cloudSnapshotPrice[];
-        storage: cloudStoragePrice[];
-        volumes: cloudVolumePrice[];
+        snapshots: cloud.SnapshotPrice[];
+        storage: cloud.StoragePrice[];
+        volumes: cloud.VolumePrice[];
     }
     // interface fullName: cloud.Project.Project
     export interface Project {
-        access: cloudAccessTypeEnum;
+        access: cloud.AccessTypeEnum;
         creationDate: string;
         description?: string;
         expiration?: string;
         orderId?: number;
         planCode: string;
         project_id: string;
-        status: cloudprojectProjectStatus;
+        status: cloud.project.ProjectStatus;
         unleash: boolean;
     }
     // interface fullName: cloud.Region.Region
     export interface Region {
-        continentCode: cloudRegionContinent;
+        continentCode: cloud.RegionContinent;
         datacenterLocation: string;
-        ipCountries: cloudIpCountryEnum[];
+        ipCountries: cloud.IpCountryEnum[];
         name: string;
-        services: cloudComponent[];
-        status: cloudRegionStatus;
+        services: cloud.Component[];
+        status: cloud.RegionStatus;
     }
     // type fullname: cloud.RegionContinent
     export type RegionContinent = "EU" | "NA" | "US" | "ASIA"
@@ -171,7 +171,7 @@ export namespace cloud {
     export namespace authentication {
         // interface fullName: cloud.authentication.Catalog.Catalog
         export interface Catalog {
-            endpoints: cloudauthenticationEndpoint[];
+            endpoints: cloud.authentication.Endpoint[];
             id: string;
             type: string;
         }
@@ -190,13 +190,13 @@ export namespace cloud {
         }
         // interface fullName: cloud.authentication.OpenstackToken.OpenstackToken
         export interface OpenstackToken {
-            catalog: cloudauthenticationCatalog[];
+            catalog: cloud.authentication.Catalog[];
             expires_at: string;
             issued_at: string;
             methods: string[];
-            project: cloudauthenticationTokenProject;
-            roles: cloudauthenticationRole[];
-            user: cloudauthenticationUserToken;
+            project: cloud.authentication.TokenProject;
+            roles: cloud.authentication.Role[];
+            user: cloud.authentication.UserToken;
         }
         // interface fullName: cloud.authentication.Role.Role
         export interface Role {
@@ -206,17 +206,17 @@ export namespace cloud {
         // interface fullName: cloud.authentication.Token.Token
         export interface Token {
             'X-Auth-Token': string;
-            token: cloudauthenticationOpenstackToken;
+            token: cloud.authentication.OpenstackToken;
         }
         // interface fullName: cloud.authentication.TokenProject.TokenProject
         export interface TokenProject {
-            domain: cloudauthenticationDomain;
+            domain: cloud.authentication.Domain;
             id: string;
             name: string;
         }
         // interface fullName: cloud.authentication.UserToken.UserToken
         export interface UserToken {
-            domain: cloudauthenticationDomain;
+            domain: cloud.authentication.Domain;
             id: string;
             name: string;
         }
@@ -224,39 +224,39 @@ export namespace cloud {
     export namespace billingView {
         // interface fullName: cloud.billingView.BandwidthInstance.BandwidthInstance
         export interface BandwidthInstance {
-            quantity: cloudbillingViewQuantity;
+            quantity: cloud.billingView.Quantity;
             totalPrice: number;
         }
         // interface fullName: cloud.billingView.BandwidthStorage.BandwidthStorage
         export interface BandwidthStorage {
-            quantity: cloudbillingViewQuantity;
+            quantity: cloud.billingView.Quantity;
             totalPrice: number;
         }
         // interface fullName: cloud.billingView.HourlyInstance.HourlyInstance
         export interface HourlyInstance {
-            details: cloudbillingViewHourlyInstanceDetail[];
-            quantity: cloudbillingViewQuantity;
+            details: cloud.billingView.HourlyInstanceDetail[];
+            quantity: cloud.billingView.Quantity;
             reference: string;
             region: string;
             totalPrice: number;
         }
         // interface fullName: cloud.billingView.HourlyInstanceBandwidth.HourlyInstanceBandwidth
         export interface HourlyInstanceBandwidth {
-            incomingBandwidth?: cloudbillingViewBandwidthInstance;
-            outgoingBandwidth?: cloudbillingViewBandwidthInstance;
+            incomingBandwidth?: cloud.billingView.BandwidthInstance;
+            outgoingBandwidth?: cloud.billingView.BandwidthInstance;
             region: string;
             totalPrice: number;
         }
         // interface fullName: cloud.billingView.HourlyInstanceDetail.HourlyInstanceDetail
         export interface HourlyInstanceDetail {
             instanceId: string;
-            quantity: cloudbillingViewQuantity;
+            quantity: cloud.billingView.Quantity;
             totalPrice: number;
         }
         // interface fullName: cloud.billingView.HourlyInstanceOption.HourlyInstanceOption
         export interface HourlyInstanceOption {
-            details: cloudbillingViewHourlyInstanceOptionDetail[];
-            quantity: cloudbillingViewQuantity;
+            details: cloud.billingView.HourlyInstanceOptionDetail[];
+            quantity: cloud.billingView.Quantity;
             reference: string;
             region: string;
             totalPrice: number;
@@ -264,56 +264,56 @@ export namespace cloud {
         // interface fullName: cloud.billingView.HourlyInstanceOptionDetail.HourlyInstanceOptionDetail
         export interface HourlyInstanceOptionDetail {
             instanceId: string;
-            quantity: cloudbillingViewQuantity;
+            quantity: cloud.billingView.Quantity;
             totalPrice: number;
         }
         // interface fullName: cloud.billingView.HourlyResources.HourlyResources
         export interface HourlyResources {
-            instance: cloudbillingViewHourlyInstance[];
-            instanceBandwidth: cloudbillingViewHourlyInstanceBandwidth[];
-            instanceOption: cloudbillingViewHourlyInstanceOption[];
-            snapshot: cloudbillingViewHourlySnapshot[];
-            storage: cloudbillingViewHourlyStorage[];
-            volume: cloudbillingViewHourlyVolume[];
+            instance: cloud.billingView.HourlyInstance[];
+            instanceBandwidth: cloud.billingView.HourlyInstanceBandwidth[];
+            instanceOption: cloud.billingView.HourlyInstanceOption[];
+            snapshot: cloud.billingView.HourlySnapshot[];
+            storage: cloud.billingView.HourlyStorage[];
+            volume: cloud.billingView.HourlyVolume[];
         }
         // interface fullName: cloud.billingView.HourlySnapshot.HourlySnapshot
         export interface HourlySnapshot {
-            instance?: cloudbillingViewInstanceSnapshot;
+            instance?: cloud.billingView.InstanceSnapshot;
             region: string;
             totalPrice: number;
-            volume?: cloudbillingViewVolumeSnapshot;
+            volume?: cloud.billingView.VolumeSnapshot;
         }
         // interface fullName: cloud.billingView.HourlyStorage.HourlyStorage
         export interface HourlyStorage {
-            incomingBandwidth?: cloudbillingViewBandwidthStorage;
-            outgoingBandwidth?: cloudbillingViewBandwidthStorage;
+            incomingBandwidth?: cloud.billingView.BandwidthStorage;
+            outgoingBandwidth?: cloud.billingView.BandwidthStorage;
             region: string;
-            stored?: cloudbillingViewStoredStorage;
+            stored?: cloud.billingView.StoredStorage;
             totalPrice: number;
-            type: cloudbillingViewStorageTypeEnum;
+            type: cloud.billingView.StorageTypeEnum;
         }
         // interface fullName: cloud.billingView.HourlyVolume.HourlyVolume
         export interface HourlyVolume {
-            details: cloudbillingViewHourlyVolumeDetail[];
-            quantity: cloudbillingViewQuantity;
+            details: cloud.billingView.HourlyVolumeDetail[];
+            quantity: cloud.billingView.Quantity;
             region: string;
             totalPrice: number;
             type: string;
         }
         // interface fullName: cloud.billingView.HourlyVolumeDetail.HourlyVolumeDetail
         export interface HourlyVolumeDetail {
-            quantity: cloudbillingViewQuantity;
+            quantity: cloud.billingView.Quantity;
             totalPrice: number;
             volumeId: string;
         }
         // interface fullName: cloud.billingView.InstanceSnapshot.InstanceSnapshot
         export interface InstanceSnapshot {
-            quantity: cloudbillingViewQuantity;
+            quantity: cloud.billingView.Quantity;
             totalPrice: number;
         }
         // interface fullName: cloud.billingView.MonthlyInstance.MonthlyInstance
         export interface MonthlyInstance {
-            details: cloudbillingViewMonthlyInstanceDetail[];
+            details: cloud.billingView.MonthlyInstanceDetail[];
             reference: string;
             region: string;
             totalPrice: number;
@@ -326,7 +326,7 @@ export namespace cloud {
         }
         // interface fullName: cloud.billingView.MonthlyInstanceOption.MonthlyInstanceOption
         export interface MonthlyInstanceOption {
-            details: cloudbillingViewMonthlyInstanceOptionDetail[];
+            details: cloud.billingView.MonthlyInstanceOptionDetail[];
             reference: string;
             region: string;
             totalPrice: number;
@@ -338,19 +338,19 @@ export namespace cloud {
         }
         // interface fullName: cloud.billingView.MonthlyResources.MonthlyResources
         export interface MonthlyResources {
-            instance: cloudbillingViewMonthlyInstance[];
-            instanceOption: cloudbillingViewMonthlyInstanceOption[];
+            instance: cloud.billingView.MonthlyInstance[];
+            instanceOption: cloud.billingView.MonthlyInstanceOption[];
         }
         // interface fullName: cloud.billingView.Quantity.Quantity
         export interface Quantity {
-            unit: cloudbillingViewUnitQuantity;
+            unit: cloud.billingView.UnitQuantity;
             value: number;
         }
         // type fullname: cloud.billingView.StorageTypeEnum
         export type StorageTypeEnum = "pcs" | "pca"
         // interface fullName: cloud.billingView.StoredStorage.StoredStorage
         export interface StoredStorage {
-            quantity: cloudbillingViewQuantity;
+            quantity: cloud.billingView.Quantity;
             totalPrice: number;
         }
         // type fullname: cloud.billingView.UnitQuantity
@@ -363,12 +363,12 @@ export namespace cloud {
         }
         // interface fullName: cloud.billingView.UsedCredits.UsedCredits
         export interface UsedCredits {
-            details: cloudbillingViewUsedCredit[];
+            details: cloud.billingView.UsedCredit[];
             totalCredit: number;
         }
         // interface fullName: cloud.billingView.VolumeSnapshot.VolumeSnapshot
         export interface VolumeSnapshot {
-            quantity: cloudbillingViewQuantity;
+            quantity: cloud.billingView.Quantity;
             totalPrice: number;
         }
     }
@@ -389,8 +389,8 @@ export namespace cloud {
                 id: string;
                 name: string;
                 projectID: string;
-                region: cloudcontainerRegistryregistryRegionEnum;
-                status: cloudcontainerRegistryregistryStatusEnum;
+                region: cloud.containerRegistry.registry.RegionEnum;
+                status: cloud.containerRegistry.registry.StatusEnum;
                 updatedAt: string;
                 url: string;
                 version: string;
@@ -418,7 +418,7 @@ export namespace cloud {
             name: string;
             osType: string;
             outboundBandwidth?: number;
-            planCodes: cloudflavorFlavorPlanCodes;
+            planCodes: cloud.flavor.FlavorPlanCodes;
             ram: number;
             region: string;
             type: string;
@@ -468,8 +468,8 @@ export namespace cloud {
         }
         // interface fullName: cloud.instance.ApplicationAccess.ApplicationAccess
         export interface ApplicationAccess {
-            accesses: cloudinstanceAccess[];
-            status: cloudinstanceApplicationAccessStateEnum;
+            accesses: cloud.instance.Access[];
+            status: cloud.instance.ApplicationAccessStateEnum;
         }
         // type fullname: cloud.instance.ApplicationAccessStateEnum
         export type ApplicationAccessStateEnum = "installing" | "ok"
@@ -479,32 +479,32 @@ export namespace cloud {
             flavorId: string;
             id: string;
             imageId: string;
-            ipAddresses: cloudinstanceIpAddress[];
-            monthlyBilling?: cloudinstanceMonthlyBilling;
+            ipAddresses: cloud.instance.IpAddress[];
+            monthlyBilling?: cloud.instance.MonthlyBilling;
             name: string;
             planCode?: string;
             region: string;
             sshKeyId?: string;
-            status: cloudinstanceInstanceStatusEnum;
+            status: cloud.instance.InstanceStatusEnum;
         }
         // interface fullName: cloud.instance.InstanceDetail.InstanceDetail
         export interface InstanceDetail {
             created: string;
-            flavor: cloudflavorFlavor;
+            flavor: cloud.flavor.Flavor;
             id: string;
-            image: cloudimageImage;
-            ipAddresses: cloudinstanceIpAddress[];
-            monthlyBilling?: cloudinstanceMonthlyBilling;
+            image: cloud.image.Image;
+            ipAddresses: cloud.instance.IpAddress[];
+            monthlyBilling?: cloud.instance.MonthlyBilling;
             name: string;
             planCode?: string;
             region: string;
-            sshKey: cloudsshkeySshKeyDetail;
-            status: cloudinstanceInstanceStatusEnum;
+            sshKey: cloud.sshkey.SshKeyDetail;
+            status: cloud.instance.InstanceStatusEnum;
         }
         // interface fullName: cloud.instance.InstanceMetrics.InstanceMetrics
         export interface InstanceMetrics {
             unit: string;
-            values: cloudinstanceInstanceMetricsValue[];
+            values: cloud.instance.InstanceMetricsValue[];
         }
         // interface fullName: cloud.instance.InstanceMetricsValue.InstanceMetricsValue
         export interface InstanceMetricsValue {
@@ -533,7 +533,7 @@ export namespace cloud {
         // interface fullName: cloud.instance.MonthlyBilling.MonthlyBilling
         export interface MonthlyBilling {
             since: string;
-            status: cloudinstanceMonthlyBillingStatusEnum;
+            status: cloud.instance.MonthlyBillingStatusEnum;
         }
         // type fullname: cloud.instance.MonthlyBillingStatusEnum
         export type MonthlyBillingStatusEnum = "activationPending" | "ok"
@@ -561,7 +561,7 @@ export namespace cloud {
         }
         // interface fullName: cloud.instanceInterface.Interface.Interface
         export interface Interface {
-            fixedIps: cloudinstanceInterfaceFixedIp[];
+            fixedIps: cloud.instanceInterface.FixedIp[];
             id: string;
             macAddress: string;
             networkId: string;
@@ -576,7 +576,7 @@ export namespace cloud {
             instance_ids: string[];
             name: string;
             region: string;
-            type: cloudinstancegroupInstanceGroupTypeEnum;
+            type: cloud.instancegroup.InstanceGroupTypeEnum;
         }
         // type fullname: cloud.instancegroup.InstanceGroupTypeEnum
         export type InstanceGroupTypeEnum = "affinity" | "anti-affinity"
@@ -586,7 +586,7 @@ export namespace cloud {
         export interface CloudIp {
             id: string;
             ip?: string;
-            status: cloudipIpStatusEnum;
+            status: cloud.ip.IpStatusEnum;
             type: string;
         }
         // interface fullName: cloud.ip.FailoverIp.FailoverIp
@@ -598,8 +598,8 @@ export namespace cloud {
             ip?: string;
             progress: number;
             routedTo: string;
-            status: cloudipIpStatusEnum;
-            subType: cloudipIpSubTypeEnum;
+            status: cloud.ip.IpStatusEnum;
+            subType: cloud.ip.IpSubTypeEnum;
         }
         // type fullname: cloud.ip.IpStatusEnum
         export type IpStatusEnum = "ok" | "operationPending"
@@ -614,10 +614,10 @@ export namespace cloud {
             id: string;
             isUpToDate: boolean;
             name: string;
-            nextUpgradeVersions?: cloudkubeVersion[];
+            nextUpgradeVersions?: cloud.kube.Version[];
             nodesUrl: string;
-            region: cloudkubeRegion;
-            status: cloudkubeClusterStatus;
+            region: cloud.kube.Region;
+            status: cloud.kube.ClusterStatus;
             updatePolicy: string;
             updatedAt: string;
             url: string;
@@ -627,10 +627,10 @@ export namespace cloud {
         export type ClusterStatus = "INSTALLING" | "UPDATING" | "RESETTING" | "SUSPENDING" | "REOPENING" | "DELETING" | "SUSPENDED" | "ERROR" | "USER_ERROR" | "USER_QUOTA_ERROR" | "READY"
         // interface fullName: cloud.kube.Flavor.Flavor
         export interface Flavor {
-            category: cloudkubeFlavorCategory;
+            category: cloud.kube.FlavorCategory;
             id: string;
             name: string;
-            state: cloudkubeFlavorState;
+            state: cloud.kube.FlavorState;
         }
         // type fullname: cloud.kube.FlavorCategory
         export type FlavorCategory = "c" | "g" | "t" | "b" | "r"
@@ -648,7 +648,7 @@ export namespace cloud {
             instanceId?: string;
             isUpToDate: boolean;
             name?: string;
-            status: cloudkubeNodeStatus;
+            status: cloud.kube.NodeStatus;
             updatedAt: string;
             version: string;
         }
@@ -671,7 +671,7 @@ export namespace cloud {
             date: string;
             migrationId: string;
             resourceId: string;
-            resourceType: cloudmigrationResourceTypeEnum;
+            resourceType: cloud.migration.ResourceTypeEnum;
         }
         // type fullname: cloud.migration.ResourceTypeEnum
         export type ResourceTypeEnum = "instance"
@@ -689,15 +689,15 @@ export namespace cloud {
         export interface Network {
             id: string;
             name: string;
-            regions: cloudnetworkNetworkRegion[];
-            status: cloudnetworkNetworkStatusEnum;
-            type?: cloudnetworkNetworkTypeEnum;
+            regions: cloud.network.NetworkRegion[];
+            status: cloud.network.NetworkStatusEnum;
+            type?: cloud.network.NetworkTypeEnum;
             vlanId: number;
         }
         // interface fullName: cloud.network.NetworkRegion.NetworkRegion
         export interface NetworkRegion {
             region: string;
-            status: cloudnetworkNetworkRegionStatusEnum;
+            status: cloud.network.NetworkRegionStatusEnum;
         }
         // type fullname: cloud.network.NetworkRegionStatusEnum
         export type NetworkRegionStatusEnum = "ACTIVE" | "BUILDING"
@@ -710,7 +710,7 @@ export namespace cloud {
             cidr: string;
             gatewayIp?: string;
             id: string;
-            ipPools: cloudnetworkIPPool[];
+            ipPools: cloud.network.IPPool[];
         }
     }
     export namespace openstackClient {
@@ -722,7 +722,7 @@ export namespace cloud {
         export interface Session {
             expires: string;
             id: string;
-            profile: cloudopenstackClientProfile;
+            profile: cloud.openstackClient.Profile;
             websocket: string;
         }
     }
@@ -733,7 +733,7 @@ export namespace cloud {
             orderId: number;
             planCode: string;
             serviceName?: string;
-            status: cloudorderStatusEnum;
+            status: cloud.order.StatusEnum;
         }
         // type fullname: cloud.order.StatusEnum
         export type StatusEnum = "unpaid" | "delivering" | "delivered" | "unknown"
@@ -764,7 +764,7 @@ export namespace cloud {
         export interface TransferState {
             agreements?: number[];
             projectId: string;
-            state: cloudpcaTransferStateEnum;
+            state: cloud.pca.TransferStateEnum;
             transferDate?: string;
         }
         // type fullname: cloud.pca.TransferStateEnum
@@ -780,18 +780,18 @@ export namespace cloud {
         // interface fullName: cloud.project.Bill.Bill
         export interface Bill {
             billId: string;
-            type: cloudprojectBillTypeEnum;
+            type: cloud.project.BillTypeEnum;
         }
         // type fullname: cloud.project.BillTypeEnum
         export type BillTypeEnum = "creditPurchased" | "monthlyConsumption" | "monthlyInstanceActivation"
         // interface fullName: cloud.project.CurrentUsage.CurrentUsage
         export interface CurrentUsage {
-            instances: cloudprojectInstancesUsage;
-            snapshots: cloudprojectSnapshotsUsage;
-            storage: cloudprojectStorageUsage;
+            instances: cloud.project.InstancesUsage;
+            snapshots: cloud.project.SnapshotsUsage;
+            storage: cloud.project.StorageUsage;
             total: orderPrice;
-            volumeSnapshots: cloudprojectSnapshotsUsage;
-            volumes: cloudprojectVolumesUsage;
+            volumeSnapshots: cloud.project.SnapshotsUsage;
+            volumes: cloud.project.VolumesUsage;
         }
         // interface fullName: cloud.project.InstanceMonthlyBilling.InstanceMonthlyBilling
         export interface InstanceMonthlyBilling {
@@ -802,23 +802,23 @@ export namespace cloud {
         export interface InstanceUsageDetail {
             hourly?: orderPrice;
             instanceId: string;
-            monthly?: cloudprojectInstanceMonthlyBilling;
+            monthly?: cloud.project.InstanceMonthlyBilling;
             monthlyBilling: boolean;
             reference: string;
         }
         // interface fullName: cloud.project.InstancesUsage.InstancesUsage
         export interface InstancesUsage {
-            detail: cloudprojectInstanceUsageDetail[];
+            detail: cloud.project.InstanceUsageDetail[];
             total: orderPrice;
         }
         // interface fullName: cloud.project.NewProject.NewProject
         export interface NewProject {
             agreements?: number[];
-            credit?: cloudprojectNewProjectCredit;
+            credit?: cloud.project.NewProjectCredit;
             description?: string;
             orderId?: number;
             project?: string;
-            status: cloudprojectNewProjectStatusEnum;
+            status: cloud.project.NewProjectStatusEnum;
         }
         // interface fullName: cloud.project.NewProjectCredit.NewProjectCredit
         export interface NewProjectCredit {
@@ -826,18 +826,18 @@ export namespace cloud {
             id: number;
             products?: string[];
             total_credit: orderPrice;
-            validity?: cloudcommonVoucherValidity;
+            validity?: cloud.common.VoucherValidity;
         }
         // interface fullName: cloud.project.NewProjectInfo.NewProjectInfo
         export interface NewProjectInfo {
             agreements?: number[];
-            error?: cloudprojectNewProjectInfoError;
+            error?: cloud.project.NewProjectInfoError;
             order?: orderPrice;
-            voucher?: cloudprojectNewProjectInfoVoucher;
+            voucher?: cloud.project.NewProjectInfoVoucher;
         }
         // interface fullName: cloud.project.NewProjectInfoError.NewProjectInfoError
         export interface NewProjectInfoError {
-            code: cloudprojectNewProjectInfoErrorCodeEnum;
+            code: cloud.project.NewProjectInfoErrorCodeEnum;
             message: string;
         }
         // type fullname: cloud.project.NewProjectInfoErrorCodeEnum
@@ -860,24 +860,24 @@ export namespace cloud {
         export type ProjectStatus = "creating" | "deleted" | "deleting" | "ok" | "suspended"
         // interface fullName: cloud.project.ProjectUsage.ProjectUsage
         export interface ProjectUsage {
-            current: cloudprojectCurrentUsage;
+            current: cloud.project.CurrentUsage;
         }
         // interface fullName: cloud.project.SnapshotUsageDetail.SnapshotUsageDetail
         export interface SnapshotUsageDetail {
             price: orderPrice;
             region: string;
-            storedSize: complexTypeUnitAndValuenumber;
+            storedSize: complexType.UnitAndValue<number>;
         }
         // interface fullName: cloud.project.SnapshotsUsage.SnapshotsUsage
         export interface SnapshotsUsage {
-            detail: cloudprojectSnapshotUsageDetail[];
+            detail: cloud.project.SnapshotUsageDetail[];
             total: orderPrice;
         }
         // interface fullName: cloud.project.StorageUsage.StorageUsage
         export interface StorageUsage {
-            bandwidth: cloudprojectBandwidthStorageUsage[];
+            bandwidth: cloud.project.BandwidthStorageUsage[];
             total: orderPrice;
-            volume: cloudprojectStorageVolumeUsage[];
+            volume: cloud.project.StorageVolumeUsage[];
         }
         // interface fullName: cloud.project.StorageVolumeUsage.StorageVolumeUsage
         export interface StorageVolumeUsage {
@@ -890,23 +890,23 @@ export namespace cloud {
         // interface fullName: cloud.project.VolumeUsageDetail.VolumeUsageDetail
         export interface VolumeUsageDetail {
             price: orderPrice;
-            volumeCapacity: complexTypeUnitAndValuenumber;
+            volumeCapacity: complexType.UnitAndValue<number>;
             volumeId: string;
-            volumeType: cloudprojectVolumeType;
+            volumeType: cloud.project.VolumeType;
         }
         // interface fullName: cloud.project.VolumesUsage.VolumesUsage
         export interface VolumesUsage {
-            detail: cloudprojectVolumeUsageDetail[];
+            detail: cloud.project.VolumeUsageDetail[];
             total: orderPrice;
         }
     }
     export namespace quota {
         // interface fullName: cloud.quota.AllowedQuota.AllowedQuota
         export interface AllowedQuota {
-            compute: cloudquotaComputeQuota;
+            compute: cloud.quota.ComputeQuota;
             name: string;
-            network: cloudquotaNetworkQuota;
-            volume: cloudquotaVolumeQuota;
+            network: cloud.quota.NetworkQuota;
+            volume: cloud.quota.VolumeQuota;
         }
         // interface fullName: cloud.quota.ComputeQuota.ComputeQuota
         export interface ComputeQuota {
@@ -935,10 +935,10 @@ export namespace cloud {
         }
         // interface fullName: cloud.quota.Quotas.Quotas
         export interface Quotas {
-            instance?: cloudquotaInstanceUsageQuotas;
-            keypair?: cloudquotaKeypairQuotas;
+            instance?: cloud.quota.InstanceUsageQuotas;
+            keypair?: cloud.quota.KeypairQuotas;
             region: string;
-            volume?: cloudquotaVolumeUsageQuotas;
+            volume?: cloud.quota.VolumeUsageQuotas;
         }
         // interface fullName: cloud.quota.VolumeQuota.VolumeQuota
         export interface VolumeQuota {
@@ -968,13 +968,13 @@ export namespace cloud {
         }
         // interface fullName: cloud.role.Roles.Roles
         export interface Roles {
-            roles: cloudroleRole[];
-            services: cloudroleService[];
+            roles: cloud.role.Role[];
+            services: cloud.role.Service[];
         }
         // interface fullName: cloud.role.Service.Service
         export interface Service {
             name: string;
-            permissions: cloudrolePermission[];
+            permissions: cloud.role.Permission[];
         }
     }
     export namespace sshkey {
@@ -1002,15 +1002,15 @@ export namespace cloud {
         }
         // interface fullName: cloud.stack.InstructionGuide.InstructionGuide
         export interface InstructionGuide {
-            content: cloudstackContent[];
+            content: cloud.stack.Content[];
             language: string;
-            sections: cloudstackSection[];
+            sections: cloud.stack.Section[];
             title: string;
         }
         // interface fullName: cloud.stack.Section.Section
         export interface Section {
-            content: cloudstackContent[];
-            steps: cloudstackStep[];
+            content: cloud.stack.Content[];
+            steps: cloud.stack.Step[];
             title: string;
         }
         // interface fullName: cloud.stack.Stack.Stack
@@ -1018,14 +1018,14 @@ export namespace cloud {
             commit: string;
             description: string;
             gitRepository: string;
-            instructions: cloudstackInstructionGuide[];
+            instructions: cloud.stack.InstructionGuide[];
             name: string;
             release: string;
             uuid: string;
         }
         // interface fullName: cloud.stack.Step.Step
         export interface Step {
-            content: cloudstackContent[];
+            content: cloud.stack.Content[];
             title: string;
         }
     }
@@ -1040,16 +1040,16 @@ export namespace cloud {
         }
         // interface fullName: cloud.storage.ContainerAccess.ContainerAccess
         export interface ContainerAccess {
-            endpoints: cloudstorageEndpoint[];
+            endpoints: cloud.storage.Endpoint[];
             token: string;
         }
         // interface fullName: cloud.storage.ContainerDetail.ContainerDetail
         export interface ContainerDetail {
             archive: boolean;
-            containerType: cloudstorageTypeEnum;
+            containerType: cloud.storage.TypeEnum;
             cors: string[];
             name: string;
-            objects: cloudstorageContainerObject[];
+            objects: cloud.storage.ContainerObject[];
             public: boolean;
             region: string;
             staticUrl: string;
@@ -1062,7 +1062,7 @@ export namespace cloud {
             lastModified: string;
             name: string;
             retrievalDelay: number;
-            retrievalState: cloudstorageRetrievalStateEnum;
+            retrievalState: cloud.storage.RetrievalStateEnum;
             size: number;
         }
         // interface fullName: cloud.storage.ContainerObjectTempURL.ContainerObjectTempURL
@@ -1095,45 +1095,45 @@ export namespace cloud {
             bill_id: string;
             credit: number;
             part: number;
-            payment_type: cloudusagePaymentTypeEnum;
+            payment_type: cloud.usage.PaymentTypeEnum;
             total: number;
         }
         // interface fullName: cloud.usage.UsageCurrent.UsageCurrent
         export interface UsageCurrent {
-            hourlyUsage?: cloudbillingViewHourlyResources;
+            hourlyUsage?: cloud.billingView.HourlyResources;
             lastUpdate: string;
-            monthlyUsage?: cloudbillingViewMonthlyResources;
-            period: cloudusagePeriod;
+            monthlyUsage?: cloud.billingView.MonthlyResources;
+            period: cloud.usage.Period;
         }
         // interface fullName: cloud.usage.UsageCurrentBills.UsageCurrentBills
         export interface UsageCurrentBills {
-            bills: cloudusageUsageBill[];
+            bills: cloud.usage.UsageBill[];
         }
         // interface fullName: cloud.usage.UsageForecast.UsageForecast
         export interface UsageForecast {
-            hourlyUsage?: cloudbillingViewHourlyResources;
+            hourlyUsage?: cloud.billingView.HourlyResources;
             lastUpdate: string;
-            monthlyUsage?: cloudbillingViewMonthlyResources;
-            period: cloudusagePeriod;
-            usableCredits?: cloudbillingViewUsedCredits;
+            monthlyUsage?: cloud.billingView.MonthlyResources;
+            period: cloud.usage.Period;
+            usableCredits?: cloud.billingView.UsedCredits;
         }
         // interface fullName: cloud.usage.UsageHistory.UsageHistory
         export interface UsageHistory {
             id: string;
             lastUpdate: string;
-            period: cloudusagePeriod;
+            period: cloud.usage.Period;
         }
         // interface fullName: cloud.usage.UsageHistoryDetail.UsageHistoryDetail
         export interface UsageHistoryDetail {
-            hourlyUsage?: cloudbillingViewHourlyResources;
+            hourlyUsage?: cloud.billingView.HourlyResources;
             id: string;
             lastUpdate: string;
-            monthlyUsage?: cloudbillingViewMonthlyResources;
-            period: cloudusagePeriod;
+            monthlyUsage?: cloud.billingView.MonthlyResources;
+            period: cloud.usage.Period;
         }
         // interface fullName: cloud.usage.UsageHistoryDetailBills.UsageHistoryDetailBills
         export interface UsageHistoryDetailBills {
-            bills: cloudusageUsageBill[];
+            bills: cloud.usage.UsageBill[];
         }
     }
     export namespace user {
@@ -1154,7 +1154,7 @@ export namespace cloud {
             creationDate: string;
             description: string;
             id: number;
-            status: clouduserUserStatusEnum;
+            status: cloud.user.UserStatusEnum;
             username: string;
         }
         // interface fullName: cloud.user.UserDetail.UserDetail
@@ -1163,8 +1163,8 @@ export namespace cloud {
             description: string;
             id: number;
             password: string;
-            roles: cloudroleRole[];
-            status: clouduserUserStatusEnum;
+            roles: cloud.role.Role[];
+            status: cloud.user.UserStatusEnum;
             username: string;
         }
         // type fullname: cloud.user.UserStatusEnum
@@ -1180,7 +1180,7 @@ export namespace cloud {
             planCode?: string;
             region: string;
             size: number;
-            status: cloudvolumeSnapshotStatusEnum;
+            status: cloud.volume.SnapshotStatusEnum;
             volumeId: string;
         }
         // type fullname: cloud.volume.SnapshotStatusEnum
@@ -1197,7 +1197,7 @@ export namespace cloud {
             region: string;
             size: number;
             status: string;
-            type: cloudvolumeVolumeTypeEnum;
+            type: cloud.volume.VolumeTypeEnum;
         }
         // type fullname: cloud.volume.VolumeTypeEnum
         export type VolumeTypeEnum = "classic" | "high-speed"
@@ -1219,7 +1219,7 @@ export namespace order {
     export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
     // interface fullName: order.Price.Price
     export interface Price {
-        currencyCode: orderCurrencyCodeEnum;
+        currencyCode: order.CurrencyCodeEnum;
         text: string;
         value: number;
     }
@@ -1239,7 +1239,7 @@ export namespace pca {
         date: string;
         id: number;
         quantity: number;
-        reference: cloudpcaBillingRefEnum;
+        reference: cloud.pca.BillingRefEnum;
         total: number;
     }
     // interface fullName: pca.File.File
@@ -1262,16 +1262,16 @@ export namespace pca {
         size: number;
         srcIp?: string;
         startDate: string;
-        state: cloudpcaSessionStateEnum;
+        state: cloud.pca.SessionStateEnum;
     }
     // interface fullName: pca.Task.Task
     export interface Task {
         comment?: string;
-        function: cloudpcaFunctionTypeEnum;
+        function: cloud.pca.FunctionTypeEnum;
         id: string;
         ipAddress?: string;
         login: string;
-        status: cloudpcaTaskStateEnum;
+        status: cloud.pca.TaskStateEnum;
         todoDate: string;
     }
 }
@@ -1305,10 +1305,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: serviceRenewType;
-        renewalType: serviceRenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: serviceStateEnum;
+        status: service.StateEnum;
     }
 }
 
@@ -1353,12 +1353,12 @@ export interface Cloud{
             // GET /cloud/project/{serviceName}
             $get(): Promise<cloud.Project>;
             // PUT /cloud/project/{serviceName}
-            $put(params?: {access?: cloudAccessTypeEnum, creationDate?: string, description?: string, expiration?: string, orderId?: number, planCode?: string, project_id?: string, status?: cloudprojectProjectStatus, unleash?: boolean}): Promise<void>;
+            $put(params?: {access?: cloud.AccessTypeEnum, creationDate?: string, description?: string, expiration?: string, orderId?: number, planCode?: string, project_id?: string, status?: cloud.project.ProjectStatus, unleash?: boolean}): Promise<void>;
             acl: {
                 // GET /cloud/project/{serviceName}/acl
-                $get(params?: {type?: cloudAclTypeEnum}): Promise<string[]>;
+                $get(params?: {type?: cloud.AclTypeEnum}): Promise<string[]>;
                 // POST /cloud/project/{serviceName}/acl
-                $post(params: {accountId: string, type: cloudAclTypeEnum}): Promise<cloud.Acl>;
+                $post(params: {accountId: string, type: cloud.AclTypeEnum}): Promise<cloud.Acl>;
                 $(accountId: string): {
                     // DELETE /cloud/project/{serviceName}/acl/{accountId}
                     $delete(): Promise<void>;
@@ -1370,14 +1370,14 @@ export interface Cloud{
                 // GET /cloud/project/{serviceName}/alerting
                 $get(): Promise<string[]>;
                 // POST /cloud/project/{serviceName}/alerting
-                $post(params: {delay: cloudAlertingDelayEnum, email: string, monthlyThreshold: number}): Promise<cloud.Alerting>;
+                $post(params: {delay: cloud.AlertingDelayEnum, email: string, monthlyThreshold: number}): Promise<cloud.Alerting>;
                 $(id: string): {
                     // DELETE /cloud/project/{serviceName}/alerting/{id}
                     $delete(): Promise<void>;
                     // GET /cloud/project/{serviceName}/alerting/{id}
                     $get(): Promise<cloud.Alerting>;
                     // PUT /cloud/project/{serviceName}/alerting/{id}
-                    $put(params?: {creationDate?: string, delay?: cloudAlertingDelayEnum, email?: string, formattedMonthlyThreshold?: orderPrice, id?: string, monthlyThreshold?: number}): Promise<void>;
+                    $put(params?: {creationDate?: string, delay?: cloud.AlertingDelayEnum, email?: string, formattedMonthlyThreshold?: orderPrice, id?: string, monthlyThreshold?: number}): Promise<void>;
                     alert: {
                         // GET /cloud/project/{serviceName}/alerting/{id}/alert
                         $get(): Promise<number[]>;
@@ -1412,7 +1412,7 @@ export interface Cloud{
                 // GET /cloud/project/{serviceName}/containerRegistry
                 $get(): Promise<cloud.containerRegistry.registry.Registry[]>;
                 // POST /cloud/project/{serviceName}/containerRegistry
-                $post(params: {name: string, region: cloudcontainerRegistryregistryRegionEnum}): Promise<cloud.containerRegistry.registry.Registry>;
+                $post(params: {name: string, region: cloud.containerRegistry.registry.RegionEnum}): Promise<cloud.containerRegistry.registry.Registry>;
                 $(registryID: string): {
                     // DELETE /cloud/project/{serviceName}/containerRegistry/{registryID}
                     $delete(): Promise<void>;
@@ -1475,7 +1475,7 @@ export interface Cloud{
                     // GET /cloud/project/{serviceName}/instance/group
                     $get(params?: {region?: string}): Promise<cloud.instancegroup.InstanceGroup[]>;
                     // POST /cloud/project/{serviceName}/instance/group
-                    $post(params: {name: string, region: string, type: cloudinstancegroupInstanceGroupTypeEnum}): Promise<cloud.instancegroup.InstanceGroup>;
+                    $post(params: {name: string, region: string, type: cloud.instancegroup.InstanceGroupTypeEnum}): Promise<cloud.instancegroup.InstanceGroup>;
                     $(groupId: string): {
                         // DELETE /cloud/project/{serviceName}/instance/group/{groupId}
                         $delete(): Promise<void>;
@@ -1572,7 +1572,7 @@ export interface Cloud{
                 // GET /cloud/project/{serviceName}/kube
                 $get(): Promise<string[]>;
                 // POST /cloud/project/{serviceName}/kube
-                $post(params: {name?: string, region: cloudkubeRegion, version?: cloudkubeVersion}): Promise<cloud.kube.Cluster>;
+                $post(params: {name?: string, region: cloud.kube.Region, version?: cloud.kube.Version}): Promise<cloud.kube.Cluster>;
                 regions: {
                     // GET /cloud/project/{serviceName}/kube/regions
                     $get(): Promise<cloud.kube.Region[]>;
@@ -1606,7 +1606,7 @@ export interface Cloud{
                     }
                     reset: {
                         // POST /cloud/project/{serviceName}/kube/{kubeId}/reset
-                        $post(params?: {version?: cloudkubeVersion, workerNodesPolicy?: cloud.kube.ResetWorkerNodesPolicy}): Promise<void>;
+                        $post(params?: {version?: cloud.kube.Version, workerNodesPolicy?: cloud.kube.ResetWorkerNodesPolicy}): Promise<void>;
                     }
                     update: {
                         // POST /cloud/project/{serviceName}/kube/{kubeId}/update
@@ -1728,7 +1728,7 @@ export interface Cloud{
                 // GET /cloud/project/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /cloud/project/{serviceName}/serviceInfos
-                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}): Promise<void>;
+                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
             }
             snapshot: {
                 // GET /cloud/project/{serviceName}/snapshot
@@ -1781,7 +1781,7 @@ export interface Cloud{
                     // GET /cloud/project/{serviceName}/storage/{containerId}
                     $get(params?: {noObjects?: boolean}): Promise<cloud.storage.ContainerDetail>;
                     // PUT /cloud/project/{serviceName}/storage/{containerId}
-                    $put(params?: {containerType?: cloudstorageTypeEnum}): Promise<void>;
+                    $put(params?: {containerType?: cloud.storage.TypeEnum}): Promise<void>;
                     cors: {
                         // DELETE /cloud/project/{serviceName}/storage/{containerId}/cors
                         $delete(): Promise<void>;
@@ -1874,7 +1874,7 @@ export interface Cloud{
                 // GET /cloud/project/{serviceName}/volume
                 $get(params?: {region?: string}): Promise<cloud.volume.Volume[]>;
                 // POST /cloud/project/{serviceName}/volume
-                $post(params: {description?: string, imageId?: string, name?: string, region: string, size: number, snapshotId?: string, type: cloudvolumeVolumeTypeEnum}): Promise<cloud.volume.Volume>;
+                $post(params: {description?: string, imageId?: string, name?: string, region: string, size: number, snapshotId?: string, type: cloud.volume.VolumeTypeEnum}): Promise<cloud.volume.Volume>;
                 snapshot: {
                     // GET /cloud/project/{serviceName}/volume/snapshot
                     $get(params?: {region?: string}): Promise<cloud.volume.Snapshot[]>;
@@ -1943,7 +1943,7 @@ export interface Cloud{
                     // GET /cloud/{serviceName}/pca/{pcaServiceName}/serviceInfos
                     $get(): Promise<services.Service>;
                     // PUT /cloud/{serviceName}/pca/{pcaServiceName}/serviceInfos
-                    $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}): Promise<void>;
+                    $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
                 }
                 sessions: {
                     // GET /cloud/{serviceName}/pca/{pcaServiceName}/sessions
@@ -1954,7 +1954,7 @@ export interface Cloud{
                         // GET /cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}
                         $get(): Promise<pca.Session>;
                         // PUT /cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}
-                        $put(params?: {endDate?: string, id?: string, login?: string, name?: string, size?: number, srcIp?: string, startDate?: string, state?: cloudpcaSessionStateEnum}): Promise<void>;
+                        $put(params?: {endDate?: string, id?: string, login?: string, name?: string, size?: number, srcIp?: string, startDate?: string, state?: cloud.pca.SessionStateEnum}): Promise<void>;
                         files: {
                             // GET /cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}/files
                             $get(params?: {name?: string}): Promise<string[]>;
@@ -1971,7 +1971,7 @@ export interface Cloud{
                 }
                 tasks: {
                     // GET /cloud/{serviceName}/pca/{pcaServiceName}/tasks
-                    $get(params?: {function_?: cloudpcaFunctionTypeEnum, status?: cloudpcaTaskStateEnum, todoDate_from?: string, todoDate_to?: string}): Promise<string[]>;
+                    $get(params?: {function_?: cloud.pca.FunctionTypeEnum, status?: cloud.pca.TaskStateEnum, todoDate_from?: string, todoDate_to?: string}): Promise<string[]>;
                     // POST /cloud/{serviceName}/pca/{pcaServiceName}/tasks
                     $post(params: {fileIds: string[], sessionId: string, taskFunction: cloud.pca.TaskTypeEnum}): Promise<pca.Task>;
                     $(taskId: string): {
@@ -2041,7 +2041,7 @@ export interface Cloud{
    * List the pca.Task objects
    * cloud archives tasks for account
    */
-  get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/tasks'): (params: {pcaServiceName: string, serviceName: string, function_?: cloudpcaFunctionTypeEnum, status?: cloudpcaTaskStateEnum, todoDate_from?: string, todoDate_to?: string}) => Promise<string[]>;
+  get(path: '/cloud/{serviceName}/pca/{pcaServiceName}/tasks'): (params: {pcaServiceName: string, serviceName: string, function_?: cloud.pca.FunctionTypeEnum, status?: cloud.pca.TaskStateEnum, todoDate_from?: string, todoDate_to?: string}) => Promise<string[]>;
   /**
    * cloud archives tasks
    * Get this object properties
@@ -2086,7 +2086,7 @@ export interface Cloud{
    * List the cloud.Acl objects
    * Get ACL on your cloud project
    */
-  get(path: '/cloud/project/{serviceName}/acl'): (params: {serviceName: string, type?: cloudAclTypeEnum}) => Promise<string[]>;
+  get(path: '/cloud/project/{serviceName}/acl'): (params: {serviceName: string, type?: cloud.AclTypeEnum}) => Promise<string[]>;
   /**
    * Cloud ACL
    * Get this object properties
@@ -2476,22 +2476,22 @@ export interface Cloud{
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/cloud/{serviceName}/pca/{pcaServiceName}/serviceInfos'): (params: {pcaServiceName: string, serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}) => Promise<void>;
+  put(path: '/cloud/{serviceName}/pca/{pcaServiceName}/serviceInfos'): (params: {pcaServiceName: string, serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
   /**
    * cloud archives sessions
    * Alter this object properties
    */
-  put(path: '/cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}'): (params: {pcaServiceName: string, serviceName: string, sessionId: string, endDate?: string, id?: string, login?: string, name?: string, size?: number, srcIp?: string, startDate?: string, state?: cloudpcaSessionStateEnum}) => Promise<void>;
+  put(path: '/cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}'): (params: {pcaServiceName: string, serviceName: string, sessionId: string, endDate?: string, id?: string, login?: string, name?: string, size?: number, srcIp?: string, startDate?: string, state?: cloud.pca.SessionStateEnum}) => Promise<void>;
   /**
    * Project
    * Alter this object properties
    */
-  put(path: '/cloud/project/{serviceName}'): (params: {serviceName: string, access?: cloudAccessTypeEnum, creationDate?: string, description?: string, expiration?: string, orderId?: number, planCode?: string, project_id?: string, status?: cloudprojectProjectStatus, unleash?: boolean}) => Promise<void>;
+  put(path: '/cloud/project/{serviceName}'): (params: {serviceName: string, access?: cloud.AccessTypeEnum, creationDate?: string, description?: string, expiration?: string, orderId?: number, planCode?: string, project_id?: string, status?: cloud.project.ProjectStatus, unleash?: boolean}) => Promise<void>;
   /**
    * Cloud alerting consumption
    * Alter this object properties
    */
-  put(path: '/cloud/project/{serviceName}/alerting/{id}'): (params: {id: string, serviceName: string, creationDate?: string, delay?: cloudAlertingDelayEnum, email?: string, formattedMonthlyThreshold?: orderPrice, monthlyThreshold?: number}) => Promise<void>;
+  put(path: '/cloud/project/{serviceName}/alerting/{id}'): (params: {id: string, serviceName: string, creationDate?: string, delay?: cloud.AlertingDelayEnum, email?: string, formattedMonthlyThreshold?: orderPrice, monthlyThreshold?: number}) => Promise<void>;
   /**
    * Manage a Docker registry
    * Update the registry
@@ -2526,12 +2526,12 @@ export interface Cloud{
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/cloud/project/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}) => Promise<void>;
+  put(path: '/cloud/project/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
   /**
    * Missing description
    * Update your storage container
    */
-  put(path: '/cloud/project/{serviceName}/storage/{containerId}'): (params: {containerId: string, serviceName: string, containerType?: cloudstorageTypeEnum}) => Promise<void>;
+  put(path: '/cloud/project/{serviceName}/storage/{containerId}'): (params: {containerId: string, serviceName: string, containerType?: cloud.storage.TypeEnum}) => Promise<void>;
   /**
    * Missing description
    * Update roles of a user
@@ -2561,12 +2561,12 @@ export interface Cloud{
    * List the cloud.Acl objects
    * Create new ACL
    */
-  post(path: '/cloud/project/{serviceName}/acl'): (params: {serviceName: string, accountId: string, type: cloudAclTypeEnum}) => Promise<cloud.Acl>;
+  post(path: '/cloud/project/{serviceName}/acl'): (params: {serviceName: string, accountId: string, type: cloud.AclTypeEnum}) => Promise<cloud.Acl>;
   /**
    * List the cloud.Alerting objects
    * Add new alert
    */
-  post(path: '/cloud/project/{serviceName}/alerting'): (params: {serviceName: string, delay: cloudAlertingDelayEnum, email: string, monthlyThreshold: number}) => Promise<cloud.Alerting>;
+  post(path: '/cloud/project/{serviceName}/alerting'): (params: {serviceName: string, delay: cloud.AlertingDelayEnum, email: string, monthlyThreshold: number}) => Promise<cloud.Alerting>;
   /**
    * cancel operations
    * Cancel project creation
@@ -2586,7 +2586,7 @@ export interface Cloud{
    * Manage registries
    * Create a new registry
    */
-  post(path: '/cloud/project/{serviceName}/containerRegistry'): (params: {serviceName: string, name: string, region: cloudcontainerRegistryregistryRegionEnum}) => Promise<cloud.containerRegistry.registry.Registry>;
+  post(path: '/cloud/project/{serviceName}/containerRegistry'): (params: {serviceName: string, name: string, region: cloud.containerRegistry.registry.RegionEnum}) => Promise<cloud.containerRegistry.registry.Registry>;
   /**
    * Manage users
    * Create a new registry user
@@ -2671,7 +2671,7 @@ export interface Cloud{
    * Missing description
    * Create a group
    */
-  post(path: '/cloud/project/{serviceName}/instance/group'): (params: {serviceName: string, name: string, region: string, type: cloudinstancegroupInstanceGroupTypeEnum}) => Promise<cloud.instancegroup.InstanceGroup>;
+  post(path: '/cloud/project/{serviceName}/instance/group'): (params: {serviceName: string, name: string, region: string, type: cloud.instancegroup.InstanceGroupTypeEnum}) => Promise<cloud.instancegroup.InstanceGroup>;
   /**
    * Missing description
    * Attach failover ip to an instance
@@ -2681,7 +2681,7 @@ export interface Cloud{
    * Manage your clusters
    * Create a new managed Kubernetes cluster
    */
-  post(path: '/cloud/project/{serviceName}/kube'): (params: {serviceName: string, name?: string, region: cloudkubeRegion, version?: cloudkubeVersion}) => Promise<cloud.kube.Cluster>;
+  post(path: '/cloud/project/{serviceName}/kube'): (params: {serviceName: string, name?: string, region: cloud.kube.Region, version?: cloud.kube.Version}) => Promise<cloud.kube.Cluster>;
   /**
    * Get your cluster configuration
    * Generate kubeconfig file
@@ -2696,7 +2696,7 @@ export interface Cloud{
    * Reset your cluster
    * Reset cluster: all Kubernetes data will be erased (pods, services, configuration, etc), nodes will be either deleted or reinstalled
    */
-  post(path: '/cloud/project/{serviceName}/kube/{kubeId}/reset'): (params: {kubeId: string, serviceName: string, version?: cloudkubeVersion, workerNodesPolicy?: cloud.kube.ResetWorkerNodesPolicy}) => Promise<void>;
+  post(path: '/cloud/project/{serviceName}/kube/{kubeId}/reset'): (params: {kubeId: string, serviceName: string, version?: cloud.kube.Version, workerNodesPolicy?: cloud.kube.ResetWorkerNodesPolicy}) => Promise<void>;
   /**
    * Update cluster
    * Force cluster and node update to the latest patch within minor version or next minor version
@@ -2816,7 +2816,7 @@ export interface Cloud{
    * Missing description
    * Create a volume
    */
-  post(path: '/cloud/project/{serviceName}/volume'): (params: {serviceName: string, description?: string, imageId?: string, name?: string, region: string, size: number, snapshotId?: string, type: cloudvolumeVolumeTypeEnum}) => Promise<cloud.volume.Volume>;
+  post(path: '/cloud/project/{serviceName}/volume'): (params: {serviceName: string, description?: string, imageId?: string, name?: string, region: string, size: number, snapshotId?: string, type: cloud.volume.VolumeTypeEnum}) => Promise<cloud.volume.Volume>;
   /**
    * Missing description
    * Attach a volume on an instance
@@ -2951,137 +2951,4 @@ export interface Cloud{
 /**
  * Extra Alias to bypass relativer namespace colitions
  */
-type cloudAclTypeEnum = cloud.AclTypeEnum;
-type cloudAlertingDelayEnum = cloud.AlertingDelayEnum;
 type orderPrice = order.Price;
-type cloudRegionContinent = cloud.RegionContinent;
-type cloudExecution = cloud.Execution;
-type cloudServiceStatus = cloud.ServiceStatus;
-type cloudcommonVoucherValidity = cloud.common.VoucherValidity;
-type cloudExecutionState = cloud.ExecutionState;
-type cloudOperationStatus = cloud.OperationStatus;
-type cloudArchiveStoragePrice = cloud.ArchiveStoragePrice;
-type cloudBandwidthStoragePrice = cloud.BandwidthStoragePrice;
-type cloudFlavorPrice = cloud.FlavorPrice;
-type cloudSnapshotPrice = cloud.SnapshotPrice;
-type cloudStoragePrice = cloud.StoragePrice;
-type cloudVolumePrice = cloud.VolumePrice;
-type cloudAccessTypeEnum = cloud.AccessTypeEnum;
-type cloudprojectProjectStatus = cloud.project.ProjectStatus;
-type cloudIpCountryEnum = cloud.IpCountryEnum;
-type cloudComponent = cloud.Component;
-type cloudRegionStatus = cloud.RegionStatus;
-type cloudauthenticationEndpoint = cloud.authentication.Endpoint;
-type cloudauthenticationCatalog = cloud.authentication.Catalog;
-type cloudauthenticationTokenProject = cloud.authentication.TokenProject;
-type cloudauthenticationRole = cloud.authentication.Role;
-type cloudauthenticationUserToken = cloud.authentication.UserToken;
-type cloudauthenticationOpenstackToken = cloud.authentication.OpenstackToken;
-type cloudauthenticationDomain = cloud.authentication.Domain;
-type cloudbillingViewQuantity = cloud.billingView.Quantity;
-type cloudbillingViewHourlyInstanceDetail = cloud.billingView.HourlyInstanceDetail;
-type cloudbillingViewBandwidthInstance = cloud.billingView.BandwidthInstance;
-type cloudbillingViewHourlyInstanceOptionDetail = cloud.billingView.HourlyInstanceOptionDetail;
-type cloudbillingViewHourlyInstance = cloud.billingView.HourlyInstance;
-type cloudbillingViewHourlyInstanceBandwidth = cloud.billingView.HourlyInstanceBandwidth;
-type cloudbillingViewHourlyInstanceOption = cloud.billingView.HourlyInstanceOption;
-type cloudbillingViewHourlySnapshot = cloud.billingView.HourlySnapshot;
-type cloudbillingViewHourlyStorage = cloud.billingView.HourlyStorage;
-type cloudbillingViewHourlyVolume = cloud.billingView.HourlyVolume;
-type cloudbillingViewInstanceSnapshot = cloud.billingView.InstanceSnapshot;
-type cloudbillingViewVolumeSnapshot = cloud.billingView.VolumeSnapshot;
-type cloudbillingViewBandwidthStorage = cloud.billingView.BandwidthStorage;
-type cloudbillingViewStoredStorage = cloud.billingView.StoredStorage;
-type cloudbillingViewStorageTypeEnum = cloud.billingView.StorageTypeEnum;
-type cloudbillingViewHourlyVolumeDetail = cloud.billingView.HourlyVolumeDetail;
-type cloudbillingViewMonthlyInstanceDetail = cloud.billingView.MonthlyInstanceDetail;
-type cloudbillingViewMonthlyInstanceOptionDetail = cloud.billingView.MonthlyInstanceOptionDetail;
-type cloudbillingViewMonthlyInstance = cloud.billingView.MonthlyInstance;
-type cloudbillingViewMonthlyInstanceOption = cloud.billingView.MonthlyInstanceOption;
-type cloudbillingViewUnitQuantity = cloud.billingView.UnitQuantity;
-type cloudbillingViewUsedCredit = cloud.billingView.UsedCredit;
-type cloudcontainerRegistryregistryRegionEnum = cloud.containerRegistry.registry.RegionEnum;
-type cloudcontainerRegistryregistryStatusEnum = cloud.containerRegistry.registry.StatusEnum;
-type cloudflavorFlavorPlanCodes = cloud.flavor.FlavorPlanCodes;
-type cloudinstanceAccess = cloud.instance.Access;
-type cloudinstanceApplicationAccessStateEnum = cloud.instance.ApplicationAccessStateEnum;
-type cloudinstanceIpAddress = cloud.instance.IpAddress;
-type cloudinstanceMonthlyBilling = cloud.instance.MonthlyBilling;
-type cloudinstanceInstanceStatusEnum = cloud.instance.InstanceStatusEnum;
-type cloudflavorFlavor = cloud.flavor.Flavor;
-type cloudimageImage = cloud.image.Image;
-type cloudsshkeySshKeyDetail = cloud.sshkey.SshKeyDetail;
-type cloudinstanceInstanceMetricsValue = cloud.instance.InstanceMetricsValue;
-type cloudinstanceMonthlyBillingStatusEnum = cloud.instance.MonthlyBillingStatusEnum;
-type cloudinstanceInterfaceFixedIp = cloud.instanceInterface.FixedIp;
-type cloudinstancegroupInstanceGroupTypeEnum = cloud.instancegroup.InstanceGroupTypeEnum;
-type cloudipIpStatusEnum = cloud.ip.IpStatusEnum;
-type cloudipIpSubTypeEnum = cloud.ip.IpSubTypeEnum;
-type cloudkubeVersion = cloud.kube.Version;
-type cloudkubeRegion = cloud.kube.Region;
-type cloudkubeClusterStatus = cloud.kube.ClusterStatus;
-type cloudkubeFlavorCategory = cloud.kube.FlavorCategory;
-type cloudkubeFlavorState = cloud.kube.FlavorState;
-type cloudkubeNodeStatus = cloud.kube.NodeStatus;
-type cloudmigrationResourceTypeEnum = cloud.migration.ResourceTypeEnum;
-type cloudnetworkNetworkRegion = cloud.network.NetworkRegion;
-type cloudnetworkNetworkStatusEnum = cloud.network.NetworkStatusEnum;
-type cloudnetworkNetworkTypeEnum = cloud.network.NetworkTypeEnum;
-type cloudnetworkNetworkRegionStatusEnum = cloud.network.NetworkRegionStatusEnum;
-type cloudnetworkIPPool = cloud.network.IPPool;
-type cloudopenstackClientProfile = cloud.openstackClient.Profile;
-type cloudorderStatusEnum = cloud.order.StatusEnum;
-type cloudpcaTransferStateEnum = cloud.pca.TransferStateEnum;
-type cloudprojectBillTypeEnum = cloud.project.BillTypeEnum;
-type cloudprojectInstancesUsage = cloud.project.InstancesUsage;
-type cloudprojectSnapshotsUsage = cloud.project.SnapshotsUsage;
-type cloudprojectStorageUsage = cloud.project.StorageUsage;
-type cloudprojectVolumesUsage = cloud.project.VolumesUsage;
-type cloudprojectInstanceMonthlyBilling = cloud.project.InstanceMonthlyBilling;
-type cloudprojectInstanceUsageDetail = cloud.project.InstanceUsageDetail;
-type cloudprojectNewProjectCredit = cloud.project.NewProjectCredit;
-type cloudprojectNewProjectStatusEnum = cloud.project.NewProjectStatusEnum;
-type cloudprojectNewProjectInfoError = cloud.project.NewProjectInfoError;
-type cloudprojectNewProjectInfoVoucher = cloud.project.NewProjectInfoVoucher;
-type cloudprojectNewProjectInfoErrorCodeEnum = cloud.project.NewProjectInfoErrorCodeEnum;
-type cloudprojectCurrentUsage = cloud.project.CurrentUsage;
-type complexTypeUnitAndValuenumber = complexType.UnitAndValue<number>;
-type cloudprojectSnapshotUsageDetail = cloud.project.SnapshotUsageDetail;
-type cloudprojectBandwidthStorageUsage = cloud.project.BandwidthStorageUsage;
-type cloudprojectStorageVolumeUsage = cloud.project.StorageVolumeUsage;
-type cloudprojectVolumeType = cloud.project.VolumeType;
-type cloudprojectVolumeUsageDetail = cloud.project.VolumeUsageDetail;
-type cloudquotaComputeQuota = cloud.quota.ComputeQuota;
-type cloudquotaNetworkQuota = cloud.quota.NetworkQuota;
-type cloudquotaVolumeQuota = cloud.quota.VolumeQuota;
-type cloudquotaInstanceUsageQuotas = cloud.quota.InstanceUsageQuotas;
-type cloudquotaKeypairQuotas = cloud.quota.KeypairQuotas;
-type cloudquotaVolumeUsageQuotas = cloud.quota.VolumeUsageQuotas;
-type cloudroleRole = cloud.role.Role;
-type cloudroleService = cloud.role.Service;
-type cloudrolePermission = cloud.role.Permission;
-type cloudstackContent = cloud.stack.Content;
-type cloudstackSection = cloud.stack.Section;
-type cloudstackStep = cloud.stack.Step;
-type cloudstackInstructionGuide = cloud.stack.InstructionGuide;
-type cloudstorageEndpoint = cloud.storage.Endpoint;
-type cloudstorageTypeEnum = cloud.storage.TypeEnum;
-type cloudstorageContainerObject = cloud.storage.ContainerObject;
-type cloudstorageRetrievalStateEnum = cloud.storage.RetrievalStateEnum;
-type cloudusagePaymentTypeEnum = cloud.usage.PaymentTypeEnum;
-type cloudbillingViewHourlyResources = cloud.billingView.HourlyResources;
-type cloudbillingViewMonthlyResources = cloud.billingView.MonthlyResources;
-type cloudusagePeriod = cloud.usage.Period;
-type cloudusageUsageBill = cloud.usage.UsageBill;
-type cloudbillingViewUsedCredits = cloud.billingView.UsedCredits;
-type clouduserUserStatusEnum = cloud.user.UserStatusEnum;
-type cloudvolumeSnapshotStatusEnum = cloud.volume.SnapshotStatusEnum;
-type cloudvolumeVolumeTypeEnum = cloud.volume.VolumeTypeEnum;
-type orderCurrencyCodeEnum = order.CurrencyCodeEnum;
-type cloudpcaBillingRefEnum = cloud.pca.BillingRefEnum;
-type cloudpcaSessionStateEnum = cloud.pca.SessionStateEnum;
-type cloudpcaFunctionTypeEnum = cloud.pca.FunctionTypeEnum;
-type cloudpcaTaskStateEnum = cloud.pca.TaskStateEnum;
-type serviceRenewType = service.RenewType;
-type serviceRenewalTypeEnum = service.RenewalTypeEnum;
-type serviceStateEnum = service.StateEnum;

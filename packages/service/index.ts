@@ -15,7 +15,7 @@ export namespace order {
     export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
     // interface fullName: order.Price.Price
     export interface Price {
-        currencyCode: orderCurrencyCodeEnum;
+        currencyCode: order.CurrencyCodeEnum;
         text: string;
         value: number;
     }
@@ -26,21 +26,21 @@ export namespace service {
     // interface fullName: service.Plan.Plan
     export interface Plan {
         code?: string;
-        product: serviceplanProduct;
+        product: service.plan.Product;
     }
     // interface fullName: service.Renew.Renew
     export interface Renew {
         dayOfMonth?: number;
-        interval?: servicerenewInterval;
-        mode: servicerenewMode;
-        possibleIntervals?: servicerenewInterval[];
-        possibleModes: servicerenewMode[];
+        interval?: service.renew.Interval;
+        mode: service.renew.Mode;
+        possibleIntervals?: service.renew.Interval[];
+        possibleModes: service.renew.Mode[];
     }
     // interface fullName: service.Resource.Resource
     export interface Resource {
         displayName: string;
         name?: string;
-        state?: serviceResourceStateEnum;
+        state?: service.ResourceStateEnum;
     }
     // type fullname: service.ResourceStateEnum
     export type ResourceStateEnum = "deleted" | "deleting" | "ok" | "opening" | "suspended" | "suspending" | "toDelete" | "toOpen" | "toSuspend"
@@ -48,26 +48,26 @@ export namespace service {
     export interface Route {
         path?: string;
         url?: string;
-        vars: complexTypeSafeKeyValuestring[];
+        vars: complexType.SafeKeyValue<string>[];
     }
     export namespace consumption {
         // interface fullName: service.consumption.Transaction.Transaction
         export interface Transaction {
             beginDate: string;
             creationDate?: string;
-            elements: serviceconsumptiontransactionElement[];
+            elements: service.consumption.transaction.Element[];
             endDate?: string;
             id?: number;
             lastUpdate?: string;
-            price: orderPrice;
+            price: order.Price;
             serviceId: number;
         }
         export namespace transaction {
             // interface fullName: service.consumption.transaction.Element.Element
             export interface Element {
-                details: serviceconsumptiontransactionElementDetail[];
+                details: service.consumption.transaction.Element.Detail[];
                 planCode: string;
-                price: orderPrice;
+                price: order.Price;
                 quantity: number;
             }
             export namespace Element {
@@ -93,26 +93,26 @@ export namespace service {
         // interface fullName: service.renew.RenewDescription.RenewDescription
         export interface RenewDescription {
             renewPeriod: string;
-            strategies: servicerenewRenewStrategy[];
+            strategies: service.renew.RenewStrategy[];
         }
         // interface fullName: service.renew.RenewForecast.RenewForecast
         export interface RenewForecast {
-            details: servicerenewRenewForecastDetail[];
-            prices: servicerenewRenewForecastDetailPrices;
+            details: service.renew.RenewForecastDetail[];
+            prices: service.renew.RenewForecastDetailPrices;
         }
         // interface fullName: service.renew.RenewForecastDetail.RenewForecastDetail
         export interface RenewForecastDetail {
             description?: string;
             quantity: number;
             serviceName: string;
-            totalPrice: orderPrice;
-            unitPrice: orderPrice;
+            totalPrice: order.Price;
+            unitPrice: order.Price;
         }
         // interface fullName: service.renew.RenewForecastDetailPrices.RenewForecastDetailPrices
         export interface RenewForecastDetailPrices {
-            tax: orderPrice;
-            withTax: orderPrice;
-            withoutTax: orderPrice;
+            tax: order.Price;
+            withTax: order.Price;
+            withoutTax: order.Price;
         }
         // interface fullName: service.renew.RenewOrder.RenewOrder
         export interface RenewOrder {
@@ -121,18 +121,18 @@ export namespace service {
             orderId: number;
             password: string;
             pdfUrl: string;
-            priceWithTax: orderPrice;
-            priceWithoutTax: orderPrice;
+            priceWithTax: order.Price;
+            priceWithoutTax: order.Price;
             retractionDate?: string;
-            tax: orderPrice;
+            tax: order.Price;
             url: string;
         }
         // interface fullName: service.renew.RenewStrategy.RenewStrategy
         export interface RenewStrategy {
-            price: orderPrice;
+            price: order.Price;
             priceInUcents: number;
             services: number[];
-            servicesDetails: servicerenewService[];
+            servicesDetails: service.renew.Service[];
         }
         // interface fullName: service.renew.Service.Service
         export interface Service {
@@ -146,16 +146,16 @@ export namespace serviceList {
     // interface fullName: serviceList.Service.Service
     export interface Service {
         creationDate: string;
-        details: complexTypeSafeKeyValuestring[];
+        details: complexType.SafeKeyValue<string>[];
         engagementDate?: string;
         expirationDate?: string;
         nextBillingDate?: string;
-        plan: servicePlan;
+        plan: service.Plan;
         quantity: number;
-        renew?: serviceRenew;
-        resource: serviceResource;
-        route: serviceRoute;
-        state: serviceBillingStateEnum;
+        renew?: service.Renew;
+        resource: service.Resource;
+        route: service.Route;
+        state: service.BillingStateEnum;
     }
 }
 
@@ -177,7 +177,7 @@ export interface Service{
         // GET /service/{serviceId}
         $get(): Promise<serviceList.Service>;
         // PUT /service/{serviceId}
-        $put(params?: {creationDate?: string, details?: complexTypeSafeKeyValuestring[], engagementDate?: string, expirationDate?: string, nextBillingDate?: string, plan?: servicePlan, quantity?: number, renew?: serviceRenew, resource?: serviceResource, route?: serviceRoute, state?: serviceBillingStateEnum}): Promise<void>;
+        $put(params?: {creationDate?: string, details?: complexType.SafeKeyValue<string>[], engagementDate?: string, expirationDate?: string, nextBillingDate?: string, plan?: service.Plan, quantity?: number, renew?: service.Renew, resource?: service.Resource, route?: service.Route, state?: service.BillingStateEnum}): Promise<void>;
         renew: {
             // GET /service/{serviceId}/renew
             $get(params?: {includeOptions?: boolean}): Promise<service.renew.RenewDescription[]>;
@@ -217,7 +217,7 @@ export interface Service{
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/service/{serviceId}'): (params: {serviceId: number, creationDate?: string, details?: complexTypeSafeKeyValuestring[], engagementDate?: string, expirationDate?: string, nextBillingDate?: string, plan?: servicePlan, quantity?: number, renew?: serviceRenew, resource?: serviceResource, route?: serviceRoute, state?: serviceBillingStateEnum}) => Promise<void>;
+  put(path: '/service/{serviceId}'): (params: {serviceId: number, creationDate?: string, details?: complexType.SafeKeyValue<string>[], engagementDate?: string, expirationDate?: string, nextBillingDate?: string, plan?: service.Plan, quantity?: number, renew?: service.Renew, resource?: service.Resource, route?: service.Route, state?: service.BillingStateEnum}) => Promise<void>;
   /**
    * Missing description
    * Create a renew order
@@ -239,24 +239,3 @@ export interface Service{
    */
   post(path: '/service/{serviceId}/terminate'): (params: {serviceId: number}) => Promise<void>;
 }
-/**
- * Extra Alias to bypass relativer namespace colitions
- */
-type orderCurrencyCodeEnum = order.CurrencyCodeEnum;
-type serviceplanProduct = service.plan.Product;
-type servicerenewInterval = service.renew.Interval;
-type servicerenewMode = service.renew.Mode;
-type serviceResourceStateEnum = service.ResourceStateEnum;
-type complexTypeSafeKeyValuestring = complexType.SafeKeyValue<string>;
-type serviceconsumptiontransactionElement = service.consumption.transaction.Element;
-type orderPrice = order.Price;
-type serviceconsumptiontransactionElementDetail = service.consumption.transaction.Element.Detail;
-type servicerenewRenewStrategy = service.renew.RenewStrategy;
-type servicerenewRenewForecastDetail = service.renew.RenewForecastDetail;
-type servicerenewRenewForecastDetailPrices = service.renew.RenewForecastDetailPrices;
-type servicerenewService = service.renew.Service;
-type servicePlan = service.Plan;
-type serviceRenew = service.Renew;
-type serviceResource = service.Resource;
-type serviceRoute = service.Route;
-type serviceBillingStateEnum = service.BillingStateEnum;

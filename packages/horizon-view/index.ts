@@ -39,11 +39,11 @@ export namespace horizonView {
     }
     // interface fullName: horizonView.DedicatedHorizon.DedicatedHorizon
     export interface DedicatedHorizon {
-        masterZone: horizonViewZone;
+        masterZone: horizonView.Zone;
         privateCloudName: string;
-        privateCloudZone: horizonViewZone;
+        privateCloudZone: horizonView.Zone;
         publicUrl: string;
-        state: horizonViewStateEnum;
+        state: horizonView.StateEnum;
         storageAccelerator: boolean;
         version: string;
     }
@@ -64,9 +64,9 @@ export namespace horizonView {
         intercoNextHop?: string;
         intercoPrivateNextHop?: string;
         portGroupId: string;
-        state: horizonViewStateEnum;
+        state: horizonView.StateEnum;
         twoFA: boolean;
-        type: horizonViewPoolType;
+        type: horizonView.PoolType;
     }
     // type fullname: horizonView.PoolType
     export type PoolType = "hybridPool" | "privatePool" | "publicPool"
@@ -78,7 +78,7 @@ export namespace horizonView {
         lastModificationDate?: string;
         name: string;
         progress: number;
-        state: horizonViewTaskStateEnum;
+        state: horizonView.TaskStateEnum;
         taskId: number;
     }
     // type fullname: horizonView.TaskStateEnum
@@ -120,10 +120,10 @@ export namespace services {
         engagedUpTo?: string;
         expiration: string;
         possibleRenewPeriod?: number[];
-        renew?: serviceRenewType;
-        renewalType: serviceRenewalTypeEnum;
+        renew?: service.RenewType;
+        renewalType: service.RenewalTypeEnum;
         serviceId: number;
-        status: serviceStateEnum;
+        status: service.StateEnum;
     }
 }
 
@@ -148,7 +148,7 @@ export interface HorizonView{
             // GET /horizonView/{serviceName}/accessPoint
             $get(): Promise<number[]>;
             // POST /horizonView/{serviceName}/accessPoint
-            $post(params: {poolType: horizonViewPoolType, privateBlock?: string, privateVlan?: number, vrouterPoolPublicIp?: string}): Promise<horizonView.Task[]>;
+            $post(params: {poolType: horizonView.PoolType, privateBlock?: string, privateVlan?: number, vrouterPoolPublicIp?: string}): Promise<horizonView.Task[]>;
             $(accessPointId: number): {
                 // DELETE /horizonView/{serviceName}/accessPoint/{accessPointId}
                 $delete(): Promise<horizonView.Task[]>;
@@ -233,7 +233,7 @@ export interface HorizonView{
             }
             task: {
                 // GET /horizonView/{serviceName}/dedicatedHorizon/task
-                $get(params?: {state?: horizonViewTaskStateEnum}): Promise<number[]>;
+                $get(params?: {state?: horizonView.TaskStateEnum}): Promise<number[]>;
                 $(taskId: number): {
                     // GET /horizonView/{serviceName}/dedicatedHorizon/task/{taskId}
                     $get(): Promise<horizonView.Task>;
@@ -282,7 +282,7 @@ export interface HorizonView{
             // GET /horizonView/{serviceName}/serviceInfos
             $get(): Promise<services.Service>;
             // PUT /horizonView/{serviceName}/serviceInfos
-            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}): Promise<void>;
+            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
         }
         terminate: {
             // POST /horizonView/{serviceName}/terminate
@@ -349,7 +349,7 @@ export interface HorizonView{
    * List the horizonView.Task objects
    * Tasks associated with this Dedicated Horizon
    */
-  get(path: '/horizonView/{serviceName}/dedicatedHorizon/task'): (params: {serviceName: string, state?: horizonViewTaskStateEnum}) => Promise<number[]>;
+  get(path: '/horizonView/{serviceName}/dedicatedHorizon/task'): (params: {serviceName: string, state?: horizonView.TaskStateEnum}) => Promise<number[]>;
   /**
    * Operation on a Horizon View component
    * Get this object properties
@@ -379,12 +379,12 @@ export interface HorizonView{
    * Details about a Service
    * Alter this object properties
    */
-  put(path: '/horizonView/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: serviceRenewType, renewalType?: serviceRenewalTypeEnum, serviceId?: number, status?: serviceStateEnum}) => Promise<void>;
+  put(path: '/horizonView/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
   /**
    * List the horizonView.Pool objects
    * Add new access point to create a new network
    */
-  post(path: '/horizonView/{serviceName}/accessPoint'): (params: {serviceName: string, poolType: horizonViewPoolType, privateBlock?: string, privateVlan?: number, vrouterPoolPublicIp?: string}) => Promise<horizonView.Task[]>;
+  post(path: '/horizonView/{serviceName}/accessPoint'): (params: {serviceName: string, poolType: horizonView.PoolType, privateBlock?: string, privateVlan?: number, vrouterPoolPublicIp?: string}) => Promise<horizonView.Task[]>;
   /**
    * changeSessionTimeout operations
    * Manage your session Timeout on Unified Access Gateway
@@ -506,13 +506,3 @@ export interface HorizonView{
    */
   delete(path: '/horizonView/{serviceName}/dedicatedHorizon/customerUser/{username}'): (params: {serviceName: string, username: string}) => Promise<horizonView.Task[]>;
 }
-/**
- * Extra Alias to bypass relativer namespace colitions
- */
-type horizonViewZone = horizonView.Zone;
-type horizonViewStateEnum = horizonView.StateEnum;
-type horizonViewPoolType = horizonView.PoolType;
-type horizonViewTaskStateEnum = horizonView.TaskStateEnum;
-type serviceRenewType = service.RenewType;
-type serviceRenewalTypeEnum = service.RenewalTypeEnum;
-type serviceStateEnum = service.StateEnum;
