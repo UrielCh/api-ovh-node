@@ -846,6 +846,11 @@ export namespace telephony {
     export type OfferTaskActionEnum = "convertToAlias" | "convertToSip" | "migrateToNewVoicemail" | "removeSimltaneousLines" | "switchServer" | "termination" | "updateFirmware" | "upgrade"
     // type fullname: telephony.OfferTaskTypeEnum
     export type OfferTaskTypeEnum = "line" | "offer" | "option" | "phone"
+    // interface fullName: telephony.OldPhone.OldPhone
+    export interface OldPhone {
+        mac: string;
+        model: string;
+    }
     // type fullname: telephony.OutplanNotificationBlockEnum
     export type OutplanNotificationBlockEnum = "blockAllCalls" | "blockIncomingCalls" | "blockOutgoingCalls" | "none"
     // interface fullName: telephony.OvhPabx.OvhPabx
@@ -2753,7 +2758,7 @@ export interface Telephony{
         }
         oldPhone: {
             // GET /telephony/{billingAccount}/oldPhone
-            $get(): Promise<telephony.Phone[]>;
+            $get(): Promise<telephony.OldPhone[]>;
         }
         outplanNotification: {
             // GET /telephony/{billingAccount}/outplanNotification
@@ -4243,7 +4248,7 @@ export interface Telephony{
    * oldPhone operations
    * List old phones archived as they were not returned after an RMA
    */
-  get(path: '/telephony/{billingAccount}/oldPhone'): (params: {billingAccount: string}) => Promise<telephony.Phone[]>;
+  get(path: '/telephony/{billingAccount}/oldPhone'): (params: {billingAccount: string}) => Promise<telephony.OldPhone[]>;
   /**
    * List the telephony.ConsumptionThreshold objects
    * Outplan notifications configured for this billing account

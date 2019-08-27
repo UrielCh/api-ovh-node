@@ -266,7 +266,7 @@ export namespace email {
             taskPendingId: number;
         }
         // type fullname: email.exchange.exchangeCommercialVersionEnum
-        export type exchangeCommercialVersionEnum = "2010" | "2013" | "2016"
+        export type exchangeCommercialVersionEnum = "2010" | "2013" | "2016" | "2019"
         // interface fullName: email.exchange.exchangeDistributionGroupManager.exchangeDistributionGroupManager
         export interface exchangeDistributionGroupManager {
             creationDate: string;

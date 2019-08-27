@@ -15,6 +15,21 @@ export namespace complexType {
         values: T[];
     }
 }
+export namespace connectivity {
+    export namespace eligibility {
+        // interface fullName: connectivity.eligibility.MeetingSlot.MeetingSlot
+        export interface MeetingSlot {
+            endDate: string;
+            startDate: string;
+            uiCode: string;
+        }
+        // interface fullName: connectivity.eligibility.Meetings.Meetings
+        export interface Meetings {
+            canBookFakeMeeting: boolean;
+            meetingSlots: connectivity.eligibility.MeetingSlot[];
+        }
+    }
+}
 export namespace coreTypes {
     // type fullname: coreTypes.CountryEnum
     export type CountryEnum = "ac" | "ad" | "ae" | "af" | "ag" | "ai" | "al" | "am" | "an" | "ao" | "aq" | "ar" | "as" | "at" | "au" | "aw" | "ax" | "az" | "ba" | "bb" | "bd" | "be" | "bf" | "bg" | "bh" | "bi" | "bj" | "bl" | "bm" | "bn" | "bo" | "bq" | "br" | "bs" | "bt" | "bv" | "bw" | "by" | "bz" | "ca" | "cc" | "cd" | "cf" | "cg" | "ch" | "ci" | "ck" | "cl" | "cm" | "cn" | "co" | "cr" | "cs" | "cu" | "cv" | "cw" | "cx" | "cy" | "cz" | "de" | "dj" | "dk" | "dm" | "do" | "dz" | "ec" | "ee" | "eg" | "eh" | "er" | "es" | "et" | "fc" | "fd" | "fi" | "fj" | "fk" | "fm" | "fo" | "fr" | "fx" | "ga" | "gb" | "gd" | "ge" | "gf" | "gg" | "gh" | "gi" | "gl" | "gm" | "gn" | "gp" | "gq" | "gr" | "gs" | "gt" | "gu" | "gw" | "gy" | "hk" | "hm" | "hn" | "hr" | "ht" | "hu" | "id" | "ie" | "il" | "im" | "in" | "io" | "iq" | "ir" | "is" | "it" | "je" | "jm" | "jo" | "jp" | "ke" | "kg" | "kh" | "ki" | "km" | "kn" | "kp" | "kr" | "kw" | "ky" | "kz" | "la" | "lb" | "lc" | "li" | "lk" | "lr" | "ls" | "lt" | "lu" | "lv" | "ly" | "ma" | "mc" | "md" | "me" | "mf" | "mg" | "mh" | "mk" | "ml" | "mm" | "mn" | "mo" | "mp" | "mq" | "mr" | "ms" | "mt" | "mu" | "mv" | "mw" | "mx" | "my" | "mz" | "na" | "nc" | "ne" | "nf" | "ng" | "ni" | "nl" | "no" | "np" | "nr" | "nu" | "nz" | "om" | "pa" | "pe" | "pf" | "pg" | "ph" | "pk" | "pl" | "pm" | "pn" | "pr" | "ps" | "pt" | "pw" | "py" | "qa" | "qc" | "re" | "ro" | "rs" | "ru" | "rw" | "sa" | "sb" | "sc" | "sd" | "se" | "sg" | "sh" | "si" | "sj" | "sk" | "sl" | "sm" | "sn" | "so" | "sr" | "ss" | "st" | "sv" | "sx" | "sy" | "sz" | "tc" | "td" | "tf" | "tg" | "th" | "tj" | "tk" | "tl" | "tm" | "tn" | "to" | "tp" | "tr" | "tt" | "tv" | "tw" | "tz" | "ua" | "ug" | "uk" | "um" | "us" | "uy" | "uz" | "va" | "vc" | "ve" | "vg" | "vi" | "vn" | "vu" | "we" | "wf" | "ws" | "ye" | "yt" | "yu" | "za" | "zm" | "zw"
@@ -1439,6 +1454,10 @@ export interface Xdsl{
             // GET /xdsl/{serviceName}/orderFollowup
             $get(): Promise<xdsl.orderFollowup.Step[]>;
         }
+        orderMeeting: {
+            // POST /xdsl/{serviceName}/orderMeeting
+            $post(params: {endDate: string, startDate: string, uiCode: string}): Promise<void>;
+        }
         pendingAction: {
             // GET /xdsl/{serviceName}/pendingAction
             $get(): Promise<xdsl.PendingAction>;
@@ -1478,6 +1497,10 @@ export interface Xdsl{
                 // PUT /xdsl/{serviceName}/rma/{id}
                 $put(params?: {cancellable?: boolean, creationDatetime?: string, equipmentReference?: string, id?: string, newMerchandise?: string, offerTypeNew?: telephony.RmaOfferTypeEnum, offerTypeOld?: telephony.RmaOfferTypeEnum, process?: telephony.RmaReplaceTypeEnum, receptionDatetime?: string, shippingContact?: telephony.Contact, status?: telephony.RmaStatusEnum, steps?: telephony.RmaStep[], terminationDatetime?: string, type?: telephony.RmaTypeEnum}): Promise<void>;
             };
+        }
+        searchOrderMeetings: {
+            // POST /xdsl/{serviceName}/searchOrderMeetings
+            $post(): Promise<xdsl.AsyncTask<connectivity.eligibility.Meetings>>;
         }
         sendOrderToProvider: {
             // POST /xdsl/{serviceName}/sendOrderToProvider
@@ -2076,6 +2099,11 @@ export interface Xdsl{
    */
   post(path: '/xdsl/{serviceName}/monitoringNotifications'): (params: {serviceName: string, allowIncident?: boolean, downThreshold?: number, email?: string, frequency: xdsl.monitoringNotifications.FrequencyEnum, phone?: string, smsAccount?: string, type: xdsl.monitoringNotifications.TypeEnum}) => Promise<xdsl.MonitoringNotification>;
   /**
+   * orderMeeting operations
+   * Book a meeting and relaunch order
+   */
+  post(path: '/xdsl/{serviceName}/orderMeeting'): (params: {serviceName: string, endDate: string, startDate: string, uiCode: string}) => Promise<void>;
+  /**
    * requestPPPLoginMail operations
    * Renew PPP password and send the PPP login informations to the e-mail of the nicAdmin
    */
@@ -2090,6 +2118,11 @@ export interface Xdsl{
    * Resiliate the access
    */
   post(path: '/xdsl/{serviceName}/resiliate'): (params: {serviceName: string, resiliationDate?: string, resiliationSurvey: xdsl.ResiliationSurvey}) => Promise<xdsl.ResiliationFollowUpDetail>;
+  /**
+   * searchOrderMeetings operations
+   * Search for available line creation meeting time slots, for order only
+   */
+  post(path: '/xdsl/{serviceName}/searchOrderMeetings'): (params: {serviceName: string}) => Promise<xdsl.AsyncTask<connectivity.eligibility.Meetings>>;
   /**
    * sendOrderToProvider operations
    * Unlock order in "waitingCustomer" status. It only concerns orders whose modem is sent before anything have been forwarded to our provider

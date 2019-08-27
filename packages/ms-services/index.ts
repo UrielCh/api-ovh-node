@@ -191,7 +191,7 @@ export namespace msServices {
         todoDate: string;
     }
     // type fullname: msServices.TaskFunctionEnum
-    export type TaskFunctionEnum = "activateADSync" | "activateSharepoint" | "addADAccount" | "addADOU" | "addADSyncAccount" | "addADUPNSuffix" | "changeADPassword" | "changeADSyncPassword" | "deactivateADSync" | "delADOU" | "deleteADAccount" | "deleteADSyncAccount" | "deleteADUPNSuffix" | "disableADAccountMfa" | "disableADAccountMfaTemporary" | "enableADAccountMfa" | "enableADSyncAccount" | "generateADSyncClientUrl" | "resetADAccountMfa" | "setADAccount" | "setPasswordPolicy"
+    export type TaskFunctionEnum = "activateADSync" | "activateSharepoint" | "addADAccount" | "addADOU" | "addADSyncAccount" | "addADUPNSuffix" | "alterMfaOnAllUsers" | "changeADPassword" | "changeADSyncPassword" | "configureExchangeOwaMfa" | "deactivateADSync" | "delADOU" | "deleteADAccount" | "deleteADSyncAccount" | "deleteADUPNSuffix" | "disableADAccountMfa" | "disableADAccountMfaTemporary" | "enableADAccountMfa" | "enableADSyncAccount" | "generateADSyncClientUrl" | "resetADAccountMfa" | "setADAccount" | "setPasswordPolicy"
     // type fullname: msServices.TaskStatusEnum
     export type TaskStatusEnum = "cancelled" | "doing" | "done" | "error" | "todo"
     // type fullname: msServices.UPNStateEnum
@@ -357,6 +357,10 @@ export interface MsServices{
                 }
             };
         }
+        createMfaOnAllUsers: {
+            // POST /msServices/{serviceName}/createMfaOnAllUsers
+            $post(): Promise<msServices.Task>;
+        }
         exchange: {
             // GET /msServices/{serviceName}/exchange
             $get(): Promise<msServices.ExchangeService>;
@@ -374,6 +378,10 @@ export interface MsServices{
                     $get(): Promise<msServices.exchangeTask>;
                 };
             }
+        }
+        removeMfaOnAllUsers: {
+            // POST /msServices/{serviceName}/removeMfaOnAllUsers
+            $post(): Promise<msServices.Task>;
         }
         sharepoint: {
             // GET /msServices/{serviceName}/sharepoint
@@ -663,6 +671,16 @@ export interface MsServices{
    * Configure sync account to be operational
    */
   post(path: '/msServices/{serviceName}/account/{userPrincipalName}/sync/configure'): (params: {serviceName: string, userPrincipalName: string}) => Promise<msServices.Task>;
+  /**
+   * createMfaOnAllUsers operations
+   * Create Mfa on all accounts.
+   */
+  post(path: '/msServices/{serviceName}/createMfaOnAllUsers'): (params: {serviceName: string}) => Promise<msServices.Task>;
+  /**
+   * removeMfaOnAllUsers operations
+   * Remove Mfa on all accounts.
+   */
+  post(path: '/msServices/{serviceName}/removeMfaOnAllUsers'): (params: {serviceName: string}) => Promise<msServices.Task>;
   /**
    * restoreAdminRights operations
    * Restore administrator rights

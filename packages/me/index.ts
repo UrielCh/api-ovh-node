@@ -758,6 +758,30 @@ export namespace me {
         // type fullname: me.SupportLevel.LevelTypeEnum
         export type LevelTypeEnum = "standard" | "premium" | "premium-accredited" | "business" | "enterprise"
     }
+    export namespace billing {
+        export namespace group {
+            // interface fullName: me.billing.group.BillingGroup.BillingGroup
+            export interface BillingGroup {
+                contactId?: number;
+                creationDate: string;
+                groupId: number;
+                lastUpdate: string;
+                name: string;
+                paymentMethodId?: number;
+            }
+            // interface fullName: me.billing.group.Service.Service
+            export interface Service {
+                groupId: number;
+                serviceId: number;
+            }
+            export namespace service {
+                // interface fullName: me.billing.group.service.Create.Create
+                export interface Create {
+                    serviceId: number;
+                }
+            }
+        }
+    }
     export namespace consent {
         // interface fullName: me.consent.Campaign.Campaign
         export interface Campaign {
@@ -1594,6 +1618,32 @@ export interface Me{
         };
     }
     billing: {
+        group: {
+            // GET /me/billing/group
+            $get(params?: {name?: string}): Promise<number[]>;
+            // POST /me/billing/group
+            $post(params?: {contactId?: number, creationDate?: string, groupId?: number, lastUpdate?: string, name?: string, paymentMethodId?: number}): Promise<me.billing.group.BillingGroup>;
+            $(groupId: number): {
+                // DELETE /me/billing/group/{groupId}
+                $delete(): Promise<void>;
+                // GET /me/billing/group/{groupId}
+                $get(): Promise<me.billing.group.BillingGroup>;
+                // PUT /me/billing/group/{groupId}
+                $put(params?: {contactId?: number, creationDate?: string, groupId?: number, lastUpdate?: string, name?: string, paymentMethodId?: number}): Promise<void>;
+                service: {
+                    // GET /me/billing/group/{groupId}/service
+                    $get(): Promise<number[]>;
+                    // POST /me/billing/group/{groupId}/service
+                    $post(params: {serviceId: number}): Promise<me.billing.group.Service>;
+                    $(serviceId: number): {
+                        // DELETE /me/billing/group/{groupId}/service/{serviceId}
+                        $delete(): Promise<void>;
+                        // GET /me/billing/group/{groupId}/service/{serviceId}
+                        $get(): Promise<me.billing.group.Service>;
+                    };
+                }
+            };
+        }
         invoicesByPostalMail: {
             // GET /me/billing/invoicesByPostalMail
             $get(): Promise<boolean>;
@@ -2604,6 +2654,26 @@ export interface Me{
    */
   get(path: '/me/bill/{billId}/payment'): (params: {billId: string}) => Promise<billing.Payment>;
   /**
+   * Manage billing groups
+   * Retrieve all billing groups
+   */
+  get(path: '/me/billing/group'): (params?: {name?: string}) => Promise<number[]>;
+  /**
+   * Manage billing groups
+   * Retrieve information about a billing group
+   */
+  get(path: '/me/billing/group/{groupId}'): (params: {groupId: number}) => Promise<me.billing.group.BillingGroup>;
+  /**
+   * 
+   * Retrieve billing group service ID list
+   */
+  get(path: '/me/billing/group/{groupId}/service'): (params: {groupId: number}) => Promise<number[]>;
+  /**
+   * 
+   * Retrieve information about a billing group service
+   */
+  get(path: '/me/billing/group/{groupId}/service/{serviceId}'): (params: {groupId: number, serviceId: number}) => Promise<me.billing.group.Service>;
+  /**
    * invoicesByPostalMail operations
    * Send invoices through postal mail
    */
@@ -3304,6 +3374,11 @@ export interface Me{
    */
   put(path: '/me/autorenew'): (params?: {active?: boolean, lastRenew?: string, renewDay?: number}) => Promise<void>;
   /**
+   * Manage billing groups
+   * Edit billing group
+   */
+  put(path: '/me/billing/group/{groupId}'): (params: {groupId: number, contactId?: number, creationDate?: string, lastUpdate?: string, name?: string, paymentMethodId?: number}) => Promise<void>;
+  /**
    * Get decision value for a consent campaign
    * Update decision of a consent campaign
    */
@@ -3518,6 +3593,16 @@ export interface Me{
    * Create an order in order to pay this order's debt
    */
   post(path: '/me/bill/{billId}/debt/pay'): (params: {billId: string}) => Promise<billing.Order>;
+  /**
+   * Manage billing groups
+   * Create a new billing group
+   */
+  post(path: '/me/billing/group'): (params?: {contactId?: number, creationDate?: string, groupId?: number, lastUpdate?: string, name?: string, paymentMethodId?: number}) => Promise<me.billing.group.BillingGroup>;
+  /**
+   * 
+   * Associate a service to a billing group
+   */
+  post(path: '/me/billing/group/{groupId}/service'): (params: {groupId: number, serviceId: number}) => Promise<me.billing.group.Service>;
   /**
    * invoicesByPostalMail operations
    * Enable or disable invoices by postal mail
@@ -3858,6 +3943,16 @@ export interface Me{
    * Remove this credential
    */
   delete(path: '/me/api/credential/{credentialId}'): (params: {credentialId: number}) => Promise<void>;
+  /**
+   * Manage billing groups
+   * Delete a billing group
+   */
+  delete(path: '/me/billing/group/{groupId}'): (params: {groupId: number}) => Promise<void>;
+  /**
+   * 
+   * Unlink a service from a billing group
+   */
+  delete(path: '/me/billing/group/{groupId}/service/{serviceId}'): (params: {groupId: number, serviceId: number}) => Promise<void>;
   /**
    * List of documents added on your account
    * Delete a document

@@ -537,6 +537,11 @@ export namespace cloud {
         }
         // type fullname: cloud.instance.MonthlyBillingStatusEnum
         export type MonthlyBillingStatusEnum = "activationPending" | "ok"
+        // interface fullName: cloud.instance.MonthlyInstanceBulkParams.MonthlyInstanceBulkParams
+        export interface MonthlyInstanceBulkParams {
+            instanceId: string;
+            region: string;
+        }
         // interface fullName: cloud.instance.NetworkBulkParams.NetworkBulkParams
         export interface NetworkBulkParams {
             networkId: string;
@@ -1291,7 +1296,7 @@ export namespace service {
     // type fullname: service.TerminationFutureUseEnum
     export type TerminationFutureUseEnum = "NOT_REPLACING_SERVICE" | "OTHER" | "SUBSCRIBE_AN_OTHER_SERVICE" | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR" | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
     // type fullname: service.TerminationReasonEnum
-    export type TerminationReasonEnum = "FEATURES_DONT_SUIT_ME" | "LACK_OF_PERFORMANCES" | "MIGRATED_TO_ANOTHER_OVH_PRODUCT" | "MIGRATED_TO_COMPETITOR" | "NOT_NEEDED_ANYMORE" | "NOT_RELIABLE" | "NO_ANSWER" | "OTHER" | "TOO_EXPENSIVE" | "TOO_HARD_TO_USE" | "UNSATIFIED_BY_CUSTOMER_SUPPORT"
+    export type TerminationReasonEnum = "FEATURES_DONT_SUIT_ME" | "LACK_OF_PERFORMANCES" | "MIGRATED_TO_ANOTHER_OVH_PRODUCT" | "MIGRATED_TO_COMPETITOR" | "NOT_ENOUGH_RECOGNITION" | "NOT_NEEDED_ANYMORE" | "NOT_RELIABLE" | "NO_ANSWER" | "OTHER" | "PRODUCT_DIMENSION_DONT_SUIT_ME" | "PRODUCT_TOOLS_DONT_SUIT_ME" | "TOO_EXPENSIVE" | "TOO_HARD_TO_USE" | "UNSATIFIED_BY_CUSTOMER_SUPPORT"
 }
 export namespace services {
     // interface fullName: services.Service.Service
@@ -1365,6 +1370,10 @@ export interface Cloud{
                     // GET /cloud/project/{serviceName}/acl/{accountId}
                     $get(): Promise<cloud.Acl>;
                 };
+            }
+            activateMonthlyBilling: {
+                // POST /cloud/project/{serviceName}/activateMonthlyBilling
+                $post(params: {instances: cloud.instance.MonthlyInstanceBulkParams[]}): Promise<cloud.instance.InstanceDetail[]>;
             }
             alerting: {
                 // GET /cloud/project/{serviceName}/alerting
@@ -2563,6 +2572,11 @@ export interface Cloud{
    */
   post(path: '/cloud/project/{serviceName}/acl'): (params: {serviceName: string, accountId: string, type: cloud.AclTypeEnum}) => Promise<cloud.Acl>;
   /**
+   * Missing description
+   * Activate monthly billing on multiple instances
+   */
+  post(path: '/cloud/project/{serviceName}/activateMonthlyBilling'): (params: {serviceName: string, instances: cloud.instance.MonthlyInstanceBulkParams[]}) => Promise<cloud.instance.InstanceDetail[]>;
+  /**
    * List the cloud.Alerting objects
    * Add new alert
    */
@@ -2604,7 +2618,7 @@ export interface Cloud{
   post(path: '/cloud/project/{serviceName}/instance'): (params: {serviceName: string, flavorId: string, groupId?: string, imageId?: string, monthlyBilling?: boolean, name: string, networks?: cloud.instance.NetworkParams[], region: string, sshKeyId?: string, userData?: string, volumeId?: string}) => Promise<cloud.instance.InstanceDetail>;
   /**
    * Missing description
-   * Active monthly billing on instance
+   * Activate monthly billing on instance
    */
   post(path: '/cloud/project/{serviceName}/instance/{instanceId}/activeMonthlyBilling'): (params: {instanceId: string, serviceName: string}) => Promise<cloud.instance.InstanceDetail>;
   /**

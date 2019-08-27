@@ -2971,6 +2971,20 @@ export interface Order{
                 };
             };
         }
+        hostingReseller: {
+            // GET /order/upgrade/hostingReseller
+            $get(): Promise<string[]>;
+            $(serviceName: string): {
+                // GET /order/upgrade/hostingReseller/{serviceName}
+                $get(): Promise<order.cart.GenericProductDefinition[]>;
+                $(planCode: string): {
+                    // GET /order/upgrade/hostingReseller/{serviceName}/{planCode}
+                    $get(params: {quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    // POST /order/upgrade/hostingReseller/{serviceName}/{planCode}
+                    $post(params: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                };
+            };
+        }
         ipLoadbalancing: {
             // GET /order/upgrade/ipLoadbalancing
             $get(): Promise<string[]>;
@@ -5107,6 +5121,21 @@ export interface Order{
    */
   get(path: '/order/upgrade/cephaas/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, quantity: number}) => Promise<order.upgrade.order_upgrade_OperationAndOrder>;
   /**
+   * Operations about the HOSTING_RESELLER service
+   * List available services
+   */
+  get(path: '/order/upgrade/hostingReseller'): () => Promise<string[]>;
+  /**
+   * Listing offers /order/upgrade/hostingReseller
+   * Retrieve available offers to upgrade your service to
+   */
+  get(path: '/order/upgrade/hostingReseller/{serviceName}'): (params: {serviceName: string}) => Promise<order.cart.GenericProductDefinition[]>;
+  /**
+   * Listing offers /order/upgrade/hostingReseller/#serviceName#
+   * Get a provisional order for the selected upgrade of your service
+   */
+  get(path: '/order/upgrade/hostingReseller/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, quantity: number}) => Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+  /**
    * Operations about the IPLB service
    * List available services
    */
@@ -6466,6 +6495,11 @@ export interface Order{
    * Perform the requested upgrade of your service
    */
   post(path: '/order/upgrade/cephaas/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, autoPayWithPreferredPaymentMethod?: boolean, quantity: number}) => Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+  /**
+   * Listing offers /order/upgrade/hostingReseller/#serviceName#
+   * Perform the requested upgrade of your service
+   */
+  post(path: '/order/upgrade/hostingReseller/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, autoPayWithPreferredPaymentMethod?: boolean, quantity: number}) => Promise<order.upgrade.order_upgrade_OperationAndOrder>;
   /**
    * Listing offers /order/upgrade/ipLoadbalancing/#serviceName#
    * Perform the requested upgrade of your service
