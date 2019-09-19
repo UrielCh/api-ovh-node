@@ -1,0 +1,45 @@
+{
+  "name": "ovh-dump-telephony",
+  "version": "1.0.0",
+  "description": "get Current month OVH telephony activity",
+  "main": "index.js",
+  "keywords": [
+    "ovh",
+    "telepnomy"
+  ],
+  "typings": "index.d.ts",
+  "license": "MIT",
+  "author": "Uriel Chemouni <uchemouni@gmail.com>",
+  "bin": {
+    "ovh-bill-importer": "./bin/ovh-dump-telephony"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UrielCh/api-ovh-node.git"
+  },
+  "bugs": "https://github.com/UrielCh/api-ovh-node/issues",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch"
+  },
+  "dependencies": {
+    "@ovh-api/api": "^2.0.0",
+    "@ovh-api/telephony": "^2.0.4",
+    "@ovh-api/common": "^1.3.0",
+    "@ovh-api/me": "^2.0.4",
+    "bluebird": "^3.5.5",
+    "commander": "^2.20.0",
+    "fs-extra": "^8.1.0"
+  },
+  "devDependencies": {
+    "@types/bluebird": "^3.5.27",
+    "@types/commander": "^2.12.2",
+    "@types/fs-extra": "^8.0.0",
+    "@types/node-fetch": "^2.5.0",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.5.3"
+  }
+}
