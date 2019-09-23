@@ -1,7 +1,7 @@
 {
     "name": "@ovh-api/xdsl",
     "description": "Add typing to to ovh api xdsl",
-    "version": "2.0.7",
+    "version": "2.0.8",
     "typings": "index.d.ts",
     "license": "MIT",
     "author": "Uriel Chemouni <uchemouni@gmail.com>",
