@@ -58,13 +58,11 @@ export namespace api {
 export namespace auth {
     // interface fullName: auth.AccessRule.AccessRule
     export interface AccessRule {
-        method: auth.MethodEnum;
+        method: http.MethodEnum;
         path: string;
     }
     // type fullname: auth.CredentialStateEnum
     export type CredentialStateEnum = "expired" | "pendingValidation" | "refused" | "validated"
-    // type fullname: auth.MethodEnum
-    export type MethodEnum = "DELETE" | "GET" | "POST" | "PUT"
 }
 export namespace billing {
     // interface fullName: billing.AutomaticPaymentMean.AutomaticPaymentMean
@@ -81,6 +79,7 @@ export namespace billing {
         defaultPaymentMean: boolean;
         description?: string;
         iban: string;
+        icon?: billing.paymentMethod.IconData;
         id: number;
         mandateSignatureDate?: string;
         ownerAddress: string;
@@ -126,6 +125,7 @@ export namespace billing {
         defaultPaymentMean: boolean;
         description?: string;
         expirationDate: string;
+        icon?: billing.paymentMethod.IconData;
         id: number;
         number: string;
         state: billing.CreditCardStateEnum;
@@ -139,6 +139,7 @@ export namespace billing {
         creationDate: string;
         defaultPaymentMean: boolean;
         description?: string;
+        icon?: billing.paymentMethod.IconData;
         id: number;
         label?: string;
         state: billing.DeferredPaymentAccountStatusEnum;
@@ -301,6 +302,7 @@ export namespace billing {
         defaultPaymentMean: boolean;
         description?: string;
         email: string;
+        icon?: billing.paymentMethod.IconData;
         id: number;
         state: billing.PaypalStateEnum;
     }
@@ -390,6 +392,7 @@ export namespace billing {
         // interface fullName: billing.credit.Balance.Balance
         export interface Balance {
             amount: orderPrice;
+            balanceDetails: billing.credit.balance.BalanceDetail[];
             balanceName: string;
             booked: billing.credit.balance.BookedMovement[];
             creationDate: string;
@@ -399,6 +402,11 @@ export namespace billing {
             type: billing.credit.balance.Type;
         }
         export namespace balance {
+            // interface fullName: billing.credit.balance.BalanceDetail.BalanceDetail
+            export interface BalanceDetail {
+                amount: orderPrice;
+                serviceId?: number;
+            }
             // interface fullName: billing.credit.balance.BookedMovement.BookedMovement
             export interface BookedMovement {
                 amount: orderPrice;
@@ -506,6 +514,11 @@ export namespace billing {
         export type OperationEnum = "cancel-credit" | "cancel-debit" | "cancel-pre-debit" | "credit" | "debit" | "pre-credit" | "pre-debit"
     }
     export namespace paymentMethod {
+        // interface fullName: billing.paymentMethod.IconData.IconData
+        export interface IconData {
+            data?: string;
+            name?: string;
+        }
         // type fullname: billing.paymentMethod.PaymentSubTypeEnum
         export type PaymentSubTypeEnum = "AMERICAN_EXPRESS" | "MASTERCARD" | "VISA"
         // type fullname: billing.paymentMethod.PaymentTypeEnum
@@ -889,6 +902,9 @@ export namespace me {
             export namespace Register {
                 // interface fullName: me.payment.method.Register.ValidationResult.ValidationResult
                 export interface ValidationResult {
+                    formSessionId?: string;
+                    merchantId?: string;
+                    organizationId?: string;
                     paymentMethodId: number;
                     url?: string;
                     validationType: paymentmethodIntegrationType;
@@ -1311,7 +1327,7 @@ export namespace payment {
             name?: string;
         }
         // type fullname: payment.method.IntegrationType
-        export type IntegrationType = "DONE" | "IFRAME_VANTIV" | "REDIRECT"
+        export type IntegrationType = "DONE" | "IFRAME_VANTIV" | "IN_CONTEXT" | "REDIRECT"
     }
 }
 export namespace telephony {
@@ -2164,7 +2180,7 @@ export interface Me{
                 }
                 finalize: {
                     // POST /me/payment/method/{paymentMethodId}/finalize
-                    $post(params?: {expirationMonth?: number, expirationYear?: number, registrationId?: string}): Promise<me.payment.method.PaymentMethod>;
+                    $post(params?: {expirationMonth?: number, expirationYear?: number, formSessionId?: string, registrationId?: string}): Promise<me.payment.method.PaymentMethod>;
                 }
             };
         }
@@ -2189,7 +2205,7 @@ export interface Me{
                 // GET /me/paymentMean/bankAccount/{id}
                 $get(): Promise<billing.BankAccount>;
                 // PUT /me/paymentMean/bankAccount/{id}
-                $put(params?: {bic?: string, creationDate?: string, defaultPaymentMean?: boolean, description?: string, iban?: string, id?: number, mandateSignatureDate?: string, ownerAddress?: string, ownerName?: string, state?: billing.BankAccountStateEnum, uniqueReference?: string, validationDocumentLink?: string}): Promise<void>;
+                $put(params?: {bic?: string, creationDate?: string, defaultPaymentMean?: boolean, description?: string, iban?: string, icon?: billing.paymentMethod.IconData, id?: number, mandateSignatureDate?: string, ownerAddress?: string, ownerName?: string, state?: billing.BankAccountStateEnum, uniqueReference?: string, validationDocumentLink?: string}): Promise<void>;
                 challenge: {
                     // POST /me/paymentMean/bankAccount/{id}/challenge
                     $post(params: {challenge: string}): Promise<void>;
@@ -2211,7 +2227,7 @@ export interface Me{
                 // GET /me/paymentMean/creditCard/{id}
                 $get(): Promise<billing.CreditCard>;
                 // PUT /me/paymentMean/creditCard/{id}
-                $put(params?: {defaultPaymentMean?: boolean, description?: string, expirationDate?: string, id?: number, number?: string, state?: billing.CreditCardStateEnum, threeDsValidated?: boolean, type?: string}): Promise<void>;
+                $put(params?: {defaultPaymentMean?: boolean, description?: string, expirationDate?: string, icon?: billing.paymentMethod.IconData, id?: number, number?: string, state?: billing.CreditCardStateEnum, threeDsValidated?: boolean, type?: string}): Promise<void>;
                 challenge: {
                     // POST /me/paymentMean/creditCard/{id}/challenge
                     $post(params: {challenge: string}): Promise<void>;
@@ -2229,7 +2245,7 @@ export interface Me{
                 // GET /me/paymentMean/deferredPaymentAccount/{id}
                 $get(): Promise<billing.DeferredPaymentAccount>;
                 // PUT /me/paymentMean/deferredPaymentAccount/{id}
-                $put(params?: {creationDate?: string, defaultPaymentMean?: boolean, description?: string, id?: number, label?: string, state?: billing.DeferredPaymentAccountStatusEnum}): Promise<void>;
+                $put(params?: {creationDate?: string, defaultPaymentMean?: boolean, description?: string, icon?: billing.paymentMethod.IconData, id?: number, label?: string, state?: billing.DeferredPaymentAccountStatusEnum}): Promise<void>;
                 chooseAsDefaultPaymentMean: {
                     // POST /me/paymentMean/deferredPaymentAccount/{id}/chooseAsDefaultPaymentMean
                     $post(): Promise<void>;
@@ -2247,7 +2263,7 @@ export interface Me{
                 // GET /me/paymentMean/paypal/{id}
                 $get(): Promise<billing.Paypal>;
                 // PUT /me/paymentMean/paypal/{id}
-                $put(params?: {agreementId?: string, creationDate?: string, defaultPaymentMean?: boolean, description?: string, email?: string, id?: number, state?: billing.PaypalStateEnum}): Promise<void>;
+                $put(params?: {agreementId?: string, creationDate?: string, defaultPaymentMean?: boolean, description?: string, email?: string, icon?: billing.paymentMethod.IconData, id?: number, state?: billing.PaypalStateEnum}): Promise<void>;
                 challenge: {
                     // POST /me/paymentMean/paypal/{id}/challenge
                     $post(params: {challenge: string}): Promise<void>;
@@ -3447,22 +3463,22 @@ export interface Me{
    * SEPA bank account info
    * Alter this object properties
    */
-  put(path: '/me/paymentMean/bankAccount/{id}'): (params: {id: number, bic?: string, creationDate?: string, defaultPaymentMean?: boolean, description?: string, iban?: string, mandateSignatureDate?: string, ownerAddress?: string, ownerName?: string, state?: billing.BankAccountStateEnum, uniqueReference?: string, validationDocumentLink?: string}) => Promise<void>;
+  put(path: '/me/paymentMean/bankAccount/{id}'): (params: {id: number, bic?: string, creationDate?: string, defaultPaymentMean?: boolean, description?: string, iban?: string, icon?: billing.paymentMethod.IconData, mandateSignatureDate?: string, ownerAddress?: string, ownerName?: string, state?: billing.BankAccountStateEnum, uniqueReference?: string, validationDocumentLink?: string}) => Promise<void>;
   /**
    * Credit card informations
    * Alter this object properties
    */
-  put(path: '/me/paymentMean/creditCard/{id}'): (params: {id: number, defaultPaymentMean?: boolean, description?: string, expirationDate?: string, number?: string, state?: billing.CreditCardStateEnum, threeDsValidated?: boolean, type?: string}) => Promise<void>;
+  put(path: '/me/paymentMean/creditCard/{id}'): (params: {id: number, defaultPaymentMean?: boolean, description?: string, expirationDate?: string, icon?: billing.paymentMethod.IconData, number?: string, state?: billing.CreditCardStateEnum, threeDsValidated?: boolean, type?: string}) => Promise<void>;
   /**
    * Deferred payment account info
    * Alter this object properties
    */
-  put(path: '/me/paymentMean/deferredPaymentAccount/{id}'): (params: {id: number, creationDate?: string, defaultPaymentMean?: boolean, description?: string, label?: string, state?: billing.DeferredPaymentAccountStatusEnum}) => Promise<void>;
+  put(path: '/me/paymentMean/deferredPaymentAccount/{id}'): (params: {id: number, creationDate?: string, defaultPaymentMean?: boolean, description?: string, icon?: billing.paymentMethod.IconData, label?: string, state?: billing.DeferredPaymentAccountStatusEnum}) => Promise<void>;
   /**
    * Paypal account info
    * Alter this object properties
    */
-  put(path: '/me/paymentMean/paypal/{id}'): (params: {id: number, agreementId?: string, creationDate?: string, defaultPaymentMean?: boolean, description?: string, email?: string, state?: billing.PaypalStateEnum}) => Promise<void>;
+  put(path: '/me/paymentMean/paypal/{id}'): (params: {id: number, agreementId?: string, creationDate?: string, defaultPaymentMean?: boolean, description?: string, email?: string, icon?: billing.paymentMethod.IconData, state?: billing.PaypalStateEnum}) => Promise<void>;
   /**
    * Customer public SSH key, can be used for rescue netboot or server access after reinstallation
    * Alter this object properties
@@ -3777,7 +3793,7 @@ export interface Me{
    * Finalize one payment method registration
    * Finalize one payment method registration
    */
-  post(path: '/me/payment/method/{paymentMethodId}/finalize'): (params: {paymentMethodId: number, expirationMonth?: number, expirationYear?: number, registrationId?: string}) => Promise<me.payment.method.PaymentMethod>;
+  post(path: '/me/payment/method/{paymentMethodId}/finalize'): (params: {paymentMethodId: number, expirationMonth?: number, expirationYear?: number, formSessionId?: string, registrationId?: string}) => Promise<me.payment.method.PaymentMethod>;
   /**
    * List the billing.BankAccount objects
    * Enable payment through a new account

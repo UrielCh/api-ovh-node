@@ -15,7 +15,7 @@ async function main() {
     // All existing API
     let apiSet = new Set(allApi);
 
-    // debug gen a aubset of API
+    // debug gen a subset of API
     if (false)
         apis = apis.filter((api) => {
             //return ~api.indexOf('veeam')

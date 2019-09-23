@@ -85,7 +85,7 @@ export namespace dedicated {
     // type fullname: dedicated.StatusEnum
     export type StatusEnum = "disable" | "enable"
     // type fullname: dedicated.TaskFunctionEnum
-    export type TaskFunctionEnum = "addVirtualMac" | "addWindowSplaFromExistingSerial" | "applyBackupFtpAcls" | "applyBackupFtpQuota" | "bypassAntiDDosGame" | "changePasswordBackupFTP" | "changeRipeOrg" | "checkAndReleaseIp" | "createBackupFTP" | "createOrUpdateRipeOrg" | "createPrivateNetwork" | "disableFirewall" | "enableFirewall" | "genericMoveFloatingIp" | "hardReboot" | "migrateBackupFTP" | "moveFloatingIp" | "moveVirtualMac" | "rebootPower8To" | "reinstallServer" | "releaseIp" | "removeBackupFTP" | "removeVirtualMac" | "requestAccessIPMI" | "resetIPMI" | "resetIPMISession" | "testIPMIhttp" | "testIPMIpassword" | "testIPMIping" | "virtualMacAdd" | "virtualMacDelete"
+    export type TaskFunctionEnum = "INFRA_002_VirtualNetworkInterface" | "addVirtualMac" | "addWindowSplaFromExistingSerial" | "applyBackupFtpAcls" | "applyBackupFtpQuota" | "bypassAntiDDosGame" | "changePasswordBackupFTP" | "changeRipeOrg" | "checkAndReleaseIp" | "createBackupFTP" | "createOrUpdateRipeOrg" | "createPrivateNetwork" | "disableFirewall" | "enableFirewall" | "genericMoveFloatingIp" | "hardReboot" | "migrateBackupFTP" | "moveFloatingIp" | "moveVirtualMac" | "rebootPower8To" | "reinstallServer" | "releaseIp" | "removeBackupFTP" | "removeVirtualMac" | "requestAccessIPMI" | "resetIPMI" | "resetIPMISession" | "testIPMIhttp" | "testIPMIpassword" | "testIPMIping" | "virtualMacAdd" | "virtualMacDelete"
     // type fullname: dedicated.TaskStatusEnum
     export type TaskStatusEnum = "cancelled" | "customerError" | "doing" | "done" | "init" | "ovhError" | "todo"
     export namespace networkInterfaceController {
@@ -93,9 +93,10 @@ export namespace dedicated {
         export interface NetworkInterfaceController {
             linkType: dedicated.networkInterfaceController.NetworkInterfaceControllerLinkTypeEnum;
             mac: string;
+            virtualNetworkInterface?: string;
         }
         // type fullname: dedicated.networkInterfaceController.NetworkInterfaceControllerLinkTypeEnum
-        export type NetworkInterfaceControllerLinkTypeEnum = "private" | "public"
+        export type NetworkInterfaceControllerLinkTypeEnum = "isolated" | "private" | "private_lag" | "provisioning" | "public"
     }
     export namespace server {
         // interface fullName: dedicated.server.Access.Access
@@ -400,10 +401,16 @@ export namespace dedicated {
         export interface NetworkSpecifications {
             bandwidth?: dedicated.server.BandwidthDetails;
             connection?: complexType.UnitAndValue<number>;
+            ola?: dedicated.server.OlaDetails;
             routing?: dedicated.server.RoutingDetails;
             switching?: dedicated.server.SwitchingDetails;
             traffic?: dedicated.server.TrafficDetails;
             vrack?: dedicated.server.BandwidthvRackDetails;
+        }
+        // interface fullName: dedicated.server.OlaDetails.OlaDetails
+        export interface OlaDetails {
+            available: boolean;
+            supportedModes?: dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum[];
         }
         // interface fullName: dedicated.server.Option.Option
         export interface Option {
@@ -746,14 +753,16 @@ export namespace dedicated {
     export namespace virtualNetworkInterface {
         // interface fullName: dedicated.virtualNetworkInterface.VirtualNetworkInterface.VirtualNetworkInterface
         export interface VirtualNetworkInterface {
+            enabled: boolean;
             mode: dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum;
             name: string;
+            networkInterfaceController: string[];
             serverName: string;
             uuid: string;
             vrack?: string;
         }
         // type fullname: dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum
-        export type VirtualNetworkInterfaceModeEnum = "public" | "vrack"
+        export type VirtualNetworkInterfaceModeEnum = "public" | "vrack" | "vrack_aggregation"
     }
 }
 export namespace license {
@@ -1414,10 +1423,12 @@ export interface Dedicated{
             }
             virtualNetworkInterface: {
                 // GET /dedicated/server/{serviceName}/virtualNetworkInterface
-                $get(params?: {mode?: dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum, name?: string, vrack?: string}): Promise<string[]>;
+                $get(params?: {enabled?: boolean, mode?: dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum, name?: string, vrack?: string}): Promise<string[]>;
                 $(uuid: string): {
                     // GET /dedicated/server/{serviceName}/virtualNetworkInterface/{uuid}
                     $get(): Promise<dedicated.virtualNetworkInterface.VirtualNetworkInterface>;
+                    // PUT /dedicated/server/{serviceName}/virtualNetworkInterface/{uuid}
+                    $put(params?: {enabled?: boolean, mode?: dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum, name?: string, networkInterfaceController?: string[], serverName?: string, uuid?: string, vrack?: string}): Promise<void>;
                 };
             }
             vrack: {
@@ -1911,7 +1922,7 @@ export interface Dedicated{
    * List the dedicated.virtualNetworkInterface.VirtualNetworkInterface objects
    * List server VirtualNetworkInterfaces
    */
-  get(path: '/dedicated/server/{serviceName}/virtualNetworkInterface'): (params: {serviceName: string, mode?: dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum, name?: string, vrack?: string}) => Promise<string[]>;
+  get(path: '/dedicated/server/{serviceName}/virtualNetworkInterface'): (params: {serviceName: string, enabled?: boolean, mode?: dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum, name?: string, vrack?: string}) => Promise<string[]>;
   /**
    * Your VirtualNetworkInterface
    * Get this object properties
@@ -2007,6 +2018,11 @@ export interface Dedicated{
    * Alter this object properties
    */
   put(path: '/dedicated/server/{serviceName}/spla/{id}'): (params: {id: number, serviceName: string, lastUpdate?: string, serialNumber?: string, status?: dedicated.server.SplaStatusEnum, type?: dedicated.server.SplaTypeEnum}) => Promise<void>;
+  /**
+   * Your VirtualNetworkInterface
+   * Alter this object properties
+   */
+  put(path: '/dedicated/server/{serviceName}/virtualNetworkInterface/{uuid}'): (params: {serviceName: string, uuid: string, enabled?: boolean, mode?: dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum, name?: string, networkInterfaceController?: string[], serverName?: string, vrack?: string}) => Promise<void>;
   /**
    * authenticationSecret operations
    * Retrieve secret to connect to the server / application

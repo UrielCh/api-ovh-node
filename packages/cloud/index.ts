@@ -91,6 +91,19 @@ export namespace cloud {
     }
     // type fullname: cloud.IpCountryEnum
     export type IpCountryEnum = "au" | "be" | "ca" | "cz" | "de" | "es" | "fi" | "fr" | "ie" | "it" | "lt" | "nl" | "pl" | "pt" | "sg" | "uk" | "us"
+    // interface fullName: cloud.Lab.Lab
+    export interface Lab {
+        id: string;
+        name: string;
+        status: cloud.LabStatus;
+    }
+    // interface fullName: cloud.LabAgreements.LabAgreements
+    export interface LabAgreements {
+        accepted: number[];
+        toAccept: number[];
+    }
+    // type fullname: cloud.LabStatus
+    export type LabStatus = "open" | "activating" | "activated" | "closed"
     // interface fullName: cloud.Operation.Operation
     export interface Operation {
         action: string;
@@ -473,6 +486,11 @@ export namespace cloud {
         }
         // type fullname: cloud.instance.ApplicationAccessStateEnum
         export type ApplicationAccessStateEnum = "installing" | "ok"
+        // interface fullName: cloud.instance.AutoBackup.AutoBackup
+        export interface AutoBackup {
+            cron: string;
+            rotation: number;
+        }
         // interface fullName: cloud.instance.Instance.Instance
         export interface Instance {
             created: string;
@@ -482,6 +500,7 @@ export namespace cloud {
             ipAddresses: cloud.instance.IpAddress[];
             monthlyBilling?: cloud.instance.MonthlyBilling;
             name: string;
+            operationIds: string[];
             planCode?: string;
             region: string;
             sshKeyId?: string;
@@ -496,6 +515,7 @@ export namespace cloud {
             ipAddresses: cloud.instance.IpAddress[];
             monthlyBilling?: cloud.instance.MonthlyBilling;
             name: string;
+            operationIds: string[];
             planCode?: string;
             region: string;
             sshKey: cloud.sshkey.SshKeyDetail;
@@ -904,6 +924,74 @@ export namespace cloud {
             detail: cloud.project.VolumeUsageDetail[];
             total: orderPrice;
         }
+        export namespace io {
+            export namespace stream {
+                // interface fullName: cloud.project.io.stream.Region.Region
+                export interface Region {
+                    endpoint: cloud.project.io.stream.RegionEndpoint;
+                    region: string;
+                }
+                // interface fullName: cloud.project.io.stream.RegionEndpoint.RegionEndpoint
+                export interface RegionEndpoint {
+                    pulsar: string;
+                }
+                // interface fullName: cloud.project.io.stream.Subscription.Subscription
+                export interface Subscription {
+                    id: string;
+                    kind: cloud.project.io.stream.SubscriptionKindEnum;
+                    name: string;
+                }
+                // interface fullName: cloud.project.io.stream.SubscriptionCreation.SubscriptionCreation
+                export interface SubscriptionCreation {
+                    name: string;
+                }
+                // type fullname: cloud.project.io.stream.SubscriptionKindEnum
+                export type SubscriptionKindEnum = "SHARED" | "KEY_SHARED" | "EXCLUSIVE" | "FAILOVER"
+                // interface fullName: cloud.project.io.stream.SubscriptionStats.SubscriptionStats
+                export interface SubscriptionStats {
+                    lag: number;
+                }
+                // interface fullName: cloud.project.io.stream.Token.Token
+                export interface Token {
+                    action: cloud.project.io.stream.TokenActionEnum;
+                    id: string;
+                    token: string;
+                }
+                // type fullname: cloud.project.io.stream.TokenActionEnum
+                export type TokenActionEnum = "CONSUME" | "PRODUCE" | "BOTH"
+                // interface fullName: cloud.project.io.stream.TokenCreation.TokenCreation
+                export interface TokenCreation {
+                    action: cloud.project.io.stream.TokenActionEnum;
+                }
+                // interface fullName: cloud.project.io.stream.Topic.Topic
+                export interface Topic {
+                    backlog: string;
+                    description: string;
+                    id: string;
+                    kind: cloud.project.io.stream.TopicKindEnum;
+                    name: string;
+                    regions: string[];
+                    retention: string;
+                    status: cloud.project.io.stream.TopicStatusEnum;
+                    throttling: number;
+                }
+                // interface fullName: cloud.project.io.stream.TopicCreation.TopicCreation
+                export interface TopicCreation {
+                    description: string;
+                    kind: cloud.project.io.stream.TopicKindEnum;
+                    name: string;
+                    region: string;
+                }
+                // type fullname: cloud.project.io.stream.TopicKindEnum
+                export type TopicKindEnum = "NON_PERSISTENT" | "PERSISTENT"
+                // interface fullName: cloud.project.io.stream.TopicStats.TopicStats
+                export interface TopicStats {
+                    usage: number;
+                }
+                // type fullname: cloud.project.io.stream.TopicStatusEnum
+                export type TopicStatusEnum = "INSTALLING" | "RUNNING" | "ERROR"
+            }
+        }
     }
     export namespace quota {
         // interface fullName: cloud.quota.AllowedQuota.AllowedQuota
@@ -1159,6 +1247,7 @@ export namespace cloud {
             creationDate: string;
             description: string;
             id: number;
+            roles: cloud.role.Role[];
             status: cloud.user.UserStatusEnum;
             username: string;
         }
@@ -1475,10 +1564,10 @@ export interface Cloud{
                 // GET /cloud/project/{serviceName}/instance
                 $get(params?: {region?: string}): Promise<cloud.instance.Instance[]>;
                 // POST /cloud/project/{serviceName}/instance
-                $post(params: {flavorId: string, groupId?: string, imageId?: string, monthlyBilling?: boolean, name: string, networks?: cloud.instance.NetworkParams[], region: string, sshKeyId?: string, userData?: string, volumeId?: string}): Promise<cloud.instance.InstanceDetail>;
+                $post(params: {autobackup?: cloud.instance.AutoBackup, flavorId: string, groupId?: string, imageId?: string, monthlyBilling?: boolean, name: string, networks?: cloud.instance.NetworkParams[], region: string, sshKeyId?: string, userData?: string, volumeId?: string}): Promise<cloud.instance.InstanceDetail>;
                 bulk: {
                     // POST /cloud/project/{serviceName}/instance/bulk
-                    $post(params: {flavorId: string, groupId?: string, imageId?: string, monthlyBilling?: boolean, name: string, networks?: cloud.instance.NetworkBulkParams[], number: number, region: string, sshKeyId?: string, userData?: string, volumeId?: string}): Promise<cloud.instance.Instance[]>;
+                    $post(params: {autobackup?: cloud.instance.AutoBackup, flavorId: string, groupId?: string, imageId?: string, monthlyBilling?: boolean, name: string, networks?: cloud.instance.NetworkBulkParams[], number: number, region: string, sshKeyId?: string, userData?: string, volumeId?: string}): Promise<cloud.instance.Instance[]>;
                 }
                 group: {
                     // GET /cloud/project/{serviceName}/instance/group
@@ -1863,9 +1952,9 @@ export interface Cloud{
                         // GET /cloud/project/{serviceName}/user/{userId}/role
                         $get(): Promise<cloud.role.Role[]>;
                         // POST /cloud/project/{serviceName}/user/{userId}/role
-                        $post(params: {roleId: string}): Promise<cloud.user.User>;
+                        $post(params: {roleId: string}): Promise<cloud.user.UserDetail>;
                         // PUT /cloud/project/{serviceName}/user/{userId}/role
-                        $put(params: {rolesIds: string[]}): Promise<cloud.user.User>;
+                        $put(params: {rolesIds: string[]}): Promise<cloud.user.UserDetail>;
                         $(roleId: string): {
                             // DELETE /cloud/project/{serviceName}/user/{userId}/role/{roleId}
                             $delete(): Promise<void>;
@@ -2087,7 +2176,7 @@ export interface Cloud{
    */
   get(path: '/cloud/project'): () => Promise<string[]>;
   /**
-   * Project
+   * Operations about the PUBLICCLOUD service
    * Get this object properties
    */
   get(path: '/cloud/project/{serviceName}'): (params: {serviceName: string}) => Promise<cloud.Project>;
@@ -2492,7 +2581,7 @@ export interface Cloud{
    */
   put(path: '/cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}'): (params: {pcaServiceName: string, serviceName: string, sessionId: string, endDate?: string, id?: string, login?: string, name?: string, size?: number, srcIp?: string, startDate?: string, state?: cloud.pca.SessionStateEnum}) => Promise<void>;
   /**
-   * Project
+   * Operations about the PUBLICCLOUD service
    * Alter this object properties
    */
   put(path: '/cloud/project/{serviceName}'): (params: {serviceName: string, access?: cloud.AccessTypeEnum, creationDate?: string, description?: string, expiration?: string, orderId?: number, planCode?: string, project_id?: string, status?: cloud.project.ProjectStatus, unleash?: boolean}) => Promise<void>;
@@ -2545,7 +2634,7 @@ export interface Cloud{
    * Missing description
    * Update roles of a user
    */
-  put(path: '/cloud/project/{serviceName}/user/{userId}/role'): (params: {serviceName: string, userId: number, rolesIds: string[]}) => Promise<cloud.user.User>;
+  put(path: '/cloud/project/{serviceName}/user/{userId}/role'): (params: {serviceName: string, userId: number, rolesIds: string[]}) => Promise<cloud.user.UserDetail>;
   /**
    * Missing description
    * Update a volume
@@ -2615,7 +2704,7 @@ export interface Cloud{
    * Missing description
    * Create a new instance
    */
-  post(path: '/cloud/project/{serviceName}/instance'): (params: {serviceName: string, flavorId: string, groupId?: string, imageId?: string, monthlyBilling?: boolean, name: string, networks?: cloud.instance.NetworkParams[], region: string, sshKeyId?: string, userData?: string, volumeId?: string}) => Promise<cloud.instance.InstanceDetail>;
+  post(path: '/cloud/project/{serviceName}/instance'): (params: {serviceName: string, autobackup?: cloud.instance.AutoBackup, flavorId: string, groupId?: string, imageId?: string, monthlyBilling?: boolean, name: string, networks?: cloud.instance.NetworkParams[], region: string, sshKeyId?: string, userData?: string, volumeId?: string}) => Promise<cloud.instance.InstanceDetail>;
   /**
    * Missing description
    * Activate monthly billing on instance
@@ -2680,7 +2769,7 @@ export interface Cloud{
    * Missing description
    * Create multiple instances
    */
-  post(path: '/cloud/project/{serviceName}/instance/bulk'): (params: {serviceName: string, flavorId: string, groupId?: string, imageId?: string, monthlyBilling?: boolean, name: string, networks?: cloud.instance.NetworkBulkParams[], number: number, region: string, sshKeyId?: string, userData?: string, volumeId?: string}) => Promise<cloud.instance.Instance[]>;
+  post(path: '/cloud/project/{serviceName}/instance/bulk'): (params: {serviceName: string, autobackup?: cloud.instance.AutoBackup, flavorId: string, groupId?: string, imageId?: string, monthlyBilling?: boolean, name: string, networks?: cloud.instance.NetworkBulkParams[], number: number, region: string, sshKeyId?: string, userData?: string, volumeId?: string}) => Promise<cloud.instance.Instance[]>;
   /**
    * Missing description
    * Create a group
@@ -2820,7 +2909,7 @@ export interface Cloud{
    * Missing description
    * Add a role to a user
    */
-  post(path: '/cloud/project/{serviceName}/user/{userId}/role'): (params: {serviceName: string, userId: number, roleId: string}) => Promise<cloud.user.User>;
+  post(path: '/cloud/project/{serviceName}/user/{userId}/role'): (params: {serviceName: string, userId: number, roleId: string}) => Promise<cloud.user.UserDetail>;
   /**
    * Missing description
    * Get token for user

@@ -14,7 +14,7 @@ export namespace dnssec {
         tag: number;
     }
     // type fullname: dnssec.KeyAlgorithmEnum
-    export type KeyAlgorithmEnum = 10 | 13 | 14 | 3 | 5 | 6 | 7 | 8
+    export type KeyAlgorithmEnum = 10 | 13 | 14 | 5 | 7 | 8
     // type fullname: dnssec.KeyFlagEnum
     export type KeyFlagEnum = 256 | 257
     // type fullname: dnssec.KeyStatusEnum

@@ -480,6 +480,7 @@ export namespace dedicatedCloud {
         // interface fullName: dedicatedCloud.disasterRecovery.LocalSiteDetails.LocalSiteDetails
         export interface LocalSiteDetails {
             role: dedicatedClouddisasterRecoverySiteRoleEnum;
+            state?: dedicatedCloudStateEnum;
             type: dedicatedClouddisasterRecoverySiteTypeEnum;
             zertoVersion: string;
             zvmIp?: string;

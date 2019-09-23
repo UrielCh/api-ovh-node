@@ -216,6 +216,18 @@ export namespace telephony {
         serviceName: string;
         serviceType: telephony.TypeServiceEnum;
     }
+    // interface fullName: telephony.CarrierSipClusterInfo.CarrierSipClusterInfo
+    export interface CarrierSipClusterInfo {
+        name: string;
+        zones: telephony.CarrierSipClusterZone[];
+    }
+    // interface fullName: telephony.CarrierSipClusterZone.CarrierSipClusterZone
+    export interface CarrierSipClusterZone {
+        mediaIps: string[];
+        region: telephony.CarrierSipClusterZoneRegionEnum;
+    }
+    // type fullname: telephony.CarrierSipClusterZoneRegionEnum
+    export type CarrierSipClusterZoneRegionEnum = "rbx" | "sbg"
     // interface fullName: telephony.CarrierSipCustomerEndpoint.CarrierSipCustomerEndpoint
     export interface CarrierSipCustomerEndpoint {
         id: number;
@@ -435,6 +447,15 @@ export namespace telephony {
     export interface DirectoryWayType {
         abbreviatedName: string;
         wayName: string;
+    }
+    // interface fullName: telephony.Document.Document
+    export interface Document {
+        description?: string;
+        id: string;
+        name: string;
+        size: number;
+        url: string;
+        validationDate?: string;
     }
     // interface fullName: telephony.EasyHunting.EasyHunting
     export interface EasyHunting {
@@ -1514,7 +1535,7 @@ export namespace telephony {
         totalPrice: order.Price;
     }
     // type fullname: telephony.TypeEnum
-    export type TypeEnum = "cloudHunting" | "cloudIvr" | "conference" | "contactCenterSolution" | "contactCenterSolutionExpert" | "ddi" | "easyHunting" | "easyPabx" | "empty" | "fax" | "freefax" | "mgcp" | "miniPabx" | "oldConference" | "plugAndFax" | "redirect" | "sip" | "svi" | "voicefax" | "voicemail" | "vxml"
+    export type TypeEnum = "carrierSip" | "cloudHunting" | "cloudIvr" | "conference" | "contactCenterSolution" | "contactCenterSolutionExpert" | "ddi" | "easyHunting" | "easyPabx" | "empty" | "fax" | "freefax" | "mgcp" | "miniPabx" | "oldConference" | "plugAndFax" | "redirect" | "sip" | "svi" | "voicefax" | "voicemail" | "vxml"
     // type fullname: telephony.TypeServiceEnum
     export type TypeServiceEnum = "alias" | "line"
     // interface fullName: telephony.VoiceConsumption.VoiceConsumption
@@ -1846,6 +1867,14 @@ export interface Telephony{
             $(serviceName: string): {
                 // GET /telephony/{billingAccount}/carrierSip/{serviceName}
                 $get(): Promise<telephony.CarrierSip>;
+                cdrs: {
+                    // GET /telephony/{billingAccount}/carrierSip/{serviceName}/cdrs
+                    $get(params?: {month?: string}): Promise<telephony.Document>;
+                }
+                clusterDetails: {
+                    // GET /telephony/{billingAccount}/carrierSip/{serviceName}/clusterDetails
+                    $get(): Promise<telephony.CarrierSipClusterInfo>;
+                }
                 endpoints: {
                     // GET /telephony/{billingAccount}/carrierSip/{serviceName}/endpoints
                     $get(): Promise<number[]>;
@@ -3609,6 +3638,16 @@ export interface Telephony{
    * Get this object properties
    */
   get(path: '/telephony/{billingAccount}/carrierSip/{serviceName}'): (params: {billingAccount: string, serviceName: string}) => Promise<telephony.CarrierSip>;
+  /**
+   * cdrs operations
+   * Get the Call Detail Records of your Carrier SIP service
+   */
+  get(path: '/telephony/{billingAccount}/carrierSip/{serviceName}/cdrs'): (params: {billingAccount: string, serviceName: string, month?: string}) => Promise<telephony.Document>;
+  /**
+   * clusterDetails operations
+   * Get details about the carrier sip cluster of your stack
+   */
+  get(path: '/telephony/{billingAccount}/carrierSip/{serviceName}/clusterDetails'): (params: {billingAccount: string, serviceName: string}) => Promise<telephony.CarrierSipClusterInfo>;
   /**
    * List the telephony.CarrierSipCustomerEndpoint objects
    * List of your remote sip endpoints (ips, ports, protocol) of your carrier sip trunk service

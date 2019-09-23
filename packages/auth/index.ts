@@ -19,7 +19,7 @@ export namespace api {
 export namespace auth {
     // interface fullName: auth.AccessRule.AccessRule
     export interface AccessRule {
-        method: auth.MethodEnum;
+        method: http.MethodEnum;
         path: string;
     }
     // interface fullName: auth.Credential.Credential
@@ -30,7 +30,18 @@ export namespace auth {
     }
     // type fullname: auth.CredentialStateEnum
     export type CredentialStateEnum = "expired" | "pendingValidation" | "refused" | "validated"
+    // interface fullName: auth.Details.Details
+    export interface Details {
+        description?: string;
+        method: auth.MethodEnum;
+        roles?: string[];
+        user?: string;
+    }
     // type fullname: auth.MethodEnum
+    export type MethodEnum = "account" | "provider" | "user"
+}
+export namespace http {
+    // type fullname: http.MethodEnum
     export type MethodEnum = "DELETE" | "GET" | "POST" | "PUT"
 }
 
@@ -54,6 +65,10 @@ export interface Auth{
         // GET /auth/currentCredential
         $get(): Promise<api.Credential>;
     }
+    details: {
+        // GET /auth/details
+        $get(): Promise<auth.Details>;
+    }
     logout: {
         // POST /auth/logout
         $post(): Promise<void>;
@@ -68,6 +83,11 @@ export interface Auth{
    * Get the current credential details
    */
   get(path: '/auth/currentCredential'): () => Promise<api.Credential>;
+  /**
+   * Details about the current authentication
+   * Details about the current authentication
+   */
+  get(path: '/auth/details'): () => Promise<auth.Details>;
   /**
    * Get the time of OVH servers
    * Get the current time of the OVH servers, since UNIX epoch

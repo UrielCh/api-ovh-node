@@ -70,11 +70,11 @@ export namespace metrics {
             access: string;
             createdAt: string;
             description: string;
-            expiredAt: string;
+            expiryAt: string;
             id: string;
             isRevoked: boolean;
             labels: metrics.api.Label[];
-            type: metrics.api.PermissionEnum;
+            permission: metrics.api.PermissionEnum;
         }
     }
 }
@@ -193,7 +193,7 @@ export interface Metrics{
    */
   get(path: '/metrics/{serviceName}'): (params: {serviceName: string}) => Promise<metrics.api.Service>;
   /**
-   * Missing description
+   * Metrics service consumption
    * Get consumption for your service
    */
   get(path: '/metrics/{serviceName}/consumption'): (params: {serviceName: string, duration?: number}) => Promise<metrics.api.Consumption>;
@@ -203,12 +203,12 @@ export interface Metrics{
    */
   get(path: '/metrics/{serviceName}/serviceInfos'): (params: {serviceName: string}) => Promise<services.Service>;
   /**
-   * Missing description
+   * Metrics service token operations
    * Get list of tokens
    */
   get(path: '/metrics/{serviceName}/token'): (params: {serviceName: string}) => Promise<string[]>;
   /**
-   * Missing description
+   * Metrics service token operations
    * Get a specific token
    */
   get(path: '/metrics/{serviceName}/token/{tokenId}'): (params: {serviceName: string, tokenId: string}) => Promise<metrics.api.Token>;
@@ -218,7 +218,7 @@ export interface Metrics{
    */
   put(path: '/metrics/{serviceName}'): (params: {serviceName: string, description?: string}) => Promise<metrics.api.Service>;
   /**
-   * Missing description
+   * Metrics service quota management
    * Set overquota
    */
   put(path: '/metrics/{serviceName}/quota'): (params: {serviceName: string, quota: number}) => Promise<string>;
@@ -228,7 +228,7 @@ export interface Metrics{
    */
   put(path: '/metrics/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
   /**
-   * Missing description
+   * Metrics service token operations
    * Modify a token
    */
   put(path: '/metrics/{serviceName}/token/{tokenId}'): (params: {serviceName: string, tokenId: string, description?: string}) => Promise<metrics.api.Token>;
@@ -243,7 +243,7 @@ export interface Metrics{
    */
   post(path: '/metrics/{serviceName}/confirmTermination'): (params: {serviceName: string, commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}) => Promise<string>;
   /**
-   * Missing description
+   * Look for service/token
    * Find TokenID for a specific token
    */
   post(path: '/metrics/{serviceName}/lookup/token'): (params: {serviceName: string, accessToken: string}) => Promise<string[]>;
@@ -253,12 +253,12 @@ export interface Metrics{
    */
   post(path: '/metrics/{serviceName}/terminate'): (params: {serviceName: string}) => Promise<string>;
   /**
-   * Missing description
+   * Metrics service token operations
    * Create a token
    */
   post(path: '/metrics/{serviceName}/token'): (params: {serviceName: string, description?: string, labels?: metrics.api.Label[], permission: metrics.api.PermissionEnum}) => Promise<metrics.api.Token>;
   /**
-   * Missing description
+   * Metrics service token operations
    * Revoke a token
    */
   delete(path: '/metrics/{serviceName}/token/{tokenId}'): (params: {serviceName: string, tokenId: string}) => Promise<void>;

@@ -209,6 +209,7 @@ export namespace xdsl {
         isActiveOnLns?: boolean;
         isModemConnected?: boolean;
         lineDetails?: xdsl.LineDiagnostic[];
+        maintenance?: boolean;
         ping?: boolean;
         remaining: number;
     }

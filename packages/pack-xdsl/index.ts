@@ -40,6 +40,14 @@ export namespace order {
 }
 export namespace pack {
     export namespace xdsl {
+        // interface fullName: pack.xdsl.AsyncTask.AsyncTask
+        export interface AsyncTask<T> {
+            error?: string;
+            result?: T;
+            status: pack.xdsl.AsyncTaskStatusEnum;
+        }
+        // type fullname: pack.xdsl.AsyncTaskStatusEnum
+        export type AsyncTaskStatusEnum = "error" | "ok" | "pending"
         // type fullname: pack.xdsl.DomainActionEnum
         export type DomainActionEnum = "create" | "trade" | "transfer"
         // interface fullName: pack.xdsl.ExchangeAccountService.ExchangeAccountService
@@ -319,14 +327,6 @@ export namespace services {
     }
 }
 export namespace xdsl {
-    // interface fullName: xdsl.AsyncTask.AsyncTask
-    export interface AsyncTask<T> {
-        error?: string;
-        result?: T;
-        status: xdsl.AsyncTaskStatusEnum;
-    }
-    // type fullname: xdsl.AsyncTaskStatusEnum
-    export type AsyncTaskStatusEnum = "error" | "ok" | "pending"
     // type fullname: xdsl.DeconsolidationEnum
     export type DeconsolidationEnum = "createNeighbour" | "creation" | "creationNeighbour" | "partial" | "total"
     // type fullname: xdsl.DslTypeEnum
@@ -427,15 +427,15 @@ export interface Pack{
             addressMove: {
                 eligibility: {
                     // POST /pack/xdsl/{packName}/addressMove/eligibility
-                    $post(params?: {address?: xdsleligibilityAddress, lineNumber?: string}): Promise<xdsl.AsyncTask<pack.xdsl.addressMove.Eligibility>>;
+                    $post(params?: {address?: xdsleligibilityAddress, lineNumber?: string}): Promise<pack.xdsl.AsyncTask<pack.xdsl.addressMove.Eligibility>>;
                 }
                 move: {
                     // POST /pack/xdsl/{packName}/addressMove/move
-                    $post(params: {creation?: pack.xdsl.addressMove.Creation, keepCurrentNumber: boolean, landline?: pack.xdsl.addressMove.Landline, moveOutDate?: string, offerCode: string, provider?: xdsleligibilityProviderEnum}): Promise<xdsl.AsyncTask<number>>;
+                    $post(params: {creation?: pack.xdsl.addressMove.Creation, keepCurrentNumber: boolean, landline?: pack.xdsl.addressMove.Landline, moveOutDate?: string, offerCode: string, provider?: xdsleligibilityProviderEnum}): Promise<pack.xdsl.AsyncTask<number>>;
                 }
                 moveFtth: {
                     // POST /pack/xdsl/{packName}/addressMove/moveFtth
-                    $post(params: {buildingReference: string, floor: string, moveOutDate?: string, otp: boolean, otpReference?: string, stair: string}): Promise<xdsl.AsyncTask<number>>;
+                    $post(params: {buildingReference: string, floor: string, moveOutDate?: string, otp: boolean, otpReference?: string, stair: string}): Promise<pack.xdsl.AsyncTask<number>>;
                 }
             }
             canCancelResiliation: {
@@ -557,7 +557,7 @@ export interface Pack{
                         $get(): Promise<pack.xdsl.Hubic>;
                         details: {
                             // GET /pack/xdsl/{packName}/hubic/services/{domain}/details
-                            $get(): Promise<xdsl.AsyncTask<xdsl.hubic.HubicDetailsResponse>>;
+                            $get(): Promise<pack.xdsl.AsyncTask<xdsl.hubic.HubicDetailsResponse>>;
                         }
                     };
                 }
@@ -569,7 +569,7 @@ export interface Pack{
                 }
                 offers: {
                     // POST /pack/xdsl/{packName}/migration/offers
-                    $post(): Promise<xdsl.AsyncTask<pack.xdsl.migration.MigrationOfferResponse>>;
+                    $post(): Promise<pack.xdsl.AsyncTask<pack.xdsl.migration.MigrationOfferResponse>>;
                 }
                 servicesToDelete: {
                     // POST /pack/xdsl/{packName}/migration/servicesToDelete
@@ -826,7 +826,7 @@ export interface Pack{
    * details operations
    * Details associated to a voucher
    */
-  get(path: '/pack/xdsl/{packName}/hubic/services/{domain}/details'): (params: {domain: string, packName: string}) => Promise<xdsl.AsyncTask<xdsl.hubic.HubicDetailsResponse>>;
+  get(path: '/pack/xdsl/{packName}/hubic/services/{domain}/details'): (params: {domain: string, packName: string}) => Promise<pack.xdsl.AsyncTask<xdsl.hubic.HubicDetailsResponse>>;
   /**
    * capabilities operations
    * Get informations about the promotion code generation
@@ -961,17 +961,17 @@ export interface Pack{
    * eligibility operations
    * Eligibility to move the access
    */
-  post(path: '/pack/xdsl/{packName}/addressMove/eligibility'): (params: {packName: string, address?: xdsleligibilityAddress, lineNumber?: string}) => Promise<xdsl.AsyncTask<pack.xdsl.addressMove.Eligibility>>;
+  post(path: '/pack/xdsl/{packName}/addressMove/eligibility'): (params: {packName: string, address?: xdsleligibilityAddress, lineNumber?: string}) => Promise<pack.xdsl.AsyncTask<pack.xdsl.addressMove.Eligibility>>;
   /**
    * move operations
    * Move the Xdsl access to another address
    */
-  post(path: '/pack/xdsl/{packName}/addressMove/move'): (params: {packName: string, creation?: pack.xdsl.addressMove.Creation, keepCurrentNumber: boolean, landline?: pack.xdsl.addressMove.Landline, moveOutDate?: string, offerCode: string, provider?: xdsleligibilityProviderEnum}) => Promise<xdsl.AsyncTask<number>>;
+  post(path: '/pack/xdsl/{packName}/addressMove/move'): (params: {packName: string, creation?: pack.xdsl.addressMove.Creation, keepCurrentNumber: boolean, landline?: pack.xdsl.addressMove.Landline, moveOutDate?: string, offerCode: string, provider?: xdsleligibilityProviderEnum}) => Promise<pack.xdsl.AsyncTask<number>>;
   /**
    * moveFtth operations
    * Move the FTTH access to another address
    */
-  post(path: '/pack/xdsl/{packName}/addressMove/moveFtth'): (params: {packName: string, buildingReference: string, floor: string, moveOutDate?: string, otp: boolean, otpReference?: string, stair: string}) => Promise<xdsl.AsyncTask<number>>;
+  post(path: '/pack/xdsl/{packName}/addressMove/moveFtth'): (params: {packName: string, buildingReference: string, floor: string, moveOutDate?: string, otp: boolean, otpReference?: string, stair: string}) => Promise<pack.xdsl.AsyncTask<number>>;
   /**
    * cancelResiliation operations
    * Cancel the ongoing resiliation
@@ -1016,7 +1016,7 @@ export interface Pack{
    * offers operations
    * Get the possibilities of migration offers available
    */
-  post(path: '/pack/xdsl/{packName}/migration/offers'): (params: {packName: string}) => Promise<xdsl.AsyncTask<pack.xdsl.migration.MigrationOfferResponse>>;
+  post(path: '/pack/xdsl/{packName}/migration/offers'): (params: {packName: string}) => Promise<pack.xdsl.AsyncTask<pack.xdsl.migration.MigrationOfferResponse>>;
   /**
    * servicesToDelete operations
    * Calculate services to delete with new offer and options
