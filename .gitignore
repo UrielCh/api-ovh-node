@@ -19,3 +19,4 @@ code/gen/*.js
 samples/*/*.d.ts
 samples/*/*.map
 samples/*/*.js
+**/token.json
