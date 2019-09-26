@@ -6,6 +6,7 @@ import path from 'path'
 import program from 'commander'
 import Bluebird from 'bluebird'
 import { StoreMysql } from "./StoreMysql";
+import { ConnectionOptions } from "typeorm";
 
 program
   .version('1.0.0')
@@ -23,7 +24,18 @@ async function main() {
   // const root = '.';
   // let dest = path.join(root, me.nichandle + '.csv')
   // const store = new StoreCsv(dest)
-  await store.init();
+  const db: ConnectionOptions = {
+    host: '172.17.0.3', username: 'test', database: "test", password: 'test', type: "mysql", "synchronize": true, "entities": [
+      "src/entity/**/*.ts"
+    ],
+    cli: {
+      entitiesDir: "src/entity",
+      migrationsDir: "src/migration",
+      subscribersDir: "src/subscriber"
+   }
+
+  };
+  await store.init(db);
   const billingAccounts = await apiPhone.$get();
   console.log('billingAccounts:', billingAccounts);
   await Bluebird.map(billingAccounts, async billingAccount => {

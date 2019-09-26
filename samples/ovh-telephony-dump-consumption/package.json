@@ -1,5 +1,5 @@
 {
-  "name": "ovh-dump-telephony",
+  "name": "ovh-telephony-dump-consumption",
   "version": "1.0.0",
   "description": "get Current month OVH telephony activity",
   "main": "index.js",
@@ -11,7 +11,7 @@
   "license": "MIT",
   "author": "Uriel Chemouni <uchemouni@gmail.com>",
   "bin": {
-    "ovh-bill-importer": "./bin/ovh-dump-telephony"
+    "ovh-bill-importer": "./bin/ovh-telephony-dump-consumption"
   },
   "publishConfig": {
     "access": "public"

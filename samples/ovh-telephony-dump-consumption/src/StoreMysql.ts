@@ -1,6 +1,7 @@
-import { createConnection, Connection } from "typeorm";
+import { createConnection, Connection, ConnectionOptions } from "typeorm";
 import { VoiceConsumption } from './entity/VoiceConsumption'
 import { telephony } from '@ovh-api/telephony'
+import { MysqlConnectionOptions } from "typeorm/driver/mysql/MysqlConnectionOptions";
 
 export class StoreMysql {
   connection?: Connection;
@@ -10,8 +11,8 @@ export class StoreMysql {
     this.cache = [];
   }
 
-  async init() {
-    this.connection = await createConnection()
+  async init(options: ConnectionOptions) {
+    this.connection = await createConnection(options)
   }
 
   getCnx(): Connection {
