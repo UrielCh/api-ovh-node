@@ -385,7 +385,7 @@ export class CodeGenerator {
 
                 // no path param to handle in Poxymode
                 //
-                let paramType = (op.httpMethod == 'GET') ? 'query' : 'body';
+                let paramType = (op.httpMethod == 'GET' || op.httpMethod == 'DELETE') ? 'query' : 'body';
                 let body = op.parameters.filter(p => p.paramType === paramType)
                 body = body.sort((a, b) => (<string>a.name).localeCompare(<string>b.name))
                 if (body.length == 1 && body[0].name == null) {

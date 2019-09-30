@@ -1820,7 +1820,7 @@ export interface Telephony{
     }
     $(billingAccount: string): {
         // DELETE /telephony/{billingAccount}
-        $delete(): Promise<void>;
+        $delete(params: {details?: string, reason: telephony.TerminationReasonEnum}): Promise<void>;
         // GET /telephony/{billingAccount}
         $get(): Promise<telephony.BillingAccount>;
         // PUT /telephony/{billingAccount}
@@ -3314,7 +3314,7 @@ export interface Telephony{
             $get(): Promise<string[]>;
             $(serviceName: string): {
                 // DELETE /telephony/{billingAccount}/service/{serviceName}
-                $delete(): Promise<void>;
+                $delete(params: {details?: string, reason: telephony.TerminationReasonEnum}): Promise<void>;
                 // GET /telephony/{billingAccount}/service/{serviceName}
                 $get(): Promise<telephony.TelephonyService>;
                 // PUT /telephony/{billingAccount}/service/{serviceName}
