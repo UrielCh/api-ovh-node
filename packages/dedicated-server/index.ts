@@ -418,7 +418,7 @@ export namespace dedicated {
             state: dedicated.server.OptionStateEnum;
         }
         // type fullname: dedicated.server.OptionEnum
-        export type OptionEnum = "BACKUPPROTOCOL" | "BANDWIDTH" | "BANDWIDTH_VRACK" | "TRAFFIC" | "TRAFFIC_DISCOVER" | "TUNING" | "TUNING_FIREWALL" | "TUNING_KVM" | "USB_KVM_IP"
+        export type OptionEnum = "BACKUPPROTOCOL" | "BANDWIDTH" | "BANDWIDTH_VRACK" | "OLA" | "SGX" | "TRAFFIC" | "TRAFFIC_DISCOVER" | "TUNING" | "TUNING_FIREWALL" | "TUNING_KVM" | "USB_KVM_IP"
         // type fullname: dedicated.server.OptionRequiredEnum
         export type OptionRequiredEnum = "professionalUse"
         // type fullname: dedicated.server.OptionStateEnum

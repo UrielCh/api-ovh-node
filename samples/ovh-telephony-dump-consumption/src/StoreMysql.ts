@@ -1,7 +1,6 @@
 import { createConnection, Connection, ConnectionOptions } from "typeorm";
 import { VoiceConsumption } from './entity/VoiceConsumption'
 import { telephony } from '@ovh-api/telephony'
-import { MysqlConnectionOptions } from "typeorm/driver/mysql/MysqlConnectionOptions";
 
 export class StoreMysql {
   connection?: Connection;

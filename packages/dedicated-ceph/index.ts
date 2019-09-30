@@ -54,8 +54,12 @@ export namespace dedicated {
         }
         // interface fullName: dedicated.ceph.response.response
         export interface response {
-            id: string;
+            key: string;
+            mdsCaps: string;
+            monCaps: string;
             name: string;
+            osdCaps: string;
+            serviceName: string;
         }
         export namespace taskGet {
             export namespace response {

@@ -942,7 +942,7 @@ export interface Domain{
    */
   get(path: '/domain/rules'): (params: {cartId: string, itemId: number}) => Promise<domain.Rule>;
   /**
-   * Operations about the HOSTING service
+   * Operations about the DNS service
    * List available services
    */
   get(path: '/domain/zone'): () => Promise<string[]>;

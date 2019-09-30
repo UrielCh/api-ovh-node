@@ -49,7 +49,7 @@ export namespace kube {
     // type fullname: kube.UpdatePolicy
     export type UpdatePolicy = "ALWAYS_UPDATE" | "MINIMAL_DOWNTIME" | "NEVER_UPDATE"
     // type fullname: kube.Version
-    export type Version = "1.11" | "1.12" | "1.13" | "1.14" | "1.15"
+    export type Version = "1.13" | "1.14" | "1.15"
 }
 export namespace service {
     // interface fullName: service.RenewType.RenewType

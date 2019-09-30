@@ -639,7 +639,7 @@ export namespace cloud {
             id: string;
             isUpToDate: boolean;
             name: string;
-            nextUpgradeVersions?: cloud.kube.Version[];
+            nextUpgradeVersions?: cloud.kube.UpgradeVersion[];
             nodesUrl: string;
             region: cloud.kube.Region;
             status: cloud.kube.ClusterStatus;
@@ -687,8 +687,10 @@ export namespace cloud {
         export type UpdatePolicy = "ALWAYS_UPDATE" | "MINIMAL_DOWNTIME" | "NEVER_UPDATE"
         // type fullname: cloud.kube.UpdateStrategy
         export type UpdateStrategy = "LATEST_PATCH" | "NEXT_MINOR"
+        // type fullname: cloud.kube.UpgradeVersion
+        export type UpgradeVersion = "1.12" | "1.13" | "1.14" | "1.15"
         // type fullname: cloud.kube.Version
-        export type Version = "1.11" | "1.12" | "1.13" | "1.14" | "1.15"
+        export type Version = "1.13" | "1.14" | "1.15"
     }
     export namespace migration {
         // interface fullName: cloud.migration.Migration.Migration
@@ -925,6 +927,33 @@ export namespace cloud {
             total: orderPrice;
         }
         export namespace io {
+            // interface fullName: cloud.project.io.Stream.Stream
+            export interface Stream {
+                backlog: string;
+                description: string;
+                id: string;
+                kind: cloud.project.io.StreamKindEnum;
+                name: string;
+                regions: string[];
+                retention: string;
+                status: cloud.project.io.StreamStatusEnum;
+                throttling: number;
+            }
+            // interface fullName: cloud.project.io.StreamCreation.StreamCreation
+            export interface StreamCreation {
+                description: string;
+                kind: cloud.project.io.StreamKindEnum;
+                name: string;
+                region: string;
+            }
+            // type fullname: cloud.project.io.StreamKindEnum
+            export type StreamKindEnum = "NON_PERSISTENT" | "PERSISTENT"
+            // interface fullName: cloud.project.io.StreamStats.StreamStats
+            export interface StreamStats {
+                usage: number;
+            }
+            // type fullname: cloud.project.io.StreamStatusEnum
+            export type StreamStatusEnum = "INSTALLING" | "RUNNING" | "ERROR"
             export namespace stream {
                 // interface fullName: cloud.project.io.stream.Region.Region
                 export interface Region {
@@ -963,33 +992,6 @@ export namespace cloud {
                 export interface TokenCreation {
                     action: cloud.project.io.stream.TokenActionEnum;
                 }
-                // interface fullName: cloud.project.io.stream.Topic.Topic
-                export interface Topic {
-                    backlog: string;
-                    description: string;
-                    id: string;
-                    kind: cloud.project.io.stream.TopicKindEnum;
-                    name: string;
-                    regions: string[];
-                    retention: string;
-                    status: cloud.project.io.stream.TopicStatusEnum;
-                    throttling: number;
-                }
-                // interface fullName: cloud.project.io.stream.TopicCreation.TopicCreation
-                export interface TopicCreation {
-                    description: string;
-                    kind: cloud.project.io.stream.TopicKindEnum;
-                    name: string;
-                    region: string;
-                }
-                // type fullname: cloud.project.io.stream.TopicKindEnum
-                export type TopicKindEnum = "NON_PERSISTENT" | "PERSISTENT"
-                // interface fullName: cloud.project.io.stream.TopicStats.TopicStats
-                export interface TopicStats {
-                    usage: number;
-                }
-                // type fullname: cloud.project.io.stream.TopicStatusEnum
-                export type TopicStatusEnum = "INSTALLING" | "RUNNING" | "ERROR"
             }
         }
     }

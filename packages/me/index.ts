@@ -453,6 +453,12 @@ export namespace billing {
             id?: string;
             type?: billing.order.associatedObject.TypeEnum;
         }
+        // interface fullName: billing.order.FollowUp.FollowUp
+        export interface FollowUp {
+            history: billing.order.followUp.History[];
+            status: billing.order.followUp.StatusEnum;
+            step: billing.order.followUp.StepEnum;
+        }
         // type fullname: billing.order.OrderStatusEnum
         export type OrderStatusEnum = "cancelled" | "cancelling" | "checking" | "delivered" | "delivering" | "documentsRequested" | "notPaid" | "unknown"
         // interface fullName: billing.order.PayWithPaymentMethod.PayWithPaymentMethod
@@ -494,6 +500,20 @@ export namespace billing {
         export namespace associatedObject {
             // type fullname: billing.order.associatedObject.TypeEnum
             export type TypeEnum = "Bill" | "Deposit" | "Refund" | "Withdrawal"
+        }
+        export namespace followUp {
+            // interface fullName: billing.order.followUp.History.History
+            export interface History {
+                date: string;
+                description: string;
+                label: billing.order.followUp.HistoryStatusEnum;
+            }
+            // type fullname: billing.order.followUp.HistoryStatusEnum
+            export type HistoryStatusEnum = "DELIVERY" | "FRAUD_CHECK" | "FRAUD_DOCS_REQUESTED" | "FRAUD_MANUAL_REVIEW" | "FRAUD_REFUSED" | "INVOICE_IN_PROGRESS" | "INVOICE_SENT" | "ORDER_ACCEPTED" | "ORDER_STARTED" | "PAYMENT_CONFIRMED" | "PAYMENT_INITIATED" | "PAYMENT_RECEIVED" | "REGISTERED_PAYMENT_INITIATED"
+            // type fullname: billing.order.followUp.StatusEnum
+            export type StatusEnum = "DOING" | "DONE" | "ERROR" | "TODO"
+            // type fullname: billing.order.followUp.StepEnum
+            export type StepEnum = "AVAILABLE" | "DELIVERING" | "VALIDATED" | "VALIDATING"
         }
         export namespace paymentMean {
             // interface fullName: billing.order.paymentMean.HttpParameter.HttpParameter

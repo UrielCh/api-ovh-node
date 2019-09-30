@@ -1679,6 +1679,16 @@ export interface Order{
         };
     }
     cartServiceOption: {
+        baremetalServers: {
+            // GET /order/cartServiceOption/baremetalServers
+            $get(): Promise<string[]>;
+            $(serviceName: string): {
+                // GET /order/cartServiceOption/baremetalServers/{serviceName}
+                $get(): Promise<order.cart.GenericOptionDefinition[]>;
+                // POST /order/cartServiceOption/baremetalServers/{serviceName}
+                $post(params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+            };
+        }
         cloud: {
             // GET /order/cartServiceOption/cloud
             $get(): Promise<string[]>;
@@ -3826,6 +3836,16 @@ export interface Order{
    */
   get(path: '/order/cart/{cartId}/xdsl/options'): (params: {cartId: string, planCode: string}) => Promise<order.cart.GenericOptionDefinition[]>;
   /**
+   * Operations about the DEDICATED service
+   * List available services
+   */
+  get(path: '/order/cartServiceOption/baremetalServers'): () => Promise<string[]>;
+  /**
+   * Listing offers /order/cartServiceOptions/baremetalServers/#serviceName#
+   * Get informations about additional baremetal servers offer for your service
+   */
+  get(path: '/order/cartServiceOption/baremetalServers/{serviceName}'): (params: {serviceName: string}) => Promise<order.cart.GenericOptionDefinition[]>;
+  /**
    * Operations about the PUBLICCLOUD service
    * List available services
    */
@@ -4461,7 +4481,7 @@ export interface Order{
    */
   get(path: '/order/dedicatedCloud/{serviceName}/vdi'): (params: {serviceName: string, datacenterId: number, firstPublicIpAddress: string, secondPublicIpAddress: string}) => Promise<order.Order>;
   /**
-   * Operations about the HOSTING service
+   * Operations about the DNS service
    * List available services
    */
   get(path: '/order/domain/zone'): () => Promise<string[]>;
@@ -5960,6 +5980,11 @@ export interface Order{
    * Post a new xdsl option in your cart
    */
   post(path: '/order/cart/{cartId}/xdsl/options'): (params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}) => Promise<order.cart.Item>;
+  /**
+   * Listing offers /order/cartServiceOptions/baremetalServers/#serviceName#
+   * Post an additional baremetal servers option in your cart
+   */
+  post(path: '/order/cartServiceOption/baremetalServers/{serviceName}'): (params: {serviceName: string, cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}) => Promise<order.cart.Item>;
   /**
    * Listing offers /order/cartServiceOptions/cloud/#serviceName#
    * Post an additional Cloud option in your cart
