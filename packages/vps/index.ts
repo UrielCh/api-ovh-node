@@ -500,7 +500,7 @@ export interface Vps{
             $get(): Promise<vps.VpsOptionEnum[]>;
             $(option: vps.VpsOptionEnum): {
                 // DELETE /vps/{serviceName}/option/{option}
-                $delete(): Promise<void>;
+                $delete(params?: {deleteNow?: boolean}): Promise<void>;
                 // GET /vps/{serviceName}/option/{option}
                 $get(): Promise<vps.Option>;
             };

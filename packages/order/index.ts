@@ -1064,7 +1064,7 @@ export interface Order{
             }
             coupon: {
                 // DELETE /order/cart/{cartId}/coupon
-                $delete(): Promise<void>;
+                $delete(params: {coupon: string}): Promise<void>;
                 // GET /order/cart/{cartId}/coupon
                 $get(): Promise<string[]>;
                 // POST /order/cart/{cartId}/coupon

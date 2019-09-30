@@ -1884,7 +1884,7 @@ export interface Cloud{
                     $put(params?: {containerType?: cloud.storage.TypeEnum}): Promise<void>;
                     cors: {
                         // DELETE /cloud/project/{serviceName}/storage/{containerId}/cors
-                        $delete(): Promise<void>;
+                        $delete(params: {origin: string}): Promise<void>;
                         // POST /cloud/project/{serviceName}/storage/{containerId}/cors
                         $post(params: {origin: string}): Promise<void>;
                     }
