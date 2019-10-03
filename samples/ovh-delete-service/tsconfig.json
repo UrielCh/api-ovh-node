@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "target": "es2017",
+        "module": "commonjs",
+        "declaration": true,
+        "strict": true,
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "sourceMap": true
+    }
+}
