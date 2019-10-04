@@ -78,7 +78,7 @@ export class OvhEventListenerV2 extends EventEmitter implements IOvhEventListene
                                 }
                             }
                             if (this._redis) {
-                                console.log(`${(new Date()).toISOString()} Send ${events.length} event to ${this.channel}`);
+                                // console.log(`${(new Date()).toISOString()} Send ${events.length} event to ${this.channel}`);
                                 for (const m of events) {
                                     delete m['token']; // hide token
                                     await this._redis.publish(this.channel, JSON.stringify(m));

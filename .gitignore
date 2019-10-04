@@ -19,4 +19,5 @@ code/gen/*.js
 samples/*/*.d.ts
 samples/*/*.map
 samples/*/*.js
+samples/*/dist/
 **/token.json

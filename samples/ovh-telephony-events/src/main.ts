@@ -4,7 +4,8 @@ import { createHandyClient, IHandyRedis } from 'handy-redis';
 import { OvhEventListenerV1 } from './OvhEventListenerV1';
 import { OvhEventListenerV2 } from './OvhEventListenerV2';
 import { OvhEventTokenImporter } from './OvhEventTokenImporter';
-import { debounce } from 'debounce';
+// import { debounce } from 'debounce';
+import { throttle, debounce } from 'throttle-debounce';
 
 // sample exec line:
 // ts-node main.ts --redis-host 127.0.0.1 --cache tokens.json --channel event-voip
@@ -38,18 +39,26 @@ async function main() {
     if (redis)
         listener.redis(redis, channel)
 
-    let cnt = 0;
-    const log = debounce(() => {
-        console.log(`${(new Date()).toISOString()} Send ${cnt} event to ${channel}`);
-        cnt = 0;
-    }, 5000, true);
+    let fromtime = 0;
+    let nbEvent = 0;
 
+    const log = () => {
+        const now = new Date();
+        const duration = (now.getTime() - fromtime) / 1000;
+        console.log(`${now.toISOString()} Send ${nbEvent} event to ${channel} in ${duration.toFixed(1)} s`);
+        nbEvent = 0;
+    };
+    //const logEvents = debounce(log, 500, true);
+    //const logEvents = throttle(3000, log, true)
+    const logEvents = debounce(5000, false, log)
     listener.on("message", (ev) => {
         if (!redis) {
             console.log(ev);
         } else {
-            cnt++;
-            log();
+            if (!nbEvent)
+                fromtime = new Date().getTime();
+            nbEvent++;    
+            logEvents();
         }
     })
     await listener.listen();

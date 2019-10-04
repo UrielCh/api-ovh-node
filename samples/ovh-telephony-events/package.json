@@ -1,6 +1,6 @@
 {
   "name": "ovh-telephony-events",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "description": "Import Ovh telephony event as an nodeJS event or to a Redis server",
   "main": "index.js",
   "keywords": [
@@ -28,21 +28,21 @@
   },
   "dependencies": {
     "@ovh-api/api": "^2.0.0",
-    "@ovh-api/telephony": "^2.0.4",
-    "bluebird": "^3.5.5",
-    "commander": "^2.20.0",
-    "debounce": "^1.2.0",
+    "@ovh-api/telephony": "^2.0.9",
+    "bluebird": "^3.7.0",
+    "commander": "^3.0.2",
     "fs-extra": "^8.1.0",
     "handy-redis": "^1.6.2",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.0",
+    "throttle-debounce": "^2.1.0"
   },
   "devDependencies": {
     "@types/bluebird": "^3.5.27",
     "@types/commander": "^2.12.2",
-    "@types/debounce": "^1.2.0",
     "@types/fs-extra": "^8.0.0",
-    "@types/node-fetch": "^2.5.0",
-    "ts-node": "^8.3.0",
-    "typescript": "^3.5.3"
+    "@types/node-fetch": "^2.5.2",
+    "@types/throttle-debounce": "^2.1.0",
+    "ts-node": "^8.4.1",
+    "typescript": "^3.6.3"
   }
 }
