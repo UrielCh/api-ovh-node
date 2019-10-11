@@ -54,11 +54,11 @@ export namespace dedicated {
         }
         // interface fullName: dedicated.ceph.response.response
         export interface response {
-            key: string;
-            mdsCaps: string;
-            monCaps: string;
+            backup: boolean;
+            minActiveReplicas: number;
             name: string;
-            osdCaps: string;
+            poolType: dedicated.ceph.poolList.response.poolTypeEnum;
+            replicaCount: number;
             serviceName: string;
         }
         export namespace taskGet {

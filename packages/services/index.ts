@@ -107,9 +107,6 @@ export namespace services {
         // interface fullName: services.terminate.ConfirmServiceTerminationRequest.ConfirmServiceTerminationRequest
         export interface ConfirmServiceTerminationRequest {
             acknowledgePotentialFees: boolean;
-            comment: string;
-            futureUse: services.terminate.TerminationFutureUseEnum;
-            reason: services.terminate.TerminationReasonEnum;
             token: string;
         }
         // interface fullName: services.terminate.TerminationAnswer.TerminationAnswer
@@ -121,10 +118,6 @@ export namespace services {
             durationLeft: string;
             fees: order.Price;
         }
-        // type fullname: services.terminate.TerminationFutureUseEnum
-        export type TerminationFutureUseEnum = "SUBSCRIBE_AN_OTHER_SERVICE" | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR" | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR" | "NOT_REPLACING_SERVICE" | "OTHER"
-        // type fullname: services.terminate.TerminationReasonEnum
-        export type TerminationReasonEnum = "NOT_NEEDED_ANYMORE" | "TOO_EXPENSIVE" | "TOO_HARD_TO_USE" | "LACK_OF_PERFORMANCES" | "FEATURES_DONT_SUIT_ME" | "NOT_ENOUGH_RECOGNITION" | "PRODUCT_TOOLS_DONT_SUIT_ME" | "PRODUCT_DIMENSION_DONT_SUIT_ME" | "NO_ANSWER" | "OTHER"
         // interface fullName: services.terminate.TerminationRequest.TerminationRequest
         export interface TerminationRequest {
             acknowledgePotentialFees: boolean;
