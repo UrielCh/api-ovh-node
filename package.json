@@ -10,10 +10,10 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^12.7.8",
-    "lerna": "^3.16.4",
+    "@types/node": "^12.7.12",
+    "lerna": "^3.17.0",
     "rimraf": "^3.0.0",
-    "typescript": "^3.6.3"
+    "typescript": "^3.6.4"
   },
   "publishConfig": {
     "access": "public"

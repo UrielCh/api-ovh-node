@@ -1194,6 +1194,18 @@ export interface Order{
                     $post(params: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
+            enterpriseCloudDatabases: {
+                // GET /order/cart/{cartId}/enterpriseCloudDatabases
+                $get(): Promise<order.cart.GenericProductDefinition[]>;
+                // POST /order/cart/{cartId}/enterpriseCloudDatabases
+                $post(params: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                options: {
+                    // GET /order/cart/{cartId}/enterpriseCloudDatabases/options
+                    $get(params: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
+                    // POST /order/cart/{cartId}/enterpriseCloudDatabases/options
+                    $post(params: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                }
+            }
             exchange: {
                 // GET /order/cart/{cartId}/exchange
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -1729,6 +1741,16 @@ export interface Order{
                 $post(params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             };
         }
+        enterpriseCloudDatabases: {
+            // GET /order/cartServiceOption/enterpriseCloudDatabases
+            $get(): Promise<string[]>;
+            $(serviceName: string): {
+                // GET /order/cartServiceOption/enterpriseCloudDatabases/{serviceName}
+                $get(): Promise<order.cart.GenericOptionDefinition[]>;
+                // POST /order/cartServiceOption/enterpriseCloudDatabases/{serviceName}
+                $post(params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+            };
+        }
         ipLoadbalancing: {
             // GET /order/cartServiceOption/ipLoadbalancing
             $get(): Promise<string[]>;
@@ -1957,6 +1979,10 @@ export interface Order{
             baremetalServers: {
                 // GET /order/catalog/public/baremetalServers
                 $get(params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.publik.DedicatedServerCatalog>;
+            }
+            enterpriseCloudDatabases: {
+                // GET /order/catalog/public/enterpriseCloudDatabases
+                $get(params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.publik.Catalog>;
             }
         }
     }
@@ -3432,6 +3458,16 @@ export interface Order{
   get(path: '/order/cart/{cartId}/emailpro/options'): (params: {cartId: string, planCode: string}) => Promise<order.cart.GenericOptionDefinition[]>;
   /**
    * Missing description
+   * Get informations about an Enterprise Cloud Databases cluster
+   */
+  get(path: '/order/cart/{cartId}/enterpriseCloudDatabases'): (params: {cartId: string}) => Promise<order.cart.GenericProductDefinition[]>;
+  /**
+   * Missing description
+   * Get information about Enterprise Cloud Databases options
+   */
+  get(path: '/order/cart/{cartId}/enterpriseCloudDatabases/options'): (params: {cartId: string, planCode: string}) => Promise<order.cart.GenericOptionDefinition[]>;
+  /**
+   * Missing description
    * Get informations about Exchange offers
    */
   get(path: '/order/cart/{cartId}/exchange'): (params: {cartId: string}) => Promise<order.cart.GenericProductDefinition[]>;
@@ -3886,6 +3922,16 @@ export interface Order{
    */
   get(path: '/order/cartServiceOption/emailpro/{serviceName}'): (params: {serviceName: string}) => Promise<order.cart.GenericOptionDefinition[]>;
   /**
+   * Operations about the CLOUDDB service
+   * List available services
+   */
+  get(path: '/order/cartServiceOption/enterpriseCloudDatabases'): () => Promise<string[]>;
+  /**
+   * Listing offers /order/cartServiceOptions/enterpriseCloudDatabases/#serviceName#
+   * Information about additional Enterprise Cloud Databases offer for your service
+   */
+  get(path: '/order/cartServiceOption/enterpriseCloudDatabases/{serviceName}'): (params: {serviceName: string}) => Promise<order.cart.GenericOptionDefinition[]>;
+  /**
    * Operations about the IPLB service
    * List available services
    */
@@ -4135,6 +4181,11 @@ export interface Order{
    * Retrieve bare-metal servers catalog
    */
   get(path: '/order/catalog/public/baremetalServers'): (params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}) => Promise<order.catalog.publik.DedicatedServerCatalog>;
+  /**
+   * Missing description
+   * Retrieve Enterprise Cloud Databases catalog
+   */
+  get(path: '/order/catalog/public/enterpriseCloudDatabases'): (params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}) => Promise<order.catalog.publik.Catalog>;
   /**
    * Operations about the CDNANYCAST service
    * List available services
@@ -5602,6 +5653,16 @@ export interface Order{
   post(path: '/order/cart/{cartId}/emailpro/options'): (params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}) => Promise<order.cart.Item>;
   /**
    * Missing description
+   * Add a new Enterprise Cloud Databases cluster item to your cart
+   */
+  post(path: '/order/cart/{cartId}/enterpriseCloudDatabases'): (params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}) => Promise<order.cart.Item>;
+  /**
+   * Missing description
+   * Add a new Enterprise Cloud Databases node to your cart
+   */
+  post(path: '/order/cart/{cartId}/enterpriseCloudDatabases/options'): (params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}) => Promise<order.cart.Item>;
+  /**
+   * Missing description
    * Post a new Exchange item in your cart
    */
   post(path: '/order/cart/{cartId}/exchange'): (params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}) => Promise<order.cart.Item>;
@@ -6005,6 +6066,11 @@ export interface Order{
    * Post an additional EmailPro option in your cart
    */
   post(path: '/order/cartServiceOption/emailpro/{serviceName}'): (params: {serviceName: string, cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}) => Promise<order.cart.Item>;
+  /**
+   * Listing offers /order/cartServiceOptions/enterpriseCloudDatabases/#serviceName#
+   * Post an additional Enterprise Cloud Databases option in your cart
+   */
+  post(path: '/order/cartServiceOption/enterpriseCloudDatabases/{serviceName}'): (params: {serviceName: string, cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}) => Promise<order.cart.Item>;
   /**
    * Listing offers /order/cartServiceOptions/ipLoadbalancing/#serviceName#
    * Post an additional IP Load-Balancing option in your cart

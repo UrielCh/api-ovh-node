@@ -141,6 +141,261 @@ export namespace cloud {
         status: cloud.project.ProjectStatus;
         unleash: boolean;
     }
+    // interface fullName: cloud.ProjectAclCreation.ProjectAclCreation
+    export interface ProjectAclCreation {
+        accountId: string;
+        type: cloud.AclTypeEnum;
+    }
+    // interface fullName: cloud.ProjectActivateMonthlyBillingCreation.ProjectActivateMonthlyBillingCreation
+    export interface ProjectActivateMonthlyBillingCreation {
+        instances: cloud.instance.MonthlyInstanceBulkParams[];
+    }
+    // interface fullName: cloud.ProjectAlertingCreation.ProjectAlertingCreation
+    export interface ProjectAlertingCreation {
+        delay: cloud.AlertingDelayEnum;
+        email: string;
+        monthlyThreshold: number;
+    }
+    // interface fullName: cloud.ProjectContainerRegistryCreation.ProjectContainerRegistryCreation
+    export interface ProjectContainerRegistryCreation {
+        name: string;
+        region: cloud.containerRegistry.registry.RegionEnum;
+    }
+    // interface fullName: cloud.ProjectContainerRegistryUpdate.ProjectContainerRegistryUpdate
+    export interface ProjectContainerRegistryUpdate {
+        name: string;
+    }
+    // interface fullName: cloud.ProjectContainerRegistryUsersCreation.ProjectContainerRegistryUsersCreation
+    export interface ProjectContainerRegistryUsersCreation {
+        email?: string;
+        login?: string;
+    }
+    // interface fullName: cloud.ProjectCreditCreation.ProjectCreditCreation
+    export interface ProjectCreditCreation {
+        code: string;
+    }
+    // interface fullName: cloud.ProjectInstanceBulkCreation.ProjectInstanceBulkCreation
+    export interface ProjectInstanceBulkCreation {
+        autobackup?: cloud.instance.AutoBackup;
+        flavorId: string;
+        groupId?: string;
+        imageId?: string;
+        monthlyBilling?: boolean;
+        name: string;
+        networks?: cloud.instance.NetworkBulkParams[];
+        number: number;
+        region: string;
+        sshKeyId?: string;
+        userData?: string;
+        volumeId?: string;
+    }
+    // interface fullName: cloud.ProjectInstanceCreation.ProjectInstanceCreation
+    export interface ProjectInstanceCreation {
+        autobackup?: cloud.instance.AutoBackup;
+        flavorId: string;
+        groupId?: string;
+        imageId?: string;
+        monthlyBilling?: boolean;
+        name: string;
+        networks?: cloud.instance.NetworkParams[];
+        region: string;
+        sshKeyId?: string;
+        userData?: string;
+        volumeId?: string;
+    }
+    // interface fullName: cloud.ProjectInstanceGroupCreation.ProjectInstanceGroupCreation
+    export interface ProjectInstanceGroupCreation {
+        name: string;
+        region: string;
+        type: cloud.instancegroup.InstanceGroupTypeEnum;
+    }
+    // interface fullName: cloud.ProjectInstanceInterfaceCreation.ProjectInstanceInterfaceCreation
+    export interface ProjectInstanceInterfaceCreation {
+        ip?: string;
+        networkId: string;
+    }
+    // interface fullName: cloud.ProjectInstanceRebootCreation.ProjectInstanceRebootCreation
+    export interface ProjectInstanceRebootCreation {
+        type: cloud.instance.RebootTypeEnum;
+    }
+    // interface fullName: cloud.ProjectInstanceReinstallCreation.ProjectInstanceReinstallCreation
+    export interface ProjectInstanceReinstallCreation {
+        imageId: string;
+    }
+    // interface fullName: cloud.ProjectInstanceRescueModeCreation.ProjectInstanceRescueModeCreation
+    export interface ProjectInstanceRescueModeCreation {
+        imageId?: string;
+        rescue: boolean;
+    }
+    // interface fullName: cloud.ProjectInstanceResizeCreation.ProjectInstanceResizeCreation
+    export interface ProjectInstanceResizeCreation {
+        flavorId: string;
+    }
+    // interface fullName: cloud.ProjectInstanceSnapshotCreation.ProjectInstanceSnapshotCreation
+    export interface ProjectInstanceSnapshotCreation {
+        snapshotName: string;
+    }
+    // interface fullName: cloud.ProjectInstanceUpdate.ProjectInstanceUpdate
+    export interface ProjectInstanceUpdate {
+        instanceName: string;
+    }
+    // interface fullName: cloud.ProjectIpFailoverAttachCreation.ProjectIpFailoverAttachCreation
+    export interface ProjectIpFailoverAttachCreation {
+        instanceId: string;
+    }
+    // interface fullName: cloud.ProjectKubeCreation.ProjectKubeCreation
+    export interface ProjectKubeCreation {
+        name?: string;
+        region: cloud.kube.Region;
+        version?: cloud.kube.Version;
+    }
+    // interface fullName: cloud.ProjectKubeNodeCreation.ProjectKubeNodeCreation
+    export interface ProjectKubeNodeCreation {
+        flavorName: string;
+        name?: string;
+    }
+    // interface fullName: cloud.ProjectKubeResetCreation.ProjectKubeResetCreation
+    export interface ProjectKubeResetCreation {
+        version?: cloud.kube.Version;
+        workerNodesPolicy?: cloud.kube.ResetWorkerNodesPolicy;
+    }
+    // interface fullName: cloud.ProjectKubeUpdate.ProjectKubeUpdate
+    export interface ProjectKubeUpdate {
+        name: string;
+    }
+    // interface fullName: cloud.ProjectKubeUpdateCreation.ProjectKubeUpdateCreation
+    export interface ProjectKubeUpdateCreation {
+        strategy?: cloud.kube.UpdateStrategy;
+    }
+    // interface fullName: cloud.ProjectKubeUpdatePolicyUpdate.ProjectKubeUpdatePolicyUpdate
+    export interface ProjectKubeUpdatePolicyUpdate {
+        updatePolicy: cloud.kube.UpdatePolicy;
+    }
+    // interface fullName: cloud.ProjectMigrationUpdate.ProjectMigrationUpdate
+    export interface ProjectMigrationUpdate {
+        date: string;
+    }
+    // interface fullName: cloud.ProjectNetworkPrivateCreation.ProjectNetworkPrivateCreation
+    export interface ProjectNetworkPrivateCreation {
+        name: string;
+        regions?: string[];
+        vlanId?: number;
+    }
+    // interface fullName: cloud.ProjectNetworkPrivateRegionCreation.ProjectNetworkPrivateRegionCreation
+    export interface ProjectNetworkPrivateRegionCreation {
+        region: string;
+    }
+    // interface fullName: cloud.ProjectNetworkPrivateSubnetCreation.ProjectNetworkPrivateSubnetCreation
+    export interface ProjectNetworkPrivateSubnetCreation {
+        dhcp: boolean;
+        end: string;
+        network: string;
+        noGateway: boolean;
+        region: string;
+        start: string;
+    }
+    // interface fullName: cloud.ProjectNetworkPrivateSubnetUpdate.ProjectNetworkPrivateSubnetUpdate
+    export interface ProjectNetworkPrivateSubnetUpdate {
+        dhcp: boolean;
+        disableGateway: boolean;
+        gatewayIp?: string;
+    }
+    // interface fullName: cloud.ProjectNetworkPrivateUpdate.ProjectNetworkPrivateUpdate
+    export interface ProjectNetworkPrivateUpdate {
+        name: string;
+    }
+    // interface fullName: cloud.ProjectRegionCreation.ProjectRegionCreation
+    export interface ProjectRegionCreation {
+        region: string;
+    }
+    // interface fullName: cloud.ProjectRegionQuotaCreation.ProjectRegionQuotaCreation
+    export interface ProjectRegionQuotaCreation {
+        name: string;
+    }
+    // interface fullName: cloud.ProjectRegionWorkflowBackupCreation.ProjectRegionWorkflowBackupCreation
+    export interface ProjectRegionWorkflowBackupCreation {
+        cron: string;
+        instanceId: string;
+        maxExecutionCount?: number;
+        name: string;
+        rotation: number;
+    }
+    // interface fullName: cloud.ProjectSshkeyCreation.ProjectSshkeyCreation
+    export interface ProjectSshkeyCreation {
+        name: string;
+        publicKey: string;
+        region?: string;
+    }
+    // interface fullName: cloud.ProjectStorageCorsCreation.ProjectStorageCorsCreation
+    export interface ProjectStorageCorsCreation {
+        origin: string;
+    }
+    // interface fullName: cloud.ProjectStorageCreation.ProjectStorageCreation
+    export interface ProjectStorageCreation {
+        archive: boolean;
+        containerName: string;
+        region: string;
+    }
+    // interface fullName: cloud.ProjectStoragePublicUrlCreation.ProjectStoragePublicUrlCreation
+    export interface ProjectStoragePublicUrlCreation {
+        expirationDate: string;
+        objectName: string;
+    }
+    // interface fullName: cloud.ProjectStorageUpdate.ProjectStorageUpdate
+    export interface ProjectStorageUpdate {
+        containerType?: cloud.storage.TypeEnum;
+    }
+    // interface fullName: cloud.ProjectStorageUserCreation.ProjectStorageUserCreation
+    export interface ProjectStorageUserCreation {
+        description?: string;
+        right: cloud.storage.RightEnum;
+    }
+    // interface fullName: cloud.ProjectUserCreation.ProjectUserCreation
+    export interface ProjectUserCreation {
+        description?: string;
+        role?: cloud.user.RoleEnum;
+        roles?: cloud.user.RoleEnum[];
+    }
+    // interface fullName: cloud.ProjectUserRoleCreation.ProjectUserRoleCreation
+    export interface ProjectUserRoleCreation {
+        roleId: string;
+    }
+    // interface fullName: cloud.ProjectUserTokenCreation.ProjectUserTokenCreation
+    export interface ProjectUserTokenCreation {
+        password: string;
+    }
+    // interface fullName: cloud.ProjectVolumeAttachCreation.ProjectVolumeAttachCreation
+    export interface ProjectVolumeAttachCreation {
+        instanceId: string;
+    }
+    // interface fullName: cloud.ProjectVolumeCreation.ProjectVolumeCreation
+    export interface ProjectVolumeCreation {
+        description?: string;
+        imageId?: string;
+        name?: string;
+        region: string;
+        size: number;
+        snapshotId?: string;
+        type: cloud.volume.VolumeTypeEnum;
+    }
+    // interface fullName: cloud.ProjectVolumeDetachCreation.ProjectVolumeDetachCreation
+    export interface ProjectVolumeDetachCreation {
+        instanceId: string;
+    }
+    // interface fullName: cloud.ProjectVolumeSnapshotCreation.ProjectVolumeSnapshotCreation
+    export interface ProjectVolumeSnapshotCreation {
+        description?: string;
+        name?: string;
+    }
+    // interface fullName: cloud.ProjectVolumeUpdate.ProjectVolumeUpdate
+    export interface ProjectVolumeUpdate {
+        description?: string;
+        name?: string;
+    }
+    // interface fullName: cloud.ProjectVolumeUpsizeCreation.ProjectVolumeUpsizeCreation
+    export interface ProjectVolumeUpsizeCreation {
+        size: number;
+    }
     // interface fullName: cloud.Region.Region
     export interface Region {
         continentCode: cloud.RegionContinent;
@@ -518,7 +773,7 @@ export namespace cloud {
             operationIds: string[];
             planCode?: string;
             region: string;
-            sshKey: cloud.sshkey.SshKeyDetail;
+            sshKey?: cloud.sshkey.SshKeyDetail;
             status: cloud.instance.InstanceStatusEnum;
         }
         // interface fullName: cloud.instance.InstanceMetrics.InstanceMetrics
@@ -930,7 +1185,7 @@ export namespace cloud {
             // interface fullName: cloud.project.io.Stream.Stream
             export interface Stream {
                 backlog: string;
-                description: string;
+                description?: string;
                 id: string;
                 kind: cloud.project.io.StreamKindEnum;
                 name: string;
@@ -1652,6 +1907,70 @@ export interface Cloud{
                     }
                 };
             }
+            io: {
+                capabilities: {
+                    stream: {
+                        region: {
+                            // GET /cloud/project/{serviceName}/io/capabilities/stream/region
+                            $get(): Promise<string[]>;
+                            $(regionName: string): {
+                                // GET /cloud/project/{serviceName}/io/capabilities/stream/region/{regionName}
+                                $get(): Promise<cloud.project.io.stream.Region>;
+                            };
+                        }
+                    }
+                }
+                stream: {
+                    // GET /cloud/project/{serviceName}/io/stream
+                    $get(): Promise<string[]>;
+                    // POST /cloud/project/{serviceName}/io/stream
+                    $post(params: {description: string, kind: cloud.project.io.StreamKindEnum, name: string, region: string}): Promise<cloud.project.io.Stream>;
+                    $(streamId: string): {
+                        // DELETE /cloud/project/{serviceName}/io/stream/{streamId}
+                        $delete(): Promise<void>;
+                        // GET /cloud/project/{serviceName}/io/stream/{streamId}
+                        $get(): Promise<cloud.project.io.Stream>;
+                        // PUT /cloud/project/{serviceName}/io/stream/{streamId}
+                        $put(params?: {backlog?: string, description?: string, id?: string, kind?: cloud.project.io.StreamKindEnum, name?: string, regions?: string[], retention?: string, status?: cloud.project.io.StreamStatusEnum, throttling?: number}): Promise<cloud.project.io.Stream>;
+                        stats: {
+                            // GET /cloud/project/{serviceName}/io/stream/{streamId}/stats
+                            $get(): Promise<cloud.project.io.StreamStats>;
+                        }
+                        subscription: {
+                            // GET /cloud/project/{serviceName}/io/stream/{streamId}/subscription
+                            $get(): Promise<string[]>;
+                            // POST /cloud/project/{serviceName}/io/stream/{streamId}/subscription
+                            $post(params: {name: string}): Promise<cloud.project.io.stream.Subscription>;
+                            $(subscriptionId: string): {
+                                // DELETE /cloud/project/{serviceName}/io/stream/{streamId}/subscription/{subscriptionId}
+                                $delete(): Promise<void>;
+                                // GET /cloud/project/{serviceName}/io/stream/{streamId}/subscription/{subscriptionId}
+                                $get(): Promise<cloud.project.io.stream.Subscription>;
+                                resetCursor: {
+                                    // POST /cloud/project/{serviceName}/io/stream/{streamId}/subscription/{subscriptionId}/resetCursor
+                                    $post(): Promise<void>;
+                                }
+                                stats: {
+                                    // GET /cloud/project/{serviceName}/io/stream/{streamId}/subscription/{subscriptionId}/stats
+                                    $get(): Promise<cloud.project.io.stream.SubscriptionStats>;
+                                }
+                            };
+                        }
+                        token: {
+                            // GET /cloud/project/{serviceName}/io/stream/{streamId}/token
+                            $get(): Promise<string[]>;
+                            // POST /cloud/project/{serviceName}/io/stream/{streamId}/token
+                            $post(params: {action: cloud.project.io.stream.TokenActionEnum}): Promise<cloud.project.io.stream.Token>;
+                            $(tokenId: string): {
+                                // DELETE /cloud/project/{serviceName}/io/stream/{streamId}/token/{tokenId}
+                                $delete(): Promise<void>;
+                                // GET /cloud/project/{serviceName}/io/stream/{streamId}/token/{tokenId}
+                                $get(): Promise<cloud.project.io.stream.Token>;
+                            };
+                        }
+                    };
+                }
+            }
             ip: {
                 // GET /cloud/project/{serviceName}/ip
                 $get(): Promise<cloud.ip.CloudIp[]>;
@@ -1715,6 +2034,20 @@ export interface Cloud{
                     updatePolicy: {
                         // PUT /cloud/project/{serviceName}/kube/{kubeId}/updatePolicy
                         $put(params: {updatePolicy: cloud.kube.UpdatePolicy}): Promise<void>;
+                    }
+                };
+            }
+            lab: {
+                // GET /cloud/project/{serviceName}/lab
+                $get(): Promise<cloud.Lab[]>;
+                $(labId: string): {
+                    // GET /cloud/project/{serviceName}/lab/{labId}
+                    $get(): Promise<cloud.Lab>;
+                    // POST /cloud/project/{serviceName}/lab/{labId}
+                    $post(): Promise<cloud.Operation>;
+                    agreement: {
+                        // GET /cloud/project/{serviceName}/lab/{labId}/agreement
+                        $get(): Promise<cloud.LabAgreements>;
                     }
                 };
             }
@@ -2308,6 +2641,56 @@ export interface Cloud{
    */
   get(path: '/cloud/project/{serviceName}/instance/group/{groupId}'): (params: {groupId: string, serviceName: string, region?: string}) => Promise<cloud.instancegroup.InstanceGroup>;
   /**
+   * 
+   * List all available regions
+   */
+  get(path: '/cloud/project/{serviceName}/io/capabilities/stream/region'): (params: {serviceName: string}) => Promise<string[]>;
+  /**
+   * 
+   * Get connection information from a region
+   */
+  get(path: '/cloud/project/{serviceName}/io/capabilities/stream/region/{regionName}'): (params: {regionName: string, serviceName: string}) => Promise<cloud.project.io.stream.Region>;
+  /**
+   * 
+   * List all stream for a tenant
+   */
+  get(path: '/cloud/project/{serviceName}/io/stream'): (params: {serviceName: string}) => Promise<string[]>;
+  /**
+   * 
+   * Get a stream
+   */
+  get(path: '/cloud/project/{serviceName}/io/stream/{streamId}'): (params: {serviceName: string, streamId: string}) => Promise<cloud.project.io.Stream>;
+  /**
+   * 
+   * Retrieve statistics of the stream
+   */
+  get(path: '/cloud/project/{serviceName}/io/stream/{streamId}/stats'): (params: {serviceName: string, streamId: string}) => Promise<cloud.project.io.StreamStats>;
+  /**
+   * 
+   * List all subscriptions for a stream
+   */
+  get(path: '/cloud/project/{serviceName}/io/stream/{streamId}/subscription'): (params: {serviceName: string, streamId: string}) => Promise<string[]>;
+  /**
+   * 
+   * Get a subscription
+   */
+  get(path: '/cloud/project/{serviceName}/io/stream/{streamId}/subscription/{subscriptionId}'): (params: {serviceName: string, streamId: string, subscriptionId: string}) => Promise<cloud.project.io.stream.Subscription>;
+  /**
+   * 
+   * Retrieve statistics of the subscription
+   */
+  get(path: '/cloud/project/{serviceName}/io/stream/{streamId}/subscription/{subscriptionId}/stats'): (params: {serviceName: string, streamId: string, subscriptionId: string}) => Promise<cloud.project.io.stream.SubscriptionStats>;
+  /**
+   * 
+   * List all tokens for a stream
+   */
+  get(path: '/cloud/project/{serviceName}/io/stream/{streamId}/token'): (params: {serviceName: string, streamId: string}) => Promise<string[]>;
+  /**
+   * 
+   * Get token
+   */
+  get(path: '/cloud/project/{serviceName}/io/stream/{streamId}/token/{tokenId}'): (params: {serviceName: string, streamId: string, tokenId: string}) => Promise<cloud.project.io.stream.Token>;
+  /**
    * Missing description
    * Get ips
    */
@@ -2352,6 +2735,21 @@ export interface Cloud{
    * List Kubernetes available regions
    */
   get(path: '/cloud/project/{serviceName}/kube/regions'): (params: {serviceName: string}) => Promise<cloud.kube.Region[]>;
+  /**
+   * Manage labs on your Cloud Project
+   * List available public cloud labs
+   */
+  get(path: '/cloud/project/{serviceName}/lab'): (params: {serviceName: string}) => Promise<cloud.Lab[]>;
+  /**
+   * Manage a lab
+   * Get details of a public cloud lab
+   */
+  get(path: '/cloud/project/{serviceName}/lab/{labId}'): (params: {labId: string, serviceName: string}) => Promise<cloud.Lab>;
+  /**
+   * Manage lab agreements
+   * List required agreements to active this lab
+   */
+  get(path: '/cloud/project/{serviceName}/lab/{labId}/agreement'): (params: {labId: string, serviceName: string}) => Promise<cloud.LabAgreements>;
   /**
    * Missing description
    * Get planned migrations
@@ -2603,6 +3001,11 @@ export interface Cloud{
    */
   put(path: '/cloud/project/{serviceName}/instance/{instanceId}'): (params: {instanceId: string, serviceName: string, instanceName: string}) => Promise<void>;
   /**
+   * 
+   * Update a stream
+   */
+  put(path: '/cloud/project/{serviceName}/io/stream/{streamId}'): (params: {serviceName: string, streamId: string, backlog?: string, description?: string, id?: string, kind?: cloud.project.io.StreamKindEnum, name?: string, regions?: string[], retention?: string, status?: cloud.project.io.StreamStatusEnum, throttling?: number}) => Promise<cloud.project.io.Stream>;
+  /**
    * Manage your cluster
    * Update information about your managed Kubernetes cluster
    */
@@ -2778,6 +3181,26 @@ export interface Cloud{
    */
   post(path: '/cloud/project/{serviceName}/instance/group'): (params: {serviceName: string, name: string, region: string, type: cloud.instancegroup.InstanceGroupTypeEnum}) => Promise<cloud.instancegroup.InstanceGroup>;
   /**
+   * 
+   * Create a stream
+   */
+  post(path: '/cloud/project/{serviceName}/io/stream'): (params: {serviceName: string, description: string, kind: cloud.project.io.StreamKindEnum, name: string, region: string}) => Promise<cloud.project.io.Stream>;
+  /**
+   * 
+   * Create a new subscription
+   */
+  post(path: '/cloud/project/{serviceName}/io/stream/{streamId}/subscription'): (params: {serviceName: string, streamId: string, name: string}) => Promise<cloud.project.io.stream.Subscription>;
+  /**
+   * 
+   * Reset a cursor
+   */
+  post(path: '/cloud/project/{serviceName}/io/stream/{streamId}/subscription/{subscriptionId}/resetCursor'): (params: {serviceName: string, streamId: string, subscriptionId: string}) => Promise<void>;
+  /**
+   * 
+   * Create a token
+   */
+  post(path: '/cloud/project/{serviceName}/io/stream/{streamId}/token'): (params: {serviceName: string, streamId: string, action: cloud.project.io.stream.TokenActionEnum}) => Promise<cloud.project.io.stream.Token>;
+  /**
    * Missing description
    * Attach failover ip to an instance
    */
@@ -2807,6 +3230,11 @@ export interface Cloud{
    * Force cluster and node update to the latest patch within minor version or next minor version
    */
   post(path: '/cloud/project/{serviceName}/kube/{kubeId}/update'): (params: {kubeId: string, serviceName: string, strategy?: cloud.kube.UpdateStrategy}) => Promise<void>;
+  /**
+   * Manage a lab
+   * Activate a lab on your Cloud Project
+   */
+  post(path: '/cloud/project/{serviceName}/lab/{labId}'): (params: {labId: string, serviceName: string}) => Promise<cloud.Operation>;
   /**
    * Missing description
    * Create a new network
@@ -2987,6 +3415,21 @@ export interface Cloud{
    * Delete a group
    */
   delete(path: '/cloud/project/{serviceName}/instance/group/{groupId}'): (params: {groupId: string, serviceName: string}) => Promise<void>;
+  /**
+   * 
+   * Delete a stream
+   */
+  delete(path: '/cloud/project/{serviceName}/io/stream/{streamId}'): (params: {serviceName: string, streamId: string}) => Promise<void>;
+  /**
+   * 
+   * Delete a subscription
+   */
+  delete(path: '/cloud/project/{serviceName}/io/stream/{streamId}/subscription/{subscriptionId}'): (params: {serviceName: string, streamId: string, subscriptionId: string}) => Promise<void>;
+  /**
+   * 
+   * Delete a token
+   */
+  delete(path: '/cloud/project/{serviceName}/io/stream/{streamId}/token/{tokenId}'): (params: {serviceName: string, streamId: string, tokenId: string}) => Promise<void>;
   /**
    * Manage your cluster
    * Delete your managed Kubernetes cluster

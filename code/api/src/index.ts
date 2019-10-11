@@ -35,6 +35,7 @@ import open from 'open';
 import { writeFile, readFileSync } from 'fs';
 import { EventEmitter } from 'events';
 import { OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { Socket } from 'net';
 
 export interface OvhError {
     errorCode: 'INVALID_CREDENTIAL' | 'NOT_CREDENTIAL' | 'QUERY_TIME_OUT' | 'NOT_GRANTED_CALL';
@@ -376,9 +377,12 @@ by default I will ask for all rights`);
 
             // mocked socket has no setTimeout
             if (typeof (ovhEngine.timeout) === 'number') {
-                req.on('socket', (socket) => {
-                    socket.setTimeout(ovhEngine.timeout);
-                    if (socket._events.timeout != null) {
+                const timeout = ovhEngine.timeout;
+                req.on('socket', (socket: Socket) => {
+                    socket.setTimeout(timeout);
+                    // TODO check socket within modern nodeJS
+                    const events = (socket as any)._events;
+                    if (events && events.timeout != null) {
                         socket.on('timeout', () => req.abort());
                     }
                 });

@@ -85,9 +85,22 @@ export namespace dedicated {
     // type fullname: dedicated.StatusEnum
     export type StatusEnum = "disable" | "enable"
     // type fullname: dedicated.TaskFunctionEnum
-    export type TaskFunctionEnum = "INFRA_002_VirtualNetworkInterface" | "addVirtualMac" | "addWindowSplaFromExistingSerial" | "applyBackupFtpAcls" | "applyBackupFtpQuota" | "bypassAntiDDosGame" | "changePasswordBackupFTP" | "changeRipeOrg" | "checkAndReleaseIp" | "createBackupFTP" | "createOrUpdateRipeOrg" | "createPrivateNetwork" | "disableFirewall" | "enableFirewall" | "genericMoveFloatingIp" | "hardReboot" | "migrateBackupFTP" | "moveFloatingIp" | "moveVirtualMac" | "rebootPower8To" | "reinstallServer" | "releaseIp" | "removeBackupFTP" | "removeVirtualMac" | "requestAccessIPMI" | "resetIPMI" | "resetIPMISession" | "testIPMIhttp" | "testIPMIpassword" | "testIPMIping" | "virtualMacAdd" | "virtualMacDelete"
+    export type TaskFunctionEnum = "INFRA_002_VirtualNetworkInterface" | "addVirtualMac" | "addWindowSplaFromExistingSerial" | "applyBackupFtpAcls" | "applyBackupFtpQuota" | "bypassAntiDDosGame" | "changePasswordBackupFTP" | "changeRipeOrg" | "checkAndReleaseIp" | "createBackupFTP" | "createOrUpdateRipeOrg" | "createPrivateNetwork" | "disableFirewall" | "enableFirewall" | "genericMoveFloatingIp" | "hardReboot" | "ipmi/configureSGX" | "migrateBackupFTP" | "moveFloatingIp" | "moveVirtualMac" | "rebootPower8To" | "reinstallServer" | "releaseIp" | "removeBackupFTP" | "removeVirtualMac" | "requestAccessIPMI" | "resetIPMI" | "resetIPMISession" | "testIPMIhttp" | "testIPMIpassword" | "testIPMIping" | "virtualMacAdd" | "virtualMacDelete"
     // type fullname: dedicated.TaskStatusEnum
     export type TaskStatusEnum = "cancelled" | "customerError" | "doing" | "done" | "init" | "ovhError" | "todo"
+    export namespace biosSettings {
+        // interface fullName: dedicated.biosSettings.BiosSettings.BiosSettings
+        export interface BiosSettings {
+            supportedSettings: dedicated.server.BiosSettingsSupport;
+        }
+    }
+    export namespace biosSettingsSgx {
+        // interface fullName: dedicated.biosSettingsSgx.BiosSettingsSgx.BiosSettingsSgx
+        export interface BiosSettingsSgx {
+            prmrr: dedicated.server.BiosSettingsSgxPrmrrEnum;
+            status: dedicated.server.BiosSettingsSgxStatusEnum;
+        }
+    }
     export namespace networkInterfaceController {
         // interface fullName: dedicated.networkInterfaceController.NetworkInterfaceController.NetworkInterfaceController
         export interface NetworkInterfaceController {
@@ -175,6 +188,14 @@ export namespace dedicated {
         }
         // type fullname: dedicated.server.BandwidthvRackTypeEnum
         export type BandwidthvRackTypeEnum = "included" | "standard"
+        // type fullname: dedicated.server.BiosSettingsSgxPrmrrEnum
+        export type BiosSettingsSgxPrmrrEnum = "128MB" | "32MB" | "64MB"
+        // type fullname: dedicated.server.BiosSettingsSgxStatusEnum
+        export type BiosSettingsSgxStatusEnum = "disabled" | "enabled" | "software controlled"
+        // interface fullName: dedicated.server.BiosSettingsSupport.BiosSettingsSupport
+        export interface BiosSettingsSupport {
+            sgx: boolean;
+        }
         // type fullname: dedicated.server.BootModeEnum
         export type BootModeEnum = "legacy" | "uefi" | "uefi-legacy"
         // type fullname: dedicated.server.BootOptionEnum
@@ -917,6 +938,18 @@ export interface Dedicated{
                 // GET /dedicated/server/{serviceName}/backupCloudOfferDetails
                 $get(): Promise<dedicated.server.backup.BackupOffer>;
             }
+            biosSettings: {
+                // GET /dedicated/server/{serviceName}/biosSettings
+                $get(): Promise<dedicated.biosSettings.BiosSettings>;
+                sgx: {
+                    // GET /dedicated/server/{serviceName}/biosSettings/sgx
+                    $get(): Promise<dedicated.biosSettingsSgx.BiosSettingsSgx>;
+                    configure: {
+                        // POST /dedicated/server/{serviceName}/biosSettings/sgx/configure
+                        $post(params?: {prmrr?: dedicated.server.BiosSettingsSgxPrmrrEnum, status?: dedicated.server.BiosSettingsSgxStatusEnum}): Promise<dedicated.server.Task>;
+                    }
+                }
+            }
             boot: {
                 // GET /dedicated/server/{serviceName}/boot
                 $get(params?: {bootType?: dedicated.server.BootTypeEnum}): Promise<number[]>;
@@ -1124,6 +1157,16 @@ export interface Dedicated{
                         $get(params: {period: dedicated.server.MrtgPeriodEnum, type: dedicated.server.MrtgTypeEnum}): Promise<dedicated.server.MrtgTimestampValue[]>;
                     }
                 };
+            }
+            ola: {
+                group: {
+                    // POST /dedicated/server/{serviceName}/ola/group
+                    $post(params: {name: string, virtualNetworkInterfaces: string[]}): Promise<dedicated.server.Task>;
+                }
+                ungroup: {
+                    // POST /dedicated/server/{serviceName}/ola/ungroup
+                    $post(params: {virtualNetworkInterface: string}): Promise<dedicated.server.Task[]>;
+                }
             }
             option: {
                 // GET /dedicated/server/{serviceName}/option
@@ -1429,6 +1472,14 @@ export interface Dedicated{
                     $get(): Promise<dedicated.virtualNetworkInterface.VirtualNetworkInterface>;
                     // PUT /dedicated/server/{serviceName}/virtualNetworkInterface/{uuid}
                     $put(params?: {enabled?: boolean, mode?: dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum, name?: string, networkInterfaceController?: string[], serverName?: string, uuid?: string, vrack?: string}): Promise<void>;
+                    disable: {
+                        // POST /dedicated/server/{serviceName}/virtualNetworkInterface/{uuid}/disable
+                        $post(): Promise<dedicated.server.Task>;
+                    }
+                    enable: {
+                        // POST /dedicated/server/{serviceName}/virtualNetworkInterface/{uuid}/enable
+                        $post(): Promise<dedicated.server.Task>;
+                    }
                 };
             }
             vrack: {
@@ -1463,6 +1514,16 @@ export interface Dedicated{
    * Get details on offered backup cloud if available for the current server
    */
   get(path: '/dedicated/server/{serviceName}/backupCloudOfferDetails'): (params: {serviceName: string}) => Promise<dedicated.server.backup.BackupOffer>;
+  /**
+   * Your BiosSettings
+   * Get this object properties
+   */
+  get(path: '/dedicated/server/{serviceName}/biosSettings'): (params: {serviceName: string}) => Promise<dedicated.biosSettings.BiosSettings>;
+  /**
+   * Your BiosSettings for SGX feature
+   * Get this object properties
+   */
+  get(path: '/dedicated/server/{serviceName}/biosSettings/sgx'): (params: {serviceName: string}) => Promise<dedicated.biosSettingsSgx.BiosSettingsSgx>;
   /**
    * List the dedicated.server.Netboot objects
    * Server compatibles netboots
@@ -2029,6 +2090,11 @@ export interface Dedicated{
    */
   post(path: '/dedicated/server/{serviceName}/authenticationSecret'): (params: {serviceName: string}) => Promise<dedicated.server.Access[]>;
   /**
+   * configure operations
+   * Configure SGX feature
+   */
+  post(path: '/dedicated/server/{serviceName}/biosSettings/sgx/configure'): (params: {serviceName: string, prmrr?: dedicated.server.BiosSettingsSgxPrmrrEnum, status?: dedicated.server.BiosSettingsSgxStatusEnum}) => Promise<dedicated.server.Task>;
+  /**
    * Change the contacts of this service
    * Launch a contact change procedure
    */
@@ -2104,6 +2170,16 @@ export interface Dedicated{
    */
   post(path: '/dedicated/server/{serviceName}/license/windows'): (params: {serviceName: string, licenseId: string, version: license.WindowsOsVersionEnum}) => Promise<dedicated.server.Task>;
   /**
+   * group operations
+   * OLA : Group interfaces into an aggregation
+   */
+  post(path: '/dedicated/server/{serviceName}/ola/group'): (params: {serviceName: string, name: string, virtualNetworkInterfaces: string[]}) => Promise<dedicated.server.Task>;
+  /**
+   * ungroup operations
+   * OLA : Ungroup interfaces
+   */
+  post(path: '/dedicated/server/{serviceName}/ola/ungroup'): (params: {serviceName: string, virtualNetworkInterface: string}) => Promise<dedicated.server.Task[]>;
+  /**
    * reboot operations
    * Hard reboot this server
    */
@@ -2163,6 +2239,16 @@ export interface Dedicated{
    * Add an IP to this Virtual MAC
    */
   post(path: '/dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress'): (params: {macAddress: string, serviceName: string, ipAddress: string, virtualMachineName: string}) => Promise<dedicated.server.Task>;
+  /**
+   * disable operations
+   * Disable this VirtualNetworkInterface
+   */
+  post(path: '/dedicated/server/{serviceName}/virtualNetworkInterface/{uuid}/disable'): (params: {serviceName: string, uuid: string}) => Promise<dedicated.server.Task>;
+  /**
+   * enable operations
+   * Enable this VirtualNetworkInterface
+   */
+  post(path: '/dedicated/server/{serviceName}/virtualNetworkInterface/{uuid}/enable'): (params: {serviceName: string, uuid: string}) => Promise<dedicated.server.Task>;
   /**
    * Backup Cloud assigned to this server
    * Deactivate the cloud backup associated to the server. This does not delete container data.

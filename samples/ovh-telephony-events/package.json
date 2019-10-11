@@ -1,6 +1,6 @@
 {
   "name": "ovh-telephony-events",
-  "version": "1.2.8",
+  "version": "1.2.9",
   "description": "Import Ovh telephony event as an nodeJS event or to a Redis server",
   "main": "index.js",
   "keywords": [
