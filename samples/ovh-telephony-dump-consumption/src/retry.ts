@@ -30,7 +30,7 @@ export const getVoiceConsumption = async (apiPhone: Telephony, billingAccount: s
             lastError = e;
         }
     }
-    console.error(`Can not Download ${billingAccount}.service.${servicename}.voiceConsumption.${callId}`);
+    console.error(`Can not Download ${billingAccount}.service.${servicename}.voiceConsumption.${callId}`, lastError);
     return null;
 }
 
@@ -61,7 +61,8 @@ export const getVoiceConsumptions = async (apiPhone: Telephony, billingAccount: 
     if (!interval) {
         let now = new Date();
         let start = startOfMonth(now);
-        now = new Date(start.getTime() + (24 * 3600000))
+        start = new Date(start.getTime() - (24 * 3600000))
+        now = new Date(now.getTime() + (2 * 24 * 3600000))
         interval = [start, now];
     }
     const intervals = getDateArray(interval[0], interval[1], 2);
