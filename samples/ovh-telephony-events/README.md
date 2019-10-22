@@ -32,6 +32,7 @@ Usage: index.ts [options]
 
 Options:
   -V, --version                output the version number
+  --reset                      reset all tokens
   --redis-host <host>          store Even in Redis
   --redis-port <port>          use non standatd port
   --redis-password <password>  provide a redis password
