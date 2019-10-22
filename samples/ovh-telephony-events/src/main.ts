@@ -4,6 +4,7 @@ import { createHandyClient, IHandyRedis } from 'handy-redis';
 import { OvhEventListenerV1 } from './OvhEventListenerV1';
 import { OvhEventListenerV2 } from './OvhEventListenerV2';
 import { OvhEventTokenImporter } from './OvhEventTokenImporter';
+import debounce from 'debounce';
 
 // sample exec line:
 // ts-node main.ts --redis-host 127.0.0.1 --cache tokens.json --channel event-voip
@@ -52,7 +53,6 @@ async function main() {
     if (redis)
         listener.redis(redis, channel)
 
-    // let fromtime = 0;
     let nbEvent = 0;
 
     const log = () => {
@@ -62,7 +62,13 @@ async function main() {
         // fromtime = 0;
     };
     const logEvents = myDebounce(program.debounce, log)
+    const logIdle1 = debounce(() => {console.error('WARNING no Activity for more than 1 min')}, 60000)
+    const logIdle2 = debounce(() => {console.error('ERROR   no Activity for more than 10 min')}, 600000)
+    logIdle1();
+    logIdle2();
     listener.on("message", (ev) => {
+        logIdle1();
+        logIdle2();
         nbEvent++;
         // if (!fromtime)
         //    fromtime = new Date().getTime();

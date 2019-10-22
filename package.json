@@ -10,6 +10,7 @@
   ],
   "license": "MIT",
   "devDependencies": {
+    "@types/debounce": "^1.2.0",
     "@types/node": "^12.7.12",
     "lerna": "^3.17.0",
     "rimraf": "^3.0.0",
@@ -29,5 +30,8 @@
     "build": "lerna run build",
     "publish": "lerna clean -y && lerna bootstrap && lerna run build && lerna publish",
     "prepublish": "lerna run yarn run lint && lerna run yarn run test && lerna run yarn run build"
+  },
+  "dependencies": {
+    "debounce": "^1.2.0"
   }
 }
