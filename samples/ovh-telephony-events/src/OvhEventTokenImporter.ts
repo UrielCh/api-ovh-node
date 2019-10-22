@@ -1,4 +1,4 @@
-import Api from '@ovh-api/telephony';
+import Api, { telephony } from '@ovh-api/telephony';
 import bluebird from 'bluebird';
 import { IEvToken } from "./model";
 import OvhApi from "@ovh-api/api";
@@ -12,13 +12,33 @@ export class OvhEventTokenImporter {
     private _cachefile: string;
 
     public constructor(engine?: OvhApi) {
-        this.engine = engine || new OvhApi({ accessRules: 'GET /telephony, GET /telephony/*/eventToken, POST /telephony/*/eventToken' });
+        this.engine = engine || new OvhApi({ accessRules: 'GET /telephony, GET /telephony/*/eventToken, POST /telephony/*/eventToken, DELETE /telephony/*/eventToken' });
         this._cachefile = '';
     }
 
     public cacheFile(cachefile: string): this {
         this._cachefile = cachefile;
         return this;
+    }
+    public async reset(): Promise<any> {
+        const api = Api(this.engine);
+        const billingAccounts = await api.$get();
+        console.log(`reset Token from ${billingAccounts.length} groupes`);
+        await bluebird.map(billingAccounts, async (billingAccount) => {
+            let token: telephony.EventToken | null = null;
+            try {
+                token = await api.$(billingAccount).eventToken.$get();
+            } catch (e) {
+            }
+            if (token && token.token) {
+                console.log(`invalidate ${token.token} for groupe ${billingAccount}`);
+                try {
+                    await api.$(billingAccount).eventToken.$delete();
+                } catch (e) {
+                    console.error(e);
+                }
+            }
+        }, { concurrency: 5 });
     }
 
     public async load(billingAccounts?: string[]): Promise<IEvToken[]> {
@@ -35,7 +55,7 @@ export class OvhEventTokenImporter {
                     let extras = await this.feachToken(missing);
                     tokens = [...tokens, ...extras];
                     if (this._cachefile)
-                        await fse.writeJSON(this._cachefile, tokens);
+                        await fse.writeJSON(this._cachefile, tokens, {spaces: 1});
                 }
             }
             return tokens;

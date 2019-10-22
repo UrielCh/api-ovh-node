@@ -5,11 +5,13 @@ import { OvhEventListenerV1 } from './OvhEventListenerV1';
 import { OvhEventListenerV2 } from './OvhEventListenerV2';
 import { OvhEventTokenImporter } from './OvhEventTokenImporter';
 import debounce from 'debounce';
+import fse from 'fs-extra';
 
 // sample exec line:
 // ts-node main.ts --redis-host 127.0.0.1 --cache tokens.json --channel event-voip
 program
     .version('1.0.0')
+    .option('--reset', 'reset all tokens')
     .option('--redis-host <host>', 'store Even in Redis')
     .option('--redis-port <port>', 'use non standatd port')
     .option('--redis-password <password>', 'provide a redis password')
@@ -35,6 +37,17 @@ export function myDebounce(
 }
 
 async function main() {
+    if (program['reset']) {
+        if (program.cache) {
+            console.log(`Try to deleting old token file ${program.cache}`);
+            try {
+                await fse.remove(program.cache)
+            } catch (e) {
+            }
+            await new OvhEventTokenImporter().reset();
+        }
+        return "reset Done";
+    }
     let redis: IHandyRedis | null = null;
     if (program['redisHost']) {
         redis = createHandyClient({ host: program['redisHost'], port: Number(program['redisPort']) | 6379, password: program['redisPassword'] });
@@ -62,8 +75,8 @@ async function main() {
         // fromtime = 0;
     };
     const logEvents = myDebounce(program.debounce, log)
-    const logIdle1 = debounce(() => {console.error('WARNING no Activity for more than 1 min')}, 60000)
-    const logIdle2 = debounce(() => {console.error('ERROR   no Activity for more than 10 min')}, 600000)
+    const logIdle1 = debounce(() => { console.error('WARNING no Activity for more than 1 min') }, 60000)
+    const logIdle2 = debounce(() => { console.error('ERROR   no Activity for more than 10 min, you may reset your token with OvhEventTokenImporter --reset') }, 600000)
     logIdle1();
     logIdle2();
     listener.on("message", (ev) => {
