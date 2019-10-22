@@ -75,8 +75,8 @@ async function main() {
         // fromtime = 0;
     };
     const logEvents = myDebounce(program.debounce, log)
-    const logIdle1 = debounce(() => { console.error('WARNING no Activity for more than 1 min') }, 60000)
-    const logIdle2 = debounce(() => { console.error('ERROR   no Activity for more than 10 min, you may reset your token with OvhEventTokenImporter --reset') }, 600000)
+    const logIdle1 = debounce(() => { console.error('WARNING no Activity for more than 2 min') }, 120000)
+    const logIdle2 = debounce(() => { console.error('ERROR   no Activity for more than 10 min, you may need to reset your tokens with OvhEventTokenImporter --reset') }, 600000)
     logIdle1();
     logIdle2();
     listener.on("message", (ev) => {

@@ -66,7 +66,7 @@ export class OvhEventListenerV1 extends EventEmitter implements IOvhEventListene
                             }
                         }
                         if (this._redis) {
-                            console.log(`${(new Date()).toISOString()} Send ${events.length} event to ${this.channel}`);
+                            // console.log(`${(new Date()).toISOString()} Send ${events.length} event to ${this.channel}`);
                             for (const m of events) {
                                 delete m['token']; // hide token
                                 await this._redis.publish(this.channel, JSON.stringify(m));
@@ -82,8 +82,8 @@ export class OvhEventListenerV1 extends EventEmitter implements IOvhEventListene
     }
 
     private async get(url: string): Promise<VoipEventV1Root> {
-        let response = await fetch(url, { method: 'GET', headers })
-        let body = await response.text();
+        const response = await fetch(url, { method: 'GET', headers })
+        const body = await response.text();
         let resp: VoipEventV1Root;
         try {
             resp = JSON.parse(body);

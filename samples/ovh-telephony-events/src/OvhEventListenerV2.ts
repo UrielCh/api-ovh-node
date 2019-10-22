@@ -52,14 +52,16 @@ export class OvhEventListenerV2 extends EventEmitter implements IOvhEventListene
             console.log(`${this.tokens.length} billingGroups grouped as ${groups2.length} groups`)
             for (const group of groups2) {
                 const method = 'POST';
-                let response = await fetch('https://events.voip.ovh.net/v2/session', { method, headers })
-                let session: EventSession = await response.json();
+                const response = await fetch('https://events.voip.ovh.net/v2/session', { method, headers })
+                const session: EventSession = await response.json();
                 group.session = session.id;
                 for (const g2 of group.groups) {
                     const url = `https://events.voip.ovh.net/v2/session/${group.session}/subscribe/${g2.token}`;
-                    let response = await fetch(url, { method, headers })
+                    const response = await fetch(url, { method, headers })
                     let resp = await response.text();
-                    // console.log(resp); // Successfully subscribed on token xxxxxx-xxx-xxxxx-xxxx-xxxxxxxxxxxx
+                    if (resp !== `Successfully subscribed on token ${g2.token}`) {
+                        console.error('unexpected response from events.voip.ovh.net/v2/session:' + resp);
+                    }
                 }
             }
             console.log(`Registred Ok on event Api V2`)
@@ -68,8 +70,8 @@ export class OvhEventListenerV2 extends EventEmitter implements IOvhEventListene
                 const url = `https://events.voip.ovh.net/v2/session/${group.session}/events/poll`;
                 while (true) {
                     try {
-                        let response = await fetch(url, { method: 'GET', headers })
-                        let events: IVoipEvent[] = await response.json();
+                        const response = await fetch(url, { method: 'GET', headers })
+                        const events: IVoipEvent[] = await response.json();
                         if (events && events.length) {
                             if (this.listenerCount("message") > 0) {
                                 for (const m of events) {
