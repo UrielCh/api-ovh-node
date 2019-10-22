@@ -29,18 +29,18 @@
   "dependencies": {
     "@ovh-api/api": "^2.0.0",
     "@ovh-api/telephony": "^2.0.9",
-    "bluebird": "^3.7.0",
+    "bluebird": "^3.7.1",
     "commander": "^3.0.2",
     "fs-extra": "^8.1.0",
     "handy-redis": "^1.6.2",
     "node-fetch": "^2.6.0"
   },
   "devDependencies": {
-    "@types/bluebird": "^3.5.27",
+    "@types/bluebird": "^3.5.28",
     "@types/commander": "^2.12.2",
-    "@types/fs-extra": "^8.0.0",
+    "@types/fs-extra": "^8.0.1",
     "@types/node-fetch": "^2.5.2",
     "ts-node": "^8.4.1",
-    "typescript": "^3.6.3"
+    "typescript": "^3.6.4"
   }
 }
