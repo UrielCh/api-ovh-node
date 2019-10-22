@@ -10,8 +10,9 @@ export class StoreMysql {
     this.cache = [];
   }
 
-  async init(options: ConnectionOptions) {
+  async init(options: ConnectionOptions): Promise<Connection> {
     this.connection = await createConnection(options)
+    return this.connection;
   }
 
   getCnx(): Connection {
@@ -24,7 +25,7 @@ export class StoreMysql {
     let value = new VoiceConsumption(billingAccount, serviceName, data, type);
     this.cache.push(value);
     this.cnt++;
-    if (this.cache.length >= 500) {
+    if (this.cache.length >= 1000) {
       this.flush();
     }
   }
