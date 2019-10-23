@@ -24,10 +24,13 @@ export class OvhEventListenerV1 extends EventEmitter implements IOvhEventListene
 
     public async listen() {
         const listen = this.tokens.map(async ({ billingAccount, token }) => {
-            const url = `https://events.voip.ovh.net/?token=${token}`;
+            let session = '';
+            const url = `https://events.voip.ovh.net/?token=${token}${session}`;
             while (true) {
                 try {
                     const rawData = await this.get(url);
+                    if (rawData.Session)
+                        session = `&session=${rawData.Session}`;
                     let events: IVoipEvent[] = rawData.Events.map((e: VoipEventV1) => {
                         let conv: IVoipEvent;
                         if (e.Service === 'queues')
