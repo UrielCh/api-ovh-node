@@ -2,13 +2,13 @@
   "name": "ovh-telephony-events",
   "version": "1.3.1",
   "description": "Import Ovh telephony event as an nodeJS event or to a Redis server",
-  "main": "index.js",
+  "main": "dist/index.js",
   "keywords": [
     "ovh",
     "Voip",
     "event"
   ],
-  "typings": "index.d.ts",
+  "typings": "dist/index.d.ts",
   "license": "MIT",
   "author": "Uriel Chemouni <uchemouni@gmail.com>",
   "bin": {
@@ -23,11 +23,12 @@
   },
   "bugs": "https://github.com/UrielCh/api-ovh-node/issues",
   "scripts": {
-    "build": "tsc",
-    "build:watch": "tsc --watch"
+    "build": "tsc -p .",
+    "build:watch": "tsc -p . --watch",
+    "prepare": "npm run build"
   },
   "dependencies": {
-    "@ovh-api/api": "^2.0.0",
+    "@ovh-api/api": "^2.1.0",
     "@ovh-api/telephony": "^2.0.9",
     "bluebird": "^3.7.1",
     "commander": "^3.0.2",

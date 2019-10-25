@@ -6,8 +6,9 @@
   "typings": "index.d.ts",
   "license": "MIT",
   "scripts": {
-    "build": "tsc",
-    "build:watch": "tsc --watch"
+    "build": "tsc -p .",
+    "build:watch": "tsc -p . --watch",
+    "prepare": "npm run build"
   },
   "dependencies": {
     "@ovh-api/api": "^2.0.0",

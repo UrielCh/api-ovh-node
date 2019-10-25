@@ -37,7 +37,7 @@
   "scripts": {
     "build": "tsc -p .",
     "test": "mocha dist/**/*.spec.js",
-    "prepublish": "yarn run build",
+    "prepare": "npm run build",
     "build:watch": "tsc -p . --watch"
   },
   "gitHead": "b9fec53f25067fa01d341adc086a63ef2c2a5f62"
