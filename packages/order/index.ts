@@ -1050,6 +1050,12 @@ export interface Order{
                     $post(params: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
+            cloudDB: {
+                // GET /order/cart/{cartId}/cloudDB
+                $get(): Promise<order.cart.GenericProductDefinition[]>;
+                // POST /order/cart/{cartId}/cloudDB
+                $post(params: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+            }
             cloudweb: {
                 // GET /order/cart/{cartId}/cloudweb
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -1181,6 +1187,12 @@ export interface Order{
                     // POST /order/cart/{cartId}/domainTransfer/options
                     $post(params: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
+            }
+            emailDomain: {
+                // GET /order/cart/{cartId}/emailDomain
+                $get(): Promise<order.cart.GenericProductDefinition[]>;
+                // POST /order/cart/{cartId}/emailDomain
+                $post(params: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             }
             emailpro: {
                 // GET /order/cart/{cartId}/emailpro
@@ -1533,6 +1545,12 @@ export interface Order{
                     // POST /order/cart/{cartId}/privateCloudSDDC/options
                     $post(params: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
+            }
+            privateSQL: {
+                // GET /order/cart/{cartId}/privateSQL
+                $get(): Promise<order.cart.GenericProductDefinition[]>;
+                // POST /order/cart/{cartId}/privateSQL
+                $post(params: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             }
             reseller: {
                 // GET /order/cart/{cartId}/reseller
@@ -3337,6 +3355,11 @@ export interface Order{
    */
   get(path: '/order/cart/{cartId}/cloud/options'): (params: {cartId: string, planCode: string}) => Promise<order.cart.GenericOptionDefinition[]>;
   /**
+   * Order a cloud db
+   * Get all cloud db offers available
+   */
+  get(path: '/order/cart/{cartId}/cloudDB'): (params: {cartId: string}) => Promise<order.cart.GenericProductDefinition[]>;
+  /**
    * Missing description
    * Get informations about Cloud Web offers
    */
@@ -3446,6 +3469,11 @@ export interface Order{
    * Get informations about domain names transfer options
    */
   get(path: '/order/cart/{cartId}/domainTransfer/options'): (params: {cartId: string, domain: string}) => Promise<order.cart.GenericOptionDefinition[]>;
+  /**
+   * Order emails pack linked to one domain
+   * Get all available packs available with emails packs
+   */
+  get(path: '/order/cart/{cartId}/emailDomain'): (params: {cartId: string}) => Promise<order.cart.GenericProductDefinition[]>;
   /**
    * Missing description
    * Get informations about EmailPro offers
@@ -3741,6 +3769,11 @@ export interface Order{
    * Get informations about Private Cloud SDDC options
    */
   get(path: '/order/cart/{cartId}/privateCloudSDDC/options'): (params: {cartId: string, planCode: string}) => Promise<order.cart.GenericOptionDefinition[]>;
+  /**
+   * Order privateSQL
+   * Get all privateSQL offers available
+   */
+  get(path: '/order/cart/{cartId}/privateSQL'): (params: {cartId: string}) => Promise<order.cart.GenericProductDefinition[]>;
   /**
    * Missing description
    * Get informations about Reseller offers
@@ -5537,6 +5570,11 @@ export interface Order{
    */
   post(path: '/order/cart/{cartId}/cloud/options'): (params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}) => Promise<order.cart.Item>;
   /**
+   * Order a cloud db
+   * Add a cloudDB in your cart
+   */
+  post(path: '/order/cart/{cartId}/cloudDB'): (params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}) => Promise<order.cart.Item>;
+  /**
    * Missing description
    * Post a new Cloud Web item in your cart
    */
@@ -5641,6 +5679,11 @@ export interface Order{
    * Post a new domain name transfer option in your cart
    */
   post(path: '/order/cart/{cartId}/domainTransfer/options'): (params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}) => Promise<order.cart.Item>;
+  /**
+   * Order emails pack linked to one domain
+   * Add a 1-domain emails pack in your cart
+   */
+  post(path: '/order/cart/{cartId}/emailDomain'): (params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}) => Promise<order.cart.Item>;
   /**
    * Missing description
    * Post a new EmailPro item in your cart
@@ -5916,6 +5959,11 @@ export interface Order{
    * Post a new Private Cloud SDDC option in your cart
    */
   post(path: '/order/cart/{cartId}/privateCloudSDDC/options'): (params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}) => Promise<order.cart.Item>;
+  /**
+   * Order privateSQL
+   * Add a privateSQL in your cart
+   */
+  post(path: '/order/cart/{cartId}/privateSQL'): (params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}) => Promise<order.cart.Item>;
   /**
    * Missing description
    * Post a new Reseller offer item in your cart

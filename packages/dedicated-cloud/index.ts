@@ -24,6 +24,25 @@ export namespace dedicatedCloud {
     }
     // type fullname: dedicatedCloud.AllowedNetworkStateEnum
     export type AllowedNetworkStateEnum = "allowed" | "toDelete" | "toUpdate"
+    // interface fullName: dedicatedCloud.AutoScaleConfig.AutoScaleConfig
+    export interface AutoScaleConfig {
+        cpuMaxThreshold: number;
+        cpuMinThreshold: number;
+        description?: string;
+        id: number;
+        maxNumOfHosts: number;
+        memMaxThreshold: number;
+        memMinThreshold: number;
+        minNumOfHosts: number;
+        storageMaxThreshold: number;
+        timeDelayScaleIn: number;
+        timeDelayScaleOut: number;
+        timeDelayStorageScaleOut: number;
+    }
+    // interface fullName: dedicatedCloud.AutoScaleVirtual.AutoScaleVirtual
+    export interface AutoScaleVirtual {
+        state: dedicatedCloudoptionStateEnum;
+    }
     // interface fullName: dedicatedCloud.Backup.Backup
     export interface Backup {
         backupDurationInReport?: boolean;
@@ -64,6 +83,17 @@ export namespace dedicatedCloud {
         nexus1000vStatus: dedicatedCloudcapabilitiesFeatureStatusEnum;
         upgradable: boolean;
         userAccessPolicyStatus: dedicatedCloudcapabilitiesFeatureStatusEnum;
+    }
+    // interface fullName: dedicatedCloud.Cluster.Cluster
+    export interface Cluster {
+        autoscale?: dedicatedCloudclusterAutoScale;
+        drsMode: dedicatedCloudclusterClusterDrsModeEnum;
+        drsStatus: dedicatedCloudclusterClusterConfigsStatusEnum;
+        evcMode: string;
+        haStatus: dedicatedCloudclusterClusterConfigsStatusEnum;
+        id: number;
+        name: string;
+        vmwareClusterId: string;
     }
     // type fullname: dedicatedCloud.CommercialNameEnum
     export type CommercialNameEnum = "DC" | "DC-ANCIENT" | "DC-ANCIENT-HDS" | "DC-ANCIENT-HIPAA" | "DC-ANCIENT-NSX" | "DC-ANCIENT-NSX-VROPS" | "DC-ANCIENT-PCIDSS" | "DC-ANCIENT-UNKNOWN" | "DC-ANCIENT-VROPS" | "DC-HDS" | "DC-HIPAA" | "DC-LEGACY" | "DC-LEGACY-HDS" | "DC-LEGACY-HIPAA" | "DC-LEGACY-NSX" | "DC-LEGACY-NSX-VROPS" | "DC-LEGACY-PCIDSS" | "DC-LEGACY-UNKNOWN" | "DC-LEGACY-VROPS" | "DC-NSX" | "DC-NSX-VROPS" | "DC-PCIDSS" | "DC-UNKNOWN" | "DC-VROPS" | "SDDC" | "SDDC-HDS" | "SDDC-HIPAA" | "SDDC-LEGACY" | "SDDC-LEGACY-HDS" | "SDDC-LEGACY-HIPAA" | "SDDC-LEGACY-PCIDSS" | "SDDC-LEGACY-UNKNOWN" | "SDDC-LEGACY-VROPS" | "SDDC-LEGACY-VROPS-WITHOUT-NSX" | "SDDC-LEGACY-WITHOUT-NSX" | "SDDC-PCIDSS" | "SDDC-UNKNOWN" | "SDDC-VROPS" | "SDDC-VROPS-WITHOUT-NSX" | "SDDC-WITHOUT-NSX" | "UNKNOWN" | "UNKNOWN-HDS" | "UNKNOWN-HIPAA" | "UNKNOWN-NSX" | "UNKNOWN-NSX-VROPS" | "UNKNOWN-PCIDSS" | "UNKNOWN-UNKNOWN" | "UNKNOWN-VROPS"
@@ -449,6 +479,24 @@ export namespace dedicatedCloud {
     export namespace capabilities {
         // type fullname: dedicatedCloud.capabilities.FeatureStatusEnum
         export type FeatureStatusEnum = "active" | "comingSoon" | "no"
+    }
+    export namespace cluster {
+        // interface fullName: dedicatedCloud.cluster.AutoScale.AutoScale
+        export interface AutoScale {
+            autoScaleInHost: dedicatedCloudclusterAutoScaleModeEnum;
+            autoScaleOutHost: dedicatedCloudclusterAutoScaleModeEnum;
+            autoScaleOutStorage: dedicatedCloudclusterAutoScaleModeEnum;
+            configId: number;
+            id: number;
+            inMaintenanceMode: boolean;
+            state: dedicatedCloudoptionStateEnum;
+        }
+        // type fullname: dedicatedCloud.cluster.AutoScaleModeEnum
+        export type AutoScaleModeEnum = "automatic" | "manual"
+        // type fullname: dedicatedCloud.cluster.ClusterConfigsStatusEnum
+        export type ClusterConfigsStatusEnum = "disabled" | "enabled" | "unknown"
+        // type fullname: dedicatedCloud.cluster.ClusterDrsModeEnum
+        export type ClusterDrsModeEnum = "fullyAutomated" | "manual" | "partiallyAutomated"
     }
     // interface fullName: dedicatedCloud.dedicatedCloud.dedicatedCloud
     export interface dedicatedCloud {
@@ -910,6 +958,10 @@ export interface DedicatedCloud{
                         // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/enable
                         $post(params?: {backupOffer?: dedicatedCloudbackupOfferTypeEnum}): Promise<dedicatedCloud.Task>;
                     }
+                }
+                checkBackupJobs: {
+                    // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/checkBackupJobs
+                    $post(): Promise<dedicatedCloud.Task>;
                 }
                 disasterRecovery: {
                     zerto: {
@@ -2130,6 +2182,11 @@ export interface DedicatedCloud{
    */
   post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/enable'): (params: {datacenterId: number, serviceName: string, backupOffer?: dedicatedCloudbackupOfferTypeEnum}) => Promise<dedicatedCloud.Task>;
   /**
+   * checkBackupJobs operations
+   * Check whether your backup jobs are correctly set in your current datacenter, use this when your virtual machines have been migrated through another datacenter
+   */
+  post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/checkBackupJobs'): (params: {datacenterId: number, serviceName: string}) => Promise<dedicatedCloud.Task>;
+  /**
    * disable operations
    * Disable Zerto
    */
@@ -2519,15 +2576,18 @@ export interface DedicatedCloud{
  * Extra Alias to bypass relativer namespace colitions
  */
 type dedicatedCloudAllowedNetworkStateEnum = dedicatedCloud.AllowedNetworkStateEnum;
+type dedicatedCloudoptionStateEnum = dedicatedCloud.option.StateEnum;
 type dedicatedCloudbackupOfferTypeEnum = dedicatedCloud.backup.OfferTypeEnum;
 type dedicatedCloudBackupStateEnum = dedicatedCloud.BackupStateEnum;
 type dedicatedCloudbackupBackupDaysEnum = dedicatedCloud.backup.BackupDaysEnum;
 type dedicatedCloudbackupStateEnum = dedicatedCloud.backup.StateEnum;
 type dedicatedCloudcapabilitiesFeatureStatusEnum = dedicatedCloud.capabilities.FeatureStatusEnum;
+type dedicatedCloudclusterAutoScale = dedicatedCloud.cluster.AutoScale;
+type dedicatedCloudclusterClusterDrsModeEnum = dedicatedCloud.cluster.ClusterDrsModeEnum;
+type dedicatedCloudclusterClusterConfigsStatusEnum = dedicatedCloud.cluster.ClusterConfigsStatusEnum;
 type dedicatedCloudHypervisorVersionEnum = dedicatedCloud.HypervisorVersionEnum;
 type dedicatedCloudrightNetworkRoleEnum = dedicatedCloud.right.NetworkRoleEnum;
 type dedicatedCloudCommercialNameEnum = dedicatedCloud.CommercialNameEnum;
-type dedicatedCloudoptionStateEnum = dedicatedCloud.option.StateEnum;
 type dedicatedCloudoptionAccessNetworkStateEnum = dedicatedCloud.optionAccessNetwork.StateEnum;
 type dedicatedCloudressourcesBillingTypeEnum = dedicatedCloud.ressources.BillingTypeEnum;
 type dedicatedCloudfilerStateEnum = dedicatedCloud.filer.StateEnum;
@@ -2554,6 +2614,7 @@ type dedicatedCloudvirtualMachinePowerState = dedicatedCloud.virtualMachinePower
 type dedicatedCloudvirtualMachineFaultToleranceState = dedicatedCloud.virtualMachineFaultToleranceState;
 type dedicatedCloudbackupJobStateEnum = dedicatedCloud.backup.JobStateEnum;
 type dedicatedCloudbackupRestorePoint = dedicatedCloud.backup.RestorePoint;
+type dedicatedCloudclusterAutoScaleModeEnum = dedicatedCloud.cluster.AutoScaleModeEnum;
 type dedicatedCloudBillingTypeEnum = dedicatedCloud.BillingTypeEnum;
 type dedicatedCloudGenerationEnum = dedicatedCloud.GenerationEnum;
 type dedicatedCloudManagementInterfaceEnum = dedicatedCloud.ManagementInterfaceEnum;

@@ -167,6 +167,19 @@ export namespace connectivity {
             streetName: string;
         }
     }
+    export namespace maintenance {
+        // type fullname: connectivity.maintenance.InterventionTypeEnum
+        export type InterventionTypeEnum = "BACKBONE_MAINTENANCE" | "CARD_SWAP_WITH_IMPACT" | "CLUSTER_AN_ROUTER_MIGRATION" | "DSLAM_LINK_UPGRADE_WITHOUT_CARD_SWAP" | "DSLAM_UPGRADE_WITH_IMPACT" | "FIBER_CABLE_LINK_SWAP" | "FIBER_CONNECTION_WITH_IMPACT" | "FIBER_MAINTENANCE" | "IP_BACKBONE_LINK_MIGRATION_WITH_IMPACT" | "IP_BACKBONE_SWITCH_UPGRADE_WITH_IMPACT" | "IP_MAINTENANCE" | "LEVEL2_DSLAM_MIGRATION" | "LINK_MIGRATION_WITH_DSL_IMPACT" | "LL_THIRD_PARTY_MAINTENANCE_WITH_IMPACT" | "LOOP_AN_ROUTER_MIGRATION" | "LOOP_AN_ROUTER_UPGRADE" | "MAINTENANCE" | "OPTIC_FIBER_WORK_WITH_OUTAGE_DURING_NON_WORKING_HOURS" | "PLANNED_CORRECTIVE_MAINTENANCE" | "SENSITIVE_LOOP_LINK_UPGRADE" | "TRANSMISSION_CORRECTIVE_MAINTENANCE" | "TRANSMISSION_CUSTOMER_TRANSFERT_MIGRATION_WITH_IMPACT" | "TRANSMISSION_FIBRE_MAINTENANCE" | "TRANSMISSION_LINK_COMMISSIONING_PRODUCTION_DECOMMISSIONING_WORK_WITH_IMPACT" | "TRANSMISSION_LINK_TRANSFERT_MIGRATION_WITH_IMPACT" | "TRANSMISSION_MAINTENANCE" | "TRANSMISSION_MOVING_WITH_IMPACT" | "TRANSMISSION_SWITCH_UPGRADE_WITH_IMPACT" | "WITH_IMPACT"
+        // interface fullName: connectivity.maintenance.WorkPlanned.WorkPlanned
+        export interface WorkPlanned {
+            dateBegin: string;
+            dateEnd: string;
+            id: number;
+            interventionType: connectivity.maintenance.InterventionTypeEnum;
+            operator: connectivity.OperatorEnum;
+            technology: string;
+        }
+    }
     export namespace monitoring {
         // interface fullName: connectivity.monitoring.GenericIncident.GenericIncident
         export interface GenericIncident {
@@ -277,6 +290,14 @@ export interface Connectivity{
             }
         }
     }
+    maintenance: {
+        workPlanned: {
+            partners: {
+                // GET /connectivity/maintenance/workPlanned/partners
+                $get(): Promise<connectivity.maintenance.WorkPlanned[]>;
+            }
+        }
+    }
     monitoring: {
         genericIncident: {
             partners: {
@@ -295,6 +316,11 @@ export interface Connectivity{
    * Get an eligibility by its reference
    */
   get(path: '/connectivity/eligibility/test'): (params: {eligibilityReference: string}) => Promise<connectivity.eligibility.EligibilityTest>;
+  /**
+   * Missing description
+   * List work planned by operators. For partners only
+   */
+  get(path: '/connectivity/maintenance/workPlanned/partners'): () => Promise<connectivity.maintenance.WorkPlanned[]>;
   /**
    * Missing description
    * List detected, validated and recently closed generic incidents. For partners only

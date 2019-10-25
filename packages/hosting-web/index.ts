@@ -230,11 +230,14 @@ export namespace hosting {
             frequency: string;
             id: number;
             language: hosting.web.cron.LanguageEnum;
+            state: hosting.web.cron.StateEnum;
             status: hosting.web.cron.StatusEnum;
         }
         export namespace cron {
             // type fullname: hosting.web.cron.LanguageEnum
             export type LanguageEnum = "node10" | "node11" | "node8" | "node9" | "other" | "php4" | "php5.2" | "php5.3" | "php5.4" | "php5.5" | "php5.6" | "php7.0" | "php7.1" | "php7.2" | "php7.3" | "python2" | "python3" | "ruby2.4" | "ruby2.5" | "ruby2.6"
+            // type fullname: hosting.web.cron.StateEnum
+            export type StateEnum = "created" | "creating" | "deleting" | "updating"
             // type fullname: hosting.web.cron.StatusEnum
             export type StatusEnum = "disabled" | "enabled" | "suspended"
         }
@@ -878,7 +881,7 @@ export interface Hosting{
                     // GET /hosting/web/{serviceName}/cron/{id}
                     $get(): Promise<hosting.web.cron>;
                     // PUT /hosting/web/{serviceName}/cron/{id}
-                    $put(params?: {command?: string, description?: string, email?: string, frequency?: string, id?: number, language?: hosting.web.cron.LanguageEnum, status?: hosting.web.cron.StatusEnum}): Promise<void>;
+                    $put(params?: {command?: string, description?: string, email?: string, frequency?: string, id?: number, language?: hosting.web.cron.LanguageEnum, state?: hosting.web.cron.StateEnum, status?: hosting.web.cron.StatusEnum}): Promise<void>;
                 };
             }
             cronAvailableLanguage: {
@@ -1663,7 +1666,7 @@ export interface Hosting{
    * Hosting crons
    * Alter this object properties
    */
-  put(path: '/hosting/web/{serviceName}/cron/{id}'): (params: {id: number, serviceName: string, command?: string, description?: string, email?: string, frequency?: string, language?: hosting.web.cron.LanguageEnum, status?: hosting.web.cron.StatusEnum}) => Promise<void>;
+  put(path: '/hosting/web/{serviceName}/cron/{id}'): (params: {id: number, serviceName: string, command?: string, description?: string, email?: string, frequency?: string, language?: hosting.web.cron.LanguageEnum, state?: hosting.web.cron.StateEnum, status?: hosting.web.cron.StatusEnum}) => Promise<void>;
   /**
    * Hosting automated emails
    * Alter this object properties

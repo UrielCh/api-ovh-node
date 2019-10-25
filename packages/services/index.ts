@@ -103,6 +103,39 @@ export namespace services {
             serviceId: number;
         }
     }
+    export namespace form {
+        // interface fullName: services.form.Answer.Answer
+        export interface Answer {
+            question: string;
+            value: string;
+        }
+        // interface fullName: services.form.AnswerAllowedValue.AnswerAllowedValue
+        export interface AnswerAllowedValue {
+            key: string;
+        }
+        // type fullname: services.form.AnswerTypeEnum
+        export type AnswerTypeEnum = "boolean" | "date" | "datetime" | "double" | "enum" | "long" | "string" | "text"
+        // interface fullName: services.form.Description.Description
+        export interface Description {
+            name: string;
+            questions: services.form.Question[];
+        }
+        // interface fullName: services.form.Form.Form
+        export interface Form {
+            answers: services.form.Answer[];
+        }
+        // interface fullName: services.form.Question.Question
+        export interface Question {
+            answers?: services.form.AnswerAllowedValue[];
+            mandatory: boolean;
+            question: string;
+            type: services.form.AnswerTypeEnum;
+        }
+        // interface fullName: services.form.Response.Response
+        export interface Response {
+            message: string;
+        }
+    }
     export namespace terminate {
         // interface fullName: services.terminate.ConfirmServiceTerminationRequest.ConfirmServiceTerminationRequest
         export interface ConfirmServiceTerminationRequest {

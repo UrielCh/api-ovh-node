@@ -83,6 +83,8 @@ export namespace sms {
     export type CountryEnum = "ag" | "ai" | "all" | "an" | "ar" | "at" | "au" | "aw" | "ba" | "bb" | "be" | "bg" | "bh" | "bm" | "bo" | "br" | "bz" | "ch" | "cl" | "cn" | "co" | "cr" | "cu" | "cy" | "cz" | "de" | "dk" | "dm" | "dz" | "ec" | "ee" | "eg" | "es" | "fi" | "fr" | "gb" | "gd" | "gp" | "gr" | "gy" | "hk" | "hn" | "hr" | "ht" | "hu" | "id" | "ie" | "il" | "in" | "is" | "it" | "jm" | "jo" | "jp" | "kr" | "kw" | "ky" | "lb" | "lc" | "lt" | "lu" | "lv" | "ma" | "me" | "mq" | "ms" | "mt" | "my" | "nc" | "ng" | "nl" | "no" | "nz" | "pa" | "pe" | "pf" | "ph" | "pk" | "pl" | "pt" | "py" | "re" | "ro" | "rs" | "ru" | "sa" | "se" | "sg" | "si" | "sk" | "sr" | "tc" | "th" | "tn" | "tr" | "tt" | "tw" | "ua" | "uy" | "vc" | "ve" | "vg" | "vn" | "za"
     // type fullname: sms.DocumentWayTypeEnum
     export type DocumentWayTypeEnum = "incoming" | "outgoing"
+    // type fullname: sms.EncodingEnum
+    export type EncodingEnum = "7bits" | "unicode"
     // interface fullName: sms.Exception.Exception
     export interface Exception {
         countrySuffixe: string;
@@ -135,6 +137,13 @@ export namespace sms {
         ptt: number;
         receiver: string;
         sender: string;
+    }
+    // interface fullName: sms.JobEstimate.JobEstimate
+    export interface JobEstimate {
+        characters: number;
+        charactersClass: sms.EncodingEnum;
+        maxCharactersPerPart: number;
+        parts: number;
     }
     // interface fullName: sms.Outgoing.Outgoing
     export interface Outgoing {
@@ -298,7 +307,7 @@ export namespace sms {
     // type fullname: sms.TodoGeneralPublicStepsEnum
     export type TodoGeneralPublicStepsEnum = "checkOrder" | "createHlrs" | "finishing" | "sendMailReport" | "starting" | "waitForHlrs"
     // type fullname: sms.TypeSenderEnum
-    export type TypeSenderEnum = "alpha" | "numeric" | "virtual"
+    export type TypeSenderEnum = "alpha" | "numeric" | "shortcode" | "virtual"
     // type fullname: sms.TypeTemplateEnum
     export type TypeTemplateEnum = "alerting" | "authentification" | "transactional"
     // interface fullName: sms.User.User
@@ -376,6 +385,10 @@ export default proxySms;
 export interface Sms{
     // GET /sms
     $get(): Promise<string[]>;
+    estimate: {
+        // POST /sms/estimate
+        $post(params: {message: string, noStopClause: boolean, senderType: sms.TypeSenderEnum}): Promise<sms.JobEstimate>;
+    }
     ptts: {
         // GET /sms/ptts
         $get(params: {ptt: number}): Promise<sms.PttDetails>;
@@ -1157,6 +1170,11 @@ export interface Sms{
    * Add one or several sending jobs
    */
   post(path: '/sms/{serviceName}/virtualNumbers/{number}/jobs'): (params: {number: string, serviceName: string, charset?: sms.CharsetEnum, class?: sms.ClassEnum, coding?: sms.CodingEnum, differedPeriod?: number, message: string, priority?: sms.PriorityEnum, receivers?: string[], receiversDocumentUrl?: string, receiversSlotId?: string, tag?: string, validityPeriod?: number}) => Promise<sms.SmsSendingReport>;
+  /**
+   * Get the encoding, length and number of SMS parts of a text message
+   * Get the encoding, length and number of SMS parts of a text message
+   */
+  post(path: '/sms/estimate'): (params: {message: string, noStopClause: boolean, senderType: sms.TypeSenderEnum}) => Promise<sms.JobEstimate>;
   /**
    * SMS blacklist
    * Delete the blacklisted sms number given

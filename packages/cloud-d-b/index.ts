@@ -72,6 +72,10 @@ export namespace cloudDB {
             export type StatusEnum = "created" | "creating" | "deleting"
         }
         export namespace Offer {
+            export namespace Region {
+                // type fullname: cloudDB.enterprise.Offer.Region.StatusEnum
+                export type StatusEnum = "available" | "unavailable"
+            }
             // type fullname: cloudDB.enterprise.Offer.StatusEnum
             export type StatusEnum = "available" | "planned" | "testing" | "unavailable"
             // type fullname: cloudDB.enterprise.Offer.TypeEnum
@@ -254,6 +258,7 @@ export namespace cloudDB {
         hostLeft?: number;
         offerName: string;
         regionName: string;
+        status: cloudDB.enterprise.Offer.Region.StatusEnum;
     }
     // interface fullName: cloudDB.enterprise_Region.enterprise_Region
     export interface enterprise_Region {

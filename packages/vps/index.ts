@@ -121,6 +121,7 @@ export namespace vps {
     export type BackupStateEnum = "disabled" | "enabled"
     // interface fullName: vps.Datacenter.Datacenter
     export interface Datacenter {
+        country: coreTypes.CountryEnum;
         longName: string;
         name: string;
     }

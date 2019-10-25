@@ -640,6 +640,13 @@ export namespace cloud {
             totalPrice: number;
         }
     }
+    export namespace capabilities {
+        // interface fullName: cloud.capabilities.Capability.Capability
+        export interface Capability {
+            enabled: boolean;
+            name: string;
+        }
+    }
     export namespace common {
         // interface fullName: cloud.common.VoucherValidity.VoucherValidity
         export interface VoucherValidity {
@@ -943,9 +950,9 @@ export namespace cloud {
         // type fullname: cloud.kube.UpdateStrategy
         export type UpdateStrategy = "LATEST_PATCH" | "NEXT_MINOR"
         // type fullname: cloud.kube.UpgradeVersion
-        export type UpgradeVersion = "1.12" | "1.13" | "1.14" | "1.15"
+        export type UpgradeVersion = "1.12" | "1.13" | "1.14" | "1.15" | "1.16"
         // type fullname: cloud.kube.Version
-        export type Version = "1.13" | "1.14" | "1.15"
+        export type Version = "1.14" | "1.15" | "1.16"
     }
     export namespace migration {
         // interface fullName: cloud.migration.Migration.Migration
@@ -2711,7 +2718,7 @@ export interface Cloud{
    */
   get(path: '/cloud/project/{serviceName}/kube'): (params: {serviceName: string}) => Promise<string[]>;
   /**
-   * Manage your cluster
+   * Manage your clusters
    * Get information about your managed Kubernetes cluster
    */
   get(path: '/cloud/project/{serviceName}/kube/{kubeId}'): (params: {kubeId: string, serviceName: string}) => Promise<cloud.kube.Cluster>;
@@ -2726,7 +2733,7 @@ export interface Cloud{
    */
   get(path: '/cloud/project/{serviceName}/kube/{kubeId}/node'): (params: {kubeId: string, serviceName: string}) => Promise<cloud.kube.Node[]>;
   /**
-   * Manage a single node on your cluster
+   * Manage your nodes
    * Get information on a specific node on your cluster
    */
   get(path: '/cloud/project/{serviceName}/kube/{kubeId}/node/{nodeId}'): (params: {kubeId: string, nodeId: string, serviceName: string}) => Promise<cloud.kube.Node>;
@@ -3006,7 +3013,7 @@ export interface Cloud{
    */
   put(path: '/cloud/project/{serviceName}/io/stream/{streamId}'): (params: {serviceName: string, streamId: string, backlog?: string, description?: string, id?: string, kind?: cloud.project.io.StreamKindEnum, name?: string, regions?: string[], retention?: string, status?: cloud.project.io.StreamStatusEnum, throttling?: number}) => Promise<cloud.project.io.Stream>;
   /**
-   * Manage your cluster
+   * Manage your clusters
    * Update information about your managed Kubernetes cluster
    */
   put(path: '/cloud/project/{serviceName}/kube/{kubeId}'): (params: {kubeId: string, serviceName: string, name: string}) => Promise<void>;
@@ -3431,12 +3438,12 @@ export interface Cloud{
    */
   delete(path: '/cloud/project/{serviceName}/io/stream/{streamId}/token/{tokenId}'): (params: {serviceName: string, streamId: string, tokenId: string}) => Promise<void>;
   /**
-   * Manage your cluster
+   * Manage your clusters
    * Delete your managed Kubernetes cluster
    */
   delete(path: '/cloud/project/{serviceName}/kube/{kubeId}'): (params: {kubeId: string, serviceName: string}) => Promise<void>;
   /**
-   * Manage a single node on your cluster
+   * Manage your nodes
    * Delete a node on your cluster
    */
   delete(path: '/cloud/project/{serviceName}/kube/{kubeId}/node/{nodeId}'): (params: {kubeId: string, nodeId: string, serviceName: string}) => Promise<void>;
