@@ -37,10 +37,30 @@ import { EventEmitter } from 'events';
 import { OvhRequestable, OvhParamType } from '@ovh-api/common';
 import { Socket } from 'net';
 
-export interface OvhError {
-    errorCode: 'INVALID_CREDENTIAL' | 'NOT_CREDENTIAL' | 'QUERY_TIME_OUT' | 'NOT_GRANTED_CALL';
+export interface IOvhError {
+    errorCode: 'INVALID_CREDENTIAL' | 'NOT_CREDENTIAL' | 'QUERY_TIME_OUT' | 'NOT_GRANTED_CALL' | 'HTTP_ERROR' | 'NETWORK_ERROR';
     httpCode: string;
     message: string;
+}
+
+export class OvhError extends Error implements IOvhError {
+    errorCode: 'INVALID_CREDENTIAL' | 'NOT_CREDENTIAL' | 'QUERY_TIME_OUT' | 'NOT_GRANTED_CALL' | 'HTTP_ERROR' | 'NETWORK_ERROR';
+    httpCode: string;
+    parent?: Error;
+
+    constructor(m: IOvhError, parent?: Error) {
+        super(m.message);
+        this.errorCode = m.errorCode;
+        this.httpCode = m.httpCode;
+        this.parent = parent;
+        if (this.parent) {
+            if (this.parent.stack)
+                this.stack = this.stack + '\nFrom previous ' + this.parent.stack.split('\n').slice(0, 2).join('\n') + '\n'
+            else if (typeof this.parent == "string")
+                this.stack = this.parent + '\n' + this.stack;
+        }
+        Object.setPrototypeOf(this, OvhError.prototype);
+    }
 }
 
 export interface OvhParams {
@@ -64,6 +84,20 @@ export interface OvhParams {
      * certCache store ans use generated certificate in a file
      */
     certCache?: string;
+    /**
+     * time to wait in ms before a retry
+     * default is 100 ms;
+     */
+    retrySleep?: number;
+    /**
+     * maximum retry atempt after a recoverable error
+     * default is 10 time;
+     */
+    maxRetry?: number;
+    /**
+     * save used query to customize accessRules
+     */
+    saveQuerys?: boolean;
 }
 
 interface AccessRule {
@@ -98,6 +132,9 @@ export default class OvhApi extends EventEmitter implements OvhRequestable, OvhA
     accessRules: string[];
     certCache: string;
     updatingCert: boolean;
+    retrySleep: number = 100;
+    maxRetry: number = 10;
+    querySet: Set<string> | null;
 
     constructor(params: OvhParams) {
         super();
@@ -109,6 +146,13 @@ export default class OvhApi extends EventEmitter implements OvhRequestable, OvhA
         this.timeout = params.timeout;
         this.apiTimeDiff = params.apiTimeDiff || null;
         this.certCache = params.certCache || '';
+        this.retrySleep = (typeof params.retrySleep === 'number') ? params.retrySleep : 100;
+        this.maxRetry = (typeof params.maxRetry === 'number') ? params.maxRetry : 10;
+        if (params.saveQuerys) {
+            this.querySet = new Set();
+        } else {
+            this.querySet = null;
+        }
         this.updatingCert = false;
         if (params.accessRules) {
             if (typeof (params.accessRules) === 'string')
@@ -149,7 +193,7 @@ by default I will ask for all rights`);
             endpoint = endpoint || 'ovh-eu';
             let selected = endpoints[endpoint]
             if (!selected)
-                throw new Error('[OVH] Unknown API ' + endpoint);
+                throw new Error(`[OVH] Unknown API ${endpoint}`);
             this.host = selected.host;
             this.port = Number(selected.port) || 443;
         }
@@ -170,6 +214,13 @@ by default I will ask for all rights`);
         return <AccessRule[]>rules
             .map(s => s.split(/\s+/))
             .map(([method, path]) => ({ method, path }));
+    }
+
+
+    public getQuerySet(): string {
+        if (this.querySet)
+            return [...this.querySet].filter(a => a != 'GET /auth/time').join(', ');
+        return 'please set saveQuerys to true to enable this feature';
     }
 
     /**
@@ -193,7 +244,7 @@ by default I will ask for all rights`);
                 const time: number = await ovhEngine.request('GET', '/auth/time', {})
                 ovhEngine.apiTimeDiff = time - Math.round(Date.now() / 1000);
             } catch (err) {
-                throw '[OVH] Unable to fetch OVH API time' + err.message
+                throw new Error(`[OVH] Unable to fetch OVH API time ${err.message || err}`);
             }
         }
         /**
@@ -217,6 +268,17 @@ by default I will ask for all rights`);
             method: httpMethod,
             path: ovhEngine.basePath + path
         };
+
+        if (this.querySet) {
+            const template = path.split('/').map((e) => {
+                if (!e.length)
+                    return e;
+                if (e.match(/\d/))
+                    return '*'
+                return e;
+            }).join('/');
+            this.querySet.add(`${httpMethod} ${template}`);
+        }
 
         // Headers
         options.headers = {
@@ -306,27 +368,31 @@ by default I will ask for all rights`);
             setTimeout(checkCert, 2000)
         });
 
-        const handleResponse = async (res: IncomingMessage, body: string) => {
-            let response;
+        const handleResponse = async (response: IncomingMessage, body: string) => {
+            let responseData: any;
+            const { statusCode, statusMessage } = response;
             if (body.length > 0) {
                 try {
-                    response = JSON.parse(body);
+                    responseData = JSON.parse(body);
                 } catch (e) {
-                    //console.error('Failed to parse', body)
-                    throw `[OVH] Unable to parse ${httpMethod} ${path} JSON reponse:${body}`;
+                    throw new OvhError({
+                        errorCode: 'HTTP_ERROR',
+                        httpCode: `${statusCode} ${statusMessage}`,
+                        message: `[OVH] Unable to parse ${httpMethod} ${path} JSON reponse:${body}`
+                    }, e);
                 }
             } else {
-                response = null;
+                responseData = '';
             }
 
             if (ovhEngine.listenerCount('debug')) {
                 ovhEngine.emit('debug', `[OVH] API response to ${httpMethod} ${path}: ${body}`);
             }
-            if (res.statusCode === 200) {
-                return response;
+            if (statusCode === 200) {
+                return responseData;
             }
 
-            const error: OvhError = <OvhError>response;
+            const error: IOvhError = <IOvhError>responseData;
             if (error.errorCode === 'INVALID_CREDENTIAL' || error.message === 'You must login first') {
                 if (ovhEngine.certCache && !ovhEngine.updatingCert) {
                     ovhEngine.updatingCert = true;
@@ -340,20 +406,24 @@ by default I will ask for all rights`);
                         consumerKey = credential['consumerKey'];
                         validationUrl = credential['validationUrl'];
                     } catch (e) {
-                        throw `failed to request a credential with rule ${JSON.stringify(ovhEngine.accessRules)} ${e.message || e}`;
+                        throw new OvhError({
+                            errorCode: 'HTTP_ERROR',
+                            httpCode: `${statusCode} ${statusMessage}`,
+                            message: `failed to request a credential with rule ${JSON.stringify(ovhEngine.accessRules)} ${e.message || e}`
+                        }, e);
                     }
                     await waitForCertValidation(consumerKey, validationUrl);
                     let resp = await ovhEngine.request(httpMethod, path, params);
                     ovhEngine.updatingCert = false;
                     return resp;
                 }
-                throw response;
+                throw new OvhError(error);
             }
-            if (response.errorCode)
-                throw response;
-            if (!response.message)
-                throw 'ErrorCode ' + res.statusCode;
-            throw res.statusCode + ': ' + response.message;
+            if (!error.errorCode)
+                error.errorCode = "HTTP_ERROR";
+            if (!error.httpCode)
+                error.httpCode = `${statusCode} ${statusMessage}`;
+            throw new OvhError(error);
         }
         let retryCnt = 0;
         // Promisify https.request
@@ -364,16 +434,32 @@ by default I will ask for all rights`);
                     .on('end', () => {
                         retryCnt++;
                         // 504 Gateway Time-out
-                        if (res.statusCode == 504 && retryCnt < 5) {
-                            console.log(`${retryCnt}/5) ${httpMethod} ${path} failed ${res.statusCode} ${res.statusMessage}`)
-                            return wait(400)()
+                        // 408 Request Time-out
+                        const { statusCode } = res;
+                        if ((statusCode == 504 || statusCode == 408) && retryCnt < this.maxRetry) {
+                            console.log(`${retryCnt}/${this.maxRetry}) ${httpMethod} ${path} failed ${statusCode} ${res.statusMessage}`)
+                            return wait(this.retrySleep * retryCnt)()
                                 // .then(() => console.log('retry'))
                                 .then(makeRequest)
                                 .then(resolve, reject);
                         }
                         return handleResponse(res, body).then(resolve, reject)
                     })
-            }).on('error', (e) => reject(Error(e.message) || e));
+            }).on('error', (e) => {
+                // network connextion error like read ECONNRESET
+                retryCnt++;
+                if (retryCnt < this.maxRetry) {
+                    console.log(`${retryCnt}/${this.maxRetry}) ${httpMethod} ${path} failed ${e}`);
+                    return wait(retryCnt * this.retrySleep)()
+                        .then(makeRequest)
+                        .then(resolve, reject);
+                }
+                reject(new OvhError({
+                    httpCode: '',
+                    errorCode: 'NETWORK_ERROR',
+                    message: 'fail to etablish a valid connexion'
+                }, e))
+            });
 
             // mocked socket has no setTimeout
             if (typeof (ovhEngine.timeout) === 'number') {
