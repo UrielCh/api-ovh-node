@@ -18,7 +18,7 @@ program
   .parse(process.argv)
 
 async function main() {
-  let param: OvhParams = { accessRules: `GET /me, GET /me/bill, GET /me/bill/*, GET /telephony, GET /telephony/*`, certCache: 'token.json' };
+  let param: OvhParams = { accessRules: `GET /me, GET /me/bill, GET /me/bill/*, GET /telephony, GET /telephony/*`, certCache: 'token.json', maxRetry: 100 };
   let ovh = new Ovh(param)
   const apiPhone = ApiTel(ovh)
   const store = new StoreMysql();

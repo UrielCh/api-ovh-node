@@ -1,5 +1,5 @@
 import { Telephony, telephony } from "@ovh-api/telephony";
-import Bluebird = require("bluebird");
+import { IOvhError } from "@ovh-api/api";
 
 const startOfMonth = (date: Date) => {
     return new Date(date.getFullYear(), date.getMonth(), 1);
@@ -21,16 +21,11 @@ const getDateArray = function (start: Date, end: Date, part: number) {
 }
 
 export const getVoiceConsumption = async (apiPhone: Telephony, billingAccount: string, servicename: string, callId: number): Promise<telephony.VoiceConsumption | null> => {
-    let lastError = null;
-    for (let i = 0; i < 20; i++) {
-        try {
-            return await apiPhone.$(billingAccount).service.$(servicename).voiceConsumption.$(callId).$get();
-        } catch (e) {
-            await Bluebird.delay(100);
-            lastError = e;
-        }
+    try {
+        return await apiPhone.$(billingAccount).service.$(servicename).voiceConsumption.$(callId).$get();
+    } catch (e) {
+        console.error(`Can not Download ${billingAccount}.service.${servicename}.voiceConsumption.${callId}`, e);
     }
-    console.error(`Can not Download ${billingAccount}.service.${servicename}.voiceConsumption.${callId}`, lastError);
     return null;
 }
 
@@ -40,35 +35,13 @@ export const getVoiceConsumptions = async (apiPhone: Telephony, billingAccount: 
         options['creationDatetime.from'] = interval[0].toISOString();
         options['creationDatetime.to'] = interval[1].toISOString();
     }
-    let lastError = '';
-    let failCnt = 0;
-    while (true) {
-        try {
-            return await apiPhone.$(billingAccount).service.$(servicename).voiceConsumption.$get(options);
-        } catch (e) {
-            failCnt++;
-            lastError = e;
-            if (e === '500: Internal server error') {
-                if (failCnt > 2)
-                    break;
-                Bluebird.delay(200);
-                continue;
-            }
-            if (e === 'read ECONNRESET') {
-                if (failCnt > 2)
-                    break;
-                Bluebird.delay(200);
-                continue;
-            }
-            if (e === '400: Too many tickets to return, try to tighten the time range.') {
-                break;
-            }
-            console.log(typeof e);
-            console.log(e);
-            break;
-        }
+    try {
+        return await apiPhone.$(billingAccount).service.$(servicename).voiceConsumption.$get(options);
+    } catch (e1) {
+        const e = e1 as IOvhError;
+        console.log(e);
+        console.error(`${new Date().toISOString()} ${e.message} GET /${billingAccount}/service/${servicename}/voiceConsumption, spliting the timeRange`);
     }
-    console.error(`${new Date().toISOString()} ${lastError} GET /${billingAccount}/service/${servicename}/voiceConsumption, spliting the timeRange`);
     if (!interval) {
         let now = new Date();
         let start = startOfMonth(now);

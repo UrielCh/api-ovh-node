@@ -62,11 +62,11 @@ export async function importAll(apiPhone: Telephony, store: StoreMysql) {
             error++;
           }
           threads.calls--;
-        }, { concurrency: 10 });
+        }, { concurrency: 20 });
         threads.services--;
       }, { concurrency: 8 });
       threads.groups--;
-    }, { concurrency: 3 })
-    store.close();
-    clearInterval(timer);  
+    }, { concurrency: 5 })
+    clearInterval(timer);
+    // await store.close();
 }
