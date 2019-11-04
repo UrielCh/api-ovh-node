@@ -4,7 +4,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /dbaas/timeseries Models
  */
 export namespace complexType {
-    // interface fullName: complexType.UnitAndValue.UnitAndValue
+    // interface fullName: complexType.UnitAndValue<T>.UnitAndValue
     export interface UnitAndValue<T> {
         unit: string;
         value: T;
@@ -32,7 +32,7 @@ export namespace paas {
         }
         // interface fullName: paas.timeseries.ConsumptionItem.ConsumptionItem
         export interface ConsumptionItem {
-            metricName: tsaas.MetricNameEnum;
+            metricName: paas.timeseries.consumption.item.MetricNameEnum;
             price: order.Price;
             quantity: complexType.UnitAndValue<number>;
             unitPrice: order.Price;
@@ -41,10 +41,21 @@ export namespace paas {
         export interface Key {
             description: string;
             id: string;
-            permissions: tsaas.PermissionEnum[];
+            permissions: paas.timeseries.PermissionEnum[];
             secret: string;
             tags: paas.timeseries.Tag[];
         }
+        // interface fullName: paas.timeseries.OpenTSDBToken.OpenTSDBToken
+        export interface OpenTSDBToken {
+            description: string;
+            id: string;
+            permission: string;
+            protocol: string;
+            secret: string;
+            tags: paas.timeseries.Tag[];
+        }
+        // type fullname: paas.timeseries.PermissionEnum
+        export type PermissionEnum = "READ" | "WRITE"
         // interface fullName: paas.timeseries.Project.Project
         export interface Project {
             description?: string;
@@ -56,8 +67,10 @@ export namespace paas {
         export interface Quota {
             current: number;
             max: number;
-            type: tsaas.QuotaTypeEnum;
+            type: paas.timeseries.QuotaTypeEnum;
         }
+        // type fullname: paas.timeseries.QuotaTypeEnum
+        export type QuotaTypeEnum = "ddp" | "mads"
         // interface fullName: paas.timeseries.Region.Region
         export interface Region {
             displayName: string;
@@ -68,6 +81,25 @@ export namespace paas {
         export interface Tag {
             key: string;
             value: string;
+        }
+        // interface fullName: paas.timeseries.Warp10Token.Warp10Token
+        export interface Warp10Token {
+            description: string;
+            expiryTimestamp: string;
+            id: string;
+            maxFetch: number;
+            maxGts: number;
+            maxOps: number;
+            permissions: string;
+            protocol: string;
+            queryToken: string;
+            secret: string;
+        }
+        export namespace consumption {
+            export namespace item {
+                // type fullname: paas.timeseries.consumption.item.MetricNameEnum
+                export type MetricNameEnum = "storage" | "input" | "output"
+            }
         }
     }
 }
@@ -116,36 +148,6 @@ export namespace timeseries {
     // type fullname: timeseries.StatusTypeEnum
     export type StatusTypeEnum = "ACTIVE" | "CREATION" | "DELETED" | "UNCONFIGURED"
 }
-export namespace tsaas {
-    // type fullname: tsaas.MetricNameEnum
-    export type MetricNameEnum = "storage" | "input" | "output"
-    // interface fullName: tsaas.OpenTSDBToken.OpenTSDBToken
-    export interface OpenTSDBToken {
-        description: string;
-        id: string;
-        permission: string;
-        protocol: string;
-        secret: string;
-        tags: paas.timeseries.Tag[];
-    }
-    // type fullname: tsaas.PermissionEnum
-    export type PermissionEnum = "READ" | "WRITE"
-    // type fullname: tsaas.QuotaTypeEnum
-    export type QuotaTypeEnum = "ddp" | "mads"
-    // interface fullName: tsaas.Warp10Token.Warp10Token
-    export interface Warp10Token {
-        description: string;
-        expiryTimestamp: string;
-        id: string;
-        maxFetch: number;
-        maxGts: number;
-        maxOps: number;
-        permissions: string;
-        protocol: string;
-        queryToken: string;
-        secret: string;
-    }
-}
 
 /**
  * END API /dbaas/timeseries Models
@@ -190,7 +192,7 @@ export interface Dbaas{
                     // GET /dbaas/timeseries/{serviceName}/key/{keyId}
                     $get(): Promise<paas.timeseries.Key>;
                     // PUT /dbaas/timeseries/{serviceName}/key/{keyId}
-                    $put(params: {description?: string, permissions: tsaas.PermissionEnum[], tags: paas.timeseries.Tag[]}): Promise<paas.timeseries.Key>;
+                    $put(params: {description?: string, permissions: paas.timeseries.PermissionEnum[], tags: paas.timeseries.Tag[]}): Promise<paas.timeseries.Key>;
                 };
             }
             quota: {
@@ -210,14 +212,14 @@ export interface Dbaas{
             token: {
                 opentsdb: {
                     // GET /dbaas/timeseries/{serviceName}/token/opentsdb
-                    $get(): Promise<tsaas.OpenTSDBToken[]>;
+                    $get(): Promise<paas.timeseries.OpenTSDBToken[]>;
                     // POST /dbaas/timeseries/{serviceName}/token/opentsdb
-                    $post(params: {description?: string, permission: string, tags: paas.timeseries.Tag[]}): Promise<tsaas.OpenTSDBToken>;
+                    $post(params: {description?: string, permission: string, tags: paas.timeseries.Tag[]}): Promise<paas.timeseries.OpenTSDBToken>;
                     $(tokenId: string): {
                         // DELETE /dbaas/timeseries/{serviceName}/token/opentsdb/{tokenId}
                         $delete(): Promise<boolean>;
                         // GET /dbaas/timeseries/{serviceName}/token/opentsdb/{tokenId}
-                        $get(): Promise<tsaas.OpenTSDBToken>;
+                        $get(): Promise<paas.timeseries.OpenTSDBToken>;
                     };
                 }
             }
@@ -263,12 +265,12 @@ export interface Dbaas{
    * OpenTSDBTokens
    * Get OpenTSDB tokens
    */
-  get(path: '/dbaas/timeseries/{serviceName}/token/opentsdb'): (params: {serviceName: string}) => Promise<tsaas.OpenTSDBToken[]>;
+  get(path: '/dbaas/timeseries/{serviceName}/token/opentsdb'): (params: {serviceName: string}) => Promise<paas.timeseries.OpenTSDBToken[]>;
   /**
    * Key
    * Get a OpenTSDB token
    */
-  get(path: '/dbaas/timeseries/{serviceName}/token/opentsdb/{tokenId}'): (params: {serviceName: string, tokenId: string}) => Promise<tsaas.OpenTSDBToken>;
+  get(path: '/dbaas/timeseries/{serviceName}/token/opentsdb/{tokenId}'): (params: {serviceName: string, tokenId: string}) => Promise<paas.timeseries.OpenTSDBToken>;
   /**
    * Regions
    * Get available regions
@@ -283,7 +285,7 @@ export interface Dbaas{
    * Key
    * Create a key
    */
-  put(path: '/dbaas/timeseries/{serviceName}/key/{keyId}'): (params: {keyId: string, serviceName: string, description?: string, permissions: tsaas.PermissionEnum[], tags: paas.timeseries.Tag[]}) => Promise<paas.timeseries.Key>;
+  put(path: '/dbaas/timeseries/{serviceName}/key/{keyId}'): (params: {keyId: string, serviceName: string, description?: string, permissions: paas.timeseries.PermissionEnum[], tags: paas.timeseries.Tag[]}) => Promise<paas.timeseries.Key>;
   /**
    * Details about a Service
    * Alter this object properties
@@ -308,7 +310,7 @@ export interface Dbaas{
    * OpenTSDBTokens
    * Create a OpenTSDB token
    */
-  post(path: '/dbaas/timeseries/{serviceName}/token/opentsdb'): (params: {serviceName: string, description?: string, permission: string, tags: paas.timeseries.Tag[]}) => Promise<tsaas.OpenTSDBToken>;
+  post(path: '/dbaas/timeseries/{serviceName}/token/opentsdb'): (params: {serviceName: string, description?: string, permission: string, tags: paas.timeseries.Tag[]}) => Promise<paas.timeseries.OpenTSDBToken>;
   /**
    * Key
    * Delete a OpenTSDB token

@@ -18,12 +18,12 @@ export namespace cdnanycast {
     export type OrderQuotaEnum = 1 | 10 | 100 | 1000
 }
 export namespace complexType {
-    // interface fullName: complexType.SafeKeyValue.SafeKeyValue
+    // interface fullName: complexType.SafeKeyValue<T>.SafeKeyValue
     export interface SafeKeyValue<T> {
         key: string;
         value: T;
     }
-    // interface fullName: complexType.UnitAndValue.UnitAndValue
+    // interface fullName: complexType.UnitAndValue<T>.UnitAndValue
     export interface UnitAndValue<T> {
         unit: string;
         value: T;
@@ -748,8 +748,8 @@ export namespace order {
                 name: string;
                 values: string[];
             }
-            // interface fullName: order.catalog.publik.DedicatedServerCatalog.DedicatedServerCatalog
-            export interface DedicatedServerCatalog {
+            // interface fullName: order.catalog.publik.DedicatedServerCatalog.Catalog
+            export interface Catalog {
                 addons: order.catalog.publik.Plan[];
                 catalogId: number;
                 locale: order.catalog.publik.Locale;
@@ -887,6 +887,11 @@ export namespace order {
             status: order.upgrade.OperationStatusEnum;
             type: order.upgrade.OperationTypeEnum;
         }
+        // interface fullName: order.upgrade.OperationAndOrder.order_upgrade_OperationAndOrder
+        export interface order_upgrade_OperationAndOrder {
+            operation?: order.upgrade.Operation;
+            order?: order.Order;
+        }
         // interface fullName: order.upgrade.OperationProduct.OperationProduct
         export interface OperationProduct {
             description: string;
@@ -896,11 +901,6 @@ export namespace order {
         export type OperationStatusEnum = "TODO" | "DOING" | "DONE" | "ERROR" | "DELAYED" | "CANCELLED" | "SCHEDULED"
         // type fullname: order.upgrade.OperationTypeEnum
         export type OperationTypeEnum = "UPGRADE"
-        // interface fullName: order.upgrade.order_upgrade_OperationAndOrder.order_upgrade_OperationAndOrder
-        export interface order_upgrade_OperationAndOrder {
-            operation?: order.upgrade.Operation;
-            order?: order.Order;
-        }
     }
 }
 export namespace overTheBox {
@@ -2995,9 +2995,9 @@ export interface Order{
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 $(planCode: string): {
                     // GET /order/upgrade/baremetalPrivateBandwidth/{serviceName}/{planCode}
-                    $get(params: {quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $get(params: {quantity: number}): Promise<order.upgrade.OperationAndOrder>;
                     // POST /order/upgrade/baremetalPrivateBandwidth/{serviceName}/{planCode}
-                    $post(params: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $post(params: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.OperationAndOrder>;
                 };
             };
         }
@@ -3009,9 +3009,9 @@ export interface Order{
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 $(planCode: string): {
                     // GET /order/upgrade/baremetalPublicBandwidth/{serviceName}/{planCode}
-                    $get(params: {quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $get(params: {quantity: number}): Promise<order.upgrade.OperationAndOrder>;
                     // POST /order/upgrade/baremetalPublicBandwidth/{serviceName}/{planCode}
-                    $post(params: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $post(params: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.OperationAndOrder>;
                 };
             };
         }
@@ -3023,9 +3023,9 @@ export interface Order{
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 $(planCode: string): {
                     // GET /order/upgrade/cephaas/{serviceName}/{planCode}
-                    $get(params: {quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $get(params: {quantity: number}): Promise<order.upgrade.OperationAndOrder>;
                     // POST /order/upgrade/cephaas/{serviceName}/{planCode}
-                    $post(params: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $post(params: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.OperationAndOrder>;
                 };
             };
         }
@@ -3037,9 +3037,9 @@ export interface Order{
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 $(planCode: string): {
                     // GET /order/upgrade/hostingReseller/{serviceName}/{planCode}
-                    $get(params: {quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $get(params: {quantity: number}): Promise<order.upgrade.OperationAndOrder>;
                     // POST /order/upgrade/hostingReseller/{serviceName}/{planCode}
-                    $post(params: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $post(params: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.OperationAndOrder>;
                 };
             };
         }
@@ -3051,9 +3051,9 @@ export interface Order{
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 $(planCode: string): {
                     // GET /order/upgrade/ipLoadbalancing/{serviceName}/{planCode}
-                    $get(params: {quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $get(params: {quantity: number}): Promise<order.upgrade.OperationAndOrder>;
                     // POST /order/upgrade/ipLoadbalancing/{serviceName}/{planCode}
-                    $post(params: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $post(params: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.OperationAndOrder>;
                 };
             };
         }
@@ -3065,9 +3065,9 @@ export interface Order{
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 $(planCode: string): {
                     // GET /order/upgrade/logs/{serviceName}/{planCode}
-                    $get(params: {quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $get(params: {quantity: number}): Promise<order.upgrade.OperationAndOrder>;
                     // POST /order/upgrade/logs/{serviceName}/{planCode}
-                    $post(params: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $post(params: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.OperationAndOrder>;
                 };
             };
         }
@@ -3079,9 +3079,9 @@ export interface Order{
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 $(planCode: string): {
                     // GET /order/upgrade/metrics/{serviceName}/{planCode}
-                    $get(params: {quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $get(params: {quantity: number}): Promise<order.upgrade.OperationAndOrder>;
                     // POST /order/upgrade/metrics/{serviceName}/{planCode}
-                    $post(params: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $post(params: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.OperationAndOrder>;
                 };
             };
         }
@@ -3093,9 +3093,9 @@ export interface Order{
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 $(planCode: string): {
                     // GET /order/upgrade/microsoftExchange/{serviceName}/{planCode}
-                    $get(params: {quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $get(params: {quantity: number}): Promise<order.upgrade.OperationAndOrder>;
                     // POST /order/upgrade/microsoftExchange/{serviceName}/{planCode}
-                    $post(params: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $post(params: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.OperationAndOrder>;
                 };
             };
         }
@@ -3107,9 +3107,9 @@ export interface Order{
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 $(planCode: string): {
                     // GET /order/upgrade/privateCloud/{serviceName}/{planCode}
-                    $get(params: {quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $get(params: {quantity: number}): Promise<order.upgrade.OperationAndOrder>;
                     // POST /order/upgrade/privateCloud/{serviceName}/{planCode}
-                    $post(params: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $post(params: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.OperationAndOrder>;
                 };
             };
         }
@@ -3121,9 +3121,9 @@ export interface Order{
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 $(planCode: string): {
                     // GET /order/upgrade/sslGateway/{serviceName}/{planCode}
-                    $get(params: {quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $get(params: {quantity: number}): Promise<order.upgrade.OperationAndOrder>;
                     // POST /order/upgrade/sslGateway/{serviceName}/{planCode}
-                    $post(params: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $post(params: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.OperationAndOrder>;
                 };
             };
         }
@@ -3135,9 +3135,9 @@ export interface Order{
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 $(planCode: string): {
                     // GET /order/upgrade/vps/{serviceName}/{planCode}
-                    $get(params: {quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $get(params: {quantity: number}): Promise<order.upgrade.OperationAndOrder>;
                     // POST /order/upgrade/vps/{serviceName}/{planCode}
-                    $post(params: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $post(params: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.OperationAndOrder>;
                 };
             };
         }
@@ -3149,9 +3149,9 @@ export interface Order{
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 $(planCode: string): {
                     // GET /order/upgrade/vpsAdditionalDisk/{serviceName}/{planCode}
-                    $get(params: {quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $get(params: {quantity: number}): Promise<order.upgrade.OperationAndOrder>;
                     // POST /order/upgrade/vpsAdditionalDisk/{serviceName}/{planCode}
-                    $post(params: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    $post(params: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.OperationAndOrder>;
                 };
             };
         }
@@ -5216,7 +5216,7 @@ export interface Order{
    * Listing offers /order/upgrade/baremetalPrivateBandwidth/#serviceName#
    * Get a provisional order for the selected upgrade of your service
    */
-  get(path: '/order/upgrade/baremetalPrivateBandwidth/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, quantity: number}) => Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+  get(path: '/order/upgrade/baremetalPrivateBandwidth/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, quantity: number}) => Promise<order.upgrade.OperationAndOrder>;
   /**
    * Operations about the DEDICATED-OPTION service
    * List available services
@@ -5231,7 +5231,7 @@ export interface Order{
    * Listing offers /order/upgrade/baremetalPublicBandwidth/#serviceName#
    * Get a provisional order for the selected upgrade of your service
    */
-  get(path: '/order/upgrade/baremetalPublicBandwidth/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, quantity: number}) => Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+  get(path: '/order/upgrade/baremetalPublicBandwidth/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, quantity: number}) => Promise<order.upgrade.OperationAndOrder>;
   /**
    * Operations about the CEPH service
    * List available services
@@ -5246,7 +5246,7 @@ export interface Order{
    * Listing offers /order/upgrade/cephaas/#serviceName#
    * Get a provisional order for the selected upgrade of your service
    */
-  get(path: '/order/upgrade/cephaas/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, quantity: number}) => Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+  get(path: '/order/upgrade/cephaas/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, quantity: number}) => Promise<order.upgrade.OperationAndOrder>;
   /**
    * Operations about the HOSTING_RESELLER service
    * List available services
@@ -5261,7 +5261,7 @@ export interface Order{
    * Listing offers /order/upgrade/hostingReseller/#serviceName#
    * Get a provisional order for the selected upgrade of your service
    */
-  get(path: '/order/upgrade/hostingReseller/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, quantity: number}) => Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+  get(path: '/order/upgrade/hostingReseller/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, quantity: number}) => Promise<order.upgrade.OperationAndOrder>;
   /**
    * Operations about the IPLB service
    * List available services
@@ -5276,7 +5276,7 @@ export interface Order{
    * Listing offers /order/upgrade/ipLoadbalancing/#serviceName#
    * Get a provisional order for the selected upgrade of your service
    */
-  get(path: '/order/upgrade/ipLoadbalancing/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, quantity: number}) => Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+  get(path: '/order/upgrade/ipLoadbalancing/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, quantity: number}) => Promise<order.upgrade.OperationAndOrder>;
   /**
    * Operations about the DBAAS-LOGS service
    * List available services
@@ -5291,7 +5291,7 @@ export interface Order{
    * Listing offers /order/upgrade/logs/#serviceName#
    * Get a provisional order for the selected upgrade of your service
    */
-  get(path: '/order/upgrade/logs/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, quantity: number}) => Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+  get(path: '/order/upgrade/logs/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, quantity: number}) => Promise<order.upgrade.OperationAndOrder>;
   /**
    * Operations about the METRICS service
    * List available services
@@ -5306,7 +5306,7 @@ export interface Order{
    * Listing offers /order/upgrade/metrics/#serviceName#
    * Get a provisional order for the selected upgrade of your service
    */
-  get(path: '/order/upgrade/metrics/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, quantity: number}) => Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+  get(path: '/order/upgrade/metrics/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, quantity: number}) => Promise<order.upgrade.OperationAndOrder>;
   /**
    * Operations about the EXCHANGE service
    * List available services
@@ -5321,7 +5321,7 @@ export interface Order{
    * Listing offers /order/upgrade/microsoftExchange/#serviceName#
    * Get a provisional order for the selected upgrade of your service
    */
-  get(path: '/order/upgrade/microsoftExchange/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, quantity: number}) => Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+  get(path: '/order/upgrade/microsoftExchange/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, quantity: number}) => Promise<order.upgrade.OperationAndOrder>;
   /**
    * Operations about the PCC service
    * List available services
@@ -5336,7 +5336,7 @@ export interface Order{
    * Listing offers /order/upgrade/privateCloud/#serviceName#
    * Get a provisional order for the selected upgrade of your service
    */
-  get(path: '/order/upgrade/privateCloud/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, quantity: number}) => Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+  get(path: '/order/upgrade/privateCloud/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, quantity: number}) => Promise<order.upgrade.OperationAndOrder>;
   /**
    * Operations about the SSLGATEWAY service
    * List available services
@@ -5351,7 +5351,7 @@ export interface Order{
    * Listing offers /order/upgrade/sslGateway/#serviceName#
    * Get a provisional order for the selected upgrade of your service
    */
-  get(path: '/order/upgrade/sslGateway/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, quantity: number}) => Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+  get(path: '/order/upgrade/sslGateway/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, quantity: number}) => Promise<order.upgrade.OperationAndOrder>;
   /**
    * Operations about the VPS service
    * List available services
@@ -5366,7 +5366,7 @@ export interface Order{
    * Listing offers /order/upgrade/vps/#serviceName#
    * Get a provisional order for the selected upgrade of your service
    */
-  get(path: '/order/upgrade/vps/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, quantity: number}) => Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+  get(path: '/order/upgrade/vps/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, quantity: number}) => Promise<order.upgrade.OperationAndOrder>;
   /**
    * Operations about the VPS-OPTION service
    * List available services
@@ -5381,7 +5381,7 @@ export interface Order{
    * Listing offers /order/upgrade/vpsAdditionalDisk/#serviceName#
    * Get a provisional order for the selected upgrade of your service
    */
-  get(path: '/order/upgrade/vpsAdditionalDisk/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, quantity: number}) => Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+  get(path: '/order/upgrade/vpsAdditionalDisk/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, quantity: number}) => Promise<order.upgrade.OperationAndOrder>;
   /**
    * Operations about the VEEAMCC service
    * List available services
@@ -6661,62 +6661,62 @@ export interface Order{
    * Listing offers /order/upgrade/baremetalPrivateBandwidth/#serviceName#
    * Perform the requested upgrade of your service
    */
-  post(path: '/order/upgrade/baremetalPrivateBandwidth/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, autoPayWithPreferredPaymentMethod?: boolean, quantity: number}) => Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+  post(path: '/order/upgrade/baremetalPrivateBandwidth/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, autoPayWithPreferredPaymentMethod?: boolean, quantity: number}) => Promise<order.upgrade.OperationAndOrder>;
   /**
    * Listing offers /order/upgrade/baremetalPublicBandwidth/#serviceName#
    * Perform the requested upgrade of your service
    */
-  post(path: '/order/upgrade/baremetalPublicBandwidth/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, autoPayWithPreferredPaymentMethod?: boolean, quantity: number}) => Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+  post(path: '/order/upgrade/baremetalPublicBandwidth/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, autoPayWithPreferredPaymentMethod?: boolean, quantity: number}) => Promise<order.upgrade.OperationAndOrder>;
   /**
    * Listing offers /order/upgrade/cephaas/#serviceName#
    * Perform the requested upgrade of your service
    */
-  post(path: '/order/upgrade/cephaas/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, autoPayWithPreferredPaymentMethod?: boolean, quantity: number}) => Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+  post(path: '/order/upgrade/cephaas/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, autoPayWithPreferredPaymentMethod?: boolean, quantity: number}) => Promise<order.upgrade.OperationAndOrder>;
   /**
    * Listing offers /order/upgrade/hostingReseller/#serviceName#
    * Perform the requested upgrade of your service
    */
-  post(path: '/order/upgrade/hostingReseller/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, autoPayWithPreferredPaymentMethod?: boolean, quantity: number}) => Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+  post(path: '/order/upgrade/hostingReseller/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, autoPayWithPreferredPaymentMethod?: boolean, quantity: number}) => Promise<order.upgrade.OperationAndOrder>;
   /**
    * Listing offers /order/upgrade/ipLoadbalancing/#serviceName#
    * Perform the requested upgrade of your service
    */
-  post(path: '/order/upgrade/ipLoadbalancing/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, autoPayWithPreferredPaymentMethod?: boolean, quantity: number}) => Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+  post(path: '/order/upgrade/ipLoadbalancing/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, autoPayWithPreferredPaymentMethod?: boolean, quantity: number}) => Promise<order.upgrade.OperationAndOrder>;
   /**
    * Listing offers /order/upgrade/logs/#serviceName#
    * Perform the requested upgrade of your service
    */
-  post(path: '/order/upgrade/logs/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, autoPayWithPreferredPaymentMethod?: boolean, quantity: number}) => Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+  post(path: '/order/upgrade/logs/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, autoPayWithPreferredPaymentMethod?: boolean, quantity: number}) => Promise<order.upgrade.OperationAndOrder>;
   /**
    * Listing offers /order/upgrade/metrics/#serviceName#
    * Perform the requested upgrade of your service
    */
-  post(path: '/order/upgrade/metrics/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, autoPayWithPreferredPaymentMethod?: boolean, quantity: number}) => Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+  post(path: '/order/upgrade/metrics/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, autoPayWithPreferredPaymentMethod?: boolean, quantity: number}) => Promise<order.upgrade.OperationAndOrder>;
   /**
    * Listing offers /order/upgrade/microsoftExchange/#serviceName#
    * Perform the requested upgrade of your service
    */
-  post(path: '/order/upgrade/microsoftExchange/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, autoPayWithPreferredPaymentMethod?: boolean, quantity: number}) => Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+  post(path: '/order/upgrade/microsoftExchange/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, autoPayWithPreferredPaymentMethod?: boolean, quantity: number}) => Promise<order.upgrade.OperationAndOrder>;
   /**
    * Listing offers /order/upgrade/privateCloud/#serviceName#
    * Perform the requested upgrade of your service
    */
-  post(path: '/order/upgrade/privateCloud/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, autoPayWithPreferredPaymentMethod?: boolean, quantity: number}) => Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+  post(path: '/order/upgrade/privateCloud/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, autoPayWithPreferredPaymentMethod?: boolean, quantity: number}) => Promise<order.upgrade.OperationAndOrder>;
   /**
    * Listing offers /order/upgrade/sslGateway/#serviceName#
    * Perform the requested upgrade of your service
    */
-  post(path: '/order/upgrade/sslGateway/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, autoPayWithPreferredPaymentMethod?: boolean, quantity: number}) => Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+  post(path: '/order/upgrade/sslGateway/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, autoPayWithPreferredPaymentMethod?: boolean, quantity: number}) => Promise<order.upgrade.OperationAndOrder>;
   /**
    * Listing offers /order/upgrade/vps/#serviceName#
    * Perform the requested upgrade of your service
    */
-  post(path: '/order/upgrade/vps/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, autoPayWithPreferredPaymentMethod?: boolean, quantity: number}) => Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+  post(path: '/order/upgrade/vps/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, autoPayWithPreferredPaymentMethod?: boolean, quantity: number}) => Promise<order.upgrade.OperationAndOrder>;
   /**
    * Listing offers /order/upgrade/vpsAdditionalDisk/#serviceName#
    * Perform the requested upgrade of your service
    */
-  post(path: '/order/upgrade/vpsAdditionalDisk/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, autoPayWithPreferredPaymentMethod?: boolean, quantity: number}) => Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+  post(path: '/order/upgrade/vpsAdditionalDisk/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, autoPayWithPreferredPaymentMethod?: boolean, quantity: number}) => Promise<order.upgrade.OperationAndOrder>;
   /**
    * Order an upgrade upon your Veeam Cloud Connect account
    * Create order

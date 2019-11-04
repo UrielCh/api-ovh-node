@@ -4,7 +4,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /vrack Models
  */
 export namespace complexType {
-    // interface fullName: complexType.UnitAndValue.UnitAndValue
+    // interface fullName: complexType.UnitAndValue<T>.UnitAndValue
     export interface UnitAndValue<T> {
         unit: string;
         value: T;

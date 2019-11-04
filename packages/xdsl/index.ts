@@ -4,12 +4,12 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /xdsl Models
  */
 export namespace complexType {
-    // interface fullName: complexType.UnitAndValue.UnitAndValue
+    // interface fullName: complexType.UnitAndValue<T>.UnitAndValue
     export interface UnitAndValue<T> {
         unit: string;
         value: T;
     }
-    // interface fullName: complexType.UnitAndValues.UnitAndValues
+    // interface fullName: complexType.UnitAndValues<T>.UnitAndValues
     export interface UnitAndValues<T> {
         unit: string;
         values: T[];
@@ -252,13 +252,13 @@ export namespace xdsl {
         lastSpamDetected: string;
         status: xdsl.antiSpam.AntiSpamStatusEnum;
     }
-    // interface fullName: xdsl.AsyncTask.AsyncTask
+    // interface fullName: xdsl.AsyncTask<T>.AsyncTask
     export interface AsyncTask<T> {
         error?: string;
         result?: T;
         status: xdsl.AsyncTaskStatusEnum;
     }
-    // interface fullName: xdsl.AsyncTaskArray.AsyncTaskArray
+    // interface fullName: xdsl.AsyncTaskArray<T>.AsyncTaskArray
     export interface AsyncTaskArray<T> {
         error?: string;
         result?: T[];

@@ -47,9 +47,151 @@ export namespace cloudDB {
             // type fullname: cloudDB.enterprise.Backup.StatusEnum
             export type StatusEnum = "archived" | "archiving" | "created" | "creating" | "deleting"
         }
+        // interface fullName: cloudDB.enterprise.Cluster.enterprise_Cluster
+        export interface enterprise_Cluster {
+            autoBackup: boolean;
+            backupSize?: number;
+            creationDate: string;
+            hostCount?: number;
+            id: string;
+            lastUpdate: string;
+            name: string;
+            offerName: string;
+            offerType: cloudDB.enterprise.Offer.TypeEnum;
+            regionName: string;
+            restoredVolumeSize?: number;
+            status: cloudDB.enterprise.Cluster.StatusEnum;
+            taskId?: string;
+            version: string;
+        }
         export namespace Cluster {
+            // interface fullName: cloudDB.enterprise.Cluster.Backup.enterprise_Cluster_Backup
+            export interface enterprise_Cluster_Backup {
+                clusterId: string;
+                creationDate: string;
+                effectiveCreationDate?: string;
+                id: string;
+                internal: boolean;
+                lastUpdate: string;
+                name: string;
+                size?: number;
+                status: cloudDB.enterprise.Backup.StatusEnum;
+                taskId?: string;
+            }
+            // interface fullName: cloudDB.enterprise.Cluster.Endpoint.enterprise_Cluster_Endpoint
+            export interface enterprise_Cluster_Endpoint {
+                clusterId: string;
+                creationDate: string;
+                fqdn: string;
+                id: string;
+                lastUpdate: string;
+                name: string;
+                port: number;
+                status: cloudDB.enterprise.Endpoint.StatusEnum;
+                taskId?: string;
+            }
+            // interface fullName: cloudDB.enterprise.Cluster.Host.enterprise_Cluster_Host
+            export interface enterprise_Cluster_Host {
+                creationDate: string;
+                id: string;
+                lastUpdate: string;
+                name: string;
+                status?: cloudDB.enterprise.Host.StatusEnum;
+                taskId?: string;
+            }
+            // interface fullName: cloudDB.enterprise.Cluster.LdpMember.enterprise_Cluster_LdpMember
+            export interface enterprise_Cluster_LdpMember {
+                creationDate: string;
+                id: string;
+                lastUpdate: string;
+                note?: string;
+                status: cloudDB.enterprise.LdpMember.StatusEnum;
+                taskId?: string;
+                username: string;
+            }
+            // interface fullName: cloudDB.enterprise.Cluster.Maintenance.enterprise_Cluster_Maintenance
+            export interface enterprise_Cluster_Maintenance {
+                clusterId: string;
+                creationDate: string;
+                duration: number;
+                id: string;
+                lastUpdate: string;
+                scheduledAt: string;
+                status: cloudDB.enterprise.Maintenance.StatusEnum;
+                taskId?: string;
+            }
+            // interface fullName: cloudDB.enterprise.Cluster.MaintenanceWindow.enterprise_Cluster_MaintenanceWindow
+            export interface enterprise_Cluster_MaintenanceWindow {
+                clusterId: string;
+                creationDate: string;
+                dayOfWeek: number;
+                duration: number;
+                id: string;
+                lastUpdate: string;
+                startTime: string;
+                status: cloudDB.enterprise.MaintenanceWindow.StatusEnum;
+                taskId?: string;
+            }
+            // interface fullName: cloudDB.enterprise.Cluster.Restore.enterprise_Cluster_Restore
+            export interface enterprise_Cluster_Restore {
+                backupId: string;
+                creationDate: string;
+                fqdn?: string;
+                id: string;
+                lastUpdate: string;
+                port?: number;
+                status: cloudDB.enterprise.Restore.StatusEnum;
+                taskId?: string;
+                timestamp?: string;
+                volumeSize?: number;
+            }
+            export namespace Restore {
+                // interface fullName: cloudDB.enterprise.Cluster.Restore.User.enterprise_Cluster_Restore_User
+                export interface enterprise_Cluster_Restore_User {
+                    creationDate: string;
+                    id: string;
+                    lastUpdate: string;
+                    name: string;
+                    restoreId: string;
+                    status: cloudDB.enterprise.Restore.User.StatusEnum;
+                    taskId?: string;
+                }
+            }
+            // interface fullName: cloudDB.enterprise.Cluster.SecurityGroup.enterprise_Cluster_SecurityGroup
+            export interface enterprise_Cluster_SecurityGroup {
+                clusterId: string;
+                creationDate: string;
+                id: string;
+                lastUpdate: string;
+                name: string;
+                rulesCount: number;
+                status: cloudDB.enterprise.SecurityGroup.StatusEnum;
+                taskId?: string;
+            }
+            export namespace SecurityGroup {
+                // interface fullName: cloudDB.enterprise.Cluster.SecurityGroup.Rule.enterprise_Cluster_SecurityGroup_Rule
+                export interface enterprise_Cluster_SecurityGroup_Rule {
+                    creationDate: string;
+                    id: string;
+                    lastUpdate: string;
+                    securityGroupId: string;
+                    source: string;
+                    status: cloudDB.enterprise.SecurityGroupRule.StatusEnum;
+                    taskId?: string;
+                }
+            }
             // type fullname: cloudDB.enterprise.Cluster.StatusEnum
             export type StatusEnum = "created" | "creating" | "deleting" | "reopening" | "restarting" | "scaling" | "suspended" | "suspending" | "updating"
+            // interface fullName: cloudDB.enterprise.Cluster.User.enterprise_Cluster_User
+            export interface enterprise_Cluster_User {
+                clusterId: string;
+                creationDate: string;
+                id: string;
+                lastUpdate: string;
+                name: string;
+                status: cloudDB.enterprise.User.StatusEnum;
+                taskId?: string;
+            }
         }
         export namespace Endpoint {
             // type fullname: cloudDB.enterprise.Endpoint.StatusEnum
@@ -71,7 +213,23 @@ export namespace cloudDB {
             // type fullname: cloudDB.enterprise.MaintenanceWindow.StatusEnum
             export type StatusEnum = "created" | "creating" | "deleting"
         }
+        // interface fullName: cloudDB.enterprise.Offer.enterprise_Offer
+        export interface enterprise_Offer {
+            creationDate: string;
+            lastUpdate: string;
+            maxHostCount?: number;
+            minHostCount: number;
+            name: string;
+            status: cloudDB.enterprise.Offer.StatusEnum;
+        }
         export namespace Offer {
+            // interface fullName: cloudDB.enterprise.Offer.Region.enterprise_Offer_Region
+            export interface enterprise_Offer_Region {
+                hostLeft?: number;
+                offerName: string;
+                regionName: string;
+                status: cloudDB.enterprise.Offer.Region.StatusEnum;
+            }
             export namespace Region {
                 // type fullname: cloudDB.enterprise.Offer.Region.StatusEnum
                 export type StatusEnum = "available" | "unavailable"
@@ -80,6 +238,16 @@ export namespace cloudDB {
             export type StatusEnum = "available" | "planned" | "testing" | "unavailable"
             // type fullname: cloudDB.enterprise.Offer.TypeEnum
             export type TypeEnum = "postgresql"
+        }
+        // interface fullName: cloudDB.enterprise.Region.enterprise_Region
+        export interface enterprise_Region {
+            creationDate: string;
+            lastUpdate: string;
+            maintenanceDayOfWeek: number;
+            maintenanceDuration: number;
+            maintenanceStartTime: string;
+            name: string;
+            status: cloudDB.enterprise.Region.StatusEnum;
         }
         export namespace Region {
             // type fullname: cloudDB.enterprise.Region.StatusEnum
@@ -105,170 +273,6 @@ export namespace cloudDB {
             // type fullname: cloudDB.enterprise.User.StatusEnum
             export type StatusEnum = "created" | "creating" | "deleting" | "updated" | "updating"
         }
-    }
-    // interface fullName: cloudDB.enterprise_Cluster.enterprise_Cluster
-    export interface enterprise_Cluster {
-        autoBackup: boolean;
-        backupSize?: number;
-        creationDate: string;
-        hostCount?: number;
-        id: string;
-        lastUpdate: string;
-        name: string;
-        offerName: string;
-        offerType: cloudDB.enterprise.Offer.TypeEnum;
-        regionName: string;
-        restoredVolumeSize?: number;
-        status: cloudDB.enterprise.Cluster.StatusEnum;
-        taskId?: string;
-        version: string;
-    }
-    // interface fullName: cloudDB.enterprise_Cluster_Backup.enterprise_Cluster_Backup
-    export interface enterprise_Cluster_Backup {
-        clusterId: string;
-        creationDate: string;
-        effectiveCreationDate?: string;
-        id: string;
-        internal: boolean;
-        lastUpdate: string;
-        name: string;
-        size?: number;
-        status: cloudDB.enterprise.Backup.StatusEnum;
-        taskId?: string;
-    }
-    // interface fullName: cloudDB.enterprise_Cluster_Endpoint.enterprise_Cluster_Endpoint
-    export interface enterprise_Cluster_Endpoint {
-        clusterId: string;
-        creationDate: string;
-        fqdn: string;
-        id: string;
-        lastUpdate: string;
-        name: string;
-        port: number;
-        status: cloudDB.enterprise.Endpoint.StatusEnum;
-        taskId?: string;
-    }
-    // interface fullName: cloudDB.enterprise_Cluster_Host.enterprise_Cluster_Host
-    export interface enterprise_Cluster_Host {
-        creationDate: string;
-        id: string;
-        lastUpdate: string;
-        name: string;
-        status?: cloudDB.enterprise.Host.StatusEnum;
-        taskId?: string;
-    }
-    // interface fullName: cloudDB.enterprise_Cluster_LdpMember.enterprise_Cluster_LdpMember
-    export interface enterprise_Cluster_LdpMember {
-        creationDate: string;
-        id: string;
-        lastUpdate: string;
-        note?: string;
-        status: cloudDB.enterprise.LdpMember.StatusEnum;
-        taskId?: string;
-        username: string;
-    }
-    // interface fullName: cloudDB.enterprise_Cluster_Maintenance.enterprise_Cluster_Maintenance
-    export interface enterprise_Cluster_Maintenance {
-        clusterId: string;
-        creationDate: string;
-        duration: number;
-        id: string;
-        lastUpdate: string;
-        scheduledAt: string;
-        status: cloudDB.enterprise.Maintenance.StatusEnum;
-        taskId?: string;
-    }
-    // interface fullName: cloudDB.enterprise_Cluster_MaintenanceWindow.enterprise_Cluster_MaintenanceWindow
-    export interface enterprise_Cluster_MaintenanceWindow {
-        clusterId: string;
-        creationDate: string;
-        dayOfWeek: number;
-        duration: number;
-        id: string;
-        lastUpdate: string;
-        startTime: string;
-        status: cloudDB.enterprise.MaintenanceWindow.StatusEnum;
-        taskId?: string;
-    }
-    // interface fullName: cloudDB.enterprise_Cluster_Restore.enterprise_Cluster_Restore
-    export interface enterprise_Cluster_Restore {
-        backupId: string;
-        creationDate: string;
-        fqdn?: string;
-        id: string;
-        lastUpdate: string;
-        port?: number;
-        status: cloudDB.enterprise.Restore.StatusEnum;
-        taskId?: string;
-        timestamp?: string;
-        volumeSize?: number;
-    }
-    // interface fullName: cloudDB.enterprise_Cluster_Restore_User.enterprise_Cluster_Restore_User
-    export interface enterprise_Cluster_Restore_User {
-        creationDate: string;
-        id: string;
-        lastUpdate: string;
-        name: string;
-        restoreId: string;
-        status: cloudDB.enterprise.Restore.User.StatusEnum;
-        taskId?: string;
-    }
-    // interface fullName: cloudDB.enterprise_Cluster_SecurityGroup.enterprise_Cluster_SecurityGroup
-    export interface enterprise_Cluster_SecurityGroup {
-        clusterId: string;
-        creationDate: string;
-        id: string;
-        lastUpdate: string;
-        name: string;
-        rulesCount: number;
-        status: cloudDB.enterprise.SecurityGroup.StatusEnum;
-        taskId?: string;
-    }
-    // interface fullName: cloudDB.enterprise_Cluster_SecurityGroup_Rule.enterprise_Cluster_SecurityGroup_Rule
-    export interface enterprise_Cluster_SecurityGroup_Rule {
-        creationDate: string;
-        id: string;
-        lastUpdate: string;
-        securityGroupId: string;
-        source: string;
-        status: cloudDB.enterprise.SecurityGroupRule.StatusEnum;
-        taskId?: string;
-    }
-    // interface fullName: cloudDB.enterprise_Cluster_User.enterprise_Cluster_User
-    export interface enterprise_Cluster_User {
-        clusterId: string;
-        creationDate: string;
-        id: string;
-        lastUpdate: string;
-        name: string;
-        status: cloudDB.enterprise.User.StatusEnum;
-        taskId?: string;
-    }
-    // interface fullName: cloudDB.enterprise_Offer.enterprise_Offer
-    export interface enterprise_Offer {
-        creationDate: string;
-        lastUpdate: string;
-        maxHostCount?: number;
-        minHostCount: number;
-        name: string;
-        status: cloudDB.enterprise.Offer.StatusEnum;
-    }
-    // interface fullName: cloudDB.enterprise_Offer_Region.enterprise_Offer_Region
-    export interface enterprise_Offer_Region {
-        hostLeft?: number;
-        offerName: string;
-        regionName: string;
-        status: cloudDB.enterprise.Offer.Region.StatusEnum;
-    }
-    // interface fullName: cloudDB.enterprise_Region.enterprise_Region
-    export interface enterprise_Region {
-        creationDate: string;
-        lastUpdate: string;
-        maintenanceDayOfWeek: number;
-        maintenanceDuration: number;
-        maintenanceStartTime: string;
-        name: string;
-        status: cloudDB.enterprise.Region.StatusEnum;
     }
     export namespace instance {
         // type fullname: cloudDB.instance.Type
@@ -296,15 +300,105 @@ export namespace cloudDB {
         }
     }
     export namespace standard {
+        // interface fullName: cloudDB.standard.Configuration.standard_Configuration
+        export interface standard_Configuration {
+            details: cloudDB.standard.configuration.Detail[];
+            lastUpdate: string;
+            status: cloudDB.standard.configuration.Status;
+            taskId?: string;
+        }
+        // interface fullName: cloudDB.standard.Database.standard_Database
+        export interface standard_Database {
+            backupTime?: string;
+            creationDate: string;
+            dumpCount: number;
+            extensions: string[];
+            name: string;
+            quotaUsed: complexType.UnitAndValue<number>;
+            status: cloudDB.standard.database.Status;
+            taskId?: string;
+            users: cloudDB.standard.database.User[];
+        }
+        // interface fullName: cloudDB.standard.Flavor.standard_Flavor
+        export interface standard_Flavor {
+            cpu?: number;
+            disk?: complexType.UnitAndValue<number>;
+            name: string;
+            ram?: complexType.UnitAndValue<number>;
+            status: cloudDB.standard.flavor.Status;
+            supportedRegionNames: string[];
+        }
+        // interface fullName: cloudDB.standard.Grant.standard_Grant
+        export interface standard_Grant {
+            creationDate: string;
+            databaseName: string;
+            id: string;
+            lastUpdate: string;
+            status: cloudDB.standard.grant.Status;
+            taskId?: string;
+            type: cloudDB.standard.grant.Type;
+            userName: string;
+        }
+        // interface fullName: cloudDB.standard.Image.standard_Image
+        export interface standard_Image {
+            name: string;
+            status: cloudDB.standard.image.Status;
+            supportedFlavorNames: string[];
+            type: cloudDB.standard.image.Type;
+            version: string;
+        }
+        // interface fullName: cloudDB.standard.Instance.standard_Instance
+        export interface standard_Instance {
+            accessCommand: string;
+            creationDate: string;
+            creationRules: cloudDB.standard.instance.CreationRules;
+            diskOverquota?: boolean;
+            diskUsed: complexType.UnitAndValue<number>;
+            endpoint?: string;
+            flavor: cloudDB.standard.instance.Flavor;
+            id: string;
+            image: cloudDB.standard.instance.Image;
+            lastUpdate: string;
+            metrics?: cloudDB.standard.instance.MetricsData;
+            name: string;
+            port?: number;
+            region: cloudDB.standard.instance.Region;
+            status: cloudDB.standard.instance.Status;
+            taskId?: string;
+        }
         // interface fullName: cloudDB.standard.Oom.Oom
         export interface Oom {
             date: string;
             sizeReached: number;
         }
+        // interface fullName: cloudDB.standard.Region.standard_Region
+        export interface standard_Region {
+            name: string;
+            status: cloudDB.standard.region.Status;
+            type: cloudDB.standard.region.Type;
+        }
         // interface fullName: cloudDB.standard.TemporaryLogsLink.TemporaryLogsLink
         export interface TemporaryLogsLink {
             expirationDate: string;
             url: string;
+        }
+        // interface fullName: cloudDB.standard.User.standard_User
+        export interface standard_User {
+            creationDate: string;
+            databases: cloudDB.standard.user.Database[];
+            lastUpdate: string;
+            name: string;
+            status: cloudDB.standard.user.Status;
+            taskId?: string;
+        }
+        // interface fullName: cloudDB.standard.Whitelist.standard_Whitelist
+        export interface standard_Whitelist {
+            creationDate: string;
+            lastUpdate: string;
+            name: string;
+            network: string;
+            status: cloudDB.standard.whitelist.Status;
+            taskId?: string;
         }
         export namespace configuration {
             // interface fullName: cloudDB.standard.configuration.Detail.Detail
@@ -326,6 +420,24 @@ export namespace cloudDB {
             }
         }
         export namespace database {
+            // interface fullName: cloudDB.standard.database.Dump.standard_database_Dump
+            export interface standard_database_Dump {
+                creationDate: string;
+                expirationDate?: string;
+                id: string;
+                name?: string;
+                size?: complexType.UnitAndValue<number>;
+                status: cloudDB.dump.Status;
+                taskId?: string;
+                url?: string;
+            }
+            // interface fullName: cloudDB.standard.database.Extension.standard_database_Extension
+            export interface standard_database_Extension {
+                description: string;
+                name: string;
+                requiredExtensions: string[];
+                status: cloudDB.standard.database.extension.Status;
+            }
             // type fullname: cloudDB.standard.database.Status
             export type Status = "created" | "creating" | "deleting" | "dumping" | "importing" | "restoring"
             // interface fullName: cloudDB.standard.database.User.User
@@ -432,126 +544,18 @@ export namespace cloudDB {
             export type Status = "created" | "creating" | "deleting" | "updating"
         }
     }
-    // interface fullName: cloudDB.standard_Configuration.standard_Configuration
-    export interface standard_Configuration {
-        details: cloudDB.standard.configuration.Detail[];
-        lastUpdate: string;
-        status: cloudDB.standard.configuration.Status;
-        taskId?: string;
-    }
-    // interface fullName: cloudDB.standard_Database.standard_Database
-    export interface standard_Database {
-        backupTime?: string;
-        creationDate: string;
-        dumpCount: number;
-        extensions: string[];
-        name: string;
-        quotaUsed: complexType.UnitAndValue<number>;
-        status: cloudDB.standard.database.Status;
-        taskId?: string;
-        users: cloudDB.standard.database.User[];
-    }
-    // interface fullName: cloudDB.standard_Flavor.standard_Flavor
-    export interface standard_Flavor {
-        cpu?: number;
-        disk?: complexType.UnitAndValue<number>;
-        name: string;
-        ram?: complexType.UnitAndValue<number>;
-        status: cloudDB.standard.flavor.Status;
-        supportedRegionNames: string[];
-    }
-    // interface fullName: cloudDB.standard_Grant.standard_Grant
-    export interface standard_Grant {
-        creationDate: string;
-        databaseName: string;
-        id: string;
-        lastUpdate: string;
-        status: cloudDB.standard.grant.Status;
-        taskId?: string;
-        type: cloudDB.standard.grant.Type;
-        userName: string;
-    }
-    // interface fullName: cloudDB.standard_Image.standard_Image
-    export interface standard_Image {
-        name: string;
-        status: cloudDB.standard.image.Status;
-        supportedFlavorNames: string[];
-        type: cloudDB.standard.image.Type;
-        version: string;
-    }
-    // interface fullName: cloudDB.standard_Instance.standard_Instance
-    export interface standard_Instance {
-        accessCommand: string;
-        creationDate: string;
-        creationRules: cloudDB.standard.instance.CreationRules;
-        diskOverquota?: boolean;
-        diskUsed: complexType.UnitAndValue<number>;
-        endpoint?: string;
-        flavor: cloudDB.standard.instance.Flavor;
-        id: string;
-        image: cloudDB.standard.instance.Image;
-        lastUpdate: string;
-        metrics?: cloudDB.standard.instance.MetricsData;
-        name: string;
-        port?: number;
-        region: cloudDB.standard.instance.Region;
-        status: cloudDB.standard.instance.Status;
-        taskId?: string;
-    }
-    // interface fullName: cloudDB.standard_Region.standard_Region
-    export interface standard_Region {
-        name: string;
-        status: cloudDB.standard.region.Status;
-        type: cloudDB.standard.region.Type;
-    }
-    // interface fullName: cloudDB.standard_User.standard_User
-    export interface standard_User {
-        creationDate: string;
-        databases: cloudDB.standard.user.Database[];
-        lastUpdate: string;
-        name: string;
-        status: cloudDB.standard.user.Status;
-        taskId?: string;
-    }
-    // interface fullName: cloudDB.standard_Whitelist.standard_Whitelist
-    export interface standard_Whitelist {
-        creationDate: string;
-        lastUpdate: string;
-        name: string;
-        network: string;
-        status: cloudDB.standard.whitelist.Status;
-        taskId?: string;
-    }
-    // interface fullName: cloudDB.standard_database_Dump.standard_database_Dump
-    export interface standard_database_Dump {
-        creationDate: string;
-        expirationDate?: string;
-        id: string;
-        name?: string;
-        size?: complexType.UnitAndValue<number>;
-        status: cloudDB.dump.Status;
-        taskId?: string;
-        url?: string;
-    }
-    // interface fullName: cloudDB.standard_database_Extension.standard_database_Extension
-    export interface standard_database_Extension {
-        description: string;
-        name: string;
-        requiredExtensions: string[];
-        status: cloudDB.standard.database.extension.Status;
-    }
     export namespace task {
         // type fullname: cloudDB.task.Status
         export type Status = "cancelled" | "doing" | "done" | "error" | "todo"
     }
 }
 export namespace complexType {
-    // interface fullName: complexType.SafeKeyValue.SafeKeyValue
+    // interface fullName: complexType.SafeKeyValue<T>.SafeKeyValue
     export interface SafeKeyValue<T> {
         key: string;
         value: T;
     }
-    // interface fullName: complexType.UnitAndValue.UnitAndValue
+    // interface fullName: complexType.UnitAndValue<T>.UnitAndValue
     export interface UnitAndValue<T> {
         unit: string;
         value: T;
@@ -612,19 +616,19 @@ export interface CloudDB{
             $get(): Promise<string[]>;
             $(clusterId: string): {
                 // GET /cloudDB/enterprise/cluster/{clusterId}
-                $get(): Promise<cloudDB.enterprise_Cluster>;
+                $get(): Promise<cloudDB.enterprise.Cluster>;
                 // PUT /cloudDB/enterprise/cluster/{clusterId}
                 $put(params?: {autoBackup?: boolean, backupSize?: number, creationDate?: string, hostCount?: number, id?: string, lastUpdate?: string, name?: string, offerName?: string, offerType?: cloudDB.enterprise.Offer.TypeEnum, regionName?: string, restoredVolumeSize?: number, status?: cloudDB.enterprise.Cluster.StatusEnum, taskId?: string, version?: string}): Promise<void>;
                 backup: {
                     // GET /cloudDB/enterprise/cluster/{clusterId}/backup
                     $get(): Promise<string[]>;
                     // POST /cloudDB/enterprise/cluster/{clusterId}/backup
-                    $post(params: {clusterId: string, name: string}): Promise<cloudDB.enterprise_Cluster_Backup>;
+                    $post(params: {clusterId: string, name: string}): Promise<cloudDB.enterprise.Cluster.Backup>;
                     $(backupId: string): {
                         // DELETE /cloudDB/enterprise/cluster/{clusterId}/backup/{backupId}
                         $delete(): Promise<void>;
                         // GET /cloudDB/enterprise/cluster/{clusterId}/backup/{backupId}
-                        $get(): Promise<cloudDB.enterprise_Cluster_Backup>;
+                        $get(): Promise<cloudDB.enterprise.Cluster.Backup>;
                     };
                 }
                 confirmTermination: {
@@ -636,7 +640,7 @@ export interface CloudDB{
                     $get(): Promise<string[]>;
                     $(endpointId: string): {
                         // GET /cloudDB/enterprise/cluster/{clusterId}/endpoint/{endpointId}
-                        $get(): Promise<cloudDB.enterprise_Cluster_Endpoint>;
+                        $get(): Promise<cloudDB.enterprise.Cluster.Endpoint>;
                     };
                 }
                 host: {
@@ -644,19 +648,19 @@ export interface CloudDB{
                     $get(): Promise<string[]>;
                     $(hostId: string): {
                         // GET /cloudDB/enterprise/cluster/{clusterId}/host/{hostId}
-                        $get(): Promise<cloudDB.enterprise_Cluster_Host>;
+                        $get(): Promise<cloudDB.enterprise.Cluster.Host>;
                     };
                 }
                 logs: {
                     // GET /cloudDB/enterprise/cluster/{clusterId}/logs
                     $get(): Promise<string[]>;
                     // POST /cloudDB/enterprise/cluster/{clusterId}/logs
-                    $post(params: {note?: string, username: string}): Promise<cloudDB.enterprise_Cluster_LdpMember>;
+                    $post(params: {note?: string, username: string}): Promise<cloudDB.enterprise.Cluster.LdpMember>;
                     $(logsId: string): {
                         // DELETE /cloudDB/enterprise/cluster/{clusterId}/logs/{logsId}
                         $delete(): Promise<void>;
                         // GET /cloudDB/enterprise/cluster/{clusterId}/logs/{logsId}
-                        $get(): Promise<cloudDB.enterprise_Cluster_LdpMember>;
+                        $get(): Promise<cloudDB.enterprise.Cluster.LdpMember>;
                     };
                 }
                 maintenance: {
@@ -666,16 +670,16 @@ export interface CloudDB{
                         // DELETE /cloudDB/enterprise/cluster/{clusterId}/maintenance/{maintenanceId}
                         $delete(): Promise<void>;
                         // GET /cloudDB/enterprise/cluster/{clusterId}/maintenance/{maintenanceId}
-                        $get(): Promise<cloudDB.enterprise_Cluster_Maintenance>;
+                        $get(): Promise<cloudDB.enterprise.Cluster.Maintenance>;
                     };
                 }
                 maintenanceWindow: {
                     // DELETE /cloudDB/enterprise/cluster/{clusterId}/maintenanceWindow
                     $delete(): Promise<void>;
                     // GET /cloudDB/enterprise/cluster/{clusterId}/maintenanceWindow
-                    $get(): Promise<cloudDB.enterprise_Cluster_MaintenanceWindow>;
+                    $get(): Promise<cloudDB.enterprise.Cluster.MaintenanceWindow>;
                     // POST /cloudDB/enterprise/cluster/{clusterId}/maintenanceWindow
-                    $post(params?: {dayOfWeek?: number, duration?: number, startTime?: string}): Promise<cloudDB.enterprise_Cluster_MaintenanceWindow>;
+                    $post(params?: {dayOfWeek?: number, duration?: number, startTime?: string}): Promise<cloudDB.enterprise.Cluster.MaintenanceWindow>;
                     // PUT /cloudDB/enterprise/cluster/{clusterId}/maintenanceWindow
                     $put(params?: {clusterId?: string, creationDate?: string, dayOfWeek?: number, duration?: number, id?: string, lastUpdate?: string, startTime?: string, status?: cloudDB.enterprise.MaintenanceWindow.StatusEnum, taskId?: string}): Promise<void>;
                 }
@@ -683,46 +687,46 @@ export interface CloudDB{
                     // GET /cloudDB/enterprise/cluster/{clusterId}/restore
                     $get(): Promise<string[]>;
                     // POST /cloudDB/enterprise/cluster/{clusterId}/restore
-                    $post(params?: {backupId?: string, timestamp?: string}): Promise<cloudDB.enterprise_Cluster_Restore>;
+                    $post(params?: {backupId?: string, timestamp?: string}): Promise<cloudDB.enterprise.Cluster.Restore>;
                     $(restoreId: string): {
                         // DELETE /cloudDB/enterprise/cluster/{clusterId}/restore/{restoreId}
                         $delete(): Promise<void>;
                         // GET /cloudDB/enterprise/cluster/{clusterId}/restore/{restoreId}
-                        $get(): Promise<cloudDB.enterprise_Cluster_Restore>;
+                        $get(): Promise<cloudDB.enterprise.Cluster.Restore>;
                         user: {
                             // GET /cloudDB/enterprise/cluster/{clusterId}/restore/{restoreId}/user
-                            $get(): Promise<cloudDB.enterprise_Cluster_Restore_User>;
+                            $get(): Promise<cloudDB.enterprise.Cluster.Restore.User>;
                             // POST /cloudDB/enterprise/cluster/{clusterId}/restore/{restoreId}/user
-                            $post(params: {password: string}): Promise<cloudDB.enterprise_Cluster_Restore_User>;
+                            $post(params: {password: string}): Promise<cloudDB.enterprise.Cluster.Restore.User>;
                         }
                     };
                 }
                 scale: {
                     // POST /cloudDB/enterprise/cluster/{clusterId}/scale
-                    $post(params: {count: number}): Promise<cloudDB.enterprise_Cluster>;
+                    $post(params: {count: number}): Promise<cloudDB.enterprise.Cluster>;
                 }
                 securityGroup: {
                     // GET /cloudDB/enterprise/cluster/{clusterId}/securityGroup
                     $get(): Promise<string[]>;
                     // POST /cloudDB/enterprise/cluster/{clusterId}/securityGroup
-                    $post(params: {clusterId: string, name: string}): Promise<cloudDB.enterprise_Cluster_SecurityGroup>;
+                    $post(params: {clusterId: string, name: string}): Promise<cloudDB.enterprise.Cluster.SecurityGroup>;
                     $(securityGroupId: string): {
                         // DELETE /cloudDB/enterprise/cluster/{clusterId}/securityGroup/{securityGroupId}
                         $delete(): Promise<void>;
                         // GET /cloudDB/enterprise/cluster/{clusterId}/securityGroup/{securityGroupId}
-                        $get(): Promise<cloudDB.enterprise_Cluster_SecurityGroup>;
+                        $get(): Promise<cloudDB.enterprise.Cluster.SecurityGroup>;
                         // PUT /cloudDB/enterprise/cluster/{clusterId}/securityGroup/{securityGroupId}
                         $put(params?: {clusterId?: string, creationDate?: string, id?: string, lastUpdate?: string, name?: string, rulesCount?: number, status?: cloudDB.enterprise.SecurityGroup.StatusEnum, taskId?: string}): Promise<void>;
                         rule: {
                             // GET /cloudDB/enterprise/cluster/{clusterId}/securityGroup/{securityGroupId}/rule
                             $get(): Promise<string[]>;
                             // POST /cloudDB/enterprise/cluster/{clusterId}/securityGroup/{securityGroupId}/rule
-                            $post(params: {source: string}): Promise<cloudDB.enterprise_Cluster_SecurityGroup_Rule>;
+                            $post(params: {source: string}): Promise<cloudDB.enterprise.Cluster.SecurityGroup.Rule>;
                             $(ruleId: string): {
                                 // DELETE /cloudDB/enterprise/cluster/{clusterId}/securityGroup/{securityGroupId}/rule/{ruleId}
                                 $delete(): Promise<void>;
                                 // GET /cloudDB/enterprise/cluster/{clusterId}/securityGroup/{securityGroupId}/rule/{ruleId}
-                                $get(): Promise<cloudDB.enterprise_Cluster_SecurityGroup_Rule>;
+                                $get(): Promise<cloudDB.enterprise.Cluster.SecurityGroup.Rule>;
                             };
                         }
                     };
@@ -747,9 +751,9 @@ export interface CloudDB{
                 }
                 user: {
                     // GET /cloudDB/enterprise/cluster/{clusterId}/user
-                    $get(): Promise<cloudDB.enterprise_Cluster_User>;
+                    $get(): Promise<cloudDB.enterprise.Cluster.User>;
                     // POST /cloudDB/enterprise/cluster/{clusterId}/user
-                    $post(params: {password: string}): Promise<cloudDB.enterprise_Cluster_User>;
+                    $post(params: {password: string}): Promise<cloudDB.enterprise.Cluster.User>;
                 }
             };
         }
@@ -758,13 +762,13 @@ export interface CloudDB{
             $get(): Promise<string[]>;
             $(offerName: string): {
                 // GET /cloudDB/enterprise/offer/{offerName}
-                $get(): Promise<cloudDB.enterprise_Offer>;
+                $get(): Promise<cloudDB.enterprise.Offer>;
                 region: {
                     // GET /cloudDB/enterprise/offer/{offerName}/region
                     $get(): Promise<string[]>;
                     $(regionName: string): {
                         // GET /cloudDB/enterprise/offer/{offerName}/region/{regionName}
-                        $get(): Promise<cloudDB.enterprise_Offer_Region>;
+                        $get(): Promise<cloudDB.enterprise.Offer.Region>;
                     };
                 }
             };
@@ -774,7 +778,7 @@ export interface CloudDB{
             $get(): Promise<string[]>;
             $(regionName: string): {
                 // GET /cloudDB/enterprise/region/{regionName}
-                $get(): Promise<cloudDB.enterprise_Region>;
+                $get(): Promise<cloudDB.enterprise.Region>;
             };
         }
     }
@@ -788,7 +792,7 @@ export interface CloudDB{
    * Cluster
    * Get this object properties
    */
-  get(path: '/cloudDB/enterprise/cluster/{clusterId}'): (params: {clusterId: string}) => Promise<cloudDB.enterprise_Cluster>;
+  get(path: '/cloudDB/enterprise/cluster/{clusterId}'): (params: {clusterId: string}) => Promise<cloudDB.enterprise.Cluster>;
   /**
    * List the cloudDB.enterprise.Cluster.Backup objects
    * Backups of this cluster
@@ -798,7 +802,7 @@ export interface CloudDB{
    * Backup
    * Get this object properties
    */
-  get(path: '/cloudDB/enterprise/cluster/{clusterId}/backup/{backupId}'): (params: {backupId: string, clusterId: string}) => Promise<cloudDB.enterprise_Cluster_Backup>;
+  get(path: '/cloudDB/enterprise/cluster/{clusterId}/backup/{backupId}'): (params: {backupId: string, clusterId: string}) => Promise<cloudDB.enterprise.Cluster.Backup>;
   /**
    * List the cloudDB.enterprise.Cluster.Endpoint objects
    * Cluster endpoints
@@ -808,7 +812,7 @@ export interface CloudDB{
    * Endpoints
    * Get this object properties
    */
-  get(path: '/cloudDB/enterprise/cluster/{clusterId}/endpoint/{endpointId}'): (params: {clusterId: string, endpointId: string}) => Promise<cloudDB.enterprise_Cluster_Endpoint>;
+  get(path: '/cloudDB/enterprise/cluster/{clusterId}/endpoint/{endpointId}'): (params: {clusterId: string, endpointId: string}) => Promise<cloudDB.enterprise.Cluster.Endpoint>;
   /**
    * List the cloudDB.enterprise.Cluster.Host objects
    * Hosts of this cluster
@@ -818,7 +822,7 @@ export interface CloudDB{
    * Host
    * Get this object properties
    */
-  get(path: '/cloudDB/enterprise/cluster/{clusterId}/host/{hostId}'): (params: {clusterId: string, hostId: string}) => Promise<cloudDB.enterprise_Cluster_Host>;
+  get(path: '/cloudDB/enterprise/cluster/{clusterId}/host/{hostId}'): (params: {clusterId: string, hostId: string}) => Promise<cloudDB.enterprise.Cluster.Host>;
   /**
    * List the cloudDB.enterprise.Cluster.LdpMember objects
    * Logs access for this cluster
@@ -828,7 +832,7 @@ export interface CloudDB{
    * Member
    * Get this object properties
    */
-  get(path: '/cloudDB/enterprise/cluster/{clusterId}/logs/{logsId}'): (params: {clusterId: string, logsId: string}) => Promise<cloudDB.enterprise_Cluster_LdpMember>;
+  get(path: '/cloudDB/enterprise/cluster/{clusterId}/logs/{logsId}'): (params: {clusterId: string, logsId: string}) => Promise<cloudDB.enterprise.Cluster.LdpMember>;
   /**
    * List the cloudDB.enterprise.Cluster.Maintenance objects
    * Cluster maintenances
@@ -838,12 +842,12 @@ export interface CloudDB{
    * Maintenance window
    * Get this object properties
    */
-  get(path: '/cloudDB/enterprise/cluster/{clusterId}/maintenance/{maintenanceId}'): (params: {clusterId: string, maintenanceId: string}) => Promise<cloudDB.enterprise_Cluster_Maintenance>;
+  get(path: '/cloudDB/enterprise/cluster/{clusterId}/maintenance/{maintenanceId}'): (params: {clusterId: string, maintenanceId: string}) => Promise<cloudDB.enterprise.Cluster.Maintenance>;
   /**
    * Maintenance window
    * Get this object properties
    */
-  get(path: '/cloudDB/enterprise/cluster/{clusterId}/maintenanceWindow'): (params: {clusterId: string}) => Promise<cloudDB.enterprise_Cluster_MaintenanceWindow>;
+  get(path: '/cloudDB/enterprise/cluster/{clusterId}/maintenanceWindow'): (params: {clusterId: string}) => Promise<cloudDB.enterprise.Cluster.MaintenanceWindow>;
   /**
    * List the cloudDB.enterprise.Cluster.Restore objects
    * Restores of this cluster
@@ -853,12 +857,12 @@ export interface CloudDB{
    * Restore
    * Get this object properties
    */
-  get(path: '/cloudDB/enterprise/cluster/{clusterId}/restore/{restoreId}'): (params: {clusterId: string, restoreId: string}) => Promise<cloudDB.enterprise_Cluster_Restore>;
+  get(path: '/cloudDB/enterprise/cluster/{clusterId}/restore/{restoreId}'): (params: {clusterId: string, restoreId: string}) => Promise<cloudDB.enterprise.Cluster.Restore>;
   /**
    * User
    * Get this object properties
    */
-  get(path: '/cloudDB/enterprise/cluster/{clusterId}/restore/{restoreId}/user'): (params: {clusterId: string, restoreId: string}) => Promise<cloudDB.enterprise_Cluster_Restore_User>;
+  get(path: '/cloudDB/enterprise/cluster/{clusterId}/restore/{restoreId}/user'): (params: {clusterId: string, restoreId: string}) => Promise<cloudDB.enterprise.Cluster.Restore.User>;
   /**
    * List the cloudDB.enterprise.Cluster.SecurityGroup objects
    * Cluster security groups
@@ -868,7 +872,7 @@ export interface CloudDB{
    * Security group
    * Get this object properties
    */
-  get(path: '/cloudDB/enterprise/cluster/{clusterId}/securityGroup/{securityGroupId}'): (params: {clusterId: string, securityGroupId: string}) => Promise<cloudDB.enterprise_Cluster_SecurityGroup>;
+  get(path: '/cloudDB/enterprise/cluster/{clusterId}/securityGroup/{securityGroupId}'): (params: {clusterId: string, securityGroupId: string}) => Promise<cloudDB.enterprise.Cluster.SecurityGroup>;
   /**
    * List the cloudDB.enterprise.Cluster.SecurityGroup.Rule objects
    * Security group rules
@@ -878,7 +882,7 @@ export interface CloudDB{
    * Security group rule
    * Get this object properties
    */
-  get(path: '/cloudDB/enterprise/cluster/{clusterId}/securityGroup/{securityGroupId}/rule/{ruleId}'): (params: {clusterId: string, ruleId: string, securityGroupId: string}) => Promise<cloudDB.enterprise_Cluster_SecurityGroup_Rule>;
+  get(path: '/cloudDB/enterprise/cluster/{clusterId}/securityGroup/{securityGroupId}/rule/{ruleId}'): (params: {clusterId: string, ruleId: string, securityGroupId: string}) => Promise<cloudDB.enterprise.Cluster.SecurityGroup.Rule>;
   /**
    * Details about a Service
    * Get this object properties
@@ -898,7 +902,7 @@ export interface CloudDB{
    * User
    * Get this object properties
    */
-  get(path: '/cloudDB/enterprise/cluster/{clusterId}/user'): (params: {clusterId: string}) => Promise<cloudDB.enterprise_Cluster_User>;
+  get(path: '/cloudDB/enterprise/cluster/{clusterId}/user'): (params: {clusterId: string}) => Promise<cloudDB.enterprise.Cluster.User>;
   /**
    * List the cloudDB.enterprise.Offer objects
    * Offers with their capabilities
@@ -908,7 +912,7 @@ export interface CloudDB{
    * Offer
    * Get this object properties
    */
-  get(path: '/cloudDB/enterprise/offer/{offerName}'): (params: {offerName: string}) => Promise<cloudDB.enterprise_Offer>;
+  get(path: '/cloudDB/enterprise/offer/{offerName}'): (params: {offerName: string}) => Promise<cloudDB.enterprise.Offer>;
   /**
    * List the cloudDB.enterprise.Offer.Region objects
    * Regions of this offer
@@ -918,7 +922,7 @@ export interface CloudDB{
    * Offer capabilities for this region
    * Get this object properties
    */
-  get(path: '/cloudDB/enterprise/offer/{offerName}/region/{regionName}'): (params: {offerName: string, regionName: string}) => Promise<cloudDB.enterprise_Offer_Region>;
+  get(path: '/cloudDB/enterprise/offer/{offerName}/region/{regionName}'): (params: {offerName: string, regionName: string}) => Promise<cloudDB.enterprise.Offer.Region>;
   /**
    * List the cloudDB.enterprise.Region objects
    * Regions with their capabilities
@@ -928,7 +932,7 @@ export interface CloudDB{
    * Region
    * Get this object properties
    */
-  get(path: '/cloudDB/enterprise/region/{regionName}'): (params: {regionName: string}) => Promise<cloudDB.enterprise_Region>;
+  get(path: '/cloudDB/enterprise/region/{regionName}'): (params: {regionName: string}) => Promise<cloudDB.enterprise.Region>;
   /**
    * Cluster
    * Alter this object properties
@@ -953,7 +957,7 @@ export interface CloudDB{
    * List the cloudDB.enterprise.Cluster.Backup objects
    * Create a cluster backup
    */
-  post(path: '/cloudDB/enterprise/cluster/{clusterId}/backup'): (params: {clusterId: string, name: string}) => Promise<cloudDB.enterprise_Cluster_Backup>;
+  post(path: '/cloudDB/enterprise/cluster/{clusterId}/backup'): (params: {clusterId: string, name: string}) => Promise<cloudDB.enterprise.Cluster.Backup>;
   /**
    * Confirm termination of your service
    * Confirm termination of your service
@@ -963,37 +967,37 @@ export interface CloudDB{
    * List the cloudDB.enterprise.Cluster.LdpMember objects
    * Grant access to cluster logs
    */
-  post(path: '/cloudDB/enterprise/cluster/{clusterId}/logs'): (params: {clusterId: string, note?: string, username: string}) => Promise<cloudDB.enterprise_Cluster_LdpMember>;
+  post(path: '/cloudDB/enterprise/cluster/{clusterId}/logs'): (params: {clusterId: string, note?: string, username: string}) => Promise<cloudDB.enterprise.Cluster.LdpMember>;
   /**
    * Maintenance window
    * Add a maintenance window to this cluster
    */
-  post(path: '/cloudDB/enterprise/cluster/{clusterId}/maintenanceWindow'): (params: {clusterId: string, dayOfWeek?: number, duration?: number, startTime?: string}) => Promise<cloudDB.enterprise_Cluster_MaintenanceWindow>;
+  post(path: '/cloudDB/enterprise/cluster/{clusterId}/maintenanceWindow'): (params: {clusterId: string, dayOfWeek?: number, duration?: number, startTime?: string}) => Promise<cloudDB.enterprise.Cluster.MaintenanceWindow>;
   /**
    * List the cloudDB.enterprise.Cluster.Restore objects
    * Create a cluster restore at a given point in time
    */
-  post(path: '/cloudDB/enterprise/cluster/{clusterId}/restore'): (params: {clusterId: string, backupId?: string, timestamp?: string}) => Promise<cloudDB.enterprise_Cluster_Restore>;
+  post(path: '/cloudDB/enterprise/cluster/{clusterId}/restore'): (params: {clusterId: string, backupId?: string, timestamp?: string}) => Promise<cloudDB.enterprise.Cluster.Restore>;
   /**
    * User
    * Create a user on this restored instance
    */
-  post(path: '/cloudDB/enterprise/cluster/{clusterId}/restore/{restoreId}/user'): (params: {clusterId: string, restoreId: string, password: string}) => Promise<cloudDB.enterprise_Cluster_Restore_User>;
+  post(path: '/cloudDB/enterprise/cluster/{clusterId}/restore/{restoreId}/user'): (params: {clusterId: string, restoreId: string, password: string}) => Promise<cloudDB.enterprise.Cluster.Restore.User>;
   /**
    * scale operations
    * Scale a cluster
    */
-  post(path: '/cloudDB/enterprise/cluster/{clusterId}/scale'): (params: {clusterId: string, count: number}) => Promise<cloudDB.enterprise_Cluster>;
+  post(path: '/cloudDB/enterprise/cluster/{clusterId}/scale'): (params: {clusterId: string, count: number}) => Promise<cloudDB.enterprise.Cluster>;
   /**
    * List the cloudDB.enterprise.Cluster.SecurityGroup objects
    * Add a security group to this cluster
    */
-  post(path: '/cloudDB/enterprise/cluster/{clusterId}/securityGroup'): (params: {clusterId: string, name: string}) => Promise<cloudDB.enterprise_Cluster_SecurityGroup>;
+  post(path: '/cloudDB/enterprise/cluster/{clusterId}/securityGroup'): (params: {clusterId: string, name: string}) => Promise<cloudDB.enterprise.Cluster.SecurityGroup>;
   /**
    * List the cloudDB.enterprise.Cluster.SecurityGroup.Rule objects
    * Add a rule to this security group
    */
-  post(path: '/cloudDB/enterprise/cluster/{clusterId}/securityGroup/{securityGroupId}/rule'): (params: {clusterId: string, securityGroupId: string, source: string}) => Promise<cloudDB.enterprise_Cluster_SecurityGroup_Rule>;
+  post(path: '/cloudDB/enterprise/cluster/{clusterId}/securityGroup/{securityGroupId}/rule'): (params: {clusterId: string, securityGroupId: string, source: string}) => Promise<cloudDB.enterprise.Cluster.SecurityGroup.Rule>;
   /**
    * Terminate your service
    * Terminate your service
@@ -1003,7 +1007,7 @@ export interface CloudDB{
    * User
    * Create a user on this cluster
    */
-  post(path: '/cloudDB/enterprise/cluster/{clusterId}/user'): (params: {clusterId: string, password: string}) => Promise<cloudDB.enterprise_Cluster_User>;
+  post(path: '/cloudDB/enterprise/cluster/{clusterId}/user'): (params: {clusterId: string, password: string}) => Promise<cloudDB.enterprise.Cluster.User>;
   /**
    * Backup
    * Delete a cluster backup

@@ -552,12 +552,12 @@ export namespace billing {
     }
 }
 export namespace complexType {
-    // interface fullName: complexType.SafeKeyValue.SafeKeyValue
+    // interface fullName: complexType.SafeKeyValue<T>.SafeKeyValue
     export interface SafeKeyValue<T> {
         key: string;
         value: T;
     }
-    // interface fullName: complexType.UnitAndValue.UnitAndValue
+    // interface fullName: complexType.UnitAndValue<T>.UnitAndValue
     export interface UnitAndValue<T> {
         unit: string;
         value: T;
@@ -859,14 +859,14 @@ export namespace me {
         export namespace transaction {
             // interface fullName: me.consumption.transaction.Element.Element
             export interface Element {
-                details: me.consumption.transaction.Element.Detail[];
+                details: me.consumption.transaction.element.Detail[];
                 planCode: string;
                 planFamily: string;
                 price: me.consumption.Price;
                 quantity: number;
             }
-            export namespace Element {
-                // interface fullName: me.consumption.transaction.Element.Detail.Detail
+            export namespace element {
+                // interface fullName: me.consumption.transaction.element.Detail.Detail
                 export interface Detail {
                     price: me.consumption.Price;
                     quantity: number;
@@ -961,7 +961,7 @@ export namespace nichandle {
             description: string;
             lastUpdate: string;
             name: string;
-            role: nichandle.RoleEnum;
+            role: nichandle.Authentication.RoleEnum;
         }
         // interface fullName: nichandle.Authentication.Provider.Provider
         export interface Provider {
@@ -971,6 +971,8 @@ export namespace nichandle {
             lastUpdate: string;
             ssoServiceUrl: string;
         }
+        // type fullname: nichandle.Authentication.RoleEnum
+        export type RoleEnum = "REGULAR" | "ADMIN" | "UNPRIVILEGED"
     }
     // interface fullName: nichandle.BillingCapacities.BillingCapacities
     export interface BillingCapacities {
@@ -1121,8 +1123,6 @@ export namespace nichandle {
     export type OvhSubsidiaryEnum = "ASIA" | "AU" | "CA" | "CZ" | "DE" | "ES" | "EU" | "FI" | "FR" | "GB" | "IE" | "IT" | "LT" | "MA" | "NL" | "PL" | "PT" | "QC" | "SG" | "SN" | "TN" | "US" | "WE" | "WS"
     // type fullname: nichandle.RequiredPaymentMethodEnum
     export type RequiredPaymentMethodEnum = "mandatoryForAutorenew" | "mandatoryForPostpaid" | "notMandatory"
-    // type fullname: nichandle.RoleEnum
-    export type RoleEnum = "REGULAR" | "ADMIN" | "UNPRIVILEGED"
     // type fullname: nichandle.StateEnum
     export type StateEnum = "complete" | "incomplete"
     // interface fullName: nichandle.SubAccount.SubAccount
@@ -1918,14 +1918,14 @@ export interface Me{
             // GET /me/identity/group
             $get(): Promise<string[]>;
             // POST /me/identity/group
-            $post(params: {description?: string, name: string, role?: nichandle.RoleEnum}): Promise<nichandle.Authentication.Group>;
+            $post(params: {description?: string, name: string, role?: nichandle.Authentication.RoleEnum}): Promise<nichandle.Authentication.Group>;
             $(group: string): {
                 // DELETE /me/identity/group/{group}
                 $delete(): Promise<void>;
                 // GET /me/identity/group/{group}
                 $get(): Promise<nichandle.Authentication.Group>;
                 // PUT /me/identity/group/{group}
-                $put(params?: {description?: string, role?: nichandle.RoleEnum}): Promise<void>;
+                $put(params?: {description?: string, role?: nichandle.Authentication.RoleEnum}): Promise<void>;
             };
         }
         user: {
@@ -3438,7 +3438,7 @@ export interface Me{
    * A group linked to this account
    * Alter a group
    */
-  put(path: '/me/identity/group/{group}'): (params: {group: string, description?: string, role?: nichandle.RoleEnum}) => Promise<void>;
+  put(path: '/me/identity/group/{group}'): (params: {group: string, description?: string, role?: nichandle.Authentication.RoleEnum}) => Promise<void>;
   /**
    * A user linked to this account
    * Alter a user
@@ -3708,7 +3708,7 @@ export interface Me{
    * Groups linked to this account
    * Create a new group
    */
-  post(path: '/me/identity/group'): (params: {description?: string, name: string, role?: nichandle.RoleEnum}) => Promise<nichandle.Authentication.Group>;
+  post(path: '/me/identity/group'): (params: {description?: string, name: string, role?: nichandle.Authentication.RoleEnum}) => Promise<nichandle.Authentication.Group>;
   /**
    * Users linked to this account
    * Create a new user

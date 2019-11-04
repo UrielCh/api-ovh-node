@@ -105,7 +105,7 @@ export namespace email {
         export type DomainDiagnoseFunctionEnum = "MX"
         // type fullname: email.domain.DomainDiagnoseResultEnum
         export type DomainDiagnoseResultEnum = "CUSTOM" | "DEPRECATED" | "KO" | "OK"
-        // interface fullName: email.domain.DomainDiagnoseTraceStruct.DomainDiagnoseTraceStruct
+        // interface fullName: email.domain.DomainDiagnoseTraceStruct<T>.DomainDiagnoseTraceStruct
         export interface DomainDiagnoseTraceStruct<T> {
             result: T;
             test: string;

@@ -14,30 +14,26 @@ export namespace ovhstatus {
     }
 }
 export namespace status {
-    export namespace Reply {
-        // interface fullName: status.Reply.Reply.Reply
-        export interface Reply {
-            comment: string;
-            date: string;
-        }
+    // interface fullName: status.Reply.Reply
+    export interface Reply {
+        comment: string;
+        date: string;
     }
-    export namespace Task {
-        // interface fullName: status.Task.Task.Task
-        export interface Task {
-            category: string;
-            endDate?: string;
-            impact: ovhstatus.task.TaskImpactEnum;
-            impactedService: string;
-            progress: number;
-            project: string;
-            reference: string;
-            replies: status.Reply.Reply[];
-            startDate?: string;
-            status: ovhstatus.task.TaskStatusEnum;
-            title: string;
-            type: ovhstatus.task.TaskTypeEnum;
-            uuid: string;
-        }
+    // interface fullName: status.Task.Task
+    export interface Task {
+        category: string;
+        endDate?: string;
+        impact: ovhstatus.task.TaskImpactEnum;
+        impactedService: string;
+        progress: number;
+        project: string;
+        reference: string;
+        replies: status.Reply[];
+        startDate?: string;
+        status: ovhstatus.task.TaskStatusEnum;
+        title: string;
+        type: ovhstatus.task.TaskTypeEnum;
+        uuid: string;
     }
 }
 
@@ -55,12 +51,12 @@ export default proxyStatus;
 export interface Status{
     task: {
         // GET /status/task
-        $get(params?: {impact?: ovhstatus.task.TaskImpactEnum, status?: ovhstatus.task.TaskStatusEnum, type?: ovhstatus.task.TaskTypeEnum}): Promise<status.Task.Task[]>;
+        $get(params?: {impact?: ovhstatus.task.TaskImpactEnum, status?: ovhstatus.task.TaskStatusEnum, type?: ovhstatus.task.TaskTypeEnum}): Promise<status.Task[]>;
     }
 // Api
   /**
    * API to get incidents or maintenances linked to nichandle services
    * Find all the incidents or maintenances linked to your services
    */
-  get(path: '/status/task'): (params?: {impact?: ovhstatus.task.TaskImpactEnum, status?: ovhstatus.task.TaskStatusEnum, type?: ovhstatus.task.TaskTypeEnum}) => Promise<status.Task.Task[]>;
+  get(path: '/status/task'): (params?: {impact?: ovhstatus.task.TaskImpactEnum, status?: ovhstatus.task.TaskStatusEnum, type?: ovhstatus.task.TaskTypeEnum}) => Promise<status.Task[]>;
 }

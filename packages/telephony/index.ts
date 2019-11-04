@@ -4,17 +4,17 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /telephony Models
  */
 export namespace complexType {
-    // interface fullName: complexType.Range.Range
+    // interface fullName: complexType.Range<T>.Range
     export interface Range<T> {
         from: T;
         to: T;
     }
-    // interface fullName: complexType.SafeKeyValue.SafeKeyValue
+    // interface fullName: complexType.SafeKeyValue<T>.SafeKeyValue
     export interface SafeKeyValue<T> {
         key: string;
         value: T;
     }
-    // interface fullName: complexType.UnitAndValues.UnitAndValues
+    // interface fullName: complexType.UnitAndValues<T>.UnitAndValues
     export interface UnitAndValues<T> {
         unit: string;
         values: T[];

@@ -137,7 +137,7 @@ export namespace domain {
     // type fullname: domain.WhoisObfuscatorFieldsEnum
     export type WhoisObfuscatorFieldsEnum = "address" | "email" | "phone"
     export namespace configurations {
-        // interface fullName: domain.configurations.ObfuscatedEmails.ObfuscatedEmails
+        // interface fullName: domain.configurations.ObfuscatedEmail.ObfuscatedEmails
         export interface ObfuscatedEmails {
             type: domain.ContactAllTypesEnum;
             value: string;
@@ -642,9 +642,9 @@ export interface Domain{
         configurations: {
             obfuscatedEmails: {
                 // GET /domain/{serviceName}/configurations/obfuscatedEmails
-                $get(): Promise<domain.configurations.ObfuscatedEmails[]>;
+                $get(): Promise<domain.configurations.ObfuscatedEmail[]>;
                 // PUT /domain/{serviceName}/configurations/obfuscatedEmails
-                $put(params: {contacts: domain.ContactAllTypesEnum[]}): Promise<domain.configurations.ObfuscatedEmails[]>;
+                $put(params: {contacts: domain.ContactAllTypesEnum[]}): Promise<domain.configurations.ObfuscatedEmail[]>;
                 refresh: {
                     // POST /domain/{serviceName}/configurations/obfuscatedEmails/refresh
                     $post(params: {contacts: domain.ContactAllTypesEnum[]}): Promise<void>;
@@ -800,7 +800,7 @@ export interface Domain{
    * Missing description
    * Retrieve obfuscated emails configuration
    */
-  get(path: '/domain/{serviceName}/configurations/obfuscatedEmails'): (params: {serviceName: string}) => Promise<domain.configurations.ObfuscatedEmails[]>;
+  get(path: '/domain/{serviceName}/configurations/obfuscatedEmails'): (params: {serviceName: string}) => Promise<domain.configurations.ObfuscatedEmail[]>;
   /**
    * Missing description
    * Retrieve optin configuration
@@ -1045,7 +1045,7 @@ export interface Domain{
    * Missing description
    * Save a new obfuscated emails configuration
    */
-  put(path: '/domain/{serviceName}/configurations/obfuscatedEmails'): (params: {serviceName: string, contacts: domain.ContactAllTypesEnum[]}) => Promise<domain.configurations.ObfuscatedEmails[]>;
+  put(path: '/domain/{serviceName}/configurations/obfuscatedEmails'): (params: {serviceName: string, contacts: domain.ContactAllTypesEnum[]}) => Promise<domain.configurations.ObfuscatedEmail[]>;
   /**
    * Missing description
    * Save a new optin configuration

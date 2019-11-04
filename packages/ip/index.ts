@@ -4,7 +4,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /ip Models
  */
 export namespace complexType {
-    // interface fullName: complexType.Range.Range
+    // interface fullName: complexType.Range<T>.Range
     export interface Range<T> {
         from: T;
         to: T;

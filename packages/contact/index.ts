@@ -4,7 +4,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /contact Models
  */
 export namespace complexType {
-    // interface fullName: complexType.SafeKeyValue.SafeKeyValue
+    // interface fullName: complexType.SafeKeyValue<T>.SafeKeyValue
     export interface SafeKeyValue<T> {
         key: string;
         value: T;

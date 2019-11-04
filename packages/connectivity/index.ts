@@ -198,13 +198,13 @@ export namespace connectivity {
     }
 }
 export namespace xdsl {
-    // interface fullName: xdsl.AsyncTask.AsyncTask
+    // interface fullName: xdsl.AsyncTask<T>.AsyncTask
     export interface AsyncTask<T> {
         error?: string;
         result?: T;
         status: xdsl.AsyncTaskStatusEnum;
     }
-    // interface fullName: xdsl.AsyncTaskArray.AsyncTaskArray
+    // interface fullName: xdsl.AsyncTaskArray<T>.AsyncTaskArray
     export interface AsyncTaskArray<T> {
         error?: string;
         result?: T[];

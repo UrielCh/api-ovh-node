@@ -4,6 +4,20 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /store Models
  */
 export namespace MarketPlace {
+    // interface fullName: MarketPlace.Contact.Contact
+    export interface Contact {
+        city?: string;
+        country?: string;
+        email: string;
+        firstname: string;
+        id: string;
+        lastname: string;
+        phone?: string;
+        province?: string;
+        street?: string;
+        title: string;
+        zip?: string;
+    }
     // interface fullName: MarketPlace.Document.Document
     export interface Document {
         creationDate?: string;
@@ -33,34 +47,18 @@ export namespace MarketPlace {
         vat?: string;
         zip?: string;
     }
-}
-export namespace MarketPlaceContact {
-    // interface fullName: MarketPlaceContact.Contact.Contact
-    export interface Contact {
-        city?: string;
-        country?: string;
-        email: string;
-        firstname: string;
-        id: string;
-        lastname: string;
-        phone?: string;
-        province?: string;
-        street?: string;
-        title: string;
-        zip?: string;
-    }
-}
-export namespace MarketPlacePartnerProduct {
-    // interface fullName: MarketPlacePartnerProduct.edit_response.edit_response
-    export interface edit_response {
-        category: string;
-        description: string;
-        name: string;
-        otherDetails?: string;
+    export namespace Partner {
+        // interface fullName: MarketPlace.Partner.Product.edit_response
+        export interface edit_response {
+            category: string;
+            description: string;
+            name: string;
+            otherDetails?: string;
+        }
     }
 }
 export namespace complexType {
-    // interface fullName: complexType.SafeKeyValue.SafeKeyValue
+    // interface fullName: complexType.SafeKeyValue<T>.SafeKeyValue
     export interface SafeKeyValue<T> {
         key: string;
         value: T;
@@ -81,16 +79,16 @@ export default proxyStore;
 export interface Store{
     contact: {
         // GET /store/contact
-        $get(): Promise<MarketPlaceContact.Contact[]>;
+        $get(): Promise<MarketPlace.Contact[]>;
         // POST /store/contact
-        $post(params: {city?: string, country?: string, email: string, firstname: string, lastname: string, phone?: string, province?: string, street?: string, title: string, zip?: string}): Promise<MarketPlaceContact.Contact>;
+        $post(params: {city?: string, country?: string, email: string, firstname: string, lastname: string, phone?: string, province?: string, street?: string, title: string, zip?: string}): Promise<MarketPlace.Contact>;
         $(contactId: string): {
             // DELETE /store/contact/{contactId}
             $delete(): Promise<string>;
             // GET /store/contact/{contactId}
-            $get(): Promise<MarketPlaceContact.Contact>;
+            $get(): Promise<MarketPlace.Contact>;
             // PUT /store/contact/{contactId}
-            $put(params?: {city?: string, country?: string, email?: string, firstname?: string, lastname?: string, phone?: string, province?: string, street?: string, title?: string, zip?: string}): Promise<MarketPlaceContact.Contact>;
+            $put(params?: {city?: string, country?: string, email?: string, firstname?: string, lastname?: string, phone?: string, province?: string, street?: string, title?: string, zip?: string}): Promise<MarketPlace.Contact>;
             document: {
                 // GET /store/contact/{contactId}/document
                 $get(): Promise<string[]>;
@@ -143,16 +141,16 @@ export interface Store{
             }
             product: {
                 // GET /store/partner/{partnerId}/product
-                $get(): Promise<MarketPlacePartnerProduct.edit_response[]>;
+                $get(): Promise<MarketPlace.Partner.Product[]>;
                 // POST /store/partner/{partnerId}/product
-                $post(params: {category: string, description: string, name: string, otherDetails?: string}): Promise<MarketPlacePartnerProduct.edit_response>;
+                $post(params: {category: string, description: string, name: string, otherDetails?: string}): Promise<MarketPlace.Partner.Product>;
                 $(productId: string): {
                     // DELETE /store/partner/{partnerId}/product/{productId}
                     $delete(): Promise<string>;
                     // GET /store/partner/{partnerId}/product/{productId}
-                    $get(): Promise<MarketPlacePartnerProduct.edit_response>;
+                    $get(): Promise<MarketPlace.Partner.Product>;
                     // PUT /store/partner/{partnerId}/product/{productId}
-                    $put(params?: {category?: string, description?: string, name?: string, otherDetails?: string}): Promise<MarketPlacePartnerProduct.edit_response>;
+                    $put(params?: {category?: string, description?: string, name?: string, otherDetails?: string}): Promise<MarketPlace.Partner.Product>;
                     document: {
                         // GET /store/partner/{partnerId}/product/{productId}/document
                         $get(): Promise<string[]>;
@@ -172,12 +170,12 @@ export interface Store{
    * MarketPlaceContact
    * List current customer contacts
    */
-  get(path: '/store/contact'): () => Promise<MarketPlaceContact.Contact[]>;
+  get(path: '/store/contact'): () => Promise<MarketPlace.Contact[]>;
   /**
    * MarketPlaceContact.contactId
    * Get contact details
    */
-  get(path: '/store/contact/{contactId}'): (params: {contactId: string}) => Promise<MarketPlaceContact.Contact>;
+  get(path: '/store/contact/{contactId}'): (params: {contactId: string}) => Promise<MarketPlace.Contact>;
   /**
    * MarketPlaceContact.doc
    * List document associated with contact
@@ -212,12 +210,12 @@ export interface Store{
    * MarketPlacePartnerProduct.search
    * List partner's products
    */
-  get(path: '/store/partner/{partnerId}/product'): (params: {partnerId: string}) => Promise<MarketPlacePartnerProduct.edit_response[]>;
+  get(path: '/store/partner/{partnerId}/product'): (params: {partnerId: string}) => Promise<MarketPlace.Partner.Product[]>;
   /**
    * MarketPlacePartnerProduct.get
    * Get partner info
    */
-  get(path: '/store/partner/{partnerId}/product/{productId}'): (params: {partnerId: string, productId: string}) => Promise<MarketPlacePartnerProduct.edit_response>;
+  get(path: '/store/partner/{partnerId}/product/{productId}'): (params: {partnerId: string, productId: string}) => Promise<MarketPlace.Partner.Product>;
   /**
    * MarketPlacePartnerProduct.doc
    * List document associated with product
@@ -227,7 +225,7 @@ export interface Store{
    * MarketPlaceContact.contactId
    * Edit contact information
    */
-  put(path: '/store/contact/{contactId}'): (params: {contactId: string, city?: string, country?: string, email?: string, firstname?: string, lastname?: string, phone?: string, province?: string, street?: string, title?: string, zip?: string}) => Promise<MarketPlaceContact.Contact>;
+  put(path: '/store/contact/{contactId}'): (params: {contactId: string, city?: string, country?: string, email?: string, firstname?: string, lastname?: string, phone?: string, province?: string, street?: string, title?: string, zip?: string}) => Promise<MarketPlace.Contact>;
   /**
    * MarketPlacePartner.get
    * Edit partner info
@@ -237,12 +235,12 @@ export interface Store{
    * MarketPlacePartnerProduct.get
    * Edit product info
    */
-  put(path: '/store/partner/{partnerId}/product/{productId}'): (params: {partnerId: string, productId: string, category?: string, description?: string, name?: string, otherDetails?: string}) => Promise<MarketPlacePartnerProduct.edit_response>;
+  put(path: '/store/partner/{partnerId}/product/{productId}'): (params: {partnerId: string, productId: string, category?: string, description?: string, name?: string, otherDetails?: string}) => Promise<MarketPlace.Partner.Product>;
   /**
    * MarketPlaceContact
    * Create a 'marketplace' contact for current nic
    */
-  post(path: '/store/contact'): (params: {city?: string, country?: string, email: string, firstname: string, lastname: string, phone?: string, province?: string, street?: string, title: string, zip?: string}) => Promise<MarketPlaceContact.Contact>;
+  post(path: '/store/contact'): (params: {city?: string, country?: string, email: string, firstname: string, lastname: string, phone?: string, province?: string, street?: string, title: string, zip?: string}) => Promise<MarketPlace.Contact>;
   /**
    * MarketPlaceContact.doc
    * Add a document to a contact
@@ -272,7 +270,7 @@ export interface Store{
    * MarketPlacePartnerProduct.search
    * Create a new product for partner
    */
-  post(path: '/store/partner/{partnerId}/product'): (params: {partnerId: string, category: string, description: string, name: string, otherDetails?: string}) => Promise<MarketPlacePartnerProduct.edit_response>;
+  post(path: '/store/partner/{partnerId}/product'): (params: {partnerId: string, category: string, description: string, name: string, otherDetails?: string}) => Promise<MarketPlace.Partner.Product>;
   /**
    * MarketPlacePartnerProduct.doc
    * Add a document to a product

@@ -4,12 +4,12 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /hosting/privateDatabase Models
  */
 export namespace complexType {
-    // interface fullName: complexType.SafeKeyValue.SafeKeyValue
+    // interface fullName: complexType.SafeKeyValue<T>.SafeKeyValue
     export interface SafeKeyValue<T> {
         key: string;
         value: T;
     }
-    // interface fullName: complexType.UnitAndValue.UnitAndValue
+    // interface fullName: complexType.UnitAndValue<T>.UnitAndValue
     export interface UnitAndValue<T> {
         unit: string;
         value: T;
@@ -154,20 +154,22 @@ export namespace hosting {
             quotaUsed: complexType.UnitAndValue<number>;
             users: hosting.PrivateDatabase.Database.User[];
         }
-        // interface fullName: hosting.privateDatabase.database_dump.database_dump
-        export interface database_dump {
-            creationDate: string;
-            databaseName: string;
-            deletionDate: string;
-            id: number;
-            url: string;
-        }
-        // interface fullName: hosting.privateDatabase.database_extension.database_extension
-        export interface database_extension {
-            description: string;
-            extensionName: string;
-            requiredExtensions: string[];
-            status: hosting.PrivateDatabase.Database.Extension.Status;
+        export namespace database {
+            // interface fullName: hosting.privateDatabase.database.dump.database_dump
+            export interface database_dump {
+                creationDate: string;
+                databaseName: string;
+                deletionDate: string;
+                id: number;
+                url: string;
+            }
+            // interface fullName: hosting.privateDatabase.database.extension.database_extension
+            export interface database_extension {
+                description: string;
+                extensionName: string;
+                requiredExtensions: string[];
+                status: hosting.PrivateDatabase.Database.Extension.Status;
+            }
         }
         // interface fullName: hosting.privateDatabase.dump.dump
         export interface dump {
@@ -323,7 +325,7 @@ export interface Hosting{
                             // DELETE /hosting/privateDatabase/{serviceName}/database/{databaseName}/dump/{id}
                             $delete(): Promise<hosting.privateDatabase.task>;
                             // GET /hosting/privateDatabase/{serviceName}/database/{databaseName}/dump/{id}
-                            $get(): Promise<hosting.privateDatabase.database_dump>;
+                            $get(): Promise<hosting.privateDatabase.database.dump>;
                             restore: {
                                 // POST /hosting/privateDatabase/{serviceName}/database/{databaseName}/dump/{id}/restore
                                 $post(): Promise<hosting.privateDatabase.task>;
@@ -335,7 +337,7 @@ export interface Hosting{
                         $get(params?: {extensionName?: string, status?: hosting.PrivateDatabase.Database.Extension.Status}): Promise<string[]>;
                         $(extensionName: string): {
                             // GET /hosting/privateDatabase/{serviceName}/database/{databaseName}/extension/{extensionName}
-                            $get(): Promise<hosting.privateDatabase.database_extension>;
+                            $get(): Promise<hosting.privateDatabase.database.extension>;
                             disable: {
                                 // POST /hosting/privateDatabase/{serviceName}/database/{databaseName}/extension/{extensionName}/disable
                                 $post(): Promise<hosting.privateDatabase.task>;
@@ -504,7 +506,7 @@ export interface Hosting{
    * Dump
    * Get this object properties
    */
-  get(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}/dump/{id}'): (params: {databaseName: string, id: number, serviceName: string}) => Promise<hosting.privateDatabase.database_dump>;
+  get(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}/dump/{id}'): (params: {databaseName: string, id: number, serviceName: string}) => Promise<hosting.privateDatabase.database.dump>;
   /**
    * List the hosting.privateDatabase.database.extension objects
    * Extensions linked to your database
@@ -514,7 +516,7 @@ export interface Hosting{
    * Databases extension
    * Get this object properties
    */
-  get(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}/extension/{extensionName}'): (params: {databaseName: string, extensionName: string, serviceName: string}) => Promise<hosting.privateDatabase.database_extension>;
+  get(path: '/hosting/privateDatabase/{serviceName}/database/{databaseName}/extension/{extensionName}'): (params: {databaseName: string, extensionName: string, serviceName: string}) => Promise<hosting.privateDatabase.database.extension>;
   /**
    * List the hosting.privateDatabase.dump objects
    * Dumps available for your private database service

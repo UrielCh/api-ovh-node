@@ -14,7 +14,7 @@ export namespace complexType {
         timestamp: number;
         value?: number;
     }
-    // interface fullName: complexType.UnitAndValue.UnitAndValue
+    // interface fullName: complexType.UnitAndValue<T>.UnitAndValue
     export interface UnitAndValue<T> {
         unit: string;
         value: T;

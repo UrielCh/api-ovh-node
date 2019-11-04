@@ -4,7 +4,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /service Models
  */
 export namespace complexType {
-    // interface fullName: complexType.SafeKeyValue.SafeKeyValue
+    // interface fullName: complexType.SafeKeyValue<T>.SafeKeyValue
     export interface SafeKeyValue<T> {
         key: string;
         value: T;
@@ -65,13 +65,13 @@ export namespace service {
         export namespace transaction {
             // interface fullName: service.consumption.transaction.Element.Element
             export interface Element {
-                details: service.consumption.transaction.Element.Detail[];
+                details: service.consumption.transaction.element.Detail[];
                 planCode: string;
                 price: order.Price;
                 quantity: number;
             }
-            export namespace Element {
-                // interface fullName: service.consumption.transaction.Element.Detail.Detail
+            export namespace element {
+                // interface fullName: service.consumption.transaction.element.Detail.Detail
                 export interface Detail {
                     quantity: number;
                     unique_id?: string;
@@ -98,7 +98,7 @@ export namespace service {
         // interface fullName: service.renew.RenewForecast.RenewForecast
         export interface RenewForecast {
             details: service.renew.RenewForecastDetail[];
-            prices: service.renew.RenewForecastDetailPrices;
+            prices: service.renew.RenewForecastPrices;
         }
         // interface fullName: service.renew.RenewForecastDetail.RenewForecastDetail
         export interface RenewForecastDetail {
@@ -108,7 +108,7 @@ export namespace service {
             totalPrice: order.Price;
             unitPrice: order.Price;
         }
-        // interface fullName: service.renew.RenewForecastDetailPrices.RenewForecastDetailPrices
+        // interface fullName: service.renew.RenewForecastPrices.RenewForecastDetailPrices
         export interface RenewForecastDetailPrices {
             tax: order.Price;
             withTax: order.Price;

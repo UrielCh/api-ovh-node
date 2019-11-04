@@ -4,7 +4,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /paas/timeseries Models
  */
 export namespace complexType {
-    // interface fullName: complexType.UnitAndValue.UnitAndValue
+    // interface fullName: complexType.UnitAndValue<T>.UnitAndValue
     export interface UnitAndValue<T> {
         unit: string;
         value: T;
@@ -32,7 +32,7 @@ export namespace paas {
         }
         // interface fullName: paas.timeseries.ConsumptionItem.ConsumptionItem
         export interface ConsumptionItem {
-            metricName: tsaas.MetricNameEnum;
+            metricName: paas.timeseries.consumption.item.MetricNameEnum;
             price: order.Price;
             quantity: complexType.UnitAndValue<number>;
             unitPrice: order.Price;
@@ -41,10 +41,12 @@ export namespace paas {
         export interface Key {
             description: string;
             id: string;
-            permissions: tsaas.PermissionEnum[];
+            permissions: paas.timeseries.PermissionEnum[];
             secret: string;
             tags: paas.timeseries.Tag[];
         }
+        // type fullname: paas.timeseries.PermissionEnum
+        export type PermissionEnum = "READ" | "WRITE"
         // interface fullName: paas.timeseries.Project.Project
         export interface Project {
             description?: string;
@@ -56,8 +58,10 @@ export namespace paas {
         export interface Quota {
             current: number;
             max: number;
-            type: tsaas.QuotaTypeEnum;
+            type: paas.timeseries.QuotaTypeEnum;
         }
+        // type fullname: paas.timeseries.QuotaTypeEnum
+        export type QuotaTypeEnum = "ddp" | "mads"
         // interface fullName: paas.timeseries.Region.Region
         export interface Region {
             displayName: string;
@@ -68,6 +72,12 @@ export namespace paas {
         export interface Tag {
             key: string;
             value: string;
+        }
+        export namespace consumption {
+            export namespace item {
+                // type fullname: paas.timeseries.consumption.item.MetricNameEnum
+                export type MetricNameEnum = "storage" | "input" | "output"
+            }
         }
     }
 }
@@ -116,14 +126,6 @@ export namespace timeseries {
     // type fullname: timeseries.StatusTypeEnum
     export type StatusTypeEnum = "ACTIVE" | "CREATION" | "DELETED" | "UNCONFIGURED"
 }
-export namespace tsaas {
-    // type fullname: tsaas.MetricNameEnum
-    export type MetricNameEnum = "storage" | "input" | "output"
-    // type fullname: tsaas.PermissionEnum
-    export type PermissionEnum = "READ" | "WRITE"
-    // type fullname: tsaas.QuotaTypeEnum
-    export type QuotaTypeEnum = "ddp" | "mads"
-}
 
 /**
  * END API /paas/timeseries Models
@@ -168,7 +170,7 @@ export interface Paas{
                     // GET /paas/timeseries/{serviceName}/key/{keyId}
                     $get(): Promise<paas.timeseries.Key>;
                     // PUT /paas/timeseries/{serviceName}/key/{keyId}
-                    $put(params: {description?: string, permissions: tsaas.PermissionEnum[], tags: paas.timeseries.Tag[]}): Promise<paas.timeseries.Key>;
+                    $put(params: {description?: string, permissions: paas.timeseries.PermissionEnum[], tags: paas.timeseries.Tag[]}): Promise<paas.timeseries.Key>;
                 };
             }
             quota: {
@@ -237,7 +239,7 @@ export interface Paas{
    * Key
    * Create a key
    */
-  put(path: '/paas/timeseries/{serviceName}/key/{keyId}'): (params: {keyId: string, serviceName: string, description?: string, permissions: tsaas.PermissionEnum[], tags: paas.timeseries.Tag[]}) => Promise<paas.timeseries.Key>;
+  put(path: '/paas/timeseries/{serviceName}/key/{keyId}'): (params: {keyId: string, serviceName: string, description?: string, permissions: paas.timeseries.PermissionEnum[], tags: paas.timeseries.Tag[]}) => Promise<paas.timeseries.Key>;
   /**
    * Details about a Service
    * Alter this object properties

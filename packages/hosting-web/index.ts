@@ -4,7 +4,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /hosting/web Models
  */
 export namespace complexType {
-    // interface fullName: complexType.ChartSerie.ChartSerie
+    // interface fullName: complexType.ChartSerie<T>.ChartSerie
     export interface ChartSerie<T> {
         serieName: string;
         unit: string;
@@ -15,7 +15,7 @@ export namespace complexType {
         timestamp: number;
         value?: number;
     }
-    // interface fullName: complexType.UnitAndValue.UnitAndValue
+    // interface fullName: complexType.UnitAndValue<T>.UnitAndValue
     export interface UnitAndValue<T> {
         unit: string;
         value: T;
@@ -308,22 +308,22 @@ export namespace hosting {
             export type SupportedVersionEnum = "beta" | "deprecated" | "stable"
             // type fullname: hosting.web.database.VersionEnum
             export type VersionEnum = "3.4" | "4.0" | "5.1" | "5.5" | "5.6" | "8.4"
+            // interface fullName: hosting.web.database.dump.database_dump
+            export interface database_dump {
+                creationDate: string;
+                deletionDate: string;
+                id: number;
+                status: hosting.web.database.dump.StatusEnum;
+                taskId?: number;
+                type: hosting.web.database.dump.DateEnum;
+                url?: string;
+            }
             export namespace dump {
                 // type fullname: hosting.web.database.dump.DateEnum
                 export type DateEnum = "daily.1" | "now" | "weekly.1"
                 // type fullname: hosting.web.database.dump.StatusEnum
                 export type StatusEnum = "created" | "creating" | "deleting"
             }
-        }
-        // interface fullName: hosting.web.database_dump.database_dump
-        export interface database_dump {
-            creationDate: string;
-            deletionDate: string;
-            id: number;
-            status: hosting.web.database.dump.StatusEnum;
-            taskId?: number;
-            type: hosting.web.database.dump.DateEnum;
-            url?: string;
         }
         // interface fullName: hosting.web.dump.dump
         export interface dump {
@@ -470,11 +470,33 @@ export namespace hosting {
                 zip?: string;
                 zipStatus?: hosting.web.localSeo.FieldStatusEnum;
             }
+            // interface fullName: hosting.web.localSeo.account.localSeo_account
+            export interface localSeo_account {
+                creationDate: string;
+                email: string;
+                id: number;
+                lastUpdate: string;
+                status: hosting.web.localSeo.account.StatusEnum;
+                taskId?: number;
+            }
             export namespace account {
                 // type fullname: hosting.web.localSeo.account.EmailAvailabilityEnum
                 export type EmailAvailabilityEnum = "available" | "merge" | "nic" | "taken"
                 // type fullname: hosting.web.localSeo.account.StatusEnum
                 export type StatusEnum = "created" | "creating" | "deleting" | "updating"
+            }
+            // interface fullName: hosting.web.localSeo.location.localSeo_location
+            export interface localSeo_location {
+                accountId?: number;
+                address?: string;
+                country: hosting.web.localSeo.location.CountryEnum;
+                creationDate: string;
+                id: number;
+                lastUpdate: string;
+                name?: string;
+                offer: hosting.web.localSeo.location.OfferEnum;
+                status: hosting.web.localSeo.location.StatusEnum;
+                taskId?: number;
             }
             export namespace location {
                 // type fullname: hosting.web.localSeo.location.CountryEnum
@@ -484,28 +506,6 @@ export namespace hosting {
                 // type fullname: hosting.web.localSeo.location.StatusEnum
                 export type StatusEnum = "created" | "creating" | "deleting" | "updating"
             }
-        }
-        // interface fullName: hosting.web.localSeo_account.localSeo_account
-        export interface localSeo_account {
-            creationDate: string;
-            email: string;
-            id: number;
-            lastUpdate: string;
-            status: hosting.web.localSeo.account.StatusEnum;
-            taskId?: number;
-        }
-        // interface fullName: hosting.web.localSeo_location.localSeo_location
-        export interface localSeo_location {
-            accountId?: number;
-            address?: string;
-            country: hosting.web.localSeo.location.CountryEnum;
-            creationDate: string;
-            id: number;
-            lastUpdate: string;
-            name?: string;
-            offer: hosting.web.localSeo.location.OfferEnum;
-            status: hosting.web.localSeo.location.StatusEnum;
-            taskId?: number;
         }
         export namespace mail {
             // type fullname: hosting.web.mail.ActionEnum
@@ -637,15 +637,17 @@ export namespace hosting {
             taskId?: number;
             type: string;
         }
-        // interface fullName: hosting.web.ssl_report.ssl_report
-        export interface ssl_report {
-            certificateSigningRequestStatus: hosting.web.hostedssl.ReportValueEnum;
-            domainControlValidationStatus: hosting.web.hostedssl.ReportValueEnum;
-            organizationValidationStatus: hosting.web.hostedssl.ReportValueEnum;
-            phoneCallApprovalStatus: hosting.web.hostedssl.ReportValueEnum;
-            providerOrderId: string;
-            termsAndConditionsAcceptanceStatus: hosting.web.hostedssl.ReportValueEnum;
-            tradeNameVerificationStatus: hosting.web.hostedssl.ReportValueEnum;
+        export namespace ssl {
+            // interface fullName: hosting.web.ssl.report.ssl_report
+            export interface ssl_report {
+                certificateSigningRequestStatus: hosting.web.hostedssl.ReportValueEnum;
+                domainControlValidationStatus: hosting.web.hostedssl.ReportValueEnum;
+                organizationValidationStatus: hosting.web.hostedssl.ReportValueEnum;
+                phoneCallApprovalStatus: hosting.web.hostedssl.ReportValueEnum;
+                providerOrderId: string;
+                termsAndConditionsAcceptanceStatus: hosting.web.hostedssl.ReportValueEnum;
+                tradeNameVerificationStatus: hosting.web.hostedssl.ReportValueEnum;
+            }
         }
         // interface fullName: hosting.web.task.task
         export interface task {
@@ -921,7 +923,7 @@ export interface Hosting{
                             // DELETE /hosting/web/{serviceName}/database/{name}/dump/{id}
                             $delete(): Promise<hosting.web.task>;
                             // GET /hosting/web/{serviceName}/database/{name}/dump/{id}
-                            $get(): Promise<hosting.web.database_dump>;
+                            $get(): Promise<hosting.web.database.dump>;
                             restore: {
                                 // POST /hosting/web/{serviceName}/database/{name}/dump/{id}/restore
                                 $post(): Promise<hosting.web.task>;
@@ -1064,7 +1066,7 @@ export interface Hosting{
                     $get(params?: {email?: string}): Promise<number[]>;
                     $(id: number): {
                         // GET /hosting/web/{serviceName}/localSeo/account/{id}
-                        $get(): Promise<hosting.web.localSeo_account>;
+                        $get(): Promise<hosting.web.localSeo.account>;
                         login: {
                             // POST /hosting/web/{serviceName}/localSeo/account/{id}/login
                             $post(): Promise<string>;
@@ -1080,7 +1082,7 @@ export interface Hosting{
                     $get(): Promise<number[]>;
                     $(id: number): {
                         // GET /hosting/web/{serviceName}/localSeo/location/{id}
-                        $get(): Promise<hosting.web.localSeo_location>;
+                        $get(): Promise<hosting.web.localSeo.location>;
                         serviceInfos: {
                             // GET /hosting/web/{serviceName}/localSeo/location/{id}/serviceInfos
                             $get(): Promise<services.Service>;
@@ -1223,7 +1225,7 @@ export interface Hosting{
                 }
                 report: {
                     // GET /hosting/web/{serviceName}/ssl/report
-                    $get(): Promise<hosting.web.ssl_report>;
+                    $get(): Promise<hosting.web.ssl.report>;
                 }
             }
             statistics: {
@@ -1368,7 +1370,7 @@ export interface Hosting{
    * Dump
    * Get this object properties
    */
-  get(path: '/hosting/web/{serviceName}/database/{name}/dump/{id}'): (params: {id: number, name: string, serviceName: string}) => Promise<hosting.web.database_dump>;
+  get(path: '/hosting/web/{serviceName}/database/{name}/dump/{id}'): (params: {id: number, name: string, serviceName: string}) => Promise<hosting.web.database.dump>;
   /**
    * statistics operations
    * Get statistics about this database
@@ -1488,7 +1490,7 @@ export interface Hosting{
    * Local SEO accounts
    * Get this object properties
    */
-  get(path: '/hosting/web/{serviceName}/localSeo/account/{id}'): (params: {id: number, serviceName: string}) => Promise<hosting.web.localSeo_account>;
+  get(path: '/hosting/web/{serviceName}/localSeo/account/{id}'): (params: {id: number, serviceName: string}) => Promise<hosting.web.localSeo.account>;
   /**
    * emailAvailability operations
    * Check email availability for a local SEO order
@@ -1503,7 +1505,7 @@ export interface Hosting{
    * Local SEO locations
    * Get this object properties
    */
-  get(path: '/hosting/web/{serviceName}/localSeo/location/{id}'): (params: {id: number, serviceName: string}) => Promise<hosting.web.localSeo_location>;
+  get(path: '/hosting/web/{serviceName}/localSeo/location/{id}'): (params: {id: number, serviceName: string}) => Promise<hosting.web.localSeo.location>;
   /**
    * serviceInfos operations
    * Get this object properties
@@ -1598,7 +1600,7 @@ export interface Hosting{
    * Hostedssl Report
    * Get this object properties
    */
-  get(path: '/hosting/web/{serviceName}/ssl/report'): (params: {serviceName: string}) => Promise<hosting.web.ssl_report>;
+  get(path: '/hosting/web/{serviceName}/ssl/report'): (params: {serviceName: string}) => Promise<hosting.web.ssl.report>;
   /**
    * statistics operations
    * Get statistics about this web hosting

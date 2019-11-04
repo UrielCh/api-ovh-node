@@ -89,7 +89,7 @@ export namespace cluster {
     }
 }
 export namespace complexType {
-    // interface fullName: complexType.UnitAndValue.UnitAndValue
+    // interface fullName: complexType.UnitAndValue<T>.UnitAndValue
     export interface UnitAndValue<T> {
         unit: string;
         value: T;

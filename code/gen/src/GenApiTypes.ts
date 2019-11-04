@@ -2,7 +2,7 @@ import * as https from 'https';
 import { Schema, OvhIndex, API, ModelsProp } from './schema';
 import { endpoints } from './endpoints';
 
-export const INDEX_BY_NAME = false;
+export const INDEX_BY_NAME = true;
 
 export interface OvhParams {
     endpoint?: string;

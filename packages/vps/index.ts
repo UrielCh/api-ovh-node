@@ -4,12 +4,12 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  * START API /vps Models
  */
 export namespace complexType {
-    // interface fullName: complexType.UnitAndValue.UnitAndValue
+    // interface fullName: complexType.UnitAndValue<T>.UnitAndValue
     export interface UnitAndValue<T> {
         unit: string;
         value: T;
     }
-    // interface fullName: complexType.UnitAndValues.UnitAndValues
+    // interface fullName: complexType.UnitAndValues<T>.UnitAndValues
     export interface UnitAndValues<T> {
         unit: string;
         values: T[];

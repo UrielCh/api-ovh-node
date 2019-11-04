@@ -40,7 +40,7 @@ export namespace order {
 }
 export namespace pack {
     export namespace xdsl {
-        // interface fullName: pack.xdsl.AsyncTask.AsyncTask
+        // interface fullName: pack.xdsl.AsyncTask<T>.AsyncTask
         export interface AsyncTask<T> {
             error?: string;
             result?: T;
