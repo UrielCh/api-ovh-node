@@ -2,6 +2,8 @@ import * as https from 'https';
 import { Schema, OvhIndex, API, ModelsProp } from './schema';
 import { endpoints } from './endpoints';
 
+export const INDEX_BY_NAME = false;
+
 export interface OvhParams {
     endpoint?: string;
     host?: string;
@@ -147,10 +149,14 @@ export default class GenApiTypes {
                 // console.log('hardFixing typeId: ' + model.id)
                 model.id = model.id.replace(/\./g, '_');
             }
-            if (this.alias[aliasName]) {
-                console.log('COLISION aliasName:' + aliasName)
+            if (INDEX_BY_NAME) {
+                this.alias[aliasName] = aliasName;// model.namespace + '.' + model.id;
+            } else {
+                if (this.alias[aliasName]) {
+                    console.log('COLISION aliasName:' + aliasName)
+                }
+                this.alias[aliasName] = model.namespace + '.' + model.id;
             }
-            this.alias[aliasName] = model.namespace + '.' + model.id;
             this.addModel(model, aliasName, this.models);
         }
         return schema;
@@ -191,8 +197,15 @@ export default class GenApiTypes {
     addModel(model: ModelsProp, aliasName: string, root: CacheModel): void {
         // name: string, 
         let { namespace, id } = model;
+
         let path = namespace.split('.');
+        // TMP
+        if (INDEX_BY_NAME) {
+            path = aliasName.split('.');
+            id = path.pop() as string;
+        }
         path = path.map(filterReservedKw)
+
         let current: CacheModel = root;
         for (const ns of path) {
             if (!current[ns]) {
@@ -233,7 +246,7 @@ export default class GenApiTypes {
                 //console.log('colision', current[id]);
                 id = <string>aliasName.split('.').pop();
                 model.id = id;
-                current[id] = <CacheModel>{ _name: id, _alias: aliasName, _model: model, _parent: current  };
+                current[id] = <CacheModel>{ _name: id, _alias: aliasName, _model: model, _parent: current };
                 // console.log('colition To', current[id]);
             } else {
                 old._name = id;
@@ -241,7 +254,7 @@ export default class GenApiTypes {
                 old._model = model;
             }
         } else {
-            current[id] = <CacheModel>{ _name: id, _alias: aliasName, _model: model, _parent: current  };
+            current[id] = <CacheModel>{ _name: id, _alias: aliasName, _model: model, _parent: current };
         }
     }
 

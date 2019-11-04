@@ -19,14 +19,16 @@ async function main() {
     if (false)
         apis = apis.filter((api) => {
             //return ~api.indexOf('veeam')
-            if ('/cloud' == api)
+            if (api.endsWith('ceph'))
                 return true;
-            if ('/domain' == api)
-                return true;
-            if ('/email/domain' == api)
-                return true;
-            if ('/me' == api)
-                return true;
+            //if ('/cloud' == api)
+            //    return true;
+            //if ('/domain' == api)
+            //    return true;
+            //if ('/email/domain' == api)
+            //    return true;
+            //if ('/me' == api)
+            //    return true;
             // if (this.api == '/cloud' || this.api == '/domain' || this.api == '/email/domain' || this.api == '/me'
             // || this.api == '/pack/xdsl' || this.api == '/veeam/veeamEnterprise' || this.api == '/telephony' || this.api == '/xdsl')
 
