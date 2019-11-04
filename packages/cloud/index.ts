@@ -141,20 +141,9 @@ export namespace cloud {
         status: cloud.project.ProjectStatus;
         unleash: boolean;
     }
-    // interface fullName: cloud.ProjectAclCreation.ProjectAclCreation
-    export interface ProjectAclCreation {
-        accountId: string;
-        type: cloud.AclTypeEnum;
-    }
     // interface fullName: cloud.ProjectActivateMonthlyBillingCreation.ProjectActivateMonthlyBillingCreation
     export interface ProjectActivateMonthlyBillingCreation {
         instances: cloud.instance.MonthlyInstanceBulkParams[];
-    }
-    // interface fullName: cloud.ProjectAlertingCreation.ProjectAlertingCreation
-    export interface ProjectAlertingCreation {
-        delay: cloud.AlertingDelayEnum;
-        email: string;
-        monthlyThreshold: number;
     }
     // interface fullName: cloud.ProjectContainerRegistryCreation.ProjectContainerRegistryCreation
     export interface ProjectContainerRegistryCreation {
@@ -169,10 +158,6 @@ export namespace cloud {
     export interface ProjectContainerRegistryUsersCreation {
         email?: string;
         login?: string;
-    }
-    // interface fullName: cloud.ProjectCreditCreation.ProjectCreditCreation
-    export interface ProjectCreditCreation {
-        code: string;
     }
     // interface fullName: cloud.ProjectInstanceBulkCreation.ProjectInstanceBulkCreation
     export interface ProjectInstanceBulkCreation {
@@ -2173,10 +2158,10 @@ export interface Cloud{
             snapshot: {
                 // GET /cloud/project/{serviceName}/snapshot
                 $get(params?: {flavorType?: string, region?: string}): Promise<cloud.image.Image[]>;
-                $(snapshotId: string): {
-                    // DELETE /cloud/project/{serviceName}/snapshot/{snapshotId}
+                $(imageId: string): {
+                    // DELETE /cloud/project/{serviceName}/snapshot/{imageId}
                     $delete(): Promise<cloud.image.Image>;
-                    // GET /cloud/project/{serviceName}/snapshot/{snapshotId}
+                    // GET /cloud/project/{serviceName}/snapshot/{imageId}
                     $get(): Promise<cloud.image.Image>;
                 };
             }
@@ -2568,7 +2553,7 @@ export interface Cloud{
    */
   get(path: '/cloud/project/{serviceName}/containerRegistry'): (params: {serviceName: string}) => Promise<cloud.containerRegistry.registry.Registry[]>;
   /**
-   * Manage a Docker registry
+   * Manage registries
    * Get the registry information
    */
   get(path: '/cloud/project/{serviceName}/containerRegistry/{registryID}'): (params: {registryID: string, serviceName: string}) => Promise<cloud.containerRegistry.registry.Registry>;
@@ -2614,7 +2599,7 @@ export interface Cloud{
   get(path: '/cloud/project/{serviceName}/image/{imageId}'): (params: {imageId: string, serviceName: string}) => Promise<cloud.image.Image>;
   /**
    * Missing description
-   * Get instances
+   * Get instance
    */
   get(path: '/cloud/project/{serviceName}/instance'): (params: {serviceName: string, region?: string}) => Promise<cloud.instance.Instance[]>;
   /**
@@ -2748,7 +2733,7 @@ export interface Cloud{
    */
   get(path: '/cloud/project/{serviceName}/lab'): (params: {serviceName: string}) => Promise<cloud.Lab[]>;
   /**
-   * Manage a lab
+   * Manage labs on your Cloud Project
    * Get details of a public cloud lab
    */
   get(path: '/cloud/project/{serviceName}/lab/{labId}'): (params: {labId: string, serviceName: string}) => Promise<cloud.Lab>;
@@ -2793,7 +2778,7 @@ export interface Cloud{
    */
   get(path: '/cloud/project/{serviceName}/operation'): (params: {serviceName: string}) => Promise<cloud.Operation[]>;
   /**
-   * Manage one of your operations
+   * Manage the operations on your Cloud Project
    * Get information about one operation
    */
   get(path: '/cloud/project/{serviceName}/operation/{operationId}'): (params: {operationId: string, serviceName: string}) => Promise<cloud.Operation>;
@@ -2808,7 +2793,7 @@ export interface Cloud{
    */
   get(path: '/cloud/project/{serviceName}/region'): (params: {serviceName: string}) => Promise<string[]>;
   /**
-   * Manage one of your region
+   * Manage your regions
    * Get information about your region
    */
   get(path: '/cloud/project/{serviceName}/region/{regionName}'): (params: {regionName: string, serviceName: string}) => Promise<cloud.Region>;
@@ -2828,7 +2813,7 @@ export interface Cloud{
    */
   get(path: '/cloud/project/{serviceName}/region/{regionName}/workflow/backup'): (params: {regionName: string, serviceName: string}) => Promise<cloud.Backup[]>;
   /**
-   * Manage a backup workflow process
+   * Manage your automated backups
    * Get details about a backup workflow process
    */
   get(path: '/cloud/project/{serviceName}/region/{regionName}/workflow/backup/{backupWorkflowId}'): (params: {backupWorkflowId: string, regionName: string, serviceName: string}) => Promise<cloud.Backup>;
@@ -2856,7 +2841,7 @@ export interface Cloud{
    * Missing description
    * Get snapshot details
    */
-  get(path: '/cloud/project/{serviceName}/snapshot/{snapshotId}'): (params: {serviceName: string, snapshotId: string}) => Promise<cloud.image.Image>;
+  get(path: '/cloud/project/{serviceName}/snapshot/{imageId}'): (params: {imageId: string, serviceName: string}) => Promise<cloud.image.Image>;
   /**
    * Missing description
    * Get SSH keys
@@ -2998,7 +2983,7 @@ export interface Cloud{
    */
   put(path: '/cloud/project/{serviceName}/alerting/{id}'): (params: {id: string, serviceName: string, creationDate?: string, delay?: cloud.AlertingDelayEnum, email?: string, formattedMonthlyThreshold?: orderPrice, monthlyThreshold?: number}) => Promise<void>;
   /**
-   * Manage a Docker registry
+   * Manage registries
    * Update the registry
    */
   put(path: '/cloud/project/{serviceName}/containerRegistry/{registryID}'): (params: {registryID: string, serviceName: string, name: string}) => Promise<void>;
@@ -3238,7 +3223,7 @@ export interface Cloud{
    */
   post(path: '/cloud/project/{serviceName}/kube/{kubeId}/update'): (params: {kubeId: string, serviceName: string, strategy?: cloud.kube.UpdateStrategy}) => Promise<void>;
   /**
-   * Manage a lab
+   * Manage labs on your Cloud Project
    * Activate a lab on your Cloud Project
    */
   post(path: '/cloud/project/{serviceName}/lab/{labId}'): (params: {labId: string, serviceName: string}) => Promise<cloud.Operation>;
@@ -3398,7 +3383,7 @@ export interface Cloud{
    */
   delete(path: '/cloud/project/{serviceName}/alerting/{id}'): (params: {id: string, serviceName: string}) => Promise<void>;
   /**
-   * Manage a Docker registry
+   * Manage registries
    * Delete a registry
    */
   delete(path: '/cloud/project/{serviceName}/containerRegistry/{registryID}'): (params: {registryID: string, serviceName: string}) => Promise<void>;
@@ -3458,7 +3443,7 @@ export interface Cloud{
    */
   delete(path: '/cloud/project/{serviceName}/network/private/{networkId}/subnet/{subnetId}'): (params: {networkId: string, serviceName: string, subnetId: string}) => Promise<void>;
   /**
-   * Manage a backup workflow process
+   * Manage your automated backups
    * Delete a backup workflow process
    */
   delete(path: '/cloud/project/{serviceName}/region/{regionName}/workflow/backup/{backupWorkflowId}'): (params: {backupWorkflowId: string, regionName: string, serviceName: string}) => Promise<void>;
@@ -3466,7 +3451,7 @@ export interface Cloud{
    * Missing description
    * Delete a snapshot
    */
-  delete(path: '/cloud/project/{serviceName}/snapshot/{snapshotId}'): (params: {serviceName: string, snapshotId: string}) => Promise<cloud.image.Image>;
+  delete(path: '/cloud/project/{serviceName}/snapshot/{imageId}'): (params: {imageId: string, serviceName: string}) => Promise<cloud.image.Image>;
   /**
    * Missing description
    * Delete SSH key

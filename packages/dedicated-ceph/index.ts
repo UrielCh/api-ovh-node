@@ -57,7 +57,7 @@ export namespace dedicated {
             backup: boolean;
             minActiveReplicas: number;
             name: string;
-            poolType: dedicated.ceph.poolList.response.poolTypeEnum;
+            poolType: dedicated.ceph.poolGet.response.poolTypeEnum;
             replicaCount: number;
             serviceName: string;
         }

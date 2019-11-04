@@ -427,7 +427,7 @@ export namespace order {
             pricingType: order.cart.GenericProductPricingTypeEnum;
         }
         // type fullname: order.cart.GenericProductPricingCapacitiesEnum
-        export type GenericProductPricingCapacitiesEnum = "installation" | "renew" | "upgrade" | "downgrade"
+        export type GenericProductPricingCapacitiesEnum = "installation" | "renew" | "upgrade" | "downgrade" | "detach"
         // type fullname: order.cart.GenericProductPricingStrategyEnum
         export type GenericProductPricingStrategyEnum = "stairstep" | "volume" | "tiered"
         // type fullname: order.cart.GenericProductPricingTypeEnum
@@ -2002,6 +2002,10 @@ export interface Order{
                 // GET /order/catalog/public/enterpriseCloudDatabases
                 $get(params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.publik.Catalog>;
             }
+            webHosting: {
+                // GET /order/catalog/public/webHosting
+                $get(params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.publik.Catalog>;
+            }
         }
     }
     cdn: {
@@ -3137,6 +3141,20 @@ export interface Order{
                 };
             };
         }
+        vpsAdditionalDisk: {
+            // GET /order/upgrade/vpsAdditionalDisk
+            $get(): Promise<string[]>;
+            $(serviceName: string): {
+                // GET /order/upgrade/vpsAdditionalDisk/{serviceName}
+                $get(): Promise<order.cart.GenericProductDefinition[]>;
+                $(planCode: string): {
+                    // GET /order/upgrade/vpsAdditionalDisk/{serviceName}/{planCode}
+                    $get(params: {quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    // POST /order/upgrade/vpsAdditionalDisk/{serviceName}/{planCode}
+                    $post(params: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                };
+            };
+        }
     }
     veeamCloudConnect: {
         // GET /order/veeamCloudConnect
@@ -4219,6 +4237,11 @@ export interface Order{
    * Retrieve Enterprise Cloud Databases catalog
    */
   get(path: '/order/catalog/public/enterpriseCloudDatabases'): (params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}) => Promise<order.catalog.publik.Catalog>;
+  /**
+   * Missing description
+   * Retrieve Web Hosting catalog
+   */
+  get(path: '/order/catalog/public/webHosting'): (params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}) => Promise<order.catalog.publik.Catalog>;
   /**
    * Operations about the CDNANYCAST service
    * List available services
@@ -5344,6 +5367,21 @@ export interface Order{
    * Get a provisional order for the selected upgrade of your service
    */
   get(path: '/order/upgrade/vps/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, quantity: number}) => Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+  /**
+   * Operations about the VPS-OPTION service
+   * List available services
+   */
+  get(path: '/order/upgrade/vpsAdditionalDisk'): () => Promise<string[]>;
+  /**
+   * Listing offers /order/upgrade/vpsAdditionalDisk
+   * Retrieve available offers to upgrade your service to
+   */
+  get(path: '/order/upgrade/vpsAdditionalDisk/{serviceName}'): (params: {serviceName: string}) => Promise<order.cart.GenericProductDefinition[]>;
+  /**
+   * Listing offers /order/upgrade/vpsAdditionalDisk/#serviceName#
+   * Get a provisional order for the selected upgrade of your service
+   */
+  get(path: '/order/upgrade/vpsAdditionalDisk/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, quantity: number}) => Promise<order.upgrade.order_upgrade_OperationAndOrder>;
   /**
    * Operations about the VEEAMCC service
    * List available services
@@ -6674,6 +6712,11 @@ export interface Order{
    * Perform the requested upgrade of your service
    */
   post(path: '/order/upgrade/vps/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, autoPayWithPreferredPaymentMethod?: boolean, quantity: number}) => Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+  /**
+   * Listing offers /order/upgrade/vpsAdditionalDisk/#serviceName#
+   * Perform the requested upgrade of your service
+   */
+  post(path: '/order/upgrade/vpsAdditionalDisk/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, autoPayWithPreferredPaymentMethod?: boolean, quantity: number}) => Promise<order.upgrade.order_upgrade_OperationAndOrder>;
   /**
    * Order an upgrade upon your Veeam Cloud Connect account
    * Create order

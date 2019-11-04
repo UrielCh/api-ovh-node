@@ -209,6 +209,25 @@ export namespace pack {
                 status: xdsleligibilityLandlineStatusEnum;
                 unbundling: xdslDeconsolidationEnum;
             }
+            // interface fullName: pack.xdsl.addressMove.MoveOffer.MoveOffer
+            export interface MoveOffer {
+                contracts: order.Contract[];
+                description: string;
+                engageMonths?: number;
+                modemReferenceToReturn?: string;
+                needModem: boolean;
+                needNewModem: boolean;
+                offerName: string;
+                options: pack.xdsl.migration.OfferAvailableOption[];
+                prices: pack.xdsl.addressMove.PriceOffer;
+                productCodes: string[];
+                subServicesToDelete: pack.xdsl.migration.SubServiceToDelete[];
+                url: string;
+            }
+            // interface fullName: pack.xdsl.addressMove.MoveOfferResponse.MoveOfferResponse
+            export interface MoveOfferResponse {
+                offers: pack.xdsl.addressMove.MoveOffer[];
+            }
             // interface fullName: pack.xdsl.addressMove.Offer.Offer
             export interface Offer {
                 address: xdsleligibilityAddress;
@@ -227,6 +246,20 @@ export namespace pack {
                 syncUpload: number;
                 type: xdslDslTypeEnum;
                 unbundling: xdslDeconsolidationEnum;
+            }
+            // interface fullName: pack.xdsl.addressMove.Price.Price
+            export interface Price {
+                description: string;
+                price?: order.Price;
+            }
+            // interface fullName: pack.xdsl.addressMove.PriceOffer.PriceOffer
+            export interface PriceOffer {
+                currentOfferPrice: pack.xdsl.addressMove.Price;
+                due: pack.xdsl.addressMove.Price;
+                firstYearPromo: pack.xdsl.addressMove.Price;
+                installFees: pack.xdsl.addressMove.Price;
+                modemRental: pack.xdsl.addressMove.Price;
+                price: pack.xdsl.addressMove.Price;
             }
         }
         export namespace migration {
@@ -436,6 +469,14 @@ export interface Pack{
                 moveFtth: {
                     // POST /pack/xdsl/{packName}/addressMove/moveFtth
                     $post(params: {buildingReference: string, floor: string, moveOutDate?: string, otp: boolean, otpReference?: string, stair: string}): Promise<pack.xdsl.AsyncTask<number>>;
+                }
+                moveOffer: {
+                    // POST /pack/xdsl/{packName}/addressMove/moveOffer
+                    $post(params: {acceptContracts: boolean, buildingReference: string, eligibilityReference: string, engageMonths?: number, floor: string, keepCurrentNumber: boolean, mondialRelayId?: number, moveOutDate?: string, nicShipping?: string, offerName: string, options?: pack.xdsl.migration.OfferOption[], otp: boolean, otpReference?: string, productCode: string, stair: string, subServicesToDelete?: pack.xdsl.migration.OfferServiceToDelete[]}): Promise<pack.xdsl.AsyncTask<number>>;
+                }
+                offers: {
+                    // POST /pack/xdsl/{packName}/addressMove/offers
+                    $post(params: {eligibilityReference: string}): Promise<pack.xdsl.AsyncTask<pack.xdsl.addressMove.MoveOfferResponse>>;
                 }
             }
             canCancelResiliation: {
@@ -972,6 +1013,16 @@ export interface Pack{
    * Move the FTTH access to another address
    */
   post(path: '/pack/xdsl/{packName}/addressMove/moveFtth'): (params: {packName: string, buildingReference: string, floor: string, moveOutDate?: string, otp: boolean, otpReference?: string, stair: string}) => Promise<pack.xdsl.AsyncTask<number>>;
+  /**
+   * moveOffer operations
+   * Move the access to another address
+   */
+  post(path: '/pack/xdsl/{packName}/addressMove/moveOffer'): (params: {packName: string, acceptContracts: boolean, buildingReference: string, eligibilityReference: string, engageMonths?: number, floor: string, keepCurrentNumber: boolean, mondialRelayId?: number, moveOutDate?: string, nicShipping?: string, offerName: string, options?: pack.xdsl.migration.OfferOption[], otp: boolean, otpReference?: string, productCode: string, stair: string, subServicesToDelete?: pack.xdsl.migration.OfferServiceToDelete[]}) => Promise<pack.xdsl.AsyncTask<number>>;
+  /**
+   * offers operations
+   * Get the possibilities of address move offers available
+   */
+  post(path: '/pack/xdsl/{packName}/addressMove/offers'): (params: {packName: string, eligibilityReference: string}) => Promise<pack.xdsl.AsyncTask<pack.xdsl.addressMove.MoveOfferResponse>>;
   /**
    * cancelResiliation operations
    * Cancel the ongoing resiliation

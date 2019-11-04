@@ -346,6 +346,12 @@ export namespace hosting {
             sentToday: number;
             state: hosting.web.mail.StateEnum;
         }
+        // interface fullName: hosting.web.emailoption.emailoption
+        export interface emailoption {
+            creationDate: string;
+            domain: string;
+            id: number;
+        }
         // interface fullName: hosting.web.envVar.envVar
         export interface envVar {
             key: string;
@@ -980,6 +986,22 @@ export interface Hosting{
                     $get(): Promise<hosting.web.mail.VolumeHistory[]>;
                 }
             }
+            emailOption: {
+                // GET /hosting/web/{serviceName}/emailOption
+                $get(): Promise<number[]>;
+                $(id: number): {
+                    // GET /hosting/web/{serviceName}/emailOption/{id}
+                    $get(): Promise<hosting.web.emailoption>;
+                    serviceInfos: {
+                        // GET /hosting/web/{serviceName}/emailOption/{id}/serviceInfos
+                        $get(): Promise<services.Service>;
+                    }
+                    terminate: {
+                        // POST /hosting/web/{serviceName}/emailOption/{id}/terminate
+                        $post(): Promise<string>;
+                    }
+                };
+            }
             envVar: {
                 // GET /hosting/web/{serviceName}/envVar
                 $get(params?: {type?: hosting.web.envVar.TypeEnum}): Promise<string[]>;
@@ -1393,6 +1415,21 @@ export interface Hosting{
    */
   get(path: '/hosting/web/{serviceName}/email/volumes'): (params: {serviceName: string}) => Promise<hosting.web.mail.VolumeHistory[]>;
   /**
+   * List the hosting.web.emailoption objects
+   * Mail service linked to webhosting
+   */
+  get(path: '/hosting/web/{serviceName}/emailOption'): (params: {serviceName: string}) => Promise<number[]>;
+  /**
+   * Mail service linked to webhosting
+   * Get this object properties
+   */
+  get(path: '/hosting/web/{serviceName}/emailOption/{id}'): (params: {id: number, serviceName: string}) => Promise<hosting.web.emailoption>;
+  /**
+   * serviceInfos operations
+   * Get the service properties
+   */
+  get(path: '/hosting/web/{serviceName}/emailOption/{id}/serviceInfos'): (params: {id: number, serviceName: string}) => Promise<services.Service>;
+  /**
    * List the hosting.web.envVar objects
    * Environment variables set on your webhosting
    */
@@ -1787,6 +1824,11 @@ export interface Hosting{
    * Request specific operation for your email
    */
   post(path: '/hosting/web/{serviceName}/email/request'): (params: {serviceName: string, action: hosting.web.mail.ActionEnum}) => Promise<string>;
+  /**
+   * terminate operations
+   * Terminate your email sub service
+   */
+  post(path: '/hosting/web/{serviceName}/emailOption/{id}/terminate'): (params: {id: number, serviceName: string}) => Promise<string>;
   /**
    * List the hosting.web.envVar objects
    * Set a variable to this hosting

@@ -1075,7 +1075,7 @@ export interface DedicatedCloud{
                 }
                 orderNewHostHourly: {
                     // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderNewHostHourly
-                    $post(params: {name: string}): Promise<dedicatedCloud.Task>;
+                    $post(params: {name: string, vmwareClusterId?: string}): Promise<dedicatedCloud.Task>;
                 }
                 orderableFilerProfiles: {
                     // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableFilerProfiles
@@ -2265,7 +2265,7 @@ export interface DedicatedCloud{
    * orderNewHostHourly operations
    * Order a new hourly Host in a given Datacenter
    */
-  post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderNewHostHourly'): (params: {datacenterId: number, serviceName: string, name: string}) => Promise<dedicatedCloud.Task>;
+  post(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderNewHostHourly'): (params: {datacenterId: number, serviceName: string, name: string, vmwareClusterId?: string}) => Promise<dedicatedCloud.Task>;
   /**
    * disable operations
    * Remove the private gateway in your Private Cloud and open public access.
