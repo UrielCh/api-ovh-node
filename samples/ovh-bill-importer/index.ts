@@ -8,7 +8,7 @@ import program from 'commander'
 import Bluebird, { Promise } from 'bluebird'
 
 program
-  .version('1.0.3')
+  .version('1.0.5')
   .option('-u, --utc', 'use UTC times, by defaut use localhost timezone')
   .option('-d, --dest <path>', 'destination directory')
   .option('-s, --split <type>', 'hierarchy model year/month/none default is month', /^(month|year|none)$/i, 'month')
@@ -80,10 +80,6 @@ async function main(root: string, type: 'pdf' | 'html') {
   let dest = path.join(root, me.nichandle)
   await fse.ensureDir(dest)
 
-
-
-
-
   const summaryFile = path.join(dest, "summary.tsv")
   if (await fse.existsSync(summaryFile)) {
     let input = fse.readFileSync(summaryFile, { encoding: 'utf8' })
@@ -117,17 +113,18 @@ async function main(root: string, type: 'pdf' | 'html') {
   }
 
   const doneDl = new Set(await listDir(dest, type))
+  console.log(`${doneDl.size} invoice already downloaded`);
   let billIds = await apiMe.get('/me/bill')()
+  console.log(`${billIds.length} invoice available`);
   billIds = billIds
-    .filter(id => (!doneDl.has(id) && !dbInvoice[id]))
-
+    .filter(id => (!doneDl.has(id) && dbInvoice[id]))
+  const toDownload = billIds.length;
+  console.log(`${toDownload} need to be download`);
+  let counter = 0;
   const getInvoice = async (billId: string) => {
     const billData: billing.Bill = await apiMe.get('/me/bill/{billId}')({ billId })
     const date = new Date(billData.date);
-    let year;
-    let month;
-    let day;
-
+    let year, month, day;
     if (program.utc) {
       year = String(date.getUTCFullYear())
       month = ('0' + (1 + date.getUTCMonth())).slice(-2)
@@ -145,6 +142,7 @@ async function main(root: string, type: 'pdf' | 'html') {
       TTC: billData.priceWithTax.value.toFixed(2),
       currency: billData.priceWithoutTax.currencyCode,
     }
+    const downloadId = ++counter;
     const finalFile = toFilePath(line);
     try {
       const stats = await fse.stat(finalFile)
@@ -158,10 +156,23 @@ async function main(root: string, type: 'pdf' | 'html') {
       const tmpFile = path.join(fullpath, filename + '.tmp')
       while (true) {
         await fse.ensureDir(fullpath)
-        console.log(`Downloading ${billId} to ${filename}`)
-        const ws = fse.createWriteStream(tmpFile)
-        const resp = await fetch(billData.pdfUrl)
-        await new Promise((resove, reject) => resp.body.pipe(ws).on('finish', resove))
+
+        while (true) {
+          try {
+            await fse.remove(tmpFile)
+          } catch (e) { }
+          try {
+            console.log(`${downloadId}/${toDownload} Downloading ${billId} to ${filename}`)
+            const ws = fse.createWriteStream(tmpFile)
+            const resp = await fetch(billData.pdfUrl)
+            await new Promise((resove, reject) => resp.body.pipe(ws).on('finish', resove))
+          } catch (e) {
+            await Bluebird.delay(1000);
+            console.log(e);
+            continue;
+          }
+          break;
+        }
         const stats = await fse.stat(tmpFile)
         if (stats.size === 46) {
           console.log('Too much requests. Please retry in 3 seconds.');
