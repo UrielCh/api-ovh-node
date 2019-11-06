@@ -5,10 +5,10 @@ import Ovh, { OvhParams } from '@ovh-api/api'
 import path from 'path'
 import fetch from 'node-fetch'
 import program from 'commander'
-import { Promise } from 'bluebird'
+import Bluebird, { Promise } from 'bluebird'
 
 program
-  .version('1.0.0')
+  .version('1.0.3')
   .option('-u, --utc', 'use UTC times, by defaut use localhost timezone')
   .option('-d, --dest <path>', 'destination directory')
   .option('-s, --split <type>', 'hierarchy model year/month/none default is month', /^(month|year|none)$/i, 'month')
@@ -27,14 +27,19 @@ async function listDir(root: string, type: 'pdf' | 'html'): Promise<string[]> {
   for (const file of list) {
     if (file.startsWith('.'))
       continue;
-    const m = file.match(/_([A-Z]{2}[0-9]+)_/)
-    if (m) {
-      if (file.endsWith(type))
-        result.push(m[1])
-      continue;
-    }
     const fullPath = path.join(root, file)
     const stat = await fse.stat(fullPath)
+    const m = file.match(/_([A-Z]{2}[0-9]+)_/)
+    if (m) {
+      if (file.endsWith(type)) {
+        if (stat.size === 46) {
+          await fse.remove(fullPath)
+        } else {
+          result.push(m[1])
+        }
+      }
+      continue
+    }
     if (stat.isDirectory()) {
       result.push.apply(result, await listDir(fullPath, type))
     }
@@ -68,13 +73,16 @@ async function main(root: string, type: 'pdf' | 'html') {
   if (program.token) {
     console.log(`Saving generarted token for next time in ${program.token}`)
     let { appKey, appSecret, consumerKey } = ovh
-    await fse.writeJSON(program.token, { appKey, appSecret, consumerKey }, {spaces: 2})
+    await fse.writeJSON(program.token, { appKey, appSecret, consumerKey }, { spaces: 2 })
   }
-  const dbInvoice = <Set<string>>new Set()
+  //const dbInvoice = new Set() as Set<string>;
+  const dbInvoice = {} as { [key: string]: CsvLine };
   let dest = path.join(root, me.nichandle)
   await fse.ensureDir(dest)
 
-  const allInvoice: CsvLine[] = []
+
+
+
 
   const summaryFile = path.join(dest, "summary.tsv")
   if (await fse.existsSync(summaryFile)) {
@@ -84,18 +92,38 @@ async function main(root: string, type: 'pdf' | 'html') {
         const [invoiceId, date, HT, TVA, TTC, currency] = line.split(/\t/)
         if (invoiceId == 'invoiceId')
           return;
-        dbInvoice.add(invoiceId)
-        allInvoice.push({ invoiceId, date, HT, TVA, TTC, currency })
+        dbInvoice[invoiceId] = { invoiceId, date, HT, TVA, TTC, currency };
+        // allInvoice.push({ invoiceId, date, HT, TVA, TTC, currency })
       });
   }
+
+  const toFilePath = (line: CsvLine) => {
+    const [year, month] = line.date.split('-')
+    let subDir = ''
+    switch (program.split.toLowerCase()) {
+      case 'month':
+        subDir = `${year}${path.sep}${month}`
+        break
+      case 'year':
+        subDir = `${year}`
+        break
+      case 'none':
+        subDir = ''
+        break
+    }
+    const filename = `${line.date}_${line.invoiceId}_${line.TTC}${line.currency}.${type}`
+    const fullpath = path.join(dest, subDir)
+    return path.join(fullpath, filename)
+  }
+
   const doneDl = new Set(await listDir(dest, type))
   let billIds = await apiMe.get('/me/bill')()
   billIds = billIds
-    .filter(id => (!doneDl.has(id) && !dbInvoice.has(id)))
+    .filter(id => (!doneDl.has(id) && !dbInvoice[id]))
 
   const getInvoice = async (billId: string) => {
     const billData: billing.Bill = await apiMe.get('/me/bill/{billId}')({ billId })
-    const date = new Date(billData.date);//.getFullYear()
+    const date = new Date(billData.date);
     let year;
     let month;
     let day;
@@ -109,51 +137,52 @@ async function main(root: string, type: 'pdf' | 'html') {
       month = ('0' + (1 + date.getMonth())).slice(-2)
       day = ('0' + date.getDate()).slice(-2)
     }
-    let subDir = ''
-    switch (program.split.toLowerCase()) {
-      case 'month':
-        subDir = `${year}${path.sep}${month}`
-        break
-      case 'year':
-        subDir = `${year}`
-        break
-      case 'none':
-        subDir = ''
-        break
-    }
-    const isoStr = `${year}-${month}-${day}`
     const line: CsvLine = {
       invoiceId: billId,
-      date: isoStr,
+      date: `${year}-${month}-${day}`,
       HT: billData.priceWithoutTax.value.toFixed(2),
       TVA: (billData.priceWithTax.value - billData.priceWithoutTax.value).toFixed(2),
       TTC: billData.priceWithTax.value.toFixed(2),
       currency: billData.priceWithoutTax.currencyCode,
     }
-
-    const filename = `${isoStr}_${billId}_${line.TTC}${line.currency}.${type}`
-    const fullpath = path.join(dest, subDir)
-    const finalFile = path.join(fullpath, filename)
+    const finalFile = toFilePath(line);
     try {
-      await fse.access(finalFile)
+      const stats = await fse.stat(finalFile)
+      if (stats.size === 46) {
+        await fse.remove(finalFile);
+        throw 'bad file size';
+      }
     } catch {
-      await fse.ensureDir(fullpath)
+      const fullpath = path.dirname(finalFile);
+      const filename = path.basename(finalFile);
       const tmpFile = path.join(fullpath, filename + '.tmp')
-      console.log(`Downloading ${billId} to ${filename}`)
-      const ws = fse.createWriteStream(tmpFile)
-      const resp = await fetch(billData.pdfUrl)
-      await new Promise((resove, reject) => resp.body.pipe(ws).on('finish', resove))
-      await fse.rename(tmpFile, finalFile)
+      while (true) {
+        await fse.ensureDir(fullpath)
+        console.log(`Downloading ${billId} to ${filename}`)
+        const ws = fse.createWriteStream(tmpFile)
+        const resp = await fetch(billData.pdfUrl)
+        await new Promise((resove, reject) => resp.body.pipe(ws).on('finish', resove))
+        const stats = await fse.stat(tmpFile)
+        if (stats.size === 46) {
+          console.log('Too much requests. Please retry in 3 seconds.');
+          await fse.remove(tmpFile)
+          await Bluebird.delay(3000);
+        } else {
+          await fse.rename(tmpFile, finalFile)
+          break;
+        }
+      }
     }
-    if (!dbInvoice.has(billId))
-      allInvoice.push(line)
+    if (!dbInvoice[billId])
+      dbInvoice[billId] = line;
   }
   const concurrency = Number(program.concurrency) || 1
-  if (concurrency > 3)
+  if (concurrency >= 3)
     console.error('Warning a hi concurrency may triger OVH query rate limit')
-  await Promise.map(billIds, (item, index, length) => getInvoice(item), { concurrency: Number(program.concurrency) })
+  await Promise.map(billIds, (item, index, length) => getInvoice(item), { concurrency })
 
   if (billIds.length) {
+    const allInvoice = Object.values(dbInvoice);
     allInvoice.sort((a, b) => a.invoiceId.localeCompare(b.invoiceId))
     let db = allInvoice.map(({ invoiceId, date, HT, TVA, TTC, currency }) => `${invoiceId}\t${date}\t${HT}\t${TVA}\t${TTC}\t${currency}`)
     db.unshift('invoiceId\tdate\tHT\tTVA\tTTC\tcurrency')
