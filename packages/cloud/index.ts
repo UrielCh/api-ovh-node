@@ -345,6 +345,10 @@ export namespace cloud {
     export interface ProjectUserRoleCreation {
         roleId: string;
     }
+    // interface fullName: cloud.ProjectUserRoleUpdate.ProjectUserRoleUpdate
+    export interface ProjectUserRoleUpdate {
+        rolesIds: string[];
+    }
     // interface fullName: cloud.ProjectUserTokenCreation.ProjectUserTokenCreation
     export interface ProjectUserTokenCreation {
         password: string;
@@ -2889,7 +2893,7 @@ export interface Cloud{
   get(path: '/cloud/project/{serviceName}/usage/forecast'): (params: {serviceName: string}) => Promise<cloud.usage.UsageForecast>;
   /**
    * Missing description
-   * Usage information on your project
+   * Usage information details
    */
   get(path: '/cloud/project/{serviceName}/usage/history'): (params: {serviceName: string, from?: string, to?: string}) => Promise<cloud.usage.UsageHistory[]>;
   /**
