@@ -1,10 +1,11 @@
 {
   "name": "ovh-bill-importer",
   "version": "1.0.5",
-  "description": "Download and organize all your OVH bills",
+  "description": "Download and organize all your ovh.com / OVHcloud bills",
   "main": "index.js",
   "keywords": [
     "ovh",
+    "OVHcloud",
     "billing",
     "download",
     "VAT"

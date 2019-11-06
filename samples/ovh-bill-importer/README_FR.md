@@ -14,6 +14,12 @@ Ce script utilise les packages npm `ovh-api/api` et `@ovh-api/me`
 npm install -g ovh-bill-importer
 ```
 
+## ChangeLog
+
+- V 1.0.5 reprise des telechargement des facture en cas d'erreur de connexion.
+- V 1.0.4 relance le telechargement en cas de `too many request`.
+- V 1.0.3 reprise sur erreur au niveau des API.
+
 ## Usage
 
 ```bash

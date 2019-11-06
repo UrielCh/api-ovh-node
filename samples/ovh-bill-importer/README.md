@@ -14,6 +14,12 @@ This script use the npm packages `@ovh-api/api` and `@ovh-api/me`
 npm install -g ovh-bill-importer
 ```
 
+## ChangeLog
+
+- V 1.0.5 properly handle error whene downloading invoices.
+- V 1.0.4 properly recover on too many request error.
+- V 1.0.3 properly handle API connexion errors.
+
 ## Usage
 
 ```bash
@@ -48,7 +54,6 @@ Provide a local path to save all invoice, a directory containing the nic-handle 
 ### concurrency -c
 
 Download multiple invoice un parallel, Do not ask for much concurrency, or Ovh will block your IP.
-
 
 ## sample
 
