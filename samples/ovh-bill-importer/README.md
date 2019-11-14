@@ -16,6 +16,7 @@ npm install -g ovh-bill-importer
 
 ## ChangeLog
 
+- V 1.0.6 fix regression in incremental execution.
 - V 1.0.5 properly handle error whene downloading invoices.
 - V 1.0.4 properly recover on too many request error.
 - V 1.0.3 properly handle API connexion errors.

@@ -7,8 +7,10 @@ import fetch from 'node-fetch'
 import program from 'commander'
 import Bluebird, { Promise } from 'bluebird'
 
+const { version } = require('./package.json');
+
 program
-  .version('1.0.5')
+  .version(version)
   .option('-u, --utc', 'use UTC times, by defaut use localhost timezone')
   .option('-d, --dest <path>', 'destination directory')
   .option('-s, --split <type>', 'hierarchy model year/month/none default is month', /^(month|year|none)$/i, 'month')
@@ -76,7 +78,7 @@ async function main(root: string, type: 'pdf' | 'html') {
     await fse.writeJSON(program.token, { appKey, appSecret, consumerKey }, { spaces: 2 })
   }
   //const dbInvoice = new Set() as Set<string>;
-  const dbInvoice = {} as { [key: string]: CsvLine };
+  const invoiceTSV = {} as { [key: string]: CsvLine };
   let dest = path.join(root, me.nichandle)
   await fse.ensureDir(dest)
 
@@ -88,7 +90,7 @@ async function main(root: string, type: 'pdf' | 'html') {
         const [invoiceId, date, HT, TVA, TTC, currency] = line.split(/\t/)
         if (invoiceId == 'invoiceId')
           return;
-        dbInvoice[invoiceId] = { invoiceId, date, HT, TVA, TTC, currency };
+        invoiceTSV[invoiceId] = { invoiceId, date, HT, TVA, TTC, currency };
         // allInvoice.push({ invoiceId, date, HT, TVA, TTC, currency })
       });
   }
@@ -112,14 +114,19 @@ async function main(root: string, type: 'pdf' | 'html') {
     return path.join(fullpath, filename)
   }
 
-  const doneDl = new Set(await listDir(dest, type))
-  console.log(`${doneDl.size} invoice already downloaded`);
+  const InvoicePDF = new Set(await listDir(dest, type))
+  console.log(`${InvoicePDF.size} invoice PDF already downloaded`);
+  console.log(`${Object.keys(invoiceTSV).length} invoice in summery.tsv`);
+
   let billIds = await apiMe.get('/me/bill')()
   console.log(`${billIds.length} invoice available`);
   billIds = billIds
-    .filter(id => (!doneDl.has(id) && dbInvoice[id]))
-  const toDownload = billIds.length;
+    .filter(billId => (!InvoicePDF.has(billId) || !invoiceTSV[billId]))
+  const toDownload = billIds.filter((billId) => !InvoicePDF.has(billId)).length
+  const toSummeryzed = billIds.filter((billId) => !invoiceTSV[billId]).length
   console.log(`${toDownload} need to be download`);
+  console.log(`${toSummeryzed} need to be add to summery.tsv`);
+
   let counter = 0;
   const getInvoice = async (billId: string) => {
     const billData: billing.Bill = await apiMe.get('/me/bill/{billId}')({ billId })
@@ -142,50 +149,53 @@ async function main(root: string, type: 'pdf' | 'html') {
       TTC: billData.priceWithTax.value.toFixed(2),
       currency: billData.priceWithoutTax.currencyCode,
     }
-    const downloadId = ++counter;
-    const finalFile = toFilePath(line);
-    try {
-      const stats = await fse.stat(finalFile)
-      if (stats.size === 46) {
-        await fse.remove(finalFile);
-        throw 'bad file size';
-      }
-    } catch {
-      const fullpath = path.dirname(finalFile);
-      const filename = path.basename(finalFile);
-      const tmpFile = path.join(fullpath, filename + '.tmp')
-      while (true) {
-        await fse.ensureDir(fullpath)
 
-        while (true) {
-          try {
-            await fse.remove(tmpFile)
-          } catch (e) { }
-          try {
-            console.log(`${downloadId}/${toDownload} Downloading ${billId} to ${filename}`)
-            const ws = fse.createWriteStream(tmpFile)
-            const resp = await fetch(billData.pdfUrl)
-            await new Promise((resove, reject) => resp.body.pipe(ws).on('finish', resove))
-          } catch (e) {
-            await Bluebird.delay(1000);
-            console.log(e);
-            continue;
-          }
-          break;
-        }
-        const stats = await fse.stat(tmpFile)
+    if (!InvoicePDF.has(billId)) {
+      const downloadId = ++counter;
+      const finalFile = toFilePath(line);
+      try {
+        const stats = await fse.stat(finalFile)
         if (stats.size === 46) {
-          console.log('Too much requests. Please retry in 3 seconds.');
-          await fse.remove(tmpFile)
-          await Bluebird.delay(3000);
-        } else {
-          await fse.rename(tmpFile, finalFile)
-          break;
+          await fse.remove(finalFile);
+          throw 'bad file size';
+        }
+      } catch {
+        const fullpath = path.dirname(finalFile);
+        const filename = path.basename(finalFile);
+        const tmpFile = path.join(fullpath, filename + '.tmp')
+        while (true) {
+          await fse.ensureDir(fullpath)
+
+          while (true) {
+            try {
+              await fse.remove(tmpFile)
+            } catch (e) { }
+            try {
+              console.log(`${downloadId}/${toDownload} Downloading ${billId} to ${finalFile}`)
+              const ws = fse.createWriteStream(tmpFile)
+              const resp = await fetch(billData.pdfUrl)
+              await new Promise((resove, reject) => resp.body.pipe(ws).on('finish', resove))
+            } catch (e) {
+              await Bluebird.delay(1000);
+              console.log(e);
+              continue;
+            }
+            break;
+          }
+          const stats = await fse.stat(tmpFile)
+          if (stats.size === 46) {
+            console.log('Too much requests. Please retry in 3 seconds.');
+            await fse.remove(tmpFile)
+            await Bluebird.delay(3000);
+          } else {
+            await fse.rename(tmpFile, finalFile)
+            break;
+          }
         }
       }
     }
-    if (!dbInvoice[billId])
-      dbInvoice[billId] = line;
+    if (!invoiceTSV[billId])
+      invoiceTSV[billId] = line;
   }
   const concurrency = Number(program.concurrency) || 1
   if (concurrency >= 3)
@@ -193,7 +203,7 @@ async function main(root: string, type: 'pdf' | 'html') {
   await Promise.map(billIds, (item, index, length) => getInvoice(item), { concurrency })
 
   if (billIds.length) {
-    const allInvoice = Object.values(dbInvoice);
+    const allInvoice = Object.values(invoiceTSV);
     allInvoice.sort((a, b) => a.invoiceId.localeCompare(b.invoiceId))
     let db = allInvoice.map(({ invoiceId, date, HT, TVA, TTC, currency }) => `${invoiceId}\t${date}\t${HT}\t${TVA}\t${TTC}\t${currency}`)
     db.unshift('invoiceId\tdate\tHT\tTVA\tTTC\tcurrency')
