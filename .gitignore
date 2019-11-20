@@ -21,3 +21,6 @@ samples/*/*.map
 samples/*/*.js
 samples/*/dist/
 **/token.json
+code/common/*.d.ts
+code/common/*.js
+packages/*/package-lock.json

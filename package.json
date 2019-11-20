@@ -11,10 +11,10 @@
   "license": "MIT",
   "devDependencies": {
     "@types/debounce": "^1.2.0",
-    "@types/node": "^12.11.7",
-    "lerna": "^3.18.3",
+    "@types/node": "^12.12.11",
+    "lerna": "^3.18.5",
     "rimraf": "^3.0.0",
-    "typescript": "^3.6.4"
+    "typescript": "^3.7.2"
   },
   "publishConfig": {
     "access": "public"
