@@ -36,6 +36,12 @@ import { EventEmitter } from 'events';
 import { OvhRequestable, OvhParamType } from '@ovh-api/common';
 import { Socket } from 'net';
 
+export interface CredentialResp {
+    consumerKey: string;
+    state: "expired" | "pendingValidation" | "refused" | "validated";
+    validationUrl: string;
+}
+
 export interface IOvhError {
     errorCode: 'INVALID_CREDENTIAL' | 'NOT_CREDENTIAL' | 'QUERY_TIME_OUT' | 'NOT_GRANTED_CALL' | 'HTTP_ERROR' | 'NETWORK_ERROR';
     httpCode: string;
@@ -222,6 +228,22 @@ by default I will ask for all rights`);
         return 'please set saveQuerys to true to enable this feature';
     }
 
+    public async queryForCredencial(redirection?: string): Promise<CredentialResp> {
+        try {
+            const rules = { accessRules: this.toAccessRules.apply(this, this.accessRules), redirection: null as any };
+            if (redirection)
+                rules.redirection = redirection;
+            const resp = await this.request('POST', '/auth/credential', rules);
+            return resp as CredentialResp;
+        } catch (e) {
+            throw new OvhError({
+                errorCode: 'HTTP_ERROR',
+                httpCode: `${e}`,
+                message: `failed to request a credential with rule ${JSON.stringify(this.accessRules)} ${e.message || e}`
+            }, e);
+        }
+    }
+
     /**
      * Execute a request on the API
      *
@@ -233,15 +255,15 @@ by default I will ask for all rights`);
      * @param {Object} refer: The parent proxied object
      */
     public async request(httpMethod: string, pathTemplate: string, params?: any): Promise<any> {
-        const ovhEngine = this;
+        // const ovhEngine = this;
         httpMethod = httpMethod.toUpperCase();
         /**
          * Time drift
          */
-        if (ovhEngine.apiTimeDiff === null && pathTemplate !== '/auth/time') {
+        if (this.apiTimeDiff === null && pathTemplate !== '/auth/time') {
             try {
-                const time: number = await ovhEngine.request('GET', '/auth/time', {})
-                ovhEngine.apiTimeDiff = time - Math.round(Date.now() / 1000);
+                const time: number = await this.request('GET', '/auth/time', {})
+                this.apiTimeDiff = time - Math.round(Date.now() / 1000);
             } catch (err) {
                 throw new Error(`[OVH] Unable to fetch OVH API time ${err.message || err}`);
             }
@@ -262,10 +284,10 @@ by default I will ask for all rights`);
          * build Request
          */
         let options: RequestOptions = {
-            host: ovhEngine.host,
-            port: ovhEngine.port,
+            host: this.host,
+            port: this.port,
             method: httpMethod,
-            path: ovhEngine.basePath + path
+            path: this.basePath + path
         };
 
         if (this.querySet) {
@@ -282,7 +304,7 @@ by default I will ask for all rights`);
         // Headers
         options.headers = {
             'Content-Type': 'application/json',
-            'X-Ovh-Application': ovhEngine.appKey,
+            'X-Ovh-Application': this.appKey,
         };
 
         /**
@@ -314,33 +336,32 @@ by default I will ask for all rights`);
          * signe operation if non /auth service
          */
         if (path !== '/auth/credential' && path !== '/auth/time') {
-            const XOvhTimestamp: number = Math.round(Date.now() / 1000) + Number(ovhEngine.apiTimeDiff);
+            const XOvhTimestamp: number = Math.round(Date.now() / 1000) + Number(this.apiTimeDiff);
             options.headers['X-Ovh-Timestamp'] = XOvhTimestamp;
 
             // Sign request
-            if (typeof (ovhEngine.consumerKey) === 'string') {
-                options.headers['X-Ovh-Consumer'] = ovhEngine.consumerKey;
-                options.headers['X-Ovh-Signature'] = ovhEngine.signRequest(
+            if (typeof (this.consumerKey) === 'string') {
+                options.headers['X-Ovh-Consumer'] = this.consumerKey;
+                options.headers['X-Ovh-Signature'] = this.signRequest(
                     httpMethod, `https://${options.host}${options.path}`,
                     reqBody, XOvhTimestamp
                 );
             }
         }
-        if (ovhEngine.listenerCount('request')) {
-            ovhEngine.emit('request', { method: httpMethod, path, pathTemplate })
+        if (this.listenerCount('request')) {
+            this.emit('request', { method: httpMethod, path, pathTemplate })
         }
-        if (ovhEngine.listenerCount('debug')) {
-            ovhEngine.emit('debug', `[OVH] API call: ${options.method} ${options.path} ${reqBody}`);
+        if (this.listenerCount('debug')) {
+            this.emit('debug', `[OVH] API call: ${options.method} ${options.path} ${reqBody}`);
         }
         // retry the Query thith a new cert
         const waitForCertValidation = async (consumerKey: string, validationUrl: string) => new Promise((done) => {
             // set consumerKey
-            ovhEngine.consumerKey = consumerKey;
+            this.consumerKey = consumerKey;
             console.log(`[OVH] MISSING_CREDENTIAL issue a new one: ${consumerKey}\nValidate this cert with this url to continue:\n${validationUrl}`)
-            // try to open a brower, ignorring error
-
-            //import open from 'open';
             try {
+                // try to open a brower, ignorring error
+                // import open from 'open';
                 const open = require('open');
                 open(validationUrl).catch(() => { });
             } catch (e) {
@@ -350,13 +371,13 @@ by default I will ask for all rights`);
                     window.open(validationUrl);
             }
             let pass = 0;
-            const checkCert = () => ovhEngine.request('GET', '/auth/currentCredential')
+            const checkCert = () => this.request('GET', '/auth/currentCredential')
                 .then(({ status }) => {
                     if (status === 'validated') {
                         console.log('consumerKey Authorized!')
-                        if (ovhEngine.certCache) {
-                            let { appKey, appSecret, consumerKey } = ovhEngine;
-                            writeFile(ovhEngine.certCache, JSON.stringify({ appKey, appSecret, consumerKey }, null, 2), { encoding: 'utf-8', mode: 0o600 }, done);
+                        if (this.certCache) {
+                            let { appKey, appSecret, consumerKey } = this;
+                            writeFile(this.certCache, JSON.stringify({ appKey, appSecret, consumerKey }, null, 2), { encoding: 'utf-8', mode: 0o600 }, done);
                         } else
                             done();
                         return false;
@@ -394,8 +415,8 @@ by default I will ask for all rights`);
                 responseData = '';
             }
 
-            if (ovhEngine.listenerCount('debug')) {
-                ovhEngine.emit('debug', `[OVH] API response to ${httpMethod} ${path}: ${body}`);
+            if (this.listenerCount('debug')) {
+                this.emit('debug', `[OVH] API response to ${httpMethod} ${path}: ${body}`);
             }
             if (statusCode === 200) {
                 return responseData;
@@ -403,27 +424,26 @@ by default I will ask for all rights`);
 
             const error: IOvhError = <IOvhError>responseData;
             if (error.errorCode === 'INVALID_CREDENTIAL' || error.message === 'You must login first') {
-                if (ovhEngine.certCache && !ovhEngine.updatingCert) {
-                    ovhEngine.updatingCert = true;
-                    ovhEngine.consumerKey = null;
+                if (this.certCache && !this.updatingCert) {
+                    this.updatingCert = true;
+                    this.consumerKey = null;
                 }
-                if (ovhEngine.consumerKey === null) {
-                    const rules = { accessRules: ovhEngine.toAccessRules.apply(this, ovhEngine.accessRules) };
+                if (this.consumerKey === null) {
                     let consumerKey, validationUrl;
                     try {
-                        const credential = await ovhEngine.request('POST', '/auth/credential', rules);
-                        consumerKey = credential['consumerKey'];
-                        validationUrl = credential['validationUrl'];
+                        const resp = await this.queryForCredencial()
+                        consumerKey = resp.consumerKey;
+                        validationUrl = resp.validationUrl;
                     } catch (e) {
                         throw new OvhError({
                             errorCode: 'HTTP_ERROR',
                             httpCode: `${statusCode} ${statusMessage}`,
-                            message: `failed to request a credential with rule ${JSON.stringify(ovhEngine.accessRules)} ${e.message || e}`
+                            message: `failed to request a credential with rule ${JSON.stringify(this.accessRules)} ${e.message || e}`
                         }, e);
                     }
                     await waitForCertValidation(consumerKey, validationUrl);
-                    let resp = await ovhEngine.request(httpMethod, path, params);
-                    ovhEngine.updatingCert = false;
+                    let resp = await this.request(httpMethod, path, params);
+                    this.updatingCert = false;
                     return resp;
                 }
                 throw new OvhError(error);
@@ -471,8 +491,8 @@ by default I will ask for all rights`);
             });
 
             // mocked socket has no setTimeout
-            if (typeof (ovhEngine.timeout) === 'number') {
-                const timeout = ovhEngine.timeout;
+            if (typeof (this.timeout) === 'number') {
+                const timeout = this.timeout;
                 req.on('socket', (socket: Socket) => {
                     socket.setTimeout(timeout);
                     // TODO check socket within modern nodeJS

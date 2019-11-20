@@ -38,6 +38,7 @@
     "build": "tsc -p .",
     "test": "mocha dist/**/*.spec.js",
     "prepare": "npm run build",
+    "prepublish": "npm run test",
     "build:watch": "tsc -p . --watch"
   },
   "gitHead": "b9fec53f25067fa01d341adc086a63ef2c2a5f62"
