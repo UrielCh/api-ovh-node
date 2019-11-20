@@ -31,7 +31,6 @@ import * as querystring from 'querystring';
 import { createHash } from 'crypto';
 import { RequestOptions } from 'http';
 import { endpoints } from './endpoints';
-import open from 'open';
 import { writeFile, readFileSync } from 'fs';
 import { EventEmitter } from 'events';
 import { OvhRequestable, OvhParamType } from '@ovh-api/common';
@@ -339,7 +338,17 @@ by default I will ask for all rights`);
             ovhEngine.consumerKey = consumerKey;
             console.log(`[OVH] MISSING_CREDENTIAL issue a new one: ${consumerKey}\nValidate this cert with this url to continue:\n${validationUrl}`)
             // try to open a brower, ignorring error
-            open(validationUrl).catch(() => { });
+
+            //import open from 'open';
+            try {
+                const open = require('open');
+                open(validationUrl).catch(() => { });
+            } catch (e) {
+                // exception if used in browser
+                // Try to open a popup
+                if (window)
+                    window.open(validationUrl);
+            }
             let pass = 0;
             const checkCert = () => ovhEngine.request('GET', '/auth/currentCredential')
                 .then(({ status }) => {

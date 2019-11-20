@@ -1,0 +1,4 @@
+V 2.1.2
+- reduce npm package size by half
+V 2.1.1
+- @ovh-api/api can now be used inside a browser
