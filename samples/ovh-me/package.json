@@ -11,7 +11,7 @@
     "prepare": "npm run build"
   },
   "dependencies": {
-    "@ovh-api/api": "^2.1.0",
+    "@ovh-api/api": "^2.1.2",
     "@ovh-api/me": "^2.0.9"
   },
   "devDependencies": {
