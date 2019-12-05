@@ -288,6 +288,8 @@ export namespace hosting {
             }
             // type fullname: hosting.web.database.DatabaseCapabilitiesTypeEnum
             export type DatabaseCapabilitiesTypeEnum = "extraSqlPerso" | "local" | "privateDatabase" | "sqlLocal" | "sqlPerso" | "sqlPro"
+            // type fullname: hosting.web.database.DatabaseCreationTypeEnum
+            export type DatabaseCreationTypeEnum = "mariadb" | "mysql" | "postgresql" | "redis"
             // type fullname: hosting.web.database.DatabaseIsolationEnum
             export type DatabaseIsolationEnum = "dedicated" | "local" | "shared"
             // type fullname: hosting.web.database.DatabaseTypeEnum
@@ -898,7 +900,7 @@ export interface Hosting{
                 // GET /hosting/web/{serviceName}/database
                 $get(params?: {mode?: hosting.web.database.ModeEnum, name?: string, server?: string, type?: hosting.web.database.DatabaseTypeEnum, user?: string}): Promise<string[]>;
                 // POST /hosting/web/{serviceName}/database
-                $post(params: {capabilitie: hosting.web.database.DatabaseCapabilitiesTypeEnum, password?: string, quota?: hosting.web.database.ExtraSqlQuotaEnum, type: hosting.web.database.DatabaseTypeEnum, user: string, version?: hosting.web.database.VersionEnum}): Promise<hosting.web.task>;
+                $post(params: {capabilitie: hosting.web.database.DatabaseCapabilitiesTypeEnum, password?: string, quota?: hosting.web.database.ExtraSqlQuotaEnum, type: hosting.web.database.DatabaseCreationTypeEnum, user: string, version?: hosting.web.database.VersionEnum}): Promise<hosting.web.task>;
                 $(name: string): {
                     // DELETE /hosting/web/{serviceName}/database/{name}
                     $delete(): Promise<hosting.web.task>;
@@ -1788,7 +1790,7 @@ export interface Hosting{
    * List the hosting.web.database objects
    * Install new database
    */
-  post(path: '/hosting/web/{serviceName}/database'): (params: {serviceName: string, capabilitie: hosting.web.database.DatabaseCapabilitiesTypeEnum, password?: string, quota?: hosting.web.database.ExtraSqlQuotaEnum, type: hosting.web.database.DatabaseTypeEnum, user: string, version?: hosting.web.database.VersionEnum}) => Promise<hosting.web.task>;
+  post(path: '/hosting/web/{serviceName}/database'): (params: {serviceName: string, capabilitie: hosting.web.database.DatabaseCapabilitiesTypeEnum, password?: string, quota?: hosting.web.database.ExtraSqlQuotaEnum, type: hosting.web.database.DatabaseCreationTypeEnum, user: string, version?: hosting.web.database.VersionEnum}) => Promise<hosting.web.task>;
   /**
    * changePassword operations
    * Request a password change

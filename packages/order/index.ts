@@ -262,10 +262,14 @@ export namespace order {
     }
     // interface fullName: order.OrderDetail.OrderDetail
     export interface OrderDetail {
+        cartItemID?: number;
         description: string;
         detailType?: order.OrderDetailTypeEnum;
         domain: string;
+        originalTotalPrice: order.Price;
         quantity: number;
+        reductionTotalPrice: order.Price;
+        reductions: order.Reduction[];
         totalPrice: order.Price;
         unitPrice: order.Price;
     }
@@ -273,6 +277,8 @@ export namespace order {
     export type OrderDetailTypeEnum = "ACCESSORY" | "CAUTION" | "CHOOSED" | "CONSUMPTION" | "CREATION" | "DELIVERY" | "DURATION" | "GIFT" | "INSTALLATION" | "LICENSE" | "MUTE" | "OTHER" | "OUTPLAN" | "QUANTITY" | "REFUND" | "RENEW" | "SPECIAL" | "SWITCH" | "TRANSFER" | "VOUCHER"
     // interface fullName: order.OrderPrices.OrderPrices
     export interface OrderPrices {
+        originalWithoutTax?: order.Price;
+        reduction?: order.Price;
         tax: order.Price;
         withTax: order.Price;
         withoutTax: order.Price;
@@ -283,6 +289,17 @@ export namespace order {
         text: string;
         value: number;
     }
+    // interface fullName: order.Reduction.Reduction
+    export interface Reduction {
+        context: order.ReductionContextEnum;
+        price: order.Price;
+        type: order.ReductionTypeEnum;
+        value: order.Price;
+    }
+    // type fullname: order.ReductionContextEnum
+    export type ReductionContextEnum = "promotion" | "voucher"
+    // type fullname: order.ReductionTypeEnum
+    export type ReductionTypeEnum = "percentage" | "forced_amount" | "fixed_amount"
     export namespace cart {
         // interface fullName: order.cart.Cart.Cart
         export interface Cart {
@@ -320,6 +337,8 @@ export namespace order {
             expire: string;
             ovhSubsidiary: nichandle.OvhSubsidiaryEnum;
         }
+        // type fullname: order.cart.DomainActionEnum
+        export type DomainActionEnum = "create" | "transfer" | "update" | "trade"
         // interface fullName: order.cart.DomainPacksCreation.DomainPacksCreation
         export interface DomainPacksCreation {
             domain: string;
@@ -466,10 +485,12 @@ export namespace order {
         export type PriceLabelEnum = "PRICE" | "DISCOUNT" | "FEE" | "TOTAL" | "RENEW"
         // interface fullName: order.cart.ProductInformation.ProductInformation
         export interface ProductInformation {
+            action: order.cart.DomainActionEnum;
             configurations: order.cart.ConfigurationRequirements[];
             deliveryTime: string;
             duration: string[];
             offer?: string;
+            offerId?: string;
             orderable: boolean;
             phase: string;
             prices?: order.cart.Price[];
@@ -1106,6 +1127,18 @@ export interface Order{
                     $post(params: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
                 }
             }
+            dedicatedDirectSales: {
+                // GET /order/cart/{cartId}/dedicatedDirectSales
+                $get(): Promise<order.cart.GenericProductDefinition[]>;
+                // POST /order/cart/{cartId}/dedicatedDirectSales
+                $post(params: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                options: {
+                    // GET /order/cart/{cartId}/dedicatedDirectSales/options
+                    $get(): Promise<order.cart.GenericOptionDefinition[]>;
+                    // POST /order/cart/{cartId}/dedicatedDirectSales/options
+                    $post(params: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                }
+            }
             dedicatedLabs: {
                 // GET /order/cart/{cartId}/dedicatedLabs
                 $get(params?: {planCode?: string}): Promise<order.cart.GenericProductDefinition[]>;
@@ -1153,6 +1186,12 @@ export interface Order{
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
                 // POST /order/cart/{cartId}/dns
                 $post(params: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                options: {
+                    // GET /order/cart/{cartId}/dns/options
+                    $get(params: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
+                    // POST /order/cart/{cartId}/dns/options
+                    $post(params: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                }
             }
             domain: {
                 // GET /order/cart/{cartId}/domain
@@ -1604,6 +1643,12 @@ export interface Order{
                 // GET /order/cart/{cartId}/summary
                 $get(): Promise<order.Order>;
             }
+            support: {
+                // GET /order/cart/{cartId}/support
+                $get(): Promise<order.cart.GenericProductDefinition[]>;
+                // POST /order/cart/{cartId}/support
+                $post(params: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+            }
             telephony: {
                 // GET /order/cart/{cartId}/telephony
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -1736,6 +1781,16 @@ export interface Order{
                 // GET /order/cartServiceOption/dedicated/{serviceName}
                 $get(): Promise<order.cart.GenericOptionDefinition[]>;
                 // POST /order/cartServiceOption/dedicated/{serviceName}
+                $post(params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+            };
+        }
+        dns: {
+            // GET /order/cartServiceOption/dns
+            $get(): Promise<string[]>;
+            $(serviceName: string): {
+                // GET /order/cartServiceOption/dns/{serviceName}
+                $get(): Promise<order.cart.GenericOptionDefinition[]>;
+                // POST /order/cartServiceOption/dns/{serviceName}
                 $post(params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
             };
         }
@@ -3419,6 +3474,16 @@ export interface Order{
   get(path: '/order/cart/{cartId}/dedicated/options'): (params: {cartId: string, family?: string, planCode: string}) => Promise<order.cart.GenericOptionDefinition[]>;
   /**
    * Missing description
+   * Get informations about a dedicated Direct Sales server
+   */
+  get(path: '/order/cart/{cartId}/dedicatedDirectSales'): (params: {cartId: string}) => Promise<order.cart.GenericProductDefinition[]>;
+  /**
+   * Missing description
+   * Get informations about dedicated Direct Sales server options
+   */
+  get(path: '/order/cart/{cartId}/dedicatedDirectSales/options'): (params: {cartId: string}) => Promise<order.cart.GenericOptionDefinition[]>;
+  /**
+   * Missing description
    * Get informations about a dedicated labs server
    */
   get(path: '/order/cart/{cartId}/dedicatedLabs'): (params: {cartId: string, planCode?: string}) => Promise<order.cart.GenericProductDefinition[]>;
@@ -3457,6 +3522,11 @@ export interface Order{
    * Get informations about DNS zone offer
    */
   get(path: '/order/cart/{cartId}/dns'): (params: {cartId: string}) => Promise<order.cart.GenericProductDefinition[]>;
+  /**
+   * DNS option
+   * Get informations about DNS options
+   */
+  get(path: '/order/cart/{cartId}/dns/options'): (params: {cartId: string, planCode: string}) => Promise<order.cart.GenericOptionDefinition[]>;
   /**
    * Missing description
    * Get informations about a domain name
@@ -3838,6 +3908,11 @@ export interface Order{
    */
   get(path: '/order/cart/{cartId}/summary'): (params: {cartId: string}) => Promise<order.Order>;
   /**
+   * Order a support offer
+   * Get all support offers available
+   */
+  get(path: '/order/cart/{cartId}/support'): (params: {cartId: string}) => Promise<order.cart.GenericProductDefinition[]>;
+  /**
    * Missing description
    * Get informations about VoIP offers
    */
@@ -3952,6 +4027,16 @@ export interface Order{
    * Get informations about additional dedicated offer for your service
    */
   get(path: '/order/cartServiceOption/dedicated/{serviceName}'): (params: {serviceName: string}) => Promise<order.cart.GenericOptionDefinition[]>;
+  /**
+   * Operations about the DNS service
+   * List available services
+   */
+  get(path: '/order/cartServiceOption/dns'): () => Promise<string[]>;
+  /**
+   * Listing offers /order/cartServiceOptions/dns/#serviceName#
+   * Get informations about additional Domain offer for your service
+   */
+  get(path: '/order/cartServiceOption/dns/{serviceName}'): (params: {serviceName: string}) => Promise<order.cart.GenericOptionDefinition[]>;
   /**
    * Operations about the DOMAIN service
    * List available services
@@ -5654,6 +5739,16 @@ export interface Order{
   post(path: '/order/cart/{cartId}/dedicated/options'): (params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}) => Promise<order.cart.Item>;
   /**
    * Missing description
+   * Post a new dedicated Direct Sales server item in your cart
+   */
+  post(path: '/order/cart/{cartId}/dedicatedDirectSales'): (params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}) => Promise<order.cart.Item>;
+  /**
+   * Missing description
+   * Post a new dedicated Direct Sales server option in your cart
+   */
+  post(path: '/order/cart/{cartId}/dedicatedDirectSales/options'): (params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}) => Promise<order.cart.Item>;
+  /**
+   * Missing description
    * Post a new dedicated labs server item in your cart
    */
   post(path: '/order/cart/{cartId}/dedicatedLabs'): (params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}) => Promise<order.cart.Item>;
@@ -5692,6 +5787,11 @@ export interface Order{
    * Post a new DNS zone item in your cart
    */
   post(path: '/order/cart/{cartId}/dns'): (params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}) => Promise<order.cart.Item>;
+  /**
+   * DNS option
+   * Post a new DNS option in your cart
+   */
+  post(path: '/order/cart/{cartId}/dns/options'): (params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}) => Promise<order.cart.Item>;
   /**
    * Missing description
    * Post a new domain in your cart
@@ -6043,6 +6143,11 @@ export interface Order{
    */
   post(path: '/order/cart/{cartId}/sslGateway/options'): (params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}) => Promise<order.cart.Item>;
   /**
+   * Order a support offer
+   * Add a support offer in your cart
+   */
+  post(path: '/order/cart/{cartId}/support'): (params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}) => Promise<order.cart.Item>;
+  /**
    * Missing description
    * Post a new VoIP item in your cart
    */
@@ -6142,6 +6247,11 @@ export interface Order{
    * Post an additional dedicated option in your cart
    */
   post(path: '/order/cartServiceOption/dedicated/{serviceName}'): (params: {serviceName: string, cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}) => Promise<order.cart.Item>;
+  /**
+   * Listing offers /order/cartServiceOptions/dns/#serviceName#
+   * Post an additional Domain option in your cart
+   */
+  post(path: '/order/cartServiceOption/dns/{serviceName}'): (params: {serviceName: string, cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}) => Promise<order.cart.Item>;
   /**
    * Listing offers /order/cartServiceOptions/domain/#serviceName#
    * Post an additional Domain option in your cart

@@ -82,6 +82,8 @@ export namespace domain {
         host: string;
         ips: string[];
     }
+    // type fullname: domain.IsForEnum
+    export type IsForEnum = "campaign_website" | "educational_website" | "emails" | "information_website" | "other_purpose" | "redirect_page" | "transactional_website"
     // type fullname: domain.OfferEnum
     export type OfferEnum = "diamond" | "gold" | "platinum"
     // type fullname: domain.OperationStatusEnum
@@ -137,6 +139,15 @@ export namespace domain {
     // type fullname: domain.WhoisObfuscatorFieldsEnum
     export type WhoisObfuscatorFieldsEnum = "address" | "email" | "phone"
     export namespace configurations {
+        // interface fullName: domain.configurations.CustomFields.CustomFields
+        export interface CustomFields {
+            audience?: string;
+            authInfo?: string;
+            isFor?: domain.IsForEnum[];
+            otherPurpose?: string;
+            reason?: string;
+            represent?: string;
+        }
         // interface fullName: domain.configurations.ObfuscatedEmails.ObfuscatedEmails
         export interface ObfuscatedEmails {
             type: domain.ContactAllTypesEnum;

@@ -148,7 +148,7 @@ export namespace cloud {
     // interface fullName: cloud.ProjectContainerRegistryCreation.ProjectContainerRegistryCreation
     export interface ProjectContainerRegistryCreation {
         name: string;
-        region: cloud.containerRegistry.registry.RegionEnum;
+        region: string;
     }
     // interface fullName: cloud.ProjectContainerRegistryUpdate.ProjectContainerRegistryUpdate
     export interface ProjectContainerRegistryUpdate {
@@ -644,6 +644,50 @@ export namespace cloud {
         }
     }
     export namespace containerRegistry {
+        // interface fullName: cloud.containerRegistry.Capability.Capability
+        export interface Capability {
+            plans: cloud.containerRegistry.Plan[];
+            regionName: string;
+        }
+        // interface fullName: cloud.containerRegistry.Features.Features
+        export interface Features {
+            vulnerability: boolean;
+        }
+        // interface fullName: cloud.containerRegistry.Limits.Limits
+        export interface Limits {
+            imageStorage: number;
+            parallelRequest: number;
+        }
+        // interface fullName: cloud.containerRegistry.Plan.Plan
+        export interface Plan {
+            createdAt: string;
+            features: cloud.containerRegistry.Features;
+            id: string;
+            name: string;
+            registryLimits: cloud.containerRegistry.Limits;
+            updatedAt: string;
+        }
+        // interface fullName: cloud.containerRegistry.Registry.Registry
+        export interface Registry {
+            createdAt: string;
+            id: string;
+            name: string;
+            projectID: string;
+            region: string;
+            status: cloud.containerRegistry.StatusEnum;
+            updatedAt: string;
+            url: string;
+            version: string;
+        }
+        // type fullname: cloud.containerRegistry.StatusEnum
+        export type StatusEnum = "ERROR" | "READY" | "DELETED" | "SUSPENDED" | "INSTALLING" | "UPDATING" | "RESTORING" | "SUSPENDING" | "DELETING"
+        // interface fullName: cloud.containerRegistry.User.User
+        export interface User {
+            email: string;
+            id: string;
+            password?: string;
+            user: string;
+        }
         export namespace registry {
             // type fullname: cloud.containerRegistry.registry.RegionEnum
             export type RegionEnum = "GRA7"
@@ -673,9 +717,17 @@ export namespace cloud {
         }
     }
     export namespace flavor {
+        // interface fullName: cloud.flavor.Capability.Capability
+        export interface Capability {
+            enabled: boolean;
+            name: cloud.flavor.CapabilityNameEnum;
+        }
+        // type fullname: cloud.flavor.CapabilityNameEnum
+        export type CapabilityNameEnum = "resize" | "snapshot" | "volume" | "failoverip"
         // interface fullName: cloud.flavor.Flavor.Flavor
         export interface Flavor {
             available: boolean;
+            capabilities: cloud.flavor.Capability[];
             disk: number;
             id: string;
             inboundBandwidth?: number;
@@ -783,7 +835,7 @@ export namespace cloud {
             value: number;
         }
         // type fullname: cloud.instance.InstanceStatusEnum
-        export type InstanceStatusEnum = "ACTIVE" | "BUILDING" | "DELETED" | "ERROR" | "HARD_REBOOT" | "PASSWORD" | "PAUSED" | "REBOOT" | "REBUILD" | "RESCUED" | "RESIZED" | "REVERT_RESIZE" | "SOFT_DELETED" | "STOPPED" | "SUSPENDED" | "UNKNOWN" | "VERIFY_RESIZE" | "MIGRATING" | "RESIZE" | "BUILD" | "SHUTOFF" | "RESCUE" | "SHELVED" | "SHELVED_OFFLOADED" | "RESCUING" | "UNRESCUING" | "SNAPSHOTTING" | "RESUMING"
+        export type InstanceStatusEnum = "ACTIVE" | "BUILDING" | "DELETED" | "DELETING" | "ERROR" | "HARD_REBOOT" | "PASSWORD" | "PAUSED" | "REBOOT" | "REBUILD" | "RESCUED" | "RESIZED" | "REVERT_RESIZE" | "SOFT_DELETED" | "STOPPED" | "SUSPENDED" | "UNKNOWN" | "VERIFY_RESIZE" | "MIGRATING" | "RESIZE" | "BUILD" | "SHUTOFF" | "RESCUE" | "SHELVED" | "SHELVED_OFFLOADED" | "RESCUING" | "UNRESCUING" | "SNAPSHOTTING" | "RESUMING"
         // interface fullName: cloud.instance.InstanceVnc.InstanceVnc
         export interface InstanceVnc {
             type: string;
@@ -909,7 +961,7 @@ export namespace cloud {
             state: cloud.kube.FlavorState;
         }
         // type fullname: cloud.kube.FlavorCategory
-        export type FlavorCategory = "c" | "g" | "t" | "b" | "r"
+        export type FlavorCategory = "c" | "g" | "t" | "b" | "r" | "i"
         // type fullname: cloud.kube.FlavorState
         export type FlavorState = "available" | "unavailable"
         // interface fullName: cloud.kube.Kubeconfig.Kubeconfig
@@ -924,6 +976,7 @@ export namespace cloud {
             instanceId?: string;
             isUpToDate: boolean;
             name?: string;
+            projectId: string;
             status: cloud.kube.NodeStatus;
             updatedAt: string;
             version: string;
@@ -1071,6 +1124,15 @@ export namespace cloud {
             volumeSnapshots: cloud.project.SnapshotsUsage;
             volumes: cloud.project.VolumesUsage;
         }
+        // type fullname: cloud.project.EligibilityAction
+        export type EligibilityAction = "addPaymentMethod" | "askIncreaseProjectsQuota" | "challengePaymentMethod" | "verifyPaypal"
+        // interface fullName: cloud.project.EligibilityInfo.EligibilityInfo
+        export interface EligibilityInfo {
+            actionsRequired?: cloud.project.EligibilityAction[];
+            minimumCredit?: orderPrice;
+            paymentMethodsAuthorized?: cloud.project.PaymentMethodAuthorized[];
+            voucher?: cloud.project.NewProjectInfoVoucher;
+        }
         // interface fullName: cloud.project.InstanceMonthlyBilling.InstanceMonthlyBilling
         export interface InstanceMonthlyBilling {
             activatedOn: string;
@@ -1127,6 +1189,8 @@ export namespace cloud {
         }
         // type fullname: cloud.project.NewProjectStatusEnum
         export type NewProjectStatusEnum = "creating" | "ok" | "validationPending" | "waitingAgreementsValidation"
+        // type fullname: cloud.project.PaymentMethodAuthorized
+        export type PaymentMethodAuthorized = "bankAccount" | "credit" | "creditCard" | "paypal"
         // interface fullName: cloud.project.ProductAgreements.ProductAgreements
         export interface ProductAgreements {
             agreementsToValidate?: number[];
@@ -1747,6 +1811,12 @@ export interface Cloud{
                 // POST /cloud/project/{serviceName}/cancel
                 $post(): Promise<void>;
             }
+            capabilities: {
+                containerRegistry: {
+                    // GET /cloud/project/{serviceName}/capabilities/containerRegistry
+                    $get(): Promise<cloud.containerRegistry.Capability[]>;
+                }
+            }
             changeContact: {
                 // POST /cloud/project/{serviceName}/changeContact
                 $post(params?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
@@ -1761,21 +1831,21 @@ export interface Cloud{
             }
             containerRegistry: {
                 // GET /cloud/project/{serviceName}/containerRegistry
-                $get(): Promise<cloud.containerRegistry.registry.Registry[]>;
+                $get(): Promise<cloud.containerRegistry.Registry[]>;
                 // POST /cloud/project/{serviceName}/containerRegistry
-                $post(params: {name: string, region: cloud.containerRegistry.registry.RegionEnum}): Promise<cloud.containerRegistry.registry.Registry>;
+                $post(params: {name: string, region: string}): Promise<cloud.containerRegistry.Registry>;
                 $(registryID: string): {
                     // DELETE /cloud/project/{serviceName}/containerRegistry/{registryID}
                     $delete(): Promise<void>;
                     // GET /cloud/project/{serviceName}/containerRegistry/{registryID}
-                    $get(): Promise<cloud.containerRegistry.registry.Registry>;
+                    $get(): Promise<cloud.containerRegistry.Registry>;
                     // PUT /cloud/project/{serviceName}/containerRegistry/{registryID}
                     $put(params: {name: string}): Promise<void>;
                     users: {
                         // GET /cloud/project/{serviceName}/containerRegistry/{registryID}/users
-                        $get(): Promise<cloud.containerRegistry.user.User[]>;
+                        $get(): Promise<cloud.containerRegistry.User[]>;
                         // POST /cloud/project/{serviceName}/containerRegistry/{registryID}/users
-                        $post(params?: {email?: string, login?: string}): Promise<cloud.containerRegistry.user.User>;
+                        $post(params?: {email?: string, login?: string}): Promise<cloud.containerRegistry.User>;
                         $(userID: string): {
                             // DELETE /cloud/project/{serviceName}/containerRegistry/{registryID}/users/{userID}
                             $delete(): Promise<void>;
@@ -2547,6 +2617,11 @@ export interface Cloud{
    */
   get(path: '/cloud/project/{serviceName}/bill'): (params: {serviceName: string, from: string, to: string}) => Promise<cloud.project.Bill[]>;
   /**
+   * 
+   * List container registry capabilities per region
+   */
+  get(path: '/cloud/project/{serviceName}/capabilities/containerRegistry'): (params: {serviceName: string}) => Promise<cloud.containerRegistry.Capability[]>;
+  /**
    * consumption operations
    * Get your project consumption
    */
@@ -2555,17 +2630,17 @@ export interface Cloud{
    * Manage registries
    * List registries of the project
    */
-  get(path: '/cloud/project/{serviceName}/containerRegistry'): (params: {serviceName: string}) => Promise<cloud.containerRegistry.registry.Registry[]>;
+  get(path: '/cloud/project/{serviceName}/containerRegistry'): (params: {serviceName: string}) => Promise<cloud.containerRegistry.Registry[]>;
   /**
    * Manage registries
    * Get the registry information
    */
-  get(path: '/cloud/project/{serviceName}/containerRegistry/{registryID}'): (params: {registryID: string, serviceName: string}) => Promise<cloud.containerRegistry.registry.Registry>;
+  get(path: '/cloud/project/{serviceName}/containerRegistry/{registryID}'): (params: {registryID: string, serviceName: string}) => Promise<cloud.containerRegistry.Registry>;
   /**
    * Manage users
    * List registry user
    */
-  get(path: '/cloud/project/{serviceName}/containerRegistry/{registryID}/users'): (params: {registryID: string, serviceName: string}) => Promise<cloud.containerRegistry.user.User[]>;
+  get(path: '/cloud/project/{serviceName}/containerRegistry/{registryID}/users'): (params: {registryID: string, serviceName: string}) => Promise<cloud.containerRegistry.User[]>;
   /**
    * List the cloud.Credit objects
    * Get your credit
@@ -3090,12 +3165,12 @@ export interface Cloud{
    * Manage registries
    * Create a new registry
    */
-  post(path: '/cloud/project/{serviceName}/containerRegistry'): (params: {serviceName: string, name: string, region: cloud.containerRegistry.registry.RegionEnum}) => Promise<cloud.containerRegistry.registry.Registry>;
+  post(path: '/cloud/project/{serviceName}/containerRegistry'): (params: {serviceName: string, name: string, region: string}) => Promise<cloud.containerRegistry.Registry>;
   /**
    * Manage users
    * Create a new registry user
    */
-  post(path: '/cloud/project/{serviceName}/containerRegistry/{registryID}/users'): (params: {registryID: string, serviceName: string, email?: string, login?: string}) => Promise<cloud.containerRegistry.user.User>;
+  post(path: '/cloud/project/{serviceName}/containerRegistry/{registryID}/users'): (params: {registryID: string, serviceName: string, email?: string, login?: string}) => Promise<cloud.containerRegistry.User>;
   /**
    * List the cloud.Credit objects
    * Add credit to your project

@@ -378,8 +378,8 @@ export interface Hosting{
                 // GET /hosting/privateDatabase/{serviceName}/oom
                 $get(): Promise<hosting.PrivateDatabase.Oom[]>;
             }
-            refresh: {
-                // POST /hosting/privateDatabase/{serviceName}/refresh
+            quotaRefresh: {
+                // POST /hosting/privateDatabase/{serviceName}/quotaRefresh
                 $post(): Promise<hosting.privateDatabase.task>;
             }
             restart: {
@@ -671,10 +671,10 @@ export interface Hosting{
    */
   post(path: '/hosting/privateDatabase/{serviceName}/generateTemporaryLogsLink'): (params: {serviceName: string}) => Promise<hosting.PrivateDatabase.TemporaryLogsLink>;
   /**
-   * refresh operations
-   * Synchronize your informations from your private database
+   * quotaRefresh operations
+   * Refresh the quota of your private database
    */
-  post(path: '/hosting/privateDatabase/{serviceName}/refresh'): (params: {serviceName: string}) => Promise<hosting.privateDatabase.task>;
+  post(path: '/hosting/privateDatabase/{serviceName}/quotaRefresh'): (params: {serviceName: string}) => Promise<hosting.privateDatabase.task>;
   /**
    * restart operations
    * Restart the private database

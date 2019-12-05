@@ -44,10 +44,12 @@ export namespace dbaas {
             clusterId: string;
             clusterType: dbaas.logs.ClusterClusterTypeEnum;
             dedicatedInputPEM: string;
+            directInputAllowedNetworks: string[];
             directInputPEM: string;
             hostname: string;
             isDefault: boolean;
             isUnlocked: boolean;
+            queryAllowedNetworks: string[];
             region: dbaas.logs.ClusterRegionEnum;
         }
         // interface fullName: dbaas.logs.ClusterAllowedNetwork.ClusterAllowedNetwork
@@ -63,6 +65,11 @@ export namespace dbaas {
         }
         // type fullname: dbaas.logs.ClusterAllowedNetworkFlowTypeEnum
         export type ClusterAllowedNetworkFlowTypeEnum = "QUERY" | "DIRECT_INPUT" | "ALL"
+        // interface fullName: dbaas.logs.ClusterAllowedNetworks.ClusterAllowedNetworks
+        export interface ClusterAllowedNetworks {
+            directInputAllowedNetworks: string[];
+            queryAllowedNetworks: string[];
+        }
         // type fullname: dbaas.logs.ClusterClusterTypeEnum
         export type ClusterClusterTypeEnum = "TRIAL" | "PRO" | "DEDICATED"
         // type fullname: dbaas.logs.ClusterRegionEnum
@@ -126,6 +133,7 @@ export namespace dbaas {
         }
         // interface fullName: dbaas.logs.Input.Input
         export interface Input {
+            allowedNetworks?: string[];
             autoSelectOption?: boolean;
             createdAt: string;
             description: string;
@@ -167,6 +175,7 @@ export namespace dbaas {
         }
         // interface fullName: dbaas.logs.InputCreation.InputCreation
         export interface InputCreation {
+            allowedNetworks?: string[];
             autoSelectOption?: boolean;
             description: string;
             engineId: string;
@@ -180,6 +189,7 @@ export namespace dbaas {
         export type InputStatusEnum = "INIT" | "PENDING" | "RUNNING" | "PROCESSING"
         // interface fullName: dbaas.logs.InputUpdate.InputUpdate
         export interface InputUpdate {
+            allowedNetworks?: string[];
             description: string;
             engineId: string;
             exposedPort?: string;
@@ -675,6 +685,8 @@ export interface Dbaas{
                 $(clusterId: string): {
                     // GET /dbaas/logs/{serviceName}/cluster/{clusterId}
                     $get(): Promise<dbaas.logs.Cluster>;
+                    // PUT /dbaas/logs/{serviceName}/cluster/{clusterId}
+                    $put(params?: {directInputAllowedNetworks?: string[], queryAllowedNetworks?: string[]}): Promise<dbaas.logs.Operation>;
                     allowedNetwork: {
                         // GET /dbaas/logs/{serviceName}/cluster/{clusterId}/allowedNetwork
                         $get(): Promise<string[]>;
@@ -693,14 +705,14 @@ export interface Dbaas{
                 // GET /dbaas/logs/{serviceName}/input
                 $get(): Promise<string[]>;
                 // POST /dbaas/logs/{serviceName}/input
-                $post(params: {autoSelectOption?: boolean, description: string, engineId: string, exposedPort?: string, optionId?: string, singleInstanceEnabled?: boolean, streamId: string, title: string}): Promise<dbaas.logs.Operation>;
+                $post(params: {allowedNetworks?: string[], autoSelectOption?: boolean, description: string, engineId: string, exposedPort?: string, optionId?: string, singleInstanceEnabled?: boolean, streamId: string, title: string}): Promise<dbaas.logs.Operation>;
                 $(inputId: string): {
                     // DELETE /dbaas/logs/{serviceName}/input/{inputId}
                     $delete(): Promise<dbaas.logs.Operation>;
                     // GET /dbaas/logs/{serviceName}/input/{inputId}
                     $get(): Promise<dbaas.logs.Input>;
                     // PUT /dbaas/logs/{serviceName}/input/{inputId}
-                    $put(params: {description: string, engineId: string, exposedPort?: string, optionId?: string, singleInstanceEnabled?: boolean, streamId: string, title: string}): Promise<dbaas.logs.Operation>;
+                    $put(params: {allowedNetworks?: string[], description: string, engineId: string, exposedPort?: string, optionId?: string, singleInstanceEnabled?: boolean, streamId: string, title: string}): Promise<dbaas.logs.Operation>;
                     action: {
                         // GET /dbaas/logs/{serviceName}/input/{inputId}/action
                         $get(): Promise<dbaas.logs.InputAction[]>;
@@ -1299,7 +1311,7 @@ export interface Dbaas{
   get(path: '/dbaas/logs/input/engine/{engineId}/helper'): (params: {engineId: string}) => Promise<string[]>;
   /**
    * Input engine helpers
-   * Returns details of specified input engine
+   * Returns details of specified input engine helper
    */
   get(path: '/dbaas/logs/input/engine/{engineId}/helper/{helperId}'): (params: {engineId: string, helperId: string}) => Promise<dbaas.logs.Helper>;
   /**
@@ -1313,10 +1325,15 @@ export interface Dbaas{
    */
   put(path: '/dbaas/logs/{serviceName}'): (params: {serviceName: string, displayName?: string, isCapped?: boolean}) => Promise<dbaas.logs.Operation>;
   /**
+   * Service Clusters
+   * Update details of an allowed cluster
+   */
+  put(path: '/dbaas/logs/{serviceName}/cluster/{clusterId}'): (params: {clusterId: string, serviceName: string, directInputAllowedNetworks?: string[], queryAllowedNetworks?: string[]}) => Promise<dbaas.logs.Operation>;
+  /**
    * Input
    * Update information of specified input object
    */
-  put(path: '/dbaas/logs/{serviceName}/input/{inputId}'): (params: {inputId: string, serviceName: string, description: string, engineId: string, exposedPort?: string, optionId?: string, singleInstanceEnabled?: boolean, streamId: string, title: string}) => Promise<dbaas.logs.Operation>;
+  put(path: '/dbaas/logs/{serviceName}/input/{inputId}'): (params: {inputId: string, serviceName: string, allowedNetworks?: string[], description: string, engineId: string, exposedPort?: string, optionId?: string, singleInstanceEnabled?: boolean, streamId: string, title: string}) => Promise<dbaas.logs.Operation>;
   /**
    * FlowggerConfiguration
    * Update the flowgger configuration
@@ -1381,7 +1398,7 @@ export interface Dbaas{
    * Inputs
    * Register a new input object
    */
-  post(path: '/dbaas/logs/{serviceName}/input'): (params: {serviceName: string, autoSelectOption?: boolean, description: string, engineId: string, exposedPort?: string, optionId?: string, singleInstanceEnabled?: boolean, streamId: string, title: string}) => Promise<dbaas.logs.Operation>;
+  post(path: '/dbaas/logs/{serviceName}/input'): (params: {serviceName: string, allowedNetworks?: string[], autoSelectOption?: boolean, description: string, engineId: string, exposedPort?: string, optionId?: string, singleInstanceEnabled?: boolean, streamId: string, title: string}) => Promise<dbaas.logs.Operation>;
   /**
    * InputAllowedNetworks
    * Allow an ip to join input

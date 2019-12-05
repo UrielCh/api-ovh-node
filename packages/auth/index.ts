@@ -6,6 +6,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 export namespace api {
     // interface fullName: api.Credential.Credential
     export interface Credential {
+        allowedIPs?: string[];
         applicationId: number;
         creation: string;
         credentialId: number;

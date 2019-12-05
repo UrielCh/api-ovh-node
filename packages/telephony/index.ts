@@ -1150,6 +1150,7 @@ export namespace telephony {
         operator: string;
         orderId: number;
         portabilityCountry: telephony.PortabilityCountryEnum;
+        rio?: string;
     }
     // type fullname: telephony.PortabilityCountryEnum
     export type PortabilityCountryEnum = "belgium" | "france" | "switzerland"

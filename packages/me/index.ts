@@ -35,6 +35,7 @@ export namespace api {
     export type ApplicationStatusEnum = "active" | "blocked" | "inactive" | "trusted"
     // interface fullName: api.Credential.Credential
     export interface Credential {
+        allowedIPs?: string[];
         applicationId: number;
         creation: string;
         credentialId: number;
@@ -872,6 +873,72 @@ export namespace me {
                     quantity: number;
                     unique_id?: string;
                 }
+            }
+        }
+    }
+    export namespace credit {
+        // interface fullName: me.credit.Balance.Balance
+        export interface Balance {
+            amount: orderPrice;
+            balanceDetails: me.credit.balance.BalanceDetails[];
+            balanceName: string;
+            booked: me.credit.balance.BookedMovement[];
+            creationDate: string;
+            expiring: me.credit.balance.ExpiringMovement[];
+            lastUpdate: string;
+            type: me.credit.balance.TypeEnum;
+        }
+        export namespace balance {
+            // interface fullName: me.credit.balance.BalanceDetails.BalanceDetails
+            export interface BalanceDetails {
+                amount: orderPrice;
+                balanceSubName?: string;
+                expiring: me.credit.balance.ExpiringMovement[];
+                serviceId?: number;
+            }
+            // interface fullName: me.credit.balance.BookedMovement.BookedMovement
+            export interface BookedMovement {
+                amount: orderPrice;
+                balanceSubName?: string;
+                orderId: number;
+            }
+            // interface fullName: me.credit.balance.ExpiringMovement.ExpiringMovement
+            export interface ExpiringMovement {
+                amount: orderPrice;
+                creationDate: string;
+                expirationDate: string;
+                lastUpdate: string;
+                sourceObject: me.credit.balance.movement.SubObject;
+            }
+            // interface fullName: me.credit.balance.Movement.Movement
+            export interface Movement {
+                amount: orderPrice;
+                balanceName: string;
+                creationDate: string;
+                expirationDate?: string;
+                lastUpdate: string;
+                movementId: number;
+                orderId?: number;
+                sourceObject: me.credit.balance.movement.SubObject;
+                type: me.credit.balance.movement.TypeEnum;
+            }
+            // type fullname: me.credit.balance.TypeEnum
+            export type TypeEnum = "PREPAID_ACCOUNT" | "VOUCHER" | "DEPOSIT" | "BONUS"
+            export namespace movement {
+                // interface fullName: me.credit.balance.movement.SubObject.SubObject
+                export interface SubObject {
+                    id: string;
+                    name: string;
+                }
+                // type fullname: me.credit.balance.movement.TypeEnum
+                export type TypeEnum = "BONUS" | "CANCEL" | "EXPIRE" | "GIFT" | "MANUAL" | "ORDER" | "REFUND" | "UNPAID" | "USE" | "VOUCHER"
+            }
+        }
+        export namespace code {
+            // interface fullName: me.credit.code.Redeem.Redeem
+            export interface Redeem {
+                inputCode: string;
+                serviceId: number;
             }
         }
     }
@@ -1748,23 +1815,23 @@ export interface Me{
     credit: {
         balance: {
             // GET /me/credit/balance
-            $get(params?: {type?: billing.credit.balance.Type}): Promise<string[]>;
+            $get(params?: {type?: me.credit.balance.TypeEnum}): Promise<string[]>;
             $(balanceName: string): {
                 // GET /me/credit/balance/{balanceName}
-                $get(): Promise<billing.credit.Balance>;
+                $get(): Promise<me.credit.Balance>;
                 movement: {
                     // GET /me/credit/balance/{balanceName}/movement
                     $get(): Promise<number[]>;
                     $(movementId: number): {
                         // GET /me/credit/balance/{balanceName}/movement/{movementId}
-                        $get(): Promise<billing.credit.balance.Movement>;
+                        $get(): Promise<me.credit.balance.Movement>;
                     };
                 }
             };
         }
         code: {
             // POST /me/credit/code
-            $post(params: {inputCode: string, serviceId?: number}): Promise<billing.credit.balance.Movement>;
+            $post(params: {inputCode: string, serviceId?: number}): Promise<me.credit.balance.Movement>;
         }
     }
     debtAccount: {
@@ -2765,25 +2832,25 @@ export interface Me{
    */
   get(path: '/me/contact/{contactId}/fields'): (params: {contactId: number}) => Promise<contact.FieldInformation[]>;
   /**
-   * Retrieve credit balance names
-   * Retrieve credit balance names
+   * Manage credit balances
+   * Retrieve all credit balances
    */
-  get(path: '/me/credit/balance'): (params?: {type?: billing.credit.balance.Type}) => Promise<string[]>;
+  get(path: '/me/credit/balance'): (params?: {type?: me.credit.balance.TypeEnum}) => Promise<string[]>;
   /**
-   * Retrieve a credit balance
+   * Manage credit balances
    * Retrieve a credit balance
    */
-  get(path: '/me/credit/balance/{balanceName}'): (params: {balanceName: string}) => Promise<billing.credit.Balance>;
+  get(path: '/me/credit/balance/{balanceName}'): (params: {balanceName: string}) => Promise<me.credit.Balance>;
   /**
-   * Retrieve movements for a specific balance
+   * Manage credit balance movements
    * Retrieve movements for a specific balance
    */
   get(path: '/me/credit/balance/{balanceName}/movement'): (params: {balanceName: string}) => Promise<number[]>;
   /**
-   * Retrieve a specific movement for a credit balance
+   * Manage credit balance movements
    * Retrieve a specific movement for a credit balance
    */
-  get(path: '/me/credit/balance/{balanceName}/movement/{movementId}'): (params: {balanceName: string, movementId: number}) => Promise<billing.credit.balance.Movement>;
+  get(path: '/me/credit/balance/{balanceName}/movement/{movementId}'): (params: {balanceName: string, movementId: number}) => Promise<me.credit.balance.Movement>;
   /**
    * Debt balance of the account
    * Get this object properties
@@ -3660,10 +3727,10 @@ export interface Me{
    */
   post(path: '/me/contact'): (params: {address: contact.Address, birthCity?: string, birthCountry?: nichandle.CountryEnum, birthDay?: string, birthZip?: string, cellPhone?: string, companyNationalIdentificationNumber?: string, email: string, fax?: string, firstName: string, gender?: nichandle.GenderEnum, language: nichandle.LanguageEnum, lastName: string, legalForm: nichandle.LegalFormEnum, nationalIdentificationNumber?: string, nationality?: nichandle.CountryEnum, organisationName?: string, organisationType?: string, phone: string, vat?: string}) => Promise<contact.Contact>;
   /**
-   * Validate a code to generate associated credit
+   * Validate a code to generate associated credit movement
    * Validate a code to generate associated credit movement
    */
-  post(path: '/me/credit/code'): (params: {inputCode: string, serviceId?: number}) => Promise<billing.credit.balance.Movement>;
+  post(path: '/me/credit/code'): (params: {inputCode: string, serviceId?: number}) => Promise<me.credit.balance.Movement>;
   /**
    * pay operations
    * Create an order in order to pay this order's debt

@@ -57,6 +57,7 @@ export namespace msServices {
         litigation: boolean;
         litigationPeriod?: number;
         mailingFilter?: msServices.MailingFilterEnum[];
+        numberOfAliases: number;
         outlookLicense: boolean;
         owaLimited: boolean;
         primaryEmailAddress: string;
@@ -303,7 +304,7 @@ export interface MsServices{
                     // GET /msServices/{serviceName}/account/{userPrincipalName}/exchange
                     $get(): Promise<msServices.ExchangeInformation>;
                     // PUT /msServices/{serviceName}/account/{userPrincipalName}/exchange
-                    $put(params?: {accountLicense?: msServices.ExchangeLicenceEnum, configured?: boolean, creationDate?: string, currentUsage?: number, deleteAtExpiration?: boolean, deleteOutlookAtExpiration?: boolean, exchangeGuid?: string, expirationDate?: string, expirationOutlookDate?: string, hiddenFromGAL?: boolean, id?: number, litigation?: boolean, litigationPeriod?: number, mailingFilter?: msServices.MailingFilterEnum[], outlookLicense?: boolean, owaLimited?: boolean, primaryEmailAddress?: string, quota?: number, renewOutlookPeriod?: msServices.RenewPeriodEnum, renewPeriod?: msServices.RenewPeriodEnum, spamAndVirusConfiguration?: msServices.SpamAndVirusConfiguration, spamDetected?: boolean, spamTicketNumber?: number, state?: msServices.ObjectStateEnum, taskPendingId?: number}): Promise<void>;
+                    $put(params?: {accountLicense?: msServices.ExchangeLicenceEnum, configured?: boolean, creationDate?: string, currentUsage?: number, deleteAtExpiration?: boolean, deleteOutlookAtExpiration?: boolean, exchangeGuid?: string, expirationDate?: string, expirationOutlookDate?: string, hiddenFromGAL?: boolean, id?: number, litigation?: boolean, litigationPeriod?: number, mailingFilter?: msServices.MailingFilterEnum[], numberOfAliases?: number, outlookLicense?: boolean, owaLimited?: boolean, primaryEmailAddress?: string, quota?: number, renewOutlookPeriod?: msServices.RenewPeriodEnum, renewPeriod?: msServices.RenewPeriodEnum, spamAndVirusConfiguration?: msServices.SpamAndVirusConfiguration, spamDetected?: boolean, spamTicketNumber?: number, state?: msServices.ObjectStateEnum, taskPendingId?: number}): Promise<void>;
                     configure: {
                         // POST /msServices/{serviceName}/account/{userPrincipalName}/exchange/configure
                         $post(): Promise<msServices.exchangeTask>;
@@ -600,7 +601,7 @@ export interface MsServices{
    * Exchange mailbox information
    * Alter this object properties
    */
-  put(path: '/msServices/{serviceName}/account/{userPrincipalName}/exchange'): (params: {serviceName: string, userPrincipalName: string, accountLicense?: msServices.ExchangeLicenceEnum, configured?: boolean, creationDate?: string, currentUsage?: number, deleteAtExpiration?: boolean, deleteOutlookAtExpiration?: boolean, exchangeGuid?: string, expirationDate?: string, expirationOutlookDate?: string, hiddenFromGAL?: boolean, id?: number, litigation?: boolean, litigationPeriod?: number, mailingFilter?: msServices.MailingFilterEnum[], outlookLicense?: boolean, owaLimited?: boolean, primaryEmailAddress?: string, quota?: number, renewOutlookPeriod?: msServices.RenewPeriodEnum, renewPeriod?: msServices.RenewPeriodEnum, spamAndVirusConfiguration?: msServices.SpamAndVirusConfiguration, spamDetected?: boolean, spamTicketNumber?: number, state?: msServices.ObjectStateEnum, taskPendingId?: number}) => Promise<void>;
+  put(path: '/msServices/{serviceName}/account/{userPrincipalName}/exchange'): (params: {serviceName: string, userPrincipalName: string, accountLicense?: msServices.ExchangeLicenceEnum, configured?: boolean, creationDate?: string, currentUsage?: number, deleteAtExpiration?: boolean, deleteOutlookAtExpiration?: boolean, exchangeGuid?: string, expirationDate?: string, expirationOutlookDate?: string, hiddenFromGAL?: boolean, id?: number, litigation?: boolean, litigationPeriod?: number, mailingFilter?: msServices.MailingFilterEnum[], numberOfAliases?: number, outlookLicense?: boolean, owaLimited?: boolean, primaryEmailAddress?: string, quota?: number, renewOutlookPeriod?: msServices.RenewPeriodEnum, renewPeriod?: msServices.RenewPeriodEnum, spamAndVirusConfiguration?: msServices.SpamAndVirusConfiguration, spamDetected?: boolean, spamTicketNumber?: number, state?: msServices.ObjectStateEnum, taskPendingId?: number}) => Promise<void>;
   /**
    * Sharepoint account information
    * Alter this object properties
