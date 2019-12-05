@@ -1,5 +1,5 @@
 {
-    "name": "@ovh-kimsufi-ca`/price",
+    "name": "@ovh-kimsufi-ca/price",
     "description": "Add typing to to ovh api price",
     "version": "2.0.0",
     "typings": "index.d.ts",

@@ -14,7 +14,7 @@ export const endpoints: { [key: string]: IEndpoint } = {
     'soyoustart-eu': { host: 'eu.api.soyoustart.com', directory: 'soyoustart', namespace: 'ovh-soyoustart', port: 443 },
     'soyoustart-ca': { host: 'ca.api.soyoustart.com', directory: 'soyoustart-ca', namespace: 'ovh-soyoustart-ca', port: 443 },
     'kimsufi-eu': { host: 'eu.api.kimsufi.com', directory: 'kimsufi', namespace: 'ovh-kimsufi', port: 443 },
-    'kimsufi-ca': { host: 'ca.api.kimsufi.com', directory: 'kimsufi-ca', namespace: 'ovh-kimsufi-ca`', port: 443 },
+    'kimsufi-ca': { host: 'ca.api.kimsufi.com', directory: 'kimsufi-ca', namespace: 'ovh-kimsufi-ca', port: 443 },
 };
 
 // export { endpoints }
