@@ -33,12 +33,6 @@ export declare namespace order {
 }
 export declare namespace pack {
     namespace xdsl {
-        interface AsyncTask<T> {
-            error?: string;
-            result?: T;
-            status: pack.xdsl.AsyncTaskStatusEnum;
-        }
-        type AsyncTaskStatusEnum = "error" | "ok" | "pending";
         type DomainActionEnum = "create" | "trade" | "transfer";
         interface ExchangeAccountService {
             domain: string;
@@ -307,6 +301,12 @@ export declare namespace services {
     }
 }
 export declare namespace xdsl {
+    interface AsyncTask<T> {
+        error?: string;
+        result?: T;
+        status: xdsl.AsyncTaskStatusEnum;
+    }
+    type AsyncTaskStatusEnum = "error" | "ok" | "pending";
     type DeconsolidationEnum = "createNeighbour" | "creation" | "creationNeighbour" | "partial" | "total";
     type DslTypeEnum = "adsl" | "ftth" | "sdsl" | "vdsl";
     interface LineSectionLength {
@@ -393,7 +393,7 @@ export default proxyPackXdsl;
                     $post(params?: {
                         address?: xdsleligibilityAddress;
                         lineNumber?: string;
-                    }): Promise<pack.xdsl.AsyncTask<pack.xdsl.addressMove.Eligibility>>;
+                    }): Promise<xdsl.AsyncTask<pack.xdsl.addressMove.Eligibility>>;
                 };
                 move: {
                     $post(params: {
@@ -403,7 +403,7 @@ export default proxyPackXdsl;
                         moveOutDate?: string;
                         offerCode: string;
                         provider?: xdsleligibilityProviderEnum;
-                    }): Promise<pack.xdsl.AsyncTask<number>>;
+                    }): Promise<xdsl.AsyncTask<number>>;
                 };
                 moveFtth: {
                     $post(params: {
@@ -413,7 +413,7 @@ export default proxyPackXdsl;
                         otp: boolean;
                         otpReference?: string;
                         stair: string;
-                    }): Promise<pack.xdsl.AsyncTask<number>>;
+                    }): Promise<xdsl.AsyncTask<number>>;
                 };
                 moveOffer: {
                     $post(params: {
@@ -433,12 +433,12 @@ export default proxyPackXdsl;
                         productCode: string;
                         stair: string;
                         subServicesToDelete?: pack.xdsl.migration.OfferServiceToDelete[];
-                    }): Promise<pack.xdsl.AsyncTask<number>>;
+                    }): Promise<xdsl.AsyncTask<number>>;
                 };
                 offers: {
                     $post(params: {
                         eligibilityReference: string;
-                    }): Promise<pack.xdsl.AsyncTask<pack.xdsl.addressMove.MoveOfferResponse>>;
+                    }): Promise<xdsl.AsyncTask<pack.xdsl.addressMove.MoveOfferResponse>>;
                 };
             };
             canCancelResiliation: {
@@ -565,7 +565,7 @@ export default proxyPackXdsl;
                     $(domain: string): {
                         $get(): Promise<pack.xdsl.Hubic>;
                         details: {
-                            $get(): Promise<pack.xdsl.AsyncTask<xdsl.hubic.HubicDetailsResponse>>;
+                            $get(): Promise<xdsl.AsyncTask<xdsl.hubic.HubicDetailsResponse>>;
                         };
                     };
                 };
@@ -588,7 +588,7 @@ export default proxyPackXdsl;
                     }): Promise<pack.xdsl.Task>;
                 };
                 offers: {
-                    $post(): Promise<pack.xdsl.AsyncTask<pack.xdsl.migration.MigrationOfferResponse>>;
+                    $post(): Promise<xdsl.AsyncTask<pack.xdsl.migration.MigrationOfferResponse>>;
                 };
                 servicesToDelete: {
                     $post(params: {
@@ -906,7 +906,7 @@ export default proxyPackXdsl;
     get(path: '/pack/xdsl/{packName}/hubic/services/{domain}/details'): (params: {
         domain: string;
         packName: string;
-    }) => Promise<pack.xdsl.AsyncTask<xdsl.hubic.HubicDetailsResponse>>;
+    }) => Promise<xdsl.AsyncTask<xdsl.hubic.HubicDetailsResponse>>;
     /**
      * capabilities operations
      * Get informations about the promotion code generation
@@ -1122,7 +1122,7 @@ export default proxyPackXdsl;
         packName: string;
         address?: xdsleligibilityAddress;
         lineNumber?: string;
-    }) => Promise<pack.xdsl.AsyncTask<pack.xdsl.addressMove.Eligibility>>;
+    }) => Promise<xdsl.AsyncTask<pack.xdsl.addressMove.Eligibility>>;
     /**
      * move operations
      * Move the Xdsl access to another address
@@ -1135,7 +1135,7 @@ export default proxyPackXdsl;
         moveOutDate?: string;
         offerCode: string;
         provider?: xdsleligibilityProviderEnum;
-    }) => Promise<pack.xdsl.AsyncTask<number>>;
+    }) => Promise<xdsl.AsyncTask<number>>;
     /**
      * moveFtth operations
      * Move the FTTH access to another address
@@ -1148,7 +1148,7 @@ export default proxyPackXdsl;
         otp: boolean;
         otpReference?: string;
         stair: string;
-    }) => Promise<pack.xdsl.AsyncTask<number>>;
+    }) => Promise<xdsl.AsyncTask<number>>;
     /**
      * moveOffer operations
      * Move the access to another address
@@ -1171,7 +1171,7 @@ export default proxyPackXdsl;
         productCode: string;
         stair: string;
         subServicesToDelete?: pack.xdsl.migration.OfferServiceToDelete[];
-    }) => Promise<pack.xdsl.AsyncTask<number>>;
+    }) => Promise<xdsl.AsyncTask<number>>;
     /**
      * offers operations
      * Get the possibilities of address move offers available
@@ -1179,7 +1179,7 @@ export default proxyPackXdsl;
     post(path: '/pack/xdsl/{packName}/addressMove/offers'): (params: {
         packName: string;
         eligibilityReference: string;
-    }) => Promise<pack.xdsl.AsyncTask<pack.xdsl.addressMove.MoveOfferResponse>>;
+    }) => Promise<xdsl.AsyncTask<pack.xdsl.addressMove.MoveOfferResponse>>;
     /**
      * cancelResiliation operations
      * Cancel the ongoing resiliation
@@ -1274,7 +1274,7 @@ export default proxyPackXdsl;
      */
     post(path: '/pack/xdsl/{packName}/migration/offers'): (params: {
         packName: string;
-    }) => Promise<pack.xdsl.AsyncTask<pack.xdsl.migration.MigrationOfferResponse>>;
+    }) => Promise<xdsl.AsyncTask<pack.xdsl.migration.MigrationOfferResponse>>;
     /**
      * servicesToDelete operations
      * Calculate services to delete with new offer and options

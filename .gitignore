@@ -9,9 +9,15 @@ code/gen/src/*.js
 code/gen/src/*.d.ts
 code/gen/dist/
 code/common/dist/
-packages/**/index.d.ts
-packages/**/index.js
-packages/**/index.js.map
+packages-*/**/index.d.ts
+packages-*/**/index.js
+packages-*/**/index.js.map
+kimsufi-*/**/index.d.ts
+kimsufi-*/**/index.js
+kimsufi-*/**/index.js.map
+soyoustart-*/**/index.d.ts
+soyoustart-*/**/index.js
+soyoustart-*/**/index.js.map
 tokenTest.json
 code/gen/src/*.js.map
 code/gen/*.js.map
@@ -30,3 +36,5 @@ samples/ovh-delete-service/delete.txt
 samples/ovh-delete-service/src/*.map
 samples/ovh-delete-service/src/*.d.ts
 samples/ovh-delete-service/src/*.js
+
+package-lock.json

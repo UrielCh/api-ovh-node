@@ -1,12 +1,8 @@
 {
   "packages": [
-    "packages-eu/*",
-    "packages-us/*",
-    "packages-ca/*",
-    "kimsufi-ca/*",
-    "kimsufi/*",
-    "soyoustart/*",
-    "soyoustart-ca/*"
+    "packages-*/*",
+    "kimsufi-*/*",
+    "soyoustart-*/*"
   ],
   "version": "2.0.11",
   "npmClient": "yarn",
