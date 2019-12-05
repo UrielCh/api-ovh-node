@@ -26,8 +26,12 @@
     "url": "git+https://github.com/UrielCh/api-ovh-node.git"
   },
   "scripts": {
-    "clean": "rimraf ./packages/*/src ./packages/*/dist ./packages/*/yarn-error.log ./packages/*/index.d.ts ./packages/*/index.js ./code/*/index.d.ts ./code/*/index.js",
-    "clean2": "lerna clean -y",
+    "clean": "yarn run clean0 && yarn run clean1 && yarn run clean2 && yarn run clean3 && yarn run clean4",
+    "clean0": "rimraf ./code/*/index.d.ts ./code/*/index.js",
+    "clean1": "rimraf ./packages-*/*/yarn-error.log ./packages-*/*/index.d.ts   ./packages-*/*/index.js ./code/*/index.d.ts ./code/*/index.js",
+    "clean2": "rimraf ./kimsufi-*/yarn-error.log    ./kimsufi-*/*/index.d.ts    ./kimsufi-*/*/index.js",
+    "clean3": "rimraf ./soyoustart-*/yarn-error.log ./soyoustart-*/*/index.d.ts ./soyoustart-*/*/index.js",
+    "clean4": "lerna clean -y",
     "bootstrap": "lerna bootstrap",
     "build": "lerna run build",
     "publish": "lerna clean -y && lerna bootstrap && lerna run build && lerna publish",
