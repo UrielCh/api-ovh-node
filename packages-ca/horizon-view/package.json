@@ -1,0 +1,24 @@
+{
+    "name": "@ovh-api-ca/horizon-view",
+    "description": "Add typing to to ovh api horizon-view",
+    "version": "2.0.0",
+    "typings": "index.d.ts",
+    "license": "MIT",
+    "author": "Uriel Chemouni <uchemouni@gmail.com>",
+    "dependencies": {
+        "@ovh-api/common": "^1.3.0"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "bugs": "https://github.com/UrielCh/api-ovh-node/issues",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/UrielCh/api-ovh-node.git"
+    },
+    "scripts": {
+        "run": "ts-node src/index.ts",
+        "build": "tsc",
+        "build:watch": "tsc --watch"
+    }
+}

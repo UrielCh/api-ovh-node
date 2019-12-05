@@ -1,4 +1,4 @@
-import GenApiTypes, { CacheApi, CacheModel, filterReservedKw } from './GenApiTypes';
+import GenApiTypes, { CacheApi, CacheModel, filterReservedKw, OvhParams } from './GenApiTypes';
 import { indentGen, protectModelField, className, protectJsonKey, rawRemapNode, formatUpperCamlCase, protectHarmonyField } from './utils';
 import { Parameter, Schema, FieldProp, API } from './schema';
 import { EOL } from 'os';
@@ -9,13 +9,18 @@ export class CodeGenerator {
     schema?: Schema;
     NSCollision: { [key: string]: string } = {};
 
-    constructor(api: string) {
+    constructor(ovhParam: OvhParams, api: string) {
         this.api = api;
-        this.gen = new GenApiTypes();
+        this.gen = new GenApiTypes(ovhParam);
+    }
+
+    async loadSchema(): Promise<any> {
+        this.schema = await this.gen.loadSchema(`${this.api}.json`)
     }
 
     async generate(): Promise<string> {
-        this.schema = await this.gen.loadSchema(`${this.api}.json`)
+        if (!this.schema)
+            await this.loadSchema();
         // start generation
         let code = `import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';${EOL}${EOL}/**${EOL} * START API ${this.api} Models${EOL} */${EOL}`;
 
@@ -79,7 +84,7 @@ export class CodeGenerator {
         return filterReservedKw(type);
     }
 
-    reservedField = new Set(['_alias', '_model', '_name', '__propo__', '_namespace', '_parent'])
+    private reservedField = new Set(['_alias', '_model', '_name', '__propo__', '_namespace', '_parent'])
 
     /**
      * @param depth 

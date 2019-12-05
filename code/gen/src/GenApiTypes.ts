@@ -40,7 +40,7 @@ let loadJson = (options: https.RequestOptions): Promise<any> => {
                 .on('end', () => {
                     if (res.statusCode !== 200) {
                         return reject(
-                            Error(`[OVH] Unable to load schema ${options.path}, HTTP response code: ${res.statusCode}`));
+                            Error(`[OVH] Unable to load schema https://${options.host}:${options.port}${options.path}, HTTP response code: ${res.statusCode}`));
                     }
                     try {
                         return resolve(JSON.parse(body));
