@@ -105,7 +105,6 @@ async function genRegion(endpoint: IEndpoint) {
                     "url": "git+https://github.com/UrielCh/api-ovh-node.git"
                 },
                 "scripts": {
-                    "run": "ts-node src/index.ts",
                     "build": "tsc",
                     "build:watch": "tsc --watch"
                 },
