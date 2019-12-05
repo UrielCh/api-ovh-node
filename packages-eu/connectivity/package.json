@@ -1,7 +1,7 @@
 {
     "name": "@ovh-api/connectivity",
     "description": "Add typing to to ovh api connectivity",
-    "version": "2.0.11",
+    "version": "2.0.12",
     "typings": "index.d.ts",
     "license": "MIT",
     "author": "Uriel Chemouni <uchemouni@gmail.com>",

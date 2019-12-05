@@ -1,7 +1,7 @@
 {
     "name": "@ovh-api/saas-csp2",
     "description": "Add typing to to ovh api saas-csp2",
-    "version": "2.0.7",
+    "version": "2.0.12",
     "typings": "index.d.ts",
     "license": "MIT",
     "author": "Uriel Chemouni <uchemouni@gmail.com>",

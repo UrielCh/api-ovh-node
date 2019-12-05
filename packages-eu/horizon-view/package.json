@@ -1,7 +1,7 @@
 {
     "name": "@ovh-api/horizon-view",
     "description": "Add typing to to ovh api horizon-view",
-    "version": "2.0.7",
+    "version": "2.0.12",
     "typings": "index.d.ts",
     "license": "MIT",
     "author": "Uriel Chemouni <uchemouni@gmail.com>",
