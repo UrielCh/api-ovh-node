@@ -1,6 +1,6 @@
 {
   "packages": [
-    "packages/*",
+    "packages-eu/*",
     "packages-us/*",
     "packages-ca/*",
     "kimsufi-ca/*",
