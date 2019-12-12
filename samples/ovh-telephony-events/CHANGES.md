@@ -1,5 +1,9 @@
 # Changelog
 
+## verion 1.3.5
+
+- add date in Warning and Error messages.
+
 ## verion 1.3.4
 
 - remove extra reference.
