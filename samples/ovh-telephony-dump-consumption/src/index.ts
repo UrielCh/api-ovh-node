@@ -7,6 +7,7 @@ import { StoreMysql } from "./StoreMysql";
 import { ConnectionOptions } from "typeorm";
 import { importAll } from "./importer";
 import { statAll } from './stats';
+const { version } = require('../package.json');
 
 Bluebird.config({ 
   warnings: true,
@@ -14,7 +15,7 @@ Bluebird.config({
 });
 
 program
-  .version('1.0.0')
+  .version(version)
   .parse(process.argv)
 
 async function main() {

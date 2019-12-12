@@ -4,8 +4,10 @@ import program from 'commander'
 import Bluebird from 'bluebird';
 import fse from 'fs-extra';
 
+const { version } = require('../package.json');
+
 program
-  .version('1.0.0')
+  .version(version)
   .parse(process.argv)
 
 async function main() {

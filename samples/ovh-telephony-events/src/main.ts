@@ -4,13 +4,17 @@ import { createHandyClient, IHandyRedis } from 'handy-redis';
 import { OvhEventListenerV1 } from './OvhEventListenerV1';
 import { OvhEventListenerV2 } from './OvhEventListenerV2';
 import { OvhEventTokenImporter } from './OvhEventTokenImporter';
+import fetch from "node-fetch";
 import debounce from 'debounce';
 import fse from 'fs-extra';
+import kleur from 'kleur';
+
+const { name, version } = require('../package.json');
 
 // sample exec line:
 // ts-node main.ts --redis-host 127.0.0.1 --cache tokens.json --channel event-voip
 program
-    .version('1.0.0')
+    .version(version)
     .option('--reset', 'reset all tokens')
     .option('--redis-host <host>', 'store Even in Redis')
     .option('--redis-port <port>', 'use non standatd port')
@@ -37,6 +41,33 @@ export function myDebounce(
 }
 
 async function main() {
+    const versionQuery = fetch(`http://registry.npmjs.com/-/v1/search?text=${name}&size=1`);
+    versionQuery.then(response => {
+        response.json().then((data) => {
+            if (data && data.objects && data.objects.length) {
+                const npmVersion = data.objects[0].package.version as string;
+                const vnpm = npmVersion.split('.')
+                const vlocal = version.split('.');
+                if (vnpm.length != vlocal.length) {
+                    console.error(`failed to test version. ${npmVersion} Vs ${version}`);
+                    console.error(`npm install -g ${name}@${npmVersion}`);
+                    console.error('');
+                    return;
+                }
+                for (let i = 0; i < vnpm.length; i++ ) {
+                    const local = Number.parseInt(vlocal[i]);
+                    const npm = Number.parseInt(vnpm[i]);
+                    if (local == npm)
+                        continue;
+                    if (local > npm) {
+                        console.log(`Developpement version ${kleur.bold().magenta(version)} not released yet`);
+                        return;
+                    }
+                    console.log(`this version (${kleur.bold().red(version)}) is outdated consider upgrading latest (${kleur.bold().green(npmVersion)}).`);
+                }
+            }
+        }, () => { })
+    }, () => { });
     if (program['reset']) {
         if (program.cache) {
             console.log(`Try to deleting old token file ${program.cache}`);
@@ -61,16 +92,18 @@ async function main() {
     else
         listener = new OvhEventListenerV2(tokens);
 
-    let channel = program.channel || 'event-voip';
-
+    if (!program.channel) {
+        program.channel = 'event-voip';
+        console.log(`--channel not provided, using default '${program.channel}'`);
+    }
     if (redis)
-        listener.redis(redis, channel)
+        listener.redis(redis, program.channel)
 
     let nbEvent = 0;
 
     const log = () => {
         const now = new Date();
-        console.log(`${now.toISOString()} Send ${nbEvent} event to ${channel}`);
+        console.log(`${now.toISOString()} Send ${nbEvent} event to ${program.channel}`);
         nbEvent = 0;
         // fromtime = 0;
     };
