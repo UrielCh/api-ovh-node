@@ -1,6 +1,10 @@
 import { EOL } from 'os'
 import fse from 'fs-extra'
-import ApiMe, { nichandle, billing } from '@ovh-api/me'
+import * as eu from '@ovh-api/me'
+import * as us from '@ovh-api-us/me'
+import * as ca from '@ovh-api-ca/me'
+import { nichandle, billing } from '@ovh-api/me';
+
 import Ovh, { OvhParams } from '@ovh-api/api'
 import path from 'path'
 import fetch from 'node-fetch'
@@ -14,6 +18,7 @@ program
   .option('-u, --utc', 'use UTC times, by defaut use localhost timezone')
   .option('-d, --dest <path>', 'destination directory')
   .option('-s, --split <type>', 'hierarchy model year/month/none default is month', /^(month|year|none)$/i, 'month')
+  .option('-a, --api <type>', 'api country you want to use supported ones: eu/us/ca', /^(eu|us|ca)$/i, 'eu')
   .option('-c, --concurrency <number>', 'max concurent download', /^[0-9]+$/)
   .option('--token <tokenfile>', 'save and reuse the certificat by storing them in a file')
   .parse(process.argv)
@@ -69,8 +74,28 @@ async function main(root: string, type: 'pdf' | 'html') {
       program.token = null
     }
   } catch (e) { console.error(e) }
+
+  if (program.a == 'us') {
+    param.endpoint = 'ovh-us';
+    // need param.appKey;
+    // need param.appSecret;
+  } else if (program.a == 'ca') {
+    param.endpoint = 'ovh-ca';
+    // need param.appKey;
+    // need param.appSecret;
+  }
+
   let ovh = new Ovh(param)
-  const apiMe = ApiMe(ovh)
+  let apiMe: eu.Me | us.Me | ca.Me;
+
+  if (program.a == 'us') {
+    apiMe = us.proxyMe(ovh)
+  } else if (program.a == 'ca') {
+    apiMe = ca.proxyMe(ovh)
+  } else {
+    apiMe = eu.proxyMe(ovh)
+  }
+
   const me: nichandle.Nichandle = await apiMe.get('/me')()
   if (program.token) {
     console.log(`Saving generarted token for next time in ${program.token}`)

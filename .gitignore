@@ -32,7 +32,7 @@ code/common/*.js
 packages/*/package-lock.json
 *Token*.json
 *token*.json
-samples/ovh-delete-service/delete.txt
+samples/ovh-delete-service/*.txt
 samples/ovh-delete-service/src/*.map
 samples/ovh-delete-service/src/*.d.ts
 samples/ovh-delete-service/src/*.js
