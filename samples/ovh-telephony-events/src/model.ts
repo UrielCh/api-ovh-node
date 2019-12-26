@@ -42,6 +42,14 @@ export interface VoipEventV1 {
 
 export type IVoipEvent = IVoipEventQueues | IVoipEventSip;
 
+export interface ErrorEvent {
+    timestamp?: number;
+    groups: string;
+    url: string;
+    status: number;
+    statusText: string;
+}
+
 export interface IVoipEventQueues {
     event: QueueEvent;
     token: string;

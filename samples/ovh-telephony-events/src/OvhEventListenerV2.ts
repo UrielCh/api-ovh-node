@@ -1,5 +1,5 @@
 import { EventEmitter } from "events";
-import { IOvhEventListener, IEvToken, IVoipEvent } from "./model";
+import { IOvhEventListener, IEvToken, IVoipEvent, ErrorEvent } from "./model";
 import { IHandyRedis } from "handy-redis";
 import fetch from "node-fetch";
 import debounce from 'debounce';
@@ -28,7 +28,7 @@ function parseVerbose(text: string, source: string): any {
     } catch (e) {
         if (text.length > 200)
             text = text.substring(0, 198) + '...';
-        const error = `source:${source}Failed to parse ${text}`;
+        const error = `source:${source} Failed to parse ${text}`;
         console.log(error);
         throw Error(error);
     }
@@ -38,6 +38,7 @@ export class OvhEventListenerV2 extends EventEmitter implements IOvhEventListene
     private _redis: IHandyRedis | null;
     private tokens: IEvToken[];
     private channel: string;
+    private logError = debounce(console.error, 1000, true);
 
     constructor(tokens: IEvToken[]) {
         super();
@@ -53,7 +54,6 @@ export class OvhEventListenerV2 extends EventEmitter implements IOvhEventListene
     }
 
     public async listen() {
-        const logError = debounce(console.error, 1000, true);
 
         return new Promise(async (resolve) => {
             let groups2: IEvTokenGroup[] = [];
@@ -70,23 +70,33 @@ export class OvhEventListenerV2 extends EventEmitter implements IOvhEventListene
             for (const group of groups2) {
                 const method = 'POST';
                 const urlSes = 'https://events.voip.ovh.net/v2/session';
-                const response = await fetch(urlSes, { method, headers })
-                const text = await response.text();
+                let text = '';
+                while (true) {
+                    const response = await fetch(urlSes, { method, headers })
+                    if (response.status === 200) {
+                        text = await response.text();
+                        break;
+                    }
+                    await this.handleError({
+                        groups: group.groups.map(g => g.billingAccount).join(','),
+                        url: urlSes,
+                        status: response.status,
+                        statusText: response.statusText
+                    });
+                }
+
                 const session: EventSession = parseVerbose(text, urlSes);
                 group.session = session.id;
                 for (const g2 of group.groups) {
                     const url = `https://events.voip.ovh.net/v2/session/${group.session}/subscribe/${g2.token}`;
                     const response = await fetch(url, { method, headers })
-                    const status = response.status;
-                    if (status !== 200) {
-                        const status = response.status;
-                        const statusText = response.statusText;
-                        const message = { groups: group.groups.map(g=>g.billingAccount).join(','), url, status, statusText };
-                        this.emit('error', message);
-                        if (this._redis) {
-                            await this._redis.publish(this.channel, JSON.stringify(message));
-                        }
-                        await bluebird.delay(200);
+                    if (response.status !== 200) {
+                        await this.handleError({
+                            groups: group.groups.map(g => g.billingAccount).join(','),
+                            url,
+                            status: response.status,
+                            statusText: response.statusText
+                        });
                     } else {
                         let resp = await response.text();
                         if (resp !== `Successfully subscribed on token ${g2.token}`) {
@@ -102,16 +112,13 @@ export class OvhEventListenerV2 extends EventEmitter implements IOvhEventListene
                 while (true) {
                     try {
                         const response = await fetch(url, { method: 'GET', headers })
-                        const status = response.status;
-                        if (status !== 200) {
-                            const statusText = response.statusText;
-                            const message = JSON.stringify({ groups: group.groups.map(g=>g.billingAccount).join(','), url, status, statusText });
-                            logError(`OVH is down ${message}`);
-                            this.emit('error', Error(message));
-                            if (this._redis) {
-                                await this._redis.publish(this.channel, JSON.stringify(message));
-                            }
-                            await bluebird.delay(200);
+                        if (response.status !== 200) {
+                            await this.handleError({
+                                groups: group.groups.map(g => g.billingAccount).join(','),
+                                url,
+                                status: response.status,
+                                statusText: response.statusText
+                            });
                         } else {
                             const text = await response.text();
                             const events: IVoipEvent[] = parseVerbose(text, url);
@@ -138,5 +145,14 @@ export class OvhEventListenerV2 extends EventEmitter implements IOvhEventListene
             })
             await Promise.all(listen); // useless for now
         })
+    }
+    private async handleError(message: ErrorEvent) {
+        const text = JSON.stringify(message)
+        this.logError(`OVH is down ${text}`);
+        this.emit('error', Error(text));
+        if (this._redis) {
+            await this._redis.publish(this.channel, text);
+        }
+        await bluebird.delay(200);
     }
 }

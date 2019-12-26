@@ -1,5 +1,9 @@
 # Changelog
 
+## verion 1.4.1
+
+- improve error support.
+
 ## verion 1.4.0
 
 - improve error handeling.
