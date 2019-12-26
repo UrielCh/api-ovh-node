@@ -2,6 +2,8 @@ import { EventEmitter } from "events";
 import { IOvhEventListener, IEvToken, IVoipEvent } from "./model";
 import { IHandyRedis } from "handy-redis";
 import fetch from "node-fetch";
+import debounce from 'debounce';
+import bluebird from 'bluebird';
 
 const headers = { 'Content-Type': 'application/json', 'Accept': 'text/plain' };
 
@@ -20,10 +22,23 @@ interface EventSession {
     lastConnection: string, //"2019-06-07T11:40:16.036199867+02:00"
 }
 
+function parseVerbose(text: string, source: string): any {
+    try {
+        return JSON.parse(text);
+    } catch (e) {
+        if (text.length > 200)
+            text = text.substring(0, 198) + '...';
+        const error = `source:${source}Failed to parse ${text}`;
+        console.log(error);
+        throw Error(error);
+    }
+}
+
 export class OvhEventListenerV2 extends EventEmitter implements IOvhEventListener {
     private _redis: IHandyRedis | null;
     private tokens: IEvToken[];
     private channel: string;
+
     constructor(tokens: IEvToken[]) {
         super();
         this._redis = null
@@ -38,6 +53,8 @@ export class OvhEventListenerV2 extends EventEmitter implements IOvhEventListene
     }
 
     public async listen() {
+        const logError = debounce(console.error, 1000, true);
+
         return new Promise(async (resolve) => {
             let groups2: IEvTokenGroup[] = [];
             groups2.push({ groups: [], session: '' });
@@ -52,15 +69,29 @@ export class OvhEventListenerV2 extends EventEmitter implements IOvhEventListene
             console.log(`${this.tokens.length} billingGroups grouped as ${groups2.length} groups`)
             for (const group of groups2) {
                 const method = 'POST';
-                const response = await fetch('https://events.voip.ovh.net/v2/session', { method, headers })
-                const session: EventSession = await response.json();
+                const urlSes = 'https://events.voip.ovh.net/v2/session';
+                const response = await fetch(urlSes, { method, headers })
+                const text = await response.text();
+                const session: EventSession = parseVerbose(text, urlSes);
                 group.session = session.id;
                 for (const g2 of group.groups) {
                     const url = `https://events.voip.ovh.net/v2/session/${group.session}/subscribe/${g2.token}`;
                     const response = await fetch(url, { method, headers })
-                    let resp = await response.text();
-                    if (resp !== `Successfully subscribed on token ${g2.token}`) {
-                        console.error('unexpected response from events.voip.ovh.net/v2/session:' + resp);
+                    const status = response.status;
+                    if (status !== 200) {
+                        const status = response.status;
+                        const statusText = response.statusText;
+                        const message = { groups: group.groups.map(g=>g.billingAccount).join(','), url, status, statusText };
+                        this.emit('error', message);
+                        if (this._redis) {
+                            await this._redis.publish(this.channel, JSON.stringify(message));
+                        }
+                        await bluebird.delay(200);
+                    } else {
+                        let resp = await response.text();
+                        if (resp !== `Successfully subscribed on token ${g2.token}`) {
+                            console.error('unexpected response from events.voip.ovh.net/v2/session:' + resp);
+                        }
                     }
                 }
             }
@@ -71,26 +102,41 @@ export class OvhEventListenerV2 extends EventEmitter implements IOvhEventListene
                 while (true) {
                     try {
                         const response = await fetch(url, { method: 'GET', headers })
-                        const events: IVoipEvent[] = await response.json();
-                        if (events && events.length) {
-                            if (this.listenerCount("message") > 0) {
-                                for (const m of events) {
-                                    delete m['token']; // hide token
-                                    this.emit("message", m);
-                                }
-                            }
+                        const status = response.status;
+                        if (status !== 200) {
+                            const statusText = response.statusText;
+                            const message = JSON.stringify({ groups: group.groups.map(g=>g.billingAccount).join(','), url, status, statusText });
+                            logError(`OVH is down ${message}`);
+                            this.emit('error', Error(message));
                             if (this._redis) {
-                                // console.log(`${(new Date()).toISOString()} Send ${events.length} event to ${this.channel}`);
-                                for (const m of events) {
-                                    delete m['token']; // hide token
-                                    await this._redis.publish(this.channel, JSON.stringify(m));
+                                await this._redis.publish(this.channel, JSON.stringify(message));
+                            }
+                            await bluebird.delay(200);
+                        } else {
+                            const text = await response.text();
+                            const events: IVoipEvent[] = parseVerbose(text, url);
+                            if (events && events.length) {
+                                if (this.listenerCount("message") > 0) {
+                                    for (const m of events) {
+                                        delete m['token']; // hide token
+                                        this.emit("message", m);
+                                    }
+                                }
+                                if (this._redis) {
+                                    // console.log(`${(new Date()).toISOString()} Send ${events.length} event to ${this.channel}`);
+                                    for (const m of events) {
+                                        delete m['token']; // hide token
+                                        await this._redis.publish(this.channel, JSON.stringify(m));
+                                    }
                                 }
                             }
                         }
-                    } catch { }
+                    } catch (e) {
+                        console.error(e);
+                    }
                 }
             })
             await Promise.all(listen); // useless for now
-        }) 
+        })
     }
 }

@@ -127,6 +127,7 @@ export interface IEvToken {
 
 export interface IOvhEventListener {
     on(event: "message", listener: (msg: IVoipEvent) => void): this;
+    on(event: "error", listener: (msg: any) => void): this;
     redis(redis: IHandyRedis, channel: string): IOvhEventListener;
     listen(): Promise<any>
 }

@@ -99,6 +99,12 @@ async function main() {
     if (redis)
         listener.redis(redis, program.channel)
 
+    const logError = debounce((msg:any) => console.error(msg), 2000, true);
+
+    listener.on("error", (err) => {
+        logError(err);
+    })
+
     let nbEvent = 0;
 
     const log = () => {

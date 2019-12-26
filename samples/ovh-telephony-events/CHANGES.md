@@ -1,5 +1,14 @@
 # Changelog
 
+## verion 1.4.0
+
+- improve error handeling.
+- foward error to the redis.
+
+## verion 1.3.6
+
+- add error handeling.
+
 ## verion 1.3.5
 
 - add date in Warning and Error messages.
