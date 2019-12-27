@@ -1,7 +1,7 @@
 {
     "name": "@ovh-api-ca/dedicated-ceph",
     "description": "Add typing to to ovh api dedicated-ceph",
-    "version": "2.0.12",
+    "version": "2.0.13",
     "typings": "index.d.ts",
     "license": "MIT",
     "author": "Uriel Chemouni <uchemouni@gmail.com>",

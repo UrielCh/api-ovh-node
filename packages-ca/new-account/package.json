@@ -1,7 +1,7 @@
 {
     "name": "@ovh-api-ca/new-account",
     "description": "Add typing to to ovh api new-account",
-    "version": "2.0.12",
+    "version": "2.0.13",
     "typings": "index.d.ts",
     "license": "MIT",
     "author": "Uriel Chemouni <uchemouni@gmail.com>",
