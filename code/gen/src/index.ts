@@ -8,7 +8,6 @@ import { IEndpoint, endpoints } from './endpoints';
 
 const PathToApiName = (api: string) => api.substring(1).replace(/\//g, '-').replace(/[A-Z]/g, letter => `-${letter.toLowerCase()}`).replace(/^-/, '');
 
-
 async function main() {
     for (const endpoint of Object.values(endpoints)) {
         //if (endpoint.directory != 'kimsufi-ca')

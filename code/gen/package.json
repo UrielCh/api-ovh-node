@@ -7,12 +7,12 @@
   "license": "MIT",
   "author": "Uriel Chemouni <uchemouni@gmail.com>",
   "devDependencies": {
-    "@types/bluebird": "^3.5.27",
-    "@types/fs-extra": "^8.0.0",
-    "@types/node": "^12.12.11",
-    "@types/rimraf": "^2.0.2",
-    "ts-node": "^8.4.1",
-    "typescript": "^3.6.4"
+    "@types/bluebird": "^3.5.29",
+    "@types/fs-extra": "^8.0.1",
+    "@types/node": "^13.1.1",
+    "@types/rimraf": "^2.0.3",
+    "ts-node": "^8.5.4",
+    "typescript": "^3.7.4"
   },
   "publishConfig": {
     "access": "public"
@@ -30,7 +30,7 @@
   },
   "gitHead": "b9fec53f25067fa01d341adc086a63ef2c2a5f62",
   "dependencies": {
-    "bluebird": "^3.7.0",
+    "bluebird": "^3.7.2",
     "fs-extra": "^8.1.0",
     "rimraf": "^3.0.0"
   }

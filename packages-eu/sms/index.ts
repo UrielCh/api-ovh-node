@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /sms Models
+ * Source: https://eu.api.ovh.com/1.0/sms.json
  */
 export namespace reference {
     // type fullname: reference.CountryEnum

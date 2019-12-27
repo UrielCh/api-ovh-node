@@ -65,7 +65,9 @@ export function formatUpperCamlCase(name: string) {
 export function className(path: string): string {
     return formatUpperCamlCase(path.replace(/\//g, '_').replace(/[{}]/g, '_').replace(/[__]/g, '_'))
 }
-
+/**
+ * TODO: add extra mapping to keep sementic mapping
+ */
 export const rawRemapNode: { [keys: string]: string } = {
     "Number": "number",
     "long": "number",
@@ -90,4 +92,5 @@ export const rawRemapNode: { [keys: string]: string } = {
     "long[]": "number[]",
     "ipInterface": "string",
     "duration": "string",
+    "internationalPhoneNumber": "string",
 }
