@@ -114,6 +114,9 @@ export default class GenApiTypes {
         })
         return data.apis.map(api => api.path)
     }
+    getFullPath(path: string) : string {
+        return 'https://' + `${this.host}/${this.basePath}${path}.json`.replace('//', '/');
+    }
     /**
      * Recursively loads the schemas of the specified used APIs.
      *

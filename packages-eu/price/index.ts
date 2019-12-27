@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /price Models
+ * Source: https://eu.api.ovh.com/1.0/price.json
  */
 export namespace order {
     // type fullname: order.CurrencyCodeEnum

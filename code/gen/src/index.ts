@@ -11,6 +11,8 @@ const PathToApiName = (api: string) => api.substring(1).replace(/\//g, '-').repl
 
 async function main() {
     for (const endpoint of Object.values(endpoints)) {
+        //if (endpoint.directory != 'kimsufi-ca')
+        //    continue;
         try {
             await genRegion(endpoint)
         } catch (e) {
@@ -69,7 +71,9 @@ async function genRegion(endpoint: IEndpoint) {
             console.log(`${endpoint.host} / ${api} faild`, e);
             return;
         }
-
+        // ignore empry API
+        if (cg.schema?.apis.length == 0)
+            return;
         let flat = PathToApiName(api);
         let dir = path.join(packagesDir, flat);
         await fse.ensureDir(dir);

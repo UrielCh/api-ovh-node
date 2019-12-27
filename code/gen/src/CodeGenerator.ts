@@ -22,7 +22,9 @@ export class CodeGenerator {
         if (!this.schema)
             await this.loadSchema();
         // start generation
-        let code = `import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';${EOL}${EOL}/**${EOL} * START API ${this.api} Models${EOL} */${EOL}`;
+        let code = `import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';${EOL}${EOL}/**${EOL}`;
+        code += ` * START API ${this.api} Models${EOL}`;
+        code += ` * Source: ${this.gen.getFullPath(this.api)}${EOL} */${EOL}`;
 
         code = this.dumpModel(0, this.gen.models, code, '');
         code += `${EOL}/**${EOL} * END API ${this.api} Models${EOL} */${EOL}`;
