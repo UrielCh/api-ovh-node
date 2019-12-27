@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /me Models
+ * Source: https://ca.api.kimsufi.com/1.0/me.json
  */
 export namespace agreements {
     // type fullname: agreements.AgreementStateEnum

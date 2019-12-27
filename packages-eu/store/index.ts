@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /store Models
+ * Source: https://eu.api.ovh.com/1.0/store.json
  */
 export namespace MarketPlace {
     // interface fullName: MarketPlace.Document.Document

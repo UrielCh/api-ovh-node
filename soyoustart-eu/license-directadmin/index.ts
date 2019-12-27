@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /license/directadmin Models
+ * Source: https://eu.api.soyoustart.com/1.0/license/directadmin.json
  */
 export namespace license {
     // type fullname: license.ActionType

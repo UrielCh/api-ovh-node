@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /connectivity Models
+ * Source: https://eu.api.ovh.com/1.0/connectivity.json
  */
 export namespace connectivity {
     // type fullname: connectivity.OperatorEnum

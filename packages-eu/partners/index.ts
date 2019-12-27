@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /partners Models
+ * Source: https://eu.api.ovh.com/1.0/partners.json
  */
 export namespace Partner {
     // interface fullName: Partner.Application.Application

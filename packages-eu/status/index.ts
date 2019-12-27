@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /status Models
+ * Source: https://eu.api.ovh.com/1.0/status.json
  */
 export namespace ovhstatus {
     export namespace task {

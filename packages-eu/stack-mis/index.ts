@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /stack/mis Models
+ * Source: https://eu.api.ovh.com/1.0/stack/mis.json
  */
 export namespace service {
     // interface fullName: service.RenewType.RenewType

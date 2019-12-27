@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /distribution/image Models
+ * Source: https://eu.api.ovh.com/1.0/distribution/image.json
  */
 export namespace distribution {
     // interface fullName: distribution.image.image

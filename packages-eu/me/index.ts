@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /me Models
+ * Source: https://eu.api.ovh.com/1.0/me.json
  */
 export namespace agreements {
     // type fullname: agreements.AgreementStateEnum
@@ -784,38 +785,6 @@ export namespace insight {
     }
 }
 export namespace me {
-    export namespace SupportLevel {
-        // interface fullName: me.SupportLevel.Level.Level
-        export interface Level {
-            level: me.SupportLevel.LevelTypeEnum;
-        }
-        // type fullname: me.SupportLevel.LevelTypeEnum
-        export type LevelTypeEnum = "standard" | "premium" | "premium-accredited" | "business" | "enterprise"
-    }
-    export namespace billing {
-        export namespace group {
-            // interface fullName: me.billing.group.BillingGroup.BillingGroup
-            export interface BillingGroup {
-                contactId?: number;
-                creationDate: string;
-                groupId: number;
-                lastUpdate: string;
-                name: string;
-                paymentMethodId?: number;
-            }
-            // interface fullName: me.billing.group.Service.Service
-            export interface Service {
-                groupId: number;
-                serviceId: number;
-            }
-            export namespace service {
-                // interface fullName: me.billing.group.service.Create.Create
-                export interface Create {
-                    serviceId: number;
-                }
-            }
-        }
-    }
     export namespace consent {
         // interface fullName: me.consent.Campaign.Campaign
         export interface Campaign {
@@ -873,72 +842,6 @@ export namespace me {
                     quantity: number;
                     unique_id?: string;
                 }
-            }
-        }
-    }
-    export namespace credit {
-        // interface fullName: me.credit.Balance.Balance
-        export interface Balance {
-            amount: orderPrice;
-            balanceDetails: me.credit.balance.BalanceDetails[];
-            balanceName: string;
-            booked: me.credit.balance.BookedMovement[];
-            creationDate: string;
-            expiring: me.credit.balance.ExpiringMovement[];
-            lastUpdate: string;
-            type: me.credit.balance.TypeEnum;
-        }
-        export namespace balance {
-            // interface fullName: me.credit.balance.BalanceDetails.BalanceDetails
-            export interface BalanceDetails {
-                amount: orderPrice;
-                balanceSubName?: string;
-                expiring: me.credit.balance.ExpiringMovement[];
-                serviceId?: number;
-            }
-            // interface fullName: me.credit.balance.BookedMovement.BookedMovement
-            export interface BookedMovement {
-                amount: orderPrice;
-                balanceSubName?: string;
-                orderId: number;
-            }
-            // interface fullName: me.credit.balance.ExpiringMovement.ExpiringMovement
-            export interface ExpiringMovement {
-                amount: orderPrice;
-                creationDate: string;
-                expirationDate: string;
-                lastUpdate: string;
-                sourceObject: me.credit.balance.movement.SubObject;
-            }
-            // interface fullName: me.credit.balance.Movement.Movement
-            export interface Movement {
-                amount: orderPrice;
-                balanceName: string;
-                creationDate: string;
-                expirationDate?: string;
-                lastUpdate: string;
-                movementId: number;
-                orderId?: number;
-                sourceObject: me.credit.balance.movement.SubObject;
-                type: me.credit.balance.movement.TypeEnum;
-            }
-            // type fullname: me.credit.balance.TypeEnum
-            export type TypeEnum = "PREPAID_ACCOUNT" | "VOUCHER" | "DEPOSIT" | "BONUS"
-            export namespace movement {
-                // interface fullName: me.credit.balance.movement.SubObject.SubObject
-                export interface SubObject {
-                    id: string;
-                    name: string;
-                }
-                // type fullname: me.credit.balance.movement.TypeEnum
-                export type TypeEnum = "BONUS" | "CANCEL" | "EXPIRE" | "GIFT" | "MANUAL" | "ORDER" | "REFUND" | "UNPAID" | "USE" | "VOUCHER"
-            }
-        }
-        export namespace code {
-            // interface fullName: me.credit.code.Redeem.Redeem
-            export interface Redeem {
-                inputCode: string;
-                serviceId: number;
             }
         }
     }
@@ -1643,6 +1546,8 @@ export interface Me{
                 $delete(): Promise<void>;
                 // GET /me/api/credential/{credentialId}
                 $get(): Promise<api.Credential>;
+                // PUT /me/api/credential/{credentialId}
+                $put(params?: {allowedIPs?: string[], applicationId?: number, creation?: string, credentialId?: number, expiration?: string, lastUse?: string, ovhSupport?: boolean, rules?: auth.AccessRule[], status?: auth.CredentialStateEnum}): Promise<void>;
                 application: {
                     // GET /me/api/credential/{credentialId}/application
                     $get(): Promise<api.Application>;
@@ -1721,32 +1626,6 @@ export interface Me{
         };
     }
     billing: {
-        group: {
-            // GET /me/billing/group
-            $get(params?: {name?: string}): Promise<number[]>;
-            // POST /me/billing/group
-            $post(params?: {contactId?: number, creationDate?: string, groupId?: number, lastUpdate?: string, name?: string, paymentMethodId?: number}): Promise<me.billing.group.BillingGroup>;
-            $(groupId: number): {
-                // DELETE /me/billing/group/{groupId}
-                $delete(): Promise<void>;
-                // GET /me/billing/group/{groupId}
-                $get(): Promise<me.billing.group.BillingGroup>;
-                // PUT /me/billing/group/{groupId}
-                $put(params?: {contactId?: number, creationDate?: string, groupId?: number, lastUpdate?: string, name?: string, paymentMethodId?: number}): Promise<void>;
-                service: {
-                    // GET /me/billing/group/{groupId}/service
-                    $get(): Promise<number[]>;
-                    // POST /me/billing/group/{groupId}/service
-                    $post(params: {serviceId: number}): Promise<me.billing.group.Service>;
-                    $(serviceId: number): {
-                        // DELETE /me/billing/group/{groupId}/service/{serviceId}
-                        $delete(): Promise<void>;
-                        // GET /me/billing/group/{groupId}/service/{serviceId}
-                        $get(): Promise<me.billing.group.Service>;
-                    };
-                }
-            };
-        }
         invoicesByPostalMail: {
             // GET /me/billing/invoicesByPostalMail
             $get(): Promise<boolean>;
@@ -1815,23 +1694,23 @@ export interface Me{
     credit: {
         balance: {
             // GET /me/credit/balance
-            $get(params?: {type?: me.credit.balance.TypeEnum}): Promise<string[]>;
+            $get(params?: {type?: billing.credit.balance.Type}): Promise<string[]>;
             $(balanceName: string): {
                 // GET /me/credit/balance/{balanceName}
-                $get(): Promise<me.credit.Balance>;
+                $get(): Promise<billing.credit.Balance>;
                 movement: {
                     // GET /me/credit/balance/{balanceName}/movement
                     $get(): Promise<number[]>;
                     $(movementId: number): {
                         // GET /me/credit/balance/{balanceName}/movement/{movementId}
-                        $get(): Promise<me.credit.balance.Movement>;
+                        $get(): Promise<billing.credit.balance.Movement>;
                     };
                 }
             };
         }
         code: {
             // POST /me/credit/code
-            $post(params: {inputCode: string, serviceId?: number}): Promise<me.credit.balance.Movement>;
+            $post(params: {inputCode: string, serviceId?: number}): Promise<billing.credit.balance.Movement>;
         }
     }
     debtAccount: {
@@ -2446,10 +2325,6 @@ export interface Me{
             $put(params?: {registered?: boolean, type?: string}): Promise<void>;
         };
     }
-    supportLevel: {
-        // GET /me/supportLevel
-        $get(): Promise<me.SupportLevel.Level>;
-    }
     task: {
         contactChange: {
             // GET /me/task/contactChange
@@ -2757,26 +2632,6 @@ export interface Me{
    */
   get(path: '/me/bill/{billId}/payment'): (params: {billId: string}) => Promise<billing.Payment>;
   /**
-   * Manage billing groups
-   * Retrieve all billing groups
-   */
-  get(path: '/me/billing/group'): (params?: {name?: string}) => Promise<number[]>;
-  /**
-   * Manage billing groups
-   * Retrieve information about a billing group
-   */
-  get(path: '/me/billing/group/{groupId}'): (params: {groupId: number}) => Promise<me.billing.group.BillingGroup>;
-  /**
-   * 
-   * Retrieve billing group service ID list
-   */
-  get(path: '/me/billing/group/{groupId}/service'): (params: {groupId: number}) => Promise<number[]>;
-  /**
-   * 
-   * Retrieve information about a billing group service
-   */
-  get(path: '/me/billing/group/{groupId}/service/{serviceId}'): (params: {groupId: number, serviceId: number}) => Promise<me.billing.group.Service>;
-  /**
    * invoicesByPostalMail operations
    * Send invoices through postal mail
    */
@@ -2832,25 +2687,25 @@ export interface Me{
    */
   get(path: '/me/contact/{contactId}/fields'): (params: {contactId: number}) => Promise<contact.FieldInformation[]>;
   /**
-   * Manage credit balances
-   * Retrieve all credit balances
+   * Retrieve credit balance names
+   * Retrieve credit balance names
    */
-  get(path: '/me/credit/balance'): (params?: {type?: me.credit.balance.TypeEnum}) => Promise<string[]>;
+  get(path: '/me/credit/balance'): (params?: {type?: billing.credit.balance.Type}) => Promise<string[]>;
   /**
-   * Manage credit balances
+   * Retrieve a credit balance
    * Retrieve a credit balance
    */
-  get(path: '/me/credit/balance/{balanceName}'): (params: {balanceName: string}) => Promise<me.credit.Balance>;
+  get(path: '/me/credit/balance/{balanceName}'): (params: {balanceName: string}) => Promise<billing.credit.Balance>;
   /**
-   * Manage credit balance movements
+   * Retrieve movements for a specific balance
    * Retrieve movements for a specific balance
    */
   get(path: '/me/credit/balance/{balanceName}/movement'): (params: {balanceName: string}) => Promise<number[]>;
   /**
-   * Manage credit balance movements
+   * Retrieve a specific movement for a credit balance
    * Retrieve a specific movement for a credit balance
    */
-  get(path: '/me/credit/balance/{balanceName}/movement/{movementId}'): (params: {balanceName: string, movementId: number}) => Promise<me.credit.balance.Movement>;
+  get(path: '/me/credit/balance/{balanceName}/movement/{movementId}'): (params: {balanceName: string, movementId: number}) => Promise<billing.credit.balance.Movement>;
   /**
    * Debt balance of the account
    * Get this object properties
@@ -3337,11 +3192,6 @@ export interface Me{
    */
   get(path: '/me/subscription/{subscriptionType}'): (params: {subscriptionType: string}) => Promise<nichandle.Subscription>;
   /**
-   * Fetch the support level of the account
-   * Fetch the support level of the account
-   */
-  get(path: '/me/supportLevel'): () => Promise<me.SupportLevel.Level>;
-  /**
    * List the nichandle.contactChange.Task objects
    * List of service contact change tasks you are involved in
    */
@@ -3472,15 +3322,15 @@ export interface Me{
    */
   put(path: '/me/accessRestriction/u2f/{id}'): (params: {id: number, creationDate?: string, description?: string, lastUsedDate?: string, status?: nichandle.accessRestriction.U2FStatusEnum}) => Promise<void>;
   /**
+   * API Credential
+   * Alter this object properties
+   */
+  put(path: '/me/api/credential/{credentialId}'): (params: {credentialId: number, allowedIPs?: string[], applicationId?: number, creation?: string, expiration?: string, lastUse?: string, ovhSupport?: boolean, rules?: auth.AccessRule[], status?: auth.CredentialStateEnum}) => Promise<void>;
+  /**
    * Auto renewal information
    * Alter this object properties
    */
   put(path: '/me/autorenew'): (params?: {active?: boolean, lastRenew?: string, renewDay?: number}) => Promise<void>;
-  /**
-   * Manage billing groups
-   * Edit billing group
-   */
-  put(path: '/me/billing/group/{groupId}'): (params: {groupId: number, contactId?: number, creationDate?: string, lastUpdate?: string, name?: string, paymentMethodId?: number}) => Promise<void>;
   /**
    * Get decision value for a consent campaign
    * Update decision of a consent campaign
@@ -3697,16 +3547,6 @@ export interface Me{
    */
   post(path: '/me/bill/{billId}/debt/pay'): (params: {billId: string}) => Promise<billing.Order>;
   /**
-   * Manage billing groups
-   * Create a new billing group
-   */
-  post(path: '/me/billing/group'): (params?: {contactId?: number, creationDate?: string, groupId?: number, lastUpdate?: string, name?: string, paymentMethodId?: number}) => Promise<me.billing.group.BillingGroup>;
-  /**
-   * 
-   * Associate a service to a billing group
-   */
-  post(path: '/me/billing/group/{groupId}/service'): (params: {groupId: number, serviceId: number}) => Promise<me.billing.group.Service>;
-  /**
    * invoicesByPostalMail operations
    * Enable or disable invoices by postal mail
    */
@@ -3727,10 +3567,10 @@ export interface Me{
    */
   post(path: '/me/contact'): (params: {address: contact.Address, birthCity?: string, birthCountry?: nichandle.CountryEnum, birthDay?: string, birthZip?: string, cellPhone?: string, companyNationalIdentificationNumber?: string, email: string, fax?: string, firstName: string, gender?: nichandle.GenderEnum, language: nichandle.LanguageEnum, lastName: string, legalForm: nichandle.LegalFormEnum, nationalIdentificationNumber?: string, nationality?: nichandle.CountryEnum, organisationName?: string, organisationType?: string, phone: string, vat?: string}) => Promise<contact.Contact>;
   /**
-   * Validate a code to generate associated credit movement
+   * Validate a code to generate associated credit
    * Validate a code to generate associated credit movement
    */
-  post(path: '/me/credit/code'): (params: {inputCode: string, serviceId?: number}) => Promise<me.credit.balance.Movement>;
+  post(path: '/me/credit/code'): (params: {inputCode: string, serviceId?: number}) => Promise<billing.credit.balance.Movement>;
   /**
    * pay operations
    * Create an order in order to pay this order's debt
@@ -4046,16 +3886,6 @@ export interface Me{
    * Remove this credential
    */
   delete(path: '/me/api/credential/{credentialId}'): (params: {credentialId: number}) => Promise<void>;
-  /**
-   * Manage billing groups
-   * Delete a billing group
-   */
-  delete(path: '/me/billing/group/{groupId}'): (params: {groupId: number}) => Promise<void>;
-  /**
-   * 
-   * Unlink a service from a billing group
-   */
-  delete(path: '/me/billing/group/{groupId}/service/{serviceId}'): (params: {groupId: number, serviceId: number}) => Promise<void>;
   /**
    * List of documents added on your account
    * Delete a document

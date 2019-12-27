@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /ip Models
+ * Source: https://eu.api.kimsufi.com/1.0/ip.json
  */
 export namespace coreTypes {
     // type fullname: coreTypes.CountryEnum

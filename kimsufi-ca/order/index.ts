@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /order Models
+ * Source: https://ca.api.kimsufi.com/1.0/order.json
  */
 export namespace dedicated {
     export namespace server {

@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /secret Models
+ * Source: https://eu.api.ovh.com/1.0/secret.json
  */
 export namespace secret {
     // interface fullName: secret.Secret.Secret

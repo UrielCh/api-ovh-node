@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /dbaas/queue Models
+ * Source: https://api.us.ovhcloud.com/1.0/dbaas/queue.json
  */
 export namespace dbaas {
     export namespace queue {

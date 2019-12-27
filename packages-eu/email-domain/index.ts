@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /email/domain Models
+ * Source: https://eu.api.ovh.com/1.0/email/domain.json
  */
 export namespace domain {
     // type fullname: domain.DomainFilterActionEnum

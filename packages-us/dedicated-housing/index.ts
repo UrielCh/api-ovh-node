@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /dedicated/housing Models
+ * Source: https://api.us.ovhcloud.com/1.0/dedicated/housing.json
  */
 export namespace complexType {
     // interface fullName: complexType.UnitAndValue.UnitAndValue

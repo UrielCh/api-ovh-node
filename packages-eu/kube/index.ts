@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /kube Models
+ * Source: https://eu.api.ovh.com/1.0/kube.json
  */
 export namespace kube {
     // interface fullName: kube.Cluster.Cluster

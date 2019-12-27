@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /order Models
+ * Source: https://ca.api.soyoustart.com/1.0/order.json
  */
 export namespace coreTypes {
     // type fullname: coreTypes.CountryEnum

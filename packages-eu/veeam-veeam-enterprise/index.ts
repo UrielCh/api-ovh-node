@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /veeam/veeamEnterprise Models
+ * Source: https://eu.api.ovh.com/1.0/veeam/veeamEnterprise.json
  */
 export namespace service {
     // interface fullName: service.RenewType.RenewType

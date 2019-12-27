@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /telephony Models
+ * Source: https://eu.api.ovh.com/1.0/telephony.json
  */
 export namespace complexType {
     // interface fullName: complexType.Range.Range

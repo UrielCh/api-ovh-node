@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /license/office Models
+ * Source: https://api.us.ovhcloud.com/1.0/license/office.json
  */
 export namespace license {
     export namespace office {

@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /allDom Models
+ * Source: https://eu.api.ovh.com/1.0/allDom.json
  */
 export namespace allDom {
     // interface fullName: allDom.AllDom.AllDom

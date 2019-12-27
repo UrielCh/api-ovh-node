@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /license/plesk Models
+ * Source: https://ca.api.ovh.com/1.0/license/plesk.json
  */
 export namespace license {
     // type fullname: license.ActionType

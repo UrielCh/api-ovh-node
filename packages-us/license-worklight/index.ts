@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /license/worklight Models
+ * Source: https://api.us.ovhcloud.com/1.0/license/worklight.json
  */
 export namespace license {
     // type fullname: license.ActionType

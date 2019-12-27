@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /router Models
+ * Source: https://ca.api.ovh.com/1.0/router.json
  */
 export namespace router {
     // interface fullName: router.Dnat.Dnat

@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /saas/csp2 Models
+ * Source: https://eu.api.ovh.com/1.0/saas/csp2.json
  */
 export namespace msServices {
     // type fullname: msServices.LicensePeriodEnum

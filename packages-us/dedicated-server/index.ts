@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /dedicated/server Models
+ * Source: https://api.us.ovhcloud.com/1.0/dedicated/server.json
  */
 export namespace complexType {
     // interface fullName: complexType.ChartReturn.ChartReturn

@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /ipLoadbalancing Models
+ * Source: https://eu.api.ovh.com/1.0/ipLoadbalancing.json
  */
 export namespace ipLoadbalancing {
     // type fullname: ipLoadbalancing.BackendCustomerServerStatusEnum

@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /newAccount Models
+ * Source: https://eu.api.kimsufi.com/1.0/newAccount.json
  */
 export namespace nichandle {
     // type fullname: nichandle.CountryEnum

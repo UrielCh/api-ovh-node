@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /analytics Models
+ * Source: https://eu.api.ovh.com/1.0/analytics.json
  */
 export namespace analytics {
     // interface fullName: analytics.Cluster.Cluster

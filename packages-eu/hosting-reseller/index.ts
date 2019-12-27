@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /hosting/reseller Models
+ * Source: https://eu.api.ovh.com/1.0/hosting/reseller.json
  */
 export namespace hosting {
     export namespace reseller {

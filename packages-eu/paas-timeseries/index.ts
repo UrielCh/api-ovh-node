@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /paas/timeseries Models
+ * Source: https://eu.api.ovh.com/1.0/paas/timeseries.json
  */
 export namespace complexType {
     // interface fullName: complexType.UnitAndValue.UnitAndValue

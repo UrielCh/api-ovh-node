@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /metrics Models
+ * Source: https://api.us.ovhcloud.com/1.0/metrics.json
  */
 export namespace metrics {
     export namespace api {

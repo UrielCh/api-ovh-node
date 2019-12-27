@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /dbaas/logs Models
+ * Source: https://eu.api.ovh.com/1.0/dbaas/logs.json
  */
 export namespace dbaas {
     export namespace logs {

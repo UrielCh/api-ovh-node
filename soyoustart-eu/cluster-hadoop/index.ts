@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /cluster/hadoop Models
+ * Source: https://eu.api.soyoustart.com/1.0/cluster/hadoop.json
  */
 export namespace cluster {
     export namespace hadoop {

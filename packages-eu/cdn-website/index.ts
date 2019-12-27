@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /cdn/website Models
+ * Source: https://eu.api.ovh.com/1.0/cdn/website.json
  */
 export namespace cdn {
     export namespace website {

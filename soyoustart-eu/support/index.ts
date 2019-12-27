@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /support Models
+ * Source: https://eu.api.soyoustart.com/1.0/support.json
  */
 export namespace support {
     // interface fullName: support.Message.Message

@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /auth Models
+ * Source: https://ca.api.soyoustart.com/1.0/auth.json
  */
 export namespace api {
     // interface fullName: api.Credential.Credential

@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /pack/siptrunk Models
+ * Source: https://eu.api.ovh.com/1.0/pack/siptrunk.json
  */
 export namespace pack {
     export namespace siptrunk {

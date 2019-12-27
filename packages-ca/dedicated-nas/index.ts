@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /dedicated/nas Models
+ * Source: https://ca.api.ovh.com/1.0/dedicated/nas.json
  */
 export namespace dedicated {
     // type fullname: dedicated.TaskStatusEnum

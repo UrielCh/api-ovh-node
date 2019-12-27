@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /license/sqlserver Models
+ * Source: https://eu.api.soyoustart.com/1.0/license/sqlserver.json
  */
 export namespace license {
     // type fullname: license.ActionType

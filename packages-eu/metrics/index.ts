@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /metrics Models
+ * Source: https://eu.api.ovh.com/1.0/metrics.json
  */
 export namespace metrics {
     // interface fullName: metrics.LookupTokenCreation.LookupTokenCreation

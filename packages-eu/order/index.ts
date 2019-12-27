@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /order Models
+ * Source: https://eu.api.ovh.com/1.0/order.json
  */
 export namespace cdn {
     export namespace webstorage {

@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /dedicated/installationTemplate Models
+ * Source: https://eu.api.soyoustart.com/1.0/dedicated/installationTemplate.json
  */
 export namespace complexType {
     // interface fullName: complexType.UnitAndValue.UnitAndValue

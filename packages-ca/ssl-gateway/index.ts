@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /sslGateway Models
+ * Source: https://ca.api.ovh.com/1.0/sslGateway.json
  */
 export namespace service {
     // interface fullName: service.RenewType.RenewType

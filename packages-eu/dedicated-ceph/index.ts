@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /dedicated/ceph Models
+ * Source: https://eu.api.ovh.com/1.0/dedicated/ceph.json
  */
 export namespace dedicated {
     export namespace ceph {

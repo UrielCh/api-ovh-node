@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /cloudDB Models
+ * Source: https://eu.api.ovh.com/1.0/cloudDB.json
  */
 export namespace cloudDB {
     // interface fullName: cloudDB.Dump.Dump

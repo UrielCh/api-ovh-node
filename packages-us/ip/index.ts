@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /ip Models
+ * Source: https://api.us.ovhcloud.com/1.0/ip.json
  */
 export namespace complexType {
     // interface fullName: complexType.Range.Range

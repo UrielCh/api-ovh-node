@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /caas/registry Models
+ * Source: https://eu.api.ovh.com/1.0/caas/registry.json
  */
 export namespace registry {
     // interface fullName: registry.image.image

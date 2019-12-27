@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /ssl Models
+ * Source: https://eu.api.ovh.com/1.0/ssl.json
  */
 export namespace service {
     // interface fullName: service.RenewType.RenewType

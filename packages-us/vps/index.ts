@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /vps Models
+ * Source: https://api.us.ovhcloud.com/1.0/vps.json
  */
 export namespace complexType {
     // interface fullName: complexType.UnitAndValue.UnitAndValue

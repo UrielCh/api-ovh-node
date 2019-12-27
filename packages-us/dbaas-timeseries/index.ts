@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /dbaas/timeseries Models
+ * Source: https://api.us.ovhcloud.com/1.0/dbaas/timeseries.json
  */
 export namespace service {
     // interface fullName: service.RenewType.RenewType

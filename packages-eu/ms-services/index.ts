@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /msServices Models
+ * Source: https://eu.api.ovh.com/1.0/msServices.json
  */
 export namespace msServices {
     // interface fullName: msServices.Account.Account

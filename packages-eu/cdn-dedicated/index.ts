@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /cdn/dedicated Models
+ * Source: https://eu.api.ovh.com/1.0/cdn/dedicated.json
  */
 export namespace cdnanycast {
     // interface fullName: cdnanycast.Anycast.Anycast

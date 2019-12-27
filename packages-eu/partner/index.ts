@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /partner Models
+ * Source: https://eu.api.ovh.com/1.0/partner.json
  */
 export namespace nichandle {
     // type fullname: nichandle.CountryEnum

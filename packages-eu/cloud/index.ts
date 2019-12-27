@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /cloud Models
+ * Source: https://eu.api.ovh.com/1.0/cloud.json
  */
 export namespace cloud {
     // type fullname: cloud.AccessTypeEnum

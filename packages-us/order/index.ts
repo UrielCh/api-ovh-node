@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /order Models
+ * Source: https://api.us.ovhcloud.com/1.0/order.json
  */
 export namespace complexType {
     // interface fullName: complexType.SafeKeyValue.SafeKeyValue

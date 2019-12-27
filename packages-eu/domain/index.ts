@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /domain Models
+ * Source: https://eu.api.ovh.com/1.0/domain.json
  */
 export namespace dnssec {
     // type fullname: dnssec.DnssecStatusEnum

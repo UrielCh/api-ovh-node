@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /supply/mondialRelay Models
+ * Source: https://eu.api.ovh.com/1.0/supply/mondialRelay.json
  */
 export namespace coreTypes {
     // type fullname: coreTypes.CountryEnum

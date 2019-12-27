@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /freefax Models
+ * Source: https://eu.api.ovh.com/1.0/freefax.json
  */
 export namespace freefax {
     // interface fullName: freefax.BalanceInformations.BalanceInformations

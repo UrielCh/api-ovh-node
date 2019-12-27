@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /email/exchange Models
+ * Source: https://eu.api.ovh.com/1.0/email/exchange.json
  */
 export namespace email {
     export namespace exchange {

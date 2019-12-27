@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /dedicated/nasha Models
+ * Source: https://ca.api.ovh.com/1.0/dedicated/nasha.json
  */
 export namespace complexType {
     // interface fullName: complexType.UnitAndValue.UnitAndValue

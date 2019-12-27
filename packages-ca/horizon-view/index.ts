@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /horizonView Models
+ * Source: https://ca.api.ovh.com/1.0/horizonView.json
  */
 export namespace horizonView {
     // type fullname: horizonView.AccessPointTypeEnum

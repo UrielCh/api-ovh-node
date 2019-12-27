@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /ovhCloudConnect Models
+ * Source: https://eu.api.ovh.com/1.0/ovhCloudConnect.json
  */
 export namespace ovhcloudconnect {
     // interface fullName: ovhcloudconnect.Service.Service

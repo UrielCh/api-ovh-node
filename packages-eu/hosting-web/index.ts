@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /hosting/web Models
+ * Source: https://eu.api.ovh.com/1.0/hosting/web.json
  */
 export namespace complexType {
     // interface fullName: complexType.ChartSerie.ChartSerie

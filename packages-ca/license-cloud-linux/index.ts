@@ -2,6 +2,7 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
 
 /**
  * START API /license/cloudLinux Models
+ * Source: https://ca.api.ovh.com/1.0/license/cloudLinux.json
  */
 export namespace license {
     // type fullname: license.ActionType
