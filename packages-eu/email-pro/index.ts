@@ -34,7 +34,7 @@ export namespace email {
             spamDetected: boolean;
             spamTicketNumber?: number;
             state: email.pro.ObjectStateEnum;
-            taskPendingId: number;
+            taskPendingId?: number;
         }
         // interface fullName: email.pro.AccountAlias.AccountAlias
         export interface AccountAlias {

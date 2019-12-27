@@ -1418,6 +1418,8 @@ export interface Me{
                 $delete(): Promise<void>;
                 // GET /me/api/credential/{credentialId}
                 $get(): Promise<api.Credential>;
+                // PUT /me/api/credential/{credentialId}
+                $put(params?: {allowedIPs?: string[], applicationId?: number, creation?: string, credentialId?: number, expiration?: string, lastUse?: string, ovhSupport?: boolean, rules?: auth.AccessRule[], status?: auth.CredentialStateEnum}): Promise<void>;
                 application: {
                     // GET /me/api/credential/{credentialId}/application
                     $get(): Promise<api.Application>;
@@ -3055,6 +3057,11 @@ export interface Me{
    * Alter this object properties
    */
   put(path: '/me/accessRestriction/u2f/{id}'): (params: {id: number, creationDate?: string, description?: string, lastUsedDate?: string, status?: nichandle.accessRestriction.U2FStatusEnum}) => Promise<void>;
+  /**
+   * API Credential
+   * Alter this object properties
+   */
+  put(path: '/me/api/credential/{credentialId}'): (params: {credentialId: number, allowedIPs?: string[], applicationId?: number, creation?: string, expiration?: string, lastUse?: string, ovhSupport?: boolean, rules?: auth.AccessRule[], status?: auth.CredentialStateEnum}) => Promise<void>;
   /**
    * Auto renewal information
    * Alter this object properties

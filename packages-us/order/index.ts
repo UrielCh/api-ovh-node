@@ -878,6 +878,10 @@ export interface Order{
                 // GET /order/catalog/public/baremetalServers
                 $get(params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.publik.DedicatedServerCatalog>;
             }
+            cloud: {
+                // GET /order/catalog/public/cloud
+                $get(params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.publik.Catalog>;
+            }
             enterpriseCloudDatabases: {
                 // GET /order/catalog/public/enterpriseCloudDatabases
                 $get(params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.publik.Catalog>;
@@ -1243,6 +1247,11 @@ export interface Order{
    * Retrieve bare-metal servers catalog
    */
   get(path: '/order/catalog/public/baremetalServers'): (params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}) => Promise<order.catalog.publik.DedicatedServerCatalog>;
+  /**
+   * Missing description
+   * Retrieve Public Cloud catalog
+   */
+  get(path: '/order/catalog/public/cloud'): (params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}) => Promise<order.catalog.publik.Catalog>;
   /**
    * Missing description
    * Retrieve Enterprise Cloud Databases catalog

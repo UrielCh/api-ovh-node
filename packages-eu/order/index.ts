@@ -112,7 +112,7 @@ export namespace hosting {
         // type fullname: hosting.PrivateDatabase.OfferEnum
         export type OfferEnum = "classic" | "public"
         // type fullname: hosting.PrivateDatabase.OrderableVersionEnum
-        export type OrderableVersionEnum = "mariadb_10.1" | "mariadb_10.2" | "mongodb_3.4" | "mongodb_4.0" | "mysql_5.5" | "mysql_5.6" | "mysql_5.7" | "postgresql_10" | "postgresql_11" | "postgresql_9.4" | "postgresql_9.5" | "postgresql_9.6" | "redis_3.2" | "redis_4.0"
+        export type OrderableVersionEnum = "mariadb_10.1" | "mariadb_10.2" | "mongodb_3.4" | "mongodb_4.0" | "mysql_5.5" | "mysql_5.6" | "mysql_5.7" | "postgresql_10" | "postgresql_11" | "postgresql_12" | "postgresql_9.4" | "postgresql_9.5" | "postgresql_9.6" | "redis_3.2" | "redis_4.0"
     }
     export namespace web {
         // type fullname: hosting.web.BandwidthOfferEnum
@@ -211,7 +211,7 @@ export namespace license {
     // type fullname: license.OrderableAntivirusEnum
     export type OrderableAntivirusEnum = "DR_WEB" | "KASPERSKY_UNLIMITED_MAILBOXES" | "kaspersky"
     // type fullname: license.OrderableCpanelVersionEnum
-    export type OrderableCpanelVersionEnum = "VERSION_11_FOR_LINUX" | "VERSION_11_FOR_VIRTUOZZO" | "VERSION_11_FOR_VPS" | "cpanel-license-version-11" | "cpanel-license-version-11-for-virtuozzo" | "cpanel-license-version-11-for-vps"
+    export type OrderableCpanelVersionEnum = "VERSION_11_FOR_LINUX" | "VERSION_11_FOR_VIRTUOZZO" | "VERSION_11_FOR_VPS" | "cpanel-license-version-11" | "cpanel-license-version-11-for-virtuozzo" | "cpanel-license-version-11-for-vps" | "version-admin-cloud" | "version-premier-cloud-100" | "version-premier-cloud-1000" | "version-premier-cloud-10000" | "version-premier-cloud-1100" | "version-premier-cloud-1200" | "version-premier-cloud-1300" | "version-premier-cloud-1400" | "version-premier-cloud-1500" | "version-premier-cloud-1600" | "version-premier-cloud-1700" | "version-premier-cloud-1800" | "version-premier-cloud-1900" | "version-premier-cloud-200" | "version-premier-cloud-2000" | "version-premier-cloud-2100" | "version-premier-cloud-2200" | "version-premier-cloud-2300" | "version-premier-cloud-2400" | "version-premier-cloud-2500" | "version-premier-cloud-2600" | "version-premier-cloud-2700" | "version-premier-cloud-2800" | "version-premier-cloud-2900" | "version-premier-cloud-300" | "version-premier-cloud-3000" | "version-premier-cloud-3100" | "version-premier-cloud-3200" | "version-premier-cloud-3300" | "version-premier-cloud-3400" | "version-premier-cloud-3500" | "version-premier-cloud-3600" | "version-premier-cloud-3700" | "version-premier-cloud-3800" | "version-premier-cloud-3900" | "version-premier-cloud-400" | "version-premier-cloud-4000" | "version-premier-cloud-4100" | "version-premier-cloud-4200" | "version-premier-cloud-4300" | "version-premier-cloud-4400" | "version-premier-cloud-4500" | "version-premier-cloud-4600" | "version-premier-cloud-4700" | "version-premier-cloud-4800" | "version-premier-cloud-4900" | "version-premier-cloud-500" | "version-premier-cloud-5000" | "version-premier-cloud-5100" | "version-premier-cloud-5200" | "version-premier-cloud-5300" | "version-premier-cloud-5400" | "version-premier-cloud-5500" | "version-premier-cloud-5600" | "version-premier-cloud-5700" | "version-premier-cloud-5800" | "version-premier-cloud-5900" | "version-premier-cloud-600" | "version-premier-cloud-6000" | "version-premier-cloud-6100" | "version-premier-cloud-6200" | "version-premier-cloud-6300" | "version-premier-cloud-6400" | "version-premier-cloud-6500" | "version-premier-cloud-6600" | "version-premier-cloud-6700" | "version-premier-cloud-6800" | "version-premier-cloud-6900" | "version-premier-cloud-700" | "version-premier-cloud-7000" | "version-premier-cloud-7100" | "version-premier-cloud-7200" | "version-premier-cloud-7300" | "version-premier-cloud-7400" | "version-premier-cloud-7500" | "version-premier-cloud-7600" | "version-premier-cloud-7700" | "version-premier-cloud-7800" | "version-premier-cloud-7900" | "version-premier-cloud-800" | "version-premier-cloud-8000" | "version-premier-cloud-8100" | "version-premier-cloud-8200" | "version-premier-cloud-8300" | "version-premier-cloud-8400" | "version-premier-cloud-8500" | "version-premier-cloud-8600" | "version-premier-cloud-8700" | "version-premier-cloud-8800" | "version-premier-cloud-8900" | "version-premier-cloud-900" | "version-premier-cloud-9000" | "version-premier-cloud-9100" | "version-premier-cloud-9200" | "version-premier-cloud-9300" | "version-premier-cloud-9400" | "version-premier-cloud-9500" | "version-premier-cloud-9600" | "version-premier-cloud-9700" | "version-premier-cloud-9800" | "version-premier-cloud-9900" | "version-premier-cloud-solo" | "version-premier-metal-1000" | "version-premier-metal-10000" | "version-premier-metal-1100" | "version-premier-metal-1200" | "version-premier-metal-1300" | "version-premier-metal-1400" | "version-premier-metal-1500" | "version-premier-metal-1600" | "version-premier-metal-1700" | "version-premier-metal-1800" | "version-premier-metal-1900" | "version-premier-metal-2000" | "version-premier-metal-2100" | "version-premier-metal-2200" | "version-premier-metal-2300" | "version-premier-metal-2400" | "version-premier-metal-2500" | "version-premier-metal-2600" | "version-premier-metal-2700" | "version-premier-metal-2800" | "version-premier-metal-2900" | "version-premier-metal-300" | "version-premier-metal-3000" | "version-premier-metal-3100" | "version-premier-metal-3200" | "version-premier-metal-3300" | "version-premier-metal-3400" | "version-premier-metal-3500" | "version-premier-metal-3600" | "version-premier-metal-3700" | "version-premier-metal-3800" | "version-premier-metal-3900" | "version-premier-metal-400" | "version-premier-metal-4000" | "version-premier-metal-4100" | "version-premier-metal-4200" | "version-premier-metal-4300" | "version-premier-metal-4400" | "version-premier-metal-4500" | "version-premier-metal-4600" | "version-premier-metal-4700" | "version-premier-metal-4800" | "version-premier-metal-4900" | "version-premier-metal-500" | "version-premier-metal-5000" | "version-premier-metal-5100" | "version-premier-metal-5200" | "version-premier-metal-5300" | "version-premier-metal-5400" | "version-premier-metal-5500" | "version-premier-metal-5600" | "version-premier-metal-5700" | "version-premier-metal-5800" | "version-premier-metal-5900" | "version-premier-metal-600" | "version-premier-metal-6000" | "version-premier-metal-6100" | "version-premier-metal-6200" | "version-premier-metal-6300" | "version-premier-metal-6400" | "version-premier-metal-6500" | "version-premier-metal-6600" | "version-premier-metal-6700" | "version-premier-metal-6800" | "version-premier-metal-6900" | "version-premier-metal-700" | "version-premier-metal-7000" | "version-premier-metal-7100" | "version-premier-metal-7200" | "version-premier-metal-7300" | "version-premier-metal-7400" | "version-premier-metal-7500" | "version-premier-metal-7600" | "version-premier-metal-7700" | "version-premier-metal-7800" | "version-premier-metal-7900" | "version-premier-metal-800" | "version-premier-metal-8000" | "version-premier-metal-8100" | "version-premier-metal-8200" | "version-premier-metal-8300" | "version-premier-metal-8400" | "version-premier-metal-8500" | "version-premier-metal-8600" | "version-premier-metal-8700" | "version-premier-metal-8800" | "version-premier-metal-8900" | "version-premier-metal-900" | "version-premier-metal-9000" | "version-premier-metal-9100" | "version-premier-metal-9200" | "version-premier-metal-9300" | "version-premier-metal-9400" | "version-premier-metal-9500" | "version-premier-metal-9600" | "version-premier-metal-9700" | "version-premier-metal-9800" | "version-premier-metal-9900" | "version-premier-metal-solo" | "version-pro-cloud"
     // type fullname: license.OrderableDirectAdminVersionEnum
     export type OrderableDirectAdminVersionEnum = "DIRECTADMIN_1" | "directadmin-license"
     // type fullname: license.OrderablePleskDomainNumberEnum
@@ -2053,6 +2053,14 @@ export interface Order{
                 // GET /order/catalog/public/baremetalServers
                 $get(params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.publik.DedicatedServerCatalog>;
             }
+            cloud: {
+                // GET /order/catalog/public/cloud
+                $get(params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.publik.Catalog>;
+            }
+            emailDomain: {
+                // GET /order/catalog/public/emailDomain
+                $get(params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.publik.Catalog>;
+            }
             enterpriseCloudDatabases: {
                 // GET /order/catalog/public/enterpriseCloudDatabases
                 $get(params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.publik.Catalog>;
@@ -2449,6 +2457,20 @@ export interface Order{
                     $post(params: {domain: string, offer: email.domain.OfferEnum}): Promise<order.Order>;
                 };
             }
+            $(domain: string): {
+                // GET /order/email/domain/{domain}
+                $get(): Promise<string[]>;
+                upgrade: {
+                    // GET /order/email/domain/{domain}/upgrade
+                    $get(params: {offer: email.domain.OfferEnum}): Promise<string[]>;
+                    $(duration: string): {
+                        // GET /order/email/domain/{domain}/upgrade/{duration}
+                        $get(params: {offer: email.domain.OfferEnum}): Promise<order.Order>;
+                        // POST /order/email/domain/{domain}/upgrade/{duration}
+                        $post(params: {offer: email.domain.OfferEnum}): Promise<order.Order>;
+                    };
+                }
+            };
         }
         exchange: {
             // GET /order/email/exchange
@@ -2679,6 +2701,8 @@ export interface Order{
             }
         }
         cpanel: {
+            // GET /order/license/cpanel
+            $get(): Promise<string[]>;
             new: {
                 // GET /order/license/cpanel/new
                 $get(params: {ip: string, serviceType?: license.LicenseTypeEnum, version: license.OrderableCpanelVersionEnum}): Promise<string[]>;
@@ -2689,6 +2713,20 @@ export interface Order{
                     $post(params: {ip: string, serviceType?: license.LicenseTypeEnum, version: license.OrderableCpanelVersionEnum}): Promise<order.Order>;
                 };
             }
+            $(serviceName: string): {
+                // GET /order/license/cpanel/{serviceName}
+                $get(): Promise<string[]>;
+                upgrade: {
+                    // GET /order/license/cpanel/{serviceName}/upgrade
+                    $get(params: {version: license.OrderableCpanelVersionEnum}): Promise<string[]>;
+                    $(duration: string): {
+                        // GET /order/license/cpanel/{serviceName}/upgrade/{duration}
+                        $get(params: {version: license.OrderableCpanelVersionEnum}): Promise<order.Order>;
+                        // POST /order/license/cpanel/{serviceName}/upgrade/{duration}
+                        $post(params: {version: license.OrderableCpanelVersionEnum}): Promise<order.Order>;
+                    };
+                }
+            };
         }
         directadmin: {
             new: {
@@ -3084,6 +3122,34 @@ export interface Order{
                 };
             };
         }
+        cloudDB: {
+            // GET /order/upgrade/cloudDB
+            $get(): Promise<string[]>;
+            $(domain: string): {
+                // GET /order/upgrade/cloudDB/{domain}
+                $get(): Promise<order.cart.GenericProductDefinition[]>;
+                $(planCode: string): {
+                    // GET /order/upgrade/cloudDB/{domain}/{planCode}
+                    $get(params: {quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    // POST /order/upgrade/cloudDB/{domain}/{planCode}
+                    $post(params: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                };
+            };
+        }
+        emailDomain: {
+            // GET /order/upgrade/emailDomain
+            $get(): Promise<string[]>;
+            $(serviceName: string): {
+                // GET /order/upgrade/emailDomain/{serviceName}
+                $get(): Promise<order.cart.GenericProductDefinition[]>;
+                $(planCode: string): {
+                    // GET /order/upgrade/emailDomain/{serviceName}/{planCode}
+                    $get(params: {quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    // POST /order/upgrade/emailDomain/{serviceName}/{planCode}
+                    $post(params: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                };
+            };
+        }
         hostingReseller: {
             // GET /order/upgrade/hostingReseller
             $get(): Promise<string[]>;
@@ -3168,6 +3234,20 @@ export interface Order{
                 };
             };
         }
+        privateSQL: {
+            // GET /order/upgrade/privateSQL
+            $get(): Promise<string[]>;
+            $(domain: string): {
+                // GET /order/upgrade/privateSQL/{domain}
+                $get(): Promise<order.cart.GenericProductDefinition[]>;
+                $(planCode: string): {
+                    // GET /order/upgrade/privateSQL/{domain}/{planCode}
+                    $get(params: {quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    // POST /order/upgrade/privateSQL/{domain}/{planCode}
+                    $post(params: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                };
+            };
+        }
         sslGateway: {
             // GET /order/upgrade/sslGateway
             $get(): Promise<string[]>;
@@ -3206,6 +3286,20 @@ export interface Order{
                     // GET /order/upgrade/vpsAdditionalDisk/{serviceName}/{planCode}
                     $get(params: {quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
                     // POST /order/upgrade/vpsAdditionalDisk/{serviceName}/{planCode}
+                    $post(params: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                };
+            };
+        }
+        webHosting: {
+            // GET /order/upgrade/webHosting
+            $get(): Promise<string[]>;
+            $(serviceName: string): {
+                // GET /order/upgrade/webHosting/{serviceName}
+                $get(): Promise<order.cart.GenericProductDefinition[]>;
+                $(planCode: string): {
+                    // GET /order/upgrade/webHosting/{serviceName}/{planCode}
+                    $get(params: {quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    // POST /order/upgrade/webHosting/{serviceName}/{planCode}
                     $post(params: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
                 };
             };
@@ -4319,6 +4413,16 @@ export interface Order{
   get(path: '/order/catalog/public/baremetalServers'): (params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}) => Promise<order.catalog.publik.DedicatedServerCatalog>;
   /**
    * Missing description
+   * Retrieve Public Cloud catalog
+   */
+  get(path: '/order/catalog/public/cloud'): (params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}) => Promise<order.catalog.publik.Catalog>;
+  /**
+   * Missing description
+   * Retrieve Email Domain catalog
+   */
+  get(path: '/order/catalog/public/emailDomain'): (params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}) => Promise<order.catalog.publik.Catalog>;
+  /**
+   * Missing description
    * Retrieve Enterprise Cloud Databases catalog
    */
   get(path: '/order/catalog/public/enterpriseCloudDatabases'): (params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}) => Promise<order.catalog.publik.Catalog>;
@@ -4703,6 +4807,21 @@ export interface Order{
    */
   get(path: '/order/email/domain'): () => Promise<string[]>;
   /**
+   * List available options for this service
+   * Get allowed options
+   */
+  get(path: '/order/email/domain/{domain}'): (params: {domain: string}) => Promise<string[]>;
+  /**
+   * Create an order for upgrade your mx plan
+   * Get allowed durations for 'upgrade' option
+   */
+  get(path: '/order/email/domain/{domain}/upgrade'): (params: {domain: string, offer: email.domain.OfferEnum}) => Promise<string[]>;
+  /**
+   * Create an order for upgrade your mx plan
+   * Get prices and contracts information
+   */
+  get(path: '/order/email/domain/{domain}/upgrade/{duration}'): (params: {domain: string, duration: string, offer: email.domain.OfferEnum}) => Promise<order.Order>;
+  /**
    * Order a new mx plan
    * Get allowed durations for 'new' option
    */
@@ -4937,6 +5056,26 @@ export interface Order{
    * Get prices and contracts information
    */
   get(path: '/order/license/cloudLinux/new/{duration}'): (params: {duration: string, ip: string, version: license.CloudLinuxVersionEnum}) => Promise<order.Order>;
+  /**
+   * Operations about the LICENSE service
+   * List available services
+   */
+  get(path: '/order/license/cpanel'): () => Promise<string[]>;
+  /**
+   * List available options for this service
+   * Get allowed options
+   */
+  get(path: '/order/license/cpanel/{serviceName}'): (params: {serviceName: string}) => Promise<string[]>;
+  /**
+   * Upgrade this license version
+   * Get allowed durations for 'upgrade' option
+   */
+  get(path: '/order/license/cpanel/{serviceName}/upgrade'): (params: {serviceName: string, version: license.OrderableCpanelVersionEnum}) => Promise<string[]>;
+  /**
+   * Upgrade this license version
+   * Get prices and contracts information
+   */
+  get(path: '/order/license/cpanel/{serviceName}/upgrade/{duration}'): (params: {duration: string, serviceName: string, version: license.OrderableCpanelVersionEnum}) => Promise<order.Order>;
   /**
    * Order a new license on a given Ip with some given options
    * Get allowed durations for 'new' option
@@ -5333,6 +5472,36 @@ export interface Order{
    */
   get(path: '/order/upgrade/cephaas/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, quantity: number}) => Promise<order.upgrade.order_upgrade_OperationAndOrder>;
   /**
+   * Operations about the SQLPRIVE service
+   * List available services
+   */
+  get(path: '/order/upgrade/cloudDB'): () => Promise<string[]>;
+  /**
+   * Listing offers /order/upgrade/cloudDB
+   * Retrieve available offers to upgrade your service to
+   */
+  get(path: '/order/upgrade/cloudDB/{domain}'): (params: {domain: string}) => Promise<order.cart.GenericProductDefinition[]>;
+  /**
+   * Listing offers /order/upgrade/cloudDB/#serviceName#
+   * Get a provisional order for the selected upgrade of your service
+   */
+  get(path: '/order/upgrade/cloudDB/{domain}/{planCode}'): (params: {domain: string, planCode: string, quantity: number}) => Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+  /**
+   * Operations about the MX service
+   * List available services
+   */
+  get(path: '/order/upgrade/emailDomain'): () => Promise<string[]>;
+  /**
+   * Listing offers /order/upgrade/emailDomain
+   * Retrieve available offers to upgrade your service to
+   */
+  get(path: '/order/upgrade/emailDomain/{serviceName}'): (params: {serviceName: string}) => Promise<order.cart.GenericProductDefinition[]>;
+  /**
+   * Listing offers /order/upgrade/emailDomain/#serviceName#
+   * Get a provisional order for the selected upgrade of your service
+   */
+  get(path: '/order/upgrade/emailDomain/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, quantity: number}) => Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+  /**
    * Operations about the HOSTING_RESELLER service
    * List available services
    */
@@ -5423,6 +5592,21 @@ export interface Order{
    */
   get(path: '/order/upgrade/privateCloud/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, quantity: number}) => Promise<order.upgrade.order_upgrade_OperationAndOrder>;
   /**
+   * Operations about the SQLPRIVE service
+   * List available services
+   */
+  get(path: '/order/upgrade/privateSQL'): () => Promise<string[]>;
+  /**
+   * Listing offers /order/upgrade/privateSQL
+   * Retrieve available offers to upgrade your service to
+   */
+  get(path: '/order/upgrade/privateSQL/{domain}'): (params: {domain: string}) => Promise<order.cart.GenericProductDefinition[]>;
+  /**
+   * Listing offers /order/upgrade/privateSQL/#serviceName#
+   * Get a provisional order for the selected upgrade of your service
+   */
+  get(path: '/order/upgrade/privateSQL/{domain}/{planCode}'): (params: {domain: string, planCode: string, quantity: number}) => Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+  /**
    * Operations about the SSLGATEWAY service
    * List available services
    */
@@ -5467,6 +5651,21 @@ export interface Order{
    * Get a provisional order for the selected upgrade of your service
    */
   get(path: '/order/upgrade/vpsAdditionalDisk/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, quantity: number}) => Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+  /**
+   * Operations about the HOSTING service
+   * List available services
+   */
+  get(path: '/order/upgrade/webHosting'): () => Promise<string[]>;
+  /**
+   * Listing offers /order/upgrade/webHosting
+   * Retrieve available offers to upgrade your service to
+   */
+  get(path: '/order/upgrade/webHosting/{serviceName}'): (params: {serviceName: string}) => Promise<order.cart.GenericProductDefinition[]>;
+  /**
+   * Listing offers /order/upgrade/webHosting/#serviceName#
+   * Get a provisional order for the selected upgrade of your service
+   */
+  get(path: '/order/upgrade/webHosting/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, quantity: number}) => Promise<order.upgrade.order_upgrade_OperationAndOrder>;
   /**
    * Operations about the VEEAMCC service
    * List available services
@@ -6498,6 +6697,11 @@ export interface Order{
    */
   post(path: '/order/domain/zone/new'): (params: {minimized?: boolean, zoneName: string}) => Promise<order.Order>;
   /**
+   * Create an order for upgrade your mx plan
+   * Create order
+   */
+  post(path: '/order/email/domain/{domain}/upgrade/{duration}'): (params: {domain: string, duration: string, offer: email.domain.OfferEnum}) => Promise<order.Order>;
+  /**
    * Order a new mx plan
    * Create order
    */
@@ -6597,6 +6801,11 @@ export interface Order{
    * Create order
    */
   post(path: '/order/license/cloudLinux/new/{duration}'): (params: {duration: string, ip: string, version: license.CloudLinuxVersionEnum}) => Promise<order.Order>;
+  /**
+   * Upgrade this license version
+   * Create order
+   */
+  post(path: '/order/license/cpanel/{serviceName}/upgrade/{duration}'): (params: {duration: string, serviceName: string, version: license.OrderableCpanelVersionEnum}) => Promise<order.Order>;
   /**
    * Order a new license on a given Ip with some given options
    * Create order
@@ -6783,6 +6992,16 @@ export interface Order{
    */
   post(path: '/order/upgrade/cephaas/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, autoPayWithPreferredPaymentMethod?: boolean, quantity: number}) => Promise<order.upgrade.order_upgrade_OperationAndOrder>;
   /**
+   * Listing offers /order/upgrade/cloudDB/#serviceName#
+   * Perform the requested upgrade of your service
+   */
+  post(path: '/order/upgrade/cloudDB/{domain}/{planCode}'): (params: {domain: string, planCode: string, autoPayWithPreferredPaymentMethod?: boolean, quantity: number}) => Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+  /**
+   * Listing offers /order/upgrade/emailDomain/#serviceName#
+   * Perform the requested upgrade of your service
+   */
+  post(path: '/order/upgrade/emailDomain/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, autoPayWithPreferredPaymentMethod?: boolean, quantity: number}) => Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+  /**
    * Listing offers /order/upgrade/hostingReseller/#serviceName#
    * Perform the requested upgrade of your service
    */
@@ -6813,6 +7032,11 @@ export interface Order{
    */
   post(path: '/order/upgrade/privateCloud/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, autoPayWithPreferredPaymentMethod?: boolean, quantity: number}) => Promise<order.upgrade.order_upgrade_OperationAndOrder>;
   /**
+   * Listing offers /order/upgrade/privateSQL/#serviceName#
+   * Perform the requested upgrade of your service
+   */
+  post(path: '/order/upgrade/privateSQL/{domain}/{planCode}'): (params: {domain: string, planCode: string, autoPayWithPreferredPaymentMethod?: boolean, quantity: number}) => Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+  /**
    * Listing offers /order/upgrade/sslGateway/#serviceName#
    * Perform the requested upgrade of your service
    */
@@ -6827,6 +7051,11 @@ export interface Order{
    * Perform the requested upgrade of your service
    */
   post(path: '/order/upgrade/vpsAdditionalDisk/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, autoPayWithPreferredPaymentMethod?: boolean, quantity: number}) => Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+  /**
+   * Listing offers /order/upgrade/webHosting/#serviceName#
+   * Perform the requested upgrade of your service
+   */
+  post(path: '/order/upgrade/webHosting/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, autoPayWithPreferredPaymentMethod?: boolean, quantity: number}) => Promise<order.upgrade.order_upgrade_OperationAndOrder>;
   /**
    * Order an upgrade upon your Veeam Cloud Connect account
    * Create order

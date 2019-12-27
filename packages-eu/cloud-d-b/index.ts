@@ -132,9 +132,11 @@ export namespace cloudDB {
         internal: boolean;
         lastUpdate: string;
         name: string;
+        restoreDuration?: number;
         size?: number;
         status: cloudDB.enterprise.Backup.StatusEnum;
         taskId?: string;
+        validationDate?: string;
     }
     // interface fullName: cloudDB.enterprise_Cluster_Endpoint.enterprise_Cluster_Endpoint
     export interface enterprise_Cluster_Endpoint {

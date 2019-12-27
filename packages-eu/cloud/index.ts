@@ -674,6 +674,7 @@ export namespace cloud {
             name: string;
             projectID: string;
             region: string;
+            size: number;
             status: cloud.containerRegistry.StatusEnum;
             updatedAt: string;
             url: string;
@@ -1241,7 +1242,109 @@ export namespace cloud {
             detail: cloud.project.VolumeUsageDetail[];
             total: orderPrice;
         }
+        export namespace ai {
+            export namespace serving {
+                // type fullname: cloud.project.ai.serving.APIStatusEnum
+                export type APIStatusEnum = "pending" | "starting" | "running" | "scaling" | "waking" | "sleeping"
+                // interface fullName: cloud.project.ai.serving.Flavor.Flavor
+                export interface Flavor {
+                    description: string;
+                    id: string;
+                }
+                // interface fullName: cloud.project.ai.serving.Model.Model
+                export interface Model {
+                    apiStatus: cloud.project.ai.serving.APIStatusEnum;
+                    createdAt: string;
+                    id: string;
+                    replicas?: number;
+                    url?: string;
+                    version?: number;
+                    versionStatus: cloud.project.ai.serving.VersionStatusEnum;
+                    workflowTemplate?: cloud.project.ai.serving.WorkflowTemplateEnum;
+                    workflowTemplateParameters: cloud.project.ai.serving.ModelWorkflowTemplateParameter;
+                }
+                // interface fullName: cloud.project.ai.serving.ModelDefinition.ModelDefinition
+                export interface ModelDefinition {
+                    flavor: string;
+                    id: string;
+                    imageId?: string;
+                    storagePath?: string;
+                    workflowTemplate?: cloud.project.ai.serving.WorkflowTemplateEnum;
+                }
+                // interface fullName: cloud.project.ai.serving.ModelWorkflowTemplateParameter.ModelWorkflowTemplateParameter
+                export interface ModelWorkflowTemplateParameter {
+                    imageId?: string;
+                    storagePath?: string;
+                }
+                // interface fullName: cloud.project.ai.serving.Namespace.Namespace
+                export interface Namespace {
+                    clusterId: string;
+                    container: string;
+                    containerId: string;
+                    createdAt: string;
+                    description: string;
+                    hubUrl: string;
+                    id: string;
+                    region: string;
+                    url: string;
+                }
+                // interface fullName: cloud.project.ai.serving.NamespaceCreation.NamespaceCreation
+                export interface NamespaceCreation {
+                    container: string;
+                    description: string;
+                    region: string;
+                }
+                // interface fullName: cloud.project.ai.serving.PresetImage.PresetImage
+                export interface PresetImage {
+                    description: string;
+                    id: string;
+                    link?: string;
+                }
+                // interface fullName: cloud.project.ai.serving.Registry.Registry
+                export interface Registry {
+                    custom: boolean;
+                    password: string;
+                    url: string;
+                    username: string;
+                }
+                // interface fullName: cloud.project.ai.serving.RegistryResponse.RegistryResponse
+                export interface RegistryResponse {
+                    message: string;
+                }
+                // interface fullName: cloud.project.ai.serving.Token.Token
+                export interface Token {
+                    createdAt: string;
+                    groups: cloud.project.ai.serving.TokenGroupEnum[];
+                    id: string;
+                    resource: string;
+                    token?: string;
+                }
+                // type fullname: cloud.project.ai.serving.TokenGroupEnum
+                export type TokenGroupEnum = "model-management" | "model-evaluation"
+                // type fullname: cloud.project.ai.serving.VersionStatusEnum
+                export type VersionStatusEnum = "pending" | "building" | "built" | "build-error" | "deploying" | "deployed" | "rollback" | "failed"
+                // type fullname: cloud.project.ai.serving.WorkflowTemplateEnum
+                export type WorkflowTemplateEnum = "build-image" | "preset-image"
+            }
+        }
         export namespace io {
+            // interface fullName: cloud.project.io.LoadBalancer.LoadBalancer
+            export interface LoadBalancer {
+                description?: string;
+                id: string;
+                name?: string;
+                region: string;
+                status: cloud.project.io.LoadBalancerStatusEnum;
+            }
+            // interface fullName: cloud.project.io.LoadBalancerCreation.LoadBalancerCreation
+            export interface LoadBalancerCreation {
+                description?: string;
+                id: string;
+                name?: string;
+                region: string;
+            }
+            // type fullname: cloud.project.io.LoadBalancerStatusEnum
+            export type LoadBalancerStatusEnum = "INSTALLING" | "RUNNING" | "ERROR"
             // interface fullName: cloud.project.io.Stream.Stream
             export interface Stream {
                 backlog: string;
@@ -1269,6 +1372,12 @@ export namespace cloud {
             }
             // type fullname: cloud.project.io.StreamStatusEnum
             export type StreamStatusEnum = "INSTALLING" | "RUNNING" | "ERROR"
+            export namespace loadbalancer {
+                // interface fullName: cloud.project.io.loadbalancer.Region.Region
+                export interface Region {
+                    region: string;
+                }
+            }
             export namespace stream {
                 // interface fullName: cloud.project.io.stream.Region.Region
                 export interface Region {

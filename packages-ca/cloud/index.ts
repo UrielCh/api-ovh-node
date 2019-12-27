@@ -674,6 +674,7 @@ export namespace cloud {
             name: string;
             projectID: string;
             region: string;
+            size: number;
             status: cloud.containerRegistry.StatusEnum;
             updatedAt: string;
             url: string;

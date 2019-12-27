@@ -270,6 +270,10 @@ export namespace domain {
         }
     }
     export namespace zone {
+        // interface fullName: domain.zone.Anycast.Anycast
+        export interface Anycast {
+            name: string;
+        }
         // interface fullName: domain.zone.Dnssec.Dnssec
         export interface Dnssec {
             status: dnssec.DnssecStatusEnum;

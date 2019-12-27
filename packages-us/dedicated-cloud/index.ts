@@ -216,6 +216,8 @@ export namespace dedicatedCloud {
     export interface Ip {
         country: string;
         description: string;
+        gateway: string;
+        netmask: string;
         network: string;
         networkName: string;
         register: dedicatedCloudBlockRegisterEnum;
