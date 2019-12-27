@@ -1,5 +1,9 @@
 # Changelog
 
+## verion 1.4.3
+
+- implement reconnect group V2.
+
 ## verion 1.4.1
 
 - improve error support.

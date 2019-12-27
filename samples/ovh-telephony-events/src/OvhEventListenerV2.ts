@@ -22,14 +22,13 @@ interface EventSession {
     lastConnection: string, //"2019-06-07T11:40:16.036199867+02:00"
 }
 
-function parseVerbose(text: string, source: string): any {
+function parseVerbose(text: string, statusCode: number, source: string): any {
     try {
         return JSON.parse(text);
     } catch (e) {
         if (text.length > 200)
             text = text.substring(0, 198) + '...';
-        const error = `source:${source} Failed to parse ${text}`;
-        console.log(error);
+        const error = `Invalid json parsing, code:${statusCode} source:${source} data:"${text}"`;
         throw Error(error);
     }
 }
@@ -53,8 +52,48 @@ export class OvhEventListenerV2 extends EventEmitter implements IOvhEventListene
         return this;
     }
 
-    public async listen() {
+    private async connectGroup(group: IEvTokenGroup) {
+        const method = 'POST';
+        const urlSes = 'https://events.voip.ovh.net/v2/session';
+        let text = '';
+        let statusCode = 0;
+        while (true) {
+            const response = await fetch(urlSes, { method, headers })
+            statusCode = response.status;
+            if (response.status === 200) {
+                text = await response.text();
+                break;
+            }
+            await this.handleError({
+                groups: group.groups.map(g => g.billingAccount).join(','),
+                url: urlSes,
+                status: response.status,
+                statusText: response.statusText
+            });
+        }
 
+        const session: EventSession = parseVerbose(text, statusCode, urlSes);
+        group.session = session.id;
+        for (const g2 of group.groups) {
+            const url = `https://events.voip.ovh.net/v2/session/${group.session}/subscribe/${g2.token}`;
+            const response = await fetch(url, { method, headers })
+            if (response.status !== 200) {
+                await this.handleError({
+                    groups: group.groups.map(g => g.billingAccount).join(','),
+                    url,
+                    status: response.status,
+                    statusText: response.statusText
+                });
+            } else {
+                let resp = await response.text();
+                if (resp !== `Successfully subscribed on token ${g2.token}`) {
+                    console.error('unexpected response from events.voip.ovh.net/v2/session:' + resp);
+                }
+            }
+        }
+    }
+
+    public async listen() {
         return new Promise(async (resolve) => {
             let groups2: IEvTokenGroup[] = [];
             groups2.push({ groups: [], session: '' });
@@ -68,45 +107,11 @@ export class OvhEventListenerV2 extends EventEmitter implements IOvhEventListene
             }
             console.log(`${this.tokens.length} billingGroups grouped as ${groups2.length} groups`)
             for (const group of groups2) {
-                const method = 'POST';
-                const urlSes = 'https://events.voip.ovh.net/v2/session';
-                let text = '';
-                while (true) {
-                    const response = await fetch(urlSes, { method, headers })
-                    if (response.status === 200) {
-                        text = await response.text();
-                        break;
-                    }
-                    await this.handleError({
-                        groups: group.groups.map(g => g.billingAccount).join(','),
-                        url: urlSes,
-                        status: response.status,
-                        statusText: response.statusText
-                    });
-                }
-
-                const session: EventSession = parseVerbose(text, urlSes);
-                group.session = session.id;
-                for (const g2 of group.groups) {
-                    const url = `https://events.voip.ovh.net/v2/session/${group.session}/subscribe/${g2.token}`;
-                    const response = await fetch(url, { method, headers })
-                    if (response.status !== 200) {
-                        await this.handleError({
-                            groups: group.groups.map(g => g.billingAccount).join(','),
-                            url,
-                            status: response.status,
-                            statusText: response.statusText
-                        });
-                    } else {
-                        let resp = await response.text();
-                        if (resp !== `Successfully subscribed on token ${g2.token}`) {
-                            console.error('unexpected response from events.voip.ovh.net/v2/session:' + resp);
-                        }
-                    }
-                }
+                await this.connectGroup(group);
             }
             console.log(`Registred Ok on event Api V2`)
             resolve();
+
             const listen = groups2.map(async (group: IEvTokenGroup) => {
                 const url = `https://events.voip.ovh.net/v2/session/${group.session}/events/poll`;
                 while (true) {
@@ -121,7 +126,11 @@ export class OvhEventListenerV2 extends EventEmitter implements IOvhEventListene
                             });
                         } else {
                             const text = await response.text();
-                            const events: IVoipEvent[] = parseVerbose(text, url);
+                            if (text === 'Timeout, please reconnect') {
+                                await this.connectGroup(group);
+                                continue;
+                            }
+                            const events: IVoipEvent[] = parseVerbose(text, response.status, url);
                             if (events && events.length) {
                                 if (this.listenerCount("message") > 0) {
                                     for (const m of events) {

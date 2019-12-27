@@ -9,10 +9,10 @@ import debounce from 'debounce';
 import fse from 'fs-extra';
 import kleur from 'kleur';
 
-const { name, version } = require('../package.json');
-
 // sample exec line:
 // ts-node main.ts --redis-host 127.0.0.1 --cache tokens.json --channel event-voip
+
+const { version } = require('../package.json');
 program
     .version(version)
     .option('--reset', 'reset all tokens')
@@ -25,22 +25,8 @@ program
     .option('--v1', 'use Api V1 (by default use V2)')
     .parse(process.argv);
 
-export function myDebounce(
-    delay: number,
-    callback: () => any,
-): () => any {
-    let next: NodeJS.Timeout | null = null;
-    return () => {
-        if (next)
-            return;
-        next = setTimeout(() => {
-            callback();
-            next = null;
-        }, delay)
-    }
-}
-
-async function main() {
+function checkUpdate() {
+    const { name } = require('../package.json');
     const versionQuery = fetch(`http://registry.npmjs.com/-/v1/search?text=${name}&size=1`);
     versionQuery.then(response => {
         response.json().then((data) => {
@@ -64,10 +50,31 @@ async function main() {
                         return;
                     }
                     console.log(`this version (${kleur.bold().red(version)}) is outdated consider upgrading latest (${kleur.bold().green(npmVersion)}).`);
+                    const cmd = `npm install -g ${name}`
+                    console.log(` ${kleur.yellow().bold(cmd)}`);
                 }
             }
         }, () => { })
     }, () => { });
+}
+
+export function myDebounce(
+    delay: number,
+    callback: () => any,
+): () => any {
+    let next: NodeJS.Timeout | null = null;
+    return () => {
+        if (next)
+            return;
+        next = setTimeout(() => {
+            callback();
+            next = null;
+        }, delay)
+    }
+}
+
+async function main() {
+    checkUpdate();
     if (program['reset']) {
         if (program.cache) {
             console.log(`Try to deleting old token file ${program.cache}`);
@@ -99,7 +106,9 @@ async function main() {
     if (redis)
         listener.redis(redis, program.channel)
 
-    const logError = debounce((msg:any) => console.error(msg), 2000, true);
+    const logError = debounce((msg:any) => {
+        console.error(msg)
+    }, 2000, true);
 
     listener.on("error", (err) => {
         logError(err);
