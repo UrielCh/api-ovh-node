@@ -221,16 +221,21 @@ by default I will ask for all rights`);
             .map(([method, path]) => ({ method, path }));
     }
 
-
     public getQuerySet(): string {
         if (this.querySet)
             return [...this.querySet].filter(a => a != 'GET /auth/time').join(', ');
         return 'please set saveQuerys to true to enable this feature';
     }
-
+    /**
+     * stat credential authentification
+     * @param redirection optional redirecton for auth page.
+     */
     public async queryForCredencial(redirection?: string): Promise<CredentialResp> {
         try {
-            const rules = { accessRules: this.toAccessRules.apply(this, this.accessRules), redirection: null as any };
+            const rules = {
+                accessRules: this.toAccessRules.apply(this, this.accessRules),
+                redirection: '',
+            };
             if (redirection)
                 rules.redirection = redirection;
             const resp = await this.request('POST', '/auth/credential', rules);
@@ -519,7 +524,7 @@ by default I will ask for all rights`);
      * @param {Object} params: The request parameters (passed as query string or
      *                         body params)
      */
-    requestPromised(httpMethod: string, path: string, params?: OvhParamType) {
+    public requestPromised(httpMethod: string, path: string, params?: OvhParamType) {
         return this.request(httpMethod, path, params);
     }
 
