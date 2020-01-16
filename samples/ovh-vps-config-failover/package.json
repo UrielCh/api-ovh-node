@@ -1,6 +1,6 @@
 {
   "name": "ovh-vps-config-failover",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Configure IP Failover on an Debian/CentOS based OVH VPS.",
   "main": "index.js",
   "keywords": [
@@ -27,16 +27,17 @@
   "bugs": "https://github.com/UrielCh/api-ovh-node/issues",
   "scripts": {
     "build": "tsc",
-    "build:watch": "tsc --watch"
+    "build:watch": "tsc --watch",
+    "prepare": "npm run build"
   },
   "dependencies": {
-    "@ovh-api/api": "^2.0.0",
-    "@ovh-api/vps": "^2.0.4",
+    "@ovh-api/api": "^2.1.3",
+    "@ovh-api/vps": "^2.0.13",
     "fs-extra": "^8.1.0"
   },
   "devDependencies": {
-    "@types/fs-extra": "^8.0.0",
-    "ts-node": "^8.3.0",
-    "typescript": "^3.5.3"
+    "@types/fs-extra": "^8.0.1",
+    "ts-node": "^8.6.2",
+    "typescript": "^3.7.4"
   }
 }
