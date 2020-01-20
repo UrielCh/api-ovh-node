@@ -698,6 +698,7 @@ export namespace telephony {
     export interface Line {
         canChangePassword: boolean;
         description: string;
+        deviceSlot: number;
         getPublicOffer: telephony.LineOffer;
         infrastructure: string;
         isAttachedToOtherLinesPhone: boolean;
@@ -2400,7 +2401,7 @@ export interface Telephony{
                 // GET /telephony/{billingAccount}/line/{serviceName}
                 $get(): Promise<telephony.Line>;
                 // PUT /telephony/{billingAccount}/line/{serviceName}
-                $put(params?: {canChangePassword?: boolean, description?: string, getPublicOffer?: telephony.LineOffer, infrastructure?: string, isAttachedToOtherLinesPhone?: boolean, notifications?: telephony.LineNotificationsOptions, offers?: string[], serviceName?: string, serviceType?: telephony.TypeServiceEnum, simultaneousLines?: number}): Promise<void>;
+                $put(params?: {canChangePassword?: boolean, description?: string, deviceSlot?: number, getPublicOffer?: telephony.LineOffer, infrastructure?: string, isAttachedToOtherLinesPhone?: boolean, notifications?: telephony.LineNotificationsOptions, offers?: string[], serviceName?: string, serviceType?: telephony.TypeServiceEnum, simultaneousLines?: number}): Promise<void>;
                 abbreviatedNumber: {
                     // GET /telephony/{billingAccount}/line/{serviceName}/abbreviatedNumber
                     $get(): Promise<number[]>;
@@ -2429,7 +2430,7 @@ export interface Telephony{
                 }
                 associateDevice: {
                     // POST /telephony/{billingAccount}/line/{serviceName}/associateDevice
-                    $post(params: {ipAddress?: string, macAddress: string}): Promise<void>;
+                    $post(params: {ipAddress?: string, macAddress: string, slot?: number}): Promise<void>;
                 }
                 automaticCall: {
                     // GET /telephony/{billingAccount}/line/{serviceName}/automaticCall
@@ -5169,7 +5170,7 @@ export interface Telephony{
    * Line service
    * Alter this object properties
    */
-  put(path: '/telephony/{billingAccount}/line/{serviceName}'): (params: {billingAccount: string, serviceName: string, canChangePassword?: boolean, description?: string, getPublicOffer?: telephony.LineOffer, infrastructure?: string, isAttachedToOtherLinesPhone?: boolean, notifications?: telephony.LineNotificationsOptions, offers?: string[], serviceType?: telephony.TypeServiceEnum, simultaneousLines?: number}) => Promise<void>;
+  put(path: '/telephony/{billingAccount}/line/{serviceName}'): (params: {billingAccount: string, serviceName: string, canChangePassword?: boolean, description?: string, deviceSlot?: number, getPublicOffer?: telephony.LineOffer, infrastructure?: string, isAttachedToOtherLinesPhone?: boolean, notifications?: telephony.LineNotificationsOptions, offers?: string[], serviceType?: telephony.TypeServiceEnum, simultaneousLines?: number}) => Promise<void>;
   /**
    * Abbreviated number
    * Alter this object properties
@@ -5684,7 +5685,7 @@ export interface Telephony{
    * associateDevice operations
    * Associate a device to the current line with the device mac address
    */
-  post(path: '/telephony/{billingAccount}/line/{serviceName}/associateDevice'): (params: {billingAccount: string, serviceName: string, ipAddress?: string, macAddress: string}) => Promise<void>;
+  post(path: '/telephony/{billingAccount}/line/{serviceName}/associateDevice'): (params: {billingAccount: string, serviceName: string, ipAddress?: string, macAddress: string, slot?: number}) => Promise<void>;
   /**
    * List the telephony.CallsGenerated objects
    * Make an automatic phone call. Return generated call identifier

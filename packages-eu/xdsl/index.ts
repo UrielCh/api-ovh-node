@@ -442,6 +442,12 @@ export namespace xdsl {
         canRefreshConnectedDevices: boolean;
         canReset: boolean;
     }
+    // interface fullName: xdsl.ModemExchangeInfo.ModemExchangeInfo
+    export interface ModemExchangeInfo {
+        canExchange: boolean;
+        newModel: string;
+        price: order.Price;
+    }
     // interface fullName: xdsl.ModemInfo.ModemInfo
     export interface ModemInfo {
         device: xdsl.DeviceModemInfo;
@@ -1300,6 +1306,8 @@ export interface Xdsl{
                 $post(params: {callWaiting: xdsl.ServiceStatusEnum}): Promise<xdsl.Task>;
             }
             comfortExchange: {
+                // GET /xdsl/{serviceName}/modem/comfortExchange
+                $get(): Promise<xdsl.ModemExchangeInfo>;
                 // POST /xdsl/{serviceName}/modem/comfortExchange
                 $post(params?: {contactShipping?: string}): Promise<order.Order>;
             }
@@ -1645,6 +1653,11 @@ export interface Xdsl{
    * Get the status of callWaiting on modem
    */
   get(path: '/xdsl/{serviceName}/modem/callWaiting'): (params: {serviceName: string}) => Promise<xdsl.ServiceStatusEnum>;
+  /**
+   * comfortExchange operations
+   * Get info about access modem replacement by last model.
+   */
+  get(path: '/xdsl/{serviceName}/modem/comfortExchange'): (params: {serviceName: string}) => Promise<xdsl.ModemExchangeInfo>;
   /**
    * List the xdsl.connectedDevice objects
    * List of devices connected on this modem

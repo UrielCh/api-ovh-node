@@ -190,7 +190,7 @@ export namespace dedicated {
         // type fullname: dedicated.server.BandwidthvRackTypeEnum
         export type BandwidthvRackTypeEnum = "included" | "standard"
         // type fullname: dedicated.server.BiosSettingsSgxPrmrrEnum
-        export type BiosSettingsSgxPrmrrEnum = "128MB"
+        export type BiosSettingsSgxPrmrrEnum = "128MB" | "256MB" | "32MB" | "64MB"
         // type fullname: dedicated.server.BiosSettingsSgxStatusEnum
         export type BiosSettingsSgxStatusEnum = "disabled" | "enabled" | "software controlled"
         // interface fullName: dedicated.server.BiosSettingsSupport.BiosSettingsSupport

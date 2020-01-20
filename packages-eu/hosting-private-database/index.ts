@@ -145,6 +145,7 @@ export namespace hosting {
             tlsCa?: string;
             type: hosting.PrivateDatabase.TypeEnum;
             version: hosting.PrivateDatabase.AvailableVersionEnum;
+            versionLabel: string;
             versionNumber: number;
         }
         // interface fullName: hosting.privateDatabase.database.database
@@ -276,7 +277,7 @@ export interface Hosting{
             // GET /hosting/privateDatabase/{serviceName}
             $get(): Promise<hosting.privateDatabase.Service>;
             // PUT /hosting/privateDatabase/{serviceName}
-            $put(params?: {capabilities?: hosting.PrivateDatabase.Capability[], cpu?: number, datacenter?: hosting.PrivateDatabase.DatacenterEnum, displayName?: string, graphEndpoint?: hosting.PrivateDatabase.GraphEndpoint, guiURL?: string, hostname?: string, hostnameFtp?: string, infrastructure?: string, ip?: string, lastCheck?: string, offer?: hosting.PrivateDatabase.OfferEnum, port?: number, portFtp?: number, quotaSize?: complexType.UnitAndValue<number>, quotaUsed?: complexType.UnitAndValue<number>, ram?: complexType.UnitAndValue<number>, server?: string, serviceName?: string, state?: hosting.PrivateDatabase.StateEnum, tlsCa?: string, type?: hosting.PrivateDatabase.TypeEnum, version?: hosting.PrivateDatabase.AvailableVersionEnum, versionNumber?: number}): Promise<void>;
+            $put(params?: {capabilities?: hosting.PrivateDatabase.Capability[], cpu?: number, datacenter?: hosting.PrivateDatabase.DatacenterEnum, displayName?: string, graphEndpoint?: hosting.PrivateDatabase.GraphEndpoint, guiURL?: string, hostname?: string, hostnameFtp?: string, infrastructure?: string, ip?: string, lastCheck?: string, offer?: hosting.PrivateDatabase.OfferEnum, port?: number, portFtp?: number, quotaSize?: complexType.UnitAndValue<number>, quotaUsed?: complexType.UnitAndValue<number>, ram?: complexType.UnitAndValue<number>, server?: string, serviceName?: string, state?: hosting.PrivateDatabase.StateEnum, tlsCa?: string, type?: hosting.PrivateDatabase.TypeEnum, version?: hosting.PrivateDatabase.AvailableVersionEnum, versionLabel?: string, versionNumber?: number}): Promise<void>;
             availableVersions: {
                 // GET /hosting/privateDatabase/{serviceName}/availableVersions
                 $get(): Promise<hosting.PrivateDatabase.AvailableVersionEnum[]>;
@@ -590,7 +591,7 @@ export interface Hosting{
    * Private database
    * Alter this object properties
    */
-  put(path: '/hosting/privateDatabase/{serviceName}'): (params: {serviceName: string, capabilities?: hosting.PrivateDatabase.Capability[], cpu?: number, datacenter?: hosting.PrivateDatabase.DatacenterEnum, displayName?: string, graphEndpoint?: hosting.PrivateDatabase.GraphEndpoint, guiURL?: string, hostname?: string, hostnameFtp?: string, infrastructure?: string, ip?: string, lastCheck?: string, offer?: hosting.PrivateDatabase.OfferEnum, port?: number, portFtp?: number, quotaSize?: complexType.UnitAndValue<number>, quotaUsed?: complexType.UnitAndValue<number>, ram?: complexType.UnitAndValue<number>, server?: string, state?: hosting.PrivateDatabase.StateEnum, tlsCa?: string, type?: hosting.PrivateDatabase.TypeEnum, version?: hosting.PrivateDatabase.AvailableVersionEnum, versionNumber?: number}) => Promise<void>;
+  put(path: '/hosting/privateDatabase/{serviceName}'): (params: {serviceName: string, capabilities?: hosting.PrivateDatabase.Capability[], cpu?: number, datacenter?: hosting.PrivateDatabase.DatacenterEnum, displayName?: string, graphEndpoint?: hosting.PrivateDatabase.GraphEndpoint, guiURL?: string, hostname?: string, hostnameFtp?: string, infrastructure?: string, ip?: string, lastCheck?: string, offer?: hosting.PrivateDatabase.OfferEnum, port?: number, portFtp?: number, quotaSize?: complexType.UnitAndValue<number>, quotaUsed?: complexType.UnitAndValue<number>, ram?: complexType.UnitAndValue<number>, server?: string, state?: hosting.PrivateDatabase.StateEnum, tlsCa?: string, type?: hosting.PrivateDatabase.TypeEnum, version?: hosting.PrivateDatabase.AvailableVersionEnum, versionLabel?: string, versionNumber?: number}) => Promise<void>;
   /**
    * Details about a Service
    * Alter this object properties

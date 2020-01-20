@@ -66,7 +66,7 @@ export namespace saas {
             zipCode: string;
         }
         // type fullname: saas.csp2.ServiceStateEnum
-        export type ServiceStateEnum = "creating" | "inMaintenance" | "ok" | "suspended"
+        export type ServiceStateEnum = "creating" | "inMaintenance" | "ok" | "suspended" | "suspending"
         // interface fullName: saas.csp2.Statistics.Statistics
         export interface Statistics {
             date: string;

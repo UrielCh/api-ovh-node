@@ -759,6 +759,38 @@ export namespace http {
     export type MethodEnum = "DELETE" | "GET" | "POST" | "PUT"
 }
 export namespace me {
+    export namespace SupportLevel {
+        // interface fullName: me.SupportLevel.Level.Level
+        export interface Level {
+            level: me.SupportLevel.LevelTypeEnum;
+        }
+        // type fullname: me.SupportLevel.LevelTypeEnum
+        export type LevelTypeEnum = "standard" | "premium" | "premium-accredited" | "business" | "enterprise"
+    }
+    export namespace billing {
+        export namespace group {
+            // interface fullName: me.billing.group.BillingGroup.BillingGroup
+            export interface BillingGroup {
+                contactId?: number;
+                creationDate: string;
+                groupId: number;
+                lastUpdate: string;
+                name: string;
+                paymentMethodId?: number;
+            }
+            // interface fullName: me.billing.group.Service.Service
+            export interface Service {
+                groupId: number;
+                serviceId: number;
+            }
+            export namespace service {
+                // interface fullName: me.billing.group.service.Create.Create
+                export interface Create {
+                    serviceId: number;
+                }
+            }
+        }
+    }
     export namespace consent {
         // interface fullName: me.consent.Campaign.Campaign
         export interface Campaign {
@@ -816,6 +848,72 @@ export namespace me {
                     quantity: number;
                     unique_id?: string;
                 }
+            }
+        }
+    }
+    export namespace credit {
+        // interface fullName: me.credit.Balance.Balance
+        export interface Balance {
+            amount: orderPrice;
+            balanceDetails: me.credit.balance.BalanceDetails[];
+            balanceName: string;
+            booked: me.credit.balance.BookedMovement[];
+            creationDate: string;
+            expiring: me.credit.balance.ExpiringMovement[];
+            lastUpdate: string;
+            type: me.credit.balance.TypeEnum;
+        }
+        export namespace balance {
+            // interface fullName: me.credit.balance.BalanceDetails.BalanceDetails
+            export interface BalanceDetails {
+                amount: orderPrice;
+                balanceSubName?: string;
+                expiring: me.credit.balance.ExpiringMovement[];
+                serviceId?: number;
+            }
+            // interface fullName: me.credit.balance.BookedMovement.BookedMovement
+            export interface BookedMovement {
+                amount: orderPrice;
+                balanceSubName?: string;
+                orderId: number;
+            }
+            // interface fullName: me.credit.balance.ExpiringMovement.ExpiringMovement
+            export interface ExpiringMovement {
+                amount: orderPrice;
+                creationDate: string;
+                expirationDate: string;
+                lastUpdate: string;
+                sourceObject: me.credit.balance.movement.SubObject;
+            }
+            // interface fullName: me.credit.balance.Movement.Movement
+            export interface Movement {
+                amount: orderPrice;
+                balanceName: string;
+                creationDate: string;
+                expirationDate?: string;
+                lastUpdate: string;
+                movementId: number;
+                orderId?: number;
+                sourceObject: me.credit.balance.movement.SubObject;
+                type: me.credit.balance.movement.TypeEnum;
+            }
+            // type fullname: me.credit.balance.TypeEnum
+            export type TypeEnum = "PREPAID_ACCOUNT" | "VOUCHER" | "DEPOSIT" | "BONUS"
+            export namespace movement {
+                // interface fullName: me.credit.balance.movement.SubObject.SubObject
+                export interface SubObject {
+                    id: string;
+                    name: string;
+                }
+                // type fullname: me.credit.balance.movement.TypeEnum
+                export type TypeEnum = "BONUS" | "CANCEL" | "EXPIRE" | "GIFT" | "MANUAL" | "ORDER" | "REFUND" | "UNPAID" | "USE" | "VOUCHER"
+            }
+        }
+        export namespace code {
+            // interface fullName: me.credit.code.Redeem.Redeem
+            export interface Redeem {
+                inputCode: string;
+                serviceId: number;
             }
         }
     }
@@ -889,6 +987,46 @@ export namespace me {
                 export type Type = "CREDIT" | "DEBIT"
             }
         }
+    }
+    export namespace paymentMean {
+        // interface fullName: me.paymentMean.CreditCard.CreditCard
+        export interface CreditCard {
+            defaultPaymentMean: boolean;
+            description?: string;
+            expirationDate: string;
+            icon?: me.paymentMean.IconData;
+            id: number;
+            number: string;
+            state: me.paymentMean.CreditCardStateEnum;
+            threeDsValidated: boolean;
+            type: string;
+        }
+        // interface fullName: me.paymentMean.CreditCardChallengeCreation.CreditCardChallengeCreation
+        export interface CreditCardChallengeCreation {
+            challenge: string;
+        }
+        // interface fullName: me.paymentMean.CreditCardCreation.CreditCardCreation
+        export interface CreditCardCreation {
+            description?: string;
+            returnUrl?: string;
+            setDefault?: boolean;
+        }
+        // type fullname: me.paymentMean.CreditCardStateEnum
+        export type CreditCardStateEnum = "expired" | "tooManyFailures" | "valid"
+        // interface fullName: me.paymentMean.CreditCardValidation.CreditCardValidation
+        export interface CreditCardValidation {
+            id: number;
+            submitUrl?: string;
+            url: string;
+            validationType: me.paymentMean.ValidationType;
+        }
+        // interface fullName: me.paymentMean.IconData.IconData
+        export interface IconData {
+            data?: string;
+            name?: string;
+        }
+        // type fullname: me.paymentMean.ValidationType
+        export type ValidationType = "creditAccount" | "documentToSend" | "simpleValidation"
     }
 }
 export namespace nichandle {
@@ -1545,6 +1683,34 @@ export interface Me{
             }
         };
     }
+    billing: {
+        group: {
+            // GET /me/billing/group
+            $get(params?: {name?: string}): Promise<number[]>;
+            // POST /me/billing/group
+            $post(params?: {contactId?: number, creationDate?: string, groupId?: number, lastUpdate?: string, name?: string, paymentMethodId?: number}): Promise<me.billing.group.BillingGroup>;
+            $(groupId: number): {
+                // DELETE /me/billing/group/{groupId}
+                $delete(): Promise<void>;
+                // GET /me/billing/group/{groupId}
+                $get(): Promise<me.billing.group.BillingGroup>;
+                // PUT /me/billing/group/{groupId}
+                $put(params?: {contactId?: number, creationDate?: string, groupId?: number, lastUpdate?: string, name?: string, paymentMethodId?: number}): Promise<void>;
+                service: {
+                    // GET /me/billing/group/{groupId}/service
+                    $get(): Promise<number[]>;
+                    // POST /me/billing/group/{groupId}/service
+                    $post(params: {serviceId: number}): Promise<me.billing.group.Service>;
+                    $(serviceId: number): {
+                        // DELETE /me/billing/group/{groupId}/service/{serviceId}
+                        $delete(): Promise<void>;
+                        // GET /me/billing/group/{groupId}/service/{serviceId}
+                        $get(): Promise<me.billing.group.Service>;
+                    };
+                }
+            };
+        }
+    }
     certificates: {
         // GET /me/certificates
         $get(params?: {name?: string}): Promise<string[]>;
@@ -1606,23 +1772,23 @@ export interface Me{
     credit: {
         balance: {
             // GET /me/credit/balance
-            $get(params?: {type?: billing.credit.balance.Type}): Promise<string[]>;
+            $get(params?: {type?: me.credit.balance.TypeEnum}): Promise<string[]>;
             $(balanceName: string): {
                 // GET /me/credit/balance/{balanceName}
-                $get(): Promise<billing.credit.Balance>;
+                $get(): Promise<me.credit.Balance>;
                 movement: {
                     // GET /me/credit/balance/{balanceName}/movement
                     $get(): Promise<number[]>;
                     $(movementId: number): {
                         // GET /me/credit/balance/{balanceName}/movement/{movementId}
-                        $get(): Promise<billing.credit.balance.Movement>;
+                        $get(): Promise<me.credit.balance.Movement>;
                     };
                 }
             };
         }
         code: {
             // POST /me/credit/code
-            $post(params: {inputCode: string, serviceId?: number}): Promise<billing.credit.balance.Movement>;
+            $post(params: {inputCode: string, serviceId?: number}): Promise<me.credit.balance.Movement>;
         }
     }
     debtAccount: {
@@ -2080,14 +2246,14 @@ export interface Me{
             // GET /me/paymentMean/creditCard
             $get(): Promise<number[]>;
             // POST /me/paymentMean/creditCard
-            $post(params?: {description?: string, returnUrl?: string, setDefault?: boolean}): Promise<billing.PaymentMeanValidation>;
+            $post(params?: {description?: string, returnUrl?: string, setDefault?: boolean}): Promise<me.paymentMean.CreditCardValidation>;
             $(id: number): {
                 // DELETE /me/paymentMean/creditCard/{id}
                 $delete(): Promise<void>;
                 // GET /me/paymentMean/creditCard/{id}
-                $get(): Promise<billing.CreditCard>;
+                $get(): Promise<me.paymentMean.CreditCard>;
                 // PUT /me/paymentMean/creditCard/{id}
-                $put(params?: {defaultPaymentMean?: boolean, description?: string, expirationDate?: string, icon?: billing.paymentMethod.IconData, id?: number, number?: string, state?: billing.CreditCardStateEnum, threeDsValidated?: boolean, type?: string}): Promise<void>;
+                $put(params?: {defaultPaymentMean?: boolean, description?: string, expirationDate?: string, icon?: me.paymentMean.IconData, id?: number, number?: string, state?: me.paymentMean.CreditCardStateEnum, threeDsValidated?: boolean, type?: string}): Promise<void>;
                 challenge: {
                     // POST /me/paymentMean/creditCard/{id}/challenge
                     $post(params: {challenge: string}): Promise<void>;
@@ -2218,6 +2384,10 @@ export interface Me{
             // PUT /me/subscription/{subscriptionType}
             $put(params?: {registered?: boolean, type?: string}): Promise<void>;
         };
+    }
+    supportLevel: {
+        // GET /me/supportLevel
+        $get(): Promise<me.SupportLevel.Level>;
     }
     task: {
         contactChange: {
@@ -2478,6 +2648,26 @@ export interface Me{
    */
   get(path: '/me/bill/{billId}/payment'): (params: {billId: string}) => Promise<billing.Payment>;
   /**
+   * Manage billing groups
+   * Retrieve all billing groups
+   */
+  get(path: '/me/billing/group'): (params?: {name?: string}) => Promise<number[]>;
+  /**
+   * Manage billing groups
+   * Retrieve information about a billing group
+   */
+  get(path: '/me/billing/group/{groupId}'): (params: {groupId: number}) => Promise<me.billing.group.BillingGroup>;
+  /**
+   * 
+   * Retrieve billing group service ID list
+   */
+  get(path: '/me/billing/group/{groupId}/service'): (params: {groupId: number}) => Promise<number[]>;
+  /**
+   * 
+   * Retrieve information about a billing group service
+   */
+  get(path: '/me/billing/group/{groupId}/service/{serviceId}'): (params: {groupId: number, serviceId: number}) => Promise<me.billing.group.Service>;
+  /**
    * Get all certificates of the account
    * Get all certificates of the account
    */
@@ -2528,25 +2718,25 @@ export interface Me{
    */
   get(path: '/me/contact/{contactId}/fields'): (params: {contactId: number}) => Promise<contact.FieldInformation[]>;
   /**
-   * Retrieve credit balance names
-   * Retrieve credit balance names
+   * Manage credit balances
+   * Retrieve all credit balances
    */
-  get(path: '/me/credit/balance'): (params?: {type?: billing.credit.balance.Type}) => Promise<string[]>;
+  get(path: '/me/credit/balance'): (params?: {type?: me.credit.balance.TypeEnum}) => Promise<string[]>;
   /**
-   * Retrieve a credit balance
+   * Manage credit balances
    * Retrieve a credit balance
    */
-  get(path: '/me/credit/balance/{balanceName}'): (params: {balanceName: string}) => Promise<billing.credit.Balance>;
+  get(path: '/me/credit/balance/{balanceName}'): (params: {balanceName: string}) => Promise<me.credit.Balance>;
   /**
-   * Retrieve movements for a specific balance
+   * Manage credit balance movements
    * Retrieve movements for a specific balance
    */
   get(path: '/me/credit/balance/{balanceName}/movement'): (params: {balanceName: string}) => Promise<number[]>;
   /**
-   * Retrieve a specific movement for a credit balance
+   * Manage credit balance movements
    * Retrieve a specific movement for a credit balance
    */
-  get(path: '/me/credit/balance/{balanceName}/movement/{movementId}'): (params: {balanceName: string, movementId: number}) => Promise<billing.credit.balance.Movement>;
+  get(path: '/me/credit/balance/{balanceName}/movement/{movementId}'): (params: {balanceName: string, movementId: number}) => Promise<me.credit.balance.Movement>;
   /**
    * Debt balance of the account
    * Get this object properties
@@ -2908,15 +3098,15 @@ export interface Me{
    */
   get(path: '/me/paymentMean/bankAccount/{id}'): (params: {id: number}) => Promise<billing.BankAccount>;
   /**
-   * List the billing.CreditCard objects
-   * List of credit cards
+   * List the payment mean credit cards
+   * List of payment mean credit cards
    */
   get(path: '/me/paymentMean/creditCard'): () => Promise<number[]>;
   /**
-   * Credit card informations
-   * Get this object properties
+   * List the payment mean credit cards
+   * Get credit card properties
    */
-  get(path: '/me/paymentMean/creditCard/{id}'): (params: {id: number}) => Promise<billing.CreditCard>;
+  get(path: '/me/paymentMean/creditCard/{id}'): (params: {id: number}) => Promise<me.paymentMean.CreditCard>;
   /**
    * List the billing.DeferredPaymentAccount objects
    * List of authorized deferred payment account for this customer
@@ -3017,6 +3207,11 @@ export interface Me{
    * Get this object properties
    */
   get(path: '/me/subscription/{subscriptionType}'): (params: {subscriptionType: string}) => Promise<nichandle.Subscription>;
+  /**
+   * Fetch the support level of the account
+   * Fetch the support level of the account
+   */
+  get(path: '/me/supportLevel'): () => Promise<me.SupportLevel.Level>;
   /**
    * List the nichandle.contactChange.Task objects
    * List of service contact change tasks you are involved in
@@ -3138,6 +3333,11 @@ export interface Me{
    */
   put(path: '/me/autorenew'): (params?: {active?: boolean, lastRenew?: string, renewDay?: number}) => Promise<void>;
   /**
+   * Manage billing groups
+   * Edit billing group
+   */
+  put(path: '/me/billing/group/{groupId}'): (params: {groupId: number, contactId?: number, creationDate?: string, lastUpdate?: string, name?: string, paymentMethodId?: number}) => Promise<void>;
+  /**
    * Get decision value for a consent campaign
    * Update decision of a consent campaign
    */
@@ -3208,10 +3408,10 @@ export interface Me{
    */
   put(path: '/me/paymentMean/bankAccount/{id}'): (params: {id: number, bic?: string, creationDate?: string, defaultPaymentMean?: boolean, description?: string, iban?: string, icon?: billing.paymentMethod.IconData, mandateSignatureDate?: string, ownerAddress?: string, ownerName?: string, state?: billing.BankAccountStateEnum, uniqueReference?: string, validationDocumentLink?: string}) => Promise<void>;
   /**
-   * Credit card informations
+   * List the payment mean credit cards
    * Alter this object properties
    */
-  put(path: '/me/paymentMean/creditCard/{id}'): (params: {id: number, defaultPaymentMean?: boolean, description?: string, expirationDate?: string, icon?: billing.paymentMethod.IconData, number?: string, state?: billing.CreditCardStateEnum, threeDsValidated?: boolean, type?: string}) => Promise<void>;
+  put(path: '/me/paymentMean/creditCard/{id}'): (params: {id: number, defaultPaymentMean?: boolean, description?: string, expirationDate?: string, icon?: me.paymentMean.IconData, number?: string, state?: me.paymentMean.CreditCardStateEnum, threeDsValidated?: boolean, type?: string}) => Promise<void>;
   /**
    * Deferred payment account info
    * Alter this object properties
@@ -3353,6 +3553,16 @@ export interface Me{
    */
   post(path: '/me/bill/{billId}/debt/pay'): (params: {billId: string}) => Promise<billing.Order>;
   /**
+   * Manage billing groups
+   * Create a new billing group
+   */
+  post(path: '/me/billing/group'): (params?: {contactId?: number, creationDate?: string, groupId?: number, lastUpdate?: string, name?: string, paymentMethodId?: number}) => Promise<me.billing.group.BillingGroup>;
+  /**
+   * 
+   * Associate a service to a billing group
+   */
+  post(path: '/me/billing/group/{groupId}/service'): (params: {groupId: number, serviceId: number}) => Promise<me.billing.group.Service>;
+  /**
    * changeEmail operations
    * Initiate an email change procedure
    */
@@ -3368,10 +3578,10 @@ export interface Me{
    */
   post(path: '/me/contact'): (params: {address: contact.Address, birthCity?: string, birthCountry?: nichandle.CountryEnum, birthDay?: string, birthZip?: string, cellPhone?: string, companyNationalIdentificationNumber?: string, email: string, fax?: string, firstName: string, gender?: nichandle.GenderEnum, language: nichandle.LanguageEnum, lastName: string, legalForm: nichandle.LegalFormEnum, nationalIdentificationNumber?: string, nationality?: nichandle.CountryEnum, organisationName?: string, organisationType?: string, phone: string, vat?: string}) => Promise<contact.Contact>;
   /**
-   * Validate a code to generate associated credit
+   * Validate a code to generate associated credit movement
    * Validate a code to generate associated credit movement
    */
-  post(path: '/me/credit/code'): (params: {inputCode: string, serviceId?: number}) => Promise<billing.credit.balance.Movement>;
+  post(path: '/me/credit/code'): (params: {inputCode: string, serviceId?: number}) => Promise<me.credit.balance.Movement>;
   /**
    * pay operations
    * Create an order in order to pay this order's debt
@@ -3533,17 +3743,17 @@ export interface Me{
    */
   post(path: '/me/paymentMean/bankAccount/{id}/chooseAsDefaultPaymentMean'): (params: {id: number}) => Promise<void>;
   /**
-   * List the billing.CreditCard objects
-   * Add a new credit card
+   * List the payment mean credit cards
+   * Add a new payment mean credit card
    */
-  post(path: '/me/paymentMean/creditCard'): (params?: {description?: string, returnUrl?: string, setDefault?: boolean}) => Promise<billing.PaymentMeanValidation>;
+  post(path: '/me/paymentMean/creditCard'): (params?: {description?: string, returnUrl?: string, setDefault?: boolean}) => Promise<me.paymentMean.CreditCardValidation>;
   /**
-   * challenge operations
-   * Challenge your bank account
+   * Challenge operations
+   * Challenge your credit card
    */
   post(path: '/me/paymentMean/creditCard/{id}/challenge'): (params: {id: number, challenge: string}) => Promise<void>;
   /**
-   * chooseAsDefaultPaymentMean operations
+   * Choose this credit card as default
    * Choose this credit card as your default payment mean. Will cancel the previous choice.
    */
   post(path: '/me/paymentMean/creditCard/{id}/chooseAsDefaultPaymentMean'): (params: {id: number}) => Promise<void>;
@@ -3668,6 +3878,16 @@ export interface Me{
    */
   delete(path: '/me/api/credential/{credentialId}'): (params: {credentialId: number}) => Promise<void>;
   /**
+   * Manage billing groups
+   * Delete a billing group
+   */
+  delete(path: '/me/billing/group/{groupId}'): (params: {groupId: number}) => Promise<void>;
+  /**
+   * 
+   * Unlink a service from a billing group
+   */
+  delete(path: '/me/billing/group/{groupId}/service/{serviceId}'): (params: {groupId: number, serviceId: number}) => Promise<void>;
+  /**
    * List of documents added on your account
    * Delete a document
    */
@@ -3723,7 +3943,7 @@ export interface Me{
    */
   delete(path: '/me/paymentMean/bankAccount/{id}'): (params: {id: number}) => Promise<void>;
   /**
-   * Credit card informations
+   * List the payment mean credit cards
    * Disable payment through this credit card
    */
   delete(path: '/me/paymentMean/creditCard/{id}'): (params: {id: number}) => Promise<void>;

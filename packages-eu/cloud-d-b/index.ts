@@ -58,7 +58,7 @@ export namespace cloudDB {
         }
         export namespace Host {
             // type fullname: cloudDB.enterprise.Host.StatusEnum
-            export type StatusEnum = "configured" | "created" | "creating" | "deleting" | "rebooted" | "rebooting" | "reinstalling" | "reopening" | "suspended" | "suspending"
+            export type StatusEnum = "configured" | "created" | "creating" | "deleting" | "rebooted" | "rebooting" | "reinstalling" | "reopening" | "replacing" | "suspended" | "suspending"
         }
         export namespace LdpMember {
             // type fullname: cloudDB.enterprise.LdpMember.StatusEnum

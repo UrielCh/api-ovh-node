@@ -240,6 +240,20 @@ export namespace cloud {
         flavorName: string;
         name?: string;
     }
+    // interface fullName: cloud.ProjectKubeNodePoolCreation.ProjectKubeNodePoolCreation
+    export interface ProjectKubeNodePoolCreation {
+        desiredNodes?: number;
+        flavorName: string;
+        maxNodes?: number;
+        minNodes?: number;
+        name?: string;
+    }
+    // interface fullName: cloud.ProjectKubeNodePoolUpdate.ProjectKubeNodePoolUpdate
+    export interface ProjectKubeNodePoolUpdate {
+        desiredNodes?: number;
+        maxNodes?: number;
+        minNodes?: number;
+    }
     // interface fullName: cloud.ProjectKubeResetCreation.ProjectKubeResetCreation
     export interface ProjectKubeResetCreation {
         version?: cloud.kube.Version;
@@ -668,6 +682,10 @@ export namespace cloud {
             registryLimits: cloud.containerRegistry.Limits;
             updatedAt: string;
         }
+        // interface fullName: cloud.containerRegistry.PlanUpdate.PlanUpdate
+        export interface PlanUpdate {
+            planID: string;
+        }
         // interface fullName: cloud.containerRegistry.Registry.Registry
         export interface Registry {
             createdAt: string;
@@ -958,7 +976,6 @@ export namespace cloud {
         // interface fullName: cloud.kube.Flavor.Flavor
         export interface Flavor {
             category: cloud.kube.FlavorCategory;
-            id: string;
             name: string;
             state: cloud.kube.FlavorState;
         }
@@ -973,16 +990,37 @@ export namespace cloud {
         // interface fullName: cloud.kube.Node.Node
         export interface Node {
             createdAt: string;
+            deployedAt?: string;
             flavor: string;
             id: string;
             instanceId?: string;
             isUpToDate: boolean;
             name?: string;
+            nodePoolId: string;
             projectId: string;
             status: cloud.kube.NodeStatus;
             updatedAt: string;
             version: string;
         }
+        // interface fullName: cloud.kube.NodePool.NodePool
+        export interface NodePool {
+            availableNodes: number;
+            createdAt: string;
+            currentNodes: number;
+            desiredNodes: number;
+            flavor: string;
+            id: string;
+            maxNodes: number;
+            minNodes: number;
+            name: string;
+            sizeStatus: cloud.kube.NodePoolSizeStatusEnum;
+            status: cloud.kube.NodePoolStatusEnum;
+            upToDateNodes: number;
+        }
+        // type fullname: cloud.kube.NodePoolSizeStatusEnum
+        export type NodePoolSizeStatusEnum = "UNDER_CAPACITY" | "CAPACITY_OK" | "OVER_CAPACITY"
+        // type fullname: cloud.kube.NodePoolStatusEnum
+        export type NodePoolStatusEnum = "INSTALLING" | "UPDATING" | "REDEPLOYING" | "RESIZING" | "DELETING" | "ERROR" | "READY"
         // type fullname: cloud.kube.NodeStatus
         export type NodeStatus = "INSTALLING" | "UPDATING" | "RESETTING" | "SUSPENDING" | "REOPENING" | "DELETING" | "SUSPENDED" | "ERROR" | "USER_ERROR" | "USER_QUOTA_ERROR" | "USER_NODE_NOT_FOUND_ERROR" | "USER_NODE_SUSPENDED_SERVICE" | "READY"
         // type fullname: cloud.kube.Region
@@ -994,7 +1032,7 @@ export namespace cloud {
         // type fullname: cloud.kube.UpdateStrategy
         export type UpdateStrategy = "LATEST_PATCH" | "NEXT_MINOR"
         // type fullname: cloud.kube.UpgradeVersion
-        export type UpgradeVersion = "1.12" | "1.13" | "1.14" | "1.15" | "1.16"
+        export type UpgradeVersion = "1.12" | "1.13" | "1.14" | "1.15" | "1.16" | "1.17"
         // type fullname: cloud.kube.Version
         export type Version = "1.14" | "1.15" | "1.16"
     }
@@ -1683,6 +1721,10 @@ export interface Cloud{
         // GET /cloud/createProjectInfo
         $get(params?: {voucher?: string}): Promise<cloud.project.NewProjectInfo>;
     }
+    eligibility: {
+        // GET /cloud/eligibility
+        $get(params?: {voucher?: string}): Promise<cloud.project.EligibilityInfo>;
+    }
     order: {
         // GET /cloud/order
         $get(params?: {planCode?: string}): Promise<cloud.order.Order[]>;
@@ -1771,6 +1813,18 @@ export interface Cloud{
                     $get(): Promise<cloud.containerRegistry.Registry>;
                     // PUT /cloud/project/{serviceName}/containerRegistry/{registryID}
                     $put(params: {name: string}): Promise<void>;
+                    capabilities: {
+                        plan: {
+                            // GET /cloud/project/{serviceName}/containerRegistry/{registryID}/capabilities/plan
+                            $get(): Promise<cloud.containerRegistry.Plan[]>;
+                        }
+                    }
+                    plan: {
+                        // GET /cloud/project/{serviceName}/containerRegistry/{registryID}/plan
+                        $get(): Promise<cloud.containerRegistry.Plan>;
+                        // PUT /cloud/project/{serviceName}/containerRegistry/{registryID}/plan
+                        $put(params: {planID: string}): Promise<void>;
+                    }
                     users: {
                         // GET /cloud/project/{serviceName}/containerRegistry/{registryID}/users
                         $get(): Promise<cloud.containerRegistry.User[]>;
@@ -2428,6 +2482,11 @@ export interface Cloud{
    */
   get(path: '/cloud/createProjectInfo'): (params?: {voucher?: string}) => Promise<cloud.project.NewProjectInfo>;
   /**
+   * Check your eligibility to create a Public Cloud order
+   * Check your eligibility to create a Public Cloud order
+   */
+  get(path: '/cloud/eligibility'): (params?: {voucher?: string}) => Promise<cloud.project.EligibilityInfo>;
+  /**
    * Missing description
    * Get all cloud pending orders
    */
@@ -2502,6 +2561,16 @@ export interface Cloud{
    * Get the registry information
    */
   get(path: '/cloud/project/{serviceName}/containerRegistry/{registryID}'): (params: {registryID: string, serviceName: string}) => Promise<cloud.containerRegistry.Registry>;
+  /**
+   * 
+   * Get available plans for the current registry.
+   */
+  get(path: '/cloud/project/{serviceName}/containerRegistry/{registryID}/capabilities/plan'): (params: {registryID: string, serviceName: string}) => Promise<cloud.containerRegistry.Plan[]>;
+  /**
+   * 
+   * Show the actual plan of the registry.
+   */
+  get(path: '/cloud/project/{serviceName}/containerRegistry/{registryID}/plan'): (params: {registryID: string, serviceName: string}) => Promise<cloud.containerRegistry.Plan>;
   /**
    * Manage users
    * List registry user
@@ -2883,6 +2952,11 @@ export interface Cloud{
    */
   put(path: '/cloud/project/{serviceName}/containerRegistry/{registryID}'): (params: {registryID: string, serviceName: string, name: string}) => Promise<void>;
   /**
+   * 
+   * Update the plan of a registry.
+   */
+  put(path: '/cloud/project/{serviceName}/containerRegistry/{registryID}/plan'): (params: {registryID: string, serviceName: string, planID: string}) => Promise<void>;
+  /**
    * Missing description
    * Alter an instance
    */
@@ -3074,7 +3148,7 @@ export interface Cloud{
   post(path: '/cloud/project/{serviceName}/kube/{kubeId}/kubeconfig'): (params: {kubeId: string, serviceName: string}) => Promise<cloud.kube.Kubeconfig>;
   /**
    * Manage your nodes
-   * Deploy a node for your cluster
+   * Deploy a node for your cluster. This call is deprecated. In the meantime it will create a new node pool for each call. We encourage you to now either create a new nodepool or change the size on an existing one
    */
   post(path: '/cloud/project/{serviceName}/kube/{kubeId}/node'): (params: {kubeId: string, serviceName: string, flavorName: string, name?: string}) => Promise<cloud.kube.Node>;
   /**
@@ -3279,7 +3353,7 @@ export interface Cloud{
   delete(path: '/cloud/project/{serviceName}/kube/{kubeId}'): (params: {kubeId: string, serviceName: string}) => Promise<void>;
   /**
    * Manage your nodes
-   * Delete a node on your cluster
+   * Delete a specific node on your cluster. This will also decrease by one the desirednodes value of its nodepool
    */
   delete(path: '/cloud/project/{serviceName}/kube/{kubeId}/node/{nodeId}'): (params: {kubeId: string, nodeId: string, serviceName: string}) => Promise<void>;
   /**

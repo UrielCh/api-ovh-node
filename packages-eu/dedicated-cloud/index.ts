@@ -460,6 +460,20 @@ export namespace dedicatedCloud {
             retentionTime?: number;
             state?: dedicatedCloudbackupStateEnum;
         }
+        // interface fullName: dedicatedCloud.backup.BackupCapabilities.BackupCapabilities
+        export interface BackupCapabilities {
+            backupDays: boolean;
+            customReport: boolean;
+            dedicatedProxy: boolean;
+            encryption: boolean;
+            mailAddress: boolean;
+            minimumFullBackups: number;
+            offerName: string;
+            proxyPerHost: boolean;
+            replication: boolean;
+            retention: number;
+            scheduleHour: boolean;
+        }
         // type fullname: dedicatedCloud.backup.BackupDaysEnum
         export type BackupDaysEnum = "Friday" | "Monday" | "Saturday" | "Sunday" | "Thursday" | "Tuesday" | "Wednesday"
         // type fullname: dedicatedCloud.backup.BackupTypeEnum
@@ -467,7 +481,7 @@ export namespace dedicatedCloud {
         // type fullname: dedicatedCloud.backup.JobStateEnum
         export type JobStateEnum = "failed" | "running" | "stopped" | "stopping" | "success" | "unknown" | "warning"
         // type fullname: dedicatedCloud.backup.OfferTypeEnum
-        export type OfferTypeEnum = "advanced" | "backup" | "classic" | "legacy"
+        export type OfferTypeEnum = "advanced" | "backup" | "classic" | "legacy" | "premium"
         // interface fullName: dedicatedCloud.backup.RestorePoint.RestorePoint
         export interface RestorePoint {
             creationTime?: string;
@@ -960,6 +974,10 @@ export interface DedicatedCloud{
                     enable: {
                         // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/enable
                         $post(params?: {backupOffer?: dedicatedCloudbackupOfferTypeEnum}): Promise<dedicatedCloud.Task>;
+                    }
+                    offerCapabilities: {
+                        // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/offerCapabilities
+                        $get(): Promise<dedicatedCloud.backup.BackupCapabilities[]>;
                     }
                 }
                 checkBackupJobs: {
@@ -1644,6 +1662,11 @@ export interface DedicatedCloud{
    * Get this object properties
    */
   get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup'): (params: {datacenterId: number, serviceName: string}) => Promise<dedicatedCloud.Backup>;
+  /**
+   * offerCapabilities operations
+   * List backup offer capabilities
+   */
+  get(path: '/dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/offerCapabilities'): (params: {datacenterId: number, serviceName: string}) => Promise<dedicatedCloud.backup.BackupCapabilities[]>;
   /**
    * defaultLocalVraNetwork operations
    * Get the default localVraNetwork subnet suggested by OVH

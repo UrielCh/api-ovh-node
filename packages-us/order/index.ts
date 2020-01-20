@@ -545,6 +545,18 @@ export interface Order{
                 // POST /order/cart/{cartId}/assign
                 $post(): Promise<void>;
             }
+            baremetalServers: {
+                // GET /order/cart/{cartId}/baremetalServers
+                $get(): Promise<order.cart.GenericProductDefinition[]>;
+                // POST /order/cart/{cartId}/baremetalServers
+                $post(params: {duration: string, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                options: {
+                    // GET /order/cart/{cartId}/baremetalServers/options
+                    $get(params: {planCode: string}): Promise<order.cart.GenericOptionDefinition[]>;
+                    // POST /order/cart/{cartId}/baremetalServers/options
+                    $post(params: {duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}): Promise<order.cart.Item>;
+                }
+            }
             checkout: {
                 // GET /order/cart/{cartId}/checkout
                 $get(): Promise<order.Order>;
@@ -898,6 +910,34 @@ export interface Order{
         }
     }
     upgrade: {
+        baremetalPrivateBandwidth: {
+            // GET /order/upgrade/baremetalPrivateBandwidth
+            $get(): Promise<string[]>;
+            $(serviceName: string): {
+                // GET /order/upgrade/baremetalPrivateBandwidth/{serviceName}
+                $get(): Promise<order.cart.GenericProductDefinition[]>;
+                $(planCode: string): {
+                    // GET /order/upgrade/baremetalPrivateBandwidth/{serviceName}/{planCode}
+                    $get(params: {quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    // POST /order/upgrade/baremetalPrivateBandwidth/{serviceName}/{planCode}
+                    $post(params: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                };
+            };
+        }
+        baremetalPublicBandwidth: {
+            // GET /order/upgrade/baremetalPublicBandwidth
+            $get(): Promise<string[]>;
+            $(serviceName: string): {
+                // GET /order/upgrade/baremetalPublicBandwidth/{serviceName}
+                $get(): Promise<order.cart.GenericProductDefinition[]>;
+                $(planCode: string): {
+                    // GET /order/upgrade/baremetalPublicBandwidth/{serviceName}/{planCode}
+                    $get(params: {quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    // POST /order/upgrade/baremetalPublicBandwidth/{serviceName}/{planCode}
+                    $post(params: {autoPayWithPreferredPaymentMethod?: boolean, quantity: number}): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                };
+            };
+        }
         licensePlesk: {
             // GET /order/upgrade/licensePlesk
             $get(): Promise<string[]>;
@@ -938,6 +978,16 @@ export interface Order{
    * Retrieve information about a specific cart
    */
   get(path: '/order/cart/{cartId}'): (params: {cartId: string}) => Promise<order.cart.Cart>;
+  /**
+   * Missing description
+   * Get informations about a baremetal server
+   */
+  get(path: '/order/cart/{cartId}/baremetalServers'): (params: {cartId: string}) => Promise<order.cart.GenericProductDefinition[]>;
+  /**
+   * Missing description
+   * Get informations about baremetal server options
+   */
+  get(path: '/order/cart/{cartId}/baremetalServers/options'): (params: {cartId: string, planCode: string}) => Promise<order.cart.GenericOptionDefinition[]>;
   /**
    * Missing description
    * Get prices and contracts information for your cart
@@ -1269,6 +1319,36 @@ export interface Order{
    */
   get(path: '/order/catalog/public/webHosting'): (params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}) => Promise<order.catalog.publik.Catalog>;
   /**
+   * Operations about the DEDICATED-OPTION service
+   * List available services
+   */
+  get(path: '/order/upgrade/baremetalPrivateBandwidth'): () => Promise<string[]>;
+  /**
+   * Listing offers /order/upgrade/baremetalPrivateBandwidth
+   * Retrieve available offers to upgrade your service to
+   */
+  get(path: '/order/upgrade/baremetalPrivateBandwidth/{serviceName}'): (params: {serviceName: string}) => Promise<order.cart.GenericProductDefinition[]>;
+  /**
+   * Listing offers /order/upgrade/baremetalPrivateBandwidth/#serviceName#
+   * Get a provisional order for the selected upgrade of your service
+   */
+  get(path: '/order/upgrade/baremetalPrivateBandwidth/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, quantity: number}) => Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+  /**
+   * Operations about the DEDICATED-OPTION service
+   * List available services
+   */
+  get(path: '/order/upgrade/baremetalPublicBandwidth'): () => Promise<string[]>;
+  /**
+   * Listing offers /order/upgrade/baremetalPublicBandwidth
+   * Retrieve available offers to upgrade your service to
+   */
+  get(path: '/order/upgrade/baremetalPublicBandwidth/{serviceName}'): (params: {serviceName: string}) => Promise<order.cart.GenericProductDefinition[]>;
+  /**
+   * Listing offers /order/upgrade/baremetalPublicBandwidth/#serviceName#
+   * Get a provisional order for the selected upgrade of your service
+   */
+  get(path: '/order/upgrade/baremetalPublicBandwidth/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, quantity: number}) => Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+  /**
    * Operations about the LICENSE service
    * List available services
    */
@@ -1318,6 +1398,16 @@ export interface Order{
    * Assign a shopping cart to an loggedin client
    */
   post(path: '/order/cart/{cartId}/assign'): (params: {cartId: string}) => Promise<void>;
+  /**
+   * Missing description
+   * Post a new baremetal server item in your cart
+   */
+  post(path: '/order/cart/{cartId}/baremetalServers'): (params: {cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}) => Promise<order.cart.Item>;
+  /**
+   * Missing description
+   * Post a new baremetal server option in your cart
+   */
+  post(path: '/order/cart/{cartId}/baremetalServers/options'): (params: {cartId: string, duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number}) => Promise<order.cart.Item>;
   /**
    * Missing description
    * Validate your shopping and create order
@@ -1498,6 +1588,16 @@ export interface Order{
    * Post an additional Private Cloud Enterprise option in your cart
    */
   post(path: '/order/cartServiceOption/privateCloudResellerEnterprise/{serviceName}'): (params: {serviceName: string, cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number}) => Promise<order.cart.Item>;
+  /**
+   * Listing offers /order/upgrade/baremetalPrivateBandwidth/#serviceName#
+   * Perform the requested upgrade of your service
+   */
+  post(path: '/order/upgrade/baremetalPrivateBandwidth/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, autoPayWithPreferredPaymentMethod?: boolean, quantity: number}) => Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+  /**
+   * Listing offers /order/upgrade/baremetalPublicBandwidth/#serviceName#
+   * Perform the requested upgrade of your service
+   */
+  post(path: '/order/upgrade/baremetalPublicBandwidth/{serviceName}/{planCode}'): (params: {planCode: string, serviceName: string, autoPayWithPreferredPaymentMethod?: boolean, quantity: number}) => Promise<order.upgrade.order_upgrade_OperationAndOrder>;
   /**
    * Listing offers /order/upgrade/licensePlesk/#serviceName#
    * Perform the requested upgrade of your service
