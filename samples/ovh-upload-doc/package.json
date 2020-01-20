@@ -30,17 +30,17 @@
   "dependencies": {
     "@ovh-api/api": "file:../../code/api",
     "@ovh-api/me": "file:../../packages/me",
-    "bluebird": "^3.5.5",
+    "bluebird": "^3.7.2",
     "fs-extra": "^8.1.0",
     "request": "^2.88.0",
-    "request-promise": "^4.2.4"
+    "request-promise": "^4.2.5"
   },
   "devDependencies": {
-    "@types/bluebird": "^3.5.27",
-    "@types/fs-extra": "^8.0.0",
-    "@types/request": "^2.48.2",
-    "@types/request-promise": "^4.1.44",
-    "ts-node": "^8.3.0",
-    "typescript": "^3.5.3"
+    "@types/bluebird": "^3.5.29",
+    "@types/fs-extra": "^8.0.1",
+    "@types/request": "^2.48.4",
+    "@types/request-promise": "^4.1.45",
+    "ts-node": "^8.6.2",
+    "typescript": "^3.7.5"
   }
 }

@@ -9,10 +9,10 @@
   "devDependencies": {
     "@types/bluebird": "^3.5.29",
     "@types/fs-extra": "^8.0.1",
-    "@types/node": "^13.1.1",
+    "@types/node": "^13.1.8",
     "@types/rimraf": "^2.0.3",
-    "ts-node": "^8.5.4",
-    "typescript": "^3.7.4"
+    "ts-node": "^8.6.2",
+    "typescript": "^3.7.5"
   },
   "publishConfig": {
     "access": "public"
