@@ -5,9 +5,6 @@ import Promise from 'bluebird'
 import dns from 'dns';
 import Ovh from '@ovh-api/api';
 
-
-''
-
 const ovh = new Ovh({ accessRules: 'GET /hosting/web, GET /hosting/web/*, GET /domain, POST /hosting/web/*/terminate, GET /me/api*, DELETE /me/api*, DELETE /hosting/web/*', certCache: '../../cleanToken2.json' });
 const apiWeb = ApiWeb(ovh);
 const apiDom = ApiDom(ovh);
@@ -105,17 +102,20 @@ async function cleanDomain() {
     }
 }
 
-
 async function cleanMultiSite() {
     try {
         let cnt = 0;
-        let doms = await apiDom.$get()
-        let domSet = new Set(doms);
-        console.log(`${doms.length} Domaines`)
+        const domSet = new Set(await apiDom.$get());
+        console.log(`${domSet.size} Domaines`)
         let hostings = await apiWeb.web.$get()
         console.log(`${hostings.length} hostings`)
         await Promise.map(hostings, async (serviceName: string) => {
             try {
+                const hostingInfo = await apiWeb.web.$(serviceName).$get();
+
+                const validIPs = new Set();
+                validIPs.add(hostingInfo.clusterIp);
+                hostingInfo.countriesIp?.forEach(e => validIPs.add(e.ip));
                 let attached = await apiWeb.web.$(serviceName).attachedDomain.$get();
                 const total = attached.length;
                 attached = attached.filter(dom => {
@@ -134,7 +134,7 @@ async function cleanMultiSite() {
 
                 if (!attached.length)
                     return;
-                const atts = await Promise.map(attached, async (domain) => {
+                let atts = await Promise.map(attached, async (domain) => {
                     let resolved = ['0.0.0.0'] as any;
                     try {
                         resolved = await resolve4(domain);
@@ -143,17 +143,28 @@ async function cleanMultiSite() {
                     } catch (e) {
                     }
                     return {
-                        domain, ip: resolved.join(', ')
+                        domain, ips: resolved
                     }
                 }, { concurrency: 5 })
                 //console.log(atts.map(({ domain, ip }) => `http://${domain}/ ${ip}`).join('\n'));
-                const toDelete = atts.filter(({ ip }) => ip === '0.0.0.0');
-                console.log(`${serviceName} has ${total} attached domain, ${attached.length} may be removed ${toDelete.length} to remove`); // : ${attached.join(",")}
+                atts = atts.filter(({ ips }) => !validIPs.has(ips[0]));
+
+                const toDelete = atts.filter(({ ips }) => ips[0] === '0.0.0.0');
+                const canDelete = atts.filter(({ ips }) => ips[0] !== '0.0.0.0');
+                if (toDelete.length === 0 && canDelete.length === 0)
+                    return;
+                console.log(`${serviceName} has ${total} attached domain, ${toDelete.length} are pointing to 0.0.0.0 will be removed, and ${canDelete.length} hosting looks not to be used`); // : ${attached.join(",")}
+                if (canDelete.length) {
+                    console.log(`${serviceName}(${hostingInfo.clusterIp}) ${canDelete.length} not used: ${canDelete.map(({domain, ips}) => `${domain}(${ips.join(',')})`).join(', ')}`)
+                    canDelete.forEach(d => toDelete.push(d));
+                }
                 if (toDelete.length == 0)
                     return;
-                console.log(`${serviceName} ${toDelete.length} toDelete:`)//, toDelete.map(({ domain, ip }) => `http://${domain}/ ${ip}`).join('\n'))
+                console.log(`${serviceName} ${toDelete.length} toDelete: ${toDelete.map(({domain}) => domain).join(', ')}`)
+                //, toDelete.map(({ domain, ip }) => `http://${domain}/ ${ip}`).join('\n'))
                 await Promise.map(toDelete, async ({ domain }) => {
                     let time = 0;
+                    let dt = new Date().getTime();
                     try {
                         // console.log(`start removeing ${serviceName} attachedDomain ${domain}`);
                         let task = await apiWeb.web.$(serviceName).attachedDomain.$(domain).$delete();
@@ -164,9 +175,10 @@ async function cleanMultiSite() {
                             task = await apiWeb.web.$(serviceName).tasks.$(id).$get();;
                         }
                     } catch (e3) {
-                        if (time > 0)
-                            console.log(`${++cnt} ${serviceName}/${domain} removed after ${time} loop`);
-                        else
+                        if (time > 0) {
+                            dt = (new Date().getTime() - dt) / 1000;
+                            console.log(`${++cnt} ${serviceName}/${domain} removed after ${dt.toFixed(1)} Sec`);
+                        } else
                             console.log(e3);
                     }
                 }, { concurrency: 8 });
