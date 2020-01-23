@@ -1,3 +1,6 @@
+V 2.1.5
+- improve Http error handeling on heavy load.
+- fix retry logic and display
 V 2.1.4
 - improve doc
 - add warning events

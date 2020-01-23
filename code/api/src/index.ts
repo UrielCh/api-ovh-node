@@ -42,19 +42,27 @@ export interface CredentialResp {
     validationUrl: string;
 }
 
+type HttpMethod = 'GET' | 'POST' | 'PUT' | 'DELETE';
+
 export interface IOvhError {
+    method: HttpMethod;
+    path: string;
     errorCode: 'INVALID_CREDENTIAL' | 'NOT_CREDENTIAL' | 'QUERY_TIME_OUT' | 'NOT_GRANTED_CALL' | 'HTTP_ERROR' | 'NETWORK_ERROR';
     httpCode: string;
     message: string;
 }
 
 export class OvhError extends Error implements IOvhError {
+    method: HttpMethod;
+    path: string;
     errorCode: 'INVALID_CREDENTIAL' | 'NOT_CREDENTIAL' | 'QUERY_TIME_OUT' | 'NOT_GRANTED_CALL' | 'HTTP_ERROR' | 'NETWORK_ERROR';
     httpCode: string;
     parent?: Error;
 
     constructor(m: IOvhError, parent?: Error) {
         super(m.message);
+        this.method = m.method;
+        this.path = m.path;
         this.errorCode = m.errorCode;
         this.httpCode = m.httpCode;
         this.parent = parent;
@@ -106,7 +114,7 @@ export interface OvhParams {
 }
 
 interface AccessRule {
-    method: 'GET' | 'POST' | 'PUT' | 'DELETE';
+    method: HttpMethod;
     path: string;
 }
 /**
@@ -129,9 +137,9 @@ export interface OvhApiEvent {
     /**
      * emited on OVH connexion error berore futher retry
      */
-    on(ev: 'warning', listener: (params: { retryCnt: number, maxRetry: number, method: 'GET' | 'POST' | 'PUT' | 'DELETE', path: string, statusCode: number, statusMessage: string }) => void): this;
-    once(ev: 'warning', listener: (params: { retryCnt: number, maxRetry: number, method: 'GET' | 'POST' | 'PUT' | 'DELETE', path: string, statusCode: number, statusMessage: string }) => void): this;
-    emit(ev: 'warning', listener: (params: { retryCnt: number, maxRetry: number, method: 'GET' | 'POST' | 'PUT' | 'DELETE', path: string, statusCode: number, statusMessage: string }) => void): boolean;
+    on(ev: 'warning', listener: (params: { retryCnt: number, maxRetry: number, method: HttpMethod, path: string, statusCode: number, statusMessage: string }) => void): this;
+    once(ev: 'warning', listener: (params: { retryCnt: number, maxRetry: number, method: HttpMethod, path: string, statusCode: number, statusMessage: string }) => void): this;
+    emit(ev: 'warning', listener: (params: { retryCnt: number, maxRetry: number, method: HttpMethod, path: string, statusCode: number, statusMessage: string }) => void): boolean;
 }
 
 /**
@@ -243,6 +251,8 @@ by default I will ask for all rights`);
      * @param redirection optional redirecton for auth page.
      */
     public async queryForCredencial(redirection?: string): Promise<CredentialResp> {
+        const method = 'POST';
+        const path = '/auth/credential';
         try {
             const rules = {
                 accessRules: this.toAccessRules.apply(this, this.accessRules),
@@ -250,10 +260,12 @@ by default I will ask for all rights`);
             };
             if (redirection)
                 rules.redirection = redirection;
-            const resp = await this.request('POST', '/auth/credential', rules);
+            const resp = await this.request(method, path, rules);
             return resp as CredentialResp;
         } catch (e) {
             throw new OvhError({
+                method,
+                path,
                 errorCode: 'HTTP_ERROR',
                 httpCode: `${e}`,
                 message: `failed to request a credential with rule ${JSON.stringify(this.accessRules)} ${e.message || e}`
@@ -422,6 +434,10 @@ by default I will ask for all rights`);
             }
         });
 
+        let retryCnt = -1;
+        // Promisify https.request
+        const t0 = new Date().getTime();
+
         const handleResponse = async (response: IncomingMessage, body: string) => {
             let responseData: any;
             const { statusCode, statusMessage } = response;
@@ -430,6 +446,8 @@ by default I will ask for all rights`);
                     responseData = JSON.parse(body);
                 } catch (e) {
                     throw new OvhError({
+                        method: options.method as HttpMethod,
+                        path: options.path as string,
                         errorCode: 'HTTP_ERROR',
                         httpCode: `${statusCode} ${statusMessage}`,
                         message: `[OVH] Unable to parse ${httpMethod} ${path} JSON reponse:${body}`
@@ -460,6 +478,8 @@ by default I will ask for all rights`);
                         validationUrl = resp.validationUrl;
                     } catch (e) {
                         throw new OvhError({
+                            method: options.method as HttpMethod,
+                            path: options.path as string,
                             errorCode: 'HTTP_ERROR',
                             httpCode: `${statusCode} ${statusMessage}`,
                             message: `failed to request a credential with rule ${JSON.stringify(this.accessRules)} ${e.message || e}`
@@ -476,10 +496,14 @@ by default I will ask for all rights`);
                 error.errorCode = "HTTP_ERROR";
             if (!error.httpCode)
                 error.httpCode = `${statusCode} ${statusMessage}`;
+            error.method = options.method as HttpMethod;
+            error.path = options.path as string;
+            if (retryCnt > 0)
+                error.message += ` after ${retryCnt} retries`;
+            error.message += ` in ${((new Date().getTime() - t0)/1000).toFixed(1)} Sec.`;
             throw new OvhError(error);
         }
-        let retryCnt = 0;
-        // Promisify https.request
+
         const makeRequest = () => new Promise((resolve, reject) => {
             let req = https.request(options, (res: IncomingMessage) => {
                 let body = '';
@@ -489,25 +513,34 @@ by default I will ask for all rights`);
                         // 504 Gateway Time-out
                         // 408 Request Time-out
                         const { statusCode } = res;
-                        if ((statusCode == 504 || statusCode == 408) && retryCnt < this.maxRetry) {
-                            this.emit('warning', { retryCnt, maxRetry: this.maxRetry, method: httpMethod, path, statusCode, statusMessage: res.statusMessage });
+                        if ((statusCode == 504 || statusCode == 408) && retryCnt <= this.maxRetry) {
+                            this.emit('warning', { retryCnt: retryCnt, maxRetry: this.maxRetry, method: httpMethod, path, statusCode, statusMessage: res.statusMessage });
                             await wait(this.retrySleep * retryCnt);
                             makeRequest().then(resolve, reject);
+                            return;
                         }
                         return handleResponse(res, body).then(resolve, reject)
                     })
             }).on('error', async (e) => {
                 // network connextion error like read ECONNRESET
                 retryCnt++;
-                if (retryCnt < this.maxRetry) {
-                    this.emit('warning', { retryCnt, maxRetry: this.maxRetry, method: httpMethod, path, statusCode: 0, statusMessage: `${e}` });
+                if (retryCnt <= this.maxRetry) {
+                    this.emit('warning', { retryCnt: retryCnt, maxRetry: this.maxRetry, method: httpMethod, path, statusCode: 0, statusMessage: `${e}` });
                     await wait(retryCnt * this.retrySleep)
                     makeRequest().then(resolve, reject);
+                    return;
                 }
+                let message = 'fail to etablish a valid connexion';
+                if (retryCnt > 0)
+                    message += ` after ${retryCnt} retries`;
+                message += ` in ${((new Date().getTime() - t0)/1000).toFixed(1)} Sec.`;
+
                 reject(new OvhError({
+                    method: options.method as HttpMethod,
+                    path: options.path as string,
                     httpCode: '',
                     errorCode: 'NETWORK_ERROR',
-                    message: 'fail to etablish a valid connexion'
+                    message
                 }, e))
             });
 
