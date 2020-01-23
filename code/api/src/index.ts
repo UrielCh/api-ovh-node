@@ -91,7 +91,7 @@ export interface OvhParams {
     certCache?: string;
     /**
      * time to wait in ms before a retry
-     * default is 100 ms;
+     * default is 100 ms, the time to wait is multiplyed by the numbers of retries
      */
     retrySleep?: number;
     /**
@@ -113,13 +113,25 @@ interface AccessRule {
  * simple wait promise generator
  * @param duration wime to wait in ms
  */
-const wait = (duration: number) => (args?: any) => new Promise(resolve => setTimeout(() => (resolve(args)), duration));
+const wait = (duration: number) => new Promise(resolve => setTimeout(() => (resolve()), duration));
 
 export interface OvhApiEvent {
+    /**
+     * emit before each request (sent a single time in case of retry)
+     */
     on(ev: 'request', listener: (params: { method: string, path: string, pathTemplate: string }) => void): this;
     once(ev: 'request', listener: (params: { method: string, path: string, pathTemplate: string }) => void): this;
+    emit(ev: 'request', listener: (params: { method: string, path: string, pathTemplate: string }) => void): boolean;
+
     on(ev: 'debug', listener: (txt: string) => void): this;
     once(ev: 'debug', listener: (txt: string) => void): this;
+    emit(ev: 'debug', listener: (txt: string) => void): boolean;
+    /**
+     * emited on OVH connexion error berore futher retry
+     */
+    on(ev: 'warning', listener: (params: { retryCnt: number, maxRetry: number, method: 'GET' | 'POST' | 'PUT' | 'DELETE', path: string, statusCode: number, statusMessage: string }) => void): this;
+    once(ev: 'warning', listener: (params: { retryCnt: number, maxRetry: number, method: 'GET' | 'POST' | 'PUT' | 'DELETE', path: string, statusCode: number, statusMessage: string }) => void): this;
+    emit(ev: 'warning', listener: (params: { retryCnt: number, maxRetry: number, method: 'GET' | 'POST' | 'PUT' | 'DELETE', path: string, statusCode: number, statusMessage: string }) => void): boolean;
 }
 
 /**
@@ -360,7 +372,7 @@ by default I will ask for all rights`);
             this.emit('debug', `[OVH] API call: ${options.method} ${options.path} ${reqBody}`);
         }
         // retry the Query thith a new cert
-        const waitForCertValidation = async (consumerKey: string, validationUrl: string) => new Promise((done) => {
+        const waitForCertValidation = async (consumerKey: string, validationUrl: string) => new Promise(async (done) => {
             // set consumerKey
             this.consumerKey = consumerKey;
             console.log(`[OVH] MISSING_CREDENTIAL issue a new one: ${consumerKey}\nValidate this cert with this url to continue:\n${validationUrl}`)
@@ -376,31 +388,38 @@ by default I will ask for all rights`);
                     window.open(validationUrl);
             }
             let pass = 0;
-            const checkCert = () => this.request('GET', '/auth/currentCredential')
-                .then(({ status }) => {
+
+            await wait(2000);
+            while (true) {
+                try {
+                    const req = await this.request('GET', '/auth/currentCredential');
+                    const { status } = req;
                     if (status === 'validated') {
                         console.log('consumerKey Authorized!')
                         if (this.certCache) {
                             let { appKey, appSecret, consumerKey } = this;
-                            writeFile(this.certCache, JSON.stringify({ appKey, appSecret, consumerKey }, null, 2), { encoding: 'utf-8', mode: 0o600 }, done);
+                            writeFile(this.certCache, JSON.stringify({ appKey, appSecret, consumerKey }, null, 2), { encoding: 'utf-8', mode: 0o600 }, (err) => {
+                                if (err)
+                                    console.error(`Failed to write in ${this.certCache} ${err}`);
+                                done();
+                            });
                         } else
                             done();
                         return false;
                     }
-                    setTimeout(checkCert, 2000);
-                }, ({ errorCode }) => {
+                } catch ({ errorCode }) {
                     // errorCode:"INVALID_CREDENTIAL"
                     // httpCode:"403 Forbidden"
                     // message:"This credential is not valid"
-                    setTimeout(checkCert, 2000);
                     if (++pass % 15 == 0) {
                         if (errorCode === 'MISSING_CREDENTIAL')
                             console.log(`waiting for cert validation here: ${validationUrl}`)
                         else
                             console.log(`\n${errorCode}: ${consumerKey} url:\n${validationUrl}`)
                     }
-                })
-            setTimeout(checkCert, 2000)
+                    await wait(2000);
+                }
+            }
         });
 
         const handleResponse = async (response: IncomingMessage, body: string) => {
@@ -465,28 +484,25 @@ by default I will ask for all rights`);
             let req = https.request(options, (res: IncomingMessage) => {
                 let body = '';
                 res.on('data', (chunk) => body += chunk)
-                    .on('end', () => {
+                    .on('end', async () => {
                         retryCnt++;
                         // 504 Gateway Time-out
                         // 408 Request Time-out
                         const { statusCode } = res;
                         if ((statusCode == 504 || statusCode == 408) && retryCnt < this.maxRetry) {
-                            console.log(`${retryCnt}/${this.maxRetry}) ${httpMethod} ${path} failed ${statusCode} ${res.statusMessage}`)
-                            return wait(this.retrySleep * retryCnt)()
-                                // .then(() => console.log('retry'))
-                                .then(makeRequest)
-                                .then(resolve, reject);
+                            this.emit('warning', { retryCnt, maxRetry: this.maxRetry, method: httpMethod, path, statusCode, statusMessage: res.statusMessage });
+                            await wait(this.retrySleep * retryCnt);
+                            makeRequest().then(resolve, reject);
                         }
                         return handleResponse(res, body).then(resolve, reject)
                     })
-            }).on('error', (e) => {
+            }).on('error', async (e) => {
                 // network connextion error like read ECONNRESET
                 retryCnt++;
                 if (retryCnt < this.maxRetry) {
-                    console.log(`${retryCnt}/${this.maxRetry}) ${httpMethod} ${path} failed ${e}`);
-                    return wait(retryCnt * this.retrySleep)()
-                        .then(makeRequest)
-                        .then(resolve, reject);
+                    this.emit('warning', { retryCnt, maxRetry: this.maxRetry, method: httpMethod, path, statusCode: 0, statusMessage: `${e}` });
+                    await wait(retryCnt * this.retrySleep)
+                    makeRequest().then(resolve, reject);
                 }
                 reject(new OvhError({
                     httpCode: '',

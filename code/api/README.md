@@ -2,7 +2,7 @@
 
 [![NPM Version](https://img.shields.io/npm/v/@ovh-api/common.svg?style=api)](https://www.npmjs.org/package/@ovh-api/api)
 
-## interactive usage:
+## interactive usage
 
 ```typescript
 import ApiIp from '@ovh-api/ip';
