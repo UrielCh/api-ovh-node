@@ -3,7 +3,7 @@ import fse from 'fs-extra'
 import * as eu from '@ovh-api/me'
 import * as us from '@ovh-api-us/me'
 import * as ca from '@ovh-api-ca/me'
-import { nichandle, billing } from '@ovh-api/me';
+import { billing } from '@ovh-api/me';
 
 import Ovh, { OvhParams } from '@ovh-api/api'
 import path from 'path'
@@ -96,7 +96,7 @@ async function main(root: string, type: 'pdf' | 'html') {
     apiMe = eu.proxyMe(ovh)
   }
 
-  const me: nichandle.Nichandle = await apiMe.get('/me')()
+  const me = await apiMe.get('/me')()
   if (program.token) {
     console.log(`Saving generarted token for next time in ${program.token}`)
     let { appKey, appSecret, consumerKey } = ovh

@@ -13,7 +13,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/debounce": "^1.2.0",
-    "@types/node": "^13.1.8",
+    "@types/node": "^13.5.0",
     "lerna": "^3.20.2",
     "rimraf": "^3.0.0",
     "typescript": "^3.7.5"

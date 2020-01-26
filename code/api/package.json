@@ -16,13 +16,13 @@
     "open": "^7.0.0"
   },
   "devDependencies": {
-    "@ovh-api/me": "^2.0.13",
+    "@ovh-api/me": "^2.0.14",
     "@types/chai": "^4.2.7",
     "@types/mocha": "^5.2.7",
-    "@types/node": "^13.1.8",
+    "@types/node": "^13.5.0",
     "@types/open": "^6.2.1",
     "chai": "^4.2.0",
-    "mocha": "^7.0.0",
+    "mocha": "^7.0.1",
     "ts-node": "^8.6.2",
     "typescript": "^3.7.5"
   },
