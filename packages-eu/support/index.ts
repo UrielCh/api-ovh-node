@@ -42,7 +42,7 @@ export namespace support {
     // type fullname: support.TicketCategoryEnum
     export type TicketCategoryEnum = "assistance" | "billing" | "incident"
     // type fullname: support.TicketProductEnum
-    export type TicketProductEnum = "adsl" | "cdn" | "dedicated" | "dedicated-billing" | "dedicated-other" | "dedicatedcloud" | "domain" | "exchange" | "fax" | "hosting" | "housing" | "iaas" | "mail" | "network" | "publiccloud" | "sms" | "ssl" | "storage" | "telecom-billing" | "telecom-other" | "voip" | "vps" | "web-billing" | "web-other"
+    export type TicketProductEnum = "adsl" | "cdn" | "dedicated" | "dedicated-billing" | "dedicated-other" | "dedicatedcloud" | "domain" | "exchange" | "fax" | "hosting" | "housing" | "iaas" | "mail" | "network" | "publiccloud" | "sms" | "ssl" | "storage" | "telecom-billing" | "telecom-other" | "vac" | "voip" | "vps" | "web-billing" | "web-other"
     // type fullname: support.TicketStatusEnum
     export type TicketStatusEnum = "closed" | "open" | "unknown"
     // type fullname: support.TicketSubCategoryEnum

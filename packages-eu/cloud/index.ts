@@ -504,6 +504,12 @@ export namespace cloud {
             quantity: cloud.billingView.Quantity;
             totalPrice: number;
         }
+        // interface fullName: cloud.billingView.Component.Component
+        export interface Component {
+            name: string;
+            quantity: cloud.billingView.Quantity;
+            totalPrice: number;
+        }
         // interface fullName: cloud.billingView.HourlyInstance.HourlyInstance
         export interface HourlyInstance {
             details: cloud.billingView.HourlyInstanceDetail[];
@@ -618,6 +624,11 @@ export namespace cloud {
             unit: cloud.billingView.UnitQuantity;
             value: number;
         }
+        // interface fullName: cloud.billingView.RegionalizedResource.RegionalizedResource
+        export interface RegionalizedResource {
+            components: cloud.billingView.Component[];
+            region: string;
+        }
         // type fullname: cloud.billingView.StorageTypeEnum
         export type StorageTypeEnum = "pcs" | "pca"
         // interface fullName: cloud.billingView.StoredStorage.StoredStorage
@@ -625,8 +636,14 @@ export namespace cloud {
             quantity: cloud.billingView.Quantity;
             totalPrice: number;
         }
+        // interface fullName: cloud.billingView.TypedResources.TypedResources
+        export interface TypedResources {
+            resources: cloud.billingView.RegionalizedResource[];
+            totalPrice: number;
+            type: string;
+        }
         // type fullname: cloud.billingView.UnitQuantity
-        export type UnitQuantity = "GiB" | "GiBh" | "Hour"
+        export type UnitQuantity = "GiB" | "GiBh" | "Hour" | "Minute" | "Second"
         // interface fullName: cloud.billingView.UsedCredit.UsedCredit
         export interface UsedCredit {
             description: string;
@@ -1013,9 +1030,11 @@ export namespace cloud {
             maxNodes: number;
             minNodes: number;
             name: string;
+            projectId: string;
             sizeStatus: cloud.kube.NodePoolSizeStatusEnum;
             status: cloud.kube.NodePoolStatusEnum;
             upToDateNodes: number;
+            updatedAt: string;
         }
         // type fullname: cloud.kube.NodePoolSizeStatusEnum
         export type NodePoolSizeStatusEnum = "UNDER_CAPACITY" | "CAPACITY_OK" | "OVER_CAPACITY"
@@ -1034,7 +1053,7 @@ export namespace cloud {
         // type fullname: cloud.kube.UpgradeVersion
         export type UpgradeVersion = "1.12" | "1.13" | "1.14" | "1.15" | "1.16" | "1.17"
         // type fullname: cloud.kube.Version
-        export type Version = "1.14" | "1.15" | "1.16"
+        export type Version = "1.14" | "1.15" | "1.16" | "1.17"
     }
     export namespace migration {
         // interface fullName: cloud.migration.Migration.Migration
@@ -1662,6 +1681,7 @@ export namespace cloud {
             lastUpdate: string;
             monthlyUsage?: cloud.billingView.MonthlyResources;
             period: cloud.usage.Period;
+            resourcesUsage?: cloud.billingView.TypedResources[];
         }
         // interface fullName: cloud.usage.UsageCurrentBills.UsageCurrentBills
         export interface UsageCurrentBills {
@@ -1673,6 +1693,7 @@ export namespace cloud {
             lastUpdate: string;
             monthlyUsage?: cloud.billingView.MonthlyResources;
             period: cloud.usage.Period;
+            resourcesUsage?: cloud.billingView.TypedResources[];
             usableCredits?: cloud.billingView.UsedCredits;
         }
         // interface fullName: cloud.usage.UsageHistory.UsageHistory
@@ -1688,6 +1709,7 @@ export namespace cloud {
             lastUpdate: string;
             monthlyUsage?: cloud.billingView.MonthlyResources;
             period: cloud.usage.Period;
+            resourcesUsage?: cloud.billingView.TypedResources[];
         }
         // interface fullName: cloud.usage.UsageHistoryDetailBills.UsageHistoryDetailBills
         export interface UsageHistoryDetailBills {

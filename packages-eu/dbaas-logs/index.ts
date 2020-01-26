@@ -68,8 +68,8 @@ export namespace dbaas {
         export type ClusterAllowedNetworkFlowTypeEnum = "QUERY" | "DIRECT_INPUT" | "ALL"
         // interface fullName: dbaas.logs.ClusterAllowedNetworks.ClusterAllowedNetworks
         export interface ClusterAllowedNetworks {
-            directInputAllowedNetworks: string[];
-            queryAllowedNetworks: string[];
+            directInputAllowedNetworks?: string[];
+            queryAllowedNetworks?: string[];
         }
         // type fullname: dbaas.logs.ClusterClusterTypeEnum
         export type ClusterClusterTypeEnum = "TRIAL" | "PRO" | "DEDICATED"
