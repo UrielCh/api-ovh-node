@@ -19,7 +19,7 @@
     "typescript": "^3.7.5"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "false"
   },
   "repository": {
     "type": "git",
@@ -34,6 +34,7 @@
     "clean4": "lerna clean -y",
     "bootstrap": "lerna bootstrap",
     "build": "lerna run build",
+    "preinstall": "npm run bootstrap",
     "publish": "lerna clean -y && lerna bootstrap && lerna run build && lerna publish",
     "prepublish": "lerna run build"
   },

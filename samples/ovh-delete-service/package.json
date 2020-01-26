@@ -27,10 +27,10 @@
     "prepare": "npm run build"
   },
   "dependencies": {
-    "@ovh-api/api": "^2.1.3",
+    "@ovh-api/api": "^2.1.5",
     "@ovh-api/common": "^1.3.0",
-    "@ovh-api/me": "^2.0.13",
-    "@ovh-api/telephony": "^2.0.13",
+    "@ovh-api/me": "^2.0.14",
+    "@ovh-api/telephony": "^2.0.14",
     "bluebird": "^3.7.2",
     "commander": "^4.1.0",
     "fs-extra": "^8.1.0"
