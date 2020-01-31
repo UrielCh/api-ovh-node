@@ -204,8 +204,9 @@ export default class OvhApi extends EventEmitter implements OvhRequestable, OvhA
     launchBrower: boolean;
     certMonitorProvider: CertMonitorProvider;
 
-    constructor(params: OvhParams) {
+    constructor(params?: OvhParams) {
         super();
+        params = params || {};
         // Application Name: api-ovh-node
         // Application Description: api-ovh-node default key
         this.appKey = params.appKey || 'bIYf2Ji3u5Qm93JZ';

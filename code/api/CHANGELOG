@@ -1,3 +1,5 @@
+V 2.1.7
+- allow OvhApi() with no param
 V 2.1.6
 - all console.log / console.error can be avoid
 - add CertMonitorProvider
