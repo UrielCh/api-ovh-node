@@ -32,10 +32,11 @@
     "clean2": "rimraf ./kimsufi-*/yarn-error.log    ./kimsufi-*/*/index.d.ts    ./kimsufi-*/*/index.js",
     "clean3": "rimraf ./soyoustart-*/yarn-error.log ./soyoustart-*/*/index.d.ts ./soyoustart-*/*/index.js",
     "clean4": "lerna clean -y",
+    "drop-cache": "rimraf ./*/*/.cache",
     "install-all": "lerna exec --parallel --stream -- npm i --cache ./.cache",
     "bootstrap": "lerna bootstrap --concurrency=1",
     "build": "lerna run build",
-    "do-publish": "lerna clean -y && npm run install-all && lerna bootstrap --concurrency=1 && lerna run build && lerna publish"
+    "do-publish": "lerna clean -y && npm run install-all && npm run drop-cache && lerna bootstrap --concurrency=1 && lerna run build && lerna publish"
   },
   "dependencies": {},
   "name": "api-ovh-node"
