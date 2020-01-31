@@ -38,6 +38,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "build": "tsc -p .",
+    "pretest": "npm run build",
     "test": "mocha dist/**/*.spec.js",
     "prepare": "npm run build",
     "prepublish": "npm run test",
