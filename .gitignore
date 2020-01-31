@@ -29,12 +29,10 @@ samples/*/dist/
 **/token.json
 code/common/*.d.ts
 code/common/*.js
-packages/*/package-lock.json
 *Token*.json
 *token*.json
 samples/ovh-delete-service/*.txt
 samples/ovh-delete-service/src/*.map
 samples/ovh-delete-service/src/*.d.ts
 samples/ovh-delete-service/src/*.js
-package-lock.json
 */*/.cache/

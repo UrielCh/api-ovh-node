@@ -3,8 +3,8 @@
   "npmClient": "npm",
   "useWorkspaces": false,
   "packages": [
-    "packages-*/*",
     "kimsufi-*/*",
+    "packages-*/*",
     "soyoustart-*/*"
   ]
 }
