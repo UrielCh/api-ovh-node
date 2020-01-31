@@ -35,15 +35,14 @@ import { writeFile, readFileSync } from 'fs';
 import { EventEmitter } from 'events';
 import { OvhRequestable, OvhParamType } from '@ovh-api/common';
 import { Socket } from 'net';
-
-export interface CredentialResp {
-    consumerKey: string;
-    state: "expired" | "pendingValidation" | "refused" | "validated";
-    validationUrl: string;
-}
-
-type HttpMethod = 'GET' | 'POST' | 'PUT' | 'DELETE';
-
+import { HttpMethod, AccessRule, OvhCredentialNew, OvhCredential } from './OVHInterfaces';
+import { CertMonitorProvider, stdOutCertMonitorProvider } from './certMonitor';
+export { CertMonitorProvider, CertMonitor } from './certMonitor';
+export { OvhCredentialNew } from './OVHInterfaces'
+import { EOL } from 'os';
+/**
+ * data used to create an Exception
+ */
 export interface IOvhError {
     method: HttpMethod;
     path: string;
@@ -52,6 +51,9 @@ export interface IOvhError {
     message: string;
 }
 
+/**
+ * Api Class used for all errors
+ */
 export class OvhError extends Error implements IOvhError {
     method: HttpMethod;
     path: string;
@@ -76,25 +78,53 @@ export class OvhError extends Error implements IOvhError {
     }
 }
 
+export type OvhEntryPointEnum = 'ovh-eu' | 'ovh-us' | 'ovh-ca' | 'runabove-ca' | 'sys-eu' | 'sys-ca' | 'soyoustart-eu' | 'soyoustart-ca' | 'ks-eu' | 'ks-ca' | 'kimsufi-eu' | 'kimsufi-ca';
+
 export interface OvhParams {
+    /** 
+     * appKey generated from https://eu.api.ovh.com/createApp/
+     * use a built-in appKey by default for test and open environement
+     * for production it's highly recomanded to generate your own.
+     */
     appKey?: string;
+    /** 
+     * appSecret generated from https://eu.api.ovh.com/createApp/
+     * use a built-in appSecret by default for test and open environement
+     * for production it's highly recomanded to generate your own and to keep if secret.
+     */
     appSecret?: string;
+    /**
+     * This OVH api can ask for it on demande whene used in a GUI, or you can provide it here for a server usage.
+     */
     consumerKey?: string;
+    /**
+     * Define a setTimeout for all Api TCP connexions.
+     */
     timeout?: number;
     /**
-     * time offset from remote server
+     * Time offset from remote server, default is autodetect.
+     * you should not need to give a value here.
      */
     apiTimeDiff?: number;
     /**
-     * entrypoint of ovg default entrypoint
+     * Api Entrypoint, by default use 'ovh-eu'
      */
-    endpoint?: string;
+    endpoint?: OvhEntryPointEnum;
+    /**
+     * ovh api hostname if you do not want to use an official public entrypoint
+     */
     host?: string;
+    /**
+     * ovh api port if you do not want to use an official public entrypoint
+     */
     port?: string;
-    apis?: string[];
+    /**
+     * Explicite ask for given access rules, by default, get all access eqivalent to 'GET /*, POST /*, PUT /*, DELETE /*'
+     * rules can be give as an array of rules, or as a string containing rules separeted by comma or semicolon
+     */
     accessRules?: string[] | string;
     /**
-     * certCache store ans use generated certificate in a file
+     * certCache filename used to store generated certificate on disque.
      */
     certCache?: string;
     /**
@@ -103,20 +133,26 @@ export interface OvhParams {
      */
     retrySleep?: number;
     /**
-     * maximum retry atempt after a recoverable error
+     * Maximum retry atempt after a recoverable error
      * default is 10 time;
      */
     maxRetry?: number;
     /**
-     * save used query to customize accessRules
+     * save all used query to customize futhers accessRules request.
      */
     saveQuerys?: boolean;
+    /**
+     * you can block automatic launch of a browser
+     * default is true;
+     */
+    launchBrower?: boolean;
+    /**
+     * put here your logic to ask for a certificat validation
+     * by default console.log validationUrl every 30 seconds
+     */
+    certMonitorProvider?: CertMonitorProvider;
 }
 
-interface AccessRule {
-    method: HttpMethod;
-    path: string;
-}
 /**
  * simple wait promise generator
  * @param duration wime to wait in ms
@@ -129,17 +165,22 @@ export interface OvhApiEvent {
      */
     on(ev: 'request', listener: (params: { method: string, path: string, pathTemplate: string }) => void): this;
     once(ev: 'request', listener: (params: { method: string, path: string, pathTemplate: string }) => void): this;
-    emit(ev: 'request', listener: (params: { method: string, path: string, pathTemplate: string }) => void): boolean;
+    emit(ev: 'request', params: { method: string, path: string, pathTemplate: string }): boolean;
 
     on(ev: 'debug', listener: (txt: string) => void): this;
     once(ev: 'debug', listener: (txt: string) => void): this;
-    emit(ev: 'debug', listener: (txt: string) => void): boolean;
+    emit(ev: 'debug', txt: string): boolean;
     /**
      * emited on OVH connexion error berore futher retry
      */
     on(ev: 'warning', listener: (params: { retryCnt: number, maxRetry: number, method: HttpMethod, path: string, statusCode: number, statusMessage: string }) => void): this;
     once(ev: 'warning', listener: (params: { retryCnt: number, maxRetry: number, method: HttpMethod, path: string, statusCode: number, statusMessage: string }) => void): this;
-    emit(ev: 'warning', listener: (params: { retryCnt: number, maxRetry: number, method: HttpMethod, path: string, statusCode: number, statusMessage: string }) => void): boolean;
+    emit(ev: 'warning', params: { retryCnt: number, maxRetry: number, method: HttpMethod, path: string, statusCode: number, statusMessage: string }): boolean;
+
+    on(ev: 'warningMsg', listener: (params: string) => void): this;
+    once(ev: 'warningMsg', listener: (params: string) => void): this;
+    emit(ev: 'warningMsg', params: string): boolean;
+
 }
 
 /**
@@ -160,6 +201,8 @@ export default class OvhApi extends EventEmitter implements OvhRequestable, OvhA
     retrySleep: number = 100;
     maxRetry: number = 10;
     querySet: Set<string> | null;
+    launchBrower: boolean;
+    certMonitorProvider: CertMonitorProvider;
 
     constructor(params: OvhParams) {
         super();
@@ -173,6 +216,9 @@ export default class OvhApi extends EventEmitter implements OvhRequestable, OvhA
         this.certCache = params.certCache || '';
         this.retrySleep = (typeof params.retrySleep === 'number') ? params.retrySleep : 100;
         this.maxRetry = (typeof params.maxRetry === 'number') ? params.maxRetry : 10;
+        this.launchBrower = (params.launchBrower === false) ? false : true;
+        this.certMonitorProvider = params.certMonitorProvider || stdOutCertMonitorProvider;
+
         if (params.saveQuerys) {
             this.querySet = new Set();
         } else {
@@ -250,7 +296,7 @@ by default I will ask for all rights`);
      * stat credential authentification
      * @param redirection optional redirecton for auth page.
      */
-    public async queryForCredencial(redirection?: string): Promise<CredentialResp> {
+    public async queryForCredencial(redirection?: string): Promise<OvhCredentialNew> {
         const method = 'POST';
         const path = '/auth/credential';
         try {
@@ -261,7 +307,7 @@ by default I will ask for all rights`);
             if (redirection)
                 rules.redirection = redirection;
             const resp = await this.request(method, path, rules);
-            return resp as CredentialResp;
+            return resp as OvhCredentialNew;
         } catch (e) {
             throw new OvhError({
                 method,
@@ -384,35 +430,38 @@ by default I will ask for all rights`);
             this.emit('debug', `[OVH] API call: ${options.method} ${options.path} ${reqBody}`);
         }
         // retry the Query thith a new cert
-        const waitForCertValidation = async (consumerKey: string, validationUrl: string) => new Promise(async (done) => {
+        const waitForCertValidation = async (newCert: OvhCredentialNew) => new Promise(async (done) => {
             // set consumerKey
+            const certMonitor = this.certMonitorProvider(this, newCert);
+            const { consumerKey, validationUrl } = newCert;
             this.consumerKey = consumerKey;
-            console.log(`[OVH] MISSING_CREDENTIAL issue a new one: ${consumerKey}\nValidate this cert with this url to continue:\n${validationUrl}`)
-            try {
-                // try to open a brower, ignorring error
-                // import open from 'open';
-                const open = require('open');
-                open(validationUrl).catch(() => { });
-            } catch (e) {
-                // exception if used in browser
-                // Try to open a popup
-                if (window)
-                    window.open(validationUrl);
-            }
+            if (this.launchBrower)
+                try {
+                    // try to open a brower, ignorring error
+                    // import open from 'open';
+                    const open = require('open');
+                    open(validationUrl).catch(() => { });
+                } catch (e) {
+                    // exception if used in browser
+                    // Try to open a popup
+                    if (window)
+                        window.open(validationUrl);
+                }
             let pass = 0;
 
             await wait(2000);
             while (true) {
                 try {
-                    const req = await this.request('GET', '/auth/currentCredential');
+                    const req = await this.request('GET', '/auth/currentCredential') as OvhCredential;
                     const { status } = req;
                     if (status === 'validated') {
-                        console.log('consumerKey Authorized!')
                         if (this.certCache) {
-                            let { appKey, appSecret, consumerKey } = this;
-                            writeFile(this.certCache, JSON.stringify({ appKey, appSecret, consumerKey }, null, 2), { encoding: 'utf-8', mode: 0o600 }, (err) => {
+                            const { appKey, appSecret, consumerKey } = this;
+                            const { applicationId, creation, credentialId, expiration, rules } = req;
+                            const jsonData = JSON.stringify({applicationId, appKey, appSecret, consumerKey, credentialId, rules, creation, expiration }, null, 2) + EOL;
+                            writeFile(this.certCache, jsonData, { encoding: 'utf-8', mode: 0o600 }, (err) => {
                                 if (err)
-                                    console.error(`Failed to write in ${this.certCache} ${err}`);
+                                    this.emit('warningMsg', `Failed to write in ${this.certCache} ${err}`);
                                 done();
                             });
                         } else
@@ -420,15 +469,7 @@ by default I will ask for all rights`);
                         return false;
                     }
                 } catch ({ errorCode }) {
-                    // errorCode:"INVALID_CREDENTIAL"
-                    // httpCode:"403 Forbidden"
-                    // message:"This credential is not valid"
-                    if (++pass % 15 == 0) {
-                        if (errorCode === 'MISSING_CREDENTIAL')
-                            console.log(`waiting for cert validation here: ${validationUrl}`)
-                        else
-                            console.log(`\n${errorCode}: ${consumerKey} url:\n${validationUrl}`)
-                    }
+                    await certMonitor.notValid(errorCode, ++pass);
                     await wait(2000);
                 }
             }
@@ -471,11 +512,9 @@ by default I will ask for all rights`);
                     this.consumerKey = null;
                 }
                 if (this.consumerKey === null) {
-                    let consumerKey, validationUrl;
+                    let newCert: OvhCredentialNew;
                     try {
-                        const resp = await this.queryForCredencial()
-                        consumerKey = resp.consumerKey;
-                        validationUrl = resp.validationUrl;
+                        newCert = await this.queryForCredencial()
                     } catch (e) {
                         throw new OvhError({
                             method: options.method as HttpMethod,
@@ -485,7 +524,7 @@ by default I will ask for all rights`);
                             message: `failed to request a credential with rule ${JSON.stringify(this.accessRules)} ${e.message || e}`
                         }, e);
                     }
-                    await waitForCertValidation(consumerKey, validationUrl);
+                    await waitForCertValidation(newCert);
                     let resp = await this.request(httpMethod, path, params);
                     this.updatingCert = false;
                     return resp;
@@ -500,7 +539,7 @@ by default I will ask for all rights`);
             error.path = options.path as string;
             if (retryCnt > 0)
                 error.message += ` after ${retryCnt} retries`;
-            error.message += ` in ${((new Date().getTime() - t0)/1000).toFixed(1)} Sec.`;
+            error.message += ` in ${((new Date().getTime() - t0) / 1000).toFixed(1)} Sec.`;
             throw new OvhError(error);
         }
 
@@ -533,7 +572,7 @@ by default I will ask for all rights`);
                 let message = 'fail to etablish a valid connexion';
                 if (retryCnt > 0)
                     message += ` after ${retryCnt} retries`;
-                message += ` in ${((new Date().getTime() - t0)/1000).toFixed(1)} Sec.`;
+                message += ` in ${((new Date().getTime() - t0) / 1000).toFixed(1)} Sec.`;
 
                 reject(new OvhError({
                     method: options.method as HttpMethod,

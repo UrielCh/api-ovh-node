@@ -1,3 +1,8 @@
+V 2.1.6
+- all console.log / console.error can be avoid
+- add CertMonitorProvider
+- update doc
+- add launchBrower boolean to block any browser launch
 V 2.1.5
 - improve Http error handeling on heavy load.
 - fix retry logic and display

@@ -1,7 +1,7 @@
 {
   "name": "@ovh-api/api",
   "description": "Ovh api connector implementation",
-  "version": "2.1.5",
+  "version": "2.1.6",
   "keywords": [
     "ovh",
     "api",
@@ -13,16 +13,17 @@
   "author": "Uriel Chemouni <uchemouni@gmail.com>",
   "dependencies": {
     "@ovh-api/common": "^1.3.0",
-    "open": "^7.0.0"
+    "open": "^7.0.1"
   },
   "devDependencies": {
     "@ovh-api/me": "^2.0.14",
-    "@types/chai": "^4.2.7",
-    "@types/mocha": "^5.2.7",
-    "@types/node": "^13.5.0",
+    "@types/chai": "^4.2.8",
+    "@types/mocha": "^7.0.1",
+    "@types/node": "^13.5.3",
     "@types/open": "^6.2.1",
     "chai": "^4.2.0",
     "mocha": "^7.0.1",
+    "rimraf": "^3.0.1",
     "ts-node": "^8.6.2",
     "typescript": "^3.7.5"
   },
@@ -35,6 +36,7 @@
     "url": "git+https://github.com/UrielCh/api-ovh-node.git"
   },
   "scripts": {
+    "clean": "rimraf dist",
     "build": "tsc -p .",
     "test": "mocha dist/**/*.spec.js",
     "prepare": "npm run build",
