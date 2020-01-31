@@ -39,7 +39,8 @@ export const getVoiceConsumptions = async (apiPhone: Telephony, billingAccount: 
         return await apiPhone.$(billingAccount).service.$(servicename).voiceConsumption.$get(options);
     } catch (e1) {
         const e = e1 as IOvhError;
-        console.log(e);
+        debugger;
+        console.error(e);
         console.error(`${new Date().toISOString()} ${e.message} GET /${billingAccount}/service/${servicename}/voiceConsumption, spliting the timeRange`);
     }
     if (!interval) {

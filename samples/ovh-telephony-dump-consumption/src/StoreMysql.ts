@@ -25,12 +25,14 @@ export class StoreMysql {
     let value = new VoiceConsumption(billingAccount, serviceName, data, type);
     this.cache.push(value);
     this.cnt++;
-    if (this.cache.length >= 1000) {
-      this.flush();
+    if (this.cache.length >= 5000) {
+      await this.flush();
     }
   }
 
-  async filter(billingAccount: string, serviceName: string, calls: number[]) {
+  async filter(billingAccount: string, serviceName: string, calls: number[]): Promise<number[]> {
+    if (!calls.length)
+      return calls;
     const hits = await this.getCnx()
       .getRepository(VoiceConsumption)
       .createQueryBuilder() // 'VoiceConsumption'

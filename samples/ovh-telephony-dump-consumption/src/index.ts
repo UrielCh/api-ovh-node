@@ -6,7 +6,6 @@ import Bluebird from 'bluebird'
 import { StoreMysql } from "./StoreMysql";
 import { ConnectionOptions } from "typeorm";
 import { importAll } from "./importer";
-import { statAll } from './stats';
 const { version } = require('../package.json');
 
 Bluebird.config({ 
@@ -41,7 +40,7 @@ async function main() {
   };
   const connection = await store.init(db);
   await importAll(apiPhone, store);
-  await statAll(connection);
+  // await statAll(connection);
   await connection.close();
 }
 main()
