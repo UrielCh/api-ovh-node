@@ -1,7 +1,7 @@
 {
     "name": "@ovh-api-ca/distribution-image",
     "description": "Add typing to to ovh api distribution-image",
-    "version": "2.0.13",
+    "version": "2.0.16",
     "typings": "index.d.ts",
     "license": "MIT",
     "author": "Uriel Chemouni <uchemouni@gmail.com>",

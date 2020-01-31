@@ -1,7 +1,7 @@
 {
     "name": "@ovh-api/over-the-box",
     "description": "Add typing to to ovh api over-the-box",
-    "version": "2.0.13",
+    "version": "2.0.16",
     "typings": "index.d.ts",
     "license": "MIT",
     "author": "Uriel Chemouni <uchemouni@gmail.com>",
