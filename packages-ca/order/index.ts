@@ -1403,6 +1403,10 @@ export interface Order{
                 // GET /order/catalog/public/enterpriseCloudDatabases
                 $get(params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.publik.Catalog>;
             }
+            privateSQL: {
+                // GET /order/catalog/public/privateSQL
+                $get(params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.publik.Catalog>;
+            }
             webHosting: {
                 // GET /order/catalog/public/webHosting
                 $get(params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.publik.Catalog>;
@@ -2818,6 +2822,11 @@ export interface Order{
    * Retrieve Enterprise Cloud Databases catalog
    */
   get(path: '/order/catalog/public/enterpriseCloudDatabases'): (params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}) => Promise<order.catalog.publik.Catalog>;
+  /**
+   * Missing description
+   * Retrieve Private SQL catalog
+   */
+  get(path: '/order/catalog/public/privateSQL'): (params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}) => Promise<order.catalog.publik.Catalog>;
   /**
    * Missing description
    * Retrieve Web Hosting catalog

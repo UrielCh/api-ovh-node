@@ -121,14 +121,26 @@ export namespace services {
         // type fullname: services.billing.InvoiceLineTypeEnum
         export type InvoiceLineTypeEnum = "accessory" | "consumption" | "creation" | "deposit" | "duration" | "gift" | "installation" | "misc" | "other" | "outplan" | "quantity" | "special" | "voucher"
         export namespace engagement {
+            // interface fullName: services.billing.engagement.EndRule.EndRule
+            export interface EndRule {
+                possibleStrategies: services.billing.engagement.EndStrategyEnum[];
+                strategy: services.billing.engagement.EndStrategyEnum;
+            }
+            // type fullname: services.billing.engagement.EndStrategyEnum
+            export type EndStrategyEnum = "STOP_ENGAGEMENT_FALLBACK_DEFAULT_PRICE" | "REACTIVATE_ENGAGEMENT" | "CANCEL_SERVICE" | "STOP_ENGAGEMENT_KEEP_PRICE"
             // interface fullName: services.billing.engagement.Engagement.Engagement
             export interface Engagement {
                 currentPeriod: services.billing.engagement.EngagementPeriod;
+                endRule?: services.billing.engagement.EndRule;
             }
             // interface fullName: services.billing.engagement.EngagementPeriod.EngagementPeriod
             export interface EngagementPeriod {
                 endDate?: string;
                 startDate: string;
+            }
+            // interface fullName: services.billing.engagement.UpdateEndRuleRequest.UpdateEndRuleRequest
+            export interface UpdateEndRuleRequest {
+                strategy: services.billing.engagement.EndStrategyEnum;
             }
         }
     }

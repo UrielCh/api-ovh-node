@@ -38,7 +38,7 @@ export namespace cloud {
     }
     // interface fullName: cloud.AvailableRegion.AvailableRegion
     export interface AvailableRegion {
-        continentCode: cloud.RegionContinent;
+        continentCode: cloud.RegionContinentEnum;
         datacenterLocation: string;
         name: string;
     }
@@ -60,7 +60,7 @@ export namespace cloud {
     // interface fullName: cloud.Component.Component
     export interface Component {
         name: string;
-        status: cloud.ServiceStatus;
+        status: cloud.ServiceStatusEnum;
     }
     // interface fullName: cloud.Credit.Credit
     export interface Credit {
@@ -77,11 +77,13 @@ export namespace cloud {
     // interface fullName: cloud.Execution.Execution
     export interface Execution {
         executedAt: string;
-        state: cloud.ExecutionState;
+        state: cloud.ExecutionStateEnum;
         stateInfo: string;
     }
     // type fullname: cloud.ExecutionState
     export type ExecutionState = "IDLE" | "RUNNING" | "SUCCESS" | "ERROR" | "PAUSED"
+    // type fullname: cloud.ExecutionStateEnum
+    export type ExecutionStateEnum = "IDLE" | "RUNNING" | "SUCCESS" | "ERROR" | "PAUSED"
     // interface fullName: cloud.FlavorPrice.FlavorPrice
     export interface FlavorPrice {
         flavorId: string;
@@ -96,7 +98,7 @@ export namespace cloud {
     export interface Lab {
         id: string;
         name: string;
-        status: cloud.LabStatus;
+        status: cloud.LabStatusEnum;
     }
     // interface fullName: cloud.LabAgreements.LabAgreements
     export interface LabAgreements {
@@ -105,6 +107,8 @@ export namespace cloud {
     }
     // type fullname: cloud.LabStatus
     export type LabStatus = "open" | "activating" | "activated" | "closed"
+    // type fullname: cloud.LabStatusEnum
+    export type LabStatusEnum = "open" | "activating" | "activated" | "closed"
     // interface fullName: cloud.Operation.Operation
     export interface Operation {
         action: string;
@@ -114,10 +118,12 @@ export namespace cloud {
         progress: number;
         regions?: string[];
         startedAt?: string;
-        status: cloud.OperationStatus;
+        status: cloud.OperationStatusEnum;
     }
     // type fullname: cloud.OperationStatus
     export type OperationStatus = "created" | "in-progress" | "completed" | "in-error" | "unknown"
+    // type fullname: cloud.OperationStatusEnum
+    export type OperationStatusEnum = "created" | "in-progress" | "completed" | "in-error" | "unknown"
     // interface fullName: cloud.Price.Price
     export interface Price {
         archive: cloud.ArchiveStoragePrice[];
@@ -139,7 +145,7 @@ export namespace cloud {
         orderId?: number;
         planCode: string;
         project_id: string;
-        status: cloud.project.ProjectStatus;
+        status: cloud.project.ProjectStatusEnum;
         unleash: boolean;
     }
     // interface fullName: cloud.ProjectActivateMonthlyBillingCreation.ProjectActivateMonthlyBillingCreation
@@ -149,6 +155,7 @@ export namespace cloud {
     // interface fullName: cloud.ProjectContainerRegistryCreation.ProjectContainerRegistryCreation
     export interface ProjectContainerRegistryCreation {
         name: string;
+        planID: string;
         region: string;
     }
     // interface fullName: cloud.ProjectContainerRegistryUpdate.ProjectContainerRegistryUpdate
@@ -232,8 +239,8 @@ export namespace cloud {
     // interface fullName: cloud.ProjectKubeCreation.ProjectKubeCreation
     export interface ProjectKubeCreation {
         name?: string;
-        region: cloud.kube.Region;
-        version?: cloud.kube.Version;
+        region: cloud.kube.RegionEnum;
+        version?: cloud.kube.VersionEnum;
     }
     // interface fullName: cloud.ProjectKubeNodeCreation.ProjectKubeNodeCreation
     export interface ProjectKubeNodeCreation {
@@ -256,8 +263,8 @@ export namespace cloud {
     }
     // interface fullName: cloud.ProjectKubeResetCreation.ProjectKubeResetCreation
     export interface ProjectKubeResetCreation {
-        version?: cloud.kube.Version;
-        workerNodesPolicy?: cloud.kube.ResetWorkerNodesPolicy;
+        version?: cloud.kube.VersionEnum;
+        workerNodesPolicy?: cloud.kube.ResetWorkerNodesPolicyEnum;
     }
     // interface fullName: cloud.ProjectKubeUpdate.ProjectKubeUpdate
     export interface ProjectKubeUpdate {
@@ -265,11 +272,11 @@ export namespace cloud {
     }
     // interface fullName: cloud.ProjectKubeUpdateCreation.ProjectKubeUpdateCreation
     export interface ProjectKubeUpdateCreation {
-        strategy?: cloud.kube.UpdateStrategy;
+        strategy?: cloud.kube.UpdateStrategyEnum;
     }
     // interface fullName: cloud.ProjectKubeUpdatePolicyUpdate.ProjectKubeUpdatePolicyUpdate
     export interface ProjectKubeUpdatePolicyUpdate {
-        updatePolicy: cloud.kube.UpdatePolicy;
+        updatePolicy: cloud.kube.UpdatePolicyEnum;
     }
     // interface fullName: cloud.ProjectMigrationUpdate.ProjectMigrationUpdate
     export interface ProjectMigrationUpdate {
@@ -402,19 +409,25 @@ export namespace cloud {
     }
     // interface fullName: cloud.Region.Region
     export interface Region {
-        continentCode: cloud.RegionContinent;
+        continentCode: cloud.RegionContinentEnum;
         datacenterLocation: string;
         ipCountries: cloud.IpCountryEnum[];
         name: string;
         services: cloud.Component[];
-        status: cloud.RegionStatus;
+        status: cloud.RegionStatusEnum;
     }
     // type fullname: cloud.RegionContinent
     export type RegionContinent = "EU" | "NA" | "US" | "ASIA"
+    // type fullname: cloud.RegionContinentEnum
+    export type RegionContinentEnum = "EU" | "NA" | "US" | "ASIA"
     // type fullname: cloud.RegionStatus
     export type RegionStatus = "UP" | "DOWN" | "MAINTENANCE"
+    // type fullname: cloud.RegionStatusEnum
+    export type RegionStatusEnum = "UP" | "DOWN" | "MAINTENANCE"
     // type fullname: cloud.ServiceStatus
     export type ServiceStatus = "UP" | "DOWN"
+    // type fullname: cloud.ServiceStatusEnum
+    export type ServiceStatusEnum = "UP" | "DOWN"
     // interface fullName: cloud.SnapshotPrice.SnapshotPrice
     export interface SnapshotPrice {
         monthlyPrice: orderPrice;
@@ -621,7 +634,7 @@ export namespace cloud {
         }
         // interface fullName: cloud.billingView.Quantity.Quantity
         export interface Quantity {
-            unit: cloud.billingView.UnitQuantity;
+            unit: cloud.billingView.UnitQuantityEnum;
             value: number;
         }
         // interface fullName: cloud.billingView.RegionalizedResource.RegionalizedResource
@@ -643,7 +656,9 @@ export namespace cloud {
             type: string;
         }
         // type fullname: cloud.billingView.UnitQuantity
-        export type UnitQuantity = "GiB" | "GiBh" | "Hour" | "Minute" | "Second"
+        export type UnitQuantity = "GiB" | "GiBh" | "Hour"
+        // type fullname: cloud.billingView.UnitQuantityEnum
+        export type UnitQuantityEnum = "GiB" | "GiBh" | "Hour" | "Minute" | "Second"
         // interface fullName: cloud.billingView.UsedCredit.UsedCredit
         export interface UsedCredit {
             description: string;
@@ -888,8 +903,12 @@ export namespace cloud {
         }
         // type fullname: cloud.instance.MetricsPeriod
         export type MetricsPeriod = "lastday" | "lastmonth" | "lastweek" | "lastyear" | "today"
+        // type fullname: cloud.instance.MetricsPeriodEnum
+        export type MetricsPeriodEnum = "lastday" | "lastmonth" | "lastweek" | "lastyear" | "today"
         // type fullname: cloud.instance.MetricsType
         export type MetricsType = "mem:used" | "mem:max" | "cpu:used" | "cpu:max" | "net:tx" | "net:rx"
+        // type fullname: cloud.instance.MetricsTypeEnum
+        export type MetricsTypeEnum = "mem:used" | "mem:max" | "cpu:used" | "cpu:max" | "net:tx" | "net:rx"
         // interface fullName: cloud.instance.MonthlyBilling.MonthlyBilling
         export interface MonthlyBilling {
             since: string;
@@ -979,10 +998,10 @@ export namespace cloud {
             id: string;
             isUpToDate: boolean;
             name: string;
-            nextUpgradeVersions?: cloud.kube.UpgradeVersion[];
+            nextUpgradeVersions?: cloud.kube.UpgradeVersionEnum[];
             nodesUrl: string;
-            region: cloud.kube.Region;
-            status: cloud.kube.ClusterStatus;
+            region: cloud.kube.RegionEnum;
+            status: cloud.kube.ClusterStatusEnum;
             updatePolicy: string;
             updatedAt: string;
             url: string;
@@ -990,16 +1009,22 @@ export namespace cloud {
         }
         // type fullname: cloud.kube.ClusterStatus
         export type ClusterStatus = "INSTALLING" | "UPDATING" | "RESETTING" | "SUSPENDING" | "REOPENING" | "DELETING" | "SUSPENDED" | "ERROR" | "USER_ERROR" | "USER_QUOTA_ERROR" | "READY"
+        // type fullname: cloud.kube.ClusterStatusEnum
+        export type ClusterStatusEnum = "INSTALLING" | "UPDATING" | "RESETTING" | "SUSPENDING" | "REOPENING" | "DELETING" | "SUSPENDED" | "ERROR" | "USER_ERROR" | "USER_QUOTA_ERROR" | "READY"
         // interface fullName: cloud.kube.Flavor.Flavor
         export interface Flavor {
-            category: cloud.kube.FlavorCategory;
+            category: cloud.kube.FlavorCategoryEnum;
             name: string;
-            state: cloud.kube.FlavorState;
+            state: cloud.kube.FlavorStateEnum;
         }
         // type fullname: cloud.kube.FlavorCategory
-        export type FlavorCategory = "c" | "g" | "t" | "b" | "r" | "i"
+        export type FlavorCategory = "c" | "g" | "t" | "b" | "r"
+        // type fullname: cloud.kube.FlavorCategoryEnum
+        export type FlavorCategoryEnum = "c" | "g" | "t" | "b" | "r" | "i"
         // type fullname: cloud.kube.FlavorState
         export type FlavorState = "available" | "unavailable"
+        // type fullname: cloud.kube.FlavorStateEnum
+        export type FlavorStateEnum = "available" | "unavailable"
         // interface fullName: cloud.kube.Kubeconfig.Kubeconfig
         export interface Kubeconfig {
             content: string;
@@ -1015,7 +1040,7 @@ export namespace cloud {
             name?: string;
             nodePoolId: string;
             projectId: string;
-            status: cloud.kube.NodeStatus;
+            status: cloud.kube.NodeStatusEnum;
             updatedAt: string;
             version: string;
         }
@@ -1039,21 +1064,35 @@ export namespace cloud {
         // type fullname: cloud.kube.NodePoolSizeStatusEnum
         export type NodePoolSizeStatusEnum = "UNDER_CAPACITY" | "CAPACITY_OK" | "OVER_CAPACITY"
         // type fullname: cloud.kube.NodePoolStatusEnum
-        export type NodePoolStatusEnum = "INSTALLING" | "UPDATING" | "REDEPLOYING" | "RESIZING" | "DELETING" | "ERROR" | "READY"
+        export type NodePoolStatusEnum = "INSTALLING" | "UPDATING" | "REDEPLOYING" | "RESIZING" | "RESETTING" | "DELETING" | "ERROR" | "READY"
         // type fullname: cloud.kube.NodeStatus
         export type NodeStatus = "INSTALLING" | "UPDATING" | "RESETTING" | "SUSPENDING" | "REOPENING" | "DELETING" | "SUSPENDED" | "ERROR" | "USER_ERROR" | "USER_QUOTA_ERROR" | "USER_NODE_NOT_FOUND_ERROR" | "USER_NODE_SUSPENDED_SERVICE" | "READY"
+        // type fullname: cloud.kube.NodeStatusEnum
+        export type NodeStatusEnum = "INSTALLING" | "UPDATING" | "RESETTING" | "SUSPENDING" | "REOPENING" | "DELETING" | "SUSPENDED" | "ERROR" | "USER_ERROR" | "USER_QUOTA_ERROR" | "USER_NODE_NOT_FOUND_ERROR" | "USER_NODE_SUSPENDED_SERVICE" | "READY"
         // type fullname: cloud.kube.Region
         export type Region = "GRA5" | "GRA7" | "BHS5"
+        // type fullname: cloud.kube.RegionEnum
+        export type RegionEnum = "GRA5" | "GRA7" | "BHS5"
         // type fullname: cloud.kube.ResetWorkerNodesPolicy
         export type ResetWorkerNodesPolicy = "reinstall" | "delete"
+        // type fullname: cloud.kube.ResetWorkerNodesPolicyEnum
+        export type ResetWorkerNodesPolicyEnum = "reinstall" | "delete"
         // type fullname: cloud.kube.UpdatePolicy
         export type UpdatePolicy = "ALWAYS_UPDATE" | "MINIMAL_DOWNTIME" | "NEVER_UPDATE"
+        // type fullname: cloud.kube.UpdatePolicyEnum
+        export type UpdatePolicyEnum = "ALWAYS_UPDATE" | "MINIMAL_DOWNTIME" | "NEVER_UPDATE"
         // type fullname: cloud.kube.UpdateStrategy
         export type UpdateStrategy = "LATEST_PATCH" | "NEXT_MINOR"
+        // type fullname: cloud.kube.UpdateStrategyEnum
+        export type UpdateStrategyEnum = "LATEST_PATCH" | "NEXT_MINOR"
         // type fullname: cloud.kube.UpgradeVersion
-        export type UpgradeVersion = "1.12" | "1.13" | "1.14" | "1.15" | "1.16" | "1.17"
+        export type UpgradeVersion = "1.12" | "1.13" | "1.14" | "1.15" | "1.16"
+        // type fullname: cloud.kube.UpgradeVersionEnum
+        export type UpgradeVersionEnum = "1.12" | "1.13" | "1.14" | "1.15" | "1.16" | "1.17"
         // type fullname: cloud.kube.Version
-        export type Version = "1.14" | "1.15" | "1.16" | "1.17"
+        export type Version = "1.13" | "1.14" | "1.15"
+        // type fullname: cloud.kube.VersionEnum
+        export type VersionEnum = "1.14" | "1.15" | "1.16" | "1.17"
     }
     export namespace migration {
         // interface fullName: cloud.migration.Migration.Migration
@@ -1259,6 +1298,8 @@ export namespace cloud {
         export type ProductNameEnum = "registry"
         // type fullname: cloud.project.ProjectStatus
         export type ProjectStatus = "creating" | "deleted" | "deleting" | "ok" | "suspended"
+        // type fullname: cloud.project.ProjectStatusEnum
+        export type ProjectStatusEnum = "creating" | "deleted" | "deleting" | "ok" | "suspended"
         // interface fullName: cloud.project.ProjectUsage.ProjectUsage
         export interface ProjectUsage {
             current: cloud.project.CurrentUsage;
@@ -1762,7 +1803,7 @@ export interface Cloud{
             // GET /cloud/project/{serviceName}
             $get(): Promise<cloud.Project>;
             // PUT /cloud/project/{serviceName}
-            $put(params?: {access?: cloud.AccessTypeEnum, creationDate?: string, description?: string, expiration?: string, orderId?: number, planCode?: string, project_id?: string, status?: cloud.project.ProjectStatus, unleash?: boolean}): Promise<void>;
+            $put(params?: {access?: cloud.AccessTypeEnum, creationDate?: string, description?: string, expiration?: string, orderId?: number, planCode?: string, project_id?: string, status?: cloud.project.ProjectStatusEnum, unleash?: boolean}): Promise<void>;
             acl: {
                 // GET /cloud/project/{serviceName}/acl
                 $get(params?: {type?: cloud.AclTypeEnum}): Promise<string[]>;
@@ -1827,7 +1868,7 @@ export interface Cloud{
                 // GET /cloud/project/{serviceName}/containerRegistry
                 $get(): Promise<cloud.containerRegistry.Registry[]>;
                 // POST /cloud/project/{serviceName}/containerRegistry
-                $post(params: {name: string, region: string}): Promise<cloud.containerRegistry.Registry>;
+                $post(params: {name: string, planID?: string, region: string}): Promise<cloud.containerRegistry.Registry>;
                 $(registryID: string): {
                     // DELETE /cloud/project/{serviceName}/containerRegistry/{registryID}
                     $delete(): Promise<void>;
@@ -1939,7 +1980,7 @@ export interface Cloud{
                     }
                     monitoring: {
                         // GET /cloud/project/{serviceName}/instance/{instanceId}/monitoring
-                        $get(params: {period: cloud.instance.MetricsPeriod, type: cloud.instance.MetricsType}): Promise<cloud.instance.InstanceMetrics>;
+                        $get(params: {period: cloud.instance.MetricsPeriodEnum, type: cloud.instance.MetricsTypeEnum}): Promise<cloud.instance.InstanceMetrics>;
                     }
                     reboot: {
                         // POST /cloud/project/{serviceName}/instance/{instanceId}/reboot
@@ -1999,10 +2040,10 @@ export interface Cloud{
                 // GET /cloud/project/{serviceName}/kube
                 $get(): Promise<string[]>;
                 // POST /cloud/project/{serviceName}/kube
-                $post(params: {name?: string, region: cloud.kube.Region, version?: cloud.kube.Version}): Promise<cloud.kube.Cluster>;
+                $post(params: {name?: string, region: cloud.kube.RegionEnum, version?: cloud.kube.VersionEnum}): Promise<cloud.kube.Cluster>;
                 regions: {
                     // GET /cloud/project/{serviceName}/kube/regions
-                    $get(): Promise<cloud.kube.Region[]>;
+                    $get(): Promise<cloud.kube.RegionEnum[]>;
                 }
                 $(kubeId: string): {
                     // DELETE /cloud/project/{serviceName}/kube/{kubeId}
@@ -2033,15 +2074,15 @@ export interface Cloud{
                     }
                     reset: {
                         // POST /cloud/project/{serviceName}/kube/{kubeId}/reset
-                        $post(params?: {version?: cloud.kube.Version, workerNodesPolicy?: cloud.kube.ResetWorkerNodesPolicy}): Promise<void>;
+                        $post(params?: {version?: cloud.kube.VersionEnum, workerNodesPolicy?: cloud.kube.ResetWorkerNodesPolicyEnum}): Promise<void>;
                     }
                     update: {
                         // POST /cloud/project/{serviceName}/kube/{kubeId}/update
-                        $post(params?: {strategy?: cloud.kube.UpdateStrategy}): Promise<void>;
+                        $post(params?: {strategy?: cloud.kube.UpdateStrategyEnum}): Promise<void>;
                     }
                     updatePolicy: {
                         // PUT /cloud/project/{serviceName}/kube/{kubeId}/updatePolicy
-                        $put(params: {updatePolicy: cloud.kube.UpdatePolicy}): Promise<void>;
+                        $put(params: {updatePolicy: cloud.kube.UpdatePolicyEnum}): Promise<void>;
                     }
                 };
             }
@@ -2657,7 +2698,7 @@ export interface Cloud{
    * Missing description
    * Return many statistics about the virtual machine for a given period
    */
-  get(path: '/cloud/project/{serviceName}/instance/{instanceId}/monitoring'): (params: {instanceId: string, serviceName: string, period: cloud.instance.MetricsPeriod, type: cloud.instance.MetricsType}) => Promise<cloud.instance.InstanceMetrics>;
+  get(path: '/cloud/project/{serviceName}/instance/{instanceId}/monitoring'): (params: {instanceId: string, serviceName: string, period: cloud.instance.MetricsPeriodEnum, type: cloud.instance.MetricsTypeEnum}) => Promise<cloud.instance.InstanceMetrics>;
   /**
    * Missing description
    * Get the detail of a group
@@ -2712,7 +2753,7 @@ export interface Cloud{
    * List Kubernetes available regions
    * List Kubernetes available regions
    */
-  get(path: '/cloud/project/{serviceName}/kube/regions'): (params: {serviceName: string}) => Promise<cloud.kube.Region[]>;
+  get(path: '/cloud/project/{serviceName}/kube/regions'): (params: {serviceName: string}) => Promise<cloud.kube.RegionEnum[]>;
   /**
    * Manage labs on your Cloud Project
    * List available public cloud labs
@@ -2962,7 +3003,7 @@ export interface Cloud{
    * Operations about the PUBLICCLOUD service
    * Alter this object properties
    */
-  put(path: '/cloud/project/{serviceName}'): (params: {serviceName: string, access?: cloud.AccessTypeEnum, creationDate?: string, description?: string, expiration?: string, orderId?: number, planCode?: string, project_id?: string, status?: cloud.project.ProjectStatus, unleash?: boolean}) => Promise<void>;
+  put(path: '/cloud/project/{serviceName}'): (params: {serviceName: string, access?: cloud.AccessTypeEnum, creationDate?: string, description?: string, expiration?: string, orderId?: number, planCode?: string, project_id?: string, status?: cloud.project.ProjectStatusEnum, unleash?: boolean}) => Promise<void>;
   /**
    * Cloud alerting consumption
    * Alter this object properties
@@ -2992,7 +3033,7 @@ export interface Cloud{
    * Manage the update policy of your cluster
    * Change the update policy of your cluster
    */
-  put(path: '/cloud/project/{serviceName}/kube/{kubeId}/updatePolicy'): (params: {kubeId: string, serviceName: string, updatePolicy: cloud.kube.UpdatePolicy}) => Promise<void>;
+  put(path: '/cloud/project/{serviceName}/kube/{kubeId}/updatePolicy'): (params: {kubeId: string, serviceName: string, updatePolicy: cloud.kube.UpdatePolicyEnum}) => Promise<void>;
   /**
    * Missing description
    * Update planned migration
@@ -3067,7 +3108,7 @@ export interface Cloud{
    * Manage registries
    * Create a new registry
    */
-  post(path: '/cloud/project/{serviceName}/containerRegistry'): (params: {serviceName: string, name: string, region: string}) => Promise<cloud.containerRegistry.Registry>;
+  post(path: '/cloud/project/{serviceName}/containerRegistry'): (params: {serviceName: string, name: string, planID?: string, region: string}) => Promise<cloud.containerRegistry.Registry>;
   /**
    * Manage users
    * Create a new registry user
@@ -3162,7 +3203,7 @@ export interface Cloud{
    * Manage your clusters
    * Create a new managed Kubernetes cluster
    */
-  post(path: '/cloud/project/{serviceName}/kube'): (params: {serviceName: string, name?: string, region: cloud.kube.Region, version?: cloud.kube.Version}) => Promise<cloud.kube.Cluster>;
+  post(path: '/cloud/project/{serviceName}/kube'): (params: {serviceName: string, name?: string, region: cloud.kube.RegionEnum, version?: cloud.kube.VersionEnum}) => Promise<cloud.kube.Cluster>;
   /**
    * Get your cluster configuration
    * Generate kubeconfig file
@@ -3177,12 +3218,12 @@ export interface Cloud{
    * Reset your cluster
    * Reset cluster: all Kubernetes data will be erased (pods, services, configuration, etc), nodes will be either deleted or reinstalled
    */
-  post(path: '/cloud/project/{serviceName}/kube/{kubeId}/reset'): (params: {kubeId: string, serviceName: string, version?: cloud.kube.Version, workerNodesPolicy?: cloud.kube.ResetWorkerNodesPolicy}) => Promise<void>;
+  post(path: '/cloud/project/{serviceName}/kube/{kubeId}/reset'): (params: {kubeId: string, serviceName: string, version?: cloud.kube.VersionEnum, workerNodesPolicy?: cloud.kube.ResetWorkerNodesPolicyEnum}) => Promise<void>;
   /**
    * Update cluster
    * Force cluster and node update to the latest patch within minor version or next minor version
    */
-  post(path: '/cloud/project/{serviceName}/kube/{kubeId}/update'): (params: {kubeId: string, serviceName: string, strategy?: cloud.kube.UpdateStrategy}) => Promise<void>;
+  post(path: '/cloud/project/{serviceName}/kube/{kubeId}/update'): (params: {kubeId: string, serviceName: string, strategy?: cloud.kube.UpdateStrategyEnum}) => Promise<void>;
   /**
    * Manage labs on your Cloud Project
    * Activate a lab on your Cloud Project

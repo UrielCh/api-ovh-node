@@ -17,20 +17,20 @@ export namespace analytics {
         osProjectId?: string;
         osRegion?: string;
         serviceName: string;
-        status: analytics.Status;
+        status: analytics.StatusEnum;
     }
     // interface fullName: analytics.Component.Component
     export interface Component {
         name: string;
         version: string;
     }
-    // type fullname: analytics.Status
-    export type Status = "PENDING" | "IN_PROGRESS" | "SUCCEEDED" | "FAILED" | "DONE" | "ERROR" | "UNKNOWN" | "OK" | "TO_DEPLOY" | "DEPLOYING" | "DEPLOYED" | "TO_DESTROY" | "DESTROYED" | "INITIALIZED"
+    // type fullname: analytics.StatusEnum
+    export type StatusEnum = "PENDING" | "IN_PROGRESS" | "SUCCEEDED" | "FAILED" | "DONE" | "ERROR" | "UNKNOWN" | "OK" | "TO_DEPLOY" | "DEPLOYING" | "DEPLOYED" | "TO_DESTROY" | "DESTROYING" | "DESTROYED" | "INITIALIZED"
     export namespace cluster {
         // interface fullName: analytics.cluster.Activity.Activity
         export interface Activity {
             description: string;
-            status: analytics.Status;
+            status: analytics.StatusEnum;
             timestamp: string;
             user?: string;
         }
@@ -62,16 +62,16 @@ export namespace analytics {
             hostname?: string;
             ip?: string;
             nodeId: string;
-            nodeType: analytics.node.Type;
+            nodeType: analytics.node.TypeEnum;
             osRegion?: string;
-            status: analytics.Status;
+            status: analytics.StatusEnum;
             storage?: number;
         }
         export namespace deploy {
             // interface fullName: analytics.cluster.deploy.Status.Status
             export interface Status {
                 percentage: number;
-                status: analytics.Status;
+                status: analytics.StatusEnum;
                 task: string;
             }
         }
@@ -88,10 +88,10 @@ export namespace analytics {
         // interface fullName: analytics.node.Deploy.Deploy
         export interface Deploy {
             nodeFlavor: string;
-            nodeType: analytics.node.Type;
+            nodeType: analytics.node.TypeEnum;
         }
-        // type fullname: analytics.node.Type
-        export type Type = "MASTER" | "SLAVE" | "EDGE" | "UTILITY"
+        // type fullname: analytics.node.TypeEnum
+        export type TypeEnum = "MASTER" | "SLAVE" | "EDGE" | "UTILITY"
     }
     export namespace platform {
         // interface fullName: analytics.platform.Capability.Capability

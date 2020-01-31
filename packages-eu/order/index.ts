@@ -2066,6 +2066,10 @@ export interface Order{
                 // GET /order/catalog/public/enterpriseCloudDatabases
                 $get(params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.publik.Catalog>;
             }
+            privateSQL: {
+                // GET /order/catalog/public/privateSQL
+                $get(params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.publik.Catalog>;
+            }
             webHosting: {
                 // GET /order/catalog/public/webHosting
                 $get(params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.publik.Catalog>;
@@ -3068,9 +3072,9 @@ export interface Order{
             }
             portability: {
                 // GET /order/telephony/{billingAccount}/portability
-                $get(params: {building?: string, callNumber: string, city: string, contactName?: string, contactNumber?: string, country: telephony.portability.CountriesAvailable, desireDate?: string, displayUniversalDirectory: boolean, door?: string, executeAsSoonAsPossible?: boolean, fiabilisation?: boolean, firstName: string, floor?: number, lineToRedirectAliasTo?: string, listNumbers?: string, mobilePhone?: string, name: string, offer: telephony.portability.OfferType, rio?: string, siret?: string, socialReason: telephony.portability.SocialReason, specialNumberCategory?: telephony.portability.SpecialNumberCategoryEnum, stair?: number, streetName: string, streetNumber: number, streetNumberExtra?: string, streetType?: string, type: telephony.portability.NumberType, zip: string}): Promise<order.Order>;
+                $get(params: {building?: string, callNumber: string, city: string, contactName?: string, contactNumber?: string, country: telephony.portability.CountriesAvailable, desireDate?: string, displayUniversalDirectory: boolean, door?: string, executeAsSoonAsPossible?: boolean, fiabilisation?: boolean, firstName?: string, floor?: number, lineToRedirectAliasTo?: string, listNumbers?: string, mobilePhone?: string, name: string, offer: telephony.portability.OfferType, rio?: string, siret?: string, socialReason: telephony.portability.SocialReason, specialNumberCategory?: telephony.portability.SpecialNumberCategoryEnum, stair?: number, streetName: string, streetNumber: number, streetNumberExtra?: string, streetType?: string, type?: telephony.portability.NumberType, zip: string}): Promise<order.Order>;
                 // POST /order/telephony/{billingAccount}/portability
-                $post(params: {building?: string, callNumber: string, city: string, contactName?: string, contactNumber?: string, country: telephony.portability.CountriesAvailable, desireDate?: string, displayUniversalDirectory: boolean, door?: string, executeAsSoonAsPossible?: boolean, fiabilisation?: boolean, firstName: string, floor?: number, lineToRedirectAliasTo?: string, listNumbers?: string, mobilePhone?: string, name: string, offer: telephony.portability.OfferType, rio?: string, siret?: string, socialReason: telephony.portability.SocialReason, specialNumberCategory?: telephony.portability.SpecialNumberCategoryEnum, stair?: number, streetName: string, streetNumber: number, streetNumberExtra?: string, streetType?: string, type: telephony.portability.NumberType, zip: string}): Promise<order.Order>;
+                $post(params: {building?: string, callNumber: string, city: string, contactName?: string, contactNumber?: string, country: telephony.portability.CountriesAvailable, desireDate?: string, displayUniversalDirectory: boolean, door?: string, executeAsSoonAsPossible?: boolean, fiabilisation?: boolean, firstName?: string, floor?: number, lineToRedirectAliasTo?: string, listNumbers?: string, mobilePhone?: string, name: string, offer: telephony.portability.OfferType, rio?: string, siret?: string, socialReason: telephony.portability.SocialReason, specialNumberCategory?: telephony.portability.SpecialNumberCategoryEnum, stair?: number, streetName: string, streetNumber: number, streetNumberExtra?: string, streetType?: string, type?: telephony.portability.NumberType, zip: string}): Promise<order.Order>;
             }
             securityDeposit: {
                 // GET /order/telephony/{billingAccount}/securityDeposit
@@ -4429,6 +4433,11 @@ export interface Order{
   get(path: '/order/catalog/public/enterpriseCloudDatabases'): (params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}) => Promise<order.catalog.publik.Catalog>;
   /**
    * Missing description
+   * Retrieve Private SQL catalog
+   */
+  get(path: '/order/catalog/public/privateSQL'): (params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}) => Promise<order.catalog.publik.Catalog>;
+  /**
+   * Missing description
    * Retrieve Web Hosting catalog
    */
   get(path: '/order/catalog/public/webHosting'): (params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}) => Promise<order.catalog.publik.Catalog>;
@@ -5361,7 +5370,7 @@ export interface Order{
    * Order a new portability
    * Get prices and contracts information
    */
-  get(path: '/order/telephony/{billingAccount}/portability'): (params: {billingAccount: string, building?: string, callNumber: string, city: string, contactName?: string, contactNumber?: string, country: telephony.portability.CountriesAvailable, desireDate?: string, displayUniversalDirectory: boolean, door?: string, executeAsSoonAsPossible?: boolean, fiabilisation?: boolean, firstName: string, floor?: number, lineToRedirectAliasTo?: string, listNumbers?: string, mobilePhone?: string, name: string, offer: telephony.portability.OfferType, rio?: string, siret?: string, socialReason: telephony.portability.SocialReason, specialNumberCategory?: telephony.portability.SpecialNumberCategoryEnum, stair?: number, streetName: string, streetNumber: number, streetNumberExtra?: string, streetType?: string, type: telephony.portability.NumberType, zip: string}) => Promise<order.Order>;
+  get(path: '/order/telephony/{billingAccount}/portability'): (params: {billingAccount: string, building?: string, callNumber: string, city: string, contactName?: string, contactNumber?: string, country: telephony.portability.CountriesAvailable, desireDate?: string, displayUniversalDirectory: boolean, door?: string, executeAsSoonAsPossible?: boolean, fiabilisation?: boolean, firstName?: string, floor?: number, lineToRedirectAliasTo?: string, listNumbers?: string, mobilePhone?: string, name: string, offer: telephony.portability.OfferType, rio?: string, siret?: string, socialReason: telephony.portability.SocialReason, specialNumberCategory?: telephony.portability.SpecialNumberCategoryEnum, stair?: number, streetName: string, streetNumber: number, streetNumberExtra?: string, streetType?: string, type?: telephony.portability.NumberType, zip: string}) => Promise<order.Order>;
   /**
    * Credit security deposit
    * Get prices and contracts information
@@ -6931,7 +6940,7 @@ export interface Order{
    * Order a new portability
    * Create order
    */
-  post(path: '/order/telephony/{billingAccount}/portability'): (params: {billingAccount: string, building?: string, callNumber: string, city: string, contactName?: string, contactNumber?: string, country: telephony.portability.CountriesAvailable, desireDate?: string, displayUniversalDirectory: boolean, door?: string, executeAsSoonAsPossible?: boolean, fiabilisation?: boolean, firstName: string, floor?: number, lineToRedirectAliasTo?: string, listNumbers?: string, mobilePhone?: string, name: string, offer: telephony.portability.OfferType, rio?: string, siret?: string, socialReason: telephony.portability.SocialReason, specialNumberCategory?: telephony.portability.SpecialNumberCategoryEnum, stair?: number, streetName: string, streetNumber: number, streetNumberExtra?: string, streetType?: string, type: telephony.portability.NumberType, zip: string}) => Promise<order.Order>;
+  post(path: '/order/telephony/{billingAccount}/portability'): (params: {billingAccount: string, building?: string, callNumber: string, city: string, contactName?: string, contactNumber?: string, country: telephony.portability.CountriesAvailable, desireDate?: string, displayUniversalDirectory: boolean, door?: string, executeAsSoonAsPossible?: boolean, fiabilisation?: boolean, firstName?: string, floor?: number, lineToRedirectAliasTo?: string, listNumbers?: string, mobilePhone?: string, name: string, offer: telephony.portability.OfferType, rio?: string, siret?: string, socialReason: telephony.portability.SocialReason, specialNumberCategory?: telephony.portability.SpecialNumberCategoryEnum, stair?: number, streetName: string, streetNumber: number, streetNumberExtra?: string, streetType?: string, type?: telephony.portability.NumberType, zip: string}) => Promise<order.Order>;
   /**
    * Credit security deposit
    * Create order

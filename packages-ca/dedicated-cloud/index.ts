@@ -647,6 +647,8 @@ export namespace dedicatedCloud {
         uppercaseLetterMandatory: boolean;
         validityPeriod: number;
     }
+    // type fullname: dedicatedCloud.releaseEnum
+    export type releaseEnum = "major" | "minor"
     // interface fullName: dedicatedCloud.resourceNewPrices.resourceNewPrices
     export interface resourceNewPrices {
         resources?: dedicatedCloudresourceNewPricesEntry[];
@@ -697,6 +699,12 @@ export namespace dedicatedCloud {
         export type ActivationStateEnum = "disabled" | "disabling" | "enabled" | "enabling" | "toDisable" | "toEnable"
         // type fullname: dedicatedCloud.user.StateEnum
         export type StateEnum = "creating" | "deleting" | "delivered" | "error"
+    }
+    // interface fullName: dedicatedCloud.vcenter.vcenter
+    export interface vcenter {
+        currentVersion: dedicatedCloudVersion;
+        lastMajor: dedicatedCloudVersion;
+        lastMinor: dedicatedCloudVersion;
     }
     export namespace vendor {
         // interface fullName: dedicatedCloud.vendor.OvhId.OvhId
@@ -1456,6 +1464,10 @@ export interface DedicatedCloud{
             // POST /dedicatedCloud/{serviceName}/upgradeHypervisor
             $post(): Promise<dedicatedCloud.Task>;
         }
+        upgradeVcenter: {
+            // POST /dedicatedCloud/{serviceName}/upgradeVcenter
+            $post(params?: {release?: dedicatedCloud.releaseEnum}): Promise<dedicatedCloud.Task>;
+        }
         user: {
             // GET /dedicatedCloud/{serviceName}/user
             $get(params?: {name?: string}): Promise<number[]>;
@@ -1525,6 +1537,10 @@ export interface DedicatedCloud{
                     };
                 }
             };
+        }
+        vcenterVersion: {
+            // GET /dedicatedCloud/{serviceName}/vcenterVersion
+            $get(): Promise<dedicatedCloud.vcenter>;
         }
         vendor: {
             // GET /dedicatedCloud/{serviceName}/vendor
@@ -2019,6 +2035,11 @@ export interface DedicatedCloud{
    */
   get(path: '/dedicatedCloud/{serviceName}/user/{userId}/task/{taskId}'): (params: {serviceName: string, taskId: number, userId: number}) => Promise<dedicatedCloud.Task>;
   /**
+   * vcenterVersion operations
+   * Get available upgrade for your vCenter
+   */
+  get(path: '/dedicatedCloud/{serviceName}/vcenterVersion'): (params: {serviceName: string}) => Promise<dedicatedCloud.vcenter>;
+  /**
    * The Private Cloud Vendor option
    * Get this object properties
    */
@@ -2473,6 +2494,11 @@ export interface DedicatedCloud{
    * Upgrade your hypervisor to the next released version
    */
   post(path: '/dedicatedCloud/{serviceName}/upgradeHypervisor'): (params: {serviceName: string}) => Promise<dedicatedCloud.Task>;
+  /**
+   * upgradeVcenter operations
+   * Upgrade your vCenter to the next released version
+   */
+  post(path: '/dedicatedCloud/{serviceName}/upgradeVcenter'): (params: {serviceName: string, release?: dedicatedCloud.releaseEnum}) => Promise<dedicatedCloud.Task>;
   /**
    * List the dedicatedCloud.User objects
    * Create a new User in your Private Cloud

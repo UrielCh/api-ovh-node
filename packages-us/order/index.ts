@@ -41,10 +41,14 @@ export namespace order {
     }
     // interface fullName: order.OrderDetail.OrderDetail
     export interface OrderDetail {
+        cartItemID?: number;
         description: string;
         detailType?: order.OrderDetailTypeEnum;
         domain: string;
+        originalTotalPrice: order.Price;
         quantity: number;
+        reductionTotalPrice: order.Price;
+        reductions: order.Reduction[];
         totalPrice: order.Price;
         unitPrice: order.Price;
     }
@@ -52,6 +56,8 @@ export namespace order {
     export type OrderDetailTypeEnum = "ACCESSORY" | "CAUTION" | "CHOOSED" | "CONSUMPTION" | "CREATION" | "DELIVERY" | "DURATION" | "GIFT" | "INSTALLATION" | "LICENSE" | "MUTE" | "OTHER" | "OUTPLAN" | "QUANTITY" | "REFUND" | "RENEW" | "SPECIAL" | "SWITCH" | "TRANSFER" | "VOUCHER"
     // interface fullName: order.OrderPrices.OrderPrices
     export interface OrderPrices {
+        originalWithoutTax?: order.Price;
+        reduction?: order.Price;
         tax: order.Price;
         withTax: order.Price;
         withoutTax: order.Price;
@@ -62,6 +68,17 @@ export namespace order {
         text: string;
         value: number;
     }
+    // interface fullName: order.Reduction.Reduction
+    export interface Reduction {
+        context: order.ReductionContextEnum;
+        price: order.Price;
+        type: order.ReductionTypeEnum;
+        value: order.Price;
+    }
+    // type fullname: order.ReductionContextEnum
+    export type ReductionContextEnum = "promotion" | "voucher"
+    // type fullname: order.ReductionTypeEnum
+    export type ReductionTypeEnum = "percentage" | "forced_amount" | "fixed_amount"
     export namespace cart {
         // interface fullName: order.cart.Cart.Cart
         export interface Cart {
@@ -909,6 +926,10 @@ export interface Order{
                 // GET /order/catalog/public/enterpriseCloudDatabases
                 $get(params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.publik.Catalog>;
             }
+            privateSQL: {
+                // GET /order/catalog/public/privateSQL
+                $get(params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.publik.Catalog>;
+            }
             vps: {
                 // GET /order/catalog/public/vps
                 $get(params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}): Promise<order.catalog.publik.Catalog>;
@@ -1328,6 +1349,11 @@ export interface Order{
    * Retrieve Enterprise Cloud Databases catalog
    */
   get(path: '/order/catalog/public/enterpriseCloudDatabases'): (params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}) => Promise<order.catalog.publik.Catalog>;
+  /**
+   * Missing description
+   * Retrieve Private SQL catalog
+   */
+  get(path: '/order/catalog/public/privateSQL'): (params: {ovhSubsidiary: nichandle.OvhSubsidiaryEnum}) => Promise<order.catalog.publik.Catalog>;
   /**
    * Missing description
    * Retrieve VPS catalog

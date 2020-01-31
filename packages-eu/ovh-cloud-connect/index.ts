@@ -194,6 +194,10 @@ export interface OvhCloudConnect{
                 $get(): Promise<ovhcloudconnect.Datacenter>;
             };
         }
+        loa: {
+            // POST /ovhCloudConnect/{serviceName}/loa
+            $post(): Promise<string>;
+        }
         serviceInfos: {
             // GET /ovhCloudConnect/{serviceName}/serviceInfos
             $get(): Promise<services.Service>;
@@ -314,6 +318,11 @@ export interface OvhCloudConnect{
    * Confirm termination of your service
    */
   post(path: '/ovhCloudConnect/{serviceName}/confirmTermination'): (params: {serviceName: string, commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}) => Promise<string>;
+  /**
+   * 
+   * Generate a loa for a service
+   */
+  post(path: '/ovhCloudConnect/{serviceName}/loa'): (params: {serviceName: string}) => Promise<string>;
   /**
    * Terminate your service
    * Terminate your service

@@ -1063,15 +1063,16 @@ export namespace me {
             id: number;
             submitUrl?: string;
             url: string;
-            validationType: me.paymentMean.ValidationType;
+            validationType: me.paymentMean.ValidationTypeEnum;
         }
         // interface fullName: me.paymentMean.IconData.IconData
         export interface IconData {
             data?: string;
             name?: string;
+            url?: string;
         }
-        // type fullname: me.paymentMean.ValidationType
-        export type ValidationType = "creditAccount" | "documentToSend" | "simpleValidation"
+        // type fullname: me.paymentMean.ValidationTypeEnum
+        export type ValidationTypeEnum = "creditAccount" | "documentToSend" | "simpleValidation"
     }
 }
 export namespace nichandle {
