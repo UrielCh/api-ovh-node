@@ -33,7 +33,7 @@ import { RequestOptions } from 'http';
 import { endpoints } from './endpoints';
 import { writeFile, readFileSync } from 'fs';
 import { EventEmitter } from 'events';
-import { OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhRequestable, OvhParamType, ICacheOptions } from '@ovh-api/common';
 import { Socket } from 'net';
 import { HttpMethod, AccessRule, OvhCredentialNew, OvhCredential } from './OVHInterfaces';
 import { CertMonitorProvider, stdOutCertMonitorProvider } from './certMonitor';
@@ -277,6 +277,11 @@ by default I will ask for all rights`);
             throw new Error('[OVH] You should precise an application key / secret');
         }
     }
+
+    async cache(param: ICacheOptions): Promise<any> {
+    }
+
+
     /**
      * conver 'GET PATH1', 'POST PATH2', ... to AccessRules
      * 
@@ -323,27 +328,11 @@ by default I will ask for all rights`);
     /**
      * Execute a request on the API
      *
-     * @param {String} httpMethod: The HTTP method
-     * @param {String} pathTemplate: The request path
-     * @param {Object} params: The request parameters (passed as query string or
-     *                         body params)
-     * @param {Function} callback
-     * @param {Object} refer: The parent proxied object
+     * @param httpMethod: The HTTP method
+     * @param pathTemplate: The request path
+     * @param params: The request parameters (passed as query string or body params)
      */
-    public async request(httpMethod: string, pathTemplate: string, params?: any): Promise<any> {
-        // const ovhEngine = this;
-        httpMethod = httpMethod.toUpperCase();
-        /**
-         * Time drift
-         */
-        if (this.apiTimeDiff === null && pathTemplate !== '/auth/time') {
-            try {
-                const time: number = await this.request('GET', '/auth/time', {})
-                this.apiTimeDiff = time - Math.round(Date.now() / 1000);
-            } catch (err) {
-                throw new Error(`[OVH] Unable to fetch OVH API time ${err.message || err}`);
-            }
-        }
+    public request(httpMethod: string, pathTemplate: string, params?: any): Promise<any> {
         /**
          * replace Path variable
          */
@@ -355,6 +344,30 @@ by default I will ask for all rights`);
                 return <Promise<any>>Promise.reject(Error(`${m[1]} param must be provide to ${pathTemplate}`));
             delete params[m[1]];
             path = path.replace(m[0], String(val));
+        }
+        return this.doRequest(httpMethod, path, pathTemplate, params);
+    }
+
+    /**
+     * Execute a request on the API
+     *
+     * @param httpMethod: The HTTP method
+     * @param path: The request path
+     * @param pathTemplate: The request path template
+     * @param params: The request parameters (passed as query string or body params)
+     */
+    public async doRequest(httpMethod: string, path: string, pathTemplate: string, params?: any): Promise<any> {
+        httpMethod = httpMethod.toUpperCase();
+        /**
+         * Time drift
+         */
+        if (this.apiTimeDiff === null && pathTemplate !== '/auth/time') {
+            try {
+                const time: number = await this.request('GET', '/auth/time', {})
+                this.apiTimeDiff = time - Math.round(Date.now() / 1000);
+            } catch (err) {
+                throw new Error(`[OVH] Unable to fetch OVH API time ${err.message || err}`);
+            }
         }
         /**
          * build Request
@@ -610,10 +623,11 @@ by default I will ask for all rights`);
      *
      * @param {String} httpMethod: The HTTP method
      * @param {String} path: The request path
-     * @param {Object} params: The request parameters (passed as query string or
-     *                         body params)
+     * @param {Object} params: The request parameters (passed as query string or body params)
+     * 
+     * @deprecated
      */
-    public requestPromised(httpMethod: string, path: string, params?: OvhParamType) {
+    public requestPromised(httpMethod: string, path: string, params?: OvhParamType): Promise<any>{
         return this.request(httpMethod, path, params);
     }
 
@@ -626,7 +640,7 @@ by default I will ask for all rights`);
      * @param {Number|String} timestamp
      * @return {String} The signature
      */
-    private signRequest(httpMethod: string, url: string, body: string, timestamp: Number) {
+    private signRequest(httpMethod: string, url: string, body: string, timestamp: Number): string {
         let s = [
             this.appSecret,
             this.consumerKey,
