@@ -1,7 +1,7 @@
 {
   "name": "@ovh-api/api",
   "description": "Ovh api connector implementation",
-  "version": "2.1.7",
+  "version": "3.0.0",
   "keywords": [
     "ovh",
     "api",
