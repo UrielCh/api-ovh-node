@@ -1,4 +1,4 @@
-import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
+import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /cluster/hadoop Models
@@ -6,25 +6,46 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  */
 export namespace cluster {
     export namespace hadoop {
-        // type fullname: cluster.hadoop.BillingNameEnum
+        /**
+         * All billing profile names
+         * type fullname: cluster.hadoop.BillingNameEnum
+         */
         export type BillingNameEnum = "100-small" | "200-cpu-1" | "220-cpu-3" | "300-disk-1" | "310-disk-3" | "900-vm-1"
-        // interface fullName: cluster.hadoop.ClusterConsumption.ClusterConsumption
+        /**
+         * Detailed information on a Hadoop Cluster consumption
+         * interface fullName: cluster.hadoop.ClusterConsumption.ClusterConsumption
+         */
         export interface ClusterConsumption {
             quantity: complexType.UnitAndValue<number>;
         }
-        // type fullname: cluster.hadoop.ClusterServiceNameEnum
+        /**
+         * All services names in a Hadoop Cluster
+         * type fullname: cluster.hadoop.ClusterServiceNameEnum
+         */
         export type ClusterServiceNameEnum = "HBase" | "HDFS" | "HUE" | "Hive" | "Oozie" | "Solr" | "Spark" | "Sqoop" | "YARN" | "ZooKeeper"
-        // type fullname: cluster.hadoop.ClusterStateEnum
+        /**
+         * All states a Hadoop Cluster can be in
+         * type fullname: cluster.hadoop.ClusterStateEnum
+         */
         export type ClusterStateEnum = "created" | "creating" | "deleted" | "deleting" | "delivered" | "delivering" | "toDeliver"
-        // interface fullName: cluster.hadoop.NetworkAcl.NetworkAcl
+        /**
+         * ACL for allowing ip blocks to access to your cluster
+         * interface fullName: cluster.hadoop.NetworkAcl.NetworkAcl
+         */
         export interface NetworkAcl {
             block: string;
             description?: string;
             state: cluster.hadoop.NetworkAclStateEnum;
         }
-        // type fullname: cluster.hadoop.NetworkAclStateEnum
+        /**
+         * All states a Hadoop Cluster NetworkAcl can be in
+         * type fullname: cluster.hadoop.NetworkAclStateEnum
+         */
         export type NetworkAclStateEnum = "disabled" | "enabled" | "pending"
-        // interface fullName: cluster.hadoop.Node.Node
+        /**
+         * Physical or Virtual Node
+         * interface fullName: cluster.hadoop.Node.Node
+         */
         export interface Node {
             billingProfileName: cluster.hadoop.BillingNameEnum;
             hostname: string;
@@ -33,7 +54,10 @@ export namespace cluster {
             softwareProfile: cluster.hadoop.NodeProfileEnum;
             state: cluster.hadoop.NodeStateEnum;
         }
-        // interface fullName: cluster.hadoop.NodeBillingProfile.NodeBillingProfile
+        /**
+         * Detailed information on a node billing profile
+         * interface fullName: cluster.hadoop.NodeBillingProfile.NodeBillingProfile
+         */
         export interface NodeBillingProfile {
             CPUFrequency: complexType.UnitAndValue<number>;
             diskCapacity: complexType.UnitAndValue<number>;
@@ -43,44 +67,74 @@ export namespace cluster {
             nodeProfile: string;
             ramQuantity: complexType.UnitAndValue<number>;
         }
-        // interface fullName: cluster.hadoop.NodeConsumption.NodeConsumption
+        /**
+         * Detailed information on a node consumption of a Hadoop Cluster
+         * interface fullName: cluster.hadoop.NodeConsumption.NodeConsumption
+         */
         export interface NodeConsumption {
             hostname: string;
             nodeProfile: cluster.hadoop.BillingNameEnum;
             quantity: complexType.UnitAndValue<number>;
         }
-        // type fullname: cluster.hadoop.NodeProfileEnum
+        /**
+         * All profiles a Hadoop Cluster Node can be
+         * type fullname: cluster.hadoop.NodeProfileEnum
+         */
         export type NodeProfileEnum = "ApplicationServer" | "BasicNode" | "ClouderaManager" | "MasterServer" | "SecondaryServer"
-        // type fullname: cluster.hadoop.NodeStateEnum
+        /**
+         * All states a Hadoop Cluster Node can be in
+         * type fullname: cluster.hadoop.NodeStateEnum
+         */
         export type NodeStateEnum = "available" | "delivered" | "toDeploy" | "unavailable"
-        // type fullname: cluster.hadoop.OperationStateEnum
+        /**
+         * All states a Hadoop Cluster Cloud Task can be in
+         * type fullname: cluster.hadoop.OperationStateEnum
+         */
         export type OperationStateEnum = "cancelled" | "doing" | "done" | "error" | "todo"
-        // interface fullName: cluster.hadoop.OrderInformations.OrderInformations
+        /**
+         * Detailed information on the order of one Hadoop Cluster
+         * interface fullName: cluster.hadoop.OrderInformations.OrderInformations
+         */
         export interface OrderInformations {
             maximumOrderableNodes: number;
             minimumOrderableNodes: number;
         }
-        // interface fullName: cluster.hadoop.Role.Role
+        /**
+         * Role (ie set of Hadoop services) of the Node
+         * interface fullName: cluster.hadoop.Role.Role
+         */
         export interface Role {
             id: number;
             type: cluster.hadoop.RoleTypeEnum;
         }
-        // type fullname: cluster.hadoop.RoleTypeEnum
+        /**
+         * All roles a Hadoop Cluster Node can be
+         * type fullname: cluster.hadoop.RoleTypeEnum
+         */
         export type RoleTypeEnum = "cloudera_manager" | "data_node" | "elasticsearch_server" | "hbase_master" | "hbase_region_server" | "hive_server2" | "hue" | "impala_daemon" | "impala_server" | "map_reduce_history_server" | "name_node" | "oozie_server" | "open_tsdb" | "secondary_name_node" | "solr_server" | "spark_master" | "spark_worker" | "sqoop_server" | "yarn_node_manager" | "yarn_resource_manager" | "zoo_keeper"
-        // interface fullName: cluster.hadoop.Task.Task
+        /**
+         * Operation on a Hadoop Cluster component
+         * interface fullName: cluster.hadoop.Task.Task
+         */
         export interface Task {
             name: string;
             status: cluster.hadoop.OperationStateEnum;
             taskId: number;
         }
-        // interface fullName: cluster.hadoop.User.User
+        /**
+         * User allowed to access interfaces on your cluster
+         * interface fullName: cluster.hadoop.User.User
+         */
         export interface User {
             clouderaManager: boolean;
             httpFrontend: boolean;
             hue: boolean;
             username: string;
         }
-        // interface fullName: cluster.hadoop.hadoop.hadoop
+        /**
+         * Managed Hadoop Cluster
+         * interface fullName: cluster.hadoop.hadoop.hadoop
+         */
         export interface hadoop {
             clouderaVersion: string;
             maxOrderableNodes: number;
@@ -90,14 +144,20 @@ export namespace cluster {
     }
 }
 export namespace complexType {
-    // interface fullName: complexType.UnitAndValue.UnitAndValue
+    /**
+     * A numeric value tagged with its unit
+     * interface fullName: complexType.UnitAndValue.UnitAndValue
+     */
     export interface UnitAndValue<T> {
         unit: string;
         value: T;
     }
 }
 export namespace service {
-    // interface fullName: service.RenewType.RenewType
+    /**
+     * Map a possible renew for a specific service
+     * interface fullName: service.RenewType.RenewType
+     */
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -105,13 +165,21 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    // type fullname: service.RenewalTypeEnum
+    /**
+     * Detailed renewal type of a service
+     * type fullname: service.RenewalTypeEnum
+     */
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    // type fullname: service.StateEnum
+    /**
+     * type fullname: service.StateEnum
+     */
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
 }
 export namespace services {
-    // interface fullName: services.Service.Service
+    /**
+     * Details about a Service
+     * interface fullName: services.Service.Service
+     */
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;
@@ -137,159 +205,419 @@ export function proxyClusterHadoop(ovhEngine: OvhRequestable): Cluster {
 }
 export default proxyClusterHadoop;
 /**
- * Api Proxy model
- */// Apis harmony
-// path /cluster
+ * Api model for /cluster/hadoop
+ */
 export interface Cluster {
     hadoop: {
-        // GET /cluster/hadoop
+        /**
+         * List available services
+         * GET /cluster/hadoop
+         */
         $get(): Promise<string[]>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         orderInformations: {
-            // GET /cluster/hadoop/orderInformations
+            /**
+             * Get informations about the order of one cluster
+             * GET /cluster/hadoop/orderInformations
+             */
             $get(): Promise<cluster.hadoop.OrderInformations>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         orderableNodeProfiles: {
-            // GET /cluster/hadoop/orderableNodeProfiles
+            /**
+             * Get the orderable node profiles and their characteristics
+             * GET /cluster/hadoop/orderableNodeProfiles
+             */
             $get(): Promise<cluster.hadoop.NodeBillingProfile[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         $(serviceName: string): {
-            // GET /cluster/hadoop/{serviceName}
+            /**
+             * Get this object properties
+             * GET /cluster/hadoop/{serviceName}
+             */
             $get(): Promise<cluster.hadoop.hadoop>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             consumptions: {
-                // GET /cluster/hadoop/{serviceName}/consumptions
+                /**
+                 * Get the current consumptions that you will billed for on the next bill
+                 * GET /cluster/hadoop/{serviceName}/consumptions
+                 */
                 $get(): Promise<cluster.hadoop.ClusterConsumption>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             networkAcl: {
-                // GET /cluster/hadoop/{serviceName}/networkAcl
+                /**
+                 * Network ACL associated with this Hadoop Cluster
+                 * GET /cluster/hadoop/{serviceName}/networkAcl
+                 */
                 $get(): Promise<string[]>;
-                // POST /cluster/hadoop/{serviceName}/networkAcl
+                /**
+                 * Add an ACL to your cluster
+                 * POST /cluster/hadoop/{serviceName}/networkAcl
+                 */
                 $post(params?: { block?: string, description?: string }): Promise<cluster.hadoop.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(block: string): {
-                    // DELETE /cluster/hadoop/{serviceName}/networkAcl/{block}
+                    /**
+                     * Remove this ACL
+                     * DELETE /cluster/hadoop/{serviceName}/networkAcl/{block}
+                     */
                     $delete(): Promise<cluster.hadoop.Task>;
-                    // GET /cluster/hadoop/{serviceName}/networkAcl/{block}
+                    /**
+                     * Get this object properties
+                     * GET /cluster/hadoop/{serviceName}/networkAcl/{block}
+                     */
                     $get(): Promise<cluster.hadoop.NetworkAcl>;
-                    // PUT /cluster/hadoop/{serviceName}/networkAcl/{block}
+                    /**
+                     * Alter this object properties
+                     * PUT /cluster/hadoop/{serviceName}/networkAcl/{block}
+                     */
                     $put(params?: { block?: string, description?: string, state?: cluster.hadoop.NetworkAclStateEnum }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 };
             }
             node: {
-                // GET /cluster/hadoop/{serviceName}/node
+                /**
+                 * Nodes of the Cluster
+                 * GET /cluster/hadoop/{serviceName}/node
+                 */
                 $get(params?: { softwareProfile?: cluster.hadoop.NodeProfileEnum }): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(hostname: string): {
-                    // DELETE /cluster/hadoop/{serviceName}/node/{hostname}
+                    /**
+                     * Remove this Node from the Cluster
+                     * DELETE /cluster/hadoop/{serviceName}/node/{hostname}
+                     */
                     $delete(): Promise<cluster.hadoop.Task>;
-                    // GET /cluster/hadoop/{serviceName}/node/{hostname}
+                    /**
+                     * Get this object properties
+                     * GET /cluster/hadoop/{serviceName}/node/{hostname}
+                     */
                     $get(): Promise<cluster.hadoop.Node>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     decommission: {
-                        // POST /cluster/hadoop/{serviceName}/node/{hostname}/decommission
+                        /**
+                         * Decommission the node and all the services on it
+                         * POST /cluster/hadoop/{serviceName}/node/{hostname}/decommission
+                         */
                         $post(): Promise<cluster.hadoop.Task>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     recommission: {
-                        // POST /cluster/hadoop/{serviceName}/node/{hostname}/recommission
+                        /**
+                         * Recommission the node and all the services on it
+                         * POST /cluster/hadoop/{serviceName}/node/{hostname}/recommission
+                         */
                         $post(): Promise<cluster.hadoop.Task>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     role: {
-                        // GET /cluster/hadoop/{serviceName}/node/{hostname}/role
+                        /**
+                         * Roles (ie set of Hadoop services) of the Node
+                         * GET /cluster/hadoop/{serviceName}/node/{hostname}/role
+                         */
                         $get(): Promise<cluster.hadoop.RoleTypeEnum[]>;
-                        // POST /cluster/hadoop/{serviceName}/node/{hostname}/role
+                        /**
+                         * Add the Role to the Node
+                         * POST /cluster/hadoop/{serviceName}/node/{hostname}/role
+                         */
                         $post(params: { type: cluster.hadoop.RoleTypeEnum }): Promise<cluster.hadoop.Task>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         $(type: cluster.hadoop.RoleTypeEnum): {
-                            // DELETE /cluster/hadoop/{serviceName}/node/{hostname}/role/{type}
+                            /**
+                             * Remove this Role from the Node
+                             * DELETE /cluster/hadoop/{serviceName}/node/{hostname}/role/{type}
+                             */
                             $delete(): Promise<cluster.hadoop.Task>;
-                            // GET /cluster/hadoop/{serviceName}/node/{hostname}/role/{type}
+                            /**
+                             * Get this object properties
+                             * GET /cluster/hadoop/{serviceName}/node/{hostname}/role/{type}
+                             */
                             $get(): Promise<cluster.hadoop.Role>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                             restart: {
-                                // POST /cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/restart
+                                /**
+                                 * Restart the role on the node (THIS ACTION WILL RESTART OTHER DEPENDANT ROLES)
+                                 * POST /cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/restart
+                                 */
                                 $post(): Promise<cluster.hadoop.Task>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions): Promise<any>;
                             }
                             start: {
-                                // POST /cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/start
+                                /**
+                                 * Start the role on the node
+                                 * POST /cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/start
+                                 */
                                 $post(): Promise<cluster.hadoop.Task>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions): Promise<any>;
                             }
                             stop: {
-                                // POST /cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/stop
+                                /**
+                                 * Stop the role on the node (THIS ACTION WILL STOP OTHER DEPENDANT ROLES)
+                                 * POST /cluster/hadoop/{serviceName}/node/{hostname}/role/{type}/stop
+                                 */
                                 $post(): Promise<cluster.hadoop.Task>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions): Promise<any>;
                             }
                         };
                     }
                 };
             }
             nodeBillingProfiles: {
-                // GET /cluster/hadoop/{serviceName}/nodeBillingProfiles
+                /**
+                 * Detailed description for each Node profile
+                 * GET /cluster/hadoop/{serviceName}/nodeBillingProfiles
+                 */
                 $get(): Promise<cluster.hadoop.NodeBillingProfile[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             nodeConsumptions: {
-                // GET /cluster/hadoop/{serviceName}/nodeConsumptions
+                /**
+                 * Get the current node consumptions that you will billed for on the next bill
+                 * GET /cluster/hadoop/{serviceName}/nodeConsumptions
+                 */
                 $get(): Promise<cluster.hadoop.NodeConsumption[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             orderNewNodeHourly: {
-                // POST /cluster/hadoop/{serviceName}/orderNewNodeHourly
+                /**
+                 * Order a new node in the cluster
+                 * POST /cluster/hadoop/{serviceName}/orderNewNodeHourly
+                 */
                 $post(params: { nodeProfile: string }): Promise<cluster.hadoop.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             orderableNodeProfiles: {
-                // GET /cluster/hadoop/{serviceName}/orderableNodeProfiles
+                /**
+                 * List of orderable Node profiles
+                 * GET /cluster/hadoop/{serviceName}/orderableNodeProfiles
+                 */
                 $get(): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             restart: {
-                // POST /cluster/hadoop/{serviceName}/restart
+                /**
+                 * Restart the Cloudera Manager Hadoop Cluster (THIS ACTION WILL RESTART EVERY SERVICE)
+                 * POST /cluster/hadoop/{serviceName}/restart
+                 */
                 $post(): Promise<cluster.hadoop.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             service: {
                 restart: {
-                    // POST /cluster/hadoop/{serviceName}/service/restart
+                    /**
+                     * Restart a Cloudera Manager service (THIS ACTION WILL RESTART OTHER DEPENDANT SERVICES)
+                     * POST /cluster/hadoop/{serviceName}/service/restart
+                     */
                     $post(params: { service: cluster.hadoop.ClusterServiceNameEnum }): Promise<cluster.hadoop.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 start: {
-                    // POST /cluster/hadoop/{serviceName}/service/start
+                    /**
+                     * Start a Cloudera Manager service
+                     * POST /cluster/hadoop/{serviceName}/service/start
+                     */
                     $post(params: { service: cluster.hadoop.ClusterServiceNameEnum }): Promise<cluster.hadoop.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 stop: {
-                    // POST /cluster/hadoop/{serviceName}/service/stop
+                    /**
+                     * Stop a Cloudera Manager service (THIS ACTION WILL STOP OTHER DEPENDANT SERVICES)
+                     * POST /cluster/hadoop/{serviceName}/service/stop
+                     */
                     $post(params: { service: cluster.hadoop.ClusterServiceNameEnum }): Promise<cluster.hadoop.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             }
             serviceInfos: {
-                // GET /cluster/hadoop/{serviceName}/serviceInfos
+                /**
+                 * Get this object properties
+                 * GET /cluster/hadoop/{serviceName}/serviceInfos
+                 */
                 $get(): Promise<services.Service>;
-                // PUT /cluster/hadoop/{serviceName}/serviceInfos
+                /**
+                 * Alter this object properties
+                 * PUT /cluster/hadoop/{serviceName}/serviceInfos
+                 */
                 $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             start: {
-                // POST /cluster/hadoop/{serviceName}/start
+                /**
+                 * Start the Cloudera Manager Hadoop Cluster
+                 * POST /cluster/hadoop/{serviceName}/start
+                 */
                 $post(): Promise<cluster.hadoop.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             stop: {
-                // POST /cluster/hadoop/{serviceName}/stop
+                /**
+                 * Stop a Cloudera Manager Hadoop Cluster (THIS ACTION WILL STOP EVERY SERVICE)
+                 * POST /cluster/hadoop/{serviceName}/stop
+                 */
                 $post(): Promise<cluster.hadoop.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             task: {
-                // GET /cluster/hadoop/{serviceName}/task
+                /**
+                 * Tasks associated with this Hadoop Cluster
+                 * GET /cluster/hadoop/{serviceName}/task
+                 */
                 $get(params?: { status?: cluster.hadoop.OperationStateEnum }): Promise<number[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(taskId: number): {
-                    // GET /cluster/hadoop/{serviceName}/task/{taskId}
+                    /**
+                     * Get this object properties
+                     * GET /cluster/hadoop/{serviceName}/task/{taskId}
+                     */
                     $get(): Promise<cluster.hadoop.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 };
             }
             terminate: {
-                // POST /cluster/hadoop/{serviceName}/terminate
+                /**
+                 * Terminate your service. THE CLUSTER WILL BE DELETED. ALL YOUR DATA WILL BE LOST
+                 * POST /cluster/hadoop/{serviceName}/terminate
+                 */
                 $post(): Promise<cluster.hadoop.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             user: {
-                // GET /cluster/hadoop/{serviceName}/user
+                /**
+                 * Users associated with this Hadoop Cluster
+                 * GET /cluster/hadoop/{serviceName}/user
+                 */
                 $get(): Promise<string[]>;
-                // POST /cluster/hadoop/{serviceName}/user
+                /**
+                 * Add an User to your cluster
+                 * POST /cluster/hadoop/{serviceName}/user
+                 */
                 $post(params: { clouderaManager: boolean, httpFrontend: boolean, hue: boolean, password: string, username: string }): Promise<cluster.hadoop.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(username: string): {
-                    // DELETE /cluster/hadoop/{serviceName}/user/{username}
+                    /**
+                     * Remove this User
+                     * DELETE /cluster/hadoop/{serviceName}/user/{username}
+                     */
                     $delete(): Promise<cluster.hadoop.Task>;
-                    // GET /cluster/hadoop/{serviceName}/user/{username}
+                    /**
+                     * Get this object properties
+                     * GET /cluster/hadoop/{serviceName}/user/{username}
+                     */
                     $get(): Promise<cluster.hadoop.User>;
-                    // PUT /cluster/hadoop/{serviceName}/user/{username}
+                    /**
+                     * Alter this object properties
+                     * PUT /cluster/hadoop/{serviceName}/user/{username}
+                     */
                     $put(params?: { clouderaManager?: boolean, httpFrontend?: boolean, hue?: boolean, username?: string }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     resetPassword: {
-                        // POST /cluster/hadoop/{serviceName}/user/{username}/resetPassword
+                        /**
+                         * Reset the password for a given Hadoop Cluster User
+                         * POST /cluster/hadoop/{serviceName}/user/{username}/resetPassword
+                         */
                         $post(params: { password: string }): Promise<cluster.hadoop.Task>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                 };
             }

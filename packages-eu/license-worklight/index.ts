@@ -1,28 +1,49 @@
-import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
+import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /license/worklight Models
  * Source: https://eu.api.ovh.com/1.0/license/worklight.json
  */
 export namespace license {
-    // type fullname: license.ActionType
+    /**
+     * A short description of what does the Task on your license
+     * type fullname: license.ActionType
+     */
     export type ActionType = "addWindowFromExistingSerial" | "changeIp" | "changeOs" | "installLicense" | "optionUpgrade" | "releaseOption" | "versionUpgrade"
-    // type fullname: license.ChangeIpMessageEnum
+    /**
+     * Messages from change IP
+     * type fullname: license.ChangeIpMessageEnum
+     */
     export type ChangeIpMessageEnum = "OK" | "destinationNotAllowed" | "licenseAlreadyExists" | "notAllowedToHandleThis" | "notSameType" | "sameIp" | "versionNotAllowed"
-    // interface fullName: license.ChangeIpStatus.ChangeIpStatus
+    /**
+     * License change ip status return
+     * interface fullName: license.ChangeIpStatus.ChangeIpStatus
+     */
     export interface ChangeIpStatus {
         message: license.ChangeIpMessageEnum;
         success: boolean;
     }
-    // type fullname: license.LicenseTypeEnum
+    /**
+     * Possible values for license type
+     * type fullname: license.LicenseTypeEnum
+     */
     export type LicenseTypeEnum = "dedicated" | "dedicatedCloud" | "dedicatedFailover" | "failover" | "vm" | "vps" | "vps_ceph" | "vps_classic" | "vps_cloud" | "vps_cloud_2016" | "vps_ssd"
-    // interface fullName: license.OrderableWorkLightCompatibilityInfos.OrderableWorkLightCompatibilityInfos
+    /**
+     * All versions available for WorkLight products
+     * interface fullName: license.OrderableWorkLightCompatibilityInfos.OrderableWorkLightCompatibilityInfos
+     */
     export interface OrderableWorkLightCompatibilityInfos {
         version: license.WorkLightVersionEnum;
     }
-    // type fullname: license.StateEnum
+    /**
+     * All states a license can be in
+     * type fullname: license.StateEnum
+     */
     export type StateEnum = "ok" | "released" | "terminated" | "toDeliver"
-    // interface fullName: license.Task.Task
+    /**
+     * licenses Todos
+     * interface fullName: license.Task.Task
+     */
     export interface Task {
         action: license.ActionType;
         doneDate?: string;
@@ -32,17 +53,29 @@ export namespace license {
         taskId: number;
         todoDate: string;
     }
-    // type fullname: license.TaskStateEnum
+    /**
+     * All states a license Task can be in
+     * type fullname: license.TaskStateEnum
+     */
     export type TaskStateEnum = "cancelled" | "doing" | "done" | "error" | "todo"
-    // interface fullName: license.WorkLightOrderConfiguration.WorkLightOrderConfiguration
+    /**
+     * Allowed WorkLight versions per matching serviceTypes
+     * interface fullName: license.WorkLightOrderConfiguration.WorkLightOrderConfiguration
+     */
     export interface WorkLightOrderConfiguration {
         orderableVersions: license.OrderableWorkLightCompatibilityInfos[];
         serviceType: license.LicenseTypeEnum;
     }
-    // type fullname: license.WorkLightVersionEnum
+    /**
+     * All versions for WorkLight product
+     * type fullname: license.WorkLightVersionEnum
+     */
     export type WorkLightVersionEnum = "VERSION-6.1U.1CPU" | "VERSION-6.1U.2CPU" | "VERSION-6.2U.1CPU" | "VERSION-6.2U.2CPU" | "VERSION-6.EVALUATION" | "worklight-license-version-6-1cpu-1u" | "worklight-license-version-6-1cpu-2u" | "worklight-license-version-6-2cpu-1u" | "worklight-license-version-6-2cpu-2u"
     export namespace worklight {
-        // interface fullName: license.worklight.WorkLight.WorkLight
+        /**
+         * Your WorkLight license
+         * interface fullName: license.worklight.WorkLight.WorkLight
+         */
         export interface WorkLight {
             creation: string;
             deleteAtExpiration: boolean;
@@ -55,7 +88,10 @@ export namespace license {
     }
 }
 export namespace service {
-    // interface fullName: service.RenewType.RenewType
+    /**
+     * Map a possible renew for a specific service
+     * interface fullName: service.RenewType.RenewType
+     */
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -63,17 +99,31 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    // type fullname: service.RenewalTypeEnum
+    /**
+     * Detailed renewal type of a service
+     * type fullname: service.RenewalTypeEnum
+     */
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    // type fullname: service.StateEnum
+    /**
+     * type fullname: service.StateEnum
+     */
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
-    // type fullname: service.TerminationFutureUseEnum
+    /**
+     * All future uses you can provide for a service termination
+     * type fullname: service.TerminationFutureUseEnum
+     */
     export type TerminationFutureUseEnum = "NOT_REPLACING_SERVICE" | "OTHER" | "SUBSCRIBE_AN_OTHER_SERVICE" | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR" | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
-    // type fullname: service.TerminationReasonEnum
+    /**
+     * All reasons you can provide for a service termination
+     * type fullname: service.TerminationReasonEnum
+     */
     export type TerminationReasonEnum = "FEATURES_DONT_SUIT_ME" | "LACK_OF_PERFORMANCES" | "MIGRATED_TO_ANOTHER_OVH_PRODUCT" | "MIGRATED_TO_COMPETITOR" | "NOT_ENOUGH_RECOGNITION" | "NOT_NEEDED_ANYMORE" | "NOT_RELIABLE" | "NO_ANSWER" | "OTHER" | "PRODUCT_DIMENSION_DONT_SUIT_ME" | "PRODUCT_TOOLS_DONT_SUIT_ME" | "TOO_EXPENSIVE" | "TOO_HARD_TO_USE" | "UNSATIFIED_BY_CUSTOMER_SUPPORT"
 }
 export namespace services {
-    // interface fullName: services.Service.Service
+    /**
+     * Details about a Service
+     * interface fullName: services.Service.Service
+     */
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;
@@ -99,55 +149,137 @@ export function proxyLicenseWorklight(ovhEngine: OvhRequestable): License {
 }
 export default proxyLicenseWorklight;
 /**
- * Api Proxy model
- */// Apis harmony
-// path /license
+ * Api model for /license/worklight
+ */
 export interface License {
     worklight: {
-        // GET /license/worklight
+        /**
+         * List available services
+         * GET /license/worklight
+         */
         $get(): Promise<string[]>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         orderableVersions: {
-            // GET /license/worklight/orderableVersions
+            /**
+             * Get the orderable WorkLight versions
+             * GET /license/worklight/orderableVersions
+             */
             $get(params: { ip: string }): Promise<license.WorkLightOrderConfiguration[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         $(serviceName: string): {
-            // GET /license/worklight/{serviceName}
+            /**
+             * Get this object properties
+             * GET /license/worklight/{serviceName}
+             */
             $get(): Promise<license.worklight.WorkLight>;
-            // PUT /license/worklight/{serviceName}
+            /**
+             * Alter this object properties
+             * PUT /license/worklight/{serviceName}
+             */
             $put(params?: { creation?: string, deleteAtExpiration?: boolean, domain?: string, ip?: string, licenseId?: string, status?: license.StateEnum, version?: license.WorkLightVersionEnum }): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             allowedDestinationIp: {
-                // GET /license/worklight/{serviceName}/allowedDestinationIp
+                /**
+                 * Returns an array of ips where the license can be moved to
+                 * GET /license/worklight/{serviceName}/allowedDestinationIp
+                 */
                 $get(): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             canLicenseBeMovedTo: {
-                // GET /license/worklight/{serviceName}/canLicenseBeMovedTo
+                /**
+                 * Will tell if the ip can accept the license
+                 * GET /license/worklight/{serviceName}/canLicenseBeMovedTo
+                 */
                 $get(params: { destinationIp: string }): Promise<license.ChangeIpStatus>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             changeIp: {
-                // POST /license/worklight/{serviceName}/changeIp
+                /**
+                 * Move this license to another Ip
+                 * POST /license/worklight/{serviceName}/changeIp
+                 */
                 $post(params: { destinationIp: string }): Promise<license.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             confirmTermination: {
-                // POST /license/worklight/{serviceName}/confirmTermination
+                /**
+                 * Confirm termination of your service
+                 * POST /license/worklight/{serviceName}/confirmTermination
+                 */
                 $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             serviceInfos: {
-                // GET /license/worklight/{serviceName}/serviceInfos
+                /**
+                 * Get this object properties
+                 * GET /license/worklight/{serviceName}/serviceInfos
+                 */
                 $get(): Promise<services.Service>;
-                // PUT /license/worklight/{serviceName}/serviceInfos
+                /**
+                 * Alter this object properties
+                 * PUT /license/worklight/{serviceName}/serviceInfos
+                 */
                 $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             tasks: {
-                // GET /license/worklight/{serviceName}/tasks
+                /**
+                 * Tasks linked to this license
+                 * GET /license/worklight/{serviceName}/tasks
+                 */
                 $get(params?: { action?: license.ActionType, status?: license.TaskStateEnum }): Promise<number[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(taskId: number): {
-                    // GET /license/worklight/{serviceName}/tasks/{taskId}
+                    /**
+                     * Get this object properties
+                     * GET /license/worklight/{serviceName}/tasks/{taskId}
+                     */
                     $get(): Promise<license.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 };
             }
             terminate: {
-                // POST /license/worklight/{serviceName}/terminate
+                /**
+                 * Terminate your service
+                 * POST /license/worklight/{serviceName}/terminate
+                 */
                 $post(): Promise<string>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         };
     }

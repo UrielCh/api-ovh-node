@@ -1,16 +1,25 @@
-import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
+import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /connectivity Models
  * Source: https://eu.api.ovh.com/1.0/connectivity.json
  */
 export namespace connectivity {
-    // type fullname: connectivity.OperatorEnum
+    /**
+     * Operator
+     * type fullname: connectivity.OperatorEnum
+     */
     export type OperatorEnum = "OVH" | "KOSC" | "SFR" | "ORANGE" | "AXIONE"
     export namespace eligibility {
-        // type fullname: connectivity.eligibility.ActivationTypeEnum
+        /**
+         * Activation type, for copper only
+         * type fullname: connectivity.eligibility.ActivationTypeEnum
+         */
         export type ActivationTypeEnum = "activate" | "create" | "createNeighbour"
-        // interface fullName: connectivity.eligibility.Address.Address
+        /**
+         * Address
+         * interface fullName: connectivity.eligibility.Address.Address
+         */
         export interface Address {
             building?: string;
             city: string;
@@ -25,7 +34,10 @@ export namespace connectivity {
             streetNumber?: string;
             zipCode: string;
         }
-        // interface fullName: connectivity.eligibility.Building.Building
+        /**
+         * Details of a Building
+         * interface fullName: connectivity.eligibility.Building.Building
+         */
         export interface Building {
             name: string;
             nro?: string;
@@ -33,21 +45,33 @@ export namespace connectivity {
             stairs: connectivity.eligibility.BuildingStair[];
             type: connectivity.eligibility.BuildingTypeEnum;
         }
-        // interface fullName: connectivity.eligibility.BuildingStair.BuildingStair
+        /**
+         * Stair details of a Building
+         * interface fullName: connectivity.eligibility.BuildingStair.BuildingStair
+         */
         export interface BuildingStair {
             floors: string[];
             stair: string;
         }
-        // type fullname: connectivity.eligibility.BuildingTypeEnum
+        /**
+         * Building type
+         * type fullname: connectivity.eligibility.BuildingTypeEnum
+         */
         export type BuildingTypeEnum = "BUILDING" | "HOUSE"
-        // interface fullName: connectivity.eligibility.City.City
+        /**
+         * Represent a city
+         * interface fullName: connectivity.eligibility.City.City
+         */
         export interface City {
             city: string;
             inseeCode: string;
             locality?: string;
             zipCode: string;
         }
-        // interface fullName: connectivity.eligibility.CopperInfo.CopperInfo
+        /**
+         * Copper informations
+         * interface fullName: connectivity.eligibility.CopperInfo.CopperInfo
+         */
         export interface CopperInfo {
             availablePairs?: number;
             maxAvailablePairs?: number;
@@ -57,13 +81,19 @@ export namespace connectivity {
             underConstruction?: boolean;
             unlistedNumber: boolean;
         }
-        // interface fullName: connectivity.eligibility.EligibilityTest.EligibilityTest
+        /**
+         * Eligibility test results
+         * interface fullName: connectivity.eligibility.EligibilityTest.EligibilityTest
+         */
         export interface EligibilityTest {
             eligibilityReference: string;
             endpoint: connectivity.eligibility.Endpoint;
             offers: connectivity.eligibility.Offer[];
         }
-        // interface fullName: connectivity.eligibility.Endpoint.Endpoint
+        /**
+         * Endpoint informations
+         * interface fullName: connectivity.eligibility.Endpoint.Endpoint
+         */
         export interface Endpoint {
             address: connectivity.eligibility.Address;
             copperInfo?: connectivity.eligibility.CopperInfo;
@@ -72,9 +102,15 @@ export namespace connectivity {
             reference: string;
             referenceType: connectivity.eligibility.EndpointReferenceTypeEnum;
         }
-        // type fullname: connectivity.eligibility.EndpointReferenceTypeEnum
+        /**
+         * Endpoint reference type
+         * type fullname: connectivity.eligibility.EndpointReferenceTypeEnum
+         */
         export type EndpointReferenceTypeEnum = "building" | "lineNumber" | "otp"
-        // interface fullName: connectivity.eligibility.FiberInfo.FiberInfo
+        /**
+         * Fiber informations
+         * interface fullName: connectivity.eligibility.FiberInfo.FiberInfo
+         */
         export interface FiberInfo {
             buildingName: string;
             buildingReference: string;
@@ -83,39 +119,63 @@ export namespace connectivity {
             operatorCode: string;
             operatorName: string;
         }
-        // interface fullName: connectivity.eligibility.Line.Line
+        /**
+         * Copper line details
+         * interface fullName: connectivity.eligibility.Line.Line
+         */
         export interface Line {
             address: connectivity.eligibility.Address;
             copperInfo: connectivity.eligibility.CopperInfo;
             lineNumber: string;
         }
-        // type fullname: connectivity.eligibility.LineStatusEnum
+        /**
+         * Line status
+         * type fullname: connectivity.eligibility.LineStatusEnum
+         */
         export type LineStatusEnum = "active" | "inactive"
-        // interface fullName: connectivity.eligibility.MeetingSlot.MeetingSlot
+        /**
+         * Represents a time slot for a meeting
+         * interface fullName: connectivity.eligibility.MeetingSlot.MeetingSlot
+         */
         export interface MeetingSlot {
             endDate: string;
             startDate: string;
             uiCode: string;
         }
-        // interface fullName: connectivity.eligibility.Meetings.Meetings
+        /**
+         * List of available meeting time slots
+         * interface fullName: connectivity.eligibility.Meetings.Meetings
+         */
         export interface Meetings {
             canBookFakeMeeting: boolean;
             meetingSlots: connectivity.eligibility.MeetingSlot[];
         }
-        // interface fullName: connectivity.eligibility.Message.Message
+        /**
+         * Message
+         * interface fullName: connectivity.eligibility.Message.Message
+         */
         export interface Message {
             availabilityDate?: string;
             code: connectivity.eligibility.MessageCodeEnum;
             message: string;
         }
-        // type fullname: connectivity.eligibility.MessageCodeEnum
+        /**
+         * Message codes
+         * type fullname: connectivity.eligibility.MessageCodeEnum
+         */
         export type MessageCodeEnum = "2006" | "2011" | "2102" | "2103" | "2104" | "2105" | "3009" | "3011" | "3012" | "3013" | "3014" | "3031" | "3040" | "3041" | "3043" | "3044" | "3045" | "3046" | "3047" | "3048" | "3049" | "ATTENUATION_LIMIT" | "COMPATIBILITY_CHECK" | "COPPER_NOT_AVAILABLE" | "COPPER_NOT_YET_AVAILABLE" | "DELAY_30" | "DELAY_7" | "EXTERNAL_WS_UNREACHABLE" | "FIBER_NOT_AVAILABLE" | "FIBER_NOT_DEPLOYED_IN_BUILDING" | "FIBER_NOT_YET_AVAILABLE" | "FIBER_NOT_YET_DEPLOYED" | "INCOMPATIBLE_LOCAL_LOOP" | "NETWORK_SATURATED" | "OTP_NOT_CONNECTABLE" | "OTP_NOT_MARKETABLE" | "PAIRS_SATURATION" | "PRODUCT_NOT_AVAILABLE" | "PRODUCT_NOT_YET_AVAILABLE" | "TOO_MUCH_ATTENUATION" | "UNCERTAIN_DATA"
-        // interface fullName: connectivity.eligibility.Offer.Offer
+        /**
+         * Offer
+         * interface fullName: connectivity.eligibility.Offer.Offer
+         */
         export interface Offer {
             eligibility: connectivity.eligibility.OfferEligibility;
             product: connectivity.eligibility.OfferProduct;
         }
-        // interface fullName: connectivity.eligibility.OfferEligibility.OfferEligibility
+        /**
+         * Offer eligibility
+         * interface fullName: connectivity.eligibility.OfferEligibility.OfferEligibility
+         */
         export interface OfferEligibility {
             activationTypes: connectivity.eligibility.ActivationTypeEnum[];
             eligible: boolean;
@@ -124,7 +184,10 @@ export namespace connectivity {
             reasons: connectivity.eligibility.Message[];
             underConditions: connectivity.eligibility.Message[];
         }
-        // interface fullName: connectivity.eligibility.OfferProduct.OfferProduct
+        /**
+         * Offer product
+         * interface fullName: connectivity.eligibility.OfferProduct.OfferProduct
+         */
         export interface OfferProduct {
             code: string;
             downloadRate: number;
@@ -137,41 +200,71 @@ export namespace connectivity {
             unbundlingType?: connectivity.eligibility.OfferProductUnbundlingTypeEnum;
             uploadRate: number;
         }
-        // type fullname: connectivity.eligibility.OfferProductProviderEnum
+        /**
+         * Offer product provider
+         * type fullname: connectivity.eligibility.OfferProductProviderEnum
+         */
         export type OfferProductProviderEnum = "AXIONE" | "KOSC" | "ORANGE" | "SFR"
-        // type fullname: connectivity.eligibility.OfferProductTypeEnum
+        /**
+         * Offer product type
+         * type fullname: connectivity.eligibility.OfferProductTypeEnum
+         */
         export type OfferProductTypeEnum = "ADSL" | "FTTH" | "SDSL" | "VDSL"
-        // type fullname: connectivity.eligibility.OfferProductUnbundlingTypeEnum
+        /**
+         * Offer product unbundling type
+         * type fullname: connectivity.eligibility.OfferProductUnbundlingTypeEnum
+         */
         export type OfferProductUnbundlingTypeEnum = "full" | "partial"
-        // interface fullName: connectivity.eligibility.Portability.Portability
+        /**
+         * Portability details of the line number
+         * interface fullName: connectivity.eligibility.Portability.Portability
+         */
         export interface Portability {
             eligibility: connectivity.eligibility.PortabilityEligibility;
             quarantineEndDate?: string;
             type?: connectivity.eligibility.PortabilityTypeEnum;
         }
-        // interface fullName: connectivity.eligibility.PortabilityEligibility.PortabilityEligibility
+        /**
+         * Portability eligibility
+         * interface fullName: connectivity.eligibility.PortabilityEligibility.PortabilityEligibility
+         */
         export interface PortabilityEligibility {
             eligible: boolean;
             reasons: connectivity.eligibility.Message[];
             underConditions: connectivity.eligibility.Message[];
         }
-        // type fullname: connectivity.eligibility.PortabilityTypeEnum
+        /**
+         * Portability type
+         * type fullname: connectivity.eligibility.PortabilityTypeEnum
+         */
         export type PortabilityTypeEnum = "portin" | "portinback" | "portout" | "subsequent" | "subsquentportin"
-        // interface fullName: connectivity.eligibility.SectionLength.SectionLength
+        /**
+         * Section length of a copper line
+         * interface fullName: connectivity.eligibility.SectionLength.SectionLength
+         */
         export interface SectionLength {
             diameter: number;
             length: number;
         }
-        // interface fullName: connectivity.eligibility.Street.Street
+        /**
+         * Details of a street
+         * interface fullName: connectivity.eligibility.Street.Street
+         */
         export interface Street {
             streetCode: string;
             streetName: string;
         }
     }
     export namespace maintenance {
-        // type fullname: connectivity.maintenance.InterventionTypeEnum
+        /**
+         * Intervention type
+         * type fullname: connectivity.maintenance.InterventionTypeEnum
+         */
         export type InterventionTypeEnum = "BACKBONE_MAINTENANCE" | "CARD_SWAP_WITH_IMPACT" | "CLUSTER_AN_ROUTER_MIGRATION" | "DSLAM_LINK_UPGRADE_WITHOUT_CARD_SWAP" | "DSLAM_UPGRADE_WITH_IMPACT" | "FIBER_CABLE_LINK_SWAP" | "FIBER_CONNECTION_WITH_IMPACT" | "FIBER_MAINTENANCE" | "FIBER_THIRD_PARTY_WORK_WITH_IMPACT" | "IP_BACKBONE_LINK_MIGRATION_WITH_IMPACT" | "IP_BACKBONE_SWITCH_UPGRADE_WITH_IMPACT" | "IP_MAINTENANCE" | "LEVEL2_DSLAM_MIGRATION" | "LINK_MIGRATION_WITH_DSL_IMPACT" | "LL_THIRD_PARTY_MAINTENANCE_WITH_IMPACT" | "LOOP_AN_ROUTER_MIGRATION" | "LOOP_AN_ROUTER_UPGRADE" | "MAINTENANCE" | "OPTIC_FIBER_WORK_WITH_OUTAGE_DURING_NON_WORKING_HOURS" | "PLANNED_CORRECTIVE_MAINTENANCE" | "SENSITIVE_LOOP_LINK_UPGRADE" | "TRANSMISSION_CORRECTIVE_MAINTENANCE" | "TRANSMISSION_CUSTOMER_TRANSFERT_MIGRATION_WITH_IMPACT" | "TRANSMISSION_FIBRE_MAINTENANCE" | "TRANSMISSION_LINK_COMMISSIONING_PRODUCTION_DECOMMISSIONING_WORK_WITH_IMPACT" | "TRANSMISSION_LINK_TRANSFERT_MIGRATION_WITH_IMPACT" | "TRANSMISSION_MAINTENANCE" | "TRANSMISSION_MOVING_WITH_IMPACT" | "TRANSMISSION_SWITCH_UPGRADE_WITH_IMPACT" | "WITH_IMPACT"
-        // interface fullName: connectivity.maintenance.WorkPlanned.WorkPlanned
+        /**
+         * Work Planned operation structure
+         * interface fullName: connectivity.maintenance.WorkPlanned.WorkPlanned
+         */
         export interface WorkPlanned {
             dateBegin: string;
             dateEnd: string;
@@ -182,7 +275,10 @@ export namespace connectivity {
         }
     }
     export namespace monitoring {
-        // interface fullName: connectivity.monitoring.GenericIncident.GenericIncident
+        /**
+         * Generic incident structure
+         * interface fullName: connectivity.monitoring.GenericIncident.GenericIncident
+         */
         export interface GenericIncident {
             comment?: string;
             creationDate: string;
@@ -194,24 +290,36 @@ export namespace connectivity {
             status: connectivity.monitoring.GenericIncidentStatusEnum;
             taskId?: number;
         }
-        // type fullname: connectivity.monitoring.GenericIncidentStatusEnum
+        /**
+         * Generic incident status
+         * type fullname: connectivity.monitoring.GenericIncidentStatusEnum
+         */
         export type GenericIncidentStatusEnum = "detected" | "validated" | "closed"
     }
 }
 export namespace xdsl {
-    // interface fullName: xdsl.AsyncTask.AsyncTask
+    /**
+     * Async task
+     * interface fullName: xdsl.AsyncTask.AsyncTask
+     */
     export interface AsyncTask<T> {
         error?: string;
         result?: T;
         status: xdsl.AsyncTaskStatusEnum;
     }
-    // interface fullName: xdsl.AsyncTaskArray.AsyncTaskArray
+    /**
+     * Async task array
+     * interface fullName: xdsl.AsyncTaskArray.AsyncTaskArray
+     */
     export interface AsyncTaskArray<T> {
         error?: string;
         result?: T[];
         status: xdsl.AsyncTaskStatusEnum;
     }
-    // type fullname: xdsl.AsyncTaskStatusEnum
+    /**
+     * AsyncTask status
+     * type fullname: xdsl.AsyncTaskStatusEnum
+     */
     export type AsyncTaskStatusEnum = "error" | "ok" | "pending"
 }
 
@@ -223,91 +331,216 @@ export function proxyConnectivity(ovhEngine: OvhRequestable): Connectivity {
 }
 export default proxyConnectivity;
 /**
- * Api Proxy model
- */// Apis harmony
-// path /connectivity
+ * Api model for /connectivity
+ */
 export interface Connectivity {
     eligibility: {
         search: {
             buildingDetails: {
-                // POST /connectivity/eligibility/search/buildingDetails
+                /**
+                 * Get the details for a building
+                 * POST /connectivity/eligibility/search/buildingDetails
+                 */
                 $post(params: { building: string }): Promise<xdsl.AsyncTask<connectivity.eligibility.Building>>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             buildings: {
-                // POST /connectivity/eligibility/search/buildings
+                /**
+                 * Get all buildings for a specific address
+                 * POST /connectivity/eligibility/search/buildings
+                 */
                 $post(params: { streetCode: string, streetNumber: string }): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.Building>>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             buildingsByLine: {
-                // POST /connectivity/eligibility/search/buildingsByLine
+                /**
+                 * Get building references from a given line number
+                 * POST /connectivity/eligibility/search/buildingsByLine
+                 */
                 $post(params: { lineNumber: string, status: connectivity.eligibility.LineStatusEnum }): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.Building>>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             cities: {
-                // POST /connectivity/eligibility/search/cities
+                /**
+                 * Get all localities linked to a zip code
+                 * POST /connectivity/eligibility/search/cities
+                 */
                 $post(params: { zipCode: string }): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.City>>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             lines: {
-                // POST /connectivity/eligibility/search/lines
+                /**
+                 * Search for active and inactive lines at an address. It will search for active lines only if the owner name is specified
+                 * POST /connectivity/eligibility/search/lines
+                 */
                 $post(params: { ownerName?: string, streetCode: string, streetNumber: string }): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.Line>>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             meetings: {
-                // POST /connectivity/eligibility/search/meetings
+                /**
+                 * Search for available line creation meeting time slots, for copper only
+                 * POST /connectivity/eligibility/search/meetings
+                 */
                 $post(params: { eligibilityReference: string, productCode: string }): Promise<xdsl.AsyncTask<connectivity.eligibility.Meetings>>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             streetNumbers: {
-                // POST /connectivity/eligibility/search/streetNumbers
+                /**
+                 * Get the available street numbers for a given street code (unique identifier of a street you can get with the method POST /connectivity/eligibility/search/streets)
+                 * POST /connectivity/eligibility/search/streetNumbers
+                 */
                 $post(params: { streetCode: string }): Promise<xdsl.AsyncTaskArray<string>>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             streets: {
-                // POST /connectivity/eligibility/search/streets
+                /**
+                 * Get all street linked to a locality
+                 * POST /connectivity/eligibility/search/streets
+                 */
                 $post(params: { inseeCode: string }): Promise<xdsl.AsyncTaskArray<connectivity.eligibility.Street>>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         }
         test: {
-            // GET /connectivity/eligibility/test
+            /**
+             * Get an eligibility by its reference
+             * GET /connectivity/eligibility/test
+             */
             $get(params: { eligibilityReference: string }): Promise<connectivity.eligibility.EligibilityTest>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             address: {
-                // POST /connectivity/eligibility/test/address
+                /**
+                 * Do an eligibility for an address, if no line exist
+                 * POST /connectivity/eligibility/test/address
+                 */
                 $post(params: { streetCode: string, streetNumber: string }): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 partners: {
-                    // POST /connectivity/eligibility/test/address/partners
+                    /**
+                     * Do an eligibility for an address, if no line exist. Partners only.
+                     * POST /connectivity/eligibility/test/address/partners
+                     */
                     $post(params: { streetCode: string, streetNumber: string }): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             }
             building: {
-                // POST /connectivity/eligibility/test/building
+                /**
+                 * Do an eligibility test on a building, for fiber only
+                 * POST /connectivity/eligibility/test/building
+                 */
                 $post(params: { building: string }): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             line: {
-                // POST /connectivity/eligibility/test/line
+                /**
+                 * Do an eligibility test on a line number, for copper only
+                 * POST /connectivity/eligibility/test/line
+                 */
                 $post(params: { lineNumber: string, status: connectivity.eligibility.LineStatusEnum }): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 partners: {
-                    // POST /connectivity/eligibility/test/line/partners
+                    /**
+                     * Do an eligibility test on a line number, for copper only. Partners only.
+                     * POST /connectivity/eligibility/test/line/partners
+                     */
                     $post(params: { lineNumber: string, status: connectivity.eligibility.LineStatusEnum }): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             }
             otp: {
-                // POST /connectivity/eligibility/test/otp
+                /**
+                 * Do an eligibility test on an OTP (Optical Termination Panel), for fiber only
+                 * POST /connectivity/eligibility/test/otp
+                 */
                 $post(params: { otp: string }): Promise<xdsl.AsyncTask<connectivity.eligibility.EligibilityTest>>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         }
     }
     maintenance: {
         workPlanned: {
             partners: {
-                // GET /connectivity/maintenance/workPlanned/partners
+                /**
+                 * List work planned by operators. For partners only
+                 * GET /connectivity/maintenance/workPlanned/partners
+                 */
                 $get(): Promise<connectivity.maintenance.WorkPlanned[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         }
     }
     monitoring: {
         genericIncident: {
             partners: {
-                // GET /connectivity/monitoring/genericIncident/partners
+                /**
+                 * List detected, validated and recently closed generic incidents. For partners only
+                 * GET /connectivity/monitoring/genericIncident/partners
+                 */
                 $get(params?: { creationDate?: string, endDate?: string, status?: connectivity.monitoring.GenericIncidentStatusEnum }): Promise<connectivity.monitoring.GenericIncident[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             public: {
-                // GET /connectivity/monitoring/genericIncident/public
+                /**
+                 * List validated and recently closed generic incidents
+                 * GET /connectivity/monitoring/genericIncident/public
+                 */
                 $get(params?: { creationDate?: string, endDate?: string, status?: connectivity.monitoring.GenericIncidentStatusEnum }): Promise<connectivity.monitoring.GenericIncident[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         }
     }

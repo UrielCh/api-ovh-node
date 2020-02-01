@@ -1,31 +1,46 @@
-import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
+import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /horizonView Models
  * Source: https://eu.api.ovh.com/1.0/horizonView.json
  */
 export namespace horizonView {
-    // type fullname: horizonView.AccessPointTypeEnum
+    /**
+     * Access Point type the customer can deploy
+     * type fullname: horizonView.AccessPointTypeEnum
+     */
     export type AccessPointTypeEnum = "privateAccessPoint" | "publicAccessPoint"
-    // interface fullName: horizonView.CustomerNetwork.CustomerNetwork
+    /**
+     * You can reach from your virtual desktops, your customer network 
+     * interface fullName: horizonView.CustomerNetwork.CustomerNetwork
+     */
     export interface CustomerNetwork {
         customerNetworkId: number;
         name: string;
         network: string;
     }
-    // interface fullName: horizonView.CustomerNetworkPool.CustomerNetworkPool
+    /**
+     * You can reach from your virtual desktops, your customer network 
+     * interface fullName: horizonView.CustomerNetworkPool.CustomerNetworkPool
+     */
     export interface CustomerNetworkPool {
         customerNetworkId: number;
         name: string;
         network: string;
     }
-    // interface fullName: horizonView.CustomerUser.CustomerUser
+    /**
+     * Horizon As A Service Customer  User
+     * interface fullName: horizonView.CustomerUser.CustomerUser
+     */
     export interface CustomerUser {
         email?: string;
         id: number;
         username: string;
     }
-    // interface fullName: horizonView.Datacenter.Datacenter
+    /**
+     * Cloud Desktop Infrastructure Datacenter
+     * interface fullName: horizonView.Datacenter.Datacenter
+     */
     export interface Datacenter {
         activeDirectoryIP: string;
         adminDomain: string;
@@ -38,7 +53,10 @@ export namespace horizonView {
         name: string;
         serviceName: string;
     }
-    // interface fullName: horizonView.DedicatedHorizon.DedicatedHorizon
+    /**
+     * Horizon View as a Service
+     * interface fullName: horizonView.DedicatedHorizon.DedicatedHorizon
+     */
     export interface DedicatedHorizon {
         masterZone: horizonView.Zone;
         privateCloudName: string;
@@ -48,7 +66,10 @@ export namespace horizonView {
         storageAccelerator: boolean;
         version: string;
     }
-    // interface fullName: horizonView.DomainTrust.DomainTrust
+    /**
+     * List all Active Directories linked to your CDI Active Directory
+     * interface fullName: horizonView.DomainTrust.DomainTrust
+     */
     export interface DomainTrust {
         activeDirectoryIP: string;
         dns1?: string;
@@ -56,7 +77,10 @@ export namespace horizonView {
         domain: string;
         domainTrustId: number;
     }
-    // interface fullName: horizonView.Pool.Pool
+    /**
+     * All informations about access point
+     * interface fullName: horizonView.Pool.Pool
+     */
     export interface Pool {
         accessPointId: number;
         dhcpNetmask: string;
@@ -69,11 +93,20 @@ export namespace horizonView {
         twoFA: boolean;
         type: horizonView.PoolType;
     }
-    // type fullname: horizonView.PoolType
+    /**
+     * Pool type the customer can deploy
+     * type fullname: horizonView.PoolType
+     */
     export type PoolType = "hybridPool" | "privatePool" | "publicPool"
-    // type fullname: horizonView.StateEnum
+    /**
+     * All states a dedicated horizon  can be in
+     * type fullname: horizonView.StateEnum
+     */
     export type StateEnum = "available" | "creating" | "delivered" | "disabled" | "error" | "reserved"
-    // interface fullName: horizonView.Task.Task
+    /**
+     * Operation on a Horizon View component
+     * interface fullName: horizonView.Task.Task
+     */
     export interface Task {
         description?: string;
         lastModificationDate?: string;
@@ -82,17 +115,29 @@ export namespace horizonView {
         state: horizonView.TaskStateEnum;
         taskId: number;
     }
-    // type fullname: horizonView.TaskStateEnum
+    /**
+     * All states a Horizon View  Task can be in
+     * type fullname: horizonView.TaskStateEnum
+     */
     export type TaskStateEnum = "canceled" | "doing" | "done" | "error" | "fixing" | "toCancel" | "toCreate" | "todo" | "unknown" | "waitingForChilds" | "waitingTodo"
-    // interface fullName: horizonView.User.User
+    /**
+     * Horizon As A Service User
+     * interface fullName: horizonView.User.User
+     */
     export interface User {
         username: string;
     }
-    // type fullname: horizonView.Zone
+    /**
+     * All zones a Cloud Desktop Infrastructure can be in
+     * type fullname: horizonView.Zone
+     */
     export type Zone = "Beauharnois" | "Roubaix" | "Strasbourg"
 }
 export namespace service {
-    // interface fullName: service.RenewType.RenewType
+    /**
+     * Map a possible renew for a specific service
+     * interface fullName: service.RenewType.RenewType
+     */
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -100,17 +145,31 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    // type fullname: service.RenewalTypeEnum
+    /**
+     * Detailed renewal type of a service
+     * type fullname: service.RenewalTypeEnum
+     */
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    // type fullname: service.StateEnum
+    /**
+     * type fullname: service.StateEnum
+     */
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
-    // type fullname: service.TerminationFutureUseEnum
+    /**
+     * All future uses you can provide for a service termination
+     * type fullname: service.TerminationFutureUseEnum
+     */
     export type TerminationFutureUseEnum = "NOT_REPLACING_SERVICE" | "OTHER" | "SUBSCRIBE_AN_OTHER_SERVICE" | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR" | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
-    // type fullname: service.TerminationReasonEnum
+    /**
+     * All reasons you can provide for a service termination
+     * type fullname: service.TerminationReasonEnum
+     */
     export type TerminationReasonEnum = "FEATURES_DONT_SUIT_ME" | "LACK_OF_PERFORMANCES" | "MIGRATED_TO_ANOTHER_OVH_PRODUCT" | "MIGRATED_TO_COMPETITOR" | "NOT_ENOUGH_RECOGNITION" | "NOT_NEEDED_ANYMORE" | "NOT_RELIABLE" | "NO_ANSWER" | "OTHER" | "PRODUCT_DIMENSION_DONT_SUIT_ME" | "PRODUCT_TOOLS_DONT_SUIT_ME" | "TOO_EXPENSIVE" | "TOO_HARD_TO_USE" | "UNSATIFIED_BY_CUSTOMER_SUPPORT"
 }
 export namespace services {
-    // interface fullName: services.Service.Service
+    /**
+     * Details about a Service
+     * interface fullName: services.Service.Service
+     */
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;
@@ -136,158 +195,418 @@ export function proxyHorizonView(ovhEngine: OvhRequestable): HorizonView {
 }
 export default proxyHorizonView;
 /**
- * Api Proxy model
- */// Apis harmony
-// path /horizonView
+ * Api model for /horizonView
+ */
 export interface HorizonView {
-    // GET /horizonView
+    /**
+     * List available services
+     * GET /horizonView
+     */
     $get(): Promise<string[]>;
+    /**
+     * Controle cache
+     */
+    $cache(param?: ICacheOptions): Promise<any>;
     $(serviceName: string): {
-        // GET /horizonView/{serviceName}
+        /**
+         * Get this object properties
+         * GET /horizonView/{serviceName}
+         */
         $get(): Promise<horizonView.Datacenter>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         accessPoint: {
-            // GET /horizonView/{serviceName}/accessPoint
+            /**
+             * Pool associated with this Datacenter
+             * GET /horizonView/{serviceName}/accessPoint
+             */
             $get(): Promise<number[]>;
-            // POST /horizonView/{serviceName}/accessPoint
+            /**
+             * Add new access point to create a new network
+             * POST /horizonView/{serviceName}/accessPoint
+             */
             $post(params: { poolType: horizonView.PoolType, privateBlock?: string, privateVlan?: number, vrouterPoolPublicIp?: string }): Promise<horizonView.Task[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(accessPointId: number): {
-                // DELETE /horizonView/{serviceName}/accessPoint/{accessPointId}
+                /**
+                 * Delete this access point 
+                 * DELETE /horizonView/{serviceName}/accessPoint/{accessPointId}
+                 */
                 $delete(): Promise<horizonView.Task[]>;
-                // GET /horizonView/{serviceName}/accessPoint/{accessPointId}
+                /**
+                 * Get this object properties
+                 * GET /horizonView/{serviceName}/accessPoint/{accessPointId}
+                 */
                 $get(): Promise<horizonView.Pool>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 changeSessionTimeout: {
-                    // POST /horizonView/{serviceName}/accessPoint/{accessPointId}/changeSessionTimeout
+                    /**
+                     * Manage your session Timeout on Unified Access Gateway
+                     * POST /horizonView/{serviceName}/accessPoint/{accessPointId}/changeSessionTimeout
+                     */
                     $post(params: { expiration: number, onSingleAP?: horizonView.AccessPointTypeEnum }): Promise<horizonView.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 customerNetwork: {
-                    // GET /horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork
+                    /**
+                     * You can reach from the Desktops your private network
+                     * GET /horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork
+                     */
                     $get(): Promise<number[]>;
-                    // POST /horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork
+                    /**
+                     * Add a new network 
+                     * POST /horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork
+                     */
                     $post(params: { network: string }): Promise<horizonView.Task[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     $(customerNetworkId: number): {
-                        // DELETE /horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork/{customerNetworkId}
+                        /**
+                         * Delete this Customer Network
+                         * DELETE /horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork/{customerNetworkId}
+                         */
                         $delete(): Promise<horizonView.Task[]>;
-                        // GET /horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork/{customerNetworkId}
+                        /**
+                         * Get this object properties
+                         * GET /horizonView/{serviceName}/accessPoint/{accessPointId}/customerNetwork/{customerNetworkId}
+                         */
                         $get(): Promise<horizonView.CustomerNetworkPool>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     };
                 }
                 disableTwoFA: {
-                    // POST /horizonView/{serviceName}/accessPoint/{accessPointId}/disableTwoFA
+                    /**
+                     * Disable two factor authentication on your pool
+                     * POST /horizonView/{serviceName}/accessPoint/{accessPointId}/disableTwoFA
+                     */
                     $post(): Promise<horizonView.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 disableWindowsUsernameOption: {
-                    // POST /horizonView/{serviceName}/accessPoint/{accessPointId}/disableWindowsUsernameOption
+                    /**
+                     * Disable windows Username option on Unified Access Gateway
+                     * POST /horizonView/{serviceName}/accessPoint/{accessPointId}/disableWindowsUsernameOption
+                     */
                     $post(params?: { onSingleAP?: horizonView.AccessPointTypeEnum }): Promise<horizonView.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 enableTwoFA: {
-                    // POST /horizonView/{serviceName}/accessPoint/{accessPointId}/enableTwoFA
+                    /**
+                     * Enable two factor authentication on your pool
+                     * POST /horizonView/{serviceName}/accessPoint/{accessPointId}/enableTwoFA
+                     */
                     $post(params: { onSingleAP?: horizonView.AccessPointTypeEnum, radiusIp: string, secret: string }): Promise<horizonView.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 enableWindowsUsernameOption: {
-                    // POST /horizonView/{serviceName}/accessPoint/{accessPointId}/enableWindowsUsernameOption
+                    /**
+                     * Enable windows Username option on Unified Access Gateway
+                     * POST /horizonView/{serviceName}/accessPoint/{accessPointId}/enableWindowsUsernameOption
+                     */
                     $post(params?: { onSingleAP?: horizonView.AccessPointTypeEnum }): Promise<horizonView.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             };
         }
         confirmTermination: {
-            // POST /horizonView/{serviceName}/confirmTermination
+            /**
+             * Confirm termination of your service
+             * POST /horizonView/{serviceName}/confirmTermination
+             */
             $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         customerNetwork: {
-            // GET /horizonView/{serviceName}/customerNetwork
+            /**
+             * You can reach from the Desktops your private network
+             * GET /horizonView/{serviceName}/customerNetwork
+             */
             $get(): Promise<number[]>;
-            // POST /horizonView/{serviceName}/customerNetwork
+            /**
+             * Add a new network 
+             * POST /horizonView/{serviceName}/customerNetwork
+             */
             $post(params: { name: string, network: string }): Promise<horizonView.Task[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(customerNetworkId: number): {
-                // DELETE /horizonView/{serviceName}/customerNetwork/{customerNetworkId}
+                /**
+                 * Delete this Customer Network
+                 * DELETE /horizonView/{serviceName}/customerNetwork/{customerNetworkId}
+                 */
                 $delete(): Promise<horizonView.Task[]>;
-                // GET /horizonView/{serviceName}/customerNetwork/{customerNetworkId}
+                /**
+                 * Get this object properties
+                 * GET /horizonView/{serviceName}/customerNetwork/{customerNetworkId}
+                 */
                 $get(): Promise<horizonView.CustomerNetwork>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             };
         }
         dedicatedHorizon: {
-            // GET /horizonView/{serviceName}/dedicatedHorizon
+            /**
+             * Get this object properties
+             * GET /horizonView/{serviceName}/dedicatedHorizon
+             */
             $get(): Promise<horizonView.DedicatedHorizon>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             customerUser: {
-                // GET /horizonView/{serviceName}/dedicatedHorizon/customerUser
+                /**
+                 * Account to access to your pool
+                 * GET /horizonView/{serviceName}/dedicatedHorizon/customerUser
+                 */
                 $get(): Promise<string[]>;
-                // POST /horizonView/{serviceName}/dedicatedHorizon/customerUser
+                /**
+                 * Create a new customer user 
+                 * POST /horizonView/{serviceName}/dedicatedHorizon/customerUser
+                 */
                 $post(params: { email?: string, password?: string, username: string }): Promise<horizonView.Task[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(username: string): {
-                    // DELETE /horizonView/{serviceName}/dedicatedHorizon/customerUser/{username}
+                    /**
+                     * Delete this Customer User
+                     * DELETE /horizonView/{serviceName}/dedicatedHorizon/customerUser/{username}
+                     */
                     $delete(): Promise<horizonView.Task[]>;
-                    // GET /horizonView/{serviceName}/dedicatedHorizon/customerUser/{username}
+                    /**
+                     * Get this object properties
+                     * GET /horizonView/{serviceName}/dedicatedHorizon/customerUser/{username}
+                     */
                     $get(): Promise<horizonView.CustomerUser>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     changePassword: {
-                        // POST /horizonView/{serviceName}/dedicatedHorizon/customerUser/{username}/changePassword
+                        /**
+                         * Change Horizon View Customer  user password
+                         * POST /horizonView/{serviceName}/dedicatedHorizon/customerUser/{username}/changePassword
+                         */
                         $post(params?: { password?: string }): Promise<horizonView.Task>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                 };
             }
             disableStorageAccelerator: {
-                // POST /horizonView/{serviceName}/dedicatedHorizon/disableStorageAccelerator
+                /**
+                 * Disable the View Storage Accelerator option on VCenter
+                 * POST /horizonView/{serviceName}/dedicatedHorizon/disableStorageAccelerator
+                 */
                 $post(): Promise<horizonView.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             enableStorageAccelerator: {
-                // POST /horizonView/{serviceName}/dedicatedHorizon/enableStorageAccelerator
+                /**
+                 * Enable the View Storage Accelerator option on VCenter
+                 * POST /horizonView/{serviceName}/dedicatedHorizon/enableStorageAccelerator
+                 */
                 $post(): Promise<horizonView.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             task: {
-                // GET /horizonView/{serviceName}/dedicatedHorizon/task
+                /**
+                 * Tasks associated with this Dedicated Horizon
+                 * GET /horizonView/{serviceName}/dedicatedHorizon/task
+                 */
                 $get(params?: { state?: horizonView.TaskStateEnum }): Promise<number[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(taskId: number): {
-                    // GET /horizonView/{serviceName}/dedicatedHorizon/task/{taskId}
+                    /**
+                     * Get this object properties
+                     * GET /horizonView/{serviceName}/dedicatedHorizon/task/{taskId}
+                     */
                     $get(): Promise<horizonView.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 };
             }
             user: {
-                // GET /horizonView/{serviceName}/dedicatedHorizon/user
+                /**
+                 * Get this object properties
+                 * GET /horizonView/{serviceName}/dedicatedHorizon/user
+                 */
                 $get(): Promise<horizonView.User>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 changePassword: {
-                    // POST /horizonView/{serviceName}/dedicatedHorizon/user/changePassword
+                    /**
+                     * Change Horizon View user password
+                     * POST /horizonView/{serviceName}/dedicatedHorizon/user/changePassword
+                     */
                     $post(params?: { password?: string }): Promise<horizonView.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 changeProperties: {
-                    // POST /horizonView/{serviceName}/dedicatedHorizon/user/changeProperties
+                    /**
+                     * Change horizon view user properties
+                     * POST /horizonView/{serviceName}/dedicatedHorizon/user/changeProperties
+                     */
                     $post(params?: { email?: string }): Promise<horizonView.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             }
         }
         domainTrust: {
-            // GET /horizonView/{serviceName}/domainTrust
+            /**
+             * List all Active Directories linked to your CDI Active Directory
+             * GET /horizonView/{serviceName}/domainTrust
+             */
             $get(): Promise<number[]>;
-            // POST /horizonView/{serviceName}/domainTrust
+            /**
+             * Link your Active Directory to your CDI Active Directory
+             * POST /horizonView/{serviceName}/domainTrust
+             */
             $post(params: { activeDirectoryIP: string, dns1?: string, dns2?: string, domain: string }): Promise<horizonView.Task[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(domainTrustId: number): {
-                // GET /horizonView/{serviceName}/domainTrust/{domainTrustId}
+                /**
+                 * Get this object properties
+                 * GET /horizonView/{serviceName}/domainTrust/{domainTrustId}
+                 */
                 $get(): Promise<horizonView.DomainTrust>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 addChildDomain: {
-                    // POST /horizonView/{serviceName}/domainTrust/{domainTrustId}/addChildDomain
+                    /**
+                     * Add a child domain for this domain.
+                     * POST /horizonView/{serviceName}/domainTrust/{domainTrustId}/addChildDomain
+                     */
                     $post(params: { activeDirectoryIP: string, domain: string, passphrase: string, serviceAccountPassword: string }): Promise<horizonView.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 addDomainController: {
-                    // POST /horizonView/{serviceName}/domainTrust/{domainTrustId}/addDomainController
+                    /**
+                     * Add a Domain Controller for this domain.
+                     * POST /horizonView/{serviceName}/domainTrust/{domainTrustId}/addDomainController
+                     */
                     $post(params: { domain: string, domainControllerIp: string }): Promise<horizonView.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 addDomainUserOnComposer: {
-                    // POST /horizonView/{serviceName}/domainTrust/{domainTrustId}/addDomainUserOnComposer
+                    /**
+                     * Add a domain user to add your desktop in your Active Directory
+                     * POST /horizonView/{serviceName}/domainTrust/{domainTrustId}/addDomainUserOnComposer
+                     */
                     $post(params: { domain: string, password: string, username: string }): Promise<horizonView.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 createTrust: {
-                    // POST /horizonView/{serviceName}/domainTrust/{domainTrustId}/createTrust
+                    /**
+                     * Change Horizon View user password
+                     * POST /horizonView/{serviceName}/domainTrust/{domainTrustId}/createTrust
+                     */
                     $post(params: { passphrase: string, serviceAccountPassword: string }): Promise<horizonView.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             };
         }
         serviceInfos: {
-            // GET /horizonView/{serviceName}/serviceInfos
+            /**
+             * Get this object properties
+             * GET /horizonView/{serviceName}/serviceInfos
+             */
             $get(): Promise<services.Service>;
-            // PUT /horizonView/{serviceName}/serviceInfos
+            /**
+             * Alter this object properties
+             * PUT /horizonView/{serviceName}/serviceInfos
+             */
             $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         terminate: {
-            // POST /horizonView/{serviceName}/terminate
+            /**
+             * Terminate your service
+             * POST /horizonView/{serviceName}/terminate
+             */
             $post(): Promise<string>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
     };
 }

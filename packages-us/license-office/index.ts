@@ -1,4 +1,4 @@
-import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
+import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /license/office Models
@@ -6,17 +6,29 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  */
 export namespace license {
     export namespace office {
-        // type fullname: license.office.DomainStateEnum
+        /**
+         * Office domain state
+         * type fullname: license.office.DomainStateEnum
+         */
         export type DomainStateEnum = "ok" | "unverified"
-        // type fullname: license.office.LicenceEnum
+        /**
+         * Office Licence
+         * type fullname: license.office.LicenceEnum
+         */
         export type LicenceEnum = "officeBusiness" | "officeProPlus"
-        // interface fullName: license.office.OfficeDomain.OfficeDomain
+        /**
+         * Office domain
+         * interface fullName: license.office.OfficeDomain.OfficeDomain
+         */
         export interface OfficeDomain {
             domainName: string;
             status: license.office.DomainStateEnum;
             txtEntry: string;
         }
-        // interface fullName: license.office.OfficeSubscription.OfficeSubscription
+        /**
+         * Office subscription
+         * interface fullName: license.office.OfficeSubscription.OfficeSubscription
+         */
         export interface OfficeSubscription {
             creationDate: string;
             id: number;
@@ -26,7 +38,10 @@ export namespace license {
             status: string;
             taskPendingId: number;
         }
-        // interface fullName: license.office.OfficeTask.OfficeTask
+        /**
+         * Office task
+         * interface fullName: license.office.OfficeTask.OfficeTask
+         */
         export interface OfficeTask {
             finishDate?: string;
             function: string;
@@ -34,7 +49,10 @@ export namespace license {
             status: license.office.TaskStatusEnum;
             todoDate: string;
         }
-        // interface fullName: license.office.OfficeTenant.OfficeTenant
+        /**
+         * Office tenant
+         * interface fullName: license.office.OfficeTenant.OfficeTenant
+         */
         export interface OfficeTenant {
             address: string;
             city: string;
@@ -47,7 +65,10 @@ export namespace license {
             status: license.office.ServiceStateEnum;
             zipCode: string;
         }
-        // interface fullName: license.office.OfficeUser.OfficeUser
+        /**
+         * Office user
+         * interface fullName: license.office.OfficeUser.OfficeUser
+         */
         export interface OfficeUser {
             activationEmail: string;
             deleteAtExpiration: boolean;
@@ -58,35 +79,59 @@ export namespace license {
             status: license.office.UserStateEnum;
             taskPendingId: number;
         }
-        // type fullname: license.office.ServiceStateEnum
+        /**
+         * Office tenant state
+         * type fullname: license.office.ServiceStateEnum
+         */
         export type ServiceStateEnum = "creating" | "inMaintenance" | "ok" | "suspended"
-        // type fullname: license.office.ServiceTypeEnum
+        /**
+         * Type of service
+         * type fullname: license.office.ServiceTypeEnum
+         */
         export type ServiceTypeEnum = "payAsYouGo" | "prepaid"
-        // interface fullName: license.office.Statistic.Statistic
+        /**
+         * License usage statistic.
+         * interface fullName: license.office.Statistic.Statistic
+         */
         export interface Statistic {
             available: number;
             licenseId: number;
             used: number;
         }
-        // interface fullName: license.office.Statistics.Statistics
+        /**
+         * License usage statistics.
+         * interface fullName: license.office.Statistics.Statistics
+         */
         export interface Statistics {
             date: string;
             lines: license.office.StatisticsLine[];
         }
-        // interface fullName: license.office.StatisticsLine.StatisticsLine
+        /**
+         * License usage statistics line.
+         * interface fullName: license.office.StatisticsLine.StatisticsLine
+         */
         export interface StatisticsLine {
             endOfDayCount: number;
             licenceType: license.office.LicenceEnum;
             peakCount: number;
         }
-        // type fullname: license.office.TaskStatusEnum
+        /**
+         * Exchange task status
+         * type fullname: license.office.TaskStatusEnum
+         */
         export type TaskStatusEnum = "cancelled" | "doing" | "done" | "error" | "todo"
-        // type fullname: license.office.UserStateEnum
+        /**
+         * Office user  state
+         * type fullname: license.office.UserStateEnum
+         */
         export type UserStateEnum = "creating" | "deleting" | "ok"
     }
 }
 export namespace service {
-    // interface fullName: service.RenewType.RenewType
+    /**
+     * Map a possible renew for a specific service
+     * interface fullName: service.RenewType.RenewType
+     */
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -94,13 +139,21 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    // type fullname: service.RenewalTypeEnum
+    /**
+     * Detailed renewal type of a service
+     * type fullname: service.RenewalTypeEnum
+     */
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    // type fullname: service.StateEnum
+    /**
+     * type fullname: service.StateEnum
+     */
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
 }
 export namespace services {
-    // interface fullName: services.Service.Service
+    /**
+     * Details about a Service
+     * interface fullName: services.Service.Service
+     */
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;
@@ -126,59 +179,150 @@ export function proxyLicenseOffice(ovhEngine: OvhRequestable): License {
 }
 export default proxyLicenseOffice;
 /**
- * Api Proxy model
- */// Apis harmony
-// path /license
+ * Api model for /license/office
+ */
 export interface License {
     office: {
-        // GET /license/office
+        /**
+         * List available services
+         * GET /license/office
+         */
         $get(): Promise<string[]>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         $(serviceName: string): {
-            // GET /license/office/{serviceName}
+            /**
+             * Get this object properties
+             * GET /license/office/{serviceName}
+             */
             $get(): Promise<license.office.OfficeTenant>;
-            // PUT /license/office/{serviceName}
+            /**
+             * Alter this object properties
+             * PUT /license/office/{serviceName}
+             */
             $put(params?: { address?: string, city?: string, creationDate?: string, displayName?: string, firstName?: string, lastName?: string, phone?: string, serviceType?: license.office.ServiceTypeEnum, status?: license.office.ServiceStateEnum, zipCode?: string }): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             domain: {
-                // GET /license/office/{serviceName}/domain
+                /**
+                 * Domain associated to this office tenant
+                 * GET /license/office/{serviceName}/domain
+                 */
                 $get(): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(domainName: string): {
-                    // GET /license/office/{serviceName}/domain/{domainName}
+                    /**
+                     * Get this object properties
+                     * GET /license/office/{serviceName}/domain/{domainName}
+                     */
                     $get(): Promise<license.office.OfficeDomain>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 };
             }
             pendingTask: {
-                // GET /license/office/{serviceName}/pendingTask
+                /**
+                 * Tasks associated to this office tenant
+                 * GET /license/office/{serviceName}/pendingTask
+                 */
                 $get(): Promise<number[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(id: number): {
-                    // GET /license/office/{serviceName}/pendingTask/{id}
+                    /**
+                     * Get this object properties
+                     * GET /license/office/{serviceName}/pendingTask/{id}
+                     */
                     $get(): Promise<license.office.OfficeTask>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 };
             }
             serviceInfos: {
-                // GET /license/office/{serviceName}/serviceInfos
+                /**
+                 * Get this object properties
+                 * GET /license/office/{serviceName}/serviceInfos
+                 */
                 $get(): Promise<services.Service>;
-                // PUT /license/office/{serviceName}/serviceInfos
+                /**
+                 * Alter this object properties
+                 * PUT /license/office/{serviceName}/serviceInfos
+                 */
                 $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             usageStatistics: {
-                // GET /license/office/{serviceName}/usageStatistics
+                /**
+                 * Shows the subscriptions' usage statistics for the given time period
+                 * GET /license/office/{serviceName}/usageStatistics
+                 */
                 $get(params: { from: string, to: string }): Promise<license.office.Statistics[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             user: {
-                // GET /license/office/{serviceName}/user
+                /**
+                 * Accounts associated to this office tenant
+                 * GET /license/office/{serviceName}/user
+                 */
                 $get(params?: { activationEmail?: string, firstName?: string, lastName?: string, licences?: license.office.LicenceEnum[] }): Promise<string[]>;
-                // POST /license/office/{serviceName}/user
+                /**
+                 * Create new office user
+                 * POST /license/office/{serviceName}/user
+                 */
                 $post(params: { domain: string, firstName?: string, lastName?: string, licence: license.office.LicenceEnum, login: string }): Promise<license.office.OfficeTask>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(activationEmail: string): {
-                    // DELETE /license/office/{serviceName}/user/{activationEmail}
+                    /**
+                     * Delete existing office user
+                     * DELETE /license/office/{serviceName}/user/{activationEmail}
+                     */
                     $delete(): Promise<license.office.OfficeTask>;
-                    // GET /license/office/{serviceName}/user/{activationEmail}
+                    /**
+                     * Get this object properties
+                     * GET /license/office/{serviceName}/user/{activationEmail}
+                     */
                     $get(): Promise<license.office.OfficeUser>;
-                    // PUT /license/office/{serviceName}/user/{activationEmail}
+                    /**
+                     * Alter this object properties
+                     * PUT /license/office/{serviceName}/user/{activationEmail}
+                     */
                     $put(params?: { activationEmail?: string, deleteAtExpiration?: boolean, firstName?: string, isVirtual?: boolean, lastName?: string, licences?: license.office.LicenceEnum[], status?: license.office.UserStateEnum, taskPendingId?: number }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     changePassword: {
-                        // POST /license/office/{serviceName}/user/{activationEmail}/changePassword
+                        /**
+                         * Change or reset  user's password
+                         * POST /license/office/{serviceName}/user/{activationEmail}/changePassword
+                         */
                         $post(params: { notifyEmail?: string, password?: string, shouldSendMail: boolean }): Promise<license.office.OfficeTask>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                 };
             }

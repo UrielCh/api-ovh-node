@@ -1,22 +1,31 @@
-import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
+import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /ip Models
  * Source: https://eu.api.soyoustart.com/1.0/ip.json
  */
 export namespace complexType {
-    // interface fullName: complexType.Range.Range
+    /**
+     * Start and end points (inclusive) of a range
+     * interface fullName: complexType.Range.Range
+     */
     export interface Range<T> {
         from: T;
         to: T;
     }
 }
 export namespace coreTypes {
-    // type fullname: coreTypes.CountryEnum
+    /**
+     * ISO country codes
+     * type fullname: coreTypes.CountryEnum
+     */
     export type CountryEnum = "ac" | "ad" | "ae" | "af" | "ag" | "ai" | "al" | "am" | "an" | "ao" | "aq" | "ar" | "as" | "at" | "au" | "aw" | "ax" | "az" | "ba" | "bb" | "bd" | "be" | "bf" | "bg" | "bh" | "bi" | "bj" | "bl" | "bm" | "bn" | "bo" | "bq" | "br" | "bs" | "bt" | "bv" | "bw" | "by" | "bz" | "ca" | "cc" | "cd" | "cf" | "cg" | "ch" | "ci" | "ck" | "cl" | "cm" | "cn" | "co" | "cr" | "cs" | "cu" | "cv" | "cw" | "cx" | "cy" | "cz" | "de" | "dj" | "dk" | "dm" | "do" | "dz" | "ec" | "ee" | "eg" | "eh" | "er" | "es" | "et" | "fc" | "fd" | "fi" | "fj" | "fk" | "fm" | "fo" | "fr" | "fx" | "ga" | "gb" | "gd" | "ge" | "gf" | "gg" | "gh" | "gi" | "gl" | "gm" | "gn" | "gp" | "gq" | "gr" | "gs" | "gt" | "gu" | "gw" | "gy" | "hk" | "hm" | "hn" | "hr" | "ht" | "hu" | "id" | "ie" | "il" | "im" | "in" | "io" | "iq" | "ir" | "is" | "it" | "je" | "jm" | "jo" | "jp" | "ke" | "kg" | "kh" | "ki" | "km" | "kn" | "kp" | "kr" | "kw" | "ky" | "kz" | "la" | "lb" | "lc" | "li" | "lk" | "lr" | "ls" | "lt" | "lu" | "lv" | "ly" | "ma" | "mc" | "md" | "me" | "mf" | "mg" | "mh" | "mk" | "ml" | "mm" | "mn" | "mo" | "mp" | "mq" | "mr" | "ms" | "mt" | "mu" | "mv" | "mw" | "mx" | "my" | "mz" | "na" | "nc" | "ne" | "nf" | "ng" | "ni" | "nl" | "no" | "np" | "nr" | "nu" | "nz" | "om" | "pa" | "pe" | "pf" | "pg" | "ph" | "pk" | "pl" | "pm" | "pn" | "pr" | "ps" | "pt" | "pw" | "py" | "qa" | "qc" | "re" | "ro" | "rs" | "ru" | "rw" | "sa" | "sb" | "sc" | "sd" | "se" | "sg" | "sh" | "si" | "sj" | "sk" | "sl" | "sm" | "sn" | "so" | "sr" | "ss" | "st" | "sv" | "sx" | "sy" | "sz" | "tc" | "td" | "tf" | "tg" | "th" | "tj" | "tk" | "tl" | "tm" | "tn" | "to" | "tp" | "tr" | "tt" | "tv" | "tw" | "tz" | "ua" | "ug" | "uk" | "um" | "us" | "uy" | "uz" | "va" | "vc" | "ve" | "vg" | "vi" | "vn" | "vu" | "we" | "wf" | "ws" | "ye" | "yt" | "yu" | "za" | "zm" | "zw"
 }
 export namespace ip {
-    // interface fullName: ip.Antiphishing.Antiphishing
+    /**
+     * Phishing URLs hosted on your IP
+     * interface fullName: ip.Antiphishing.Antiphishing
+     */
     export interface Antiphishing {
         creationDate: string;
         id: number;
@@ -24,9 +33,15 @@ export namespace ip {
         state: ip.AntiphishingStateEnum;
         urlPhishing: string;
     }
-    // type fullname: ip.AntiphishingStateEnum
+    /**
+     * Possible values for antiphishing state
+     * type fullname: ip.AntiphishingStateEnum
+     */
     export type AntiphishingStateEnum = "blocked" | "blocking" | "unblocked" | "unblocking"
-    // interface fullName: ip.ArpBlockedIp.ArpBlockedIp
+    /**
+     * ARP blocked IP information
+     * interface fullName: ip.ArpBlockedIp.ArpBlockedIp
+     */
     export interface ArpBlockedIp {
         blockedSince: string;
         ipBlocked: string;
@@ -34,9 +49,15 @@ export namespace ip {
         state: ip.ArpStateEnum;
         time: number;
     }
-    // type fullname: ip.ArpStateEnum
+    /**
+     * Possible values for IP state
+     * type fullname: ip.ArpStateEnum
+     */
     export type ArpStateEnum = "blocked" | "unblocking"
-    // interface fullName: ip.BlockedIp.BlockedIp
+    /**
+     * Blocked IP information
+     * interface fullName: ip.BlockedIp.BlockedIp
+     */
     export interface BlockedIp {
         blockedSince: string;
         ipBlocked: string;
@@ -44,14 +65,23 @@ export namespace ip {
         state: ip.BlockedIpStateEnum;
         time: number;
     }
-    // type fullname: ip.BlockedIpStateEnum
+    /**
+     * Possible values for IP state
+     * type fullname: ip.BlockedIpStateEnum
+     */
     export type BlockedIpStateEnum = "blocked" | "unblocking"
-    // interface fullName: ip.Destination.Destination
+    /**
+     * A structure given service and its nexthops as a destination for failover ips
+     * interface fullName: ip.Destination.Destination
+     */
     export interface Destination {
         nexthop?: string[];
         service: string;
     }
-    // interface fullName: ip.Destinations.Destinations
+    /**
+     * A structure given all services allowed as a destination for this ip
+     * interface fullName: ip.Destinations.Destinations
+     */
     export interface Destinations {
         cloudProject?: ip.Destination[];
         dedicatedCloud?: ip.Destination[];
@@ -60,26 +90,44 @@ export namespace ip {
         ipLoadbalancing?: ip.Destination[];
         vps?: ip.Destination[];
     }
-    // interface fullName: ip.GameMitigation.GameMitigation
+    /**
+     * GAME Anti-DDoS
+     * interface fullName: ip.GameMitigation.GameMitigation
+     */
     export interface GameMitigation {
         firewallModeEnabled: boolean;
         ipOnGame: string;
         state: ip.GameMitigationStateEnum;
     }
-    // interface fullName: ip.GameMitigationRule.GameMitigationRule
+    /**
+     * Rule on ip:ports
+     * interface fullName: ip.GameMitigationRule.GameMitigationRule
+     */
     export interface GameMitigationRule {
         id: number;
         ports: complexType.Range<number>;
         protocol: ip.GameMitigationRuleProtocolEnum;
         state: ip.GameMitigationRuleStateEnum;
     }
-    // type fullname: ip.GameMitigationRuleProtocolEnum
+    /**
+     * Possible values for game rule protocol
+     * type fullname: ip.GameMitigationRuleProtocolEnum
+     */
     export type GameMitigationRuleProtocolEnum = "arkSurvivalEvolved" | "arma" | "gtaMultiTheftAutoSanAndreas" | "gtaSanAndreasMultiplayerMod" | "hl2Source" | "minecraftPocketEdition" | "minecraftQuery" | "mumble" | "other" | "rust" | "teamspeak2" | "teamspeak3" | "trackmaniaShootmania"
-    // type fullname: ip.GameMitigationRuleStateEnum
+    /**
+     * Possible values for game mitigation rule state
+     * type fullname: ip.GameMitigationRuleStateEnum
+     */
     export type GameMitigationRuleStateEnum = "createRulePending" | "deleteRulePending" | "ok"
-    // type fullname: ip.GameMitigationStateEnum
+    /**
+     * Possible values for udp mitigation rule state
+     * type fullname: ip.GameMitigationStateEnum
+     */
     export type GameMitigationStateEnum = "firewallModeDisablePending" | "firewallModeEnablePending" | "ok"
-    // interface fullName: ip.Ip.Ip
+    /**
+     * Your IP
+     * interface fullName: ip.Ip.Ip
+     */
     export interface Ip {
         canBeTerminated: boolean;
         country?: coreTypes.CountryEnum;
@@ -89,12 +137,18 @@ export namespace ip {
         routedTo?: ip.RoutedTo;
         type: ip.IpTypeEnum;
     }
-    // interface fullName: ip.IpMigrationToken.IpMigrationToken
+    /**
+     * IP migration to OVH
+     * interface fullName: ip.IpMigrationToken.IpMigrationToken
+     */
     export interface IpMigrationToken {
         customerId: string;
         token: string;
     }
-    // interface fullName: ip.IpTask.IpTask
+    /**
+     * IP tasks
+     * interface fullName: ip.IpTask.IpTask
+     */
     export interface IpTask {
         comment?: string;
         destination?: ip.RoutedTo;
@@ -105,41 +159,65 @@ export namespace ip {
         status: ip.TaskStatusEnum;
         taskId: number;
     }
-    // type fullname: ip.IpTypeEnum
+    /**
+     * Possible values for ip type
+     * type fullname: ip.IpTypeEnum
+     */
     export type IpTypeEnum = "cdn" | "cloud" | "dedicated" | "failover" | "hosted_ssl" | "housing" | "loadBalancing" | "mail" | "overthebox" | "pcc" | "pci" | "private" | "vpn" | "vps" | "vrack" | "xdsl"
-    // interface fullName: ip.MitigationAttack.MitigationAttack
+    /**
+     * Mitigation attack on your ip
+     * interface fullName: ip.MitigationAttack.MitigationAttack
+     */
     export interface MitigationAttack {
         endDate?: string;
         idAttack: number;
         ipAttack: string;
         startDate: string;
     }
-    // interface fullName: ip.MitigationStats.MitigationStats
+    /**
+     * Traffic statistics in and out on a mitigated ip
+     * interface fullName: ip.MitigationStats.MitigationStats
+     */
     export interface MitigationStats {
         in?: ip.MitigationTraffic;
         out?: ip.MitigationTraffic;
         timestamp: number;
     }
-    // interface fullName: ip.MitigationTraffic.MitigationTraffic
+    /**
+     * Traffic on mitigation
+     * interface fullName: ip.MitigationTraffic.MitigationTraffic
+     */
     export interface MitigationTraffic {
         bps: number;
         pps: number;
     }
-    // interface fullName: ip.ReverseIp.ReverseIp
+    /**
+     * Your reverse records on IP
+     * interface fullName: ip.ReverseIp.ReverseIp
+     */
     export interface ReverseIp {
         ipReverse: string;
         reverse: string;
     }
-    // interface fullName: ip.RipeInfos.RipeInfos
+    /**
+     * IP block RIPE informations
+     * interface fullName: ip.RipeInfos.RipeInfos
+     */
     export interface RipeInfos {
         description?: string;
         netname?: string;
     }
-    // interface fullName: ip.RoutedTo.RoutedTo
+    /**
+     * Information about routing
+     * interface fullName: ip.RoutedTo.RoutedTo
+     */
     export interface RoutedTo {
         serviceName?: string;
     }
-    // interface fullName: ip.ServiceIp.ServiceIp
+    /**
+     * Your IP linked to service
+     * interface fullName: ip.ServiceIp.ServiceIp
+     */
     export interface ServiceIp {
         canBeTerminated: boolean;
         country?: coreTypes.CountryEnum;
@@ -149,16 +227,25 @@ export namespace ip {
         routedTo?: ip.RoutedTo;
         type: ip.IpTypeEnum;
     }
-    // interface fullName: ip.SpamIp.SpamIp
+    /**
+     * Your IP spam stats
+     * interface fullName: ip.SpamIp.SpamIp
+     */
     export interface SpamIp {
         date: string;
         ipSpamming: string;
         state: ip.SpamStateEnum;
         time: number;
     }
-    // type fullname: ip.SpamStateEnum
+    /**
+     * Possible values for spam state
+     * type fullname: ip.SpamStateEnum
+     */
     export type SpamStateEnum = "blockedForSpam" | "unblocked" | "unblocking"
-    // interface fullName: ip.SpamStats.SpamStats
+    /**
+     * Spam statistics about an IP address
+     * interface fullName: ip.SpamStats.SpamStats
+     */
     export interface SpamStats {
         averageSpamscore?: number;
         detectedSpams?: ip.SpamTarget[];
@@ -166,28 +253,48 @@ export namespace ip {
         timestamp: number;
         total: number;
     }
-    // interface fullName: ip.SpamTarget.SpamTarget
+    /**
+     * Spam's target information
+     * interface fullName: ip.SpamTarget.SpamTarget
+     */
     export interface SpamTarget {
         date: number;
         destinationIp: string;
         messageId: string;
         spamscore: number;
     }
-    // type fullname: ip.TaskFunctionEnum
+    /**
+     * different task operation
+     * type fullname: ip.TaskFunctionEnum
+     */
     export type TaskFunctionEnum = "arinBlockReassign" | "changeRipeOrg" | "checkAndReleaseIp" | "genericMoveFloatingIp"
-    // type fullname: ip.TaskStatusEnum
+    /**
+     * different task status
+     * type fullname: ip.TaskStatusEnum
+     */
     export type TaskStatusEnum = "cancelled" | "customerError" | "doing" | "done" | "init" | "ovhError" | "todo"
 }
 export namespace service {
-    // type fullname: service.StateEnum
+    /**
+     * type fullname: service.StateEnum
+     */
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
-    // type fullname: service.TerminationFutureUseEnum
+    /**
+     * All future uses you can provide for a service termination
+     * type fullname: service.TerminationFutureUseEnum
+     */
     export type TerminationFutureUseEnum = "NOT_REPLACING_SERVICE" | "OTHER" | "SUBSCRIBE_AN_OTHER_SERVICE" | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR" | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
-    // type fullname: service.TerminationReasonEnum
+    /**
+     * All reasons you can provide for a service termination
+     * type fullname: service.TerminationReasonEnum
+     */
     export type TerminationReasonEnum = "FEATURES_DONT_SUIT_ME" | "LACK_OF_PERFORMANCES" | "MIGRATED_TO_ANOTHER_OVH_PRODUCT" | "MIGRATED_TO_COMPETITOR" | "NOT_ENOUGH_RECOGNITION" | "NOT_NEEDED_ANYMORE" | "NOT_RELIABLE" | "NO_ANSWER" | "OTHER" | "PRODUCT_DIMENSION_DONT_SUIT_ME" | "PRODUCT_TOOLS_DONT_SUIT_ME" | "TOO_EXPENSIVE" | "TOO_HARD_TO_USE" | "UNSATIFIED_BY_CUSTOMER_SUPPORT"
 }
 export namespace services {
-    // interface fullName: services.NonExpiringService.NonExpiringService
+    /**
+     * Details about a non-expiring Service
+     * interface fullName: services.NonExpiringService.NonExpiringService
+     */
     export interface NonExpiringService {
         contactAdmin: string;
         contactBilling: string;
@@ -207,192 +314,508 @@ export function proxyIp(ovhEngine: OvhRequestable): Ip {
 }
 export default proxyIp;
 /**
- * Api Proxy model
- */// Apis harmony
-// path /ip
+ * Api model for /ip
+ */
 export interface Ip {
-    // GET /ip
+    /**
+     * Your OVH IPs
+     * GET /ip
+     */
     $get(params?: { description?: string, ip?: string, routedTo_serviceName?: string, type?: ip.IpTypeEnum }): Promise<string[]>;
+    /**
+     * Controle cache
+     */
+    $cache(param?: ICacheOptions): Promise<any>;
     service: {
-        // GET /ip/service
+        /**
+         * List available services
+         * GET /ip/service
+         */
         $get(): Promise<string[]>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         $(serviceName: string): {
-            // GET /ip/service/{serviceName}
+            /**
+             * Get this object properties
+             * GET /ip/service/{serviceName}
+             */
             $get(): Promise<ip.ServiceIp>;
-            // PUT /ip/service/{serviceName}
+            /**
+             * Alter this object properties
+             * PUT /ip/service/{serviceName}
+             */
             $put(params?: { canBeTerminated?: boolean, country?: coreTypes.CountryEnum, description?: string, ip?: string, organisationId?: string, routedTo?: ip.RoutedTo, type?: ip.IpTypeEnum }): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             confirmTermination: {
-                // POST /ip/service/{serviceName}/confirmTermination
+                /**
+                 * Confirm termination of your service
+                 * POST /ip/service/{serviceName}/confirmTermination
+                 */
                 $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             serviceInfos: {
-                // GET /ip/service/{serviceName}/serviceInfos
+                /**
+                 * Get this object properties
+                 * GET /ip/service/{serviceName}/serviceInfos
+                 */
                 $get(): Promise<services.NonExpiringService>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             terminate: {
-                // POST /ip/service/{serviceName}/terminate
+                /**
+                 * Terminate your service
+                 * POST /ip/service/{serviceName}/terminate
+                 */
                 $post(): Promise<string>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         };
     }
     $(ip: string): {
-        // GET /ip/{ip}
+        /**
+         * Get this object properties
+         * GET /ip/{ip}
+         */
         $get(): Promise<ip.Ip>;
-        // PUT /ip/{ip}
+        /**
+         * Alter this object properties
+         * PUT /ip/{ip}
+         */
         $put(params?: { canBeTerminated?: boolean, country?: coreTypes.CountryEnum, description?: string, ip?: string, organisationId?: string, routedTo?: ip.RoutedTo, type?: ip.IpTypeEnum }): Promise<void>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         antihack: {
-            // GET /ip/{ip}/antihack
+            /**
+             * Anti-Hack blocked IP
+             * GET /ip/{ip}/antihack
+             */
             $get(params?: { state?: ip.BlockedIpStateEnum }): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(ipBlocked: string): {
-                // GET /ip/{ip}/antihack/{ipBlocked}
+                /**
+                 * Get this object properties
+                 * GET /ip/{ip}/antihack/{ipBlocked}
+                 */
                 $get(): Promise<ip.BlockedIp>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 unblock: {
-                    // POST /ip/{ip}/antihack/{ipBlocked}/unblock
+                    /**
+                     * Unblock this IP
+                     * POST /ip/{ip}/antihack/{ipBlocked}/unblock
+                     */
                     $post(): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             };
         }
         arp: {
-            // GET /ip/{ip}/arp
+            /**
+             * ARP blocked IP
+             * GET /ip/{ip}/arp
+             */
             $get(params?: { state?: ip.ArpStateEnum }): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(ipBlocked: string): {
-                // GET /ip/{ip}/arp/{ipBlocked}
+                /**
+                 * Get this object properties
+                 * GET /ip/{ip}/arp/{ipBlocked}
+                 */
                 $get(): Promise<ip.ArpBlockedIp>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 unblock: {
-                    // POST /ip/{ip}/arp/{ipBlocked}/unblock
+                    /**
+                     * Unblock this IP
+                     * POST /ip/{ip}/arp/{ipBlocked}/unblock
+                     */
                     $post(): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             };
         }
         changeOrg: {
-            // POST /ip/{ip}/changeOrg
+            /**
+             * Change organisation of this IP
+             * POST /ip/{ip}/changeOrg
+             */
             $post(params: { organisation: string }): Promise<ip.IpTask>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         game: {
-            // GET /ip/{ip}/game
+            /**
+             * Ip under game anti-ddos
+             * GET /ip/{ip}/game
+             */
             $get(): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(ipOnGame: string): {
-                // GET /ip/{ip}/game/{ipOnGame}
+                /**
+                 * Get this object properties
+                 * GET /ip/{ip}/game/{ipOnGame}
+                 */
                 $get(): Promise<ip.GameMitigation>;
-                // PUT /ip/{ip}/game/{ipOnGame}
+                /**
+                 * Alter this object properties
+                 * PUT /ip/{ip}/game/{ipOnGame}
+                 */
                 $put(params?: { firewallModeEnabled?: boolean, ipOnGame?: string, state?: ip.GameMitigationStateEnum }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 rule: {
-                    // GET /ip/{ip}/game/{ipOnGame}/rule
+                    /**
+                     * IDs of rules configured for this IP
+                     * GET /ip/{ip}/game/{ipOnGame}/rule
+                     */
                     $get(): Promise<number[]>;
-                    // POST /ip/{ip}/game/{ipOnGame}/rule
+                    /**
+                     * Add new rule on your IP
+                     * POST /ip/{ip}/game/{ipOnGame}/rule
+                     */
                     $post(params: { ports: complexType.Range<number>, protocol: ip.GameMitigationRuleProtocolEnum }): Promise<ip.GameMitigationRule>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     $(id: number): {
-                        // DELETE /ip/{ip}/game/{ipOnGame}/rule/{id}
+                        /**
+                         * Delete rule
+                         * DELETE /ip/{ip}/game/{ipOnGame}/rule/{id}
+                         */
                         $delete(): Promise<ip.GameMitigationRule>;
-                        // GET /ip/{ip}/game/{ipOnGame}/rule/{id}
+                        /**
+                         * Get this object properties
+                         * GET /ip/{ip}/game/{ipOnGame}/rule/{id}
+                         */
                         $get(): Promise<ip.GameMitigationRule>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     };
                 }
             };
         }
         license: {
             cloudLinux: {
-                // GET /ip/{ip}/license/cloudLinux
+                /**
+                 * Cloud Linux licenses associated to this IP
+                 * GET /ip/{ip}/license/cloudLinux
+                 */
                 $get(params?: { ipAddress?: string }): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             cpanel: {
-                // GET /ip/{ip}/license/cpanel
+                /**
+                 * Cpanel licenses associated to this IP
+                 * GET /ip/{ip}/license/cpanel
+                 */
                 $get(params?: { ipAddress?: string }): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             directadmin: {
-                // GET /ip/{ip}/license/directadmin
+                /**
+                 * DirectAdmin licenses associated to this IP
+                 * GET /ip/{ip}/license/directadmin
+                 */
                 $get(params?: { ipAddress?: string }): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             plesk: {
-                // GET /ip/{ip}/license/plesk
+                /**
+                 * Plesk licenses associated to this IP
+                 * GET /ip/{ip}/license/plesk
+                 */
                 $get(params?: { ipAddress?: string }): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             sqlserver: {
-                // GET /ip/{ip}/license/sqlserver
+                /**
+                 * SQL Server licenses associated to this IP
+                 * GET /ip/{ip}/license/sqlserver
+                 */
                 $get(params?: { ipAddress?: string }): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             virtuozzo: {
-                // GET /ip/{ip}/license/virtuozzo
+                /**
+                 * Virtuozzo licenses associated to this IP
+                 * GET /ip/{ip}/license/virtuozzo
+                 */
                 $get(params?: { ipAddress?: string }): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             windows: {
-                // GET /ip/{ip}/license/windows
+                /**
+                 * Windows licenses associated to this IP
+                 * GET /ip/{ip}/license/windows
+                 */
                 $get(params?: { ipAddress?: string }): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             worklight: {
-                // GET /ip/{ip}/license/worklight
+                /**
+                 * WorkLight licenses associated to this IP
+                 * GET /ip/{ip}/license/worklight
+                 */
                 $get(params?: { ipAddress?: string }): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         }
         migrationToken: {
-            // GET /ip/{ip}/migrationToken
+            /**
+             * Get this object properties
+             * GET /ip/{ip}/migrationToken
+             */
             $get(): Promise<ip.IpMigrationToken>;
-            // POST /ip/{ip}/migrationToken
+            /**
+             * Generate a migration token
+             * POST /ip/{ip}/migrationToken
+             */
             $post(params: { customerId: string }): Promise<ip.IpMigrationToken>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         move: {
-            // GET /ip/{ip}/move
+            /**
+             * List services available as a destination
+             * GET /ip/{ip}/move
+             */
             $get(): Promise<ip.Destinations>;
-            // POST /ip/{ip}/move
+            /**
+             * Move this IP to another service
+             * POST /ip/{ip}/move
+             */
             $post(params: { nexthop?: string, to: string }): Promise<ip.IpTask>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         park: {
-            // POST /ip/{ip}/park
+            /**
+             * Park this IP
+             * POST /ip/{ip}/park
+             */
             $post(): Promise<ip.IpTask>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         phishing: {
-            // GET /ip/{ip}/phishing
+            /**
+             * Ip under anti-phishing
+             * GET /ip/{ip}/phishing
+             */
             $get(params?: { ipOnAntiphishing?: string, state?: ip.AntiphishingStateEnum }): Promise<number[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(id: number): {
-                // GET /ip/{ip}/phishing/{id}
+                /**
+                 * Get this object properties
+                 * GET /ip/{ip}/phishing/{id}
+                 */
                 $get(): Promise<ip.Antiphishing>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             };
         }
         reverse: {
-            // GET /ip/{ip}/reverse
+            /**
+             * Reverse on your ip
+             * GET /ip/{ip}/reverse
+             */
             $get(): Promise<string[]>;
-            // POST /ip/{ip}/reverse
+            /**
+             * Add reverse on an ip
+             * POST /ip/{ip}/reverse
+             */
             $post(params: { ipReverse: string, reverse: string }): Promise<ip.ReverseIp>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(ipReverse: string): {
-                // DELETE /ip/{ip}/reverse/{ipReverse}
+                /**
+                 * Delete a reverse on one IP
+                 * DELETE /ip/{ip}/reverse/{ipReverse}
+                 */
                 $delete(): Promise<void>;
-                // GET /ip/{ip}/reverse/{ipReverse}
+                /**
+                 * Get this object properties
+                 * GET /ip/{ip}/reverse/{ipReverse}
+                 */
                 $get(): Promise<ip.ReverseIp>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             };
         }
         ripe: {
-            // GET /ip/{ip}/ripe
+            /**
+             * Get this object properties
+             * GET /ip/{ip}/ripe
+             */
             $get(): Promise<ip.RipeInfos>;
-            // PUT /ip/{ip}/ripe
+            /**
+             * Alter this object properties
+             * PUT /ip/{ip}/ripe
+             */
             $put(params?: { description?: string, netname?: string }): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         spam: {
-            // GET /ip/{ip}/spam
+            /**
+             * Ip spamming
+             * GET /ip/{ip}/spam
+             */
             $get(params?: { state?: ip.SpamStateEnum }): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(ipSpamming: string): {
-                // GET /ip/{ip}/spam/{ipSpamming}
+                /**
+                 * Get this object properties
+                 * GET /ip/{ip}/spam/{ipSpamming}
+                 */
                 $get(): Promise<ip.SpamIp>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 stats: {
-                    // GET /ip/{ip}/spam/{ipSpamming}/stats
+                    /**
+                     * Get statistics about the email traffic
+                     * GET /ip/{ip}/spam/{ipSpamming}/stats
+                     */
                     $get(params: { from: string, to: string }): Promise<ip.SpamStats[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 unblock: {
-                    // POST /ip/{ip}/spam/{ipSpamming}/unblock
+                    /**
+                     * Release the ip from anti-spam system
+                     * POST /ip/{ip}/spam/{ipSpamming}/unblock
+                     */
                     $post(): Promise<ip.SpamIp>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             };
         }
         task: {
-            // GET /ip/{ip}/task
+            /**
+             * IP tasks
+             * GET /ip/{ip}/task
+             */
             $get(params?: { function_?: ip.TaskFunctionEnum, status?: ip.TaskStatusEnum }): Promise<number[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(taskId: number): {
-                // GET /ip/{ip}/task/{taskId}
+                /**
+                 * Get this object properties
+                 * GET /ip/{ip}/task/{taskId}
+                 */
                 $get(): Promise<ip.IpTask>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             };
         }
         terminate: {
-            // POST /ip/{ip}/terminate
+            /**
+             * Delete a failover IP
+             * POST /ip/{ip}/terminate
+             */
             $post(): Promise<ip.IpTask>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
     };
 }

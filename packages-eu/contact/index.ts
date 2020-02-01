@@ -1,23 +1,32 @@
-import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
+import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /contact Models
  * Source: https://eu.api.ovh.com/1.0/contact.json
  */
 export namespace complexType {
-    // interface fullName: complexType.SafeKeyValue.SafeKeyValue
+    /**
+     * Key and value, with proper key strings
+     * interface fullName: complexType.SafeKeyValue.SafeKeyValue
+     */
     export interface SafeKeyValue<T> {
         key: string;
         value: T;
     }
 }
 export namespace contact {
-    // interface fullName: contact.FormCharacteristic.FormCharacteristic
+    /**
+     * Form characteristics
+     * interface fullName: contact.FormCharacteristic.FormCharacteristic
+     */
     export interface FormCharacteristic {
         keys: contact.KeyFormCharacteristic[];
         type: string;
     }
-    // interface fullName: contact.KeyFormCharacteristic.KeyFormCharacteristic
+    /**
+     * Form key description
+     * interface fullName: contact.KeyFormCharacteristic.KeyFormCharacteristic
+     */
     export interface KeyFormCharacteristic {
         key: string;
         required: boolean;
@@ -32,16 +41,29 @@ export function proxyContact(ovhEngine: OvhRequestable): Contact {
 }
 export default proxyContact;
 /**
- * Api Proxy model
- */// Apis harmony
-// path /contact
+ * Api model for /contact
+ */
 export interface Contact {
     form: {
-        // GET /contact/form
+        /**
+         * Get form characteristics
+         * GET /contact/form
+         */
         $get(): Promise<contact.FormCharacteristic[]>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         send: {
-            // POST /contact/form/send
+            /**
+             * Send form following characteristics of /contact/form
+             * POST /contact/form/send
+             */
             $post(params: { form: complexType.SafeKeyValue<string>[], type: string }): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
     }
 }

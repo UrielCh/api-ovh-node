@@ -1,20 +1,32 @@
-import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
+import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /cloud Models
  * Source: https://eu.api.ovh.com/1.0/cloud.json
  */
 export namespace cloud {
-    // type fullname: cloud.AccessTypeEnum
+    /**
+     * Possible values for project access type
+     * type fullname: cloud.AccessTypeEnum
+     */
     export type AccessTypeEnum = "full" | "restricted"
-    // interface fullName: cloud.Acl.Acl
+    /**
+     * Cloud ACL
+     * interface fullName: cloud.Acl.Acl
+     */
     export interface Acl {
         accountId: string;
         type: cloud.AclTypeEnum;
     }
-    // type fullname: cloud.AclTypeEnum
+    /**
+     * Possible values for ACL type
+     * type fullname: cloud.AclTypeEnum
+     */
     export type AclTypeEnum = "readOnly" | "readWrite"
-    // interface fullName: cloud.Alerting.Alerting
+    /**
+     * Cloud alerting consumption
+     * interface fullName: cloud.Alerting.Alerting
+     */
     export interface Alerting {
         creationDate: string;
         delay: cloud.AlertingDelayEnum;
@@ -23,26 +35,41 @@ export namespace cloud {
         id: string;
         monthlyThreshold: number;
     }
-    // interface fullName: cloud.AlertingAlert.AlertingAlert
+    /**
+     * Cloud alert on your consumption
+     * interface fullName: cloud.AlertingAlert.AlertingAlert
+     */
     export interface AlertingAlert {
         alertDate: string;
         alertId: number;
         emails: string[];
     }
-    // type fullname: cloud.AlertingDelayEnum
+    /**
+     * Possible values for delay between two alerts in seconds
+     * type fullname: cloud.AlertingDelayEnum
+     */
     export type AlertingDelayEnum = 10800 | 172800 | 21600 | 259200 | 3600 | 43200 | 604800 | 86400
-    // interface fullName: cloud.ArchiveStoragePrice.ArchiveStoragePrice
+    /**
+     * Details about archive storage pricing
+     * interface fullName: cloud.ArchiveStoragePrice.ArchiveStoragePrice
+     */
     export interface ArchiveStoragePrice {
         monthlyPrice: orderPrice;
         region: string;
     }
-    // interface fullName: cloud.AvailableRegion.AvailableRegion
+    /**
+     * Details about an available region that can be activated on your project
+     * interface fullName: cloud.AvailableRegion.AvailableRegion
+     */
     export interface AvailableRegion {
         continentCode: cloud.RegionContinentEnum;
         datacenterLocation: string;
         name: string;
     }
-    // interface fullName: cloud.Backup.Backup
+    /**
+     * List your automated backups
+     * interface fullName: cloud.Backup.Backup
+     */
     export interface Backup {
         backupName: string;
         createdAt: string;
@@ -52,17 +79,26 @@ export namespace cloud {
         instanceId: string;
         name: string;
     }
-    // interface fullName: cloud.BandwidthStoragePrice.BandwidthStoragePrice
+    /**
+     * Details about bandwidth storage pricing
+     * interface fullName: cloud.BandwidthStoragePrice.BandwidthStoragePrice
+     */
     export interface BandwidthStoragePrice {
         price: orderPrice;
         region: string;
     }
-    // interface fullName: cloud.Component.Component
+    /**
+     * Information about the different components available in the region
+     * interface fullName: cloud.Component.Component
+     */
     export interface Component {
         name: string;
         status: cloud.ServiceStatusEnum;
     }
-    // interface fullName: cloud.Credit.Credit
+    /**
+     * Cloud credit
+     * interface fullName: cloud.Credit.Credit
+     */
     export interface Credit {
         available_credit: orderPrice;
         bill?: string;
@@ -74,17 +110,29 @@ export namespace cloud {
         validity?: cloud.common.VoucherValidity;
         voucher?: string;
     }
-    // interface fullName: cloud.Execution.Execution
+    /**
+     * An execution of the backup workflow
+     * interface fullName: cloud.Execution.Execution
+     */
     export interface Execution {
         executedAt: string;
         state: cloud.ExecutionStateEnum;
         stateInfo: string;
     }
-    // type fullname: cloud.ExecutionState
+    /**
+     * Enum values for State
+     * type fullname: cloud.ExecutionState
+     */
     export type ExecutionState = "IDLE" | "RUNNING" | "SUCCESS" | "ERROR" | "PAUSED"
-    // type fullname: cloud.ExecutionStateEnum
+    /**
+     * Enum values for State
+     * type fullname: cloud.ExecutionStateEnum
+     */
     export type ExecutionStateEnum = "IDLE" | "RUNNING" | "SUCCESS" | "ERROR" | "PAUSED"
-    // interface fullName: cloud.FlavorPrice.FlavorPrice
+    /**
+     * Details about flavor pricing
+     * interface fullName: cloud.FlavorPrice.FlavorPrice
+     */
     export interface FlavorPrice {
         flavorId: string;
         flavorName: string;
@@ -92,24 +140,42 @@ export namespace cloud {
         price: orderPrice;
         region: string;
     }
-    // type fullname: cloud.IpCountryEnum
+    /**
+     * Enum values for IpCountry
+     * type fullname: cloud.IpCountryEnum
+     */
     export type IpCountryEnum = "au" | "be" | "ca" | "cz" | "de" | "es" | "fi" | "fr" | "ie" | "it" | "lt" | "nl" | "pl" | "pt" | "sg" | "uk" | "us"
-    // interface fullName: cloud.Lab.Lab
+    /**
+     * A public cloud lab permits to activate a feature in beta
+     * interface fullName: cloud.Lab.Lab
+     */
     export interface Lab {
         id: string;
         name: string;
         status: cloud.LabStatusEnum;
     }
-    // interface fullName: cloud.LabAgreements.LabAgreements
+    /**
+     * List of required agreements to activate the lab
+     * interface fullName: cloud.LabAgreements.LabAgreements
+     */
     export interface LabAgreements {
         accepted: number[];
         toAccept: number[];
     }
-    // type fullname: cloud.LabStatus
+    /**
+     * Enum values for Status
+     * type fullname: cloud.LabStatus
+     */
     export type LabStatus = "open" | "activating" | "activated" | "closed"
-    // type fullname: cloud.LabStatusEnum
+    /**
+     * Enum values for Status
+     * type fullname: cloud.LabStatusEnum
+     */
     export type LabStatusEnum = "open" | "activating" | "activated" | "closed"
-    // interface fullName: cloud.Operation.Operation
+    /**
+     * An operation is an async process on your Project
+     * interface fullName: cloud.Operation.Operation
+     */
     export interface Operation {
         action: string;
         completedAt?: string;
@@ -120,11 +186,20 @@ export namespace cloud {
         startedAt?: string;
         status: cloud.OperationStatusEnum;
     }
-    // type fullname: cloud.OperationStatus
+    /**
+     * Enum values for Status
+     * type fullname: cloud.OperationStatus
+     */
     export type OperationStatus = "created" | "in-progress" | "completed" | "in-error" | "unknown"
-    // type fullname: cloud.OperationStatusEnum
+    /**
+     * Enum values for Status
+     * type fullname: cloud.OperationStatusEnum
+     */
     export type OperationStatusEnum = "created" | "in-progress" | "completed" | "in-error" | "unknown"
-    // interface fullName: cloud.Price.Price
+    /**
+     * A structure defining prices for cloud services
+     * interface fullName: cloud.Price.Price
+     */
     export interface Price {
         archive: cloud.ArchiveStoragePrice[];
         bandwidthArchiveIn: cloud.BandwidthStoragePrice[];
@@ -136,7 +211,10 @@ export namespace cloud {
         storage: cloud.StoragePrice[];
         volumes: cloud.VolumePrice[];
     }
-    // interface fullName: cloud.Project.Project
+    /**
+     * Project
+     * interface fullName: cloud.Project.Project
+     */
     export interface Project {
         access: cloud.AccessTypeEnum;
         creationDate: string;
@@ -148,26 +226,41 @@ export namespace cloud {
         status: cloud.project.ProjectStatusEnum;
         unleash: boolean;
     }
-    // interface fullName: cloud.ProjectActivateMonthlyBillingCreation.ProjectActivateMonthlyBillingCreation
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectActivateMonthlyBillingCreation.ProjectActivateMonthlyBillingCreation
+     */
     export interface ProjectActivateMonthlyBillingCreation {
         instances: cloud.instance.MonthlyInstanceBulkParams[];
     }
-    // interface fullName: cloud.ProjectContainerRegistryCreation.ProjectContainerRegistryCreation
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectContainerRegistryCreation.ProjectContainerRegistryCreation
+     */
     export interface ProjectContainerRegistryCreation {
         name: string;
         planID: string;
         region: string;
     }
-    // interface fullName: cloud.ProjectContainerRegistryUpdate.ProjectContainerRegistryUpdate
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectContainerRegistryUpdate.ProjectContainerRegistryUpdate
+     */
     export interface ProjectContainerRegistryUpdate {
         name: string;
     }
-    // interface fullName: cloud.ProjectContainerRegistryUsersCreation.ProjectContainerRegistryUsersCreation
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectContainerRegistryUsersCreation.ProjectContainerRegistryUsersCreation
+     */
     export interface ProjectContainerRegistryUsersCreation {
         email?: string;
         login?: string;
     }
-    // interface fullName: cloud.ProjectInstanceBulkCreation.ProjectInstanceBulkCreation
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectInstanceBulkCreation.ProjectInstanceBulkCreation
+     */
     export interface ProjectInstanceBulkCreation {
         autobackup?: cloud.instance.AutoBackup;
         flavorId: string;
@@ -182,7 +275,10 @@ export namespace cloud {
         userData?: string;
         volumeId?: string;
     }
-    // interface fullName: cloud.ProjectInstanceCreation.ProjectInstanceCreation
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectInstanceCreation.ProjectInstanceCreation
+     */
     export interface ProjectInstanceCreation {
         autobackup?: cloud.instance.AutoBackup;
         flavorId: string;
@@ -196,58 +292,94 @@ export namespace cloud {
         userData?: string;
         volumeId?: string;
     }
-    // interface fullName: cloud.ProjectInstanceGroupCreation.ProjectInstanceGroupCreation
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectInstanceGroupCreation.ProjectInstanceGroupCreation
+     */
     export interface ProjectInstanceGroupCreation {
         name: string;
         region: string;
         type: cloud.instancegroup.InstanceGroupTypeEnum;
     }
-    // interface fullName: cloud.ProjectInstanceInterfaceCreation.ProjectInstanceInterfaceCreation
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectInstanceInterfaceCreation.ProjectInstanceInterfaceCreation
+     */
     export interface ProjectInstanceInterfaceCreation {
         ip?: string;
         networkId: string;
     }
-    // interface fullName: cloud.ProjectInstanceRebootCreation.ProjectInstanceRebootCreation
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectInstanceRebootCreation.ProjectInstanceRebootCreation
+     */
     export interface ProjectInstanceRebootCreation {
         type: cloud.instance.RebootTypeEnum;
     }
-    // interface fullName: cloud.ProjectInstanceReinstallCreation.ProjectInstanceReinstallCreation
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectInstanceReinstallCreation.ProjectInstanceReinstallCreation
+     */
     export interface ProjectInstanceReinstallCreation {
         imageId: string;
     }
-    // interface fullName: cloud.ProjectInstanceRescueModeCreation.ProjectInstanceRescueModeCreation
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectInstanceRescueModeCreation.ProjectInstanceRescueModeCreation
+     */
     export interface ProjectInstanceRescueModeCreation {
         imageId?: string;
         rescue: boolean;
     }
-    // interface fullName: cloud.ProjectInstanceResizeCreation.ProjectInstanceResizeCreation
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectInstanceResizeCreation.ProjectInstanceResizeCreation
+     */
     export interface ProjectInstanceResizeCreation {
         flavorId: string;
     }
-    // interface fullName: cloud.ProjectInstanceSnapshotCreation.ProjectInstanceSnapshotCreation
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectInstanceSnapshotCreation.ProjectInstanceSnapshotCreation
+     */
     export interface ProjectInstanceSnapshotCreation {
         snapshotName: string;
     }
-    // interface fullName: cloud.ProjectInstanceUpdate.ProjectInstanceUpdate
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectInstanceUpdate.ProjectInstanceUpdate
+     */
     export interface ProjectInstanceUpdate {
         instanceName: string;
     }
-    // interface fullName: cloud.ProjectIpFailoverAttachCreation.ProjectIpFailoverAttachCreation
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectIpFailoverAttachCreation.ProjectIpFailoverAttachCreation
+     */
     export interface ProjectIpFailoverAttachCreation {
         instanceId: string;
     }
-    // interface fullName: cloud.ProjectKubeCreation.ProjectKubeCreation
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectKubeCreation.ProjectKubeCreation
+     */
     export interface ProjectKubeCreation {
         name?: string;
         region: cloud.kube.RegionEnum;
         version?: cloud.kube.VersionEnum;
     }
-    // interface fullName: cloud.ProjectKubeNodeCreation.ProjectKubeNodeCreation
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectKubeNodeCreation.ProjectKubeNodeCreation
+     */
     export interface ProjectKubeNodeCreation {
         flavorName: string;
         name?: string;
     }
-    // interface fullName: cloud.ProjectKubeNodePoolCreation.ProjectKubeNodePoolCreation
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectKubeNodePoolCreation.ProjectKubeNodePoolCreation
+     */
     export interface ProjectKubeNodePoolCreation {
         desiredNodes?: number;
         flavorName: string;
@@ -255,44 +387,71 @@ export namespace cloud {
         minNodes?: number;
         name?: string;
     }
-    // interface fullName: cloud.ProjectKubeNodePoolUpdate.ProjectKubeNodePoolUpdate
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectKubeNodePoolUpdate.ProjectKubeNodePoolUpdate
+     */
     export interface ProjectKubeNodePoolUpdate {
         desiredNodes?: number;
         maxNodes?: number;
         minNodes?: number;
     }
-    // interface fullName: cloud.ProjectKubeResetCreation.ProjectKubeResetCreation
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectKubeResetCreation.ProjectKubeResetCreation
+     */
     export interface ProjectKubeResetCreation {
         version?: cloud.kube.VersionEnum;
         workerNodesPolicy?: cloud.kube.ResetWorkerNodesPolicyEnum;
     }
-    // interface fullName: cloud.ProjectKubeUpdate.ProjectKubeUpdate
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectKubeUpdate.ProjectKubeUpdate
+     */
     export interface ProjectKubeUpdate {
         name: string;
     }
-    // interface fullName: cloud.ProjectKubeUpdateCreation.ProjectKubeUpdateCreation
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectKubeUpdateCreation.ProjectKubeUpdateCreation
+     */
     export interface ProjectKubeUpdateCreation {
         strategy?: cloud.kube.UpdateStrategyEnum;
     }
-    // interface fullName: cloud.ProjectKubeUpdatePolicyUpdate.ProjectKubeUpdatePolicyUpdate
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectKubeUpdatePolicyUpdate.ProjectKubeUpdatePolicyUpdate
+     */
     export interface ProjectKubeUpdatePolicyUpdate {
         updatePolicy: cloud.kube.UpdatePolicyEnum;
     }
-    // interface fullName: cloud.ProjectMigrationUpdate.ProjectMigrationUpdate
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectMigrationUpdate.ProjectMigrationUpdate
+     */
     export interface ProjectMigrationUpdate {
         date: string;
     }
-    // interface fullName: cloud.ProjectNetworkPrivateCreation.ProjectNetworkPrivateCreation
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectNetworkPrivateCreation.ProjectNetworkPrivateCreation
+     */
     export interface ProjectNetworkPrivateCreation {
         name: string;
         regions?: string[];
         vlanId?: number;
     }
-    // interface fullName: cloud.ProjectNetworkPrivateRegionCreation.ProjectNetworkPrivateRegionCreation
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectNetworkPrivateRegionCreation.ProjectNetworkPrivateRegionCreation
+     */
     export interface ProjectNetworkPrivateRegionCreation {
         region: string;
     }
-    // interface fullName: cloud.ProjectNetworkPrivateSubnetCreation.ProjectNetworkPrivateSubnetCreation
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectNetworkPrivateSubnetCreation.ProjectNetworkPrivateSubnetCreation
+     */
     export interface ProjectNetworkPrivateSubnetCreation {
         dhcp: boolean;
         end: string;
@@ -301,25 +460,40 @@ export namespace cloud {
         region: string;
         start: string;
     }
-    // interface fullName: cloud.ProjectNetworkPrivateSubnetUpdate.ProjectNetworkPrivateSubnetUpdate
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectNetworkPrivateSubnetUpdate.ProjectNetworkPrivateSubnetUpdate
+     */
     export interface ProjectNetworkPrivateSubnetUpdate {
         dhcp: boolean;
         disableGateway: boolean;
         gatewayIp?: string;
     }
-    // interface fullName: cloud.ProjectNetworkPrivateUpdate.ProjectNetworkPrivateUpdate
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectNetworkPrivateUpdate.ProjectNetworkPrivateUpdate
+     */
     export interface ProjectNetworkPrivateUpdate {
         name: string;
     }
-    // interface fullName: cloud.ProjectRegionCreation.ProjectRegionCreation
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectRegionCreation.ProjectRegionCreation
+     */
     export interface ProjectRegionCreation {
         region: string;
     }
-    // interface fullName: cloud.ProjectRegionQuotaCreation.ProjectRegionQuotaCreation
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectRegionQuotaCreation.ProjectRegionQuotaCreation
+     */
     export interface ProjectRegionQuotaCreation {
         name: string;
     }
-    // interface fullName: cloud.ProjectRegionWorkflowBackupCreation.ProjectRegionWorkflowBackupCreation
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectRegionWorkflowBackupCreation.ProjectRegionWorkflowBackupCreation
+     */
     export interface ProjectRegionWorkflowBackupCreation {
         cron: string;
         instanceId: string;
@@ -327,59 +501,95 @@ export namespace cloud {
         name: string;
         rotation: number;
     }
-    // interface fullName: cloud.ProjectSshkeyCreation.ProjectSshkeyCreation
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectSshkeyCreation.ProjectSshkeyCreation
+     */
     export interface ProjectSshkeyCreation {
         name: string;
         publicKey: string;
         region?: string;
     }
-    // interface fullName: cloud.ProjectStorageCorsCreation.ProjectStorageCorsCreation
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectStorageCorsCreation.ProjectStorageCorsCreation
+     */
     export interface ProjectStorageCorsCreation {
         origin: string;
     }
-    // interface fullName: cloud.ProjectStorageCreation.ProjectStorageCreation
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectStorageCreation.ProjectStorageCreation
+     */
     export interface ProjectStorageCreation {
         archive: boolean;
         containerName: string;
         region: string;
     }
-    // interface fullName: cloud.ProjectStoragePublicUrlCreation.ProjectStoragePublicUrlCreation
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectStoragePublicUrlCreation.ProjectStoragePublicUrlCreation
+     */
     export interface ProjectStoragePublicUrlCreation {
         expirationDate: string;
         objectName: string;
     }
-    // interface fullName: cloud.ProjectStorageUpdate.ProjectStorageUpdate
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectStorageUpdate.ProjectStorageUpdate
+     */
     export interface ProjectStorageUpdate {
         containerType?: cloud.storage.TypeEnum;
     }
-    // interface fullName: cloud.ProjectStorageUserCreation.ProjectStorageUserCreation
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectStorageUserCreation.ProjectStorageUserCreation
+     */
     export interface ProjectStorageUserCreation {
         description?: string;
         right: cloud.storage.RightEnum;
     }
-    // interface fullName: cloud.ProjectUserCreation.ProjectUserCreation
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectUserCreation.ProjectUserCreation
+     */
     export interface ProjectUserCreation {
         description?: string;
         role?: cloud.user.RoleEnum;
         roles?: cloud.user.RoleEnum[];
     }
-    // interface fullName: cloud.ProjectUserRoleCreation.ProjectUserRoleCreation
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectUserRoleCreation.ProjectUserRoleCreation
+     */
     export interface ProjectUserRoleCreation {
         roleId: string;
     }
-    // interface fullName: cloud.ProjectUserRoleUpdate.ProjectUserRoleUpdate
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectUserRoleUpdate.ProjectUserRoleUpdate
+     */
     export interface ProjectUserRoleUpdate {
         rolesIds: string[];
     }
-    // interface fullName: cloud.ProjectUserTokenCreation.ProjectUserTokenCreation
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectUserTokenCreation.ProjectUserTokenCreation
+     */
     export interface ProjectUserTokenCreation {
         password: string;
     }
-    // interface fullName: cloud.ProjectVolumeAttachCreation.ProjectVolumeAttachCreation
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectVolumeAttachCreation.ProjectVolumeAttachCreation
+     */
     export interface ProjectVolumeAttachCreation {
         instanceId: string;
     }
-    // interface fullName: cloud.ProjectVolumeCreation.ProjectVolumeCreation
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectVolumeCreation.ProjectVolumeCreation
+     */
     export interface ProjectVolumeCreation {
         description?: string;
         imageId?: string;
@@ -389,25 +599,40 @@ export namespace cloud {
         snapshotId?: string;
         type: cloud.volume.VolumeTypeEnum;
     }
-    // interface fullName: cloud.ProjectVolumeDetachCreation.ProjectVolumeDetachCreation
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectVolumeDetachCreation.ProjectVolumeDetachCreation
+     */
     export interface ProjectVolumeDetachCreation {
         instanceId: string;
     }
-    // interface fullName: cloud.ProjectVolumeSnapshotCreation.ProjectVolumeSnapshotCreation
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectVolumeSnapshotCreation.ProjectVolumeSnapshotCreation
+     */
     export interface ProjectVolumeSnapshotCreation {
         description?: string;
         name?: string;
     }
-    // interface fullName: cloud.ProjectVolumeUpdate.ProjectVolumeUpdate
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectVolumeUpdate.ProjectVolumeUpdate
+     */
     export interface ProjectVolumeUpdate {
         description?: string;
         name?: string;
     }
-    // interface fullName: cloud.ProjectVolumeUpsizeCreation.ProjectVolumeUpsizeCreation
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectVolumeUpsizeCreation.ProjectVolumeUpsizeCreation
+     */
     export interface ProjectVolumeUpsizeCreation {
         size: number;
     }
-    // interface fullName: cloud.Region.Region
+    /**
+     * Details about your region
+     * interface fullName: cloud.Region.Region
+     */
     export interface Region {
         continentCode: cloud.RegionContinentEnum;
         datacenterLocation: string;
@@ -416,55 +641,94 @@ export namespace cloud {
         services: cloud.Component[];
         status: cloud.RegionStatusEnum;
     }
-    // type fullname: cloud.RegionContinent
+    /**
+     * Enum values for ContinentCode
+     * type fullname: cloud.RegionContinent
+     */
     export type RegionContinent = "EU" | "NA" | "US" | "ASIA"
-    // type fullname: cloud.RegionContinentEnum
+    /**
+     * Enum values for ContinentCode
+     * type fullname: cloud.RegionContinentEnum
+     */
     export type RegionContinentEnum = "EU" | "NA" | "US" | "ASIA"
-    // type fullname: cloud.RegionStatus
+    /**
+     * Enum values for Status
+     * type fullname: cloud.RegionStatus
+     */
     export type RegionStatus = "UP" | "DOWN" | "MAINTENANCE"
-    // type fullname: cloud.RegionStatusEnum
+    /**
+     * Enum values for Status
+     * type fullname: cloud.RegionStatusEnum
+     */
     export type RegionStatusEnum = "UP" | "DOWN" | "MAINTENANCE"
-    // type fullname: cloud.ServiceStatus
+    /**
+     * Enum values for Status
+     * type fullname: cloud.ServiceStatus
+     */
     export type ServiceStatus = "UP" | "DOWN"
-    // type fullname: cloud.ServiceStatusEnum
+    /**
+     * Enum values for Status
+     * type fullname: cloud.ServiceStatusEnum
+     */
     export type ServiceStatusEnum = "UP" | "DOWN"
-    // interface fullName: cloud.SnapshotPrice.SnapshotPrice
+    /**
+     * Details about snapshot pricing
+     * interface fullName: cloud.SnapshotPrice.SnapshotPrice
+     */
     export interface SnapshotPrice {
         monthlyPrice: orderPrice;
         price: orderPrice;
         region: string;
     }
-    // interface fullName: cloud.StoragePrice.StoragePrice
+    /**
+     * Details about storage pricing
+     * interface fullName: cloud.StoragePrice.StoragePrice
+     */
     export interface StoragePrice {
         monthlyPrice: orderPrice;
         price: orderPrice;
         region: string;
     }
-    // interface fullName: cloud.VolumePrice.VolumePrice
+    /**
+     * Details about volume pricing
+     * interface fullName: cloud.VolumePrice.VolumePrice
+     */
     export interface VolumePrice {
         monthlyPrice: orderPrice;
         price: orderPrice;
         region: string;
         volumeName: string;
     }
-    // interface fullName: cloud.Vrack.Vrack
+    /**
+     * A vRack allows to connect your OVH infrastructures accross products and datacenters
+     * interface fullName: cloud.Vrack.Vrack
+     */
     export interface Vrack {
         description: string;
         id: string;
         name: string;
     }
     export namespace authentication {
-        // interface fullName: cloud.authentication.Catalog.Catalog
+        /**
+         * Catalog
+         * interface fullName: cloud.authentication.Catalog.Catalog
+         */
         export interface Catalog {
             endpoints: cloud.authentication.Endpoint[];
             id: string;
             type: string;
         }
-        // interface fullName: cloud.authentication.Domain.Domain
+        /**
+         * Domain
+         * interface fullName: cloud.authentication.Domain.Domain
+         */
         export interface Domain {
             name: string;
         }
-        // interface fullName: cloud.authentication.Endpoint.Endpoint
+        /**
+         * Endpoint
+         * interface fullName: cloud.authentication.Endpoint.Endpoint
+         */
         export interface Endpoint {
             id: string;
             interface: string;
@@ -473,7 +737,10 @@ export namespace cloud {
             service_id: string;
             url: string;
         }
-        // interface fullName: cloud.authentication.OpenstackToken.OpenstackToken
+        /**
+         * OpenstackToken
+         * interface fullName: cloud.authentication.OpenstackToken.OpenstackToken
+         */
         export interface OpenstackToken {
             catalog: cloud.authentication.Catalog[];
             expires_at: string;
@@ -483,23 +750,35 @@ export namespace cloud {
             roles: cloud.authentication.Role[];
             user: cloud.authentication.UserToken;
         }
-        // interface fullName: cloud.authentication.Role.Role
+        /**
+         * Role
+         * interface fullName: cloud.authentication.Role.Role
+         */
         export interface Role {
             id: string;
             name: string;
         }
-        // interface fullName: cloud.authentication.Token.Token
+        /**
+         * Token
+         * interface fullName: cloud.authentication.Token.Token
+         */
         export interface Token {
             'X-Auth-Token': string;
             token: cloud.authentication.OpenstackToken;
         }
-        // interface fullName: cloud.authentication.TokenProject.TokenProject
+        /**
+         * TokenProject
+         * interface fullName: cloud.authentication.TokenProject.TokenProject
+         */
         export interface TokenProject {
             domain: cloud.authentication.Domain;
             id: string;
             name: string;
         }
-        // interface fullName: cloud.authentication.UserToken.UserToken
+        /**
+         * UserToken
+         * interface fullName: cloud.authentication.UserToken.UserToken
+         */
         export interface UserToken {
             domain: cloud.authentication.Domain;
             id: string;
@@ -507,23 +786,35 @@ export namespace cloud {
         }
     }
     export namespace billingView {
-        // interface fullName: cloud.billingView.BandwidthInstance.BandwidthInstance
+        /**
+         * BandwidthInstance
+         * interface fullName: cloud.billingView.BandwidthInstance.BandwidthInstance
+         */
         export interface BandwidthInstance {
             quantity: cloud.billingView.Quantity;
             totalPrice: number;
         }
-        // interface fullName: cloud.billingView.BandwidthStorage.BandwidthStorage
+        /**
+         * BandwidthStorage
+         * interface fullName: cloud.billingView.BandwidthStorage.BandwidthStorage
+         */
         export interface BandwidthStorage {
             quantity: cloud.billingView.Quantity;
             totalPrice: number;
         }
-        // interface fullName: cloud.billingView.Component.Component
+        /**
+         * Component
+         * interface fullName: cloud.billingView.Component.Component
+         */
         export interface Component {
             name: string;
             quantity: cloud.billingView.Quantity;
             totalPrice: number;
         }
-        // interface fullName: cloud.billingView.HourlyInstance.HourlyInstance
+        /**
+         * HourlyInstance
+         * interface fullName: cloud.billingView.HourlyInstance.HourlyInstance
+         */
         export interface HourlyInstance {
             details: cloud.billingView.HourlyInstanceDetail[];
             quantity: cloud.billingView.Quantity;
@@ -531,20 +822,29 @@ export namespace cloud {
             region: string;
             totalPrice: number;
         }
-        // interface fullName: cloud.billingView.HourlyInstanceBandwidth.HourlyInstanceBandwidth
+        /**
+         * HourlyInstanceBandwidth
+         * interface fullName: cloud.billingView.HourlyInstanceBandwidth.HourlyInstanceBandwidth
+         */
         export interface HourlyInstanceBandwidth {
             incomingBandwidth?: cloud.billingView.BandwidthInstance;
             outgoingBandwidth?: cloud.billingView.BandwidthInstance;
             region: string;
             totalPrice: number;
         }
-        // interface fullName: cloud.billingView.HourlyInstanceDetail.HourlyInstanceDetail
+        /**
+         * HourlyInstanceDetail
+         * interface fullName: cloud.billingView.HourlyInstanceDetail.HourlyInstanceDetail
+         */
         export interface HourlyInstanceDetail {
             instanceId: string;
             quantity: cloud.billingView.Quantity;
             totalPrice: number;
         }
-        // interface fullName: cloud.billingView.HourlyInstanceOption.HourlyInstanceOption
+        /**
+         * HourlyInstanceOption
+         * interface fullName: cloud.billingView.HourlyInstanceOption.HourlyInstanceOption
+         */
         export interface HourlyInstanceOption {
             details: cloud.billingView.HourlyInstanceOptionDetail[];
             quantity: cloud.billingView.Quantity;
@@ -552,13 +852,19 @@ export namespace cloud {
             region: string;
             totalPrice: number;
         }
-        // interface fullName: cloud.billingView.HourlyInstanceOptionDetail.HourlyInstanceOptionDetail
+        /**
+         * HourlyInstanceOptionDetail
+         * interface fullName: cloud.billingView.HourlyInstanceOptionDetail.HourlyInstanceOptionDetail
+         */
         export interface HourlyInstanceOptionDetail {
             instanceId: string;
             quantity: cloud.billingView.Quantity;
             totalPrice: number;
         }
-        // interface fullName: cloud.billingView.HourlyResources.HourlyResources
+        /**
+         * HourlyResources
+         * interface fullName: cloud.billingView.HourlyResources.HourlyResources
+         */
         export interface HourlyResources {
             instance: cloud.billingView.HourlyInstance[];
             instanceBandwidth: cloud.billingView.HourlyInstanceBandwidth[];
@@ -567,14 +873,20 @@ export namespace cloud {
             storage: cloud.billingView.HourlyStorage[];
             volume: cloud.billingView.HourlyVolume[];
         }
-        // interface fullName: cloud.billingView.HourlySnapshot.HourlySnapshot
+        /**
+         * HourlySnapshot
+         * interface fullName: cloud.billingView.HourlySnapshot.HourlySnapshot
+         */
         export interface HourlySnapshot {
             instance?: cloud.billingView.InstanceSnapshot;
             region: string;
             totalPrice: number;
             volume?: cloud.billingView.VolumeSnapshot;
         }
-        // interface fullName: cloud.billingView.HourlyStorage.HourlyStorage
+        /**
+         * HourlyStorage
+         * interface fullName: cloud.billingView.HourlyStorage.HourlyStorage
+         */
         export interface HourlyStorage {
             incomingBandwidth?: cloud.billingView.BandwidthStorage;
             outgoingBandwidth?: cloud.billingView.BandwidthStorage;
@@ -583,7 +895,10 @@ export namespace cloud {
             totalPrice: number;
             type: cloud.billingView.StorageTypeEnum;
         }
-        // interface fullName: cloud.billingView.HourlyVolume.HourlyVolume
+        /**
+         * HourlyVolume
+         * interface fullName: cloud.billingView.HourlyVolume.HourlyVolume
+         */
         export interface HourlyVolume {
             details: cloud.billingView.HourlyVolumeDetail[];
             quantity: cloud.billingView.Quantity;
@@ -591,121 +906,190 @@ export namespace cloud {
             totalPrice: number;
             type: string;
         }
-        // interface fullName: cloud.billingView.HourlyVolumeDetail.HourlyVolumeDetail
+        /**
+         * HourlyVolumeDetail
+         * interface fullName: cloud.billingView.HourlyVolumeDetail.HourlyVolumeDetail
+         */
         export interface HourlyVolumeDetail {
             quantity: cloud.billingView.Quantity;
             totalPrice: number;
             volumeId: string;
         }
-        // interface fullName: cloud.billingView.InstanceSnapshot.InstanceSnapshot
+        /**
+         * InstanceSnapshot
+         * interface fullName: cloud.billingView.InstanceSnapshot.InstanceSnapshot
+         */
         export interface InstanceSnapshot {
             quantity: cloud.billingView.Quantity;
             totalPrice: number;
         }
-        // interface fullName: cloud.billingView.MonthlyInstance.MonthlyInstance
+        /**
+         * MonthlyInstance
+         * interface fullName: cloud.billingView.MonthlyInstance.MonthlyInstance
+         */
         export interface MonthlyInstance {
             details: cloud.billingView.MonthlyInstanceDetail[];
             reference: string;
             region: string;
             totalPrice: number;
         }
-        // interface fullName: cloud.billingView.MonthlyInstanceDetail.MonthlyInstanceDetail
+        /**
+         * MonthlyInstanceDetail
+         * interface fullName: cloud.billingView.MonthlyInstanceDetail.MonthlyInstanceDetail
+         */
         export interface MonthlyInstanceDetail {
             activation: string;
             instanceId: string;
             totalPrice: number;
         }
-        // interface fullName: cloud.billingView.MonthlyInstanceOption.MonthlyInstanceOption
+        /**
+         * MonthlyInstanceOption
+         * interface fullName: cloud.billingView.MonthlyInstanceOption.MonthlyInstanceOption
+         */
         export interface MonthlyInstanceOption {
             details: cloud.billingView.MonthlyInstanceOptionDetail[];
             reference: string;
             region: string;
             totalPrice: number;
         }
-        // interface fullName: cloud.billingView.MonthlyInstanceOptionDetail.MonthlyInstanceOptionDetail
+        /**
+         * MonthlyInstanceOptionDetail
+         * interface fullName: cloud.billingView.MonthlyInstanceOptionDetail.MonthlyInstanceOptionDetail
+         */
         export interface MonthlyInstanceOptionDetail {
             instanceId: string;
             totalPrice: number;
         }
-        // interface fullName: cloud.billingView.MonthlyResources.MonthlyResources
+        /**
+         * MonthlyResources
+         * interface fullName: cloud.billingView.MonthlyResources.MonthlyResources
+         */
         export interface MonthlyResources {
             instance: cloud.billingView.MonthlyInstance[];
             instanceOption: cloud.billingView.MonthlyInstanceOption[];
         }
-        // interface fullName: cloud.billingView.Quantity.Quantity
+        /**
+         * Quantity
+         * interface fullName: cloud.billingView.Quantity.Quantity
+         */
         export interface Quantity {
             unit: cloud.billingView.UnitQuantityEnum;
             value: number;
         }
-        // interface fullName: cloud.billingView.RegionalizedResource.RegionalizedResource
+        /**
+         * RegionalizedResource
+         * interface fullName: cloud.billingView.RegionalizedResource.RegionalizedResource
+         */
         export interface RegionalizedResource {
             components: cloud.billingView.Component[];
             region: string;
         }
-        // type fullname: cloud.billingView.StorageTypeEnum
+        /**
+         * StorageTypeEnum
+         * type fullname: cloud.billingView.StorageTypeEnum
+         */
         export type StorageTypeEnum = "pcs" | "pca"
-        // interface fullName: cloud.billingView.StoredStorage.StoredStorage
+        /**
+         * StoredStorage
+         * interface fullName: cloud.billingView.StoredStorage.StoredStorage
+         */
         export interface StoredStorage {
             quantity: cloud.billingView.Quantity;
             totalPrice: number;
         }
-        // interface fullName: cloud.billingView.TypedResources.TypedResources
+        /**
+         * TypedResources
+         * interface fullName: cloud.billingView.TypedResources.TypedResources
+         */
         export interface TypedResources {
             resources: cloud.billingView.RegionalizedResource[];
             totalPrice: number;
             type: string;
         }
-        // type fullname: cloud.billingView.UnitQuantity
+        /**
+         * UnitQuantity
+         * type fullname: cloud.billingView.UnitQuantity
+         */
         export type UnitQuantity = "GiB" | "GiBh" | "Hour"
-        // type fullname: cloud.billingView.UnitQuantityEnum
+        /**
+         * UnitQuantity
+         * type fullname: cloud.billingView.UnitQuantityEnum
+         */
         export type UnitQuantityEnum = "GiB" | "GiBh" | "Hour" | "Minute" | "Second"
-        // interface fullName: cloud.billingView.UsedCredit.UsedCredit
+        /**
+         * UsedCredit
+         * interface fullName: cloud.billingView.UsedCredit.UsedCredit
+         */
         export interface UsedCredit {
             description: string;
             id: number;
             usedAmount: number;
         }
-        // interface fullName: cloud.billingView.UsedCredits.UsedCredits
+        /**
+         * UsedCredits
+         * interface fullName: cloud.billingView.UsedCredits.UsedCredits
+         */
         export interface UsedCredits {
             details: cloud.billingView.UsedCredit[];
             totalCredit: number;
         }
-        // interface fullName: cloud.billingView.VolumeSnapshot.VolumeSnapshot
+        /**
+         * VolumeSnapshot
+         * interface fullName: cloud.billingView.VolumeSnapshot.VolumeSnapshot
+         */
         export interface VolumeSnapshot {
             quantity: cloud.billingView.Quantity;
             totalPrice: number;
         }
     }
     export namespace capabilities {
-        // interface fullName: cloud.capabilities.Capability.Capability
+        /**
+         * Capability
+         * interface fullName: cloud.capabilities.Capability.Capability
+         */
         export interface Capability {
             enabled: boolean;
             name: string;
         }
     }
     export namespace common {
-        // interface fullName: cloud.common.VoucherValidity.VoucherValidity
+        /**
+         * Voucher validity range
+         * interface fullName: cloud.common.VoucherValidity.VoucherValidity
+         */
         export interface VoucherValidity {
             from?: string;
             to?: string;
         }
     }
     export namespace containerRegistry {
-        // interface fullName: cloud.containerRegistry.Capability.Capability
+        /**
+         * The container registry capability for a single region
+         * interface fullName: cloud.containerRegistry.Capability.Capability
+         */
         export interface Capability {
             plans: cloud.containerRegistry.Plan[];
             regionName: string;
         }
-        // interface fullName: cloud.containerRegistry.Features.Features
+        /**
+         * Features list, enabled or not
+         * interface fullName: cloud.containerRegistry.Features.Features
+         */
         export interface Features {
             vulnerability: boolean;
         }
-        // interface fullName: cloud.containerRegistry.Limits.Limits
+        /**
+         * Limitation of a docker registry
+         * interface fullName: cloud.containerRegistry.Limits.Limits
+         */
         export interface Limits {
             imageStorage: number;
             parallelRequest: number;
         }
-        // interface fullName: cloud.containerRegistry.Plan.Plan
+        /**
+         * Plan of the registry
+         * interface fullName: cloud.containerRegistry.Plan.Plan
+         */
         export interface Plan {
             createdAt: string;
             features: cloud.containerRegistry.Features;
@@ -714,11 +1098,17 @@ export namespace cloud {
             registryLimits: cloud.containerRegistry.Limits;
             updatedAt: string;
         }
-        // interface fullName: cloud.containerRegistry.PlanUpdate.PlanUpdate
+        /**
+         * Missing description
+         * interface fullName: cloud.containerRegistry.PlanUpdate.PlanUpdate
+         */
         export interface PlanUpdate {
             planID: string;
         }
-        // interface fullName: cloud.containerRegistry.Registry.Registry
+        /**
+         * Managed docker registry
+         * interface fullName: cloud.containerRegistry.Registry.Registry
+         */
         export interface Registry {
             createdAt: string;
             id: string;
@@ -731,9 +1121,15 @@ export namespace cloud {
             url: string;
             version: string;
         }
-        // type fullname: cloud.containerRegistry.StatusEnum
+        /**
+         * Status of the registry
+         * type fullname: cloud.containerRegistry.StatusEnum
+         */
         export type StatusEnum = "ERROR" | "READY" | "DELETED" | "SUSPENDED" | "INSTALLING" | "UPDATING" | "RESTORING" | "SUSPENDING" | "DELETING"
-        // interface fullName: cloud.containerRegistry.User.User
+        /**
+         * Docker registry user
+         * interface fullName: cloud.containerRegistry.User.User
+         */
         export interface User {
             email: string;
             id: string;
@@ -741,9 +1137,15 @@ export namespace cloud {
             user: string;
         }
         export namespace registry {
-            // type fullname: cloud.containerRegistry.registry.RegionEnum
+            /**
+             * Region of the registry
+             * type fullname: cloud.containerRegistry.registry.RegionEnum
+             */
             export type RegionEnum = "GRA7"
-            // interface fullName: cloud.containerRegistry.registry.Registry.Registry
+            /**
+             * Managed docker registry
+             * interface fullName: cloud.containerRegistry.registry.Registry.Registry
+             */
             export interface Registry {
                 createdAt: string;
                 id: string;
@@ -755,11 +1157,17 @@ export namespace cloud {
                 url: string;
                 version: string;
             }
-            // type fullname: cloud.containerRegistry.registry.StatusEnum
+            /**
+             * Status of the registry
+             * type fullname: cloud.containerRegistry.registry.StatusEnum
+             */
             export type StatusEnum = "ERROR" | "READY" | "DELETED" | "SUSPENDED" | "INSTALLING" | "UPDATING" | "RESTORING" | "SUSPENDING" | "DELETING"
         }
         export namespace user {
-            // interface fullName: cloud.containerRegistry.user.User.User
+            /**
+             * Docker registry user
+             * interface fullName: cloud.containerRegistry.user.User.User
+             */
             export interface User {
                 email: string;
                 id: string;
@@ -769,14 +1177,23 @@ export namespace cloud {
         }
     }
     export namespace flavor {
-        // interface fullName: cloud.flavor.Capability.Capability
+        /**
+         * Flavor capability
+         * interface fullName: cloud.flavor.Capability.Capability
+         */
         export interface Capability {
             enabled: boolean;
             name: cloud.flavor.CapabilityNameEnum;
         }
-        // type fullname: cloud.flavor.CapabilityNameEnum
+        /**
+         * Enum values for flavor capabilities names
+         * type fullname: cloud.flavor.CapabilityNameEnum
+         */
         export type CapabilityNameEnum = "resize" | "snapshot" | "volume" | "failoverip"
-        // interface fullName: cloud.flavor.Flavor.Flavor
+        /**
+         * Flavor
+         * interface fullName: cloud.flavor.Flavor.Flavor
+         */
         export interface Flavor {
             available: boolean;
             capabilities: cloud.flavor.Capability[];
@@ -792,21 +1209,30 @@ export namespace cloud {
             type: string;
             vcpus: number;
         }
-        // interface fullName: cloud.flavor.FlavorPlanCodes.FlavorPlanCodes
+        /**
+         * FlavorPlanCodes
+         * interface fullName: cloud.flavor.FlavorPlanCodes.FlavorPlanCodes
+         */
         export interface FlavorPlanCodes {
             hourly?: string;
             monthly?: string;
         }
     }
     export namespace forecast {
-        // interface fullName: cloud.forecast.ProjectForecast.ProjectForecast
+        /**
+         * ProjectForecast
+         * interface fullName: cloud.forecast.ProjectForecast.ProjectForecast
+         */
         export interface ProjectForecast {
             lastMetric: string;
             projectForecast: orderPrice;
         }
     }
     export namespace image {
-        // interface fullName: cloud.image.Image.Image
+        /**
+         * Image
+         * interface fullName: cloud.image.Image.Image
+         */
         export interface Image {
             creationDate: string;
             flavorType?: string;
@@ -823,30 +1249,48 @@ export namespace cloud {
             user: string;
             visibility: string;
         }
-        // type fullname: cloud.image.OSTypeEnum
+        /**
+         * OSTypeEnum
+         * type fullname: cloud.image.OSTypeEnum
+         */
         export type OSTypeEnum = "linux" | "bsd" | "windows"
     }
     export namespace instance {
-        // interface fullName: cloud.instance.Access.Access
+        /**
+         * Access
+         * interface fullName: cloud.instance.Access.Access
+         */
         export interface Access {
             login: string;
             password: string;
             type: string;
             url: string;
         }
-        // interface fullName: cloud.instance.ApplicationAccess.ApplicationAccess
+        /**
+         * ApplicationAccess
+         * interface fullName: cloud.instance.ApplicationAccess.ApplicationAccess
+         */
         export interface ApplicationAccess {
             accesses: cloud.instance.Access[];
             status: cloud.instance.ApplicationAccessStateEnum;
         }
-        // type fullname: cloud.instance.ApplicationAccessStateEnum
+        /**
+         * ApplicationAccessStateEnum
+         * type fullname: cloud.instance.ApplicationAccessStateEnum
+         */
         export type ApplicationAccessStateEnum = "installing" | "ok"
-        // interface fullName: cloud.instance.AutoBackup.AutoBackup
+        /**
+         * Autobackup params at instance creation
+         * interface fullName: cloud.instance.AutoBackup.AutoBackup
+         */
         export interface AutoBackup {
             cron: string;
             rotation: number;
         }
-        // interface fullName: cloud.instance.Instance.Instance
+        /**
+         * Instance
+         * interface fullName: cloud.instance.Instance.Instance
+         */
         export interface Instance {
             created: string;
             flavorId: string;
@@ -861,7 +1305,10 @@ export namespace cloud {
             sshKeyId?: string;
             status: cloud.instance.InstanceStatusEnum;
         }
-        // interface fullName: cloud.instance.InstanceDetail.InstanceDetail
+        /**
+         * InstanceDetail
+         * interface fullName: cloud.instance.InstanceDetail.InstanceDetail
+         */
         export interface InstanceDetail {
             created: string;
             flavor: cloud.flavor.Flavor;
@@ -876,24 +1323,39 @@ export namespace cloud {
             sshKey?: cloud.sshkey.SshKeyDetail;
             status: cloud.instance.InstanceStatusEnum;
         }
-        // interface fullName: cloud.instance.InstanceMetrics.InstanceMetrics
+        /**
+         * InstanceMetrics
+         * interface fullName: cloud.instance.InstanceMetrics.InstanceMetrics
+         */
         export interface InstanceMetrics {
             unit: string;
             values: cloud.instance.InstanceMetricsValue[];
         }
-        // interface fullName: cloud.instance.InstanceMetricsValue.InstanceMetricsValue
+        /**
+         * InstanceMetricsValue
+         * interface fullName: cloud.instance.InstanceMetricsValue.InstanceMetricsValue
+         */
         export interface InstanceMetricsValue {
             timestamp: number;
             value: number;
         }
-        // type fullname: cloud.instance.InstanceStatusEnum
+        /**
+         * InstanceStatusEnum
+         * type fullname: cloud.instance.InstanceStatusEnum
+         */
         export type InstanceStatusEnum = "ACTIVE" | "BUILDING" | "DELETED" | "DELETING" | "ERROR" | "HARD_REBOOT" | "PASSWORD" | "PAUSED" | "REBOOT" | "REBUILD" | "RESCUED" | "RESIZED" | "REVERT_RESIZE" | "SOFT_DELETED" | "STOPPED" | "SUSPENDED" | "UNKNOWN" | "VERIFY_RESIZE" | "MIGRATING" | "RESIZE" | "BUILD" | "SHUTOFF" | "RESCUE" | "SHELVED" | "SHELVED_OFFLOADED" | "RESCUING" | "UNRESCUING" | "SNAPSHOTTING" | "RESUMING"
-        // interface fullName: cloud.instance.InstanceVnc.InstanceVnc
+        /**
+         * InstanceVnc
+         * interface fullName: cloud.instance.InstanceVnc.InstanceVnc
+         */
         export interface InstanceVnc {
             type: string;
             url: string;
         }
-        // interface fullName: cloud.instance.IpAddress.IpAddress
+        /**
+         * IpAddress
+         * interface fullName: cloud.instance.IpAddress.IpAddress
+         */
         export interface IpAddress {
             gatewayIp?: string;
             ip: string;
@@ -901,49 +1363,88 @@ export namespace cloud {
             type: string;
             version: number;
         }
-        // type fullname: cloud.instance.MetricsPeriod
+        /**
+         * MetricsPeriod
+         * type fullname: cloud.instance.MetricsPeriod
+         */
         export type MetricsPeriod = "lastday" | "lastmonth" | "lastweek" | "lastyear" | "today"
-        // type fullname: cloud.instance.MetricsPeriodEnum
+        /**
+         * MetricsPeriod
+         * type fullname: cloud.instance.MetricsPeriodEnum
+         */
         export type MetricsPeriodEnum = "lastday" | "lastmonth" | "lastweek" | "lastyear" | "today"
-        // type fullname: cloud.instance.MetricsType
+        /**
+         * MetricsType
+         * type fullname: cloud.instance.MetricsType
+         */
         export type MetricsType = "mem:used" | "mem:max" | "cpu:used" | "cpu:max" | "net:tx" | "net:rx"
-        // type fullname: cloud.instance.MetricsTypeEnum
+        /**
+         * MetricsType
+         * type fullname: cloud.instance.MetricsTypeEnum
+         */
         export type MetricsTypeEnum = "mem:used" | "mem:max" | "cpu:used" | "cpu:max" | "net:tx" | "net:rx"
-        // interface fullName: cloud.instance.MonthlyBilling.MonthlyBilling
+        /**
+         * MonthlyBilling
+         * interface fullName: cloud.instance.MonthlyBilling.MonthlyBilling
+         */
         export interface MonthlyBilling {
             since: string;
             status: cloud.instance.MonthlyBillingStatusEnum;
         }
-        // type fullname: cloud.instance.MonthlyBillingStatusEnum
+        /**
+         * MonthlyBillingStatusEnum
+         * type fullname: cloud.instance.MonthlyBillingStatusEnum
+         */
         export type MonthlyBillingStatusEnum = "activationPending" | "ok"
-        // interface fullName: cloud.instance.MonthlyInstanceBulkParams.MonthlyInstanceBulkParams
+        /**
+         * Instance with region to set as monthly billing
+         * interface fullName: cloud.instance.MonthlyInstanceBulkParams.MonthlyInstanceBulkParams
+         */
         export interface MonthlyInstanceBulkParams {
             instanceId: string;
             region: string;
         }
-        // interface fullName: cloud.instance.NetworkBulkParams.NetworkBulkParams
+        /**
+         * NetworkBulkParams
+         * interface fullName: cloud.instance.NetworkBulkParams.NetworkBulkParams
+         */
         export interface NetworkBulkParams {
             networkId: string;
         }
-        // interface fullName: cloud.instance.NetworkParams.NetworkParams
+        /**
+         * NetworkParams
+         * interface fullName: cloud.instance.NetworkParams.NetworkParams
+         */
         export interface NetworkParams {
             ip?: string;
             networkId: string;
         }
-        // type fullname: cloud.instance.RebootTypeEnum
+        /**
+         * RebootTypeEnum
+         * type fullname: cloud.instance.RebootTypeEnum
+         */
         export type RebootTypeEnum = "soft" | "hard"
-        // interface fullName: cloud.instance.RescueAdminPassword.RescueAdminPassword
+        /**
+         * RescueAdminPassword
+         * interface fullName: cloud.instance.RescueAdminPassword.RescueAdminPassword
+         */
         export interface RescueAdminPassword {
             adminPassword?: string;
         }
     }
     export namespace instanceInterface {
-        // interface fullName: cloud.instanceInterface.FixedIp.FixedIp
+        /**
+         * FixedIp
+         * interface fullName: cloud.instanceInterface.FixedIp.FixedIp
+         */
         export interface FixedIp {
             ip: string;
             subnetId: string;
         }
-        // interface fullName: cloud.instanceInterface.Interface.Interface
+        /**
+         * Interface
+         * interface fullName: cloud.instanceInterface.Interface.Interface
+         */
         export interface Interface {
             fixedIps: cloud.instanceInterface.FixedIp[];
             id: string;
@@ -954,7 +1455,10 @@ export namespace cloud {
         }
     }
     export namespace instancegroup {
-        // interface fullName: cloud.instancegroup.InstanceGroup.InstanceGroup
+        /**
+         * InstanceGroup
+         * interface fullName: cloud.instancegroup.InstanceGroup.InstanceGroup
+         */
         export interface InstanceGroup {
             id: string;
             instance_ids: string[];
@@ -962,18 +1466,27 @@ export namespace cloud {
             region: string;
             type: cloud.instancegroup.InstanceGroupTypeEnum;
         }
-        // type fullname: cloud.instancegroup.InstanceGroupTypeEnum
+        /**
+         * InstanceGroupTypeEnum
+         * type fullname: cloud.instancegroup.InstanceGroupTypeEnum
+         */
         export type InstanceGroupTypeEnum = "affinity" | "anti-affinity"
     }
     export namespace ip {
-        // interface fullName: cloud.ip.CloudIp.CloudIp
+        /**
+         * CloudIp
+         * interface fullName: cloud.ip.CloudIp.CloudIp
+         */
         export interface CloudIp {
             id: string;
             ip?: string;
             status: cloud.ip.IpStatusEnum;
             type: string;
         }
-        // interface fullName: cloud.ip.FailoverIp.FailoverIp
+        /**
+         * FailoverIp
+         * interface fullName: cloud.ip.FailoverIp.FailoverIp
+         */
         export interface FailoverIp {
             block?: string;
             continentCode?: string;
@@ -985,13 +1498,22 @@ export namespace cloud {
             status: cloud.ip.IpStatusEnum;
             subType: cloud.ip.IpSubTypeEnum;
         }
-        // type fullname: cloud.ip.IpStatusEnum
+        /**
+         * IpStatusEnum
+         * type fullname: cloud.ip.IpStatusEnum
+         */
         export type IpStatusEnum = "ok" | "operationPending"
-        // type fullname: cloud.ip.IpSubTypeEnum
+        /**
+         * IpSubTypeEnum
+         * type fullname: cloud.ip.IpSubTypeEnum
+         */
         export type IpSubTypeEnum = "cloud" | "ovh"
     }
     export namespace kube {
-        // interface fullName: cloud.kube.Cluster.Cluster
+        /**
+         * Managed Kubernetes cluster description
+         * interface fullName: cloud.kube.Cluster.Cluster
+         */
         export interface Cluster {
             controlPlaneIsUpToDate: boolean;
             createdAt: string;
@@ -1007,29 +1529,56 @@ export namespace cloud {
             url: string;
             version: string;
         }
-        // type fullname: cloud.kube.ClusterStatus
+        /**
+         * Enum values for Status
+         * type fullname: cloud.kube.ClusterStatus
+         */
         export type ClusterStatus = "INSTALLING" | "UPDATING" | "RESETTING" | "SUSPENDING" | "REOPENING" | "DELETING" | "SUSPENDED" | "ERROR" | "USER_ERROR" | "USER_QUOTA_ERROR" | "READY"
-        // type fullname: cloud.kube.ClusterStatusEnum
+        /**
+         * Enum values for Status
+         * type fullname: cloud.kube.ClusterStatusEnum
+         */
         export type ClusterStatusEnum = "INSTALLING" | "UPDATING" | "RESETTING" | "SUSPENDING" | "REOPENING" | "DELETING" | "SUSPENDED" | "ERROR" | "USER_ERROR" | "USER_QUOTA_ERROR" | "READY"
-        // interface fullName: cloud.kube.Flavor.Flavor
+        /**
+         * a flavor kind
+         * interface fullName: cloud.kube.Flavor.Flavor
+         */
         export interface Flavor {
             category: cloud.kube.FlavorCategoryEnum;
             name: string;
             state: cloud.kube.FlavorStateEnum;
         }
-        // type fullname: cloud.kube.FlavorCategory
+        /**
+         * Enum values for category
+         * type fullname: cloud.kube.FlavorCategory
+         */
         export type FlavorCategory = "c" | "g" | "t" | "b" | "r"
-        // type fullname: cloud.kube.FlavorCategoryEnum
+        /**
+         * Enum values for category
+         * type fullname: cloud.kube.FlavorCategoryEnum
+         */
         export type FlavorCategoryEnum = "c" | "g" | "t" | "b" | "r" | "i"
-        // type fullname: cloud.kube.FlavorState
+        /**
+         * Enum values for State
+         * type fullname: cloud.kube.FlavorState
+         */
         export type FlavorState = "available" | "unavailable"
-        // type fullname: cloud.kube.FlavorStateEnum
+        /**
+         * Enum values for State
+         * type fullname: cloud.kube.FlavorStateEnum
+         */
         export type FlavorStateEnum = "available" | "unavailable"
-        // interface fullName: cloud.kube.Kubeconfig.Kubeconfig
+        /**
+         * Kubeconfig description
+         * interface fullName: cloud.kube.Kubeconfig.Kubeconfig
+         */
         export interface Kubeconfig {
             content: string;
         }
-        // interface fullName: cloud.kube.Node.Node
+        /**
+         * Node installed on your cluster
+         * interface fullName: cloud.kube.Node.Node
+         */
         export interface Node {
             createdAt: string;
             deployedAt?: string;
@@ -1044,7 +1593,10 @@ export namespace cloud {
             updatedAt: string;
             version: string;
         }
-        // interface fullName: cloud.kube.NodePool.NodePool
+        /**
+         * NodePool created on your cluster to manage your nodes
+         * interface fullName: cloud.kube.NodePool.NodePool
+         */
         export interface NodePool {
             availableNodes: number;
             createdAt: string;
@@ -1061,52 +1613,109 @@ export namespace cloud {
             upToDateNodes: number;
             updatedAt: string;
         }
-        // type fullname: cloud.kube.NodePoolSizeStatusEnum
+        /**
+         * Enum values for NodePool size Status
+         * type fullname: cloud.kube.NodePoolSizeStatusEnum
+         */
         export type NodePoolSizeStatusEnum = "UNDER_CAPACITY" | "CAPACITY_OK" | "OVER_CAPACITY"
-        // type fullname: cloud.kube.NodePoolStatusEnum
+        /**
+         * Enum values for NodePool Status
+         * type fullname: cloud.kube.NodePoolStatusEnum
+         */
         export type NodePoolStatusEnum = "INSTALLING" | "UPDATING" | "REDEPLOYING" | "RESIZING" | "RESETTING" | "DELETING" | "ERROR" | "READY"
-        // type fullname: cloud.kube.NodeStatus
+        /**
+         * Enum values for Status
+         * type fullname: cloud.kube.NodeStatus
+         */
         export type NodeStatus = "INSTALLING" | "UPDATING" | "RESETTING" | "SUSPENDING" | "REOPENING" | "DELETING" | "SUSPENDED" | "ERROR" | "USER_ERROR" | "USER_QUOTA_ERROR" | "USER_NODE_NOT_FOUND_ERROR" | "USER_NODE_SUSPENDED_SERVICE" | "READY"
-        // type fullname: cloud.kube.NodeStatusEnum
+        /**
+         * Enum values for Status
+         * type fullname: cloud.kube.NodeStatusEnum
+         */
         export type NodeStatusEnum = "INSTALLING" | "UPDATING" | "RESETTING" | "SUSPENDING" | "REOPENING" | "DELETING" | "SUSPENDED" | "ERROR" | "USER_ERROR" | "USER_QUOTA_ERROR" | "USER_NODE_NOT_FOUND_ERROR" | "USER_NODE_SUSPENDED_SERVICE" | "READY"
-        // type fullname: cloud.kube.Region
+        /**
+         * Enum values for available regions
+         * type fullname: cloud.kube.Region
+         */
         export type Region = "GRA5" | "GRA7" | "BHS5"
-        // type fullname: cloud.kube.RegionEnum
+        /**
+         * Enum values for available regions
+         * type fullname: cloud.kube.RegionEnum
+         */
         export type RegionEnum = "GRA5" | "GRA7" | "BHS5"
-        // type fullname: cloud.kube.ResetWorkerNodesPolicy
+        /**
+         * Enum values for worker nodes reset policy
+         * type fullname: cloud.kube.ResetWorkerNodesPolicy
+         */
         export type ResetWorkerNodesPolicy = "reinstall" | "delete"
-        // type fullname: cloud.kube.ResetWorkerNodesPolicyEnum
+        /**
+         * Enum values for worker nodes reset policy
+         * type fullname: cloud.kube.ResetWorkerNodesPolicyEnum
+         */
         export type ResetWorkerNodesPolicyEnum = "reinstall" | "delete"
-        // type fullname: cloud.kube.UpdatePolicy
+        /**
+         * Enum values for UpdatePolicy
+         * type fullname: cloud.kube.UpdatePolicy
+         */
         export type UpdatePolicy = "ALWAYS_UPDATE" | "MINIMAL_DOWNTIME" | "NEVER_UPDATE"
-        // type fullname: cloud.kube.UpdatePolicyEnum
+        /**
+         * Enum values for UpdatePolicy
+         * type fullname: cloud.kube.UpdatePolicyEnum
+         */
         export type UpdatePolicyEnum = "ALWAYS_UPDATE" | "MINIMAL_DOWNTIME" | "NEVER_UPDATE"
-        // type fullname: cloud.kube.UpdateStrategy
+        /**
+         * Enum values for UpdateStrategy
+         * type fullname: cloud.kube.UpdateStrategy
+         */
         export type UpdateStrategy = "LATEST_PATCH" | "NEXT_MINOR"
-        // type fullname: cloud.kube.UpdateStrategyEnum
+        /**
+         * Enum values for UpdateStrategy
+         * type fullname: cloud.kube.UpdateStrategyEnum
+         */
         export type UpdateStrategyEnum = "LATEST_PATCH" | "NEXT_MINOR"
-        // type fullname: cloud.kube.UpgradeVersion
+        /**
+         * List of available versions for upgrade
+         * type fullname: cloud.kube.UpgradeVersion
+         */
         export type UpgradeVersion = "1.12" | "1.13" | "1.14" | "1.15" | "1.16"
-        // type fullname: cloud.kube.UpgradeVersionEnum
+        /**
+         * List of available versions for upgrade
+         * type fullname: cloud.kube.UpgradeVersionEnum
+         */
         export type UpgradeVersionEnum = "1.12" | "1.13" | "1.14" | "1.15" | "1.16" | "1.17"
-        // type fullname: cloud.kube.Version
+        /**
+         * List of available versions for installation
+         * type fullname: cloud.kube.Version
+         */
         export type Version = "1.13" | "1.14" | "1.15"
-        // type fullname: cloud.kube.VersionEnum
+        /**
+         * List of available versions for installation
+         * type fullname: cloud.kube.VersionEnum
+         */
         export type VersionEnum = "1.14" | "1.15" | "1.16" | "1.17"
     }
     export namespace migration {
-        // interface fullName: cloud.migration.Migration.Migration
+        /**
+         * Migration
+         * interface fullName: cloud.migration.Migration.Migration
+         */
         export interface Migration {
             date: string;
             migrationId: string;
             resourceId: string;
             resourceType: cloud.migration.ResourceTypeEnum;
         }
-        // type fullname: cloud.migration.ResourceTypeEnum
+        /**
+         * ResourceTypeEnum
+         * type fullname: cloud.migration.ResourceTypeEnum
+         */
         export type ResourceTypeEnum = "instance"
     }
     export namespace network {
-        // interface fullName: cloud.network.IPPool.IPPool
+        /**
+         * IPPool
+         * interface fullName: cloud.network.IPPool.IPPool
+         */
         export interface IPPool {
             dhcp: boolean;
             end: string;
@@ -1114,7 +1723,10 @@ export namespace cloud {
             region: string;
             start: string;
         }
-        // interface fullName: cloud.network.Network.Network
+        /**
+         * Network
+         * interface fullName: cloud.network.Network.Network
+         */
         export interface Network {
             id: string;
             name: string;
@@ -1123,18 +1735,33 @@ export namespace cloud {
             type?: cloud.network.NetworkTypeEnum;
             vlanId: number;
         }
-        // interface fullName: cloud.network.NetworkRegion.NetworkRegion
+        /**
+         * NetworkRegion
+         * interface fullName: cloud.network.NetworkRegion.NetworkRegion
+         */
         export interface NetworkRegion {
             region: string;
             status: cloud.network.NetworkRegionStatusEnum;
         }
-        // type fullname: cloud.network.NetworkRegionStatusEnum
+        /**
+         * NetworkRegionStatusEnum
+         * type fullname: cloud.network.NetworkRegionStatusEnum
+         */
         export type NetworkRegionStatusEnum = "ACTIVE" | "BUILDING"
-        // type fullname: cloud.network.NetworkStatusEnum
+        /**
+         * NetworkStatusEnum
+         * type fullname: cloud.network.NetworkStatusEnum
+         */
         export type NetworkStatusEnum = "BUILDING" | "ACTIVE" | "DELETING"
-        // type fullname: cloud.network.NetworkTypeEnum
+        /**
+         * NetworkTypeEnum
+         * type fullname: cloud.network.NetworkTypeEnum
+         */
         export type NetworkTypeEnum = "public" | "private"
-        // interface fullName: cloud.network.Subnet.Subnet
+        /**
+         * Subnet
+         * interface fullName: cloud.network.Subnet.Subnet
+         */
         export interface Subnet {
             cidr: string;
             gatewayIp?: string;
@@ -1143,11 +1770,17 @@ export namespace cloud {
         }
     }
     export namespace openstackClient {
-        // interface fullName: cloud.openstackClient.Profile.Profile
+        /**
+         * Profile
+         * interface fullName: cloud.openstackClient.Profile.Profile
+         */
         export interface Profile {
             name: string;
         }
-        // interface fullName: cloud.openstackClient.Session.Session
+        /**
+         * Session
+         * interface fullName: cloud.openstackClient.Session.Session
+         */
         export interface Session {
             expires: string;
             id: string;
@@ -1156,7 +1789,10 @@ export namespace cloud {
         }
     }
     export namespace order {
-        // interface fullName: cloud.order.Order.Order
+        /**
+         * Order
+         * interface fullName: cloud.order.Order.Order
+         */
         export interface Order {
             date: string;
             orderId: number;
@@ -1164,13 +1800,22 @@ export namespace cloud {
             serviceName?: string;
             status: cloud.order.StatusEnum;
         }
-        // type fullname: cloud.order.StatusEnum
+        /**
+         * StatusEnum
+         * type fullname: cloud.order.StatusEnum
+         */
         export type StatusEnum = "unpaid" | "delivering" | "delivered" | "unknown"
     }
     export namespace pca {
-        // type fullname: cloud.pca.BillingRefEnum
+        /**
+         * Task type available for cloud archives
+         * type fullname: cloud.pca.BillingRefEnum
+         */
         export type BillingRefEnum = "backup" | "delete" | "restore"
-        // interface fullName: cloud.pca.DownloadCredentials.DownloadCredentials
+        /**
+         * Openstack swift credentials for your PCA offer
+         * interface fullName: cloud.pca.DownloadCredentials.DownloadCredentials
+         */
         export interface DownloadCredentials {
             authEndpoint: string;
             container: string;
@@ -1181,39 +1826,69 @@ export namespace cloud {
             tenantId: string;
             tenantName: string;
         }
-        // type fullname: cloud.pca.FunctionTypeEnum
+        /**
+         * Task types for cloud archives
+         * type fullname: cloud.pca.FunctionTypeEnum
+         */
         export type FunctionTypeEnum = "createUser" | "delete" | "restore" | "setPassword" | "setSessionName" | "setSshKey"
-        // type fullname: cloud.pca.SessionStateEnum
+        /**
+         * Session state available for cloud archives
+         * type fullname: cloud.pca.SessionStateEnum
+         */
         export type SessionStateEnum = "doing" | "doingBackup" | "doingDelete" | "doingRestore" | "done" | "error" | "failedDelete" | "failedRestore" | "new" | "tagging" | "toBackup" | "toDelete" | "toRestore"
-        // type fullname: cloud.pca.TaskStateEnum
+        /**
+         * Task status for cloud archives
+         * type fullname: cloud.pca.TaskStateEnum
+         */
         export type TaskStateEnum = "cancelled" | "deleted" | "doing" | "doingBackup" | "doingDelete" | "doingRestore" | "done" | "error" | "failedDelete" | "failedRestore" | "new" | "tagging" | "toBackup" | "toDelete" | "toRestore" | "todo"
-        // type fullname: cloud.pca.TaskTypeEnum
+        /**
+         * Task type available for cloud archives
+         * type fullname: cloud.pca.TaskTypeEnum
+         */
         export type TaskTypeEnum = "delete" | "restore"
-        // interface fullName: cloud.pca.TransferState.TransferState
+        /**
+         * State of the request to transfer a PCA offer to Object Storage
+         * interface fullName: cloud.pca.TransferState.TransferState
+         */
         export interface TransferState {
             agreements?: number[];
             projectId: string;
             state: cloud.pca.TransferStateEnum;
             transferDate?: string;
         }
-        // type fullname: cloud.pca.TransferStateEnum
+        /**
+         * Transfer states
+         * type fullname: cloud.pca.TransferStateEnum
+         */
         export type TransferStateEnum = "deleted" | "transferred" | "untransferred" | "waitingAgreementsValidation"
     }
     export namespace project {
-        // interface fullName: cloud.project.BandwidthStorageUsage.BandwidthStorageUsage
+        /**
+         * Usage information for current month on your project
+         * interface fullName: cloud.project.BandwidthStorageUsage.BandwidthStorageUsage
+         */
         export interface BandwidthStorageUsage {
             downloadedBytes: number;
             region: string;
             total: orderPrice;
         }
-        // interface fullName: cloud.project.Bill.Bill
+        /**
+         * Project bill
+         * interface fullName: cloud.project.Bill.Bill
+         */
         export interface Bill {
             billId: string;
             type: cloud.project.BillTypeEnum;
         }
-        // type fullname: cloud.project.BillTypeEnum
+        /**
+         * Possible values for bill type
+         * type fullname: cloud.project.BillTypeEnum
+         */
         export type BillTypeEnum = "creditPurchased" | "monthlyConsumption" | "monthlyInstanceActivation"
-        // interface fullName: cloud.project.CurrentUsage.CurrentUsage
+        /**
+         * Usage information for current month on your project
+         * interface fullName: cloud.project.CurrentUsage.CurrentUsage
+         */
         export interface CurrentUsage {
             instances: cloud.project.InstancesUsage;
             snapshots: cloud.project.SnapshotsUsage;
@@ -1222,21 +1897,33 @@ export namespace cloud {
             volumeSnapshots: cloud.project.SnapshotsUsage;
             volumes: cloud.project.VolumesUsage;
         }
-        // type fullname: cloud.project.EligibilityAction
+        /**
+         * Possible eligibility actions
+         * type fullname: cloud.project.EligibilityAction
+         */
         export type EligibilityAction = "addPaymentMethod" | "askIncreaseProjectsQuota" | "challengePaymentMethod" | "verifyPaypal"
-        // interface fullName: cloud.project.EligibilityInfo.EligibilityInfo
+        /**
+         * Eligibility information
+         * interface fullName: cloud.project.EligibilityInfo.EligibilityInfo
+         */
         export interface EligibilityInfo {
             actionsRequired?: cloud.project.EligibilityAction[];
             minimumCredit?: orderPrice;
             paymentMethodsAuthorized?: cloud.project.PaymentMethodAuthorized[];
             voucher?: cloud.project.NewProjectInfoVoucher;
         }
-        // interface fullName: cloud.project.InstanceMonthlyBilling.InstanceMonthlyBilling
+        /**
+         * Instance monthly billing details
+         * interface fullName: cloud.project.InstanceMonthlyBilling.InstanceMonthlyBilling
+         */
         export interface InstanceMonthlyBilling {
             activatedOn: string;
             cost: orderPrice;
         }
-        // interface fullName: cloud.project.InstanceUsageDetail.InstanceUsageDetail
+        /**
+         * Instance usage
+         * interface fullName: cloud.project.InstanceUsageDetail.InstanceUsageDetail
+         */
         export interface InstanceUsageDetail {
             hourly?: orderPrice;
             instanceId: string;
@@ -1244,12 +1931,18 @@ export namespace cloud {
             monthlyBilling: boolean;
             reference: string;
         }
-        // interface fullName: cloud.project.InstancesUsage.InstancesUsage
+        /**
+         * Instances usage for current month
+         * interface fullName: cloud.project.InstancesUsage.InstancesUsage
+         */
         export interface InstancesUsage {
             detail: cloud.project.InstanceUsageDetail[];
             total: orderPrice;
         }
-        // interface fullName: cloud.project.LoadBalancer.LoadBalancer
+        /**
+         * A load balancer to handle workload
+         * interface fullName: cloud.project.LoadBalancer.LoadBalancer
+         */
         export interface LoadBalancer {
             address: cloud.project.loadbalancer.Address;
             configuration: cloud.project.loadbalancer.ConfigurationVersion;
@@ -1259,14 +1952,20 @@ export namespace cloud {
             region: string;
             status: cloud.project.loadbalancer.StatusEnum;
         }
-        // interface fullName: cloud.project.LoadBalancerCreation.LoadBalancerCreation
+        /**
+         * A load balancer to handle workload
+         * interface fullName: cloud.project.LoadBalancerCreation.LoadBalancerCreation
+         */
         export interface LoadBalancerCreation {
             description?: string;
             id: string;
             name?: string;
             region: string;
         }
-        // interface fullName: cloud.project.NewProject.NewProject
+        /**
+         * New cloud project
+         * interface fullName: cloud.project.NewProject.NewProject
+         */
         export interface NewProject {
             agreements?: number[];
             credit?: cloud.project.NewProjectCredit;
@@ -1275,7 +1974,10 @@ export namespace cloud {
             project?: string;
             status: cloud.project.NewProjectStatusEnum;
         }
-        // interface fullName: cloud.project.NewProjectCredit.NewProjectCredit
+        /**
+         * Credit details
+         * interface fullName: cloud.project.NewProjectCredit.NewProjectCredit
+         */
         export interface NewProjectCredit {
             description?: string;
             id: number;
@@ -1283,91 +1985,154 @@ export namespace cloud {
             total_credit: orderPrice;
             validity?: cloud.common.VoucherValidity;
         }
-        // interface fullName: cloud.project.NewProjectInfo.NewProjectInfo
+        /**
+         * New cloud project informations
+         * interface fullName: cloud.project.NewProjectInfo.NewProjectInfo
+         */
         export interface NewProjectInfo {
             agreements?: number[];
             error?: cloud.project.NewProjectInfoError;
             order?: orderPrice;
             voucher?: cloud.project.NewProjectInfoVoucher;
         }
-        // interface fullName: cloud.project.NewProjectInfoError.NewProjectInfoError
+        /**
+         * Error that can occur when creating a Public Cloud project
+         * interface fullName: cloud.project.NewProjectInfoError.NewProjectInfoError
+         */
         export interface NewProjectInfoError {
             code: cloud.project.NewProjectInfoErrorCodeEnum;
             message: string;
         }
-        // type fullname: cloud.project.NewProjectInfoErrorCodeEnum
+        /**
+         * Possible values for error code on project creation
+         * type fullname: cloud.project.NewProjectInfoErrorCodeEnum
+         */
         export type NewProjectInfoErrorCodeEnum = "accountNotEligible" | "challengePaymentMethodRequested" | "invalidPaymentMean" | "maxProjectsLimitReached" | "paypalAccountNotVerified" | "unpaidDebts"
-        // interface fullName: cloud.project.NewProjectInfoVoucher.NewProjectInfoVoucher
+        /**
+         * Information about voucher
+         * interface fullName: cloud.project.NewProjectInfoVoucher.NewProjectInfoVoucher
+         */
         export interface NewProjectInfoVoucher {
             credit: orderPrice;
             paymentMethodRequired: boolean;
         }
-        // type fullname: cloud.project.NewProjectStatusEnum
+        /**
+         * Possible values for new project status
+         * type fullname: cloud.project.NewProjectStatusEnum
+         */
         export type NewProjectStatusEnum = "creating" | "ok" | "validationPending" | "waitingAgreementsValidation"
-        // type fullname: cloud.project.PaymentMethodAuthorized
+        /**
+         * List of accepted payment methods
+         * type fullname: cloud.project.PaymentMethodAuthorized
+         */
         export type PaymentMethodAuthorized = "bankAccount" | "credit" | "creditCard" | "paypal"
-        // interface fullName: cloud.project.ProductAgreements.ProductAgreements
+        /**
+         * Product agreements
+         * interface fullName: cloud.project.ProductAgreements.ProductAgreements
+         */
         export interface ProductAgreements {
             agreementsToValidate?: number[];
             agreementsValidated?: number[];
         }
-        // type fullname: cloud.project.ProductNameEnum
+        /**
+         * Possible values for cloud project product name
+         * type fullname: cloud.project.ProductNameEnum
+         */
         export type ProductNameEnum = "registry"
-        // type fullname: cloud.project.ProjectStatus
+        /**
+         * Possible values for project status
+         * type fullname: cloud.project.ProjectStatus
+         */
         export type ProjectStatus = "creating" | "deleted" | "deleting" | "ok" | "suspended"
-        // type fullname: cloud.project.ProjectStatusEnum
+        /**
+         * Possible values for project status
+         * type fullname: cloud.project.ProjectStatusEnum
+         */
         export type ProjectStatusEnum = "creating" | "deleted" | "deleting" | "ok" | "suspended"
-        // interface fullName: cloud.project.ProjectUsage.ProjectUsage
+        /**
+         * Usage information on your project
+         * interface fullName: cloud.project.ProjectUsage.ProjectUsage
+         */
         export interface ProjectUsage {
             current: cloud.project.CurrentUsage;
         }
-        // interface fullName: cloud.project.SnapshotUsageDetail.SnapshotUsageDetail
+        /**
+         * Snapshot usage
+         * interface fullName: cloud.project.SnapshotUsageDetail.SnapshotUsageDetail
+         */
         export interface SnapshotUsageDetail {
             price: orderPrice;
             region: string;
             storedSize: complexType.UnitAndValue<number>;
         }
-        // interface fullName: cloud.project.SnapshotsUsage.SnapshotsUsage
+        /**
+         * Snapshots usage for current month
+         * interface fullName: cloud.project.SnapshotsUsage.SnapshotsUsage
+         */
         export interface SnapshotsUsage {
             detail: cloud.project.SnapshotUsageDetail[];
             total: orderPrice;
         }
-        // interface fullName: cloud.project.StorageUsage.StorageUsage
+        /**
+         * Usage information for current month on your project
+         * interface fullName: cloud.project.StorageUsage.StorageUsage
+         */
         export interface StorageUsage {
             bandwidth: cloud.project.BandwidthStorageUsage[];
             total: orderPrice;
             volume: cloud.project.StorageVolumeUsage[];
         }
-        // interface fullName: cloud.project.StorageVolumeUsage.StorageVolumeUsage
+        /**
+         * Storage volume used on your project
+         * interface fullName: cloud.project.StorageVolumeUsage.StorageVolumeUsage
+         */
         export interface StorageVolumeUsage {
             region: string;
             storedBytes: number;
             total: orderPrice;
         }
-        // type fullname: cloud.project.VolumeType
+        /**
+         * Possible values for volume type
+         * type fullname: cloud.project.VolumeType
+         */
         export type VolumeType = "classic" | "high-speed"
-        // interface fullName: cloud.project.VolumeUsageDetail.VolumeUsageDetail
+        /**
+         * Volume usage
+         * interface fullName: cloud.project.VolumeUsageDetail.VolumeUsageDetail
+         */
         export interface VolumeUsageDetail {
             price: orderPrice;
             volumeCapacity: complexType.UnitAndValue<number>;
             volumeId: string;
             volumeType: cloud.project.VolumeType;
         }
-        // interface fullName: cloud.project.VolumesUsage.VolumesUsage
+        /**
+         * Volumes usage for current month
+         * interface fullName: cloud.project.VolumesUsage.VolumesUsage
+         */
         export interface VolumesUsage {
             detail: cloud.project.VolumeUsageDetail[];
             total: orderPrice;
         }
         export namespace ai {
             export namespace serving {
-                // type fullname: cloud.project.ai.serving.APIStatusEnum
+                /**
+                 * Status of API
+                 * type fullname: cloud.project.ai.serving.APIStatusEnum
+                 */
                 export type APIStatusEnum = "pending" | "starting" | "running" | "scaling" | "waking" | "sleeping"
-                // interface fullName: cloud.project.ai.serving.Flavor.Flavor
+                /**
+                 * Compute Flavor for the Serving Engine
+                 * interface fullName: cloud.project.ai.serving.Flavor.Flavor
+                 */
                 export interface Flavor {
                     description: string;
                     id: string;
                 }
-                // interface fullName: cloud.project.ai.serving.Model.Model
+                /**
+                 * A deployed machine learning model
+                 * interface fullName: cloud.project.ai.serving.Model.Model
+                 */
                 export interface Model {
                     apiStatus: cloud.project.ai.serving.APIStatusEnum;
                     createdAt: string;
@@ -1379,7 +2144,10 @@ export namespace cloud {
                     workflowTemplate?: cloud.project.ai.serving.WorkflowTemplateEnum;
                     workflowTemplateParameters: cloud.project.ai.serving.ModelWorkflowTemplateParameter;
                 }
-                // interface fullName: cloud.project.ai.serving.ModelDefinition.ModelDefinition
+                /**
+                 * Missing description
+                 * interface fullName: cloud.project.ai.serving.ModelDefinition.ModelDefinition
+                 */
                 export interface ModelDefinition {
                     flavor: string;
                     id: string;
@@ -1387,12 +2155,18 @@ export namespace cloud {
                     storagePath?: string;
                     workflowTemplate?: cloud.project.ai.serving.WorkflowTemplateEnum;
                 }
-                // interface fullName: cloud.project.ai.serving.ModelWorkflowTemplateParameter.ModelWorkflowTemplateParameter
+                /**
+                 * Parameters of the Workflow that build
+                 * interface fullName: cloud.project.ai.serving.ModelWorkflowTemplateParameter.ModelWorkflowTemplateParameter
+                 */
                 export interface ModelWorkflowTemplateParameter {
                     imageId?: string;
                     storagePath?: string;
                 }
-                // interface fullName: cloud.project.ai.serving.Namespace.Namespace
+                /**
+                 * A serving engine namespace
+                 * interface fullName: cloud.project.ai.serving.Namespace.Namespace
+                 */
                 export interface Namespace {
                     clusterId: string;
                     container: string;
@@ -1404,31 +2178,46 @@ export namespace cloud {
                     region: string;
                     url: string;
                 }
-                // interface fullName: cloud.project.ai.serving.NamespaceCreation.NamespaceCreation
+                /**
+                 * Missing description
+                 * interface fullName: cloud.project.ai.serving.NamespaceCreation.NamespaceCreation
+                 */
                 export interface NamespaceCreation {
                     container: string;
                     description: string;
                     region: string;
                 }
-                // interface fullName: cloud.project.ai.serving.PresetImage.PresetImage
+                /**
+                 * A Image of a built serving model
+                 * interface fullName: cloud.project.ai.serving.PresetImage.PresetImage
+                 */
                 export interface PresetImage {
                     description: string;
                     id: string;
                     link?: string;
                     name: string;
                 }
-                // interface fullName: cloud.project.ai.serving.Registry.Registry
+                /**
+                 * Representation of a registry
+                 * interface fullName: cloud.project.ai.serving.Registry.Registry
+                 */
                 export interface Registry {
                     custom: boolean;
                     password: string;
                     url: string;
                     username: string;
                 }
-                // interface fullName: cloud.project.ai.serving.RegistryResponse.RegistryResponse
+                /**
+                 * Missing description
+                 * interface fullName: cloud.project.ai.serving.RegistryResponse.RegistryResponse
+                 */
                 export interface RegistryResponse {
                     message: string;
                 }
-                // interface fullName: cloud.project.ai.serving.Token.Token
+                /**
+                 * A token to access / manage a machine learning Model
+                 * interface fullName: cloud.project.ai.serving.Token.Token
+                 */
                 export interface Token {
                     createdAt: string;
                     groups: cloud.project.ai.serving.TokenGroupEnum[];
@@ -1436,16 +2225,28 @@ export namespace cloud {
                     resource: string;
                     token?: string;
                 }
-                // type fullname: cloud.project.ai.serving.TokenGroupEnum
+                /**
+                 * A serving engine access group
+                 * type fullname: cloud.project.ai.serving.TokenGroupEnum
+                 */
                 export type TokenGroupEnum = "model-management" | "model-evaluation"
-                // type fullname: cloud.project.ai.serving.VersionStatusEnum
+                /**
+                 * Status of current version
+                 * type fullname: cloud.project.ai.serving.VersionStatusEnum
+                 */
                 export type VersionStatusEnum = "pending" | "building" | "built" | "build-error" | "deploying" | "deployed" | "rollback" | "failed"
-                // type fullname: cloud.project.ai.serving.WorkflowTemplateEnum
+                /**
+                 * The workflow Template to use
+                 * type fullname: cloud.project.ai.serving.WorkflowTemplateEnum
+                 */
                 export type WorkflowTemplateEnum = "build-image" | "preset-image"
             }
         }
         export namespace dataProcessing {
-            // interface fullName: cloud.project.dataProcessing.CapabilitiesEngineParameter.CapabilitiesEngineParameter
+            /**
+             * Engine parameters
+             * interface fullName: cloud.project.dataProcessing.CapabilitiesEngineParameter.CapabilitiesEngineParameter
+             */
             export interface CapabilitiesEngineParameter {
                 default?: string;
                 description: string;
@@ -1453,24 +2254,36 @@ export namespace cloud {
                 name: string;
                 type: string;
             }
-            // interface fullName: cloud.project.dataProcessing.Capability.Capability
+            /**
+             * Capabilities of data processing service
+             * interface fullName: cloud.project.dataProcessing.Capability.Capability
+             */
             export interface Capability {
                 availableVersions: cloud.project.dataProcessing.EngineVersion[];
                 name: string;
                 parameters: cloud.project.dataProcessing.CapabilitiesEngineParameter[];
             }
-            // interface fullName: cloud.project.dataProcessing.EngineParameter.EngineParameter
+            /**
+             * Parameters of the engine
+             * interface fullName: cloud.project.dataProcessing.EngineParameter.EngineParameter
+             */
             export interface EngineParameter {
                 name: string;
                 value: string;
             }
-            // interface fullName: cloud.project.dataProcessing.EngineVersion.EngineVersion
+            /**
+             * Engine version
+             * interface fullName: cloud.project.dataProcessing.EngineVersion.EngineVersion
+             */
             export interface EngineVersion {
                 availableRegions: string[];
                 description: string;
                 name: string;
             }
-            // interface fullName: cloud.project.dataProcessing.Job.Job
+            /**
+             * Job information
+             * interface fullName: cloud.project.dataProcessing.Job.Job
+             */
             export interface Job {
                 containerName: string;
                 creationDate?: string;
@@ -1484,33 +2297,51 @@ export namespace cloud {
                 startDate?: string;
                 status: cloud.project.dataProcessing.StatusEnum;
             }
-            // interface fullName: cloud.project.dataProcessing.JobLogs.JobLogs
+            /**
+             * Job Logs
+             * interface fullName: cloud.project.dataProcessing.JobLogs.JobLogs
+             */
             export interface JobLogs {
                 logs: cloud.project.dataProcessing.LogLine[];
                 logsAddress?: string;
                 startDate: string;
             }
-            // interface fullName: cloud.project.dataProcessing.LogLine.LogLine
+            /**
+             * Log line
+             * interface fullName: cloud.project.dataProcessing.LogLine.LogLine
+             */
             export interface LogLine {
                 content: string;
                 id: number;
                 timestamp: string;
             }
-            // interface fullName: cloud.project.dataProcessing.Metrics.Metrics
+            /**
+             * Metrics information
+             * interface fullName: cloud.project.dataProcessing.Metrics.Metrics
+             */
             export interface Metrics {
                 endpoints: cloud.project.dataProcessing.MetricsEndpoint[];
                 token: string;
             }
-            // interface fullName: cloud.project.dataProcessing.MetricsEndpoint.MetricsEndpoint
+            /**
+             * Job Logs
+             * interface fullName: cloud.project.dataProcessing.MetricsEndpoint.MetricsEndpoint
+             */
             export interface MetricsEndpoint {
                 name: string;
                 url: string;
             }
-            // type fullname: cloud.project.dataProcessing.StatusEnum
+            /**
+             * Possible state of the job
+             * type fullname: cloud.project.dataProcessing.StatusEnum
+             */
             export type StatusEnum = "UNKNOWN" | "PENDING" | "SUBMITTED" | "RUNNING" | "CANCELLING" | "FAILED" | "TERMINATED" | "COMPLETED"
         }
         export namespace io {
-            // interface fullName: cloud.project.io.Stream.Stream
+            /**
+             * A stream to send data
+             * interface fullName: cloud.project.io.Stream.Stream
+             */
             export interface Stream {
                 backlog: string;
                 description?: string;
@@ -1522,91 +2353,148 @@ export namespace cloud {
                 status: cloud.project.io.StreamStatusEnum;
                 throttling: number;
             }
-            // interface fullName: cloud.project.io.StreamCreation.StreamCreation
+            /**
+             * Create a stream of data
+             * interface fullName: cloud.project.io.StreamCreation.StreamCreation
+             */
             export interface StreamCreation {
                 description: string;
                 kind: cloud.project.io.StreamKindEnum;
                 name: string;
                 region: string;
             }
-            // type fullname: cloud.project.io.StreamKindEnum
+            /**
+             * Kind of persistence for the stream
+             * type fullname: cloud.project.io.StreamKindEnum
+             */
             export type StreamKindEnum = "NON_PERSISTENT" | "PERSISTENT"
-            // interface fullName: cloud.project.io.StreamStats.StreamStats
+            /**
+             * Get statistics of a stream
+             * interface fullName: cloud.project.io.StreamStats.StreamStats
+             */
             export interface StreamStats {
                 usage: number;
             }
-            // type fullname: cloud.project.io.StreamStatusEnum
+            /**
+             * Status of the stream
+             * type fullname: cloud.project.io.StreamStatusEnum
+             */
             export type StreamStatusEnum = "INSTALLING" | "RUNNING" | "ERROR"
             export namespace stream {
-                // interface fullName: cloud.project.io.stream.Region.Region
+                /**
+                 * Region information
+                 * interface fullName: cloud.project.io.stream.Region.Region
+                 */
                 export interface Region {
                     endpoint: cloud.project.io.stream.RegionEndpoint;
                     region: string;
                 }
-                // interface fullName: cloud.project.io.stream.RegionEndpoint.RegionEndpoint
+                /**
+                 * Region information
+                 * interface fullName: cloud.project.io.stream.RegionEndpoint.RegionEndpoint
+                 */
                 export interface RegionEndpoint {
                     pulsar: string;
                 }
-                // interface fullName: cloud.project.io.stream.Subscription.Subscription
+                /**
+                 * Create a consumer on a stream
+                 * interface fullName: cloud.project.io.stream.Subscription.Subscription
+                 */
                 export interface Subscription {
                     id: string;
                     kind: cloud.project.io.stream.SubscriptionKindEnum;
                     name: string;
                 }
-                // interface fullName: cloud.project.io.stream.SubscriptionCreation.SubscriptionCreation
+                /**
+                 * Create a subscription on a stream
+                 * interface fullName: cloud.project.io.stream.SubscriptionCreation.SubscriptionCreation
+                 */
                 export interface SubscriptionCreation {
                     name: string;
                 }
-                // type fullname: cloud.project.io.stream.SubscriptionKindEnum
+                /**
+                 * Kind of the subscription
+                 * type fullname: cloud.project.io.stream.SubscriptionKindEnum
+                 */
                 export type SubscriptionKindEnum = "SHARED" | "KEY_SHARED" | "EXCLUSIVE" | "FAILOVER"
-                // interface fullName: cloud.project.io.stream.SubscriptionStats.SubscriptionStats
+                /**
+                 * Get statistic of a subscription
+                 * interface fullName: cloud.project.io.stream.SubscriptionStats.SubscriptionStats
+                 */
                 export interface SubscriptionStats {
                     lag: number;
                 }
-                // interface fullName: cloud.project.io.stream.Token.Token
+                /**
+                 * Token to access a stream
+                 * interface fullName: cloud.project.io.stream.Token.Token
+                 */
                 export interface Token {
                     action: cloud.project.io.stream.TokenActionEnum;
                     id: string;
                     token: string;
                 }
-                // type fullname: cloud.project.io.stream.TokenActionEnum
+                /**
+                 * Action of the token
+                 * type fullname: cloud.project.io.stream.TokenActionEnum
+                 */
                 export type TokenActionEnum = "CONSUME" | "PRODUCE" | "BOTH"
-                // interface fullName: cloud.project.io.stream.TokenCreation.TokenCreation
+                /**
+                 * Create a token to access a stream
+                 * interface fullName: cloud.project.io.stream.TokenCreation.TokenCreation
+                 */
                 export interface TokenCreation {
                     action: cloud.project.io.stream.TokenActionEnum;
                 }
             }
         }
         export namespace loadbalancer {
-            // interface fullName: cloud.project.loadbalancer.Address.Address
+            /**
+             * Address to reach the load balancer
+             * interface fullName: cloud.project.loadbalancer.Address.Address
+             */
             export interface Address {
                 ipv4: string;
                 ipv6?: string;
             }
-            // interface fullName: cloud.project.loadbalancer.Backend.Backend
+            /**
+             * A load balancer backend
+             * interface fullName: cloud.project.loadbalancer.Backend.Backend
+             */
             export interface Backend {
                 balancer?: cloud.project.loadbalancer.backend.BalancerAlgorithmEnum;
                 name: string;
                 proxyProtocol?: cloud.project.loadbalancer.backend.ProxyProtocolEnum;
                 servers: cloud.project.loadbalancer.Server[];
             }
-            // interface fullName: cloud.project.loadbalancer.BackendSelector.BackendSelector
+            /**
+             * Select a load balancer backend
+             * interface fullName: cloud.project.loadbalancer.BackendSelector.BackendSelector
+             */
             export interface BackendSelector {
                 name: string;
             }
-            // interface fullName: cloud.project.loadbalancer.Configuration.Configuration
+            /**
+             * A load balancer configuration
+             * interface fullName: cloud.project.loadbalancer.Configuration.Configuration
+             */
             export interface Configuration {
                 backends: cloud.project.loadbalancer.Backend[];
                 frontends: cloud.project.loadbalancer.Frontend[];
                 previousVersion?: number;
                 version: number;
             }
-            // interface fullName: cloud.project.loadbalancer.ConfigurationVersion.ConfigurationVersion
+            /**
+             * Information about version of the configuration
+             * interface fullName: cloud.project.loadbalancer.ConfigurationVersion.ConfigurationVersion
+             */
             export interface ConfigurationVersion {
                 applied: number;
                 latest: number;
             }
-            // interface fullName: cloud.project.loadbalancer.Frontend.Frontend
+            /**
+             * A load balancer frontend
+             * interface fullName: cloud.project.loadbalancer.Frontend.Frontend
+             */
             export interface Frontend {
                 backends: cloud.project.loadbalancer.BackendSelector[];
                 mode?: cloud.project.loadbalancer.frontend.ModeEnum;
@@ -1614,11 +2502,17 @@ export namespace cloud {
                 port: number;
                 whitelist: string[];
             }
-            // interface fullName: cloud.project.loadbalancer.Region.Region
+            /**
+             * Region information
+             * interface fullName: cloud.project.loadbalancer.Region.Region
+             */
             export interface Region {
                 region: string;
             }
-            // interface fullName: cloud.project.loadbalancer.Server.Server
+            /**
+             * A load balancer backend server
+             * interface fullName: cloud.project.loadbalancer.Server.Server
+             */
             export interface Server {
                 ip: string;
                 name: string;
@@ -1626,35 +2520,56 @@ export namespace cloud {
                 port: number;
                 weight?: number;
             }
-            // type fullname: cloud.project.loadbalancer.StatusEnum
+            /**
+             * Status of a load balancer
+             * type fullname: cloud.project.loadbalancer.StatusEnum
+             */
             export type StatusEnum = "INSTALLING" | "APPLYING" | "RUNNING" | "DELETING" | "ERROR"
             export namespace backend {
-                // type fullname: cloud.project.loadbalancer.backend.BalancerAlgorithmEnum
+                /**
+                 * Available load balancer backend balancer algorithm
+                 * type fullname: cloud.project.loadbalancer.backend.BalancerAlgorithmEnum
+                 */
                 export type BalancerAlgorithmEnum = "roundrobin" | "static-rr" | "leastconn" | "first" | "source"
-                // type fullname: cloud.project.loadbalancer.backend.ProxyProtocolEnum
+                /**
+                 * Available load balancer backend proxy-protocol
+                 * type fullname: cloud.project.loadbalancer.backend.ProxyProtocolEnum
+                 */
                 export type ProxyProtocolEnum = "v1" | "v2" | "v2-ssl" | "v2-cn"
             }
             export namespace frontend {
-                // type fullname: cloud.project.loadbalancer.frontend.ModeEnum
+                /**
+                 * Available load balancer frontend mode
+                 * type fullname: cloud.project.loadbalancer.frontend.ModeEnum
+                 */
                 export type ModeEnum = "TCP"
             }
         }
     }
     export namespace quota {
-        // interface fullName: cloud.quota.AllowedQuota.AllowedQuota
+        /**
+         * Quotas
+         * interface fullName: cloud.quota.AllowedQuota.AllowedQuota
+         */
         export interface AllowedQuota {
             compute: cloud.quota.ComputeQuota;
             name: string;
             network: cloud.quota.NetworkQuota;
             volume: cloud.quota.VolumeQuota;
         }
-        // interface fullName: cloud.quota.ComputeQuota.ComputeQuota
+        /**
+         * Quotas for compute
+         * interface fullName: cloud.quota.ComputeQuota.ComputeQuota
+         */
         export interface ComputeQuota {
             cores: number;
             instances: number;
             ram: number;
         }
-        // interface fullName: cloud.quota.InstanceUsageQuotas.InstanceUsageQuotas
+        /**
+         * Quotas on instances
+         * interface fullName: cloud.quota.InstanceUsageQuotas.InstanceUsageQuotas
+         */
         export interface InstanceUsageQuotas {
             maxCores: number;
             maxInstances: number;
@@ -1663,30 +2578,45 @@ export namespace cloud {
             usedInstances: number;
             usedRAM: number;
         }
-        // interface fullName: cloud.quota.KeypairQuotas.KeypairQuotas
+        /**
+         * Quotas on keypairs
+         * interface fullName: cloud.quota.KeypairQuotas.KeypairQuotas
+         */
         export interface KeypairQuotas {
             maxCount: number;
         }
-        // interface fullName: cloud.quota.NetworkQuota.NetworkQuota
+        /**
+         * Quotas for network
+         * interface fullName: cloud.quota.NetworkQuota.NetworkQuota
+         */
         export interface NetworkQuota {
             networks: number;
             ports: number;
             subnets: number;
         }
-        // interface fullName: cloud.quota.Quotas.Quotas
+        /**
+         * Quotas
+         * interface fullName: cloud.quota.Quotas.Quotas
+         */
         export interface Quotas {
             instance?: cloud.quota.InstanceUsageQuotas;
             keypair?: cloud.quota.KeypairQuotas;
             region: string;
             volume?: cloud.quota.VolumeUsageQuotas;
         }
-        // interface fullName: cloud.quota.VolumeQuota.VolumeQuota
+        /**
+         * Quotas for volume
+         * interface fullName: cloud.quota.VolumeQuota.VolumeQuota
+         */
         export interface VolumeQuota {
             gigabytes: number;
             snapshots: number;
             volumes: number;
         }
-        // interface fullName: cloud.quota.VolumeUsageQuotas.VolumeUsageQuotas
+        /**
+         * Quotas on volumes
+         * interface fullName: cloud.quota.VolumeUsageQuotas.VolumeUsageQuotas
+         */
         export interface VolumeUsageQuotas {
             maxGigabytes: number;
             usedGigabytes: number;
@@ -1694,38 +2624,56 @@ export namespace cloud {
         }
     }
     export namespace role {
-        // interface fullName: cloud.role.Permission.Permission
+        /**
+         * Role permissions
+         * interface fullName: cloud.role.Permission.Permission
+         */
         export interface Permission {
             label: string;
             roles: string[];
         }
-        // interface fullName: cloud.role.Role.Role
+        /**
+         * Role
+         * interface fullName: cloud.role.Role.Role
+         */
         export interface Role {
             description: string;
             id: string;
             name: string;
             permissions: string[];
         }
-        // interface fullName: cloud.role.Roles.Roles
+        /**
+         * OpenStack role
+         * interface fullName: cloud.role.Roles.Roles
+         */
         export interface Roles {
             roles: cloud.role.Role[];
             services: cloud.role.Service[];
         }
-        // interface fullName: cloud.role.Service.Service
+        /**
+         * OpenStack service
+         * interface fullName: cloud.role.Service.Service
+         */
         export interface Service {
             name: string;
             permissions: cloud.role.Permission[];
         }
     }
     export namespace sshkey {
-        // interface fullName: cloud.sshkey.SshKey.SshKey
+        /**
+         * SshKey
+         * interface fullName: cloud.sshkey.SshKey.SshKey
+         */
         export interface SshKey {
             id: string;
             name: string;
             publicKey: string;
             regions: string[];
         }
-        // interface fullName: cloud.sshkey.SshKeyDetail.SshKeyDetail
+        /**
+         * SshKeyDetail
+         * interface fullName: cloud.sshkey.SshKeyDetail.SshKeyDetail
+         */
         export interface SshKeyDetail {
             fingerPrint: string;
             id: string;
@@ -1735,25 +2683,37 @@ export namespace cloud {
         }
     }
     export namespace stack {
-        // interface fullName: cloud.stack.Content.Content
+        /**
+         * Content
+         * interface fullName: cloud.stack.Content.Content
+         */
         export interface Content {
             content: string;
             type: string;
         }
-        // interface fullName: cloud.stack.InstructionGuide.InstructionGuide
+        /**
+         * InstructionGuide
+         * interface fullName: cloud.stack.InstructionGuide.InstructionGuide
+         */
         export interface InstructionGuide {
             content: cloud.stack.Content[];
             language: string;
             sections: cloud.stack.Section[];
             title: string;
         }
-        // interface fullName: cloud.stack.Section.Section
+        /**
+         * Section
+         * interface fullName: cloud.stack.Section.Section
+         */
         export interface Section {
             content: cloud.stack.Content[];
             steps: cloud.stack.Step[];
             title: string;
         }
-        // interface fullName: cloud.stack.Stack.Stack
+        /**
+         * Stack
+         * interface fullName: cloud.stack.Stack.Stack
+         */
         export interface Stack {
             commit: string;
             description: string;
@@ -1763,14 +2723,20 @@ export namespace cloud {
             release: string;
             uuid: string;
         }
-        // interface fullName: cloud.stack.Step.Step
+        /**
+         * Step
+         * interface fullName: cloud.stack.Step.Step
+         */
         export interface Step {
             content: cloud.stack.Content[];
             title: string;
         }
     }
     export namespace storage {
-        // interface fullName: cloud.storage.Container.Container
+        /**
+         * Container
+         * interface fullName: cloud.storage.Container.Container
+         */
         export interface Container {
             id: string;
             name: string;
@@ -1778,12 +2744,18 @@ export namespace cloud {
             storedBytes: number;
             storedObjects: number;
         }
-        // interface fullName: cloud.storage.ContainerAccess.ContainerAccess
+        /**
+         * ContainerAccess
+         * interface fullName: cloud.storage.ContainerAccess.ContainerAccess
+         */
         export interface ContainerAccess {
             endpoints: cloud.storage.Endpoint[];
             token: string;
         }
-        // interface fullName: cloud.storage.ContainerDetail.ContainerDetail
+        /**
+         * ContainerDetail
+         * interface fullName: cloud.storage.ContainerDetail.ContainerDetail
+         */
         export interface ContainerDetail {
             archive: boolean;
             containerType: cloud.storage.TypeEnum;
@@ -1796,7 +2768,10 @@ export namespace cloud {
             storedBytes: number;
             storedObjects: number;
         }
-        // interface fullName: cloud.storage.ContainerObject.ContainerObject
+        /**
+         * ContainerObject
+         * interface fullName: cloud.storage.ContainerObject.ContainerObject
+         */
         export interface ContainerObject {
             contentType: string;
             lastModified: string;
@@ -1805,32 +2780,56 @@ export namespace cloud {
             retrievalState: cloud.storage.RetrievalStateEnum;
             size: number;
         }
-        // interface fullName: cloud.storage.ContainerObjectTempURL.ContainerObjectTempURL
+        /**
+         * ContainerObjectTempURL
+         * interface fullName: cloud.storage.ContainerObjectTempURL.ContainerObjectTempURL
+         */
         export interface ContainerObjectTempURL {
             expirationDate: string;
             getURL: string;
         }
-        // interface fullName: cloud.storage.Endpoint.Endpoint
+        /**
+         * Endpoint
+         * interface fullName: cloud.storage.Endpoint.Endpoint
+         */
         export interface Endpoint {
             region: string;
             url: string;
         }
-        // type fullname: cloud.storage.RetrievalStateEnum
+        /**
+         * RetrievalStateEnum
+         * type fullname: cloud.storage.RetrievalStateEnum
+         */
         export type RetrievalStateEnum = "sealed" | "unsealing" | "unsealed"
-        // type fullname: cloud.storage.RightEnum
+        /**
+         * RightEnum
+         * type fullname: cloud.storage.RightEnum
+         */
         export type RightEnum = "all" | "read" | "write"
-        // type fullname: cloud.storage.TypeEnum
+        /**
+         * TypeEnum
+         * type fullname: cloud.storage.TypeEnum
+         */
         export type TypeEnum = "static" | "public" | "private"
     }
     export namespace usage {
-        // type fullname: cloud.usage.PaymentTypeEnum
+        /**
+         * PaymentTypeEnum
+         * type fullname: cloud.usage.PaymentTypeEnum
+         */
         export type PaymentTypeEnum = "pre" | "post"
-        // interface fullName: cloud.usage.Period.Period
+        /**
+         * Period
+         * interface fullName: cloud.usage.Period.Period
+         */
         export interface Period {
             from: string;
             to: string;
         }
-        // interface fullName: cloud.usage.UsageBill.UsageBill
+        /**
+         * UsageBill
+         * interface fullName: cloud.usage.UsageBill.UsageBill
+         */
         export interface UsageBill {
             bill_id: string;
             credit: number;
@@ -1838,7 +2837,10 @@ export namespace cloud {
             payment_type: cloud.usage.PaymentTypeEnum;
             total: number;
         }
-        // interface fullName: cloud.usage.UsageCurrent.UsageCurrent
+        /**
+         * UsageCurrent
+         * interface fullName: cloud.usage.UsageCurrent.UsageCurrent
+         */
         export interface UsageCurrent {
             hourlyUsage?: cloud.billingView.HourlyResources;
             lastUpdate: string;
@@ -1846,11 +2848,17 @@ export namespace cloud {
             period: cloud.usage.Period;
             resourcesUsage?: cloud.billingView.TypedResources[];
         }
-        // interface fullName: cloud.usage.UsageCurrentBills.UsageCurrentBills
+        /**
+         * UsageCurrentBills
+         * interface fullName: cloud.usage.UsageCurrentBills.UsageCurrentBills
+         */
         export interface UsageCurrentBills {
             bills: cloud.usage.UsageBill[];
         }
-        // interface fullName: cloud.usage.UsageForecast.UsageForecast
+        /**
+         * UsageForecast
+         * interface fullName: cloud.usage.UsageForecast.UsageForecast
+         */
         export interface UsageForecast {
             hourlyUsage?: cloud.billingView.HourlyResources;
             lastUpdate: string;
@@ -1859,13 +2867,19 @@ export namespace cloud {
             resourcesUsage?: cloud.billingView.TypedResources[];
             usableCredits?: cloud.billingView.UsedCredits;
         }
-        // interface fullName: cloud.usage.UsageHistory.UsageHistory
+        /**
+         * UsageHistory
+         * interface fullName: cloud.usage.UsageHistory.UsageHistory
+         */
         export interface UsageHistory {
             id: string;
             lastUpdate: string;
             period: cloud.usage.Period;
         }
-        // interface fullName: cloud.usage.UsageHistoryDetail.UsageHistoryDetail
+        /**
+         * UsageHistoryDetail
+         * interface fullName: cloud.usage.UsageHistoryDetail.UsageHistoryDetail
+         */
         export interface UsageHistoryDetail {
             hourlyUsage?: cloud.billingView.HourlyResources;
             id: string;
@@ -1874,25 +2888,43 @@ export namespace cloud {
             period: cloud.usage.Period;
             resourcesUsage?: cloud.billingView.TypedResources[];
         }
-        // interface fullName: cloud.usage.UsageHistoryDetailBills.UsageHistoryDetailBills
+        /**
+         * UsageHistoryDetailBills
+         * interface fullName: cloud.usage.UsageHistoryDetailBills.UsageHistoryDetailBills
+         */
         export interface UsageHistoryDetailBills {
             bills: cloud.usage.UsageBill[];
         }
     }
     export namespace user {
-        // interface fullName: cloud.user.Openrc.Openrc
+        /**
+         * Openrc
+         * interface fullName: cloud.user.Openrc.Openrc
+         */
         export interface Openrc {
             content: string;
         }
-        // type fullname: cloud.user.OpenrcVersionEnum
+        /**
+         * OpenrcVersionEnum
+         * type fullname: cloud.user.OpenrcVersionEnum
+         */
         export type OpenrcVersionEnum = "v2.0" | "v3"
-        // interface fullName: cloud.user.Rclone.Rclone
+        /**
+         * Rclone
+         * interface fullName: cloud.user.Rclone.Rclone
+         */
         export interface Rclone {
             content: string;
         }
-        // type fullname: cloud.user.RoleEnum
+        /**
+         * RoleEnum
+         * type fullname: cloud.user.RoleEnum
+         */
         export type RoleEnum = "admin" | "authentication" | "administrator" | "compute_operator" | "infrastructure_supervisor" | "network_security_operator" | "network_operator" | "backup_operator" | "image_operator" | "volume_operator" | "objectstore_operator"
-        // interface fullName: cloud.user.User.User
+        /**
+         * User
+         * interface fullName: cloud.user.User.User
+         */
         export interface User {
             creationDate: string;
             description: string;
@@ -1901,7 +2933,10 @@ export namespace cloud {
             status: cloud.user.UserStatusEnum;
             username: string;
         }
-        // interface fullName: cloud.user.UserDetail.UserDetail
+        /**
+         * UserDetail
+         * interface fullName: cloud.user.UserDetail.UserDetail
+         */
         export interface UserDetail {
             creationDate: string;
             description: string;
@@ -1911,11 +2946,17 @@ export namespace cloud {
             status: cloud.user.UserStatusEnum;
             username: string;
         }
-        // type fullname: cloud.user.UserStatusEnum
+        /**
+         * UserStatusEnum
+         * type fullname: cloud.user.UserStatusEnum
+         */
         export type UserStatusEnum = "creating" | "ok" | "deleting" | "deleted"
     }
     export namespace volume {
-        // interface fullName: cloud.volume.Snapshot.Snapshot
+        /**
+         * Snapshot
+         * interface fullName: cloud.volume.Snapshot.Snapshot
+         */
         export interface Snapshot {
             creationDate: string;
             description: string;
@@ -1927,9 +2968,15 @@ export namespace cloud {
             status: cloud.volume.SnapshotStatusEnum;
             volumeId: string;
         }
-        // type fullname: cloud.volume.SnapshotStatusEnum
+        /**
+         * SnapshotStatusEnum
+         * type fullname: cloud.volume.SnapshotStatusEnum
+         */
         export type SnapshotStatusEnum = "creating" | "available" | "deleting" | "error" | "error_deleting"
-        // interface fullName: cloud.volume.Volume.Volume
+        /**
+         * Volume
+         * interface fullName: cloud.volume.Volume.Volume
+         */
         export interface Volume {
             attachedTo: string[];
             bootable: boolean;
@@ -1943,25 +2990,39 @@ export namespace cloud {
             status: string;
             type: cloud.volume.VolumeTypeEnum;
         }
-        // type fullname: cloud.volume.VolumeTypeEnum
+        /**
+         * VolumeTypeEnum
+         * type fullname: cloud.volume.VolumeTypeEnum
+         */
         export type VolumeTypeEnum = "classic" | "high-speed"
     }
 }
 export namespace complexType {
-    // interface fullName: complexType.UnitAndValue.UnitAndValue
+    /**
+     * A numeric value tagged with its unit
+     * interface fullName: complexType.UnitAndValue.UnitAndValue
+     */
     export interface UnitAndValue<T> {
         unit: string;
         value: T;
     }
 }
 export namespace nichandle {
-    // type fullname: nichandle.OvhSubsidiaryEnum
+    /**
+     * OVH subsidiaries
+     * type fullname: nichandle.OvhSubsidiaryEnum
+     */
     export type OvhSubsidiaryEnum = "ASIA" | "AU" | "CA" | "CZ" | "DE" | "ES" | "EU" | "FI" | "FR" | "GB" | "IE" | "IT" | "LT" | "MA" | "NL" | "PL" | "PT" | "QC" | "SG" | "SN" | "TN" | "US" | "WE" | "WS"
 }
 export namespace order {
-    // type fullname: order.CurrencyCodeEnum
+    /**
+     * type fullname: order.CurrencyCodeEnum
+     */
     export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
-    // interface fullName: order.Price.Price
+    /**
+     * Price with it's currency and textual representation
+     * interface fullName: order.Price.Price
+     */
     export interface Price {
         currencyCode: order.CurrencyCodeEnum;
         text: string;
@@ -1969,7 +3030,10 @@ export namespace order {
     }
 }
 export namespace pca {
-    // interface fullName: pca.Account.Account
+    /**
+     * Cloud Archives Account
+     * interface fullName: pca.Account.Account
+     */
     export interface Account {
         domain: string;
         host: string;
@@ -1977,7 +3041,10 @@ export namespace pca {
         password: string;
         sshkey?: string;
     }
-    // interface fullName: pca.Billing.Billing
+    /**
+     * cloud archives billing
+     * interface fullName: pca.Billing.Billing
+     */
     export interface Billing {
         billed: boolean;
         date: string;
@@ -1986,7 +3053,10 @@ export namespace pca {
         reference: cloud.pca.BillingRefEnum;
         total: number;
     }
-    // interface fullName: pca.File.File
+    /**
+     * cloud archives files
+     * interface fullName: pca.File.File
+     */
     export interface File {
         MD5: string;
         SHA1: string;
@@ -1997,7 +3067,10 @@ export namespace pca {
         state: string;
         type: string;
     }
-    // interface fullName: pca.Session.Session
+    /**
+     * cloud archives sessions
+     * interface fullName: pca.Session.Session
+     */
     export interface Session {
         endDate?: string;
         id: string;
@@ -2008,7 +3081,10 @@ export namespace pca {
         startDate: string;
         state: cloud.pca.SessionStateEnum;
     }
-    // interface fullName: pca.Task.Task
+    /**
+     * cloud archives tasks
+     * interface fullName: pca.Task.Task
+     */
     export interface Task {
         comment?: string;
         function: cloud.pca.FunctionTypeEnum;
@@ -2020,7 +3096,10 @@ export namespace pca {
     }
 }
 export namespace service {
-    // interface fullName: service.RenewType.RenewType
+    /**
+     * Map a possible renew for a specific service
+     * interface fullName: service.RenewType.RenewType
+     */
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -2028,17 +3107,31 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    // type fullname: service.RenewalTypeEnum
+    /**
+     * Detailed renewal type of a service
+     * type fullname: service.RenewalTypeEnum
+     */
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    // type fullname: service.StateEnum
+    /**
+     * type fullname: service.StateEnum
+     */
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
-    // type fullname: service.TerminationFutureUseEnum
+    /**
+     * All future uses you can provide for a service termination
+     * type fullname: service.TerminationFutureUseEnum
+     */
     export type TerminationFutureUseEnum = "NOT_REPLACING_SERVICE" | "OTHER" | "SUBSCRIBE_AN_OTHER_SERVICE" | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR" | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
-    // type fullname: service.TerminationReasonEnum
+    /**
+     * All reasons you can provide for a service termination
+     * type fullname: service.TerminationReasonEnum
+     */
     export type TerminationReasonEnum = "FEATURES_DONT_SUIT_ME" | "LACK_OF_PERFORMANCES" | "MIGRATED_TO_ANOTHER_OVH_PRODUCT" | "MIGRATED_TO_COMPETITOR" | "NOT_ENOUGH_RECOGNITION" | "NOT_NEEDED_ANYMORE" | "NOT_RELIABLE" | "NO_ANSWER" | "OTHER" | "PRODUCT_DIMENSION_DONT_SUIT_ME" | "PRODUCT_TOOLS_DONT_SUIT_ME" | "TOO_EXPENSIVE" | "TOO_HARD_TO_USE" | "UNSATIFIED_BY_CUSTOMER_SUPPORT"
 }
 export namespace services {
-    // interface fullName: services.Service.Service
+    /**
+     * Details about a Service
+     * interface fullName: services.Service.Service
+     */
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;
@@ -2064,261 +3157,695 @@ export function proxyCloud(ovhEngine: OvhRequestable): Cloud {
 }
 export default proxyCloud;
 /**
- * Api Proxy model
- */// Apis harmony
-// path /cloud
+ * Api model for /cloud
+ */
 export interface Cloud {
-    // GET /cloud
+    /**
+     * List available services
+     * GET /cloud
+     */
     $get(): Promise<string[]>;
+    /**
+     * Controle cache
+     */
+    $cache(param?: ICacheOptions): Promise<any>;
     agreements: {
-        // GET /cloud/agreements
+        /**
+         * Get agreements related to a product
+         * GET /cloud/agreements
+         */
         $get(params: { product: cloud.project.ProductNameEnum }): Promise<cloud.project.ProductAgreements>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
     }
     createProject: {
-        // POST /cloud/createProject
+        /**
+         * Start a new cloud project
+         * POST /cloud/createProject
+         */
         $post(params?: { credit?: number, description?: string, voucher?: string }): Promise<cloud.project.NewProject>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
     }
     createProjectInfo: {
-        // GET /cloud/createProjectInfo
+        /**
+         * Get information about a cloud project creation
+         * GET /cloud/createProjectInfo
+         */
         $get(params?: { voucher?: string }): Promise<cloud.project.NewProjectInfo>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
     }
     eligibility: {
-        // GET /cloud/eligibility
+        /**
+         * Check your eligibility to create a Public Cloud order
+         * GET /cloud/eligibility
+         */
         $get(params?: { voucher?: string }): Promise<cloud.project.EligibilityInfo>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
     }
     order: {
-        // GET /cloud/order
+        /**
+         * Get all cloud pending orders
+         * GET /cloud/order
+         */
         $get(params?: { planCode?: string }): Promise<cloud.order.Order[]>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
     }
     price: {
-        // GET /cloud/price
+        /**
+         * Get services prices
+         * GET /cloud/price
+         */
         $get(params?: { flavorId?: string, region?: string }): Promise<cloud.Price>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
     }
     project: {
-        // GET /cloud/project
+        /**
+         * List available services
+         * GET /cloud/project
+         */
         $get(): Promise<string[]>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         $(serviceName: string): {
-            // GET /cloud/project/{serviceName}
+            /**
+             * Get this object properties
+             * GET /cloud/project/{serviceName}
+             */
             $get(): Promise<cloud.Project>;
-            // PUT /cloud/project/{serviceName}
+            /**
+             * Alter this object properties
+             * PUT /cloud/project/{serviceName}
+             */
             $put(params?: { access?: cloud.AccessTypeEnum, creationDate?: string, description?: string, expiration?: string, orderId?: number, planCode?: string, project_id?: string, status?: cloud.project.ProjectStatusEnum, unleash?: boolean }): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             acl: {
-                // GET /cloud/project/{serviceName}/acl
+                /**
+                 * Get ACL on your cloud project
+                 * GET /cloud/project/{serviceName}/acl
+                 */
                 $get(params?: { type?: cloud.AclTypeEnum }): Promise<string[]>;
-                // POST /cloud/project/{serviceName}/acl
+                /**
+                 * Create new ACL
+                 * POST /cloud/project/{serviceName}/acl
+                 */
                 $post(params: { accountId: string, type: cloud.AclTypeEnum }): Promise<cloud.Acl>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(accountId: string): {
-                    // DELETE /cloud/project/{serviceName}/acl/{accountId}
+                    /**
+                     * Delete ACL
+                     * DELETE /cloud/project/{serviceName}/acl/{accountId}
+                     */
                     $delete(): Promise<void>;
-                    // GET /cloud/project/{serviceName}/acl/{accountId}
+                    /**
+                     * Get this object properties
+                     * GET /cloud/project/{serviceName}/acl/{accountId}
+                     */
                     $get(): Promise<cloud.Acl>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 };
             }
             activateMonthlyBilling: {
-                // POST /cloud/project/{serviceName}/activateMonthlyBilling
+                /**
+                 * Activate monthly billing on multiple instances
+                 * POST /cloud/project/{serviceName}/activateMonthlyBilling
+                 */
                 $post(params: { instances: cloud.instance.MonthlyInstanceBulkParams[] }): Promise<cloud.instance.InstanceDetail[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             alerting: {
-                // GET /cloud/project/{serviceName}/alerting
+                /**
+                 * Manage alerts on your consumption
+                 * GET /cloud/project/{serviceName}/alerting
+                 */
                 $get(): Promise<string[]>;
-                // POST /cloud/project/{serviceName}/alerting
+                /**
+                 * Add new alert
+                 * POST /cloud/project/{serviceName}/alerting
+                 */
                 $post(params: { delay: cloud.AlertingDelayEnum, email: string, monthlyThreshold: number }): Promise<cloud.Alerting>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(id: string): {
-                    // DELETE /cloud/project/{serviceName}/alerting/{id}
+                    /**
+                     * Delete alerting
+                     * DELETE /cloud/project/{serviceName}/alerting/{id}
+                     */
                     $delete(): Promise<void>;
-                    // GET /cloud/project/{serviceName}/alerting/{id}
+                    /**
+                     * Get this object properties
+                     * GET /cloud/project/{serviceName}/alerting/{id}
+                     */
                     $get(): Promise<cloud.Alerting>;
-                    // PUT /cloud/project/{serviceName}/alerting/{id}
+                    /**
+                     * Alter this object properties
+                     * PUT /cloud/project/{serviceName}/alerting/{id}
+                     */
                     $put(params?: { creationDate?: string, delay?: cloud.AlertingDelayEnum, email?: string, formattedMonthlyThreshold?: orderPrice, id?: string, monthlyThreshold?: number }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     alert: {
-                        // GET /cloud/project/{serviceName}/alerting/{id}/alert
+                        /**
+                         * See alerts
+                         * GET /cloud/project/{serviceName}/alerting/{id}/alert
+                         */
                         $get(): Promise<number[]>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         $(alertId: number): {
-                            // GET /cloud/project/{serviceName}/alerting/{id}/alert/{alertId}
+                            /**
+                             * Get this object properties
+                             * GET /cloud/project/{serviceName}/alerting/{id}/alert/{alertId}
+                             */
                             $get(): Promise<cloud.AlertingAlert>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         };
                     }
                 };
             }
             bill: {
-                // GET /cloud/project/{serviceName}/bill
+                /**
+                 * Get your project bills
+                 * GET /cloud/project/{serviceName}/bill
+                 */
                 $get(params: { from: string, to: string }): Promise<cloud.project.Bill[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             cancel: {
-                // POST /cloud/project/{serviceName}/cancel
+                /**
+                 * Cancel project creation
+                 * POST /cloud/project/{serviceName}/cancel
+                 */
                 $post(): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             capabilities: {
                 containerRegistry: {
-                    // GET /cloud/project/{serviceName}/capabilities/containerRegistry
+                    /**
+                     * List container registry capabilities per region
+                     * GET /cloud/project/{serviceName}/capabilities/containerRegistry
+                     */
                     $get(): Promise<cloud.containerRegistry.Capability[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             }
             changeContact: {
-                // POST /cloud/project/{serviceName}/changeContact
+                /**
+                 * Launch a contact change procedure
+                 * POST /cloud/project/{serviceName}/changeContact
+                 */
                 $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             confirmTermination: {
-                // POST /cloud/project/{serviceName}/confirmTermination
+                /**
+                 * Confirm termination of your service
+                 * POST /cloud/project/{serviceName}/confirmTermination
+                 */
                 $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             consumption: {
-                // GET /cloud/project/{serviceName}/consumption
+                /**
+                 * Get your project consumption
+                 * GET /cloud/project/{serviceName}/consumption
+                 */
                 $get(params: { from: string, to: string }): Promise<cloud.project.ProjectUsage>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             containerRegistry: {
-                // GET /cloud/project/{serviceName}/containerRegistry
+                /**
+                 * List registries of the project
+                 * GET /cloud/project/{serviceName}/containerRegistry
+                 */
                 $get(): Promise<cloud.containerRegistry.Registry[]>;
-                // POST /cloud/project/{serviceName}/containerRegistry
+                /**
+                 * Create a new registry
+                 * POST /cloud/project/{serviceName}/containerRegistry
+                 */
                 $post(params: { name: string, planID?: string, region: string }): Promise<cloud.containerRegistry.Registry>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(registryID: string): {
-                    // DELETE /cloud/project/{serviceName}/containerRegistry/{registryID}
+                    /**
+                     * Delete a registry
+                     * DELETE /cloud/project/{serviceName}/containerRegistry/{registryID}
+                     */
                     $delete(): Promise<void>;
-                    // GET /cloud/project/{serviceName}/containerRegistry/{registryID}
+                    /**
+                     * Get the registry information
+                     * GET /cloud/project/{serviceName}/containerRegistry/{registryID}
+                     */
                     $get(): Promise<cloud.containerRegistry.Registry>;
-                    // PUT /cloud/project/{serviceName}/containerRegistry/{registryID}
+                    /**
+                     * Update the registry
+                     * PUT /cloud/project/{serviceName}/containerRegistry/{registryID}
+                     */
                     $put(params: { name: string }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     capabilities: {
                         plan: {
-                            // GET /cloud/project/{serviceName}/containerRegistry/{registryID}/capabilities/plan
+                            /**
+                             * Get available plans for the current registry.
+                             * GET /cloud/project/{serviceName}/containerRegistry/{registryID}/capabilities/plan
+                             */
                             $get(): Promise<cloud.containerRegistry.Plan[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         }
                     }
                     plan: {
-                        // GET /cloud/project/{serviceName}/containerRegistry/{registryID}/plan
+                        /**
+                         * Show the actual plan of the registry.
+                         * GET /cloud/project/{serviceName}/containerRegistry/{registryID}/plan
+                         */
                         $get(): Promise<cloud.containerRegistry.Plan>;
-                        // PUT /cloud/project/{serviceName}/containerRegistry/{registryID}/plan
+                        /**
+                         * Update the plan of a registry.
+                         * PUT /cloud/project/{serviceName}/containerRegistry/{registryID}/plan
+                         */
                         $put(params: { planID: string }): Promise<void>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     users: {
-                        // GET /cloud/project/{serviceName}/containerRegistry/{registryID}/users
+                        /**
+                         * List registry user
+                         * GET /cloud/project/{serviceName}/containerRegistry/{registryID}/users
+                         */
                         $get(): Promise<cloud.containerRegistry.User[]>;
-                        // POST /cloud/project/{serviceName}/containerRegistry/{registryID}/users
+                        /**
+                         * Create a new registry user
+                         * POST /cloud/project/{serviceName}/containerRegistry/{registryID}/users
+                         */
                         $post(params?: { email?: string, login?: string }): Promise<cloud.containerRegistry.User>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         $(userID: string): {
-                            // DELETE /cloud/project/{serviceName}/containerRegistry/{registryID}/users/{userID}
+                            /**
+                             * Delete a registry user
+                             * DELETE /cloud/project/{serviceName}/containerRegistry/{registryID}/users/{userID}
+                             */
                             $delete(): Promise<void>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         };
                     }
                 };
             }
             credit: {
-                // GET /cloud/project/{serviceName}/credit
+                /**
+                 * Get your credit
+                 * GET /cloud/project/{serviceName}/credit
+                 */
                 $get(): Promise<number[]>;
-                // POST /cloud/project/{serviceName}/credit
+                /**
+                 * Add credit to your project
+                 * POST /cloud/project/{serviceName}/credit
+                 */
                 $post(params: { code: string }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(id: number): {
-                    // GET /cloud/project/{serviceName}/credit/{id}
+                    /**
+                     * Get this object properties
+                     * GET /cloud/project/{serviceName}/credit/{id}
+                     */
                     $get(): Promise<cloud.Credit>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 };
             }
             flavor: {
-                // GET /cloud/project/{serviceName}/flavor
+                /**
+                 * Get flavors
+                 * GET /cloud/project/{serviceName}/flavor
+                 */
                 $get(params?: { region?: string }): Promise<cloud.flavor.Flavor[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(flavorId: string): {
-                    // GET /cloud/project/{serviceName}/flavor/{flavorId}
+                    /**
+                     * Get flavor
+                     * GET /cloud/project/{serviceName}/flavor/{flavorId}
+                     */
                     $get(): Promise<cloud.flavor.Flavor>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 };
             }
             forecast: {
-                // GET /cloud/project/{serviceName}/forecast
+                /**
+                 * Get your consumption forecast
+                 * GET /cloud/project/{serviceName}/forecast
+                 */
                 $get(params: { toDate: string }): Promise<cloud.forecast.ProjectForecast>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             image: {
-                // GET /cloud/project/{serviceName}/image
+                /**
+                 * Get images
+                 * GET /cloud/project/{serviceName}/image
+                 */
                 $get(params?: { flavorType?: string, osType?: cloud.image.OSTypeEnum, region?: string }): Promise<cloud.image.Image[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(imageId: string): {
-                    // GET /cloud/project/{serviceName}/image/{imageId}
+                    /**
+                     * Get image
+                     * GET /cloud/project/{serviceName}/image/{imageId}
+                     */
                     $get(): Promise<cloud.image.Image>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 };
             }
             instance: {
-                // GET /cloud/project/{serviceName}/instance
+                /**
+                 * Get instance
+                 * GET /cloud/project/{serviceName}/instance
+                 */
                 $get(params?: { region?: string }): Promise<cloud.instance.Instance[]>;
-                // POST /cloud/project/{serviceName}/instance
+                /**
+                 * Create a new instance
+                 * POST /cloud/project/{serviceName}/instance
+                 */
                 $post(params: { autobackup?: cloud.instance.AutoBackup, flavorId: string, groupId?: string, imageId?: string, monthlyBilling?: boolean, name: string, networks?: cloud.instance.NetworkParams[], region: string, sshKeyId?: string, userData?: string, volumeId?: string }): Promise<cloud.instance.InstanceDetail>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 bulk: {
-                    // POST /cloud/project/{serviceName}/instance/bulk
+                    /**
+                     * Create multiple instances
+                     * POST /cloud/project/{serviceName}/instance/bulk
+                     */
                     $post(params: { autobackup?: cloud.instance.AutoBackup, flavorId: string, groupId?: string, imageId?: string, monthlyBilling?: boolean, name: string, networks?: cloud.instance.NetworkBulkParams[], number: number, region: string, sshKeyId?: string, userData?: string, volumeId?: string }): Promise<cloud.instance.Instance[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 group: {
-                    // GET /cloud/project/{serviceName}/instance/group
+                    /**
+                     * Get the detail of a group
+                     * GET /cloud/project/{serviceName}/instance/group
+                     */
                     $get(params?: { region?: string }): Promise<cloud.instancegroup.InstanceGroup[]>;
-                    // POST /cloud/project/{serviceName}/instance/group
+                    /**
+                     * Create a group
+                     * POST /cloud/project/{serviceName}/instance/group
+                     */
                     $post(params: { name: string, region: string, type: cloud.instancegroup.InstanceGroupTypeEnum }): Promise<cloud.instancegroup.InstanceGroup>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     $(groupId: string): {
-                        // DELETE /cloud/project/{serviceName}/instance/group/{groupId}
+                        /**
+                         * Delete a group
+                         * DELETE /cloud/project/{serviceName}/instance/group/{groupId}
+                         */
                         $delete(): Promise<void>;
-                        // GET /cloud/project/{serviceName}/instance/group/{groupId}
+                        /**
+                         * Get all groups
+                         * GET /cloud/project/{serviceName}/instance/group/{groupId}
+                         */
                         $get(params?: { region?: string }): Promise<cloud.instancegroup.InstanceGroup>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     };
                 }
                 $(instanceId: string): {
-                    // DELETE /cloud/project/{serviceName}/instance/{instanceId}
+                    /**
+                     * Delete an instance
+                     * DELETE /cloud/project/{serviceName}/instance/{instanceId}
+                     */
                     $delete(): Promise<void>;
-                    // GET /cloud/project/{serviceName}/instance/{instanceId}
+                    /**
+                     * Get instance
+                     * GET /cloud/project/{serviceName}/instance/{instanceId}
+                     */
                     $get(): Promise<cloud.instance.InstanceDetail>;
-                    // PUT /cloud/project/{serviceName}/instance/{instanceId}
+                    /**
+                     * Alter an instance
+                     * PUT /cloud/project/{serviceName}/instance/{instanceId}
+                     */
                     $put(params: { instanceName: string }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     activeMonthlyBilling: {
-                        // POST /cloud/project/{serviceName}/instance/{instanceId}/activeMonthlyBilling
+                        /**
+                         * Activate monthly billing on instance
+                         * POST /cloud/project/{serviceName}/instance/{instanceId}/activeMonthlyBilling
+                         */
                         $post(): Promise<cloud.instance.InstanceDetail>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     applicationAccess: {
-                        // POST /cloud/project/{serviceName}/instance/{instanceId}/applicationAccess
+                        /**
+                         * Return initial credentials of applications installed from public image
+                         * POST /cloud/project/{serviceName}/instance/{instanceId}/applicationAccess
+                         */
                         $post(): Promise<cloud.instance.ApplicationAccess>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     interface: {
-                        // GET /cloud/project/{serviceName}/instance/{instanceId}/interface
+                        /**
+                         * Get interfaces
+                         * GET /cloud/project/{serviceName}/instance/{instanceId}/interface
+                         */
                         $get(): Promise<cloud.instanceInterface.Interface[]>;
-                        // POST /cloud/project/{serviceName}/instance/{instanceId}/interface
+                        /**
+                         * Create interface on an instance and attached it to a network
+                         * POST /cloud/project/{serviceName}/instance/{instanceId}/interface
+                         */
                         $post(params: { ip?: string, networkId: string }): Promise<cloud.instanceInterface.Interface>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         $(interfaceId: string): {
-                            // DELETE /cloud/project/{serviceName}/instance/{instanceId}/interface/{interfaceId}
+                            /**
+                             * Delete an interface
+                             * DELETE /cloud/project/{serviceName}/instance/{instanceId}/interface/{interfaceId}
+                             */
                             $delete(): Promise<void>;
-                            // GET /cloud/project/{serviceName}/instance/{instanceId}/interface/{interfaceId}
+                            /**
+                             * Get interface
+                             * GET /cloud/project/{serviceName}/instance/{instanceId}/interface/{interfaceId}
+                             */
                             $get(): Promise<cloud.instanceInterface.Interface>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         };
                     }
                     monitoring: {
-                        // GET /cloud/project/{serviceName}/instance/{instanceId}/monitoring
+                        /**
+                         * Return many statistics about the virtual machine for a given period
+                         * GET /cloud/project/{serviceName}/instance/{instanceId}/monitoring
+                         */
                         $get(params: { period: cloud.instance.MetricsPeriodEnum, type: cloud.instance.MetricsTypeEnum }): Promise<cloud.instance.InstanceMetrics>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     reboot: {
-                        // POST /cloud/project/{serviceName}/instance/{instanceId}/reboot
+                        /**
+                         * Reboot an instance
+                         * POST /cloud/project/{serviceName}/instance/{instanceId}/reboot
+                         */
                         $post(params: { type: cloud.instance.RebootTypeEnum }): Promise<void>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     reinstall: {
-                        // POST /cloud/project/{serviceName}/instance/{instanceId}/reinstall
+                        /**
+                         * Reinstall an instance
+                         * POST /cloud/project/{serviceName}/instance/{instanceId}/reinstall
+                         */
                         $post(params: { imageId: string }): Promise<cloud.instance.InstanceDetail>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     rescueMode: {
-                        // POST /cloud/project/{serviceName}/instance/{instanceId}/rescueMode
+                        /**
+                         * Enable or disable rescue mode
+                         * POST /cloud/project/{serviceName}/instance/{instanceId}/rescueMode
+                         */
                         $post(params: { imageId?: string, rescue: boolean }): Promise<cloud.instance.RescueAdminPassword>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     resize: {
-                        // POST /cloud/project/{serviceName}/instance/{instanceId}/resize
+                        /**
+                         * Migrate your instance to another flavor
+                         * POST /cloud/project/{serviceName}/instance/{instanceId}/resize
+                         */
                         $post(params: { flavorId: string }): Promise<cloud.instance.InstanceDetail>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     resume: {
-                        // POST /cloud/project/{serviceName}/instance/{instanceId}/resume
+                        /**
+                         * Resume a suspended instance
+                         * POST /cloud/project/{serviceName}/instance/{instanceId}/resume
+                         */
                         $post(): Promise<void>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     snapshot: {
-                        // POST /cloud/project/{serviceName}/instance/{instanceId}/snapshot
+                        /**
+                         * Snapshot an instance
+                         * POST /cloud/project/{serviceName}/instance/{instanceId}/snapshot
+                         */
                         $post(params: { snapshotName: string }): Promise<void>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     start: {
-                        // POST /cloud/project/{serviceName}/instance/{instanceId}/start
+                        /**
+                         * Start an instance
+                         * POST /cloud/project/{serviceName}/instance/{instanceId}/start
+                         */
                         $post(): Promise<void>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     stop: {
-                        // POST /cloud/project/{serviceName}/instance/{instanceId}/stop
+                        /**
+                         * Stop an instance
+                         * POST /cloud/project/{serviceName}/instance/{instanceId}/stop
+                         */
                         $post(): Promise<void>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     vnc: {
-                        // POST /cloud/project/{serviceName}/instance/{instanceId}/vnc
+                        /**
+                         * Get VNC access to your instance
+                         * POST /cloud/project/{serviceName}/instance/{instanceId}/vnc
+                         */
                         $post(): Promise<cloud.instance.InstanceVnc>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                 };
             }
@@ -2326,510 +3853,1355 @@ export interface Cloud {
                 capabilities: {
                     stream: {
                         region: {
-                            // GET /cloud/project/{serviceName}/io/capabilities/stream/region
+                            /**
+                             * List all available regions
+                             * GET /cloud/project/{serviceName}/io/capabilities/stream/region
+                             */
                             $get(): Promise<string[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                             $(regionName: string): {
-                                // GET /cloud/project/{serviceName}/io/capabilities/stream/region/{regionName}
+                                /**
+                                 * Get connection information from a region
+                                 * GET /cloud/project/{serviceName}/io/capabilities/stream/region/{regionName}
+                                 */
                                 $get(): Promise<cloud.project.io.stream.Region>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions): Promise<any>;
                             };
                         }
                     }
                 }
                 stream: {
-                    // GET /cloud/project/{serviceName}/io/stream
+                    /**
+                     * List all stream for a tenant
+                     * GET /cloud/project/{serviceName}/io/stream
+                     */
                     $get(): Promise<string[]>;
-                    // POST /cloud/project/{serviceName}/io/stream
+                    /**
+                     * Create a stream
+                     * POST /cloud/project/{serviceName}/io/stream
+                     */
                     $post(params: { description: string, kind: cloud.project.io.StreamKindEnum, name: string, region: string }): Promise<cloud.project.io.Stream>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     $(streamId: string): {
-                        // DELETE /cloud/project/{serviceName}/io/stream/{streamId}
+                        /**
+                         * Delete a stream
+                         * DELETE /cloud/project/{serviceName}/io/stream/{streamId}
+                         */
                         $delete(): Promise<void>;
-                        // GET /cloud/project/{serviceName}/io/stream/{streamId}
+                        /**
+                         * Get a stream
+                         * GET /cloud/project/{serviceName}/io/stream/{streamId}
+                         */
                         $get(): Promise<cloud.project.io.Stream>;
-                        // PUT /cloud/project/{serviceName}/io/stream/{streamId}
+                        /**
+                         * Update a stream
+                         * PUT /cloud/project/{serviceName}/io/stream/{streamId}
+                         */
                         $put(params?: { backlog?: string, description?: string, id?: string, kind?: cloud.project.io.StreamKindEnum, name?: string, regions?: string[], retention?: string, status?: cloud.project.io.StreamStatusEnum, throttling?: number }): Promise<cloud.project.io.Stream>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         stats: {
-                            // GET /cloud/project/{serviceName}/io/stream/{streamId}/stats
+                            /**
+                             * Retrieve statistics of the stream
+                             * GET /cloud/project/{serviceName}/io/stream/{streamId}/stats
+                             */
                             $get(): Promise<cloud.project.io.StreamStats>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         }
                         subscription: {
-                            // GET /cloud/project/{serviceName}/io/stream/{streamId}/subscription
+                            /**
+                             * List all subscriptions for a stream
+                             * GET /cloud/project/{serviceName}/io/stream/{streamId}/subscription
+                             */
                             $get(): Promise<string[]>;
-                            // POST /cloud/project/{serviceName}/io/stream/{streamId}/subscription
+                            /**
+                             * Create a new subscription
+                             * POST /cloud/project/{serviceName}/io/stream/{streamId}/subscription
+                             */
                             $post(params: { name: string }): Promise<cloud.project.io.stream.Subscription>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                             $(subscriptionId: string): {
-                                // DELETE /cloud/project/{serviceName}/io/stream/{streamId}/subscription/{subscriptionId}
+                                /**
+                                 * Delete a subscription
+                                 * DELETE /cloud/project/{serviceName}/io/stream/{streamId}/subscription/{subscriptionId}
+                                 */
                                 $delete(): Promise<void>;
-                                // GET /cloud/project/{serviceName}/io/stream/{streamId}/subscription/{subscriptionId}
+                                /**
+                                 * Get a subscription
+                                 * GET /cloud/project/{serviceName}/io/stream/{streamId}/subscription/{subscriptionId}
+                                 */
                                 $get(): Promise<cloud.project.io.stream.Subscription>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions): Promise<any>;
                                 resetCursor: {
-                                    // POST /cloud/project/{serviceName}/io/stream/{streamId}/subscription/{subscriptionId}/resetCursor
+                                    /**
+                                     * Reset a cursor
+                                     * POST /cloud/project/{serviceName}/io/stream/{streamId}/subscription/{subscriptionId}/resetCursor
+                                     */
                                     $post(): Promise<void>;
+                                    /**
+                                     * Controle cache
+                                     */
+                                    $cache(param?: ICacheOptions): Promise<any>;
                                 }
                                 stats: {
-                                    // GET /cloud/project/{serviceName}/io/stream/{streamId}/subscription/{subscriptionId}/stats
+                                    /**
+                                     * Retrieve statistics of the subscription
+                                     * GET /cloud/project/{serviceName}/io/stream/{streamId}/subscription/{subscriptionId}/stats
+                                     */
                                     $get(): Promise<cloud.project.io.stream.SubscriptionStats>;
+                                    /**
+                                     * Controle cache
+                                     */
+                                    $cache(param?: ICacheOptions): Promise<any>;
                                 }
                             };
                         }
                         token: {
-                            // GET /cloud/project/{serviceName}/io/stream/{streamId}/token
+                            /**
+                             * List all tokens for a stream
+                             * GET /cloud/project/{serviceName}/io/stream/{streamId}/token
+                             */
                             $get(): Promise<string[]>;
-                            // POST /cloud/project/{serviceName}/io/stream/{streamId}/token
+                            /**
+                             * Create a token
+                             * POST /cloud/project/{serviceName}/io/stream/{streamId}/token
+                             */
                             $post(params: { action: cloud.project.io.stream.TokenActionEnum }): Promise<cloud.project.io.stream.Token>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                             $(tokenId: string): {
-                                // DELETE /cloud/project/{serviceName}/io/stream/{streamId}/token/{tokenId}
+                                /**
+                                 * Delete a token
+                                 * DELETE /cloud/project/{serviceName}/io/stream/{streamId}/token/{tokenId}
+                                 */
                                 $delete(): Promise<void>;
-                                // GET /cloud/project/{serviceName}/io/stream/{streamId}/token/{tokenId}
+                                /**
+                                 * Get token
+                                 * GET /cloud/project/{serviceName}/io/stream/{streamId}/token/{tokenId}
+                                 */
                                 $get(): Promise<cloud.project.io.stream.Token>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions): Promise<any>;
                             };
                         }
                     };
                 }
             }
             ip: {
-                // GET /cloud/project/{serviceName}/ip
+                /**
+                 * Get ips
+                 * GET /cloud/project/{serviceName}/ip
+                 */
                 $get(): Promise<cloud.ip.CloudIp[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 failover: {
-                    // GET /cloud/project/{serviceName}/ip/failover
+                    /**
+                     * Get failover ips
+                     * GET /cloud/project/{serviceName}/ip/failover
+                     */
                     $get(): Promise<cloud.ip.FailoverIp[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     $(id: string): {
-                        // GET /cloud/project/{serviceName}/ip/failover/{id}
+                        /**
+                         * Get failover ip
+                         * GET /cloud/project/{serviceName}/ip/failover/{id}
+                         */
                         $get(): Promise<cloud.ip.FailoverIp>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         attach: {
-                            // POST /cloud/project/{serviceName}/ip/failover/{id}/attach
+                            /**
+                             * Attach failover ip to an instance
+                             * POST /cloud/project/{serviceName}/ip/failover/{id}/attach
+                             */
                             $post(params: { instanceId: string }): Promise<cloud.ip.FailoverIp>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         }
                     };
                 }
             }
             kube: {
-                // GET /cloud/project/{serviceName}/kube
+                /**
+                 * List your managed Kubernetes clusters
+                 * GET /cloud/project/{serviceName}/kube
+                 */
                 $get(): Promise<string[]>;
-                // POST /cloud/project/{serviceName}/kube
+                /**
+                 * Create a new managed Kubernetes cluster
+                 * POST /cloud/project/{serviceName}/kube
+                 */
                 $post(params: { name?: string, region: cloud.kube.RegionEnum, version?: cloud.kube.VersionEnum }): Promise<cloud.kube.Cluster>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 regions: {
-                    // GET /cloud/project/{serviceName}/kube/regions
+                    /**
+                     * List Kubernetes available regions
+                     * GET /cloud/project/{serviceName}/kube/regions
+                     */
                     $get(): Promise<cloud.kube.RegionEnum[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 $(kubeId: string): {
-                    // DELETE /cloud/project/{serviceName}/kube/{kubeId}
+                    /**
+                     * Delete your managed Kubernetes cluster
+                     * DELETE /cloud/project/{serviceName}/kube/{kubeId}
+                     */
                     $delete(): Promise<void>;
-                    // GET /cloud/project/{serviceName}/kube/{kubeId}
+                    /**
+                     * Get information about your managed Kubernetes cluster
+                     * GET /cloud/project/{serviceName}/kube/{kubeId}
+                     */
                     $get(): Promise<cloud.kube.Cluster>;
-                    // PUT /cloud/project/{serviceName}/kube/{kubeId}
+                    /**
+                     * Update information about your managed Kubernetes cluster
+                     * PUT /cloud/project/{serviceName}/kube/{kubeId}
+                     */
                     $put(params: { name: string }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     flavors: {
-                        // GET /cloud/project/{serviceName}/kube/{kubeId}/flavors
+                        /**
+                         * List all flavors available
+                         * GET /cloud/project/{serviceName}/kube/{kubeId}/flavors
+                         */
                         $get(): Promise<cloud.kube.Flavor[]>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     kubeconfig: {
-                        // POST /cloud/project/{serviceName}/kube/{kubeId}/kubeconfig
+                        /**
+                         * Generate kubeconfig file
+                         * POST /cloud/project/{serviceName}/kube/{kubeId}/kubeconfig
+                         */
                         $post(): Promise<cloud.kube.Kubeconfig>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     node: {
-                        // GET /cloud/project/{serviceName}/kube/{kubeId}/node
+                        /**
+                         * List your nodes
+                         * GET /cloud/project/{serviceName}/kube/{kubeId}/node
+                         */
                         $get(): Promise<cloud.kube.Node[]>;
-                        // POST /cloud/project/{serviceName}/kube/{kubeId}/node
+                        /**
+                         * Deploy a node for your cluster. This call is deprecated. In the meantime it will create a new node pool for each call. We encourage you to now either create a new nodepool or change the size on an existing one
+                         * POST /cloud/project/{serviceName}/kube/{kubeId}/node
+                         */
                         $post(params: { flavorName: string, name?: string }): Promise<cloud.kube.Node>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         $(nodeId: string): {
-                            // DELETE /cloud/project/{serviceName}/kube/{kubeId}/node/{nodeId}
+                            /**
+                             * Delete a specific node on your cluster. This will also decrease by one the desirednodes value of its nodepool
+                             * DELETE /cloud/project/{serviceName}/kube/{kubeId}/node/{nodeId}
+                             */
                             $delete(): Promise<void>;
-                            // GET /cloud/project/{serviceName}/kube/{kubeId}/node/{nodeId}
+                            /**
+                             * Get information on a specific node on your cluster
+                             * GET /cloud/project/{serviceName}/kube/{kubeId}/node/{nodeId}
+                             */
                             $get(): Promise<cloud.kube.Node>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         };
                     }
                     reset: {
-                        // POST /cloud/project/{serviceName}/kube/{kubeId}/reset
+                        /**
+                         * Reset cluster: all Kubernetes data will be erased (pods, services, configuration, etc), nodes will be either deleted or reinstalled
+                         * POST /cloud/project/{serviceName}/kube/{kubeId}/reset
+                         */
                         $post(params?: { version?: cloud.kube.VersionEnum, workerNodesPolicy?: cloud.kube.ResetWorkerNodesPolicyEnum }): Promise<void>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     update: {
-                        // POST /cloud/project/{serviceName}/kube/{kubeId}/update
+                        /**
+                         * Force cluster and node update to the latest patch within minor version or next minor version
+                         * POST /cloud/project/{serviceName}/kube/{kubeId}/update
+                         */
                         $post(params?: { strategy?: cloud.kube.UpdateStrategyEnum }): Promise<void>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     updatePolicy: {
-                        // PUT /cloud/project/{serviceName}/kube/{kubeId}/updatePolicy
+                        /**
+                         * Change the update policy of your cluster
+                         * PUT /cloud/project/{serviceName}/kube/{kubeId}/updatePolicy
+                         */
                         $put(params: { updatePolicy: cloud.kube.UpdatePolicyEnum }): Promise<void>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                 };
             }
             lab: {
-                // GET /cloud/project/{serviceName}/lab
+                /**
+                 * List available public cloud labs
+                 * GET /cloud/project/{serviceName}/lab
+                 */
                 $get(): Promise<cloud.Lab[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(labId: string): {
-                    // GET /cloud/project/{serviceName}/lab/{labId}
+                    /**
+                     * Get details of a public cloud lab
+                     * GET /cloud/project/{serviceName}/lab/{labId}
+                     */
                     $get(): Promise<cloud.Lab>;
-                    // POST /cloud/project/{serviceName}/lab/{labId}
+                    /**
+                     * Activate a lab on your Cloud Project
+                     * POST /cloud/project/{serviceName}/lab/{labId}
+                     */
                     $post(): Promise<cloud.Operation>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     agreement: {
-                        // GET /cloud/project/{serviceName}/lab/{labId}/agreement
+                        /**
+                         * List required agreements to active this lab
+                         * GET /cloud/project/{serviceName}/lab/{labId}/agreement
+                         */
                         $get(): Promise<cloud.LabAgreements>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                 };
             }
             migration: {
-                // GET /cloud/project/{serviceName}/migration
+                /**
+                 * Get planned migrations
+                 * GET /cloud/project/{serviceName}/migration
+                 */
                 $get(): Promise<cloud.migration.Migration[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(migrationId: string): {
-                    // GET /cloud/project/{serviceName}/migration/{migrationId}
+                    /**
+                     * Get planned migration
+                     * GET /cloud/project/{serviceName}/migration/{migrationId}
+                     */
                     $get(): Promise<cloud.migration.Migration>;
-                    // PUT /cloud/project/{serviceName}/migration/{migrationId}
+                    /**
+                     * Update planned migration
+                     * PUT /cloud/project/{serviceName}/migration/{migrationId}
+                     */
                     $put(params: { date: string }): Promise<cloud.migration.Migration>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 };
             }
             network: {
                 private: {
-                    // GET /cloud/project/{serviceName}/network/private
+                    /**
+                     * Get private networks
+                     * GET /cloud/project/{serviceName}/network/private
+                     */
                     $get(): Promise<cloud.network.Network[]>;
-                    // POST /cloud/project/{serviceName}/network/private
+                    /**
+                     * Create a new network
+                     * POST /cloud/project/{serviceName}/network/private
+                     */
                     $post(params: { name: string, regions?: string[], vlanId?: number }): Promise<cloud.network.Network>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     $(networkId: string): {
-                        // DELETE /cloud/project/{serviceName}/network/private/{networkId}
+                        /**
+                         * Delete private network
+                         * DELETE /cloud/project/{serviceName}/network/private/{networkId}
+                         */
                         $delete(): Promise<void>;
-                        // GET /cloud/project/{serviceName}/network/private/{networkId}
+                        /**
+                         * Get private network
+                         * GET /cloud/project/{serviceName}/network/private/{networkId}
+                         */
                         $get(): Promise<cloud.network.Network>;
-                        // PUT /cloud/project/{serviceName}/network/private/{networkId}
+                        /**
+                         * Rename private network
+                         * PUT /cloud/project/{serviceName}/network/private/{networkId}
+                         */
                         $put(params: { name: string }): Promise<void>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         region: {
-                            // POST /cloud/project/{serviceName}/network/private/{networkId}/region
+                            /**
+                             * Activate private network in a new region
+                             * POST /cloud/project/{serviceName}/network/private/{networkId}/region
+                             */
                             $post(params: { region: string }): Promise<cloud.network.Network>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         }
                         subnet: {
-                            // GET /cloud/project/{serviceName}/network/private/{networkId}/subnet
+                            /**
+                             * Get network subnets
+                             * GET /cloud/project/{serviceName}/network/private/{networkId}/subnet
+                             */
                             $get(): Promise<cloud.network.Subnet[]>;
-                            // POST /cloud/project/{serviceName}/network/private/{networkId}/subnet
+                            /**
+                             * Create a new network subnet
+                             * POST /cloud/project/{serviceName}/network/private/{networkId}/subnet
+                             */
                             $post(params: { dhcp: boolean, end: string, network: string, noGateway: boolean, region: string, start: string }): Promise<cloud.network.Subnet>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                             $(subnetId: string): {
-                                // DELETE /cloud/project/{serviceName}/network/private/{networkId}/subnet/{subnetId}
+                                /**
+                                 * Delete a network subnet
+                                 * DELETE /cloud/project/{serviceName}/network/private/{networkId}/subnet/{subnetId}
+                                 */
                                 $delete(): Promise<void>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions): Promise<any>;
                             };
                         }
                     };
                 }
                 public: {
-                    // GET /cloud/project/{serviceName}/network/public
+                    /**
+                     * Get public networks
+                     * GET /cloud/project/{serviceName}/network/public
+                     */
                     $get(): Promise<cloud.network.Network[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             }
             openstackClient: {
-                // POST /cloud/project/{serviceName}/openstackClient
+                /**
+                 * Get OVH playground session to use the openstack terminal
+                 * POST /cloud/project/{serviceName}/openstackClient
+                 */
                 $post(): Promise<cloud.openstackClient.Session>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             operation: {
-                // GET /cloud/project/{serviceName}/operation
+                /**
+                 * List your operations
+                 * GET /cloud/project/{serviceName}/operation
+                 */
                 $get(): Promise<cloud.Operation[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(operationId: string): {
-                    // GET /cloud/project/{serviceName}/operation/{operationId}
+                    /**
+                     * Get information about one operation
+                     * GET /cloud/project/{serviceName}/operation/{operationId}
+                     */
                     $get(): Promise<cloud.Operation>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 };
             }
             quota: {
-                // GET /cloud/project/{serviceName}/quota
+                /**
+                 * List quotas
+                 * GET /cloud/project/{serviceName}/quota
+                 */
                 $get(): Promise<cloud.quota.Quotas[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             region: {
-                // GET /cloud/project/{serviceName}/region
+                /**
+                 * List your regions
+                 * GET /cloud/project/{serviceName}/region
+                 */
                 $get(): Promise<string[]>;
-                // POST /cloud/project/{serviceName}/region
+                /**
+                 * Request access to a region
+                 * POST /cloud/project/{serviceName}/region
+                 */
                 $post(params: { region: string }): Promise<cloud.Region>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(regionName: string): {
-                    // GET /cloud/project/{serviceName}/region/{regionName}
+                    /**
+                     * Get information about your region
+                     * GET /cloud/project/{serviceName}/region/{regionName}
+                     */
                     $get(): Promise<cloud.Region>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     quota: {
-                        // GET /cloud/project/{serviceName}/region/{regionName}/quota
+                        /**
+                         * List quotas
+                         * GET /cloud/project/{serviceName}/region/{regionName}/quota
+                         */
                         $get(): Promise<cloud.quota.Quotas>;
-                        // POST /cloud/project/{serviceName}/region/{regionName}/quota
+                        /**
+                         * Change project quotas on region
+                         * POST /cloud/project/{serviceName}/region/{regionName}/quota
+                         */
                         $post(params: { name: string }): Promise<cloud.Operation>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         allowed: {
-                            // GET /cloud/project/{serviceName}/region/{regionName}/quota/allowed
+                            /**
+                             * Get allowed quotas on region
+                             * GET /cloud/project/{serviceName}/region/{regionName}/quota/allowed
+                             */
                             $get(): Promise<cloud.quota.AllowedQuota[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         }
                     }
                     workflow: {
                         backup: {
-                            // GET /cloud/project/{serviceName}/region/{regionName}/workflow/backup
+                            /**
+                             * List your automated backups
+                             * GET /cloud/project/{serviceName}/region/{regionName}/workflow/backup
+                             */
                             $get(): Promise<cloud.Backup[]>;
-                            // POST /cloud/project/{serviceName}/region/{regionName}/workflow/backup
+                            /**
+                             * Create a new automated backup
+                             * POST /cloud/project/{serviceName}/region/{regionName}/workflow/backup
+                             */
                             $post(params: { cron: string, instanceId: string, maxExecutionCount?: number, name: string, rotation: number }): Promise<cloud.Backup>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                             $(backupWorkflowId: string): {
-                                // DELETE /cloud/project/{serviceName}/region/{regionName}/workflow/backup/{backupWorkflowId}
+                                /**
+                                 * Delete a backup workflow process
+                                 * DELETE /cloud/project/{serviceName}/region/{regionName}/workflow/backup/{backupWorkflowId}
+                                 */
                                 $delete(): Promise<void>;
-                                // GET /cloud/project/{serviceName}/region/{regionName}/workflow/backup/{backupWorkflowId}
+                                /**
+                                 * Get details about a backup workflow process
+                                 * GET /cloud/project/{serviceName}/region/{regionName}/workflow/backup/{backupWorkflowId}
+                                 */
                                 $get(): Promise<cloud.Backup>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions): Promise<any>;
                             };
                         }
                     }
                 };
             }
             regionAvailable: {
-                // GET /cloud/project/{serviceName}/regionAvailable
+                /**
+                 * List the regions on which you can ask an access to
+                 * GET /cloud/project/{serviceName}/regionAvailable
+                 */
                 $get(): Promise<cloud.AvailableRegion[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             retain: {
-                // POST /cloud/project/{serviceName}/retain
+                /**
+                 * Do not expire the project, and retain it. You will have to pay for the resources you will use after using this call
+                 * POST /cloud/project/{serviceName}/retain
+                 */
                 $post(): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             role: {
-                // GET /cloud/project/{serviceName}/role
+                /**
+                 * Get all Roles
+                 * GET /cloud/project/{serviceName}/role
+                 */
                 $get(): Promise<cloud.role.Roles>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             serviceInfos: {
-                // GET /cloud/project/{serviceName}/serviceInfos
+                /**
+                 * Get this object properties
+                 * GET /cloud/project/{serviceName}/serviceInfos
+                 */
                 $get(): Promise<services.Service>;
-                // PUT /cloud/project/{serviceName}/serviceInfos
+                /**
+                 * Alter this object properties
+                 * PUT /cloud/project/{serviceName}/serviceInfos
+                 */
                 $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             snapshot: {
-                // GET /cloud/project/{serviceName}/snapshot
+                /**
+                 * Get snapshots
+                 * GET /cloud/project/{serviceName}/snapshot
+                 */
                 $get(params?: { flavorType?: string, region?: string }): Promise<cloud.image.Image[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(imageId: string): {
-                    // DELETE /cloud/project/{serviceName}/snapshot/{imageId}
+                    /**
+                     * Delete a snapshot
+                     * DELETE /cloud/project/{serviceName}/snapshot/{imageId}
+                     */
                     $delete(): Promise<cloud.image.Image>;
-                    // GET /cloud/project/{serviceName}/snapshot/{imageId}
+                    /**
+                     * Get snapshot details
+                     * GET /cloud/project/{serviceName}/snapshot/{imageId}
+                     */
                     $get(): Promise<cloud.image.Image>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 };
             }
             sshkey: {
-                // GET /cloud/project/{serviceName}/sshkey
+                /**
+                 * Get SSH keys
+                 * GET /cloud/project/{serviceName}/sshkey
+                 */
                 $get(params?: { region?: string }): Promise<cloud.sshkey.SshKey[]>;
-                // POST /cloud/project/{serviceName}/sshkey
+                /**
+                 * Create SSH key
+                 * POST /cloud/project/{serviceName}/sshkey
+                 */
                 $post(params: { name: string, publicKey: string, region?: string }): Promise<cloud.sshkey.SshKeyDetail>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(keyId: string): {
-                    // DELETE /cloud/project/{serviceName}/sshkey/{keyId}
+                    /**
+                     * Delete SSH key
+                     * DELETE /cloud/project/{serviceName}/sshkey/{keyId}
+                     */
                     $delete(): Promise<void>;
-                    // GET /cloud/project/{serviceName}/sshkey/{keyId}
+                    /**
+                     * Get SSH key
+                     * GET /cloud/project/{serviceName}/sshkey/{keyId}
+                     */
                     $get(): Promise<cloud.sshkey.SshKeyDetail>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 };
             }
             stack: {
-                // GET /cloud/project/{serviceName}/stack
+                /**
+                 * Get stacks
+                 * GET /cloud/project/{serviceName}/stack
+                 */
                 $get(): Promise<cloud.stack.Stack[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(stackId: string): {
-                    // GET /cloud/project/{serviceName}/stack/{stackId}
+                    /**
+                     * Get stack
+                     * GET /cloud/project/{serviceName}/stack/{stackId}
+                     */
                     $get(): Promise<cloud.stack.Stack>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     client: {
-                        // POST /cloud/project/{serviceName}/stack/{stackId}/client
+                        /**
+                         * Get OVH playground session with a stack installed to use the openstack terminal
+                         * POST /cloud/project/{serviceName}/stack/{stackId}/client
+                         */
                         $post(): Promise<cloud.openstackClient.Session>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                 };
             }
             storage: {
-                // GET /cloud/project/{serviceName}/storage
+                /**
+                 * Get storage containers
+                 * GET /cloud/project/{serviceName}/storage
+                 */
                 $get(): Promise<cloud.storage.Container[]>;
-                // POST /cloud/project/{serviceName}/storage
+                /**
+                 * Create container
+                 * POST /cloud/project/{serviceName}/storage
+                 */
                 $post(params: { archive: boolean, containerName: string, region: string }): Promise<cloud.storage.Container>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 access: {
-                    // GET /cloud/project/{serviceName}/storage/access
+                    /**
+                     * Access to storage API
+                     * GET /cloud/project/{serviceName}/storage/access
+                     */
                     $get(): Promise<cloud.storage.ContainerAccess>;
-                    // POST /cloud/project/{serviceName}/storage/access
+                    /**
+                     * Access to storage API
+                     * POST /cloud/project/{serviceName}/storage/access
+                     */
                     $post(): Promise<cloud.storage.ContainerAccess>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 $(containerId: string): {
-                    // DELETE /cloud/project/{serviceName}/storage/{containerId}
+                    /**
+                     * Delete container
+                     * DELETE /cloud/project/{serviceName}/storage/{containerId}
+                     */
                     $delete(): Promise<void>;
-                    // GET /cloud/project/{serviceName}/storage/{containerId}
+                    /**
+                     * Get storage container
+                     * GET /cloud/project/{serviceName}/storage/{containerId}
+                     */
                     $get(params?: { noObjects?: boolean }): Promise<cloud.storage.ContainerDetail>;
-                    // PUT /cloud/project/{serviceName}/storage/{containerId}
+                    /**
+                     * Update your storage container
+                     * PUT /cloud/project/{serviceName}/storage/{containerId}
+                     */
                     $put(params?: { containerType?: cloud.storage.TypeEnum }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     cors: {
-                        // DELETE /cloud/project/{serviceName}/storage/{containerId}/cors
+                        /**
+                         * Delete CORS support on your container
+                         * DELETE /cloud/project/{serviceName}/storage/{containerId}/cors
+                         */
                         $delete(params: { origin: string }): Promise<void>;
-                        // POST /cloud/project/{serviceName}/storage/{containerId}/cors
+                        /**
+                         * Add CORS support on your container
+                         * POST /cloud/project/{serviceName}/storage/{containerId}/cors
+                         */
                         $post(params: { origin: string }): Promise<void>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     publicUrl: {
-                        // POST /cloud/project/{serviceName}/storage/{containerId}/publicUrl
+                        /**
+                         * Get a public temporary URL to access to one of your object
+                         * POST /cloud/project/{serviceName}/storage/{containerId}/publicUrl
+                         */
                         $post(params: { expirationDate: string, objectName: string }): Promise<cloud.storage.ContainerObjectTempURL>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     static: {
-                        // POST /cloud/project/{serviceName}/storage/{containerId}/static
+                        /**
+                         * Deploy your container files as a static web site
+                         * POST /cloud/project/{serviceName}/storage/{containerId}/static
+                         */
                         $post(): Promise<void>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     user: {
-                        // POST /cloud/project/{serviceName}/storage/{containerId}/user
+                        /**
+                         * Create openstack user with only access to this container
+                         * POST /cloud/project/{serviceName}/storage/{containerId}/user
+                         */
                         $post(params: { description?: string, right: cloud.storage.RightEnum }): Promise<cloud.user.UserDetail>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                 };
             }
             terminate: {
-                // POST /cloud/project/{serviceName}/terminate
+                /**
+                 * Terminate your service
+                 * POST /cloud/project/{serviceName}/terminate
+                 */
                 $post(): Promise<string>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             unleash: {
-                // POST /cloud/project/{serviceName}/unleash
+                /**
+                 * Request more quota on your /cloud project
+                 * POST /cloud/project/{serviceName}/unleash
+                 */
                 $post(): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             usage: {
                 current: {
-                    // GET /cloud/project/{serviceName}/usage/current
+                    /**
+                     * Get current usage
+                     * GET /cloud/project/{serviceName}/usage/current
+                     */
                     $get(): Promise<cloud.usage.UsageCurrent>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 forecast: {
-                    // GET /cloud/project/{serviceName}/usage/forecast
+                    /**
+                     * Get usage forecast
+                     * GET /cloud/project/{serviceName}/usage/forecast
+                     */
                     $get(): Promise<cloud.usage.UsageForecast>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 history: {
-                    // GET /cloud/project/{serviceName}/usage/history
+                    /**
+                     * Usage information details
+                     * GET /cloud/project/{serviceName}/usage/history
+                     */
                     $get(params?: { from?: string, to?: string }): Promise<cloud.usage.UsageHistory[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     $(usageId: string): {
-                        // GET /cloud/project/{serviceName}/usage/history/{usageId}
+                        /**
+                         * Usage information details
+                         * GET /cloud/project/{serviceName}/usage/history/{usageId}
+                         */
                         $get(): Promise<cloud.usage.UsageHistoryDetail>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     };
                 }
             }
             user: {
-                // GET /cloud/project/{serviceName}/user
+                /**
+                 * Get all users
+                 * GET /cloud/project/{serviceName}/user
+                 */
                 $get(): Promise<cloud.user.User[]>;
-                // POST /cloud/project/{serviceName}/user
+                /**
+                 * Create user
+                 * POST /cloud/project/{serviceName}/user
+                 */
                 $post(params?: { description?: string, role?: cloud.user.RoleEnum, roles?: cloud.user.RoleEnum[] }): Promise<cloud.user.UserDetail>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(userId: number): {
-                    // DELETE /cloud/project/{serviceName}/user/{userId}
+                    /**
+                     * Delete user
+                     * DELETE /cloud/project/{serviceName}/user/{userId}
+                     */
                     $delete(): Promise<void>;
-                    // GET /cloud/project/{serviceName}/user/{userId}
+                    /**
+                     * Get user details
+                     * GET /cloud/project/{serviceName}/user/{userId}
+                     */
                     $get(): Promise<cloud.user.User>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     openrc: {
-                        // GET /cloud/project/{serviceName}/user/{userId}/openrc
+                        /**
+                         * Get RC file of OpenStack
+                         * GET /cloud/project/{serviceName}/user/{userId}/openrc
+                         */
                         $get(params: { region: string, version?: cloud.user.OpenrcVersionEnum }): Promise<cloud.user.Openrc>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     rclone: {
-                        // GET /cloud/project/{serviceName}/user/{userId}/rclone
+                        /**
+                         * Get rclone configuration file
+                         * GET /cloud/project/{serviceName}/user/{userId}/rclone
+                         */
                         $get(params: { region: string }): Promise<cloud.user.Rclone>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     regeneratePassword: {
-                        // POST /cloud/project/{serviceName}/user/{userId}/regeneratePassword
+                        /**
+                         * Regenerate user password
+                         * POST /cloud/project/{serviceName}/user/{userId}/regeneratePassword
+                         */
                         $post(): Promise<cloud.user.UserDetail>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     role: {
-                        // GET /cloud/project/{serviceName}/user/{userId}/role
+                        /**
+                         * Get user roles
+                         * GET /cloud/project/{serviceName}/user/{userId}/role
+                         */
                         $get(): Promise<cloud.role.Role[]>;
-                        // POST /cloud/project/{serviceName}/user/{userId}/role
+                        /**
+                         * Add a role to a user
+                         * POST /cloud/project/{serviceName}/user/{userId}/role
+                         */
                         $post(params: { roleId: string }): Promise<cloud.user.UserDetail>;
-                        // PUT /cloud/project/{serviceName}/user/{userId}/role
+                        /**
+                         * Update roles of a user
+                         * PUT /cloud/project/{serviceName}/user/{userId}/role
+                         */
                         $put(params: { rolesIds: string[] }): Promise<cloud.user.UserDetail>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         $(roleId: string): {
-                            // DELETE /cloud/project/{serviceName}/user/{userId}/role/{roleId}
+                            /**
+                             * Remove role for a user
+                             * DELETE /cloud/project/{serviceName}/user/{userId}/role/{roleId}
+                             */
                             $delete(): Promise<void>;
-                            // GET /cloud/project/{serviceName}/user/{userId}/role/{roleId}
+                            /**
+                             * Get role detail
+                             * GET /cloud/project/{serviceName}/user/{userId}/role/{roleId}
+                             */
                             $get(): Promise<cloud.role.Role>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         };
                     }
                     token: {
-                        // POST /cloud/project/{serviceName}/user/{userId}/token
+                        /**
+                         * Get token for user
+                         * POST /cloud/project/{serviceName}/user/{userId}/token
+                         */
                         $post(params: { password: string }): Promise<cloud.authentication.Token>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                 };
             }
             volume: {
-                // GET /cloud/project/{serviceName}/volume
+                /**
+                 * Get volumes
+                 * GET /cloud/project/{serviceName}/volume
+                 */
                 $get(params?: { region?: string }): Promise<cloud.volume.Volume[]>;
-                // POST /cloud/project/{serviceName}/volume
+                /**
+                 * Create a volume
+                 * POST /cloud/project/{serviceName}/volume
+                 */
                 $post(params: { description?: string, imageId?: string, name?: string, region: string, size: number, snapshotId?: string, type: cloud.volume.VolumeTypeEnum }): Promise<cloud.volume.Volume>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 snapshot: {
-                    // GET /cloud/project/{serviceName}/volume/snapshot
+                    /**
+                     * Get volume snapshots
+                     * GET /cloud/project/{serviceName}/volume/snapshot
+                     */
                     $get(params?: { region?: string }): Promise<cloud.volume.Snapshot[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     $(snapshotId: string): {
-                        // DELETE /cloud/project/{serviceName}/volume/snapshot/{snapshotId}
+                        /**
+                         * Delete a volume snapshot
+                         * DELETE /cloud/project/{serviceName}/volume/snapshot/{snapshotId}
+                         */
                         $delete(): Promise<void>;
-                        // GET /cloud/project/{serviceName}/volume/snapshot/{snapshotId}
+                        /**
+                         * Get volume snapshot details
+                         * GET /cloud/project/{serviceName}/volume/snapshot/{snapshotId}
+                         */
                         $get(): Promise<cloud.volume.Snapshot>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     };
                 }
                 $(volumeId: string): {
-                    // DELETE /cloud/project/{serviceName}/volume/{volumeId}
+                    /**
+                     * Delete a volume
+                     * DELETE /cloud/project/{serviceName}/volume/{volumeId}
+                     */
                     $delete(): Promise<void>;
-                    // GET /cloud/project/{serviceName}/volume/{volumeId}
+                    /**
+                     * Get volume details
+                     * GET /cloud/project/{serviceName}/volume/{volumeId}
+                     */
                     $get(): Promise<cloud.volume.Volume>;
-                    // PUT /cloud/project/{serviceName}/volume/{volumeId}
+                    /**
+                     * Update a volume
+                     * PUT /cloud/project/{serviceName}/volume/{volumeId}
+                     */
                     $put(params?: { description?: string, name?: string }): Promise<cloud.volume.Volume>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     attach: {
-                        // POST /cloud/project/{serviceName}/volume/{volumeId}/attach
+                        /**
+                         * Attach a volume on an instance
+                         * POST /cloud/project/{serviceName}/volume/{volumeId}/attach
+                         */
                         $post(params: { instanceId: string }): Promise<cloud.volume.Volume>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     detach: {
-                        // POST /cloud/project/{serviceName}/volume/{volumeId}/detach
+                        /**
+                         * Detach a volume from an instance
+                         * POST /cloud/project/{serviceName}/volume/{volumeId}/detach
+                         */
                         $post(params: { instanceId: string }): Promise<cloud.volume.Volume>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     snapshot: {
-                        // POST /cloud/project/{serviceName}/volume/{volumeId}/snapshot
+                        /**
+                         * Snapshot a volume
+                         * POST /cloud/project/{serviceName}/volume/{volumeId}/snapshot
+                         */
                         $post(params?: { description?: string, name?: string }): Promise<cloud.volume.Snapshot>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     upsize: {
-                        // POST /cloud/project/{serviceName}/volume/{volumeId}/upsize
+                        /**
+                         * Extend a volume
+                         * POST /cloud/project/{serviceName}/volume/{volumeId}/upsize
+                         */
                         $post(params: { size: number }): Promise<cloud.volume.Volume>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                 };
             }
             vrack: {
-                // GET /cloud/project/{serviceName}/vrack
+                /**
+                 * Get the linked vRack on your project
+                 * GET /cloud/project/{serviceName}/vrack
+                 */
                 $get(): Promise<cloud.Vrack>;
-                // POST /cloud/project/{serviceName}/vrack
+                /**
+                 * Order and attach a new vRack on your project
+                 * POST /cloud/project/{serviceName}/vrack
+                 */
                 $post(): Promise<cloud.Operation>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         };
     }
     subsidiaryPrice: {
-        // GET /cloud/subsidiaryPrice
+        /**
+         * Get services prices for a subsidiary
+         * GET /cloud/subsidiaryPrice
+         */
         $get(params: { flavorId?: string, ovhSubsidiary: nichandle.OvhSubsidiaryEnum, region?: string }): Promise<cloud.Price>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
     }
     $(serviceName: string | number): {
         pca: {
-            // GET /cloud/{serviceName}/pca
+            /**
+             * List available services
+             * GET /cloud/{serviceName}/pca
+             */
             $get(): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(pcaServiceName: string): {
-                // GET /cloud/{serviceName}/pca/{pcaServiceName}
+                /**
+                 * Get this object properties
+                 * GET /cloud/{serviceName}/pca/{pcaServiceName}
+                 */
                 $get(): Promise<pca.Account>;
-                // PUT /cloud/{serviceName}/pca/{pcaServiceName}
+                /**
+                 * Alter this object properties
+                 * PUT /cloud/{serviceName}/pca/{pcaServiceName}
+                 */
                 $put(params?: { domain?: string, host?: string, login?: string, password?: string, sshkey?: string }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 billing: {
-                    // GET /cloud/{serviceName}/pca/{pcaServiceName}/billing
+                    /**
+                     * cloud Archives billing items
+                     * GET /cloud/{serviceName}/pca/{pcaServiceName}/billing
+                     */
                     $get(params?: { billed?: boolean, date_from?: string, date_to?: string }): Promise<number[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     $(billingId: number): {
-                        // GET /cloud/{serviceName}/pca/{pcaServiceName}/billing/{billingId}
+                        /**
+                         * Get this object properties
+                         * GET /cloud/{serviceName}/pca/{pcaServiceName}/billing/{billingId}
+                         */
                         $get(): Promise<pca.Billing>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     };
                 }
                 serviceInfos: {
-                    // GET /cloud/{serviceName}/pca/{pcaServiceName}/serviceInfos
+                    /**
+                     * Get this object properties
+                     * GET /cloud/{serviceName}/pca/{pcaServiceName}/serviceInfos
+                     */
                     $get(): Promise<services.Service>;
-                    // PUT /cloud/{serviceName}/pca/{pcaServiceName}/serviceInfos
+                    /**
+                     * Alter this object properties
+                     * PUT /cloud/{serviceName}/pca/{pcaServiceName}/serviceInfos
+                     */
                     $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 sessions: {
-                    // GET /cloud/{serviceName}/pca/{pcaServiceName}/sessions
+                    /**
+                     * cloud archives sessions for account
+                     * GET /cloud/{serviceName}/pca/{pcaServiceName}/sessions
+                     */
                     $get(params?: { name?: string }): Promise<string[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     $(sessionId: string): {
-                        // DELETE /cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}
+                        /**
+                         * Create a delete task for all files in session
+                         * DELETE /cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}
+                         */
                         $delete(): Promise<pca.Task>;
-                        // GET /cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}
+                        /**
+                         * Get this object properties
+                         * GET /cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}
+                         */
                         $get(): Promise<pca.Session>;
-                        // PUT /cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}
+                        /**
+                         * Alter this object properties
+                         * PUT /cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}
+                         */
                         $put(params?: { endDate?: string, id?: string, login?: string, name?: string, size?: number, srcIp?: string, startDate?: string, state?: cloud.pca.SessionStateEnum }): Promise<void>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         files: {
-                            // GET /cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}/files
+                            /**
+                             * cloud archives files in session
+                             * GET /cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}/files
+                             */
                             $get(params?: { name?: string }): Promise<string[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                             $(fileId: string): {
-                                // GET /cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}/files/{fileId}
+                                /**
+                                 * Get this object properties
+                                 * GET /cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}/files/{fileId}
+                                 */
                                 $get(): Promise<pca.File>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions): Promise<any>;
                             };
                         }
                         restore: {
-                            // POST /cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}/restore
+                            /**
+                             * Create a restore task for session
+                             * POST /cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}/restore
+                             */
                             $post(): Promise<pca.Task>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         }
                     };
                 }
                 tasks: {
-                    // GET /cloud/{serviceName}/pca/{pcaServiceName}/tasks
+                    /**
+                     * cloud archives tasks for account
+                     * GET /cloud/{serviceName}/pca/{pcaServiceName}/tasks
+                     */
                     $get(params?: { function_?: cloud.pca.FunctionTypeEnum, status?: cloud.pca.TaskStateEnum, todoDate_from?: string, todoDate_to?: string }): Promise<string[]>;
-                    // POST /cloud/{serviceName}/pca/{pcaServiceName}/tasks
+                    /**
+                     * Create a cloud archives task
+                     * POST /cloud/{serviceName}/pca/{pcaServiceName}/tasks
+                     */
                     $post(params: { fileIds: string[], sessionId: string, taskFunction: cloud.pca.TaskTypeEnum }): Promise<pca.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     $(taskId: string): {
-                        // GET /cloud/{serviceName}/pca/{pcaServiceName}/tasks/{taskId}
+                        /**
+                         * Get this object properties
+                         * GET /cloud/{serviceName}/pca/{pcaServiceName}/tasks/{taskId}
+                         */
                         $get(): Promise<pca.Task>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     };
                 }
                 usage: {
-                    // GET /cloud/{serviceName}/pca/{pcaServiceName}/usage
+                    /**
+                     * View account current total sessions usage (bytes)
+                     * GET /cloud/{serviceName}/pca/{pcaServiceName}/usage
+                     */
                     $get(): Promise<number>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             };
         }

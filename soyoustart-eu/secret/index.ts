@@ -1,11 +1,14 @@
-import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
+import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /secret Models
  * Source: https://eu.api.soyoustart.com/1.0/secret.json
  */
 export namespace secret {
-    // interface fullName: secret.Secret.Secret
+    /**
+     * A secret
+     * interface fullName: secret.Secret.Secret
+     */
     export interface Secret {
         expiration: string;
         secret: string;
@@ -20,12 +23,18 @@ export function proxySecret(ovhEngine: OvhRequestable): Secret {
 }
 export default proxySecret;
 /**
- * Api Proxy model
- */// Apis harmony
-// path /secret
+ * Api model for /secret
+ */
 export interface Secret {
     retrieve: {
-        // POST /secret/retrieve
+        /**
+         * Retrieve a secret sent by email
+         * POST /secret/retrieve
+         */
         $post(params: { id: string }): Promise<secret.Secret>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
     }
 }

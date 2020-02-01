@@ -1,31 +1,55 @@
-import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
+import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /email/domain Models
  * Source: https://eu.api.ovh.com/1.0/email/domain.json
  */
 export namespace domain {
-    // type fullname: domain.DomainFilterActionEnum
+    /**
+     * Possible values for filter action
+     * type fullname: domain.DomainFilterActionEnum
+     */
     export type DomainFilterActionEnum = "accept" | "account" | "delete" | "redirect"
-    // type fullname: domain.DomainFilterOperandEnum
+    /**
+     * Possible values for filter operation
+     * type fullname: domain.DomainFilterOperandEnum
+     */
     export type DomainFilterOperandEnum = "checkspf" | "contains" | "noContains"
-    // type fullname: domain.DomainMXFilterEnum
+    /**
+     * Possible values for MX filter
+     * type fullname: domain.DomainMXFilterEnum
+     */
     export type DomainMXFilterEnum = "CUSTOM" | "FULL_FILTERING" | "NO_FILTERING" | "REDIRECT" | "SIMPLE_FILTERING"
-    // type fullname: domain.DomainMlLanguageEnum
+    /**
+     * Possible values for mailing list language
+     * type fullname: domain.DomainMlLanguageEnum
+     */
     export type DomainMlLanguageEnum = "de" | "en" | "es" | "fr" | "it" | "nl" | "pl" | "pt"
-    // interface fullName: domain.DomainMlLimits.DomainMlLimits
+    /**
+     * Structure of mailinglist limits
+     * interface fullName: domain.DomainMlLimits.DomainMlLimits
+     */
     export interface DomainMlLimits {
         subscribers: number;
     }
-    // interface fullName: domain.DomainMlOptionsStruct.DomainMlOptionsStruct
+    /**
+     * Structure of imapCopy
+     * interface fullName: domain.DomainMlOptionsStruct.DomainMlOptionsStruct
+     */
     export interface DomainMlOptionsStruct {
         moderatorMessage: boolean;
         subscribeByModerator: boolean;
         usersPostOnly: boolean;
     }
-    // type fullname: domain.DomainPopActionEnum
+    /**
+     * Possible values for pop action task
+     * type fullname: domain.DomainPopActionEnum
+     */
     export type DomainPopActionEnum = "addAccount" | "changeAccount" | "changePassword" | "deleteAccount" | "internalMigration" | "migration" | "temporaryTask" | "unknown"
-    // interface fullName: domain.DomainQuota.DomainQuota
+    /**
+     * Values of quota account (pop, mailing list, redirection, responder and big pop)
+     * interface fullName: domain.DomainQuota.DomainQuota
+     */
     export interface DomainQuota {
         account: number;
         alias: number;
@@ -33,27 +57,45 @@ export namespace domain {
         redirection: number;
         responder: number;
     }
-    // type fullname: domain.DomainSpecialAccountActionEnum
+    /**
+     * Possible values for pop action task
+     * type fullname: domain.DomainSpecialAccountActionEnum
+     */
     export type DomainSpecialAccountActionEnum = "add" | "change" | "delete"
-    // type fullname: domain.DomainSpecialAccountTypeEnum
+    /**
+     * Possible type task
+     * type fullname: domain.DomainSpecialAccountTypeEnum
+     */
     export type DomainSpecialAccountTypeEnum = "25g" | "alias" | "delete" | "filter" | "forward" | "responder"
-    // type fullname: domain.DomainStatusEnum
+    /**
+     * Possible values for status domain
+     * type fullname: domain.DomainStatusEnum
+     */
     export type DomainStatusEnum = "close" | "ok" | "readOnly" | "unknown"
-    // interface fullName: domain.DomainSummary.DomainSummary
+    /**
+     * Values of number account (account, mailing list, redirection and responder)
+     * interface fullName: domain.DomainSummary.DomainSummary
+     */
     export interface DomainSummary {
         account: number;
         mailingList: number;
         redirection: number;
         responder: number;
     }
-    // interface fullName: domain.DomainUsageAccountStruct.DomainUsageAccountStruct
+    /**
+     * Structure of usage account
+     * interface fullName: domain.DomainUsageAccountStruct.DomainUsageAccountStruct
+     */
     export interface DomainUsageAccountStruct {
         date?: string;
         emailCount?: number;
         quota?: number;
     }
     export namespace zone {
-        // interface fullName: domain.zone.Record.Record
+        /**
+         * Zone resource records
+         * interface fullName: domain.zone.Record.Record
+         */
         export interface Record {
             fieldType: zoneNamedResolutionFieldTypeEnum;
             id: number;
@@ -66,7 +108,10 @@ export namespace domain {
 }
 export namespace email {
     export namespace domain {
-        // interface fullName: email.domain.Account.Account
+        /**
+         * Account List
+         * interface fullName: email.domain.Account.Account
+         */
         export interface Account {
             accountName: string;
             description: string;
@@ -75,7 +120,10 @@ export namespace email {
             isBlocked: boolean;
             size: number;
         }
-        // interface fullName: email.domain.AccountDelegated.AccountDelegated
+        /**
+         * Account List
+         * interface fullName: email.domain.AccountDelegated.AccountDelegated
+         */
         export interface AccountDelegated {
             accountName: string;
             allowedAccountSize?: number[];
@@ -85,15 +133,24 @@ export namespace email {
             isBlocked: boolean;
             size: number;
         }
-        // interface fullName: email.domain.Acl.Acl
+        /**
+         * Email ACL
+         * interface fullName: email.domain.Acl.Acl
+         */
         export interface Acl {
             accountId: string;
         }
-        // interface fullName: email.domain.Delegation.Delegation
+        /**
+         * Delegation List
+         * interface fullName: email.domain.Delegation.Delegation
+         */
         export interface Delegation {
             accountId: string;
         }
-        // interface fullName: email.domain.Diagnose.Diagnose
+        /**
+         * Email diagnoses
+         * interface fullName: email.domain.Diagnose.Diagnose
+         */
         export interface Diagnose {
             date: string;
             function: email.domain.DomainDiagnoseFunctionEnum;
@@ -102,16 +159,28 @@ export namespace email {
             result?: email.domain.DomainDiagnoseResultEnum;
             trace?: email.domain.DomainDiagnoseTraceStruct<email.domain.DomainDiagnoseResultEnum>[];
         }
-        // type fullname: email.domain.DomainDiagnoseFunctionEnum
+        /**
+         * Function of diagnose
+         * type fullname: email.domain.DomainDiagnoseFunctionEnum
+         */
         export type DomainDiagnoseFunctionEnum = "MX"
-        // type fullname: email.domain.DomainDiagnoseResultEnum
+        /**
+         * Result of diagnose
+         * type fullname: email.domain.DomainDiagnoseResultEnum
+         */
         export type DomainDiagnoseResultEnum = "CUSTOM" | "DEPRECATED" | "KO" | "OK"
-        // interface fullName: email.domain.DomainDiagnoseTraceStruct.DomainDiagnoseTraceStruct
+        /**
+         * Test and result, with proper test strings
+         * interface fullName: email.domain.DomainDiagnoseTraceStruct.DomainDiagnoseTraceStruct
+         */
         export interface DomainDiagnoseTraceStruct<T> {
             result: T;
             test: string;
         }
-        // interface fullName: email.domain.DomainService.DomainService
+        /**
+         * Domain service
+         * interface fullName: email.domain.DomainService.DomainService
+         */
         export interface DomainService {
             allowedAccountSize?: number[];
             creationDate?: string;
@@ -122,7 +191,10 @@ export namespace email {
             offer?: string;
             status: domainDomainStatusEnum;
         }
-        // interface fullName: email.domain.Filter.Filter
+        /**
+         * Filter List
+         * interface fullName: email.domain.Filter.Filter
+         */
         export interface Filter {
             action?: domainDomainFilterActionEnum;
             actionParam?: string;
@@ -132,7 +204,10 @@ export namespace email {
             pop: string;
             priority: number;
         }
-        // interface fullName: email.domain.MailingList.MailingList
+        /**
+         * Mailing List
+         * interface fullName: email.domain.MailingList.MailingList
+         */
         export interface MailingList {
             id: number;
             language?: domainDomainMlLanguageEnum;
@@ -143,19 +218,31 @@ export namespace email {
             ownerEmail: string;
             replyTo: string;
         }
-        // interface fullName: email.domain.MigrationAccount.MigrationAccount
+        /**
+         * Migration account
+         * interface fullName: email.domain.MigrationAccount.MigrationAccount
+         */
         export interface MigrationAccount {
             destinationEmailAddress: string;
             quota: number;
         }
-        // type fullname: email.domain.MigrationCheckCodeEnum
+        /**
+         * Result code of check migration
+         * type fullname: email.domain.MigrationCheckCodeEnum
+         */
         export type MigrationCheckCodeEnum = "ACCOUNT_EMPTY" | "ACCOUNT_INPROGRESS" | "DELEGATION_EXIST" | "DOMAIN_EMPTY" | "FILTER_EXIST" | "FORWARD_EXIST" | "FORWARD_LOCAL" | "MAILINGLIST_EXIST" | "MAILINGLIST_INPROGRESS" | "MAILPROXY_BAD_INFRA" | "MAILPROXY_EMPTY" | "MAILPROXY_INPROGRESS" | "MAILPROXY_RESERVATION" | "REDIRECTION_INPROGRESS" | "RESPONDER_EXIST" | "RESPONDER_INPROGRESS" | "UNKNOW"
-        // interface fullName: email.domain.MigrationCheckResultStruct.MigrationCheckResultStruct
+        /**
+         * Check Migration result
+         * interface fullName: email.domain.MigrationCheckResultStruct.MigrationCheckResultStruct
+         */
         export interface MigrationCheckResultStruct {
             code: email.domain.MigrationCheckCodeEnum;
             details?: string;
         }
-        // interface fullName: email.domain.MigrationCheckStruct.MigrationCheckStruct
+        /**
+         * Check Migration result
+         * interface fullName: email.domain.MigrationCheckStruct.MigrationCheckStruct
+         */
         export interface MigrationCheckStruct {
             alias?: string[];
             error?: email.domain.MigrationCheckResultStruct[];
@@ -163,7 +250,10 @@ export namespace email {
             forward?: string[];
             warning?: email.domain.MigrationCheckResultStruct[];
         }
-        // interface fullName: email.domain.MigrationService.MigrationService
+        /**
+         * Migration service
+         * interface fullName: email.domain.MigrationService.MigrationService
+         */
         export interface MigrationService {
             contactAdmin: string;
             contactBilling: string;
@@ -173,21 +263,33 @@ export namespace email {
             expiration: string;
             type: email.domain.MigrationServiceType;
         }
-        // type fullname: email.domain.MigrationServiceType
+        /**
+         * Types of migration service
+         * type fullname: email.domain.MigrationServiceType
+         */
         export type MigrationServiceType = "EMAIL PRO" | "HOSTED EXCHANGE" | "PRIVATE EXCHANGE" | "PROVIDER EXCHANGE"
-        // interface fullName: email.domain.Moderator.Moderator
+        /**
+         * Moderators List
+         * interface fullName: email.domain.Moderator.Moderator
+         */
         export interface Moderator {
             domain: string;
             email: string;
             mailinglist: string;
         }
-        // interface fullName: email.domain.RedirectionGlobal.RedirectionGlobal
+        /**
+         * Global Redirection
+         * interface fullName: email.domain.RedirectionGlobal.RedirectionGlobal
+         */
         export interface RedirectionGlobal {
             from: string;
             id: string;
             to: string;
         }
-        // interface fullName: email.domain.Responder.Responder
+        /**
+         * Responder
+         * interface fullName: email.domain.Responder.Responder
+         */
         export interface Responder {
             account: string;
             content: string;
@@ -196,7 +298,10 @@ export namespace email {
             from?: string;
             to?: string;
         }
-        // interface fullName: email.domain.ResponderAccount.ResponderAccount
+        /**
+         * Responder of account
+         * interface fullName: email.domain.ResponderAccount.ResponderAccount
+         */
         export interface ResponderAccount {
             account: string;
             content: string;
@@ -205,20 +310,29 @@ export namespace email {
             from?: string;
             to?: string;
         }
-        // interface fullName: email.domain.Rule.Rule
+        /**
+         * Rule List
+         * interface fullName: email.domain.Rule.Rule
+         */
         export interface Rule {
             header: string;
             id: number;
             operand: domainDomainFilterOperandEnum;
             value: string;
         }
-        // interface fullName: email.domain.Subscriber.Subscriber
+        /**
+         * Subscribers List
+         * interface fullName: email.domain.Subscriber.Subscriber
+         */
         export interface Subscriber {
             domain: string;
             email: string;
             mailinglist: string;
         }
-        // interface fullName: email.domain.TaskFilter.TaskFilter
+        /**
+         * Task filter List
+         * interface fullName: email.domain.TaskFilter.TaskFilter
+         */
         export interface TaskFilter {
             account: string;
             action: string;
@@ -226,7 +340,10 @@ export namespace email {
             id: number;
             timestamp: string;
         }
-        // interface fullName: email.domain.TaskMl.TaskMl
+        /**
+         * Task Mailing List
+         * interface fullName: email.domain.TaskMl.TaskMl
+         */
         export interface TaskMl {
             account: string;
             action: string;
@@ -235,7 +352,10 @@ export namespace email {
             id: number;
             language: domainDomainMlLanguageEnum;
         }
-        // interface fullName: email.domain.TaskPop.TaskPop
+        /**
+         * Task Pop List
+         * interface fullName: email.domain.TaskPop.TaskPop
+         */
         export interface TaskPop {
             action: domainDomainPopActionEnum;
             date: string;
@@ -243,7 +363,10 @@ export namespace email {
             id: number;
             name: string;
         }
-        // interface fullName: email.domain.TaskSpecialAccount.TaskSpecialAccount
+        /**
+         * Task special account List
+         * interface fullName: email.domain.TaskSpecialAccount.TaskSpecialAccount
+         */
         export interface TaskSpecialAccount {
             account: string;
             action: domainDomainSpecialAccountActionEnum;
@@ -255,7 +378,10 @@ export namespace email {
     }
 }
 export namespace service {
-    // interface fullName: service.RenewType.RenewType
+    /**
+     * Map a possible renew for a specific service
+     * interface fullName: service.RenewType.RenewType
+     */
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -263,15 +389,26 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    // type fullname: service.RenewalTypeEnum
+    /**
+     * Detailed renewal type of a service
+     * type fullname: service.RenewalTypeEnum
+     */
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    // type fullname: service.StateEnum
+    /**
+     * type fullname: service.StateEnum
+     */
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
-    // type fullname: service.TerminationReasonEnum
+    /**
+     * All reasons you can provide for a service termination
+     * type fullname: service.TerminationReasonEnum
+     */
     export type TerminationReasonEnum = "FEATURES_DONT_SUIT_ME" | "LACK_OF_PERFORMANCES" | "MIGRATED_TO_ANOTHER_OVH_PRODUCT" | "MIGRATED_TO_COMPETITOR" | "NOT_ENOUGH_RECOGNITION" | "NOT_NEEDED_ANYMORE" | "NOT_RELIABLE" | "NO_ANSWER" | "OTHER" | "PRODUCT_DIMENSION_DONT_SUIT_ME" | "PRODUCT_TOOLS_DONT_SUIT_ME" | "TOO_EXPENSIVE" | "TOO_HARD_TO_USE" | "UNSATIFIED_BY_CUSTOMER_SUPPORT"
 }
 export namespace services {
-    // interface fullName: services.Service.Service
+    /**
+     * Details about a Service
+     * interface fullName: services.Service.Service
+     */
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;
@@ -289,7 +426,10 @@ export namespace services {
     }
 }
 export namespace zone {
-    // type fullname: zone.NamedResolutionFieldTypeEnum
+    /**
+     * Resource record fieldType
+     * type fullname: zone.NamedResolutionFieldTypeEnum
+     */
     export type NamedResolutionFieldTypeEnum = "A" | "AAAA" | "CAA" | "CNAME" | "DKIM" | "DMARC" | "LOC" | "MX" | "NAPTR" | "NS" | "PTR" | "SPF" | "SRV" | "SSHFP" | "TLSA" | "TXT"
 }
 
@@ -301,353 +441,938 @@ export function proxyEmailDomain(ovhEngine: OvhRequestable): Email {
 }
 export default proxyEmailDomain;
 /**
- * Api Proxy model
- */// Apis harmony
-// path /email
+ * Api model for /email/domain
+ */
 export interface Email {
     domain: {
-        // GET /email/domain
+        /**
+         * List available services
+         * GET /email/domain
+         */
         $get(): Promise<string[]>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         delegatedAccount: {
-            // GET /email/domain/delegatedAccount
+            /**
+             * Delegated emails
+             * GET /email/domain/delegatedAccount
+             */
             $get(params?: { accountName?: string, domain?: string }): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(email: string): {
-                // GET /email/domain/delegatedAccount/{email}
+                /**
+                 * Get this object properties
+                 * GET /email/domain/delegatedAccount/{email}
+                 */
                 $get(): Promise<email.domain.AccountDelegated>;
-                // PUT /email/domain/delegatedAccount/{email}
+                /**
+                 * Alter this object properties
+                 * PUT /email/domain/delegatedAccount/{email}
+                 */
                 $put(params?: { accountName?: string, allowedAccountSize?: number[], description?: string, domain?: string, email?: string, isBlocked?: boolean, size?: number }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 changePassword: {
-                    // POST /email/domain/delegatedAccount/{email}/changePassword
+                    /**
+                     * Change mailbox password (length : [9;30], no space at begin and end, no accent)
+                     * POST /email/domain/delegatedAccount/{email}/changePassword
+                     */
                     $post(params: { password: string }): Promise<email.domain.TaskPop>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 filter: {
-                    // GET /email/domain/delegatedAccount/{email}/filter
+                    /**
+                     * Get filters
+                     * GET /email/domain/delegatedAccount/{email}/filter
+                     */
                     $get(): Promise<string[]>;
-                    // POST /email/domain/delegatedAccount/{email}/filter
+                    /**
+                     * Create new filter for account
+                     * POST /email/domain/delegatedAccount/{email}/filter
+                     */
                     $post(params: { action: domainDomainFilterActionEnum, actionParam?: string, active: boolean, header: string, name: string, operand: domainDomainFilterOperandEnum, priority: number, value: string }): Promise<email.domain.TaskFilter>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     $(name: string): {
-                        // DELETE /email/domain/delegatedAccount/{email}/filter/{name}
+                        /**
+                         * Delete an existing filter
+                         * DELETE /email/domain/delegatedAccount/{email}/filter/{name}
+                         */
                         $delete(): Promise<email.domain.TaskFilter[]>;
-                        // GET /email/domain/delegatedAccount/{email}/filter/{name}
+                        /**
+                         * Get this object properties
+                         * GET /email/domain/delegatedAccount/{email}/filter/{name}
+                         */
                         $get(): Promise<email.domain.Filter>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         changeActivity: {
-                            // POST /email/domain/delegatedAccount/{email}/filter/{name}/changeActivity
+                            /**
+                             * Change filter activity
+                             * POST /email/domain/delegatedAccount/{email}/filter/{name}/changeActivity
+                             */
                             $post(params: { activity: boolean }): Promise<email.domain.TaskFilter>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         }
                         changePriority: {
-                            // POST /email/domain/delegatedAccount/{email}/filter/{name}/changePriority
+                            /**
+                             * Change filter priority
+                             * POST /email/domain/delegatedAccount/{email}/filter/{name}/changePriority
+                             */
                             $post(params: { priority: number }): Promise<email.domain.TaskFilter>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         }
                         rule: {
-                            // GET /email/domain/delegatedAccount/{email}/filter/{name}/rule
+                            /**
+                             * Get rules
+                             * GET /email/domain/delegatedAccount/{email}/filter/{name}/rule
+                             */
                             $get(): Promise<number[]>;
-                            // POST /email/domain/delegatedAccount/{email}/filter/{name}/rule
+                            /**
+                             * Create new rule for filter
+                             * POST /email/domain/delegatedAccount/{email}/filter/{name}/rule
+                             */
                             $post(params: { header: string, operand: domainDomainFilterOperandEnum, value: string }): Promise<email.domain.TaskFilter>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                             $(id: number): {
-                                // DELETE /email/domain/delegatedAccount/{email}/filter/{name}/rule/{id}
+                                /**
+                                 * Delete an existing filter
+                                 * DELETE /email/domain/delegatedAccount/{email}/filter/{name}/rule/{id}
+                                 */
                                 $delete(): Promise<email.domain.TaskFilter[]>;
-                                // GET /email/domain/delegatedAccount/{email}/filter/{name}/rule/{id}
+                                /**
+                                 * Get this object properties
+                                 * GET /email/domain/delegatedAccount/{email}/filter/{name}/rule/{id}
+                                 */
                                 $get(): Promise<email.domain.Rule>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions): Promise<any>;
                             };
                         }
                     };
                 }
                 responder: {
-                    // DELETE /email/domain/delegatedAccount/{email}/responder
+                    /**
+                     * Delete an existing responder in server
+                     * DELETE /email/domain/delegatedAccount/{email}/responder
+                     */
                     $delete(): Promise<email.domain.TaskSpecialAccount>;
-                    // GET /email/domain/delegatedAccount/{email}/responder
+                    /**
+                     * Get this object properties
+                     * GET /email/domain/delegatedAccount/{email}/responder
+                     */
                     $get(): Promise<email.domain.ResponderAccount>;
-                    // POST /email/domain/delegatedAccount/{email}/responder
+                    /**
+                     * Create new responder in server
+                     * POST /email/domain/delegatedAccount/{email}/responder
+                     */
                     $post(params: { content: string, copy: boolean, copyTo?: string, from?: string, to?: string }): Promise<email.domain.TaskSpecialAccount>;
-                    // PUT /email/domain/delegatedAccount/{email}/responder
+                    /**
+                     * Alter this object properties
+                     * PUT /email/domain/delegatedAccount/{email}/responder
+                     */
                     $put(params?: { account?: string, content?: string, copy?: boolean, copyTo?: string, from?: string, to?: string }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 updateUsage: {
-                    // POST /email/domain/delegatedAccount/{email}/updateUsage
+                    /**
+                     * Update usage of account
+                     * POST /email/domain/delegatedAccount/{email}/updateUsage
+                     */
                     $post(): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 usage: {
-                    // POST /email/domain/delegatedAccount/{email}/usage
+                    /**
+                     * usage of account
+                     * POST /email/domain/delegatedAccount/{email}/usage
+                     */
                     $post(): Promise<domain.DomainUsageAccountStruct>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             };
         }
         mailingListLimits: {
-            // GET /email/domain/mailingListLimits
+            /**
+             * Get limits of mailing list
+             * GET /email/domain/mailingListLimits
+             */
             $get(params: { moderatorMessage: boolean }): Promise<domain.DomainMlLimits>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         $(domain: string): {
-            // GET /email/domain/{domain}
+            /**
+             * Get this object properties
+             * GET /email/domain/{domain}
+             */
             $get(): Promise<email.domain.DomainService>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             account: {
-                // GET /email/domain/{domain}/account
+                /**
+                 * Get accounts
+                 * GET /email/domain/{domain}/account
+                 */
                 $get(params?: { accountName?: string, description?: string }): Promise<string[]>;
-                // POST /email/domain/{domain}/account
+                /**
+                 * Create new mailbox in server
+                 * POST /email/domain/{domain}/account
+                 */
                 $post(params: { accountName: string, description?: string, password: string, size?: number }): Promise<email.domain.TaskPop>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(accountName: string): {
-                    // DELETE /email/domain/{domain}/account/{accountName}
+                    /**
+                     * Delete an existing mailbox in server
+                     * DELETE /email/domain/{domain}/account/{accountName}
+                     */
                     $delete(): Promise<email.domain.TaskPop>;
-                    // GET /email/domain/{domain}/account/{accountName}
+                    /**
+                     * Get this object properties
+                     * GET /email/domain/{domain}/account/{accountName}
+                     */
                     $get(): Promise<email.domain.Account>;
-                    // PUT /email/domain/{domain}/account/{accountName}
+                    /**
+                     * Alter this object properties
+                     * PUT /email/domain/{domain}/account/{accountName}
+                     */
                     $put(params?: { accountName?: string, description?: string, domain?: string, email?: string, isBlocked?: boolean, size?: number }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     changePassword: {
-                        // POST /email/domain/{domain}/account/{accountName}/changePassword
+                        /**
+                         * Change mailbox password (length : [9;30], no space at begin and end, no accent)
+                         * POST /email/domain/{domain}/account/{accountName}/changePassword
+                         */
                         $post(params: { password: string }): Promise<email.domain.TaskPop>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     delegation: {
-                        // GET /email/domain/{domain}/account/{accountName}/delegation
+                        /**
+                         * Get delegations
+                         * GET /email/domain/{domain}/account/{accountName}/delegation
+                         */
                         $get(): Promise<string[]>;
-                        // POST /email/domain/{domain}/account/{accountName}/delegation
+                        /**
+                         * Create delegation for this account
+                         * POST /email/domain/{domain}/account/{accountName}/delegation
+                         */
                         $post(params: { accountId: string }): Promise<string>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         $(accountId: string): {
-                            // DELETE /email/domain/{domain}/account/{accountName}/delegation/{accountId}
+                            /**
+                             * Delete an existing delegation
+                             * DELETE /email/domain/{domain}/account/{accountName}/delegation/{accountId}
+                             */
                             $delete(): Promise<string>;
-                            // GET /email/domain/{domain}/account/{accountName}/delegation/{accountId}
+                            /**
+                             * Get this object properties
+                             * GET /email/domain/{domain}/account/{accountName}/delegation/{accountId}
+                             */
                             $get(): Promise<email.domain.Delegation>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         };
                     }
                     filter: {
-                        // GET /email/domain/{domain}/account/{accountName}/filter
+                        /**
+                         * Get filters
+                         * GET /email/domain/{domain}/account/{accountName}/filter
+                         */
                         $get(): Promise<string[]>;
-                        // POST /email/domain/{domain}/account/{accountName}/filter
+                        /**
+                         * Create new filter for account
+                         * POST /email/domain/{domain}/account/{accountName}/filter
+                         */
                         $post(params: { action: domainDomainFilterActionEnum, actionParam?: string, active: boolean, header: string, name: string, operand: domainDomainFilterOperandEnum, priority: number, value: string }): Promise<email.domain.TaskFilter>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         $(name: string): {
-                            // DELETE /email/domain/{domain}/account/{accountName}/filter/{name}
+                            /**
+                             * Delete an existing filter
+                             * DELETE /email/domain/{domain}/account/{accountName}/filter/{name}
+                             */
                             $delete(): Promise<email.domain.TaskFilter[]>;
-                            // GET /email/domain/{domain}/account/{accountName}/filter/{name}
+                            /**
+                             * Get this object properties
+                             * GET /email/domain/{domain}/account/{accountName}/filter/{name}
+                             */
                             $get(): Promise<email.domain.Filter>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                             changeActivity: {
-                                // POST /email/domain/{domain}/account/{accountName}/filter/{name}/changeActivity
+                                /**
+                                 * Change filter activity
+                                 * POST /email/domain/{domain}/account/{accountName}/filter/{name}/changeActivity
+                                 */
                                 $post(params: { activity: boolean }): Promise<email.domain.TaskFilter>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions): Promise<any>;
                             }
                             changePriority: {
-                                // POST /email/domain/{domain}/account/{accountName}/filter/{name}/changePriority
+                                /**
+                                 * Change filter priority
+                                 * POST /email/domain/{domain}/account/{accountName}/filter/{name}/changePriority
+                                 */
                                 $post(params: { priority: number }): Promise<email.domain.TaskFilter>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions): Promise<any>;
                             }
                             rule: {
-                                // GET /email/domain/{domain}/account/{accountName}/filter/{name}/rule
+                                /**
+                                 * Get rules
+                                 * GET /email/domain/{domain}/account/{accountName}/filter/{name}/rule
+                                 */
                                 $get(): Promise<number[]>;
-                                // POST /email/domain/{domain}/account/{accountName}/filter/{name}/rule
+                                /**
+                                 * Create new rule for filter
+                                 * POST /email/domain/{domain}/account/{accountName}/filter/{name}/rule
+                                 */
                                 $post(params: { header: string, operand: domainDomainFilterOperandEnum, value: string }): Promise<email.domain.TaskFilter>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions): Promise<any>;
                                 $(id: number): {
-                                    // DELETE /email/domain/{domain}/account/{accountName}/filter/{name}/rule/{id}
+                                    /**
+                                     * Delete an existing filter
+                                     * DELETE /email/domain/{domain}/account/{accountName}/filter/{name}/rule/{id}
+                                     */
                                     $delete(): Promise<email.domain.TaskFilter[]>;
-                                    // GET /email/domain/{domain}/account/{accountName}/filter/{name}/rule/{id}
+                                    /**
+                                     * Get this object properties
+                                     * GET /email/domain/{domain}/account/{accountName}/filter/{name}/rule/{id}
+                                     */
                                     $get(): Promise<email.domain.Rule>;
+                                    /**
+                                     * Controle cache
+                                     */
+                                    $cache(param?: ICacheOptions): Promise<any>;
                                 };
                             }
                         };
                     }
                     migrate: {
-                        // GET /email/domain/{domain}/account/{accountName}/migrate
+                        /**
+                         * Get migration service
+                         * GET /email/domain/{domain}/account/{accountName}/migrate
+                         */
                         $get(params?: { type?: email.domain.MigrationServiceType }): Promise<string[]>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         $(destinationServiceName: string): {
-                            // GET /email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}
+                            /**
+                             * Get this object properties
+                             * GET /email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}
+                             */
                             $get(): Promise<email.domain.MigrationService>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                             destinationEmailAddress: {
-                                // GET /email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress
+                                /**
+                                 * List of email address available for migration
+                                 * GET /email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress
+                                 */
                                 $get(params?: { quota?: number }): Promise<string[]>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions): Promise<any>;
                                 $(destinationEmailAddress: string): {
-                                    // GET /email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress/{destinationEmailAddress}
+                                    /**
+                                     * Get this object properties
+                                     * GET /email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress/{destinationEmailAddress}
+                                     */
                                     $get(): Promise<email.domain.MigrationAccount>;
+                                    /**
+                                     * Controle cache
+                                     */
+                                    $cache(param?: ICacheOptions): Promise<any>;
                                     checkMigrate: {
-                                        // GET /email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress/{destinationEmailAddress}/checkMigrate
+                                        /**
+                                         * Check if it's possible to migrate
+                                         * GET /email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress/{destinationEmailAddress}/checkMigrate
+                                         */
                                         $get(): Promise<email.domain.MigrationCheckStruct>;
+                                        /**
+                                         * Controle cache
+                                         */
+                                        $cache(param?: ICacheOptions): Promise<any>;
                                     }
                                     migrate: {
-                                        // POST /email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress/{destinationEmailAddress}/migrate
+                                        /**
+                                         * Migrate account to destination account
+                                         * POST /email/domain/{domain}/account/{accountName}/migrate/{destinationServiceName}/destinationEmailAddress/{destinationEmailAddress}/migrate
+                                         */
                                         $post(params: { password: string }): Promise<email.domain.TaskPop>;
+                                        /**
+                                         * Controle cache
+                                         */
+                                        $cache(param?: ICacheOptions): Promise<any>;
                                     }
                                 };
                             }
                         };
                     }
                     updateUsage: {
-                        // POST /email/domain/{domain}/account/{accountName}/updateUsage
+                        /**
+                         * Update usage of account
+                         * POST /email/domain/{domain}/account/{accountName}/updateUsage
+                         */
                         $post(): Promise<void>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     usage: {
-                        // GET /email/domain/{domain}/account/{accountName}/usage
+                        /**
+                         * usage of account
+                         * GET /email/domain/{domain}/account/{accountName}/usage
+                         */
                         $get(): Promise<domain.DomainUsageAccountStruct>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                 };
             }
             acl: {
-                // GET /email/domain/{domain}/acl
+                /**
+                 * Get ACL on your domain
+                 * GET /email/domain/{domain}/acl
+                 */
                 $get(): Promise<string[]>;
-                // POST /email/domain/{domain}/acl
+                /**
+                 * Create new ACL
+                 * POST /email/domain/{domain}/acl
+                 */
                 $post(params: { accountId: string }): Promise<email.domain.Acl>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(accountId: string): {
-                    // DELETE /email/domain/{domain}/acl/{accountId}
+                    /**
+                     * Delete ACL
+                     * DELETE /email/domain/{domain}/acl/{accountId}
+                     */
                     $delete(): Promise<void>;
-                    // GET /email/domain/{domain}/acl/{accountId}
+                    /**
+                     * Get this object properties
+                     * GET /email/domain/{domain}/acl/{accountId}
+                     */
                     $get(): Promise<email.domain.Acl>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 };
             }
             changeContact: {
-                // POST /email/domain/{domain}/changeContact
+                /**
+                 * Launch a contact change procedure
+                 * POST /email/domain/{domain}/changeContact
+                 */
                 $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             changeDnsMXFilter: {
-                // POST /email/domain/{domain}/changeDnsMXFilter
+                /**
+                 * Change MX filter, so change MX DNS records
+                 * POST /email/domain/{domain}/changeDnsMXFilter
+                 */
                 $post(params: { customTarget?: string, mxFilter: domain.DomainMXFilterEnum, subDomain?: string }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             confirmTermination: {
-                // POST /email/domain/{domain}/confirmTermination
+                /**
+                 * Confirm termination of your email service
+                 * POST /email/domain/{domain}/confirmTermination
+                 */
                 $post(params: { commentary?: string, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             dnsMXFilter: {
-                // GET /email/domain/{domain}/dnsMXFilter
+                /**
+                 * Domain MX filter
+                 * GET /email/domain/{domain}/dnsMXFilter
+                 */
                 $get(params?: { subDomain?: string }): Promise<domain.DomainMXFilterEnum>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             dnsMXRecords: {
-                // GET /email/domain/{domain}/dnsMXRecords
+                /**
+                 * Domain MX records
+                 * GET /email/domain/{domain}/dnsMXRecords
+                 */
                 $get(params?: { subDomain?: string }): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             mailingList: {
-                // GET /email/domain/{domain}/mailingList
+                /**
+                 * Get mailing lists
+                 * GET /email/domain/{domain}/mailingList
+                 */
                 $get(params?: { name?: string }): Promise<string[]>;
-                // POST /email/domain/{domain}/mailingList
+                /**
+                 * Create new mailingList
+                 * POST /email/domain/{domain}/mailingList
+                 */
                 $post(params: { language: domainDomainMlLanguageEnum, name: string, options: domainDomainMlOptionsStruct, ownerEmail: string, replyTo?: string }): Promise<email.domain.TaskMl>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(name: string): {
-                    // DELETE /email/domain/{domain}/mailingList/{name}
+                    /**
+                     * Delete existing Mailing list
+                     * DELETE /email/domain/{domain}/mailingList/{name}
+                     */
                     $delete(): Promise<email.domain.TaskMl>;
-                    // GET /email/domain/{domain}/mailingList/{name}
+                    /**
+                     * Get this object properties
+                     * GET /email/domain/{domain}/mailingList/{name}
+                     */
                     $get(): Promise<email.domain.MailingList>;
-                    // PUT /email/domain/{domain}/mailingList/{name}
+                    /**
+                     * Alter this object properties
+                     * PUT /email/domain/{domain}/mailingList/{name}
+                     */
                     $put(params?: { id?: number, language?: domainDomainMlLanguageEnum, name?: string, nbSubscribers?: number, nbSubscribersUpdateDate?: string, options?: domainDomainMlOptionsStruct, ownerEmail?: string, replyTo?: string }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     changeOptions: {
-                        // POST /email/domain/{domain}/mailingList/{name}/changeOptions
+                        /**
+                         * Change mailing list options
+                         * POST /email/domain/{domain}/mailingList/{name}/changeOptions
+                         */
                         $post(params: { options: domainDomainMlOptionsStruct }): Promise<email.domain.TaskMl>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     moderator: {
-                        // GET /email/domain/{domain}/mailingList/{name}/moderator
+                        /**
+                         * List of moderators
+                         * GET /email/domain/{domain}/mailingList/{name}/moderator
+                         */
                         $get(params?: { email?: string }): Promise<string[]>;
-                        // POST /email/domain/{domain}/mailingList/{name}/moderator
+                        /**
+                         * Add moderator to mailing list
+                         * POST /email/domain/{domain}/mailingList/{name}/moderator
+                         */
                         $post(params: { email: string }): Promise<email.domain.TaskMl>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         $(email: string): {
-                            // DELETE /email/domain/{domain}/mailingList/{name}/moderator/{email}
+                            /**
+                             * Delete existing moderator
+                             * DELETE /email/domain/{domain}/mailingList/{name}/moderator/{email}
+                             */
                             $delete(): Promise<email.domain.TaskMl>;
-                            // GET /email/domain/{domain}/mailingList/{name}/moderator/{email}
+                            /**
+                             * Get this object properties
+                             * GET /email/domain/{domain}/mailingList/{name}/moderator/{email}
+                             */
                             $get(): Promise<email.domain.Moderator>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         };
                     }
                     sendListByEmail: {
-                        // POST /email/domain/{domain}/mailingList/{name}/sendListByEmail
+                        /**
+                         * Send moderators list and subscribers list of this mailing list by email
+                         * POST /email/domain/{domain}/mailingList/{name}/sendListByEmail
+                         */
                         $post(params: { email: string }): Promise<email.domain.TaskMl>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     subscriber: {
-                        // GET /email/domain/{domain}/mailingList/{name}/subscriber
+                        /**
+                         * List of subscribers
+                         * GET /email/domain/{domain}/mailingList/{name}/subscriber
+                         */
                         $get(params?: { email?: string }): Promise<string[]>;
-                        // POST /email/domain/{domain}/mailingList/{name}/subscriber
+                        /**
+                         * Add subscriber to mailing list
+                         * POST /email/domain/{domain}/mailingList/{name}/subscriber
+                         */
                         $post(params: { email: string }): Promise<email.domain.TaskMl>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         $(email: string): {
-                            // DELETE /email/domain/{domain}/mailingList/{name}/subscriber/{email}
+                            /**
+                             * Delete existing subscriber
+                             * DELETE /email/domain/{domain}/mailingList/{name}/subscriber/{email}
+                             */
                             $delete(): Promise<email.domain.TaskMl>;
-                            // GET /email/domain/{domain}/mailingList/{name}/subscriber/{email}
+                            /**
+                             * Get this object properties
+                             * GET /email/domain/{domain}/mailingList/{name}/subscriber/{email}
+                             */
                             $get(): Promise<email.domain.Subscriber>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         };
                     }
                 };
             }
             migrateDelegationV3toV6: {
-                // POST /email/domain/{domain}/migrateDelegationV3toV6
+                /**
+                 * Create delegation of domain with same nic than V3
+                 * POST /email/domain/{domain}/migrateDelegationV3toV6
+                 */
                 $post(): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             quota: {
-                // GET /email/domain/{domain}/quota
+                /**
+                 * List all quotas for this domain
+                 * GET /email/domain/{domain}/quota
+                 */
                 $get(): Promise<domain.DomainQuota>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             recommendedDNSRecords: {
-                // GET /email/domain/{domain}/recommendedDNSRecords
+                /**
+                 * Recommended domain DNS records
+                 * GET /email/domain/{domain}/recommendedDNSRecords
+                 */
                 $get(): Promise<domain.zone.Record[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             redirection: {
-                // GET /email/domain/{domain}/redirection
+                /**
+                 * Get redirections
+                 * GET /email/domain/{domain}/redirection
+                 */
                 $get(params?: { from?: string, to?: string }): Promise<string[]>;
-                // POST /email/domain/{domain}/redirection
+                /**
+                 * Create new redirection in server
+                 * POST /email/domain/{domain}/redirection
+                 */
                 $post(params: { from: string, localCopy: boolean, to: string }): Promise<email.domain.TaskSpecialAccount>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(id: string): {
-                    // DELETE /email/domain/{domain}/redirection/{id}
+                    /**
+                     * Delete an existing redirection in server
+                     * DELETE /email/domain/{domain}/redirection/{id}
+                     */
                     $delete(): Promise<email.domain.TaskSpecialAccount>;
-                    // GET /email/domain/{domain}/redirection/{id}
+                    /**
+                     * Get this object properties
+                     * GET /email/domain/{domain}/redirection/{id}
+                     */
                     $get(): Promise<email.domain.RedirectionGlobal>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     changeRedirection: {
-                        // POST /email/domain/{domain}/redirection/{id}/changeRedirection
+                        /**
+                         * Change redirection
+                         * POST /email/domain/{domain}/redirection/{id}/changeRedirection
+                         */
                         $post(params: { to: string }): Promise<email.domain.TaskSpecialAccount>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                 };
             }
             responder: {
-                // GET /email/domain/{domain}/responder
+                /**
+                 * Get responders
+                 * GET /email/domain/{domain}/responder
+                 */
                 $get(params?: { account?: string }): Promise<string[]>;
-                // POST /email/domain/{domain}/responder
+                /**
+                 * Create new responder in server
+                 * POST /email/domain/{domain}/responder
+                 */
                 $post(params: { account: string, content: string, copy: boolean, copyTo?: string, from?: string, to?: string }): Promise<email.domain.TaskSpecialAccount>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(account: string): {
-                    // DELETE /email/domain/{domain}/responder/{account}
+                    /**
+                     * Delete an existing responder in server
+                     * DELETE /email/domain/{domain}/responder/{account}
+                     */
                     $delete(): Promise<email.domain.TaskSpecialAccount>;
-                    // GET /email/domain/{domain}/responder/{account}
+                    /**
+                     * Get this object properties
+                     * GET /email/domain/{domain}/responder/{account}
+                     */
                     $get(): Promise<email.domain.Responder>;
-                    // PUT /email/domain/{domain}/responder/{account}
+                    /**
+                     * Alter this object properties
+                     * PUT /email/domain/{domain}/responder/{account}
+                     */
                     $put(params?: { account?: string, content?: string, copy?: boolean, copyTo?: string, from?: string, to?: string }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 };
             }
             serviceInfos: {
-                // GET /email/domain/{domain}/serviceInfos
+                /**
+                 * Get this object properties
+                 * GET /email/domain/{domain}/serviceInfos
+                 */
                 $get(): Promise<services.Service>;
-                // PUT /email/domain/{domain}/serviceInfos
+                /**
+                 * Alter this object properties
+                 * PUT /email/domain/{domain}/serviceInfos
+                 */
                 $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             summary: {
-                // GET /email/domain/{domain}/summary
+                /**
+                 * Summary for this domain
+                 * GET /email/domain/{domain}/summary
+                 */
                 $get(): Promise<domain.DomainSummary>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             task: {
                 account: {
-                    // GET /email/domain/{domain}/task/account
+                    /**
+                     * Get account tasks
+                     * GET /email/domain/{domain}/task/account
+                     */
                     $get(params?: { name?: string }): Promise<number[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     $(id: number): {
-                        // GET /email/domain/{domain}/task/account/{id}
+                        /**
+                         * Get this object properties
+                         * GET /email/domain/{domain}/task/account/{id}
+                         */
                         $get(): Promise<email.domain.TaskPop>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     };
                 }
                 filter: {
-                    // GET /email/domain/{domain}/task/filter
+                    /**
+                     * Get filter tasks
+                     * GET /email/domain/{domain}/task/filter
+                     */
                     $get(params?: { account?: string }): Promise<number[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     $(id: number): {
-                        // GET /email/domain/{domain}/task/filter/{id}
+                        /**
+                         * Get this object properties
+                         * GET /email/domain/{domain}/task/filter/{id}
+                         */
                         $get(): Promise<email.domain.TaskFilter>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     };
                 }
                 mailinglist: {
-                    // GET /email/domain/{domain}/task/mailinglist
+                    /**
+                     * Get Mailing List tasks
+                     * GET /email/domain/{domain}/task/mailinglist
+                     */
                     $get(params?: { account?: string }): Promise<number[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     $(id: number): {
-                        // GET /email/domain/{domain}/task/mailinglist/{id}
+                        /**
+                         * Get this object properties
+                         * GET /email/domain/{domain}/task/mailinglist/{id}
+                         */
                         $get(): Promise<email.domain.TaskMl>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     };
                 }
                 redirection: {
-                    // GET /email/domain/{domain}/task/redirection
+                    /**
+                     * Get redirection tasks
+                     * GET /email/domain/{domain}/task/redirection
+                     */
                     $get(params?: { account?: string }): Promise<number[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     $(id: number): {
-                        // GET /email/domain/{domain}/task/redirection/{id}
+                        /**
+                         * Get this object properties
+                         * GET /email/domain/{domain}/task/redirection/{id}
+                         */
                         $get(): Promise<email.domain.TaskSpecialAccount>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     };
                 }
                 responder: {
-                    // GET /email/domain/{domain}/task/responder
+                    /**
+                     * Get responder tasks
+                     * GET /email/domain/{domain}/task/responder
+                     */
                     $get(params?: { account?: string }): Promise<number[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     $(id: number): {
-                        // GET /email/domain/{domain}/task/responder/{id}
+                        /**
+                         * Get this object properties
+                         * GET /email/domain/{domain}/task/responder/{id}
+                         */
                         $get(): Promise<email.domain.TaskSpecialAccount>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     };
                 }
             }
             terminate: {
-                // POST /email/domain/{domain}/terminate
+                /**
+                 * Terminate your email service
+                 * POST /email/domain/{domain}/terminate
+                 */
                 $post(): Promise<string>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         };
     }

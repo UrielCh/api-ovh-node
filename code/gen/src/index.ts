@@ -31,10 +31,9 @@ async function genRegion(endpoint: IEndpoint) {
     if (false)
         apis = apis.filter((api) => {
             //return ~api.indexOf('veeam')
-            if (api.endsWith('ceph'))
-                return true;
+            //if (api.endsWith('ceph')) return true;
             //if ('/cloud' == api) return true;
-            //if ('/domain' == api) return true;
+            if ('/domain' == api) return true;
             //if ('/email/domain' == api) return true;
             //if ('/me' == api) return true;
             // if (this.api == '/cloud' || this.api == '/domain' || this.api == '/email/domain' || this.api == '/me'

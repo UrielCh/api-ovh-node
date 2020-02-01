@@ -1,18 +1,24 @@
-import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
+import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /veeamCloudConnect Models
  * Source: https://eu.api.ovh.com/1.0/veeamCloudConnect.json
  */
 export namespace complexType {
-    // interface fullName: complexType.UnitAndValue.UnitAndValue
+    /**
+     * A numeric value tagged with its unit
+     * interface fullName: complexType.UnitAndValue.UnitAndValue
+     */
     export interface UnitAndValue<T> {
         unit: string;
         value: T;
     }
 }
 export namespace service {
-    // interface fullName: service.RenewType.RenewType
+    /**
+     * Map a possible renew for a specific service
+     * interface fullName: service.RenewType.RenewType
+     */
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -20,13 +26,21 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    // type fullname: service.RenewalTypeEnum
+    /**
+     * Detailed renewal type of a service
+     * type fullname: service.RenewalTypeEnum
+     */
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    // type fullname: service.StateEnum
+    /**
+     * type fullname: service.StateEnum
+     */
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
 }
 export namespace services {
-    // interface fullName: services.Service.Service
+    /**
+     * Details about a Service
+     * interface fullName: services.Service.Service
+     */
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;
@@ -44,14 +58,20 @@ export namespace services {
     }
 }
 export namespace veeamCloudConnect {
-    // interface fullName: veeamCloudConnect.Account.Account
+    /**
+     * Veeam Cloud Connect account
+     * interface fullName: veeamCloudConnect.Account.Account
+     */
     export interface Account {
         location: veeamCloudConnect.Location;
         productOffer: veeamCloudConnect.Offer;
         serviceName: string;
         vmCount?: number;
     }
-    // interface fullName: veeamCloudConnect.BackupRepository.BackupRepository
+    /**
+     * Veeam Backup Repository
+     * interface fullName: veeamCloudConnect.BackupRepository.BackupRepository
+     */
     export interface BackupRepository {
         inventoryName: string;
         quota: complexType.UnitAndValue<number>;
@@ -60,13 +80,25 @@ export namespace veeamCloudConnect {
         state: veeamCloudConnect.BackupRepositoryStateEnum;
         usage?: number;
     }
-    // type fullname: veeamCloudConnect.BackupRepositoryStateEnum
+    /**
+     * All states a Cloud Tenant backup repository can be in
+     * type fullname: veeamCloudConnect.BackupRepositoryStateEnum
+     */
     export type BackupRepositoryStateEnum = "configuring" | "delivered" | "disabled" | "disabling" | "error" | "migrating" | "removing"
-    // type fullname: veeamCloudConnect.Location
+    /**
+     * All Location where cloud can be physically located
+     * type fullname: veeamCloudConnect.Location
+     */
     export type Location = "bhs1" | "rbx2" | "sbg1"
-    // type fullname: veeamCloudConnect.Offer
+    /**
+     * All orderable Veeam Cloud Connect offers
+     * type fullname: veeamCloudConnect.Offer
+     */
     export type Offer = "advanced" | "demo" | "starter"
-    // interface fullName: veeamCloudConnect.Task.Task
+    /**
+     * Operation with the Cloud Tenant Account
+     * interface fullName: veeamCloudConnect.Task.Task
+     */
     export interface Task {
         endDate?: string;
         name: string;
@@ -75,9 +107,15 @@ export namespace veeamCloudConnect {
         state: veeamCloudConnect.TaskStateEnum;
         taskId: number;
     }
-    // type fullname: veeamCloudConnect.TaskStateEnum
+    /**
+     * All states a Cloud Tenant Task can be in
+     * type fullname: veeamCloudConnect.TaskStateEnum
+     */
     export type TaskStateEnum = "canceled" | "doing" | "done" | "error" | "fixing" | "problem" | "toCreate" | "todo" | "unknown" | "waitingTodo"
-    // interface fullName: veeamCloudConnect.offerCapabilities.offerCapabilities
+    /**
+     * Details about Veeam Cloud Connect offer
+     * interface fullName: veeamCloudConnect.offerCapabilities.offerCapabilities
+     */
     export interface offerCapabilities {
         defaultQuota: number;
         maxQuota: number;
@@ -98,55 +136,140 @@ export function proxyVeeamCloudConnect(ovhEngine: OvhRequestable): VeeamCloudCon
 }
 export default proxyVeeamCloudConnect;
 /**
- * Api Proxy model
- */// Apis harmony
-// path /veeamCloudConnect
+ * Api model for /veeamCloudConnect
+ */
 export interface VeeamCloudConnect {
-    // GET /veeamCloudConnect
+    /**
+     * List available services
+     * GET /veeamCloudConnect
+     */
     $get(): Promise<string[]>;
+    /**
+     * Controle cache
+     */
+    $cache(param?: ICacheOptions): Promise<any>;
     $(serviceName: string): {
-        // GET /veeamCloudConnect/{serviceName}
+        /**
+         * Get this object properties
+         * GET /veeamCloudConnect/{serviceName}
+         */
         $get(): Promise<veeamCloudConnect.Account>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         backupRepository: {
-            // GET /veeamCloudConnect/{serviceName}/backupRepository
+            /**
+             * Veeam Backup Repository linked to this Veeam Cloud Connect account
+             * GET /veeamCloudConnect/{serviceName}/backupRepository
+             */
             $get(): Promise<string[]>;
-            // POST /veeamCloudConnect/{serviceName}/backupRepository
+            /**
+             * Add a new Backup Repository to your professional account
+             * POST /veeamCloudConnect/{serviceName}/backupRepository
+             */
             $post(): Promise<veeamCloudConnect.Task[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(inventoryName: string): {
-                // DELETE /veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}
+                /**
+                 * Delete this backup Repository. 
+                 * DELETE /veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}
+                 */
                 $delete(): Promise<veeamCloudConnect.Task[]>;
-                // GET /veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}
+                /**
+                 * Get this object properties
+                 * GET /veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}
+                 */
                 $get(): Promise<veeamCloudConnect.BackupRepository>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 upgradeQuota: {
-                    // POST /veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}/upgradeQuota
+                    /**
+                     * Change your quota
+                     * POST /veeamCloudConnect/{serviceName}/backupRepository/{inventoryName}/upgradeQuota
+                     */
                     $post(params: { newQuota: number }): Promise<veeamCloudConnect.Task[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             };
         }
         capabilities: {
-            // GET /veeamCloudConnect/{serviceName}/capabilities
+            /**
+             * Show capabilities of your current offer
+             * GET /veeamCloudConnect/{serviceName}/capabilities
+             */
             $get(): Promise<veeamCloudConnect.offerCapabilities>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         orderableUpgrade: {
-            // GET /veeamCloudConnect/{serviceName}/orderableUpgrade
+            /**
+             * List the possible upgrades on your Veeam Cloud Connect account
+             * GET /veeamCloudConnect/{serviceName}/orderableUpgrade
+             */
             $get(): Promise<veeamCloudConnect.Offer[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         resetPassword: {
-            // POST /veeamCloudConnect/{serviceName}/resetPassword
+            /**
+             * Reset your Cloud Tenant Password
+             * POST /veeamCloudConnect/{serviceName}/resetPassword
+             */
             $post(): Promise<veeamCloudConnect.Task>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         serviceInfos: {
-            // GET /veeamCloudConnect/{serviceName}/serviceInfos
+            /**
+             * Get this object properties
+             * GET /veeamCloudConnect/{serviceName}/serviceInfos
+             */
             $get(): Promise<services.Service>;
-            // PUT /veeamCloudConnect/{serviceName}/serviceInfos
+            /**
+             * Alter this object properties
+             * PUT /veeamCloudConnect/{serviceName}/serviceInfos
+             */
             $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         task: {
-            // GET /veeamCloudConnect/{serviceName}/task
+            /**
+             * Tasks associated with Cloud Tenant
+             * GET /veeamCloudConnect/{serviceName}/task
+             */
             $get(params?: { name?: string, state?: veeamCloudConnect.TaskStateEnum }): Promise<number[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(taskId: number): {
-                // GET /veeamCloudConnect/{serviceName}/task/{taskId}
+                /**
+                 * Get this object properties
+                 * GET /veeamCloudConnect/{serviceName}/task/{taskId}
+                 */
                 $get(): Promise<veeamCloudConnect.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             };
         }
     };

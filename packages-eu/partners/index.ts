@@ -1,15 +1,21 @@
-import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
+import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /partners Models
  * Source: https://eu.api.ovh.com/1.0/partners.json
  */
 export namespace Partner {
-    // interface fullName: Partner.Application.Application
+    /**
+     * Partner Application
+     * interface fullName: Partner.Application.Application
+     */
     export interface Application {
         tieringLevel: string;
     }
-    // interface fullName: Partner.Company.Company
+    /**
+     * Partner company
+     * interface fullName: Partner.Company.Company
+     */
     export interface Company {
         OVHCertifications: Partner.OVHCertifications;
         OVHCustomersAdvised: string;
@@ -42,7 +48,10 @@ export namespace Partner {
         website: string;
         zipCode: string;
     }
-    // interface fullName: Partner.Contact.Contact
+    /**
+     * Partner contact
+     * interface fullName: Partner.Contact.Contact
+     */
     export interface Contact {
         email: string;
         facebook?: string;
@@ -55,26 +64,41 @@ export namespace Partner {
         role: string;
         twitter?: string;
     }
-    // interface fullName: Partner.Nic.Nic
+    /**
+     * Partner Nic
+     * interface fullName: Partner.Nic.Nic
+     */
     export interface Nic {
         nic: string;
     }
-    // interface fullName: Partner.OVHCertifications.OVHCertifications
+    /**
+     * Possible choices for OVHCertifications
+     * interface fullName: Partner.OVHCertifications.OVHCertifications
+     */
     export interface OVHCertifications {
         advanced?: string;
         business?: string;
         technical?: string;
     }
-    // type fullname: Partner.OVHCustomersAdvisedEnum
+    /**
+     * Possible choices for OVHCustomersAdvisedEnum
+     * type fullname: Partner.OVHCustomersAdvisedEnum
+     */
     export type OVHCustomersAdvisedEnum = "none" | "one" | "from2To3" | "from4To5" | "moreThan5"
-    // interface fullName: Partner.OVHProductsUsed.OVHProductsUsed
+    /**
+     * Possible choices for OVHProductsUsed
+     * interface fullName: Partner.OVHProductsUsed.OVHProductsUsed
+     */
     export interface OVHProductsUsed {
         cloud: Partner.OVHProductsUsedCloud;
         mobileHosting: Partner.OVHProductsUsedMobileHosting;
         telecom: Partner.OVHProductsUsedTelecom;
         web: Partner.OVHProductsUsedWeb;
     }
-    // interface fullName: Partner.OVHProductsUsedCloud.OVHProductsUsedCloud
+    /**
+     * Possible options for OVHProductsUsed_cloud
+     * interface fullName: Partner.OVHProductsUsedCloud.OVHProductsUsedCloud
+     */
     export interface OVHProductsUsedCloud {
         cloudDesktop: boolean;
         cloudDesktopInfrastructure: boolean;
@@ -86,12 +110,18 @@ export namespace Partner {
         vps: boolean;
         vrack: boolean;
     }
-    // interface fullName: Partner.OVHProductsUsedMobileHosting.OVHProductsUsedMobileHosting
+    /**
+     * Possible ranges for OVHProductsUsed_mobileHosting
+     * interface fullName: Partner.OVHProductsUsedMobileHosting.OVHProductsUsedMobileHosting
+     */
     export interface OVHProductsUsedMobileHosting {
         logs: boolean;
         metrics: boolean;
     }
-    // interface fullName: Partner.OVHProductsUsedTelecom.OVHProductsUsedTelecom
+    /**
+     * Possible ranges for OVHProductsUsed_telecom
+     * interface fullName: Partner.OVHProductsUsedTelecom.OVHProductsUsedTelecom
+     */
     export interface OVHProductsUsedTelecom {
         dsl: boolean;
         fax: boolean;
@@ -99,7 +129,10 @@ export namespace Partner {
         sms: boolean;
         voip: boolean;
     }
-    // interface fullName: Partner.OVHProductsUsedWeb.OVHProductsUsedWeb
+    /**
+     * Possible ranges for OVHProductsUsed_web
+     * interface fullName: Partner.OVHProductsUsedWeb.OVHProductsUsedWeb
+     */
     export interface OVHProductsUsedWeb {
         domainName: boolean;
         exchange: boolean;
@@ -107,7 +140,10 @@ export namespace Partner {
         sharepoint: boolean;
         webHosting: boolean;
     }
-    // interface fullName: Partner.activitySectors.activitySectors
+    /**
+     * Possible choices for activitySectors
+     * interface fullName: Partner.activitySectors.activitySectors
+     */
     export interface activitySectors {
         bankInsuranceFinance: boolean;
         businessServiceOrIndividuals: boolean;
@@ -125,7 +161,10 @@ export namespace Partner {
         videoGames: boolean;
         webAgency: boolean;
     }
-    // interface fullName: Partner.clientKinds.clientKinds
+    /**
+     * Possible choices for clientKinds
+     * interface fullName: Partner.clientKinds.clientKinds
+     */
     export interface clientKinds {
         association: boolean;
         individual: boolean;
@@ -135,18 +174,30 @@ export namespace Partner {
         publicSector: boolean;
         startup: boolean;
     }
-    // type fullname: Partner.companyStatusEnum
+    /**
+     * Possible choices for companyStatusEnum
+     * type fullname: Partner.companyStatusEnum
+     */
     export type companyStatusEnum = "draft" | "submitted" | "validated" | "rejected"
-    // type fullname: Partner.employeesNumberEnum
+    /**
+     * Possible ranges for company employees number
+     * type fullname: Partner.employeesNumberEnum
+     */
     export type employeesNumberEnum = "from1To10" | "from11To50" | "from51To100" | "from101To500" | "moreThan500"
-    // interface fullName: Partner.expertisesChoices.expertisesChoices
+    /**
+     * Possible choices for expertises
+     * interface fullName: Partner.expertisesChoices.expertisesChoices
+     */
     export interface expertisesChoices {
         consulting: Partner.expertisesChoicesConsulting;
         installationAndIntegration: Partner.expertisesChoicesInstallationAndIntegration;
         outsourcingAndMaintenance: Partner.expertisesChoicesOutsourcingAndMaintenance;
         softwareAndDevelopment: Partner.expertisesChoicesSoftwareAndDevelopment;
     }
-    // interface fullName: Partner.expertisesChoicesConsulting.expertisesChoicesConsulting
+    /**
+     * Possible options for consulting expertises
+     * interface fullName: Partner.expertisesChoicesConsulting.expertisesChoicesConsulting
+     */
     export interface expertisesChoicesConsulting {
         ITSecurity: boolean;
         auditAndConsulting: boolean;
@@ -154,27 +205,39 @@ export namespace Partner {
         marketingCommerceAndCommunication: boolean;
         searchEngineOptimization: boolean;
     }
-    // interface fullName: Partner.expertisesChoicesInstallationAndIntegration.expertisesChoicesInstallationAndIntegration
+    /**
+     * Possible options for installation and integration expertises
+     * interface fullName: Partner.expertisesChoicesInstallationAndIntegration.expertisesChoicesInstallationAndIntegration
+     */
     export interface expertisesChoicesInstallationAndIntegration {
         cloudInfrastructure: boolean;
         networkEquipment: boolean;
         peripheralsAndMobilitySolutions: boolean;
         telecomEquipmentAndInfrastructure: boolean;
     }
-    // interface fullName: Partner.expertisesChoicesOutsourcingAndMaintenance.expertisesChoicesOutsourcingAndMaintenance
+    /**
+     * Possible options for outsourcing and maintenance expertises
+     * interface fullName: Partner.expertisesChoicesOutsourcingAndMaintenance.expertisesChoicesOutsourcingAndMaintenance
+     */
     export interface expertisesChoicesOutsourcingAndMaintenance {
         cmputerSupport: boolean;
         maintenanceOfNetworkEquipment: boolean;
         outsourcing: boolean;
     }
-    // interface fullName: Partner.expertisesChoicesSoftwareAndDevelopment.expertisesChoicesSoftwareAndDevelopment
+    /**
+     * Possible options for software and development expertises
+     * interface fullName: Partner.expertisesChoicesSoftwareAndDevelopment.expertisesChoicesSoftwareAndDevelopment
+     */
     export interface expertisesChoicesSoftwareAndDevelopment {
         adviceAndexpertises: boolean;
         maintenanceOrApplicationManagement: boolean;
         networkEquipment: boolean;
         softwareSolutions: boolean;
     }
-    // interface fullName: Partner.externalCertifications.externalCertifications
+    /**
+     * Possible choices for externalCertifications
+     * interface fullName: Partner.externalCertifications.externalCertifications
+     */
     export interface externalCertifications {
         aws: boolean;
         cisco: boolean;
@@ -183,9 +246,15 @@ export namespace Partner {
         other?: string;
         vmware: boolean;
     }
-    // type fullname: Partner.knowledgeResourcesRangeEnum
+    /**
+     * Possible ranges for knowledgeResources
+     * type fullname: Partner.knowledgeResourcesRangeEnum
+     */
     export type knowledgeResourcesRangeEnum = "none" | "from1To3" | "from4To10" | "moreThan10"
-    // interface fullName: Partner.partnerKnowledges.partnerKnowledges
+    /**
+     * Possible choices for partnerKnowledges
+     * interface fullName: Partner.partnerKnowledges.partnerKnowledges
+     */
     export interface partnerKnowledges {
         events: boolean;
         forum: boolean;
@@ -195,7 +264,10 @@ export namespace Partner {
         socialNetwork: boolean;
         website: boolean;
     }
-    // interface fullName: Partner.productCountries.productCountries
+    /**
+     * Possible choices for productCountries
+     * interface fullName: Partner.productCountries.productCountries
+     */
     export interface productCountries {
         australia: boolean;
         brazil: boolean;
@@ -218,15 +290,27 @@ export namespace Partner {
         tunisia: boolean;
         uk: boolean;
     }
-    // type fullname: Partner.revenueRangeEnum
+    /**
+     * Possible ranges for revenue
+     * type fullname: Partner.revenueRangeEnum
+     */
     export type revenueRangeEnum = "lessThan50000Euros" | "from50000To500000Euros" | "from500000To5000000Euros" | "moreThan5000000Euros" | "IDoNotWishToDiscloseThisInformation"
-    // type fullname: Partner.technicalAdvancedResourcesRangeEnum
+    /**
+     * Possible ranges for AdvancedResources
+     * type fullname: Partner.technicalAdvancedResourcesRangeEnum
+     */
     export type technicalAdvancedResourcesRangeEnum = "none" | "from1To3" | "from4To10" | "moreThan10"
-    // type fullname: Partner.technicalExpertResourcesRangeEnum
+    /**
+     * Possible ranges for revenue
+     * type fullname: Partner.technicalExpertResourcesRangeEnum
+     */
     export type technicalExpertResourcesRangeEnum = "none" | "from1To3" | "from4To10" | "moreThan10"
 }
 export namespace nichandle {
-    // type fullname: nichandle.CountryEnum
+    /**
+     * Countries a nichandle can choose
+     * type fullname: nichandle.CountryEnum
+     */
     export type CountryEnum = "AC" | "AD" | "AE" | "AF" | "AG" | "AI" | "AL" | "AM" | "AO" | "AQ" | "AR" | "AS" | "AT" | "AU" | "AW" | "AX" | "AZ" | "BA" | "BB" | "BD" | "BE" | "BF" | "BG" | "BH" | "BI" | "BJ" | "BL" | "BM" | "BN" | "BO" | "BQ" | "BR" | "BS" | "BT" | "BW" | "BY" | "BZ" | "CA" | "CC" | "CD" | "CF" | "CG" | "CH" | "CI" | "CK" | "CL" | "CM" | "CN" | "CO" | "CR" | "CU" | "CV" | "CW" | "CX" | "CY" | "CZ" | "DE" | "DG" | "DJ" | "DK" | "DM" | "DO" | "DZ" | "EA" | "EC" | "EE" | "EG" | "EH" | "ER" | "ES" | "ET" | "FI" | "FJ" | "FK" | "FM" | "FO" | "FR" | "GA" | "GB" | "GD" | "GE" | "GF" | "GG" | "GH" | "GI" | "GL" | "GM" | "GN" | "GP" | "GQ" | "GR" | "GS" | "GT" | "GU" | "GW" | "GY" | "HK" | "HN" | "HR" | "HT" | "HU" | "IC" | "ID" | "IE" | "IL" | "IM" | "IN" | "IO" | "IQ" | "IR" | "IS" | "IT" | "JE" | "JM" | "JO" | "JP" | "KE" | "KG" | "KH" | "KI" | "KM" | "KN" | "KP" | "KR" | "KW" | "KY" | "KZ" | "LA" | "LB" | "LC" | "LI" | "LK" | "LR" | "LS" | "LT" | "LU" | "LV" | "LY" | "MA" | "MC" | "MD" | "ME" | "MF" | "MG" | "MH" | "MK" | "ML" | "MM" | "MN" | "MO" | "MP" | "MQ" | "MR" | "MS" | "MT" | "MU" | "MV" | "MW" | "MX" | "MY" | "MZ" | "NA" | "NC" | "NE" | "NF" | "NG" | "NI" | "NL" | "NO" | "NP" | "NR" | "NU" | "NZ" | "OM" | "PA" | "PE" | "PF" | "PG" | "PH" | "PK" | "PL" | "PM" | "PN" | "PR" | "PS" | "PT" | "PW" | "PY" | "QA" | "RE" | "RO" | "RS" | "RU" | "RW" | "SA" | "SB" | "SC" | "SD" | "SE" | "SG" | "SH" | "SI" | "SJ" | "SK" | "SL" | "SM" | "SN" | "SO" | "SR" | "SS" | "ST" | "SV" | "SX" | "SY" | "SZ" | "TA" | "TC" | "TD" | "TF" | "TG" | "TH" | "TJ" | "TK" | "TL" | "TM" | "TN" | "TO" | "TR" | "TT" | "TV" | "TW" | "TZ" | "UA" | "UG" | "UM" | "UNKNOWN" | "US" | "UY" | "UZ" | "VA" | "VC" | "VE" | "VG" | "VI" | "VN" | "VU" | "WF" | "WS" | "XK" | "YE" | "YT" | "ZA" | "ZM" | "ZW"
 }
 
@@ -238,41 +322,96 @@ export function proxyPartners(ovhEngine: OvhRequestable): Partners {
 }
 export default proxyPartners;
 /**
- * Api Proxy model
- */// Apis harmony
-// path /partners
+ * Api model for /partners
+ */
 export interface Partners {
     register: {
         company: {
-            // GET /partners/register/company
+            /**
+             * List created companies
+             * GET /partners/register/company
+             */
             $get(): Promise<string[]>;
-            // POST /partners/register/company
+            /**
+             * Created a new company for the inscription
+             * POST /partners/register/company
+             */
             $post(params: { activitySectors?: Partner.activitySectors, address: string, city: string, clientKinds?: Partner.clientKinds, commercialName: string, country: nichandle.CountryEnum, description: string, email: string, employeesNumber: Partner.employeesNumberEnum, expertises?: Partner.expertisesChoices, externalCertifications?: Partner.externalCertifications, facebook?: string, linkedin?: string, logo: string, name: string, OVHCertifications?: Partner.OVHCertifications, OVHCustomersAdvised: Partner.OVHCustomersAdvisedEnum, OVHKnowledgeResources: Partner.knowledgeResourcesRangeEnum, OVHProductsUsed?: Partner.OVHProductsUsed, OVHTechnicalAdvancedResources: Partner.technicalAdvancedResourcesRangeEnum, OVHTechnicalExpertResources: Partner.technicalExpertResourcesRangeEnum, partnerKnowledges?: Partner.partnerKnowledges, phone: string, productCountries?: Partner.productCountries, registrationNumber?: string, revenue: Partner.revenueRangeEnum, twitter?: string, website: string, zipCode: string }): Promise<Partner.Company>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(companyId: string): {
-                // DELETE /partners/register/company/{companyId}
+                /**
+                 * Remove a company
+                 * DELETE /partners/register/company/{companyId}
+                 */
                 $delete(): Promise<string>;
-                // GET /partners/register/company/{companyId}
+                /**
+                 * Get information on a created company
+                 * GET /partners/register/company/{companyId}
+                 */
                 $get(): Promise<Partner.Company>;
-                // PUT /partners/register/company/{companyId}
+                /**
+                 * Update some fields on a created company
+                 * PUT /partners/register/company/{companyId}
+                 */
                 $put(params?: { activitySectors?: Partner.activitySectors, address?: string, city?: string, clientKinds?: Partner.clientKinds, commercialName?: string, country?: nichandle.CountryEnum, description?: string, effective?: Partner.employeesNumberEnum, email?: string, expertises?: Partner.expertisesChoices, externalCertifications?: Partner.externalCertifications, facebook?: string, linkedin?: string, logo?: string, name?: string, OVHCertifications?: Partner.OVHCertifications, OVHCustomersAdvised?: Partner.OVHCustomersAdvisedEnum, OVHKnowledgeResources?: Partner.knowledgeResourcesRangeEnum, OVHProductsUsed?: Partner.OVHProductsUsed, OVHTechnicalAdvancedResources?: Partner.technicalAdvancedResourcesRangeEnum, OVHTechnicalExpertResources?: Partner.technicalExpertResourcesRangeEnum, partnerKnowledges?: Partner.partnerKnowledges, phone?: string, productCountries?: Partner.productCountries, registrationNumber?: string, revenue?: Partner.revenueRangeEnum, twitter?: string, website?: string, zipCode?: string }): Promise<Partner.Company>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 application: {
-                    // GET /partners/register/company/{companyId}/application
+                    /**
+                     * Compute scoring score without submitting application
+                     * GET /partners/register/company/{companyId}/application
+                     */
                     $get(): Promise<Partner.Application>;
-                    // POST /partners/register/company/{companyId}/application
+                    /**
+                     * Submit application information for validation
+                     * POST /partners/register/company/{companyId}/application
+                     */
                     $post(params: { termsAndConditionsOfServiceAccepted: boolean }): Promise<Partner.Application>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 contact: {
-                    // GET /partners/register/company/{companyId}/contact
+                    /**
+                     * List created contacts
+                     * GET /partners/register/company/{companyId}/contact
+                     */
                     $get(): Promise<string[]>;
-                    // POST /partners/register/company/{companyId}/contact
+                    /**
+                     * Created a new contact for the inscription
+                     * POST /partners/register/company/{companyId}/contact
+                     */
                     $post(params: { email: string, facebook?: string, firstName: string, lastName: string, linkedin?: string, newsletter?: boolean, otherNics?: Partner.Nic[], phone: string, role: string, twitter?: string }): Promise<Partner.Contact>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     $(contactId: string): {
-                        // DELETE /partners/register/company/{companyId}/contact/{contactId}
+                        /**
+                         * Remove a contact
+                         * DELETE /partners/register/company/{companyId}/contact/{contactId}
+                         */
                         $delete(): Promise<string>;
-                        // GET /partners/register/company/{companyId}/contact/{contactId}
+                        /**
+                         * Get information on a created contact
+                         * GET /partners/register/company/{companyId}/contact/{contactId}
+                         */
                         $get(): Promise<Partner.Contact>;
-                        // PUT /partners/register/company/{companyId}/contact/{contactId}
+                        /**
+                         * Update some fields on a created contact
+                         * PUT /partners/register/company/{companyId}/contact/{contactId}
+                         */
                         $put(params?: { email?: string, facebook?: string, firstName?: string, lastName?: string, linkedin?: string, newsletter?: boolean, otherNics?: Partner.Nic[], phone?: string, role?: string, twitter?: string }): Promise<Partner.Contact>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     };
                 }
             };

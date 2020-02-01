@@ -1,13 +1,19 @@
-import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
+import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /ipLoadbalancing Models
  * Source: https://ca.api.ovh.com/1.0/ipLoadbalancing.json
  */
 export namespace ipLoadbalancing {
-    // type fullname: ipLoadbalancing.BackendCustomerServerStatusEnum
+    /**
+     * Possible values for server status
+     * type fullname: ipLoadbalancing.BackendCustomerServerStatusEnum
+     */
     export type BackendCustomerServerStatusEnum = "active" | "inactive"
-    // interface fullName: ipLoadbalancing.BackendProbe.BackendProbe
+    /**
+     * Probe used to determine if a backend is alive and can handle requests
+     * interface fullName: ipLoadbalancing.BackendProbe.BackendProbe
+     */
     export interface BackendProbe {
         forceSsl?: boolean;
         interval?: number;
@@ -19,27 +25,45 @@ export namespace ipLoadbalancing {
         type?: ipLoadbalancing.ProbeTypeEnum;
         url?: string;
     }
-    // type fullname: ipLoadbalancing.BalanceHTTPEnum
+    /**
+     * Possible values for load balancing balance algorithm
+     * type fullname: ipLoadbalancing.BalanceHTTPEnum
+     */
     export type BalanceHTTPEnum = "first" | "leastconn" | "roundrobin" | "source" | "uri"
-    // type fullname: ipLoadbalancing.BalanceTCPEnum
+    /**
+     * Possible values for load balancing balance algorithm
+     * type fullname: ipLoadbalancing.BalanceTCPEnum
+     */
     export type BalanceTCPEnum = "first" | "leastconn" | "roundrobin" | "source"
-    // interface fullName: ipLoadbalancing.DefinedFarm.DefinedFarm
+    /**
+     * a list of { type => [ Farm ids ] }
+     * interface fullName: ipLoadbalancing.DefinedFarm.DefinedFarm
+     */
     export interface DefinedFarm {
         id: number;
         type: string;
     }
-    // interface fullName: ipLoadbalancing.DefinedFrontend.DefinedFrontend
+    /**
+     * a list of {type=>[Frontend ids]}
+     * interface fullName: ipLoadbalancing.DefinedFrontend.DefinedFrontend
+     */
     export interface DefinedFrontend {
         id: number;
         type: string;
     }
-    // interface fullName: ipLoadbalancing.DefinedRoute.DefinedRoute
+    /**
+     * Defined routes name, type and id. Typically used to generate autocomplete lists.
+     * interface fullName: ipLoadbalancing.DefinedRoute.DefinedRoute
+     */
     export interface DefinedRoute {
         displayName?: string;
         routeId: number;
         type: string;
     }
-    // interface fullName: ipLoadbalancing.FarmAvailableProbe.FarmAvailableProbe
+    /**
+     * Available farm probes options
+     * interface fullName: ipLoadbalancing.FarmAvailableProbe.FarmAvailableProbe
+     */
     export interface FarmAvailableProbe {
         matches: string[];
         method?: string[];
@@ -48,14 +72,20 @@ export namespace ipLoadbalancing {
         type: string;
         url: boolean;
     }
-    // interface fullName: ipLoadbalancing.InstancesState.InstancesState
+    /**
+     * A structure describing the current state of an IPLB instances
+     * interface fullName: ipLoadbalancing.InstancesState.InstancesState
+     */
     export interface InstancesState {
         internalId: number;
         lastUpdateDate: string;
         state: string;
         zone: string;
     }
-    // interface fullName: ipLoadbalancing.Ip.Ip
+    /**
+     * Your IP load balancing
+     * interface fullName: ipLoadbalancing.Ip.Ip
+     */
     export interface Ip {
         displayName?: string;
         ipLoadbalancing: string;
@@ -71,33 +101,60 @@ export namespace ipLoadbalancing {
         vrackName?: string;
         zone: string[];
     }
-    // type fullname: ipLoadbalancing.IpStateEnum
+    /**
+     * Possible values for load balancing IP state
+     * type fullname: ipLoadbalancing.IpStateEnum
+     */
     export type IpStateEnum = "blacklisted" | "deleted" | "free" | "ok" | "quarantined" | "suspended"
-    // interface fullName: ipLoadbalancing.NatIps.NatIps
+    /**
+     * a list of {zone, nat Ip}
+     * interface fullName: ipLoadbalancing.NatIps.NatIps
+     */
     export interface NatIps {
         ip: string[];
         zone: string;
     }
-    // interface fullName: ipLoadbalancing.OrderableZone.OrderableZone
+    /**
+     * Available additional zone to order for a Load Balancer
+     * interface fullName: ipLoadbalancing.OrderableZone.OrderableZone
+     */
     export interface OrderableZone {
         name: string;
         planCode: string;
     }
-    // interface fullName: ipLoadbalancing.PendingChanges.PendingChanges
+    /**
+     * The pending changes for a Load Balancer zone
+     * interface fullName: ipLoadbalancing.PendingChanges.PendingChanges
+     */
     export interface PendingChanges {
         number: number;
         zone: string;
     }
-    // type fullname: ipLoadbalancing.ProbeExpectMatchEnum
+    /**
+     * List of possible probe result matches. "status" is only supported for HTTP probes
+     * type fullname: ipLoadbalancing.ProbeExpectMatchEnum
+     */
     export type ProbeExpectMatchEnum = "contains" | "default" | "internal" | "matches" | "status"
-    // type fullname: ipLoadbalancing.ProbeMethodEnum
+    /**
+     * List of possible method for HTTP probes. Consider using HEAD to save bandwidth when possible.
+     * type fullname: ipLoadbalancing.ProbeMethodEnum
+     */
     export type ProbeMethodEnum = "GET" | "HEAD" | "OPTIONS" | "internal"
-    // type fullname: ipLoadbalancing.ProbeTypeEnum
+    /**
+     * Possible values for farm probe
+     * type fullname: ipLoadbalancing.ProbeTypeEnum
+     */
     export type ProbeTypeEnum = "http" | "internal" | "mysql" | "oco" | "pgsql" | "smtp" | "tcp"
-    // type fullname: ipLoadbalancing.ProxyProtocolVersionEnum
+    /**
+     * Possible values for proxy type
+     * type fullname: ipLoadbalancing.ProxyProtocolVersionEnum
+     */
     export type ProxyProtocolVersionEnum = "v1" | "v2" | "v2-ssl" | "v2-ssl-cn"
     export namespace Quota {
-        // interface fullName: ipLoadbalancing.Quota.Quota.Quota
+        /**
+         * Quota informations for current billing period for this zone
+         * interface fullName: ipLoadbalancing.Quota.Quota.Quota
+         */
         export interface Quota {
             alert?: number;
             included?: number;
@@ -108,7 +165,10 @@ export namespace ipLoadbalancing {
         }
     }
     export namespace QuotaHistory {
-        // interface fullName: ipLoadbalancing.QuotaHistory.QuotaHistory.QuotaHistory
+        /**
+         * QuotaHistory
+         * interface fullName: ipLoadbalancing.QuotaHistory.QuotaHistory.QuotaHistory
+         */
         export interface QuotaHistory {
             historizedDate: string;
             id: number;
@@ -118,14 +178,20 @@ export namespace ipLoadbalancing {
             zone: string;
         }
     }
-    // interface fullName: ipLoadbalancing.RouteAvailableAction.RouteAvailableAction
+    /**
+     * Available route actions options
+     * interface fullName: ipLoadbalancing.RouteAvailableAction.RouteAvailableAction
+     */
     export interface RouteAvailableAction {
         destination?: string;
         name: string;
         status?: number[];
         type: string;
     }
-    // interface fullName: ipLoadbalancing.RouteAvailableRule.RouteAvailableRule
+    /**
+     * Match rule to combine to build routes
+     * interface fullName: ipLoadbalancing.RouteAvailableRule.RouteAvailableRule
+     */
     export interface RouteAvailableRule {
         enum?: string[];
         hasSubField: boolean;
@@ -135,7 +201,10 @@ export namespace ipLoadbalancing {
         type: string;
     }
     export namespace RouteHttp {
-        // interface fullName: ipLoadbalancing.RouteHttp.RouteHttp.RouteHttp
+        /**
+         * HTTP Route
+         * interface fullName: ipLoadbalancing.RouteHttp.RouteHttp.RouteHttp
+         */
         export interface RouteHttp {
             action: ipLoadbalancing.RouteHttpAction;
             displayName?: string;
@@ -146,13 +215,19 @@ export namespace ipLoadbalancing {
             weight: number;
         }
     }
-    // interface fullName: ipLoadbalancing.RouteHttpAction.RouteHttpAction
+    /**
+     * Action triggered when all rules from route match
+     * interface fullName: ipLoadbalancing.RouteHttpAction.RouteHttpAction
+     */
     export interface RouteHttpAction {
         status?: number;
         target?: string;
         type: string;
     }
-    // interface fullName: ipLoadbalancing.RouteRule.RouteRule
+    /**
+     * Match rule to combine to build routes
+     * interface fullName: ipLoadbalancing.RouteRule.RouteRule
+     */
     export interface RouteRule {
         field: string;
         match: ipLoadbalancing.RouteRuleMatchesEnum;
@@ -162,7 +237,10 @@ export namespace ipLoadbalancing {
         subField?: string;
     }
     export namespace RouteRule {
-        // interface fullName: ipLoadbalancing.RouteRule.RouteRule.RouteRule
+        /**
+         * Rule of a route
+         * interface fullName: ipLoadbalancing.RouteRule.RouteRule.RouteRule
+         */
         export interface RouteRule {
             displayName?: string;
             field: string;
@@ -173,12 +251,21 @@ export namespace ipLoadbalancing {
             subField?: string;
         }
     }
-    // type fullname: ipLoadbalancing.RouteRuleMatchesEnum
+    /**
+     * List of possible route rule matches
+     * type fullname: ipLoadbalancing.RouteRuleMatchesEnum
+     */
     export type RouteRuleMatchesEnum = "contains" | "endswith" | "exists" | "in" | "internal" | "is" | "matches" | "startswith"
-    // type fullname: ipLoadbalancing.RouteStatusEnum
+    /**
+     * Route configuration status
+     * type fullname: ipLoadbalancing.RouteStatusEnum
+     */
     export type RouteStatusEnum = "creating" | "deleting" | "internal" | "ok" | "updating"
     export namespace RouteTcp {
-        // interface fullName: ipLoadbalancing.RouteTcp.RouteTcp.RouteTcp
+        /**
+         * TCP Route
+         * interface fullName: ipLoadbalancing.RouteTcp.RouteTcp.RouteTcp
+         */
         export interface RouteTcp {
             action: ipLoadbalancing.RouteTcpAction;
             displayName?: string;
@@ -189,12 +276,18 @@ export namespace ipLoadbalancing {
             weight: number;
         }
     }
-    // interface fullName: ipLoadbalancing.RouteTcpAction.RouteTcpAction
+    /**
+     * Action triggered when all rules from route match
+     * interface fullName: ipLoadbalancing.RouteTcpAction.RouteTcpAction
+     */
     export interface RouteTcpAction {
         target?: string;
         type: string;
     }
-    // interface fullName: ipLoadbalancing.ServerState.ServerState
+    /**
+     * Available servers states
+     * interface fullName: ipLoadbalancing.ServerState.ServerState
+     */
     export interface ServerState {
         checkCode?: string;
         checkStatus?: string;
@@ -204,7 +297,10 @@ export namespace ipLoadbalancing {
         status?: string;
     }
     export namespace Ssl {
-        // interface fullName: ipLoadbalancing.Ssl.Ssl.Ssl
+        /**
+         * Ssl
+         * interface fullName: ipLoadbalancing.Ssl.Ssl.Ssl
+         */
         export interface Ssl {
             displayName?: string;
             expireDate: string;
@@ -216,23 +312,41 @@ export namespace ipLoadbalancing {
             type?: ipLoadbalancing.SslTypeEnum;
         }
     }
-    // type fullname: ipLoadbalancing.SslConfigurationEnum
+    /**
+     * Possible values for ssl ciphers
+     * type fullname: ipLoadbalancing.SslConfigurationEnum
+     */
     export type SslConfigurationEnum = "intermediate" | "modern"
-    // type fullname: ipLoadbalancing.SslTypeEnum
+    /**
+     * Possible values for ssl type
+     * type fullname: ipLoadbalancing.SslTypeEnum
+     */
     export type SslTypeEnum = "built" | "built_not_routed" | "custom"
-    // interface fullName: ipLoadbalancing.Status.Status
+    /**
+     * The global status of a Load Balancer
+     * interface fullName: ipLoadbalancing.Status.Status
+     */
     export interface Status {
         farms: ipLoadbalancing.status.Component;
         frontends: ipLoadbalancing.status.Component;
         servers: ipLoadbalancing.status.Component;
         service: ipLoadbalancing.status.Service;
     }
-    // type fullname: ipLoadbalancing.StickinessHTTPEnum
+    /**
+     * Possible values for HTTP backend stickiness
+     * type fullname: ipLoadbalancing.StickinessHTTPEnum
+     */
     export type StickinessHTTPEnum = "cookie" | "sourceIp"
-    // type fullname: ipLoadbalancing.StickinessTCPEnum
+    /**
+     * Possible values for TCP backend stickiness
+     * type fullname: ipLoadbalancing.StickinessTCPEnum
+     */
     export type StickinessTCPEnum = "sourceIp"
     export namespace Task {
-        // interface fullName: ipLoadbalancing.Task.Task.Task
+        /**
+         * IP Load Balancing Operations
+         * interface fullName: ipLoadbalancing.Task.Task.Task
+         */
         export interface Task {
             action: ipLoadbalancing.TaskActionEnum;
             creationDate: string;
@@ -243,18 +357,30 @@ export namespace ipLoadbalancing {
             zones: string[];
         }
     }
-    // type fullname: ipLoadbalancing.TaskActionEnum
+    /**
+     * Possible task action
+     * type fullname: ipLoadbalancing.TaskActionEnum
+     */
     export type TaskActionEnum = "deleteIplb" | "deployIplb" | "install" | "installIplb" | "installZone" | "orderFreeCertificate" | "orderPaidCertificate" | "orderSsl" | "refreshIplb" | "releaseIplb" | "releaseIplbZone" | "reopenIplb" | "suspendIplb" | "suspendZone" | "switchToIplbNextGenerationApi" | "vrackAttach" | "vrackDetach"
-    // type fullname: ipLoadbalancing.TaskStatusEnum
+    /**
+     * Possible task status
+     * type fullname: ipLoadbalancing.TaskStatusEnum
+     */
     export type TaskStatusEnum = "blocked" | "cancelled" | "doing" | "done" | "error" | "todo"
-    // interface fullName: ipLoadbalancing.VrackInformation.VrackInformation
+    /**
+     * Information about vRack for your Load Balancer
+     * interface fullName: ipLoadbalancing.VrackInformation.VrackInformation
+     */
     export interface VrackInformation {
         state: ipLoadbalancing.VrackStateEnum;
         task: number[];
         vrackName?: string;
     }
     export namespace VrackNetwork {
-        // interface fullName: ipLoadbalancing.VrackNetwork.VrackNetwork.VrackNetwork
+        /**
+         * Represents a private network in the vRack
+         * interface fullName: ipLoadbalancing.VrackNetwork.VrackNetwork.VrackNetwork
+         */
         export interface VrackNetwork {
             displayName?: string;
             farmId: ipLoadbalancing.DefinedFarm[];
@@ -264,22 +390,34 @@ export namespace ipLoadbalancing {
             vrackNetworkId: number;
         }
     }
-    // interface fullName: ipLoadbalancing.VrackNetworkCreationRules.VrackNetworkCreationRules
+    /**
+     * Rules to create a new description of a private network in the vRack
+     * interface fullName: ipLoadbalancing.VrackNetworkCreationRules.VrackNetworkCreationRules
+     */
     export interface VrackNetworkCreationRules {
         minNatIps: number;
         remainingNetworks: number;
         vrackName: string;
     }
-    // type fullname: ipLoadbalancing.VrackStateEnum
+    /**
+     * Possible values for load balancing vRack state
+     * type fullname: ipLoadbalancing.VrackStateEnum
+     */
     export type VrackStateEnum = "activating" | "active" | "deactivating" | "inactive"
-    // interface fullName: ipLoadbalancing.VrackTransparentGateways.VrackTransparentGateways
+    /**
+     * Aims to help you configure needed transparent interfaces
+     * interface fullName: ipLoadbalancing.VrackTransparentGateways.VrackTransparentGateways
+     */
     export interface VrackTransparentGateways {
         address: string;
         gateway: string;
         vlan: number;
     }
     export namespace VrackTransparentIp {
-        // interface fullName: ipLoadbalancing.VrackTransparentIp.VrackTransparentIp.VrackTransparentIp
+        /**
+         * Server's vrack transparent ip
+         * interface fullName: ipLoadbalancing.VrackTransparentIp.VrackTransparentIp.VrackTransparentIp
+         */
         export interface VrackTransparentIp {
             address: string;
             farmId: number;
@@ -289,14 +427,20 @@ export namespace ipLoadbalancing {
         }
     }
     export namespace Zone {
-        // interface fullName: ipLoadbalancing.Zone.Zone.Zone
+        /**
+         * IP Load Balancing Zone
+         * interface fullName: ipLoadbalancing.Zone.Zone.Zone
+         */
         export interface Zone {
             name: string;
             state: string;
         }
     }
     export namespace backendHttp {
-        // interface fullName: ipLoadbalancing.backendHttp.BackendHttp.BackendHttp
+        /**
+         * HTTP Farm
+         * interface fullName: ipLoadbalancing.backendHttp.BackendHttp.BackendHttp
+         */
         export interface BackendHttp {
             balance?: ipLoadbalancing.BalanceHTTPEnum;
             displayName?: string;
@@ -309,7 +453,10 @@ export namespace ipLoadbalancing {
         }
     }
     export namespace backendHttpCustomerServer {
-        // interface fullName: ipLoadbalancing.backendHttpCustomerServer.BackendHTTPServer.BackendHTTPServer
+        /**
+         * HTTP Farm's Server
+         * interface fullName: ipLoadbalancing.backendHttpCustomerServer.BackendHTTPServer.BackendHTTPServer
+         */
         export interface BackendHTTPServer {
             address: string;
             backendId: number;
@@ -328,7 +475,10 @@ export namespace ipLoadbalancing {
         }
     }
     export namespace backendTcp {
-        // interface fullName: ipLoadbalancing.backendTcp.BackendTcp.BackendTcp
+        /**
+         * TCP Farm
+         * interface fullName: ipLoadbalancing.backendTcp.BackendTcp.BackendTcp
+         */
         export interface BackendTcp {
             balance?: ipLoadbalancing.BalanceTCPEnum;
             displayName?: string;
@@ -341,7 +491,10 @@ export namespace ipLoadbalancing {
         }
     }
     export namespace backendTcpCustomerServer {
-        // interface fullName: ipLoadbalancing.backendTcpCustomerServer.BackendTCPServer.BackendTCPServer
+        /**
+         * TCP Farm's Server
+         * interface fullName: ipLoadbalancing.backendTcpCustomerServer.BackendTCPServer.BackendTCPServer
+         */
         export interface BackendTCPServer {
             address: string;
             backendId: number;
@@ -359,7 +512,10 @@ export namespace ipLoadbalancing {
         }
     }
     export namespace backendUdp {
-        // interface fullName: ipLoadbalancing.backendUdp.BackendUdp.BackendUdp
+        /**
+         * UDP Farm
+         * interface fullName: ipLoadbalancing.backendUdp.BackendUdp.BackendUdp
+         */
         export interface BackendUdp {
             displayName?: string;
             farmId: number;
@@ -369,7 +525,10 @@ export namespace ipLoadbalancing {
         }
     }
     export namespace backendUdpCustomerServer {
-        // interface fullName: ipLoadbalancing.backendUdpCustomerServer.BackendUDPServer.BackendUDPServer
+        /**
+         * UDP Farm's Server
+         * interface fullName: ipLoadbalancing.backendUdpCustomerServer.BackendUDPServer.BackendUDPServer
+         */
         export interface BackendUDPServer {
             address: string;
             backendId: number;
@@ -380,7 +539,10 @@ export namespace ipLoadbalancing {
         }
     }
     export namespace frontendHttp {
-        // interface fullName: ipLoadbalancing.frontendHttp.FrontendHttp.FrontendHttp
+        /**
+         * Frontend HTTP
+         * interface fullName: ipLoadbalancing.frontendHttp.FrontendHttp.FrontendHttp
+         */
         export interface FrontendHttp {
             allowedSource?: string[];
             dedicatedIpfo?: string[];
@@ -398,7 +560,10 @@ export namespace ipLoadbalancing {
         }
     }
     export namespace frontendTcp {
-        // interface fullName: ipLoadbalancing.frontendTcp.FrontendTcp.FrontendTcp
+        /**
+         * Frontend TCP
+         * interface fullName: ipLoadbalancing.frontendTcp.FrontendTcp.FrontendTcp
+         */
         export interface FrontendTcp {
             allowedSource?: string[];
             dedicatedIpfo?: string[];
@@ -413,7 +578,10 @@ export namespace ipLoadbalancing {
         }
     }
     export namespace frontendUdp {
-        // interface fullName: ipLoadbalancing.frontendUdp.FrontendUdp.FrontendUdp
+        /**
+         * Frontend UDP
+         * interface fullName: ipLoadbalancing.frontendUdp.FrontendUdp.FrontendUdp
+         */
         export interface FrontendUdp {
             dedicatedIpfo?: string[];
             defaultFarmId?: number;
@@ -425,28 +593,43 @@ export namespace ipLoadbalancing {
         }
     }
     export namespace status {
-        // interface fullName: ipLoadbalancing.status.Component.Component
+        /**
+         * The global status of a Load Balancer component
+         * interface fullName: ipLoadbalancing.status.Component.Component
+         */
         export interface Component {
             status: ipLoadbalancing.status.ComponentStatus;
             total: number;
         }
-        // interface fullName: ipLoadbalancing.status.ComponentStatus.ComponentStatus
+        /**
+         * The statuses of a Load Balancer component
+         * interface fullName: ipLoadbalancing.status.ComponentStatus.ComponentStatus
+         */
         export interface ComponentStatus {
             error: number;
             ok: number;
             unknown: number;
             warn: number;
         }
-        // type fullname: ipLoadbalancing.status.Enum
+        /**
+         * Possible values for a Load Balancer status
+         * type fullname: ipLoadbalancing.status.Enum
+         */
         export type Enum = "error" | "ok" | "unknown" | "warn"
-        // interface fullName: ipLoadbalancing.status.Service.Service
+        /**
+         * The status of a Load Balancer service
+         * interface fullName: ipLoadbalancing.status.Service.Service
+         */
         export interface Service {
             status: ipLoadbalancing.status.Enum;
         }
     }
 }
 export namespace service {
-    // interface fullName: service.RenewType.RenewType
+    /**
+     * Map a possible renew for a specific service
+     * interface fullName: service.RenewType.RenewType
+     */
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -454,17 +637,31 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    // type fullname: service.RenewalTypeEnum
+    /**
+     * Detailed renewal type of a service
+     * type fullname: service.RenewalTypeEnum
+     */
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    // type fullname: service.StateEnum
+    /**
+     * type fullname: service.StateEnum
+     */
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
-    // type fullname: service.TerminationFutureUseEnum
+    /**
+     * All future uses you can provide for a service termination
+     * type fullname: service.TerminationFutureUseEnum
+     */
     export type TerminationFutureUseEnum = "NOT_REPLACING_SERVICE" | "OTHER" | "SUBSCRIBE_AN_OTHER_SERVICE" | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR" | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
-    // type fullname: service.TerminationReasonEnum
+    /**
+     * All reasons you can provide for a service termination
+     * type fullname: service.TerminationReasonEnum
+     */
     export type TerminationReasonEnum = "FEATURES_DONT_SUIT_ME" | "LACK_OF_PERFORMANCES" | "MIGRATED_TO_ANOTHER_OVH_PRODUCT" | "MIGRATED_TO_COMPETITOR" | "NOT_ENOUGH_RECOGNITION" | "NOT_NEEDED_ANYMORE" | "NOT_RELIABLE" | "NO_ANSWER" | "OTHER" | "PRODUCT_DIMENSION_DONT_SUIT_ME" | "PRODUCT_TOOLS_DONT_SUIT_ME" | "TOO_EXPENSIVE" | "TOO_HARD_TO_USE" | "UNSATIFIED_BY_CUSTOMER_SUPPORT"
 }
 export namespace services {
-    // interface fullName: services.Service.Service
+    /**
+     * Details about a Service
+     * interface fullName: services.Service.Service
+     */
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;
@@ -490,364 +687,955 @@ export function proxyIpLoadbalancing(ovhEngine: OvhRequestable): IpLoadbalancing
 }
 export default proxyIpLoadbalancing;
 /**
- * Api Proxy model
- */// Apis harmony
-// path /ipLoadbalancing
+ * Api model for /ipLoadbalancing
+ */
 export interface IpLoadbalancing {
-    // GET /ipLoadbalancing
+    /**
+     * List available services
+     * GET /ipLoadbalancing
+     */
     $get(): Promise<string[]>;
+    /**
+     * Controle cache
+     */
+    $cache(param?: ICacheOptions): Promise<any>;
     availableZones: {
-        // GET /ipLoadbalancing/availableZones
+        /**
+         * List of zone available for an IP load balancing
+         * GET /ipLoadbalancing/availableZones
+         */
         $get(): Promise<string[]>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
     }
     $(serviceName: string): {
-        // GET /ipLoadbalancing/{serviceName}
+        /**
+         * Get this object properties
+         * GET /ipLoadbalancing/{serviceName}
+         */
         $get(): Promise<ipLoadbalancing.Ip>;
-        // PUT /ipLoadbalancing/{serviceName}
+        /**
+         * Alter this object properties
+         * PUT /ipLoadbalancing/{serviceName}
+         */
         $put(params?: { displayName?: string, ipLoadbalancing?: string, ipv4?: string, ipv6?: string, metricsToken?: string, offer?: string, orderableZone?: ipLoadbalancing.OrderableZone[], serviceName?: string, sslConfiguration?: ipLoadbalancing.SslConfigurationEnum, state?: ipLoadbalancing.IpStateEnum, vrackEligibility?: boolean, vrackName?: string, zone?: string[] }): Promise<void>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         availableFarmProbes: {
-            // GET /ipLoadbalancing/{serviceName}/availableFarmProbes
+            /**
+             * Available farm probes for health checks
+             * GET /ipLoadbalancing/{serviceName}/availableFarmProbes
+             */
             $get(): Promise<ipLoadbalancing.FarmAvailableProbe[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         availableFarmType: {
-            // GET /ipLoadbalancing/{serviceName}/availableFarmType
+            /**
+             * Available farm types
+             * GET /ipLoadbalancing/{serviceName}/availableFarmType
+             */
             $get(): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         availableFrontendType: {
-            // GET /ipLoadbalancing/{serviceName}/availableFrontendType
+            /**
+             * Available frontend type
+             * GET /ipLoadbalancing/{serviceName}/availableFrontendType
+             */
             $get(): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         availableRouteActions: {
-            // GET /ipLoadbalancing/{serviceName}/availableRouteActions
+            /**
+             * Available route actions
+             * GET /ipLoadbalancing/{serviceName}/availableRouteActions
+             */
             $get(): Promise<ipLoadbalancing.RouteAvailableAction[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         availableRouteRules: {
-            // GET /ipLoadbalancing/{serviceName}/availableRouteRules
+            /**
+             * Available route match rules
+             * GET /ipLoadbalancing/{serviceName}/availableRouteRules
+             */
             $get(): Promise<ipLoadbalancing.RouteAvailableRule[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         confirmTermination: {
-            // POST /ipLoadbalancing/{serviceName}/confirmTermination
+            /**
+             * Confirm termination of your service
+             * POST /ipLoadbalancing/{serviceName}/confirmTermination
+             */
             $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         definedFarms: {
-            // GET /ipLoadbalancing/{serviceName}/definedFarms
+            /**
+             * List of defined farms, and whether they are HTTP, TCP or UDP
+             * GET /ipLoadbalancing/{serviceName}/definedFarms
+             */
             $get(params?: { vrackNetworkId?: number }): Promise<ipLoadbalancing.DefinedFarm[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         definedFrontends: {
-            // GET /ipLoadbalancing/{serviceName}/definedFrontends
+            /**
+             * List of defined frontends, and whether they are HTTP, TCP or UDP
+             * GET /ipLoadbalancing/{serviceName}/definedFrontends
+             */
             $get(): Promise<ipLoadbalancing.DefinedFrontend[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         definedRoutes: {
-            // GET /ipLoadbalancing/{serviceName}/definedRoutes
+            /**
+             * List of defined routes, and whether they are HTTP or TCP
+             * GET /ipLoadbalancing/{serviceName}/definedRoutes
+             */
             $get(): Promise<ipLoadbalancing.DefinedRoute[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         failover: {
-            // GET /ipLoadbalancing/{serviceName}/failover
+            /**
+             * List all failover ip routed to this IPLB
+             * GET /ipLoadbalancing/{serviceName}/failover
+             */
             $get(): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         freeCertificate: {
-            // POST /ipLoadbalancing/{serviceName}/freeCertificate
+            /**
+             * Order a free certificate. We order and deliver it for you
+             * POST /ipLoadbalancing/{serviceName}/freeCertificate
+             */
             $post(params: { fqdn: string[] }): Promise<ipLoadbalancing.Task.Task>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         http: {
             farm: {
-                // GET /ipLoadbalancing/{serviceName}/http/farm
+                /**
+                 * HTTP Farm for this iplb
+                 * GET /ipLoadbalancing/{serviceName}/http/farm
+                 */
                 $get(params?: { vrackNetworkId?: number, zone?: string }): Promise<number[]>;
-                // POST /ipLoadbalancing/{serviceName}/http/farm
+                /**
+                 * Add a new HTTP Farm on your IP Load Balancing
+                 * POST /ipLoadbalancing/{serviceName}/http/farm
+                 */
                 $post(params: { balance?: ipLoadbalancing.BalanceHTTPEnum, displayName?: string, port?: number, probe?: ipLoadbalancing.BackendProbe, stickiness?: ipLoadbalancing.StickinessHTTPEnum, vrackNetworkId?: number, zone: string }): Promise<ipLoadbalancing.backendHttp.BackendHttp>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(farmId: number): {
-                    // DELETE /ipLoadbalancing/{serviceName}/http/farm/{farmId}
+                    /**
+                     * Delete an HTTP Farm
+                     * DELETE /ipLoadbalancing/{serviceName}/http/farm/{farmId}
+                     */
                     $delete(): Promise<void>;
-                    // GET /ipLoadbalancing/{serviceName}/http/farm/{farmId}
+                    /**
+                     * Get this object properties
+                     * GET /ipLoadbalancing/{serviceName}/http/farm/{farmId}
+                     */
                     $get(): Promise<ipLoadbalancing.backendHttp.BackendHttp>;
-                    // PUT /ipLoadbalancing/{serviceName}/http/farm/{farmId}
+                    /**
+                     * Alter this object properties
+                     * PUT /ipLoadbalancing/{serviceName}/http/farm/{farmId}
+                     */
                     $put(params?: { balance?: ipLoadbalancing.BalanceHTTPEnum, displayName?: string, farmId?: number, port?: number, probe?: ipLoadbalancing.BackendProbe, stickiness?: ipLoadbalancing.StickinessHTTPEnum, vrackNetworkId?: number, zone?: string }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     server: {
-                        // GET /ipLoadbalancing/{serviceName}/http/farm/{farmId}/server
+                        /**
+                         * HTTP Farm's Servers
+                         * GET /ipLoadbalancing/{serviceName}/http/farm/{farmId}/server
+                         */
                         $get(params?: { address?: string, cookie?: string, status?: ipLoadbalancing.BackendCustomerServerStatusEnum }): Promise<number[]>;
-                        // POST /ipLoadbalancing/{serviceName}/http/farm/{farmId}/server
+                        /**
+                         * Add a server to an HTTP Farm
+                         * POST /ipLoadbalancing/{serviceName}/http/farm/{farmId}/server
+                         */
                         $post(params: { address: string, backup?: boolean, chain?: string, cookie?: string, displayName?: string, port?: number, probe?: boolean, proxyProtocolVersion?: ipLoadbalancing.ProxyProtocolVersionEnum, ssl?: boolean, status: ipLoadbalancing.BackendCustomerServerStatusEnum, weight?: number }): Promise<ipLoadbalancing.backendHttpCustomerServer.BackendHTTPServer>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         $(serverId: number): {
-                            // DELETE /ipLoadbalancing/{serviceName}/http/farm/{farmId}/server/{serverId}
+                            /**
+                             * Delete a server from an HTTP Farm
+                             * DELETE /ipLoadbalancing/{serviceName}/http/farm/{farmId}/server/{serverId}
+                             */
                             $delete(): Promise<void>;
-                            // GET /ipLoadbalancing/{serviceName}/http/farm/{farmId}/server/{serverId}
+                            /**
+                             * Get this object properties
+                             * GET /ipLoadbalancing/{serviceName}/http/farm/{farmId}/server/{serverId}
+                             */
                             $get(): Promise<ipLoadbalancing.backendHttpCustomerServer.BackendHTTPServer>;
-                            // PUT /ipLoadbalancing/{serviceName}/http/farm/{farmId}/server/{serverId}
+                            /**
+                             * Alter this object properties
+                             * PUT /ipLoadbalancing/{serviceName}/http/farm/{farmId}/server/{serverId}
+                             */
                             $put(params?: { address?: string, backendId?: number, backup?: boolean, chain?: string, cookie?: string, displayName?: string, port?: number, probe?: boolean, proxyProtocolVersion?: ipLoadbalancing.ProxyProtocolVersionEnum, serverId?: number, serverState?: ipLoadbalancing.ServerState[], ssl?: boolean, status?: ipLoadbalancing.BackendCustomerServerStatusEnum, weight?: number }): Promise<void>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         };
                     }
                 };
             }
             frontend: {
-                // GET /ipLoadbalancing/{serviceName}/http/frontend
+                /**
+                 * HTTP frontends for this iplb
+                 * GET /ipLoadbalancing/{serviceName}/http/frontend
+                 */
                 $get(params?: { defaultFarmId?: number, port?: string, zone?: string }): Promise<number[]>;
-                // POST /ipLoadbalancing/{serviceName}/http/frontend
+                /**
+                 * Add a new http frontend on your IP Load Balancing
+                 * POST /ipLoadbalancing/{serviceName}/http/frontend
+                 */
                 $post(params: { allowedSource?: string[], dedicatedIpfo?: string[], defaultFarmId?: number, defaultSslId?: number, disabled?: boolean, displayName?: string, hsts?: boolean, httpHeader?: string[], port: string, redirectLocation?: string, ssl?: boolean, zone: string }): Promise<ipLoadbalancing.frontendHttp.FrontendHttp>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(frontendId: number): {
-                    // DELETE /ipLoadbalancing/{serviceName}/http/frontend/{frontendId}
+                    /**
+                     * Delete an HTTP frontend
+                     * DELETE /ipLoadbalancing/{serviceName}/http/frontend/{frontendId}
+                     */
                     $delete(): Promise<void>;
-                    // GET /ipLoadbalancing/{serviceName}/http/frontend/{frontendId}
+                    /**
+                     * Get this object properties
+                     * GET /ipLoadbalancing/{serviceName}/http/frontend/{frontendId}
+                     */
                     $get(): Promise<ipLoadbalancing.frontendHttp.FrontendHttp>;
-                    // PUT /ipLoadbalancing/{serviceName}/http/frontend/{frontendId}
+                    /**
+                     * Alter this object properties
+                     * PUT /ipLoadbalancing/{serviceName}/http/frontend/{frontendId}
+                     */
                     $put(params?: { allowedSource?: string[], dedicatedIpfo?: string[], defaultFarmId?: number, defaultSslId?: number, disabled?: boolean, displayName?: string, frontendId?: number, hsts?: boolean, httpHeader?: string[], port?: string, redirectLocation?: string, ssl?: boolean, zone?: string }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 };
             }
             route: {
-                // GET /ipLoadbalancing/{serviceName}/http/route
+                /**
+                 * HTTP routes for this iplb
+                 * GET /ipLoadbalancing/{serviceName}/http/route
+                 */
                 $get(params?: { frontendId?: number }): Promise<number[]>;
-                // POST /ipLoadbalancing/{serviceName}/http/route
+                /**
+                 * Add a new HTTP route to your frontend
+                 * POST /ipLoadbalancing/{serviceName}/http/route
+                 */
                 $post(params: { action: ipLoadbalancing.RouteHttpAction, displayName?: string, frontendId?: number, weight?: number }): Promise<ipLoadbalancing.RouteHttp.RouteHttp>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(routeId: number): {
-                    // DELETE /ipLoadbalancing/{serviceName}/http/route/{routeId}
+                    /**
+                     * Delete this HTTP route
+                     * DELETE /ipLoadbalancing/{serviceName}/http/route/{routeId}
+                     */
                     $delete(): Promise<void>;
-                    // GET /ipLoadbalancing/{serviceName}/http/route/{routeId}
+                    /**
+                     * Get this object properties
+                     * GET /ipLoadbalancing/{serviceName}/http/route/{routeId}
+                     */
                     $get(): Promise<ipLoadbalancing.RouteHttp.RouteHttp>;
-                    // PUT /ipLoadbalancing/{serviceName}/http/route/{routeId}
+                    /**
+                     * Alter this object properties
+                     * PUT /ipLoadbalancing/{serviceName}/http/route/{routeId}
+                     */
                     $put(params?: { action?: ipLoadbalancing.RouteHttpAction, displayName?: string, frontendId?: number, routeId?: number, rules?: ipLoadbalancing.RouteRule[], status?: ipLoadbalancing.RouteStatusEnum, weight?: number }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     rule: {
-                        // GET /ipLoadbalancing/{serviceName}/http/route/{routeId}/rule
+                        /**
+                         * HTTP routes for this iplb
+                         * GET /ipLoadbalancing/{serviceName}/http/route/{routeId}/rule
+                         */
                         $get(): Promise<number[]>;
-                        // POST /ipLoadbalancing/{serviceName}/http/route/{routeId}/rule
+                        /**
+                         * Add a new rule to your route
+                         * POST /ipLoadbalancing/{serviceName}/http/route/{routeId}/rule
+                         */
                         $post(params: { displayName?: string, field: string, match: ipLoadbalancing.RouteRuleMatchesEnum, negate?: boolean, pattern?: string, subField?: string }): Promise<ipLoadbalancing.RouteRule.RouteRule>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         $(ruleId: number): {
-                            // DELETE /ipLoadbalancing/{serviceName}/http/route/{routeId}/rule/{ruleId}
+                            /**
+                             * Delete this rule from the route
+                             * DELETE /ipLoadbalancing/{serviceName}/http/route/{routeId}/rule/{ruleId}
+                             */
                             $delete(): Promise<void>;
-                            // GET /ipLoadbalancing/{serviceName}/http/route/{routeId}/rule/{ruleId}
+                            /**
+                             * Get this object properties
+                             * GET /ipLoadbalancing/{serviceName}/http/route/{routeId}/rule/{ruleId}
+                             */
                             $get(): Promise<ipLoadbalancing.RouteRule.RouteRule>;
-                            // PUT /ipLoadbalancing/{serviceName}/http/route/{routeId}/rule/{ruleId}
+                            /**
+                             * Alter this object properties
+                             * PUT /ipLoadbalancing/{serviceName}/http/route/{routeId}/rule/{ruleId}
+                             */
                             $put(params?: { displayName?: string, field?: string, match?: ipLoadbalancing.RouteRuleMatchesEnum, negate?: boolean, pattern?: string, ruleId?: number, subField?: string }): Promise<void>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         };
                     }
                 };
             }
         }
         instancesState: {
-            // GET /ipLoadbalancing/{serviceName}/instancesState
+            /**
+             * Get the effective state of your IPLB instances on IPLB servers
+             * GET /ipLoadbalancing/{serviceName}/instancesState
+             */
             $get(): Promise<ipLoadbalancing.InstancesState[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         natIp: {
-            // GET /ipLoadbalancing/{serviceName}/natIp
+            /**
+             * Ip subnet used by OVH to nat requests on your IPLB to your backends. You must ensure that your backends are not part of a network that overlap with this one
+             * GET /ipLoadbalancing/{serviceName}/natIp
+             */
             $get(): Promise<ipLoadbalancing.NatIps[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         pendingChanges: {
-            // GET /ipLoadbalancing/{serviceName}/pendingChanges
+            /**
+             * List the pending changes on your Load Balancer configuration, per zone
+             * GET /ipLoadbalancing/{serviceName}/pendingChanges
+             */
             $get(): Promise<ipLoadbalancing.PendingChanges[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         quota: {
-            // GET /ipLoadbalancing/{serviceName}/quota
+            /**
+             * Available quota informations for current billing period per zone
+             * GET /ipLoadbalancing/{serviceName}/quota
+             */
             $get(): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(zone: string): {
-                // GET /ipLoadbalancing/{serviceName}/quota/{zone}
+                /**
+                 * Get this object properties
+                 * GET /ipLoadbalancing/{serviceName}/quota/{zone}
+                 */
                 $get(): Promise<ipLoadbalancing.Quota.Quota>;
-                // PUT /ipLoadbalancing/{serviceName}/quota/{zone}
+                /**
+                 * Alter this object properties
+                 * PUT /ipLoadbalancing/{serviceName}/quota/{zone}
+                 */
                 $put(params?: { alert?: number, included?: number, lastUpdateDate?: string, resetDate?: string, total?: number, zone?: string }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             };
         }
         quotaHistory: {
-            // GET /ipLoadbalancing/{serviceName}/quotaHistory
+            /**
+             * Quota history informations, per month
+             * GET /ipLoadbalancing/{serviceName}/quotaHistory
+             */
             $get(params?: { historizedDate_from?: string, historizedDate_to?: string, zone?: string }): Promise<number[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(id: number): {
-                // GET /ipLoadbalancing/{serviceName}/quotaHistory/{id}
+                /**
+                 * Get this object properties
+                 * GET /ipLoadbalancing/{serviceName}/quotaHistory/{id}
+                 */
                 $get(): Promise<ipLoadbalancing.QuotaHistory.QuotaHistory>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             };
         }
         refresh: {
-            // POST /ipLoadbalancing/{serviceName}/refresh
+            /**
+             * Apply the configuration to your iplb
+             * POST /ipLoadbalancing/{serviceName}/refresh
+             */
             $post(params?: { zone?: string }): Promise<ipLoadbalancing.Task.Task>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         serviceInfos: {
-            // GET /ipLoadbalancing/{serviceName}/serviceInfos
+            /**
+             * Get this object properties
+             * GET /ipLoadbalancing/{serviceName}/serviceInfos
+             */
             $get(): Promise<services.Service>;
-            // PUT /ipLoadbalancing/{serviceName}/serviceInfos
+            /**
+             * Alter this object properties
+             * PUT /ipLoadbalancing/{serviceName}/serviceInfos
+             */
             $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         ssl: {
-            // GET /ipLoadbalancing/{serviceName}/ssl
+            /**
+             * Ssl for this iplb
+             * GET /ipLoadbalancing/{serviceName}/ssl
+             */
             $get(params?: { fingerprint?: string, serial?: string, type?: ipLoadbalancing.SslTypeEnum }): Promise<number[]>;
-            // POST /ipLoadbalancing/{serviceName}/ssl
+            /**
+             * Add a new custom SSL certificate on your IP Load Balancing
+             * POST /ipLoadbalancing/{serviceName}/ssl
+             */
             $post(params: { certificate: string, chain?: string, displayName?: string, key: string }): Promise<ipLoadbalancing.Ssl.Ssl>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(id: number): {
-                // DELETE /ipLoadbalancing/{serviceName}/ssl/{id}
+                /**
+                 * Delete a custom SSL certificate
+                 * DELETE /ipLoadbalancing/{serviceName}/ssl/{id}
+                 */
                 $delete(): Promise<void>;
-                // GET /ipLoadbalancing/{serviceName}/ssl/{id}
+                /**
+                 * Get this object properties
+                 * GET /ipLoadbalancing/{serviceName}/ssl/{id}
+                 */
                 $get(): Promise<ipLoadbalancing.Ssl.Ssl>;
-                // PUT /ipLoadbalancing/{serviceName}/ssl/{id}
+                /**
+                 * Alter this object properties
+                 * PUT /ipLoadbalancing/{serviceName}/ssl/{id}
+                 */
                 $put(params?: { displayName?: string, expireDate?: string, fingerprint?: string, id?: number, san?: string[], serial?: string, subject?: string, type?: ipLoadbalancing.SslTypeEnum }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             };
         }
         status: {
-            // GET /ipLoadbalancing/{serviceName}/status
+            /**
+             * Get the global status of your IPLB
+             * GET /ipLoadbalancing/{serviceName}/status
+             */
             $get(): Promise<ipLoadbalancing.Status>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         task: {
-            // GET /ipLoadbalancing/{serviceName}/task
+            /**
+             * Task for this iplb
+             * GET /ipLoadbalancing/{serviceName}/task
+             */
             $get(params?: { action?: ipLoadbalancing.TaskActionEnum, creationDate_from?: string, creationDate_to?: string, doneDate_from?: string, doneDate_to?: string, status?: ipLoadbalancing.TaskStatusEnum }): Promise<number[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(id: number): {
-                // GET /ipLoadbalancing/{serviceName}/task/{id}
+                /**
+                 * Get this object properties
+                 * GET /ipLoadbalancing/{serviceName}/task/{id}
+                 */
                 $get(): Promise<ipLoadbalancing.Task.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             };
         }
         tcp: {
             farm: {
-                // GET /ipLoadbalancing/{serviceName}/tcp/farm
+                /**
+                 * TCP Farm for this iplb
+                 * GET /ipLoadbalancing/{serviceName}/tcp/farm
+                 */
                 $get(params?: { vrackNetworkId?: number, zone?: string }): Promise<number[]>;
-                // POST /ipLoadbalancing/{serviceName}/tcp/farm
+                /**
+                 * Add a new TCP Farm on your IP Load Balancing
+                 * POST /ipLoadbalancing/{serviceName}/tcp/farm
+                 */
                 $post(params: { balance?: ipLoadbalancing.BalanceTCPEnum, displayName?: string, port?: number, probe?: ipLoadbalancing.BackendProbe, stickiness?: ipLoadbalancing.StickinessTCPEnum, vrackNetworkId?: number, zone: string }): Promise<ipLoadbalancing.backendTcp.BackendTcp>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(farmId: number): {
-                    // DELETE /ipLoadbalancing/{serviceName}/tcp/farm/{farmId}
+                    /**
+                     * Delete a TCP Farm
+                     * DELETE /ipLoadbalancing/{serviceName}/tcp/farm/{farmId}
+                     */
                     $delete(): Promise<void>;
-                    // GET /ipLoadbalancing/{serviceName}/tcp/farm/{farmId}
+                    /**
+                     * Get this object properties
+                     * GET /ipLoadbalancing/{serviceName}/tcp/farm/{farmId}
+                     */
                     $get(): Promise<ipLoadbalancing.backendTcp.BackendTcp>;
-                    // PUT /ipLoadbalancing/{serviceName}/tcp/farm/{farmId}
+                    /**
+                     * Alter this object properties
+                     * PUT /ipLoadbalancing/{serviceName}/tcp/farm/{farmId}
+                     */
                     $put(params?: { balance?: ipLoadbalancing.BalanceTCPEnum, displayName?: string, farmId?: number, port?: number, probe?: ipLoadbalancing.BackendProbe, stickiness?: ipLoadbalancing.StickinessTCPEnum, vrackNetworkId?: number, zone?: string }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     server: {
-                        // GET /ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server
+                        /**
+                         * TCP Farm's Servers
+                         * GET /ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server
+                         */
                         $get(params?: { address?: string, status?: ipLoadbalancing.BackendCustomerServerStatusEnum }): Promise<number[]>;
-                        // POST /ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server
+                        /**
+                         * Add a server to a TCP Farm
+                         * POST /ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server
+                         */
                         $post(params: { address: string, backup?: boolean, chain?: string, displayName?: string, port?: number, probe?: boolean, proxyProtocolVersion?: ipLoadbalancing.ProxyProtocolVersionEnum, ssl?: boolean, status: ipLoadbalancing.BackendCustomerServerStatusEnum, weight?: number }): Promise<ipLoadbalancing.backendTcpCustomerServer.BackendTCPServer>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         $(serverId: number): {
-                            // DELETE /ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server/{serverId}
+                            /**
+                             * Delete a server from a TCP Farm
+                             * DELETE /ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server/{serverId}
+                             */
                             $delete(): Promise<void>;
-                            // GET /ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server/{serverId}
+                            /**
+                             * Get this object properties
+                             * GET /ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server/{serverId}
+                             */
                             $get(): Promise<ipLoadbalancing.backendTcpCustomerServer.BackendTCPServer>;
-                            // PUT /ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server/{serverId}
+                            /**
+                             * Alter this object properties
+                             * PUT /ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server/{serverId}
+                             */
                             $put(params?: { address?: string, backendId?: number, backup?: boolean, chain?: string, displayName?: string, port?: number, probe?: boolean, proxyProtocolVersion?: ipLoadbalancing.ProxyProtocolVersionEnum, serverId?: number, serverState?: ipLoadbalancing.ServerState[], ssl?: boolean, status?: ipLoadbalancing.BackendCustomerServerStatusEnum, weight?: number }): Promise<void>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         };
                     }
                 };
             }
             frontend: {
-                // GET /ipLoadbalancing/{serviceName}/tcp/frontend
+                /**
+                 * TCP frontends for this iplb
+                 * GET /ipLoadbalancing/{serviceName}/tcp/frontend
+                 */
                 $get(params?: { defaultFarmId?: number, port?: string, zone?: string }): Promise<number[]>;
-                // POST /ipLoadbalancing/{serviceName}/tcp/frontend
+                /**
+                 * Add a new TCP frontend on your IP Load Balancing
+                 * POST /ipLoadbalancing/{serviceName}/tcp/frontend
+                 */
                 $post(params: { allowedSource?: string[], dedicatedIpfo?: string[], defaultFarmId?: number, defaultSslId?: number, disabled?: boolean, displayName?: string, port: string, ssl?: boolean, zone: string }): Promise<ipLoadbalancing.frontendTcp.FrontendTcp>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(frontendId: number): {
-                    // DELETE /ipLoadbalancing/{serviceName}/tcp/frontend/{frontendId}
+                    /**
+                     * Delete an TCP frontend
+                     * DELETE /ipLoadbalancing/{serviceName}/tcp/frontend/{frontendId}
+                     */
                     $delete(): Promise<void>;
-                    // GET /ipLoadbalancing/{serviceName}/tcp/frontend/{frontendId}
+                    /**
+                     * Get this object properties
+                     * GET /ipLoadbalancing/{serviceName}/tcp/frontend/{frontendId}
+                     */
                     $get(): Promise<ipLoadbalancing.frontendTcp.FrontendTcp>;
-                    // PUT /ipLoadbalancing/{serviceName}/tcp/frontend/{frontendId}
+                    /**
+                     * Alter this object properties
+                     * PUT /ipLoadbalancing/{serviceName}/tcp/frontend/{frontendId}
+                     */
                     $put(params?: { allowedSource?: string[], dedicatedIpfo?: string[], defaultFarmId?: number, defaultSslId?: number, disabled?: boolean, displayName?: string, frontendId?: number, port?: string, ssl?: boolean, zone?: string }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 };
             }
             route: {
-                // GET /ipLoadbalancing/{serviceName}/tcp/route
+                /**
+                 * TCP routes for this iplb
+                 * GET /ipLoadbalancing/{serviceName}/tcp/route
+                 */
                 $get(params?: { frontendId?: number }): Promise<number[]>;
-                // POST /ipLoadbalancing/{serviceName}/tcp/route
+                /**
+                 * Add a new TCP route to your frontend
+                 * POST /ipLoadbalancing/{serviceName}/tcp/route
+                 */
                 $post(params: { action: ipLoadbalancing.RouteTcpAction, displayName?: string, frontendId?: number, weight?: number }): Promise<ipLoadbalancing.RouteTcp.RouteTcp>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(routeId: number): {
-                    // DELETE /ipLoadbalancing/{serviceName}/tcp/route/{routeId}
+                    /**
+                     * Delete this TCP route
+                     * DELETE /ipLoadbalancing/{serviceName}/tcp/route/{routeId}
+                     */
                     $delete(): Promise<void>;
-                    // GET /ipLoadbalancing/{serviceName}/tcp/route/{routeId}
+                    /**
+                     * Get this object properties
+                     * GET /ipLoadbalancing/{serviceName}/tcp/route/{routeId}
+                     */
                     $get(): Promise<ipLoadbalancing.RouteTcp.RouteTcp>;
-                    // PUT /ipLoadbalancing/{serviceName}/tcp/route/{routeId}
+                    /**
+                     * Alter this object properties
+                     * PUT /ipLoadbalancing/{serviceName}/tcp/route/{routeId}
+                     */
                     $put(params?: { action?: ipLoadbalancing.RouteTcpAction, displayName?: string, frontendId?: number, routeId?: number, rules?: ipLoadbalancing.RouteRule[], status?: ipLoadbalancing.RouteStatusEnum, weight?: number }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     rule: {
-                        // GET /ipLoadbalancing/{serviceName}/tcp/route/{routeId}/rule
+                        /**
+                         * HTTP routes for this iplb
+                         * GET /ipLoadbalancing/{serviceName}/tcp/route/{routeId}/rule
+                         */
                         $get(): Promise<number[]>;
-                        // POST /ipLoadbalancing/{serviceName}/tcp/route/{routeId}/rule
+                        /**
+                         * Add a new rule to your route
+                         * POST /ipLoadbalancing/{serviceName}/tcp/route/{routeId}/rule
+                         */
                         $post(params: { displayName?: string, field: string, match: ipLoadbalancing.RouteRuleMatchesEnum, negate?: boolean, pattern?: string, subField?: string }): Promise<ipLoadbalancing.RouteRule.RouteRule>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         $(ruleId: number): {
-                            // DELETE /ipLoadbalancing/{serviceName}/tcp/route/{routeId}/rule/{ruleId}
+                            /**
+                             * Delete this rule from the route
+                             * DELETE /ipLoadbalancing/{serviceName}/tcp/route/{routeId}/rule/{ruleId}
+                             */
                             $delete(): Promise<void>;
-                            // GET /ipLoadbalancing/{serviceName}/tcp/route/{routeId}/rule/{ruleId}
+                            /**
+                             * Get this object properties
+                             * GET /ipLoadbalancing/{serviceName}/tcp/route/{routeId}/rule/{ruleId}
+                             */
                             $get(): Promise<ipLoadbalancing.RouteRule.RouteRule>;
-                            // PUT /ipLoadbalancing/{serviceName}/tcp/route/{routeId}/rule/{ruleId}
+                            /**
+                             * Alter this object properties
+                             * PUT /ipLoadbalancing/{serviceName}/tcp/route/{routeId}/rule/{ruleId}
+                             */
                             $put(params?: { displayName?: string, field?: string, match?: ipLoadbalancing.RouteRuleMatchesEnum, negate?: boolean, pattern?: string, ruleId?: number, subField?: string }): Promise<void>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         };
                     }
                 };
             }
         }
         terminate: {
-            // POST /ipLoadbalancing/{serviceName}/terminate
+            /**
+             * Terminate your service
+             * POST /ipLoadbalancing/{serviceName}/terminate
+             */
             $post(): Promise<string>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         udp: {
             farm: {
-                // GET /ipLoadbalancing/{serviceName}/udp/farm
+                /**
+                 * UDP Farm for this iplb
+                 * GET /ipLoadbalancing/{serviceName}/udp/farm
+                 */
                 $get(params?: { vrackNetworkId?: number, zone?: string }): Promise<number[]>;
-                // POST /ipLoadbalancing/{serviceName}/udp/farm
+                /**
+                 * Add a new UDP Farm on your IP Load Balancing
+                 * POST /ipLoadbalancing/{serviceName}/udp/farm
+                 */
                 $post(params: { displayName?: string, port: number, vrackNetworkId?: number, zone: string }): Promise<ipLoadbalancing.backendUdp.BackendUdp>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(farmId: number): {
-                    // DELETE /ipLoadbalancing/{serviceName}/udp/farm/{farmId}
+                    /**
+                     * Delete an UDP Farm
+                     * DELETE /ipLoadbalancing/{serviceName}/udp/farm/{farmId}
+                     */
                     $delete(): Promise<void>;
-                    // GET /ipLoadbalancing/{serviceName}/udp/farm/{farmId}
+                    /**
+                     * Get this object properties
+                     * GET /ipLoadbalancing/{serviceName}/udp/farm/{farmId}
+                     */
                     $get(): Promise<ipLoadbalancing.backendUdp.BackendUdp>;
-                    // PUT /ipLoadbalancing/{serviceName}/udp/farm/{farmId}
+                    /**
+                     * Alter this object properties
+                     * PUT /ipLoadbalancing/{serviceName}/udp/farm/{farmId}
+                     */
                     $put(params?: { displayName?: string, farmId?: number, port?: number, vrackNetworkId?: number, zone?: string }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     server: {
-                        // GET /ipLoadbalancing/{serviceName}/udp/farm/{farmId}/server
+                        /**
+                         * UDP Farm's Servers
+                         * GET /ipLoadbalancing/{serviceName}/udp/farm/{farmId}/server
+                         */
                         $get(params?: { address?: string, status?: ipLoadbalancing.BackendCustomerServerStatusEnum }): Promise<number[]>;
-                        // POST /ipLoadbalancing/{serviceName}/udp/farm/{farmId}/server
+                        /**
+                         * Add a server to an UDP Farm
+                         * POST /ipLoadbalancing/{serviceName}/udp/farm/{farmId}/server
+                         */
                         $post(params: { address: string, displayName?: string, port?: number, status: ipLoadbalancing.BackendCustomerServerStatusEnum }): Promise<ipLoadbalancing.backendUdpCustomerServer.BackendUDPServer>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         $(serverId: number): {
-                            // DELETE /ipLoadbalancing/{serviceName}/udp/farm/{farmId}/server/{serverId}
+                            /**
+                             * Delete a server from an UDP Farm
+                             * DELETE /ipLoadbalancing/{serviceName}/udp/farm/{farmId}/server/{serverId}
+                             */
                             $delete(): Promise<void>;
-                            // GET /ipLoadbalancing/{serviceName}/udp/farm/{farmId}/server/{serverId}
+                            /**
+                             * Get this object properties
+                             * GET /ipLoadbalancing/{serviceName}/udp/farm/{farmId}/server/{serverId}
+                             */
                             $get(): Promise<ipLoadbalancing.backendUdpCustomerServer.BackendUDPServer>;
-                            // PUT /ipLoadbalancing/{serviceName}/udp/farm/{farmId}/server/{serverId}
+                            /**
+                             * Alter this object properties
+                             * PUT /ipLoadbalancing/{serviceName}/udp/farm/{farmId}/server/{serverId}
+                             */
                             $put(params?: { address?: string, backendId?: number, displayName?: string, port?: number, serverId?: number, status?: ipLoadbalancing.BackendCustomerServerStatusEnum }): Promise<void>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         };
                     }
                 };
             }
             frontend: {
-                // GET /ipLoadbalancing/{serviceName}/udp/frontend
+                /**
+                 * UDP frontends for this iplb
+                 * GET /ipLoadbalancing/{serviceName}/udp/frontend
+                 */
                 $get(params?: { defaultFarmId?: number, port?: string, zone?: string }): Promise<number[]>;
-                // POST /ipLoadbalancing/{serviceName}/udp/frontend
+                /**
+                 * Add a new UDP frontend on your IP Load Balancing
+                 * POST /ipLoadbalancing/{serviceName}/udp/frontend
+                 */
                 $post(params: { dedicatedIpfo?: string[], defaultFarmId?: number, disabled?: boolean, displayName?: string, port: string, zone: string }): Promise<ipLoadbalancing.frontendUdp.FrontendUdp>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(frontendId: number): {
-                    // DELETE /ipLoadbalancing/{serviceName}/udp/frontend/{frontendId}
+                    /**
+                     * Delete an UDP frontend
+                     * DELETE /ipLoadbalancing/{serviceName}/udp/frontend/{frontendId}
+                     */
                     $delete(): Promise<void>;
-                    // GET /ipLoadbalancing/{serviceName}/udp/frontend/{frontendId}
+                    /**
+                     * Get this object properties
+                     * GET /ipLoadbalancing/{serviceName}/udp/frontend/{frontendId}
+                     */
                     $get(): Promise<ipLoadbalancing.frontendUdp.FrontendUdp>;
-                    // PUT /ipLoadbalancing/{serviceName}/udp/frontend/{frontendId}
+                    /**
+                     * Alter this object properties
+                     * PUT /ipLoadbalancing/{serviceName}/udp/frontend/{frontendId}
+                     */
                     $put(params?: { dedicatedIpfo?: string[], defaultFarmId?: number, disabled?: boolean, displayName?: string, frontendId?: number, port?: string, zone?: string }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 };
             }
         }
         vrack: {
             network: {
-                // GET /ipLoadbalancing/{serviceName}/vrack/network
+                /**
+                 * Descriptions of private networks in the vRack attached to this Load Balancer
+                 * GET /ipLoadbalancing/{serviceName}/vrack/network
+                 */
                 $get(params?: { subnet?: string, vlan?: number }): Promise<number[]>;
-                // POST /ipLoadbalancing/{serviceName}/vrack/network
+                /**
+                 * Add a description of a private network in the attached vRack
+                 * POST /ipLoadbalancing/{serviceName}/vrack/network
+                 */
                 $post(params: { displayName?: string, farmId?: number[], natIp: string, subnet: string, vlan?: number }): Promise<ipLoadbalancing.VrackNetwork.VrackNetwork>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(vrackNetworkId: number): {
-                    // DELETE /ipLoadbalancing/{serviceName}/vrack/network/{vrackNetworkId}
+                    /**
+                     * Delete this description of a private network in the vRack. It must not be used by any farm server
+                     * DELETE /ipLoadbalancing/{serviceName}/vrack/network/{vrackNetworkId}
+                     */
                     $delete(): Promise<void>;
-                    // GET /ipLoadbalancing/{serviceName}/vrack/network/{vrackNetworkId}
+                    /**
+                     * Get this object properties
+                     * GET /ipLoadbalancing/{serviceName}/vrack/network/{vrackNetworkId}
+                     */
                     $get(): Promise<ipLoadbalancing.VrackNetwork.VrackNetwork>;
-                    // PUT /ipLoadbalancing/{serviceName}/vrack/network/{vrackNetworkId}
+                    /**
+                     * Alter this object properties
+                     * PUT /ipLoadbalancing/{serviceName}/vrack/network/{vrackNetworkId}
+                     */
                     $put(params?: { displayName?: string, farmId?: ipLoadbalancing.DefinedFarm[], natIp?: string, subnet?: string, vlan?: number, vrackNetworkId?: number }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     updateFarmId: {
-                        // POST /ipLoadbalancing/{serviceName}/vrack/network/{vrackNetworkId}/updateFarmId
+                        /**
+                         * Update farm attached to that vrack network id
+                         * POST /ipLoadbalancing/{serviceName}/vrack/network/{vrackNetworkId}/updateFarmId
+                         */
                         $post(params: { farmId: number[] }): Promise<ipLoadbalancing.VrackNetwork.VrackNetwork>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                 };
             }
             networkCreationRules: {
-                // GET /ipLoadbalancing/{serviceName}/vrack/networkCreationRules
+                /**
+                 * Rules to create a network attached to a vrack
+                 * GET /ipLoadbalancing/{serviceName}/vrack/networkCreationRules
+                 */
                 $get(): Promise<ipLoadbalancing.VrackNetworkCreationRules>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             status: {
-                // GET /ipLoadbalancing/{serviceName}/vrack/status
+                /**
+                 * Information about vRack for your Load Balancer
+                 * GET /ipLoadbalancing/{serviceName}/vrack/status
+                 */
                 $get(): Promise<ipLoadbalancing.VrackInformation>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         }
         zone: {
-            // GET /ipLoadbalancing/{serviceName}/zone
+            /**
+             * Zone for this iplb
+             * GET /ipLoadbalancing/{serviceName}/zone
+             */
             $get(): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(name: string): {
-                // GET /ipLoadbalancing/{serviceName}/zone/{name}
+                /**
+                 * Get this object properties
+                 * GET /ipLoadbalancing/{serviceName}/zone/{name}
+                 */
                 $get(): Promise<ipLoadbalancing.Zone.Zone>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 cancelTermination: {
-                    // POST /ipLoadbalancing/{serviceName}/zone/{name}/cancelTermination
+                    /**
+                     * Cancel the termination request of your service zone option
+                     * POST /ipLoadbalancing/{serviceName}/zone/{name}/cancelTermination
+                     */
                     $post(): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 terminate: {
-                    // POST /ipLoadbalancing/{serviceName}/zone/{name}/terminate
+                    /**
+                     * Terminate your service zone option
+                     * POST /ipLoadbalancing/{serviceName}/zone/{name}/terminate
+                     */
                     $post(): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             };
         }

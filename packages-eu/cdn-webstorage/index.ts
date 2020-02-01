@@ -1,4 +1,4 @@
-import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
+import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /cdn/webstorage Models
@@ -6,33 +6,51 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  */
 export namespace cdn {
     export namespace webstorage {
-        // interface fullName: cdn.webstorage.Account.Account
+        /**
+         * Static CDN
+         * interface fullName: cdn.webstorage.Account.Account
+         */
         export interface Account {
             domain: string;
             server: string;
             storageLimit: number;
             storageUsage: number;
         }
-        // interface fullName: cdn.webstorage.AccountCredentials.AccountCredentials
+        /**
+         * A structure with credentials for using openstack account
+         * interface fullName: cdn.webstorage.AccountCredentials.AccountCredentials
+         */
         export interface AccountCredentials {
             endpoint: string;
             login: string;
             password: string;
             tenant: string;
         }
-        // interface fullName: cdn.webstorage.StatsDataType.StatsDataType
+        /**
+         * A structure describing type of a stats hash
+         * interface fullName: cdn.webstorage.StatsDataType.StatsDataType
+         */
         export interface StatsDataType {
             date: string;
             value: number;
         }
-        // type fullname: cdn.webstorage.StatsPeriodEnum
+        /**
+         * Period of the statistics
+         * type fullname: cdn.webstorage.StatsPeriodEnum
+         */
         export type StatsPeriodEnum = "day" | "month" | "week"
-        // type fullname: cdn.webstorage.StatsTypeEnum
+        /**
+         * Type of statistics related to cache
+         * type fullname: cdn.webstorage.StatsTypeEnum
+         */
         export type StatsTypeEnum = "backend" | "cdn" | "quota"
     }
 }
 export namespace service {
-    // interface fullName: service.RenewType.RenewType
+    /**
+     * Map a possible renew for a specific service
+     * interface fullName: service.RenewType.RenewType
+     */
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -40,13 +58,21 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    // type fullname: service.RenewalTypeEnum
+    /**
+     * Detailed renewal type of a service
+     * type fullname: service.RenewalTypeEnum
+     */
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    // type fullname: service.StateEnum
+    /**
+     * type fullname: service.StateEnum
+     */
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
 }
 export namespace services {
-    // interface fullName: services.Service.Service
+    /**
+     * Details about a Service
+     * interface fullName: services.Service.Service
+     */
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;
@@ -72,29 +98,66 @@ export function proxyCdnWebstorage(ovhEngine: OvhRequestable): Cdn {
 }
 export default proxyCdnWebstorage;
 /**
- * Api Proxy model
- */// Apis harmony
-// path /cdn
+ * Api model for /cdn/webstorage
+ */
 export interface Cdn {
     webstorage: {
-        // GET /cdn/webstorage
+        /**
+         * List available services
+         * GET /cdn/webstorage
+         */
         $get(): Promise<string[]>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         $(serviceName: string): {
-            // GET /cdn/webstorage/{serviceName}
+            /**
+             * Get this object properties
+             * GET /cdn/webstorage/{serviceName}
+             */
             $get(): Promise<cdn.webstorage.Account>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             credentials: {
-                // GET /cdn/webstorage/{serviceName}/credentials
+                /**
+                 * Gives for customer credentials to accesss swift account
+                 * GET /cdn/webstorage/{serviceName}/credentials
+                 */
                 $get(): Promise<cdn.webstorage.AccountCredentials>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             serviceInfos: {
-                // GET /cdn/webstorage/{serviceName}/serviceInfos
+                /**
+                 * Get this object properties
+                 * GET /cdn/webstorage/{serviceName}/serviceInfos
+                 */
                 $get(): Promise<services.Service>;
-                // PUT /cdn/webstorage/{serviceName}/serviceInfos
+                /**
+                 * Alter this object properties
+                 * PUT /cdn/webstorage/{serviceName}/serviceInfos
+                 */
                 $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             statistics: {
-                // GET /cdn/webstorage/{serviceName}/statistics
+                /**
+                 * Return stats about bandwidth consumption
+                 * GET /cdn/webstorage/{serviceName}/statistics
+                 */
                 $get(params: { period: cdn.webstorage.StatsPeriodEnum, type: cdn.webstorage.StatsTypeEnum }): Promise<cdn.webstorage.StatsDataType[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         };
     }

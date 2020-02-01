@@ -1,30 +1,74 @@
-import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
+import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /domain Models
  * Source: https://eu.api.ovh.com/1.0/domain.json
  */
 export namespace dnssec {
-    // type fullname: dnssec.DnssecStatusEnum
+    /**
+     * Dnssec Status
+     * type fullname: dnssec.DnssecStatusEnum
+     */
     export type DnssecStatusEnum = "disableInProgress" | "disabled" | "enableInProgress" | "enabled"
-    // interface fullName: dnssec.Key.Key
+    /**
+     * Key type
+     * interface fullName: dnssec.Key.Key
+     */
     export interface Key {
         algorithm: dnssec.KeyAlgorithmEnum;
         flags: dnssec.KeyFlagEnum;
         publicKey: string;
         tag: number;
     }
-    // type fullname: dnssec.KeyAlgorithmEnum
+    /**
+     * Dnssec Algorithm
+                        ###
+                        5  : RSASHA1
+                        7  : RSASHA1-NSEC3-SHA1
+                        8  : RSASHA256
+                        10 : RSASHA512
+                        13 : ECDSAP256SHA256
+                        14 : ECDSAP384SHA384
+     * type fullname: dnssec.KeyAlgorithmEnum
+     */
     export type KeyAlgorithmEnum = 10 | 13 | 14 | 5 | 7 | 8
-    // type fullname: dnssec.KeyFlagEnum
+    /**
+     * Dnssec Key Flag Type
+                        ###
+                        256 : Zone Signing Key (ZSK)
+                        257 : Key  Signing Key (KSK)
+     * type fullname: dnssec.KeyFlagEnum
+     */
     export type KeyFlagEnum = 256 | 257
-    // type fullname: dnssec.KeyStatusEnum
+    /**
+     * 
+                Generated : The key has been created, but has not yet been used for anything.
+                ###
+                Published : The DNSKEY record is published in the zone, but predecessors of the key may be held in caches.
+                ###
+                Ready     : The new key data has been published for long enough to guarantee that any previous versions of the DNSKEY RRset have expired from caches.
+                ###
+                Active    : The key has started to be used to sign RRsets.
+                ###
+                Retired   : A successor key has become active and this key is no longer being used to generate RRSIGs.
+                ###
+                Removed   : The key has been removed from the zone.
+                ###
+                Revoked   : The key is published for a period with the "revoke" bit set as a way of notifying validating resolvers that have configured it as an trust anchor that it is about to be removed from the zone.
+     * type fullname: dnssec.KeyStatusEnum
+     */
     export type KeyStatusEnum = "active" | "generated" | "published" | "removed" | "retired" | "revoked"
 }
 export namespace domain {
-    // type fullname: domain.ContactAllTypesEnum
+    /**
+     * Contact type fields
+     * type fullname: domain.ContactAllTypesEnum
+     */
     export type ContactAllTypesEnum = "admin" | "all" | "billing" | "owner" | "tech"
-    // interface fullName: domain.CurrentNameServer.CurrentNameServer
+    /**
+     * CurrentNameServer
+     * interface fullName: domain.CurrentNameServer.CurrentNameServer
+     */
     export interface CurrentNameServer {
         host: string;
         id: number;
@@ -32,7 +76,10 @@ export namespace domain {
         isUsed: boolean;
         toDelete: boolean;
     }
-    // interface fullName: domain.DnssecKey.DnssecKey
+    /**
+     * Domain's DNSSEC Key
+     * interface fullName: domain.DnssecKey.DnssecKey
+     */
     export interface DnssecKey {
         algorithm: dnssec.KeyAlgorithmEnum;
         flags: dnssec.KeyFlagEnum;
@@ -41,7 +88,10 @@ export namespace domain {
         status: dnssec.KeyStatusEnum;
         tag: number;
     }
-    // interface fullName: domain.Domain.Domain
+    /**
+     * Domain name administration
+     * interface fullName: domain.Domain.Domain
+     */
     export interface Domain {
         dnssecSupported: boolean;
         domain: string;
@@ -55,60 +105,114 @@ export namespace domain {
         transferLockStatus: domain.DomainLockStatusEnum;
         whoisOwner: string;
     }
-    // type fullname: domain.DomainContactTypeEnum
+    /**
+     * All contact type for a domain
+     * type fullname: domain.DomainContactTypeEnum
+     */
     export type DomainContactTypeEnum = "admin" | "billing" | "owner" | "tech"
-    // type fullname: domain.DomainLockStatusEnum
+    /**
+     * Domain lock status
+     * type fullname: domain.DomainLockStatusEnum
+     */
     export type DomainLockStatusEnum = "locked" | "locking" | "unavailable" | "unlocked" | "unlocking"
-    // interface fullName: domain.DomainNs.DomainNs
+    /**
+     * Name server
+     * interface fullName: domain.DomainNs.DomainNs
+     */
     export interface DomainNs {
         host: string;
         ip?: string;
     }
-    // type fullname: domain.DomainNsStateEnum
+    /**
+     * DNS server state
+     * type fullname: domain.DomainNsStateEnum
+     */
     export type DomainNsStateEnum = "ko" | "ok"
-    // interface fullName: domain.DomainNsStatus.DomainNsStatus
+    /**
+     * DNS server status
+     * interface fullName: domain.DomainNsStatus.DomainNsStatus
+     */
     export interface DomainNsStatus {
         state: domain.DomainNsStateEnum;
         type: domain.DomainNsTypeEnum;
         usedSince?: string;
     }
-    // type fullname: domain.DomainNsTypeEnum
+    /**
+     * DomainNS Type
+     * type fullname: domain.DomainNsTypeEnum
+     */
     export type DomainNsTypeEnum = "external" | "hosted"
-    // type fullname: domain.DomainOptionEnum
+    /**
+     * All options a domain can have
+     * type fullname: domain.DomainOptionEnum
+     */
     export type DomainOptionEnum = "dnsAnycast"
-    // type fullname: domain.DomainOptionStateEnum
+    /**
+     * All states a domain Option can be in
+     * type fullname: domain.DomainOptionStateEnum
+     */
     export type DomainOptionStateEnum = "released" | "subscribed"
-    // interface fullName: domain.GlueRecord.GlueRecord
+    /**
+     * Glue record
+     * interface fullName: domain.GlueRecord.GlueRecord
+     */
     export interface GlueRecord {
         host: string;
         ips: string[];
     }
-    // type fullname: domain.IsForEnum
+    /**
+     * Possible purposes of the domain
+     * type fullname: domain.IsForEnum
+     */
     export type IsForEnum = "campaign_website" | "educational_website" | "emails" | "information_website" | "other_purpose" | "redirect_page" | "transactional_website"
-    // type fullname: domain.OfferEnum
+    /**
+     * Offer
+     * type fullname: domain.OfferEnum
+     */
     export type OfferEnum = "diamond" | "gold" | "platinum"
-    // type fullname: domain.OperationStatusEnum
+    /**
+     * Operation status
+     * type fullname: domain.OperationStatusEnum
+     */
     export type OperationStatusEnum = "cancelled" | "doing" | "done" | "error" | "todo"
-    // type fullname: domain.OptinFieldsEnum
+    /**
+     * Whois optin fields
+     * type fullname: domain.OptinFieldsEnum
+     */
     export type OptinFieldsEnum = "address" | "city" | "country" | "email" | "fax" | "name" | "organisation" | "phone" | "province" | "zip"
-    // interface fullName: domain.Option.Option
+    /**
+     * Information about the options of a domain
+     * interface fullName: domain.Option.Option
+     */
     export interface Option {
         expirationDate: string;
         option: domain.DomainOptionEnum;
         state: domain.DomainOptionStateEnum;
     }
-    // interface fullName: domain.Owo.Owo
+    /**
+     * Obfuscate whois
+     * interface fullName: domain.Owo.Owo
+     */
     export interface Owo {
         field: domain.WhoisObfuscatorFieldsEnum;
     }
-    // interface fullName: domain.ParentService.ParentService
+    /**
+     * Parent service
+     * interface fullName: domain.ParentService.ParentService
+     */
     export interface ParentService {
         name: string;
         type: domain.ParentServiceTypeEnum;
     }
-    // type fullname: domain.ParentServiceTypeEnum
+    /**
+     * Parent service type enum
+     * type fullname: domain.ParentServiceTypeEnum
+     */
     export type ParentServiceTypeEnum = "/allDom"
-    // interface fullName: domain.Rule.Rule
+    /**
+     * Description not available
+     * interface fullName: domain.Rule.Rule
+     */
     export interface Rule {
         allowedValues?: string[];
         description: string;
@@ -118,7 +222,10 @@ export namespace domain {
         required?: boolean;
         type: string;
     }
-    // interface fullName: domain.Task.Task
+    /**
+     * Tasks associated to domain
+     * interface fullName: domain.Task.Task
+     */
     export interface Task {
         canAccelerate: boolean;
         canCancel: boolean;
@@ -132,15 +239,24 @@ export namespace domain {
         status: domain.OperationStatusEnum;
         todoDate: string;
     }
-    // interface fullName: domain.UkRegistrar.UkRegistrar
+    /**
+     * Representation of a UK Registrar (used for outgoing transfer)
+     * interface fullName: domain.UkRegistrar.UkRegistrar
+     */
     export interface UkRegistrar {
         name: string;
         tag: string;
     }
-    // type fullname: domain.WhoisObfuscatorFieldsEnum
+    /**
+     * Whois obfuscable fields
+     * type fullname: domain.WhoisObfuscatorFieldsEnum
+     */
     export type WhoisObfuscatorFieldsEnum = "address" | "email" | "phone"
     export namespace configurations {
-        // interface fullName: domain.configurations.CustomFields.CustomFields
+        /**
+         * Representation of the domain custom fields
+         * interface fullName: domain.configurations.CustomFields.CustomFields
+         */
         export interface CustomFields {
             audience?: string;
             authInfo?: string;
@@ -149,26 +265,38 @@ export namespace domain {
             reason?: string;
             represent?: string;
         }
-        // interface fullName: domain.configurations.ObfuscatedEmails.ObfuscatedEmails
+        /**
+         * Representation of the obfuscated emails configuration
+         * interface fullName: domain.configurations.ObfuscatedEmails.ObfuscatedEmails
+         */
         export interface ObfuscatedEmails {
             type: domain.ContactAllTypesEnum;
             value: string;
         }
-        // interface fullName: domain.configurations.Optin.Optin
+        /**
+         * Representation of the optin configuration
+         * interface fullName: domain.configurations.Optin.Optin
+         */
         export interface Optin {
             fields: domain.OptinFieldsEnum[];
             type: domain.ContactAllTypesEnum;
         }
     }
     export namespace data {
-        // interface fullName: domain.data.AfnicCorporationTrademarkContact.AfnicCorporationTrademarkContact
+        /**
+         * Representation of an Inpi additional information for a corporation
+         * interface fullName: domain.data.AfnicCorporationTrademarkContact.AfnicCorporationTrademarkContact
+         */
         export interface AfnicCorporationTrademarkContact {
             contactId: number;
             id: number;
             inpiNumber: string;
             inpiTrademarkOwner: string;
         }
-        // interface fullName: domain.data.AssociationContact.AssociationContact
+        /**
+         * Representation of a Association additional information
+         * interface fullName: domain.data.AssociationContact.AssociationContact
+         */
         export interface AssociationContact {
             contactId: number;
             declarationDate: string;
@@ -177,7 +305,10 @@ export namespace domain {
             publicationNumber: string;
             publicationPageNumber: string;
         }
-        // interface fullName: domain.data.ProContact.ProContact
+        /**
+         * Representation of an .pro Contact Resource
+         * interface fullName: domain.data.ProContact.ProContact
+         */
         export interface ProContact {
             authority: string;
             authorityWebsite: string;
@@ -185,7 +316,10 @@ export namespace domain {
             jobDescription: string;
             licenseNumber: string;
         }
-        // interface fullName: domain.data.Smd.Smd
+        /**
+         * Representation of a SMD Resource file
+         * interface fullName: domain.data.Smd.Smd
+         */
         export interface Smd {
             data: string;
             id: number;
@@ -194,13 +328,19 @@ export namespace domain {
             protectedLabels: domain.data.SmdLabel[];
             smdId?: string;
         }
-        // interface fullName: domain.data.SmdLabel.SmdLabel
+        /**
+         * Representation of a protected label
+         * interface fullName: domain.data.SmdLabel.SmdLabel
+         */
         export interface SmdLabel {
             label: string;
             trademark: string;
         }
         export namespace claimNotice {
-            // interface fullName: domain.data.claimNotice.Address.Address
+            /**
+             * Address for a claim notice holder
+             * interface fullName: domain.data.claimNotice.Address.Address
+             */
             export interface Address {
                 city?: string;
                 countryCode?: nichandle.CountryEnum;
@@ -212,7 +352,10 @@ export namespace domain {
                 voice?: string;
                 voiceExtension?: string;
             }
-            // interface fullName: domain.data.claimNotice.ClaimNotice.ClaimNotice
+            /**
+             * Definition of claim notices applying to a domain name
+             * interface fullName: domain.data.claimNotice.ClaimNotice.ClaimNotice
+             */
             export interface ClaimNotice {
                 claims?: domain.data.claimNotice.ClaimNoticeDecision[];
                 endingDate: string;
@@ -221,7 +364,10 @@ export namespace domain {
                 startingDate?: string;
                 type?: domain.data.claimNotice.ClaimNoticeTypeEnum;
             }
-            // interface fullName: domain.data.claimNotice.ClaimNoticeDecision.ClaimNoticeDecision
+            /**
+             * Definition of a single claim notice
+             * interface fullName: domain.data.claimNotice.ClaimNoticeDecision.ClaimNoticeDecision
+             */
             export interface ClaimNoticeDecision {
                 classifications: domain.data.claimNotice.Classification[];
                 courtDecisions: domain.data.claimNotice.CourtDecision[];
@@ -233,14 +379,23 @@ export namespace domain {
                 trademarkHolders: domain.data.claimNotice.Contact[];
                 trademarkUDRP: domain.data.claimNotice.UDRP[];
             }
-            // type fullname: domain.data.claimNotice.ClaimNoticeTypeEnum
+            /**
+             * Type of claim notice
+             * type fullname: domain.data.claimNotice.ClaimNoticeTypeEnum
+             */
             export type ClaimNoticeTypeEnum = "UK" | "TRADEMARK"
-            // interface fullName: domain.data.claimNotice.Classification.Classification
+            /**
+             * Definition of a trademark claim notice classification
+             * interface fullName: domain.data.claimNotice.Classification.Classification
+             */
             export interface Classification {
                 description: string;
                 number: string;
             }
-            // interface fullName: domain.data.claimNotice.Contact.Contact
+            /**
+             * Contact definition of a claim notice holder
+             * interface fullName: domain.data.claimNotice.Contact.Contact
+             */
             export interface Contact {
                 address: domain.data.claimNotice.Address;
                 email?: string;
@@ -249,14 +404,20 @@ export namespace domain {
                 organisation?: string;
                 type?: string;
             }
-            // interface fullName: domain.data.claimNotice.CourtDecision.CourtDecision
+            /**
+             * Definition of a court decision
+             * interface fullName: domain.data.claimNotice.CourtDecision.CourtDecision
+             */
             export interface CourtDecision {
                 countryCode: string;
                 courtName: string;
                 referenceNumber: string;
                 regions: string[];
             }
-            // interface fullName: domain.data.claimNotice.UDRP.UDRP
+            /**
+             * Definition of a UDRP procedure
+             * interface fullName: domain.data.claimNotice.UDRP.UDRP
+             */
             export interface UDRP {
                 caseNumber: string;
                 udrpProvider: string;
@@ -264,28 +425,43 @@ export namespace domain {
         }
     }
     export namespace rules {
-        // interface fullName: domain.rules.Optin.Optin
+        /**
+         * Representation of the optin rule
+         * interface fullName: domain.rules.Optin.Optin
+         */
         export interface Optin {
             fields: domain.OptinFieldsEnum[];
             type: domain.ContactAllTypesEnum;
         }
     }
     export namespace zone {
-        // interface fullName: domain.zone.Anycast.Anycast
+        /**
+         * DNS Anycast service
+         * interface fullName: domain.zone.Anycast.Anycast
+         */
         export interface Anycast {
             name: string;
         }
-        // interface fullName: domain.zone.Dnssec.Dnssec
+        /**
+         * Manage Dnssec for this zone
+         * interface fullName: domain.zone.Dnssec.Dnssec
+         */
         export interface Dnssec {
             status: dnssec.DnssecStatusEnum;
         }
-        // interface fullName: domain.zone.DynHostLogin.DynHostLogin
+        /**
+         * Manage DynHost login
+         * interface fullName: domain.zone.DynHostLogin.DynHostLogin
+         */
         export interface DynHostLogin {
             login: string;
             subDomain: string;
             zone: string;
         }
-        // interface fullName: domain.zone.DynHostRecord.DynHostRecord
+        /**
+         * DynHost record
+         * interface fullName: domain.zone.DynHostRecord.DynHostRecord
+         */
         export interface DynHostRecord {
             id: number;
             ip: string;
@@ -293,7 +469,10 @@ export namespace domain {
             ttl?: number;
             zone: string;
         }
-        // interface fullName: domain.zone.Record.Record
+        /**
+         * Zone resource records
+         * interface fullName: domain.zone.Record.Record
+         */
         export interface Record {
             fieldType: zoneNamedResolutionFieldTypeEnum;
             id: number;
@@ -302,7 +481,10 @@ export namespace domain {
             ttl?: number;
             zone: string;
         }
-        // interface fullName: domain.zone.Redirection.Redirection
+        /**
+         * Redirection
+         * interface fullName: domain.zone.Redirection.Redirection
+         */
         export interface Redirection {
             description?: string;
             id: number;
@@ -313,7 +495,10 @@ export namespace domain {
             type: zoneRedirectionTypeEnum;
             zone: string;
         }
-        // interface fullName: domain.zone.Soa.Soa
+        /**
+         * Zone Start Of Authority
+         * interface fullName: domain.zone.Soa.Soa
+         */
         export interface Soa {
             email: string;
             expire: number;
@@ -323,7 +508,10 @@ export namespace domain {
             server: string;
             ttl: number;
         }
-        // interface fullName: domain.zone.Task.Task
+        /**
+         * Tasks associated to a zone
+         * interface fullName: domain.zone.Task.Task
+         */
         export interface Task {
             canAccelerate: boolean;
             canCancel: boolean;
@@ -337,7 +525,10 @@ export namespace domain {
             status: domain.OperationStatusEnum;
             todoDate: string;
         }
-        // interface fullName: domain.zone.Zone.Zone
+        /**
+         * Zone dns Management
+         * interface fullName: domain.zone.Zone.Zone
+         */
         export interface Zone {
             dnssecSupported: boolean;
             hasDnsAnycast: boolean;
@@ -345,7 +536,10 @@ export namespace domain {
             name: string;
             nameServers: string[];
         }
-        // interface fullName: domain.zone.ZoneRestorePoint.ZoneRestorePoint
+        /**
+         * Zone restore point
+         * interface fullName: domain.zone.ZoneRestorePoint.ZoneRestorePoint
+         */
         export interface ZoneRestorePoint {
             creationDate: string;
             zoneFileUrl: string;
@@ -353,11 +547,17 @@ export namespace domain {
     }
 }
 export namespace nichandle {
-    // type fullname: nichandle.CountryEnum
+    /**
+     * Countries a nichandle can choose
+     * type fullname: nichandle.CountryEnum
+     */
     export type CountryEnum = "AC" | "AD" | "AE" | "AF" | "AG" | "AI" | "AL" | "AM" | "AO" | "AQ" | "AR" | "AS" | "AT" | "AU" | "AW" | "AX" | "AZ" | "BA" | "BB" | "BD" | "BE" | "BF" | "BG" | "BH" | "BI" | "BJ" | "BL" | "BM" | "BN" | "BO" | "BQ" | "BR" | "BS" | "BT" | "BW" | "BY" | "BZ" | "CA" | "CC" | "CD" | "CF" | "CG" | "CH" | "CI" | "CK" | "CL" | "CM" | "CN" | "CO" | "CR" | "CU" | "CV" | "CW" | "CX" | "CY" | "CZ" | "DE" | "DG" | "DJ" | "DK" | "DM" | "DO" | "DZ" | "EA" | "EC" | "EE" | "EG" | "EH" | "ER" | "ES" | "ET" | "FI" | "FJ" | "FK" | "FM" | "FO" | "FR" | "GA" | "GB" | "GD" | "GE" | "GF" | "GG" | "GH" | "GI" | "GL" | "GM" | "GN" | "GP" | "GQ" | "GR" | "GS" | "GT" | "GU" | "GW" | "GY" | "HK" | "HN" | "HR" | "HT" | "HU" | "IC" | "ID" | "IE" | "IL" | "IM" | "IN" | "IO" | "IQ" | "IR" | "IS" | "IT" | "JE" | "JM" | "JO" | "JP" | "KE" | "KG" | "KH" | "KI" | "KM" | "KN" | "KP" | "KR" | "KW" | "KY" | "KZ" | "LA" | "LB" | "LC" | "LI" | "LK" | "LR" | "LS" | "LT" | "LU" | "LV" | "LY" | "MA" | "MC" | "MD" | "ME" | "MF" | "MG" | "MH" | "MK" | "ML" | "MM" | "MN" | "MO" | "MP" | "MQ" | "MR" | "MS" | "MT" | "MU" | "MV" | "MW" | "MX" | "MY" | "MZ" | "NA" | "NC" | "NE" | "NF" | "NG" | "NI" | "NL" | "NO" | "NP" | "NR" | "NU" | "NZ" | "OM" | "PA" | "PE" | "PF" | "PG" | "PH" | "PK" | "PL" | "PM" | "PN" | "PR" | "PS" | "PT" | "PW" | "PY" | "QA" | "RE" | "RO" | "RS" | "RU" | "RW" | "SA" | "SB" | "SC" | "SD" | "SE" | "SG" | "SH" | "SI" | "SJ" | "SK" | "SL" | "SM" | "SN" | "SO" | "SR" | "SS" | "ST" | "SV" | "SX" | "SY" | "SZ" | "TA" | "TC" | "TD" | "TF" | "TG" | "TH" | "TJ" | "TK" | "TL" | "TM" | "TN" | "TO" | "TR" | "TT" | "TV" | "TW" | "TZ" | "UA" | "UG" | "UM" | "UNKNOWN" | "US" | "UY" | "UZ" | "VA" | "VC" | "VE" | "VG" | "VI" | "VN" | "VU" | "WF" | "WS" | "XK" | "YE" | "YT" | "ZA" | "ZM" | "ZW"
 }
 export namespace service {
-    // interface fullName: service.RenewType.RenewType
+    /**
+     * Map a possible renew for a specific service
+     * interface fullName: service.RenewType.RenewType
+     */
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -365,17 +565,31 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    // type fullname: service.RenewalTypeEnum
+    /**
+     * Detailed renewal type of a service
+     * type fullname: service.RenewalTypeEnum
+     */
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    // type fullname: service.StateEnum
+    /**
+     * type fullname: service.StateEnum
+     */
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
-    // type fullname: service.TerminationFutureUseEnum
+    /**
+     * All future uses you can provide for a service termination
+     * type fullname: service.TerminationFutureUseEnum
+     */
     export type TerminationFutureUseEnum = "NOT_REPLACING_SERVICE" | "OTHER" | "SUBSCRIBE_AN_OTHER_SERVICE" | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR" | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
-    // type fullname: service.TerminationReasonEnum
+    /**
+     * All reasons you can provide for a service termination
+     * type fullname: service.TerminationReasonEnum
+     */
     export type TerminationReasonEnum = "FEATURES_DONT_SUIT_ME" | "LACK_OF_PERFORMANCES" | "MIGRATED_TO_ANOTHER_OVH_PRODUCT" | "MIGRATED_TO_COMPETITOR" | "NOT_ENOUGH_RECOGNITION" | "NOT_NEEDED_ANYMORE" | "NOT_RELIABLE" | "NO_ANSWER" | "OTHER" | "PRODUCT_DIMENSION_DONT_SUIT_ME" | "PRODUCT_TOOLS_DONT_SUIT_ME" | "TOO_EXPENSIVE" | "TOO_HARD_TO_USE" | "UNSATIFIED_BY_CUSTOMER_SUPPORT"
 }
 export namespace services {
-    // interface fullName: services.Service.Service
+    /**
+     * Details about a Service
+     * interface fullName: services.Service.Service
+     */
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;
@@ -393,18 +607,33 @@ export namespace services {
     }
 }
 export namespace zone {
-    // type fullname: zone.NamedResolutionFieldTypeEnum
+    /**
+     * Resource record fieldType
+     * type fullname: zone.NamedResolutionFieldTypeEnum
+     */
     export type NamedResolutionFieldTypeEnum = "A" | "AAAA" | "CAA" | "CNAME" | "DKIM" | "DMARC" | "LOC" | "MX" | "NAPTR" | "NS" | "PTR" | "SPF" | "SRV" | "SSHFP" | "TLSA" | "TXT"
-    // type fullname: zone.RedirectionTypeEnum
+    /**
+     * Redirection type enum : visible -> Redirection by http code 302, visiblePermanent -> Redirection by http code 301, invisible -> Redirection by html frame
+     * type fullname: zone.RedirectionTypeEnum
+     */
     export type RedirectionTypeEnum = "invisible" | "visible" | "visiblePermanent"
-    // interface fullName: zone.ResetRecord.ResetRecord
+    /**
+     * Resource record
+     * interface fullName: zone.ResetRecord.ResetRecord
+     */
     export interface ResetRecord {
         fieldType: zone.ResettableNamedResolutionFieldTypeEnum;
         target: string;
     }
-    // type fullname: zone.ResettableNamedResolutionFieldTypeEnum
+    /**
+     * Resource record type
+     * type fullname: zone.ResettableNamedResolutionFieldTypeEnum
+     */
     export type ResettableNamedResolutionFieldTypeEnum = "A" | "MX"
-    // interface fullName: zone.Status.Status
+    /**
+     * Zone status
+     * interface fullName: zone.Status.Status
+     */
     export interface Status {
         errors?: string[];
         isDeployed: boolean;
@@ -420,15 +649,18 @@ export function proxyDomain(ovhEngine: OvhRequestable): Domain {
 }
 export default proxyDomain;
 /**
- * Api Proxy model
- */// Apis harmony
-// path /domain
+ * Api model for /domain
+ */
 export interface Domain {
     /**
      * List available services
      * GET /domain
      */
     $get(params?: { whoisOwner?: string }): Promise<string[]>;
+    /**
+     * Controle cache
+     */
+    $cache(param?: ICacheOptions): Promise<any>;
     data: {
         afnicAssociationInformation: {
             /**
@@ -441,12 +673,20 @@ export interface Domain {
              * POST /domain/data/afnicAssociationInformation
              */
             $post(params: { contactId: number, declarationDate: string, publicationDate: string, publicationNumber: string, publicationPageNumber: string }): Promise<domain.data.AssociationContact>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(associationInformationId: number): {
                 /**
                  * Retrieve an association information according to Afnic
                  * GET /domain/data/afnicAssociationInformation/{associationInformationId}
                  */
                 $get(): Promise<domain.data.AssociationContact>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             };
         }
         afnicCorporationTrademarkInformation: {
@@ -460,12 +700,20 @@ export interface Domain {
              * POST /domain/data/afnicCorporationTrademarkInformation
              */
             $post(params: { contactId: number, inpiNumber: string, inpiTrademarkOwner: string }): Promise<domain.data.AfnicCorporationTrademarkContact>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(afnicCorporationTrademarkId: number): {
                 /**
                  * Retrieve a corporation trademark information according to Afnic
                  * GET /domain/data/afnicCorporationTrademarkInformation/{afnicCorporationTrademarkId}
                  */
                 $get(): Promise<domain.data.AfnicCorporationTrademarkContact>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             };
         }
         claimNotice: {
@@ -474,6 +722,10 @@ export interface Domain {
              * GET /domain/data/claimNotice
              */
             $get(params: { domain: string }): Promise<domain.data.claimNotice.ClaimNotice>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         extension: {
             /**
@@ -481,6 +733,10 @@ export interface Domain {
              * GET /domain/data/extension
              */
             $get(params: { country: nichandle.CountryEnum }): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         proContact: {
             /**
@@ -493,12 +749,20 @@ export interface Domain {
              * POST /domain/data/proContact
              */
             $post(params: { authority: string, authorityWebsite: string, contactId?: number, jobDescription: string, licenseNumber: string }): Promise<domain.data.ProContact>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(proContactId: number): {
                 /**
                  * Retrieve information about a Pro Contact
                  * GET /domain/data/proContact/{proContactId}
                  */
                 $get(): Promise<domain.data.ProContact>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             };
         }
         smd: {
@@ -512,6 +776,10 @@ export interface Domain {
              * POST /domain/data/smd
              */
             $post(params: { data: string }): Promise<domain.data.Smd>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(smdId: number): {
                 /**
                  * Delete a SMD file
@@ -528,6 +796,10 @@ export interface Domain {
                  * PUT /domain/data/smd/{smdId}
                  */
                 $put(params: { data: string }): Promise<domain.data.Smd>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             };
         }
     }
@@ -537,6 +809,10 @@ export interface Domain {
          * GET /domain/rules
          */
         $get(params: { cartId: string, itemId: number }): Promise<domain.Rule>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
     }
     zone: {
         /**
@@ -544,18 +820,30 @@ export interface Domain {
          * GET /domain/zone
          */
         $get(): Promise<string[]>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         $(zoneName: string): {
             /**
              * Get this object properties
              * GET /domain/zone/{zoneName}
              */
             $get(): Promise<domain.zone.Zone>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             changeContact: {
                 /**
                  * Launch a contact change procedure
                  * POST /domain/zone/{zoneName}/changeContact
                  */
                 $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             confirmTermination: {
                 /**
@@ -563,6 +851,10 @@ export interface Domain {
                  * POST /domain/zone/{zoneName}/confirmTermination
                  */
                 $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             dnssec: {
                 /**
@@ -580,6 +872,10 @@ export interface Domain {
                  * POST /domain/zone/{zoneName}/dnssec
                  */
                 $post(): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             dynHost: {
                 login: {
@@ -593,6 +889,10 @@ export interface Domain {
                      * POST /domain/zone/{zoneName}/dynHost/login
                      */
                     $post(params: { loginSuffix: string, password: string, subDomain: string }): Promise<domain.zone.DynHostLogin>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     $(login: string): {
                         /**
                          * Delete a DynHost login
@@ -609,12 +909,20 @@ export interface Domain {
                          * PUT /domain/zone/{zoneName}/dynHost/login/{login}
                          */
                         $put(params?: { login?: string, subDomain?: string, zone?: string }): Promise<void>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         changePassword: {
                             /**
                              * Change password of the DynHost login
                              * POST /domain/zone/{zoneName}/dynHost/login/{login}/changePassword
                              */
                             $post(params: { password: string }): Promise<void>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         }
                     };
                 }
@@ -629,6 +937,10 @@ export interface Domain {
                      * POST /domain/zone/{zoneName}/dynHost/record
                      */
                     $post(params: { ip: string, subDomain?: string }): Promise<domain.zone.DynHostRecord>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     $(id: number): {
                         /**
                          * Delete a DynHost record (Don't forget to refresh the zone)
@@ -645,6 +957,10 @@ export interface Domain {
                          * PUT /domain/zone/{zoneName}/dynHost/record/{id}
                          */
                         $put(params?: { id?: number, ip?: string, subDomain?: string, ttl?: number, zone?: string }): Promise<void>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     };
                 }
             }
@@ -654,6 +970,10 @@ export interface Domain {
                  * GET /domain/zone/{zoneName}/export
                  */
                 $get(): Promise<string>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             history: {
                 /**
@@ -661,18 +981,30 @@ export interface Domain {
                  * GET /domain/zone/{zoneName}/history
                  */
                 $get(params?: { creationDate_from?: string, creationDate_to?: string }): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(creationDate: string): {
                     /**
                      * Get this object properties
                      * GET /domain/zone/{zoneName}/history/{creationDate}
                      */
                     $get(): Promise<domain.zone.ZoneRestorePoint>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     restore: {
                         /**
                          * Restore the DNS zone
                          * POST /domain/zone/{zoneName}/history/{creationDate}/restore
                          */
                         $post(): Promise<domain.zone.Task>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                 };
             }
@@ -682,6 +1014,10 @@ export interface Domain {
                  * POST /domain/zone/{zoneName}/import
                  */
                 $post(params: { zoneFile: string }): Promise<domain.zone.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             record: {
                 /**
@@ -694,6 +1030,10 @@ export interface Domain {
                  * POST /domain/zone/{zoneName}/record
                  */
                 $post(params: { fieldType: zoneNamedResolutionFieldTypeEnum, subDomain?: string, target: string, ttl?: number }): Promise<domain.zone.Record>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(id: number): {
                     /**
                      * Delete a DNS record (Don't forget to refresh the zone)
@@ -710,6 +1050,10 @@ export interface Domain {
                      * PUT /domain/zone/{zoneName}/record/{id}
                      */
                     $put(params?: { fieldType?: zoneNamedResolutionFieldTypeEnum, id?: number, subDomain?: string, target?: string, ttl?: number, zone?: string }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 };
             }
             redirection: {
@@ -723,6 +1067,10 @@ export interface Domain {
                  * POST /domain/zone/{zoneName}/redirection
                  */
                 $post(params: { description?: string, keywords?: string, subDomain?: string, target: string, title?: string, type: zoneRedirectionTypeEnum }): Promise<domain.zone.Redirection>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(id: number): {
                     /**
                      * Delete a redirection (Don't forget to refresh the zone)
@@ -739,6 +1087,10 @@ export interface Domain {
                      * PUT /domain/zone/{zoneName}/redirection/{id}
                      */
                     $put(params?: { description?: string, id?: number, keywords?: string, subDomain?: string, target?: string, title?: string, type?: zoneRedirectionTypeEnum, zone?: string }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 };
             }
             refresh: {
@@ -747,6 +1099,10 @@ export interface Domain {
                  * POST /domain/zone/{zoneName}/refresh
                  */
                 $post(): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             reset: {
                 /**
@@ -754,6 +1110,10 @@ export interface Domain {
                  * POST /domain/zone/{zoneName}/reset
                  */
                 $post(params?: { DnsRecords?: zone.ResetRecord[], minimized?: boolean }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             serviceInfos: {
                 /**
@@ -766,6 +1126,10 @@ export interface Domain {
                  * PUT /domain/zone/{zoneName}/serviceInfos
                  */
                 $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             soa: {
                 /**
@@ -778,6 +1142,10 @@ export interface Domain {
                  * PUT /domain/zone/{zoneName}/soa
                  */
                 $put(params?: { email?: string, expire?: number, nxDomainTtl?: number, refresh?: number, serial?: number, server?: string, ttl?: number }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             status: {
                 /**
@@ -785,6 +1153,10 @@ export interface Domain {
                  * GET /domain/zone/{zoneName}/status
                  */
                 $get(): Promise<zone.Status>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             task: {
                 /**
@@ -792,18 +1164,30 @@ export interface Domain {
                  * GET /domain/zone/{zoneName}/task
                  */
                 $get(params?: { function_?: string, status?: domain.OperationStatusEnum }): Promise<number[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(id: number): {
                     /**
                      * Get this object properties
                      * GET /domain/zone/{zoneName}/task/{id}
                      */
                     $get(): Promise<domain.zone.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     accelerate: {
                         /**
                          * Accelerate the task
                          * POST /domain/zone/{zoneName}/task/{id}/accelerate
                          */
                         $post(): Promise<void>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     cancel: {
                         /**
@@ -811,6 +1195,10 @@ export interface Domain {
                          * POST /domain/zone/{zoneName}/task/{id}/cancel
                          */
                         $post(): Promise<void>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     relaunch: {
                         /**
@@ -818,6 +1206,10 @@ export interface Domain {
                          * POST /domain/zone/{zoneName}/task/{id}/relaunch
                          */
                         $post(): Promise<void>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                 };
             }
@@ -827,6 +1219,10 @@ export interface Domain {
                  * POST /domain/zone/{zoneName}/terminate
                  */
                 $post(): Promise<string>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         };
     }
@@ -841,12 +1237,20 @@ export interface Domain {
          * PUT /domain/{serviceName}
          */
         $put(params?: { dnssecSupported?: boolean, domain?: string, glueRecordIpv6Supported?: boolean, glueRecordMultiIpSupported?: boolean, lastUpdate?: string, nameServerType?: domain.DomainNsTypeEnum, offer?: domain.OfferEnum, owoSupported?: boolean, parentService?: domain.ParentService, transferLockStatus?: domain.DomainLockStatusEnum, whoisOwner?: string }): Promise<void>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         activateZone: {
             /**
              * Activate the DNS zone for this domain
              * POST /domain/{serviceName}/activateZone
              */
             $post(params?: { minimized?: boolean }): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         authInfo: {
             /**
@@ -854,6 +1258,10 @@ export interface Domain {
              * GET /domain/{serviceName}/authInfo
              */
             $get(): Promise<string>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         changeContact: {
             /**
@@ -861,6 +1269,10 @@ export interface Domain {
              * POST /domain/{serviceName}/changeContact
              */
             $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         configurations: {
             obfuscatedEmails: {
@@ -874,12 +1286,20 @@ export interface Domain {
                  * PUT /domain/{serviceName}/configurations/obfuscatedEmails
                  */
                 $put(params: { contacts: domain.ContactAllTypesEnum[] }): Promise<domain.configurations.ObfuscatedEmails[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 refresh: {
                     /**
                      * Refresh an obfuscated emails configuration
                      * POST /domain/{serviceName}/configurations/obfuscatedEmails/refresh
                      */
                     $post(params: { contacts: domain.ContactAllTypesEnum[] }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             }
             optin: {
@@ -893,6 +1313,10 @@ export interface Domain {
                  * PUT /domain/{serviceName}/configurations/optin
                  */
                 $put(params: { optin: domain.configurations.Optin[] }): Promise<domain.configurations.Optin[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         }
         dsRecord: {
@@ -906,12 +1330,20 @@ export interface Domain {
              * POST /domain/{serviceName}/dsRecord
              */
             $post(params: { keys: dnssec.Key[] }): Promise<domain.Task>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(id: number): {
                 /**
                  * Get this object properties
                  * GET /domain/{serviceName}/dsRecord/{id}
                  */
                 $get(): Promise<domain.DnssecKey>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             };
         }
         email: {
@@ -922,6 +1354,10 @@ export interface Domain {
                      * POST /domain/{serviceName}/email/obfuscated/refresh
                      */
                     $post(params: { contactType: domain.DomainContactTypeEnum[] }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             }
         }
@@ -936,6 +1372,10 @@ export interface Domain {
              * POST /domain/{serviceName}/glueRecord
              */
             $post(params: { host: string, ips: string[] }): Promise<domain.Task>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(host: string): {
                 /**
                  * Delete the glue record
@@ -947,12 +1387,20 @@ export interface Domain {
                  * GET /domain/{serviceName}/glueRecord/{host}
                  */
                 $get(): Promise<domain.GlueRecord>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 update: {
                     /**
                      * Update the glue record
                      * POST /domain/{serviceName}/glueRecord/{host}/update
                      */
                     $post(params: { ips: string[] }): Promise<domain.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             };
         }
@@ -967,6 +1415,10 @@ export interface Domain {
              * POST /domain/{serviceName}/nameServer
              */
             $post(params: { nameServer: domain.DomainNs[] }): Promise<domain.Task>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(id: number): {
                 /**
                  * Delete a name server
@@ -978,12 +1430,20 @@ export interface Domain {
                  * GET /domain/{serviceName}/nameServer/{id}
                  */
                 $get(): Promise<domain.CurrentNameServer>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 status: {
                     /**
                      * Get name server status
                      * POST /domain/{serviceName}/nameServer/{id}/status
                      */
                     $post(): Promise<domain.DomainNsStatus>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             };
         }
@@ -994,6 +1454,10 @@ export interface Domain {
                  * POST /domain/{serviceName}/nameServers/update
                  */
                 $post(params: { nameServers: domain.DomainNs[] }): Promise<domain.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         }
         option: {
@@ -1002,6 +1466,10 @@ export interface Domain {
              * GET /domain/{serviceName}/option
              */
             $get(): Promise<domain.DomainOptionEnum[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(option: domain.DomainOptionEnum): {
                 /**
                  * Release a given option
@@ -1013,6 +1481,10 @@ export interface Domain {
                  * GET /domain/{serviceName}/option/{option}
                  */
                 $get(): Promise<domain.Option>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             };
         }
         owo: {
@@ -1026,6 +1498,10 @@ export interface Domain {
              * POST /domain/{serviceName}/owo
              */
             $post(params: { fields: domain.WhoisObfuscatorFieldsEnum[] }): Promise<domain.WhoisObfuscatorFieldsEnum[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(field: domain.WhoisObfuscatorFieldsEnum): {
                 /**
                  * Delete a whois obfuscator
@@ -1037,6 +1513,10 @@ export interface Domain {
                  * GET /domain/{serviceName}/owo/{field}
                  */
                 $get(): Promise<domain.Owo>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             };
         }
         rules: {
@@ -1046,6 +1526,10 @@ export interface Domain {
                  * GET /domain/{serviceName}/rules/emailsObfuscation
                  */
                 $get(): Promise<domain.ContactAllTypesEnum[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             optin: {
                 /**
@@ -1053,6 +1537,10 @@ export interface Domain {
                  * GET /domain/{serviceName}/rules/optin
                  */
                 $get(): Promise<domain.rules.Optin[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         }
         serviceInfos: {
@@ -1066,6 +1554,10 @@ export interface Domain {
              * PUT /domain/{serviceName}/serviceInfos
              */
             $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         task: {
             /**
@@ -1073,18 +1565,30 @@ export interface Domain {
              * GET /domain/{serviceName}/task
              */
             $get(params?: { function_?: string, status?: domain.OperationStatusEnum }): Promise<number[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(id: number): {
                 /**
                  * Get this object properties
                  * GET /domain/{serviceName}/task/{id}
                  */
                 $get(): Promise<domain.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 accelerate: {
                     /**
                      * Accelerate the task
                      * POST /domain/{serviceName}/task/{id}/accelerate
                      */
                     $post(): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 cancel: {
                     /**
@@ -1092,6 +1596,10 @@ export interface Domain {
                      * POST /domain/{serviceName}/task/{id}/cancel
                      */
                     $post(): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 relaunch: {
                     /**
@@ -1099,6 +1607,10 @@ export interface Domain {
                      * POST /domain/{serviceName}/task/{id}/relaunch
                      */
                     $post(): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             };
         }
@@ -1108,6 +1620,10 @@ export interface Domain {
              * POST /domain/{serviceName}/ukOutgoingTransfer
              */
             $post(params: { tag: string }): Promise<domain.Task>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         ukRegistrars: {
             /**
@@ -1115,6 +1631,10 @@ export interface Domain {
              * GET /domain/{serviceName}/ukRegistrars
              */
             $get(): Promise<domain.UkRegistrar[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
     };
 }

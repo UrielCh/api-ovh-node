@@ -1,16 +1,22 @@
-import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
+import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /ovhCloudConnect Models
  * Source: https://eu.api.ovh.com/1.0/ovhCloudConnect.json
  */
 export namespace ovhcloudconnect {
-    // interface fullName: ovhcloudconnect.Datacenter.Datacenter
+    /**
+     * OVHcloud Connect Datacenter
+     * interface fullName: ovhcloudconnect.Datacenter.Datacenter
+     */
     export interface Datacenter {
         id: number;
         name: string;
     }
-    // interface fullName: ovhcloudconnect.DatacenterConfig.DatacenterConfig
+    /**
+     * OVHcloud Connect Service Datacenter Configuration
+     * interface fullName: ovhcloudconnect.DatacenterConfig.DatacenterConfig
+     */
     export interface DatacenterConfig {
         datacenterId: number;
         id: number;
@@ -18,7 +24,10 @@ export namespace ovhcloudconnect {
         status: ovhcloudconnect.popConfig.StatusEnum;
         subnet: string;
     }
-    // interface fullName: ovhcloudconnect.DatacenterExtraConfig.DatacenterExtraConfig
+    /**
+     * OVHcloud Connect Service Datacenter Extra Configuration
+     * interface fullName: ovhcloudconnect.DatacenterExtraConfig.DatacenterExtraConfig
+     */
     export interface DatacenterExtraConfig {
         bgpNeighborArea?: number;
         bgpNeighborIp?: string;
@@ -28,7 +37,10 @@ export namespace ovhcloudconnect {
         subnet?: string;
         type: ovhcloudconnect.datacenterExtraConfig.TypeEnum;
     }
-    // interface fullName: ovhcloudconnect.PopConfig.PopConfig
+    /**
+     * OVHcloud Connect Service Pop Configuration
+     * interface fullName: ovhcloudconnect.PopConfig.PopConfig
+     */
     export interface PopConfig {
         customerBgpArea: number;
         id: number;
@@ -38,7 +50,10 @@ export namespace ovhcloudconnect {
         subnet: string;
         type: ovhcloudconnect.popConfig.TypeEnum;
     }
-    // interface fullName: ovhcloudconnect.Service.Service
+    /**
+     * OVHcloud Connect Service
+     * interface fullName: ovhcloudconnect.Service.Service
+     */
     export interface Service {
         bandwidth: ovhcloudconnect.service.BandwidthEnum;
         description: string;
@@ -48,44 +63,77 @@ export namespace ovhcloudconnect {
         uuid: string;
         vrack?: string;
     }
-    // interface fullName: ovhcloudconnect.Task.Task
+    /**
+     * OVHcloud Connect Task
+     * interface fullName: ovhcloudconnect.Task.Task
+     */
     export interface Task {
         function: ovhcloudconnect.task.FunctionEnum;
         id: number;
         resourceId: number;
         status: ovhcloudconnect.task.StatusEnum;
     }
-    // interface fullName: ovhcloudconnect.Update.Update
+    /**
+     * Missing description
+     * interface fullName: ovhcloudconnect.Update.Update
+     */
     export interface Update {
         description?: string;
     }
     export namespace datacenterExtraConfig {
-        // type fullname: ovhcloudconnect.datacenterExtraConfig.TypeEnum
+        /**
+         * Enum values for Datacenter Extra Configuration Type
+         * type fullname: ovhcloudconnect.datacenterExtraConfig.TypeEnum
+         */
         export type TypeEnum = "bgp" | "network"
     }
     export namespace popConfig {
-        // type fullname: ovhcloudconnect.popConfig.StatusEnum
+        /**
+         * Enum values for Pop Configuration Status
+         * type fullname: ovhcloudconnect.popConfig.StatusEnum
+         */
         export type StatusEnum = "init" | "active" | "toDelete"
-        // type fullname: ovhcloudconnect.popConfig.TypeEnum
+        /**
+         * Enum values for Pop Configuration Type
+         * type fullname: ovhcloudconnect.popConfig.TypeEnum
+         */
         export type TypeEnum = "l2" | "l3"
     }
     export namespace service {
-        // type fullname: ovhcloudconnect.service.BandwidthEnum
+        /**
+         * Enum values for bandwidth
+         * type fullname: ovhcloudconnect.service.BandwidthEnum
+         */
         export type BandwidthEnum = "10g" | "1g"
-        // type fullname: ovhcloudconnect.service.PortEnum
+        /**
+         * Enum values for port quantity
+         * type fullname: ovhcloudconnect.service.PortEnum
+         */
         export type PortEnum = "1" | "2"
-        // type fullname: ovhcloudconnect.service.StatusEnum
+        /**
+         * Enum values for the Service
+         * type fullname: ovhcloudconnect.service.StatusEnum
+         */
         export type StatusEnum = "active" | "closed"
     }
     export namespace task {
-        // type fullname: ovhcloudconnect.task.FunctionEnum
+        /**
+         * Enum values for Task function
+         * type fullname: ovhcloudconnect.task.FunctionEnum
+         */
         export type FunctionEnum = "lockInterface" | "unlockInterface" | "addPopConfiguration" | "delPopConfiguration" | "addDatacenterConfiguration" | "delDatacenterConfiguration" | "addDatacenterExtraConfiguration" | "delDatacenterExtraConfiguration"
-        // type fullname: ovhcloudconnect.task.StatusEnum
+        /**
+         * Enum values for Task status
+         * type fullname: ovhcloudconnect.task.StatusEnum
+         */
         export type StatusEnum = "todo" | "doing" | "done" | "error"
     }
 }
 export namespace service {
-    // interface fullName: service.RenewType.RenewType
+    /**
+     * Map a possible renew for a specific service
+     * interface fullName: service.RenewType.RenewType
+     */
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -93,17 +141,31 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    // type fullname: service.RenewalTypeEnum
+    /**
+     * Detailed renewal type of a service
+     * type fullname: service.RenewalTypeEnum
+     */
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    // type fullname: service.StateEnum
+    /**
+     * type fullname: service.StateEnum
+     */
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
-    // type fullname: service.TerminationFutureUseEnum
+    /**
+     * All future uses you can provide for a service termination
+     * type fullname: service.TerminationFutureUseEnum
+     */
     export type TerminationFutureUseEnum = "NOT_REPLACING_SERVICE" | "OTHER" | "SUBSCRIBE_AN_OTHER_SERVICE" | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR" | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
-    // type fullname: service.TerminationReasonEnum
+    /**
+     * All reasons you can provide for a service termination
+     * type fullname: service.TerminationReasonEnum
+     */
     export type TerminationReasonEnum = "FEATURES_DONT_SUIT_ME" | "LACK_OF_PERFORMANCES" | "MIGRATED_TO_ANOTHER_OVH_PRODUCT" | "MIGRATED_TO_COMPETITOR" | "NOT_ENOUGH_RECOGNITION" | "NOT_NEEDED_ANYMORE" | "NOT_RELIABLE" | "NO_ANSWER" | "OTHER" | "PRODUCT_DIMENSION_DONT_SUIT_ME" | "PRODUCT_TOOLS_DONT_SUIT_ME" | "TOO_EXPENSIVE" | "TOO_HARD_TO_USE" | "UNSATIFIED_BY_CUSTOMER_SUPPORT"
 }
 export namespace services {
-    // interface fullName: services.Service.Service
+    /**
+     * Details about a Service
+     * interface fullName: services.Service.Service
+     */
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;
@@ -129,52 +191,135 @@ export function proxyOvhCloudConnect(ovhEngine: OvhRequestable): OvhCloudConnect
 }
 export default proxyOvhCloudConnect;
 /**
- * Api Proxy model
- */// Apis harmony
-// path /ovhCloudConnect
+ * Api model for /ovhCloudConnect
+ */
 export interface OvhCloudConnect {
-    // GET /ovhCloudConnect
+    /**
+     * List available services
+     * GET /ovhCloudConnect
+     */
     $get(): Promise<string[]>;
+    /**
+     * Controle cache
+     */
+    $cache(param?: ICacheOptions): Promise<any>;
     $(serviceName: string): {
-        // GET /ovhCloudConnect/{serviceName}
+        /**
+         * Get service
+         * GET /ovhCloudConnect/{serviceName}
+         */
         $get(): Promise<ovhcloudconnect.Service>;
-        // PUT /ovhCloudConnect/{serviceName}
+        /**
+         * Modify service
+         * PUT /ovhCloudConnect/{serviceName}
+         */
         $put(params?: { description?: string }): Promise<void>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         changeContact: {
-            // POST /ovhCloudConnect/{serviceName}/changeContact
+            /**
+             * Launch a contact change procedure
+             * POST /ovhCloudConnect/{serviceName}/changeContact
+             */
             $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         config: {
             pop: {
-                // GET /ovhCloudConnect/{serviceName}/config/pop
+                /**
+                 * Get Pop Configuration linked to of a OVHcloud Connect Service
+                 * GET /ovhCloudConnect/{serviceName}/config/pop
+                 */
                 $get(): Promise<number[]>;
-                // POST /ovhCloudConnect/{serviceName}/config/pop
+                /**
+                 * Create a Pop Configuration
+                 * POST /ovhCloudConnect/{serviceName}/config/pop
+                 */
                 $post(params?: { customerBgpArea?: number, id?: number, interfaceId?: number, ovhBgpArea?: number, status?: ovhcloudconnect.popConfig.StatusEnum, subnet?: string, type?: ovhcloudconnect.popConfig.TypeEnum }): Promise<ovhcloudconnect.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(popId: number): {
-                    // DELETE /ovhCloudConnect/{serviceName}/config/pop/{popId}
+                    /**
+                     * Delete a Pop Configuration
+                     * DELETE /ovhCloudConnect/{serviceName}/config/pop/{popId}
+                     */
                     $delete(): Promise<ovhcloudconnect.Task>;
-                    // GET /ovhCloudConnect/{serviceName}/config/pop/{popId}
+                    /**
+                     * Get Pop Configuration of a OVHcloud Connect Service
+                     * GET /ovhCloudConnect/{serviceName}/config/pop/{popId}
+                     */
                     $get(): Promise<ovhcloudconnect.PopConfig>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     datacenter: {
-                        // GET /ovhCloudConnect/{serviceName}/config/pop/{popId}/datacenter
+                        /**
+                         * Get Datacenter Configuration linked to of a OVHcloud Connect Service
+                         * GET /ovhCloudConnect/{serviceName}/config/pop/{popId}/datacenter
+                         */
                         $get(): Promise<number[]>;
-                        // POST /ovhCloudConnect/{serviceName}/config/pop/{popId}/datacenter
+                        /**
+                         * Create a Datacenter Configuration
+                         * POST /ovhCloudConnect/{serviceName}/config/pop/{popId}/datacenter
+                         */
                         $post(params?: { datacenterId?: number, id?: number, ovhBgpArea?: number, status?: ovhcloudconnect.popConfig.StatusEnum, subnet?: string }): Promise<ovhcloudconnect.Task>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         $(datacenterId: number): {
-                            // DELETE /ovhCloudConnect/{serviceName}/config/pop/{popId}/datacenter/{datacenterId}
+                            /**
+                             * Delete a Datacenter Configuration
+                             * DELETE /ovhCloudConnect/{serviceName}/config/pop/{popId}/datacenter/{datacenterId}
+                             */
                             $delete(): Promise<ovhcloudconnect.Task>;
-                            // GET /ovhCloudConnect/{serviceName}/config/pop/{popId}/datacenter/{datacenterId}
+                            /**
+                             * Get Datacenter Configuration of a OVHcloud Connect Service
+                             * GET /ovhCloudConnect/{serviceName}/config/pop/{popId}/datacenter/{datacenterId}
+                             */
                             $get(): Promise<ovhcloudconnect.DatacenterConfig>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                             extra: {
-                                // GET /ovhCloudConnect/{serviceName}/config/pop/{popId}/datacenter/{datacenterId}/extra
+                                /**
+                                 * Get Datacenter Extra Configuration linked to of a OVHcloud Connect Service
+                                 * GET /ovhCloudConnect/{serviceName}/config/pop/{popId}/datacenter/{datacenterId}/extra
+                                 */
                                 $get(): Promise<number[]>;
-                                // POST /ovhCloudConnect/{serviceName}/config/pop/{popId}/datacenter/{datacenterId}/extra
+                                /**
+                                 * Create a Datacenter Extra Configuration
+                                 * POST /ovhCloudConnect/{serviceName}/config/pop/{popId}/datacenter/{datacenterId}/extra
+                                 */
                                 $post(params?: { bgpNeighborArea?: number, bgpNeighborIp?: string, id?: number, nextHop?: string, status?: ovhcloudconnect.popConfig.StatusEnum, subnet?: string, type?: ovhcloudconnect.datacenterExtraConfig.TypeEnum }): Promise<ovhcloudconnect.Task>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions): Promise<any>;
                                 $(extraId: number): {
-                                    // DELETE /ovhCloudConnect/{serviceName}/config/pop/{popId}/datacenter/{datacenterId}/extra/{extraId}
+                                    /**
+                                     * Delete a Datacenter Extra Configuration
+                                     * DELETE /ovhCloudConnect/{serviceName}/config/pop/{popId}/datacenter/{datacenterId}/extra/{extraId}
+                                     */
                                     $delete(): Promise<ovhcloudconnect.Task>;
-                                    // GET /ovhCloudConnect/{serviceName}/config/pop/{popId}/datacenter/{datacenterId}/extra/{extraId}
+                                    /**
+                                     * Get Datacenter Extra Configuration of a OVHcloud Connect Service
+                                     * GET /ovhCloudConnect/{serviceName}/config/pop/{popId}/datacenter/{datacenterId}/extra/{extraId}
+                                     */
                                     $get(): Promise<ovhcloudconnect.DatacenterExtraConfig>;
+                                    /**
+                                     * Controle cache
+                                     */
+                                    $cache(param?: ICacheOptions): Promise<any>;
                                 };
                             }
                         };
@@ -183,38 +328,97 @@ export interface OvhCloudConnect {
             }
         }
         confirmTermination: {
-            // POST /ovhCloudConnect/{serviceName}/confirmTermination
+            /**
+             * Confirm termination of your service
+             * POST /ovhCloudConnect/{serviceName}/confirmTermination
+             */
             $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         datacenter: {
-            // GET /ovhCloudConnect/{serviceName}/datacenter
+            /**
+             * List available Datacenter
+             * GET /ovhCloudConnect/{serviceName}/datacenter
+             */
             $get(): Promise<number[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(id: number): {
-                // GET /ovhCloudConnect/{serviceName}/datacenter/{id}
+                /**
+                 * Get Datacenter
+                 * GET /ovhCloudConnect/{serviceName}/datacenter/{id}
+                 */
                 $get(): Promise<ovhcloudconnect.Datacenter>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             };
         }
         loa: {
-            // POST /ovhCloudConnect/{serviceName}/loa
+            /**
+             * Generate a loa for a service
+             * POST /ovhCloudConnect/{serviceName}/loa
+             */
             $post(): Promise<string>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         serviceInfos: {
-            // GET /ovhCloudConnect/{serviceName}/serviceInfos
+            /**
+             * Get this object properties
+             * GET /ovhCloudConnect/{serviceName}/serviceInfos
+             */
             $get(): Promise<services.Service>;
-            // PUT /ovhCloudConnect/{serviceName}/serviceInfos
+            /**
+             * Alter this object properties
+             * PUT /ovhCloudConnect/{serviceName}/serviceInfos
+             */
             $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         task: {
-            // GET /ovhCloudConnect/{serviceName}/task
+            /**
+             * Get Task linked to of a OVHcloud Connect Service
+             * GET /ovhCloudConnect/{serviceName}/task
+             */
             $get(): Promise<number[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(id: number): {
-                // GET /ovhCloudConnect/{serviceName}/task/{id}
+                /**
+                 * Get Tasks linked to of a OVHcloud Connect Service
+                 * GET /ovhCloudConnect/{serviceName}/task/{id}
+                 */
                 $get(): Promise<ovhcloudconnect.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             };
         }
         terminate: {
-            // POST /ovhCloudConnect/{serviceName}/terminate
+            /**
+             * Terminate your service
+             * POST /ovhCloudConnect/{serviceName}/terminate
+             */
             $post(): Promise<string>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
     };
 }

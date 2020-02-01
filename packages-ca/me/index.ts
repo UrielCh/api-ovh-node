@@ -1,13 +1,19 @@
-import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
+import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /me Models
  * Source: https://ca.api.ovh.com/1.0/me.json
  */
 export namespace agreements {
-    // type fullname: agreements.AgreementStateEnum
+    /**
+     * The current state of a contract agreement
+     * type fullname: agreements.AgreementStateEnum
+     */
     export type AgreementStateEnum = "ko" | "obsolete" | "ok" | "todo"
-    // interface fullName: agreements.Contract.Contract
+    /**
+     * Contract of service
+     * interface fullName: agreements.Contract.Contract
+     */
     export interface Contract {
         active: boolean;
         date: string;
@@ -15,7 +21,10 @@ export namespace agreements {
         pdf: string;
         text: string;
     }
-    // interface fullName: agreements.ContractAgreement.ContractAgreement
+    /**
+     * Contract agreement
+     * interface fullName: agreements.ContractAgreement.ContractAgreement
+     */
     export interface ContractAgreement {
         agreed: agreements.AgreementStateEnum;
         contractId: number;
@@ -24,7 +33,10 @@ export namespace agreements {
     }
 }
 export namespace api {
-    // interface fullName: api.Application.Application
+    /**
+     * API Application
+     * interface fullName: api.Application.Application
+     */
     export interface Application {
         applicationId: number;
         applicationKey: string;
@@ -32,9 +44,15 @@ export namespace api {
         name: string;
         status: api.ApplicationStatusEnum;
     }
-    // type fullname: api.ApplicationStatusEnum
+    /**
+     * List of state of an Api Application
+     * type fullname: api.ApplicationStatusEnum
+     */
     export type ApplicationStatusEnum = "active" | "blocked" | "inactive" | "trusted"
-    // interface fullName: api.Credential.Credential
+    /**
+     * API Credential
+     * interface fullName: api.Credential.Credential
+     */
     export interface Credential {
         allowedIPs?: string[];
         applicationId: number;
@@ -48,23 +66,35 @@ export namespace api {
     }
 }
 export namespace auth {
-    // interface fullName: auth.AccessRule.AccessRule
+    /**
+     * Access rule required for the application
+     * interface fullName: auth.AccessRule.AccessRule
+     */
     export interface AccessRule {
         method: http.MethodEnum;
         path: string;
     }
-    // type fullname: auth.CredentialStateEnum
+    /**
+     * All states a Credential can be in
+     * type fullname: auth.CredentialStateEnum
+     */
     export type CredentialStateEnum = "expired" | "pendingValidation" | "refused" | "validated"
 }
 export namespace billing {
-    // interface fullName: billing.AutomaticPaymentMean.AutomaticPaymentMean
+    /**
+     * Available automatic payment means
+     * interface fullName: billing.AutomaticPaymentMean.AutomaticPaymentMean
+     */
     export interface AutomaticPaymentMean {
         bankAccount: boolean;
         creditCard: boolean;
         deferredPaymentAccount: boolean;
         paypal: boolean;
     }
-    // interface fullName: billing.BankAccount.BankAccount
+    /**
+     * SEPA bank account info
+     * interface fullName: billing.BankAccount.BankAccount
+     */
     export interface BankAccount {
         bic: string;
         creationDate: string;
@@ -80,9 +110,15 @@ export namespace billing {
         uniqueReference: string;
         validationDocumentLink?: string;
     }
-    // type fullname: billing.BankAccountStateEnum
+    /**
+     * List of bank account states
+     * type fullname: billing.BankAccountStateEnum
+     */
     export type BankAccountStateEnum = "blockedForIncidents" | "pendingValidation" | "valid"
-    // interface fullName: billing.Bill.Bill
+    /**
+     * Details about a Bill
+     * interface fullName: billing.Bill.Bill
+     */
     export interface Bill {
         billId: string;
         date: string;
@@ -94,7 +130,10 @@ export namespace billing {
         tax: orderPrice;
         url: string;
     }
-    // interface fullName: billing.BillDetail.BillDetail
+    /**
+     * Information about a Bill entry
+     * interface fullName: billing.BillDetail.BillDetail
+     */
     export interface BillDetail {
         billDetailId: string;
         description: string;
@@ -105,12 +144,18 @@ export namespace billing {
         totalPrice: orderPrice;
         unitPrice: orderPrice;
     }
-    // interface fullName: billing.CreditBalance.CreditBalance
+    /**
+     * Credit balance applied on an Order
+     * interface fullName: billing.CreditBalance.CreditBalance
+     */
     export interface CreditBalance {
         amount: orderPrice;
         balanceName: string;
     }
-    // interface fullName: billing.CreditCard.CreditCard
+    /**
+     * Credit card informations
+     * interface fullName: billing.CreditCard.CreditCard
+     */
     export interface CreditCard {
         defaultPaymentMean: boolean;
         description?: string;
@@ -122,9 +167,15 @@ export namespace billing {
         threeDsValidated: boolean;
         type: string;
     }
-    // type fullname: billing.CreditCardStateEnum
+    /**
+     * State of you credit card
+     * type fullname: billing.CreditCardStateEnum
+     */
     export type CreditCardStateEnum = "expired" | "tooManyFailures" | "valid"
-    // interface fullName: billing.DeferredPaymentAccount.DeferredPaymentAccount
+    /**
+     * Deferred payment account info
+     * interface fullName: billing.DeferredPaymentAccount.DeferredPaymentAccount
+     */
     export interface DeferredPaymentAccount {
         creationDate: string;
         defaultPaymentMean: boolean;
@@ -134,9 +185,15 @@ export namespace billing {
         label?: string;
         state: billing.DeferredPaymentAccountStatusEnum;
     }
-    // type fullname: billing.DeferredPaymentAccountStatusEnum
+    /**
+     * Status of your deferred invoice payment account
+     * type fullname: billing.DeferredPaymentAccountStatusEnum
+     */
     export type DeferredPaymentAccountStatusEnum = "valid"
-    // interface fullName: billing.Deposit.Deposit
+    /**
+     * Details about a deposit
+     * interface fullName: billing.Deposit.Deposit
+     */
     export interface Deposit {
         amount: orderPrice;
         date: string;
@@ -147,7 +204,10 @@ export namespace billing {
         pdfUrl: string;
         url: string;
     }
-    // interface fullName: billing.DepositDetail.DepositDetail
+    /**
+     * Information about a Deposit entry
+     * interface fullName: billing.DepositDetail.DepositDetail
+     */
     export interface DepositDetail {
         depositDetailId: string;
         description: string;
@@ -156,7 +216,10 @@ export namespace billing {
         totalPrice: orderPrice;
         unitPrice: orderPrice;
     }
-    // interface fullName: billing.FidelityAccount.FidelityAccount
+    /**
+     * Balance of the fidelity account
+     * interface fullName: billing.FidelityAccount.FidelityAccount
+     */
     export interface FidelityAccount {
         alertThreshold?: number;
         balance: number;
@@ -164,7 +227,10 @@ export namespace billing {
         lastUpdate: string;
         openDate: string;
     }
-    // interface fullName: billing.FidelityMovement.FidelityMovement
+    /**
+     * Details about a fidelity account
+     * interface fullName: billing.FidelityMovement.FidelityMovement
+     */
     export interface FidelityMovement {
         amount: number;
         balance: number;
@@ -175,25 +241,40 @@ export namespace billing {
         order: number;
         previousBalance: number;
     }
-    // interface fullName: billing.ItemDetail.ItemDetail
+    /**
+     * Extensions of a detail
+     * interface fullName: billing.ItemDetail.ItemDetail
+     */
     export interface ItemDetail {
         order: billing.ItemDetail.Order;
     }
     export namespace ItemDetail {
-        // interface fullName: billing.ItemDetail.Order.Order
+        /**
+         * Order data for this Detail
+         * interface fullName: billing.ItemDetail.Order.Order
+         */
         export interface Order {
             action?: billing.ItemDetail.OrderActionEnum;
             configurations: billing.ItemDetail.OrderConfiguration[];
             plan: billing.ItemDetail.OrderPlan;
         }
-        // type fullname: billing.ItemDetail.OrderActionEnum
+        /**
+         * List of order actions
+         * type fullname: billing.ItemDetail.OrderActionEnum
+         */
         export type OrderActionEnum = "consumption" | "installation" | "renew" | "upgrade"
-        // interface fullName: billing.ItemDetail.OrderConfiguration.OrderConfiguration
+        /**
+         * Configuration of order
+         * interface fullName: billing.ItemDetail.OrderConfiguration.OrderConfiguration
+         */
         export interface OrderConfiguration {
             label: string;
             value: string;
         }
-        // interface fullName: billing.ItemDetail.OrderPlan.OrderPlan
+        /**
+         * Plan data from order
+         * interface fullName: billing.ItemDetail.OrderPlan.OrderPlan
+         */
         export interface OrderPlan {
             code?: string;
             duration?: string;
@@ -201,12 +282,18 @@ export namespace billing {
             product: billing.ItemDetail.OrderPlanProduct;
             quantity?: number;
         }
-        // interface fullName: billing.ItemDetail.OrderPlanProduct.OrderPlanProduct
+        /**
+         * Product data from order
+         * interface fullName: billing.ItemDetail.OrderPlanProduct.OrderPlanProduct
+         */
         export interface OrderPlanProduct {
             name?: string;
         }
     }
-    // interface fullName: billing.Movement.Movement
+    /**
+     * Details about an OVH account
+     * interface fullName: billing.Movement.Movement
+     */
     export interface Movement {
         amount: orderPrice;
         balance: orderPrice;
@@ -217,7 +304,10 @@ export namespace billing {
         order: number;
         previousBalance: orderPrice;
     }
-    // interface fullName: billing.Order.Order
+    /**
+     * Details about an Order
+     * interface fullName: billing.Order.Order
+     */
     export interface Order {
         date?: string;
         expirationDate?: string;
@@ -230,7 +320,10 @@ export namespace billing {
         tax: orderPrice;
         url: string;
     }
-    // interface fullName: billing.OrderDetail.OrderDetail
+    /**
+     * Information about a Bill entry
+     * interface fullName: billing.OrderDetail.OrderDetail
+     */
     export interface OrderDetail {
         cancelled: boolean;
         description: string;
@@ -240,7 +333,10 @@ export namespace billing {
         totalPrice: orderPrice;
         unitPrice: orderPrice;
     }
-    // interface fullName: billing.OvhAccount.OvhAccount
+    /**
+     * Details about an OVH account
+     * interface fullName: billing.OvhAccount.OvhAccount
+     */
     export interface OvhAccount {
         alertThreshold?: number;
         balance: orderPrice;
@@ -250,24 +346,39 @@ export namespace billing {
         openDate: string;
         ovhAccountId: string;
     }
-    // interface fullName: billing.Payment.Payment
+    /**
+     * Details about a payment
+     * interface fullName: billing.Payment.Payment
+     */
     export interface Payment {
         paymentDate: string;
         paymentIdentifier?: string;
         paymentType: billing.PaymentMeanEnum;
     }
-    // type fullname: billing.PaymentMeanEnum
+    /**
+     * All payment means you might have use on an OVH order
+     * type fullname: billing.PaymentMeanEnum
+     */
     export type PaymentMeanEnum = "cash" | "chargeback" | "cheque" | "creditAccount" | "creditCard" | "debtAccount" | "deposit" | "digitalLaunchPad" | "edinar" | "fidelityPoints" | "free" | "ideal" | "incubatorAccount" | "mandat" | "multibanco" | "none" | "ovhAccount" | "paymentMandate" | "paypal" | "payu" | "platnosci" | "refund" | "transfer" | "withdrawal"
-    // interface fullName: billing.PaymentMeanValidation.PaymentMeanValidation
+    /**
+     * A validation required to add a payment mean
+     * interface fullName: billing.PaymentMeanValidation.PaymentMeanValidation
+     */
     export interface PaymentMeanValidation {
         id: number;
         submitUrl?: string;
         url: string;
         validationType: billing.PaymentMeanValidationType;
     }
-    // type fullname: billing.PaymentMeanValidationType
+    /**
+     * All the validation you may have to do
+     * type fullname: billing.PaymentMeanValidationType
+     */
     export type PaymentMeanValidationType = "creditAccount" | "documentToSend" | "simpleValidation"
-    // interface fullName: billing.PaymentMethod.PaymentMethod
+    /**
+     * Available payment methods
+     * interface fullName: billing.PaymentMethod.PaymentMethod
+     */
     export interface PaymentMethod {
         billingContactId: number;
         creationDate: string;
@@ -279,7 +390,10 @@ export namespace billing {
         publicLabel: string;
         status: billing.paymentMethod.StatusEnum;
     }
-    // interface fullName: billing.Paypal.Paypal
+    /**
+     * Paypal account info
+     * interface fullName: billing.Paypal.Paypal
+     */
     export interface Paypal {
         agreementId: string;
         creationDate: string;
@@ -290,9 +404,15 @@ export namespace billing {
         id: number;
         state: billing.PaypalStateEnum;
     }
-    // type fullname: billing.PaypalStateEnum
+    /**
+     * State of you paypal account
+     * type fullname: billing.PaypalStateEnum
+     */
     export type PaypalStateEnum = "tooManyFailures" | "valid"
-    // interface fullName: billing.Refund.Refund
+    /**
+     * Details about a Refund
+     * interface fullName: billing.Refund.Refund
+     */
     export interface Refund {
         date: string;
         orderId: number;
@@ -305,7 +425,10 @@ export namespace billing {
         tax: orderPrice;
         url: string;
     }
-    // interface fullName: billing.RefundDetail.RefundDetail
+    /**
+     * Information about a Bill entry
+     * interface fullName: billing.RefundDetail.RefundDetail
+     */
     export interface RefundDetail {
         description: string;
         domain: string;
@@ -316,9 +439,15 @@ export namespace billing {
         totalPrice: orderPrice;
         unitPrice: orderPrice;
     }
-    // type fullname: billing.ReusablePaymentMeanEnum
+    /**
+     * Reusable payment mean type
+     * type fullname: billing.ReusablePaymentMeanEnum
+     */
     export type ReusablePaymentMeanEnum = "CREDIT_CARD" | "ENTERPRISE" | "INTERNAL_TRUSTED_ACCOUNT" | "PAYPAL" | "bankAccount" | "creditCard" | "fidelityAccount" | "ovhAccount" | "paypal"
-    // interface fullName: billing.SlaOperation.SlaOperation
+    /**
+     * SLA properties
+     * interface fullName: billing.SlaOperation.SlaOperation
+     */
     export interface SlaOperation {
         date: string;
         description: string;
@@ -327,21 +456,30 @@ export namespace billing {
         name: string;
         startDate: string;
     }
-    // interface fullName: billing.SlaOperationService.SlaOperationService
+    /**
+     * Describe all services impacted by SLA
+     * interface fullName: billing.SlaOperationService.SlaOperationService
+     */
     export interface SlaOperationService {
         description: string;
         serviceName: string;
         slaApplication: string;
         slaPlan: string;
     }
-    // interface fullName: billing.VoucherAccount.VoucherAccount
+    /**
+     * Details about a Voucher account
+     * interface fullName: billing.VoucherAccount.VoucherAccount
+     */
     export interface VoucherAccount {
         balance: orderPrice;
         lastUpdate: string;
         openDate: string;
         voucherAccountId: string;
     }
-    // interface fullName: billing.VoucherMovement.VoucherMovement
+    /**
+     * Details about a voucher account
+     * interface fullName: billing.VoucherMovement.VoucherMovement
+     */
     export interface VoucherMovement {
         amount: orderPrice;
         balance: orderPrice;
@@ -352,7 +490,10 @@ export namespace billing {
         order: number;
         previousBalance: orderPrice;
     }
-    // interface fullName: billing.Withdrawal.Withdrawal
+    /**
+     * Details about a withdrawal
+     * interface fullName: billing.Withdrawal.Withdrawal
+     */
     export interface Withdrawal {
         amount: orderPrice;
         country: string;
@@ -363,7 +504,10 @@ export namespace billing {
         url: string;
         withdrawalId: string;
     }
-    // interface fullName: billing.WithdrawalDetail.WithdrawalDetail
+    /**
+     * Information about a Withdrawal entry
+     * interface fullName: billing.WithdrawalDetail.WithdrawalDetail
+     */
     export interface WithdrawalDetail {
         description: string;
         domain: string;
@@ -373,7 +517,10 @@ export namespace billing {
         withdrawalDetailId: string;
     }
     export namespace credit {
-        // interface fullName: billing.credit.Balance.Balance
+        /**
+         * Credit balance
+         * interface fullName: billing.credit.Balance.Balance
+         */
         export interface Balance {
             amount: orderPrice;
             balanceDetails: billing.credit.balance.BalanceDetail[];
@@ -386,17 +533,26 @@ export namespace billing {
             type: billing.credit.balance.Type;
         }
         export namespace balance {
-            // interface fullName: billing.credit.balance.BalanceDetail.BalanceDetail
+            /**
+             * Part of a balance
+             * interface fullName: billing.credit.balance.BalanceDetail.BalanceDetail
+             */
             export interface BalanceDetail {
                 amount: orderPrice;
                 serviceId?: number;
             }
-            // interface fullName: billing.credit.balance.BookedMovement.BookedMovement
+            /**
+             * Movement already booked on orders
+             * interface fullName: billing.credit.balance.BookedMovement.BookedMovement
+             */
             export interface BookedMovement {
                 amount: orderPrice;
                 orderId: number;
             }
-            // interface fullName: billing.credit.balance.ExpiringMovement.ExpiringMovement
+            /**
+             * Movement expiring soon
+             * interface fullName: billing.credit.balance.ExpiringMovement.ExpiringMovement
+             */
             export interface ExpiringMovement {
                 amount: orderPrice;
                 creationDate: string;
@@ -404,7 +560,10 @@ export namespace billing {
                 lastUpdate: string;
                 sourceObject: billing.credit.balance.movement.SubObject;
             }
-            // interface fullName: billing.credit.balance.Movement.Movement
+            /**
+             * Credit balance
+             * interface fullName: billing.credit.balance.Movement.Movement
+             */
             export interface Movement {
                 amount: orderPrice;
                 balanceName: string;
@@ -416,10 +575,16 @@ export namespace billing {
                 sourceObject: billing.credit.balance.movement.SubObject;
                 type: string;
             }
-            // type fullname: billing.credit.balance.Type
+            /**
+             * Balance type
+             * type fullname: billing.credit.balance.Type
+             */
             export type Type = "PREPAID_ACCOUNT" | "VOUCHER" | "DEPOSIT" | "BONUS"
             export namespace movement {
-                // interface fullName: billing.credit.balance.movement.SubObject.SubObject
+                /**
+                 * Movement sub object
+                 * interface fullName: billing.credit.balance.movement.SubObject.SubObject
+                 */
                 export interface SubObject {
                     id?: string;
                     name?: string;
@@ -428,28 +593,46 @@ export namespace billing {
         }
     }
     export namespace fidelityAccount {
-        // type fullname: billing.fidelityAccount.OperationEnum
+        /**
+         * Operations a fidelity account movement can represent
+         * type fullname: billing.fidelityAccount.OperationEnum
+         */
         export type OperationEnum = "bonus" | "cancel-bonus" | "cancel-credit" | "cancel-debit" | "cancel-pre-debit" | "credit" | "debit" | "pre-credit" | "pre-debit"
     }
     export namespace order {
-        // interface fullName: billing.order.AssociatedObject.AssociatedObject
+        /**
+         * The object the processing of the order leaded to
+         * interface fullName: billing.order.AssociatedObject.AssociatedObject
+         */
         export interface AssociatedObject {
             id?: string;
             type?: billing.order.associatedObject.TypeEnum;
         }
-        // interface fullName: billing.order.FollowUp.FollowUp
+        /**
+         * Follow up history of an order
+         * interface fullName: billing.order.FollowUp.FollowUp
+         */
         export interface FollowUp {
             history: billing.order.followUp.History[];
             status: billing.order.followUp.StatusEnum;
             step: billing.order.followUp.StepEnum;
         }
-        // type fullname: billing.order.OrderStatusEnum
+        /**
+         * All possible order status
+         * type fullname: billing.order.OrderStatusEnum
+         */
         export type OrderStatusEnum = "cancelled" | "cancelling" | "checking" | "delivered" | "delivering" | "documentsRequested" | "notPaid" | "unknown"
-        // interface fullName: billing.order.PayWithPaymentMethod.PayWithPaymentMethod
+        /**
+         * Pay with payment method parameter
+         * interface fullName: billing.order.PayWithPaymentMethod.PayWithPaymentMethod
+         */
         export interface PayWithPaymentMethod {
             id: number;
         }
-        // interface fullName: billing.order.PaymentMean.PaymentMean
+        /**
+         * All data needed to use a payment mean
+         * interface fullName: billing.order.PaymentMean.PaymentMean
+         */
         export interface PaymentMean {
             fee: number;
             htmlForm?: string;
@@ -459,7 +642,10 @@ export namespace billing {
             subType?: string;
             url: string;
         }
-        // interface fullName: billing.order.PaymentMeans.PaymentMeans
+        /**
+         * TODO
+         * interface fullName: billing.order.PaymentMeans.PaymentMeans
+         */
         export interface PaymentMeans {
             creditCard?: billing.order.PaymentMean[];
             edinar?: billing.order.PaymentMean[];
@@ -470,43 +656,73 @@ export namespace billing {
             paypal?: billing.order.PaymentMean[];
             promotion?: billing.order.PaymentMean[];
         }
-        // interface fullName: billing.order.PaymentMethods.PaymentMethods
+        /**
+         * Payment methods
+         * interface fullName: billing.order.PaymentMethods.PaymentMethods
+         */
         export interface PaymentMethods {
             available: payment.method.AvailablePaymentMethod[];
             registered: number[];
         }
-        // interface fullName: billing.order.RegisteredPaymentMean.RegisteredPaymentMean
+        /**
+         * A registered payment mean
+         * interface fullName: billing.order.RegisteredPaymentMean.RegisteredPaymentMean
+         */
         export interface RegisteredPaymentMean {
             paymentMean: billing.ReusablePaymentMeanEnum;
         }
-        // type fullname: billing.order.RetractionReasonEnum
+        /**
+         * Retraction reason type
+         * type fullname: billing.order.RetractionReasonEnum
+         */
         export type RetractionReasonEnum = "competitor" | "difficulty" | "expensive" | "other" | "performance" | "reliability" | "unused"
         export namespace associatedObject {
-            // type fullname: billing.order.associatedObject.TypeEnum
+            /**
+             * Type of objects an order can be linked to
+             * type fullname: billing.order.associatedObject.TypeEnum
+             */
             export type TypeEnum = "Bill" | "Deposit" | "Refund" | "Withdrawal"
         }
         export namespace followUp {
-            // interface fullName: billing.order.followUp.History.History
+            /**
+             * Step history of order follow-up
+             * interface fullName: billing.order.followUp.History.History
+             */
             export interface History {
                 date: string;
                 description: string;
                 label: billing.order.followUp.HistoryStatusEnum;
             }
-            // type fullname: billing.order.followUp.HistoryStatusEnum
+            /**
+             * History label of order follow-up
+             * type fullname: billing.order.followUp.HistoryStatusEnum
+             */
             export type HistoryStatusEnum = "DELIVERY" | "FRAUD_CHECK" | "FRAUD_DOCS_REQUESTED" | "FRAUD_MANUAL_REVIEW" | "FRAUD_REFUSED" | "INVOICE_IN_PROGRESS" | "INVOICE_SENT" | "ORDER_ACCEPTED" | "ORDER_STARTED" | "PAYMENT_CONFIRMED" | "PAYMENT_INITIATED" | "PAYMENT_RECEIVED" | "REGISTERED_PAYMENT_INITIATED"
-            // type fullname: billing.order.followUp.StatusEnum
+            /**
+             * Step status of order follow-up
+             * type fullname: billing.order.followUp.StatusEnum
+             */
             export type StatusEnum = "DOING" | "DONE" | "ERROR" | "TODO"
-            // type fullname: billing.order.followUp.StepEnum
+            /**
+             * Status of order follow-up
+             * type fullname: billing.order.followUp.StepEnum
+             */
             export type StepEnum = "AVAILABLE" | "DELIVERING" | "VALIDATED" | "VALIDATING"
         }
         export namespace paymentMean {
-            // interface fullName: billing.order.paymentMean.HttpParameter.HttpParameter
+            /**
+             * Parameter to give to a payment page
+             * interface fullName: billing.order.paymentMean.HttpParameter.HttpParameter
+             */
             export interface HttpParameter {
                 choice?: billing.order.paymentMean.HttpParameterChoice[];
                 name: string;
                 value?: string;
             }
-            // interface fullName: billing.order.paymentMean.HttpParameterChoice.HttpParameterChoice
+            /**
+             * Choice for an HTTP multi value parameter
+             * interface fullName: billing.order.paymentMean.HttpParameterChoice.HttpParameterChoice
+             */
             export interface HttpParameterChoice {
                 name: string;
                 value: string;
@@ -514,41 +730,68 @@ export namespace billing {
         }
     }
     export namespace ovhAccount {
-        // type fullname: billing.ovhAccount.OperationEnum
+        /**
+         * Operations an OVH account movement can represent
+         * type fullname: billing.ovhAccount.OperationEnum
+         */
         export type OperationEnum = "cancel-credit" | "cancel-debit" | "cancel-pre-debit" | "credit" | "debit" | "pre-credit" | "pre-debit"
     }
     export namespace paymentMethod {
-        // interface fullName: billing.paymentMethod.IconData.IconData
+        /**
+         * Payment method type icon
+         * interface fullName: billing.paymentMethod.IconData.IconData
+         */
         export interface IconData {
             data?: string;
             name?: string;
         }
-        // type fullname: billing.paymentMethod.PaymentSubTypeEnum
+        /**
+         * List of payment sub type enum
+         * type fullname: billing.paymentMethod.PaymentSubTypeEnum
+         */
         export type PaymentSubTypeEnum = "AMERICAN_EXPRESS" | "MASTERCARD" | "VISA"
-        // type fullname: billing.paymentMethod.PaymentTypeEnum
+        /**
+         * List of payment type enum
+         * type fullname: billing.paymentMethod.PaymentTypeEnum
+         */
         export type PaymentTypeEnum = "BANK_ACCOUNT" | "CREDIT_CARD" | "DEFERRED_PAYMENT_ACCOUNT" | "ENTERPRISE" | "INTERNAL_TRUSTED_ACCOUNT" | "PAYPAL"
-        // type fullname: billing.paymentMethod.StatusEnum
+        /**
+         * List of payment method status enum
+         * type fullname: billing.paymentMethod.StatusEnum
+         */
         export type StatusEnum = "BLOCKED" | "BLOCKED_BY_CUSTOMER" | "BROKEN" | "CANCELED" | "CANCELED_BY_CUSTOMER" | "CREATED" | "ERROR" | "EXPIRED" | "PAUSED" | "VALID" | "VALID_FOR_CREDIT"
     }
     export namespace voucherAccount {
-        // type fullname: billing.voucherAccount.OperationEnum
+        /**
+         * Operations a voucher account movement can represent
+         * type fullname: billing.voucherAccount.OperationEnum
+         */
         export type OperationEnum = "cancel-credit" | "cancel-debit" | "cancel-pre-debit" | "credit" | "debit" | "pre-credit" | "pre-debit"
     }
 }
 export namespace complexType {
-    // interface fullName: complexType.SafeKeyValue.SafeKeyValue
+    /**
+     * Key and value, with proper key strings
+     * interface fullName: complexType.SafeKeyValue.SafeKeyValue
+     */
     export interface SafeKeyValue<T> {
         key: string;
         value: T;
     }
-    // interface fullName: complexType.UnitAndValue.UnitAndValue
+    /**
+     * A numeric value tagged with its unit
+     * interface fullName: complexType.UnitAndValue.UnitAndValue
+     */
     export interface UnitAndValue<T> {
         unit: string;
         value: T;
     }
 }
 export namespace contact {
-    // interface fullName: contact.Address.Address
+    /**
+     * Representation of an Address
+     * interface fullName: contact.Address.Address
+     */
     export interface Address {
         city: string;
         country: nichandle.CountryEnum;
@@ -559,7 +802,10 @@ export namespace contact {
         province?: string;
         zip: string;
     }
-    // interface fullName: contact.Contact.Contact
+    /**
+     * Representation of a Contact
+     * interface fullName: contact.Contact.Contact
+     */
     export interface Contact {
         address: contact.Address;
         birthCity?: string;
@@ -584,7 +830,10 @@ export namespace contact {
         spareEmail?: string;
         vat?: string;
     }
-    // interface fullName: contact.FieldInformation.FieldInformation
+    /**
+     * Extras informations about a field
+     * interface fullName: contact.FieldInformation.FieldInformation
+     */
     export interface FieldInformation {
         fieldName: string;
         mandatory: boolean;
@@ -592,13 +841,22 @@ export namespace contact {
     }
 }
 export namespace coreTypes {
-    // type fullname: coreTypes.ContinentEnum
+    /**
+     * Continents
+     * type fullname: coreTypes.ContinentEnum
+     */
     export type ContinentEnum = "africa" | "antartica" | "asia" | "europe" | "north-america" | "oceania" | "south-america"
-    // type fullname: coreTypes.CountryEnum
+    /**
+     * ISO country codes
+     * type fullname: coreTypes.CountryEnum
+     */
     export type CountryEnum = "ac" | "ad" | "ae" | "af" | "ag" | "ai" | "al" | "am" | "an" | "ao" | "aq" | "ar" | "as" | "at" | "au" | "aw" | "ax" | "az" | "ba" | "bb" | "bd" | "be" | "bf" | "bg" | "bh" | "bi" | "bj" | "bl" | "bm" | "bn" | "bo" | "bq" | "br" | "bs" | "bt" | "bv" | "bw" | "by" | "bz" | "ca" | "cc" | "cd" | "cf" | "cg" | "ch" | "ci" | "ck" | "cl" | "cm" | "cn" | "co" | "cr" | "cs" | "cu" | "cv" | "cw" | "cx" | "cy" | "cz" | "de" | "dj" | "dk" | "dm" | "do" | "dz" | "ec" | "ee" | "eg" | "eh" | "er" | "es" | "et" | "fc" | "fd" | "fi" | "fj" | "fk" | "fm" | "fo" | "fr" | "fx" | "ga" | "gb" | "gd" | "ge" | "gf" | "gg" | "gh" | "gi" | "gl" | "gm" | "gn" | "gp" | "gq" | "gr" | "gs" | "gt" | "gu" | "gw" | "gy" | "hk" | "hm" | "hn" | "hr" | "ht" | "hu" | "id" | "ie" | "il" | "im" | "in" | "io" | "iq" | "ir" | "is" | "it" | "je" | "jm" | "jo" | "jp" | "ke" | "kg" | "kh" | "ki" | "km" | "kn" | "kp" | "kr" | "kw" | "ky" | "kz" | "la" | "lb" | "lc" | "li" | "lk" | "lr" | "ls" | "lt" | "lu" | "lv" | "ly" | "ma" | "mc" | "md" | "me" | "mf" | "mg" | "mh" | "mk" | "ml" | "mm" | "mn" | "mo" | "mp" | "mq" | "mr" | "ms" | "mt" | "mu" | "mv" | "mw" | "mx" | "my" | "mz" | "na" | "nc" | "ne" | "nf" | "ng" | "ni" | "nl" | "no" | "np" | "nr" | "nu" | "nz" | "om" | "pa" | "pe" | "pf" | "pg" | "ph" | "pk" | "pl" | "pm" | "pn" | "pr" | "ps" | "pt" | "pw" | "py" | "qa" | "qc" | "re" | "ro" | "rs" | "ru" | "rw" | "sa" | "sb" | "sc" | "sd" | "se" | "sg" | "sh" | "si" | "sj" | "sk" | "sl" | "sm" | "sn" | "so" | "sr" | "ss" | "st" | "sv" | "sx" | "sy" | "sz" | "tc" | "td" | "tf" | "tg" | "th" | "tj" | "tk" | "tl" | "tm" | "tn" | "to" | "tp" | "tr" | "tt" | "tv" | "tw" | "tz" | "ua" | "ug" | "uk" | "um" | "us" | "uy" | "uz" | "va" | "vc" | "ve" | "vg" | "vi" | "vn" | "vu" | "we" | "wf" | "ws" | "ye" | "yt" | "yu" | "za" | "zm" | "zw"
 }
 export namespace debt {
-    // interface fullName: debt.Balance.Balance
+    /**
+     * Debt balance of the account
+     * interface fullName: debt.Balance.Balance
+     */
     export interface Balance {
         active: boolean;
         dueAmount: orderPrice;
@@ -606,7 +864,10 @@ export namespace debt {
         todoAmount: orderPrice;
         unmaturedAmount: orderPrice;
     }
-    // interface fullName: debt.Debt.Debt
+    /**
+     * State of a debt
+     * interface fullName: debt.Debt.Debt
+     */
     export interface Debt {
         amount: orderPrice;
         date: string;
@@ -618,7 +879,10 @@ export namespace debt {
         todoAmount: orderPrice;
         unmaturedAmount: orderPrice;
     }
-    // interface fullName: debt.Operation.Operation
+    /**
+     * Operation that happend on a debt
+     * interface fullName: debt.Operation.Operation
+     */
     export interface Operation {
         amount: orderPrice;
         date: string;
@@ -628,37 +892,64 @@ export namespace debt {
         type?: debt.entry.OperationEnum;
     }
     export namespace associatedObject {
-        // interface fullName: debt.associatedObject.PaymentInfo.PaymentInfo
+        /**
+         * The payment infos linked to this debt entry
+         * interface fullName: debt.associatedObject.PaymentInfo.PaymentInfo
+         */
         export interface PaymentInfo {
             description?: string;
             paymentType: billing.PaymentMeanEnum;
             publicLabel?: string;
         }
-        // type fullname: debt.associatedObject.TypeEnum
+        /**
+         * Type of objects an order can be linked to
+         * type fullname: debt.associatedObject.TypeEnum
+         */
         export type TypeEnum = "Bill" | "DebtOperation" | "Deposit" | "Order" | "OvhAccountMovement" | "Refund" | "Withdrawal"
     }
     export namespace entry {
-        // interface fullName: debt.entry.AssociatedObject.AssociatedObject
+        /**
+         * The object linked to this debt entry
+         * interface fullName: debt.entry.AssociatedObject.AssociatedObject
+         */
         export interface AssociatedObject {
             id?: string;
             paymentInfo?: debt.associatedObject.PaymentInfo;
             subId?: string;
             type?: debt.associatedObject.TypeEnum;
         }
-        // type fullname: debt.entry.OperationEnum
+        /**
+         * All operations a debt entry can represent
+         * type fullname: debt.entry.OperationEnum
+         */
         export type OperationEnum = "CANCEL" | "CASH_MANUAL" | "CHECK_MANUAL" | "CREDITCARD" | "CREDITCARD_AUTOMATIC" | "CREDITCARD_MANUAL" | "CREDIT_ACCOUNT_AUTOMATIC" | "EDINAR_MANUAL" | "IDEAL_MANUAL" | "MULTIBANCO_MANUAL" | "ORDER" | "PAYPAL_AUTOMATIC" | "PAYPAL_MANUAL" | "PAYU_MANUAL" | "RECOVERY_TRANSFER_AUTOMATIC" | "REFUND" | "REFUND_CHECK" | "REFUND_CREDITCARD" | "REFUND_CREDIT_ACCOUNT" | "REFUND_LOSS" | "REFUND_PAYPAL" | "REFUND_PAYU" | "REFUND_SEPA" | "REFUND_TRANSFER" | "REFUND_UNKNOWN" | "SEPA_AUTOMATIC" | "TRANSFER_MANUAL" | "UNPAID_CHECK" | "UNPAID_CREDITCARD" | "UNPAID_CREDIT_ACCOUNT" | "UNPAID_PAYPAL" | "UNPAID_SEPA" | "UNPAID_WITHDRAW" | "WARRANT_MANUAL" | "WITHDRAW_AUTOMATIC"
-        // type fullname: debt.entry.StatusEnum
+        /**
+         * All status a debt entry can be in
+         * type fullname: debt.entry.StatusEnum
+         */
         export type StatusEnum = "CANCELLED" | "DONE" | "FAILED" | "PAID" | "PENDING" | "TODO"
     }
 }
 export namespace dedicated {
-    // type fullname: dedicated.TemplateOsFileSystemEnum
+    /**
+     * Filesystems available
+     * type fullname: dedicated.TemplateOsFileSystemEnum
+     */
     export type TemplateOsFileSystemEnum = "btrfs" | "ext3" | "ext4" | "ntfs" | "reiserfs" | "swap" | "ufs" | "xfs" | "zfs"
-    // type fullname: dedicated.TemplateOsHardwareRaidEnum
+    /**
+     * Hardware RAID enum
+     * type fullname: dedicated.TemplateOsHardwareRaidEnum
+     */
     export type TemplateOsHardwareRaidEnum = "raid0" | "raid1" | "raid10" | "raid5" | "raid50" | "raid6" | "raid60"
-    // type fullname: dedicated.TemplateOsLanguageEnum
+    /**
+     * all language available
+     * type fullname: dedicated.TemplateOsLanguageEnum
+     */
     export type TemplateOsLanguageEnum = "ar" | "bg" | "cs" | "da" | "de" | "el" | "en" | "es" | "et" | "fi" | "fr" | "he" | "hr" | "hu" | "it" | "ja" | "ko" | "lt" | "lv" | "nb" | "nl" | "no" | "pl" | "pt" | "ro" | "ru" | "sk" | "sl" | "sr" | "sv" | "th" | "tr" | "tu" | "uk" | "zh-Hans-CN" | "zh-Hans-HK"
-    // interface fullName: dedicated.TemplateOsProperties.TemplateOsProperties
+    /**
+     * A structure describing properties customizables about this dedicated installation template
+     * interface fullName: dedicated.TemplateOsProperties.TemplateOsProperties
+     */
     export interface TemplateOsProperties {
         changeLog?: string;
         customHostname?: string;
@@ -668,14 +959,26 @@ export namespace dedicated {
         sshKeyName?: string;
         useDistributionKernel?: boolean;
     }
-    // type fullname: dedicated.TemplateOsTypeEnum
+    /**
+     * Os type
+     * type fullname: dedicated.TemplateOsTypeEnum
+     */
     export type TemplateOsTypeEnum = "bsd" | "linux" | "solaris" | "windows"
-    // type fullname: dedicated.TemplateOsUsageEnum
+    /**
+     * Os usage definition
+     * type fullname: dedicated.TemplateOsUsageEnum
+     */
     export type TemplateOsUsageEnum = "basic" | "customer" | "hosting" | "other" | "readyToUse" | "virtualisation"
-    // type fullname: dedicated.TemplatePartitionTypeEnum
+    /**
+     * partition type
+     * type fullname: dedicated.TemplatePartitionTypeEnum
+     */
     export type TemplatePartitionTypeEnum = "logical" | "lv" | "primary"
     export namespace installationTemplate {
-        // interface fullName: dedicated.installationTemplate.Templates.Templates
+        /**
+         * Available installation templates
+         * interface fullName: dedicated.installationTemplate.Templates.Templates
+         */
         export interface Templates {
             availableLanguages: dedicated.TemplateOsLanguageEnum[];
             beta?: boolean;
@@ -698,19 +1001,28 @@ export namespace dedicated {
             supportsUEFI?: dedicated.server.SupportsUEFIEnum;
             templateName: string;
         }
-        // interface fullName: dedicated.installationTemplate.hardwareRaid.hardwareRaid
+        /**
+         * Hardware RAID defined in this partitioning scheme
+         * interface fullName: dedicated.installationTemplate.hardwareRaid.hardwareRaid
+         */
         export interface hardwareRaid {
             disks: string[];
             mode: dedicated.TemplateOsHardwareRaidEnum;
             name: string;
             step: number;
         }
-        // interface fullName: dedicated.installationTemplate.templatePartitioningSchemes.templatePartitioningSchemes
+        /**
+         * Partitioning schemes available on this template
+         * interface fullName: dedicated.installationTemplate.templatePartitioningSchemes.templatePartitioningSchemes
+         */
         export interface templatePartitioningSchemes {
             name: string;
             priority: number;
         }
-        // interface fullName: dedicated.installationTemplate.templatePartitions.templatePartitions
+        /**
+         *  Partitions defined in this partitioning scheme
+         * interface fullName: dedicated.installationTemplate.templatePartitions.templatePartitions
+         */
         export interface templatePartitions {
             filesystem: dedicated.TemplateOsFileSystemEnum;
             mountpoint: string;
@@ -722,24 +1034,48 @@ export namespace dedicated {
         }
     }
     export namespace server {
-        // type fullname: dedicated.server.BitFormatEnum
+        /**
+         * Available os bit format
+         * type fullname: dedicated.server.BitFormatEnum
+         */
         export type BitFormatEnum = 32 | 64
-        // type fullname: dedicated.server.PartitionRaidEnum
+        /**
+         * partition raid type
+         * type fullname: dedicated.server.PartitionRaidEnum
+         */
         export type PartitionRaidEnum = "0" | "1" | "10" | "5" | "6"
-        // type fullname: dedicated.server.SupportsUEFIEnum
+        /**
+         * supports UEFI setup
+         * type fullname: dedicated.server.SupportsUEFIEnum
+         */
         export type SupportsUEFIEnum = "no" | "only" | "yes"
     }
 }
 export namespace domain {
-    // type fullname: domain.DocumentFormatsEnum
+    /**
+     * Document file format
+     * type fullname: domain.DocumentFormatsEnum
+     */
     export type DocumentFormatsEnum = "gif" | "jpeg" | "jpg" | "pdf" | "png"
-    // type fullname: domain.NicOperationFunctionEnum
+    /**
+     * Operation functions
+     * type fullname: domain.NicOperationFunctionEnum
+     */
     export type NicOperationFunctionEnum = "ContactControl" | "DnsAnycastActivate" | "DnsAnycastDeactivate" | "DnssecDisable" | "DnssecEnable" | "DnssecResigning" | "DnssecRollKsk" | "DnssecRollZsk" | "DomainContactControl" | "DomainContactUpdate" | "DomainControl" | "DomainCreate" | "DomainDelete" | "DomainDnsUpdate" | "DomainDsUpdate" | "DomainHold" | "DomainHostCreate" | "DomainHostDelete" | "DomainHostUpdate" | "DomainIncomingTransfer" | "DomainLock" | "DomainOutgoingTransfer" | "DomainRenew" | "DomainRestore" | "DomainTrade" | "ZoneImport"
-    // type fullname: domain.OperationActionEnum
+    /**
+     * operation Action
+     * type fullname: domain.OperationActionEnum
+     */
     export type OperationActionEnum = "canCancel" | "canCorrect" | "canRelaunch" | "canReset"
-    // type fullname: domain.OperationStatusEnum
+    /**
+     * Operation status
+     * type fullname: domain.OperationStatusEnum
+     */
     export type OperationStatusEnum = "cancelled" | "doing" | "done" | "error" | "todo"
-    // interface fullName: domain.OperationStep.OperationStep
+    /**
+     * One step from an operation
+     * interface fullName: domain.OperationStep.OperationStep
+     */
     export interface OperationStep {
         description: string;
         executionDuration: number;
@@ -747,7 +1083,10 @@ export namespace domain {
     }
 }
 export namespace geolocation {
-    // interface fullName: geolocation.ContinentCountryLocation.ContinentCountryLocation
+    /**
+     * Representation of country and continent from visitor IP
+     * interface fullName: geolocation.ContinentCountryLocation.ContinentCountryLocation
+     */
     export interface ContinentCountryLocation {
         continent: coreTypes.ContinentEnum;
         countryCode: coreTypes.CountryEnum;
@@ -755,21 +1094,33 @@ export namespace geolocation {
     }
 }
 export namespace http {
-    // type fullname: http.MethodEnum
+    /**
+     * All HTTP methods available
+     * type fullname: http.MethodEnum
+     */
     export type MethodEnum = "DELETE" | "GET" | "POST" | "PUT"
 }
 export namespace me {
     export namespace SupportLevel {
-        // interface fullName: me.SupportLevel.Level.Level
+        /**
+         * Support level of an account
+         * interface fullName: me.SupportLevel.Level.Level
+         */
         export interface Level {
             level: me.SupportLevel.LevelTypeEnum;
         }
-        // type fullname: me.SupportLevel.LevelTypeEnum
+        /**
+         * Type of level
+         * type fullname: me.SupportLevel.LevelTypeEnum
+         */
         export type LevelTypeEnum = "standard" | "premium" | "premium-accredited" | "business" | "enterprise"
     }
     export namespace billing {
         export namespace group {
-            // interface fullName: me.billing.group.BillingGroup.BillingGroup
+            /**
+             * Missing description
+             * interface fullName: me.billing.group.BillingGroup.BillingGroup
+             */
             export interface BillingGroup {
                 contactId?: number;
                 creationDate: string;
@@ -778,13 +1129,19 @@ export namespace me {
                 name: string;
                 paymentMethodId?: number;
             }
-            // interface fullName: me.billing.group.Service.Service
+            /**
+             * Missing description
+             * interface fullName: me.billing.group.Service.Service
+             */
             export interface Service {
                 groupId: number;
                 serviceId: number;
             }
             export namespace service {
-                // interface fullName: me.billing.group.service.Create.Create
+                /**
+                 * Missing description
+                 * interface fullName: me.billing.group.service.Create.Create
+                 */
                 export interface Create {
                     serviceId: number;
                 }
@@ -792,36 +1149,54 @@ export namespace me {
         }
     }
     export namespace consent {
-        // interface fullName: me.consent.Campaign.Campaign
+        /**
+         * Consent campaign
+         * interface fullName: me.consent.Campaign.Campaign
+         */
         export interface Campaign {
             description: string;
             name: string;
             type: me.consent.CampaignTypeEnum;
         }
-        // type fullname: me.consent.CampaignTypeEnum
+        /**
+         * Campaign type
+         * type fullname: me.consent.CampaignTypeEnum
+         */
         export type CampaignTypeEnum = "OPTIN" | "OPTOUT"
-        // interface fullName: me.consent.Consent.Consent
+        /**
+         * Customer consent information for a campaign
+         * interface fullName: me.consent.Consent.Consent
+         */
         export interface Consent {
             campaign: string;
             history: me.consent.Decision[];
             type: me.consent.CampaignTypeEnum;
             value: boolean;
         }
-        // interface fullName: me.consent.Decision.Decision
+        /**
+         * Customer consent decision
+         * interface fullName: me.consent.Decision.Decision
+         */
         export interface Decision {
             timestamp: string;
             value: boolean;
         }
     }
     export namespace consumption {
-        // interface fullName: me.consumption.Price.Price
+        /**
+         * Price with currency and amount in micro-cents
+         * interface fullName: me.consumption.Price.Price
+         */
         export interface Price {
             currencyCode: order.CurrencyCodeEnum;
             text: string;
             value: number;
             valueInUcents: number;
         }
-        // interface fullName: me.consumption.Transaction.Transaction
+        /**
+         * List of consumptions recorded in a range
+         * interface fullName: me.consumption.Transaction.Transaction
+         */
         export interface Transaction {
             beginDate: string;
             creationDate?: string;
@@ -833,7 +1208,10 @@ export namespace me {
             serviceId: number;
         }
         export namespace transaction {
-            // interface fullName: me.consumption.transaction.Element.Element
+            /**
+             * Element of consumption for resource
+             * interface fullName: me.consumption.transaction.Element.Element
+             */
             export interface Element {
                 details: me.consumption.transaction.Element.Detail[];
                 planCode: string;
@@ -842,7 +1220,10 @@ export namespace me {
                 quantity: number;
             }
             export namespace Element {
-                // interface fullName: me.consumption.transaction.Element.Detail.Detail
+                /**
+                 * Element of consumption for resource
+                 * interface fullName: me.consumption.transaction.Element.Detail.Detail
+                 */
                 export interface Detail {
                     price: me.consumption.Price;
                     quantity: number;
@@ -852,7 +1233,10 @@ export namespace me {
         }
     }
     export namespace credit {
-        // interface fullName: me.credit.Balance.Balance
+        /**
+         * Missing description
+         * interface fullName: me.credit.Balance.Balance
+         */
         export interface Balance {
             amount: orderPrice;
             balanceDetails: me.credit.balance.BalanceDetails[];
@@ -864,20 +1248,29 @@ export namespace me {
             type: me.credit.balance.TypeEnum;
         }
         export namespace balance {
-            // interface fullName: me.credit.balance.BalanceDetails.BalanceDetails
+            /**
+             * Missing description
+             * interface fullName: me.credit.balance.BalanceDetails.BalanceDetails
+             */
             export interface BalanceDetails {
                 amount: orderPrice;
                 balanceSubName?: string;
                 expiring: me.credit.balance.ExpiringMovement[];
                 serviceId?: number;
             }
-            // interface fullName: me.credit.balance.BookedMovement.BookedMovement
+            /**
+             * Missing description
+             * interface fullName: me.credit.balance.BookedMovement.BookedMovement
+             */
             export interface BookedMovement {
                 amount: orderPrice;
                 balanceSubName?: string;
                 orderId: number;
             }
-            // interface fullName: me.credit.balance.ExpiringMovement.ExpiringMovement
+            /**
+             * Missing description
+             * interface fullName: me.credit.balance.ExpiringMovement.ExpiringMovement
+             */
             export interface ExpiringMovement {
                 amount: orderPrice;
                 creationDate: string;
@@ -885,7 +1278,10 @@ export namespace me {
                 lastUpdate: string;
                 sourceObject: me.credit.balance.movement.SubObject;
             }
-            // interface fullName: me.credit.balance.Movement.Movement
+            /**
+             * Missing description
+             * interface fullName: me.credit.balance.Movement.Movement
+             */
             export interface Movement {
                 amount: orderPrice;
                 balanceName: string;
@@ -897,20 +1293,32 @@ export namespace me {
                 sourceObject: me.credit.balance.movement.SubObject;
                 type: me.credit.balance.movement.TypeEnum;
             }
-            // type fullname: me.credit.balance.TypeEnum
+            /**
+             * Balance type
+             * type fullname: me.credit.balance.TypeEnum
+             */
             export type TypeEnum = "PREPAID_ACCOUNT" | "VOUCHER" | "DEPOSIT" | "BONUS"
             export namespace movement {
-                // interface fullName: me.credit.balance.movement.SubObject.SubObject
+                /**
+                 * Missing description
+                 * interface fullName: me.credit.balance.movement.SubObject.SubObject
+                 */
                 export interface SubObject {
                     id: string;
                     name: string;
                 }
-                // type fullname: me.credit.balance.movement.TypeEnum
+                /**
+                 * Balance movement type
+                 * type fullname: me.credit.balance.movement.TypeEnum
+                 */
                 export type TypeEnum = "BONUS" | "CANCEL" | "EXPIRE" | "GIFT" | "MANUAL" | "ORDER" | "REFUND" | "UNPAID" | "USE" | "VOUCHER"
             }
         }
         export namespace code {
-            // interface fullName: me.credit.code.Redeem.Redeem
+            /**
+             * Missing description
+             * interface fullName: me.credit.code.Redeem.Redeem
+             */
             export interface Redeem {
                 inputCode: string;
                 serviceId: number;
@@ -919,7 +1327,10 @@ export namespace me {
     }
     export namespace payment {
         export namespace method {
-            // interface fullName: me.payment.method.AvailablePaymentMethod.AvailablePaymentMethod
+            /**
+             * Available payment method object
+             * interface fullName: me.payment.method.AvailablePaymentMethod.AvailablePaymentMethod
+             */
             export interface AvailablePaymentMethod {
                 icon: me.payment.method.Icon;
                 integration: paymentmethodIntegrationType;
@@ -928,7 +1339,10 @@ export namespace me {
                 registerable: boolean;
                 registerableWithTransaction: boolean;
             }
-            // interface fullName: me.payment.method.CallbackUrl.CallbackUrl
+            /**
+             * Callback URL's to register a new payment method
+             * interface fullName: me.payment.method.CallbackUrl.CallbackUrl
+             */
             export interface CallbackUrl {
                 cancel: string;
                 error: string;
@@ -936,12 +1350,18 @@ export namespace me {
                 pending: string;
                 success: string;
             }
-            // interface fullName: me.payment.method.Icon.Icon
+            /**
+             * Icon
+             * interface fullName: me.payment.method.Icon.Icon
+             */
             export interface Icon {
                 data?: string;
                 name?: string;
             }
-            // interface fullName: me.payment.method.PaymentMethod.PaymentMethod
+            /**
+             * Payment method object
+             * interface fullName: me.payment.method.PaymentMethod.PaymentMethod
+             */
             export interface PaymentMethod {
                 billingContactId?: number;
                 creationDate: string;
@@ -958,11 +1378,17 @@ export namespace me {
                 status: me.payment.method.PaymentMethod.Status;
             }
             export namespace PaymentMethod {
-                // type fullname: me.payment.method.PaymentMethod.Status
+                /**
+                 * Payment method status enum
+                 * type fullname: me.payment.method.PaymentMethod.Status
+                 */
                 export type Status = "CANCELED" | "CANCELING" | "CREATED" | "ERROR" | "EXPIRED" | "CREATING" | "MAINTENANCE" | "PAUSED" | "VALID"
             }
             export namespace Register {
-                // interface fullName: me.payment.method.Register.ValidationResult.ValidationResult
+                /**
+                 * Register validation payload result
+                 * interface fullName: me.payment.method.Register.ValidationResult.ValidationResult
+                 */
                 export interface ValidationResult {
                     formSessionId?: string;
                     merchantId?: string;
@@ -972,7 +1398,10 @@ export namespace me {
                     validationType: paymentmethodIntegrationType;
                 }
             }
-            // interface fullName: me.payment.method.Transaction.Transaction
+            /**
+             * Payment method transaction object
+             * interface fullName: me.payment.method.Transaction.Transaction
+             */
             export interface Transaction {
                 amount: orderPrice;
                 creationDate: string;
@@ -981,15 +1410,24 @@ export namespace me {
                 type: me.payment.method.Transaction.Type;
             }
             export namespace Transaction {
-                // type fullname: me.payment.method.Transaction.Status
+                /**
+                 * Payment transaction status enum
+                 * type fullname: me.payment.method.Transaction.Status
+                 */
                 export type Status = "CANCELED" | "CANCELING" | "CONFIRMING" | "CREATED" | "ERROR" | "FAILED" | "READY" | "SUCCESS"
-                // type fullname: me.payment.method.Transaction.Type
+                /**
+                 * Payment transaction type enum
+                 * type fullname: me.payment.method.Transaction.Type
+                 */
                 export type Type = "CREDIT" | "DEBIT"
             }
         }
     }
     export namespace paymentMean {
-        // interface fullName: me.paymentMean.CreditCard.CreditCard
+        /**
+         * Credit card informations
+         * interface fullName: me.paymentMean.CreditCard.CreditCard
+         */
         export interface CreditCard {
             defaultPaymentMean: boolean;
             description?: string;
@@ -1001,43 +1439,67 @@ export namespace me {
             threeDsValidated: boolean;
             type: string;
         }
-        // interface fullName: me.paymentMean.CreditCardChallengeCreation.CreditCardChallengeCreation
+        /**
+         * Missing description
+         * interface fullName: me.paymentMean.CreditCardChallengeCreation.CreditCardChallengeCreation
+         */
         export interface CreditCardChallengeCreation {
             challenge: string;
         }
-        // interface fullName: me.paymentMean.CreditCardCreation.CreditCardCreation
+        /**
+         * Missing description
+         * interface fullName: me.paymentMean.CreditCardCreation.CreditCardCreation
+         */
         export interface CreditCardCreation {
             description?: string;
             returnUrl?: string;
             setDefault?: boolean;
         }
-        // type fullname: me.paymentMean.CreditCardStateEnum
+        /**
+         * State of you credit card
+         * type fullname: me.paymentMean.CreditCardStateEnum
+         */
         export type CreditCardStateEnum = "expired" | "tooManyFailures" | "valid"
-        // interface fullName: me.paymentMean.CreditCardValidation.CreditCardValidation
+        /**
+         * A validation required to add a payment mean credit card
+         * interface fullName: me.paymentMean.CreditCardValidation.CreditCardValidation
+         */
         export interface CreditCardValidation {
             id: number;
             submitUrl?: string;
             url: string;
             validationType: me.paymentMean.ValidationTypeEnum;
         }
-        // interface fullName: me.paymentMean.IconData.IconData
+        /**
+         * Payment mean type icon
+         * interface fullName: me.paymentMean.IconData.IconData
+         */
         export interface IconData {
             data?: string;
             name?: string;
             url?: string;
         }
-        // type fullname: me.paymentMean.ValidationTypeEnum
+        /**
+         * All the validation you may have to do
+         * type fullname: me.paymentMean.ValidationTypeEnum
+         */
         export type ValidationTypeEnum = "creditAccount" | "documentToSend" | "simpleValidation"
     }
 }
 export namespace nichandle {
     export namespace Authentication {
-        // interface fullName: nichandle.Authentication.Certificate.Certificate
+        /**
+         * X509 Certificate
+         * interface fullName: nichandle.Authentication.Certificate.Certificate
+         */
         export interface Certificate {
             expiration: string;
             subject: string;
         }
-        // interface fullName: nichandle.Authentication.Group.Group
+        /**
+         * A group
+         * interface fullName: nichandle.Authentication.Group.Group
+         */
         export interface Group {
             creation: string;
             defaultGroup: boolean;
@@ -1046,7 +1508,10 @@ export namespace nichandle {
             name: string;
             role: nichandle.RoleEnum;
         }
-        // interface fullName: nichandle.Authentication.Provider.Provider
+        /**
+         * A SAML 2.0 provider
+         * interface fullName: nichandle.Authentication.Provider.Provider
+         */
         export interface Provider {
             creation: string;
             groupAttributeName: string;
@@ -1055,24 +1520,39 @@ export namespace nichandle {
             ssoServiceUrl: string;
         }
     }
-    // interface fullName: nichandle.BillingCapacities.BillingCapacities
+    /**
+     * Internal customer billing capacities for customer control panel
+     * interface fullName: nichandle.BillingCapacities.BillingCapacities
+     */
     export interface BillingCapacities {
         canUseDebtSystem: boolean;
         canUsePostalMailForInvoices: boolean;
         requiredPaymentMethod: nichandle.RequiredPaymentMethodEnum;
     }
-    // type fullname: nichandle.CountryEnum
+    /**
+     * Countries a nichandle can choose
+     * type fullname: nichandle.CountryEnum
+     */
     export type CountryEnum = "AC" | "AD" | "AE" | "AF" | "AG" | "AI" | "AL" | "AM" | "AO" | "AQ" | "AR" | "AS" | "AT" | "AU" | "AW" | "AX" | "AZ" | "BA" | "BB" | "BD" | "BE" | "BF" | "BG" | "BH" | "BI" | "BJ" | "BL" | "BM" | "BN" | "BO" | "BQ" | "BR" | "BS" | "BT" | "BW" | "BY" | "BZ" | "CA" | "CC" | "CD" | "CF" | "CG" | "CH" | "CI" | "CK" | "CL" | "CM" | "CN" | "CO" | "CR" | "CU" | "CV" | "CW" | "CX" | "CY" | "CZ" | "DE" | "DG" | "DJ" | "DK" | "DM" | "DO" | "DZ" | "EA" | "EC" | "EE" | "EG" | "EH" | "ER" | "ES" | "ET" | "FI" | "FJ" | "FK" | "FM" | "FO" | "FR" | "GA" | "GB" | "GD" | "GE" | "GF" | "GG" | "GH" | "GI" | "GL" | "GM" | "GN" | "GP" | "GQ" | "GR" | "GS" | "GT" | "GU" | "GW" | "GY" | "HK" | "HN" | "HR" | "HT" | "HU" | "IC" | "ID" | "IE" | "IL" | "IM" | "IN" | "IO" | "IQ" | "IR" | "IS" | "IT" | "JE" | "JM" | "JO" | "JP" | "KE" | "KG" | "KH" | "KI" | "KM" | "KN" | "KP" | "KR" | "KW" | "KY" | "KZ" | "LA" | "LB" | "LC" | "LI" | "LK" | "LR" | "LS" | "LT" | "LU" | "LV" | "LY" | "MA" | "MC" | "MD" | "ME" | "MF" | "MG" | "MH" | "MK" | "ML" | "MM" | "MN" | "MO" | "MP" | "MQ" | "MR" | "MS" | "MT" | "MU" | "MV" | "MW" | "MX" | "MY" | "MZ" | "NA" | "NC" | "NE" | "NF" | "NG" | "NI" | "NL" | "NO" | "NP" | "NR" | "NU" | "NZ" | "OM" | "PA" | "PE" | "PF" | "PG" | "PH" | "PK" | "PL" | "PM" | "PN" | "PR" | "PS" | "PT" | "PW" | "PY" | "QA" | "RE" | "RO" | "RS" | "RU" | "RW" | "SA" | "SB" | "SC" | "SD" | "SE" | "SG" | "SH" | "SI" | "SJ" | "SK" | "SL" | "SM" | "SN" | "SO" | "SR" | "SS" | "ST" | "SV" | "SX" | "SY" | "SZ" | "TA" | "TC" | "TD" | "TF" | "TG" | "TH" | "TJ" | "TK" | "TL" | "TM" | "TN" | "TO" | "TR" | "TT" | "TV" | "TW" | "TZ" | "UA" | "UG" | "UM" | "UNKNOWN" | "US" | "UY" | "UZ" | "VA" | "VC" | "VE" | "VG" | "VI" | "VN" | "VU" | "WF" | "WS" | "XK" | "YE" | "YT" | "ZA" | "ZM" | "ZW"
-    // interface fullName: nichandle.Currency.Currency
+    /**
+     * Customer currency
+     * interface fullName: nichandle.Currency.Currency
+     */
     export interface Currency {
         code: string;
         symbol: string;
     }
-    // interface fullName: nichandle.DeveloperModeRestriction.DeveloperModeRestriction
+    /**
+     * Login restrictions on a development version of the Manager
+     * interface fullName: nichandle.DeveloperModeRestriction.DeveloperModeRestriction
+     */
     export interface DeveloperModeRestriction {
         enabled: boolean;
     }
-    // interface fullName: nichandle.DomainTask.DomainTask
+    /**
+     * Domain tasks
+     * interface fullName: nichandle.DomainTask.DomainTask
+     */
     export interface DomainTask {
         canAccelerate: boolean;
         canCancel: boolean;
@@ -1087,7 +1567,10 @@ export namespace nichandle {
         status: domain.OperationStatusEnum;
         todoDate: string;
     }
-    // interface fullName: nichandle.DomainTaskArgument.DomainTaskArgument
+    /**
+     * Domain operation argument
+     * interface fullName: nichandle.DomainTaskArgument.DomainTaskArgument
+     */
     export interface DomainTaskArgument {
         acceptedFormats?: domain.DocumentFormatsEnum[];
         acceptedValues?: string[];
@@ -1101,7 +1584,10 @@ export namespace nichandle {
         type: string;
         value?: string;
     }
-    // interface fullName: nichandle.DomainTaskProgressBar.DomainTaskProgressBar
+    /**
+     * Domain operation progress
+     * interface fullName: nichandle.DomainTaskProgressBar.DomainTaskProgressBar
+     */
     export interface DomainTaskProgressBar {
         currentStep: domain.OperationStep;
         expectedDoneDate?: string;
@@ -1111,23 +1597,38 @@ export namespace nichandle {
         taskActions: domain.OperationActionEnum[];
         taskStatus: domain.OperationStatusEnum;
     }
-    // type fullname: nichandle.GenderEnum
+    /**
+     * All genders a person can choose
+     * type fullname: nichandle.GenderEnum
+     */
     export type GenderEnum = "female" | "male"
-    // type fullname: nichandle.IpRegistryEnum
+    /**
+     * Ip registries
+     * type fullname: nichandle.IpRegistryEnum
+     */
     export type IpRegistryEnum = "ARIN" | "RIPE"
-    // interface fullName: nichandle.IpRestriction.IpRestriction
+    /**
+     * List of all IP Restrictions
+     * interface fullName: nichandle.IpRestriction.IpRestriction
+     */
     export interface IpRestriction {
         id: number;
         ip: string;
         rule: nichandle.accessRestriction.IpRestrictionRuleEnum;
         warning: boolean;
     }
-    // interface fullName: nichandle.IpRestrictionDefaultRule.IpRestrictionDefaultRule
+    /**
+     * IP Restriction default rule
+     * interface fullName: nichandle.IpRestrictionDefaultRule.IpRestrictionDefaultRule
+     */
     export interface IpRestrictionDefaultRule {
         rule: nichandle.accessRestriction.IpRestrictionRuleEnum;
         warning: boolean;
     }
-    // interface fullName: nichandle.Ipv4Org.Ipv4Org
+    /**
+     * Details about an IP block organisation
+     * interface fullName: nichandle.Ipv4Org.Ipv4Org
+     */
     export interface Ipv4Org {
         abuse_mailbox: string;
         address: string;
@@ -1141,22 +1642,37 @@ export namespace nichandle {
         state?: string;
         zip?: string;
     }
-    // type fullname: nichandle.LanguageEnum
+    /**
+     * Languages a nichandle can choose
+     * type fullname: nichandle.LanguageEnum
+     */
     export type LanguageEnum = "cs_CZ" | "de_DE" | "en_AU" | "en_CA" | "en_GB" | "en_IE" | "en_US" | "es_ES" | "fi_FI" | "fr_CA" | "fr_FR" | "fr_MA" | "fr_SN" | "fr_TN" | "it_IT" | "lt_LT" | "nl_NL" | "pl_PL" | "pt_PT"
-    // type fullname: nichandle.LegalFormEnum
+    /**
+     * Legal forms a nichandle can be registered as
+     * type fullname: nichandle.LegalFormEnum
+     */
     export type LegalFormEnum = "administration" | "association" | "corporation" | "individual" | "other" | "personalcorporation"
-    // interface fullName: nichandle.ManagerPreference.ManagerPreference
+    /**
+     * Manager preference
+     * interface fullName: nichandle.ManagerPreference.ManagerPreference
+     */
     export interface ManagerPreference {
         key: string;
         value: string;
     }
-    // interface fullName: nichandle.NicAutorenewInfos.NicAutorenewInfos
+    /**
+     * Auto renewal information
+     * interface fullName: nichandle.NicAutorenewInfos.NicAutorenewInfos
+     */
     export interface NicAutorenewInfos {
         active: boolean;
         lastRenew?: string;
         renewDay: number;
     }
-    // interface fullName: nichandle.Nichandle.Nichandle
+    /**
+     * Details about your OVH identifier
+     * interface fullName: nichandle.Nichandle.Nichandle
+     */
     export interface Nichandle {
         address?: string;
         area?: string;
@@ -1188,7 +1704,10 @@ export namespace nichandle {
         vat?: string;
         zip?: string;
     }
-    // interface fullName: nichandle.NichandleSmsNotification.NichandleSmsNotification
+    /**
+     * SMS notifications
+     * interface fullName: nichandle.NichandleSmsNotification.NichandleSmsNotification
+     */
     export interface NichandleSmsNotification {
         abuse: boolean;
         creationDate: string;
@@ -1196,34 +1715,64 @@ export namespace nichandle {
         status: nichandle.NotificationStatusEnum;
         updateDate?: string;
     }
-    // type fullname: nichandle.NotificationStatusEnum
+    /**
+     * Status of your notification
+     * type fullname: nichandle.NotificationStatusEnum
+     */
     export type NotificationStatusEnum = "ok" | "waitingForValidation"
-    // type fullname: nichandle.OvhCompanyEnum
+    /**
+     * OVH subsidiaries
+     * type fullname: nichandle.OvhCompanyEnum
+     */
     export type OvhCompanyEnum = "kimsufi" | "ovh" | "soyoustart"
-    // type fullname: nichandle.OvhSubsidiaryEnum
+    /**
+     * OVH subsidiaries
+     * type fullname: nichandle.OvhSubsidiaryEnum
+     */
     export type OvhSubsidiaryEnum = "ASIA" | "AU" | "CA" | "CZ" | "DE" | "ES" | "EU" | "FI" | "FR" | "GB" | "IE" | "IT" | "LT" | "MA" | "NL" | "PL" | "PT" | "QC" | "SG" | "SN" | "TN" | "US" | "WE" | "WS"
-    // type fullname: nichandle.RequiredPaymentMethodEnum
+    /**
+     * Indicates the mandatory nature of having a valid payment method
+     * type fullname: nichandle.RequiredPaymentMethodEnum
+     */
     export type RequiredPaymentMethodEnum = "mandatoryForAutorenew" | "mandatoryForPostpaid" | "notMandatory"
-    // type fullname: nichandle.RoleEnum
+    /**
+     * Permission given on the account
+     * type fullname: nichandle.RoleEnum
+     */
     export type RoleEnum = "REGULAR" | "ADMIN" | "UNPRIVILEGED"
-    // type fullname: nichandle.StateEnum
+    /**
+     * States a nichandle can be in
+     * type fullname: nichandle.StateEnum
+     */
     export type StateEnum = "complete" | "incomplete"
-    // interface fullName: nichandle.SubAccount.SubAccount
+    /**
+     * Sub Account
+     * interface fullName: nichandle.SubAccount.SubAccount
+     */
     export interface SubAccount {
         creationDate: string;
         description?: string;
         id: number;
     }
-    // interface fullName: nichandle.SubAccountConsumerKey.SubAccountConsumerKey
+    /**
+     * Credentials to interact with the api on behalf of the sub-account
+     * interface fullName: nichandle.SubAccountConsumerKey.SubAccountConsumerKey
+     */
     export interface SubAccountConsumerKey {
         consumerKey: string;
     }
-    // interface fullName: nichandle.Subscription.Subscription
+    /**
+     * List of all OVH things you can subscribe to
+     * interface fullName: nichandle.Subscription.Subscription
+     */
     export interface Subscription {
         registered?: boolean;
         type: string;
     }
-    // interface fullName: nichandle.User.User
+    /**
+     * A user
+     * interface fullName: nichandle.User.User
+     */
     export interface User {
         creation: string;
         description: string;
@@ -1234,40 +1783,67 @@ export namespace nichandle {
         passwordLastUpdate: string;
         status: nichandle.UserStatus;
     }
-    // type fullname: nichandle.UserStatus
+    /**
+     * Status of a User
+     * type fullname: nichandle.UserStatus
+     */
     export type UserStatus = "OK" | "DISABLED" | "PASSWORD_CHANGE_REQUIRED"
-    // interface fullName: nichandle.VipStatus.VipStatus
+    /**
+     * VIP Status by Universe
+     * interface fullName: nichandle.VipStatus.VipStatus
+     */
     export interface VipStatus {
         cloud: boolean;
         dedicated: boolean;
         telecom: boolean;
         web: boolean;
     }
-    // interface fullName: nichandle.VoucherStatus.VoucherStatus
+    /**
+     * Voucher Status and Information
+     * interface fullName: nichandle.VoucherStatus.VoucherStatus
+     */
     export interface VoucherStatus {
         validity: boolean;
     }
     export namespace accessRestriction {
-        // type fullname: nichandle.accessRestriction.IpRestrictionRuleEnum
+        /**
+         * Accept or deny IP access
+         * type fullname: nichandle.accessRestriction.IpRestrictionRuleEnum
+         */
         export type IpRestrictionRuleEnum = "accept" | "deny"
-        // interface fullName: nichandle.accessRestriction.SOTPAccount.SOTPAccount
+        /**
+         * SOTP Two-Factor Authentication
+         * interface fullName: nichandle.accessRestriction.SOTPAccount.SOTPAccount
+         */
         export interface SOTPAccount {
             creationDate: string;
             lastUsedDate?: string;
             remaining: number;
             status: nichandle.accessRestriction.SOTPStatusEnum;
         }
-        // interface fullName: nichandle.accessRestriction.SOTPSecret.SOTPSecret
+        /**
+         * Describe SOTP secret keys
+         * interface fullName: nichandle.accessRestriction.SOTPSecret.SOTPSecret
+         */
         export interface SOTPSecret {
             codes: string[];
         }
-        // type fullname: nichandle.accessRestriction.SOTPStatusEnum
+        /**
+         * Status of SOTP account
+         * type fullname: nichandle.accessRestriction.SOTPStatusEnum
+         */
         export type SOTPStatusEnum = "disabled" | "enabled" | "needCodeValidation" | "needEmailValidation"
-        // interface fullName: nichandle.accessRestriction.SOTPValidate.SOTPValidate
+        /**
+         * Describe SOTP validation status
+         * interface fullName: nichandle.accessRestriction.SOTPValidate.SOTPValidate
+         */
         export interface SOTPValidate {
             remainingCodes: number;
         }
-        // interface fullName: nichandle.accessRestriction.SmsAccount.SmsAccount
+        /**
+         * Sms Two-Factor Authentication
+         * interface fullName: nichandle.accessRestriction.SmsAccount.SmsAccount
+         */
         export interface SmsAccount {
             creationDate: string;
             description: string;
@@ -1276,18 +1852,30 @@ export namespace nichandle {
             phoneNumber: string;
             status: nichandle.accessRestriction.SmsStatusEnum;
         }
-        // interface fullName: nichandle.accessRestriction.SmsCode.SmsCode
+        /**
+         * Send secret code
+         * interface fullName: nichandle.accessRestriction.SmsCode.SmsCode
+         */
         export interface SmsCode {
             challenge: string;
         }
-        // interface fullName: nichandle.accessRestriction.SmsSecret.SmsSecret
+        /**
+         * Describe secret key
+         * interface fullName: nichandle.accessRestriction.SmsSecret.SmsSecret
+         */
         export interface SmsSecret {
             id: number;
             remainingTry: number;
         }
-        // type fullname: nichandle.accessRestriction.SmsStatusEnum
+        /**
+         * Status of the Sms account
+         * type fullname: nichandle.accessRestriction.SmsStatusEnum
+         */
         export type SmsStatusEnum = "disabled" | "enabled" | "needCodeValidation" | "needEmailValidation"
-        // interface fullName: nichandle.accessRestriction.TOTPAccount.TOTPAccount
+        /**
+         * TOTP Two-Factor Authentication
+         * interface fullName: nichandle.accessRestriction.TOTPAccount.TOTPAccount
+         */
         export interface TOTPAccount {
             creationDate: string;
             description: string;
@@ -1295,15 +1883,24 @@ export namespace nichandle {
             lastUsedDate?: string;
             status: nichandle.accessRestriction.TOTPStatusEnum;
         }
-        // interface fullName: nichandle.accessRestriction.TOTPSecret.TOTPSecret
+        /**
+         * Describe TOTP secret keys
+         * interface fullName: nichandle.accessRestriction.TOTPSecret.TOTPSecret
+         */
         export interface TOTPSecret {
             id: number;
             qrcodeHelper: string;
             secret: string;
         }
-        // type fullname: nichandle.accessRestriction.TOTPStatusEnum
+        /**
+         * Status of TOTP account
+         * type fullname: nichandle.accessRestriction.TOTPStatusEnum
+         */
         export type TOTPStatusEnum = "disabled" | "enabled" | "needCodeValidation" | "needEmailValidation"
-        // interface fullName: nichandle.accessRestriction.U2FAccount.U2FAccount
+        /**
+         * U2F Two-Factor Authentication
+         * interface fullName: nichandle.accessRestriction.U2FAccount.U2FAccount
+         */
         export interface U2FAccount {
             creationDate: string;
             description: string;
@@ -1311,43 +1908,70 @@ export namespace nichandle {
             lastUsedDate?: string;
             status: nichandle.accessRestriction.U2FStatusEnum;
         }
-        // interface fullName: nichandle.accessRestriction.U2FRegisterChallenge.U2FRegisterChallenge
+        /**
+         * U2F Register Request
+         * interface fullName: nichandle.accessRestriction.U2FRegisterChallenge.U2FRegisterChallenge
+         */
         export interface U2FRegisterChallenge {
             applicationId: string;
             id: number;
             request: nichandle.accessRestriction.U2FRegistrationRequest;
         }
-        // interface fullName: nichandle.accessRestriction.U2FRegistrationRequest.U2FRegistrationRequest
+        /**
+         * Describe U2F RegistrationRequest
+         * interface fullName: nichandle.accessRestriction.U2FRegistrationRequest.U2FRegistrationRequest
+         */
         export interface U2FRegistrationRequest {
             challenge: string;
             version: string;
         }
-        // interface fullName: nichandle.accessRestriction.U2FSignChallenge.U2FSignChallenge
+        /**
+         * U2F Register Request
+         * interface fullName: nichandle.accessRestriction.U2FSignChallenge.U2FSignChallenge
+         */
         export interface U2FSignChallenge {
             applicationId: string;
             request: nichandle.accessRestriction.U2FSignRequest;
         }
-        // interface fullName: nichandle.accessRestriction.U2FSignRequest.U2FSignRequest
+        /**
+         * Describe U2F SignRequest
+         * interface fullName: nichandle.accessRestriction.U2FSignRequest.U2FSignRequest
+         */
         export interface U2FSignRequest {
             challenge: string;
             keyHandle: string;
             version: string;
         }
-        // type fullname: nichandle.accessRestriction.U2FStatusEnum
+        /**
+         * Status of U2F account
+         * type fullname: nichandle.accessRestriction.U2FStatusEnum
+         */
         export type U2FStatusEnum = "disabled" | "enabled" | "needCodeValidation"
     }
     export namespace changeContact {
-        // type fullname: nichandle.changeContact.ContactTypeEnum
+        /**
+         * Allowed types of contact who can be changed by change contact task
+         * type fullname: nichandle.changeContact.ContactTypeEnum
+         */
         export type ContactTypeEnum = "contactAdmin" | "contactBilling" | "contactTech"
-        // type fullname: nichandle.changeContact.TaskStateEnum
+        /**
+         * State of contact change task
+         * type fullname: nichandle.changeContact.TaskStateEnum
+         */
         export type TaskStateEnum = "aborted" | "checkValidity" | "doing" | "done" | "error" | "expired" | "refused" | "todo" | "validatingByCustomers"
     }
     export namespace changeEmail {
-        // type fullname: nichandle.changeEmail.TaskStateEnum
+        /**
+         * State of email change task
+         * type fullname: nichandle.changeEmail.TaskStateEnum
+         */
         export type TaskStateEnum = "aborted" | "done" | "refused" | "todo"
     }
     export namespace contactChange {
-        // interface fullName: nichandle.contactChange.Task.Task
+        /**
+         * Task running a contact change on a service
+         * interface fullName: nichandle.contactChange.Task.Task
+         */
         export interface Task {
             askingAccount?: string;
             contactTypes: nichandle.changeContact.ContactTypeEnum[];
@@ -1361,7 +1985,10 @@ export namespace nichandle {
         }
     }
     export namespace document {
-        // interface fullName: nichandle.document.Document.Document
+        /**
+         * List of documents added on your account
+         * interface fullName: nichandle.document.Document.Document
+         */
         export interface Document {
             creationDate: string;
             expirationDate?: string;
@@ -1375,7 +2002,10 @@ export namespace nichandle {
         }
     }
     export namespace emailChange {
-        // interface fullName: nichandle.emailChange.Task.Task
+        /**
+         * Task running an email change on an account
+         * interface fullName: nichandle.emailChange.Task.Task
+         */
         export interface Task {
             dateDone?: string;
             dateRequest: string;
@@ -1384,19 +2014,28 @@ export namespace nichandle {
             state: nichandle.changeEmail.TaskStateEnum;
         }
     }
-    // interface fullName: nichandle.emailNotification.emailNotification
+    /**
+     * Email notification
+     * interface fullName: nichandle.emailNotification.emailNotification
+     */
     export interface emailNotification {
         body: string;
         date: string;
         id: number;
         subject: string;
     }
-    // interface fullName: nichandle.ipxe.ipxe
+    /**
+     * Customer IPXE scripts
+     * interface fullName: nichandle.ipxe.ipxe
+     */
     export interface ipxe {
         name: string;
         script: string;
     }
-    // interface fullName: nichandle.sshKey.sshKey
+    /**
+     * Customer public SSH key, can be used for rescue netboot or server access after reinstallation
+     * interface fullName: nichandle.sshKey.sshKey
+     */
     export interface sshKey {
         default: boolean;
         key: string;
@@ -1404,9 +2043,15 @@ export namespace nichandle {
     }
 }
 export namespace order {
-    // type fullname: order.CurrencyCodeEnum
+    /**
+     * Currency code
+     * type fullname: order.CurrencyCodeEnum
+     */
     export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
-    // interface fullName: order.Price.Price
+    /**
+     * Price with its currency and textual representation
+     * interface fullName: order.Price.Price
+     */
     export interface Price {
         currencyCode: order.CurrencyCodeEnum;
         text: string;
@@ -1415,7 +2060,10 @@ export namespace order {
 }
 export namespace payment {
     export namespace method {
-        // interface fullName: payment.method.AvailablePaymentMethod.AvailablePaymentMethod
+        /**
+         * Available payment methods
+         * interface fullName: payment.method.AvailablePaymentMethod.AvailablePaymentMethod
+         */
         export interface AvailablePaymentMethod {
             icon: payment.method.Icon;
             integration: paymentmethodIntegrationType;
@@ -1424,17 +2072,26 @@ export namespace payment {
             registerable: boolean;
             registerableWithTransaction: boolean;
         }
-        // interface fullName: payment.method.Icon.Icon
+        /**
+         * Payment icon
+         * interface fullName: payment.method.Icon.Icon
+         */
         export interface Icon {
             data?: string;
             name?: string;
         }
-        // type fullname: payment.method.IntegrationType
+        /**
+         * Payment method integration type
+         * type fullname: payment.method.IntegrationType
+         */
         export type IntegrationType = "DONE" | "IFRAME_VANTIV" | "IN_CONTEXT" | "REDIRECT"
     }
 }
 export namespace xander {
-    // type fullname: xander.ContactFieldEnum
+    /**
+     * Available contact fields
+     * type fullname: xander.ContactFieldEnum
+     */
     export type ContactFieldEnum = "address.city" | "address.country" | "address.line1" | "address.line2" | "address.line3" | "address.otherDetails" | "address.province" | "address.zip" | "birthCity" | "birthCountry" | "birthDay" | "birthZip" | "cellPhone" | "companyNationalIdentificationNumber" | "email" | "fax" | "firstName" | "gender" | "language" | "lastName" | "legalForm" | "nationalIdentificationNumber" | "nationality" | "organisationName" | "organisationType" | "phone" | "spareEmail" | "vat"
 }
 
@@ -1446,576 +2103,1529 @@ export function proxyMe(ovhEngine: OvhRequestable): Me {
 }
 export default proxyMe;
 /**
- * Api Proxy model
- */// Apis harmony
-// path /me
+ * Api model for /me
+ */
 export interface Me {
-    // GET /me
+    /**
+     * Get this object properties
+     * GET /me
+     */
     $get(): Promise<nichandle.Nichandle>;
-    // PUT /me
+    /**
+     * Alter this object properties
+     * PUT /me
+     */
     $put(params?: { address?: string, area?: string, birthCity?: string, birthDay?: string, city?: string, companyNationalIdentificationNumber?: string, corporationType?: string, country?: nichandle.CountryEnum, currency?: nichandle.Currency, customerCode?: string, email?: string, fax?: string, firstname?: string, italianSDI?: string, language?: nichandle.LanguageEnum, legalform?: nichandle.LegalFormEnum, name?: string, nationalIdentificationNumber?: string, nichandle?: string, organisation?: string, ovhCompany?: nichandle.OvhCompanyEnum, ovhSubsidiary?: nichandle.OvhSubsidiaryEnum, phone?: string, phoneCountry?: nichandle.CountryEnum, sex?: nichandle.GenderEnum, spareEmail?: string, state?: nichandle.StateEnum, vat?: string, zip?: string }): Promise<void>;
+    /**
+     * Controle cache
+     */
+    $cache(param?: ICacheOptions): Promise<any>;
     accessRestriction: {
         backupCode: {
-            // DELETE /me/accessRestriction/backupCode
+            /**
+             * Delete this Two-Factor
+             * DELETE /me/accessRestriction/backupCode
+             */
             $delete(): Promise<void>;
-            // GET /me/accessRestriction/backupCode
+            /**
+             * Get this object properties
+             * GET /me/accessRestriction/backupCode
+             */
             $get(): Promise<nichandle.accessRestriction.SOTPAccount>;
-            // POST /me/accessRestriction/backupCode
+            /**
+             * Add a SOTP access restriction
+             * POST /me/accessRestriction/backupCode
+             */
             $post(): Promise<nichandle.accessRestriction.SOTPSecret>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             disable: {
-                // POST /me/accessRestriction/backupCode/disable
+                /**
+                 * Disable this SOTP account
+                 * POST /me/accessRestriction/backupCode/disable
+                 */
                 $post(params: { code: string }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             enable: {
-                // POST /me/accessRestriction/backupCode/enable
+                /**
+                 * Enable this SOTP account
+                 * POST /me/accessRestriction/backupCode/enable
+                 */
                 $post(params: { code: string }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             validate: {
-                // POST /me/accessRestriction/backupCode/validate
+                /**
+                 * Validate your SOTP account
+                 * POST /me/accessRestriction/backupCode/validate
+                 */
                 $post(params: { code: string }): Promise<nichandle.accessRestriction.SOTPValidate>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         }
         developerMode: {
-            // GET /me/accessRestriction/developerMode
+            /**
+             * Get this object properties
+             * GET /me/accessRestriction/developerMode
+             */
             $get(): Promise<nichandle.DeveloperModeRestriction>;
-            // PUT /me/accessRestriction/developerMode
+            /**
+             * Alter this object properties
+             * PUT /me/accessRestriction/developerMode
+             */
             $put(params?: { enabled?: boolean }): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         ip: {
-            // GET /me/accessRestriction/ip
+            /**
+             * List of IP restrictions
+             * GET /me/accessRestriction/ip
+             */
             $get(): Promise<number[]>;
-            // POST /me/accessRestriction/ip
+            /**
+             * Add an IP access restriction
+             * POST /me/accessRestriction/ip
+             */
             $post(params: { ip: string, rule: nichandle.accessRestriction.IpRestrictionRuleEnum, warning: boolean }): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(id: number): {
-                // DELETE /me/accessRestriction/ip/{id}
+                /**
+                 * Delete this restriction rule
+                 * DELETE /me/accessRestriction/ip/{id}
+                 */
                 $delete(): Promise<void>;
-                // GET /me/accessRestriction/ip/{id}
+                /**
+                 * Get this object properties
+                 * GET /me/accessRestriction/ip/{id}
+                 */
                 $get(): Promise<nichandle.IpRestriction>;
-                // PUT /me/accessRestriction/ip/{id}
+                /**
+                 * Alter this object properties
+                 * PUT /me/accessRestriction/ip/{id}
+                 */
                 $put(params?: { id?: number, ip?: string, rule?: nichandle.accessRestriction.IpRestrictionRuleEnum, warning?: boolean }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             };
         }
         ipDefaultRule: {
-            // GET /me/accessRestriction/ipDefaultRule
+            /**
+             * Get this object properties
+             * GET /me/accessRestriction/ipDefaultRule
+             */
             $get(): Promise<nichandle.IpRestrictionDefaultRule>;
-            // PUT /me/accessRestriction/ipDefaultRule
+            /**
+             * Alter this object properties
+             * PUT /me/accessRestriction/ipDefaultRule
+             */
             $put(params?: { rule?: nichandle.accessRestriction.IpRestrictionRuleEnum, warning?: boolean }): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         sms: {
-            // GET /me/accessRestriction/sms
+            /**
+             * List of Sms accounts
+             * GET /me/accessRestriction/sms
+             */
             $get(): Promise<number[]>;
-            // POST /me/accessRestriction/sms
+            /**
+             * Add a SMS access restriction
+             * POST /me/accessRestriction/sms
+             */
             $post(params: { phone: string }): Promise<nichandle.accessRestriction.SmsSecret>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(id: number): {
-                // DELETE /me/accessRestriction/sms/{id}
+                /**
+                 * Delete this Two-Factor
+                 * DELETE /me/accessRestriction/sms/{id}
+                 */
                 $delete(): Promise<void>;
-                // GET /me/accessRestriction/sms/{id}
+                /**
+                 * Get this object properties
+                 * GET /me/accessRestriction/sms/{id}
+                 */
                 $get(): Promise<nichandle.accessRestriction.SmsAccount>;
-                // PUT /me/accessRestriction/sms/{id}
+                /**
+                 * Alter this object properties
+                 * PUT /me/accessRestriction/sms/{id}
+                 */
                 $put(params?: { creationDate?: string, description?: string, id?: number, lastUsedDate?: string, phoneNumber?: string, status?: nichandle.accessRestriction.SmsStatusEnum }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 disable: {
-                    // POST /me/accessRestriction/sms/{id}/disable
+                    /**
+                     * Disable this SMS account
+                     * POST /me/accessRestriction/sms/{id}/disable
+                     */
                     $post(params: { code: string }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 enable: {
-                    // POST /me/accessRestriction/sms/{id}/enable
+                    /**
+                     * Enable this SMS account
+                     * POST /me/accessRestriction/sms/{id}/enable
+                     */
                     $post(params: { code: string }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 sendCode: {
-                    // POST /me/accessRestriction/sms/{id}/sendCode
+                    /**
+                     * Send a SMS to this account
+                     * POST /me/accessRestriction/sms/{id}/sendCode
+                     */
                     $post(): Promise<nichandle.accessRestriction.SmsCode>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 validate: {
-                    // POST /me/accessRestriction/sms/{id}/validate
+                    /**
+                     * Validate your SMS account
+                     * POST /me/accessRestriction/sms/{id}/validate
+                     */
                     $post(params: { code: string }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             };
         }
         totp: {
-            // GET /me/accessRestriction/totp
+            /**
+             * List of TOTP accounts
+             * GET /me/accessRestriction/totp
+             */
             $get(): Promise<number[]>;
-            // POST /me/accessRestriction/totp
+            /**
+             * Add a TOTP access restriction
+             * POST /me/accessRestriction/totp
+             */
             $post(): Promise<nichandle.accessRestriction.TOTPSecret>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(id: number): {
-                // DELETE /me/accessRestriction/totp/{id}
+                /**
+                 * Delete this Two-Factor
+                 * DELETE /me/accessRestriction/totp/{id}
+                 */
                 $delete(): Promise<void>;
-                // GET /me/accessRestriction/totp/{id}
+                /**
+                 * Get this object properties
+                 * GET /me/accessRestriction/totp/{id}
+                 */
                 $get(): Promise<nichandle.accessRestriction.TOTPAccount>;
-                // PUT /me/accessRestriction/totp/{id}
+                /**
+                 * Alter this object properties
+                 * PUT /me/accessRestriction/totp/{id}
+                 */
                 $put(params?: { creationDate?: string, description?: string, id?: number, lastUsedDate?: string, status?: nichandle.accessRestriction.TOTPStatusEnum }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 disable: {
-                    // POST /me/accessRestriction/totp/{id}/disable
+                    /**
+                     * Disable this TOTP account
+                     * POST /me/accessRestriction/totp/{id}/disable
+                     */
                     $post(params: { code: string }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 enable: {
-                    // POST /me/accessRestriction/totp/{id}/enable
+                    /**
+                     * Enable this TOTP account
+                     * POST /me/accessRestriction/totp/{id}/enable
+                     */
                     $post(params: { code: string }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 validate: {
-                    // POST /me/accessRestriction/totp/{id}/validate
+                    /**
+                     * Validate your TOTP account
+                     * POST /me/accessRestriction/totp/{id}/validate
+                     */
                     $post(params: { code: string }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             };
         }
         u2f: {
-            // GET /me/accessRestriction/u2f
+            /**
+             * List of U2F accounts
+             * GET /me/accessRestriction/u2f
+             */
             $get(): Promise<number[]>;
-            // POST /me/accessRestriction/u2f
+            /**
+             * Add a U2F access restriction
+             * POST /me/accessRestriction/u2f
+             */
             $post(): Promise<nichandle.accessRestriction.U2FRegisterChallenge>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(id: number): {
-                // DELETE /me/accessRestriction/u2f/{id}
+                /**
+                 * Delete this Two-Factor
+                 * DELETE /me/accessRestriction/u2f/{id}
+                 */
                 $delete(): Promise<void>;
-                // GET /me/accessRestriction/u2f/{id}
+                /**
+                 * Get this object properties
+                 * GET /me/accessRestriction/u2f/{id}
+                 */
                 $get(): Promise<nichandle.accessRestriction.U2FAccount>;
-                // PUT /me/accessRestriction/u2f/{id}
+                /**
+                 * Alter this object properties
+                 * PUT /me/accessRestriction/u2f/{id}
+                 */
                 $put(params?: { creationDate?: string, description?: string, id?: number, lastUsedDate?: string, status?: nichandle.accessRestriction.U2FStatusEnum }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 challenge: {
-                    // POST /me/accessRestriction/u2f/{id}/challenge
+                    /**
+                     * Get an U2F Challenge
+                     * POST /me/accessRestriction/u2f/{id}/challenge
+                     */
                     $post(): Promise<nichandle.accessRestriction.U2FSignChallenge>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 disable: {
-                    // POST /me/accessRestriction/u2f/{id}/disable
+                    /**
+                     * Disable this U2F account
+                     * POST /me/accessRestriction/u2f/{id}/disable
+                     */
                     $post(params: { clientData: string, signatureData: string }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 enable: {
-                    // POST /me/accessRestriction/u2f/{id}/enable
+                    /**
+                     * Enable this U2F account
+                     * POST /me/accessRestriction/u2f/{id}/enable
+                     */
                     $post(params: { clientData: string, signatureData: string }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 validate: {
-                    // POST /me/accessRestriction/u2f/{id}/validate
+                    /**
+                     * Validate your U2F account
+                     * POST /me/accessRestriction/u2f/{id}/validate
+                     */
                     $post(params: { clientData: string, registrationData: string }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             };
         }
     }
     agreements: {
-        // GET /me/agreements
+        /**
+         * List of contracts signed between you and OVH
+         * GET /me/agreements
+         */
         $get(params?: { agreed?: agreements.AgreementStateEnum, contractId?: number }): Promise<number[]>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         $(id: number): {
-            // GET /me/agreements/{id}
+            /**
+             * Get this object properties
+             * GET /me/agreements/{id}
+             */
             $get(): Promise<agreements.ContractAgreement>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             accept: {
-                // POST /me/agreements/{id}/accept
+                /**
+                 * Accept this contract
+                 * POST /me/agreements/{id}/accept
+                 */
                 $post(): Promise<string>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             contract: {
-                // GET /me/agreements/{id}/contract
+                /**
+                 * Get this object properties
+                 * GET /me/agreements/{id}/contract
+                 */
                 $get(): Promise<agreements.Contract>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         };
     }
     api: {
         application: {
-            // GET /me/api/application
+            /**
+             * List of your Api Application
+             * GET /me/api/application
+             */
             $get(): Promise<number[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(applicationId: number): {
-                // DELETE /me/api/application/{applicationId}
+                /**
+                 * Remove this application. It will revoke all credential belonging to this application.
+                 * DELETE /me/api/application/{applicationId}
+                 */
                 $delete(): Promise<void>;
-                // GET /me/api/application/{applicationId}
+                /**
+                 * Get this object properties
+                 * GET /me/api/application/{applicationId}
+                 */
                 $get(): Promise<api.Application>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             };
         }
         credential: {
-            // GET /me/api/credential
+            /**
+             * List of your Api Credentials
+             * GET /me/api/credential
+             */
             $get(params?: { applicationId?: number, status?: auth.CredentialStateEnum }): Promise<number[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(credentialId: number): {
-                // DELETE /me/api/credential/{credentialId}
+                /**
+                 * Remove this credential
+                 * DELETE /me/api/credential/{credentialId}
+                 */
                 $delete(): Promise<void>;
-                // GET /me/api/credential/{credentialId}
+                /**
+                 * Get this object properties
+                 * GET /me/api/credential/{credentialId}
+                 */
                 $get(): Promise<api.Credential>;
-                // PUT /me/api/credential/{credentialId}
+                /**
+                 * Alter this object properties
+                 * PUT /me/api/credential/{credentialId}
+                 */
                 $put(params?: { allowedIPs?: string[], applicationId?: number, creation?: string, credentialId?: number, expiration?: string, lastUse?: string, ovhSupport?: boolean, rules?: auth.AccessRule[], status?: auth.CredentialStateEnum }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 application: {
-                    // GET /me/api/credential/{credentialId}/application
+                    /**
+                     * Get this object properties
+                     * GET /me/api/credential/{credentialId}/application
+                     */
                     $get(): Promise<api.Application>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             };
         }
     }
     autorenew: {
-        // GET /me/autorenew
+        /**
+         * Get this object properties
+         * GET /me/autorenew
+         */
         $get(): Promise<nichandle.NicAutorenewInfos>;
-        // POST /me/autorenew
+        /**
+         * Activate auto renew for this nic
+         * POST /me/autorenew
+         */
         $post(params: { renewDay: number }): Promise<void>;
-        // PUT /me/autorenew
+        /**
+         * Alter this object properties
+         * PUT /me/autorenew
+         */
         $put(params?: { active?: boolean, lastRenew?: string, renewDay?: number }): Promise<void>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
     }
     availableAutomaticPaymentMeans: {
-        // GET /me/availableAutomaticPaymentMeans
+        /**
+         * List available payment methods in this Nic's country
+         * GET /me/availableAutomaticPaymentMeans
+         */
         $get(): Promise<billing.AutomaticPaymentMean>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
     }
     bill: {
-        // GET /me/bill
+        /**
+         * List of all the bills the logged account has
+         * GET /me/bill
+         */
         $get(params?: { date_from?: string, date_to?: string, orderId?: number }): Promise<string[]>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         $(billId: string): {
-            // GET /me/bill/{billId}
+            /**
+             * Get this object properties
+             * GET /me/bill/{billId}
+             */
             $get(): Promise<billing.Bill>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             debt: {
-                // GET /me/bill/{billId}/debt
+                /**
+                 * Get this object properties
+                 * GET /me/bill/{billId}/debt
+                 */
                 $get(): Promise<debt.Debt>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 operation: {
-                    // GET /me/bill/{billId}/debt/operation
+                    /**
+                     * All operations related to these debts
+                     * GET /me/bill/{billId}/debt/operation
+                     */
                     $get(params?: { depositOrderId?: number }): Promise<number[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     $(operationId: number): {
-                        // GET /me/bill/{billId}/debt/operation/{operationId}
+                        /**
+                         * Get this object properties
+                         * GET /me/bill/{billId}/debt/operation/{operationId}
+                         */
                         $get(): Promise<debt.Operation>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         associatedObject: {
-                            // GET /me/bill/{billId}/debt/operation/{operationId}/associatedObject
+                            /**
+                             * Return main data about the object related to this debt operation
+                             * GET /me/bill/{billId}/debt/operation/{operationId}/associatedObject
+                             */
                             $get(): Promise<debt.entry.AssociatedObject>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         }
                     };
                 }
                 pay: {
-                    // POST /me/bill/{billId}/debt/pay
+                    /**
+                     * Create an order in order to pay this order's debt
+                     * POST /me/bill/{billId}/debt/pay
+                     */
                     $post(): Promise<billing.Order>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             }
             details: {
-                // GET /me/bill/{billId}/details
+                /**
+                 * Give access to all entries of the bill
+                 * GET /me/bill/{billId}/details
+                 */
                 $get(): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(billDetailId: string): {
-                    // GET /me/bill/{billId}/details/{billDetailId}
+                    /**
+                     * Get this object properties
+                     * GET /me/bill/{billId}/details/{billDetailId}
+                     */
                     $get(): Promise<billing.BillDetail>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 };
             }
             payment: {
-                // GET /me/bill/{billId}/payment
+                /**
+                 * Get this object properties
+                 * GET /me/bill/{billId}/payment
+                 */
                 $get(): Promise<billing.Payment>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         };
     }
     billing: {
         group: {
-            // GET /me/billing/group
+            /**
+             * Retrieve all billing groups
+             * GET /me/billing/group
+             */
             $get(params?: { name?: string }): Promise<number[]>;
-            // POST /me/billing/group
+            /**
+             * Create a new billing group
+             * POST /me/billing/group
+             */
             $post(params?: { contactId?: number, creationDate?: string, groupId?: number, lastUpdate?: string, name?: string, paymentMethodId?: number }): Promise<me.billing.group.BillingGroup>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(groupId: number): {
-                // DELETE /me/billing/group/{groupId}
+                /**
+                 * Delete a billing group
+                 * DELETE /me/billing/group/{groupId}
+                 */
                 $delete(): Promise<void>;
-                // GET /me/billing/group/{groupId}
+                /**
+                 * Retrieve information about a billing group
+                 * GET /me/billing/group/{groupId}
+                 */
                 $get(): Promise<me.billing.group.BillingGroup>;
-                // PUT /me/billing/group/{groupId}
+                /**
+                 * Edit billing group
+                 * PUT /me/billing/group/{groupId}
+                 */
                 $put(params?: { contactId?: number, creationDate?: string, groupId?: number, lastUpdate?: string, name?: string, paymentMethodId?: number }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 service: {
-                    // GET /me/billing/group/{groupId}/service
+                    /**
+                     * Retrieve billing group service ID list
+                     * GET /me/billing/group/{groupId}/service
+                     */
                     $get(): Promise<number[]>;
-                    // POST /me/billing/group/{groupId}/service
+                    /**
+                     * Associate a service to a billing group
+                     * POST /me/billing/group/{groupId}/service
+                     */
                     $post(params: { serviceId: number }): Promise<me.billing.group.Service>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     $(serviceId: number): {
-                        // DELETE /me/billing/group/{groupId}/service/{serviceId}
+                        /**
+                         * Unlink a service from a billing group
+                         * DELETE /me/billing/group/{groupId}/service/{serviceId}
+                         */
                         $delete(): Promise<void>;
-                        // GET /me/billing/group/{groupId}/service/{serviceId}
+                        /**
+                         * Retrieve information about a billing group service
+                         * GET /me/billing/group/{groupId}/service/{serviceId}
+                         */
                         $get(): Promise<me.billing.group.Service>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     };
                 }
             };
         }
     }
     certificates: {
-        // GET /me/certificates
+        /**
+         * Get all certificates of the account
+         * GET /me/certificates
+         */
         $get(params?: { name?: string }): Promise<string[]>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
     }
     changeEmail: {
-        // POST /me/changeEmail
+        /**
+         * Initiate an email change procedure
+         * POST /me/changeEmail
+         */
         $post(params: { newEmail: string }): Promise<nichandle.emailChange.Task>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
     }
     changePassword: {
-        // POST /me/changePassword
+        /**
+         * Initiate a password change procedure
+         * POST /me/changePassword
+         */
         $post(): Promise<void>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
     }
     consent: {
-        // GET /me/consent
+        /**
+         * List all consent campaign available
+         * GET /me/consent
+         */
         $get(): Promise<me.consent.Campaign[]>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         $(campaignName: string): {
-            // GET /me/consent/{campaignName}
+            /**
+             * Retrieve information about a consent campaign
+             * GET /me/consent/{campaignName}
+             */
             $get(): Promise<me.consent.Campaign>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             decision: {
-                // GET /me/consent/{campaignName}/decision
+                /**
+                 * Get decision value for a consent campaign
+                 * GET /me/consent/{campaignName}/decision
+                 */
                 $get(): Promise<me.consent.Consent>;
-                // PUT /me/consent/{campaignName}/decision
+                /**
+                 * Update decision of a consent campaign
+                 * PUT /me/consent/{campaignName}/decision
+                 */
                 $put(params: { value: boolean }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         };
     }
     consumption: {
         usage: {
             current: {
-                // GET /me/consumption/usage/current
+                /**
+                 * Get on-going consumptions for all services
+                 * GET /me/consumption/usage/current
+                 */
                 $get(): Promise<me.consumption.Transaction[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             forecast: {
-                // GET /me/consumption/usage/forecast
+                /**
+                 * Get forecasted consumptions for all services
+                 * GET /me/consumption/usage/forecast
+                 */
                 $get(): Promise<me.consumption.Transaction[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             history: {
-                // GET /me/consumption/usage/history
+                /**
+                 * Get list of transactions between two dates
+                 * GET /me/consumption/usage/history
+                 */
                 $get(params: { beginDate: string, endDate: string }): Promise<me.consumption.Transaction[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         }
     }
     contact: {
-        // GET /me/contact
+        /**
+         * Retrieve all contact that you created
+         * GET /me/contact
+         */
         $get(): Promise<number[]>;
-        // POST /me/contact
+        /**
+         * Create a new contact
+         * POST /me/contact
+         */
         $post(params: { address: contact.Address, birthCity?: string, birthCountry?: nichandle.CountryEnum, birthDay?: string, birthZip?: string, cellPhone?: string, companyNationalIdentificationNumber?: string, email: string, fax?: string, firstName: string, gender?: nichandle.GenderEnum, language: nichandle.LanguageEnum, lastName: string, legalForm: nichandle.LegalFormEnum, nationalIdentificationNumber?: string, nationality?: nichandle.CountryEnum, organisationName?: string, organisationType?: string, phone: string, vat?: string }): Promise<contact.Contact>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         $(contactId: number): {
-            // GET /me/contact/{contactId}
+            /**
+             * Retrieve information about a contact
+             * GET /me/contact/{contactId}
+             */
             $get(): Promise<contact.Contact>;
-            // PUT /me/contact/{contactId}
+            /**
+             * Update an existing contact
+             * PUT /me/contact/{contactId}
+             */
             $put(params?: { address?: contact.Address, birthCity?: string, birthCountry?: nichandle.CountryEnum, birthDay?: string, birthZip?: string, cellPhone?: string, companyNationalIdentificationNumber?: string, email?: string, fax?: string, firstName?: string, gender?: nichandle.GenderEnum, language?: nichandle.LanguageEnum, lastName?: string, legalForm?: nichandle.LegalFormEnum, nationalIdentificationNumber?: string, nationality?: nichandle.CountryEnum, organisationName?: string, organisationType?: string, phone?: string, vat?: string }): Promise<contact.Contact>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             fields: {
-                // GET /me/contact/{contactId}/fields
+                /**
+                 * Display mandatory/read-only informations of a contact
+                 * GET /me/contact/{contactId}/fields
+                 */
                 $get(): Promise<contact.FieldInformation[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         };
     }
     credit: {
         balance: {
-            // GET /me/credit/balance
+            /**
+             * Retrieve all credit balances
+             * GET /me/credit/balance
+             */
             $get(params?: { type?: me.credit.balance.TypeEnum }): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(balanceName: string): {
-                // GET /me/credit/balance/{balanceName}
+                /**
+                 * Retrieve a credit balance
+                 * GET /me/credit/balance/{balanceName}
+                 */
                 $get(): Promise<me.credit.Balance>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 movement: {
-                    // GET /me/credit/balance/{balanceName}/movement
+                    /**
+                     * Retrieve movements for a specific balance
+                     * GET /me/credit/balance/{balanceName}/movement
+                     */
                     $get(): Promise<number[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     $(movementId: number): {
-                        // GET /me/credit/balance/{balanceName}/movement/{movementId}
+                        /**
+                         * Retrieve a specific movement for a credit balance
+                         * GET /me/credit/balance/{balanceName}/movement/{movementId}
+                         */
                         $get(): Promise<me.credit.balance.Movement>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     };
                 }
             };
         }
         code: {
-            // POST /me/credit/code
+            /**
+             * Validate a code to generate associated credit movement
+             * POST /me/credit/code
+             */
             $post(params: { inputCode: string, serviceId?: number }): Promise<me.credit.balance.Movement>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
     }
     debtAccount: {
-        // GET /me/debtAccount
+        /**
+         * Get this object properties
+         * GET /me/debtAccount
+         */
         $get(): Promise<debt.Balance>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         debt: {
-            // GET /me/debtAccount/debt
+            /**
+             * All debts related to your account
+             * GET /me/debtAccount/debt
+             */
             $get(): Promise<number[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(debtId: number): {
-                // GET /me/debtAccount/debt/{debtId}
+                /**
+                 * Get this object properties
+                 * GET /me/debtAccount/debt/{debtId}
+                 */
                 $get(): Promise<debt.Debt>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 operation: {
-                    // GET /me/debtAccount/debt/{debtId}/operation
+                    /**
+                     * All operations related to these debts
+                     * GET /me/debtAccount/debt/{debtId}/operation
+                     */
                     $get(params?: { depositOrderId?: number }): Promise<number[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     $(operationId: number): {
-                        // GET /me/debtAccount/debt/{debtId}/operation/{operationId}
+                        /**
+                         * Get this object properties
+                         * GET /me/debtAccount/debt/{debtId}/operation/{operationId}
+                         */
                         $get(): Promise<debt.Operation>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         associatedObject: {
-                            // GET /me/debtAccount/debt/{debtId}/operation/{operationId}/associatedObject
+                            /**
+                             * Return main data about the object related to this debt operation
+                             * GET /me/debtAccount/debt/{debtId}/operation/{operationId}/associatedObject
+                             */
                             $get(): Promise<debt.entry.AssociatedObject>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         }
                     };
                 }
                 pay: {
-                    // POST /me/debtAccount/debt/{debtId}/pay
+                    /**
+                     * Create an order in order to pay this order's debt
+                     * POST /me/debtAccount/debt/{debtId}/pay
+                     */
                     $post(): Promise<billing.Order>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             };
         }
         pay: {
-            // POST /me/debtAccount/pay
+            /**
+             * Create an order in order to pay all your due debts
+             * POST /me/debtAccount/pay
+             */
             $post(): Promise<billing.Order>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
     }
     deposit: {
-        // GET /me/deposit
+        /**
+         * List of all the deposits made to your prepaid account or debt account
+         * GET /me/deposit
+         */
         $get(params?: { date_from?: string, date_to?: string, orderId?: number }): Promise<string[]>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         $(depositId: string): {
-            // GET /me/deposit/{depositId}
+            /**
+             * Get this object properties
+             * GET /me/deposit/{depositId}
+             */
             $get(): Promise<billing.Deposit>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             details: {
-                // GET /me/deposit/{depositId}/details
+                /**
+                 * Give access to all entries of this deposit
+                 * GET /me/deposit/{depositId}/details
+                 */
                 $get(): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(depositDetailId: string): {
-                    // GET /me/deposit/{depositId}/details/{depositDetailId}
+                    /**
+                     * Get this object properties
+                     * GET /me/deposit/{depositId}/details/{depositDetailId}
+                     */
                     $get(): Promise<billing.DepositDetail>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 };
             }
             paidBills: {
-                // GET /me/deposit/{depositId}/paidBills
+                /**
+                 * Get invoices paid by this deposit
+                 * GET /me/deposit/{depositId}/paidBills
+                 */
                 $get(): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(billId: string): {
-                    // GET /me/deposit/{depositId}/paidBills/{billId}
+                    /**
+                     * Get this object properties
+                     * GET /me/deposit/{depositId}/paidBills/{billId}
+                     */
                     $get(): Promise<billing.Bill>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     debt: {
-                        // GET /me/deposit/{depositId}/paidBills/{billId}/debt
+                        /**
+                         * Get this object properties
+                         * GET /me/deposit/{depositId}/paidBills/{billId}/debt
+                         */
                         $get(): Promise<debt.Debt>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         operation: {
-                            // GET /me/deposit/{depositId}/paidBills/{billId}/debt/operation
+                            /**
+                             * All operations related to these debts
+                             * GET /me/deposit/{depositId}/paidBills/{billId}/debt/operation
+                             */
                             $get(params?: { depositOrderId?: number }): Promise<number[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                             $(operationId: number): {
-                                // GET /me/deposit/{depositId}/paidBills/{billId}/debt/operation/{operationId}
+                                /**
+                                 * Get this object properties
+                                 * GET /me/deposit/{depositId}/paidBills/{billId}/debt/operation/{operationId}
+                                 */
                                 $get(): Promise<debt.Operation>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions): Promise<any>;
                                 associatedObject: {
-                                    // GET /me/deposit/{depositId}/paidBills/{billId}/debt/operation/{operationId}/associatedObject
+                                    /**
+                                     * Return main data about the object related to this debt operation
+                                     * GET /me/deposit/{depositId}/paidBills/{billId}/debt/operation/{operationId}/associatedObject
+                                     */
                                     $get(): Promise<debt.entry.AssociatedObject>;
+                                    /**
+                                     * Controle cache
+                                     */
+                                    $cache(param?: ICacheOptions): Promise<any>;
                                 }
                             };
                         }
                         pay: {
-                            // POST /me/deposit/{depositId}/paidBills/{billId}/debt/pay
+                            /**
+                             * Create an order in order to pay this order's debt
+                             * POST /me/deposit/{depositId}/paidBills/{billId}/debt/pay
+                             */
                             $post(): Promise<billing.Order>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         }
                     }
                     details: {
-                        // GET /me/deposit/{depositId}/paidBills/{billId}/details
+                        /**
+                         * Give access to all entries of the bill
+                         * GET /me/deposit/{depositId}/paidBills/{billId}/details
+                         */
                         $get(): Promise<string[]>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         $(billDetailId: string): {
-                            // GET /me/deposit/{depositId}/paidBills/{billId}/details/{billDetailId}
+                            /**
+                             * Get this object properties
+                             * GET /me/deposit/{depositId}/paidBills/{billId}/details/{billDetailId}
+                             */
                             $get(): Promise<billing.BillDetail>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         };
                     }
                     payment: {
-                        // GET /me/deposit/{depositId}/paidBills/{billId}/payment
+                        /**
+                         * Get this object properties
+                         * GET /me/deposit/{depositId}/paidBills/{billId}/payment
+                         */
                         $get(): Promise<billing.Payment>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                 };
             }
             payment: {
-                // GET /me/deposit/{depositId}/payment
+                /**
+                 * Get this object properties
+                 * GET /me/deposit/{depositId}/payment
+                 */
                 $get(): Promise<billing.Payment>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         };
     }
     document: {
-        // GET /me/document
+        /**
+         * List of documents added in your account
+         * GET /me/document
+         */
         $get(): Promise<string[]>;
-        // POST /me/document
+        /**
+         * Create new document
+         * POST /me/document
+         */
         $post(params: { name: string, tags?: complexType.SafeKeyValue<string>[] }): Promise<nichandle.document.Document>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         cors: {
-            // POST /me/document/cors
+            /**
+             * Add CORS support on your container
+             * POST /me/document/cors
+             */
             $post(params: { origin: string }): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         $(id: string): {
-            // DELETE /me/document/{id}
+            /**
+             * Delete a document
+             * DELETE /me/document/{id}
+             */
             $delete(): Promise<void>;
-            // GET /me/document/{id}
+            /**
+             * Get this object properties
+             * GET /me/document/{id}
+             */
             $get(): Promise<nichandle.document.Document>;
-            // PUT /me/document/{id}
+            /**
+             * Alter this object properties
+             * PUT /me/document/{id}
+             */
             $put(params?: { creationDate?: string, expirationDate?: string, getUrl?: string, id?: string, name?: string, putUrl?: string, size?: number, tags?: complexType.SafeKeyValue<string>[], validationDate?: string }): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         };
     }
     fidelityAccount: {
-        // GET /me/fidelityAccount
+        /**
+         * Get this object properties
+         * GET /me/fidelityAccount
+         */
         $get(): Promise<billing.FidelityAccount>;
-        // PUT /me/fidelityAccount
+        /**
+         * Alter this object properties
+         * PUT /me/fidelityAccount
+         */
         $put(params?: { alertThreshold?: number, balance?: number, canBeCredited?: boolean, lastUpdate?: string, openDate?: string }): Promise<void>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         creditOrder: {
-            // POST /me/fidelityAccount/creditOrder
+            /**
+             * Generate an order that can be paid in order to credit the fidelity account
+             * POST /me/fidelityAccount/creditOrder
+             */
             $post(params: { amount: number }): Promise<billing.Order>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         movements: {
-            // GET /me/fidelityAccount/movements
+            /**
+             * List of entries of the fidelity account
+             * GET /me/fidelityAccount/movements
+             */
             $get(params?: { date_from?: string, date_to?: string }): Promise<number[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(movementId: number): {
-                // GET /me/fidelityAccount/movements/{movementId}
+                /**
+                 * Get this object properties
+                 * GET /me/fidelityAccount/movements/{movementId}
+                 */
                 $get(): Promise<billing.FidelityMovement>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             };
         }
     }
     geolocation: {
-        // POST /me/geolocation
+        /**
+         * Fetch visitor country & region
+         * POST /me/geolocation
+         */
         $post(): Promise<geolocation.ContinentCountryLocation>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
     }
     identity: {
         group: {
-            // GET /me/identity/group
+            /**
+             * Retrieve all groups of this account
+             * GET /me/identity/group
+             */
             $get(): Promise<string[]>;
-            // POST /me/identity/group
+            /**
+             * Create a new group
+             * POST /me/identity/group
+             */
             $post(params: { description?: string, name: string, role?: nichandle.RoleEnum }): Promise<nichandle.Authentication.Group>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(group: string): {
-                // DELETE /me/identity/group/{group}
+                /**
+                 * Delete this object
+                 * DELETE /me/identity/group/{group}
+                 */
                 $delete(): Promise<void>;
-                // GET /me/identity/group/{group}
+                /**
+                 * Get this object properties
+                 * GET /me/identity/group/{group}
+                 */
                 $get(): Promise<nichandle.Authentication.Group>;
-                // PUT /me/identity/group/{group}
+                /**
+                 * Alter a group
+                 * PUT /me/identity/group/{group}
+                 */
                 $put(params?: { description?: string, role?: nichandle.RoleEnum }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             };
         }
         user: {
-            // GET /me/identity/user
+            /**
+             * Retrieve all users of this account
+             * GET /me/identity/user
+             */
             $get(): Promise<string[]>;
-            // POST /me/identity/user
+            /**
+             * Create a new user
+             * POST /me/identity/user
+             */
             $post(params: { description?: string, email: string, group?: string, login: string, password: string }): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(user: string): {
-                // DELETE /me/identity/user/{user}
+                /**
+                 * Delete this object
+                 * DELETE /me/identity/user/{user}
+                 */
                 $delete(): Promise<void>;
-                // GET /me/identity/user/{user}
+                /**
+                 * Get this object properties
+                 * GET /me/identity/user/{user}
+                 */
                 $get(): Promise<nichandle.User>;
-                // PUT /me/identity/user/{user}
+                /**
+                 * Alter a user
+                 * PUT /me/identity/user/{user}
+                 */
                 $put(params?: { description?: string, email?: string, group?: string }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 disable: {
-                    // POST /me/identity/user/{user}/disable
+                    /**
+                     * Disable this user
+                     * POST /me/identity/user/{user}/disable
+                     */
                     $post(): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 enable: {
-                    // POST /me/identity/user/{user}/enable
+                    /**
+                     * Enable this user
+                     * POST /me/identity/user/{user}/enable
+                     */
                     $post(): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             };
         }
     }
     installationTemplate: {
-        // GET /me/installationTemplate
+        /**
+         * Your customized operating system installation templates
+         * GET /me/installationTemplate
+         */
         $get(): Promise<string[]>;
-        // POST /me/installationTemplate
+        /**
+         * Create a template
+         * POST /me/installationTemplate
+         */
         $post(params: { baseTemplateName: string, defaultLanguage: dedicated.TemplateOsLanguageEnum, name: string }): Promise<void>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         $(templateName: string): {
-            // DELETE /me/installationTemplate/{templateName}
+            /**
+             * remove this template
+             * DELETE /me/installationTemplate/{templateName}
+             */
             $delete(): Promise<void>;
-            // GET /me/installationTemplate/{templateName}
+            /**
+             * Get this object properties
+             * GET /me/installationTemplate/{templateName}
+             */
             $get(): Promise<dedicated.installationTemplate.Templates>;
-            // PUT /me/installationTemplate/{templateName}
+            /**
+             * Alter this object properties
+             * PUT /me/installationTemplate/{templateName}
+             */
             $put(params?: { availableLanguages?: dedicated.TemplateOsLanguageEnum[], beta?: boolean, bitFormat?: dedicated.server.BitFormatEnum, category?: dedicated.TemplateOsUsageEnum, customization?: dedicated.TemplateOsProperties, defaultLanguage?: dedicated.TemplateOsLanguageEnum, deprecated?: boolean, description?: string, distribution?: string, family?: dedicated.TemplateOsTypeEnum, filesystems?: dedicated.TemplateOsFileSystemEnum[], hardRaidConfiguration?: boolean, lastModification?: string, lvmReady?: boolean, supportsDistributionKernel?: boolean, supportsGptLabel?: boolean, supportsRTM?: boolean, supportsSqlServer?: boolean, supportsUEFI?: dedicated.server.SupportsUEFIEnum, templateName?: string }): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             checkIntegrity: {
-                // POST /me/installationTemplate/{templateName}/checkIntegrity
+                /**
+                 * Check the integrity of this template
+                 * POST /me/installationTemplate/{templateName}/checkIntegrity
+                 */
                 $post(): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             partitionScheme: {
-                // GET /me/installationTemplate/{templateName}/partitionScheme
+                /**
+                 * Partitioning schemes available on this template
+                 * GET /me/installationTemplate/{templateName}/partitionScheme
+                 */
                 $get(): Promise<string[]>;
-                // POST /me/installationTemplate/{templateName}/partitionScheme
+                /**
+                 * Add a scheme of partition
+                 * POST /me/installationTemplate/{templateName}/partitionScheme
+                 */
                 $post(params: { name: string, priority: number }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(schemeName: string): {
-                    // DELETE /me/installationTemplate/{templateName}/partitionScheme/{schemeName}
+                    /**
+                     * remove this scheme of partition
+                     * DELETE /me/installationTemplate/{templateName}/partitionScheme/{schemeName}
+                     */
                     $delete(): Promise<void>;
-                    // GET /me/installationTemplate/{templateName}/partitionScheme/{schemeName}
+                    /**
+                     * Get this object properties
+                     * GET /me/installationTemplate/{templateName}/partitionScheme/{schemeName}
+                     */
                     $get(): Promise<dedicated.installationTemplate.templatePartitioningSchemes>;
-                    // PUT /me/installationTemplate/{templateName}/partitionScheme/{schemeName}
+                    /**
+                     * Alter this object properties
+                     * PUT /me/installationTemplate/{templateName}/partitionScheme/{schemeName}
+                     */
                     $put(params?: { name?: string, priority?: number }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     hardwareRaid: {
-                        // GET /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid
+                        /**
+                         * Hardware RAIDs defined in this partitioning scheme
+                         * GET /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid
+                         */
                         $get(): Promise<string[]>;
-                        // POST /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid
+                        /**
+                         * Add an hardware RAID in this partitioning scheme
+                         * POST /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid
+                         */
                         $post(params: { disks: string[], mode: dedicated.TemplateOsHardwareRaidEnum, name: string, step: number }): Promise<void>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         $(name: string): {
-                            // DELETE /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}
+                            /**
+                             * Remove this RAID
+                             * DELETE /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}
+                             */
                             $delete(): Promise<void>;
-                            // GET /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}
+                            /**
+                             * Get this object properties
+                             * GET /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}
+                             */
                             $get(): Promise<dedicated.installationTemplate.hardwareRaid>;
-                            // PUT /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}
+                            /**
+                             * Alter this object properties
+                             * PUT /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}
+                             */
                             $put(params?: { disks?: string[], mode?: dedicated.TemplateOsHardwareRaidEnum, name?: string, step?: number }): Promise<void>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         };
                     }
                     partition: {
-                        // GET /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition
+                        /**
+                         * Partitions defined in this partitioning scheme
+                         * GET /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition
+                         */
                         $get(): Promise<string[]>;
-                        // POST /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition
+                        /**
+                         * Add a partition in this partitioning scheme
+                         * POST /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition
+                         */
                         $post(params: { filesystem: dedicated.TemplateOsFileSystemEnum, mountpoint: string, raid?: number, size: number, step: number, type: dedicated.TemplatePartitionTypeEnum, volumeName?: string }): Promise<void>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         $(mountpoint: string): {
-                            // DELETE /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}
+                            /**
+                             * remove this partition
+                             * DELETE /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}
+                             */
                             $delete(): Promise<void>;
-                            // GET /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}
+                            /**
+                             * Get this object properties
+                             * GET /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}
+                             */
                             $get(): Promise<dedicated.installationTemplate.templatePartitions>;
-                            // PUT /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}
+                            /**
+                             * Alter this object properties
+                             * PUT /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}
+                             */
                             $put(params?: { filesystem?: dedicated.TemplateOsFileSystemEnum, mountpoint?: string, order?: number, raid?: dedicated.server.PartitionRaidEnum, size?: complexType.UnitAndValue<number>, type?: dedicated.TemplatePartitionTypeEnum, volumeName?: string }): Promise<void>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         };
                     }
                 };
@@ -2023,472 +3633,1257 @@ export interface Me {
         };
     }
     ipOrganisation: {
-        // GET /me/ipOrganisation
+        /**
+         * List of organisations
+         * GET /me/ipOrganisation
+         */
         $get(): Promise<string[]>;
-        // POST /me/ipOrganisation
+        /**
+         * Add an organisation
+         * POST /me/ipOrganisation
+         */
         $post(params: { abuse_mailbox: string, address: string, city: string, country: nichandle.CountryEnum, firstname: string, lastname: string, phone: string, registry: nichandle.IpRegistryEnum, state?: string, zip?: string }): Promise<void>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         $(organisationId: string): {
-            // DELETE /me/ipOrganisation/{organisationId}
+            /**
+             * Delete this organisation
+             * DELETE /me/ipOrganisation/{organisationId}
+             */
             $delete(): Promise<void>;
-            // GET /me/ipOrganisation/{organisationId}
+            /**
+             * Get this object properties
+             * GET /me/ipOrganisation/{organisationId}
+             */
             $get(): Promise<nichandle.Ipv4Org>;
-            // PUT /me/ipOrganisation/{organisationId}
+            /**
+             * Alter this object properties
+             * PUT /me/ipOrganisation/{organisationId}
+             */
             $put(params?: { abuse_mailbox?: string, address?: string, city?: string, country?: nichandle.CountryEnum, firstname?: string, lastname?: string, organisationId?: string, phone?: string, registry?: nichandle.IpRegistryEnum, state?: string, zip?: string }): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         };
     }
     ipxeScript: {
-        // GET /me/ipxeScript
+        /**
+         * List of all your IPXE scripts
+         * GET /me/ipxeScript
+         */
         $get(): Promise<string[]>;
-        // POST /me/ipxeScript
+        /**
+         * Add an IPXE script
+         * POST /me/ipxeScript
+         */
         $post(params: { description: string, name: string, script: string }): Promise<nichandle.ipxe>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         $(name: string): {
-            // DELETE /me/ipxeScript/{name}
+            /**
+             * Remove this IPXE Script
+             * DELETE /me/ipxeScript/{name}
+             */
             $delete(): Promise<void>;
-            // GET /me/ipxeScript/{name}
+            /**
+             * Get this object properties
+             * GET /me/ipxeScript/{name}
+             */
             $get(): Promise<nichandle.ipxe>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         };
     }
     mailingList: {
         availableLists: {
-            // GET /me/mailingList/availableLists
+            /**
+             * List of mailing list you can subscribe
+             * GET /me/mailingList/availableLists
+             */
             $get(): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         subscribe: {
-            // POST /me/mailingList/subscribe
+            /**
+             * Subscribe an email to a restricted mailing list
+             * POST /me/mailingList/subscribe
+             */
             $post(params: { email: string, mailingList: string }): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
     }
     notification: {
         email: {
             history: {
-                // GET /me/notification/email/history
+                /**
+                 * List of all your email notifications
+                 * GET /me/notification/email/history
+                 */
                 $get(): Promise<number[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(id: number): {
-                    // GET /me/notification/email/history/{id}
+                    /**
+                     * Get this object properties
+                     * GET /me/notification/email/history/{id}
+                     */
                     $get(): Promise<nichandle.emailNotification>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 };
             }
         }
     }
     order: {
-        // GET /me/order
+        /**
+         * List of all the orders the logged account has
+         * GET /me/order
+         */
         $get(params?: { date_from?: string, date_to?: string }): Promise<number[]>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         $(orderId: number): {
-            // GET /me/order/{orderId}
+            /**
+             * Get this object properties
+             * GET /me/order/{orderId}
+             */
             $get(): Promise<billing.Order>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             associatedObject: {
-                // GET /me/order/{orderId}/associatedObject
+                /**
+                 * Return main data about the object the processing of the order generated
+                 * GET /me/order/{orderId}/associatedObject
+                 */
                 $get(): Promise<billing.order.AssociatedObject>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             availableRegisteredPaymentMean: {
-                // GET /me/order/{orderId}/availableRegisteredPaymentMean
+                /**
+                 * List of registered payment mean you can use to pay this order
+                 * GET /me/order/{orderId}/availableRegisteredPaymentMean
+                 */
                 $get(): Promise<billing.order.RegisteredPaymentMean[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             bill: {
-                // GET /me/order/{orderId}/bill
+                /**
+                 * Get this object properties
+                 * GET /me/order/{orderId}/bill
+                 */
                 $get(): Promise<billing.Bill>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             debt: {
-                // GET /me/order/{orderId}/debt
+                /**
+                 * Get this object properties
+                 * GET /me/order/{orderId}/debt
+                 */
                 $get(): Promise<debt.Debt>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 operation: {
-                    // GET /me/order/{orderId}/debt/operation
+                    /**
+                     * All operations related to these debts
+                     * GET /me/order/{orderId}/debt/operation
+                     */
                     $get(params?: { depositOrderId?: number }): Promise<number[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     $(operationId: number): {
-                        // GET /me/order/{orderId}/debt/operation/{operationId}
+                        /**
+                         * Get this object properties
+                         * GET /me/order/{orderId}/debt/operation/{operationId}
+                         */
                         $get(): Promise<debt.Operation>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         associatedObject: {
-                            // GET /me/order/{orderId}/debt/operation/{operationId}/associatedObject
+                            /**
+                             * Return main data about the object related to this debt operation
+                             * GET /me/order/{orderId}/debt/operation/{operationId}/associatedObject
+                             */
                             $get(): Promise<debt.entry.AssociatedObject>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         }
                     };
                 }
                 pay: {
-                    // POST /me/order/{orderId}/debt/pay
+                    /**
+                     * Create an order in order to pay this order's debt
+                     * POST /me/order/{orderId}/debt/pay
+                     */
                     $post(): Promise<billing.Order>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             }
             details: {
-                // GET /me/order/{orderId}/details
+                /**
+                 * Give access to all entries of the order
+                 * GET /me/order/{orderId}/details
+                 */
                 $get(): Promise<number[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(orderDetailId: number): {
-                    // GET /me/order/{orderId}/details/{orderDetailId}
+                    /**
+                     * Get this object properties
+                     * GET /me/order/{orderId}/details/{orderDetailId}
+                     */
                     $get(): Promise<billing.OrderDetail>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     extension: {
-                        // GET /me/order/{orderId}/details/{orderDetailId}/extension
+                        /**
+                         * Get this object properties
+                         * GET /me/order/{orderId}/details/{orderDetailId}/extension
+                         */
                         $get(): Promise<billing.ItemDetail>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                 };
             }
             pay: {
-                // POST /me/order/{orderId}/pay
+                /**
+                 * Pay with a payment method reference
+                 * POST /me/order/{orderId}/pay
+                 */
                 $post(params: { paymentMethod: billing.order.PayWithPaymentMethod }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             payWithRegisteredPaymentMean: {
-                // POST /me/order/{orderId}/payWithRegisteredPaymentMean
+                /**
+                 * Pay with an already registered payment mean
+                 * POST /me/order/{orderId}/payWithRegisteredPaymentMean
+                 */
                 $post(params: { paymentMean: billing.ReusablePaymentMeanEnum, paymentMeanId?: number }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             payment: {
-                // GET /me/order/{orderId}/payment
+                /**
+                 * Get this object properties
+                 * GET /me/order/{orderId}/payment
+                 */
                 $get(): Promise<billing.Payment>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             paymentMeans: {
-                // GET /me/order/{orderId}/paymentMeans
+                /**
+                 * Return main data about the object the processing of the order generated
+                 * GET /me/order/{orderId}/paymentMeans
+                 */
                 $get(): Promise<billing.order.PaymentMeans>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             paymentMethods: {
-                // GET /me/order/{orderId}/paymentMethods
+                /**
+                 * List of registered payment method you can use to pay this order
+                 * GET /me/order/{orderId}/paymentMethods
+                 */
                 $get(): Promise<billing.order.PaymentMethods>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             refund: {
-                // GET /me/order/{orderId}/refund
+                /**
+                 * Get this object properties
+                 * GET /me/order/{orderId}/refund
+                 */
                 $get(): Promise<billing.Refund>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             retraction: {
-                // POST /me/order/{orderId}/retraction
+                /**
+                 * Request retraction of order
+                 * POST /me/order/{orderId}/retraction
+                 */
                 $post(params: { comment?: string, reason: billing.order.RetractionReasonEnum }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             status: {
-                // GET /me/order/{orderId}/status
+                /**
+                 * Return status of order
+                 * GET /me/order/{orderId}/status
+                 */
                 $get(): Promise<billing.order.OrderStatusEnum>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         };
     }
     ovhAccount: {
-        // GET /me/ovhAccount
+        /**
+         * List of OVH accounts the logged account has
+         * GET /me/ovhAccount
+         */
         $get(): Promise<string[]>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         $(ovhAccountId: string): {
-            // GET /me/ovhAccount/{ovhAccountId}
+            /**
+             * Get this object properties
+             * GET /me/ovhAccount/{ovhAccountId}
+             */
             $get(): Promise<billing.OvhAccount>;
-            // PUT /me/ovhAccount/{ovhAccountId}
+            /**
+             * Alter this object properties
+             * PUT /me/ovhAccount/{ovhAccountId}
+             */
             $put(params?: { alertThreshold?: number, balance?: orderPrice, canBeCredited?: boolean, isActive?: boolean, lastUpdate?: string, openDate?: string, ovhAccountId?: string }): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             creditOrder: {
-                // POST /me/ovhAccount/{ovhAccountId}/creditOrder
+                /**
+                 * Generate an order that can be paid in order to credit the OVH account
+                 * POST /me/ovhAccount/{ovhAccountId}/creditOrder
+                 */
                 $post(params: { amount: number }): Promise<billing.Order>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             movements: {
-                // GET /me/ovhAccount/{ovhAccountId}/movements
+                /**
+                 * Details about an entry of the OVH account
+                 * GET /me/ovhAccount/{ovhAccountId}/movements
+                 */
                 $get(params?: { date_from?: string, date_to?: string }): Promise<number[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(movementId: number): {
-                    // GET /me/ovhAccount/{ovhAccountId}/movements/{movementId}
+                    /**
+                     * Get this object properties
+                     * GET /me/ovhAccount/{ovhAccountId}/movements/{movementId}
+                     */
                     $get(): Promise<billing.Movement>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 };
             }
             retrieveMoney: {
-                // POST /me/ovhAccount/{ovhAccountId}/retrieveMoney
+                /**
+                 * Transfer money from ovhAccount to your bank account
+                 * POST /me/ovhAccount/{ovhAccountId}/retrieveMoney
+                 */
                 $post(params: { amount: number, bankAccountId: number }): Promise<billing.Order>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         };
     }
     passwordRecover: {
-        // POST /me/passwordRecover
+        /**
+         * Request a password recover
+         * POST /me/passwordRecover
+         */
         $post(params: { ovhCompany: nichandle.OvhCompanyEnum, ovhId: string }): Promise<void>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
     }
     payment: {
         availableMethods: {
-            // GET /me/payment/availableMethods
+            /**
+             * Retrieve available payment method
+             * GET /me/payment/availableMethods
+             */
             $get(): Promise<me.payment.method.AvailablePaymentMethod[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         method: {
-            // GET /me/payment/method
+            /**
+             * Retrieve payment method ID list
+             * GET /me/payment/method
+             */
             $get(params?: { paymentType?: string, status?: me.payment.method.PaymentMethod.Status }): Promise<number[]>;
-            // POST /me/payment/method
+            /**
+             * Pay an order and register a new payment method if necessary
+             * POST /me/payment/method
+             */
             $post(params: { callbackUrl: me.payment.method.CallbackUrl, default_?: boolean, description?: string, orderId?: number, paymentType: string, register?: boolean }): Promise<me.payment.method.Register.ValidationResult>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(paymentMethodId: number): {
-                // DELETE /me/payment/method/{paymentMethodId}
+                /**
+                 * Cancel one payment method
+                 * DELETE /me/payment/method/{paymentMethodId}
+                 */
                 $delete(): Promise<me.payment.method.PaymentMethod>;
-                // GET /me/payment/method/{paymentMethodId}
+                /**
+                 * Get one payment method
+                 * GET /me/payment/method/{paymentMethodId}
+                 */
                 $get(): Promise<me.payment.method.PaymentMethod>;
-                // PUT /me/payment/method/{paymentMethodId}
+                /**
+                 * Edit payment method
+                 * PUT /me/payment/method/{paymentMethodId}
+                 */
                 $put(params?: { default_?: boolean, description?: string }): Promise<billing.PaymentMethod>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 challenge: {
-                    // POST /me/payment/method/{paymentMethodId}/challenge
+                    /**
+                     * Challenge one payment method
+                     * POST /me/payment/method/{paymentMethodId}/challenge
+                     */
                     $post(params: { challenge: string }): Promise<me.payment.method.PaymentMethod>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 finalize: {
-                    // POST /me/payment/method/{paymentMethodId}/finalize
+                    /**
+                     * Finalize one payment method registration
+                     * POST /me/payment/method/{paymentMethodId}/finalize
+                     */
                     $post(params?: { expirationMonth?: number, expirationYear?: number, formSessionId?: string, registrationId?: string }): Promise<me.payment.method.PaymentMethod>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             };
         }
         transaction: {
-            // GET /me/payment/transaction
+            /**
+             * Retrieve associated payment method transaction ID list
+             * GET /me/payment/transaction
+             */
             $get(params?: { paymentMethodId?: number, status?: me.payment.method.Transaction.Status }): Promise<number[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(transactionId: number): {
-                // GET /me/payment/transaction/{transactionId}
+                /**
+                 * Get associated payment method transaction
+                 * GET /me/payment/transaction/{transactionId}
+                 */
                 $get(): Promise<me.payment.method.Transaction>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             };
         }
     }
     paymentMean: {
         bankAccount: {
-            // GET /me/paymentMean/bankAccount
+            /**
+             * List of bank accounts
+             * GET /me/paymentMean/bankAccount
+             */
             $get(params?: { state?: billing.BankAccountStateEnum }): Promise<number[]>;
-            // POST /me/paymentMean/bankAccount
+            /**
+             * Enable payment through a new account
+             * POST /me/paymentMean/bankAccount
+             */
             $post(params: { bic: string, description?: string, iban: string, ownerAddress: string, ownerName: string, setDefault?: boolean }): Promise<billing.PaymentMeanValidation>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(id: number): {
-                // DELETE /me/paymentMean/bankAccount/{id}
+                /**
+                 * Disable payment through this account
+                 * DELETE /me/paymentMean/bankAccount/{id}
+                 */
                 $delete(): Promise<void>;
-                // GET /me/paymentMean/bankAccount/{id}
+                /**
+                 * Get this object properties
+                 * GET /me/paymentMean/bankAccount/{id}
+                 */
                 $get(): Promise<billing.BankAccount>;
-                // PUT /me/paymentMean/bankAccount/{id}
+                /**
+                 * Alter this object properties
+                 * PUT /me/paymentMean/bankAccount/{id}
+                 */
                 $put(params?: { bic?: string, creationDate?: string, defaultPaymentMean?: boolean, description?: string, iban?: string, icon?: billing.paymentMethod.IconData, id?: number, mandateSignatureDate?: string, ownerAddress?: string, ownerName?: string, state?: billing.BankAccountStateEnum, uniqueReference?: string, validationDocumentLink?: string }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 challenge: {
-                    // POST /me/paymentMean/bankAccount/{id}/challenge
+                    /**
+                     * Challenge your bank account
+                     * POST /me/paymentMean/bankAccount/{id}/challenge
+                     */
                     $post(params: { challenge: string }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 chooseAsDefaultPaymentMean: {
-                    // POST /me/paymentMean/bankAccount/{id}/chooseAsDefaultPaymentMean
+                    /**
+                     * Choose this bank account as your default payment mean. Will cancel the previous choice.
+                     * POST /me/paymentMean/bankAccount/{id}/chooseAsDefaultPaymentMean
+                     */
                     $post(): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             };
         }
         creditCard: {
-            // GET /me/paymentMean/creditCard
+            /**
+             * List of payment mean credit cards
+             * GET /me/paymentMean/creditCard
+             */
             $get(): Promise<number[]>;
-            // POST /me/paymentMean/creditCard
+            /**
+             * Add a new payment mean credit card
+             * POST /me/paymentMean/creditCard
+             */
             $post(params?: { description?: string, returnUrl?: string, setDefault?: boolean }): Promise<me.paymentMean.CreditCardValidation>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(id: number): {
-                // DELETE /me/paymentMean/creditCard/{id}
+                /**
+                 * Disable payment through this credit card
+                 * DELETE /me/paymentMean/creditCard/{id}
+                 */
                 $delete(): Promise<void>;
-                // GET /me/paymentMean/creditCard/{id}
+                /**
+                 * Get credit card properties
+                 * GET /me/paymentMean/creditCard/{id}
+                 */
                 $get(): Promise<me.paymentMean.CreditCard>;
-                // PUT /me/paymentMean/creditCard/{id}
+                /**
+                 * Alter this object properties
+                 * PUT /me/paymentMean/creditCard/{id}
+                 */
                 $put(params?: { defaultPaymentMean?: boolean, description?: string, expirationDate?: string, icon?: me.paymentMean.IconData, id?: number, number?: string, state?: me.paymentMean.CreditCardStateEnum, threeDsValidated?: boolean, type?: string }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 challenge: {
-                    // POST /me/paymentMean/creditCard/{id}/challenge
+                    /**
+                     * Challenge your credit card
+                     * POST /me/paymentMean/creditCard/{id}/challenge
+                     */
                     $post(params: { challenge: string }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 chooseAsDefaultPaymentMean: {
-                    // POST /me/paymentMean/creditCard/{id}/chooseAsDefaultPaymentMean
+                    /**
+                     * Choose this credit card as your default payment mean. Will cancel the previous choice.
+                     * POST /me/paymentMean/creditCard/{id}/chooseAsDefaultPaymentMean
+                     */
                     $post(): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             };
         }
         deferredPaymentAccount: {
-            // GET /me/paymentMean/deferredPaymentAccount
+            /**
+             * List of authorized deferred payment account for this customer
+             * GET /me/paymentMean/deferredPaymentAccount
+             */
             $get(): Promise<number[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(id: number): {
-                // GET /me/paymentMean/deferredPaymentAccount/{id}
+                /**
+                 * Get this object properties
+                 * GET /me/paymentMean/deferredPaymentAccount/{id}
+                 */
                 $get(): Promise<billing.DeferredPaymentAccount>;
-                // PUT /me/paymentMean/deferredPaymentAccount/{id}
+                /**
+                 * Alter this object properties
+                 * PUT /me/paymentMean/deferredPaymentAccount/{id}
+                 */
                 $put(params?: { creationDate?: string, defaultPaymentMean?: boolean, description?: string, icon?: billing.paymentMethod.IconData, id?: number, label?: string, state?: billing.DeferredPaymentAccountStatusEnum }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 chooseAsDefaultPaymentMean: {
-                    // POST /me/paymentMean/deferredPaymentAccount/{id}/chooseAsDefaultPaymentMean
+                    /**
+                     * Allow you to use deferred payment. Will cancel the previous choice.
+                     * POST /me/paymentMean/deferredPaymentAccount/{id}/chooseAsDefaultPaymentMean
+                     */
                     $post(): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             };
         }
         paypal: {
-            // GET /me/paymentMean/paypal
+            /**
+             * List of Paypal accounts usable for payments on this account
+             * GET /me/paymentMean/paypal
+             */
             $get(): Promise<number[]>;
-            // POST /me/paymentMean/paypal
+            /**
+             * Enable payment through a new PayPal account
+             * POST /me/paymentMean/paypal
+             */
             $post(params?: { description?: string, returnUrl?: string, setDefault?: boolean }): Promise<billing.PaymentMeanValidation>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(id: number): {
-                // DELETE /me/paymentMean/paypal/{id}
+                /**
+                 * Disable payment through this PayPal account
+                 * DELETE /me/paymentMean/paypal/{id}
+                 */
                 $delete(): Promise<void>;
-                // GET /me/paymentMean/paypal/{id}
+                /**
+                 * Get this object properties
+                 * GET /me/paymentMean/paypal/{id}
+                 */
                 $get(): Promise<billing.Paypal>;
-                // PUT /me/paymentMean/paypal/{id}
+                /**
+                 * Alter this object properties
+                 * PUT /me/paymentMean/paypal/{id}
+                 */
                 $put(params?: { agreementId?: string, creationDate?: string, defaultPaymentMean?: boolean, description?: string, email?: string, icon?: billing.paymentMethod.IconData, id?: number, state?: billing.PaypalStateEnum }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 challenge: {
-                    // POST /me/paymentMean/paypal/{id}/challenge
+                    /**
+                     * Challenge your bank account
+                     * POST /me/paymentMean/paypal/{id}/challenge
+                     */
                     $post(params: { challenge: string }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 chooseAsDefaultPaymentMean: {
-                    // POST /me/paymentMean/paypal/{id}/chooseAsDefaultPaymentMean
+                    /**
+                     * Choose this Paypal agreement as your default payment mean. Will cancel the previous choice.
+                     * POST /me/paymentMean/paypal/{id}/chooseAsDefaultPaymentMean
+                     */
                     $post(): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             };
         }
     }
     refund: {
-        // GET /me/refund
+        /**
+         * List of all the refunds the logged account has
+         * GET /me/refund
+         */
         $get(params?: { date_from?: string, date_to?: string, orderId?: number }): Promise<string[]>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         $(refundId: string): {
-            // GET /me/refund/{refundId}
+            /**
+             * Get this object properties
+             * GET /me/refund/{refundId}
+             */
             $get(): Promise<billing.Refund>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             details: {
-                // GET /me/refund/{refundId}/details
+                /**
+                 * Give access to all entries of the refund
+                 * GET /me/refund/{refundId}/details
+                 */
                 $get(): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(refundDetailId: string): {
-                    // GET /me/refund/{refundId}/details/{refundDetailId}
+                    /**
+                     * Get this object properties
+                     * GET /me/refund/{refundId}/details/{refundDetailId}
+                     */
                     $get(): Promise<billing.RefundDetail>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 };
             }
             payment: {
-                // GET /me/refund/{refundId}/payment
+                /**
+                 * Get this object properties
+                 * GET /me/refund/{refundId}/payment
+                 */
                 $get(): Promise<billing.Payment>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         };
     }
     sla: {
-        // GET /me/sla
+        /**
+         * List active SLA
+         * GET /me/sla
+         */
         $get(): Promise<number[]>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         $(id: number): {
-            // GET /me/sla/{id}
+            /**
+             * Get this object properties
+             * GET /me/sla/{id}
+             */
             $get(): Promise<billing.SlaOperation>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             apply: {
-                // POST /me/sla/{id}/apply
+                /**
+                 * Ask for SLA application
+                 * POST /me/sla/{id}/apply
+                 */
                 $post(): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             canBeApplied: {
-                // GET /me/sla/{id}/canBeApplied
+                /**
+                 * Check whether this SLA can be applied on your services
+                 * GET /me/sla/{id}/canBeApplied
+                 */
                 $get(): Promise<boolean>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             services: {
-                // GET /me/sla/{id}/services
+                /**
+                 * Get services impacted by this SLA
+                 * GET /me/sla/{id}/services
+                 */
                 $get(): Promise<billing.SlaOperationService[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             status: {
-                // GET /me/sla/{id}/status
+                /**
+                 * Get the status request of this SLA
+                 * GET /me/sla/{id}/status
+                 */
                 $get(): Promise<string>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         };
     }
     sshKey: {
-        // GET /me/sshKey
+        /**
+         * List of your public SSH keys
+         * GET /me/sshKey
+         */
         $get(): Promise<string[]>;
-        // POST /me/sshKey
+        /**
+         * Add a new public SSH key
+         * POST /me/sshKey
+         */
         $post(params: { key: string, keyName: string }): Promise<void>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         $(keyName: string): {
-            // DELETE /me/sshKey/{keyName}
+            /**
+             * Remove this public SSH key
+             * DELETE /me/sshKey/{keyName}
+             */
             $delete(): Promise<void>;
-            // GET /me/sshKey/{keyName}
+            /**
+             * Get this object properties
+             * GET /me/sshKey/{keyName}
+             */
             $get(): Promise<nichandle.sshKey>;
-            // PUT /me/sshKey/{keyName}
+            /**
+             * Alter this object properties
+             * PUT /me/sshKey/{keyName}
+             */
             $put(params?: { default_?: boolean, key?: string, keyName?: string }): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         };
     }
     subAccount: {
-        // GET /me/subAccount
+        /**
+         * List of sub-accounts
+         * GET /me/subAccount
+         */
         $get(): Promise<number[]>;
-        // POST /me/subAccount
+        /**
+         * Create a new sub-account
+         * POST /me/subAccount
+         */
         $post(params?: { description?: string }): Promise<number>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         $(id: number): {
-            // GET /me/subAccount/{id}
+            /**
+             * Get this object properties
+             * GET /me/subAccount/{id}
+             */
             $get(): Promise<nichandle.SubAccount>;
-            // PUT /me/subAccount/{id}
+            /**
+             * Alter this object properties
+             * PUT /me/subAccount/{id}
+             */
             $put(params?: { creationDate?: string, description?: string, id?: number }): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             createConsumerKey: {
-                // POST /me/subAccount/{id}/createConsumerKey
+                /**
+                 * Create a consumer key for the current application
+                 * POST /me/subAccount/{id}/createConsumerKey
+                 */
                 $post(): Promise<nichandle.SubAccountConsumerKey>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         };
     }
     subscription: {
-        // GET /me/subscription
+        /**
+         * List of all OVH things you can subscribe to
+         * GET /me/subscription
+         */
         $get(): Promise<string[]>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         $(subscriptionType: string): {
-            // GET /me/subscription/{subscriptionType}
+            /**
+             * Get this object properties
+             * GET /me/subscription/{subscriptionType}
+             */
             $get(): Promise<nichandle.Subscription>;
-            // PUT /me/subscription/{subscriptionType}
+            /**
+             * Alter this object properties
+             * PUT /me/subscription/{subscriptionType}
+             */
             $put(params?: { registered?: boolean, type?: string }): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         };
     }
     supportLevel: {
-        // GET /me/supportLevel
+        /**
+         * Fetch the support level of the account
+         * GET /me/supportLevel
+         */
         $get(): Promise<me.SupportLevel.Level>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
     }
     task: {
         contactChange: {
-            // GET /me/task/contactChange
+            /**
+             * List of service contact change tasks you are involved in
+             * GET /me/task/contactChange
+             */
             $get(params?: { askingAccount?: string, state?: nichandle.changeContact.TaskStateEnum, toAccount?: string }): Promise<number[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(id: number): {
-                // GET /me/task/contactChange/{id}
+                /**
+                 * Get this object properties
+                 * GET /me/task/contactChange/{id}
+                 */
                 $get(): Promise<nichandle.contactChange.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 accept: {
-                    // POST /me/task/contactChange/{id}/accept
+                    /**
+                     * Accept this change request
+                     * POST /me/task/contactChange/{id}/accept
+                     */
                     $post(params: { token: string }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 refuse: {
-                    // POST /me/task/contactChange/{id}/refuse
+                    /**
+                     * Refuse this change request
+                     * POST /me/task/contactChange/{id}/refuse
+                     */
                     $post(params: { token: string }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 resendEmail: {
-                    // POST /me/task/contactChange/{id}/resendEmail
+                    /**
+                     * This call will send you a new email, containing a new token
+                     * POST /me/task/contactChange/{id}/resendEmail
+                     */
                     $post(): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             };
         }
         domain: {
-            // GET /me/task/domain
+            /**
+             * List of domain task
+             * GET /me/task/domain
+             */
             $get(params?: { domain?: string, function_?: domain.NicOperationFunctionEnum, status?: domain.OperationStatusEnum }): Promise<number[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(id: number): {
-                // GET /me/task/domain/{id}
+                /**
+                 * Get this object properties
+                 * GET /me/task/domain/{id}
+                 */
                 $get(): Promise<nichandle.DomainTask>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 accelerate: {
-                    // POST /me/task/domain/{id}/accelerate
+                    /**
+                     * Accelerate the task
+                     * POST /me/task/domain/{id}/accelerate
+                     */
                     $post(): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 argument: {
-                    // GET /me/task/domain/{id}/argument
+                    /**
+                     * List of arguments
+                     * GET /me/task/domain/{id}/argument
+                     */
                     $get(): Promise<string[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     $(key: string): {
-                        // GET /me/task/domain/{id}/argument/{key}
+                        /**
+                         * Get this object properties
+                         * GET /me/task/domain/{id}/argument/{key}
+                         */
                         $get(): Promise<nichandle.DomainTaskArgument>;
-                        // PUT /me/task/domain/{id}/argument/{key}
+                        /**
+                         * Alter this object properties
+                         * PUT /me/task/domain/{id}/argument/{key}
+                         */
                         $put(params?: { acceptedFormats?: domain.DocumentFormatsEnum[], acceptedValues?: string[], description?: string, fields?: xander.ContactFieldEnum[], key?: string, maximumSize?: number, minimumSize?: number, readOnly?: boolean, template?: string, type?: string, value?: string }): Promise<void>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     };
                 }
                 cancel: {
-                    // POST /me/task/domain/{id}/cancel
+                    /**
+                     * Cancel the task
+                     * POST /me/task/domain/{id}/cancel
+                     */
                     $post(): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 progressbar: {
-                    // GET /me/task/domain/{id}/progressbar
+                    /**
+                     * Get this object properties
+                     * GET /me/task/domain/{id}/progressbar
+                     */
                     $get(): Promise<nichandle.DomainTaskProgressBar>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 relaunch: {
-                    // POST /me/task/domain/{id}/relaunch
+                    /**
+                     * Relaunch the task
+                     * POST /me/task/domain/{id}/relaunch
+                     */
                     $post(): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             };
         }
         emailChange: {
-            // GET /me/task/emailChange
+            /**
+             * List of email change tasks you are involved in
+             * GET /me/task/emailChange
+             */
             $get(params?: { state?: nichandle.changeEmail.TaskStateEnum }): Promise<number[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(id: number): {
-                // GET /me/task/emailChange/{id}
+                /**
+                 * Get this object properties
+                 * GET /me/task/emailChange/{id}
+                 */
                 $get(): Promise<nichandle.emailChange.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 accept: {
-                    // POST /me/task/emailChange/{id}/accept
+                    /**
+                     * Accept this change request
+                     * POST /me/task/emailChange/{id}/accept
+                     */
                     $post(params: { token: string }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 refuse: {
-                    // POST /me/task/emailChange/{id}/refuse
+                    /**
+                     * Refuse this change request
+                     * POST /me/task/emailChange/{id}/refuse
+                     */
                     $post(params: { token: string }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             };
         }
     }
     vipStatus: {
-        // GET /me/vipStatus
+        /**
+         * VIP Status of this account
+         * GET /me/vipStatus
+         */
         $get(): Promise<nichandle.VipStatus>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
     }
     voucher: {
         checkValidity: {
-            // POST /me/voucher/checkValidity
+            /**
+             * Verify existing voucher
+             * POST /me/voucher/checkValidity
+             */
             $post(params: { voucher: string }): Promise<nichandle.VoucherStatus>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
     }
     withdrawal: {
-        // GET /me/withdrawal
+        /**
+         * List of all the withdrawals made from your prepaid account
+         * GET /me/withdrawal
+         */
         $get(params?: { date_from?: string, date_to?: string, orderId?: number }): Promise<string[]>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         $(withdrawalId: string): {
-            // GET /me/withdrawal/{withdrawalId}
+            /**
+             * Get this object properties
+             * GET /me/withdrawal/{withdrawalId}
+             */
             $get(): Promise<billing.Withdrawal>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             details: {
-                // GET /me/withdrawal/{withdrawalId}/details
+                /**
+                 * Give access to all entries of this withdrawal
+                 * GET /me/withdrawal/{withdrawalId}/details
+                 */
                 $get(): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(withdrawalDetailId: string): {
-                    // GET /me/withdrawal/{withdrawalId}/details/{withdrawalDetailId}
+                    /**
+                     * Get this object properties
+                     * GET /me/withdrawal/{withdrawalId}/details/{withdrawalDetailId}
+                     */
                     $get(): Promise<billing.WithdrawalDetail>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 };
             }
             payment: {
-                // GET /me/withdrawal/{withdrawalId}/payment
+                /**
+                 * Get this object properties
+                 * GET /me/withdrawal/{withdrawalId}/payment
+                 */
                 $get(): Promise<billing.Payment>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         };
     }

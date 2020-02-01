@@ -1,31 +1,46 @@
-import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
+import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /dedicatedCloud Models
  * Source: https://api.us.ovhcloud.com/1.0/dedicatedCloud.json
  */
 export namespace complexType {
-    // interface fullName: complexType.UnitAndValue.UnitAndValue
+    /**
+     * A numeric value tagged with its unit
+     * interface fullName: complexType.UnitAndValue.UnitAndValue
+     */
     export interface UnitAndValue<T> {
         unit: string;
         value: T;
     }
 }
 export namespace coreTypes {
-    // type fullname: coreTypes.CountryEnum
+    /**
+     * ISO country codes
+     * type fullname: coreTypes.CountryEnum
+     */
     export type CountryEnum = "ac" | "ad" | "ae" | "af" | "ag" | "ai" | "al" | "am" | "an" | "ao" | "aq" | "ar" | "as" | "at" | "au" | "aw" | "ax" | "az" | "ba" | "bb" | "bd" | "be" | "bf" | "bg" | "bh" | "bi" | "bj" | "bl" | "bm" | "bn" | "bo" | "bq" | "br" | "bs" | "bt" | "bv" | "bw" | "by" | "bz" | "ca" | "cc" | "cd" | "cf" | "cg" | "ch" | "ci" | "ck" | "cl" | "cm" | "cn" | "co" | "cr" | "cs" | "cu" | "cv" | "cw" | "cx" | "cy" | "cz" | "de" | "dj" | "dk" | "dm" | "do" | "dz" | "ec" | "ee" | "eg" | "eh" | "er" | "es" | "et" | "fc" | "fd" | "fi" | "fj" | "fk" | "fm" | "fo" | "fr" | "fx" | "ga" | "gb" | "gd" | "ge" | "gf" | "gg" | "gh" | "gi" | "gl" | "gm" | "gn" | "gp" | "gq" | "gr" | "gs" | "gt" | "gu" | "gw" | "gy" | "hk" | "hm" | "hn" | "hr" | "ht" | "hu" | "id" | "ie" | "il" | "im" | "in" | "io" | "iq" | "ir" | "is" | "it" | "je" | "jm" | "jo" | "jp" | "ke" | "kg" | "kh" | "ki" | "km" | "kn" | "kp" | "kr" | "kw" | "ky" | "kz" | "la" | "lb" | "lc" | "li" | "lk" | "lr" | "ls" | "lt" | "lu" | "lv" | "ly" | "ma" | "mc" | "md" | "me" | "mf" | "mg" | "mh" | "mk" | "ml" | "mm" | "mn" | "mo" | "mp" | "mq" | "mr" | "ms" | "mt" | "mu" | "mv" | "mw" | "mx" | "my" | "mz" | "na" | "nc" | "ne" | "nf" | "ng" | "ni" | "nl" | "no" | "np" | "nr" | "nu" | "nz" | "om" | "pa" | "pe" | "pf" | "pg" | "ph" | "pk" | "pl" | "pm" | "pn" | "pr" | "ps" | "pt" | "pw" | "py" | "qa" | "qc" | "re" | "ro" | "rs" | "ru" | "rw" | "sa" | "sb" | "sc" | "sd" | "se" | "sg" | "sh" | "si" | "sj" | "sk" | "sl" | "sm" | "sn" | "so" | "sr" | "ss" | "st" | "sv" | "sx" | "sy" | "sz" | "tc" | "td" | "tf" | "tg" | "th" | "tj" | "tk" | "tl" | "tm" | "tn" | "to" | "tp" | "tr" | "tt" | "tv" | "tw" | "tz" | "ua" | "ug" | "uk" | "um" | "us" | "uy" | "uz" | "va" | "vc" | "ve" | "vg" | "vi" | "vn" | "vu" | "we" | "wf" | "ws" | "ye" | "yt" | "yu" | "za" | "zm" | "zw"
 }
 export namespace dedicatedCloud {
-    // interface fullName: dedicatedCloud.AllowedNetwork.AllowedNetwork
+    /**
+     * Network allowed to connect to the Private Cloud management interface
+     * interface fullName: dedicatedCloud.AllowedNetwork.AllowedNetwork
+     */
     export interface AllowedNetwork {
         description?: string;
         network: string;
         networkAccessId: number;
         state: dedicatedCloudAllowedNetworkStateEnum;
     }
-    // type fullname: dedicatedCloud.AllowedNetworkStateEnum
+    /**
+     * All states an Allowed Network can be in
+     * type fullname: dedicatedCloud.AllowedNetworkStateEnum
+     */
     export type AllowedNetworkStateEnum = "allowed" | "toDelete" | "toUpdate"
-    // interface fullName: dedicatedCloud.AutoScaleConfig.AutoScaleConfig
+    /**
+     * AutoScale configuration
+     * interface fullName: dedicatedCloud.AutoScaleConfig.AutoScaleConfig
+     */
     export interface AutoScaleConfig {
         cpuMaxThreshold: number;
         cpuMinThreshold: number;
@@ -40,11 +55,17 @@ export namespace dedicatedCloud {
         timeDelayScaleOut: number;
         timeDelayStorageScaleOut: number;
     }
-    // interface fullName: dedicatedCloud.AutoScaleVirtual.AutoScaleVirtual
+    /**
+     * Private Cloud AutoScale option
+     * interface fullName: dedicatedCloud.AutoScaleVirtual.AutoScaleVirtual
+     */
     export interface AutoScaleVirtual {
         state: dedicatedCloudoptionStateEnum;
     }
-    // interface fullName: dedicatedCloud.Backup.Backup
+    /**
+     * Backup configured on a given Datacenter
+     * interface fullName: dedicatedCloud.Backup.Backup
+     */
     export interface Backup {
         backupDurationInReport?: boolean;
         backupOffer?: dedicatedCloudbackupOfferTypeEnum;
@@ -59,7 +80,10 @@ export namespace dedicatedCloud {
         state: dedicatedCloudBackupStateEnum;
         vmwareVmId?: string;
     }
-    // interface fullName: dedicatedCloud.BackupJob.BackupJob
+    /**
+     * Private Cloud Backup Job
+     * interface fullName: dedicatedCloud.BackupJob.BackupJob
+     */
     export interface BackupJob {
         allocatedDisk?: number;
         backupDays?: dedicatedCloudbackupBackupDaysEnum[];
@@ -69,13 +93,25 @@ export namespace dedicatedCloud {
         state: dedicatedCloudbackupStateEnum;
         vmName?: string;
     }
-    // type fullname: dedicatedCloud.BackupStateEnum
+    /**
+     * All states a Dedicated Cloud Backup can be in
+     * type fullname: dedicatedCloud.BackupStateEnum
+     */
     export type BackupStateEnum = "disabled" | "disabling" | "enabled" | "enabling" | "error" | "removing"
-    // type fullname: dedicatedCloud.BillingTypeEnum
+    /**
+     * The billing type of this Dedicated Cloud
+     * type fullname: dedicatedCloud.BillingTypeEnum
+     */
     export type BillingTypeEnum = "demo" | "monthly"
-    // type fullname: dedicatedCloud.BlockRegisterEnum
+    /**
+     * The Regional Internet Registry of this IP block
+     * type fullname: dedicatedCloud.BlockRegisterEnum
+     */
     export type BlockRegisterEnum = "arin" | "ripe"
-    // interface fullName: dedicatedCloud.Capabilities.Capabilities
+    /**
+     * The features available in your Private Cloud
+     * interface fullName: dedicatedCloud.Capabilities.Capabilities
+     */
     export interface Capabilities {
         addRessourceRightStatus: dedicatedCloudcapabilitiesFeatureStatusEnum;
         backupStatus: dedicatedCloudcapabilitiesFeatureStatusEnum;
@@ -85,7 +121,10 @@ export namespace dedicatedCloud {
         upgradable: boolean;
         userAccessPolicyStatus: dedicatedCloudcapabilitiesFeatureStatusEnum;
     }
-    // interface fullName: dedicatedCloud.Cluster.Cluster
+    /**
+     * Private Cloud Cluster
+     * interface fullName: dedicatedCloud.Cluster.Cluster
+     */
     export interface Cluster {
         autoscale?: dedicatedCloudclusterAutoScale;
         drsMode: dedicatedCloudclusterClusterDrsModeEnum;
@@ -96,9 +135,15 @@ export namespace dedicatedCloud {
         name: string;
         vmwareClusterId: string;
     }
-    // type fullname: dedicatedCloud.CommercialNameEnum
+    /**
+     * The commercial name component
+     * type fullname: dedicatedCloud.CommercialNameEnum
+     */
     export type CommercialNameEnum = "DC" | "DC-ANCIENT" | "DC-ANCIENT-HDS" | "DC-ANCIENT-HIPAA" | "DC-ANCIENT-NSX" | "DC-ANCIENT-NSX-VROPS" | "DC-ANCIENT-PCIDSS" | "DC-ANCIENT-UNKNOWN" | "DC-ANCIENT-VROPS" | "DC-HDS" | "DC-HIPAA" | "DC-LEGACY" | "DC-LEGACY-HDS" | "DC-LEGACY-HIPAA" | "DC-LEGACY-NSX" | "DC-LEGACY-NSX-VROPS" | "DC-LEGACY-PCIDSS" | "DC-LEGACY-UNKNOWN" | "DC-LEGACY-VROPS" | "DC-NSX" | "DC-NSX-VROPS" | "DC-PCIDSS" | "DC-UNKNOWN" | "DC-VROPS" | "SDDC" | "SDDC-HDS" | "SDDC-HIPAA" | "SDDC-LEGACY" | "SDDC-LEGACY-HDS" | "SDDC-LEGACY-HIPAA" | "SDDC-LEGACY-PCIDSS" | "SDDC-LEGACY-UNKNOWN" | "SDDC-LEGACY-VROPS" | "SDDC-LEGACY-VROPS-WITHOUT-NSX" | "SDDC-LEGACY-WITHOUT-NSX" | "SDDC-PCIDSS" | "SDDC-UNKNOWN" | "SDDC-VROPS" | "SDDC-VROPS-WITHOUT-NSX" | "SDDC-WITHOUT-NSX" | "UNKNOWN" | "UNKNOWN-HDS" | "UNKNOWN-HIPAA" | "UNKNOWN-NSX" | "UNKNOWN-NSX-VROPS" | "UNKNOWN-PCIDSS" | "UNKNOWN-UNKNOWN" | "UNKNOWN-VROPS"
-    // interface fullName: dedicatedCloud.CommercialRange.CommercialRange
+    /**
+     * The commercial ranges actually available in your Private Cloud
+     * interface fullName: dedicatedCloud.CommercialRange.CommercialRange
+     */
     export interface CommercialRange {
         allowedHypervisorVersions: dedicatedCloudHypervisorVersionEnum[];
         allowedNetworkRoles: dedicatedCloudrightNetworkRoleEnum[];
@@ -106,7 +151,10 @@ export namespace dedicatedCloud {
         dedicatedCloudVersion: string;
         range?: string;
     }
-    // interface fullName: dedicatedCloud.Datacenter.Datacenter
+    /**
+     * Private Cloud Datacenter
+     * interface fullName: dedicatedCloud.Datacenter.Datacenter
+     */
     export interface Datacenter {
         commercialName: dedicatedCloudCommercialNameEnum;
         commercialRangeName: string;
@@ -117,11 +165,17 @@ export namespace dedicatedCloud {
         name: string;
         version: string;
     }
-    // interface fullName: dedicatedCloud.Federation.Federation
+    /**
+     * Private Cloud Active Directory Federation option
+     * interface fullName: dedicatedCloud.Federation.Federation
+     */
     export interface Federation {
         state: dedicatedCloudoptionStateEnum;
     }
-    // interface fullName: dedicatedCloud.FederationAccessNetwork.FederationAccessNetwork
+    /**
+     * Private Cloud federation option access network
+     * interface fullName: dedicatedCloud.FederationAccessNetwork.FederationAccessNetwork
+     */
     export interface FederationAccessNetwork {
         activeDirectoryId: number;
         baseDnForGroups: string;
@@ -135,7 +189,10 @@ export namespace dedicatedCloud {
         state: dedicatedCloudoptionAccessNetworkStateEnum;
         username: string;
     }
-    // interface fullName: dedicatedCloud.Filer.Filer
+    /**
+     * Private Cloud Filer
+     * interface fullName: dedicatedCloud.Filer.Filer
+     */
     export interface Filer {
         billingType: dedicatedCloudressourcesBillingTypeEnum;
         filerId: number;
@@ -149,23 +206,38 @@ export namespace dedicatedCloud {
         state: dedicatedCloudfilerStateEnum;
         vmTotal?: number;
     }
-    // type fullname: dedicatedCloud.GenerationEnum
+    /**
+     * The generation of a Private Cloud
+     * type fullname: dedicatedCloud.GenerationEnum
+     */
     export type GenerationEnum = "1.0" | "2.0"
-    // interface fullName: dedicatedCloud.Hcx.Hcx
+    /**
+     * Private Cloud VMware Hybrid Cloud Extension option
+     * interface fullName: dedicatedCloud.Hcx.Hcx
+     */
     export interface Hcx {
         build?: string;
         state: dedicatedCloudoptionStateEnum;
         version?: string;
     }
-    // interface fullName: dedicatedCloud.Hds.Hds
+    /**
+     * The Private Cloud Hds option
+     * interface fullName: dedicatedCloud.Hds.Hds
+     */
     export interface Hds {
         state: dedicatedCloudoptionStateEnum;
     }
-    // interface fullName: dedicatedCloud.Hipaa.Hipaa
+    /**
+     * The Private Cloud Hipaa option
+     * interface fullName: dedicatedCloud.Hipaa.Hipaa
+     */
     export interface Hipaa {
         state: dedicatedCloudoptionStateEnum;
     }
-    // interface fullName: dedicatedCloud.Host.Host
+    /**
+     * Private Cloud Host
+     * interface fullName: dedicatedCloud.Host.Host
+     */
     export interface Host {
         billingType: dedicatedCloudressourcesBillingTypeEnum;
         clusterName?: string;
@@ -189,31 +261,49 @@ export namespace dedicatedCloud {
         vmTotal?: number;
         vmVcpuTotal?: number;
     }
-    // interface fullName: dedicatedCloud.HostProfile.HostProfile
+    /**
+     * Host profiles actually available in Private Cloud
+     * interface fullName: dedicatedCloud.HostProfile.HostProfile
+     */
     export interface HostProfile {
         id: number;
         name: string;
     }
-    // interface fullName: dedicatedCloud.HostStockHypervisor.HostStockHypervisor
+    /**
+     * Hypervisor and their availability
+     * interface fullName: dedicatedCloud.HostStockHypervisor.HostStockHypervisor
+     */
     export interface HostStockHypervisor {
         value: number;
         version: string;
     }
-    // interface fullName: dedicatedCloud.HostStockProcGen.HostStockProcGen
+    /**
+     * Processor generation and their availability
+     * interface fullName: dedicatedCloud.HostStockProcGen.HostStockProcGen
+     */
     export interface HostStockProcGen {
         cpuGeneration: string;
         value: dedicatedCloudHostStockHypervisor[];
     }
-    // interface fullName: dedicatedCloud.HostStockProfile.HostStockProfile
+    /**
+     * HostProfiles and their availability
+     * interface fullName: dedicatedCloud.HostStockProfile.HostStockProfile
+     */
     export interface HostStockProfile {
         id: number;
         name: string;
         ref: string;
         value: dedicatedCloudHostStockProcGen[];
     }
-    // type fullname: dedicatedCloud.HypervisorVersionEnum
+    /**
+     * The Hypervisor version of this Dedicated Cloud component
+     * type fullname: dedicatedCloud.HypervisorVersionEnum
+     */
     export type HypervisorVersionEnum = "4.1" | "5.0" | "5.1" | "5.5" | "6.0" | "6.5" | "hv3.1" | "hvdc3.1" | "nc1.0"
-    // interface fullName: dedicatedCloud.Ip.Ip
+    /**
+     * IP Blocks associated with a Private Cloud
+     * interface fullName: dedicatedCloud.Ip.Ip
+     */
     export interface Ip {
         country: string;
         description: string;
@@ -224,23 +314,38 @@ export namespace dedicatedCloud {
         register: dedicatedCloudBlockRegisterEnum;
         vlanNumber: number;
     }
-    // type fullname: dedicatedCloud.IpCountriesEnum
+    /**
+     * All countries in which an Ip Block may be ordered
+     * type fullname: dedicatedCloud.IpCountriesEnum
+     */
     export type IpCountriesEnum = "be" | "ca" | "ch" | "cz" | "de" | "es" | "fi" | "fr" | "gb" | "ie" | "it" | "lt" | "nl" | "pl" | "pt" | "us"
-    // interface fullName: dedicatedCloud.IpDetails.IpDetails
+    /**
+     * Details about an Ip
+     * interface fullName: dedicatedCloud.IpDetails.IpDetails
+     */
     export interface IpDetails {
         ip: string;
         reverse?: string;
         usage: dedicatedCloudipUsageEnum;
         usageDetails?: string;
     }
-    // type fullname: dedicatedCloud.ManagementInterfaceEnum
+    /**
+     * The management interface of this Dedicated Cloud
+     * type fullname: dedicatedCloud.ManagementInterfaceEnum
+     */
     export type ManagementInterfaceEnum = "azure" | "openstack" | "systemcenter" | "vcloud" | "vcsa" | "vsphere"
-    // interface fullName: dedicatedCloud.Nsx.Nsx
+    /**
+     * The Private Cloud Nsx option
+     * interface fullName: dedicatedCloud.Nsx.Nsx
+     */
     export interface Nsx {
         state: dedicatedCloudoptionStateEnum;
         url?: string;
     }
-    // interface fullName: dedicatedCloud.ObjectRight.ObjectRight
+    /**
+     * Private Cloud User object right
+     * interface fullName: dedicatedCloud.ObjectRight.ObjectRight
+     */
     export interface ObjectRight {
         name: string;
         objectRightId: number;
@@ -249,35 +354,53 @@ export namespace dedicatedCloud {
         type: dedicatedCloudrightUserObjectRightTypeEnum;
         vmwareObjectId: string;
     }
-    // interface fullName: dedicatedCloud.Os.Os
+    /**
+     * Hypervisors actually available in Private Cloud
+     * interface fullName: dedicatedCloud.Os.Os
+     */
     export interface Os {
         fullName: string;
         lastModificationDate: string;
         shortName: string;
     }
-    // interface fullName: dedicatedCloud.PccStockProfile.PccStockProfile
+    /**
+     * PCC and their availability
+     * interface fullName: dedicatedCloud.PccStockProfile.PccStockProfile
+     */
     export interface PccStockProfile {
         count: number;
         mode: string;
         realVersion: string;
     }
-    // interface fullName: dedicatedCloud.PccZone.PccZone
+    /**
+     * PccZones actually available in Private Cloud
+     * interface fullName: dedicatedCloud.PccZone.PccZone
+     */
     export interface PccZone {
         id: number;
         pccZone: string;
     }
-    // interface fullName: dedicatedCloud.PciDss.PciDss
+    /**
+     * The Private Cloud PCI-DSS option
+     * interface fullName: dedicatedCloud.PciDss.PciDss
+     */
     export interface PciDss {
         state: dedicatedCloudoptionStateEnum;
     }
-    // interface fullName: dedicatedCloud.PrivateGateway.PrivateGateway
+    /**
+     * Private management gateway deployed in your Private Cloud to block all public access
+     * interface fullName: dedicatedCloud.PrivateGateway.PrivateGateway
+     */
     export interface PrivateGateway {
         customerIp?: string;
         customerNetmask?: string;
         customerPortGroup?: string;
         state: dedicatedCloudoptionStateEnum;
     }
-    // interface fullName: dedicatedCloud.RestorePoint.RestorePoint
+    /**
+     * Private Cloud Restore Point
+     * interface fullName: dedicatedCloud.RestorePoint.RestorePoint
+     */
     export interface RestorePoint {
         creationTime?: string;
         isCorrupted: boolean;
@@ -285,7 +408,10 @@ export namespace dedicatedCloud {
         restorePointSize: complexType.UnitAndValue<number>;
         type?: dedicatedCloudbackupBackupTypeEnum;
     }
-    // interface fullName: dedicatedCloud.Right.Right
+    /**
+     * Private Cloud User right
+     * interface fullName: dedicatedCloud.Right.Right
+     */
     export interface Right {
         canAddRessource: boolean;
         datacenterId: number;
@@ -294,7 +420,10 @@ export namespace dedicatedCloud {
         rightId: number;
         vmNetworkRole: dedicatedCloudrightVmNetworkRoleEnum;
     }
-    // interface fullName: dedicatedCloud.Robot.Robot
+    /**
+     * The robots used in Private Cloud
+     * interface fullName: dedicatedCloud.Robot.Robot
+     */
     export interface Robot {
         criticity: string;
         description?: string;
@@ -302,14 +431,23 @@ export namespace dedicatedCloud {
         name: string;
         type: string;
     }
-    // interface fullName: dedicatedCloud.ServicePack.ServicePack
+    /**
+     * List of Service Pack compliant with the current Private Cloud
+     * interface fullName: dedicatedCloud.ServicePack.ServicePack
+     */
     export interface ServicePack {
         name: string;
         options: string[];
     }
-    // type fullname: dedicatedCloud.StateEnum
+    /**
+     * All states a Dedicated Cloud can be in
+     * type fullname: dedicatedCloud.StateEnum
+     */
     export type StateEnum = "available" | "delivered" | "disabled" | "disabling" | "error" | "migrating" | "provisionning" | "recycling" | "reserved" | "toDisable" | "toProvision" | "toRecycle" | "toRemove" | "toUnprovision" | "unprovisionning"
-    // interface fullName: dedicatedCloud.Task.Task
+    /**
+     * Operation on a Private Cloud component
+     * interface fullName: dedicatedCloud.Task.Task
+     */
     export interface Task {
         createdBy?: string;
         createdFrom?: string;
@@ -334,11 +472,20 @@ export namespace dedicatedCloud {
         userId?: number;
         vlanId?: number;
     }
-    // type fullname: dedicatedCloud.TaskStateEnum
+    /**
+     * All states a Dedicated Cloud Task can be in
+     * type fullname: dedicatedCloud.TaskStateEnum
+     */
     export type TaskStateEnum = "canceled" | "doing" | "done" | "error" | "fixing" | "toCancel" | "toCreate" | "todo" | "unknown" | "waitingForChilds" | "waitingTodo"
-    // type fullname: dedicatedCloud.TwoFAWhitelistStateEnum
+    /**
+     * All states a Dedicated Cloud two factor authentication whitelist can be in
+     * type fullname: dedicatedCloud.TwoFAWhitelistStateEnum
+     */
     export type TwoFAWhitelistStateEnum = "enabled" | "enabling" | "error" | "migrating" | "removed" | "removing"
-    // interface fullName: dedicatedCloud.User.User
+    /**
+     * Private Cloud User
+     * interface fullName: dedicatedCloud.User.User
+     */
     export interface User {
         activationState?: dedicatedClouduserActivationStateEnum;
         canManageIpFailOvers: boolean;
@@ -358,15 +505,27 @@ export namespace dedicatedCloud {
         state: dedicatedClouduserStateEnum;
         userId: number;
     }
-    // type fullname: dedicatedCloud.UserAccessPolicyEnum
+    /**
+     * Open or restricted access to management interface ?
+     * type fullname: dedicatedCloud.UserAccessPolicyEnum
+     */
     export type UserAccessPolicyEnum = "filtered" | "open"
-    // type fullname: dedicatedCloud.UserLogoutPolicyEnum
+    /**
+     * Which user will be disconnected first in case of quota of maximum connection is reached
+     * type fullname: dedicatedCloud.UserLogoutPolicyEnum
+     */
     export type UserLogoutPolicyEnum = "first" | "last"
-    // interface fullName: dedicatedCloud.VMEncryption.VMEncryption
+    /**
+     * Private Cloud VM Encryption option
+     * interface fullName: dedicatedCloud.VMEncryption.VMEncryption
+     */
     export interface VMEncryption {
         state: dedicatedCloudoptionStateEnum;
     }
-    // interface fullName: dedicatedCloud.VMEncryptionAccessNetwork.VMEncryptionAccessNetwork
+    /**
+     * Private Cloud VM Encryption option access network
+     * interface fullName: dedicatedCloud.VMEncryptionAccessNetwork.VMEncryptionAccessNetwork
+     */
     export interface VMEncryptionAccessNetwork {
         description: string;
         ip: string;
@@ -375,19 +534,31 @@ export namespace dedicatedCloud {
         sslThumbprint: string;
         state: dedicatedCloudoptionAccessNetworkStateEnum;
     }
-    // interface fullName: dedicatedCloud.Vendor.Vendor
+    /**
+     * The Private Cloud Vendor option
+     * interface fullName: dedicatedCloud.Vendor.Vendor
+     */
     export interface Vendor {
         vendorName: string;
     }
-    // type fullname: dedicatedCloud.VendorObjectTypeEnum
+    /**
+     * Dedicated Cloud vendors objects types
+     * type fullname: dedicatedCloud.VendorObjectTypeEnum
+     */
     export type VendorObjectTypeEnum = "cluster" | "datacenter" | "filer" | "host" | "vm"
-    // interface fullName: dedicatedCloud.Version.Version
+    /**
+     * Detailed version
+     * interface fullName: dedicatedCloud.Version.Version
+     */
     export interface Version {
         build: string;
         major: string;
         minor: string;
     }
-    // interface fullName: dedicatedCloud.Vlan.Vlan
+    /**
+     * Private Cloud Vlan
+     * interface fullName: dedicatedCloud.Vlan.Vlan
+     */
     export interface Vlan {
         name: string;
         routingRateLimit: string;
@@ -396,7 +567,10 @@ export namespace dedicatedCloud {
         vlanId: number;
         vlanNumber: number;
     }
-    // interface fullName: dedicatedCloud.Vm.Vm
+    /**
+     * Private Cloud Virtual Machine
+     * interface fullName: dedicatedCloud.Vm.Vm
+     */
     export interface Vm {
         backup?: dedicatedCloudbackupBackup;
         cdroms?: dedicatedCloudvirtualMachineCdrom[];
@@ -433,19 +607,28 @@ export namespace dedicatedCloud {
         writePerSecond?: number;
         writeRate?: number;
     }
-    // interface fullName: dedicatedCloud.Vrops.Vrops
+    /**
+     * The Private Cloud vRealize Operations option
+     * interface fullName: dedicatedCloud.Vrops.Vrops
+     */
     export interface Vrops {
         state: dedicatedCloudoptionStateEnum;
         url?: string;
     }
-    // interface fullName: dedicatedCloud.ZpoolStockProfile.ZpoolStockProfile
+    /**
+     * Zpool and their availability
+     * interface fullName: dedicatedCloud.ZpoolStockProfile.ZpoolStockProfile
+     */
     export interface ZpoolStockProfile {
         minimumAvailability: string;
         profile: string;
         realCount: number;
     }
     export namespace backup {
-        // interface fullName: dedicatedCloud.backup.Backup.Backup
+        /**
+         * Details about a backup
+         * interface fullName: dedicatedCloud.backup.Backup.Backup
+         */
         export interface Backup {
             allocatedDisk?: number;
             backupDays?: dedicatedCloudbackupBackupDaysEnum[];
@@ -460,7 +643,10 @@ export namespace dedicatedCloud {
             retentionTime?: number;
             state?: dedicatedCloudbackupStateEnum;
         }
-        // interface fullName: dedicatedCloud.backup.BackupCapabilities.BackupCapabilities
+        /**
+         * Details about BackupCapabilities
+         * interface fullName: dedicatedCloud.backup.BackupCapabilities.BackupCapabilities
+         */
         export interface BackupCapabilities {
             backupDays: boolean;
             customReport: boolean;
@@ -474,15 +660,30 @@ export namespace dedicatedCloud {
             retention: number;
             scheduleHour: boolean;
         }
-        // type fullname: dedicatedCloud.backup.BackupDaysEnum
+        /**
+         * All the possible Days of Backup
+         * type fullname: dedicatedCloud.backup.BackupDaysEnum
+         */
         export type BackupDaysEnum = "Friday" | "Monday" | "Saturday" | "Sunday" | "Thursday" | "Tuesday" | "Wednesday"
-        // type fullname: dedicatedCloud.backup.BackupTypeEnum
+        /**
+         * All the type of a restore point
+         * type fullname: dedicatedCloud.backup.BackupTypeEnum
+         */
         export type BackupTypeEnum = "full" | "incremental"
-        // type fullname: dedicatedCloud.backup.JobStateEnum
+        /**
+         * State of the backup job
+         * type fullname: dedicatedCloud.backup.JobStateEnum
+         */
         export type JobStateEnum = "failed" | "running" | "stopped" | "stopping" | "success" | "unknown" | "warning"
-        // type fullname: dedicatedCloud.backup.OfferTypeEnum
+        /**
+         * All the offer type of the backup
+         * type fullname: dedicatedCloud.backup.OfferTypeEnum
+         */
         export type OfferTypeEnum = "advanced" | "backup" | "classic" | "legacy" | "premium"
-        // interface fullName: dedicatedCloud.backup.RestorePoint.RestorePoint
+        /**
+         * Details about a restore point
+         * interface fullName: dedicatedCloud.backup.RestorePoint.RestorePoint
+         */
         export interface RestorePoint {
             creationTime?: string;
             isCorrupted?: boolean;
@@ -490,15 +691,24 @@ export namespace dedicatedCloud {
             size?: complexType.UnitAndValue<number>;
             type?: dedicatedCloudbackupBackupTypeEnum;
         }
-        // type fullname: dedicatedCloud.backup.StateEnum
+        /**
+         * All the state of the backup
+         * type fullname: dedicatedCloud.backup.StateEnum
+         */
         export type StateEnum = "deleting" | "delivered" | "disabled" | "disabling" | "enabling" | "error" | "migrating" | "pending" | "removed" | "stopping" | "toCreate" | "toDelete" | "toDisable" | "toEnable" | "toStop" | "unknown"
     }
     export namespace capabilities {
-        // type fullname: dedicatedCloud.capabilities.FeatureStatusEnum
+        /**
+         * All Dedicated Cloud feature status available
+         * type fullname: dedicatedCloud.capabilities.FeatureStatusEnum
+         */
         export type FeatureStatusEnum = "active" | "comingSoon" | "no"
     }
     export namespace cluster {
-        // interface fullName: dedicatedCloud.cluster.AutoScale.AutoScale
+        /**
+         * Details about AutoScale
+         * interface fullName: dedicatedCloud.cluster.AutoScale.AutoScale
+         */
         export interface AutoScale {
             autoScaleInHost: dedicatedCloudclusterAutoScaleModeEnum;
             autoScaleOutHost: dedicatedCloudclusterAutoScaleModeEnum;
@@ -508,14 +718,26 @@ export namespace dedicatedCloud {
             inMaintenanceMode: boolean;
             state: dedicatedCloudoptionStateEnum;
         }
-        // type fullname: dedicatedCloud.cluster.AutoScaleModeEnum
+        /**
+         * Modes of the AutoScale service
+         * type fullname: dedicatedCloud.cluster.AutoScaleModeEnum
+         */
         export type AutoScaleModeEnum = "automatic" | "manual"
-        // type fullname: dedicatedCloud.cluster.ClusterConfigsStatusEnum
+        /**
+         * Config status of the cluster
+         * type fullname: dedicatedCloud.cluster.ClusterConfigsStatusEnum
+         */
         export type ClusterConfigsStatusEnum = "disabled" | "enabled" | "unknown"
-        // type fullname: dedicatedCloud.cluster.ClusterDrsModeEnum
+        /**
+         * Config status of the cluster
+         * type fullname: dedicatedCloud.cluster.ClusterDrsModeEnum
+         */
         export type ClusterDrsModeEnum = "fullyAutomated" | "manual" | "partiallyAutomated"
     }
-    // interface fullName: dedicatedCloud.dedicatedCloud.dedicatedCloud
+    /**
+     * Private Cloud
+     * interface fullName: dedicatedCloud.dedicatedCloud.dedicatedCloud
+     */
     export interface dedicatedCloud {
         advancedSecurity: boolean;
         bandwidth: string;
@@ -540,9 +762,15 @@ export namespace dedicatedCloud {
         webInterfaceUrl: string;
     }
     export namespace disasterRecovery {
-        // type fullname: dedicatedCloud.disasterRecovery.DrpTypeEnum
+        /**
+         * Disaster Recovery Plan Types
+         * type fullname: dedicatedCloud.disasterRecovery.DrpTypeEnum
+         */
         export type DrpTypeEnum = "onPremise" | "ovh"
-        // interface fullName: dedicatedCloud.disasterRecovery.LocalSiteDetails.LocalSiteDetails
+        /**
+         * Information on the local datacenter
+         * interface fullName: dedicatedCloud.disasterRecovery.LocalSiteDetails.LocalSiteDetails
+         */
         export interface LocalSiteDetails {
             role: dedicatedClouddisasterRecoverySiteRoleEnum;
             state?: dedicatedCloudStateEnum;
@@ -550,7 +778,10 @@ export namespace dedicatedCloud {
             zertoVersion: string;
             zvmIp?: string;
         }
-        // interface fullName: dedicatedCloud.disasterRecovery.Profile.Profile
+        /**
+         * State of the disaster recovery option
+         * interface fullName: dedicatedCloud.disasterRecovery.Profile.Profile
+         */
         export interface Profile {
             drpType?: dedicatedClouddisasterRecoveryDrpTypeEnum;
             localSiteInformation?: dedicatedClouddisasterRecoveryLocalSiteDetails;
@@ -558,7 +789,10 @@ export namespace dedicatedCloud {
             state: dedicatedCloudStateEnum;
             systemVersion: string;
         }
-        // interface fullName: dedicatedCloud.disasterRecovery.RemoteSiteDetails.RemoteSiteDetails
+        /**
+         * Information on the remote datacenter linked to the local one
+         * interface fullName: dedicatedCloud.disasterRecovery.RemoteSiteDetails.RemoteSiteDetails
+         */
         export interface RemoteSiteDetails {
             datacenterId?: number;
             datacenterName?: string;
@@ -573,68 +807,116 @@ export namespace dedicatedCloud {
             vpnConfigState?: dedicatedClouddisasterRecoveryVpnConfigStateEnum;
             zertoVersion?: string;
         }
-        // type fullname: dedicatedCloud.disasterRecovery.SiteRoleEnum
+        /**
+         * Site manager configured mode
+         * type fullname: dedicatedCloud.disasterRecovery.SiteRoleEnum
+         */
         export type SiteRoleEnum = "primary" | "secondary" | "single"
-        // type fullname: dedicatedCloud.disasterRecovery.SiteTypeEnum
+        /**
+         * Site manager hosting type
+         * type fullname: dedicatedCloud.disasterRecovery.SiteTypeEnum
+         */
         export type SiteTypeEnum = "onPremise" | "ovhPrivateCloud"
-        // type fullname: dedicatedCloud.disasterRecovery.VpnConfigStateEnum
+        /**
+         * Zerto VPN configuration state
+         * type fullname: dedicatedCloud.disasterRecovery.VpnConfigStateEnum
+         */
         export type VpnConfigStateEnum = "configured" | "configuring" | "error" | "notConfigured" | "tunnelError"
     }
     export namespace filer {
-        // interface fullName: dedicatedCloud.filer.HourlyConsumption.HourlyConsumption
+        /**
+         * Hourly consumption of a filer
+         * interface fullName: dedicatedCloud.filer.HourlyConsumption.HourlyConsumption
+         */
         export interface HourlyConsumption {
             consumption: complexType.UnitAndValue<number>;
             lastUpdate: string;
         }
-        // interface fullName: dedicatedCloud.filer.Profile.Profile
+        /**
+         * A Filer profile
+         * interface fullName: dedicatedCloud.filer.Profile.Profile
+         */
         export interface Profile {
             fullName: string;
             name: string;
             size: complexType.UnitAndValue<number>;
         }
-        // type fullname: dedicatedCloud.filer.StateEnum
+        /**
+         * All states a Dedicated Cloud Filer can be in
+         * type fullname: dedicatedCloud.filer.StateEnum
+         */
         export type StateEnum = "adding" | "delivered" | "error" | "removing" | "unknown"
     }
     export namespace host {
-        // interface fullName: dedicatedCloud.host.HourlyConsumption.HourlyConsumption
+        /**
+         * Hourly consumption of a host
+         * interface fullName: dedicatedCloud.host.HourlyConsumption.HourlyConsumption
+         */
         export interface HourlyConsumption {
             consumption: complexType.UnitAndValue<number>;
             lastUpdate: string;
         }
-        // interface fullName: dedicatedCloud.host.Profile.Profile
+        /**
+         * A Host profile
+         * interface fullName: dedicatedCloud.host.Profile.Profile
+         */
         export interface Profile {
             core: string;
             cpu: complexType.UnitAndValue<number>;
             name: string;
             ram: complexType.UnitAndValue<number>;
         }
-        // type fullname: dedicatedCloud.host.StateEnum
+        /**
+         * All states a Dedicated Cloud Host can be in
+         * type fullname: dedicatedCloud.host.StateEnum
+         */
         export type StateEnum = "adding" | "delivered" | "error" | "removing" | "unknown"
     }
-    // type fullname: dedicatedCloud.hostSystemConnectionState
+    /**
+     * The connection state of the host
+     * type fullname: dedicatedCloud.hostSystemConnectionState
+     */
     export type hostSystemConnectionState = "connected" | "disconnected" | "notResponding"
-    // type fullname: dedicatedCloud.ipUsageEnum
+    /**
+     * IP address usage
+     * type fullname: dedicatedCloud.ipUsageEnum
+     */
     export type ipUsageEnum = "reserved" | "vm"
-    // interface fullName: dedicatedCloud.metricsToken.metricsToken
+    /**
+     * A structure describing metrics token for vScope graphs data
+     * interface fullName: dedicatedCloud.metricsToken.metricsToken
+     */
     export interface metricsToken {
         opentsdbEndpoint: string;
         token: string;
         warpEndpoint: string;
     }
     export namespace option {
-        // type fullname: dedicatedCloud.option.StateEnum
+        /**
+         * States of a Private Cloud option
+         * type fullname: dedicatedCloud.option.StateEnum
+         */
         export type StateEnum = "disabled" | "disabling" | "enabled" | "enabling" | "error" | "migrating" | "unknown"
     }
     export namespace optionAccessNetwork {
-        // type fullname: dedicatedCloud.optionAccessNetwork.StateEnum
+        /**
+         * States of a Private Cloud option
+         * type fullname: dedicatedCloud.optionAccessNetwork.StateEnum
+         */
         export type StateEnum = "creating" | "deleting" | "delivered" | "error" | "toCreate" | "toDelete" | "toUpdate" | "unknown" | "updating"
     }
-    // interface fullName: dedicatedCloud.optionCompatibility.optionCompatibility
+    /**
+     * A structure describing option compatibility
+     * interface fullName: dedicatedCloud.optionCompatibility.optionCompatibility
+     */
     export interface optionCompatibility {
         newCommercialVersion: string;
         oldCommercialVersion: string;
     }
-    // interface fullName: dedicatedCloud.passwordPolicy.passwordPolicy
+    /**
+     * A structure describing the current password policy for your Dedicated Cloud
+     * interface fullName: dedicatedCloud.passwordPolicy.passwordPolicy
+     */
     export interface passwordPolicy {
         deniedChars: string[];
         digitMandatory: boolean;
@@ -647,13 +929,22 @@ export namespace dedicatedCloud {
         uppercaseLetterMandatory: boolean;
         validityPeriod: number;
     }
-    // type fullname: dedicatedCloud.releaseEnum
+    /**
+     * All vCenter upgrade possibility
+     * type fullname: dedicatedCloud.releaseEnum
+     */
     export type releaseEnum = "major" | "minor"
-    // interface fullName: dedicatedCloud.resourceNewPrices.resourceNewPrices
+    /**
+     * A structure describing the Resource's new price
+     * interface fullName: dedicatedCloud.resourceNewPrices.resourceNewPrices
+     */
     export interface resourceNewPrices {
         resources?: dedicatedCloudresourceNewPricesEntry[];
     }
-    // interface fullName: dedicatedCloud.resourceNewPricesEntry.resourceNewPricesEntry
+    /**
+     * A structure describing the Resource's new price
+     * interface fullName: dedicatedCloud.resourceNewPricesEntry.resourceNewPricesEntry
+     */
     export interface resourceNewPricesEntry {
         billingType: dedicatedCloudressourcesBillingTypeEnum;
         changed: boolean;
@@ -663,31 +954,61 @@ export namespace dedicatedCloud {
         resourceType: dedicatedCloudressourcesResourceTypeEnum;
     }
     export namespace ressources {
-        // type fullname: dedicatedCloud.ressources.BillingTypeEnum
+        /**
+         * The billing type of this Dedicated Cloud ressource
+         * type fullname: dedicatedCloud.ressources.BillingTypeEnum
+         */
         export type BillingTypeEnum = "freeSpare" | "hourly" | "monthly" | "undefined"
-        // type fullname: dedicatedCloud.ressources.ResourceTypeEnum
+        /**
+         * The resource type of this Dedicated Cloud ressource
+         * type fullname: dedicatedCloud.ressources.ResourceTypeEnum
+         */
         export type ResourceTypeEnum = "host" | "storage"
     }
     export namespace right {
-        // type fullname: dedicatedCloud.right.NetworkRoleEnum
+        /**
+         * Determine how this user can act on the Dedicated Cloud vLans or vxLans
+         * type fullname: dedicatedCloud.right.NetworkRoleEnum
+         */
         export type NetworkRoleEnum = "admin" | "manager" | "noAccess" | "readonly"
-        // type fullname: dedicatedCloud.right.RightEnum
+        /**
+         * All rights a Dedicated Cloud user may be associated with
+         * type fullname: dedicatedCloud.right.RightEnum
+         */
         export type RightEnum = "admin" | "disabled" | "readonly" | "readwrite"
-        // type fullname: dedicatedCloud.right.UserObjectRightTypeEnum
+        /**
+         * All types of objects handled in objectRights
+         * type fullname: dedicatedCloud.right.UserObjectRightTypeEnum
+         */
         export type UserObjectRightTypeEnum = "cluster" | "datastore" | "dvportgroup" | "folder" | "pool" | "vm"
-        // type fullname: dedicatedCloud.right.VmNetworkRoleEnum
+        /**
+         * Determine how this user can act on the Dedicated Cloud vmNetwork
+         * type fullname: dedicatedCloud.right.VmNetworkRoleEnum
+         */
         export type VmNetworkRoleEnum = "admin" | "noAccess" | "readonly"
     }
-    // type fullname: dedicatedCloud.servicePackEnum
+    /**
+     * List of possible service pack
+     * type fullname: dedicatedCloud.servicePackEnum
+     */
     export type servicePackEnum = "default" | "hds" | "hipaa" | "legacy" | "nsx" | "nsx-and-vrops" | "pcidss" | "vrops"
-    // type fullname: dedicatedCloud.servicePackStateEnum
+    /**
+     * List of possible state of the service pack
+     * type fullname: dedicatedCloud.servicePackStateEnum
+     */
     export type servicePackStateEnum = "activating" | "active" | "error" | "waitingForCustomer"
-    // interface fullName: dedicatedCloud.servicePackStatus.servicePackStatus
+    /**
+     * Service pack informations
+     * interface fullName: dedicatedCloud.servicePackStatus.servicePackStatus
+     */
     export interface servicePackStatus {
         name: dedicatedCloudservicePackEnum;
         state: dedicatedCloudservicePackStateEnum;
     }
-    // interface fullName: dedicatedCloud.twoFAWhitelist.twoFAWhitelist
+    /**
+     * Trust IP which can bypass the two factor authentication
+     * interface fullName: dedicatedCloud.twoFAWhitelist.twoFAWhitelist
+     */
     export interface twoFAWhitelist {
         description: string;
         id: number;
@@ -695,19 +1016,31 @@ export namespace dedicatedCloud {
         state: dedicatedCloudTwoFAWhitelistStateEnum;
     }
     export namespace user {
-        // type fullname: dedicatedCloud.user.ActivationStateEnum
+        /**
+         * All activation states a Dedicated Cloud User can have
+         * type fullname: dedicatedCloud.user.ActivationStateEnum
+         */
         export type ActivationStateEnum = "disabled" | "disabling" | "enabled" | "enabling" | "toDisable" | "toEnable"
-        // type fullname: dedicatedCloud.user.StateEnum
+        /**
+         * All states a Dedicated Cloud User can be in
+         * type fullname: dedicatedCloud.user.StateEnum
+         */
         export type StateEnum = "creating" | "deleting" | "delivered" | "error"
     }
-    // interface fullName: dedicatedCloud.vcenter.vcenter
+    /**
+     * A structure describing the vCenter available upgrade for your Dedicated Cloud
+     * interface fullName: dedicatedCloud.vcenter.vcenter
+     */
     export interface vcenter {
         currentVersion: dedicatedCloudVersion;
         lastMajor: dedicatedCloudVersion;
         lastMinor: dedicatedCloudVersion;
     }
     export namespace vendor {
-        // interface fullName: dedicatedCloud.vendor.OvhId.OvhId
+        /**
+         * Representation of a Vendor object in OVH API
+         * interface fullName: dedicatedCloud.vendor.OvhId.OvhId
+         */
         export interface OvhId {
             datacenterId?: number;
             filerId?: number;
@@ -715,35 +1048,62 @@ export namespace dedicatedCloud {
             vmId?: number;
         }
     }
-    // type fullname: dedicatedCloud.virtualDeviceConnectInfoStatus
+    /**
+     * The connectable virtual device status
+     * type fullname: dedicatedCloud.virtualDeviceConnectInfoStatus
+     */
     export type virtualDeviceConnectInfoStatus = "ok" | "recoverableError" | "unrecoverableError" | "untried"
-    // interface fullName: dedicatedCloud.virtualMachineCdrom.virtualMachineCdrom
+    /**
+     * A structure describing the cdrom configuration of a virtual machine
+     * interface fullName: dedicatedCloud.virtualMachineCdrom.virtualMachineCdrom
+     */
     export interface virtualMachineCdrom {
         connected?: boolean;
         iso?: string;
     }
-    // type fullname: dedicatedCloud.virtualMachineFaultToleranceState
+    /**
+     * The fault tolerance state of the virtual machine
+     * type fullname: dedicatedCloud.virtualMachineFaultToleranceState
+     */
     export type virtualMachineFaultToleranceState = "disabled" | "enabled" | "needSecondary" | "notConfigured" | "running" | "starting"
-    // type fullname: dedicatedCloud.virtualMachinePowerState
+    /**
+     * The power state of the virtual machine
+     * type fullname: dedicatedCloud.virtualMachinePowerState
+     */
     export type virtualMachinePowerState = "deleted" | "poweredOff" | "poweredOn" | "suspended"
     export namespace vlan {
-        // type fullname: dedicatedCloud.vlan.StateEnum
+        /**
+         * All states a Dedicated Cloud Vlan can be in
+         * type fullname: dedicatedCloud.vlan.StateEnum
+         */
         export type StateEnum = "available" | "delivered" | "disabled" | "error" | "removing" | "reserved"
-        // type fullname: dedicatedCloud.vlan.TypeEnum
+        /**
+         * This Dedicated Cloud vlan type
+         * type fullname: dedicatedCloud.vlan.TypeEnum
+         */
         export type TypeEnum = "admin" | "free" | "paid"
     }
-    // interface fullName: dedicatedCloud.vmFiler.vmFiler
+    /**
+     * A structure describing filers of a the virtual machine
+     * interface fullName: dedicatedCloud.vmFiler.vmFiler
+     */
     export interface vmFiler {
         committed: number;
         disks: dedicatedCloudvmFilerDisk[];
         name: string;
     }
-    // interface fullName: dedicatedCloud.vmFilerDisk.vmFilerDisk
+    /**
+     * A structure describing filer disks of a the virtual machine
+     * interface fullName: dedicatedCloud.vmFilerDisk.vmFilerDisk
+     */
     export interface vmFilerDisk {
         capacity: number;
         id: string;
     }
-    // interface fullName: dedicatedCloud.vmNetwork.vmNetwork
+    /**
+     * A structure describing the network of a the virtual machine
+     * interface fullName: dedicatedCloud.vmNetwork.vmNetwork
+     */
     export interface vmNetwork {
         allowGuestControl: boolean;
         backing: dedicatedCloudvmNetworkBacking;
@@ -754,7 +1114,10 @@ export namespace dedicatedCloud {
         startConnected: boolean;
         status: dedicatedCloudvirtualDeviceConnectInfoStatus;
     }
-    // interface fullName: dedicatedCloud.vmNetworkBacking.vmNetworkBacking
+    /**
+     * A structure describing the backing network of a the virtual machine
+     * interface fullName: dedicatedCloud.vmNetworkBacking.vmNetworkBacking
+     */
     export interface vmNetworkBacking {
         deviceName?: string;
         portGroupKey?: string;
@@ -764,13 +1127,21 @@ export namespace dedicatedCloud {
         useAutoDetect?: boolean;
         valueMoref?: string;
     }
-    // type fullname: dedicatedCloud.vmNetworkBackingTypeEnum
+    /**
+     * The type of the network backing
+     * type fullname: dedicatedCloud.vmNetworkBackingTypeEnum
+     */
     export type vmNetworkBackingTypeEnum = "DVS" | "VSS"
 }
 export namespace order {
-    // type fullname: order.CurrencyCodeEnum
+    /**
+     * type fullname: order.CurrencyCodeEnum
+     */
     export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
-    // interface fullName: order.Price.Price
+    /**
+     * Price with it's currency and textual representation
+     * interface fullName: order.Price.Price
+     */
     export interface Price {
         currencyCode: order.CurrencyCodeEnum;
         text: string;
@@ -778,7 +1149,10 @@ export namespace order {
     }
 }
 export namespace service {
-    // interface fullName: service.RenewType.RenewType
+    /**
+     * Map a possible renew for a specific service
+     * interface fullName: service.RenewType.RenewType
+     */
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -786,17 +1160,31 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    // type fullname: service.RenewalTypeEnum
+    /**
+     * Detailed renewal type of a service
+     * type fullname: service.RenewalTypeEnum
+     */
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    // type fullname: service.StateEnum
+    /**
+     * type fullname: service.StateEnum
+     */
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
-    // type fullname: service.TerminationFutureUseEnum
+    /**
+     * All future uses you can provide for a service termination
+     * type fullname: service.TerminationFutureUseEnum
+     */
     export type TerminationFutureUseEnum = "NOT_REPLACING_SERVICE" | "OTHER" | "SUBSCRIBE_AN_OTHER_SERVICE" | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR" | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
-    // type fullname: service.TerminationReasonEnum
+    /**
+     * All reasons you can provide for a service termination
+     * type fullname: service.TerminationReasonEnum
+     */
     export type TerminationReasonEnum = "FEATURES_DONT_SUIT_ME" | "LACK_OF_PERFORMANCES" | "MIGRATED_TO_ANOTHER_OVH_PRODUCT" | "MIGRATED_TO_COMPETITOR" | "NOT_ENOUGH_RECOGNITION" | "NOT_NEEDED_ANYMORE" | "NOT_RELIABLE" | "NO_ANSWER" | "OTHER" | "PRODUCT_DIMENSION_DONT_SUIT_ME" | "PRODUCT_TOOLS_DONT_SUIT_ME" | "TOO_EXPENSIVE" | "TOO_HARD_TO_USE" | "UNSATIFIED_BY_CUSTOMER_SUPPORT"
 }
 export namespace services {
-    // interface fullName: services.Service.Service
+    /**
+     * Details about a Service
+     * interface fullName: services.Service.Service
+     */
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;
@@ -814,7 +1202,10 @@ export namespace services {
     }
 }
 export namespace vrack {
-    // interface fullName: vrack.Task.Task
+    /**
+     * vrack tasks
+     * interface fullName: vrack.Task.Task
+     */
     export interface Task {
         function: string;
         id: number;
@@ -825,9 +1216,15 @@ export namespace vrack {
         targetDomain?: string;
         todoDate?: string;
     }
-    // type fullname: vrack.TaskStatusEnum
+    /**
+     * All states a vRack Task can be in
+     * type fullname: vrack.TaskStatusEnum
+     */
     export type TaskStatusEnum = "cancelled" | "doing" | "done" | "init" | "todo"
-    // interface fullName: vrack.dedicatedCloud.dedicatedCloud
+    /**
+     * vrack dedicated cloud interface
+     * interface fullName: vrack.dedicatedCloud.dedicatedCloud
+     */
     export interface dedicatedCloud {
         dedicatedCloud: string;
         vlanId?: number;
@@ -843,773 +1240,2088 @@ export function proxyDedicatedCloud(ovhEngine: OvhRequestable): DedicatedCloud {
 }
 export default proxyDedicatedCloud;
 /**
- * Api Proxy model
- */// Apis harmony
-// path /dedicatedCloud
+ * Api model for /dedicatedCloud
+ */
 export interface DedicatedCloud {
-    // GET /dedicatedCloud
+    /**
+     * List available services
+     * GET /dedicatedCloud
+     */
     $get(): Promise<string[]>;
+    /**
+     * Controle cache
+     */
+    $cache(param?: ICacheOptions): Promise<any>;
     commercialRange: {
-        // GET /dedicatedCloud/commercialRange
+        /**
+         * List of commercial Ranges available in a Dedicated Cloud
+         * GET /dedicatedCloud/commercialRange
+         */
         $get(): Promise<string[]>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         $(commercialRangeName: string): {
-            // GET /dedicatedCloud/commercialRange/{commercialRangeName}
+            /**
+             * Get this object properties
+             * GET /dedicatedCloud/commercialRange/{commercialRangeName}
+             */
             $get(): Promise<dedicatedCloud.CommercialRange>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         };
     }
     location: {
-        // GET /dedicatedCloud/location
+        /**
+         * List of locations available in a Dedicated Cloud
+         * GET /dedicatedCloud/location
+         */
         $get(): Promise<string[]>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         $(pccZone: string): {
-            // GET /dedicatedCloud/location/{pccZone}
+            /**
+             * Get this object properties
+             * GET /dedicatedCloud/location/{pccZone}
+             */
             $get(): Promise<dedicatedCloud.PccZone>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             hostProfile: {
-                // GET /dedicatedCloud/location/{pccZone}/hostProfile
+                /**
+                 * Offered host profile
+                 * GET /dedicatedCloud/location/{pccZone}/hostProfile
+                 */
                 $get(): Promise<number[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(id: number): {
-                    // GET /dedicatedCloud/location/{pccZone}/hostProfile/{id}
+                    /**
+                     * Get this object properties
+                     * GET /dedicatedCloud/location/{pccZone}/hostProfile/{id}
+                     */
                     $get(): Promise<dedicatedCloud.HostProfile>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 };
             }
             hypervisor: {
-                // GET /dedicatedCloud/location/{pccZone}/hypervisor
+                /**
+                 * Offered hypervisor version
+                 * GET /dedicatedCloud/location/{pccZone}/hypervisor
+                 */
                 $get(): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(shortName: string): {
-                    // GET /dedicatedCloud/location/{pccZone}/hypervisor/{shortName}
+                    /**
+                     * Get this object properties
+                     * GET /dedicatedCloud/location/{pccZone}/hypervisor/{shortName}
+                     */
                     $get(): Promise<dedicatedCloud.Os>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 };
             }
             stock: {
                 host: {
-                    // GET /dedicatedCloud/location/{pccZone}/stock/host
+                    /**
+                     * Available host stock
+                     * GET /dedicatedCloud/location/{pccZone}/stock/host
+                     */
                     $get(params?: { minYear?: number }): Promise<dedicatedCloud.HostStockProfile[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 pcc: {
-                    // GET /dedicatedCloud/location/{pccZone}/stock/pcc
+                    /**
+                     * Available PCC stock
+                     * GET /dedicatedCloud/location/{pccZone}/stock/pcc
+                     */
                     $get(): Promise<dedicatedCloud.PccStockProfile[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 zpool: {
-                    // GET /dedicatedCloud/location/{pccZone}/stock/zpool
+                    /**
+                     * Available zpool stock
+                     * GET /dedicatedCloud/location/{pccZone}/stock/zpool
+                     */
                     $get(params?: { profileFilter?: string }): Promise<dedicatedCloud.ZpoolStockProfile[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             }
         };
     }
     $(serviceName: string): {
-        // GET /dedicatedCloud/{serviceName}
+        /**
+         * Get this object properties
+         * GET /dedicatedCloud/{serviceName}
+         */
         $get(): Promise<dedicatedCloud.dedicatedCloud>;
-        // PUT /dedicatedCloud/{serviceName}
+        /**
+         * Alter this object properties
+         * PUT /dedicatedCloud/{serviceName}
+         */
         $put(params?: { advancedSecurity?: boolean, bandwidth?: string, billingType?: dedicatedCloudBillingTypeEnum, certifiedInterfaceUrl?: string, commercialRange?: string, description?: string, generation?: dedicatedCloudGenerationEnum, location?: string, managementInterface?: dedicatedCloudManagementInterfaceEnum, serviceName?: string, servicePackName?: string, spla?: boolean, sslV3?: boolean, state?: dedicatedCloudStateEnum, userAccessPolicy?: dedicatedCloudUserAccessPolicyEnum, userLimitConcurrentSession?: number, userLogoutPolicy?: dedicatedCloudUserLogoutPolicyEnum, userSessionTimeout?: number, vScopeUrl?: string, version?: dedicatedCloudVersion, webInterfaceUrl?: string }): Promise<dedicatedCloud.Task>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         allowedNetwork: {
-            // GET /dedicatedCloud/{serviceName}/allowedNetwork
+            /**
+             * Networks allowed to access to this Private Cloud management interface
+             * GET /dedicatedCloud/{serviceName}/allowedNetwork
+             */
             $get(): Promise<number[]>;
-            // POST /dedicatedCloud/{serviceName}/allowedNetwork
+            /**
+             * Create a new Allowed network for your dedicatedCloud
+             * POST /dedicatedCloud/{serviceName}/allowedNetwork
+             */
             $post(params: { description?: string, network: string }): Promise<dedicatedCloud.Task>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(networkAccessId: number): {
-                // DELETE /dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}
+                /**
+                 * Remove this network from your Private Cloud
+                 * DELETE /dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}
+                 */
                 $delete(): Promise<dedicatedCloud.Task>;
-                // GET /dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}
+                /**
+                 * Get this object properties
+                 * GET /dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}
+                 */
                 $get(): Promise<dedicatedCloud.AllowedNetwork>;
-                // PUT /dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}
+                /**
+                 * Alter this object properties
+                 * PUT /dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}
+                 */
                 $put(params?: { description?: string, network?: string, networkAccessId?: number, state?: dedicatedCloudAllowedNetworkStateEnum }): Promise<dedicatedCloud.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 task: {
-                    // GET /dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task
+                    /**
+                     * Tasks associated with this allowed network
+                     * GET /dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task
+                     */
                     $get(params?: { name?: string, state?: dedicatedCloudTaskStateEnum }): Promise<number[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     $(taskId: number): {
-                        // GET /dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task/{taskId}
+                        /**
+                         * Get this object properties
+                         * GET /dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task/{taskId}
+                         */
                         $get(): Promise<dedicatedCloud.Task>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         changeMaintenanceExecutionDate: {
-                            // POST /dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task/{taskId}/changeMaintenanceExecutionDate
+                            /**
+                             * Change the execution date of a maintenance. Works only if task type is maintenance and if it has not started yet.
+                             * POST /dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task/{taskId}/changeMaintenanceExecutionDate
+                             */
                             $post(params: { executionDate: string }): Promise<dedicatedCloud.Task>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         }
                         resetTaskState: {
-                            // POST /dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task/{taskId}/resetTaskState
+                            /**
+                             * Restart task in error.
+                             * POST /dedicatedCloud/{serviceName}/allowedNetwork/{networkAccessId}/task/{taskId}/resetTaskState
+                             */
                             $post(params: { reason: string }): Promise<dedicatedCloud.Task>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         }
                     };
                 }
             };
         }
         capabilities: {
-            // GET /dedicatedCloud/{serviceName}/capabilities
+            /**
+             * Get this object properties
+             * GET /dedicatedCloud/{serviceName}/capabilities
+             */
             $get(): Promise<dedicatedCloud.Capabilities>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         changeProperties: {
-            // POST /dedicatedCloud/{serviceName}/changeProperties
+            /**
+             * Update this Private Cloud properties.
+             * POST /dedicatedCloud/{serviceName}/changeProperties
+             */
             $post(params?: { description?: string, sslV3?: boolean, userAccessPolicy?: dedicatedCloudUserAccessPolicyEnum, userLimitConcurrentSession?: number, userLogoutPolicy?: dedicatedCloudUserLogoutPolicyEnum, userSessionTimeout?: number }): Promise<dedicatedCloud.Task>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         commercialRange: {
             compliance: {
-                // GET /dedicatedCloud/{serviceName}/commercialRange/compliance
+                /**
+                 * Get the name of the commercial ranges compliant with your Private Cloud
+                 * GET /dedicatedCloud/{serviceName}/commercialRange/compliance
+                 */
                 $get(): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             orderable: {
-                // GET /dedicatedCloud/{serviceName}/commercialRange/orderable
+                /**
+                 * Get the name of the commercial ranges orderable in your Private Cloud
+                 * GET /dedicatedCloud/{serviceName}/commercialRange/orderable
+                 */
                 $get(): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         }
         confirmTermination: {
-            // POST /dedicatedCloud/{serviceName}/confirmTermination
+            /**
+             * Confirm termination of your service
+             * POST /dedicatedCloud/{serviceName}/confirmTermination
+             */
             $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         datacenter: {
-            // GET /dedicatedCloud/{serviceName}/datacenter
+            /**
+             * Datacenters associated with this Private Cloud
+             * GET /dedicatedCloud/{serviceName}/datacenter
+             */
             $get(): Promise<number[]>;
-            // POST /dedicatedCloud/{serviceName}/datacenter
+            /**
+             * Add a new Datacenter in your Private Cloud
+             * POST /dedicatedCloud/{serviceName}/datacenter
+             */
             $post(params: { commercialRangeName: string, vrackName?: string }): Promise<dedicatedCloud.Task>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(datacenterId: number): {
-                // DELETE /dedicatedCloud/{serviceName}/datacenter/{datacenterId}
+                /**
+                 * Remove this Datacenter from your Private Cloud. (It has to be empty in order to be removable)
+                 * DELETE /dedicatedCloud/{serviceName}/datacenter/{datacenterId}
+                 */
                 $delete(): Promise<dedicatedCloud.Task>;
-                // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}
+                /**
+                 * Get this object properties
+                 * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}
+                 */
                 $get(): Promise<dedicatedCloud.Datacenter>;
-                // PUT /dedicatedCloud/{serviceName}/datacenter/{datacenterId}
+                /**
+                 * Alter this object properties
+                 * PUT /dedicatedCloud/{serviceName}/datacenter/{datacenterId}
+                 */
                 $put(params?: { commercialName?: dedicatedCloudCommercialNameEnum, commercialRangeName?: string, datacenterId?: number, description?: string, horizonViewName?: string, isRemovable?: boolean, name?: string, version?: string }): Promise<dedicatedCloud.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 backup: {
-                    // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup
+                    /**
+                     * Get this object properties
+                     * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup
+                     */
                     $get(): Promise<dedicatedCloud.Backup>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     changeProperties: {
-                        // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/changeProperties
+                        /**
+                         * Edit the backup on a Private Cloud
+                         * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/changeProperties
+                         */
                         $post(params: { backupDurationInReport: boolean, backupOffer: dedicatedCloudbackupOfferTypeEnum, backupSizeInReport: boolean, diskSizeInReport: boolean, fullDayInReport: boolean, mailAddress?: string, restorePointInReport: boolean, scheduleHour?: string }): Promise<dedicatedCloud.Task>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     disable: {
-                        // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/disable
+                        /**
+                         * Disable backup solution on a Private Cloud
+                         * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/disable
+                         */
                         $post(): Promise<dedicatedCloud.Task>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     enable: {
-                        // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/enable
+                        /**
+                         * Enable backup solution on a Private Cloud
+                         * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/enable
+                         */
                         $post(params?: { backupOffer?: dedicatedCloudbackupOfferTypeEnum }): Promise<dedicatedCloud.Task>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     offerCapabilities: {
-                        // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/offerCapabilities
+                        /**
+                         * List backup offer capabilities
+                         * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/offerCapabilities
+                         */
                         $get(): Promise<dedicatedCloud.backup.BackupCapabilities[]>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                 }
                 checkBackupJobs: {
-                    // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/checkBackupJobs
+                    /**
+                     * Check whether your backup jobs are correctly set in your current datacenter, use this when your virtual machines have been migrated through another datacenter
+                     * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/checkBackupJobs
+                     */
                     $post(): Promise<dedicatedCloud.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 disasterRecovery: {
                     zerto: {
                         disable: {
-                            // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/disable
+                            /**
+                             * Disable Zerto
+                             * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/disable
+                             */
                             $post(params: { secondaryDatacenterId: number, secondaryServiceName: string }): Promise<dedicatedCloud.Task>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         }
                         enable: {
-                            // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/enable
+                            /**
+                             * Enable Zerto replication between 2 OVH dedicated Clouds
+                             * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/enable
+                             */
                             $post(params: { primaryEndpointIp: string, secondaryDatacenterId: number, secondaryEndpointIp: string, secondaryServiceName: string }): Promise<dedicatedCloud.Task>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         }
                         generateZsspPassword: {
-                            // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/generateZsspPassword
+                            /**
+                             * Generate a new password for Zerto Self Service Portal and receive it by email.
+                             * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/generateZsspPassword
+                             */
                             $post(): Promise<dedicatedCloud.Task>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         }
                         state: {
-                            // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/state
+                            /**
+                             * Get the current state of Zerto deployment on your dedicated Cloud.
+                             * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/state
+                             */
                             $post(): Promise<dedicatedCloud.disasterRecovery.Profile>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         }
                     }
                     zertoSingle: {
                         configureVpn: {
-                            // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/configureVpn
+                            /**
+                             * Configure vpn between your OVH Private Cloud and your onsite infrastructure
+                             * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/configureVpn
+                             */
                             $post(params: { preSharedKey: string, remoteEndpointInternalIp: string, remoteEndpointPublicIp: string, remoteVraNetwork?: string, remoteZvmInternalIp: string }): Promise<dedicatedCloud.Task>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         }
                         defaultLocalVraNetwork: {
-                            // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/defaultLocalVraNetwork
+                            /**
+                             * Get the default localVraNetwork subnet suggested by OVH
+                             * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/defaultLocalVraNetwork
+                             */
                             $get(): Promise<string>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         }
                         disable: {
-                            // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/disable
+                            /**
+                             * Disable Single site Zerto
+                             * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/disable
+                             */
                             $post(): Promise<dedicatedCloud.Task>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         }
                         enable: {
-                            // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/enable
+                            /**
+                             * Enable Zerto replication between your OVH Private Cloud and your onsite infrastructure
+                             * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zertoSingle/enable
+                             */
                             $post(params: { localVraNetwork: string, ovhEndpointIp: string, remoteVraNetwork: string }): Promise<dedicatedCloud.Task>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         }
                     }
                 }
                 filer: {
-                    // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer
+                    /**
+                     * Filers associated with this Datacenter
+                     * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer
+                     */
                     $get(): Promise<number[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     $(filerId: number): {
-                        // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}
+                        /**
+                         * Get this object properties
+                         * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}
+                         */
                         $get(): Promise<dedicatedCloud.Filer>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         hourlyConsumption: {
-                            // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/hourlyConsumption
+                            /**
+                             * Hourly consumption associated with this Filer
+                             * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/hourlyConsumption
+                             */
                             $get(): Promise<dedicatedCloud.filer.HourlyConsumption>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         }
                         remove: {
-                            // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/remove
+                            /**
+                             * Remove the filer from your Private Cloud.
+                             * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/remove
+                             */
                             $post(): Promise<dedicatedCloud.Task>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         }
                         task: {
-                            // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task
+                            /**
+                             * Tasks associated with this Filer
+                             * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task
+                             */
                             $get(params?: { name?: string, state?: dedicatedCloudTaskStateEnum }): Promise<number[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                             $(taskId: number): {
-                                // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task/{taskId}
+                                /**
+                                 * Get this object properties
+                                 * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task/{taskId}
+                                 */
                                 $get(): Promise<dedicatedCloud.Task>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions): Promise<any>;
                                 changeMaintenanceExecutionDate: {
-                                    // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task/{taskId}/changeMaintenanceExecutionDate
+                                    /**
+                                     * Change the execution date of a maintenance. Works only if task type is maintenance and if it has not started yet.
+                                     * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task/{taskId}/changeMaintenanceExecutionDate
+                                     */
                                     $post(params: { executionDate: string }): Promise<dedicatedCloud.Task>;
+                                    /**
+                                     * Controle cache
+                                     */
+                                    $cache(param?: ICacheOptions): Promise<any>;
                                 }
                                 resetTaskState: {
-                                    // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task/{taskId}/resetTaskState
+                                    /**
+                                     * Restart task in error.
+                                     * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/task/{taskId}/resetTaskState
+                                     */
                                     $post(params: { reason: string }): Promise<dedicatedCloud.Task>;
+                                    /**
+                                     * Controle cache
+                                     */
+                                    $cache(param?: ICacheOptions): Promise<any>;
                                 }
                             };
                         }
                     };
                 }
                 host: {
-                    // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host
+                    /**
+                     * Hosts associated with this Datacenter
+                     * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host
+                     */
                     $get(): Promise<number[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     $(hostId: number): {
-                        // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}
+                        /**
+                         * Get this object properties
+                         * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}
+                         */
                         $get(): Promise<dedicatedCloud.Host>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         addHostSpare: {
-                            // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/addHostSpare
+                            /**
+                             * Add a spare host to your Private Cloud.
+                             * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/addHostSpare
+                             */
                             $post(params: { reason: string }): Promise<dedicatedCloud.Task>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         }
                         hourlyConsumption: {
-                            // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/hourlyConsumption
+                            /**
+                             * Hourly consumption associated with this host.
+                             * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/hourlyConsumption
+                             */
                             $get(): Promise<dedicatedCloud.host.HourlyConsumption>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         }
                         remove: {
-                            // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/remove
+                            /**
+                             * Remove the host from your Private Cloud.
+                             * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/remove
+                             */
                             $post(): Promise<dedicatedCloud.Task>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         }
                         task: {
-                            // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task
+                            /**
+                             * Tasks associated with this Host
+                             * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task
+                             */
                             $get(params?: { name?: string, state?: dedicatedCloudTaskStateEnum }): Promise<number[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                             $(taskId: number): {
-                                // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task/{taskId}
+                                /**
+                                 * Get this object properties
+                                 * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task/{taskId}
+                                 */
                                 $get(): Promise<dedicatedCloud.Task>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions): Promise<any>;
                                 changeMaintenanceExecutionDate: {
-                                    // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task/{taskId}/changeMaintenanceExecutionDate
+                                    /**
+                                     * Change the execution date of a maintenance. Works only if task type is maintenance and if it has not started yet.
+                                     * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task/{taskId}/changeMaintenanceExecutionDate
+                                     */
                                     $post(params: { executionDate: string }): Promise<dedicatedCloud.Task>;
+                                    /**
+                                     * Controle cache
+                                     */
+                                    $cache(param?: ICacheOptions): Promise<any>;
                                 }
                                 resetTaskState: {
-                                    // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task/{taskId}/resetTaskState
+                                    /**
+                                     * Restart task in error.
+                                     * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/task/{taskId}/resetTaskState
+                                     */
                                     $post(params: { reason: string }): Promise<dedicatedCloud.Task>;
+                                    /**
+                                     * Controle cache
+                                     */
+                                    $cache(param?: ICacheOptions): Promise<any>;
                                 }
                             };
                         }
                     };
                 }
                 orderNewFilerHourly: {
-                    // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderNewFilerHourly
+                    /**
+                     * Order a new hourly Filer in a given Datacenter
+                     * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderNewFilerHourly
+                     */
                     $post(params: { name: string }): Promise<dedicatedCloud.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 orderNewHostHourly: {
-                    // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderNewHostHourly
+                    /**
+                     * Order a new hourly Host in a given Datacenter
+                     * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderNewHostHourly
+                     */
                     $post(params: { name: string, vmwareClusterId?: string }): Promise<dedicatedCloud.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 orderableFilerProfiles: {
-                    // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableFilerProfiles
+                    /**
+                     * List available filers in a given Private Cloud Datacenter
+                     * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableFilerProfiles
+                     */
                     $get(): Promise<dedicatedCloud.filer.Profile[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 orderableHostProfiles: {
-                    // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableHostProfiles
+                    /**
+                     * List available hosts in a given Private Cloud Datacenter
+                     * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/orderableHostProfiles
+                     */
                     $get(): Promise<dedicatedCloud.host.Profile[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 privateGateway: {
-                    // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/privateGateway
+                    /**
+                     * Get this object properties
+                     * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/privateGateway
+                     */
                     $get(): Promise<dedicatedCloud.PrivateGateway>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     disable: {
-                        // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/privateGateway/disable
+                        /**
+                         * Remove the private gateway in your Private Cloud and open public access.
+                         * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/privateGateway/disable
+                         */
                         $post(): Promise<dedicatedCloud.Task>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     enable: {
-                        // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/privateGateway/enable
+                        /**
+                         * Deploy a private gateway on your Private Cloud to block all public access
+                         * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/privateGateway/enable
+                         */
                         $post(params: { ip: string, netmask: string, portgroup: string }): Promise<dedicatedCloud.Task>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                 }
                 task: {
-                    // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task
+                    /**
+                     * Tasks associated with this Datacenter
+                     * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task
+                     */
                     $get(params?: { name?: string, state?: dedicatedCloudTaskStateEnum }): Promise<number[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     $(taskId: number): {
-                        // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task/{taskId}
+                        /**
+                         * Get this object properties
+                         * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task/{taskId}
+                         */
                         $get(): Promise<dedicatedCloud.Task>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         changeMaintenanceExecutionDate: {
-                            // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task/{taskId}/changeMaintenanceExecutionDate
+                            /**
+                             * Change the execution date of a maintenance. Works only if task type is maintenance and if it has not started yet.
+                             * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task/{taskId}/changeMaintenanceExecutionDate
+                             */
                             $post(params: { executionDate: string }): Promise<dedicatedCloud.Task>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         }
                         resetTaskState: {
-                            // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task/{taskId}/resetTaskState
+                            /**
+                             * Restart task in error.
+                             * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/task/{taskId}/resetTaskState
+                             */
                             $post(params: { reason: string }): Promise<dedicatedCloud.Task>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         }
                     };
                 }
                 vm: {
-                    // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm
+                    /**
+                     * Virtual machiness associated with this Datacenter
+                     * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm
+                     */
                     $get(): Promise<number[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     $(vmId: number): {
-                        // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}
+                        /**
+                         * Get this object properties
+                         * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}
+                         */
                         $get(): Promise<dedicatedCloud.Vm>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         backupJob: {
-                            // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob
+                            /**
+                             * Get this object properties
+                             * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob
+                             */
                             $get(): Promise<dedicatedCloud.BackupJob>;
-                            // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob
+                            /**
+                             * Edit a backup job
+                             * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob
+                             */
                             $post(params: { backupDays: dedicatedCloudbackupBackupDaysEnum[] }): Promise<dedicatedCloud.Task>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                             disable: {
-                                // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/disable
+                                /**
+                                 * Disable backup solution on this virtual Machine
+                                 * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/disable
+                                 */
                                 $post(): Promise<dedicatedCloud.Task>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions): Promise<any>;
                             }
                             enable: {
-                                // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/enable
+                                /**
+                                 * Enable backup solution on this virtual Machine
+                                 * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/enable
+                                 */
                                 $post(params: { backupDays: dedicatedCloudbackupBackupDaysEnum[] }): Promise<dedicatedCloud.Task>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions): Promise<any>;
                             }
                             restorePoints: {
-                                // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/restorePoints
+                                /**
+                                 * Restore point associated to this Backup Job
+                                 * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/restorePoints
+                                 */
                                 $get(): Promise<number[]>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions): Promise<any>;
                                 $(restorePointId: number): {
-                                    // GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/restorePoints/{restorePointId}
+                                    /**
+                                     * Get this object properties
+                                     * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/restorePoints/{restorePointId}
+                                     */
                                     $get(): Promise<dedicatedCloud.RestorePoint>;
+                                    /**
+                                     * Controle cache
+                                     */
+                                    $cache(param?: ICacheOptions): Promise<any>;
                                     restore: {
-                                        // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/restorePoints/{restorePointId}/restore
+                                        /**
+                                         * Restore this restore point
+                                         * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/backupJob/restorePoints/{restorePointId}/restore
+                                         */
                                         $post(params: { filerId: number }): Promise<dedicatedCloud.Task>;
+                                        /**
+                                         * Controle cache
+                                         */
+                                        $cache(param?: ICacheOptions): Promise<any>;
                                     }
                                 };
                             }
                         }
                         disableBackup: {
-                            // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/disableBackup
+                            /**
+                             * Disable backup on this virtual Machine
+                             * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/disableBackup
+                             */
                             $post(): Promise<dedicatedCloud.Task>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         }
                         editBackup: {
-                            // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/editBackup
+                            /**
+                             * Edit backup on this virtual Machine
+                             * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/editBackup
+                             */
                             $post(params: { backupDays: dedicatedCloudbackupBackupDaysEnum[] }): Promise<dedicatedCloud.Task>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         }
                         enableBackup: {
-                            // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/enableBackup
+                            /**
+                             * Enable backup on this virtual Machine
+                             * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/enableBackup
+                             */
                             $post(params: { backupDays: dedicatedCloudbackupBackupDaysEnum[] }): Promise<dedicatedCloud.Task>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         }
                         restoreBackup: {
-                            // POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/restoreBackup
+                            /**
+                             * Restore this restore point
+                             * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/vm/{vmId}/restoreBackup
+                             */
                             $post(params: { filerId: number, restorePointId: number }): Promise<dedicatedCloud.Task>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         }
                     };
                 }
             };
         }
         federation: {
-            // GET /dedicatedCloud/{serviceName}/federation
+            /**
+             * Get this object properties
+             * GET /dedicatedCloud/{serviceName}/federation
+             */
             $get(): Promise<dedicatedCloud.Federation>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             activeDirectory: {
-                // GET /dedicatedCloud/{serviceName}/federation/activeDirectory
+                /**
+                 * Active Directories linked to this Private Cloud
+                 * GET /dedicatedCloud/{serviceName}/federation/activeDirectory
+                 */
                 $get(): Promise<number[]>;
-                // POST /dedicatedCloud/{serviceName}/federation/activeDirectory
+                /**
+                 * Add a new option user access
+                 * POST /dedicatedCloud/{serviceName}/federation/activeDirectory
+                 */
                 $post(params: { baseDnForGroups: string, baseDnForUsers: string, description?: string, domainAlias: string, domainName: string, ip: string, password: string, username: string }): Promise<dedicatedCloud.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(activeDirectoryId: number): {
-                    // DELETE /dedicatedCloud/{serviceName}/federation/activeDirectory/{activeDirectoryId}
+                    /**
+                     * Remove an option user access
+                     * DELETE /dedicatedCloud/{serviceName}/federation/activeDirectory/{activeDirectoryId}
+                     */
                     $delete(): Promise<dedicatedCloud.Task>;
-                    // GET /dedicatedCloud/{serviceName}/federation/activeDirectory/{activeDirectoryId}
+                    /**
+                     * Get this object properties
+                     * GET /dedicatedCloud/{serviceName}/federation/activeDirectory/{activeDirectoryId}
+                     */
                     $get(): Promise<dedicatedCloud.FederationAccessNetwork>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     changeProperties: {
-                        // POST /dedicatedCloud/{serviceName}/federation/activeDirectory/{activeDirectoryId}/changeProperties
+                        /**
+                         * Change Active Directory properties
+                         * POST /dedicatedCloud/{serviceName}/federation/activeDirectory/{activeDirectoryId}/changeProperties
+                         */
                         $post(params: { description?: string, password: string, username: string }): Promise<dedicatedCloud.Task>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     grantActiveDirectoryUser: {
-                        // POST /dedicatedCloud/{serviceName}/federation/activeDirectory/{activeDirectoryId}/grantActiveDirectoryUser
+                        /**
+                         * Grant Active Directory user
+                         * POST /dedicatedCloud/{serviceName}/federation/activeDirectory/{activeDirectoryId}/grantActiveDirectoryUser
+                         */
                         $post(params: { username: string }): Promise<dedicatedCloud.Task>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                 };
             }
         }
         filer: {
-            // GET /dedicatedCloud/{serviceName}/filer
+            /**
+             * Filers mounted on all Datacenters of your Private Cloud Vsphere
+             * GET /dedicatedCloud/{serviceName}/filer
+             */
             $get(): Promise<number[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(filerId: number): {
-                // GET /dedicatedCloud/{serviceName}/filer/{filerId}
+                /**
+                 * Get this object properties
+                 * GET /dedicatedCloud/{serviceName}/filer/{filerId}
+                 */
                 $get(): Promise<dedicatedCloud.Filer>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 hourlyConsumption: {
-                    // GET /dedicatedCloud/{serviceName}/filer/{filerId}/hourlyConsumption
+                    /**
+                     * Hourly consumption associated with this Filer
+                     * GET /dedicatedCloud/{serviceName}/filer/{filerId}/hourlyConsumption
+                     */
                     $get(): Promise<dedicatedCloud.filer.HourlyConsumption>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 remove: {
-                    // POST /dedicatedCloud/{serviceName}/filer/{filerId}/remove
+                    /**
+                     * Remove the filer from your Private Cloud.
+                     * POST /dedicatedCloud/{serviceName}/filer/{filerId}/remove
+                     */
                     $post(): Promise<dedicatedCloud.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 task: {
-                    // GET /dedicatedCloud/{serviceName}/filer/{filerId}/task
+                    /**
+                     * Tasks associated with this Filer
+                     * GET /dedicatedCloud/{serviceName}/filer/{filerId}/task
+                     */
                     $get(params?: { name?: string, state?: dedicatedCloudTaskStateEnum }): Promise<number[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     $(taskId: number): {
-                        // GET /dedicatedCloud/{serviceName}/filer/{filerId}/task/{taskId}
+                        /**
+                         * Get this object properties
+                         * GET /dedicatedCloud/{serviceName}/filer/{filerId}/task/{taskId}
+                         */
                         $get(): Promise<dedicatedCloud.Task>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         changeMaintenanceExecutionDate: {
-                            // POST /dedicatedCloud/{serviceName}/filer/{filerId}/task/{taskId}/changeMaintenanceExecutionDate
+                            /**
+                             * Change the execution date of a maintenance. Works only if task type is maintenance and if it has not started yet.
+                             * POST /dedicatedCloud/{serviceName}/filer/{filerId}/task/{taskId}/changeMaintenanceExecutionDate
+                             */
                             $post(params: { executionDate: string }): Promise<dedicatedCloud.Task>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         }
                         resetTaskState: {
-                            // POST /dedicatedCloud/{serviceName}/filer/{filerId}/task/{taskId}/resetTaskState
+                            /**
+                             * Restart task in error.
+                             * POST /dedicatedCloud/{serviceName}/filer/{filerId}/task/{taskId}/resetTaskState
+                             */
                             $post(params: { reason: string }): Promise<dedicatedCloud.Task>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         }
                     };
                 }
             };
         }
         globalTasks: {
-            // GET /dedicatedCloud/{serviceName}/globalTasks
+            /**
+             * Get filtered tasks associated with this Private Cloud
+             * GET /dedicatedCloud/{serviceName}/globalTasks
+             */
             $get(params?: { datacenterId?: number, endDate_from?: string, endDate_to?: string, executionDate_from?: string, executionDate_to?: string, filerId?: number, hostId?: number, lastModificationDate_from?: string, lastModificationDate_to?: string, name?: string, networkAccessId?: number, orderId?: number, parentTaskId?: number, state?: dedicatedCloudTaskStateEnum[], userId?: number, vlanId?: number }): Promise<number[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         hcx: {
-            // GET /dedicatedCloud/{serviceName}/hcx
+            /**
+             * Get this object properties
+             * GET /dedicatedCloud/{serviceName}/hcx
+             */
             $get(): Promise<dedicatedCloud.Hcx>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             canBeDisabled: {
-                // GET /dedicatedCloud/{serviceName}/hcx/canBeDisabled
+                /**
+                 * Check if VMware Hybrid Cloud Extension option can be disabled
+                 * GET /dedicatedCloud/{serviceName}/hcx/canBeDisabled
+                 */
                 $get(): Promise<boolean>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             canBeEnabled: {
-                // GET /dedicatedCloud/{serviceName}/hcx/canBeEnabled
+                /**
+                 * Check if VMware Hybrid Cloud Extension option can be enabled
+                 * GET /dedicatedCloud/{serviceName}/hcx/canBeEnabled
+                 */
                 $get(): Promise<boolean>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             disable: {
-                // POST /dedicatedCloud/{serviceName}/hcx/disable
+                /**
+                 * Disable VMware Hybrid Cloud Extension option
+                 * POST /dedicatedCloud/{serviceName}/hcx/disable
+                 */
                 $post(): Promise<dedicatedCloud.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             enable: {
-                // POST /dedicatedCloud/{serviceName}/hcx/enable
+                /**
+                 * Enable VMware Hybrid Cloud Extension option
+                 * POST /dedicatedCloud/{serviceName}/hcx/enable
+                 */
                 $post(): Promise<dedicatedCloud.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         }
         hds: {
-            // GET /dedicatedCloud/{serviceName}/hds
+            /**
+             * Get this object properties
+             * GET /dedicatedCloud/{serviceName}/hds
+             */
             $get(): Promise<dedicatedCloud.Hds>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             canBeDisabled: {
-                // GET /dedicatedCloud/{serviceName}/hds/canBeDisabled
+                /**
+                 * Check if Hds option can be disabled
+                 * GET /dedicatedCloud/{serviceName}/hds/canBeDisabled
+                 */
                 $get(): Promise<dedicatedCloud.optionCompatibility>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             canBeEnabled: {
-                // GET /dedicatedCloud/{serviceName}/hds/canBeEnabled
+                /**
+                 * Check if Hds option can be enabled
+                 * GET /dedicatedCloud/{serviceName}/hds/canBeEnabled
+                 */
                 $get(): Promise<dedicatedCloud.optionCompatibility>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             disable: {
-                // POST /dedicatedCloud/{serviceName}/hds/disable
+                /**
+                 * Disable Hds option
+                 * POST /dedicatedCloud/{serviceName}/hds/disable
+                 */
                 $post(): Promise<dedicatedCloud.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             enable: {
-                // POST /dedicatedCloud/{serviceName}/hds/enable
+                /**
+                 * Enable Hds option
+                 * POST /dedicatedCloud/{serviceName}/hds/enable
+                 */
                 $post(): Promise<dedicatedCloud.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         }
         hipaa: {
-            // GET /dedicatedCloud/{serviceName}/hipaa
+            /**
+             * Get this object properties
+             * GET /dedicatedCloud/{serviceName}/hipaa
+             */
             $get(): Promise<dedicatedCloud.Hipaa>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             canBeDisabled: {
-                // GET /dedicatedCloud/{serviceName}/hipaa/canBeDisabled
+                /**
+                 * Check if Hipaa option can be disabled
+                 * GET /dedicatedCloud/{serviceName}/hipaa/canBeDisabled
+                 */
                 $get(): Promise<dedicatedCloud.optionCompatibility>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             canBeEnabled: {
-                // GET /dedicatedCloud/{serviceName}/hipaa/canBeEnabled
+                /**
+                 * Check if Hipaa option can be enabled
+                 * GET /dedicatedCloud/{serviceName}/hipaa/canBeEnabled
+                 */
                 $get(): Promise<dedicatedCloud.optionCompatibility>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             disable: {
-                // POST /dedicatedCloud/{serviceName}/hipaa/disable
+                /**
+                 * Disable Hipaa option
+                 * POST /dedicatedCloud/{serviceName}/hipaa/disable
+                 */
                 $post(): Promise<dedicatedCloud.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             enable: {
-                // POST /dedicatedCloud/{serviceName}/hipaa/enable
+                /**
+                 * Enable Hipaa option
+                 * POST /dedicatedCloud/{serviceName}/hipaa/enable
+                 */
                 $post(): Promise<dedicatedCloud.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         }
         ip: {
-            // GET /dedicatedCloud/{serviceName}/ip
+            /**
+             * Ip Blocks attached to this Private Cloud
+             * GET /dedicatedCloud/{serviceName}/ip
+             */
             $get(): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(network: string): {
-                // GET /dedicatedCloud/{serviceName}/ip/{network}
+                /**
+                 * Get this object properties
+                 * GET /dedicatedCloud/{serviceName}/ip/{network}
+                 */
                 $get(): Promise<dedicatedCloud.Ip>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 details: {
-                    // GET /dedicatedCloud/{serviceName}/ip/{network}/details
+                    /**
+                     * List details about this IP Block
+                     * GET /dedicatedCloud/{serviceName}/ip/{network}/details
+                     */
                     $get(): Promise<dedicatedCloud.IpDetails[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 task: {
-                    // GET /dedicatedCloud/{serviceName}/ip/{network}/task
+                    /**
+                     * Tasks associated with this IP Block
+                     * GET /dedicatedCloud/{serviceName}/ip/{network}/task
+                     */
                     $get(params?: { name?: string, state?: dedicatedCloudTaskStateEnum }): Promise<number[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     $(taskId: number): {
-                        // GET /dedicatedCloud/{serviceName}/ip/{network}/task/{taskId}
+                        /**
+                         * Get this object properties
+                         * GET /dedicatedCloud/{serviceName}/ip/{network}/task/{taskId}
+                         */
                         $get(): Promise<dedicatedCloud.Task>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         changeMaintenanceExecutionDate: {
-                            // POST /dedicatedCloud/{serviceName}/ip/{network}/task/{taskId}/changeMaintenanceExecutionDate
+                            /**
+                             * Change the execution date of a maintenance. Works only if task type is maintenance and if it has not started yet.
+                             * POST /dedicatedCloud/{serviceName}/ip/{network}/task/{taskId}/changeMaintenanceExecutionDate
+                             */
                             $post(params: { executionDate: string }): Promise<dedicatedCloud.Task>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         }
                         resetTaskState: {
-                            // POST /dedicatedCloud/{serviceName}/ip/{network}/task/{taskId}/resetTaskState
+                            /**
+                             * Restart task in error.
+                             * POST /dedicatedCloud/{serviceName}/ip/{network}/task/{taskId}/resetTaskState
+                             */
                             $post(params: { reason: string }): Promise<dedicatedCloud.Task>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         }
                     };
                 }
             };
         }
         newPrices: {
-            // GET /dedicatedCloud/{serviceName}/newPrices
+            /**
+             * Get the new Prices for your Private Cloud
+             * GET /dedicatedCloud/{serviceName}/newPrices
+             */
             $get(): Promise<dedicatedCloud.resourceNewPrices>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         nsx: {
-            // GET /dedicatedCloud/{serviceName}/nsx
+            /**
+             * Get this object properties
+             * GET /dedicatedCloud/{serviceName}/nsx
+             */
             $get(): Promise<dedicatedCloud.Nsx>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             canBeDisabled: {
-                // GET /dedicatedCloud/{serviceName}/nsx/canBeDisabled
+                /**
+                 * Check if Nsx option can be disabled
+                 * GET /dedicatedCloud/{serviceName}/nsx/canBeDisabled
+                 */
                 $get(): Promise<dedicatedCloud.optionCompatibility>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             canBeEnabled: {
-                // GET /dedicatedCloud/{serviceName}/nsx/canBeEnabled
+                /**
+                 * Check if Nsx option can be enabled
+                 * GET /dedicatedCloud/{serviceName}/nsx/canBeEnabled
+                 */
                 $get(): Promise<dedicatedCloud.optionCompatibility>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             disable: {
-                // POST /dedicatedCloud/{serviceName}/nsx/disable
+                /**
+                 * Disable Nsx option
+                 * POST /dedicatedCloud/{serviceName}/nsx/disable
+                 */
                 $post(): Promise<dedicatedCloud.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             enable: {
-                // POST /dedicatedCloud/{serviceName}/nsx/enable
+                /**
+                 * Enable Nsx option
+                 * POST /dedicatedCloud/{serviceName}/nsx/enable
+                 */
                 $post(): Promise<dedicatedCloud.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         }
         orderNewFilerHourly: {
-            // POST /dedicatedCloud/{serviceName}/orderNewFilerHourly
+            /**
+             * Order a new hourly Filer mounted in every Datacenter of a given Private Cloud
+             * POST /dedicatedCloud/{serviceName}/orderNewFilerHourly
+             */
             $post(params: { name: string }): Promise<dedicatedCloud.Task>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         orderableIpCountries: {
-            // GET /dedicatedCloud/{serviceName}/orderableIpCountries
+            /**
+             * Get the countries you can select in /order/dedicatedCloud/{serviceName}/ip
+             * GET /dedicatedCloud/{serviceName}/orderableIpCountries
+             */
             $get(): Promise<dedicatedCloud.IpCountriesEnum[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         passwordPolicy: {
-            // GET /dedicatedCloud/{serviceName}/passwordPolicy
+            /**
+             * Get the current password policy for your Private Cloud
+             * GET /dedicatedCloud/{serviceName}/passwordPolicy
+             */
             $get(): Promise<dedicatedCloud.passwordPolicy>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         pcidss: {
-            // GET /dedicatedCloud/{serviceName}/pcidss
+            /**
+             * Get this object properties
+             * GET /dedicatedCloud/{serviceName}/pcidss
+             */
             $get(): Promise<dedicatedCloud.PciDss>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             canBeDisabled: {
-                // GET /dedicatedCloud/{serviceName}/pcidss/canBeDisabled
+                /**
+                 * Check if PCI-DSS option can be disabled
+                 * GET /dedicatedCloud/{serviceName}/pcidss/canBeDisabled
+                 */
                 $get(): Promise<dedicatedCloud.optionCompatibility>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             canBeEnabled: {
-                // GET /dedicatedCloud/{serviceName}/pcidss/canBeEnabled
+                /**
+                 * Check if PCI-DSS option can be enabled
+                 * GET /dedicatedCloud/{serviceName}/pcidss/canBeEnabled
+                 */
                 $get(): Promise<dedicatedCloud.optionCompatibility>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             disable: {
-                // POST /dedicatedCloud/{serviceName}/pcidss/disable
+                /**
+                 * Disable PCI-DSS option
+                 * POST /dedicatedCloud/{serviceName}/pcidss/disable
+                 */
                 $post(): Promise<dedicatedCloud.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             enable: {
-                // POST /dedicatedCloud/{serviceName}/pcidss/enable
+                /**
+                 * Enable PCI-DSS option
+                 * POST /dedicatedCloud/{serviceName}/pcidss/enable
+                 */
                 $post(): Promise<dedicatedCloud.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         }
         resetTriggeredAlarm: {
-            // POST /dedicatedCloud/{serviceName}/resetTriggeredAlarm
+            /**
+             * Reset all triggered alarms on PCC
+             * POST /dedicatedCloud/{serviceName}/resetTriggeredAlarm
+             */
             $post(): Promise<dedicatedCloud.Task>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         robot: {
-            // GET /dedicatedCloud/{serviceName}/robot
+            /**
+             * Robots that can run on this Private Cloud
+             * GET /dedicatedCloud/{serviceName}/robot
+             */
             $get(): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(name: string): {
-                // GET /dedicatedCloud/{serviceName}/robot/{name}
+                /**
+                 * Get this object properties
+                 * GET /dedicatedCloud/{serviceName}/robot/{name}
+                 */
                 $get(): Promise<dedicatedCloud.Robot>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             };
         }
         serviceInfos: {
-            // GET /dedicatedCloud/{serviceName}/serviceInfos
+            /**
+             * Get this object properties
+             * GET /dedicatedCloud/{serviceName}/serviceInfos
+             */
             $get(): Promise<services.Service>;
-            // PUT /dedicatedCloud/{serviceName}/serviceInfos
+            /**
+             * Alter this object properties
+             * PUT /dedicatedCloud/{serviceName}/serviceInfos
+             */
             $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         servicePack: {
-            // GET /dedicatedCloud/{serviceName}/servicePack
+            /**
+             * Retrieve the service pack informations
+             * GET /dedicatedCloud/{serviceName}/servicePack
+             */
             $get(): Promise<dedicatedCloud.servicePackStatus>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         servicePacks: {
-            // GET /dedicatedCloud/{serviceName}/servicePacks
+            /**
+             * Service Pack compliant with the current Private Cloud
+             * GET /dedicatedCloud/{serviceName}/servicePacks
+             */
             $get(): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(name: string): {
-                // GET /dedicatedCloud/{serviceName}/servicePacks/{name}
+                /**
+                 * Get this object properties
+                 * GET /dedicatedCloud/{serviceName}/servicePacks/{name}
+                 */
                 $get(): Promise<dedicatedCloud.ServicePack>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             };
         }
         task: {
-            // GET /dedicatedCloud/{serviceName}/task
+            /**
+             * Tasks associated with this Private Cloud
+             * GET /dedicatedCloud/{serviceName}/task
+             */
             $get(params?: { name?: string, state?: dedicatedCloudTaskStateEnum }): Promise<number[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(taskId: number): {
-                // GET /dedicatedCloud/{serviceName}/task/{taskId}
+                /**
+                 * Get this object properties
+                 * GET /dedicatedCloud/{serviceName}/task/{taskId}
+                 */
                 $get(): Promise<dedicatedCloud.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 changeMaintenanceExecutionDate: {
-                    // POST /dedicatedCloud/{serviceName}/task/{taskId}/changeMaintenanceExecutionDate
+                    /**
+                     * Change the execution date of a maintenance. Works only if task type is maintenance and if it has not started yet.
+                     * POST /dedicatedCloud/{serviceName}/task/{taskId}/changeMaintenanceExecutionDate
+                     */
                     $post(params: { executionDate: string }): Promise<dedicatedCloud.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 resetTaskState: {
-                    // POST /dedicatedCloud/{serviceName}/task/{taskId}/resetTaskState
+                    /**
+                     * Restart task in error.
+                     * POST /dedicatedCloud/{serviceName}/task/{taskId}/resetTaskState
+                     */
                     $post(params: { reason: string }): Promise<dedicatedCloud.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             };
         }
         terminate: {
-            // POST /dedicatedCloud/{serviceName}/terminate
+            /**
+             * Terminate your service
+             * POST /dedicatedCloud/{serviceName}/terminate
+             */
             $post(): Promise<string>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         twoFAWhitelist: {
-            // GET /dedicatedCloud/{serviceName}/twoFAWhitelist
+            /**
+             * Ip allowed to bypass the two factor authentication on this Private Cloud management interface
+             * GET /dedicatedCloud/{serviceName}/twoFAWhitelist
+             */
             $get(): Promise<number[]>;
-            // POST /dedicatedCloud/{serviceName}/twoFAWhitelist
+            /**
+             * Add a whitelisted ip on the two factor authentication
+             * POST /dedicatedCloud/{serviceName}/twoFAWhitelist
+             */
             $post(params: { description: string, ip: string }): Promise<dedicatedCloud.Task>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(id: number): {
-                // DELETE /dedicatedCloud/{serviceName}/twoFAWhitelist/{id}
+                /**
+                 * Remove a whitelisted ip on the two factor authentication
+                 * DELETE /dedicatedCloud/{serviceName}/twoFAWhitelist/{id}
+                 */
                 $delete(): Promise<dedicatedCloud.Task>;
-                // GET /dedicatedCloud/{serviceName}/twoFAWhitelist/{id}
+                /**
+                 * Get this object properties
+                 * GET /dedicatedCloud/{serviceName}/twoFAWhitelist/{id}
+                 */
                 $get(): Promise<dedicatedCloud.twoFAWhitelist>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 changeProperties: {
-                    // POST /dedicatedCloud/{serviceName}/twoFAWhitelist/{id}/changeProperties
+                    /**
+                     * Change Private Cloud Two facter authentication whitelist properties
+                     * POST /dedicatedCloud/{serviceName}/twoFAWhitelist/{id}/changeProperties
+                     */
                     $post(params?: { description?: string }): Promise<dedicatedCloud.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             };
         }
         upgradeHypervisor: {
-            // POST /dedicatedCloud/{serviceName}/upgradeHypervisor
+            /**
+             * Upgrade your hypervisor to the next released version
+             * POST /dedicatedCloud/{serviceName}/upgradeHypervisor
+             */
             $post(): Promise<dedicatedCloud.Task>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         upgradeVcenter: {
-            // POST /dedicatedCloud/{serviceName}/upgradeVcenter
+            /**
+             * Upgrade your vCenter to the next released version
+             * POST /dedicatedCloud/{serviceName}/upgradeVcenter
+             */
             $post(params?: { release?: dedicatedCloud.releaseEnum }): Promise<dedicatedCloud.Task>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         user: {
-            // GET /dedicatedCloud/{serviceName}/user
+            /**
+             * Private Cloud users
+             * GET /dedicatedCloud/{serviceName}/user
+             */
             $get(params?: { name?: string }): Promise<number[]>;
-            // POST /dedicatedCloud/{serviceName}/user
+            /**
+             * Create a new User in your Private Cloud
+             * POST /dedicatedCloud/{serviceName}/user
+             */
             $post(params: { canAddRessource?: boolean, canManageRights?: boolean, email?: string, expirationDate?: string, firstName?: string, lastName?: string, name: string, networkRole?: dedicatedCloudrightNetworkRoleEnum, nsxRight?: boolean, password?: string, phoneNumber?: string, receiveAlerts?: boolean, right?: dedicatedCloudrightRightEnum, tokenValidator?: boolean, vmNetworkRole?: dedicatedCloudrightVmNetworkRoleEnum }): Promise<dedicatedCloud.Task>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(userId: number): {
-                // DELETE /dedicatedCloud/{serviceName}/user/{userId}
+                /**
+                 * Remove a given user from your Private Cloud
+                 * DELETE /dedicatedCloud/{serviceName}/user/{userId}
+                 */
                 $delete(): Promise<dedicatedCloud.Task>;
-                // GET /dedicatedCloud/{serviceName}/user/{userId}
+                /**
+                 * Get this object properties
+                 * GET /dedicatedCloud/{serviceName}/user/{userId}
+                 */
                 $get(): Promise<dedicatedCloud.User>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 changePassword: {
-                    // POST /dedicatedCloud/{serviceName}/user/{userId}/changePassword
+                    /**
+                     * Change Private Cloud user password
+                     * POST /dedicatedCloud/{serviceName}/user/{userId}/changePassword
+                     */
                     $post(params?: { password?: string }): Promise<dedicatedCloud.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 changeProperties: {
-                    // POST /dedicatedCloud/{serviceName}/user/{userId}/changeProperties
+                    /**
+                     * Change Private Cloud user properties
+                     * POST /dedicatedCloud/{serviceName}/user/{userId}/changeProperties
+                     */
                     $post(params?: { canManageIpFailOvers?: boolean, canManageNetwork?: boolean, canManageRights?: boolean, email?: string, firstName?: string, fullAdminRo?: boolean, lastName?: string, nsxRight?: boolean, phoneNumber?: string, receiveAlerts?: boolean, tokenValidator?: boolean }): Promise<dedicatedCloud.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 disable: {
-                    // POST /dedicatedCloud/{serviceName}/user/{userId}/disable
+                    /**
+                     * Disable the given Private Cloud user 
+                     * POST /dedicatedCloud/{serviceName}/user/{userId}/disable
+                     */
                     $post(): Promise<dedicatedCloud.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 enable: {
-                    // POST /dedicatedCloud/{serviceName}/user/{userId}/enable
+                    /**
+                     * Enable the given Private Cloud user 
+                     * POST /dedicatedCloud/{serviceName}/user/{userId}/enable
+                     */
                     $post(): Promise<dedicatedCloud.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 metricsToken: {
-                    // POST /dedicatedCloud/{serviceName}/user/{userId}/metricsToken
+                    /**
+                     * Get Metrics Token to query vScope Graphs data 
+                     * POST /dedicatedCloud/{serviceName}/user/{userId}/metricsToken
+                     */
                     $post(): Promise<dedicatedCloud.metricsToken>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 objectRight: {
-                    // GET /dedicatedCloud/{serviceName}/user/{userId}/objectRight
+                    /**
+                     * User rights on an object
+                     * GET /dedicatedCloud/{serviceName}/user/{userId}/objectRight
+                     */
                     $get(): Promise<number[]>;
-                    // POST /dedicatedCloud/{serviceName}/user/{userId}/objectRight
+                    /**
+                     * Add a new object right to user in datacenter on Private Cloud
+                     * POST /dedicatedCloud/{serviceName}/user/{userId}/objectRight
+                     */
                     $post(params: { propagate?: boolean, right: dedicatedCloudrightRightEnum, type: dedicatedCloudrightUserObjectRightTypeEnum, vmwareObjectId: string }): Promise<dedicatedCloud.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     $(objectRightId: number): {
-                        // DELETE /dedicatedCloud/{serviceName}/user/{userId}/objectRight/{objectRightId}
+                        /**
+                         * Remove an object right from user in datacenter on Private Cloud
+                         * DELETE /dedicatedCloud/{serviceName}/user/{userId}/objectRight/{objectRightId}
+                         */
                         $delete(): Promise<dedicatedCloud.Task>;
-                        // GET /dedicatedCloud/{serviceName}/user/{userId}/objectRight/{objectRightId}
+                        /**
+                         * Get this object properties
+                         * GET /dedicatedCloud/{serviceName}/user/{userId}/objectRight/{objectRightId}
+                         */
                         $get(): Promise<dedicatedCloud.ObjectRight>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     };
                 }
                 right: {
-                    // GET /dedicatedCloud/{serviceName}/user/{userId}/right
+                    /**
+                     * User rights in a given Datacenters
+                     * GET /dedicatedCloud/{serviceName}/user/{userId}/right
+                     */
                     $get(): Promise<number[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     $(rightId: number): {
-                        // GET /dedicatedCloud/{serviceName}/user/{userId}/right/{rightId}
+                        /**
+                         * Get this object properties
+                         * GET /dedicatedCloud/{serviceName}/user/{userId}/right/{rightId}
+                         */
                         $get(): Promise<dedicatedCloud.Right>;
-                        // PUT /dedicatedCloud/{serviceName}/user/{userId}/right/{rightId}
+                        /**
+                         * Alter this object properties
+                         * PUT /dedicatedCloud/{serviceName}/user/{userId}/right/{rightId}
+                         */
                         $put(params?: { canAddRessource?: boolean, datacenterId?: number, networkRole?: dedicatedCloudrightNetworkRoleEnum, right?: dedicatedCloudrightRightEnum, rightId?: number, vmNetworkRole?: dedicatedCloudrightVmNetworkRoleEnum }): Promise<dedicatedCloud.Task>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     };
                 }
                 task: {
-                    // GET /dedicatedCloud/{serviceName}/user/{userId}/task
+                    /**
+                     * Tasks associated with this User
+                     * GET /dedicatedCloud/{serviceName}/user/{userId}/task
+                     */
                     $get(params?: { name?: string, state?: dedicatedCloudTaskStateEnum }): Promise<number[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     $(taskId: number): {
-                        // GET /dedicatedCloud/{serviceName}/user/{userId}/task/{taskId}
+                        /**
+                         * Get this object properties
+                         * GET /dedicatedCloud/{serviceName}/user/{userId}/task/{taskId}
+                         */
                         $get(): Promise<dedicatedCloud.Task>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         changeMaintenanceExecutionDate: {
-                            // POST /dedicatedCloud/{serviceName}/user/{userId}/task/{taskId}/changeMaintenanceExecutionDate
+                            /**
+                             * Change the execution date of a maintenance. Works only if task type is maintenance and if it has not started yet.
+                             * POST /dedicatedCloud/{serviceName}/user/{userId}/task/{taskId}/changeMaintenanceExecutionDate
+                             */
                             $post(params: { executionDate: string }): Promise<dedicatedCloud.Task>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         }
                         resetTaskState: {
-                            // POST /dedicatedCloud/{serviceName}/user/{userId}/task/{taskId}/resetTaskState
+                            /**
+                             * Restart task in error.
+                             * POST /dedicatedCloud/{serviceName}/user/{userId}/task/{taskId}/resetTaskState
+                             */
                             $post(params: { reason: string }): Promise<dedicatedCloud.Task>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         }
                     };
                 }
             };
         }
         vcenterVersion: {
-            // GET /dedicatedCloud/{serviceName}/vcenterVersion
+            /**
+             * Get available upgrade for your vCenter
+             * GET /dedicatedCloud/{serviceName}/vcenterVersion
+             */
             $get(): Promise<dedicatedCloud.vcenter>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         vendor: {
-            // GET /dedicatedCloud/{serviceName}/vendor
+            /**
+             * Get this object properties
+             * GET /dedicatedCloud/{serviceName}/vendor
+             */
             $get(): Promise<dedicatedCloud.Vendor>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             objectType: {
-                // POST /dedicatedCloud/{serviceName}/vendor/objectType
+                /**
+                 * Get available object types
+                 * POST /dedicatedCloud/{serviceName}/vendor/objectType
+                 */
                 $post(): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             ovhId: {
-                // POST /dedicatedCloud/{serviceName}/vendor/ovhId
+                /**
+                 * Get ovh id from object type
+                 * POST /dedicatedCloud/{serviceName}/vendor/ovhId
+                 */
                 $post(params: { objectType: dedicatedCloud.VendorObjectTypeEnum, vendorId: string }): Promise<dedicatedCloud.vendor.OvhId>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         }
         vlan: {
-            // GET /dedicatedCloud/{serviceName}/vlan
+            /**
+             * Private Cloud vlans
+             * GET /dedicatedCloud/{serviceName}/vlan
+             */
             $get(): Promise<number[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(vlanId: number): {
-                // GET /dedicatedCloud/{serviceName}/vlan/{vlanId}
+                /**
+                 * Get this object properties
+                 * GET /dedicatedCloud/{serviceName}/vlan/{vlanId}
+                 */
                 $get(): Promise<dedicatedCloud.Vlan>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             };
         }
         vmEncryption: {
-            // GET /dedicatedCloud/{serviceName}/vmEncryption
+            /**
+             * Get this object properties
+             * GET /dedicatedCloud/{serviceName}/vmEncryption
+             */
             $get(): Promise<dedicatedCloud.VMEncryption>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             kms: {
-                // GET /dedicatedCloud/{serviceName}/vmEncryption/kms
+                /**
+                 * VM Encryption KMS linked to this Private Cloud
+                 * GET /dedicatedCloud/{serviceName}/vmEncryption/kms
+                 */
                 $get(): Promise<number[]>;
-                // POST /dedicatedCloud/{serviceName}/vmEncryption/kms
+                /**
+                 * Add a new option user access
+                 * POST /dedicatedCloud/{serviceName}/vmEncryption/kms
+                 */
                 $post(params: { description?: string, ip: string, sslThumbprint: string }): Promise<dedicatedCloud.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(kmsId: number): {
-                    // DELETE /dedicatedCloud/{serviceName}/vmEncryption/kms/{kmsId}
+                    /**
+                     * Remove an option user access
+                     * DELETE /dedicatedCloud/{serviceName}/vmEncryption/kms/{kmsId}
+                     */
                     $delete(): Promise<dedicatedCloud.Task>;
-                    // GET /dedicatedCloud/{serviceName}/vmEncryption/kms/{kmsId}
+                    /**
+                     * Get this object properties
+                     * GET /dedicatedCloud/{serviceName}/vmEncryption/kms/{kmsId}
+                     */
                     $get(): Promise<dedicatedCloud.VMEncryptionAccessNetwork>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     changeProperties: {
-                        // POST /dedicatedCloud/{serviceName}/vmEncryption/kms/{kmsId}/changeProperties
+                        /**
+                         * Change option user access properties
+                         * POST /dedicatedCloud/{serviceName}/vmEncryption/kms/{kmsId}/changeProperties
+                         */
                         $post(params: { description?: string, sslThumbprint: string }): Promise<dedicatedCloud.Task>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                 };
             }
         }
         vrack: {
-            // GET /dedicatedCloud/{serviceName}/vrack
+            /**
+             * This Private Cloud vrack
+             * GET /dedicatedCloud/{serviceName}/vrack
+             */
             $get(): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(vrack: string): {
-                // DELETE /dedicatedCloud/{serviceName}/vrack/{vrack}
+                /**
+                 * remove this dedicatedCloud (VmNetwork) from this vrack
+                 * DELETE /dedicatedCloud/{serviceName}/vrack/{vrack}
+                 */
                 $delete(): Promise<vrack.Task>;
-                // GET /dedicatedCloud/{serviceName}/vrack/{vrack}
+                /**
+                 * Get this object properties
+                 * GET /dedicatedCloud/{serviceName}/vrack/{vrack}
+                 */
                 $get(): Promise<vrack.dedicatedCloud>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             };
         }
         vrops: {
-            // GET /dedicatedCloud/{serviceName}/vrops
+            /**
+             * Get this object properties
+             * GET /dedicatedCloud/{serviceName}/vrops
+             */
             $get(): Promise<dedicatedCloud.Vrops>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             canBeDisabled: {
-                // GET /dedicatedCloud/{serviceName}/vrops/canBeDisabled
+                /**
+                 * Check if vRealize Operations option can be disabled
+                 * GET /dedicatedCloud/{serviceName}/vrops/canBeDisabled
+                 */
                 $get(): Promise<dedicatedCloud.optionCompatibility>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             canBeEnabled: {
-                // GET /dedicatedCloud/{serviceName}/vrops/canBeEnabled
+                /**
+                 * Check if vRealize Operations option can be enabled
+                 * GET /dedicatedCloud/{serviceName}/vrops/canBeEnabled
+                 */
                 $get(): Promise<dedicatedCloud.optionCompatibility>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             disable: {
-                // POST /dedicatedCloud/{serviceName}/vrops/disable
+                /**
+                 * Disable vRealize Operations option
+                 * POST /dedicatedCloud/{serviceName}/vrops/disable
+                 */
                 $post(): Promise<dedicatedCloud.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             enable: {
-                // POST /dedicatedCloud/{serviceName}/vrops/enable
+                /**
+                 * Enable vRealize Operations option
+                 * POST /dedicatedCloud/{serviceName}/vrops/enable
+                 */
                 $post(): Promise<dedicatedCloud.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         }
     };

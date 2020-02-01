@@ -1,16 +1,22 @@
-import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
+import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /xdsl Models
  * Source: https://eu.api.ovh.com/1.0/xdsl.json
  */
 export namespace complexType {
-    // interface fullName: complexType.UnitAndValue.UnitAndValue
+    /**
+     * A numeric value tagged with its unit
+     * interface fullName: complexType.UnitAndValue.UnitAndValue
+     */
     export interface UnitAndValue<T> {
         unit: string;
         value: T;
     }
-    // interface fullName: complexType.UnitAndValues.UnitAndValues
+    /**
+     * A value set tagged with its unit
+     * interface fullName: complexType.UnitAndValues.UnitAndValues
+     */
     export interface UnitAndValues<T> {
         unit: string;
         values: T[];
@@ -18,13 +24,19 @@ export namespace complexType {
 }
 export namespace connectivity {
     export namespace eligibility {
-        // interface fullName: connectivity.eligibility.MeetingSlot.MeetingSlot
+        /**
+         * Represents a time slot for a meeting
+         * interface fullName: connectivity.eligibility.MeetingSlot.MeetingSlot
+         */
         export interface MeetingSlot {
             endDate: string;
             startDate: string;
             uiCode: string;
         }
-        // interface fullName: connectivity.eligibility.Meetings.Meetings
+        /**
+         * List of available meeting time slots
+         * interface fullName: connectivity.eligibility.Meetings.Meetings
+         */
         export interface Meetings {
             canBookFakeMeeting: boolean;
             meetingSlots: connectivity.eligibility.MeetingSlot[];
@@ -32,27 +44,44 @@ export namespace connectivity {
     }
 }
 export namespace coreTypes {
-    // type fullname: coreTypes.CountryEnum
+    /**
+     * ISO country codes
+     * type fullname: coreTypes.CountryEnum
+     */
     export type CountryEnum = "ac" | "ad" | "ae" | "af" | "ag" | "ai" | "al" | "am" | "an" | "ao" | "aq" | "ar" | "as" | "at" | "au" | "aw" | "ax" | "az" | "ba" | "bb" | "bd" | "be" | "bf" | "bg" | "bh" | "bi" | "bj" | "bl" | "bm" | "bn" | "bo" | "bq" | "br" | "bs" | "bt" | "bv" | "bw" | "by" | "bz" | "ca" | "cc" | "cd" | "cf" | "cg" | "ch" | "ci" | "ck" | "cl" | "cm" | "cn" | "co" | "cr" | "cs" | "cu" | "cv" | "cw" | "cx" | "cy" | "cz" | "de" | "dj" | "dk" | "dm" | "do" | "dz" | "ec" | "ee" | "eg" | "eh" | "er" | "es" | "et" | "fc" | "fd" | "fi" | "fj" | "fk" | "fm" | "fo" | "fr" | "fx" | "ga" | "gb" | "gd" | "ge" | "gf" | "gg" | "gh" | "gi" | "gl" | "gm" | "gn" | "gp" | "gq" | "gr" | "gs" | "gt" | "gu" | "gw" | "gy" | "hk" | "hm" | "hn" | "hr" | "ht" | "hu" | "id" | "ie" | "il" | "im" | "in" | "io" | "iq" | "ir" | "is" | "it" | "je" | "jm" | "jo" | "jp" | "ke" | "kg" | "kh" | "ki" | "km" | "kn" | "kp" | "kr" | "kw" | "ky" | "kz" | "la" | "lb" | "lc" | "li" | "lk" | "lr" | "ls" | "lt" | "lu" | "lv" | "ly" | "ma" | "mc" | "md" | "me" | "mf" | "mg" | "mh" | "mk" | "ml" | "mm" | "mn" | "mo" | "mp" | "mq" | "mr" | "ms" | "mt" | "mu" | "mv" | "mw" | "mx" | "my" | "mz" | "na" | "nc" | "ne" | "nf" | "ng" | "ni" | "nl" | "no" | "np" | "nr" | "nu" | "nz" | "om" | "pa" | "pe" | "pf" | "pg" | "ph" | "pk" | "pl" | "pm" | "pn" | "pr" | "ps" | "pt" | "pw" | "py" | "qa" | "qc" | "re" | "ro" | "rs" | "ru" | "rw" | "sa" | "sb" | "sc" | "sd" | "se" | "sg" | "sh" | "si" | "sj" | "sk" | "sl" | "sm" | "sn" | "so" | "sr" | "ss" | "st" | "sv" | "sx" | "sy" | "sz" | "tc" | "td" | "tf" | "tg" | "th" | "tj" | "tk" | "tl" | "tm" | "tn" | "to" | "tp" | "tr" | "tt" | "tv" | "tw" | "tz" | "ua" | "ug" | "uk" | "um" | "us" | "uy" | "uz" | "va" | "vc" | "ve" | "vg" | "vi" | "vn" | "vu" | "we" | "wf" | "ws" | "ye" | "yt" | "yu" | "za" | "zm" | "zw"
-    // type fullname: coreTypes.IpVersionEnum
+    /**
+     * Ip versions
+     * type fullname: coreTypes.IpVersionEnum
+     */
     export type IpVersionEnum = "v4" | "v6"
 }
 export namespace email {
     export namespace pro {
-        // type fullname: email.pro.ObjectStateEnum
+        /**
+         * Current object state
+         * type fullname: email.pro.ObjectStateEnum
+         */
         export type ObjectStateEnum = "creating" | "deleting" | "ok" | "reopening" | "suspended" | "suspending" | "unknown"
     }
 }
 export namespace order {
-    // interface fullName: order.Contract.Contract
+    /**
+     * A contract
+     * interface fullName: order.Contract.Contract
+     */
     export interface Contract {
         content: string;
         name: string;
         url: string;
     }
-    // type fullname: order.CurrencyCodeEnum
+    /**
+     * type fullname: order.CurrencyCodeEnum
+     */
     export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
-    // interface fullName: order.Order.Order
+    /**
+     * An order
+     * interface fullName: order.Order.Order
+     */
     export interface Order {
         contracts: order.Contract[];
         details: order.OrderDetail[];
@@ -60,7 +89,10 @@ export namespace order {
         prices: order.OrderPrices;
         url?: string;
     }
-    // interface fullName: order.OrderDetail.OrderDetail
+    /**
+     * Detail of an order
+     * interface fullName: order.OrderDetail.OrderDetail
+     */
     export interface OrderDetail {
         description: string;
         detailType?: order.OrderDetailTypeEnum;
@@ -69,15 +101,24 @@ export namespace order {
         totalPrice: order.Price;
         unitPrice: order.Price;
     }
-    // type fullname: order.OrderDetailTypeEnum
+    /**
+     * Product type of item in order
+     * type fullname: order.OrderDetailTypeEnum
+     */
     export type OrderDetailTypeEnum = "ACCESSORY" | "CAUTION" | "CHOOSED" | "CONSUMPTION" | "CREATION" | "DELIVERY" | "DURATION" | "GIFT" | "INSTALLATION" | "LICENSE" | "MUTE" | "OTHER" | "OUTPLAN" | "QUANTITY" | "REFUND" | "RENEW" | "SPECIAL" | "SWITCH" | "TRANSFER" | "VOUCHER"
-    // interface fullName: order.OrderPrices.OrderPrices
+    /**
+     * Prices of an order
+     * interface fullName: order.OrderPrices.OrderPrices
+     */
     export interface OrderPrices {
         tax: order.Price;
         withTax: order.Price;
         withoutTax: order.Price;
     }
-    // interface fullName: order.Price.Price
+    /**
+     * Price with it's currency and textual representation
+     * interface fullName: order.Price.Price
+     */
     export interface Price {
         currencyCode: order.CurrencyCodeEnum;
         text: string;
@@ -85,7 +126,10 @@ export namespace order {
     }
 }
 export namespace service {
-    // interface fullName: service.RenewType.RenewType
+    /**
+     * Map a possible renew for a specific service
+     * interface fullName: service.RenewType.RenewType
+     */
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -93,13 +137,21 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    // type fullname: service.RenewalTypeEnum
+    /**
+     * Detailed renewal type of a service
+     * type fullname: service.RenewalTypeEnum
+     */
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    // type fullname: service.StateEnum
+    /**
+     * type fullname: service.StateEnum
+     */
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
 }
 export namespace services {
-    // interface fullName: services.Service.Service
+    /**
+     * Details about a Service
+     * interface fullName: services.Service.Service
+     */
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;
@@ -118,7 +170,10 @@ export namespace services {
 }
 export namespace spare {
     export namespace xdsl {
-        // interface fullName: spare.xdsl.XdslSpare.XdslSpare
+        /**
+         * Spare properties
+         * interface fullName: spare.xdsl.XdslSpare.XdslSpare
+         */
         export interface XdslSpare {
             brand: string;
             macAddress: string;
@@ -126,7 +181,10 @@ export namespace spare {
     }
 }
 export namespace telephony {
-    // interface fullName: telephony.Contact.Contact
+    /**
+     * Contact informations structure
+     * interface fullName: telephony.Contact.Contact
+     */
     export interface Contact {
         address?: string;
         city?: string;
@@ -138,7 +196,10 @@ export namespace telephony {
         phone?: string;
         zip?: string;
     }
-    // interface fullName: telephony.Rma.Rma
+    /**
+     * Current Return Merchandise Authorisation
+     * interface fullName: telephony.Rma.Rma
+     */
     export interface Rma {
         cancellable: boolean;
         creationDatetime: string;
@@ -155,13 +216,25 @@ export namespace telephony {
         terminationDatetime?: string;
         type: telephony.RmaTypeEnum;
     }
-    // type fullname: telephony.RmaOfferTypeEnum
+    /**
+     * Return merchandise authorisation offer type
+     * type fullname: telephony.RmaOfferTypeEnum
+     */
     export type RmaOfferTypeEnum = "deposit" | "loan" | "purchase"
-    // type fullname: telephony.RmaReplaceTypeEnum
+    /**
+     * Return merchandise authorisation type
+     * type fullname: telephony.RmaReplaceTypeEnum
+     */
     export type RmaReplaceTypeEnum = "changePhone" | "phoneRestitution" | "undefined"
-    // type fullname: telephony.RmaStatusEnum
+    /**
+     * Return merchandise authorisation step
+     * type fullname: telephony.RmaStatusEnum
+     */
     export type RmaStatusEnum = "closed" | "open" | "received"
-    // interface fullName: telephony.RmaStep.RmaStep
+    /**
+     * Informations related to the current RMA step status
+     * interface fullName: telephony.RmaStep.RmaStep
+     */
     export interface RmaStep {
         description: string;
         doneDate?: string;
@@ -169,15 +242,27 @@ export namespace telephony {
         name: telephony.RmaStepNameEnum;
         status: telephony.RmaStepStatusEnum;
     }
-    // type fullname: telephony.RmaStepNameEnum
+    /**
+     * RMA step names
+     * type fullname: telephony.RmaStepNameEnum
+     */
     export type RmaStepNameEnum = "dispatchJustification" | "equipmentSending" | "equipmentTesting" | "opening" | "parcelReception" | "parcelValidation" | "validation"
-    // type fullname: telephony.RmaStepStatusEnum
+    /**
+     * Status of the RMA step
+     * type fullname: telephony.RmaStepStatusEnum
+     */
     export type RmaStepStatusEnum = "done" | "todo"
-    // type fullname: telephony.RmaTypeEnum
+    /**
+     * Return merchandise authorisation type
+     * type fullname: telephony.RmaTypeEnum
+     */
     export type RmaTypeEnum = "after sale equipment service exchange" | "after sale phone service exchange" | "equipment restitution" | "fast exchange" | "old merchandise reception before exchange" | "phone restitution" | "resends due to shipping lost by the carrier" | "resends due to shipping not withdraw" | "specific return merchandise authorisation" | "termination" | "unknown"
 }
 export namespace xdsl {
-    // interface fullName: xdsl.Access.Access
+    /**
+     * XDSL Access
+     * interface fullName: xdsl.Access.Access
+     */
     export interface Access {
         accessName: string;
         accessType: xdsl.DslTypeEnum;
@@ -193,7 +278,10 @@ export namespace xdsl {
         role: xdsl.AccessRoleEnum;
         status: xdsl.AccessStatusEnum;
     }
-    // interface fullName: xdsl.AccessCapabilities.AccessCapabilities
+    /**
+     * Describe the capabilities of the Access
+     * interface fullName: xdsl.AccessCapabilities.AccessCapabilities
+     */
     export interface AccessCapabilities {
         canApplyLnsRateLimit: boolean;
         canChangeDslamProfile: boolean;
@@ -202,7 +290,10 @@ export namespace xdsl {
         canResetDslamPort: boolean;
         hasDslamPort: boolean;
     }
-    // interface fullName: xdsl.AccessDiagnostic.AccessDiagnostic
+    /**
+     * Diagnostic of the access
+     * interface fullName: xdsl.AccessDiagnostic.AccessDiagnostic
+     */
     export interface AccessDiagnostic {
         capabilities: xdsl.AccessDiagnosticCapabilities;
         diagnosticTime: string;
@@ -214,7 +305,10 @@ export namespace xdsl {
         ping?: boolean;
         remaining: number;
     }
-    // interface fullName: xdsl.AccessDiagnosticCapabilities.AccessDiagnosticCapabilities
+    /**
+     * Describe the capabilities of the access diagnostic
+     * interface fullName: xdsl.AccessDiagnosticCapabilities.AccessDiagnosticCapabilities
+     */
     export interface AccessDiagnosticCapabilities {
         incident: boolean;
         isActiveOnLns: boolean;
@@ -224,13 +318,25 @@ export namespace xdsl {
         proposedProfileId: boolean;
         sync: boolean;
     }
-    // type fullname: xdsl.AccessRoleEnum
+    /**
+     * Available access roles
+     * type fullname: xdsl.AccessRoleEnum
+     */
     export type AccessRoleEnum = "backup" | "main"
-    // type fullname: xdsl.AccessStatisticsTypeEnum
+    /**
+     * Various types of statisctics available for the access.
+     * type fullname: xdsl.AccessStatisticsTypeEnum
+     */
     export type AccessStatisticsTypeEnum = "ping" | "traffic:download" | "traffic:upload"
-    // type fullname: xdsl.AccessStatusEnum
+    /**
+     * Status of the access
+     * type fullname: xdsl.AccessStatusEnum
+     */
     export type AccessStatusEnum = "active" | "cancelled" | "close" | "deleting" | "doing" | "migration" | "slamming" | "upgradeOffer"
-    // interface fullName: xdsl.AddressDetail.AddressDetail
+    /**
+     * All components of an address
+     * interface fullName: xdsl.AddressDetail.AddressDetail
+     */
     export interface AddressDetail {
         building?: string;
         city: string;
@@ -246,28 +352,43 @@ export namespace xdsl {
         street: string;
         zipCode: string;
     }
-    // interface fullName: xdsl.AntiSpam.AntiSpam
+    /**
+     * Spams detected from xdsl access
+     * interface fullName: xdsl.AntiSpam.AntiSpam
+     */
     export interface AntiSpam {
         date: string;
         ip: string;
         lastSpamDetected: string;
         status: xdsl.antiSpam.AntiSpamStatusEnum;
     }
-    // interface fullName: xdsl.AsyncTask.AsyncTask
+    /**
+     * Async task
+     * interface fullName: xdsl.AsyncTask.AsyncTask
+     */
     export interface AsyncTask<T> {
         error?: string;
         result?: T;
         status: xdsl.AsyncTaskStatusEnum;
     }
-    // interface fullName: xdsl.AsyncTaskArray.AsyncTaskArray
+    /**
+     * Async task array
+     * interface fullName: xdsl.AsyncTaskArray.AsyncTaskArray
+     */
     export interface AsyncTaskArray<T> {
         error?: string;
         result?: T[];
         status: xdsl.AsyncTaskStatusEnum;
     }
-    // type fullname: xdsl.AsyncTaskStatusEnum
+    /**
+     * AsyncTask status
+     * type fullname: xdsl.AsyncTaskStatusEnum
+     */
     export type AsyncTaskStatusEnum = "error" | "ok" | "pending"
-    // interface fullName: xdsl.DHCP.DHCP
+    /**
+     * DHCP Configuration of the Modem
+     * interface fullName: xdsl.DHCP.DHCP
+     */
     export interface DHCP {
         defaultGateway: string;
         dhcpName: string;
@@ -281,22 +402,34 @@ export namespace xdsl {
         subnetMask: string;
         taskId?: number;
     }
-    // interface fullName: xdsl.DHCPStaticAddress.DHCPStaticAddress
+    /**
+     * DHCP Static Address
+     * interface fullName: xdsl.DHCPStaticAddress.DHCPStaticAddress
+     */
     export interface DHCPStaticAddress {
         IPAddress: string;
         MACAddress: string;
         name?: string;
         taskId?: number;
     }
-    // type fullname: xdsl.DeconsolidationEnum
+    /**
+     * Deconsolidation of the line.
+     * type fullname: xdsl.DeconsolidationEnum
+     */
     export type DeconsolidationEnum = "createNeighbour" | "creation" | "creationNeighbour" | "partial" | "total"
-    // interface fullName: xdsl.DeconsolidationTerms.DeconsolidationTerms
+    /**
+     * Show the deconsolidation terms
+     * interface fullName: xdsl.DeconsolidationTerms.DeconsolidationTerms
+     */
     export interface DeconsolidationTerms {
         engagement: number;
         monthlyPrice: order.Price;
         price: order.Price;
     }
-    // interface fullName: xdsl.DeviceModemInfo.DeviceModemInfo
+    /**
+     * Describe device informations of a Modem
+     * interface fullName: xdsl.DeviceModemInfo.DeviceModemInfo
+     */
     export interface DeviceModemInfo {
         brand: string;
         ip: string;
@@ -309,41 +442,68 @@ export namespace xdsl {
         serial: string;
         softVersion: string;
     }
-    // type fullname: xdsl.DslTypeEnum
+    /**
+     * Possible DSL technologies
+     * type fullname: xdsl.DslTypeEnum
+     */
     export type DslTypeEnum = "adsl" | "ftth" | "sdsl" | "vdsl"
-    // interface fullName: xdsl.DslamLineProfile.DslamLineProfile
+    /**
+     * Profile on the DSLAM
+     * interface fullName: xdsl.DslamLineProfile.DslamLineProfile
+     */
     export interface DslamLineProfile {
         id: number;
         isCurrent: boolean;
         name: string;
     }
-    // interface fullName: xdsl.DslamPort.DslamPort
+    /**
+     * Information about the port on the DSLAM
+     * interface fullName: xdsl.DslamPort.DslamPort
+     */
     export interface DslamPort {
         lastDesyncDate?: string;
         lastSyncDate?: string;
         profile?: xdsl.DslamLineProfile;
         status: xdsl.DslamPortStatusEnum;
     }
-    // interface fullName: xdsl.DslamPortLog.DslamPortLog
+    /**
+     * A message log from the DSLAM
+     * interface fullName: xdsl.DslamPortLog.DslamPortLog
+     */
     export interface DslamPortLog {
         date: string;
         lastOccurrenceDate: string;
         message: string;
         numberOfOccurrences: number;
     }
-    // type fullname: xdsl.DslamPortStatusEnum
+    /**
+     * Different states of a DSLAM port
+     * type fullname: xdsl.DslamPortStatusEnum
+     */
     export type DslamPortStatusEnum = "activated" | "deactivated" | "outofsync"
-    // interface fullName: xdsl.ExtraIpRangeMove.ExtraIpRangeMove
+    /**
+     * Informations about the extra IP range during address move
+     * interface fullName: xdsl.ExtraIpRangeMove.ExtraIpRangeMove
+     */
     export interface ExtraIpRangeMove {
         date: string;
         ipRange: string;
         moveTo: string;
     }
-    // type fullname: xdsl.FaultRepairTimeEnum
+    /**
+     * Maximum time needed to repair a landline
+     * type fullname: xdsl.FaultRepairTimeEnum
+     */
     export type FaultRepairTimeEnum = "4HNO" | "4HO" | "NORMAL"
-    // type fullname: xdsl.GtrEnum
+    /**
+     * Gtr of the line.
+     * type fullname: xdsl.GtrEnum
+     */
     export type GtrEnum = "4hno" | "4ho" | "none"
-    // interface fullName: xdsl.IP.IP
+    /**
+     * Informations about an IP address
+     * interface fullName: xdsl.IP.IP
+     */
     export interface IP {
         dnsList: string[];
         ip: string;
@@ -351,7 +511,10 @@ export namespace xdsl {
         status: xdsl.IpStatusEnum;
         version: coreTypes.IpVersionEnum;
     }
-    // interface fullName: xdsl.Incident.Incident
+    /**
+     * Detected incident
+     * interface fullName: xdsl.Incident.Incident
+     */
     export interface Incident {
         comment: string;
         creationDate: string;
@@ -362,9 +525,15 @@ export namespace xdsl {
         operators: xdsl.OperatorTypeEnum[];
         taskId?: number;
     }
-    // type fullname: xdsl.IpStatusEnum
+    /**
+     * Status of an IP.
+     * type fullname: xdsl.IpStatusEnum
+     */
     export type IpStatusEnum = "active" | "close" | "toDelete"
-    // interface fullName: xdsl.LAN.LAN
+    /**
+     * LAN Configuration of the Modem
+     * interface fullName: xdsl.LAN.LAN
+     */
     export interface LAN {
         IPAddress: string;
         addressingType: xdsl.xdslModemConfig.AddressingTypeEnum;
@@ -372,13 +541,19 @@ export namespace xdsl {
         subnetMask: string;
         taskId?: number;
     }
-    // interface fullName: xdsl.LandlineConcentrationPoint.LandlineConcentrationPoint
+    /**
+     * Infos about a Landline at the concentration point
+     * interface fullName: xdsl.LandlineConcentrationPoint.LandlineConcentrationPoint
+     */
     export interface LandlineConcentrationPoint {
         lineHead: string;
         lineInitialSection: number;
         lineInitialSectionPair: number;
     }
-    // interface fullName: xdsl.Line.Line
+    /**
+     * Information about the physical copper line
+     * interface fullName: xdsl.Line.Line
+     */
     export interface Line {
         concentrationPoint?: xdsl.LandlineConcentrationPoint;
         deconsolidation: xdsl.DeconsolidationEnum;
@@ -393,7 +568,10 @@ export namespace xdsl {
         syncDown?: number;
         syncUp?: number;
     }
-    // interface fullName: xdsl.LineDiagnostic.LineDiagnostic
+    /**
+     * Detailed line tests
+     * interface fullName: xdsl.LineDiagnostic.LineDiagnostic
+     */
     export interface LineDiagnostic {
         lineTest?: xdsl.LineTestEnum;
         lineTestTime?: string;
@@ -401,16 +579,27 @@ export namespace xdsl {
         proposedProfileId?: number;
         sync: boolean;
     }
-    // interface fullName: xdsl.LineSectionLength.LineSectionLength
+    /**
+     * interface fullName: xdsl.LineSectionLength.LineSectionLength
+     */
     export interface LineSectionLength {
         diameter: number;
         length: number;
     }
-    // type fullname: xdsl.LineStatisticsTypeEnum
+    /**
+     * Various types of statisctics available for the line.
+     * type fullname: xdsl.LineStatisticsTypeEnum
+     */
     export type LineStatisticsTypeEnum = "attenuation:download" | "attenuation:upload" | "snr:download" | "snr:upload" | "synchronization:download" | "synchronization:upload"
-    // type fullname: xdsl.LineTestEnum
+    /**
+     * Line tests results
+     * type fullname: xdsl.LineTestEnum
+     */
     export type LineTestEnum = "actionPending" | "customerSideProblem" | "error" | "noProblem" | "ovhSideProblem"
-    // interface fullName: xdsl.Modem.Modem
+    /**
+     * Modem
+     * interface fullName: xdsl.Modem.Modem
+     */
     export interface Modem {
         brandName: string;
         capabilities: xdsl.ModemCapabilities;
@@ -424,7 +613,10 @@ export namespace xdsl {
         model: string;
         mtuSize?: xdsl.xdslModemConfig.MTUSizeEnum;
     }
-    // interface fullName: xdsl.ModemCapabilities.ModemCapabilities
+    /**
+     * Describe the capabilities of the Modem
+     * interface fullName: xdsl.ModemCapabilities.ModemCapabilities
+     */
     export interface ModemCapabilities {
         canBeManagedByOvh: boolean;
         canChangeBridgeMode: boolean;
@@ -442,18 +634,27 @@ export namespace xdsl {
         canRefreshConnectedDevices: boolean;
         canReset: boolean;
     }
-    // interface fullName: xdsl.ModemExchangeInfo.ModemExchangeInfo
+    /**
+     * Information about modem exchange
+     * interface fullName: xdsl.ModemExchangeInfo.ModemExchangeInfo
+     */
     export interface ModemExchangeInfo {
         canExchange: boolean;
         newModel: string;
         price: order.Price;
     }
-    // interface fullName: xdsl.ModemInfo.ModemInfo
+    /**
+     * Describe general information of a Modem
+     * interface fullName: xdsl.ModemInfo.ModemInfo
+     */
     export interface ModemInfo {
         device: xdsl.DeviceModemInfo;
         statistics: xdsl.StatsModemInfo;
     }
-    // interface fullName: xdsl.MonitoringNotification.MonitoringNotification
+    /**
+     * Defines where and how the notifications will be sent
+     * interface fullName: xdsl.MonitoringNotification.MonitoringNotification
+     */
     export interface MonitoringNotification {
         allowIncident: boolean;
         downThreshold: number;
@@ -465,14 +666,23 @@ export namespace xdsl {
         smsAccount?: string;
         type: xdsl.monitoringNotifications.TypeEnum;
     }
-    // type fullname: xdsl.OperatorTypeEnum
+    /**
+     * Operators
+     * type fullname: xdsl.OperatorTypeEnum
+     */
     export type OperatorTypeEnum = "collect" | "kosc" | "ovh"
-    // interface fullName: xdsl.PendingAction.PendingAction
+    /**
+     * Scheduled action before the next renewal of the service
+     * interface fullName: xdsl.PendingAction.PendingAction
+     */
     export interface PendingAction {
         action: string;
         dateTodo: string;
     }
-    // interface fullName: xdsl.PortMapping.PortMapping
+    /**
+     * Port Mappings
+     * interface fullName: xdsl.PortMapping.PortMapping
+     */
     export interface PortMapping {
         allowedRemoteIp?: string;
         description?: string;
@@ -485,28 +695,43 @@ export namespace xdsl {
         protocol: xdsl.xdslModemConfig.ProtocolTypeEnum;
         taskId?: number;
     }
-    // interface fullName: xdsl.RadiusConnectionLog.RadiusConnectionLog
+    /**
+     * Log entry of an auth attempt to the radius server
+     * interface fullName: xdsl.RadiusConnectionLog.RadiusConnectionLog
+     */
     export interface RadiusConnectionLog {
         date: string;
         login: string;
         message: string;
         state: string;
     }
-    // interface fullName: xdsl.ResiliationFollowUpDetail.ResiliationFollowUpDetail
+    /**
+     * Details about the resiliation
+     * interface fullName: xdsl.ResiliationFollowUpDetail.ResiliationFollowUpDetail
+     */
     export interface ResiliationFollowUpDetail {
         dateTodo: string;
         needModemReturn: boolean;
         registrationDate: string;
         status: string;
     }
-    // type fullname: xdsl.ResiliationReasonEnum
+    /**
+     * Reason of a resiliation
+     * type fullname: xdsl.ResiliationReasonEnum
+     */
     export type ResiliationReasonEnum = "addressMove" | "billingProblems" | "cessationOfActivity" | "changeOfTerms" | "ftth" | "goToCompetitor" | "other" | "technicalProblems"
-    // interface fullName: xdsl.ResiliationSurvey.ResiliationSurvey
+    /**
+     * Information about the reason for the resiliation
+     * interface fullName: xdsl.ResiliationSurvey.ResiliationSurvey
+     */
     export interface ResiliationSurvey {
         comment?: string;
         type: xdsl.ResiliationReasonEnum;
     }
-    // interface fullName: xdsl.ResiliationTerms.ResiliationTerms
+    /**
+     * Show the resiliation terms
+     * interface fullName: xdsl.ResiliationTerms.ResiliationTerms
+     */
     export interface ResiliationTerms {
         due: order.Price;
         engageDate?: string;
@@ -514,11 +739,20 @@ export namespace xdsl {
         resiliationDate: string;
         resiliationReasons: xdsl.ResiliationReasonEnum[];
     }
-    // type fullname: xdsl.ServiceStatusEnum
+    /**
+     * Status of the service
+     * type fullname: xdsl.ServiceStatusEnum
+     */
     export type ServiceStatusEnum = "disabled" | "enabled"
-    // type fullname: xdsl.StatisticsPeriodEnum
+    /**
+     * Periods for statistics.
+     * type fullname: xdsl.StatisticsPeriodEnum
+     */
     export type StatisticsPeriodEnum = "daily" | "monthly" | "preview" | "weekly" | "yearly"
-    // interface fullName: xdsl.StatsModemInfo.StatsModemInfo
+    /**
+     * Describe statistics information of a Modem
+     * interface fullName: xdsl.StatsModemInfo.StatsModemInfo
+     */
     export interface StatsModemInfo {
         connectionUptime: number;
         crcError: number;
@@ -534,7 +768,10 @@ export namespace xdsl {
         upstreamMargin: number;
         upstreamSync: number;
     }
-    // interface fullName: xdsl.Task.Task
+    /**
+     * Describes the current status of a task
+     * interface fullName: xdsl.Task.Task
+     */
     export interface Task {
         function: string;
         id: number;
@@ -542,9 +779,15 @@ export namespace xdsl {
         todoDate: string;
         updateDate: string;
     }
-    // type fullname: xdsl.TaskStatusEnum
+    /**
+     * Status of a task.
+     * type fullname: xdsl.TaskStatusEnum
+     */
     export type TaskStatusEnum = "cancelled" | "doing" | "done" | "error" | "problem" | "todo"
-    // interface fullName: xdsl.TemplateModem.TemplateModem
+    /**
+     * Modem Template
+     * interface fullName: xdsl.TemplateModem.TemplateModem
+     */
     export interface TemplateModem {
         DHCP: xdsl.templateModem.DHCP[];
         LAN: xdsl.templateModem.LAN[];
@@ -557,12 +800,18 @@ export namespace xdsl {
         parametersToIgnore?: xdsl.templateModem.ParametersToIgnore;
         portMapping: xdsl.templateModem.PortMapping[];
     }
-    // interface fullName: xdsl.TimestampAndValue.TimestampAndValue
+    /**
+     * A value associated to a timestamp
+     * interface fullName: xdsl.TimestampAndValue.TimestampAndValue
+     */
     export interface TimestampAndValue {
         timestamp: number;
         value?: number;
     }
-    // interface fullName: xdsl.WLAN.WLAN
+    /**
+     * WLAN Configuration of the Modem
+     * interface fullName: xdsl.WLAN.WLAN
+     */
     export interface WLAN {
         SSID: string;
         SSIDAdvertisementEnabled: boolean;
@@ -577,27 +826,45 @@ export namespace xdsl {
         taskId?: number;
         wifiName: string;
     }
-    // type fullname: xdsl.WLANFrequencyEnum
+    /**
+     * Frequency of WLAN
+     * type fullname: xdsl.WLANFrequencyEnum
+     */
     export type WLANFrequencyEnum = "2.4GHz" | "5GHz"
     export namespace antiSpam {
-        // type fullname: xdsl.antiSpam.AntiSpamStatusEnum
+        /**
+         * AntiSpam status
+         * type fullname: xdsl.antiSpam.AntiSpamStatusEnum
+         */
         export type AntiSpamStatusEnum = "block" | "done" | "new" | "unblock" | "warn"
-        // interface fullName: xdsl.antiSpam.EvidencesInfo.EvidencesInfo
+        /**
+         * List of evidences
+         * interface fullName: xdsl.antiSpam.EvidencesInfo.EvidencesInfo
+         */
         export interface EvidencesInfo {
             error?: string;
             result?: xdsl.antiSpam.EvidencesInfoDetail[];
             status: xdsl.antiSpam.EvidencesInfoStatusEnum;
         }
-        // interface fullName: xdsl.antiSpam.EvidencesInfoDetail.EvidencesInfoDetail
+        /**
+         * detail on evidences stored on PCS
+         * interface fullName: xdsl.antiSpam.EvidencesInfoDetail.EvidencesInfoDetail
+         */
         export interface EvidencesInfoDetail {
             date: string;
             filename: string;
             url: string;
         }
-        // type fullname: xdsl.antiSpam.EvidencesInfoStatusEnum
+        /**
+         * Evidences AsyncTask status
+         * type fullname: xdsl.antiSpam.EvidencesInfoStatusEnum
+         */
         export type EvidencesInfoStatusEnum = "error" | "ok" | "pending"
     }
-    // interface fullName: xdsl.connectedDevice.connectedDevice
+    /**
+     * Connected Device
+     * interface fullName: xdsl.connectedDevice.connectedDevice
+     */
     export interface connectedDevice {
         active: boolean;
         addressSource: xdsl.xdslModemConfig.ConnectedDeviceAddressSourceEnum;
@@ -609,7 +876,10 @@ export namespace xdsl {
         macAddress: string;
     }
     export namespace eligibility {
-        // interface fullName: xdsl.eligibility.Address.Address
+        /**
+         * Represents an address
+         * interface fullName: xdsl.eligibility.Address.Address
+         */
         export interface Address {
             building?: string;
             city: xdsl.eligibility.City;
@@ -622,28 +892,43 @@ export namespace xdsl {
             street?: xdsl.eligibility.Street;
             streetNumber?: string;
         }
-        // interface fullName: xdsl.eligibility.Building.Building
+        /**
+         * Details of a Building
+         * interface fullName: xdsl.eligibility.Building.Building
+         */
         export interface Building {
             name: string;
             nro: string;
             reference: string;
             type: xdsl.eligibility.BuildingTypeEnum;
         }
-        // type fullname: xdsl.eligibility.BuildingTypeEnum
+        /**
+         * Type of building
+         * type fullname: xdsl.eligibility.BuildingTypeEnum
+         */
         export type BuildingTypeEnum = "BUILDING" | "HOUSE"
-        // interface fullName: xdsl.eligibility.City.City
+        /**
+         * Represent a city
+         * interface fullName: xdsl.eligibility.City.City
+         */
         export interface City {
             inseeCode: string;
             locality?: string;
             name: string;
             zipCode: string;
         }
-        // interface fullName: xdsl.eligibility.CodeAndMessage.CodeAndMessage
+        /**
+         * A message and its code
+         * interface fullName: xdsl.eligibility.CodeAndMessage.CodeAndMessage
+         */
         export interface CodeAndMessage {
             code: string;
             message: string;
         }
-        // interface fullName: xdsl.eligibility.Eligibility.Eligibility
+        /**
+         * Eligibility result
+         * interface fullName: xdsl.eligibility.Eligibility.Eligibility
+         */
         export interface Eligibility {
             address?: xdsl.eligibility.Address;
             characteristics: xdsl.eligibility.LineCharacteristics;
@@ -653,12 +938,18 @@ export namespace xdsl {
             offers: xdsl.eligibility.Offer[];
             portability: xdsl.eligibility.Portability;
         }
-        // interface fullName: xdsl.eligibility.FiberEligibility.FiberEligibility
+        /**
+         * Fiber Eligibility result
+         * interface fullName: xdsl.eligibility.FiberEligibility.FiberEligibility
+         */
         export interface FiberEligibility {
             id: string;
             offers: xdsl.eligibility.FiberOffer[];
         }
-        // interface fullName: xdsl.eligibility.FiberOffer.FiberOffer
+        /**
+         * A fiber offer
+         * interface fullName: xdsl.eligibility.FiberOffer.FiberOffer
+         */
         export interface FiberOffer {
             availibilityDate?: string;
             downloadRate?: number;
@@ -670,21 +961,33 @@ export namespace xdsl {
             type: xdsl.DslTypeEnum;
             uploadRate?: number;
         }
-        // interface fullName: xdsl.eligibility.FiberStreet.FiberStreet
+        /**
+         * Details of a FiberStreet
+         * interface fullName: xdsl.eligibility.FiberStreet.FiberStreet
+         */
         export interface FiberStreet {
             streetCode: string;
             streetName: string;
         }
-        // type fullname: xdsl.eligibility.LandlineStatusEnum
+        /**
+         * Status of a landline
+         * type fullname: xdsl.eligibility.LandlineStatusEnum
+         */
         export type LandlineStatusEnum = "active" | "inactive"
-        // interface fullName: xdsl.eligibility.Line.Line
+        /**
+         * a line
+         * interface fullName: xdsl.eligibility.Line.Line
+         */
         export interface Line {
             address: xdsl.eligibility.Address;
             contactName: string;
             lineNumber: string;
             lineStatus: xdsl.eligibility.LandlineStatusEnum;
         }
-        // interface fullName: xdsl.eligibility.LineCharacteristics.LineCharacteristics
+        /**
+         * The characteristics of a line
+         * interface fullName: xdsl.eligibility.LineCharacteristics.LineCharacteristics
+         */
         export interface LineCharacteristics {
             calibration: xdsl.eligibility.LineSectionCalibration[];
             desaturationFreePairs: number;
@@ -694,32 +997,50 @@ export namespace xdsl {
             mitigationSdsl: number;
             nra: string;
         }
-        // type fullname: xdsl.eligibility.LineEndpointEnum
+        /**
+         * Type of the endpoint for the eligibility
+         * type fullname: xdsl.eligibility.LineEndpointEnum
+         */
         export type LineEndpointEnum = "address" | "line"
-        // interface fullName: xdsl.eligibility.LineInfos.LineInfos
+        /**
+         * The line infos
+         * interface fullName: xdsl.eligibility.LineInfos.LineInfos
+         */
         export interface LineInfos {
             createNeighbour: boolean;
             lineNumber?: string;
             lineStatus?: xdsl.eligibility.LandlineStatusEnum;
             unlistedNumber: boolean;
         }
-        // interface fullName: xdsl.eligibility.LineSectionCalibration.LineSectionCalibration
+        /**
+         * A line section calibration detail
+         * interface fullName: xdsl.eligibility.LineSectionCalibration.LineSectionCalibration
+         */
         export interface LineSectionCalibration {
             diameter: number;
             length: number;
         }
-        // interface fullName: xdsl.eligibility.MeetingSlot.MeetingSlot
+        /**
+         * Represents a time slot for a meeting
+         * interface fullName: xdsl.eligibility.MeetingSlot.MeetingSlot
+         */
         export interface MeetingSlot {
             endDate: string;
             startDate: string;
             uiCode: string;
         }
-        // interface fullName: xdsl.eligibility.MeetingSlots.MeetingSlots
+        /**
+         * List of available meeting time slots
+         * interface fullName: xdsl.eligibility.MeetingSlots.MeetingSlots
+         */
         export interface MeetingSlots {
             canBookFakeMeeting: boolean;
             meetingSlots: xdsl.eligibility.MeetingSlot[];
         }
-        // interface fullName: xdsl.eligibility.Offer.Offer
+        /**
+         * An offer
+         * interface fullName: xdsl.eligibility.Offer.Offer
+         */
         export interface Offer {
             desaturation?: boolean;
             downloadRate?: number;
@@ -733,16 +1054,25 @@ export namespace xdsl {
             unbundling?: xdsl.DeconsolidationEnum[];
             uploadRate?: number;
         }
-        // interface fullName: xdsl.eligibility.Portability.Portability
+        /**
+         * Eligibility of the portability of the line number
+         * interface fullName: xdsl.eligibility.Portability.Portability
+         */
         export interface Portability {
             comments: xdsl.eligibility.CodeAndMessage[];
             eligible: boolean;
             underCondition: boolean;
             warnings: xdsl.eligibility.CodeAndMessage[];
         }
-        // type fullname: xdsl.eligibility.ProviderEnum
+        /**
+         * The providers
+         * type fullname: xdsl.eligibility.ProviderEnum
+         */
         export type ProviderEnum = "axione" | "ft" | "kosc" | "ovh" | "sfr"
-        // interface fullName: xdsl.eligibility.Street.Street
+        /**
+         * Represent a street
+         * interface fullName: xdsl.eligibility.Street.Street
+         */
         export interface Street {
             name: string;
             rivoliCode: string;
@@ -750,19 +1080,28 @@ export namespace xdsl {
     }
     export namespace email {
         export namespace pro {
-            // interface fullName: xdsl.email.pro.Task.Task
+            /**
+             * Task Struct
+             * interface fullName: xdsl.email.pro.Task.Task
+             */
             export interface Task {
                 finishDate?: string;
                 function: string;
                 status: xdsl.email.pro.TaskStatusEnum;
                 todoDate: string;
             }
-            // type fullname: xdsl.email.pro.TaskStatusEnum
+            /**
+             * Status of an Email Pro task.
+             * type fullname: xdsl.email.pro.TaskStatusEnum
+             */
             export type TaskStatusEnum = "cancelled" | "doing" | "done" | "error" | "todo"
         }
     }
     export namespace lineDiagnostic {
-        // interface fullName: xdsl.lineDiagnostic.Answers.Answers
+        /**
+         * Customer answers for line diagnostic
+         * interface fullName: xdsl.lineDiagnostic.Answers.Answers
+         */
         export interface Answers {
             bandwidthTestUnit?: xdsl.lineDiagnostic.BandwidthTestUnitEnum;
             comment?: string;
@@ -792,9 +1131,15 @@ export namespace xdsl {
             startMorningHours?: string;
             uploadBandwidthTest?: number;
         }
-        // type fullname: xdsl.lineDiagnostic.BandwidthTestUnitEnum
+        /**
+         * bandwidth unit for proof.ovh.net test values
+         * type fullname: xdsl.lineDiagnostic.BandwidthTestUnitEnum
+         */
         export type BandwidthTestUnitEnum = "Kbps" | "Mbps"
-        // interface fullName: xdsl.lineDiagnostic.ConnectionInformations.ConnectionInformations
+        /**
+         * Informations directly get on DSLAM or Modem
+         * interface fullName: xdsl.lineDiagnostic.ConnectionInformations.ConnectionInformations
+         */
         export interface ConnectionInformations {
             crcError?: number;
             downstreamAttenuation?: number;
@@ -806,21 +1151,33 @@ export namespace xdsl {
             upstreamMargin?: number;
             upstreamSync?: number;
         }
-        // interface fullName: xdsl.lineDiagnostic.CustomerActionToDo.CustomerActionToDo
+        /**
+         * Customer action to do
+         * interface fullName: xdsl.lineDiagnostic.CustomerActionToDo.CustomerActionToDo
+         */
         export interface CustomerActionToDo {
             description: string;
             name: xdsl.lineDiagnostic.CustomerActionsEnum;
         }
-        // type fullname: xdsl.lineDiagnostic.CustomerActionsEnum
+        /**
+         * Customer possible actions
+         * type fullname: xdsl.lineDiagnostic.CustomerActionsEnum
+         */
         export type CustomerActionsEnum = "bePreparedToCheckModemSynchronization" | "changeDslFilterAndPlugInDti" | "changeExtensionCable" | "changeProfile" | "checkConnectionCable" | "checkConnectionLoginAndParameters" | "checkFilter" | "connectModemToOtherPlugs" | "neutralTest" | "rebootModem" | "resetModem" | "unplugEveryModems" | "unplugModem"
-        // interface fullName: xdsl.lineDiagnostic.Diagnostic.Diagnostic
+        /**
+         * Diagnostic status and informations
+         * interface fullName: xdsl.lineDiagnostic.Diagnostic.Diagnostic
+         */
         export interface Diagnostic {
             data: xdsl.lineDiagnostic.DiagnosticData;
             faultType: xdsl.lineDiagnostic.FaultTypeEnum;
             id: number;
             status: xdsl.lineDiagnostic.DiagnosticStatusEnum;
         }
-        // interface fullName: xdsl.lineDiagnostic.DiagnosticData.DiagnosticData
+        /**
+         * Diagnostic data and informations
+         * interface fullName: xdsl.lineDiagnostic.DiagnosticData.DiagnosticData
+         */
         export interface DiagnosticData {
             actionsDone: xdsl.lineDiagnostic.CustomerActionsEnum[];
             actionsToDo: xdsl.lineDiagnostic.CustomerActionToDo[];
@@ -836,18 +1193,30 @@ export namespace xdsl {
             timeout: number;
             toAnswer: xdsl.lineDiagnostic.Question[];
         }
-        // type fullname: xdsl.lineDiagnostic.DiagnosticStatusEnum
+        /**
+         * Diagnostic status possible values
+         * type fullname: xdsl.lineDiagnostic.DiagnosticStatusEnum
+         */
         export type DiagnosticStatusEnum = "cancelled" | "connectionProblem" | "genericIncidentPending" | "haveToConnectModemOnTheRightPlug" | "init" | "interventionRequested" | "noBandwidthFault" | "noProblemAnymore" | "noSyncFaultDiagnosticRequired" | "problem" | "resolvedAfterTests" | "sleeping" | "validationRefused" | "waitingHuman" | "waitingRobot" | "waitingValidation"
-        // type fullname: xdsl.lineDiagnostic.FaultTypeEnum
+        /**
+         * Line diagnostic fault type
+         * type fullname: xdsl.lineDiagnostic.FaultTypeEnum
+         */
         export type FaultTypeEnum = "alignment" | "noSync" | "syncLossOrLowBandwidth" | "unknown"
-        // interface fullName: xdsl.lineDiagnostic.LineCapabilities.LineCapabilities
+        /**
+         * Theoretical line capabilities
+         * interface fullName: xdsl.lineDiagnostic.LineCapabilities.LineCapabilities
+         */
         export interface LineCapabilities {
             down?: number;
             mitigation?: string;
             ping?: number;
             up?: number;
         }
-        // interface fullName: xdsl.lineDiagnostic.LineDetails.LineDetails
+        /**
+         * Line informations
+         * interface fullName: xdsl.lineDiagnostic.LineDetails.LineDetails
+         */
         export interface LineDetails {
             accessName: string;
             accessPing?: boolean;
@@ -865,17 +1234,29 @@ export namespace xdsl {
             operator: xdsl.lineDiagnostic.ProviderEnum;
             sections?: xdsl.lineDiagnostic.Section[];
         }
-        // interface fullName: xdsl.lineDiagnostic.PossibleValue.PossibleValue
+        /**
+         * possible value for specific answer
+         * interface fullName: xdsl.lineDiagnostic.PossibleValue.PossibleValue
+         */
         export interface PossibleValue {
             id?: number;
             label?: string;
             value?: string;
         }
-        // type fullname: xdsl.lineDiagnostic.ProblemTypeEnum
+        /**
+         * Possible customer questions
+         * type fullname: xdsl.lineDiagnostic.ProblemTypeEnum
+         */
         export type ProblemTypeEnum = "lowBandwidth" | "syncLoss"
-        // type fullname: xdsl.lineDiagnostic.ProviderEnum
+        /**
+         * The providers for xdsl access
+         * type fullname: xdsl.lineDiagnostic.ProviderEnum
+         */
         export type ProviderEnum = "axione" | "ft" | "ftBySfr" | "kosc" | "koscDeg" | "ovh" | "sfr"
-        // interface fullName: xdsl.lineDiagnostic.Question.Question
+        /**
+         * Question to customer
+         * interface fullName: xdsl.lineDiagnostic.Question.Question
+         */
         export interface Question {
             defaultValue?: string;
             description: string;
@@ -885,18 +1266,33 @@ export namespace xdsl {
             required?: boolean;
             type: string;
         }
-        // type fullname: xdsl.lineDiagnostic.QuestionsEnum
+        /**
+         * Possible customer questions
+         * type fullname: xdsl.lineDiagnostic.QuestionsEnum
+         */
         export type QuestionsEnum = "bandwidthTestUnit" | "comment" | "conditionsAccepted" | "contactPhone" | "datetimeOfAppearance" | "downloadBandwidthTest" | "endAfternoonHours" | "endMorningHours" | "followBySms" | "hasModemKeptSynchronization" | "idAppointment" | "individualSite" | "modemIsSynchronized" | "modemMac" | "modemStillSynchronized" | "modemType" | "ovhTicket" | "problemType" | "resolvedAfterTests" | "secureSite" | "severalInternetConnections" | "siteClosedDays" | "siteDigicode" | "siteOpening" | "startAfternoonHours" | "startMorningHours" | "uploadBandwidthTest"
-        // type fullname: xdsl.lineDiagnostic.RobotActionsEnum
+        /**
+         * Diagnostic robot possible actions
+         * type fullname: xdsl.lineDiagnostic.RobotActionsEnum
+         */
         export type RobotActionsEnum = "alignmentLockTest" | "alignmentResetTest" | "alignmentTestResult" | "checkCustomerTicket" | "checkIfAccessPing" | "checkIfResolvedAfterConnectionTests" | "checkIfResolvedAfterInstallationCheck" | "checkIfResolvedAfterTests" | "checkIfSeveralConnections" | "checkInstallation" | "checkProblem" | "checkSynchronizationWithoutOtherModems" | "customerPrelocChecks" | "findProblem" | "installationCheck" | "lockUnlock" | "needToRequestMonitoring" | "needToRequestOperatorIntervention" | "needToRequestOvhIntervention" | "requestMonitoring" | "requestOperatorIntervention" | "requestOvhIntervention" | "seltTest"
-        // interface fullName: xdsl.lineDiagnostic.Section.Section
+        /**
+         * Cables section details
+         * interface fullName: xdsl.lineDiagnostic.Section.Section
+         */
         export interface Section {
             length: number;
             section: number;
         }
-        // type fullname: xdsl.lineDiagnostic.SeltPrelocEnum
+        /**
+         * Possible SELT test prelocalizations
+         * type fullname: xdsl.lineDiagnostic.SeltPrelocEnum
+         */
         export type SeltPrelocEnum = "CUST" | "DSLAM" | "LINE" | "RE"
-        // interface fullName: xdsl.lineDiagnostic.SeltResult.SeltResult
+        /**
+         * Customer answers for line diagnostic
+         * interface fullName: xdsl.lineDiagnostic.SeltResult.SeltResult
+         */
         export interface SeltResult {
             date?: string;
             distance?: number;
@@ -904,21 +1300,39 @@ export namespace xdsl {
             state?: xdsl.lineDiagnostic.SeltStateEnum;
             status?: xdsl.lineDiagnostic.SeltStatusEnum;
         }
-        // type fullname: xdsl.lineDiagnostic.SeltStateEnum
+        /**
+         * Possible SELT test states
+         * type fullname: xdsl.lineDiagnostic.SeltStateEnum
+         */
         export type SeltStateEnum = "open" | "short" | "synced" | "unknown"
-        // type fullname: xdsl.lineDiagnostic.SeltStatusEnum
+        /**
+         * Possible SELT test status
+         * type fullname: xdsl.lineDiagnostic.SeltStatusEnum
+         */
         export type SeltStatusEnum = "failed" | "notAvailable" | "ok"
     }
     export namespace monitoringNotifications {
-        // type fullname: xdsl.monitoringNotifications.FrequencyEnum
+        /**
+         * Frequency between notifications.
+         * type fullname: xdsl.monitoringNotifications.FrequencyEnum
+         */
         export type FrequencyEnum = "1h" | "5m" | "6h" | "once"
-        // type fullname: xdsl.monitoringNotifications.TypeEnum
+        /**
+         * Type of notification.
+         * type fullname: xdsl.monitoringNotifications.TypeEnum
+         */
         export type TypeEnum = "mail" | "sms"
     }
     export namespace orderFollowup {
-        // type fullname: xdsl.orderFollowup.DurationUnitEnum
+        /**
+         * The duration units
+         * type fullname: xdsl.orderFollowup.DurationUnitEnum
+         */
         export type DurationUnitEnum = "day" | "hour" | "minute"
-        // interface fullName: xdsl.orderFollowup.Step.Step
+        /**
+         * A step of the order process
+         * interface fullName: xdsl.orderFollowup.Step.Step
+         */
         export interface Step {
             comments: string[];
             doneDate?: string;
@@ -927,13 +1341,22 @@ export namespace xdsl {
             name: xdsl.orderFollowup.StepNameEnum;
             status: xdsl.orderFollowup.StepStatusEnum;
         }
-        // type fullname: xdsl.orderFollowup.StepNameEnum
+        /**
+         * The status of an order step
+         * type fullname: xdsl.orderFollowup.StepNameEnum
+         */
         export type StepNameEnum = "accessIsOperational" | "checkInfrastructure" | "configureAccessOnOVH" | "orderPayed" | "orderReceived" | "orderTreatment" | "sendModem" | "sendOrderToProvider" | "setupCustomerPremisesEquipment" | "waitingForProviderInstallReport" | "waitingForWithdrawalPeriodToBeOver"
-        // type fullname: xdsl.orderFollowup.StepStatusEnum
+        /**
+         * The status of an order step
+         * type fullname: xdsl.orderFollowup.StepStatusEnum
+         */
         export type StepStatusEnum = "doing" | "done" | "error" | "todo" | "waitingCustomer"
     }
     export namespace templateModem {
-        // interface fullName: xdsl.templateModem.DHCP.DHCP
+        /**
+         * DHCP Configuration for Modem Template
+         * interface fullName: xdsl.templateModem.DHCP.DHCP
+         */
         export interface DHCP {
             defaultGateway: string;
             dhcpName: string;
@@ -946,14 +1369,20 @@ export namespace xdsl {
             startAddress: string;
             subnetMask: string;
         }
-        // interface fullName: xdsl.templateModem.LAN.LAN
+        /**
+         * LAN Configuration for Modem Template
+         * interface fullName: xdsl.templateModem.LAN.LAN
+         */
         export interface LAN {
             IPAddress: string;
             addressingType: xdsl.xdslModemConfig.AddressingTypeEnum;
             lanName: string;
             subnetMask: string;
         }
-        // interface fullName: xdsl.templateModem.ParametersToIgnore.ParametersToIgnore
+        /**
+         * Parameters and values to ignore when apply modem template configuration
+         * interface fullName: xdsl.templateModem.ParametersToIgnore.ParametersToIgnore
+         */
         export interface ParametersToIgnore {
             LANandDHCP?: boolean;
             WLANList?: string[];
@@ -961,7 +1390,10 @@ export namespace xdsl {
             mtuSize?: boolean;
             portMappingList?: string[];
         }
-        // interface fullName: xdsl.templateModem.PortMapping.PortMapping
+        /**
+         * PortMapping Configuration for Modem Template
+         * interface fullName: xdsl.templateModem.PortMapping.PortMapping
+         */
         export interface PortMapping {
             allowedRemoteIp?: string;
             description?: string;
@@ -972,9 +1404,15 @@ export namespace xdsl {
             name: string;
             protocol: xdsl.xdslModemConfig.ProtocolTypeEnum;
         }
-        // type fullname: xdsl.templateModem.SecurityTypeEnum
+        /**
+         * Type of WLAN security protection
+         * type fullname: xdsl.templateModem.SecurityTypeEnum
+         */
         export type SecurityTypeEnum = "None" | "WPA" | "WPA2" | "WPAandWPA2"
-        // interface fullName: xdsl.templateModem.WLAN.WLAN
+        /**
+         * WLAN Configuration for Modem Template
+         * interface fullName: xdsl.templateModem.WLAN.WLAN
+         */
         export interface WLAN {
             SSID: string;
             SSIDAdvertisementEnabled: boolean;
@@ -989,7 +1427,10 @@ export namespace xdsl {
             wifiName: string;
         }
     }
-    // interface fullName: xdsl.xdslEmailPro.xdslEmailPro
+    /**
+     * XDSL Email Pro
+     * interface fullName: xdsl.xdslEmailPro.xdslEmailPro
+     */
     export interface xdslEmailPro {
         currentUsage: complexType.UnitAndValue<number>;
         displayName?: string;
@@ -1008,21 +1449,45 @@ export namespace xdsl {
         taskPendingId?: number;
     }
     export namespace xdslModemConfig {
-        // type fullname: xdsl.xdslModemConfig.AddressingTypeEnum
+        /**
+         * How the modem gets its LAN IP Address
+         * type fullname: xdsl.xdslModemConfig.AddressingTypeEnum
+         */
         export type AddressingTypeEnum = "DHCP" | "Static"
-        // type fullname: xdsl.xdslModemConfig.ChannelModeEnum
+        /**
+         * How the WiFi channel is selected
+         * type fullname: xdsl.xdslModemConfig.ChannelModeEnum
+         */
         export type ChannelModeEnum = "Auto" | "Manual"
-        // type fullname: xdsl.xdslModemConfig.ConnectedDeviceAddressSourceEnum
+        /**
+         * How did the device got its IP Address
+         * type fullname: xdsl.xdslModemConfig.ConnectedDeviceAddressSourceEnum
+         */
         export type ConnectedDeviceAddressSourceEnum = "DHCP" | "Static" | "Unknown"
-        // type fullname: xdsl.xdslModemConfig.EasyFirewallLevelEnum
+        /**
+         * Level of the Firewall ( BlockAll will block all connections, Normal will block all incoming connections except those in PortMapping and let go all outgoing connections , Disabled will disable all the Firewall and let all incoming or outgoing connections pass through )
+         * type fullname: xdsl.xdslModemConfig.EasyFirewallLevelEnum
+         */
         export type EasyFirewallLevelEnum = "BlockAll" | "Disabled" | "Normal"
-        // type fullname: xdsl.xdslModemConfig.FrequencyEnum
+        /**
+         * Modem frequency
+         * type fullname: xdsl.xdslModemConfig.FrequencyEnum
+         */
         export type FrequencyEnum = "2.4GHz" | "5GHz"
-        // type fullname: xdsl.xdslModemConfig.MTUSizeEnum
+        /**
+         * Size of the Maximum Transmission Unit on the modem's interfaces
+         * type fullname: xdsl.xdslModemConfig.MTUSizeEnum
+         */
         export type MTUSizeEnum = 1432 | 1456 | 1492
-        // type fullname: xdsl.xdslModemConfig.ProtocolTypeEnum
+        /**
+         * Type of protocol for the Port Mapping
+         * type fullname: xdsl.xdslModemConfig.ProtocolTypeEnum
+         */
         export type ProtocolTypeEnum = "TCP" | "UDP"
-        // type fullname: xdsl.xdslModemConfig.SecurityTypeEnum
+        /**
+         * Type of WLAN security protection
+         * type fullname: xdsl.xdslModemConfig.SecurityTypeEnum
+         */
         export type SecurityTypeEnum = "None" | "WEP" | "WPA" | "WPA2" | "WPAandWPA2"
     }
 }
@@ -1035,350 +1500,925 @@ export function proxyXdsl(ovhEngine: OvhRequestable): Xdsl {
 }
 export default proxyXdsl;
 /**
- * Api Proxy model
- */// Apis harmony
-// path /xdsl
+ * Api model for /xdsl
+ */
 export interface Xdsl {
-    // GET /xdsl
+    /**
+     * List available services
+     * GET /xdsl
+     */
     $get(): Promise<string[]>;
+    /**
+     * Controle cache
+     */
+    $cache(param?: ICacheOptions): Promise<any>;
     eligibility: {
         cities: {
-            // GET /xdsl/eligibility/cities
+            /**
+             * Get the cities from a zipCode
+             * GET /xdsl/eligibility/cities
+             */
             $get(params: { zipCode: string }): Promise<xdsl.eligibility.City[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         lines: {
             active: {
-                // POST /xdsl/eligibility/lines/active
+                /**
+                 * Get the active lines at given address
+                 * POST /xdsl/eligibility/lines/active
+                 */
                 $post(params: { city: xdsl.eligibility.City, contactName: string, street: xdsl.eligibility.Street, streetNumber?: string }): Promise<xdsl.AsyncTaskArray<xdsl.eligibility.Line>>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             inactive: {
-                // POST /xdsl/eligibility/lines/inactive
+                /**
+                 * Get the inactive lines at given address
+                 * POST /xdsl/eligibility/lines/inactive
+                 */
                 $post(params: { city: xdsl.eligibility.City, contactName?: string, street: xdsl.eligibility.Street, streetNumber?: string }): Promise<xdsl.AsyncTaskArray<xdsl.eligibility.Line>>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         }
         meetings: {
-            // GET /xdsl/eligibility/meetings
+            /**
+             * Search for meeting time slot
+             * GET /xdsl/eligibility/meetings
+             */
             $get(params: { eligibilityId: string, offerLabel: string }): Promise<xdsl.AsyncTask<xdsl.eligibility.MeetingSlots>>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         search: {
             buildings: {
-                // POST /xdsl/eligibility/search/buildings
+                /**
+                 * Get all buildings for a specific address
+                 * POST /xdsl/eligibility/search/buildings
+                 */
                 $post(params: { streetCode: string, streetNumber: string }): Promise<xdsl.AsyncTaskArray<xdsl.eligibility.Building>>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             cities: {
-                // POST /xdsl/eligibility/search/cities
+                /**
+                 * Get all localities linked to a zip code
+                 * POST /xdsl/eligibility/search/cities
+                 */
                 $post(params: { zipCode: string }): Promise<xdsl.AsyncTaskArray<xdsl.eligibility.City>>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             fiberStreets: {
-                // POST /xdsl/eligibility/search/fiberStreets
+                /**
+                 * Get all street linked to a locality
+                 * POST /xdsl/eligibility/search/fiberStreets
+                 */
                 $post(params: { inseeCode: string }): Promise<xdsl.AsyncTaskArray<xdsl.eligibility.FiberStreet>>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             streetNumbers: {
-                // POST /xdsl/eligibility/search/streetNumbers
+                /**
+                 * Get the available street numbers for a given street code (unique identifier of a street you can get with the method POST /xdsl/eligibility/search/streets)
+                 * POST /xdsl/eligibility/search/streetNumbers
+                 */
                 $post(params: { streetCode: string }): Promise<xdsl.AsyncTaskArray<string>>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         }
         streets: {
-            // GET /xdsl/eligibility/streets
+            /**
+             * Get the streets from a city inseeCode and partial street name
+             * GET /xdsl/eligibility/streets
+             */
             $get(params: { inseeCode: string, partialName: string }): Promise<xdsl.eligibility.Street[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         test: {
-            // GET /xdsl/eligibility/test
+            /**
+             * Get an eligibility by its id
+             * GET /xdsl/eligibility/test
+             */
             $get(params: { id: string }): Promise<xdsl.eligibility.Eligibility>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             address: {
-                // POST /xdsl/eligibility/test/address
+                /**
+                 * Do an eligibility for an address, if no line exist
+                 * POST /xdsl/eligibility/test/address
+                 */
                 $post(params: { address: xdsl.eligibility.Address }): Promise<xdsl.AsyncTask<xdsl.eligibility.Eligibility>>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             fiber: {
                 building: {
-                    // POST /xdsl/eligibility/test/fiber/building
+                    /**
+                     * Perform a fiber eligibility for a building
+                     * POST /xdsl/eligibility/test/fiber/building
+                     */
                     $post(params: { building: string }): Promise<xdsl.AsyncTask<xdsl.eligibility.FiberEligibility>>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             }
             line: {
-                // POST /xdsl/eligibility/test/line
+                /**
+                 * Do an eligibility for a line
+                 * POST /xdsl/eligibility/test/line
+                 */
                 $post(params: { lineNumber: string, lineStatus: xdsl.eligibility.LandlineStatusEnum }): Promise<xdsl.AsyncTask<xdsl.eligibility.Eligibility>>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         }
     }
     email: {
         pro: {
-            // GET /xdsl/email/pro
+            /**
+             * List available services
+             * GET /xdsl/email/pro
+             */
             $get(): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(email: string): {
-                // DELETE /xdsl/email/pro/{email}
+                /**
+                 * Delete the email
+                 * DELETE /xdsl/email/pro/{email}
+                 */
                 $delete(): Promise<void>;
-                // GET /xdsl/email/pro/{email}
+                /**
+                 * Get this object properties
+                 * GET /xdsl/email/pro/{email}
+                 */
                 $get(): Promise<xdsl.xdslEmailPro>;
-                // PUT /xdsl/email/pro/{email}
+                /**
+                 * Alter this object properties
+                 * PUT /xdsl/email/pro/{email}
+                 */
                 $put(params?: { currentUsage?: complexType.UnitAndValue<number>, displayName?: string, domain?: string, firstName?: string, id?: number, initial?: string, lastLogoffDate?: string, lastLogonDate?: string, lastName?: string, login?: string, passwordLastUpdate?: string, primaryEmailAddress?: string, quota?: complexType.UnitAndValue<number>, state?: emailproObjectStateEnum, taskPendingId?: number }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 changePassword: {
-                    // POST /xdsl/email/pro/{email}/changePassword
+                    /**
+                     * Change the email password
+                     * POST /xdsl/email/pro/{email}/changePassword
+                     */
                     $post(params: { password: string }): Promise<xdsl.email.pro.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             };
         }
     }
     incidents: {
-        // GET /xdsl/incidents
+        /**
+         * List of incidents
+         * GET /xdsl/incidents
+         */
         $get(params?: { creationDate?: string, endDate?: string }): Promise<number[]>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         $(id: number): {
-            // GET /xdsl/incidents/{id}
+            /**
+             * Get this object properties
+             * GET /xdsl/incidents/{id}
+             */
             $get(): Promise<xdsl.Incident>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         };
     }
     spare: {
-        // GET /xdsl/spare
+        /**
+         * List available services
+         * GET /xdsl/spare
+         */
         $get(): Promise<string[]>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         brands: {
-            // GET /xdsl/spare/brands
+            /**
+             * Get all available spare brands
+             * GET /xdsl/spare/brands
+             */
             $get(): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         $(spare: string): {
-            // DELETE /xdsl/spare/{spare}
+            /**
+             * Delete the spare as if it was not belonging to OVH anymore
+             * DELETE /xdsl/spare/{spare}
+             */
             $delete(): Promise<void>;
-            // GET /xdsl/spare/{spare}
+            /**
+             * Get this object properties
+             * GET /xdsl/spare/{spare}
+             */
             $get(): Promise<spare.xdsl.XdslSpare>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             compatibleReplacement: {
-                // GET /xdsl/spare/{spare}/compatibleReplacement
+                /**
+                 * Return the list of brand compatible to be replaced
+                 * GET /xdsl/spare/{spare}/compatibleReplacement
+                 */
                 $get(): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             replace: {
-                // POST /xdsl/spare/{spare}/replace
+                /**
+                 * Replace the modem by its spare
+                 * POST /xdsl/spare/{spare}/replace
+                 */
                 $post(params: { domain: string }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             returnMerchandise: {
-                // POST /xdsl/spare/{spare}/returnMerchandise
+                /**
+                 * Return the broken equipment in instantRefund
+                 * POST /xdsl/spare/{spare}/returnMerchandise
+                 */
                 $post(): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             serviceInfos: {
-                // GET /xdsl/spare/{spare}/serviceInfos
+                /**
+                 * Get this object properties
+                 * GET /xdsl/spare/{spare}/serviceInfos
+                 */
                 $get(): Promise<services.Service>;
-                // PUT /xdsl/spare/{spare}/serviceInfos
+                /**
+                 * Alter this object properties
+                 * PUT /xdsl/spare/{spare}/serviceInfos
+                 */
                 $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         };
     }
     templateModem: {
-        // GET /xdsl/templateModem
+        /**
+         * List of TemplateModem
+         * GET /xdsl/templateModem
+         */
         $get(): Promise<string[]>;
-        // POST /xdsl/templateModem
+        /**
+         * Create new Modem Template from existing modem
+         * POST /xdsl/templateModem
+         */
         $post(params: { name: string, serviceName: string }): Promise<xdsl.TemplateModem>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         $(name: string): {
-            // DELETE /xdsl/templateModem/{name}
+            /**
+             * Delete this Modem Template
+             * DELETE /xdsl/templateModem/{name}
+             */
             $delete(): Promise<void>;
-            // GET /xdsl/templateModem/{name}
+            /**
+             * Get this object properties
+             * GET /xdsl/templateModem/{name}
+             */
             $get(): Promise<xdsl.TemplateModem>;
-            // PUT /xdsl/templateModem/{name}
+            /**
+             * Alter this object properties
+             * PUT /xdsl/templateModem/{name}
+             */
             $put(params?: { DHCP?: xdsl.templateModem.DHCP[], LAN?: xdsl.templateModem.LAN[], WLAN?: xdsl.templateModem.WLAN[], capabilities?: string, creationDate?: string, dmzIP?: string, mtuSize?: xdsl.xdslModemConfig.MTUSizeEnum, name?: string, parametersToIgnore?: xdsl.templateModem.ParametersToIgnore, portMapping?: xdsl.templateModem.PortMapping[] }): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         };
     }
     $(serviceName: string): {
-        // GET /xdsl/{serviceName}
+        /**
+         * Get this object properties
+         * GET /xdsl/{serviceName}
+         */
         $get(): Promise<xdsl.Access>;
-        // PUT /xdsl/{serviceName}
+        /**
+         * Alter this object properties
+         * PUT /xdsl/{serviceName}
+         */
         $put(params?: { accessName?: string, accessType?: xdsl.DslTypeEnum, address?: xdsl.AddressDetail, capabilities?: xdsl.AccessCapabilities, description?: string, ipv6Enabled?: boolean, lnsRateLimit?: number, monitoring?: boolean, nra?: string, packName?: string, pairsNumber?: number, role?: xdsl.AccessRoleEnum, status?: xdsl.AccessStatusEnum }): Promise<void>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         addressMove: {
             extraIpRange: {
-                // GET /xdsl/{serviceName}/addressMove/extraIpRange
+                /**
+                 * Informations about the extra IP range during address move
+                 * GET /xdsl/{serviceName}/addressMove/extraIpRange
+                 */
                 $get(): Promise<xdsl.ExtraIpRangeMove>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             extraIpRangeMove: {
-                // POST /xdsl/{serviceName}/addressMove/extraIpRangeMove
+                /**
+                 * Initiate the extra IP range migration
+                 * POST /xdsl/{serviceName}/addressMove/extraIpRangeMove
+                 */
                 $post(): Promise<xdsl.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         }
         antiSpams: {
-            // GET /xdsl/{serviceName}/antiSpams
+            /**
+             * List antiSpams for this access
+             * GET /xdsl/{serviceName}/antiSpams
+             */
             $get(): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(ip: string): {
-                // GET /xdsl/{serviceName}/antiSpams/{ip}
+                /**
+                 * Get this object properties
+                 * GET /xdsl/{serviceName}/antiSpams/{ip}
+                 */
                 $get(): Promise<xdsl.AntiSpam>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 evidences: {
-                    // GET /xdsl/{serviceName}/antiSpams/{ip}/evidences
+                    /**
+                     * List of evidences stored on PCS for this ip
+                     * GET /xdsl/{serviceName}/antiSpams/{ip}/evidences
+                     */
                     $get(): Promise<xdsl.antiSpam.EvidencesInfo>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             };
         }
         applyTemplateToModem: {
-            // POST /xdsl/{serviceName}/applyTemplateToModem
+            /**
+             * Apply TemplateModem to existing Modem
+             * POST /xdsl/{serviceName}/applyTemplateToModem
+             */
             $post(params: { templateName: string }): Promise<xdsl.Task>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         canCancelResiliation: {
-            // GET /xdsl/{serviceName}/canCancelResiliation
+            /**
+             * Get information about the ongoing resiliation
+             * GET /xdsl/{serviceName}/canCancelResiliation
+             */
             $get(): Promise<boolean>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         cancelResiliation: {
-            // POST /xdsl/{serviceName}/cancelResiliation
+            /**
+             * Cancel the ongoing resiliation
+             * POST /xdsl/{serviceName}/cancelResiliation
+             */
             $post(): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         changeContact: {
-            // POST /xdsl/{serviceName}/changeContact
+            /**
+             * Launch a contact change procedure
+             * POST /xdsl/{serviceName}/changeContact
+             */
             $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         diagnostic: {
-            // GET /xdsl/{serviceName}/diagnostic
+            /**
+             * Get this object properties
+             * GET /xdsl/{serviceName}/diagnostic
+             */
             $get(): Promise<xdsl.AccessDiagnostic>;
-            // POST /xdsl/{serviceName}/diagnostic
+            /**
+             * Run diagnostic on the access
+             * POST /xdsl/{serviceName}/diagnostic
+             */
             $post(): Promise<xdsl.Task>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         incident: {
-            // GET /xdsl/{serviceName}/incident
+            /**
+             * Get this object properties
+             * GET /xdsl/{serviceName}/incident
+             */
             $get(): Promise<xdsl.Incident>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         ips: {
-            // GET /xdsl/{serviceName}/ips
+            /**
+             * List of IPs addresses for this access
+             * GET /xdsl/{serviceName}/ips
+             */
             $get(): Promise<string[]>;
-            // POST /xdsl/{serviceName}/ips
+            /**
+             * Order an extra /29 range of IPv4 addresses
+             * POST /xdsl/{serviceName}/ips
+             */
             $post(): Promise<xdsl.Task>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(ip: string): {
-                // DELETE /xdsl/{serviceName}/ips/{ip}
+                /**
+                 * Stop renewing this extra IPv4 option
+                 * DELETE /xdsl/{serviceName}/ips/{ip}
+                 */
                 $delete(): Promise<void>;
-                // GET /xdsl/{serviceName}/ips/{ip}
+                /**
+                 * Get this object properties
+                 * GET /xdsl/{serviceName}/ips/{ip}
+                 */
                 $get(): Promise<xdsl.IP>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             };
         }
         ipv6: {
-            // POST /xdsl/{serviceName}/ipv6
+            /**
+             * Change the status of the IPv6 for this access
+             * POST /xdsl/{serviceName}/ipv6
+             */
             $post(params: { enabled: boolean }): Promise<xdsl.Task>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         lines: {
-            // GET /xdsl/{serviceName}/lines
+            /**
+             * The lines of the access
+             * GET /xdsl/{serviceName}/lines
+             */
             $get(): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(number: string): {
-                // GET /xdsl/{serviceName}/lines/{number}
+                /**
+                 * Get this object properties
+                 * GET /xdsl/{serviceName}/lines/{number}
+                 */
                 $get(): Promise<xdsl.Line>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 diagnostic: {
                     cancel: {
-                        // POST /xdsl/{serviceName}/lines/{number}/diagnostic/cancel
+                        /**
+                         * Cancel line diagnostic if possible
+                         * POST /xdsl/{serviceName}/lines/{number}/diagnostic/cancel
+                         */
                         $post(): Promise<void>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     run: {
-                        // POST /xdsl/{serviceName}/lines/{number}/diagnostic/run
+                        /**
+                         * Update and get advanced diagnostic of the line
+                         * POST /xdsl/{serviceName}/lines/{number}/diagnostic/run
+                         */
                         $post(params: { actionsDone?: xdsl.lineDiagnostic.CustomerActionsEnum[], answers?: xdsl.lineDiagnostic.Answers, faultType: xdsl.lineDiagnostic.FaultTypeEnum }): Promise<xdsl.lineDiagnostic.Diagnostic>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                 }
                 dslamPort: {
-                    // GET /xdsl/{serviceName}/lines/{number}/dslamPort
+                    /**
+                     * Get this object properties
+                     * GET /xdsl/{serviceName}/lines/{number}/dslamPort
+                     */
                     $get(): Promise<xdsl.DslamPort>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     availableProfiles: {
-                        // GET /xdsl/{serviceName}/lines/{number}/dslamPort/availableProfiles
+                        /**
+                         * List all availables profiles for this port
+                         * GET /xdsl/{serviceName}/lines/{number}/dslamPort/availableProfiles
+                         */
                         $get(): Promise<xdsl.DslamLineProfile[]>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     changeProfile: {
-                        // POST /xdsl/{serviceName}/lines/{number}/dslamPort/changeProfile
+                        /**
+                         * Change the profile of the port
+                         * POST /xdsl/{serviceName}/lines/{number}/dslamPort/changeProfile
+                         */
                         $post(params: { dslamProfileId: number }): Promise<xdsl.Task>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     logs: {
-                        // GET /xdsl/{serviceName}/lines/{number}/dslamPort/logs
+                        /**
+                         * Get the logs emitted by the DSLAM for this port
+                         * GET /xdsl/{serviceName}/lines/{number}/dslamPort/logs
+                         */
                         $get(params: { limit: number }): Promise<xdsl.DslamPortLog[]>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     reset: {
-                        // POST /xdsl/{serviceName}/lines/{number}/dslamPort/reset
+                        /**
+                         * Reset the port on the DSLAM
+                         * POST /xdsl/{serviceName}/lines/{number}/dslamPort/reset
+                         */
                         $post(): Promise<xdsl.Task>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                 }
                 statistics: {
-                    // GET /xdsl/{serviceName}/lines/{number}/statistics
+                    /**
+                     * Get various statistics about the line
+                     * GET /xdsl/{serviceName}/lines/{number}/statistics
+                     */
                     $get(params: { period: xdsl.StatisticsPeriodEnum, type: xdsl.LineStatisticsTypeEnum }): Promise<complexType.UnitAndValues<xdsl.TimestampAndValue>>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             };
         }
         modem: {
-            // GET /xdsl/{serviceName}/modem
+            /**
+             * Get this object properties
+             * GET /xdsl/{serviceName}/modem
+             */
             $get(): Promise<xdsl.Modem>;
-            // PUT /xdsl/{serviceName}/modem
+            /**
+             * Alter this object properties
+             * PUT /xdsl/{serviceName}/modem
+             */
             $put(params?: { brandName?: string, capabilities?: xdsl.ModemCapabilities, dmzIP?: string, easyFirewallLevel?: xdsl.xdslModemConfig.EasyFirewallLevelEnum, ipv6Support?: boolean, isBridged?: boolean, lastCwmpRequestDate?: string, macAddress?: string, managedByOvh?: boolean, model?: string, mtuSize?: xdsl.xdslModemConfig.MTUSizeEnum }): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             availableWLANChannel: {
-                // GET /xdsl/{serviceName}/modem/availableWLANChannel
+                /**
+                 * List available WLAN channel for this modem
+                 * GET /xdsl/{serviceName}/modem/availableWLANChannel
+                 */
                 $get(params: { frequency: xdsl.WLANFrequencyEnum }): Promise<number[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             blocIp: {
-                // GET /xdsl/{serviceName}/modem/blocIp
+                /**
+                 * Get the status of the Bloc IP on modem
+                 * GET /xdsl/{serviceName}/modem/blocIp
+                 */
                 $get(): Promise<xdsl.ServiceStatusEnum>;
-                // POST /xdsl/{serviceName}/modem/blocIp
+                /**
+                 * Change the status of the Bloc IP on modem
+                 * POST /xdsl/{serviceName}/modem/blocIp
+                 */
                 $post(params: { status: xdsl.ServiceStatusEnum }): Promise<xdsl.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             callWaiting: {
-                // GET /xdsl/{serviceName}/modem/callWaiting
+                /**
+                 * Get the status of callWaiting on modem
+                 * GET /xdsl/{serviceName}/modem/callWaiting
+                 */
                 $get(): Promise<xdsl.ServiceStatusEnum>;
-                // POST /xdsl/{serviceName}/modem/callWaiting
+                /**
+                 * Change the status of callWaiting on modem
+                 * POST /xdsl/{serviceName}/modem/callWaiting
+                 */
                 $post(params: { callWaiting: xdsl.ServiceStatusEnum }): Promise<xdsl.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             comfortExchange: {
-                // GET /xdsl/{serviceName}/modem/comfortExchange
+                /**
+                 * Get info about access modem replacement by last model.
+                 * GET /xdsl/{serviceName}/modem/comfortExchange
+                 */
                 $get(): Promise<xdsl.ModemExchangeInfo>;
-                // POST /xdsl/{serviceName}/modem/comfortExchange
+                /**
+                 * Replace access modem by last model, fees will be applied.
+                 * POST /xdsl/{serviceName}/modem/comfortExchange
+                 */
                 $post(params?: { contactShipping?: string }): Promise<order.Order>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             connectedDevices: {
-                // GET /xdsl/{serviceName}/modem/connectedDevices
+                /**
+                 * List of devices connected on this modem
+                 * GET /xdsl/{serviceName}/modem/connectedDevices
+                 */
                 $get(): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(macAddress: string): {
-                    // GET /xdsl/{serviceName}/modem/connectedDevices/{macAddress}
+                    /**
+                     * Get this object properties
+                     * GET /xdsl/{serviceName}/modem/connectedDevices/{macAddress}
+                     */
                     $get(): Promise<xdsl.connectedDevice>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 };
             }
             contentSharing: {
-                // GET /xdsl/{serviceName}/modem/contentSharing
+                /**
+                 * Get the status of contentSharing on modem
+                 * GET /xdsl/{serviceName}/modem/contentSharing
+                 */
                 $get(): Promise<xdsl.ServiceStatusEnum>;
-                // POST /xdsl/{serviceName}/modem/contentSharing
+                /**
+                 * Change the status of contentSharing on modem
+                 * POST /xdsl/{serviceName}/modem/contentSharing
+                 */
                 $post(params: { contentSharing: xdsl.ServiceStatusEnum }): Promise<xdsl.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             duplicatePortMappingConfig: {
-                // POST /xdsl/{serviceName}/modem/duplicatePortMappingConfig
+                /**
+                 * Remove all the current port mapping rules and set the same config as the access given in parameters
+                 * POST /xdsl/{serviceName}/modem/duplicatePortMappingConfig
+                 */
                 $post(params: { accessName: string }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             firmware: {
-                // GET /xdsl/{serviceName}/modem/firmware
+                /**
+                 * Get the firmware version installed on modem
+                 * GET /xdsl/{serviceName}/modem/firmware
+                 */
                 $get(): Promise<string>;
-                // POST /xdsl/{serviceName}/modem/firmware
+                /**
+                 * Launch a task to install target firmware on modem
+                 * POST /xdsl/{serviceName}/modem/firmware
+                 */
                 $post(params: { firmware: string, todoDate?: string }): Promise<xdsl.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             firmwareAvailable: {
-                // GET /xdsl/{serviceName}/modem/firmwareAvailable
+                /**
+                 * List available firmware for this modem
+                 * GET /xdsl/{serviceName}/modem/firmwareAvailable
+                 */
                 $get(): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             ftp: {
-                // GET /xdsl/{serviceName}/modem/ftp
+                /**
+                 * Get the status of ftp service on modem
+                 * GET /xdsl/{serviceName}/modem/ftp
+                 */
                 $get(): Promise<xdsl.ServiceStatusEnum>;
-                // POST /xdsl/{serviceName}/modem/ftp
+                /**
+                 * Change the status of the ftp service on modem
+                 * POST /xdsl/{serviceName}/modem/ftp
+                 */
                 $post(params: { ftp: xdsl.ServiceStatusEnum }): Promise<xdsl.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             ipsecAlg: {
-                // GET /xdsl/{serviceName}/modem/ipsecAlg
+                /**
+                 * Get the status of ipsec alg service on modem
+                 * GET /xdsl/{serviceName}/modem/ipsecAlg
+                 */
                 $get(): Promise<xdsl.ServiceStatusEnum>;
-                // POST /xdsl/{serviceName}/modem/ipsecAlg
+                /**
+                 * Change the status of the ipsec alg service on modem
+                 * POST /xdsl/{serviceName}/modem/ipsecAlg
+                 */
                 $post(params: { ipsecAlg: xdsl.ServiceStatusEnum }): Promise<xdsl.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             lan: {
-                // GET /xdsl/{serviceName}/modem/lan
+                /**
+                 * List of LANs on this modem
+                 * GET /xdsl/{serviceName}/modem/lan
+                 */
                 $get(): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(lanName: string): {
-                    // GET /xdsl/{serviceName}/modem/lan/{lanName}
+                    /**
+                     * Get this object properties
+                     * GET /xdsl/{serviceName}/modem/lan/{lanName}
+                     */
                     $get(): Promise<xdsl.LAN>;
-                    // PUT /xdsl/{serviceName}/modem/lan/{lanName}
+                    /**
+                     * Alter this object properties
+                     * PUT /xdsl/{serviceName}/modem/lan/{lanName}
+                     */
                     $put(params?: { IPAddress?: string, addressingType?: xdsl.xdslModemConfig.AddressingTypeEnum, lanName?: string, subnetMask?: string, taskId?: number }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     dhcp: {
-                        // GET /xdsl/{serviceName}/modem/lan/{lanName}/dhcp
+                        /**
+                         * List of DHCP on this modem
+                         * GET /xdsl/{serviceName}/modem/lan/{lanName}/dhcp
+                         */
                         $get(): Promise<string[]>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         $(dhcpName: string): {
-                            // GET /xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}
+                            /**
+                             * Get this object properties
+                             * GET /xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}
+                             */
                             $get(): Promise<xdsl.DHCP>;
-                            // PUT /xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}
+                            /**
+                             * Alter this object properties
+                             * PUT /xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}
+                             */
                             $put(params?: { defaultGateway?: string, dhcpName?: string, domainName?: string, endAddress?: string, leaseTime?: number, primaryDNS?: string, secondaryDNS?: string, serverEnabled?: boolean, startAddress?: string, subnetMask?: string, taskId?: number }): Promise<void>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                             DHCPStaticAddresses: {
-                                // GET /xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses
+                                /**
+                                 * List of DHCP Static Address of this modem
+                                 * GET /xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses
+                                 */
                                 $get(): Promise<string[]>;
-                                // POST /xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses
+                                /**
+                                 * Add a DHCP static lease
+                                 * POST /xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses
+                                 */
                                 $post(params: { IPAddress: string, MACAddress: string, name?: string }): Promise<xdsl.DHCPStaticAddress>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions): Promise<any>;
                                 $(MACAddress: string): {
-                                    // DELETE /xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses/{MACAddress}
+                                    /**
+                                     * Delete this port mapping
+                                     * DELETE /xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses/{MACAddress}
+                                     */
                                     $delete(): Promise<xdsl.Task>;
-                                    // GET /xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses/{MACAddress}
+                                    /**
+                                     * Get this object properties
+                                     * GET /xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses/{MACAddress}
+                                     */
                                     $get(): Promise<xdsl.DHCPStaticAddress>;
-                                    // PUT /xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses/{MACAddress}
+                                    /**
+                                     * Alter this object properties
+                                     * PUT /xdsl/{serviceName}/modem/lan/{lanName}/dhcp/{dhcpName}/DHCPStaticAddresses/{MACAddress}
+                                     */
                                     $put(params?: { IPAddress?: string, MACAddress?: string, name?: string, taskId?: number }): Promise<void>;
+                                    /**
+                                     * Controle cache
+                                     */
+                                    $cache(param?: ICacheOptions): Promise<any>;
                                 };
                             }
                         };
@@ -1386,165 +2426,439 @@ export interface Xdsl {
                 };
             }
             portMappings: {
-                // GET /xdsl/{serviceName}/modem/portMappings
+                /**
+                 * List of PortMappings on this modem
+                 * GET /xdsl/{serviceName}/modem/portMappings
+                 */
                 $get(): Promise<string[]>;
-                // POST /xdsl/{serviceName}/modem/portMappings
+                /**
+                 * Add a port mapping
+                 * POST /xdsl/{serviceName}/modem/portMappings
+                 */
                 $post(params: { allowedRemoteIp?: string, description?: string, externalPortEnd?: number, externalPortStart: number, internalClient: string, internalPort: number, name: string, protocol: xdsl.xdslModemConfig.ProtocolTypeEnum }): Promise<xdsl.PortMapping>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(name: string): {
-                    // DELETE /xdsl/{serviceName}/modem/portMappings/{name}
+                    /**
+                     * Delete this port mapping
+                     * DELETE /xdsl/{serviceName}/modem/portMappings/{name}
+                     */
                     $delete(): Promise<xdsl.Task>;
-                    // GET /xdsl/{serviceName}/modem/portMappings/{name}
+                    /**
+                     * Get this object properties
+                     * GET /xdsl/{serviceName}/modem/portMappings/{name}
+                     */
                     $get(): Promise<xdsl.PortMapping>;
-                    // PUT /xdsl/{serviceName}/modem/portMappings/{name}
+                    /**
+                     * Alter this object properties
+                     * PUT /xdsl/{serviceName}/modem/portMappings/{name}
+                     */
                     $put(params?: { allowedRemoteIp?: string, description?: string, externalPortEnd?: number, externalPortStart?: number, id?: number, internalClient?: string, internalPort?: number, name?: string, protocol?: xdsl.xdslModemConfig.ProtocolTypeEnum, taskId?: number }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 };
             }
             reboot: {
-                // POST /xdsl/{serviceName}/modem/reboot
+                /**
+                 * Reboot the modem
+                 * POST /xdsl/{serviceName}/modem/reboot
+                 */
                 $post(params?: { todoDate?: string }): Promise<xdsl.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             reconfigureVoip: {
-                // POST /xdsl/{serviceName}/modem/reconfigureVoip
+                /**
+                 * Reconfigure voip line on modem
+                 * POST /xdsl/{serviceName}/modem/reconfigureVoip
+                 */
                 $post(): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             refreshConnectedDevices: {
-                // POST /xdsl/{serviceName}/modem/refreshConnectedDevices
+                /**
+                 * Refresh the list of connected devices on the modem
+                 * POST /xdsl/{serviceName}/modem/refreshConnectedDevices
+                 */
                 $post(): Promise<xdsl.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             reset: {
-                // POST /xdsl/{serviceName}/modem/reset
+                /**
+                 * Reset the modem to its default configuration
+                 * POST /xdsl/{serviceName}/modem/reset
+                 */
                 $post(params?: { resetOvhConfig?: boolean }): Promise<xdsl.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             resetPortMappingConfig: {
-                // POST /xdsl/{serviceName}/modem/resetPortMappingConfig
+                /**
+                 * Remove all the current port mapping rules
+                 * POST /xdsl/{serviceName}/modem/resetPortMappingConfig
+                 */
                 $post(): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             retrieveInfo: {
-                // POST /xdsl/{serviceName}/modem/retrieveInfo
+                /**
+                 * get general Modem information
+                 * POST /xdsl/{serviceName}/modem/retrieveInfo
+                 */
                 $post(): Promise<xdsl.AsyncTask<xdsl.ModemInfo>>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             sipAlg: {
-                // GET /xdsl/{serviceName}/modem/sipAlg
+                /**
+                 * Get the status of sip alg service on modem
+                 * GET /xdsl/{serviceName}/modem/sipAlg
+                 */
                 $get(): Promise<xdsl.ServiceStatusEnum>;
-                // POST /xdsl/{serviceName}/modem/sipAlg
+                /**
+                 * Change the status of the sip alg service on modem
+                 * POST /xdsl/{serviceName}/modem/sipAlg
+                 */
                 $post(params: { sipAlg: xdsl.ServiceStatusEnum }): Promise<xdsl.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             upnp: {
-                // GET /xdsl/{serviceName}/modem/upnp
+                /**
+                 * Get the status of the Upnp on modem
+                 * GET /xdsl/{serviceName}/modem/upnp
+                 */
                 $get(): Promise<xdsl.ServiceStatusEnum>;
-                // POST /xdsl/{serviceName}/modem/upnp
+                /**
+                 * Change the status of the Upnp on modem
+                 * POST /xdsl/{serviceName}/modem/upnp
+                 */
                 $post(params: { upnp: xdsl.ServiceStatusEnum }): Promise<xdsl.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             wifi: {
-                // GET /xdsl/{serviceName}/modem/wifi
+                /**
+                 * List of WLANs on this modem
+                 * GET /xdsl/{serviceName}/modem/wifi
+                 */
                 $get(): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(wifiName: string): {
-                    // GET /xdsl/{serviceName}/modem/wifi/{wifiName}
+                    /**
+                     * Get this object properties
+                     * GET /xdsl/{serviceName}/modem/wifi/{wifiName}
+                     */
                     $get(): Promise<xdsl.WLAN>;
-                    // PUT /xdsl/{serviceName}/modem/wifi/{wifiName}
+                    /**
+                     * Alter this object properties
+                     * PUT /xdsl/{serviceName}/modem/wifi/{wifiName}
+                     */
                     $put(params?: { SSID?: string, SSIDAdvertisementEnabled?: boolean, bandSteering?: boolean, channel?: number, channelMode?: xdsl.xdslModemConfig.ChannelModeEnum, enabled?: boolean, frequency?: xdsl.xdslModemConfig.FrequencyEnum, guest?: boolean, securityKey?: string, securityType?: xdsl.xdslModemConfig.SecurityTypeEnum, taskId?: number, wifiName?: string }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 };
             }
         }
         monitoringNotifications: {
-            // GET /xdsl/{serviceName}/monitoringNotifications
+            /**
+             * List the notifications for this access
+             * GET /xdsl/{serviceName}/monitoringNotifications
+             */
             $get(): Promise<number[]>;
-            // POST /xdsl/{serviceName}/monitoringNotifications
+            /**
+             * Add a notification
+             * POST /xdsl/{serviceName}/monitoringNotifications
+             */
             $post(params: { allowIncident?: boolean, downThreshold?: number, email?: string, frequency: xdsl.monitoringNotifications.FrequencyEnum, phone?: string, smsAccount?: string, type: xdsl.monitoringNotifications.TypeEnum }): Promise<xdsl.MonitoringNotification>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(id: number): {
-                // DELETE /xdsl/{serviceName}/monitoringNotifications/{id}
+                /**
+                 * Delete this notification
+                 * DELETE /xdsl/{serviceName}/monitoringNotifications/{id}
+                 */
                 $delete(): Promise<void>;
-                // GET /xdsl/{serviceName}/monitoringNotifications/{id}
+                /**
+                 * Get this object properties
+                 * GET /xdsl/{serviceName}/monitoringNotifications/{id}
+                 */
                 $get(): Promise<xdsl.MonitoringNotification>;
-                // PUT /xdsl/{serviceName}/monitoringNotifications/{id}
+                /**
+                 * Alter this object properties
+                 * PUT /xdsl/{serviceName}/monitoringNotifications/{id}
+                 */
                 $put(params?: { allowIncident?: boolean, downThreshold?: number, email?: string, enabled?: boolean, frequency?: xdsl.monitoringNotifications.FrequencyEnum, id?: number, phone?: string, smsAccount?: string, type?: xdsl.monitoringNotifications.TypeEnum }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             };
         }
         orderFollowup: {
-            // GET /xdsl/{serviceName}/orderFollowup
+            /**
+             * Get the status of the order
+             * GET /xdsl/{serviceName}/orderFollowup
+             */
             $get(): Promise<xdsl.orderFollowup.Step[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         orderMeeting: {
-            // POST /xdsl/{serviceName}/orderMeeting
+            /**
+             * Book a meeting and relaunch order
+             * POST /xdsl/{serviceName}/orderMeeting
+             */
             $post(params: { endDate: string, startDate: string, uiCode: string }): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         pendingAction: {
-            // GET /xdsl/{serviceName}/pendingAction
+            /**
+             * Get this object properties
+             * GET /xdsl/{serviceName}/pendingAction
+             */
             $get(): Promise<xdsl.PendingAction>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         radiusConnectionLogs: {
-            // GET /xdsl/{serviceName}/radiusConnectionLogs
+            /**
+             * List the radius connection logs
+             * GET /xdsl/{serviceName}/radiusConnectionLogs
+             */
             $get(): Promise<xdsl.RadiusConnectionLog[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         requestPPPLoginMail: {
-            // POST /xdsl/{serviceName}/requestPPPLoginMail
+            /**
+             * Renew PPP password and send the PPP login informations to the e-mail of the nicAdmin
+             * POST /xdsl/{serviceName}/requestPPPLoginMail
+             */
             $post(): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         requestTotalDeconsolidation: {
-            // POST /xdsl/{serviceName}/requestTotalDeconsolidation
+            /**
+             * Switch this access to total deconsolidation
+             * POST /xdsl/{serviceName}/requestTotalDeconsolidation
+             */
             $post(params?: { noPortability?: boolean, rio?: string }): Promise<xdsl.Task>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         resiliate: {
-            // POST /xdsl/{serviceName}/resiliate
+            /**
+             * Resiliate the access
+             * POST /xdsl/{serviceName}/resiliate
+             */
             $post(params: { resiliationDate?: string, resiliationSurvey: xdsl.ResiliationSurvey }): Promise<xdsl.ResiliationFollowUpDetail>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         resiliationFollowup: {
-            // GET /xdsl/{serviceName}/resiliationFollowup
+            /**
+             * Get information about the ongoing resiliation
+             * GET /xdsl/{serviceName}/resiliationFollowup
+             */
             $get(): Promise<xdsl.ResiliationFollowUpDetail>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         resiliationTerms: {
-            // GET /xdsl/{serviceName}/resiliationTerms
+            /**
+             * Get resiliation terms
+             * GET /xdsl/{serviceName}/resiliationTerms
+             */
             $get(params?: { resiliationDate?: string }): Promise<xdsl.ResiliationTerms>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         rma: {
-            // GET /xdsl/{serviceName}/rma
+            /**
+             * Return Merchandise Authorisation associated
+             * GET /xdsl/{serviceName}/rma
+             */
             $get(): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(id: string): {
-                // DELETE /xdsl/{serviceName}/rma/{id}
+                /**
+                 * Cancel the rma
+                 * DELETE /xdsl/{serviceName}/rma/{id}
+                 */
                 $delete(): Promise<void>;
-                // GET /xdsl/{serviceName}/rma/{id}
+                /**
+                 * Get this object properties
+                 * GET /xdsl/{serviceName}/rma/{id}
+                 */
                 $get(): Promise<telephony.Rma>;
-                // PUT /xdsl/{serviceName}/rma/{id}
+                /**
+                 * Alter this object properties
+                 * PUT /xdsl/{serviceName}/rma/{id}
+                 */
                 $put(params?: { cancellable?: boolean, creationDatetime?: string, equipmentReference?: string, id?: string, newMerchandise?: string, offerTypeNew?: telephony.RmaOfferTypeEnum, offerTypeOld?: telephony.RmaOfferTypeEnum, process?: telephony.RmaReplaceTypeEnum, receptionDatetime?: string, shippingContact?: telephony.Contact, status?: telephony.RmaStatusEnum, steps?: telephony.RmaStep[], terminationDatetime?: string, type?: telephony.RmaTypeEnum }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             };
         }
         searchOrderMeetings: {
-            // POST /xdsl/{serviceName}/searchOrderMeetings
+            /**
+             * Search for available line creation meeting time slots, for order only
+             * POST /xdsl/{serviceName}/searchOrderMeetings
+             */
             $post(): Promise<xdsl.AsyncTask<connectivity.eligibility.Meetings>>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         sendOrderToProvider: {
-            // POST /xdsl/{serviceName}/sendOrderToProvider
+            /**
+             * Unlock order in "waitingCustomer" status. It only concerns orders whose modem is sent before anything have been forwarded to our provider
+             * POST /xdsl/{serviceName}/sendOrderToProvider
+             */
             $post(): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         serviceInfos: {
-            // GET /xdsl/{serviceName}/serviceInfos
+            /**
+             * Get this object properties
+             * GET /xdsl/{serviceName}/serviceInfos
+             */
             $get(): Promise<services.Service>;
-            // PUT /xdsl/{serviceName}/serviceInfos
+            /**
+             * Alter this object properties
+             * PUT /xdsl/{serviceName}/serviceInfos
+             */
             $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         statistics: {
-            // GET /xdsl/{serviceName}/statistics
+            /**
+             * Get various statistics about this access
+             * GET /xdsl/{serviceName}/statistics
+             */
             $get(params: { period: xdsl.StatisticsPeriodEnum, type: xdsl.AccessStatisticsTypeEnum }): Promise<complexType.UnitAndValues<xdsl.TimestampAndValue>>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         tasks: {
-            // GET /xdsl/{serviceName}/tasks
+            /**
+             * Tasks scheduled for this access
+             * GET /xdsl/{serviceName}/tasks
+             */
             $get(params?: { function_?: string, status?: xdsl.TaskStatusEnum }): Promise<number[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(id: number): {
-                // GET /xdsl/{serviceName}/tasks/{id}
+                /**
+                 * Get this object properties
+                 * GET /xdsl/{serviceName}/tasks/{id}
+                 */
                 $get(): Promise<xdsl.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 archive: {
-                    // POST /xdsl/{serviceName}/tasks/{id}/archive
+                    /**
+                     * Delete the task in problem from the results
+                     * POST /xdsl/{serviceName}/tasks/{id}/archive
+                     */
                     $post(): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             };
         }
         totalDeconsolidationTerms: {
-            // GET /xdsl/{serviceName}/totalDeconsolidationTerms
+            /**
+             * Give the price to requestTotalDeconsolidation on the access
+             * GET /xdsl/{serviceName}/totalDeconsolidationTerms
+             */
             $get(): Promise<xdsl.DeconsolidationTerms>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         updateInvalidOrMissingRio: {
-            // POST /xdsl/{serviceName}/updateInvalidOrMissingRio
+            /**
+             * Update RIO, or disable portability, for order in error because of missing or invalid RIO
+             * POST /xdsl/{serviceName}/updateInvalidOrMissingRio
+             */
             $post(params: { relaunchWithoutPortability: boolean, rio?: string }): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
     };
 }

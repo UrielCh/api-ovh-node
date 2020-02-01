@@ -1,4 +1,4 @@
-import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
+import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /hosting/reseller Models
@@ -6,12 +6,18 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  */
 export namespace hosting {
     export namespace reseller {
-        // interface fullName: hosting.reseller.metaType.metaType
+        /**
+         * Plesk instance meta details
+         * interface fullName: hosting.reseller.metaType.metaType
+         */
         export interface metaType {
             email: string;
             region: string;
         }
-        // interface fullName: hosting.reseller.product.product
+        /**
+         * Reseller
+         * interface fullName: hosting.reseller.product.product
+         */
         export interface product {
             action?: string;
             ip?: string;
@@ -22,7 +28,10 @@ export namespace hosting {
             typeDetail: hosting.reseller.productType;
             url?: string;
         }
-        // interface fullName: hosting.reseller.productType.productType
+        /**
+         * Plesk instance type details
+         * interface fullName: hosting.reseller.productType.productType
+         */
         export interface productType {
             consumers: number;
             cpu: string;
@@ -34,23 +43,38 @@ export namespace hosting {
             vCores: number;
             websites: number;
         }
-        // type fullname: hosting.reseller.resellerTypeEnum
+        /**
+         * Reseller type
+         * type fullname: hosting.reseller.resellerTypeEnum
+         */
         export type resellerTypeEnum = "TYPE1" | "TYPE2" | "TYPE3" | "TYPE4" | "TYPE5"
     }
 }
 export namespace reseller {
-    // type fullname: reseller.pleskLanguageTypeEnum
+    /**
+     * Possible values for language type
+     * type fullname: reseller.pleskLanguageTypeEnum
+     */
     export type pleskLanguageTypeEnum = "ar" | "zh-CN" | "zh-TW" | "cs-CZ" | "da-DK" | "nl-NL" | "en-US" | "fi-FI" | "fr-FR" | "de-DE" | "el-GR" | "he-IL" | "hu-HU" | "id-ID" | "it-IT" | "ja-JP" | "ko-KR" | "ms-MY" | "nb-NO" | "pl-PL" | "pt-BR" | "pt-PT" | "ro-RO" | "ru-RU" | "es-ES" | "sv-SE" | "tl-PH" | "th-TH" | "tr-TR" | "uk-UA" | "vi-VN"
-    // interface fullName: reseller.snapshot.snapshot
+    /**
+     * Reseller snapshot
+     * interface fullName: reseller.snapshot.snapshot
+     */
     export interface snapshot {
         creationDate: string;
         id: string;
         snashotName: string;
         type: reseller.snapshotTypeEnum;
     }
-    // type fullname: reseller.snapshotTypeEnum
+    /**
+     * Possible values for snapshot type
+     * type fullname: reseller.snapshotTypeEnum
+     */
     export type snapshotTypeEnum = "automatic" | "manual"
-    // interface fullName: reseller.task.task
+    /**
+     * Reseller task
+     * interface fullName: reseller.task.task
+     */
     export interface task {
         currentStep: string;
         expectedDoneDate?: string;
@@ -61,11 +85,17 @@ export namespace reseller {
         taskName: string;
         taskStatus: reseller.taskTypeEnum;
     }
-    // type fullname: reseller.taskTypeEnum
+    /**
+     * Possible values for task status
+     * type fullname: reseller.taskTypeEnum
+     */
     export type taskTypeEnum = "done" | "error" | "doing" | "todo" | "unknown"
 }
 export namespace service {
-    // interface fullName: service.RenewType.RenewType
+    /**
+     * Map a possible renew for a specific service
+     * interface fullName: service.RenewType.RenewType
+     */
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -73,13 +103,21 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    // type fullname: service.RenewalTypeEnum
+    /**
+     * Detailed renewal type of a service
+     * type fullname: service.RenewalTypeEnum
+     */
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    // type fullname: service.StateEnum
+    /**
+     * type fullname: service.StateEnum
+     */
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
 }
 export namespace services {
-    // interface fullName: services.Service.Service
+    /**
+     * Details about a Service
+     * interface fullName: services.Service.Service
+     */
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;
@@ -105,70 +143,180 @@ export function proxyHostingReseller(ovhEngine: OvhRequestable): Hosting {
 }
 export default proxyHostingReseller;
 /**
- * Api Proxy model
- */// Apis harmony
-// path /hosting
+ * Api model for /hosting/reseller
+ */
 export interface Hosting {
     reseller: {
-        // GET /hosting/reseller
+        /**
+         * List available services
+         * GET /hosting/reseller
+         */
         $get(): Promise<string[]>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         $(serviceName: string): {
-            // GET /hosting/reseller/{serviceName}
+            /**
+             * Get this object properties
+             * GET /hosting/reseller/{serviceName}
+             */
             $get(): Promise<hosting.reseller.product>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             changeContact: {
-                // POST /hosting/reseller/{serviceName}/changeContact
+                /**
+                 * Launch a contact change procedure
+                 * POST /hosting/reseller/{serviceName}/changeContact
+                 */
                 $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             email: {
-                // POST /hosting/reseller/{serviceName}/email
+                /**
+                 * Change user email
+                 * POST /hosting/reseller/{serviceName}/email
+                 */
                 $post(params: { email: string }): Promise<string>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             language: {
-                // POST /hosting/reseller/{serviceName}/language
+                /**
+                 * Change language of the Plesk instance
+                 * POST /hosting/reseller/{serviceName}/language
+                 */
                 $post(params: { language: reseller.pleskLanguageTypeEnum }): Promise<string>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             reboot: {
-                // POST /hosting/reseller/{serviceName}/reboot
+                /**
+                 * Restart instance
+                 * POST /hosting/reseller/{serviceName}/reboot
+                 */
                 $post(): Promise<string>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             reinstall: {
-                // POST /hosting/reseller/{serviceName}/reinstall
+                /**
+                 * Reinstall instance
+                 * POST /hosting/reseller/{serviceName}/reinstall
+                 */
                 $post(): Promise<string>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             resetPasswordUrl: {
-                // GET /hosting/reseller/{serviceName}/resetPasswordUrl
+                /**
+                 * Get reset instance password url
+                 * GET /hosting/reseller/{serviceName}/resetPasswordUrl
+                 */
                 $get(): Promise<string>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             reverse: {
-                // POST /hosting/reseller/{serviceName}/reverse
+                /**
+                 * Set new reverse to ip
+                 * POST /hosting/reseller/{serviceName}/reverse
+                 */
                 $post(params: { reverse: string }): Promise<string>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             serviceInfos: {
-                // GET /hosting/reseller/{serviceName}/serviceInfos
+                /**
+                 * Get this object properties
+                 * GET /hosting/reseller/{serviceName}/serviceInfos
+                 */
                 $get(): Promise<services.Service>;
-                // PUT /hosting/reseller/{serviceName}/serviceInfos
+                /**
+                 * Alter this object properties
+                 * PUT /hosting/reseller/{serviceName}/serviceInfos
+                 */
                 $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             snapshot: {
-                // GET /hosting/reseller/{serviceName}/snapshot
+                /**
+                 * List instance's current snapshots
+                 * GET /hosting/reseller/{serviceName}/snapshot
+                 */
                 $get(): Promise<reseller.snapshot[]>;
-                // POST /hosting/reseller/{serviceName}/snapshot
+                /**
+                 * Make manual snapshot
+                 * POST /hosting/reseller/{serviceName}/snapshot
+                 */
                 $post(): Promise<string>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(snapshotId: string): {
-                    // GET /hosting/reseller/{serviceName}/snapshot/{snapshotId}
+                    /**
+                     * Detail of a snapshot
+                     * GET /hosting/reseller/{serviceName}/snapshot/{snapshotId}
+                     */
                     $get(): Promise<reseller.snapshot>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     restore: {
-                        // POST /hosting/reseller/{serviceName}/snapshot/{snapshotId}/restore
+                        /**
+                         * Restore a snapshot
+                         * POST /hosting/reseller/{serviceName}/snapshot/{snapshotId}/restore
+                         */
                         $post(): Promise<string>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                 };
             }
             task: {
-                // GET /hosting/reseller/{serviceName}/task
+                /**
+                 * Get list of tasks
+                 * GET /hosting/reseller/{serviceName}/task
+                 */
                 $get(): Promise<reseller.task[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(taskId: string): {
-                    // GET /hosting/reseller/{serviceName}/task/{taskId}
+                    /**
+                     * Get task information given its id
+                     * GET /hosting/reseller/{serviceName}/task/{taskId}
+                     */
                     $get(): Promise<reseller.task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 };
             }
         };

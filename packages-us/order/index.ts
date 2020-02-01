@@ -1,37 +1,58 @@
-import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
+import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /order Models
  * Source: https://api.us.ovhcloud.com/1.0/order.json
  */
 export namespace complexType {
-    // interface fullName: complexType.SafeKeyValue.SafeKeyValue
+    /**
+     * Key and value, with proper key strings
+     * interface fullName: complexType.SafeKeyValue.SafeKeyValue
+     */
     export interface SafeKeyValue<T> {
         key: string;
         value: T;
     }
-    // interface fullName: complexType.UnitAndValue.UnitAndValue
+    /**
+     * A numeric value tagged with its unit
+     * interface fullName: complexType.UnitAndValue.UnitAndValue
+     */
     export interface UnitAndValue<T> {
         unit: string;
         value: T;
     }
 }
 export namespace nichandle {
-    // type fullname: nichandle.CountryEnum
+    /**
+     * Countries a nichandle can choose
+     * type fullname: nichandle.CountryEnum
+     */
     export type CountryEnum = "AC" | "AD" | "AE" | "AF" | "AG" | "AI" | "AL" | "AM" | "AO" | "AQ" | "AR" | "AS" | "AT" | "AU" | "AW" | "AX" | "AZ" | "BA" | "BB" | "BD" | "BE" | "BF" | "BG" | "BH" | "BI" | "BJ" | "BL" | "BM" | "BN" | "BO" | "BQ" | "BR" | "BS" | "BT" | "BW" | "BY" | "BZ" | "CA" | "CC" | "CD" | "CF" | "CG" | "CH" | "CI" | "CK" | "CL" | "CM" | "CN" | "CO" | "CR" | "CU" | "CV" | "CW" | "CX" | "CY" | "CZ" | "DE" | "DG" | "DJ" | "DK" | "DM" | "DO" | "DZ" | "EA" | "EC" | "EE" | "EG" | "EH" | "ER" | "ES" | "ET" | "FI" | "FJ" | "FK" | "FM" | "FO" | "FR" | "GA" | "GB" | "GD" | "GE" | "GF" | "GG" | "GH" | "GI" | "GL" | "GM" | "GN" | "GP" | "GQ" | "GR" | "GS" | "GT" | "GU" | "GW" | "GY" | "HK" | "HN" | "HR" | "HT" | "HU" | "IC" | "ID" | "IE" | "IL" | "IM" | "IN" | "IO" | "IQ" | "IR" | "IS" | "IT" | "JE" | "JM" | "JO" | "JP" | "KE" | "KG" | "KH" | "KI" | "KM" | "KN" | "KP" | "KR" | "KW" | "KY" | "KZ" | "LA" | "LB" | "LC" | "LI" | "LK" | "LR" | "LS" | "LT" | "LU" | "LV" | "LY" | "MA" | "MC" | "MD" | "ME" | "MF" | "MG" | "MH" | "MK" | "ML" | "MM" | "MN" | "MO" | "MP" | "MQ" | "MR" | "MS" | "MT" | "MU" | "MV" | "MW" | "MX" | "MY" | "MZ" | "NA" | "NC" | "NE" | "NF" | "NG" | "NI" | "NL" | "NO" | "NP" | "NR" | "NU" | "NZ" | "OM" | "PA" | "PE" | "PF" | "PG" | "PH" | "PK" | "PL" | "PM" | "PN" | "PR" | "PS" | "PT" | "PW" | "PY" | "QA" | "RE" | "RO" | "RS" | "RU" | "RW" | "SA" | "SB" | "SC" | "SD" | "SE" | "SG" | "SH" | "SI" | "SJ" | "SK" | "SL" | "SM" | "SN" | "SO" | "SR" | "SS" | "ST" | "SV" | "SX" | "SY" | "SZ" | "TA" | "TC" | "TD" | "TF" | "TG" | "TH" | "TJ" | "TK" | "TL" | "TM" | "TN" | "TO" | "TR" | "TT" | "TV" | "TW" | "TZ" | "UA" | "UG" | "UM" | "UNKNOWN" | "US" | "UY" | "UZ" | "VA" | "VC" | "VE" | "VG" | "VI" | "VN" | "VU" | "WF" | "WS" | "XK" | "YE" | "YT" | "ZA" | "ZM" | "ZW"
-    // type fullname: nichandle.OvhSubsidiaryEnum
+    /**
+     * OVH subsidiaries
+     * type fullname: nichandle.OvhSubsidiaryEnum
+     */
     export type OvhSubsidiaryEnum = "ASIA" | "AU" | "CA" | "CZ" | "DE" | "ES" | "EU" | "FI" | "FR" | "GB" | "IE" | "IT" | "LT" | "MA" | "NL" | "PL" | "PT" | "QC" | "SG" | "SN" | "TN" | "US" | "WE" | "WS"
 }
 export namespace order {
-    // interface fullName: order.Contract.Contract
+    /**
+     * A contract
+     * interface fullName: order.Contract.Contract
+     */
     export interface Contract {
         content: string;
         name: string;
         url: string;
     }
-    // type fullname: order.CurrencyCodeEnum
+    /**
+     * Currency code
+     * type fullname: order.CurrencyCodeEnum
+     */
     export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
-    // interface fullName: order.Order.Order
+    /**
+     * An order
+     * interface fullName: order.Order.Order
+     */
     export interface Order {
         contracts: order.Contract[];
         details: order.OrderDetail[];
@@ -39,7 +60,10 @@ export namespace order {
         prices: order.OrderPrices;
         url?: string;
     }
-    // interface fullName: order.OrderDetail.OrderDetail
+    /**
+     * Detail of an order
+     * interface fullName: order.OrderDetail.OrderDetail
+     */
     export interface OrderDetail {
         cartItemID?: number;
         description: string;
@@ -52,9 +76,15 @@ export namespace order {
         totalPrice: order.Price;
         unitPrice: order.Price;
     }
-    // type fullname: order.OrderDetailTypeEnum
+    /**
+     * Product type of item in order
+     * type fullname: order.OrderDetailTypeEnum
+     */
     export type OrderDetailTypeEnum = "ACCESSORY" | "CAUTION" | "CHOOSED" | "CONSUMPTION" | "CREATION" | "DELIVERY" | "DURATION" | "GIFT" | "INSTALLATION" | "LICENSE" | "MUTE" | "OTHER" | "OUTPLAN" | "QUANTITY" | "REFUND" | "RENEW" | "SPECIAL" | "SWITCH" | "TRANSFER" | "VOUCHER"
-    // interface fullName: order.OrderPrices.OrderPrices
+    /**
+     * Prices of an order
+     * interface fullName: order.OrderPrices.OrderPrices
+     */
     export interface OrderPrices {
         originalWithoutTax?: order.Price;
         reduction?: order.Price;
@@ -62,25 +92,40 @@ export namespace order {
         withTax: order.Price;
         withoutTax: order.Price;
     }
-    // interface fullName: order.Price.Price
+    /**
+     * Price with its currency and textual representation
+     * interface fullName: order.Price.Price
+     */
     export interface Price {
         currencyCode: order.CurrencyCodeEnum;
         text: string;
         value: number;
     }
-    // interface fullName: order.Reduction.Reduction
+    /**
+     * Order detail reduction
+     * interface fullName: order.Reduction.Reduction
+     */
     export interface Reduction {
         context: order.ReductionContextEnum;
         price: order.Price;
         type: order.ReductionTypeEnum;
         value: order.Price;
     }
-    // type fullname: order.ReductionContextEnum
+    /**
+     * Context of the reduction
+     * type fullname: order.ReductionContextEnum
+     */
     export type ReductionContextEnum = "promotion" | "voucher"
-    // type fullname: order.ReductionTypeEnum
+    /**
+     * Type of reduction
+     * type fullname: order.ReductionTypeEnum
+     */
     export type ReductionTypeEnum = "percentage" | "forced_amount" | "fixed_amount"
     export namespace cart {
-        // interface fullName: order.cart.Cart.Cart
+        /**
+         * A shopping cart
+         * interface fullName: order.cart.Cart.Cart
+         */
         export interface Cart {
             cartId: string;
             description: string;
@@ -88,26 +133,41 @@ export namespace order {
             items: number[];
             readOnly: boolean;
         }
-        // interface fullName: order.cart.ConfigurationItem.ConfigurationItem
+        /**
+         * Representation of a configuration item for personalizing product
+         * interface fullName: order.cart.ConfigurationItem.ConfigurationItem
+         */
         export interface ConfigurationItem {
             id: number;
             label: string;
             value: string;
         }
-        // interface fullName: order.cart.ConfigurationRequirements.ConfigurationRequirements
+        /**
+         * Information about a configuration
+         * interface fullName: order.cart.ConfigurationRequirements.ConfigurationRequirements
+         */
         export interface ConfigurationRequirements {
             fields?: string[];
             label: string;
             required: boolean;
             type: string;
         }
-        // interface fullName: order.cart.DomainSettings.DomainSettings
+        /**
+         * Representation of domain name order properties
+         * interface fullName: order.cart.DomainSettings.DomainSettings
+         */
         export interface DomainSettings {
             domain: string;
         }
-        // type fullname: order.cart.DurationUnitEnum
+        /**
+         * Unit that correspond to a duration range
+         * type fullname: order.cart.DurationUnitEnum
+         */
         export type DurationUnitEnum = "month" | "day" | "none"
-        // interface fullName: order.cart.GenericOptionDefinition.GenericOptionDefinition
+        /**
+         * Representation of a generic product option
+         * interface fullName: order.cart.GenericOptionDefinition.GenericOptionDefinition
+         */
         export interface GenericOptionDefinition {
             exclusive: boolean;
             family: string;
@@ -117,14 +177,20 @@ export namespace order {
             productName: string;
             productType: order.cart.GenericProductTypeEnum;
         }
-        // interface fullName: order.cart.GenericProductDefinition.GenericProductDefinition
+        /**
+         * Representation of a generic product
+         * interface fullName: order.cart.GenericProductDefinition.GenericProductDefinition
+         */
         export interface GenericProductDefinition {
             planCode: string;
             prices: order.cart.GenericProductPricing[];
             productName: string;
             productType: order.cart.GenericProductTypeEnum;
         }
-        // interface fullName: order.cart.GenericProductPricing.GenericProductPricing
+        /**
+         * Representation of a product pricing
+         * interface fullName: order.cart.GenericProductPricing.GenericProductPricing
+         */
         export interface GenericProductPricing {
             capacities: order.cart.GenericProductPricingCapacitiesEnum[];
             description: string;
@@ -139,15 +205,30 @@ export namespace order {
             pricingMode: string;
             pricingType: order.cart.GenericProductPricingTypeEnum;
         }
-        // type fullname: order.cart.GenericProductPricingCapacitiesEnum
+        /**
+         * Capacity of a pricing (type)
+         * type fullname: order.cart.GenericProductPricingCapacitiesEnum
+         */
         export type GenericProductPricingCapacitiesEnum = "installation" | "renew" | "upgrade" | "downgrade" | "detach"
-        // type fullname: order.cart.GenericProductPricingStrategyEnum
+        /**
+         * Strategy of a Pricing
+         * type fullname: order.cart.GenericProductPricingStrategyEnum
+         */
         export type GenericProductPricingStrategyEnum = "stairstep" | "volume" | "tiered"
-        // type fullname: order.cart.GenericProductPricingTypeEnum
+        /**
+         * Type of a pricing
+         * type fullname: order.cart.GenericProductPricingTypeEnum
+         */
         export type GenericProductPricingTypeEnum = "rental" | "consumption" | "purchase"
-        // type fullname: order.cart.GenericProductTypeEnum
+        /**
+         * Type of a product
+         * type fullname: order.cart.GenericProductTypeEnum
+         */
         export type GenericProductTypeEnum = "delivery" | "deposit" | "shipping" | "cloud_service" | "saas_license" | "storage" | "domain"
-        // interface fullName: order.cart.Item.Item
+        /**
+         * Representation of a cart item
+         * interface fullName: order.cart.Item.Item
+         */
         export interface Item {
             cartId: string;
             configurations?: number[];
@@ -160,34 +241,52 @@ export namespace order {
             productId: string;
             settings: order.cart.DomainSettings;
         }
-        // interface fullName: order.cart.Price.Price
+        /**
+         * Price informations with label
+         * interface fullName: order.cart.Price.Price
+         */
         export interface Price {
             label: order.cart.PriceLabelEnum;
             price: order.Price;
         }
-        // type fullname: order.cart.PriceLabelEnum
+        /**
+         * Label corresponding to different type of price
+         * type fullname: order.cart.PriceLabelEnum
+         */
         export type PriceLabelEnum = "PRICE" | "DISCOUNT" | "FEE" | "TOTAL" | "RENEW"
     }
     export namespace catalog {
-        // interface fullName: order.catalog.AddonItem.AddonItem
+        /**
+         * Describes an Addon
+         * interface fullName: order.catalog.AddonItem.AddonItem
+         */
         export interface AddonItem {
             addons: order.catalog.AddonOffer[];
             exclusive: boolean;
             family: string;
             mandatory: boolean;
         }
-        // interface fullName: order.catalog.AddonOffer.AddonOffer
+        /**
+         * Describes of Addon offer
+         * interface fullName: order.catalog.AddonOffer.AddonOffer
+         */
         export interface AddonOffer {
             invoiceName: string;
             plan: order.catalog.ProductPlan;
         }
-        // interface fullName: order.catalog.Catalog.Catalog
+        /**
+         * Describes a Catalog
+         * interface fullName: order.catalog.Catalog.Catalog
+         */
         export interface Catalog {
             catalogId: number;
             merchantCode: string;
             plansFamily: order.catalog.PlansItem[];
         }
-        // interface fullName: order.catalog.ConfigurationItem.ConfigurationItem
+        /**
+         * Composition of a configuration
+         * interface fullName: order.catalog.ConfigurationItem.ConfigurationItem
+         */
         export interface ConfigurationItem {
             defaultValue?: string;
             isCustom: boolean;
@@ -195,12 +294,18 @@ export namespace order {
             name: string;
             values: string[];
         }
-        // interface fullName: order.catalog.PlansItem.PlansItem
+        /**
+         * Describe an item that contains multiple plans
+         * interface fullName: order.catalog.PlansItem.PlansItem
+         */
         export interface PlansItem {
             family: string;
             plans: order.catalog.ProductPlan[];
         }
-        // interface fullName: order.catalog.Pricing.Pricing
+        /**
+         * Describes a pricing
+         * interface fullName: order.catalog.Pricing.Pricing
+         */
         export interface Pricing {
             capacities: string[];
             commitment: number;
@@ -217,24 +322,36 @@ export namespace order {
             priceInUcents: number;
             pricingStrategy: string;
         }
-        // interface fullName: order.catalog.PricingDefault.PricingDefault
+        /**
+         * Describe default pricings
+         * interface fullName: order.catalog.PricingDefault.PricingDefault
+         */
         export interface PricingDefault {
             default: order.catalog.Pricing[];
         }
-        // interface fullName: order.catalog.Product.Product
+        /**
+         * Describe a Product in the Catalog
+         * interface fullName: order.catalog.Product.Product
+         */
         export interface Product {
             configurations: order.catalog.ConfigurationItem[];
             description: string;
             name: string;
             technicalDetails?: complexType.SafeKeyValue<string>[];
         }
-        // interface fullName: order.catalog.ProductOfferDetails.ProductOfferDetails
+        /**
+         * Describe the details of a commercial offer
+         * interface fullName: order.catalog.ProductOfferDetails.ProductOfferDetails
+         */
         export interface ProductOfferDetails {
             metadatas: complexType.SafeKeyValue<string>[];
             pricings: order.catalog.PricingDefault;
             product: order.catalog.Product;
         }
-        // interface fullName: order.catalog.ProductPlan.ProductPlan
+        /**
+         * Describes of commercial offer of a product
+         * interface fullName: order.catalog.ProductPlan.ProductPlan
+         */
         export interface ProductPlan {
             addonsFamily: order.catalog.AddonItem[];
             consumptionBillingStrategy?: string;
@@ -244,7 +361,10 @@ export namespace order {
             pricingType: string;
         }
         export namespace pcc {
-            // interface fullName: order.catalog.pcc.Catalog.Catalog
+            /**
+             * Describe a Private Cloud commercial catalog
+             * interface fullName: order.catalog.pcc.Catalog.Catalog
+             */
             export interface Catalog {
                 catalogId: number;
                 catalogName: string;
@@ -252,13 +372,19 @@ export namespace order {
                 merchantCode: string;
                 plans: order.catalog.ProductPlan[];
             }
-            // interface fullName: order.catalog.pcc.CommercialRange.CommercialRange
+            /**
+             * Describes the Commercial Range of a Private Cloud
+             * interface fullName: order.catalog.pcc.CommercialRange.CommercialRange
+             */
             export interface CommercialRange {
                 datacenters: order.catalog.pcc.Datacenter[];
                 defaultZone: string;
                 name: string;
             }
-            // interface fullName: order.catalog.pcc.Datacenter.Datacenter
+            /**
+             * Describes a Private Cloud Datacenter
+             * interface fullName: order.catalog.pcc.Datacenter.Datacenter
+             */
             export interface Datacenter {
                 cityCode: string;
                 cityName: string;
@@ -273,7 +399,10 @@ export namespace order {
                 zoneFullName: string;
                 zoneName: string;
             }
-            // interface fullName: order.catalog.pcc.Host.Host
+            /**
+             * Describes a Private Cloud Host
+             * interface fullName: order.catalog.pcc.Host.Host
+             */
             export interface Host {
                 name: string;
                 onInitialOrder: boolean;
@@ -282,7 +411,10 @@ export namespace order {
                 specifications: order.catalog.pcc.HostSpecifications;
                 storagesPack: string[];
             }
-            // interface fullName: order.catalog.pcc.HostCpuSpecifications.HostCpuSpecifications
+            /**
+             * Describes a Private Cloud Host CPU
+             * interface fullName: order.catalog.pcc.HostCpuSpecifications.HostCpuSpecifications
+             */
             export interface HostCpuSpecifications {
                 cores: number;
                 frequency: complexType.UnitAndValue<number>;
@@ -291,22 +423,34 @@ export namespace order {
                 socket: number;
                 threads: number;
             }
-            // interface fullName: order.catalog.pcc.HostMemorySpecifications.HostMemorySpecifications
+            /**
+             * Describes a Private Cloud Host Memory
+             * interface fullName: order.catalog.pcc.HostMemorySpecifications.HostMemorySpecifications
+             */
             export interface HostMemorySpecifications {
                 ram: complexType.UnitAndValue<number>;
             }
-            // interface fullName: order.catalog.pcc.HostNetworkSpecifications.HostNetworkSpecifications
+            /**
+             * Describes a Private Cloud Host Network
+             * interface fullName: order.catalog.pcc.HostNetworkSpecifications.HostNetworkSpecifications
+             */
             export interface HostNetworkSpecifications {
                 nics: number;
                 speed: complexType.UnitAndValue<number>;
             }
-            // interface fullName: order.catalog.pcc.HostSpecifications.HostSpecifications
+            /**
+             * Describes a Private Cloud Host Hardware
+             * interface fullName: order.catalog.pcc.HostSpecifications.HostSpecifications
+             */
             export interface HostSpecifications {
                 cpu: order.catalog.pcc.HostCpuSpecifications;
                 memory: order.catalog.pcc.HostMemorySpecifications;
                 network: order.catalog.pcc.HostNetworkSpecifications[];
             }
-            // interface fullName: order.catalog.pcc.Hypervisor.Hypervisor
+            /**
+             * Describes a Private Cloud Hypervisor
+             * interface fullName: order.catalog.pcc.Hypervisor.Hypervisor
+             */
             export interface Hypervisor {
                 hosts: order.catalog.pcc.Host[];
                 name: string;
@@ -317,7 +461,10 @@ export namespace order {
                 storages: order.catalog.pcc.Storage[];
                 type: string;
             }
-            // interface fullName: order.catalog.pcc.Option.Option
+            /**
+             * Describes a Private Cloud Option
+             * interface fullName: order.catalog.pcc.Option.Option
+             */
             export interface Option {
                 maxInitialQuantity: number;
                 name: string;
@@ -326,20 +473,29 @@ export namespace order {
                 planCode: string;
                 type: string;
             }
-            // interface fullName: order.catalog.pcc.ServicePack.ServicePack
+            /**
+             * Describes a Private Cloud Service Pack
+             * interface fullName: order.catalog.pcc.ServicePack.ServicePack
+             */
             export interface ServicePack {
                 name: string;
                 options: order.catalog.pcc.ServicePackOption[];
                 planCode: string;
                 upgradableTo: string[];
             }
-            // interface fullName: order.catalog.pcc.ServicePackOption.ServicePackOption
+            /**
+             * Describes a Private Cloud service pack option
+             * interface fullName: order.catalog.pcc.ServicePackOption.ServicePackOption
+             */
             export interface ServicePackOption {
                 name: string;
                 planCode: string;
                 type: string;
             }
-            // interface fullName: order.catalog.pcc.Storage.Storage
+            /**
+             * Describes a Private Cloud Storage
+             * interface fullName: order.catalog.pcc.Storage.Storage
+             */
             export interface Storage {
                 name: string;
                 onInitialOrder: boolean;
@@ -347,14 +503,20 @@ export namespace order {
                 planCode: string;
                 specifications: order.catalog.pcc.StorageSpecifications;
             }
-            // interface fullName: order.catalog.pcc.StorageSpecifications.StorageSpecifications
+            /**
+             * Describes a Private Cloud Storage
+             * interface fullName: order.catalog.pcc.StorageSpecifications.StorageSpecifications
+             */
             export interface StorageSpecifications {
                 size: complexType.UnitAndValue<number>;
                 type: string;
             }
         }
         export namespace publik {
-            // interface fullName: order.catalog.publik.AddonFamily.AddonFamily
+            /**
+             * Describes an Addon family for a Commercial offer
+             * interface fullName: order.catalog.publik.AddonFamily.AddonFamily
+             */
             export interface AddonFamily {
                 addons: string[];
                 default?: string;
@@ -362,7 +524,10 @@ export namespace order {
                 mandatory: boolean;
                 name: string;
             }
-            // interface fullName: order.catalog.publik.Catalog.Catalog
+            /**
+             * Describes a Catalog inside a Subsidiary
+             * interface fullName: order.catalog.publik.Catalog.Catalog
+             */
             export interface Catalog {
                 addons: order.catalog.publik.Plan[];
                 catalogId: number;
@@ -371,14 +536,20 @@ export namespace order {
                 plans: order.catalog.publik.Plan[];
                 products: order.catalog.publik.Product[];
             }
-            // interface fullName: order.catalog.publik.Configuration.Configuration
+            /**
+             * Describes the Configuration for a Commercial offer
+             * interface fullName: order.catalog.publik.Configuration.Configuration
+             */
             export interface Configuration {
                 isCustom: boolean;
                 isMandatory: boolean;
                 name: string;
                 values: string[];
             }
-            // interface fullName: order.catalog.publik.DedicatedServerCatalog.DedicatedServerCatalog
+            /**
+             * Describes a Dedicated server Catalog inside a Subsidiary
+             * interface fullName: order.catalog.publik.DedicatedServerCatalog.DedicatedServerCatalog
+             */
             export interface DedicatedServerCatalog {
                 addons: order.catalog.publik.Plan[];
                 catalogId: number;
@@ -387,17 +558,26 @@ export namespace order {
                 plans: order.catalog.publik.Plan[];
                 products: order.catalog.publik.DedicatedServerProduct[];
             }
-            // interface fullName: order.catalog.publik.DedicatedServerProduct.DedicatedServerProduct
+            /**
+             * Describes a Dedicated Server Product
+             * interface fullName: order.catalog.publik.DedicatedServerProduct.DedicatedServerProduct
+             */
             export interface DedicatedServerProduct {
                 blobs?: order.catalog.publik.DedicatedServerProductBlob;
                 description: string;
                 name: string;
             }
-            // interface fullName: order.catalog.publik.DedicatedServerProductBlob.DedicatedServerProductBlob
+            /**
+             * Describes a Blob for a Dedicated Server
+             * interface fullName: order.catalog.publik.DedicatedServerProductBlob.DedicatedServerProductBlob
+             */
             export interface DedicatedServerProductBlob {
                 technical?: order.catalog.publik.DedicatedServerProductBlobTechnical;
             }
-            // interface fullName: order.catalog.publik.DedicatedServerProductBlobTechnical.DedicatedServerProductBlobTechnical
+            /**
+             * Describes a Technical Blob for a Dedicated Server
+             * interface fullName: order.catalog.publik.DedicatedServerProductBlobTechnical.DedicatedServerProductBlobTechnical
+             */
             export interface DedicatedServerProductBlobTechnical {
                 bandwidth?: order.catalog.publik.DedicatedServerProductBlobTechnicalNetwork;
                 cpu?: order.catalog.publik.DedicatedServerProductBlobTechnicalCPU;
@@ -407,7 +587,10 @@ export namespace order {
                 storage?: order.catalog.publik.DedicatedServerProductBlobTechnicalStorage;
                 vrack?: order.catalog.publik.DedicatedServerProductBlobTechnicalNetwork;
             }
-            // interface fullName: order.catalog.publik.DedicatedServerProductBlobTechnicalCPU.DedicatedServerProductBlobTechnicalCPU
+            /**
+             * Describes a CPU for a Dedicated Server
+             * interface fullName: order.catalog.publik.DedicatedServerProductBlobTechnicalCPU.DedicatedServerProductBlobTechnicalCPU
+             */
             export interface DedicatedServerProductBlobTechnicalCPU {
                 boost: number;
                 brand: string;
@@ -417,7 +600,10 @@ export namespace order {
                 score: number;
                 threads: number;
             }
-            // interface fullName: order.catalog.publik.DedicatedServerProductBlobTechnicalDisk.DedicatedServerProductBlobTechnicalDisk
+            /**
+             * Describes a Disk for a Dedicated Server
+             * interface fullName: order.catalog.publik.DedicatedServerProductBlobTechnicalDisk.DedicatedServerProductBlobTechnicalDisk
+             */
             export interface DedicatedServerProductBlobTechnicalDisk {
                 capacity: number;
                 interface: string;
@@ -425,47 +611,71 @@ export namespace order {
                 specs: string;
                 technology: string;
             }
-            // interface fullName: order.catalog.publik.DedicatedServerProductBlobTechnicalFrame.DedicatedServerProductBlobTechnicalFrame
+            /**
+             * Describes a Frame for a Dedicated Server
+             * interface fullName: order.catalog.publik.DedicatedServerProductBlobTechnicalFrame.DedicatedServerProductBlobTechnicalFrame
+             */
             export interface DedicatedServerProductBlobTechnicalFrame {
                 model: string;
                 size: string;
             }
-            // interface fullName: order.catalog.publik.DedicatedServerProductBlobTechnicalGPU.DedicatedServerProductBlobTechnicalGPU
+            /**
+             * Describes a GPU for a Dedicated Server
+             * interface fullName: order.catalog.publik.DedicatedServerProductBlobTechnicalGPU.DedicatedServerProductBlobTechnicalGPU
+             */
             export interface DedicatedServerProductBlobTechnicalGPU {
                 memory: number;
             }
-            // interface fullName: order.catalog.publik.DedicatedServerProductBlobTechnicalMemory.DedicatedServerProductBlobTechnicalMemory
+            /**
+             * Describes a Memory technical Blob for a Dedicated Server
+             * interface fullName: order.catalog.publik.DedicatedServerProductBlobTechnicalMemory.DedicatedServerProductBlobTechnicalMemory
+             */
             export interface DedicatedServerProductBlobTechnicalMemory {
                 ecc: boolean;
                 frequency: number;
                 ramType: string;
                 size: number;
             }
-            // interface fullName: order.catalog.publik.DedicatedServerProductBlobTechnicalNetwork.DedicatedServerProductBlobTechnicalNetwork
+            /**
+             * Describes a Network technical Blob for a Dedicated Server
+             * interface fullName: order.catalog.publik.DedicatedServerProductBlobTechnicalNetwork.DedicatedServerProductBlobTechnicalNetwork
+             */
             export interface DedicatedServerProductBlobTechnicalNetwork {
                 burst?: number;
                 guaranteed: boolean;
                 level: number;
                 limit?: number;
             }
-            // interface fullName: order.catalog.publik.DedicatedServerProductBlobTechnicalServer.DedicatedServerProductBlobTechnicalServer
+            /**
+             * Describes some technicals informations of a Dedicated Server
+             * interface fullName: order.catalog.publik.DedicatedServerProductBlobTechnicalServer.DedicatedServerProductBlobTechnicalServer
+             */
             export interface DedicatedServerProductBlobTechnicalServer {
                 cpu: order.catalog.publik.DedicatedServerProductBlobTechnicalCPU;
                 frame: order.catalog.publik.DedicatedServerProductBlobTechnicalFrame;
                 range: string;
             }
-            // interface fullName: order.catalog.publik.DedicatedServerProductBlobTechnicalStorage.DedicatedServerProductBlobTechnicalStorage
+            /**
+             * Describes a Storage technical Blob for a Dedicated Server
+             * interface fullName: order.catalog.publik.DedicatedServerProductBlobTechnicalStorage.DedicatedServerProductBlobTechnicalStorage
+             */
             export interface DedicatedServerProductBlobTechnicalStorage {
                 disks: order.catalog.publik.DedicatedServerProductBlobTechnicalDisk[];
                 raid: string;
             }
-            // interface fullName: order.catalog.publik.Locale.Locale
+            /**
+             * Describes specifics for a given Subsidiary
+             * interface fullName: order.catalog.publik.Locale.Locale
+             */
             export interface Locale {
                 currencyCode: order.CurrencyCodeEnum;
                 subsidiary: nichandle.OvhSubsidiaryEnum;
                 taxRate: number;
             }
-            // interface fullName: order.catalog.publik.Plan.Plan
+            /**
+             * Describes a Commercial offer inside a Catalog
+             * interface fullName: order.catalog.publik.Plan.Plan
+             */
             export interface Plan {
                 addonFamilies: order.catalog.publik.AddonFamily[];
                 configurations: order.catalog.publik.Configuration[];
@@ -476,11 +686,17 @@ export namespace order {
                 pricings: order.catalog.publik.Pricing[];
                 product: string;
             }
-            // interface fullName: order.catalog.publik.PlanFamily.PlanFamily
+            /**
+             * Describes a PlanFamily for a Catalog
+             * interface fullName: order.catalog.publik.PlanFamily.PlanFamily
+             */
             export interface PlanFamily {
                 name: string;
             }
-            // interface fullName: order.catalog.publik.Pricing.Pricing
+            /**
+             * Describes a Pricing for a Commercial offer
+             * interface fullName: order.catalog.publik.Pricing.Pricing
+             */
             export interface Pricing {
                 capacities: order.cart.GenericProductPricingCapacitiesEnum[];
                 commitment: number;
@@ -497,12 +713,18 @@ export namespace order {
                 tax: number;
                 type: order.cart.GenericProductPricingTypeEnum;
             }
-            // interface fullName: order.catalog.publik.PricingMinMax.PricingMinMax
+            /**
+             * Describes minimal and maximal values for a Pricing
+             * interface fullName: order.catalog.publik.PricingMinMax.PricingMinMax
+             */
             export interface PricingMinMax {
                 max?: number;
                 min: number;
             }
-            // interface fullName: order.catalog.publik.Product.Product
+            /**
+             * Describes a Product attached to a Commercial offer
+             * interface fullName: order.catalog.publik.Product.Product
+             */
             export interface Product {
                 description: string;
                 name: string;
@@ -510,23 +732,38 @@ export namespace order {
         }
     }
     export namespace upgrade {
-        // interface fullName: order.upgrade.Operation.Operation
+        /**
+         * Describes an operation
+         * interface fullName: order.upgrade.Operation.Operation
+         */
         export interface Operation {
             id: number;
             product: order.upgrade.OperationProduct;
             status: order.upgrade.OperationStatusEnum;
             type: order.upgrade.OperationTypeEnum;
         }
-        // interface fullName: order.upgrade.OperationProduct.OperationProduct
+        /**
+         * Describes a product inside a operation
+         * interface fullName: order.upgrade.OperationProduct.OperationProduct
+         */
         export interface OperationProduct {
             description: string;
             name: string;
         }
-        // type fullname: order.upgrade.OperationStatusEnum
+        /**
+         * Unit that represent the status of an operation
+         * type fullname: order.upgrade.OperationStatusEnum
+         */
         export type OperationStatusEnum = "TODO" | "DOING" | "DONE" | "ERROR" | "DELAYED" | "CANCELLED" | "SCHEDULED"
-        // type fullname: order.upgrade.OperationTypeEnum
+        /**
+         * Unit that represent the type of an operation
+         * type fullname: order.upgrade.OperationTypeEnum
+         */
         export type OperationTypeEnum = "UPGRADE"
-        // interface fullName: order.upgrade.order_upgrade_OperationAndOrder.order_upgrade_OperationAndOrder
+        /**
+         * Describes an Operation and the associated Order
+         * interface fullName: order.upgrade.order_upgrade_OperationAndOrder.order_upgrade_OperationAndOrder
+         */
         export interface order_upgrade_OperationAndOrder {
             operation?: order.upgrade.Operation;
             order?: order.Order;
@@ -542,458 +779,1209 @@ export function proxyOrder(ovhEngine: OvhRequestable): Order {
 }
 export default proxyOrder;
 /**
- * Api Proxy model
- */// Apis harmony
-// path /order
+ * Api model for /order
+ */
 export interface Order {
     cart: {
-        // GET /order/cart
+        /**
+         * List of your OVH order carts
+         * GET /order/cart
+         */
         $get(params?: { description?: string }): Promise<string[]>;
-        // POST /order/cart
+        /**
+         * Create a new OVH order cart
+         * POST /order/cart
+         */
         $post(params: { description?: string, expire?: string, ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.cart.Cart>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         $(cartId: string): {
-            // DELETE /order/cart/{cartId}
+            /**
+             * Delete a cart
+             * DELETE /order/cart/{cartId}
+             */
             $delete(): Promise<void>;
-            // GET /order/cart/{cartId}
+            /**
+             * Retrieve information about a specific cart
+             * GET /order/cart/{cartId}
+             */
             $get(): Promise<order.cart.Cart>;
-            // PUT /order/cart/{cartId}
+            /**
+             * Modify information about a specific cart
+             * PUT /order/cart/{cartId}
+             */
             $put(params?: { description?: string, expire?: string }): Promise<order.cart.Cart>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             assign: {
-                // POST /order/cart/{cartId}/assign
+                /**
+                 * Assign a shopping cart to an loggedin client
+                 * POST /order/cart/{cartId}/assign
+                 */
                 $post(): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             baremetalServers: {
-                // GET /order/cart/{cartId}/baremetalServers
+                /**
+                 * Get informations about a baremetal server
+                 * GET /order/cart/{cartId}/baremetalServers
+                 */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
-                // POST /order/cart/{cartId}/baremetalServers
+                /**
+                 * Post a new baremetal server item in your cart
+                 * POST /order/cart/{cartId}/baremetalServers
+                 */
                 $post(params: { duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 options: {
-                    // GET /order/cart/{cartId}/baremetalServers/options
+                    /**
+                     * Get informations about baremetal server options
+                     * GET /order/cart/{cartId}/baremetalServers/options
+                     */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
-                    // POST /order/cart/{cartId}/baremetalServers/options
+                    /**
+                     * Post a new baremetal server option in your cart
+                     * POST /order/cart/{cartId}/baremetalServers/options
+                     */
                     $post(params: { duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             }
             checkout: {
-                // GET /order/cart/{cartId}/checkout
+                /**
+                 * Get prices and contracts information for your cart
+                 * GET /order/cart/{cartId}/checkout
+                 */
                 $get(): Promise<order.Order>;
-                // POST /order/cart/{cartId}/checkout
+                /**
+                 * Validate your shopping and create order
+                 * POST /order/cart/{cartId}/checkout
+                 */
                 $post(params?: { autoPayWithPreferredPaymentMethod?: boolean, waiveRetractationPeriod?: boolean }): Promise<order.Order>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             cloud: {
-                // GET /order/cart/{cartId}/cloud
+                /**
+                 * Get informations about Public Cloud offers
+                 * GET /order/cart/{cartId}/cloud
+                 */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
-                // POST /order/cart/{cartId}/cloud
+                /**
+                 * Post a new Public Cloud item in your cart
+                 * POST /order/cart/{cartId}/cloud
+                 */
                 $post(params: { duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 options: {
-                    // GET /order/cart/{cartId}/cloud/options
+                    /**
+                     * Get informations about Public Cloud options
+                     * GET /order/cart/{cartId}/cloud/options
+                     */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
-                    // POST /order/cart/{cartId}/cloud/options
+                    /**
+                     * Post a new Public Cloud option in your cart
+                     * POST /order/cart/{cartId}/cloud/options
+                     */
                     $post(params: { duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             }
             coupon: {
-                // DELETE /order/cart/{cartId}/coupon
+                /**
+                 * Delete a coupon from cart
+                 * DELETE /order/cart/{cartId}/coupon
+                 */
                 $delete(params: { coupon: string }): Promise<void>;
-                // GET /order/cart/{cartId}/coupon
+                /**
+                 * Retrieve coupons associated to cart
+                 * GET /order/cart/{cartId}/coupon
+                 */
                 $get(): Promise<string[]>;
-                // POST /order/cart/{cartId}/coupon
+                /**
+                 * Add a new coupon to cart
+                 * POST /order/cart/{cartId}/coupon
+                 */
                 $post(params: { coupon: string }): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             dedicated: {
-                // GET /order/cart/{cartId}/dedicated
+                /**
+                 * Get informations about a dedicated server
+                 * GET /order/cart/{cartId}/dedicated
+                 */
                 $get(params?: { family?: string, planCode?: string }): Promise<order.cart.GenericProductDefinition[]>;
-                // POST /order/cart/{cartId}/dedicated
+                /**
+                 * Post a new dedicated server item in your cart
+                 * POST /order/cart/{cartId}/dedicated
+                 */
                 $post(params: { duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 options: {
-                    // GET /order/cart/{cartId}/dedicated/options
+                    /**
+                     * Get informations about dedicated server options
+                     * GET /order/cart/{cartId}/dedicated/options
+                     */
                     $get(params: { family?: string, planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
-                    // POST /order/cart/{cartId}/dedicated/options
+                    /**
+                     * Post a new dedicated server option in your cart
+                     * POST /order/cart/{cartId}/dedicated/options
+                     */
                     $post(params: { duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             }
             discover: {
-                // GET /order/cart/{cartId}/discover
+                /**
+                 * Get informations about Dedicated Discover server offers
+                 * GET /order/cart/{cartId}/discover
+                 */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
-                // POST /order/cart/{cartId}/discover
+                /**
+                 * Post a new Dedicated Discover server item in your cart
+                 * POST /order/cart/{cartId}/discover
+                 */
                 $post(params: { duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 options: {
-                    // GET /order/cart/{cartId}/discover/options
+                    /**
+                     * Get informations about Dedicated Discover server options
+                     * GET /order/cart/{cartId}/discover/options
+                     */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
-                    // POST /order/cart/{cartId}/discover/options
+                    /**
+                     * Post a new Dedicated Discover server option in your cart
+                     * POST /order/cart/{cartId}/discover/options
+                     */
                     $post(params: { duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             }
             ip: {
-                // GET /order/cart/{cartId}/ip
+                /**
+                 * Get informations about IP addresses offers
+                 * GET /order/cart/{cartId}/ip
+                 */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
-                // POST /order/cart/{cartId}/ip
+                /**
+                 * Post a new IP addresses item in your cart
+                 * POST /order/cart/{cartId}/ip
+                 */
                 $post(params: { duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 options: {
-                    // GET /order/cart/{cartId}/ip/options
+                    /**
+                     * Get informations about IP addresses options
+                     * GET /order/cart/{cartId}/ip/options
+                     */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
-                    // POST /order/cart/{cartId}/ip/options
+                    /**
+                     * Post a new IP addresses option in your cart
+                     * POST /order/cart/{cartId}/ip/options
+                     */
                     $post(params: { duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             }
             ipLoadbalancing: {
-                // GET /order/cart/{cartId}/ipLoadbalancing
+                /**
+                 * Get informations about IP Load-Balancing offers
+                 * GET /order/cart/{cartId}/ipLoadbalancing
+                 */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
-                // POST /order/cart/{cartId}/ipLoadbalancing
+                /**
+                 * Post a new IP Load-Balancing item in your cart
+                 * POST /order/cart/{cartId}/ipLoadbalancing
+                 */
                 $post(params: { duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 options: {
-                    // GET /order/cart/{cartId}/ipLoadbalancing/options
+                    /**
+                     * Get informations about IP Load-Balancing options
+                     * GET /order/cart/{cartId}/ipLoadbalancing/options
+                     */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
-                    // POST /order/cart/{cartId}/ipLoadbalancing/options
+                    /**
+                     * Post a new IP Load-Balancing option in your cart
+                     * POST /order/cart/{cartId}/ipLoadbalancing/options
+                     */
                     $post(params: { duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             }
             item: {
-                // GET /order/cart/{cartId}/item
+                /**
+                 * List all the items of a cart
+                 * GET /order/cart/{cartId}/item
+                 */
                 $get(): Promise<number[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(itemId: number): {
-                    // DELETE /order/cart/{cartId}/item/{itemId}
+                    /**
+                     * Delete an item from a cart
+                     * DELETE /order/cart/{cartId}/item/{itemId}
+                     */
                     $delete(): Promise<void>;
-                    // GET /order/cart/{cartId}/item/{itemId}
+                    /**
+                     * Retrieve information about a specific item of a cart
+                     * GET /order/cart/{cartId}/item/{itemId}
+                     */
                     $get(): Promise<order.cart.Item>;
-                    // PUT /order/cart/{cartId}/item/{itemId}
+                    /**
+                     * Update some values on a cart item
+                     * PUT /order/cart/{cartId}/item/{itemId}
+                     */
                     $put(params?: { duration?: string, quantity?: number }): Promise<order.cart.Item>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     configuration: {
-                        // GET /order/cart/{cartId}/item/{itemId}/configuration
+                        /**
+                         * Retrieve all configuration item of the cart item
+                         * GET /order/cart/{cartId}/item/{itemId}/configuration
+                         */
                         $get(params?: { label?: string }): Promise<number[]>;
-                        // POST /order/cart/{cartId}/item/{itemId}/configuration
+                        /**
+                         * Setup configuration item for the product
+                         * POST /order/cart/{cartId}/item/{itemId}/configuration
+                         */
                         $post(params: { label: string, value: string }): Promise<order.cart.ConfigurationItem>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         $(configurationId: number): {
-                            // DELETE /order/cart/{cartId}/item/{itemId}/configuration/{configurationId}
+                            /**
+                             * Delete configuration item
+                             * DELETE /order/cart/{cartId}/item/{itemId}/configuration/{configurationId}
+                             */
                             $delete(): Promise<void>;
-                            // GET /order/cart/{cartId}/item/{itemId}/configuration/{configurationId}
+                            /**
+                             * Retrieve configuration item
+                             * GET /order/cart/{cartId}/item/{itemId}/configuration/{configurationId}
+                             */
                             $get(): Promise<order.cart.ConfigurationItem>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         };
                     }
                     requiredConfiguration: {
-                        // GET /order/cart/{cartId}/item/{itemId}/requiredConfiguration
+                        /**
+                         * Retrieve all required configuration item of the cart item
+                         * GET /order/cart/{cartId}/item/{itemId}/requiredConfiguration
+                         */
                         $get(): Promise<order.cart.ConfigurationRequirements[]>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                 };
             }
             licenseCloudLinux: {
-                // GET /order/cart/{cartId}/licenseCloudLinux
+                /**
+                 * Get informations about CloudLinux licenses offers
+                 * GET /order/cart/{cartId}/licenseCloudLinux
+                 */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
-                // POST /order/cart/{cartId}/licenseCloudLinux
+                /**
+                 * Post a new CloudLinux license item in your cart
+                 * POST /order/cart/{cartId}/licenseCloudLinux
+                 */
                 $post(params: { duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             licenseDirectadmin: {
-                // GET /order/cart/{cartId}/licenseDirectadmin
+                /**
+                 * Get informations about Directadmin licenses offers
+                 * GET /order/cart/{cartId}/licenseDirectadmin
+                 */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
-                // POST /order/cart/{cartId}/licenseDirectadmin
+                /**
+                 * Post a new Directadmin license item in your cart
+                 * POST /order/cart/{cartId}/licenseDirectadmin
+                 */
                 $post(params: { duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             licensePlesk: {
-                // GET /order/cart/{cartId}/licensePlesk
+                /**
+                 * Get informations about Plesk licenses offers
+                 * GET /order/cart/{cartId}/licensePlesk
+                 */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
-                // POST /order/cart/{cartId}/licensePlesk
+                /**
+                 * Post a new Plesk license item in your cart
+                 * POST /order/cart/{cartId}/licensePlesk
+                 */
                 $post(params: { duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 options: {
-                    // GET /order/cart/{cartId}/licensePlesk/options
+                    /**
+                     * Get informations about Plesk license options
+                     * GET /order/cart/{cartId}/licensePlesk/options
+                     */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
-                    // POST /order/cart/{cartId}/licensePlesk/options
+                    /**
+                     * Post a new Plesk license option in your cart
+                     * POST /order/cart/{cartId}/licensePlesk/options
+                     */
                     $post(params: { duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             }
             licenseSqlServer: {
-                // GET /order/cart/{cartId}/licenseSqlServer
+                /**
+                 * Get informations about SqlServer licenses offers
+                 * GET /order/cart/{cartId}/licenseSqlServer
+                 */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
-                // POST /order/cart/{cartId}/licenseSqlServer
+                /**
+                 * Post a new SqlServer license item in your cart
+                 * POST /order/cart/{cartId}/licenseSqlServer
+                 */
                 $post(params: { duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             licenseVirtuozzo: {
-                // GET /order/cart/{cartId}/licenseVirtuozzo
+                /**
+                 * Get informations about Virtuozzo licenses offers
+                 * GET /order/cart/{cartId}/licenseVirtuozzo
+                 */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
-                // POST /order/cart/{cartId}/licenseVirtuozzo
+                /**
+                 * Post a new Virtuozzo license item in your cart
+                 * POST /order/cart/{cartId}/licenseVirtuozzo
+                 */
                 $post(params: { duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 options: {
-                    // GET /order/cart/{cartId}/licenseVirtuozzo/options
+                    /**
+                     * Get informations about Virtuozzo license options
+                     * GET /order/cart/{cartId}/licenseVirtuozzo/options
+                     */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
-                    // POST /order/cart/{cartId}/licenseVirtuozzo/options
+                    /**
+                     * Post a new Virtuozzo license option in your cart
+                     * POST /order/cart/{cartId}/licenseVirtuozzo/options
+                     */
                     $post(params: { duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             }
             licenseWindows: {
-                // GET /order/cart/{cartId}/licenseWindows
+                /**
+                 * Get informations about Windows licenses offers
+                 * GET /order/cart/{cartId}/licenseWindows
+                 */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
-                // POST /order/cart/{cartId}/licenseWindows
+                /**
+                 * Post a new Windows license item in your cart
+                 * POST /order/cart/{cartId}/licenseWindows
+                 */
                 $post(params: { duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             licenseWorklight: {
-                // GET /order/cart/{cartId}/licenseWorklight
+                /**
+                 * Get informations about Worklight licenses offers
+                 * GET /order/cart/{cartId}/licenseWorklight
+                 */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
-                // POST /order/cart/{cartId}/licenseWorklight
+                /**
+                 * Post a new Worklight license item in your cart
+                 * POST /order/cart/{cartId}/licenseWorklight
+                 */
                 $post(params: { duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             licensecPanel: {
-                // GET /order/cart/{cartId}/licensecPanel
+                /**
+                 * Get informations about cPanel licenses offers
+                 * GET /order/cart/{cartId}/licensecPanel
+                 */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
-                // POST /order/cart/{cartId}/licensecPanel
+                /**
+                 * Post a new cPanel license item in your cart
+                 * POST /order/cart/{cartId}/licensecPanel
+                 */
                 $post(params: { duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             ovhCloudConnect: {
-                // GET /order/cart/{cartId}/ovhCloudConnect
+                /**
+                 * Get informations about OVHcloud Connect offers
+                 * GET /order/cart/{cartId}/ovhCloudConnect
+                 */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
-                // POST /order/cart/{cartId}/ovhCloudConnect
+                /**
+                 * Post a new OVHcloud Connect item in your cart
+                 * POST /order/cart/{cartId}/ovhCloudConnect
+                 */
                 $post(params: { duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             sslComodo: {
-                // GET /order/cart/{cartId}/sslComodo
+                /**
+                 * Get informations about SSL Comodo offers
+                 * GET /order/cart/{cartId}/sslComodo
+                 */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
-                // POST /order/cart/{cartId}/sslComodo
+                /**
+                 * Post a new SSL Comodo item in your cart
+                 * POST /order/cart/{cartId}/sslComodo
+                 */
                 $post(params: { duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             summary: {
-                // GET /order/cart/{cartId}/summary
+                /**
+                 * Get a summary of your current order
+                 * GET /order/cart/{cartId}/summary
+                 */
                 $get(): Promise<order.Order>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             veeamEnterprise: {
-                // GET /order/cart/{cartId}/veeamEnterprise
+                /**
+                 * Get informations about Veeam Enterprise offers
+                 * GET /order/cart/{cartId}/veeamEnterprise
+                 */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
-                // POST /order/cart/{cartId}/veeamEnterprise
+                /**
+                 * Post a new Veeam Enterprise item in your cart
+                 * POST /order/cart/{cartId}/veeamEnterprise
+                 */
                 $post(params: { duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 options: {
-                    // GET /order/cart/{cartId}/veeamEnterprise/options
+                    /**
+                     * Get informations about Veeam Enterprise options
+                     * GET /order/cart/{cartId}/veeamEnterprise/options
+                     */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
-                    // POST /order/cart/{cartId}/veeamEnterprise/options
+                    /**
+                     * Post a new Veeam Enterprise option in your cart
+                     * POST /order/cart/{cartId}/veeamEnterprise/options
+                     */
                     $post(params: { duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             }
             vps: {
-                // GET /order/cart/{cartId}/vps
+                /**
+                 * Get informations about VPS offers
+                 * GET /order/cart/{cartId}/vps
+                 */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
-                // POST /order/cart/{cartId}/vps
+                /**
+                 * Post a new VPS item in your cart
+                 * POST /order/cart/{cartId}/vps
+                 */
                 $post(params: { duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 options: {
-                    // GET /order/cart/{cartId}/vps/options
+                    /**
+                     * Get informations about VPS options
+                     * GET /order/cart/{cartId}/vps/options
+                     */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
-                    // POST /order/cart/{cartId}/vps/options
+                    /**
+                     * Post a new VPS option in your cart
+                     * POST /order/cart/{cartId}/vps/options
+                     */
                     $post(params: { duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             }
             vrack: {
-                // GET /order/cart/{cartId}/vrack
+                /**
+                 * Get informations about vRack offers
+                 * GET /order/cart/{cartId}/vrack
+                 */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
-                // POST /order/cart/{cartId}/vrack
+                /**
+                 * Post a new vRack item in your cart
+                 * POST /order/cart/{cartId}/vrack
+                 */
                 $post(params: { duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         };
     }
     cartServiceOption: {
         baremetalServers: {
-            // GET /order/cartServiceOption/baremetalServers
+            /**
+             * List available services
+             * GET /order/cartServiceOption/baremetalServers
+             */
             $get(): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(serviceName: string): {
-                // GET /order/cartServiceOption/baremetalServers/{serviceName}
+                /**
+                 * Get informations about additional baremetal servers offer for your service
+                 * GET /order/cartServiceOption/baremetalServers/{serviceName}
+                 */
                 $get(): Promise<order.cart.GenericOptionDefinition[]>;
-                // POST /order/cartServiceOption/baremetalServers/{serviceName}
+                /**
+                 * Post an additional baremetal servers option in your cart
+                 * POST /order/cartServiceOption/baremetalServers/{serviceName}
+                 */
                 $post(params: { cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             };
         }
         cloud: {
-            // GET /order/cartServiceOption/cloud
+            /**
+             * List available services
+             * GET /order/cartServiceOption/cloud
+             */
             $get(): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(serviceName: string): {
-                // GET /order/cartServiceOption/cloud/{serviceName}
+                /**
+                 * Get informations about additional Cloud offer for your service
+                 * GET /order/cartServiceOption/cloud/{serviceName}
+                 */
                 $get(): Promise<order.cart.GenericOptionDefinition[]>;
-                // POST /order/cartServiceOption/cloud/{serviceName}
+                /**
+                 * Post an additional Cloud option in your cart
+                 * POST /order/cartServiceOption/cloud/{serviceName}
+                 */
                 $post(params: { cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             };
         }
         dedicated: {
-            // GET /order/cartServiceOption/dedicated
+            /**
+             * List available services
+             * GET /order/cartServiceOption/dedicated
+             */
             $get(): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(serviceName: string): {
-                // GET /order/cartServiceOption/dedicated/{serviceName}
+                /**
+                 * Get informations about additional dedicated offer for your service
+                 * GET /order/cartServiceOption/dedicated/{serviceName}
+                 */
                 $get(): Promise<order.cart.GenericOptionDefinition[]>;
-                // POST /order/cartServiceOption/dedicated/{serviceName}
+                /**
+                 * Post an additional dedicated option in your cart
+                 * POST /order/cartServiceOption/dedicated/{serviceName}
+                 */
                 $post(params: { cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             };
         }
         ipLoadbalancing: {
-            // GET /order/cartServiceOption/ipLoadbalancing
+            /**
+             * List available services
+             * GET /order/cartServiceOption/ipLoadbalancing
+             */
             $get(): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(serviceName: string): {
-                // GET /order/cartServiceOption/ipLoadbalancing/{serviceName}
+                /**
+                 * Get informations about additional IP Load-Balancing offer for your service
+                 * GET /order/cartServiceOption/ipLoadbalancing/{serviceName}
+                 */
                 $get(): Promise<order.cart.GenericOptionDefinition[]>;
-                // POST /order/cartServiceOption/ipLoadbalancing/{serviceName}
+                /**
+                 * Post an additional IP Load-Balancing option in your cart
+                 * POST /order/cartServiceOption/ipLoadbalancing/{serviceName}
+                 */
                 $post(params: { cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             };
         }
         privateCloud: {
-            // GET /order/cartServiceOption/privateCloud
+            /**
+             * List available services
+             * GET /order/cartServiceOption/privateCloud
+             */
             $get(): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(serviceName: string): {
-                // GET /order/cartServiceOption/privateCloud/{serviceName}
+                /**
+                 * Get informations about additional Private Cloud offer for your service
+                 * GET /order/cartServiceOption/privateCloud/{serviceName}
+                 */
                 $get(): Promise<order.cart.GenericOptionDefinition[]>;
-                // POST /order/cartServiceOption/privateCloud/{serviceName}
+                /**
+                 * Post an additional Private Cloud option in your cart
+                 * POST /order/cartServiceOption/privateCloud/{serviceName}
+                 */
                 $post(params: { cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             };
         }
         privateCloudReseller: {
-            // GET /order/cartServiceOption/privateCloudReseller
+            /**
+             * List available services
+             * GET /order/cartServiceOption/privateCloudReseller
+             */
             $get(): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(serviceName: string): {
-                // GET /order/cartServiceOption/privateCloudReseller/{serviceName}
+                /**
+                 * Get informations about additional Private Cloud offer for your service
+                 * GET /order/cartServiceOption/privateCloudReseller/{serviceName}
+                 */
                 $get(): Promise<order.cart.GenericOptionDefinition[]>;
-                // POST /order/cartServiceOption/privateCloudReseller/{serviceName}
+                /**
+                 * Post an additional Private Cloud option in your cart
+                 * POST /order/cartServiceOption/privateCloudReseller/{serviceName}
+                 */
                 $post(params: { cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             };
         }
         privateCloudResellerEnterprise: {
-            // GET /order/cartServiceOption/privateCloudResellerEnterprise
+            /**
+             * List available services
+             * GET /order/cartServiceOption/privateCloudResellerEnterprise
+             */
             $get(): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(serviceName: string): {
-                // GET /order/cartServiceOption/privateCloudResellerEnterprise/{serviceName}
+                /**
+                 * Get informations about additional Private Cloud Enterprise offer for your service
+                 * GET /order/cartServiceOption/privateCloudResellerEnterprise/{serviceName}
+                 */
                 $get(): Promise<order.cart.GenericOptionDefinition[]>;
-                // POST /order/cartServiceOption/privateCloudResellerEnterprise/{serviceName}
+                /**
+                 * Post an additional Private Cloud Enterprise option in your cart
+                 * POST /order/cartServiceOption/privateCloudResellerEnterprise/{serviceName}
+                 */
                 $post(params: { cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             };
         }
     }
     catalog: {
         formatted: {
-            // GET /order/catalog/formatted
+            /**
+             * Retrieve list of catalog name
+             * GET /order/catalog/formatted
+             */
             $get(): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             cloud: {
-                // GET /order/catalog/formatted/cloud
+                /**
+                 * Retrieve information of Public Cloud catalog
+                 * GET /order/catalog/formatted/cloud
+                 */
                 $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             dedicated: {
-                // GET /order/catalog/formatted/dedicated
+                /**
+                 * Retrieve information of dedicated server catalog
+                 * GET /order/catalog/formatted/dedicated
+                 */
                 $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             discover: {
-                // GET /order/catalog/formatted/discover
+                /**
+                 * Retrieve information of dedicated discover offer server catalog
+                 * GET /order/catalog/formatted/discover
+                 */
                 $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             ip: {
-                // GET /order/catalog/formatted/ip
+                /**
+                 * Retrieve information of IP addresses catalog
+                 * GET /order/catalog/formatted/ip
+                 */
                 $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             licenseCloudLinux: {
-                // GET /order/catalog/formatted/licenseCloudLinux
+                /**
+                 * Retrieve information of CloudLinux licenses catalog
+                 * GET /order/catalog/formatted/licenseCloudLinux
+                 */
                 $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             licenseDirectadmin: {
-                // GET /order/catalog/formatted/licenseDirectadmin
+                /**
+                 * Retrieve information of Directadmin licenses offers catalog
+                 * GET /order/catalog/formatted/licenseDirectadmin
+                 */
                 $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             licensePlesk: {
-                // GET /order/catalog/formatted/licensePlesk
+                /**
+                 * Retrieve information of Plesk licenses catalog
+                 * GET /order/catalog/formatted/licensePlesk
+                 */
                 $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             licenseSqlServer: {
-                // GET /order/catalog/formatted/licenseSqlServer
+                /**
+                 * Retrieve information of SqlServer licenses catalog
+                 * GET /order/catalog/formatted/licenseSqlServer
+                 */
                 $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             licenseVirtuozzo: {
-                // GET /order/catalog/formatted/licenseVirtuozzo
+                /**
+                 * Retrieve information of Virtuozzo licenses catalog
+                 * GET /order/catalog/formatted/licenseVirtuozzo
+                 */
                 $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             licenseWindows: {
-                // GET /order/catalog/formatted/licenseWindows
+                /**
+                 * Retrieve information of Windows licenses catalog
+                 * GET /order/catalog/formatted/licenseWindows
+                 */
                 $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             licenseWorklight: {
-                // GET /order/catalog/formatted/licenseWorklight
+                /**
+                 * Retrieve information of Worklight licenses catalog
+                 * GET /order/catalog/formatted/licenseWorklight
+                 */
                 $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             licensecPanel: {
-                // GET /order/catalog/formatted/licensecPanel
+                /**
+                 * Retrieve information of cPanel licenses catalog
+                 * GET /order/catalog/formatted/licensecPanel
+                 */
                 $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             vps: {
-                // GET /order/catalog/formatted/vps
+                /**
+                 * Retrieve information of VPS catalog
+                 * GET /order/catalog/formatted/vps
+                 */
                 $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         }
         public: {
             baremetalServers: {
-                // GET /order/catalog/public/baremetalServers
+                /**
+                 * Retrieve bare-metal servers catalog
+                 * GET /order/catalog/public/baremetalServers
+                 */
                 $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.DedicatedServerCatalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             cloud: {
-                // GET /order/catalog/public/cloud
+                /**
+                 * Retrieve Public Cloud catalog
+                 * GET /order/catalog/public/cloud
+                 */
                 $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             enterpriseCloudDatabases: {
-                // GET /order/catalog/public/enterpriseCloudDatabases
+                /**
+                 * Retrieve Enterprise Cloud Databases catalog
+                 * GET /order/catalog/public/enterpriseCloudDatabases
+                 */
                 $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             privateSQL: {
-                // GET /order/catalog/public/privateSQL
+                /**
+                 * Retrieve Private SQL catalog
+                 * GET /order/catalog/public/privateSQL
+                 */
                 $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             vps: {
-                // GET /order/catalog/public/vps
+                /**
+                 * Retrieve VPS catalog
+                 * GET /order/catalog/public/vps
+                 */
                 $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             webHosting: {
-                // GET /order/catalog/public/webHosting
+                /**
+                 * Retrieve Web Hosting catalog
+                 * GET /order/catalog/public/webHosting
+                 */
                 $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         }
     }
     upgrade: {
         baremetalPrivateBandwidth: {
-            // GET /order/upgrade/baremetalPrivateBandwidth
+            /**
+             * List available services
+             * GET /order/upgrade/baremetalPrivateBandwidth
+             */
             $get(): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(serviceName: string): {
-                // GET /order/upgrade/baremetalPrivateBandwidth/{serviceName}
+                /**
+                 * Retrieve available offers to upgrade your service to
+                 * GET /order/upgrade/baremetalPrivateBandwidth/{serviceName}
+                 */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(planCode: string): {
-                    // GET /order/upgrade/baremetalPrivateBandwidth/{serviceName}/{planCode}
+                    /**
+                     * Get a provisional order for the selected upgrade of your service
+                     * GET /order/upgrade/baremetalPrivateBandwidth/{serviceName}/{planCode}
+                     */
                     $get(params: { quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
-                    // POST /order/upgrade/baremetalPrivateBandwidth/{serviceName}/{planCode}
+                    /**
+                     * Perform the requested upgrade of your service
+                     * POST /order/upgrade/baremetalPrivateBandwidth/{serviceName}/{planCode}
+                     */
                     $post(params: { autoPayWithPreferredPaymentMethod?: boolean, quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 };
             };
         }
         baremetalPublicBandwidth: {
-            // GET /order/upgrade/baremetalPublicBandwidth
+            /**
+             * List available services
+             * GET /order/upgrade/baremetalPublicBandwidth
+             */
             $get(): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(serviceName: string): {
-                // GET /order/upgrade/baremetalPublicBandwidth/{serviceName}
+                /**
+                 * Retrieve available offers to upgrade your service to
+                 * GET /order/upgrade/baremetalPublicBandwidth/{serviceName}
+                 */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(planCode: string): {
-                    // GET /order/upgrade/baremetalPublicBandwidth/{serviceName}/{planCode}
+                    /**
+                     * Get a provisional order for the selected upgrade of your service
+                     * GET /order/upgrade/baremetalPublicBandwidth/{serviceName}/{planCode}
+                     */
                     $get(params: { quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
-                    // POST /order/upgrade/baremetalPublicBandwidth/{serviceName}/{planCode}
+                    /**
+                     * Perform the requested upgrade of your service
+                     * POST /order/upgrade/baremetalPublicBandwidth/{serviceName}/{planCode}
+                     */
                     $post(params: { autoPayWithPreferredPaymentMethod?: boolean, quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 };
             };
         }
         licensePlesk: {
-            // GET /order/upgrade/licensePlesk
+            /**
+             * List available services
+             * GET /order/upgrade/licensePlesk
+             */
             $get(): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(serviceName: string): {
-                // GET /order/upgrade/licensePlesk/{serviceName}
+                /**
+                 * Retrieve available offers to upgrade your service to
+                 * GET /order/upgrade/licensePlesk/{serviceName}
+                 */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(planCode: string): {
-                    // GET /order/upgrade/licensePlesk/{serviceName}/{planCode}
+                    /**
+                     * Get a provisional order for the selected upgrade of your service
+                     * GET /order/upgrade/licensePlesk/{serviceName}/{planCode}
+                     */
                     $get(params: { quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
-                    // POST /order/upgrade/licensePlesk/{serviceName}/{planCode}
+                    /**
+                     * Perform the requested upgrade of your service
+                     * POST /order/upgrade/licensePlesk/{serviceName}/{planCode}
+                     */
                     $post(params: { autoPayWithPreferredPaymentMethod?: boolean, quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 };
             };
         }
         privateCloud: {
-            // GET /order/upgrade/privateCloud
+            /**
+             * List available services
+             * GET /order/upgrade/privateCloud
+             */
             $get(): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(serviceName: string): {
-                // GET /order/upgrade/privateCloud/{serviceName}
+                /**
+                 * Retrieve available offers to upgrade your service to
+                 * GET /order/upgrade/privateCloud/{serviceName}
+                 */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(planCode: string): {
-                    // GET /order/upgrade/privateCloud/{serviceName}/{planCode}
+                    /**
+                     * Get a provisional order for the selected upgrade of your service
+                     * GET /order/upgrade/privateCloud/{serviceName}/{planCode}
+                     */
                     $get(params: { quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
-                    // POST /order/upgrade/privateCloud/{serviceName}/{planCode}
+                    /**
+                     * Perform the requested upgrade of your service
+                     * POST /order/upgrade/privateCloud/{serviceName}/{planCode}
+                     */
                     $post(params: { autoPayWithPreferredPaymentMethod?: boolean, quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 };
             };
         }

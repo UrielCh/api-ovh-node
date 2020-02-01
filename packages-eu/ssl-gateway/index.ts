@@ -1,11 +1,14 @@
-import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
+import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /sslGateway Models
  * Source: https://eu.api.ovh.com/1.0/sslGateway.json
  */
 export namespace service {
-    // interface fullName: service.RenewType.RenewType
+    /**
+     * Map a possible renew for a specific service
+     * interface fullName: service.RenewType.RenewType
+     */
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -13,17 +16,31 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    // type fullname: service.RenewalTypeEnum
+    /**
+     * Detailed renewal type of a service
+     * type fullname: service.RenewalTypeEnum
+     */
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    // type fullname: service.StateEnum
+    /**
+     * type fullname: service.StateEnum
+     */
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
-    // type fullname: service.TerminationFutureUseEnum
+    /**
+     * All future uses you can provide for a service termination
+     * type fullname: service.TerminationFutureUseEnum
+     */
     export type TerminationFutureUseEnum = "NOT_REPLACING_SERVICE" | "OTHER" | "SUBSCRIBE_AN_OTHER_SERVICE" | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR" | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
-    // type fullname: service.TerminationReasonEnum
+    /**
+     * All reasons you can provide for a service termination
+     * type fullname: service.TerminationReasonEnum
+     */
     export type TerminationReasonEnum = "FEATURES_DONT_SUIT_ME" | "LACK_OF_PERFORMANCES" | "MIGRATED_TO_ANOTHER_OVH_PRODUCT" | "MIGRATED_TO_COMPETITOR" | "NOT_ENOUGH_RECOGNITION" | "NOT_NEEDED_ANYMORE" | "NOT_RELIABLE" | "NO_ANSWER" | "OTHER" | "PRODUCT_DIMENSION_DONT_SUIT_ME" | "PRODUCT_TOOLS_DONT_SUIT_ME" | "TOO_EXPENSIVE" | "TOO_HARD_TO_USE" | "UNSATIFIED_BY_CUSTOMER_SUPPORT"
 }
 export namespace services {
-    // interface fullName: services.Service.Service
+    /**
+     * Details about a Service
+     * interface fullName: services.Service.Service
+     */
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;
@@ -41,40 +58,67 @@ export namespace services {
     }
 }
 export namespace sslGateway {
-    // interface fullName: sslGateway.Domain.Domain
+    /**
+     * Domain attached to an SSL Gateway
+     * interface fullName: sslGateway.Domain.Domain
+     */
     export interface Domain {
         domain: string;
         id: number;
         state: sslGateway.DomainStateEnum;
     }
-    // type fullname: sslGateway.DomainStateEnum
+    /**
+     * Possible values for SSL Gateway domain state
+     * type fullname: sslGateway.DomainStateEnum
+     */
     export type DomainStateEnum = "creating" | "deleted" | "deleting" | "http-only" | "internal" | "ok"
-    // interface fullName: sslGateway.EligibilityStatus.EligibilityStatus
+    /**
+     * A structure describing the eligibility status of a domain
+     * interface fullName: sslGateway.EligibilityStatus.EligibilityStatus
+     */
     export interface EligibilityStatus {
         domain: string;
         ip6s: string[];
         ips: string[];
         isHostedByOvh: boolean;
     }
-    // interface fullName: sslGateway.NatIps.NatIps
+    /**
+     * a list of {zone, nat Ip}
+     * interface fullName: sslGateway.NatIps.NatIps
+     */
     export interface NatIps {
         ip: string[];
         zone: string;
     }
-    // type fullname: sslGateway.OfferEnum
+    /**
+     * List of SSL Gateway offers
+     * type fullname: sslGateway.OfferEnum
+     */
     export type OfferEnum = "advanced" | "enterprise" | "free" | "internal"
-    // interface fullName: sslGateway.Server.Server
+    /**
+     * Server attached to an SSL Gateway
+     * interface fullName: sslGateway.Server.Server
+     */
     export interface Server {
         address: string;
         id: number;
         port: number;
         state: sslGateway.ServerStateEnum;
     }
-    // type fullname: sslGateway.ServerStateEnum
+    /**
+     * Possible values for SSL Gateway server state
+     * type fullname: sslGateway.ServerStateEnum
+     */
     export type ServerStateEnum = "creating" | "deleted" | "deleting" | "internal" | "ok" | "updating"
-    // type fullname: sslGateway.SslConfigurationEnum
+    /**
+     * Possible values for ssl ciphers
+     * type fullname: sslGateway.SslConfigurationEnum
+     */
     export type SslConfigurationEnum = "intermediate" | "internal" | "modern"
-    // interface fullName: sslGateway.SslGateway.SslGateway
+    /**
+     * Your SSL Gateway
+     * interface fullName: sslGateway.SslGateway.SslGateway
+     */
     export interface SslGateway {
         allowedSource?: string[];
         displayName?: string;
@@ -91,9 +135,15 @@ export namespace sslGateway {
         state: sslGateway.StateEnum;
         zones: string[];
     }
-    // type fullname: sslGateway.StateEnum
+    /**
+     * Possible values for SSL Gateway state
+     * type fullname: sslGateway.StateEnum
+     */
     export type StateEnum = "creating" | "deleted" | "deleting" | "http-only" | "internal" | "ok" | "suspended" | "upgrading"
-    // interface fullName: sslGateway.Task.Task
+    /**
+     * SSL Gateway tasks
+     * interface fullName: sslGateway.Task.Task
+     */
     export interface Task {
         action: sslGateway.TaskActionEnum;
         creationDate: string;
@@ -101,9 +151,15 @@ export namespace sslGateway {
         progress: number;
         status: sslGateway.TaskStatusEnum;
     }
-    // type fullname: sslGateway.TaskActionEnum
+    /**
+     * Possible task action
+     * type fullname: sslGateway.TaskActionEnum
+     */
     export type TaskActionEnum = "addDomain" | "addPaidCertificate" | "addServer" | "createService" | "deleteDomain" | "deleteServer" | "deleteService" | "internalTask" | "updateServer" | "updateService" | "upgrade"
-    // type fullname: sslGateway.TaskStatusEnum
+    /**
+     * Possible task status
+     * type fullname: sslGateway.TaskStatusEnum
+     */
     export type TaskStatusEnum = "blocked" | "cancelled" | "doing" | "done" | "error" | "paused" | "todo"
 }
 
@@ -115,84 +171,216 @@ export function proxySslGateway(ovhEngine: OvhRequestable): SslGateway {
 }
 export default proxySslGateway;
 /**
- * Api Proxy model
- */// Apis harmony
-// path /sslGateway
+ * Api model for /sslGateway
+ */
 export interface SslGateway {
-    // GET /sslGateway
+    /**
+     * List available services
+     * GET /sslGateway
+     */
     $get(): Promise<string[]>;
+    /**
+     * Controle cache
+     */
+    $cache(param?: ICacheOptions): Promise<any>;
     availableZones: {
-        // GET /sslGateway/availableZones
+        /**
+         * List of zone available for an SSL Gateway
+         * GET /sslGateway/availableZones
+         */
         $get(): Promise<string[]>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
     }
     eligibility: {
-        // GET /sslGateway/eligibility
+        /**
+         * Check domain eligibility. Return list of eligible IP(s) for this domain.
+         * GET /sslGateway/eligibility
+         */
         $get(params: { domain: string }): Promise<sslGateway.EligibilityStatus>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
     }
     $(serviceName: string): {
-        // GET /sslGateway/{serviceName}
+        /**
+         * Get this object properties
+         * GET /sslGateway/{serviceName}
+         */
         $get(): Promise<sslGateway.SslGateway>;
-        // PUT /sslGateway/{serviceName}
+        /**
+         * Alter this object properties
+         * PUT /sslGateway/{serviceName}
+         */
         $put(params?: { allowedSource?: string[], displayName?: string, hsts?: boolean, httpsRedirect?: boolean, ipv4?: string, ipv6?: string, metricsToken?: string, offer?: sslGateway.OfferEnum, reverse?: string, serverHttps?: boolean, serviceName?: string, sslConfiguration?: sslGateway.SslConfigurationEnum, state?: sslGateway.StateEnum, zones?: string[] }): Promise<void>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         changeContact: {
-            // POST /sslGateway/{serviceName}/changeContact
+            /**
+             * Launch a contact change procedure
+             * POST /sslGateway/{serviceName}/changeContact
+             */
             $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         confirmTermination: {
-            // POST /sslGateway/{serviceName}/confirmTermination
+            /**
+             * Confirm termination of your service
+             * POST /sslGateway/{serviceName}/confirmTermination
+             */
             $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         domain: {
-            // GET /sslGateway/{serviceName}/domain
+            /**
+             * Domains attached to your SSL Gateway
+             * GET /sslGateway/{serviceName}/domain
+             */
             $get(): Promise<number[]>;
-            // POST /sslGateway/{serviceName}/domain
+            /**
+             * Attach a new domain to your SSL Gateway
+             * POST /sslGateway/{serviceName}/domain
+             */
             $post(params: { domain: string }): Promise<sslGateway.Domain>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(id: number): {
-                // DELETE /sslGateway/{serviceName}/domain/{id}
+                /**
+                 * Detach a domain from your SSL Gateway
+                 * DELETE /sslGateway/{serviceName}/domain/{id}
+                 */
                 $delete(): Promise<void>;
-                // GET /sslGateway/{serviceName}/domain/{id}
+                /**
+                 * Get this object properties
+                 * GET /sslGateway/{serviceName}/domain/{id}
+                 */
                 $get(): Promise<sslGateway.Domain>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             };
         }
         natIp: {
-            // GET /sslGateway/{serviceName}/natIp
+            /**
+             * Ip subnet used by OVH to nat requests to your SSL Gateway backends.
+             * GET /sslGateway/{serviceName}/natIp
+             */
             $get(): Promise<sslGateway.NatIps[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         renewCertificate: {
-            // POST /sslGateway/{serviceName}/renewCertificate
+            /**
+             * Renew your SSL certificates
+             * POST /sslGateway/{serviceName}/renewCertificate
+             */
             $post(params?: { domain?: string }): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         server: {
-            // GET /sslGateway/{serviceName}/server
+            /**
+             * Servers attached to your SSL Gateway
+             * GET /sslGateway/{serviceName}/server
+             */
             $get(): Promise<number[]>;
-            // POST /sslGateway/{serviceName}/server
+            /**
+             * Add a new server to your SSL Gateway
+             * POST /sslGateway/{serviceName}/server
+             */
             $post(params: { address: string, port: number }): Promise<sslGateway.Server>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(id: number): {
-                // DELETE /sslGateway/{serviceName}/server/{id}
+                /**
+                 * Remove a server
+                 * DELETE /sslGateway/{serviceName}/server/{id}
+                 */
                 $delete(): Promise<void>;
-                // GET /sslGateway/{serviceName}/server/{id}
+                /**
+                 * Get this object properties
+                 * GET /sslGateway/{serviceName}/server/{id}
+                 */
                 $get(): Promise<sslGateway.Server>;
-                // PUT /sslGateway/{serviceName}/server/{id}
+                /**
+                 * Alter this object properties
+                 * PUT /sslGateway/{serviceName}/server/{id}
+                 */
                 $put(params?: { address?: string, id?: number, port?: number, state?: sslGateway.ServerStateEnum }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             };
         }
         serviceInfos: {
-            // GET /sslGateway/{serviceName}/serviceInfos
+            /**
+             * Get this object properties
+             * GET /sslGateway/{serviceName}/serviceInfos
+             */
             $get(): Promise<services.Service>;
-            // PUT /sslGateway/{serviceName}/serviceInfos
+            /**
+             * Alter this object properties
+             * PUT /sslGateway/{serviceName}/serviceInfos
+             */
             $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         task: {
-            // GET /sslGateway/{serviceName}/task
+            /**
+             * Task for this SSL Gateway
+             * GET /sslGateway/{serviceName}/task
+             */
             $get(): Promise<number[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(id: number): {
-                // GET /sslGateway/{serviceName}/task/{id}
+                /**
+                 * Get this object properties
+                 * GET /sslGateway/{serviceName}/task/{id}
+                 */
                 $get(): Promise<sslGateway.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             };
         }
         terminate: {
-            // POST /sslGateway/{serviceName}/terminate
+            /**
+             * Terminate your service
+             * POST /sslGateway/{serviceName}/terminate
+             */
             $post(): Promise<string>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
     };
 }

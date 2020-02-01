@@ -1,11 +1,14 @@
-import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
+import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /store Models
  * Source: https://eu.api.ovh.com/1.0/store.json
  */
 export namespace MarketPlace {
-    // interface fullName: MarketPlace.Document.Document
+    /**
+     * Document
+     * interface fullName: MarketPlace.Document.Document
+     */
     export interface Document {
         creationDate?: string;
         getUrl?: string;
@@ -15,7 +18,10 @@ export namespace MarketPlace {
         size?: string;
         tags?: complexType.SafeKeyValue<string>[];
     }
-    // interface fullName: MarketPlace.Partner.Partner
+    /**
+     * partner
+     * interface fullName: MarketPlace.Partner.Partner
+     */
     export interface Partner {
         category?: string;
         city?: string;
@@ -36,7 +42,10 @@ export namespace MarketPlace {
     }
 }
 export namespace MarketPlaceContact {
-    // interface fullName: MarketPlaceContact.Contact.Contact
+    /**
+     * Contact information
+     * interface fullName: MarketPlaceContact.Contact.Contact
+     */
     export interface Contact {
         city?: string;
         country?: string;
@@ -52,7 +61,10 @@ export namespace MarketPlaceContact {
     }
 }
 export namespace MarketPlacePartnerProduct {
-    // interface fullName: MarketPlacePartnerProduct.edit_response.edit_response
+    /**
+     * product
+     * interface fullName: MarketPlacePartnerProduct.edit_response.edit_response
+     */
     export interface edit_response {
         category: string;
         description: string;
@@ -61,7 +73,10 @@ export namespace MarketPlacePartnerProduct {
     }
 }
 export namespace complexType {
-    // interface fullName: complexType.SafeKeyValue.SafeKeyValue
+    /**
+     * Key and value, with proper key strings
+     * interface fullName: complexType.SafeKeyValue.SafeKeyValue
+     */
     export interface SafeKeyValue<T> {
         key: string;
         value: T;
@@ -76,92 +91,238 @@ export function proxyStore(ovhEngine: OvhRequestable): Store {
 }
 export default proxyStore;
 /**
- * Api Proxy model
- */// Apis harmony
-// path /store
+ * Api model for /store
+ */
 export interface Store {
     contact: {
-        // GET /store/contact
+        /**
+         * List current customer contacts
+         * GET /store/contact
+         */
         $get(): Promise<MarketPlaceContact.Contact[]>;
-        // POST /store/contact
+        /**
+         * Create a 'marketplace' contact for current nic
+         * POST /store/contact
+         */
         $post(params: { city?: string, country?: string, email: string, firstname: string, lastname: string, phone?: string, province?: string, street?: string, title: string, zip?: string }): Promise<MarketPlaceContact.Contact>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         $(contactId: string): {
-            // DELETE /store/contact/{contactId}
+            /**
+             * Remove an existing contact
+             * DELETE /store/contact/{contactId}
+             */
             $delete(): Promise<string>;
-            // GET /store/contact/{contactId}
+            /**
+             * Get contact details
+             * GET /store/contact/{contactId}
+             */
             $get(): Promise<MarketPlaceContact.Contact>;
-            // PUT /store/contact/{contactId}
+            /**
+             * Edit contact information
+             * PUT /store/contact/{contactId}
+             */
             $put(params?: { city?: string, country?: string, email?: string, firstname?: string, lastname?: string, phone?: string, province?: string, street?: string, title?: string, zip?: string }): Promise<MarketPlaceContact.Contact>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             document: {
-                // GET /store/contact/{contactId}/document
+                /**
+                 * List document associated with contact
+                 * GET /store/contact/{contactId}/document
+                 */
                 $get(): Promise<string[]>;
-                // POST /store/contact/{contactId}/document
+                /**
+                 * Add a document to a contact
+                 * POST /store/contact/{contactId}/document
+                 */
                 $post(params: { documentId: string }): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(documentId: string): {
-                    // DELETE /store/contact/{contactId}/document/{documentId}
+                    /**
+                     * Unlink a document from a contact
+                     * DELETE /store/contact/{contactId}/document/{documentId}
+                     */
                     $delete(): Promise<string[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 };
             }
         };
     }
     document: {
-        // GET /store/document
+        /**
+         * List current customer documents
+         * GET /store/document
+         */
         $get(): Promise<MarketPlace.Document[]>;
-        // POST /store/document
+        /**
+         * Create a document
+         * POST /store/document
+         */
         $post(params: { name: string, tags?: complexType.SafeKeyValue<string>[] }): Promise<MarketPlace.Document>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         cors: {
-            // POST /store/document/cors
+            /**
+             * Add CORS support on your container
+             * POST /store/document/cors
+             */
             $post(params: { origin: string }): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         $(documentId: string): {
-            // DELETE /store/document/{documentId}
+            /**
+             * Delete document
+             * DELETE /store/document/{documentId}
+             */
             $delete(): Promise<string>;
-            // GET /store/document/{documentId}
+            /**
+             * Get document info
+             * GET /store/document/{documentId}
+             */
             $get(): Promise<MarketPlace.Document>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         };
     }
     partner: {
-        // GET /store/partner
+        /**
+         * List current customer partners
+         * GET /store/partner
+         */
         $get(): Promise<MarketPlace.Partner[]>;
-        // POST /store/partner
+        /**
+         * Create a 'marketplace' partner for current nic
+         * POST /store/partner
+         */
         $post(params: { category?: string, city: string, companyNationalIdentificationNumber?: string, contact?: string, country: string, description?: string, language?: string, legalForm: string, organisationDisplayName?: string, organisationName: string, otherDetails?: string, province: string, street: string, url?: string, vat?: string, zip: string }): Promise<MarketPlace.Partner>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         $(partnerId: string): {
-            // DELETE /store/partner/{partnerId}
+            /**
+             * Delete partner
+             * DELETE /store/partner/{partnerId}
+             */
             $delete(): Promise<string>;
-            // GET /store/partner/{partnerId}
+            /**
+             * Get partner info
+             * GET /store/partner/{partnerId}
+             */
             $get(): Promise<MarketPlace.Partner>;
-            // PUT /store/partner/{partnerId}
+            /**
+             * Edit partner info
+             * PUT /store/partner/{partnerId}
+             */
             $put(params?: { category?: string, city?: string, companyNationalIdentificationNumber?: string, contact?: string, country?: string, description?: string, language?: string, legalForm?: string, organisationDisplayName?: string, organisationName?: string, otherDetails?: string, province?: string, street?: string, url?: string, vat?: string, zip?: string }): Promise<MarketPlace.Partner>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             document: {
-                // GET /store/partner/{partnerId}/document
+                /**
+                 * List document associated with partner
+                 * GET /store/partner/{partnerId}/document
+                 */
                 $get(): Promise<string[]>;
-                // POST /store/partner/{partnerId}/document
+                /**
+                 * Add a document to a partner
+                 * POST /store/partner/{partnerId}/document
+                 */
                 $post(params: { documentId: string }): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(documentId: string): {
-                    // DELETE /store/partner/{partnerId}/document/{documentId}
+                    /**
+                     * Unlink a document from a partner
+                     * DELETE /store/partner/{partnerId}/document/{documentId}
+                     */
                     $delete(): Promise<string[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 };
             }
             product: {
-                // GET /store/partner/{partnerId}/product
+                /**
+                 * List partner's products
+                 * GET /store/partner/{partnerId}/product
+                 */
                 $get(): Promise<MarketPlacePartnerProduct.edit_response[]>;
-                // POST /store/partner/{partnerId}/product
+                /**
+                 * Create a new product for partner
+                 * POST /store/partner/{partnerId}/product
+                 */
                 $post(params: { category: string, description: string, name: string, otherDetails?: string }): Promise<MarketPlacePartnerProduct.edit_response>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(productId: string): {
-                    // DELETE /store/partner/{partnerId}/product/{productId}
+                    /**
+                     * Delete product
+                     * DELETE /store/partner/{partnerId}/product/{productId}
+                     */
                     $delete(): Promise<string>;
-                    // GET /store/partner/{partnerId}/product/{productId}
+                    /**
+                     * Get partner info
+                     * GET /store/partner/{partnerId}/product/{productId}
+                     */
                     $get(): Promise<MarketPlacePartnerProduct.edit_response>;
-                    // PUT /store/partner/{partnerId}/product/{productId}
+                    /**
+                     * Edit product info
+                     * PUT /store/partner/{partnerId}/product/{productId}
+                     */
                     $put(params?: { category?: string, description?: string, name?: string, otherDetails?: string }): Promise<MarketPlacePartnerProduct.edit_response>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     document: {
-                        // GET /store/partner/{partnerId}/product/{productId}/document
+                        /**
+                         * List document associated with product
+                         * GET /store/partner/{partnerId}/product/{productId}/document
+                         */
                         $get(): Promise<string[]>;
-                        // POST /store/partner/{partnerId}/product/{productId}/document
+                        /**
+                         * Add a document to a product
+                         * POST /store/partner/{partnerId}/product/{productId}/document
+                         */
                         $post(params: { documentId: string }): Promise<string[]>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         $(documentId: string): {
-                            // DELETE /store/partner/{partnerId}/product/{productId}/document/{documentId}
+                            /**
+                             * Unlink a document from a product
+                             * DELETE /store/partner/{partnerId}/product/{productId}/document/{documentId}
+                             */
                             $delete(): Promise<string[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         };
                     }
                 };

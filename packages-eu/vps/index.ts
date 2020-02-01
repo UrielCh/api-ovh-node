@@ -1,34 +1,55 @@
-import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
+import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /vps Models
  * Source: https://eu.api.ovh.com/1.0/vps.json
  */
 export namespace complexType {
-    // interface fullName: complexType.UnitAndValue.UnitAndValue
+    /**
+     * A numeric value tagged with its unit
+     * interface fullName: complexType.UnitAndValue.UnitAndValue
+     */
     export interface UnitAndValue<T> {
         unit: string;
         value: T;
     }
-    // interface fullName: complexType.UnitAndValues.UnitAndValues
+    /**
+     * A value set tagged with its unit
+     * interface fullName: complexType.UnitAndValues.UnitAndValues
+     */
     export interface UnitAndValues<T> {
         unit: string;
         values: T[];
     }
 }
 export namespace coreTypes {
-    // type fullname: coreTypes.CountryEnum
+    /**
+     * ISO country codes
+     * type fullname: coreTypes.CountryEnum
+     */
     export type CountryEnum = "ac" | "ad" | "ae" | "af" | "ag" | "ai" | "al" | "am" | "an" | "ao" | "aq" | "ar" | "as" | "at" | "au" | "aw" | "ax" | "az" | "ba" | "bb" | "bd" | "be" | "bf" | "bg" | "bh" | "bi" | "bj" | "bl" | "bm" | "bn" | "bo" | "bq" | "br" | "bs" | "bt" | "bv" | "bw" | "by" | "bz" | "ca" | "cc" | "cd" | "cf" | "cg" | "ch" | "ci" | "ck" | "cl" | "cm" | "cn" | "co" | "cr" | "cs" | "cu" | "cv" | "cw" | "cx" | "cy" | "cz" | "de" | "dj" | "dk" | "dm" | "do" | "dz" | "ec" | "ee" | "eg" | "eh" | "er" | "es" | "et" | "fc" | "fd" | "fi" | "fj" | "fk" | "fm" | "fo" | "fr" | "fx" | "ga" | "gb" | "gd" | "ge" | "gf" | "gg" | "gh" | "gi" | "gl" | "gm" | "gn" | "gp" | "gq" | "gr" | "gs" | "gt" | "gu" | "gw" | "gy" | "hk" | "hm" | "hn" | "hr" | "ht" | "hu" | "id" | "ie" | "il" | "im" | "in" | "io" | "iq" | "ir" | "is" | "it" | "je" | "jm" | "jo" | "jp" | "ke" | "kg" | "kh" | "ki" | "km" | "kn" | "kp" | "kr" | "kw" | "ky" | "kz" | "la" | "lb" | "lc" | "li" | "lk" | "lr" | "ls" | "lt" | "lu" | "lv" | "ly" | "ma" | "mc" | "md" | "me" | "mf" | "mg" | "mh" | "mk" | "ml" | "mm" | "mn" | "mo" | "mp" | "mq" | "mr" | "ms" | "mt" | "mu" | "mv" | "mw" | "mx" | "my" | "mz" | "na" | "nc" | "ne" | "nf" | "ng" | "ni" | "nl" | "no" | "np" | "nr" | "nu" | "nz" | "om" | "pa" | "pe" | "pf" | "pg" | "ph" | "pk" | "pl" | "pm" | "pn" | "pr" | "ps" | "pt" | "pw" | "py" | "qa" | "qc" | "re" | "ro" | "rs" | "ru" | "rw" | "sa" | "sb" | "sc" | "sd" | "se" | "sg" | "sh" | "si" | "sj" | "sk" | "sl" | "sm" | "sn" | "so" | "sr" | "ss" | "st" | "sv" | "sx" | "sy" | "sz" | "tc" | "td" | "tf" | "tg" | "th" | "tj" | "tk" | "tl" | "tm" | "tn" | "to" | "tp" | "tr" | "tt" | "tv" | "tw" | "tz" | "ua" | "ug" | "uk" | "um" | "us" | "uy" | "uz" | "va" | "vc" | "ve" | "vg" | "vi" | "vn" | "vu" | "we" | "wf" | "ws" | "ye" | "yt" | "yu" | "za" | "zm" | "zw"
-    // type fullname: coreTypes.IpVersionEnum
+    /**
+     * Ip versions
+     * type fullname: coreTypes.IpVersionEnum
+     */
     export type IpVersionEnum = "v4" | "v6"
 }
 export namespace dedicated {
-    // type fullname: dedicated.TaskFunctionEnum
+    /**
+     * different task operation
+     * type fullname: dedicated.TaskFunctionEnum
+     */
     export type TaskFunctionEnum = "INFRA_002_VirtualNetworkInterface" | "addVirtualMac" | "addWindowSplaFromExistingSerial" | "applyBackupFtpAcls" | "applyBackupFtpQuota" | "bypassAntiDDosGame" | "changePasswordBackupFTP" | "changeRipeOrg" | "checkAndReleaseIp" | "createBackupFTP" | "createOrUpdateRipeOrg" | "createPrivateNetwork" | "disableFirewall" | "enableFirewall" | "genericMoveFloatingIp" | "hardReboot" | "ipmi/configureSGX" | "migrateBackupFTP" | "moveFloatingIp" | "moveVirtualMac" | "rebootPower8To" | "reinstallServer" | "releaseIp" | "removeBackupFTP" | "removeVirtualMac" | "requestAccessIPMI" | "resetIPMI" | "resetIPMISession" | "testIPMIhttp" | "testIPMIpassword" | "testIPMIping" | "virtualMacAdd" | "virtualMacDelete"
-    // type fullname: dedicated.TaskStatusEnum
+    /**
+     * different task status
+     * type fullname: dedicated.TaskStatusEnum
+     */
     export type TaskStatusEnum = "cancelled" | "customerError" | "doing" | "done" | "init" | "ovhError" | "todo"
     export namespace server {
-        // interface fullName: dedicated.server.BackupFtpAcl.BackupFtpAcl
+        /**
+         * Backup Ftp ACL for this server and Backup Ftp
+         * interface fullName: dedicated.server.BackupFtpAcl.BackupFtpAcl
+         */
         export interface BackupFtpAcl {
             cifs: boolean;
             ftp: boolean;
@@ -37,7 +58,10 @@ export namespace dedicated {
             lastUpdate: string;
             nfs: boolean;
         }
-        // interface fullName: dedicated.server.Task.Task
+        /**
+         * Server tasks
+         * interface fullName: dedicated.server.Task.Task
+         */
         export interface Task {
             comment?: string;
             doneDate?: string;
@@ -50,18 +74,27 @@ export namespace dedicated {
     }
 }
 export namespace nichandle {
-    // type fullname: nichandle.CountryEnum
+    /**
+     * Countries a nichandle can choose
+     * type fullname: nichandle.CountryEnum
+     */
     export type CountryEnum = "AC" | "AD" | "AE" | "AF" | "AG" | "AI" | "AL" | "AM" | "AO" | "AQ" | "AR" | "AS" | "AT" | "AU" | "AW" | "AX" | "AZ" | "BA" | "BB" | "BD" | "BE" | "BF" | "BG" | "BH" | "BI" | "BJ" | "BL" | "BM" | "BN" | "BO" | "BQ" | "BR" | "BS" | "BT" | "BW" | "BY" | "BZ" | "CA" | "CC" | "CD" | "CF" | "CG" | "CH" | "CI" | "CK" | "CL" | "CM" | "CN" | "CO" | "CR" | "CU" | "CV" | "CW" | "CX" | "CY" | "CZ" | "DE" | "DG" | "DJ" | "DK" | "DM" | "DO" | "DZ" | "EA" | "EC" | "EE" | "EG" | "EH" | "ER" | "ES" | "ET" | "FI" | "FJ" | "FK" | "FM" | "FO" | "FR" | "GA" | "GB" | "GD" | "GE" | "GF" | "GG" | "GH" | "GI" | "GL" | "GM" | "GN" | "GP" | "GQ" | "GR" | "GS" | "GT" | "GU" | "GW" | "GY" | "HK" | "HN" | "HR" | "HT" | "HU" | "IC" | "ID" | "IE" | "IL" | "IM" | "IN" | "IO" | "IQ" | "IR" | "IS" | "IT" | "JE" | "JM" | "JO" | "JP" | "KE" | "KG" | "KH" | "KI" | "KM" | "KN" | "KP" | "KR" | "KW" | "KY" | "KZ" | "LA" | "LB" | "LC" | "LI" | "LK" | "LR" | "LS" | "LT" | "LU" | "LV" | "LY" | "MA" | "MC" | "MD" | "ME" | "MF" | "MG" | "MH" | "MK" | "ML" | "MM" | "MN" | "MO" | "MP" | "MQ" | "MR" | "MS" | "MT" | "MU" | "MV" | "MW" | "MX" | "MY" | "MZ" | "NA" | "NC" | "NE" | "NF" | "NG" | "NI" | "NL" | "NO" | "NP" | "NR" | "NU" | "NZ" | "OM" | "PA" | "PE" | "PF" | "PG" | "PH" | "PK" | "PL" | "PM" | "PN" | "PR" | "PS" | "PT" | "PW" | "PY" | "QA" | "RE" | "RO" | "RS" | "RU" | "RW" | "SA" | "SB" | "SC" | "SD" | "SE" | "SG" | "SH" | "SI" | "SJ" | "SK" | "SL" | "SM" | "SN" | "SO" | "SR" | "SS" | "ST" | "SV" | "SX" | "SY" | "SZ" | "TA" | "TC" | "TD" | "TF" | "TG" | "TH" | "TJ" | "TK" | "TL" | "TM" | "TN" | "TO" | "TR" | "TT" | "TV" | "TW" | "TZ" | "UA" | "UG" | "UM" | "UNKNOWN" | "US" | "UY" | "UZ" | "VA" | "VC" | "VE" | "VG" | "VI" | "VN" | "VU" | "WF" | "WS" | "XK" | "YE" | "YT" | "ZA" | "ZM" | "ZW"
 }
 export namespace secondaryDns {
-    // interface fullName: secondaryDns.SecondaryDNS.SecondaryDNS
+    /**
+     * Secondary dns infos
+     * interface fullName: secondaryDns.SecondaryDNS.SecondaryDNS
+     */
     export interface SecondaryDNS {
         creationDate: string;
         dns: string;
         domain: string;
         ipMaster: string;
     }
-    // interface fullName: secondaryDns.SecondaryDNSNameServer.SecondaryDNSNameServer
+    /**
+     * A structure describing informations about available nameserver for secondary dns 
+     * interface fullName: secondaryDns.SecondaryDNSNameServer.SecondaryDNSNameServer
+     */
     export interface SecondaryDNSNameServer {
         hostname: string;
         ip: string;
@@ -69,7 +102,10 @@ export namespace secondaryDns {
     }
 }
 export namespace service {
-    // interface fullName: service.RenewType.RenewType
+    /**
+     * Map a possible renew for a specific service
+     * interface fullName: service.RenewType.RenewType
+     */
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -77,17 +113,31 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    // type fullname: service.RenewalTypeEnum
+    /**
+     * Detailed renewal type of a service
+     * type fullname: service.RenewalTypeEnum
+     */
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    // type fullname: service.StateEnum
+    /**
+     * type fullname: service.StateEnum
+     */
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
-    // type fullname: service.TerminationFutureUseEnum
+    /**
+     * All future uses you can provide for a service termination
+     * type fullname: service.TerminationFutureUseEnum
+     */
     export type TerminationFutureUseEnum = "NOT_REPLACING_SERVICE" | "OTHER" | "SUBSCRIBE_AN_OTHER_SERVICE" | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR" | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
-    // type fullname: service.TerminationReasonEnum
+    /**
+     * All reasons you can provide for a service termination
+     * type fullname: service.TerminationReasonEnum
+     */
     export type TerminationReasonEnum = "FEATURES_DONT_SUIT_ME" | "LACK_OF_PERFORMANCES" | "MIGRATED_TO_ANOTHER_OVH_PRODUCT" | "MIGRATED_TO_COMPETITOR" | "NOT_ENOUGH_RECOGNITION" | "NOT_NEEDED_ANYMORE" | "NOT_RELIABLE" | "NO_ANSWER" | "OTHER" | "PRODUCT_DIMENSION_DONT_SUIT_ME" | "PRODUCT_TOOLS_DONT_SUIT_ME" | "TOO_EXPENSIVE" | "TOO_HARD_TO_USE" | "UNSATIFIED_BY_CUSTOMER_SUPPORT"
 }
 export namespace services {
-    // interface fullName: services.Service.Service
+    /**
+     * Details about a Service
+     * interface fullName: services.Service.Service
+     */
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;
@@ -105,12 +155,18 @@ export namespace services {
     }
 }
 export namespace vps {
-    // interface fullName: vps.AutomatedBackup.AutomatedBackup
+    /**
+     * Backup your VPS
+     * interface fullName: vps.AutomatedBackup.AutomatedBackup
+     */
     export interface AutomatedBackup {
         schedule?: string;
         state: vps.BackupStateEnum;
     }
-    // interface fullName: vps.BackupFtp.BackupFtp
+    /**
+     * Backup Ftp assigned to this VPS
+     * interface fullName: vps.BackupFtp.BackupFtp
+     */
     export interface BackupFtp {
         ftpBackupName: string;
         quota?: complexType.UnitAndValue<number>;
@@ -118,15 +174,24 @@ export namespace vps {
         type: string;
         usage?: complexType.UnitAndValue<number>;
     }
-    // type fullname: vps.BackupStateEnum
+    /**
+     * Available AutomatedBackup states
+     * type fullname: vps.BackupStateEnum
+     */
     export type BackupStateEnum = "disabled" | "enabled"
-    // interface fullName: vps.Datacenter.Datacenter
+    /**
+     * Information about a datacenter of a VPS Virtual Machine
+     * interface fullName: vps.Datacenter.Datacenter
+     */
     export interface Datacenter {
         country: coreTypes.CountryEnum;
         longName: string;
         name: string;
     }
-    // interface fullName: vps.Disk.Disk
+    /**
+     * Information about a disk of a VPS Virtual Machine
+     * interface fullName: vps.Disk.Disk
+     */
     export interface Disk {
         bandwidthLimit: number;
         id: number;
@@ -136,12 +201,18 @@ export namespace vps {
         state: vps.disk.StateEnum;
         type: vps.disk.TypeEnum;
     }
-    // interface fullName: vps.Image.Image
+    /**
+     * Installation image for a VPS
+     * interface fullName: vps.Image.Image
+     */
     export interface Image {
         id: string;
         name: string;
     }
-    // interface fullName: vps.Ip.Ip
+    /**
+     * Information about an IP address for a VPS Virtual Machine
+     * interface fullName: vps.Ip.Ip
+     */
     export interface Ip {
         gateway?: string;
         geolocation: vps.ip.GeolocationEnum;
@@ -151,7 +222,10 @@ export namespace vps {
         type: vps.ip.TypeEnum;
         version: coreTypes.IpVersionEnum;
     }
-    // interface fullName: vps.Model.Model
+    /**
+     * A structure describing characteristics of a VPS model
+     * interface fullName: vps.Model.Model
+     */
     export interface Model {
         availableOptions: vps.VpsOptionEnum[];
         datacenter: string[];
@@ -163,43 +237,76 @@ export namespace vps {
         vcore: number;
         version: vps.VpsVersionEnum;
     }
-    // interface fullName: vps.Option.Option
+    /**
+     * Information about the options of a VPS Virtual Machine
+     * interface fullName: vps.Option.Option
+     */
     export interface Option {
         option: vps.VpsOptionEnum;
         state: vps.VpsOptionStateEnum;
     }
-    // type fullname: vps.RestoreStateEnum
+    /**
+     * Available restore state
+     * type fullname: vps.RestoreStateEnum
+     */
     export type RestoreStateEnum = "available" | "restored" | "restoring"
-    // type fullname: vps.RestoreTypeEnum
+    /**
+     * Available restore types
+     * type fullname: vps.RestoreTypeEnum
+     */
     export type RestoreTypeEnum = "file" | "full"
-    // interface fullName: vps.Snapshot.Snapshot
+    /**
+     * Information about the snapshot of a VPS Virtual Machine
+     * interface fullName: vps.Snapshot.Snapshot
+     */
     export interface Snapshot {
         creationDate: string;
         description: string;
     }
-    // interface fullName: vps.Software.Software
+    /**
+     * Available softwares on a Template
+     * interface fullName: vps.Software.Software
+     */
     export interface Software {
         id: number;
         name: string;
         status: vps.SoftwareStatusEnum;
         type: vps.SoftwareTypeEnum;
     }
-    // type fullname: vps.SoftwareStatusEnum
+    /**
+     * Available Status for a vps Software
+     * type fullname: vps.SoftwareStatusEnum
+     */
     export type SoftwareStatusEnum = "deprecated" | "stable" | "testing"
-    // type fullname: vps.SoftwareTypeEnum
+    /**
+     * Available Type for a vps Software
+     * type fullname: vps.SoftwareTypeEnum
+     */
     export type SoftwareTypeEnum = "database" | "environment" | "webserver"
-    // interface fullName: vps.Task.Task
+    /**
+     * Operation on a VPS Virtual Machine
+     * interface fullName: vps.Task.Task
+     */
     export interface Task {
         id: number;
         progress: number;
         state: vps.TaskStateEnum;
         type: vps.TaskTypeEnum;
     }
-    // type fullname: vps.TaskStateEnum
+    /**
+     * All states a VPS task can be in
+     * type fullname: vps.TaskStateEnum
+     */
     export type TaskStateEnum = "blocked" | "cancelled" | "doing" | "done" | "error" | "paused" | "todo" | "waitingAck"
-    // type fullname: vps.TaskTypeEnum
+    /**
+     * All type a VPS task can be
+     * type fullname: vps.TaskTypeEnum
+     */
     export type TaskTypeEnum = "addVeeamBackupJob" | "changeRootPassword" | "createSnapshot" | "deleteSnapshot" | "deliverVm" | "getConsoleUrl" | "internalTask" | "openConsoleAccess" | "provisioningAdditionalIp" | "reOpenVm" | "rebootVm" | "reinstallVm" | "removeVeeamBackup" | "restoreFullVeeamBackup" | "restoreVeeamBackup" | "restoreVm" | "revertSnapshot" | "setMonitoring" | "setNetboot" | "startVm" | "stopVm" | "upgradeVm"
-    // interface fullName: vps.Template.Template
+    /**
+     * Installation template for a VPS Virtual Machine
+     * interface fullName: vps.Template.Template
+     */
     export interface Template {
         availableLanguage: string[];
         bitFormat: vps.TemplateBitFormatEnum;
@@ -208,9 +315,15 @@ export namespace vps {
         locale: string;
         name: string;
     }
-    // type fullname: vps.TemplateBitFormatEnum
+    /**
+     * Bitness of a VPS template
+     * type fullname: vps.TemplateBitFormatEnum
+     */
     export type TemplateBitFormatEnum = 32 | 64
-    // interface fullName: vps.VPS.VPS
+    /**
+     * VPS Virtual Machine
+     * interface fullName: vps.VPS.VPS
+     */
     export interface VPS {
         cluster: string;
         displayName?: string;
@@ -226,53 +339,101 @@ export namespace vps {
         vcore: number;
         zone: string;
     }
-    // interface fullName: vps.Veeam.Veeam
+    /**
+     * Informations about a VPS Veeam backups
+     * interface fullName: vps.Veeam.Veeam
+     */
     export interface Veeam {
         backup: boolean;
     }
-    // interface fullName: vps.Vnc.Vnc
+    /**
+     * A VNC connection informations
+     * interface fullName: vps.Vnc.Vnc
+     */
     export interface Vnc {
         host: string;
         password: string;
         port: number;
     }
-    // type fullname: vps.VncProtocolEnum
+    /**
+     * All supported VNC protocols by VPS
+     * type fullname: vps.VncProtocolEnum
+     */
     export type VncProtocolEnum = "VNC" | "VNCOverWebSocket"
-    // interface fullName: vps.VpsBillingVersion.VpsBillingVersion
+    /**
+     * VPS billing version
+     * interface fullName: vps.VpsBillingVersion.VpsBillingVersion
+     */
     export interface VpsBillingVersion {
         version: number;
     }
-    // type fullname: vps.VpsKeymapEnum
+    /**
+     * All values keymap can be in
+     * type fullname: vps.VpsKeymapEnum
+     */
     export type VpsKeymapEnum = "fr" | "us"
-    // type fullname: vps.VpsMonitoringPeriodEnum
+    /**
+     * Available periods for the VPS monitoring
+     * type fullname: vps.VpsMonitoringPeriodEnum
+     */
     export type VpsMonitoringPeriodEnum = "lastday" | "lastmonth" | "lastweek" | "lastyear" | "today"
-    // type fullname: vps.VpsNetbootEnum
+    /**
+     * All values a VPS netboot mode can be in
+     * type fullname: vps.VpsNetbootEnum
+     */
     export type VpsNetbootEnum = "local" | "rescue"
-    // type fullname: vps.VpsOfferEnum
+    /**
+     * All offers a VPS can have
+     * type fullname: vps.VpsOfferEnum
+     */
     export type VpsOfferEnum = "beta-classic" | "classic" | "cloud" | "cloudram" | "game-classic" | "lowlat" | "ssd"
-    // type fullname: vps.VpsOptionEnum
+    /**
+     * All options a VPS can have
+     * type fullname: vps.VpsOptionEnum
+     */
     export type VpsOptionEnum = "additionalDisk" | "automatedBackup" | "cpanel" | "ftpbackup" | "plesk" | "snapshot" | "veeam" | "windows"
-    // type fullname: vps.VpsOptionStateEnum
+    /**
+     * All states a VPS Option can be in
+     * type fullname: vps.VpsOptionStateEnum
+     */
     export type VpsOptionStateEnum = "released" | "subscribed"
-    // type fullname: vps.VpsStateEnum
+    /**
+     * All states a VPS can be in
+     * type fullname: vps.VpsStateEnum
+     */
     export type VpsStateEnum = "installing" | "maintenance" | "rebooting" | "running" | "stopped" | "stopping" | "upgrading"
-    // type fullname: vps.VpsStatisticTypeEnum
+    /**
+     * Available types for the VPS monitoring and use
+     * type fullname: vps.VpsStatisticTypeEnum
+     */
     export type VpsStatisticTypeEnum = "cpu:iowait" | "cpu:max" | "cpu:nice" | "cpu:sys" | "cpu:used" | "cpu:user" | "mem:max" | "mem:used" | "net:rx" | "net:tx"
-    // interface fullName: vps.VpsTimestampValue.VpsTimestampValue
+    /**
+     * A timestamp associated to a value
+     * interface fullName: vps.VpsTimestampValue.VpsTimestampValue
+     */
     export interface VpsTimestampValue {
         timestamp: number;
         value?: number;
     }
-    // type fullname: vps.VpsVersionEnum
+    /**
+     * All versions that VPS can have
+     * type fullname: vps.VpsVersionEnum
+     */
     export type VpsVersionEnum = "2013v1" | "2014v1" | "2015v1" | "2017v1" | "2017v2" | "2017v3" | "2018v1" | "2018v2" | "2019v1"
     export namespace automatedBackup {
-        // interface fullName: vps.automatedBackup.Attached.Attached
+        /**
+         * A backup attached to your VPS
+         * interface fullName: vps.automatedBackup.Attached.Attached
+         */
         export interface Attached {
             access: vps.automatedBackup.attached.Infos;
             restorePoint: string;
         }
         export namespace attached {
-            // interface fullName: vps.automatedBackup.attached.Infos.Infos
+            /**
+             * A structure describing a backup's access informations
+             * interface fullName: vps.automatedBackup.attached.Infos.Infos
+             */
             export interface Infos {
                 additionalDisk?: string;
                 nfs?: string;
@@ -281,17 +442,32 @@ export namespace vps {
         }
     }
     export namespace disk {
-        // type fullname: vps.disk.StateEnum
+        /**
+         * Possible states the disk can be in
+         * type fullname: vps.disk.StateEnum
+         */
         export type StateEnum = "connected" | "disconnected" | "pending"
-        // type fullname: vps.disk.StatisticTypeEnum
+        /**
+         * Available types for the Disk monitoring and use
+         * type fullname: vps.disk.StatisticTypeEnum
+         */
         export type StatisticTypeEnum = "max" | "used"
-        // type fullname: vps.disk.TypeEnum
+        /**
+         * Possible type a disk can be in
+         * type fullname: vps.disk.TypeEnum
+         */
         export type TypeEnum = "additional" | "primary"
     }
     export namespace ip {
-        // type fullname: vps.ip.GeolocationEnum
+        /**
+         * Geolocation of the IP Address
+         * type fullname: vps.ip.GeolocationEnum
+         */
         export type GeolocationEnum = "au" | "be" | "ca" | "cz" | "de" | "es" | "fi" | "fr" | "ie" | "it" | "lt" | "nl" | "pl" | "pt" | "sg" | "uk" | "us"
-        // interface fullName: vps.ip.ServiceStatus.ServiceStatus
+        /**
+         * Service states for an Ip
+         * interface fullName: vps.ip.ServiceStatus.ServiceStatus
+         */
         export interface ServiceStatus {
             dns: vps.ip.ServiceStatusService;
             http: vps.ip.ServiceStatusService;
@@ -301,43 +477,70 @@ export namespace vps {
             ssh: vps.ip.ServiceStatusService;
             tools?: vps.ip.ServiceStatusStateEnum;
         }
-        // interface fullName: vps.ip.ServiceStatusService.ServiceStatusService
+        /**
+         * Port and state of a service on an IP
+         * interface fullName: vps.ip.ServiceStatusService.ServiceStatusService
+         */
         export interface ServiceStatusService {
             port: number;
             state: vps.ip.ServiceStatusStateEnum;
         }
-        // type fullname: vps.ip.ServiceStatusStateEnum
+        /**
+         * Possible states of a service (ping, port)
+         * type fullname: vps.ip.ServiceStatusStateEnum
+         */
         export type ServiceStatusStateEnum = "down" | "up"
-        // type fullname: vps.ip.TypeEnum
+        /**
+         * Ip types on a VPS
+         * type fullname: vps.ip.TypeEnum
+         */
         export type TypeEnum = "additional" | "primary"
     }
     export namespace migration {
-        // interface fullName: vps.migration.Migration.Migration
+        /**
+         * Description not available
+         * interface fullName: vps.migration.Migration.Migration
+         */
         export interface Migration {
             date: string;
             id: string;
         }
     }
     export namespace veeam {
-        // type fullname: vps.veeam.ExportTypeEnum
+        /**
+         * A structure describing a Veeam backup's export options
+         * type fullname: vps.veeam.ExportTypeEnum
+         */
         export type ExportTypeEnum = "nfs" | "smb"
-        // interface fullName: vps.veeam.Infos.Infos
+        /**
+         * A structure describing a Veeam backup's access informations
+         * interface fullName: vps.veeam.Infos.Infos
+         */
         export interface Infos {
             nfs: string;
             smb: string;
         }
-        // interface fullName: vps.veeam.RestorePoint.RestorePoint
+        /**
+         * Informations about a VPS Veeam restore points
+         * interface fullName: vps.veeam.RestorePoint.RestorePoint
+         */
         export interface RestorePoint {
             creationTime: string;
             id: number;
         }
-        // interface fullName: vps.veeam.RestoredBackup.RestoredBackup
+        /**
+         * Currently restored backup
+         * interface fullName: vps.veeam.RestoredBackup.RestoredBackup
+         */
         export interface RestoredBackup {
             accessInfos: vps.veeam.Infos;
             restorePointId: number;
             state: vps.veeam.StateEnum;
         }
-        // type fullname: vps.veeam.StateEnum
+        /**
+         * A structure describing a Veeam restored backup's state
+         * type fullname: vps.veeam.StateEnum
+         */
         export type StateEnum = "mounted" | "restoring" | "unmounted" | "unmounting"
     }
 }
@@ -350,279 +553,750 @@ export function proxyVps(ovhEngine: OvhRequestable): Vps {
 }
 export default proxyVps;
 /**
- * Api Proxy model
- */// Apis harmony
-// path /vps
+ * Api model for /vps
+ */
 export interface Vps {
-    // GET /vps
+    /**
+     * List available services
+     * GET /vps
+     */
     $get(): Promise<string[]>;
+    /**
+     * Controle cache
+     */
+    $cache(param?: ICacheOptions): Promise<any>;
     datacenter: {
-        // GET /vps/datacenter
+        /**
+         * List all the datacenters for a specific country
+         * GET /vps/datacenter
+         */
         $get(params: { country: nichandle.CountryEnum }): Promise<string[]>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
     }
     $(serviceName: string): {
-        // GET /vps/{serviceName}
+        /**
+         * Get this object properties
+         * GET /vps/{serviceName}
+         */
         $get(): Promise<vps.VPS>;
-        // PUT /vps/{serviceName}
+        /**
+         * Alter this object properties
+         * PUT /vps/{serviceName}
+         */
         $put(params?: { cluster?: string, displayName?: string, keymap?: vps.VpsKeymapEnum, memoryLimit?: number, model?: vps.Model, monitoringIpBlocks?: string[], name?: string, netbootMode?: vps.VpsNetbootEnum, offerType?: vps.VpsOfferEnum, slaMonitoring?: boolean, state?: vps.VpsStateEnum, vcore?: number, zone?: string }): Promise<void>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         activeOptions: {
-            // GET /vps/{serviceName}/activeOptions
+            /**
+             * Return all active options for the virtual server
+             * GET /vps/{serviceName}/activeOptions
+             */
             $get(): Promise<vps.VpsOptionEnum[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         automatedBackup: {
-            // GET /vps/{serviceName}/automatedBackup
+            /**
+             * Get this object properties
+             * GET /vps/{serviceName}/automatedBackup
+             */
             $get(): Promise<vps.AutomatedBackup>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             attachedBackup: {
-                // GET /vps/{serviceName}/automatedBackup/attachedBackup
+                /**
+                 * Backup attached to your VPS
+                 * GET /vps/{serviceName}/automatedBackup/attachedBackup
+                 */
                 $get(): Promise<vps.automatedBackup.Attached[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             detachBackup: {
-                // POST /vps/{serviceName}/automatedBackup/detachBackup
+                /**
+                 * Create a VPS.Task that will umount a restored backup on your VPS
+                 * POST /vps/{serviceName}/automatedBackup/detachBackup
+                 */
                 $post(params: { restorePoint: string }): Promise<vps.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             restore: {
-                // POST /vps/{serviceName}/automatedBackup/restore
+                /**
+                 * Creates a VPS.Task that will restore the given restorePoint
+                 * POST /vps/{serviceName}/automatedBackup/restore
+                 */
                 $post(params: { changePassword?: boolean, restorePoint: string, type: vps.RestoreTypeEnum }): Promise<vps.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             restorePoints: {
-                // GET /vps/{serviceName}/automatedBackup/restorePoints
+                /**
+                 * Get available Restore Points
+                 * GET /vps/{serviceName}/automatedBackup/restorePoints
+                 */
                 $get(params: { state: vps.RestoreStateEnum }): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         }
         availableUpgrade: {
-            // GET /vps/{serviceName}/availableUpgrade
+            /**
+             * Return all models the virtual server can be upgraded to
+             * GET /vps/{serviceName}/availableUpgrade
+             */
             $get(): Promise<vps.Model[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         backupftp: {
-            // GET /vps/{serviceName}/backupftp
+            /**
+             * Get this object properties
+             * GET /vps/{serviceName}/backupftp
+             */
             $get(): Promise<vps.BackupFtp>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             access: {
-                // GET /vps/{serviceName}/backupftp/access
+                /**
+                 * List of IP blocks (and protocols to allow on these blocks) authorized on your backup FTP
+                 * GET /vps/{serviceName}/backupftp/access
+                 */
                 $get(): Promise<string[]>;
-                // POST /vps/{serviceName}/backupftp/access
+                /**
+                 * Create a new Backup FTP ACL
+                 * POST /vps/{serviceName}/backupftp/access
+                 */
                 $post(params: { cifs: boolean, ftp?: boolean, ipBlock: string, nfs: boolean }): Promise<dedicated.server.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(ipBlock: string): {
-                    // DELETE /vps/{serviceName}/backupftp/access/{ipBlock}
+                    /**
+                     * Revoke this ACL
+                     * DELETE /vps/{serviceName}/backupftp/access/{ipBlock}
+                     */
                     $delete(): Promise<dedicated.server.Task>;
-                    // GET /vps/{serviceName}/backupftp/access/{ipBlock}
+                    /**
+                     * Get this object properties
+                     * GET /vps/{serviceName}/backupftp/access/{ipBlock}
+                     */
                     $get(): Promise<dedicated.server.BackupFtpAcl>;
-                    // PUT /vps/{serviceName}/backupftp/access/{ipBlock}
+                    /**
+                     * Alter this object properties
+                     * PUT /vps/{serviceName}/backupftp/access/{ipBlock}
+                     */
                     $put(params?: { cifs?: boolean, ftp?: boolean, ipBlock?: string, isApplied?: boolean, lastUpdate?: string, nfs?: boolean }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 };
             }
             authorizableBlocks: {
-                // GET /vps/{serviceName}/backupftp/authorizableBlocks
+                /**
+                 * Get all IP blocks that can be used in the ACL
+                 * GET /vps/{serviceName}/backupftp/authorizableBlocks
+                 */
                 $get(): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             password: {
-                // POST /vps/{serviceName}/backupftp/password
+                /**
+                 * Change your Backup FTP password
+                 * POST /vps/{serviceName}/backupftp/password
+                 */
                 $post(): Promise<dedicated.server.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         }
         changeContact: {
-            // POST /vps/{serviceName}/changeContact
+            /**
+             * Launch a contact change procedure
+             * POST /vps/{serviceName}/changeContact
+             */
             $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         confirmTermination: {
-            // POST /vps/{serviceName}/confirmTermination
+            /**
+             * Confirm termination of your service
+             * POST /vps/{serviceName}/confirmTermination
+             */
             $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         createSnapshot: {
-            // POST /vps/{serviceName}/createSnapshot
+            /**
+             * Create a snapshot of the Virtual Server if the snapshot option is enabled and if there is no existing snapshot
+             * POST /vps/{serviceName}/createSnapshot
+             */
             $post(params?: { description?: string }): Promise<vps.Task>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         datacenter: {
-            // GET /vps/{serviceName}/datacenter
+            /**
+             * Get this object properties
+             * GET /vps/{serviceName}/datacenter
+             */
             $get(): Promise<vps.Datacenter>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         disks: {
-            // GET /vps/{serviceName}/disks
+            /**
+             * Disks associated to this virtual server
+             * GET /vps/{serviceName}/disks
+             */
             $get(): Promise<number[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(id: number): {
-                // GET /vps/{serviceName}/disks/{id}
+                /**
+                 * Get this object properties
+                 * GET /vps/{serviceName}/disks/{id}
+                 */
                 $get(): Promise<vps.Disk>;
-                // PUT /vps/{serviceName}/disks/{id}
+                /**
+                 * Alter this object properties
+                 * PUT /vps/{serviceName}/disks/{id}
+                 */
                 $put(params?: { bandwidthLimit?: number, id?: number, lowFreeSpaceThreshold?: number, monitoring?: boolean, size?: number, state?: vps.disk.StateEnum, type?: vps.disk.TypeEnum }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 monitoring: {
-                    // GET /vps/{serviceName}/disks/{id}/monitoring
+                    /**
+                     * Return many statistics about the disk for a given period
+                     * GET /vps/{serviceName}/disks/{id}/monitoring
+                     */
                     $get(params: { period: vps.VpsMonitoringPeriodEnum, type: vps.disk.StatisticTypeEnum }): Promise<complexType.UnitAndValues<vps.VpsTimestampValue>>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 use: {
-                    // GET /vps/{serviceName}/disks/{id}/use
+                    /**
+                     * Return many statistics about the disk at that time
+                     * GET /vps/{serviceName}/disks/{id}/use
+                     */
                     $get(params: { type: vps.disk.StatisticTypeEnum }): Promise<complexType.UnitAndValue<number>>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             };
         }
         distribution: {
-            // GET /vps/{serviceName}/distribution
+            /**
+             * Get this object properties
+             * GET /vps/{serviceName}/distribution
+             */
             $get(): Promise<vps.Template>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             software: {
-                // GET /vps/{serviceName}/distribution/software
+                /**
+                 * List available softwares for this template Id
+                 * GET /vps/{serviceName}/distribution/software
+                 */
                 $get(): Promise<number[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(softwareId: number): {
-                    // GET /vps/{serviceName}/distribution/software/{softwareId}
+                    /**
+                     * Get this object properties
+                     * GET /vps/{serviceName}/distribution/software/{softwareId}
+                     */
                     $get(): Promise<vps.Software>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 };
             }
         }
         getConsoleUrl: {
-            // POST /vps/{serviceName}/getConsoleUrl
+            /**
+             * Return the VPS console URL
+             * POST /vps/{serviceName}/getConsoleUrl
+             */
             $post(): Promise<string>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         ipCountryAvailable: {
-            // GET /vps/{serviceName}/ipCountryAvailable
+            /**
+             * Get the countries you can select for your IPs geolocation
+             * GET /vps/{serviceName}/ipCountryAvailable
+             */
             $get(): Promise<vps.ip.GeolocationEnum[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         ips: {
-            // GET /vps/{serviceName}/ips
+            /**
+             * Ips associated to this virtual server
+             * GET /vps/{serviceName}/ips
+             */
             $get(): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(ipAddress: string): {
-                // DELETE /vps/{serviceName}/ips/{ipAddress}
+                /**
+                 * Release a given Ip (Additional Ip)
+                 * DELETE /vps/{serviceName}/ips/{ipAddress}
+                 */
                 $delete(): Promise<void>;
-                // GET /vps/{serviceName}/ips/{ipAddress}
+                /**
+                 * Get this object properties
+                 * GET /vps/{serviceName}/ips/{ipAddress}
+                 */
                 $get(): Promise<vps.Ip>;
-                // PUT /vps/{serviceName}/ips/{ipAddress}
+                /**
+                 * Alter this object properties
+                 * PUT /vps/{serviceName}/ips/{ipAddress}
+                 */
                 $put(params?: { gateway?: string, geolocation?: vps.ip.GeolocationEnum, ipAddress?: string, macAddress?: string, reverse?: string, type?: vps.ip.TypeEnum, version?: coreTypes.IpVersionEnum }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             };
         }
         models: {
-            // GET /vps/{serviceName}/models
+            /**
+             * Return all models for the range of the virtual server
+             * GET /vps/{serviceName}/models
+             */
             $get(): Promise<vps.Model[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         monitoring: {
-            // GET /vps/{serviceName}/monitoring
+            /**
+             * Return many statistics about the virtual machine for a given period
+             * GET /vps/{serviceName}/monitoring
+             */
             $get(params: { period: vps.VpsMonitoringPeriodEnum, type: vps.VpsStatisticTypeEnum }): Promise<complexType.UnitAndValues<vps.VpsTimestampValue>>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         openConsoleAccess: {
-            // POST /vps/{serviceName}/openConsoleAccess
+            /**
+             * Return the necessary informations to open a VNC connection to your VPS
+             * POST /vps/{serviceName}/openConsoleAccess
+             */
             $post(params?: { protocol?: vps.VncProtocolEnum }): Promise<vps.Vnc>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         option: {
-            // GET /vps/{serviceName}/option
+            /**
+             * List of VPS options
+             * GET /vps/{serviceName}/option
+             */
             $get(): Promise<vps.VpsOptionEnum[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(option: vps.VpsOptionEnum): {
-                // DELETE /vps/{serviceName}/option/{option}
+                /**
+                 * Release a given option
+                 * DELETE /vps/{serviceName}/option/{option}
+                 */
                 $delete(params?: { deleteNow?: boolean }): Promise<void>;
-                // GET /vps/{serviceName}/option/{option}
+                /**
+                 * Get this object properties
+                 * GET /vps/{serviceName}/option/{option}
+                 */
                 $get(): Promise<vps.Option>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             };
         }
         reboot: {
-            // POST /vps/{serviceName}/reboot
+            /**
+             * Request a reboot of the machine
+             * POST /vps/{serviceName}/reboot
+             */
             $post(): Promise<vps.Task>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         reinstall: {
-            // POST /vps/{serviceName}/reinstall
+            /**
+             * Reinstall the virtual server
+             * POST /vps/{serviceName}/reinstall
+             */
             $post(params: { doNotSendPassword?: boolean, language?: string, softwareId?: number[], sshKey?: string[], templateId: number }): Promise<vps.Task>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         secondaryDnsDomains: {
-            // GET /vps/{serviceName}/secondaryDnsDomains
+            /**
+             * List of secondary dns domain name
+             * GET /vps/{serviceName}/secondaryDnsDomains
+             */
             $get(): Promise<string[]>;
-            // POST /vps/{serviceName}/secondaryDnsDomains
+            /**
+             * add a domain on secondary dns
+             * POST /vps/{serviceName}/secondaryDnsDomains
+             */
             $post(params: { domain: string, ip?: string }): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(domain: string): {
-                // DELETE /vps/{serviceName}/secondaryDnsDomains/{domain}
+                /**
+                 * remove this domain
+                 * DELETE /vps/{serviceName}/secondaryDnsDomains/{domain}
+                 */
                 $delete(): Promise<void>;
-                // GET /vps/{serviceName}/secondaryDnsDomains/{domain}
+                /**
+                 * Get this object properties
+                 * GET /vps/{serviceName}/secondaryDnsDomains/{domain}
+                 */
                 $get(): Promise<secondaryDns.SecondaryDNS>;
-                // PUT /vps/{serviceName}/secondaryDnsDomains/{domain}
+                /**
+                 * Alter this object properties
+                 * PUT /vps/{serviceName}/secondaryDnsDomains/{domain}
+                 */
                 $put(params?: { creationDate?: string, dns?: string, domain?: string, ipMaster?: string }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 dnsServer: {
-                    // GET /vps/{serviceName}/secondaryDnsDomains/{domain}/dnsServer
+                    /**
+                     * domain name server informations
+                     * GET /vps/{serviceName}/secondaryDnsDomains/{domain}/dnsServer
+                     */
                     $get(): Promise<secondaryDns.SecondaryDNSNameServer>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             };
         }
         secondaryDnsNameServerAvailable: {
-            // GET /vps/{serviceName}/secondaryDnsNameServerAvailable
+            /**
+             * Secondary nameServer available for your Server
+             * GET /vps/{serviceName}/secondaryDnsNameServerAvailable
+             */
             $get(): Promise<secondaryDns.SecondaryDNSNameServer>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         serviceInfos: {
-            // GET /vps/{serviceName}/serviceInfos
+            /**
+             * Get this object properties
+             * GET /vps/{serviceName}/serviceInfos
+             */
             $get(): Promise<services.Service>;
-            // PUT /vps/{serviceName}/serviceInfos
+            /**
+             * Alter this object properties
+             * PUT /vps/{serviceName}/serviceInfos
+             */
             $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         setPassword: {
-            // POST /vps/{serviceName}/setPassword
+            /**
+             * Start the process in order to set the root password of the virtual machine. Be careful, in case of Cloud model, a reboot is mandatory.
+             * POST /vps/{serviceName}/setPassword
+             */
             $post(): Promise<vps.Task>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         snapshot: {
-            // DELETE /vps/{serviceName}/snapshot
+            /**
+             * Creates a vps.Task that will delete the Snapshot
+             * DELETE /vps/{serviceName}/snapshot
+             */
             $delete(): Promise<vps.Task>;
-            // GET /vps/{serviceName}/snapshot
+            /**
+             * Get this object properties
+             * GET /vps/{serviceName}/snapshot
+             */
             $get(): Promise<vps.Snapshot>;
-            // PUT /vps/{serviceName}/snapshot
+            /**
+             * Alter this object properties
+             * PUT /vps/{serviceName}/snapshot
+             */
             $put(params?: { creationDate?: string, description?: string }): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             revert: {
-                // POST /vps/{serviceName}/snapshot/revert
+                /**
+                 * Revert the Virtual Server to this snapshot
+                 * POST /vps/{serviceName}/snapshot/revert
+                 */
                 $post(): Promise<vps.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         }
         start: {
-            // POST /vps/{serviceName}/start
+            /**
+             * Request the machine to start
+             * POST /vps/{serviceName}/start
+             */
             $post(): Promise<vps.Task>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         status: {
-            // GET /vps/{serviceName}/status
+            /**
+             * Give the status of the services of the main IP
+             * GET /vps/{serviceName}/status
+             */
             $get(): Promise<vps.ip.ServiceStatus>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         stop: {
-            // POST /vps/{serviceName}/stop
+            /**
+             * Request the machine to stop
+             * POST /vps/{serviceName}/stop
+             */
             $post(): Promise<vps.Task>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         tasks: {
-            // GET /vps/{serviceName}/tasks
+            /**
+             * Tasks associated to this virtual server
+             * GET /vps/{serviceName}/tasks
+             */
             $get(params?: { state?: vps.TaskStateEnum, type?: vps.TaskTypeEnum }): Promise<number[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(id: number): {
-                // GET /vps/{serviceName}/tasks/{id}
+                /**
+                 * Get this object properties
+                 * GET /vps/{serviceName}/tasks/{id}
+                 */
                 $get(): Promise<vps.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             };
         }
         templates: {
-            // GET /vps/{serviceName}/templates
+            /**
+             * Templates available for this virtual server
+             * GET /vps/{serviceName}/templates
+             */
             $get(): Promise<number[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(id: number): {
-                // GET /vps/{serviceName}/templates/{id}
+                /**
+                 * Get this object properties
+                 * GET /vps/{serviceName}/templates/{id}
+                 */
                 $get(): Promise<vps.Template>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 software: {
-                    // GET /vps/{serviceName}/templates/{id}/software
+                    /**
+                     * List available softwares for this template Id
+                     * GET /vps/{serviceName}/templates/{id}/software
+                     */
                     $get(): Promise<number[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     $(softwareId: number): {
-                        // GET /vps/{serviceName}/templates/{id}/software/{softwareId}
+                        /**
+                         * Get this object properties
+                         * GET /vps/{serviceName}/templates/{id}/software/{softwareId}
+                         */
                         $get(): Promise<vps.Software>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     };
                 }
             };
         }
         terminate: {
-            // POST /vps/{serviceName}/terminate
+            /**
+             * Terminate your service
+             * POST /vps/{serviceName}/terminate
+             */
             $post(): Promise<string>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         use: {
-            // GET /vps/{serviceName}/use
+            /**
+             * Return many statistics about the virtual machine at that time
+             * GET /vps/{serviceName}/use
+             */
             $get(params: { type: vps.VpsStatisticTypeEnum }): Promise<complexType.UnitAndValue<number>>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         veeam: {
-            // GET /vps/{serviceName}/veeam
+            /**
+             * Get this object properties
+             * GET /vps/{serviceName}/veeam
+             */
             $get(): Promise<vps.Veeam>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             restorePoints: {
-                // GET /vps/{serviceName}/veeam/restorePoints
+                /**
+                 * Veeam restore points for the VPS
+                 * GET /vps/{serviceName}/veeam/restorePoints
+                 */
                 $get(params?: { creationTime?: string }): Promise<number[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(id: number): {
-                    // GET /vps/{serviceName}/veeam/restorePoints/{id}
+                    /**
+                     * Get this object properties
+                     * GET /vps/{serviceName}/veeam/restorePoints/{id}
+                     */
                     $get(): Promise<vps.veeam.RestorePoint>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     restore: {
-                        // POST /vps/{serviceName}/veeam/restorePoints/{id}/restore
+                        /**
+                         * Creates a VPS.Task that will restore the given restorePoint
+                         * POST /vps/{serviceName}/veeam/restorePoints/{id}/restore
+                         */
                         $post(params: { changePassword?: boolean, export?: vps.veeam.ExportTypeEnum, full: boolean }): Promise<vps.Task>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                 };
             }
             restoredBackup: {
-                // DELETE /vps/{serviceName}/veeam/restoredBackup
+                /**
+                 * Creates a VPS.Task that will unmount the backup
+                 * DELETE /vps/{serviceName}/veeam/restoredBackup
+                 */
                 $delete(): Promise<vps.Task>;
-                // GET /vps/{serviceName}/veeam/restoredBackup
+                /**
+                 * Get this object properties
+                 * GET /vps/{serviceName}/veeam/restoredBackup
+                 */
                 $get(): Promise<vps.veeam.RestoredBackup>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         }
     };

@@ -1,38 +1,56 @@
-import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
+import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /dedicated/server Models
  * Source: https://eu.api.ovh.com/1.0/dedicated/server.json
  */
 export namespace complexType {
-    // interface fullName: complexType.ChartReturn.ChartReturn
+    /**
+     * Chart
+     * interface fullName: complexType.ChartReturn.ChartReturn
+     */
     export interface ChartReturn {
         unit?: string;
         values?: complexType.ChartTimestampValue[];
     }
-    // interface fullName: complexType.ChartTimestampValue.ChartTimestampValue
+    /**
+     * A timestamp associated to a value
+     * interface fullName: complexType.ChartTimestampValue.ChartTimestampValue
+     */
     export interface ChartTimestampValue {
         timestamp: number;
         value?: number;
     }
-    // interface fullName: complexType.UnitAndValue.UnitAndValue
+    /**
+     * A numeric value tagged with its unit
+     * interface fullName: complexType.UnitAndValue.UnitAndValue
+     */
     export interface UnitAndValue<T> {
         unit: string;
         value: T;
     }
 }
 export namespace coreTypes {
-    // type fullname: coreTypes.CountryEnum
+    /**
+     * ISO country codes
+     * type fullname: coreTypes.CountryEnum
+     */
     export type CountryEnum = "ac" | "ad" | "ae" | "af" | "ag" | "ai" | "al" | "am" | "an" | "ao" | "aq" | "ar" | "as" | "at" | "au" | "aw" | "ax" | "az" | "ba" | "bb" | "bd" | "be" | "bf" | "bg" | "bh" | "bi" | "bj" | "bl" | "bm" | "bn" | "bo" | "bq" | "br" | "bs" | "bt" | "bv" | "bw" | "by" | "bz" | "ca" | "cc" | "cd" | "cf" | "cg" | "ch" | "ci" | "ck" | "cl" | "cm" | "cn" | "co" | "cr" | "cs" | "cu" | "cv" | "cw" | "cx" | "cy" | "cz" | "de" | "dj" | "dk" | "dm" | "do" | "dz" | "ec" | "ee" | "eg" | "eh" | "er" | "es" | "et" | "fc" | "fd" | "fi" | "fj" | "fk" | "fm" | "fo" | "fr" | "fx" | "ga" | "gb" | "gd" | "ge" | "gf" | "gg" | "gh" | "gi" | "gl" | "gm" | "gn" | "gp" | "gq" | "gr" | "gs" | "gt" | "gu" | "gw" | "gy" | "hk" | "hm" | "hn" | "hr" | "ht" | "hu" | "id" | "ie" | "il" | "im" | "in" | "io" | "iq" | "ir" | "is" | "it" | "je" | "jm" | "jo" | "jp" | "ke" | "kg" | "kh" | "ki" | "km" | "kn" | "kp" | "kr" | "kw" | "ky" | "kz" | "la" | "lb" | "lc" | "li" | "lk" | "lr" | "ls" | "lt" | "lu" | "lv" | "ly" | "ma" | "mc" | "md" | "me" | "mf" | "mg" | "mh" | "mk" | "ml" | "mm" | "mn" | "mo" | "mp" | "mq" | "mr" | "ms" | "mt" | "mu" | "mv" | "mw" | "mx" | "my" | "mz" | "na" | "nc" | "ne" | "nf" | "ng" | "ni" | "nl" | "no" | "np" | "nr" | "nu" | "nz" | "om" | "pa" | "pe" | "pf" | "pg" | "ph" | "pk" | "pl" | "pm" | "pn" | "pr" | "ps" | "pt" | "pw" | "py" | "qa" | "qc" | "re" | "ro" | "rs" | "ru" | "rw" | "sa" | "sb" | "sc" | "sd" | "se" | "sg" | "sh" | "si" | "sj" | "sk" | "sl" | "sm" | "sn" | "so" | "sr" | "ss" | "st" | "sv" | "sx" | "sy" | "sz" | "tc" | "td" | "tf" | "tg" | "th" | "tj" | "tk" | "tl" | "tm" | "tn" | "to" | "tp" | "tr" | "tt" | "tv" | "tw" | "tz" | "ua" | "ug" | "uk" | "um" | "us" | "uy" | "uz" | "va" | "vc" | "ve" | "vg" | "vi" | "vn" | "vu" | "we" | "wf" | "ws" | "ye" | "yt" | "yu" | "za" | "zm" | "zw"
 }
 export namespace dedicated {
-    // interface fullName: dedicated.Availabilities.Availabilities
+    /**
+     * A structure describing the availabilities of dedicated server
+     * interface fullName: dedicated.Availabilities.Availabilities
+     */
     export interface Availabilities {
         datacenters: dedicated.AvailabilityDatacenter[];
         hardware?: string;
         region?: dedicated.AvailabilityRegionEnum;
     }
-    // interface fullName: dedicated.AvailabilitiesRaw.AvailabilitiesRaw
+    /**
+     * A structure describing the availabilities of dedicated server
+     * interface fullName: dedicated.AvailabilitiesRaw.AvailabilitiesRaw
+     */
     export interface AvailabilitiesRaw {
         availability: dedicated.AvailabilityEnum;
         available: number;
@@ -47,28 +65,49 @@ export namespace dedicated {
         trueAvailable4H: number;
         zone: dedicated.AvailabilityRegionEnum;
     }
-    // interface fullName: dedicated.AvailabilityDatacenter.AvailabilityDatacenter
+    /**
+     * A structure describing the hardware availability for each datacenter
+     * interface fullName: dedicated.AvailabilityDatacenter.AvailabilityDatacenter
+     */
     export interface AvailabilityDatacenter {
         availability: dedicated.AvailabilityEnum;
         datacenter: dedicated.AvailabilityDatacenterEnum;
     }
-    // type fullname: dedicated.AvailabilityDatacenterEnum
+    /**
+     * The datacenter
+     * type fullname: dedicated.AvailabilityDatacenterEnum
+     */
     export type AvailabilityDatacenterEnum = "bhs" | "default" | "fra" | "gra" | "hil" | "lon" | "rbx" | "rbx-hz" | "sbg" | "sgp" | "syd" | "vin" | "waw"
-    // type fullname: dedicated.AvailabilityEnum
+    /**
+     * The availability
+     * type fullname: dedicated.AvailabilityEnum
+     */
     export type AvailabilityEnum = "1H-high" | "1H-low" | "240H" | "24H" | "72H" | "unavailable" | "unknown"
-    // type fullname: dedicated.AvailabilityRegionEnum
+    /**
+     * The region
+     * type fullname: dedicated.AvailabilityRegionEnum
+     */
     export type AvailabilityRegionEnum = "europe" | "northAmerica"
-    // interface fullName: dedicated.BinaryFirewall.BinaryFirewall
+    /**
+     * Get list of compatible firewall binaries
+     * interface fullName: dedicated.BinaryFirewall.BinaryFirewall
+     */
     export interface BinaryFirewall {
         asa: string[];
         asdm: string[];
         type: dedicated.ProfileFirewallEnum;
     }
-    // interface fullName: dedicated.BinaryFirewallLink.BinaryFirewallLink
+    /**
+     * Get temporary URL link to download binary
+     * interface fullName: dedicated.BinaryFirewallLink.BinaryFirewallLink
+     */
     export interface BinaryFirewallLink {
         url: string;
     }
-    // interface fullName: dedicated.DatacenterAvailability.DatacenterAvailability
+    /**
+     * A structure describing the availabilities of dedicated server
+     * interface fullName: dedicated.DatacenterAvailability.DatacenterAvailability
+     */
     export interface DatacenterAvailability {
         datacenters: dedicated.AvailabilityDatacenter[];
         fqn: string;
@@ -77,61 +116,106 @@ export namespace dedicated {
         server: string;
         storage?: string;
     }
-    // type fullname: dedicated.DatacenterEnum
+    /**
+     * ovh datacenter
+     * type fullname: dedicated.DatacenterEnum
+     */
     export type DatacenterEnum = "bhs1" | "bhs2" | "bhs3" | "bhs4" | "bhs5" | "bhs6" | "bhs7" | "dc1" | "eri1" | "gra1" | "gra2" | "gsw" | "hil1" | "lim1" | "p19" | "rbx-hz" | "rbx1" | "rbx2" | "rbx3" | "rbx4" | "rbx5" | "rbx6" | "rbx7" | "sbg1" | "sbg2" | "sbg3" | "sbg4" | "sgp1" | "syd1" | "vin1" | "waw1"
-    // type fullname: dedicated.OsAvailabilitiesEnum
+    /**
+     * Operating system name
+     * type fullname: dedicated.OsAvailabilitiesEnum
+     */
     export type OsAvailabilitiesEnum = "archlinux-installer_64" | "centos5_64" | "centos6-cpanel-latest_64" | "centos6-ovh_64" | "centos6-plesk12_64" | "centos6_64" | "centos7-cpanel-latest_64" | "centos7-directadmin_64" | "centos7-fpga-accelize_64" | "centos7-fpga-intel-opencl_64" | "centos7-plesk125_64" | "centos7-plesk12_64" | "centos7-plesk17_64" | "centos7_64" | "cloudlinux6_64" | "cloudlinux7_64" | "coreos-alpha_64" | "coreos_64" | "debian7-ispconfig3_64" | "debian7-minecraft_64" | "debian7-plesk12_64" | "debian7_64" | "debian8-ispconfig3_64" | "debian8-plesk125_64" | "debian8_64" | "debian8_armhf_32" | "debian9-ispconfig3_64" | "debian9_64" | "debian9_armhf_32" | "dgx1-os-3_64" | "esxi51_64" | "esxi55_64" | "esxi5_64" | "esxi60_64" | "esxi65_64" | "fedora26_64" | "fedora27_64" | "freebsd10-zfs_64" | "freebsd10_64" | "freebsd11-zfs_64" | "gentoo11_64" | "openmediavault3_armhf_32" | "openmediavault_armhf_32" | "opensuse42_64" | "proxmox4-zfs_64" | "proxmox4_64" | "proxmox5-zfs_64" | "proxmox5_64" | "slackware14_64" | "smartos_64" | "solusvm-master-vz_64" | "solusvm-slave-vz_64" | "ubuntu1404-plesk125_64" | "ubuntu1404-server_64" | "ubuntu1510-server_arm64_64" | "ubuntu1510-server_ppc64el_64" | "ubuntu1604-desktop_64" | "ubuntu1604-server_64" | "ubuntu1604-server_armhf_32" | "ubuntu1604-server_ppc64el_64" | "ubuntu1710-server_64" | "win2008r2-dc-virtuozzo46_64" | "win2008r2-dc_64" | "win2008r2-ent-plesk10_64" | "win2008r2-ent-plesk11_64" | "win2008r2-ent-plesk12_64" | "win2008r2-ent-sp2010found_64" | "win2008r2-ent-virtuozzo46_64" | "win2008r2-ent_64" | "win2008r2-std-plesk11_64" | "win2008r2-std-plesk12_64" | "win2008r2-std-sp2010found_64" | "win2008r2-std_64" | "win2008r2-web-plesk11_64" | "win2008r2-web-plesk12_64" | "win2008r2-web-sp2010found_64" | "win2008r2-web_64" | "win2008r2core-dc_64" | "win2008r2core-ent_64" | "win2008r2core-hyperv_64" | "win2008r2core-std_64" | "win2008r2core-web_64" | "win2012-dc_64" | "win2012-hyperv3_64" | "win2012-std-plesk11_64" | "win2012-std-plesk12_64" | "win2012-std_64" | "win2012r2-dc_64" | "win2012r2-hyperv3_64" | "win2012r2-std-plesk12_64" | "win2012r2-std_64" | "win2016-dc_64" | "win2016-std_64" | "win81-pro-sysprep_64" | "xenserver6_64"
-    // type fullname: dedicated.ProfileFirewallEnum
+    /**
+     * profile firewall asa
+     * type fullname: dedicated.ProfileFirewallEnum
+     */
     export type ProfileFirewallEnum = "cisco.asa5505" | "cisco.asa5510" | "cisco.asa5520"
-    // type fullname: dedicated.StatusEnum
+    /**
+     * enable or disable
+     * type fullname: dedicated.StatusEnum
+     */
     export type StatusEnum = "disable" | "enable"
-    // type fullname: dedicated.TaskFunctionEnum
+    /**
+     * different task operation
+     * type fullname: dedicated.TaskFunctionEnum
+     */
     export type TaskFunctionEnum = "INFRA_002_VirtualNetworkInterface" | "addVirtualMac" | "addWindowSplaFromExistingSerial" | "applyBackupFtpAcls" | "applyBackupFtpQuota" | "bypassAntiDDosGame" | "changePasswordBackupFTP" | "changeRipeOrg" | "checkAndReleaseIp" | "createBackupFTP" | "createOrUpdateRipeOrg" | "createPrivateNetwork" | "disableFirewall" | "enableFirewall" | "genericMoveFloatingIp" | "hardReboot" | "ipmi/configureSGX" | "migrateBackupFTP" | "moveFloatingIp" | "moveVirtualMac" | "rebootPower8To" | "reinstallServer" | "releaseIp" | "removeBackupFTP" | "removeVirtualMac" | "requestAccessIPMI" | "resetIPMI" | "resetIPMISession" | "testIPMIhttp" | "testIPMIpassword" | "testIPMIping" | "virtualMacAdd" | "virtualMacDelete"
-    // type fullname: dedicated.TaskStatusEnum
+    /**
+     * different task status
+     * type fullname: dedicated.TaskStatusEnum
+     */
     export type TaskStatusEnum = "cancelled" | "customerError" | "doing" | "done" | "init" | "ovhError" | "todo"
     export namespace biosSettings {
-        // interface fullName: dedicated.biosSettings.BiosSettings.BiosSettings
+        /**
+         * Your BiosSettings
+         * interface fullName: dedicated.biosSettings.BiosSettings.BiosSettings
+         */
         export interface BiosSettings {
             supportedSettings: dedicated.server.BiosSettingsSupport;
         }
     }
     export namespace biosSettingsSgx {
-        // interface fullName: dedicated.biosSettingsSgx.BiosSettingsSgx.BiosSettingsSgx
+        /**
+         * Your BiosSettings for SGX feature
+         * interface fullName: dedicated.biosSettingsSgx.BiosSettingsSgx.BiosSettingsSgx
+         */
         export interface BiosSettingsSgx {
             prmrr: dedicated.server.BiosSettingsSgxPrmrrEnum;
             status: dedicated.server.BiosSettingsSgxStatusEnum;
         }
     }
     export namespace networkInterfaceController {
-        // interface fullName: dedicated.networkInterfaceController.NetworkInterfaceController.NetworkInterfaceController
+        /**
+         * Your networkInterfaceController
+         * interface fullName: dedicated.networkInterfaceController.NetworkInterfaceController.NetworkInterfaceController
+         */
         export interface NetworkInterfaceController {
             linkType: dedicated.networkInterfaceController.NetworkInterfaceControllerLinkTypeEnum;
             mac: string;
             virtualNetworkInterface?: string;
         }
-        // type fullname: dedicated.networkInterfaceController.NetworkInterfaceControllerLinkTypeEnum
+        /**
+         * List NetworkInterfaceController linktype
+         * type fullname: dedicated.networkInterfaceController.NetworkInterfaceControllerLinkTypeEnum
+         */
         export type NetworkInterfaceControllerLinkTypeEnum = "isolated" | "private" | "private_lag" | "provisioning" | "public"
     }
     export namespace server {
-        // interface fullName: dedicated.server.Access.Access
+        /**
+         * A structure describing the server's access
+         * interface fullName: dedicated.server.Access.Access
+         */
         export interface Access {
             password: string;
             type: dedicated.server.AccessTypeEnum;
             url?: string;
             user?: string;
         }
-        // type fullname: dedicated.server.AccessTypeEnum
+        /**
+         * Application access type
+         * type fullname: dedicated.server.AccessTypeEnum
+         */
         export type AccessTypeEnum = "DIRECTADMIN_PANEL" | "PLESK_PANEL" | "PROXMOX_PANEL" | "RDP" | "SQL_SERVER" | "SSH" | "WEB_PANEL"
-        // type fullname: dedicated.server.AlertLanguageEnum
+        /**
+         * Monitoring alert language
+         * type fullname: dedicated.server.AlertLanguageEnum
+         */
         export type AlertLanguageEnum = "cz" | "de" | "en" | "es" | "fi" | "fr" | "it" | "lt" | "nl" | "pl" | "pt"
-        // interface fullName: dedicated.server.BackupCloud.BackupCloud
+        /**
+         * Backup Cloud assigned to this server
+         * interface fullName: dedicated.server.BackupCloud.BackupCloud
+         */
         export interface BackupCloud {
             agreements?: number[];
             archive?: dedicated.server.backup.BackupContainer;
             status: dedicated.server.backup.BackupStatus;
             storage?: dedicated.server.backup.BackupContainer;
         }
-        // interface fullName: dedicated.server.BackupFtp.BackupFtp
+        /**
+         * Backup Ftp assigned to this server
+         * interface fullName: dedicated.server.BackupFtp.BackupFtp
+         */
         export interface BackupFtp {
             ftpBackupName: string;
             quota?: complexType.UnitAndValue<number>;
@@ -139,7 +223,10 @@ export namespace dedicated {
             type: dedicated.server.BackupStorageTypeEnum;
             usage?: complexType.UnitAndValue<number>;
         }
-        // interface fullName: dedicated.server.BackupFtpAcl.BackupFtpAcl
+        /**
+         * Backup Ftp ACL for this server and Backup Ftp
+         * interface fullName: dedicated.server.BackupFtpAcl.BackupFtpAcl
+         */
         export interface BackupFtpAcl {
             cifs: boolean;
             ftp: boolean;
@@ -148,68 +235,131 @@ export namespace dedicated {
             lastUpdate: string;
             nfs: boolean;
         }
-        // type fullname: dedicated.server.BackupStorageCapacityEnum
+        /**
+         * Different backup storage capacity in gigabytes
+         * type fullname: dedicated.server.BackupStorageCapacityEnum
+         */
         export type BackupStorageCapacityEnum = 1000 | 10000 | 500 | 5000
-        // interface fullName: dedicated.server.BackupStorageOrderable.BackupStorageOrderable
+        /**
+         * A structure describing informations storage backup orderable for this dedicated server
+         * interface fullName: dedicated.server.BackupStorageOrderable.BackupStorageOrderable
+         */
         export interface BackupStorageOrderable {
             capacities?: dedicated.server.BackupStorageCapacityEnum[];
             orderable: boolean;
         }
-        // type fullname: dedicated.server.BackupStorageTypeEnum
+        /**
+         * Different backup storage type
+         * type fullname: dedicated.server.BackupStorageTypeEnum
+         */
         export type BackupStorageTypeEnum = "included" | "storage"
-        // interface fullName: dedicated.server.BandwidthDetails.BandwidthDetails
+        /**
+         * A structure describing bandwidth informations about this dedicated server
+         * interface fullName: dedicated.server.BandwidthDetails.BandwidthDetails
+         */
         export interface BandwidthDetails {
             InternetToOvh?: complexType.UnitAndValue<number>;
             OvhToInternet?: complexType.UnitAndValue<number>;
             OvhToOvh?: complexType.UnitAndValue<number>;
             type?: dedicated.server.BandwidthTypeEnum;
         }
-        // type fullname: dedicated.server.BandwidthOrderEnum
+        /**
+         *  Different Bandwidth orderable in Mbps
+         * type fullname: dedicated.server.BandwidthOrderEnum
+         */
         export type BandwidthOrderEnum = 1000 | 2000 | 3000
-        // interface fullName: dedicated.server.BandwidthOrderable.BandwidthOrderable
+        /**
+         * A structure describing informations bandwidth orderable for this dedicated server
+         * interface fullName: dedicated.server.BandwidthOrderable.BandwidthOrderable
+         */
         export interface BandwidthOrderable {
             orderable: boolean;
             platinum?: dedicated.server.BandwidthOrderEnum[];
             premium?: dedicated.server.BandwidthOrderEnum[];
             ultimate?: dedicated.server.BandwidthOrderEnum[];
         }
-        // type fullname: dedicated.server.BandwidthTypeEnum
+        /**
+         *  Different Bandwidth type
+         * type fullname: dedicated.server.BandwidthTypeEnum
+         */
         export type BandwidthTypeEnum = "included" | "platinum" | "premium" | "standard" | "ultimate"
-        // interface fullName: dedicated.server.BandwidthvRackDetails.BandwidthvRackDetails
+        /**
+         * A structure describing vRack bandwidth informations about this dedicated server
+         * interface fullName: dedicated.server.BandwidthvRackDetails.BandwidthvRackDetails
+         */
         export interface BandwidthvRackDetails {
             bandwidth?: complexType.UnitAndValue<number>;
             type?: dedicated.server.BandwidthvRackTypeEnum;
         }
-        // type fullname: dedicated.server.BandwidthvRackOrderEnum
+        /**
+         *  Different vRack Bandwidth orderable in Mbps
+         * type fullname: dedicated.server.BandwidthvRackOrderEnum
+         */
         export type BandwidthvRackOrderEnum = 1000 | 3000
-        // interface fullName: dedicated.server.BandwidthvRackOrderable.BandwidthvRackOrderable
+        /**
+         * A structure describing informations bandwidth orderable for this dedicated server
+         * interface fullName: dedicated.server.BandwidthvRackOrderable.BandwidthvRackOrderable
+         */
         export interface BandwidthvRackOrderable {
             orderable: boolean;
             vrack?: dedicated.server.BandwidthvRackOrderEnum[];
         }
-        // type fullname: dedicated.server.BandwidthvRackTypeEnum
+        /**
+         *  Different Bandwidth type
+         * type fullname: dedicated.server.BandwidthvRackTypeEnum
+         */
         export type BandwidthvRackTypeEnum = "included" | "standard"
-        // type fullname: dedicated.server.BiosSettingsSgxPrmrrEnum
+        /**
+         * SGX PRMRR value enum
+         * type fullname: dedicated.server.BiosSettingsSgxPrmrrEnum
+         */
         export type BiosSettingsSgxPrmrrEnum = "128MB" | "256MB" | "32MB" | "64MB"
-        // type fullname: dedicated.server.BiosSettingsSgxStatusEnum
+        /**
+         * SGX Status enum
+         * type fullname: dedicated.server.BiosSettingsSgxStatusEnum
+         */
         export type BiosSettingsSgxStatusEnum = "disabled" | "enabled" | "software controlled"
-        // interface fullName: dedicated.server.BiosSettingsSupport.BiosSettingsSupport
+        /**
+         * A structure describing supported bios settings
+         * interface fullName: dedicated.server.BiosSettingsSupport.BiosSettingsSupport
+         */
         export interface BiosSettingsSupport {
             sgx: boolean;
         }
-        // type fullname: dedicated.server.BootModeEnum
+        /**
+         * Server boot mode
+         * type fullname: dedicated.server.BootModeEnum
+         */
         export type BootModeEnum = "legacy" | "uefi" | "uefi-legacy"
-        // type fullname: dedicated.server.BootOptionEnum
+        /**
+         * Different option activated on netboot 
+         * type fullname: dedicated.server.BootOptionEnum
+         */
         export type BootOptionEnum = "cpufamily" | "grsec" | "ipv6" | "smp"
-        // type fullname: dedicated.server.BootTypeEnum
+        /**
+         *  Different netboot boot
+         * type fullname: dedicated.server.BootTypeEnum
+         */
         export type BootTypeEnum = "harddisk" | "internal" | "ipxeCustomerScript" | "network" | "rescue"
-        // type fullname: dedicated.server.BurstStatusEnum
+        /**
+         * Dedicated server bandwidth burst
+         * type fullname: dedicated.server.BurstStatusEnum
+         */
         export type BurstStatusEnum = "active" | "inactive" | "inactiveLocked"
-        // type fullname: dedicated.server.CacheTTLEnum
+        /**
+         * Time to live in minutes for cache
+         * type fullname: dedicated.server.CacheTTLEnum
+         */
         export type CacheTTLEnum = 1 | 10 | 15 | 3 | 5
-        // type fullname: dedicated.server.CpuFamilyEnum
+        /**
+         * cpu family 
+         * type fullname: dedicated.server.CpuFamilyEnum
+         */
         export type CpuFamilyEnum = "arm64" | "armhf32" | "ppc64" | "x86" | "x86-ht" | "x86_64"
-        // interface fullName: dedicated.server.Dedicated.Dedicated
+        /**
+         * Server informations
+         * interface fullName: dedicated.server.Dedicated.Dedicated
+         */
         export interface Dedicated {
             bootId?: number;
             commercialRange?: string;
@@ -228,9 +378,15 @@ export namespace dedicated {
             state: dedicated.server.StateEnum;
             supportLevel: dedicated.server.SupportLevelEnum;
         }
-        // type fullname: dedicated.server.DiskTypeEnum
+        /**
+         * Disk interface type enum
+         * type fullname: dedicated.server.DiskTypeEnum
+         */
         export type DiskTypeEnum = "NVMe" | "SAS" | "SATA" | "SSD" | "Unknown"
-        // interface fullName: dedicated.server.Firewall.Firewall
+        /**
+         * Firewall attached to this server
+         * interface fullName: dedicated.server.Firewall.Firewall
+         */
         export interface Firewall {
             enabled: boolean;
             firewall: string;
@@ -238,13 +394,25 @@ export namespace dedicated {
             mode: dedicated.server.FirewallModeEnum;
             model?: dedicated.server.FirewallModelEnum;
         }
-        // type fullname: dedicated.server.FirewallModeEnum
+        /**
+         * Dedicated server firewall mode
+         * type fullname: dedicated.server.FirewallModeEnum
+         */
         export type FirewallModeEnum = "routed" | "transparent"
-        // type fullname: dedicated.server.FirewallModelEnum
+        /**
+         * Firewall model name
+         * type fullname: dedicated.server.FirewallModelEnum
+         */
         export type FirewallModelEnum = "asa5505" | "asa5510" | "asa5520"
-        // type fullname: dedicated.server.FormFactorEnum
+        /**
+         * Server form factor
+         * type fullname: dedicated.server.FormFactorEnum
+         */
         export type FormFactorEnum = "0.25u" | "0.5u" | "1u" | "2u" | "3u" | "4u"
-        // interface fullName: dedicated.server.HardwareRaidConfiguration.HardwareRaidConfiguration
+        /**
+         * Simulated result of how the hardware RAID template will be configured on this server
+         * interface fullName: dedicated.server.HardwareRaidConfiguration.HardwareRaidConfiguration
+         */
         export interface HardwareRaidConfiguration {
             capacity: complexType.UnitAndValue<number>;
             diskCount: number;
@@ -254,28 +422,43 @@ export namespace dedicated {
             name: string;
             type: string;
         }
-        // interface fullName: dedicated.server.HardwareRaidController.HardwareRaidController
+        /**
+         * RAID controller configuration
+         * interface fullName: dedicated.server.HardwareRaidController.HardwareRaidController
+         */
         export interface HardwareRaidController {
             disks: dedicated.server.HardwareRaidDiskGroup[];
             model: string;
             type: string;
         }
-        // interface fullName: dedicated.server.HardwareRaidDiskGroup.HardwareRaidDiskGroup
+        /**
+         * Disk attached to a RAID controller
+         * interface fullName: dedicated.server.HardwareRaidDiskGroup.HardwareRaidDiskGroup
+         */
         export interface HardwareRaidDiskGroup {
             capacity: complexType.UnitAndValue<number>;
             names: string[];
             speed: complexType.UnitAndValue<string>;
             type: dedicated.server.DiskTypeEnum;
         }
-        // interface fullName: dedicated.server.HardwareRaidProfile.HardwareRaidProfile
+        /**
+         * A structure describing the server's hardware RAID configuration
+         * interface fullName: dedicated.server.HardwareRaidProfile.HardwareRaidProfile
+         */
         export interface HardwareRaidProfile {
             controllers: dedicated.server.HardwareRaidController[];
         }
-        // interface fullName: dedicated.server.HardwareRaidSize.HardwareRaidSize
+        /**
+         * A structure describing the server's resulting layout after RAID configuration
+         * interface fullName: dedicated.server.HardwareRaidSize.HardwareRaidSize
+         */
         export interface HardwareRaidSize {
             configurations: dedicated.server.HardwareRaidConfiguration[];
         }
-        // interface fullName: dedicated.server.HardwareSpecifications.HardwareSpecifications
+        /**
+         * A structure describing informations about this dedicated server
+         * interface fullName: dedicated.server.HardwareSpecifications.HardwareSpecifications
+         */
         export interface HardwareSpecifications {
             bootMode: dedicated.server.BootModeEnum;
             coresPerProcessor?: number;
@@ -293,7 +476,10 @@ export namespace dedicated {
             threadsPerProcessor?: number;
             usbKeys?: complexType.UnitAndValue<number>[];
         }
-        // interface fullName: dedicated.server.HardwareSpecificationsDisk.HardwareSpecificationsDisk
+        /**
+         * A structure describing informations about server disks
+         * interface fullName: dedicated.server.HardwareSpecificationsDisk.HardwareSpecificationsDisk
+         */
         export interface HardwareSpecificationsDisk {
             defaultHardwareRaidSize?: complexType.UnitAndValue<number>;
             defaultHardwareRaidType?: dedicated.server.HardwareSpecificationsRaidHardEnum;
@@ -304,16 +490,28 @@ export namespace dedicated {
             numberOfDisks?: number;
             raidController?: string;
         }
-        // interface fullName: dedicated.server.HardwareSpecificationsExpansionCard.HardwareSpecificationsExpansionCard
+        /**
+         * A structure describing informations about server expansion cards
+         * interface fullName: dedicated.server.HardwareSpecificationsExpansionCard.HardwareSpecificationsExpansionCard
+         */
         export interface HardwareSpecificationsExpansionCard {
             description: string;
             type: dedicated.server.HardwareSpecificationsExpansionCardTypeEnum;
         }
-        // type fullname: dedicated.server.HardwareSpecificationsExpansionCardTypeEnum
+        /**
+         * Expansion card type enum
+         * type fullname: dedicated.server.HardwareSpecificationsExpansionCardTypeEnum
+         */
         export type HardwareSpecificationsExpansionCardTypeEnum = "fpga" | "gpu"
-        // type fullname: dedicated.server.HardwareSpecificationsRaidHardEnum
+        /**
+         * Raid hard configuration
+         * type fullname: dedicated.server.HardwareSpecificationsRaidHardEnum
+         */
         export type HardwareSpecificationsRaidHardEnum = "raid0" | "raid1" | "raid10" | "raid1E" | "raid5" | "raid50" | "raid6" | "raid60"
-        // interface fullName: dedicated.server.InstallCustom.InstallCustom
+        /**
+         * A structure describing informations about installation custom
+         * interface fullName: dedicated.server.InstallCustom.InstallCustom
+         */
         export interface InstallCustom {
             customHostname?: string;
             diskGroupId?: number;
@@ -329,40 +527,67 @@ export namespace dedicated {
             useDistribKernel?: boolean;
             useSpla?: boolean;
         }
-        // interface fullName: dedicated.server.InstallTemplate.InstallTemplate
+        /**
+         * A structure describing informations about an Installation templates
+         * interface fullName: dedicated.server.InstallTemplate.InstallTemplate
+         */
         export interface InstallTemplate {
             ovh?: string[];
             personal?: string[];
         }
-        // interface fullName: dedicated.server.InstallationProgressStatus.InstallationProgressStatus
+        /**
+         * A structure describing informations about this dedicated server installation status
+         * interface fullName: dedicated.server.InstallationProgressStatus.InstallationProgressStatus
+         */
         export interface InstallationProgressStatus {
             elapsedTime: number;
             progress?: dedicated.server.InstallationProgressSteps[];
         }
-        // type fullname: dedicated.server.InstallationProgressStatusEnum
+        /**
+         * Distinct Installation status
+         * type fullname: dedicated.server.InstallationProgressStatusEnum
+         */
         export type InstallationProgressStatusEnum = "doing" | "done" | "error" | "expired" | "idle" | "pending" | "stopping" | "todo"
-        // interface fullName: dedicated.server.InstallationProgressSteps.InstallationProgressSteps
+        /**
+         * A structure describing informations about this dedicated server installation steps
+         * interface fullName: dedicated.server.InstallationProgressSteps.InstallationProgressSteps
+         */
         export interface InstallationProgressSteps {
             comment: string;
             error?: string;
             status: dedicated.server.InstallationProgressStatusEnum;
         }
-        // interface fullName: dedicated.server.Intervention.Intervention
+        /**
+         * Intervention made on this server
+         * interface fullName: dedicated.server.Intervention.Intervention
+         */
         export interface Intervention {
             date?: string;
             interventionId: number;
             type?: string;
         }
-        // type fullname: dedicated.server.IpBlockSizeEnum
+        /**
+         * IP block size
+         * type fullname: dedicated.server.IpBlockSizeEnum
+         */
         export type IpBlockSizeEnum = 1 | 128 | 16 | 256 | 32 | 4 | 64 | 8
-        // type fullname: dedicated.server.IpCountryEnum
+        /**
+         * Available localization for this static IP
+         * type fullname: dedicated.server.IpCountryEnum
+         */
         export type IpCountryEnum = "au" | "be" | "ca" | "cz" | "de" | "es" | "fi" | "fr" | "ie" | "it" | "lt" | "nl" | "pl" | "pt" | "sg" | "uk" | "us"
-        // interface fullName: dedicated.server.IpOrderable.IpOrderable
+        /**
+         * A structure describing informations about orderable IP address
+         * interface fullName: dedicated.server.IpOrderable.IpOrderable
+         */
         export interface IpOrderable {
             ipv4?: dedicated.server.IpOrderableDetails[];
             ipv6?: dedicated.server.IpOrderableDetails[];
         }
-        // interface fullName: dedicated.server.IpOrderableDetails.IpOrderableDetails
+        /**
+         * A structure describing informations about orderable IP address
+         * interface fullName: dedicated.server.IpOrderableDetails.IpOrderableDetails
+         */
         export interface IpOrderableDetails {
             blockSizes: dedicated.server.IpBlockSizeEnum[];
             included: boolean;
@@ -371,55 +596,97 @@ export namespace dedicated {
             optionRequired?: dedicated.server.OptionRequiredEnum;
             type: dedicated.server.IpTypeOrderableEnum;
         }
-        // type fullname: dedicated.server.IpTypeOrderableEnum
+        /**
+         * Orderable IP type
+         * type fullname: dedicated.server.IpTypeOrderableEnum
+         */
         export type IpTypeOrderableEnum = "failover" | "static" | "unshielded"
-        // interface fullName: dedicated.server.Ipmi.Ipmi
+        /**
+         * Server IPMI interface
+         * interface fullName: dedicated.server.Ipmi.Ipmi
+         */
         export interface Ipmi {
             activated: boolean;
             supportedFeatures: dedicated.server.IpmiSupportedFeatures;
         }
-        // type fullname: dedicated.server.IpmiAccessTypeEnum
+        /**
+         * Distinct way to acces a KVM IPMI session
+         * type fullname: dedicated.server.IpmiAccessTypeEnum
+         */
         export type IpmiAccessTypeEnum = "kvmipHtml5URL" | "kvmipJnlp" | "serialOverLanSshKey" | "serialOverLanURL"
-        // interface fullName: dedicated.server.IpmiAccessValue.IpmiAccessValue
+        /**
+         * A structure describing ipmi access value
+         * interface fullName: dedicated.server.IpmiAccessValue.IpmiAccessValue
+         */
         export interface IpmiAccessValue {
             expiration?: string;
             value?: string;
         }
-        // interface fullName: dedicated.server.IpmiSupportedFeatures.IpmiSupportedFeatures
+        /**
+         * A structure describing the IPMI supported features
+         * interface fullName: dedicated.server.IpmiSupportedFeatures.IpmiSupportedFeatures
+         */
         export interface IpmiSupportedFeatures {
             kvmipHtml5URL: boolean;
             kvmipJnlp: boolean;
             serialOverLanSshKey: boolean;
             serialOverLanURL: boolean;
         }
-        // interface fullName: dedicated.server.IpmiTestResult.IpmiTestResult
+        /**
+         * A structure describing IPMI test result
+         * interface fullName: dedicated.server.IpmiTestResult.IpmiTestResult
+         */
         export interface IpmiTestResult {
             date?: string;
             status?: string;
         }
-        // type fullname: dedicated.server.IpmiTestTypeEnum
+        /**
+         * Different test can be made on IPMI interface
+         * type fullname: dedicated.server.IpmiTestTypeEnum
+         */
         export type IpmiTestTypeEnum = "http" | "password" | "ping"
-        // type fullname: dedicated.server.MonitoringIntervalEnum
+        /**
+         * Monitoring interval in seconds
+         * type fullname: dedicated.server.MonitoringIntervalEnum
+         */
         export type MonitoringIntervalEnum = "1800" | "21600" | "300" | "3600"
-        // type fullname: dedicated.server.MonitoringProtocolEnum
+        /**
+         * Monitoring protocol
+         * type fullname: dedicated.server.MonitoringProtocolEnum
+         */
         export type MonitoringProtocolEnum = "DNS" | "FTP" | "HTTP" | "IMAP" | "POP" | "SMTP" | "SSH" | "openTCP"
-        // type fullname: dedicated.server.MrtgPeriodEnum
+        /**
+         * distincts MRTG period
+         * type fullname: dedicated.server.MrtgPeriodEnum
+         */
         export type MrtgPeriodEnum = "daily" | "hourly" | "monthly" | "weekly" | "yearly"
-        // interface fullName: dedicated.server.MrtgTimestampValue.MrtgTimestampValue
+        /**
+         * A timestamp associated to a value
+         * interface fullName: dedicated.server.MrtgTimestampValue.MrtgTimestampValue
+         */
         export interface MrtgTimestampValue {
             timestamp: number;
             value?: complexType.UnitAndValue<number>;
         }
-        // type fullname: dedicated.server.MrtgTypeEnum
+        /**
+         * distincts MRTG type
+         * type fullname: dedicated.server.MrtgTypeEnum
+         */
         export type MrtgTypeEnum = "errors:download" | "errors:upload" | "packets:download" | "packets:upload" | "traffic:download" | "traffic:upload"
-        // interface fullName: dedicated.server.Netboot.Netboot
+        /**
+         * Available boots
+         * interface fullName: dedicated.server.Netboot.Netboot
+         */
         export interface Netboot {
             bootId: number;
             bootType: dedicated.server.BootTypeEnum;
             description: string;
             kernel: string;
         }
-        // interface fullName: dedicated.server.NetworkSpecifications.NetworkSpecifications
+        /**
+         * A structure describing network informations about this dedicated server
+         * interface fullName: dedicated.server.NetworkSpecifications.NetworkSpecifications
+         */
         export interface NetworkSpecifications {
             bandwidth?: dedicated.server.BandwidthDetails;
             connection?: complexType.UnitAndValue<number>;
@@ -429,57 +696,99 @@ export namespace dedicated {
             traffic?: dedicated.server.TrafficDetails;
             vrack?: dedicated.server.BandwidthvRackDetails;
         }
-        // interface fullName: dedicated.server.OlaDetails.OlaDetails
+        /**
+         * A structure describing OVH Link Aggregation available modes for this dedicated server
+         * interface fullName: dedicated.server.OlaDetails.OlaDetails
+         */
         export interface OlaDetails {
             available: boolean;
             supportedModes?: dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum[];
         }
-        // interface fullName: dedicated.server.Option.Option
+        /**
+         * Information about the options of a dedicated server
+         * interface fullName: dedicated.server.Option.Option
+         */
         export interface Option {
             option: dedicated.server.OptionEnum;
             state: dedicated.server.OptionStateEnum;
         }
-        // type fullname: dedicated.server.OptionEnum
+        /**
+         * All options a dedicated server can have and release
+         * type fullname: dedicated.server.OptionEnum
+         */
         export type OptionEnum = "BACKUPPROTOCOL" | "BANDWIDTH" | "BANDWIDTH_VRACK" | "OLA" | "SGX" | "TRAFFIC" | "TRAFFIC_DISCOVER" | "TUNING" | "TUNING_FIREWALL" | "TUNING_KVM" | "USB_KVM_IP"
-        // type fullname: dedicated.server.OptionRequiredEnum
+        /**
+         * Required option
+         * type fullname: dedicated.server.OptionRequiredEnum
+         */
         export type OptionRequiredEnum = "professionalUse"
-        // type fullname: dedicated.server.OptionStateEnum
+        /**
+         * All states a dedicated server option can be in
+         * type fullname: dedicated.server.OptionStateEnum
+         */
         export type OptionStateEnum = "released" | "subscribed"
-        // type fullname: dedicated.server.OrderableSysFeatureEnum
+        /**
+         * Dedicated server orderable features
+         * type fullname: dedicated.server.OrderableSysFeatureEnum
+         */
         export type OrderableSysFeatureEnum = "backupProtocol" | "monitoring"
-        // interface fullName: dedicated.server.RoutingDetails.RoutingDetails
+        /**
+         * A structure describing routing informations about this dedicated server
+         * interface fullName: dedicated.server.RoutingDetails.RoutingDetails
+         */
         export interface RoutingDetails {
             ipv4?: dedicated.server.RoutingDetailsIpv4;
             ipv6?: dedicated.server.RoutingDetailsIpv6;
         }
-        // interface fullName: dedicated.server.RoutingDetailsIpv4.RoutingDetailsIpv4
+        /**
+         * A structure describing IPv4 routing informations about this dedicated server
+         * interface fullName: dedicated.server.RoutingDetailsIpv4.RoutingDetailsIpv4
+         */
         export interface RoutingDetailsIpv4 {
             gateway?: string;
             ip?: string;
             network?: string;
         }
-        // interface fullName: dedicated.server.RoutingDetailsIpv6.RoutingDetailsIpv6
+        /**
+         * A structure describing IPv6 routing informations about this dedicated server
+         * interface fullName: dedicated.server.RoutingDetailsIpv6.RoutingDetailsIpv6
+         */
         export interface RoutingDetailsIpv6 {
             gateway?: string;
             ip?: string;
             network?: string;
         }
-        // interface fullName: dedicated.server.Rtm.Rtm
+        /**
+         * Servers statistics sent by RTM (Real Time Monitoring)
+         * interface fullName: dedicated.server.Rtm.Rtm
+         */
         export interface Rtm {
             currentVersion?: string;
             installedVersion?: string;
             needsUpdate: boolean;
         }
-        // type fullname: dedicated.server.RtmChartPeriodEnum
+        /**
+         * distincts RTM charts period
+         * type fullname: dedicated.server.RtmChartPeriodEnum
+         */
         export type RtmChartPeriodEnum = "daily" | "monthly" | "weekly" | "yearly"
-        // type fullname: dedicated.server.RtmChartTypeEnum
+        /**
+         * distincts probes type
+         * type fullname: dedicated.server.RtmChartTypeEnum
+         */
         export type RtmChartTypeEnum = "cpu" | "loadavg1" | "loadavg15" | "loadavg5" | "memory" | "processCount" | "processRunning" | "swap"
-        // interface fullName: dedicated.server.RtmCommandSize.RtmCommandSize
+        /**
+         * A structure describing informations about RTM
+         * interface fullName: dedicated.server.RtmCommandSize.RtmCommandSize
+         */
         export interface RtmCommandSize {
             command?: string;
             memory?: complexType.UnitAndValue<number>;
         }
-        // interface fullName: dedicated.server.RtmConnection.RtmConnection
+        /**
+         * A structure describing informations about opened sockets on the server
+         * interface fullName: dedicated.server.RtmConnection.RtmConnection
+         */
         export interface RtmConnection {
             cmdline?: string;
             domain?: string;
@@ -491,21 +800,30 @@ export namespace dedicated {
             uid?: number;
             username?: string;
         }
-        // interface fullName: dedicated.server.RtmCpu.RtmCpu
+        /**
+         * A structure describing informations about server cpu
+         * interface fullName: dedicated.server.RtmCpu.RtmCpu
+         */
         export interface RtmCpu {
             cache?: complexType.UnitAndValue<number>;
             core?: number;
             freq?: complexType.UnitAndValue<number>;
             name?: string;
         }
-        // interface fullName: dedicated.server.RtmDisk.RtmDisk
+        /**
+         * Server disks informations
+         * interface fullName: dedicated.server.RtmDisk.RtmDisk
+         */
         export interface RtmDisk {
             capacity?: complexType.UnitAndValue<number>;
             disk: string;
             model?: string;
             temperature?: complexType.UnitAndValue<number>;
         }
-        // interface fullName: dedicated.server.RtmDiskSmart.RtmDiskSmart
+        /**
+         * A structure describing SMART health disk status
+         * interface fullName: dedicated.server.RtmDiskSmart.RtmDiskSmart
+         */
         export interface RtmDiskSmart {
             current_pending_sector?: number;
             multizone_error_rate?: number;
@@ -518,7 +836,10 @@ export namespace dedicated {
             uncorrected_read_errors?: number;
             uncorrected_write_errors?: number;
         }
-        // interface fullName: dedicated.server.RtmLoad.RtmLoad
+        /**
+         * A structure describing informations about server load
+         * interface fullName: dedicated.server.RtmLoad.RtmLoad
+         */
         export interface RtmLoad {
             cpu?: complexType.UnitAndValue<number>;
             loadavg1?: number;
@@ -530,41 +851,65 @@ export namespace dedicated {
             swap?: complexType.UnitAndValue<number>;
             uptime?: number;
         }
-        // interface fullName: dedicated.server.RtmMemory.RtmMemory
+        /**
+         * A structure describing informations about server memory
+         * interface fullName: dedicated.server.RtmMemory.RtmMemory
+         */
         export interface RtmMemory {
             capacity?: complexType.UnitAndValue<number>;
             slot?: string;
         }
-        // interface fullName: dedicated.server.RtmMotherboardHw.RtmMotherboardHw
+        /**
+         * A structure describing informations about motherboard
+         * interface fullName: dedicated.server.RtmMotherboardHw.RtmMotherboardHw
+         */
         export interface RtmMotherboardHw {
             manufacturer?: string;
             name?: string;
         }
-        // interface fullName: dedicated.server.RtmOs.RtmOs
+        /**
+         * A structure describing informations about Rtm os
+         * interface fullName: dedicated.server.RtmOs.RtmOs
+         */
         export interface RtmOs {
             kernelRelease?: string;
             kernelVersion?: string;
             release?: string;
         }
-        // interface fullName: dedicated.server.RtmPartition.RtmPartition
+        /**
+         * Server partitions informations
+         * interface fullName: dedicated.server.RtmPartition.RtmPartition
+         */
         export interface RtmPartition {
             inodeUsage?: complexType.UnitAndValue<number>;
             mountPoint?: string;
             partition: string;
             usage?: complexType.UnitAndValue<number>;
         }
-        // interface fullName: dedicated.server.RtmPci.RtmPci
+        /**
+         * A structure describing informations about server PCI devices
+         * interface fullName: dedicated.server.RtmPci.RtmPci
+         */
         export interface RtmPci {
             bus?: string;
             device?: string;
         }
-        // interface fullName: dedicated.server.RtmRaid.RtmRaid
+        /**
+         * Server raid informations
+         * interface fullName: dedicated.server.RtmRaid.RtmRaid
+         */
         export interface RtmRaid {
             unit: string;
         }
-        // type fullname: dedicated.server.RtmRaidStatusEnum
+        /**
+         *  Different RAID status
+         * type fullname: dedicated.server.RtmRaidStatusEnum
+         */
         export type RtmRaidStatusEnum = "KO" | "OK" | "REBUILDING" | "UNKNOWN"
-        // interface fullName: dedicated.server.RtmRaidVolume.RtmRaidVolume
+        /**
+         * Server raid volume information
+         * interface fullName: dedicated.server.RtmRaidVolume.RtmRaidVolume
+         */
         export interface RtmRaidVolume {
             capacity?: complexType.UnitAndValue<number>;
             chunks?: string;
@@ -577,7 +922,10 @@ export namespace dedicated {
             type?: string;
             volume?: string;
         }
-        // interface fullName: dedicated.server.RtmRaidVolumePort.RtmRaidVolumePort
+        /**
+         * Server raid volume port informations
+         * interface fullName: dedicated.server.RtmRaidVolumePort.RtmRaidVolumePort
+         */
         export interface RtmRaidVolumePort {
             capacity?: complexType.UnitAndValue<number>;
             disk?: string;
@@ -587,36 +935,66 @@ export namespace dedicated {
             status?: dedicated.server.RtmRaidStatusEnum;
             syncprogress?: string;
         }
-        // interface fullName: dedicated.server.ServerBurst.ServerBurst
+        /**
+         * Server bandwidth burst details
+         * interface fullName: dedicated.server.ServerBurst.ServerBurst
+         */
         export interface ServerBurst {
             capacity?: complexType.UnitAndValue<number>;
             status: dedicated.server.BurstStatusEnum;
         }
-        // type fullname: dedicated.server.SplaStatusEnum
+        /**
+         * SPLA license status
+         * type fullname: dedicated.server.SplaStatusEnum
+         */
         export type SplaStatusEnum = "terminated" | "used" | "waitingToCheck"
-        // type fullname: dedicated.server.SplaTypeEnum
+        /**
+         * SPLA license type
+         * type fullname: dedicated.server.SplaTypeEnum
+         */
         export type SplaTypeEnum = "os" | "sqlstd" | "sqlweb"
-        // type fullname: dedicated.server.StateEnum
+        /**
+         * All states a Dedicated can in
+         * type fullname: dedicated.server.StateEnum
+         */
         export type StateEnum = "error" | "hacked" | "hackedBlocked" | "ok"
-        // type fullname: dedicated.server.SupportLevelEnum
+        /**
+         * distincts support level
+         * type fullname: dedicated.server.SupportLevelEnum
+         */
         export type SupportLevelEnum = "critical" | "fastpath" | "gs" | "pro"
-        // interface fullName: dedicated.server.SupportLevelOrderable.SupportLevelOrderable
+        /**
+         * A structure describing informations support level orderable for this dedicated server
+         * interface fullName: dedicated.server.SupportLevelOrderable.SupportLevelOrderable
+         */
         export interface SupportLevelOrderable {
             levels?: dedicated.server.SupportLevelOrderableEnum[];
             orderable: boolean;
         }
-        // type fullname: dedicated.server.SupportLevelOrderableEnum
+        /**
+         * distincts support level
+         * type fullname: dedicated.server.SupportLevelOrderableEnum
+         */
         export type SupportLevelOrderableEnum = "critical" | "fastpath" | "gs"
-        // interface fullName: dedicated.server.SupportReplaceHddInfo.SupportReplaceHddInfo
+        /**
+         * Hdd replace support request details. 
+         * interface fullName: dedicated.server.SupportReplaceHddInfo.SupportReplaceHddInfo
+         */
         export interface SupportReplaceHddInfo {
             disk_serial: string;
             slot_id?: number;
         }
-        // interface fullName: dedicated.server.SwitchingDetails.SwitchingDetails
+        /**
+         * A structure describing switching informations about this dedicated server
+         * interface fullName: dedicated.server.SwitchingDetails.SwitchingDetails
+         */
         export interface SwitchingDetails {
             name?: string;
         }
-        // interface fullName: dedicated.server.Task.Task
+        /**
+         * Server tasks
+         * interface fullName: dedicated.server.Task.Task
+         */
         export interface Task {
             comment?: string;
             doneDate?: string;
@@ -626,11 +1004,17 @@ export namespace dedicated {
             status: dedicated.TaskStatusEnum;
             taskId: number;
         }
-        // interface fullName: dedicated.server.TemplateCaps.TemplateCaps
+        /**
+         * Miscellaneous template capabilities regarding the server.
+         * interface fullName: dedicated.server.TemplateCaps.TemplateCaps
+         */
         export interface TemplateCaps {
             hybridSupport: boolean;
         }
-        // interface fullName: dedicated.server.TrafficDetails.TrafficDetails
+        /**
+         * A structure describing traffic informations about this dedicated server
+         * interface fullName: dedicated.server.TrafficDetails.TrafficDetails
+         */
         export interface TrafficDetails {
             inputQuotaSize?: complexType.UnitAndValue<number>;
             inputQuotaUsed?: complexType.UnitAndValue<number>;
@@ -639,36 +1023,60 @@ export namespace dedicated {
             outputQuotaUsed?: complexType.UnitAndValue<number>;
             resetQuotaDate?: string;
         }
-        // type fullname: dedicated.server.TrafficOrderEnum
+        /**
+         *  traffic orderable 
+         * type fullname: dedicated.server.TrafficOrderEnum
+         */
         export type TrafficOrderEnum = "100Mbps-Unlimited" | "250Mbps-Unlimited" | "500Mbps-Unlimited"
-        // interface fullName: dedicated.server.TrafficOrderable.TrafficOrderable
+        /**
+         * A structure describing informations bandwidth orderable for this dedicated server
+         * interface fullName: dedicated.server.TrafficOrderable.TrafficOrderable
+         */
         export interface TrafficOrderable {
             orderable: boolean;
             traffic?: dedicated.server.TrafficOrderEnum[];
         }
-        // type fullname: dedicated.server.UsbKeyCapacityEnum
+        /**
+         *  Different USB key capacity in gigabytes
+         * type fullname: dedicated.server.UsbKeyCapacityEnum
+         */
         export type UsbKeyCapacityEnum = 128 | 16 | 256 | 32 | 64
-        // interface fullName: dedicated.server.UsbKeyOrderableDetails.UsbKeyOrderableDetails
+        /**
+         * A structure describing informations about orderable USB keys
+         * interface fullName: dedicated.server.UsbKeyOrderableDetails.UsbKeyOrderableDetails
+         */
         export interface UsbKeyOrderableDetails {
             capacity: dedicated.server.UsbKeyCapacityEnum[];
             number: number;
             optionRequired?: dedicated.server.OptionRequiredEnum;
             orderable: boolean;
         }
-        // interface fullName: dedicated.server.VirtualMac.VirtualMac
+        /**
+         * A virtual MAC address associated to one or more IPs
+         * interface fullName: dedicated.server.VirtualMac.VirtualMac
+         */
         export interface VirtualMac {
             macAddress: string;
             type: dedicated.server.VmacTypeEnum;
         }
-        // interface fullName: dedicated.server.VirtualMacManagement.VirtualMacManagement
+        /**
+         *  ip address linked with this virtual mac address
+         * interface fullName: dedicated.server.VirtualMacManagement.VirtualMacManagement
+         */
         export interface VirtualMacManagement {
             ipAddress: string;
             virtualMachineName: string;
         }
-        // type fullname: dedicated.server.VmacTypeEnum
+        /**
+         * Distinct type of virtual mac
+         * type fullname: dedicated.server.VmacTypeEnum
+         */
         export type VmacTypeEnum = "ovh" | "vmware"
         export namespace backup {
-            // interface fullName: dedicated.server.backup.BackupContainer.BackupContainer
+            /**
+             * A structure describing informations about the backup cloud feature
+             * interface fullName: dedicated.server.backup.BackupContainer.BackupContainer
+             */
             export interface BackupContainer {
                 cloudProject?: dedicated.server.backup.BackupProject;
                 id?: string;
@@ -678,71 +1086,107 @@ export namespace dedicated {
                 sftp?: dedicated.server.backup.BackupSftp;
                 swift?: dedicated.server.backup.BackupSwift;
             }
-            // interface fullName: dedicated.server.backup.BackupOffer.BackupOffer
+            /**
+             * Backup cloud offer description for a dedicated server
+             * interface fullName: dedicated.server.backup.BackupOffer.BackupOffer
+             */
             export interface BackupOffer {
                 maxArchive?: complexType.UnitAndValue<number>;
                 maxBandwidthArchive?: complexType.UnitAndValue<number>;
                 maxBandwidthStorage?: complexType.UnitAndValue<number>;
                 maxStorage?: complexType.UnitAndValue<number>;
             }
-            // interface fullName: dedicated.server.backup.BackupPassword.BackupPassword
+            /**
+             * A structure describing regenerated passwords
+             * interface fullName: dedicated.server.backup.BackupPassword.BackupPassword
+             */
             export interface BackupPassword {
                 sftpArchive?: string;
                 sftpStorage?: string;
                 swiftArchive?: string;
                 swiftStorage?: string;
             }
-            // interface fullName: dedicated.server.backup.BackupProject.BackupProject
+            /**
+             * Cloud project struct.
+             * interface fullName: dedicated.server.backup.BackupProject.BackupProject
+             */
             export interface BackupProject {
                 description?: string;
                 projectId?: string;
             }
-            // interface fullName: dedicated.server.backup.BackupQuota.BackupQuota
+            /**
+             * A structure describing quota associated to the current container
+             * interface fullName: dedicated.server.backup.BackupQuota.BackupQuota
+             */
             export interface BackupQuota {
                 maxBandwidth?: complexType.UnitAndValue<number>;
                 maxStorage?: complexType.UnitAndValue<number>;
                 storageUsed?: complexType.UnitAndValue<number>;
                 usagePercent?: number;
             }
-            // interface fullName: dedicated.server.backup.BackupSftp.BackupSftp
+            /**
+             * A structure describing the SFTP access to a container
+             * interface fullName: dedicated.server.backup.BackupSftp.BackupSftp
+             */
             export interface BackupSftp {
                 password?: string;
                 url?: string;
                 username?: string;
             }
-            // interface fullName: dedicated.server.backup.BackupStatus.BackupStatus
+            /**
+             * A structure describing the status of your backup
+             * interface fullName: dedicated.server.backup.BackupStatus.BackupStatus
+             */
             export interface BackupStatus {
                 code: dedicated.server.backup.BackupStatusCodeEnum;
                 reason?: string;
             }
-            // type fullname: dedicated.server.backup.BackupStatusCodeEnum
+            /**
+             * Possible values for backup status code
+             * type fullname: dedicated.server.backup.BackupStatusCodeEnum
+             */
             export type BackupStatusCodeEnum = "DELETING" | "ERROR" | "OK" | "SUSPENDED" | "SUSPENDING" | "UNKNOWN" | "WAITING_AGREEMENTS_VALIDATION"
-            // interface fullName: dedicated.server.backup.BackupSwift.BackupSwift
+            /**
+             * A structure describing the information related to Openstack to reach the container.
+             * interface fullName: dedicated.server.backup.BackupSwift.BackupSwift
+             */
             export interface BackupSwift {
                 authUrl?: string;
                 password?: string;
                 username?: string;
             }
         }
-        // interface fullName: dedicated.server.emailAlert.emailAlert
+        /**
+         * Service monitoring Email alert
+         * interface fullName: dedicated.server.emailAlert.emailAlert
+         */
         export interface emailAlert {
             alertId: number;
             email: string;
             enabled: boolean;
             language: dedicated.server.AlertLanguageEnum;
         }
-        // interface fullName: dedicated.server.kvm.kvm
+        /**
+         * Physical KVM
+         * interface fullName: dedicated.server.kvm.kvm
+         */
         export interface kvm {
             expiration: string;
             ip?: string;
             name: string;
         }
-        // interface fullName: dedicated.server.netbootOption.netbootOption
+        /**
+         * Available boot options
+         * interface fullName: dedicated.server.netbootOption.netbootOption
+         */
         export interface netbootOption {
             option: dedicated.server.BootOptionEnum;
             value: string;
         }
-        // interface fullName: dedicated.server.serviceMonitoring.serviceMonitoring
+        /**
+         * Service monitoring details
+         * interface fullName: dedicated.server.serviceMonitoring.serviceMonitoring
+         */
         export interface serviceMonitoring {
             challengeText?: string;
             enabled: boolean;
@@ -753,7 +1197,10 @@ export namespace dedicated {
             protocol: dedicated.server.MonitoringProtocolEnum;
             url?: string;
         }
-        // interface fullName: dedicated.server.smsAlert.smsAlert
+        /**
+         * Monitoring SMS alert details, This service is currently not supported for servers at BHS 
+         * interface fullName: dedicated.server.smsAlert.smsAlert
+         */
         export interface smsAlert {
             alertId: number;
             enabled: boolean;
@@ -763,7 +1210,10 @@ export namespace dedicated {
             smsAccount: string;
             toHour?: number;
         }
-        // interface fullName: dedicated.server.spla.spla
+        /**
+         * SPLA licenses management
+         * interface fullName: dedicated.server.spla.spla
+         */
         export interface spla {
             id: number;
             lastUpdate: string;
@@ -773,7 +1223,10 @@ export namespace dedicated {
         }
     }
     export namespace virtualNetworkInterface {
-        // interface fullName: dedicated.virtualNetworkInterface.VirtualNetworkInterface.VirtualNetworkInterface
+        /**
+         * Your VirtualNetworkInterface
+         * interface fullName: dedicated.virtualNetworkInterface.VirtualNetworkInterface.VirtualNetworkInterface
+         */
         export interface VirtualNetworkInterface {
             enabled: boolean;
             mode: dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum;
@@ -783,35 +1236,56 @@ export namespace dedicated {
             uuid: string;
             vrack?: string;
         }
-        // type fullname: dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum
+        /**
+         * Available VirtualNetworkInterface modes
+         * type fullname: dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum
+         */
         export type VirtualNetworkInterfaceModeEnum = "public" | "vrack" | "vrack_aggregation"
     }
 }
 export namespace license {
-    // type fullname: license.WindowsOsVersionEnum
+    /**
+     * All versions for Windows products
+     * type fullname: license.WindowsOsVersionEnum
+     */
     export type WindowsOsVersionEnum = "WINDOWS_SERVER_2003_ENTERPRISE_EDITION" | "WINDOWS_SERVER_2003_ENTERPRISE_EDITION_2_CPU" | "WINDOWS_SERVER_2003_STANDARD_EDITION" | "WINDOWS_SERVER_2003_WEB_EDITION" | "WINDOWS_SERVER_2003_WEB_EDITION_2_CPU" | "WINDOWS_SERVER_2003_WEB_ENHANCED_EDITION" | "WINDOWS_SERVER_2003_WEB_STANDARD_EDITION" | "WINDOWS_SERVER_2003_WEB_STANDARD_EDITION_2_CPU" | "WINDOWS_SERVER_2008_DATACENTER_EDITION" | "WINDOWS_SERVER_2008_DATACENTER_EDITION_2_CPU" | "WINDOWS_SERVER_2008_DATACENTER_EDITION_4_CPU" | "WINDOWS_SERVER_2008_ENTERPRISE_EDITION" | "WINDOWS_SERVER_2008_ENTERPRISE_EDITION_2_CPU" | "WINDOWS_SERVER_2008_ENTERPRISE_EDITION_4_CPU" | "WINDOWS_SERVER_2008_STANDARD_EDITION" | "WINDOWS_SERVER_2008_STANDARD_EDITION_2_CPU" | "WINDOWS_SERVER_2008_STANDARD_EDITION_4_CPU" | "WINDOWS_SERVER_2008_WEB_EDITION" | "WINDOWS_SERVER_2008_WEB_EDITION_2_CPU" | "WINDOWS_SERVER_2008_WEB_EDITION_4_CPU" | "WINDOWS_SERVER_2008_WEB_STANDARD_EDITION" | "WINDOWS_SERVER_2012_DATACENTER_EDITION" | "WINDOWS_SERVER_2012_DATACENTER_EDITION_2_CPU" | "WINDOWS_SERVER_2012_DATACENTER_EDITION_4_CPU" | "WINDOWS_SERVER_2012_ENTERPRISE_EDITION" | "WINDOWS_SERVER_2012_ENTERPRISE_EDITION_2_CPU" | "WINDOWS_SERVER_2012_STANDARD_EDITION" | "WINDOWS_SERVER_2012_STANDARD_EDITION_2_CPU" | "WINDOWS_SERVER_2012_STANDARD_EDITION_4_CPU" | "WINDOWS_SERVER_2012_WEB_EDITION" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_1_CPU_10_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_1_CPU_12_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_1_CPU_14_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_1_CPU_16_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_1_CPU_18_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_1_CPU_20_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_1_CPU_22_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_1_CPU_24_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_1_CPU_8_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_2_CPU_10_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_2_CPU_12_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_2_CPU_14_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_2_CPU_16_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_2_CPU_18_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_2_CPU_20_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_2_CPU_22_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_2_CPU_24_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_2_CPU_8_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_4_CPU_10_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_4_CPU_12_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_4_CPU_14_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_4_CPU_16_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_4_CPU_18_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_4_CPU_20_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_4_CPU_22_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_4_CPU_24_CORES" | "WINDOWS_SERVER_2016_DATACENTER_EDITION_4_CPU_8_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_1_CPU_10_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_1_CPU_12_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_1_CPU_14_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_1_CPU_16_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_1_CPU_18_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_1_CPU_20_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_1_CPU_22_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_1_CPU_24_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_1_CPU_8_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_2_CPU_10_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_2_CPU_12_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_2_CPU_14_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_2_CPU_16_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_2_CPU_18_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_2_CPU_20_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_2_CPU_22_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_2_CPU_24_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_2_CPU_8_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_4_CPU_10_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_4_CPU_12_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_4_CPU_14_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_4_CPU_16_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_4_CPU_18_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_4_CPU_20_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_4_CPU_22_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_4_CPU_24_CORES" | "WINDOWS_SERVER_2016_STANDARD_EDITION_4_CPU_8_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_10_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_12_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_14_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_16_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_18_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_20_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_22_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_24_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_26_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_28_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_30_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_32_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_34_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_36_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_38_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_40_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_42_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_44_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_46_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_48_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_50_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_52_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_54_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_56_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_58_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_60_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_62_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_64_CORES" | "WINDOWS_SERVER_2019_DATACENTER_EDITION_8_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_10_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_12_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_14_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_16_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_18_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_20_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_22_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_24_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_26_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_28_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_30_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_32_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_34_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_36_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_38_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_40_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_42_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_44_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_46_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_48_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_50_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_52_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_54_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_56_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_58_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_60_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_62_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_64_CORES" | "WINDOWS_SERVER_2019_STANDARD_EDITION_8_CORES" | "windows-server-2008-license-datacenter-edition-1-cpu" | "windows-server-2008-license-datacenter-edition-2-cpu" | "windows-server-2008-license-datacenter-edition-4-cpu" | "windows-server-2008-license-enterprise-edition-1-cpu" | "windows-server-2008-license-enterprise-edition-2-cpu" | "windows-server-2008-license-enterprise-edition-4-cpu" | "windows-server-2008-license-standard-edition-1-cpu" | "windows-server-2008-license-standard-edition-2-cpu" | "windows-server-2008-license-standard-edition-4-cpu" | "windows-server-2008-license-web-edition-1-cpu" | "windows-server-2008-license-web-edition-2-cpu" | "windows-server-2008-license-web-edition-4-cpu" | "windows-server-2012-license-datacenter-edition-1-cpu" | "windows-server-2012-license-datacenter-edition-2-cpu" | "windows-server-2012-license-datacenter-edition-4-cpu" | "windows-server-2012-license-standard-edition-1-cpu" | "windows-server-2012-license-standard-edition-2-cpu" | "windows-server-2012-license-standard-edition-4-cpu" | "windows-server-2016-license-datacenter-edition-1-cpu-10-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-12-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-14-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-16-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-18-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-20-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-22-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-24-cores" | "windows-server-2016-license-datacenter-edition-1-cpu-8-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-10-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-12-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-14-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-16-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-18-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-20-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-22-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-24-cores" | "windows-server-2016-license-datacenter-edition-2-cpu-8-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-10-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-12-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-14-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-16-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-18-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-20-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-22-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-24-cores" | "windows-server-2016-license-datacenter-edition-4-cpu-8-cores" | "windows-server-2016-license-standard-edition-1-cpu-10-cores" | "windows-server-2016-license-standard-edition-1-cpu-12-cores" | "windows-server-2016-license-standard-edition-1-cpu-14-cores" | "windows-server-2016-license-standard-edition-1-cpu-16-cores" | "windows-server-2016-license-standard-edition-1-cpu-18-cores" | "windows-server-2016-license-standard-edition-1-cpu-20-cores" | "windows-server-2016-license-standard-edition-1-cpu-22-cores" | "windows-server-2016-license-standard-edition-1-cpu-24-cores" | "windows-server-2016-license-standard-edition-1-cpu-8-cores" | "windows-server-2016-license-standard-edition-2-cpu-10-cores" | "windows-server-2016-license-standard-edition-2-cpu-12-cores" | "windows-server-2016-license-standard-edition-2-cpu-14-cores" | "windows-server-2016-license-standard-edition-2-cpu-16-cores" | "windows-server-2016-license-standard-edition-2-cpu-18-cores" | "windows-server-2016-license-standard-edition-2-cpu-20-cores" | "windows-server-2016-license-standard-edition-2-cpu-22-cores" | "windows-server-2016-license-standard-edition-2-cpu-24-cores" | "windows-server-2016-license-standard-edition-2-cpu-8-cores" | "windows-server-2016-license-standard-edition-4-cpu-10-cores" | "windows-server-2016-license-standard-edition-4-cpu-12-cores" | "windows-server-2016-license-standard-edition-4-cpu-14-cores" | "windows-server-2016-license-standard-edition-4-cpu-16-cores" | "windows-server-2016-license-standard-edition-4-cpu-18-cores" | "windows-server-2016-license-standard-edition-4-cpu-20-cores" | "windows-server-2016-license-standard-edition-4-cpu-22-cores" | "windows-server-2016-license-standard-edition-4-cpu-24-cores" | "windows-server-2016-license-standard-edition-4-cpu-8-cores" | "windows-server-2019-license-datacenter-edition-10-cores" | "windows-server-2019-license-datacenter-edition-12-cores" | "windows-server-2019-license-datacenter-edition-14-cores" | "windows-server-2019-license-datacenter-edition-16-cores" | "windows-server-2019-license-datacenter-edition-18-cores" | "windows-server-2019-license-datacenter-edition-20-cores" | "windows-server-2019-license-datacenter-edition-22-cores" | "windows-server-2019-license-datacenter-edition-24-cores" | "windows-server-2019-license-datacenter-edition-26-cores" | "windows-server-2019-license-datacenter-edition-28-cores" | "windows-server-2019-license-datacenter-edition-30-cores" | "windows-server-2019-license-datacenter-edition-32-cores" | "windows-server-2019-license-datacenter-edition-34-cores" | "windows-server-2019-license-datacenter-edition-36-cores" | "windows-server-2019-license-datacenter-edition-38-cores" | "windows-server-2019-license-datacenter-edition-40-cores" | "windows-server-2019-license-datacenter-edition-42-cores" | "windows-server-2019-license-datacenter-edition-44-cores" | "windows-server-2019-license-datacenter-edition-46-cores" | "windows-server-2019-license-datacenter-edition-48-cores" | "windows-server-2019-license-datacenter-edition-50-cores" | "windows-server-2019-license-datacenter-edition-52-cores" | "windows-server-2019-license-datacenter-edition-54-cores" | "windows-server-2019-license-datacenter-edition-56-cores" | "windows-server-2019-license-datacenter-edition-58-cores" | "windows-server-2019-license-datacenter-edition-60-cores" | "windows-server-2019-license-datacenter-edition-62-cores" | "windows-server-2019-license-datacenter-edition-64-cores" | "windows-server-2019-license-datacenter-edition-8-cores" | "windows-server-2019-license-standard-edition-10-cores" | "windows-server-2019-license-standard-edition-12-cores" | "windows-server-2019-license-standard-edition-14-cores" | "windows-server-2019-license-standard-edition-16-cores" | "windows-server-2019-license-standard-edition-18-cores" | "windows-server-2019-license-standard-edition-20-cores" | "windows-server-2019-license-standard-edition-22-cores" | "windows-server-2019-license-standard-edition-24-cores" | "windows-server-2019-license-standard-edition-26-cores" | "windows-server-2019-license-standard-edition-28-cores" | "windows-server-2019-license-standard-edition-30-cores" | "windows-server-2019-license-standard-edition-32-cores" | "windows-server-2019-license-standard-edition-34-cores" | "windows-server-2019-license-standard-edition-36-cores" | "windows-server-2019-license-standard-edition-38-cores" | "windows-server-2019-license-standard-edition-40-cores" | "windows-server-2019-license-standard-edition-42-cores" | "windows-server-2019-license-standard-edition-44-cores" | "windows-server-2019-license-standard-edition-46-cores" | "windows-server-2019-license-standard-edition-48-cores" | "windows-server-2019-license-standard-edition-50-cores" | "windows-server-2019-license-standard-edition-52-cores" | "windows-server-2019-license-standard-edition-54-cores" | "windows-server-2019-license-standard-edition-56-cores" | "windows-server-2019-license-standard-edition-58-cores" | "windows-server-2019-license-standard-edition-60-cores" | "windows-server-2019-license-standard-edition-62-cores" | "windows-server-2019-license-standard-edition-64-cores" | "windows-server-2019-license-standard-edition-8-cores"
-    // type fullname: license.WindowsSqlVersionEnum
+    /**
+     * All SQL Server versions for Windows products
+     * type fullname: license.WindowsSqlVersionEnum
+     */
     export type WindowsSqlVersionEnum = "SQL_SERVER_2008_STANDARD_EDITION" | "SQL_SERVER_2008_STANDARD_EDITION_2_CPU" | "SQL_SERVER_2008_WEB_EDITION" | "SQL_SERVER_2008_WEB_EDITION_2_CPU" | "SQL_SERVER_2012_STANDARD_EDITION" | "SQL_SERVER_2012_STANDARD_EDITION_12_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_16_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_18_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_20_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_24_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_2_CPU" | "SQL_SERVER_2012_STANDARD_EDITION_32_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_4_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_6_CORES" | "SQL_SERVER_2012_STANDARD_EDITION_8_CORES" | "SQL_SERVER_2012_WEB_EDITION_12_CORES" | "SQL_SERVER_2012_WEB_EDITION_16_CORES" | "SQL_SERVER_2012_WEB_EDITION_18_CORES" | "SQL_SERVER_2012_WEB_EDITION_20_CORES" | "SQL_SERVER_2012_WEB_EDITION_24_CORES" | "SQL_SERVER_2012_WEB_EDITION_32_CORES" | "SQL_SERVER_2012_WEB_EDITION_4_CORES" | "SQL_SERVER_2012_WEB_EDITION_6_CORES" | "SQL_SERVER_2012_WEB_EDITION_8_CORES"
 }
 export namespace nichandle {
-    // type fullname: nichandle.OvhSubsidiaryEnum
+    /**
+     * OVH subsidiaries
+     * type fullname: nichandle.OvhSubsidiaryEnum
+     */
     export type OvhSubsidiaryEnum = "ASIA" | "AU" | "CA" | "CZ" | "DE" | "ES" | "EU" | "FI" | "FR" | "GB" | "IE" | "IT" | "LT" | "MA" | "NL" | "PL" | "PT" | "QC" | "SG" | "SN" | "TN" | "US" | "WE" | "WS"
 }
 export namespace secondaryDns {
-    // interface fullName: secondaryDns.SecondaryDNS.SecondaryDNS
+    /**
+     * Secondary dns infos
+     * interface fullName: secondaryDns.SecondaryDNS.SecondaryDNS
+     */
     export interface SecondaryDNS {
         creationDate: string;
         dns: string;
         domain: string;
         ipMaster: string;
     }
-    // interface fullName: secondaryDns.SecondaryDNSCheckField.SecondaryDNSCheckField
+    /**
+     * A structure describing informations about secondary dns check field
+     * interface fullName: secondaryDns.SecondaryDNSCheckField.SecondaryDNSCheckField
+     */
     export interface SecondaryDNSCheckField {
         fieldType: zone.NamedResolutionFieldTypeEnum;
         fieldValue: string;
         subDomain: string;
     }
-    // interface fullName: secondaryDns.SecondaryDNSNameServer.SecondaryDNSNameServer
+    /**
+     * A structure describing informations about available nameserver for secondary dns 
+     * interface fullName: secondaryDns.SecondaryDNSNameServer.SecondaryDNSNameServer
+     */
     export interface SecondaryDNSNameServer {
         hostname: string;
         ip: string;
@@ -819,7 +1293,10 @@ export namespace secondaryDns {
     }
 }
 export namespace service {
-    // interface fullName: service.RenewType.RenewType
+    /**
+     * Map a possible renew for a specific service
+     * interface fullName: service.RenewType.RenewType
+     */
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -827,17 +1304,31 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    // type fullname: service.RenewalTypeEnum
+    /**
+     * Detailed renewal type of a service
+     * type fullname: service.RenewalTypeEnum
+     */
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    // type fullname: service.StateEnum
+    /**
+     * type fullname: service.StateEnum
+     */
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
-    // type fullname: service.TerminationFutureUseEnum
+    /**
+     * All future uses you can provide for a service termination
+     * type fullname: service.TerminationFutureUseEnum
+     */
     export type TerminationFutureUseEnum = "NOT_REPLACING_SERVICE" | "OTHER" | "SUBSCRIBE_AN_OTHER_SERVICE" | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR" | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
-    // type fullname: service.TerminationReasonEnum
+    /**
+     * All reasons you can provide for a service termination
+     * type fullname: service.TerminationReasonEnum
+     */
     export type TerminationReasonEnum = "FEATURES_DONT_SUIT_ME" | "LACK_OF_PERFORMANCES" | "MIGRATED_TO_ANOTHER_OVH_PRODUCT" | "MIGRATED_TO_COMPETITOR" | "NOT_ENOUGH_RECOGNITION" | "NOT_NEEDED_ANYMORE" | "NOT_RELIABLE" | "NO_ANSWER" | "OTHER" | "PRODUCT_DIMENSION_DONT_SUIT_ME" | "PRODUCT_TOOLS_DONT_SUIT_ME" | "TOO_EXPENSIVE" | "TOO_HARD_TO_USE" | "UNSATIFIED_BY_CUSTOMER_SUPPORT"
 }
 export namespace services {
-    // interface fullName: services.Service.Service
+    /**
+     * Details about a Service
+     * interface fullName: services.Service.Service
+     */
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;
@@ -855,7 +1346,10 @@ export namespace services {
     }
 }
 export namespace support {
-    // interface fullName: support.NewMessageInfo.NewMessageInfo
+    /**
+     * Newly created support identifiers
+     * interface fullName: support.NewMessageInfo.NewMessageInfo
+     */
     export interface NewMessageInfo {
         messageId: number;
         ticketId: number;
@@ -863,7 +1357,10 @@ export namespace support {
     }
 }
 export namespace vrack {
-    // interface fullName: vrack.Task.Task
+    /**
+     * vrack tasks
+     * interface fullName: vrack.Task.Task
+     */
     export interface Task {
         function: string;
         id: number;
@@ -874,16 +1371,25 @@ export namespace vrack {
         targetDomain?: string;
         todoDate?: string;
     }
-    // type fullname: vrack.TaskStatusEnum
+    /**
+     * All states a vRack Task can be in
+     * type fullname: vrack.TaskStatusEnum
+     */
     export type TaskStatusEnum = "cancelled" | "doing" | "done" | "init" | "todo"
-    // interface fullName: vrack.dedicatedServer.dedicatedServer
+    /**
+     * vrack dedicated server interfaces
+     * interface fullName: vrack.dedicatedServer.dedicatedServer
+     */
     export interface dedicatedServer {
         dedicatedServer: string;
         vrack: string;
     }
 }
 export namespace zone {
-    // type fullname: zone.NamedResolutionFieldTypeEnum
+    /**
+     * Resource record fieldType
+     * type fullname: zone.NamedResolutionFieldTypeEnum
+     */
     export type NamedResolutionFieldTypeEnum = "A" | "AAAA" | "CAA" | "CNAME" | "DKIM" | "DMARC" | "LOC" | "MX" | "NAPTR" | "NS" | "PTR" | "SPF" | "SRV" | "SSHFP" | "TLSA" | "TXT"
 }
 
@@ -895,407 +1401,1065 @@ export function proxyDedicatedServer(ovhEngine: OvhRequestable): Dedicated {
 }
 export default proxyDedicatedServer;
 /**
- * Api Proxy model
- */// Apis harmony
-// path /dedicated
+ * Api model for /dedicated/server
+ */
 export interface Dedicated {
     server: {
-        // GET /dedicated/server
+        /**
+         * List available services
+         * GET /dedicated/server
+         */
         $get(): Promise<string[]>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         availabilities: {
-            // GET /dedicated/server/availabilities
+            /**
+             * List the availability of dedicated server
+             * GET /dedicated/server/availabilities
+             */
             $get(params: { country: nichandle.OvhSubsidiaryEnum, hardware?: string }): Promise<dedicated.Availabilities[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             raw: {
-                // GET /dedicated/server/availabilities/raw
+                /**
+                 * List the availability of dedicated server
+                 * GET /dedicated/server/availabilities/raw
+                 */
                 $get(): Promise<dedicated.AvailabilitiesRaw[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         }
         datacenter: {
             availabilities: {
-                // GET /dedicated/server/datacenter/availabilities
+                /**
+                 * List the availability of dedicated server
+                 * GET /dedicated/server/datacenter/availabilities
+                 */
                 $get(params?: { datacenters?: string, excludeDatacenters?: boolean, memory?: string, planCode?: string, server?: string, storage?: string }): Promise<dedicated.DatacenterAvailability[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         }
         osAvailabilities: {
-            // GET /dedicated/server/osAvailabilities
+            /**
+             * List the os available for a specified hardware reference
+             * GET /dedicated/server/osAvailabilities
+             */
             $get(params: { hardware: string }): Promise<dedicated.OsAvailabilitiesEnum[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         virtualNetworkInterface: {
             $(uuid: string): {
-                // GET /dedicated/server/virtualNetworkInterface/{uuid}
+                /**
+                 * Get VirtualNetworkInterface details
+                 * GET /dedicated/server/virtualNetworkInterface/{uuid}
+                 */
                 $get(): Promise<dedicated.virtualNetworkInterface.VirtualNetworkInterface>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             };
         }
         $(serviceName: string): {
-            // GET /dedicated/server/{serviceName}
+            /**
+             * Get this object properties
+             * GET /dedicated/server/{serviceName}
+             */
             $get(): Promise<dedicated.server.Dedicated>;
-            // PUT /dedicated/server/{serviceName}
+            /**
+             * Alter this object properties
+             * PUT /dedicated/server/{serviceName}
+             */
             $put(params?: { bootId?: number, commercialRange?: string, datacenter?: dedicated.DatacenterEnum, ip?: string, linkSpeed?: number, monitoring?: boolean, name?: string, os?: string, professionalUse?: boolean, rack?: string, rescueMail?: string, reverse?: string, rootDevice?: string, serverId?: number, state?: dedicated.server.StateEnum, supportLevel?: dedicated.server.SupportLevelEnum }): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             authenticationSecret: {
-                // POST /dedicated/server/{serviceName}/authenticationSecret
+                /**
+                 * Retrieve secret to connect to the server / application
+                 * POST /dedicated/server/{serviceName}/authenticationSecret
+                 */
                 $post(): Promise<dedicated.server.Access[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             backupCloudOfferDetails: {
-                // GET /dedicated/server/{serviceName}/backupCloudOfferDetails
+                /**
+                 * Get details on offered backup cloud if available for the current server
+                 * GET /dedicated/server/{serviceName}/backupCloudOfferDetails
+                 */
                 $get(): Promise<dedicated.server.backup.BackupOffer>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             biosSettings: {
-                // GET /dedicated/server/{serviceName}/biosSettings
+                /**
+                 * Get this object properties
+                 * GET /dedicated/server/{serviceName}/biosSettings
+                 */
                 $get(): Promise<dedicated.biosSettings.BiosSettings>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 sgx: {
-                    // GET /dedicated/server/{serviceName}/biosSettings/sgx
+                    /**
+                     * Get this object properties
+                     * GET /dedicated/server/{serviceName}/biosSettings/sgx
+                     */
                     $get(): Promise<dedicated.biosSettingsSgx.BiosSettingsSgx>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     configure: {
-                        // POST /dedicated/server/{serviceName}/biosSettings/sgx/configure
+                        /**
+                         * Configure SGX feature
+                         * POST /dedicated/server/{serviceName}/biosSettings/sgx/configure
+                         */
                         $post(params?: { prmrr?: dedicated.server.BiosSettingsSgxPrmrrEnum, status?: dedicated.server.BiosSettingsSgxStatusEnum }): Promise<dedicated.server.Task>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                 }
             }
             boot: {
-                // GET /dedicated/server/{serviceName}/boot
+                /**
+                 * Server compatibles netboots
+                 * GET /dedicated/server/{serviceName}/boot
+                 */
                 $get(params?: { bootType?: dedicated.server.BootTypeEnum }): Promise<number[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(bootId: number): {
-                    // GET /dedicated/server/{serviceName}/boot/{bootId}
+                    /**
+                     * Get this object properties
+                     * GET /dedicated/server/{serviceName}/boot/{bootId}
+                     */
                     $get(): Promise<dedicated.server.Netboot>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     option: {
-                        // GET /dedicated/server/{serviceName}/boot/{bootId}/option
+                        /**
+                         * Option used on this netboot
+                         * GET /dedicated/server/{serviceName}/boot/{bootId}/option
+                         */
                         $get(): Promise<dedicated.server.BootOptionEnum[]>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         $(option: dedicated.server.BootOptionEnum): {
-                            // GET /dedicated/server/{serviceName}/boot/{bootId}/option/{option}
+                            /**
+                             * Get this object properties
+                             * GET /dedicated/server/{serviceName}/boot/{bootId}/option/{option}
+                             */
                             $get(): Promise<dedicated.server.netbootOption>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         };
                     }
                 };
             }
             burst: {
-                // GET /dedicated/server/{serviceName}/burst
+                /**
+                 * Get this object properties
+                 * GET /dedicated/server/{serviceName}/burst
+                 */
                 $get(): Promise<dedicated.server.ServerBurst>;
-                // PUT /dedicated/server/{serviceName}/burst
+                /**
+                 * Alter this object properties
+                 * PUT /dedicated/server/{serviceName}/burst
+                 */
                 $put(params?: { capacity?: complexType.UnitAndValue<number>, status?: dedicated.server.BurstStatusEnum }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             changeContact: {
-                // POST /dedicated/server/{serviceName}/changeContact
+                /**
+                 * Launch a contact change procedure
+                 * POST /dedicated/server/{serviceName}/changeContact
+                 */
                 $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             confirmTermination: {
-                // POST /dedicated/server/{serviceName}/confirmTermination
+                /**
+                 * Confirm termination of your service
+                 * POST /dedicated/server/{serviceName}/confirmTermination
+                 */
                 $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             features: {
                 backupCloud: {
-                    // DELETE /dedicated/server/{serviceName}/features/backupCloud
+                    /**
+                     * Deactivate the cloud backup associated to the server. This does not delete container data.
+                     * DELETE /dedicated/server/{serviceName}/features/backupCloud
+                     */
                     $delete(): Promise<void>;
-                    // GET /dedicated/server/{serviceName}/features/backupCloud
+                    /**
+                     * Get this object properties
+                     * GET /dedicated/server/{serviceName}/features/backupCloud
+                     */
                     $get(): Promise<dedicated.server.BackupCloud>;
-                    // POST /dedicated/server/{serviceName}/features/backupCloud
+                    /**
+                     * Create a new storage backup space associated to server
+                     * POST /dedicated/server/{serviceName}/features/backupCloud
+                     */
                     $post(params?: { cloudProjectId?: string, projectDescription?: string }): Promise<dedicated.server.BackupCloud>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     password: {
-                        // POST /dedicated/server/{serviceName}/features/backupCloud/password
+                        /**
+                         * Change your cloud account password
+                         * POST /dedicated/server/{serviceName}/features/backupCloud/password
+                         */
                         $post(): Promise<dedicated.server.backup.BackupPassword>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                 }
                 backupFTP: {
-                    // DELETE /dedicated/server/{serviceName}/features/backupFTP
+                    /**
+                     * Terminate your Backup FTP service, ALL DATA WILL BE PERMANENTLY DELETED
+                     * DELETE /dedicated/server/{serviceName}/features/backupFTP
+                     */
                     $delete(): Promise<dedicated.server.Task>;
-                    // GET /dedicated/server/{serviceName}/features/backupFTP
+                    /**
+                     * Get this object properties
+                     * GET /dedicated/server/{serviceName}/features/backupFTP
+                     */
                     $get(): Promise<dedicated.server.BackupFtp>;
-                    // POST /dedicated/server/{serviceName}/features/backupFTP
+                    /**
+                     * Create a new Backup FTP space
+                     * POST /dedicated/server/{serviceName}/features/backupFTP
+                     */
                     $post(): Promise<dedicated.server.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     access: {
-                        // GET /dedicated/server/{serviceName}/features/backupFTP/access
+                        /**
+                         * List of IP blocks (and protocols to allow on these blocks) authorized on your backup FTP
+                         * GET /dedicated/server/{serviceName}/features/backupFTP/access
+                         */
                         $get(): Promise<string[]>;
-                        // POST /dedicated/server/{serviceName}/features/backupFTP/access
+                        /**
+                         * Create a new Backup FTP ACL
+                         * POST /dedicated/server/{serviceName}/features/backupFTP/access
+                         */
                         $post(params: { cifs: boolean, ftp?: boolean, ipBlock: string, nfs: boolean }): Promise<dedicated.server.Task>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         $(ipBlock: string): {
-                            // DELETE /dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}
+                            /**
+                             * Revoke this ACL
+                             * DELETE /dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}
+                             */
                             $delete(): Promise<dedicated.server.Task>;
-                            // GET /dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}
+                            /**
+                             * Get this object properties
+                             * GET /dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}
+                             */
                             $get(): Promise<dedicated.server.BackupFtpAcl>;
-                            // PUT /dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}
+                            /**
+                             * Alter this object properties
+                             * PUT /dedicated/server/{serviceName}/features/backupFTP/access/{ipBlock}
+                             */
                             $put(params?: { cifs?: boolean, ftp?: boolean, ipBlock?: string, isApplied?: boolean, lastUpdate?: string, nfs?: boolean }): Promise<void>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         };
                     }
                     authorizableBlocks: {
-                        // GET /dedicated/server/{serviceName}/features/backupFTP/authorizableBlocks
+                        /**
+                         * Get all IP blocks that can be used in the ACL
+                         * GET /dedicated/server/{serviceName}/features/backupFTP/authorizableBlocks
+                         */
                         $get(): Promise<string[]>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     password: {
-                        // POST /dedicated/server/{serviceName}/features/backupFTP/password
+                        /**
+                         * Change your Backup FTP password
+                         * POST /dedicated/server/{serviceName}/features/backupFTP/password
+                         */
                         $post(): Promise<dedicated.server.Task>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                 }
                 firewall: {
-                    // GET /dedicated/server/{serviceName}/features/firewall
+                    /**
+                     * Get this object properties
+                     * GET /dedicated/server/{serviceName}/features/firewall
+                     */
                     $get(): Promise<dedicated.server.Firewall>;
-                    // PUT /dedicated/server/{serviceName}/features/firewall
+                    /**
+                     * Alter this object properties
+                     * PUT /dedicated/server/{serviceName}/features/firewall
+                     */
                     $put(params?: { enabled?: boolean, firewall?: string, ip?: string, mode?: dedicated.server.FirewallModeEnum, model?: dedicated.server.FirewallModelEnum }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 ipmi: {
-                    // GET /dedicated/server/{serviceName}/features/ipmi
+                    /**
+                     * Get this object properties
+                     * GET /dedicated/server/{serviceName}/features/ipmi
+                     */
                     $get(): Promise<dedicated.server.Ipmi>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     access: {
-                        // GET /dedicated/server/{serviceName}/features/ipmi/access
+                        /**
+                         * IPMI access method
+                         * GET /dedicated/server/{serviceName}/features/ipmi/access
+                         */
                         $get(params: { type: dedicated.server.IpmiAccessTypeEnum }): Promise<dedicated.server.IpmiAccessValue>;
-                        // POST /dedicated/server/{serviceName}/features/ipmi/access
+                        /**
+                         * Request an acces on KVM IPMI interface
+                         * POST /dedicated/server/{serviceName}/features/ipmi/access
+                         */
                         $post(params: { ipToAllow?: string, sshKey?: string, ttl: dedicated.server.CacheTTLEnum, type: dedicated.server.IpmiAccessTypeEnum }): Promise<dedicated.server.Task>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     resetInterface: {
-                        // POST /dedicated/server/{serviceName}/features/ipmi/resetInterface
+                        /**
+                         * Reset KVM IPMI interface
+                         * POST /dedicated/server/{serviceName}/features/ipmi/resetInterface
+                         */
                         $post(): Promise<dedicated.server.Task>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     resetSessions: {
-                        // POST /dedicated/server/{serviceName}/features/ipmi/resetSessions
+                        /**
+                         * Reset KVM IPMI sessions
+                         * POST /dedicated/server/{serviceName}/features/ipmi/resetSessions
+                         */
                         $post(): Promise<dedicated.server.Task>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     test: {
-                        // GET /dedicated/server/{serviceName}/features/ipmi/test
+                        /**
+                         * Result of http, ping and identification tests on IPMI interface
+                         * GET /dedicated/server/{serviceName}/features/ipmi/test
+                         */
                         $get(params: { type: dedicated.server.IpmiTestTypeEnum }): Promise<dedicated.server.IpmiTestResult>;
-                        // POST /dedicated/server/{serviceName}/features/ipmi/test
+                        /**
+                         * Launch test on KVM IPMI interface
+                         * POST /dedicated/server/{serviceName}/features/ipmi/test
+                         */
                         $post(params: { ttl: dedicated.server.CacheTTLEnum, type: dedicated.server.IpmiTestTypeEnum }): Promise<dedicated.server.Task>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                 }
                 kvm: {
-                    // GET /dedicated/server/{serviceName}/features/kvm
+                    /**
+                     * Get this object properties
+                     * GET /dedicated/server/{serviceName}/features/kvm
+                     */
                     $get(): Promise<dedicated.server.kvm>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             }
             firewall: {
                 binary: {
                     compatible: {
-                        // GET /dedicated/server/{serviceName}/firewall/binary/compatible
+                        /**
+                         * Get name binary for asa
+                         * GET /dedicated/server/{serviceName}/firewall/binary/compatible
+                         */
                         $get(): Promise<dedicated.BinaryFirewall>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     link: {
-                        // GET /dedicated/server/{serviceName}/firewall/binary/link
+                        /**
+                         * Get url of binary to update firewall asa
+                         * GET /dedicated/server/{serviceName}/firewall/binary/link
+                         */
                         $get(params: { binaryName: string }): Promise<dedicated.BinaryFirewallLink>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                 }
             }
             install: {
                 compatibleTemplatePartitionSchemes: {
-                    // GET /dedicated/server/{serviceName}/install/compatibleTemplatePartitionSchemes
+                    /**
+                     * Retrieve compatible  install template partitions scheme
+                     * GET /dedicated/server/{serviceName}/install/compatibleTemplatePartitionSchemes
+                     */
                     $get(params: { templateName: string }): Promise<string[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 compatibleTemplates: {
-                    // GET /dedicated/server/{serviceName}/install/compatibleTemplates
+                    /**
+                     * Retrieve compatible  install templates names
+                     * GET /dedicated/server/{serviceName}/install/compatibleTemplates
+                     */
                     $get(): Promise<dedicated.server.InstallTemplate>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 hardwareRaidProfile: {
-                    // GET /dedicated/server/{serviceName}/install/hardwareRaidProfile
+                    /**
+                     * Retrieve hardware RAID profile
+                     * GET /dedicated/server/{serviceName}/install/hardwareRaidProfile
+                     */
                     $get(): Promise<dedicated.server.HardwareRaidProfile>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 hardwareRaidSize: {
-                    // GET /dedicated/server/{serviceName}/install/hardwareRaidSize
+                    /**
+                     * Get hardware RAID size for a given configuration
+                     * GET /dedicated/server/{serviceName}/install/hardwareRaidSize
+                     */
                     $get(params: { partitionSchemeName: string, templateName: string }): Promise<dedicated.server.HardwareRaidSize>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 start: {
-                    // POST /dedicated/server/{serviceName}/install/start
+                    /**
+                     * Start an install
+                     * POST /dedicated/server/{serviceName}/install/start
+                     */
                     $post(params: { details?: dedicated.server.InstallCustom, partitionSchemeName?: string, templateName: string }): Promise<dedicated.server.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 status: {
-                    // GET /dedicated/server/{serviceName}/install/status
+                    /**
+                     * Get installation status
+                     * GET /dedicated/server/{serviceName}/install/status
+                     */
                     $get(): Promise<dedicated.server.InstallationProgressStatus>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 templateCapabilities: {
-                    // GET /dedicated/server/{serviceName}/install/templateCapabilities
+                    /**
+                     * Gives some capabilities regarding the template for the current dedicated server.
+                     * GET /dedicated/server/{serviceName}/install/templateCapabilities
+                     */
                     $get(params: { templateName: string }): Promise<dedicated.server.TemplateCaps>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             }
             intervention: {
-                // GET /dedicated/server/{serviceName}/intervention
+                /**
+                 * technical intervention history
+                 * GET /dedicated/server/{serviceName}/intervention
+                 */
                 $get(): Promise<number[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(interventionId: number): {
-                    // GET /dedicated/server/{serviceName}/intervention/{interventionId}
+                    /**
+                     * Get this object properties
+                     * GET /dedicated/server/{serviceName}/intervention/{interventionId}
+                     */
                     $get(): Promise<dedicated.server.Intervention>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 };
             }
             ipBlockMerge: {
-                // POST /dedicated/server/{serviceName}/ipBlockMerge
+                /**
+                 * Merge a splitted block and route it to the choosen server. You cannot undo this operation
+                 * POST /dedicated/server/{serviceName}/ipBlockMerge
+                 */
                 $post(params: { block: string }): Promise<dedicated.server.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             ipCanBeMovedTo: {
-                // GET /dedicated/server/{serviceName}/ipCanBeMovedTo
+                /**
+                 * Check if given IP can be moved to this server
+                 * GET /dedicated/server/{serviceName}/ipCanBeMovedTo
+                 */
                 $get(params: { ip: string }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             ipCountryAvailable: {
-                // GET /dedicated/server/{serviceName}/ipCountryAvailable
+                /**
+                 * Retrieve available country for IP order
+                 * GET /dedicated/server/{serviceName}/ipCountryAvailable
+                 */
                 $get(): Promise<dedicated.server.IpCountryEnum[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             ipMove: {
-                // POST /dedicated/server/{serviceName}/ipMove
+                /**
+                 * Move an Ip failover to this server
+                 * POST /dedicated/server/{serviceName}/ipMove
+                 */
                 $post(params: { ip: string }): Promise<dedicated.server.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             ips: {
-                // GET /dedicated/server/{serviceName}/ips
+                /**
+                 * List all ip from server
+                 * GET /dedicated/server/{serviceName}/ips
+                 */
                 $get(): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             license: {
                 compliantWindows: {
-                    // GET /dedicated/server/{serviceName}/license/compliantWindows
+                    /**
+                     * Get the windows license compliant with your server.
+                     * GET /dedicated/server/{serviceName}/license/compliantWindows
+                     */
                     $get(): Promise<license.WindowsOsVersionEnum[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 compliantWindowsSqlServer: {
-                    // GET /dedicated/server/{serviceName}/license/compliantWindowsSqlServer
+                    /**
+                     * Get the windows SQL server license compliant with your server.
+                     * GET /dedicated/server/{serviceName}/license/compliantWindowsSqlServer
+                     */
                     $get(): Promise<license.WindowsSqlVersionEnum[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 windows: {
-                    // POST /dedicated/server/{serviceName}/license/windows
+                    /**
+                     * Add your existing windows license serial to this dedicated server. Will be manageable in /license/windows.
+                     * POST /dedicated/server/{serviceName}/license/windows
+                     */
                     $post(params: { licenseId: string, version: license.WindowsOsVersionEnum }): Promise<dedicated.server.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             }
             mrtg: {
-                // GET /dedicated/server/{serviceName}/mrtg
+                /**
+                 * Retrieve traffic graph values
+                 * GET /dedicated/server/{serviceName}/mrtg
+                 */
                 $get(params: { period: dedicated.server.MrtgPeriodEnum, type: dedicated.server.MrtgTypeEnum }): Promise<dedicated.server.MrtgTimestampValue[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             networkInterfaceController: {
-                // GET /dedicated/server/{serviceName}/networkInterfaceController
+                /**
+                 * List server networkInterfaceController
+                 * GET /dedicated/server/{serviceName}/networkInterfaceController
+                 */
                 $get(params?: { linkType?: dedicated.networkInterfaceController.NetworkInterfaceControllerLinkTypeEnum }): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(mac: string): {
-                    // GET /dedicated/server/{serviceName}/networkInterfaceController/{mac}
+                    /**
+                     * Get this object properties
+                     * GET /dedicated/server/{serviceName}/networkInterfaceController/{mac}
+                     */
                     $get(): Promise<dedicated.networkInterfaceController.NetworkInterfaceController>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     mrtg: {
-                        // GET /dedicated/server/{serviceName}/networkInterfaceController/{mac}/mrtg
+                        /**
+                         * Retrieve traffic graph values
+                         * GET /dedicated/server/{serviceName}/networkInterfaceController/{mac}/mrtg
+                         */
                         $get(params: { period: dedicated.server.MrtgPeriodEnum, type: dedicated.server.MrtgTypeEnum }): Promise<dedicated.server.MrtgTimestampValue[]>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                 };
             }
             ola: {
                 group: {
-                    // POST /dedicated/server/{serviceName}/ola/group
+                    /**
+                     * OLA : Group interfaces into an aggregation
+                     * POST /dedicated/server/{serviceName}/ola/group
+                     */
                     $post(params: { name: string, virtualNetworkInterfaces: string[] }): Promise<dedicated.server.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 ungroup: {
-                    // POST /dedicated/server/{serviceName}/ola/ungroup
+                    /**
+                     * OLA : Ungroup interfaces
+                     * POST /dedicated/server/{serviceName}/ola/ungroup
+                     */
                     $post(params: { virtualNetworkInterface: string }): Promise<dedicated.server.Task[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             }
             option: {
-                // GET /dedicated/server/{serviceName}/option
+                /**
+                 * List of dedicated server options
+                 * GET /dedicated/server/{serviceName}/option
+                 */
                 $get(): Promise<dedicated.server.OptionEnum[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(option: dedicated.server.OptionEnum): {
-                    // DELETE /dedicated/server/{serviceName}/option/{option}
+                    /**
+                     * Release a given option
+                     * DELETE /dedicated/server/{serviceName}/option/{option}
+                     */
                     $delete(): Promise<void>;
-                    // GET /dedicated/server/{serviceName}/option/{option}
+                    /**
+                     * Get this object properties
+                     * GET /dedicated/server/{serviceName}/option/{option}
+                     */
                     $get(): Promise<dedicated.server.Option>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 };
             }
             orderable: {
                 backupStorage: {
-                    // GET /dedicated/server/{serviceName}/orderable/backupStorage
+                    /**
+                     * Get the backup storage orderable with your server.
+                     * GET /dedicated/server/{serviceName}/orderable/backupStorage
+                     */
                     $get(): Promise<dedicated.server.BackupStorageOrderable>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 bandwidth: {
-                    // GET /dedicated/server/{serviceName}/orderable/bandwidth
+                    /**
+                     * Get bandwidth orderable with your server.
+                     * GET /dedicated/server/{serviceName}/orderable/bandwidth
+                     */
                     $get(): Promise<dedicated.server.BandwidthOrderable>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 bandwidthvRack: {
-                    // GET /dedicated/server/{serviceName}/orderable/bandwidthvRack
+                    /**
+                     * Get vRack bandwidth orderable with your server.
+                     * GET /dedicated/server/{serviceName}/orderable/bandwidthvRack
+                     */
                     $get(): Promise<dedicated.server.BandwidthvRackOrderable>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 feature: {
-                    // GET /dedicated/server/{serviceName}/orderable/feature
+                    /**
+                     * Is this feature orderable with your server
+                     * GET /dedicated/server/{serviceName}/orderable/feature
+                     */
                     $get(params: { feature: dedicated.server.OrderableSysFeatureEnum }): Promise<boolean>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 ip: {
-                    // GET /dedicated/server/{serviceName}/orderable/ip
+                    /**
+                     * Get IP orderable with your server.
+                     * GET /dedicated/server/{serviceName}/orderable/ip
+                     */
                     $get(): Promise<dedicated.server.IpOrderable>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 kvm: {
-                    // GET /dedicated/server/{serviceName}/orderable/kvm
+                    /**
+                     * Is a KVM orderable with your server
+                     * GET /dedicated/server/{serviceName}/orderable/kvm
+                     */
                     $get(): Promise<boolean>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 kvmExpress: {
-                    // GET /dedicated/server/{serviceName}/orderable/kvmExpress
+                    /**
+                     * Is a KVM express orderable with your server
+                     * GET /dedicated/server/{serviceName}/orderable/kvmExpress
+                     */
                     $get(): Promise<boolean>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 professionalUse: {
-                    // GET /dedicated/server/{serviceName}/orderable/professionalUse
+                    /**
+                     * Is professional use orderable with your server
+                     * GET /dedicated/server/{serviceName}/orderable/professionalUse
+                     */
                     $get(): Promise<boolean>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 traffic: {
-                    // GET /dedicated/server/{serviceName}/orderable/traffic
+                    /**
+                     * Get orderable traffic with your server.
+                     * GET /dedicated/server/{serviceName}/orderable/traffic
+                     */
                     $get(): Promise<dedicated.server.TrafficOrderable>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 usbKey: {
-                    // GET /dedicated/server/{serviceName}/orderable/usbKey
+                    /**
+                     * Get USB keys orderable with your server
+                     * GET /dedicated/server/{serviceName}/orderable/usbKey
+                     */
                     $get(): Promise<dedicated.server.UsbKeyOrderableDetails>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             }
             reboot: {
-                // POST /dedicated/server/{serviceName}/reboot
+                /**
+                 * Hard reboot this server
+                 * POST /dedicated/server/{serviceName}/reboot
+                 */
                 $post(): Promise<dedicated.server.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             secondaryDnsDomains: {
-                // GET /dedicated/server/{serviceName}/secondaryDnsDomains
+                /**
+                 * List of secondary dns domain name
+                 * GET /dedicated/server/{serviceName}/secondaryDnsDomains
+                 */
                 $get(): Promise<string[]>;
-                // POST /dedicated/server/{serviceName}/secondaryDnsDomains
+                /**
+                 * add a domain on secondary dns
+                 * POST /dedicated/server/{serviceName}/secondaryDnsDomains
+                 */
                 $post(params: { domain: string, ip?: string }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(domain: string): {
-                    // DELETE /dedicated/server/{serviceName}/secondaryDnsDomains/{domain}
+                    /**
+                     * remove this domain
+                     * DELETE /dedicated/server/{serviceName}/secondaryDnsDomains/{domain}
+                     */
                     $delete(): Promise<void>;
-                    // GET /dedicated/server/{serviceName}/secondaryDnsDomains/{domain}
+                    /**
+                     * Get this object properties
+                     * GET /dedicated/server/{serviceName}/secondaryDnsDomains/{domain}
+                     */
                     $get(): Promise<secondaryDns.SecondaryDNS>;
-                    // PUT /dedicated/server/{serviceName}/secondaryDnsDomains/{domain}
+                    /**
+                     * Alter this object properties
+                     * PUT /dedicated/server/{serviceName}/secondaryDnsDomains/{domain}
+                     */
                     $put(params?: { creationDate?: string, dns?: string, domain?: string, ipMaster?: string }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     dnsServer: {
-                        // GET /dedicated/server/{serviceName}/secondaryDnsDomains/{domain}/dnsServer
+                        /**
+                         * domain name server informations
+                         * GET /dedicated/server/{serviceName}/secondaryDnsDomains/{domain}/dnsServer
+                         */
                         $get(): Promise<secondaryDns.SecondaryDNSNameServer>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                 };
             }
             secondaryDnsNameDomainToken: {
-                // GET /dedicated/server/{serviceName}/secondaryDnsNameDomainToken
+                /**
+                 * DNS field to temporarily add to your zone so that we can verify you are the owner of this domain
+                 * GET /dedicated/server/{serviceName}/secondaryDnsNameDomainToken
+                 */
                 $get(params: { domain: string }): Promise<secondaryDns.SecondaryDNSCheckField>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             secondaryDnsNameServerAvailable: {
-                // GET /dedicated/server/{serviceName}/secondaryDnsNameServerAvailable
+                /**
+                 * Secondary nameServer available for your Server
+                 * GET /dedicated/server/{serviceName}/secondaryDnsNameServerAvailable
+                 */
                 $get(): Promise<secondaryDns.SecondaryDNSNameServer>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             serviceInfos: {
-                // GET /dedicated/server/{serviceName}/serviceInfos
+                /**
+                 * Get this object properties
+                 * GET /dedicated/server/{serviceName}/serviceInfos
+                 */
                 $get(): Promise<services.Service>;
-                // PUT /dedicated/server/{serviceName}/serviceInfos
+                /**
+                 * Alter this object properties
+                 * PUT /dedicated/server/{serviceName}/serviceInfos
+                 */
                 $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             serviceMonitoring: {
-                // GET /dedicated/server/{serviceName}/serviceMonitoring
+                /**
+                 * Service monitoring details
+                 * GET /dedicated/server/{serviceName}/serviceMonitoring
+                 */
                 $get(): Promise<number[]>;
-                // POST /dedicated/server/{serviceName}/serviceMonitoring
+                /**
+                 * Add a new service monitoring
+                 * POST /dedicated/server/{serviceName}/serviceMonitoring
+                 */
                 $post(params: { challengeText?: string, enabled: boolean, interval: dedicated.server.MonitoringIntervalEnum, ip: string, port: number, protocol: dedicated.server.MonitoringProtocolEnum, url?: string }): Promise<dedicated.server.serviceMonitoring>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(monitoringId: number): {
-                    // DELETE /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}
+                    /**
+                     * Remove this service monitoring
+                     * DELETE /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}
+                     */
                     $delete(): Promise<void>;
-                    // GET /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}
+                    /**
+                     * Get this object properties
+                     * GET /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}
+                     */
                     $get(): Promise<dedicated.server.serviceMonitoring>;
-                    // PUT /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}
+                    /**
+                     * Alter this object properties
+                     * PUT /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}
+                     */
                     $put(params?: { challengeText?: string, enabled?: boolean, interval?: dedicated.server.MonitoringIntervalEnum, ip?: string, monitoringId?: number, port?: number, protocol?: dedicated.server.MonitoringProtocolEnum, url?: string }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     alert: {
                         email: {
-                            // GET /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email
+                            /**
+                             * Service monitoring alert by email
+                             * GET /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email
+                             */
                             $get(): Promise<number[]>;
-                            // POST /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email
+                            /**
+                             * Add a new email alert
+                             * POST /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email
+                             */
                             $post(params: { email: string, language: dedicated.server.AlertLanguageEnum }): Promise<dedicated.server.emailAlert>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                             $(alertId: number): {
-                                // DELETE /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}
+                                /**
+                                 * Remove this Email alert monitoring
+                                 * DELETE /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}
+                                 */
                                 $delete(): Promise<void>;
-                                // GET /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}
+                                /**
+                                 * Get this object properties
+                                 * GET /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}
+                                 */
                                 $get(): Promise<dedicated.server.emailAlert>;
-                                // PUT /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}
+                                /**
+                                 * Alter this object properties
+                                 * PUT /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/email/{alertId}
+                                 */
                                 $put(params?: { alertId?: number, email?: string, enabled?: boolean, language?: dedicated.server.AlertLanguageEnum }): Promise<void>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions): Promise<any>;
                             };
                         }
                         sms: {
-                            // GET /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms
+                            /**
+                             * Service monitoring alert by SMS
+                             * GET /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms
+                             */
                             $get(): Promise<number[]>;
-                            // POST /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms
+                            /**
+                             * Create a SMS alert
+                             * POST /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms
+                             */
                             $post(params: { fromHour?: number, language: dedicated.server.AlertLanguageEnum, phoneNumberTo: string, smsAccount: string, toHour?: number }): Promise<dedicated.server.smsAlert>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                             $(alertId: number): {
-                                // DELETE /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}
+                                /**
+                                 * Remove this SMS alert
+                                 * DELETE /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}
+                                 */
                                 $delete(): Promise<void>;
-                                // GET /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}
+                                /**
+                                 * Get this object properties
+                                 * GET /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}
+                                 */
                                 $get(): Promise<dedicated.server.smsAlert>;
-                                // PUT /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}
+                                /**
+                                 * Alter this object properties
+                                 * PUT /dedicated/server/{serviceName}/serviceMonitoring/{monitoringId}/alert/sms/{alertId}
+                                 */
                                 $put(params?: { alertId?: number, enabled?: boolean, fromHour?: number, language?: dedicated.server.AlertLanguageEnum, phoneNumberTo?: string, smsAccount?: string, toHour?: number }): Promise<void>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions): Promise<any>;
                             };
                         }
                     }
@@ -1303,115 +2467,317 @@ export interface Dedicated {
             }
             specifications: {
                 hardware: {
-                    // GET /dedicated/server/{serviceName}/specifications/hardware
+                    /**
+                     * Retrieve hardware informations about this dedicated server
+                     * GET /dedicated/server/{serviceName}/specifications/hardware
+                     */
                     $get(): Promise<dedicated.server.HardwareSpecifications>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 ip: {
-                    // GET /dedicated/server/{serviceName}/specifications/ip
+                    /**
+                     * Retrieve IP capabilities about this dedicated server
+                     * GET /dedicated/server/{serviceName}/specifications/ip
+                     */
                     $get(): Promise<dedicated.server.IpOrderable>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 network: {
-                    // GET /dedicated/server/{serviceName}/specifications/network
+                    /**
+                     * Retrieve network informations about this dedicated server
+                     * GET /dedicated/server/{serviceName}/specifications/network
+                     */
                     $get(): Promise<dedicated.server.NetworkSpecifications>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             }
             spla: {
-                // GET /dedicated/server/{serviceName}/spla
+                /**
+                 * Your own SPLA licenses attached to this dedicated server
+                 * GET /dedicated/server/{serviceName}/spla
+                 */
                 $get(params?: { status?: dedicated.server.SplaStatusEnum, type?: dedicated.server.SplaTypeEnum }): Promise<number[]>;
-                // POST /dedicated/server/{serviceName}/spla
+                /**
+                 * Add a new SPLA license
+                 * POST /dedicated/server/{serviceName}/spla
+                 */
                 $post(params: { serialNumber: string, type: dedicated.server.SplaTypeEnum }): Promise<number>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(id: number): {
-                    // GET /dedicated/server/{serviceName}/spla/{id}
+                    /**
+                     * Get this object properties
+                     * GET /dedicated/server/{serviceName}/spla/{id}
+                     */
                     $get(): Promise<dedicated.server.spla>;
-                    // PUT /dedicated/server/{serviceName}/spla/{id}
+                    /**
+                     * Alter this object properties
+                     * PUT /dedicated/server/{serviceName}/spla/{id}
+                     */
                     $put(params?: { id?: number, lastUpdate?: string, serialNumber?: string, status?: dedicated.server.SplaStatusEnum, type?: dedicated.server.SplaTypeEnum }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     revoke: {
-                        // POST /dedicated/server/{serviceName}/spla/{id}/revoke
+                        /**
+                         * Revoke an SPLA license
+                         * POST /dedicated/server/{serviceName}/spla/{id}/revoke
+                         */
                         $post(): Promise<void>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                 };
             }
             statistics: {
-                // GET /dedicated/server/{serviceName}/statistics
+                /**
+                 * Get this object properties
+                 * GET /dedicated/server/{serviceName}/statistics
+                 */
                 $get(): Promise<dedicated.server.Rtm>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 chart: {
-                    // GET /dedicated/server/{serviceName}/statistics/chart
+                    /**
+                     * Retrieve RTM graph values
+                     * GET /dedicated/server/{serviceName}/statistics/chart
+                     */
                     $get(params: { period: dedicated.server.RtmChartPeriodEnum, type: dedicated.server.RtmChartTypeEnum }): Promise<complexType.ChartReturn>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 connection: {
-                    // GET /dedicated/server/{serviceName}/statistics/connection
+                    /**
+                     * Get server opened connections
+                     * GET /dedicated/server/{serviceName}/statistics/connection
+                     */
                     $get(): Promise<dedicated.server.RtmConnection[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 cpu: {
-                    // GET /dedicated/server/{serviceName}/statistics/cpu
+                    /**
+                     * Get server cpu informations
+                     * GET /dedicated/server/{serviceName}/statistics/cpu
+                     */
                     $get(): Promise<dedicated.server.RtmCpu>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 disk: {
-                    // GET /dedicated/server/{serviceName}/statistics/disk
+                    /**
+                     * Server disks
+                     * GET /dedicated/server/{serviceName}/statistics/disk
+                     */
                     $get(): Promise<string[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     $(disk: string): {
-                        // GET /dedicated/server/{serviceName}/statistics/disk/{disk}
+                        /**
+                         * Get this object properties
+                         * GET /dedicated/server/{serviceName}/statistics/disk/{disk}
+                         */
                         $get(): Promise<dedicated.server.RtmDisk>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         smart: {
-                            // GET /dedicated/server/{serviceName}/statistics/disk/{disk}/smart
+                            /**
+                             * Get disk smart informations
+                             * GET /dedicated/server/{serviceName}/statistics/disk/{disk}/smart
+                             */
                             $get(): Promise<dedicated.server.RtmDiskSmart>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         }
                     };
                 }
                 load: {
-                    // GET /dedicated/server/{serviceName}/statistics/load
+                    /**
+                     * Get server load
+                     * GET /dedicated/server/{serviceName}/statistics/load
+                     */
                     $get(): Promise<dedicated.server.RtmLoad>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 memory: {
-                    // GET /dedicated/server/{serviceName}/statistics/memory
+                    /**
+                     * Get server memory informations
+                     * GET /dedicated/server/{serviceName}/statistics/memory
+                     */
                     $get(): Promise<dedicated.server.RtmMemory[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 motherboard: {
-                    // GET /dedicated/server/{serviceName}/statistics/motherboard
+                    /**
+                     * Get server motherboard hardware informations
+                     * GET /dedicated/server/{serviceName}/statistics/motherboard
+                     */
                     $get(): Promise<dedicated.server.RtmMotherboardHw>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 os: {
-                    // GET /dedicated/server/{serviceName}/statistics/os
+                    /**
+                     * Get server os informations
+                     * GET /dedicated/server/{serviceName}/statistics/os
+                     */
                     $get(): Promise<dedicated.server.RtmOs>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 partition: {
-                    // GET /dedicated/server/{serviceName}/statistics/partition
+                    /**
+                     * Server partitions
+                     * GET /dedicated/server/{serviceName}/statistics/partition
+                     */
                     $get(): Promise<string[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     $(partition: string): {
-                        // GET /dedicated/server/{serviceName}/statistics/partition/{partition}
+                        /**
+                         * Get this object properties
+                         * GET /dedicated/server/{serviceName}/statistics/partition/{partition}
+                         */
                         $get(): Promise<dedicated.server.RtmPartition>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         chart: {
-                            // GET /dedicated/server/{serviceName}/statistics/partition/{partition}/chart
+                            /**
+                             * Retrieve partition charts
+                             * GET /dedicated/server/{serviceName}/statistics/partition/{partition}/chart
+                             */
                             $get(params: { period: dedicated.server.RtmChartPeriodEnum }): Promise<complexType.ChartReturn>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         }
                     };
                 }
                 pci: {
-                    // GET /dedicated/server/{serviceName}/statistics/pci
+                    /**
+                     * Get server PCI devices informations
+                     * GET /dedicated/server/{serviceName}/statistics/pci
+                     */
                     $get(): Promise<dedicated.server.RtmPci[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 process: {
-                    // GET /dedicated/server/{serviceName}/statistics/process
+                    /**
+                     * Get server process
+                     * GET /dedicated/server/{serviceName}/statistics/process
+                     */
                     $get(): Promise<dedicated.server.RtmCommandSize[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 raid: {
-                    // GET /dedicated/server/{serviceName}/statistics/raid
+                    /**
+                     * Server raid informations
+                     * GET /dedicated/server/{serviceName}/statistics/raid
+                     */
                     $get(): Promise<string[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     $(unit: string): {
-                        // GET /dedicated/server/{serviceName}/statistics/raid/{unit}
+                        /**
+                         * Get this object properties
+                         * GET /dedicated/server/{serviceName}/statistics/raid/{unit}
+                         */
                         $get(): Promise<dedicated.server.RtmRaid>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         volume: {
-                            // GET /dedicated/server/{serviceName}/statistics/raid/{unit}/volume
+                            /**
+                             * Raid unit volumes
+                             * GET /dedicated/server/{serviceName}/statistics/raid/{unit}/volume
+                             */
                             $get(): Promise<string[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                             $(volume: string): {
-                                // GET /dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}
+                                /**
+                                 * Get this object properties
+                                 * GET /dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}
+                                 */
                                 $get(): Promise<dedicated.server.RtmRaidVolume>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions): Promise<any>;
                                 port: {
-                                    // GET /dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}/port
+                                    /**
+                                     * Raid unit volume ports
+                                     * GET /dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}/port
+                                     */
                                     $get(): Promise<string[]>;
+                                    /**
+                                     * Controle cache
+                                     */
+                                    $cache(param?: ICacheOptions): Promise<any>;
                                     $(port: string): {
-                                        // GET /dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}/port/{port}
+                                        /**
+                                         * Get this object properties
+                                         * GET /dedicated/server/{serviceName}/statistics/raid/{unit}/volume/{volume}/port/{port}
+                                         */
                                         $get(): Promise<dedicated.server.RtmRaidVolumePort>;
+                                        /**
+                                         * Controle cache
+                                         */
+                                        $cache(param?: ICacheOptions): Promise<any>;
                                     };
                                 }
                             };
@@ -1422,78 +2788,205 @@ export interface Dedicated {
             support: {
                 replace: {
                     hardDiskDrive: {
-                        // POST /dedicated/server/{serviceName}/support/replace/hardDiskDrive
+                        /**
+                         * Ask for a broken HDD replacement
+                         * POST /dedicated/server/{serviceName}/support/replace/hardDiskDrive
+                         */
                         $post(params: { comment: string, disks: dedicated.server.SupportReplaceHddInfo[], inverse: boolean }): Promise<support.NewMessageInfo>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                 }
             }
             task: {
-                // GET /dedicated/server/{serviceName}/task
+                /**
+                 * Dedicated server todos
+                 * GET /dedicated/server/{serviceName}/task
+                 */
                 $get(params?: { function_?: dedicated.TaskFunctionEnum, status?: dedicated.TaskStatusEnum }): Promise<number[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(taskId: number): {
-                    // GET /dedicated/server/{serviceName}/task/{taskId}
+                    /**
+                     * Get this object properties
+                     * GET /dedicated/server/{serviceName}/task/{taskId}
+                     */
                     $get(): Promise<dedicated.server.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     cancel: {
-                        // POST /dedicated/server/{serviceName}/task/{taskId}/cancel
+                        /**
+                         * this action stop the task progression if it's possible
+                         * POST /dedicated/server/{serviceName}/task/{taskId}/cancel
+                         */
                         $post(): Promise<void>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                 };
             }
             terminate: {
-                // POST /dedicated/server/{serviceName}/terminate
+                /**
+                 * Terminate your service
+                 * POST /dedicated/server/{serviceName}/terminate
+                 */
                 $post(): Promise<string>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             virtualMac: {
-                // GET /dedicated/server/{serviceName}/virtualMac
+                /**
+                 * Virtual MAC addresses of the server
+                 * GET /dedicated/server/{serviceName}/virtualMac
+                 */
                 $get(): Promise<string[]>;
-                // POST /dedicated/server/{serviceName}/virtualMac
+                /**
+                 * Add a virtual mac to an IP address
+                 * POST /dedicated/server/{serviceName}/virtualMac
+                 */
                 $post(params: { ipAddress: string, type: dedicated.server.VmacTypeEnum, virtualMachineName: string }): Promise<dedicated.server.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(macAddress: string): {
-                    // GET /dedicated/server/{serviceName}/virtualMac/{macAddress}
+                    /**
+                     * Get this object properties
+                     * GET /dedicated/server/{serviceName}/virtualMac/{macAddress}
+                     */
                     $get(): Promise<dedicated.server.VirtualMac>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     virtualAddress: {
-                        // GET /dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress
+                        /**
+                         * List of IPs associated to this Virtual MAC
+                         * GET /dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress
+                         */
                         $get(): Promise<string[]>;
-                        // POST /dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress
+                        /**
+                         * Add an IP to this Virtual MAC
+                         * POST /dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress
+                         */
                         $post(params: { ipAddress: string, virtualMachineName: string }): Promise<dedicated.server.Task>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         $(ipAddress: string): {
-                            // DELETE /dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress/{ipAddress}
+                            /**
+                             * Remove this ip from virtual mac , if you remove the last linked Ip, virtualmac will be deleted
+                             * DELETE /dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress/{ipAddress}
+                             */
                             $delete(): Promise<dedicated.server.Task>;
-                            // GET /dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress/{ipAddress}
+                            /**
+                             * Get this object properties
+                             * GET /dedicated/server/{serviceName}/virtualMac/{macAddress}/virtualAddress/{ipAddress}
+                             */
                             $get(): Promise<dedicated.server.VirtualMacManagement>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         };
                     }
                 };
             }
             virtualNetworkInterface: {
-                // GET /dedicated/server/{serviceName}/virtualNetworkInterface
+                /**
+                 * List server VirtualNetworkInterfaces
+                 * GET /dedicated/server/{serviceName}/virtualNetworkInterface
+                 */
                 $get(params?: { enabled?: boolean, mode?: dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum, name?: string, vrack?: string }): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(uuid: string): {
-                    // GET /dedicated/server/{serviceName}/virtualNetworkInterface/{uuid}
+                    /**
+                     * Get this object properties
+                     * GET /dedicated/server/{serviceName}/virtualNetworkInterface/{uuid}
+                     */
                     $get(): Promise<dedicated.virtualNetworkInterface.VirtualNetworkInterface>;
-                    // PUT /dedicated/server/{serviceName}/virtualNetworkInterface/{uuid}
+                    /**
+                     * Alter this object properties
+                     * PUT /dedicated/server/{serviceName}/virtualNetworkInterface/{uuid}
+                     */
                     $put(params?: { enabled?: boolean, mode?: dedicated.virtualNetworkInterface.VirtualNetworkInterfaceModeEnum, name?: string, networkInterfaceController?: string[], serverName?: string, uuid?: string, vrack?: string }): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     disable: {
-                        // POST /dedicated/server/{serviceName}/virtualNetworkInterface/{uuid}/disable
+                        /**
+                         * Disable this VirtualNetworkInterface
+                         * POST /dedicated/server/{serviceName}/virtualNetworkInterface/{uuid}/disable
+                         */
                         $post(): Promise<dedicated.server.Task>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     enable: {
-                        // POST /dedicated/server/{serviceName}/virtualNetworkInterface/{uuid}/enable
+                        /**
+                         * Enable this VirtualNetworkInterface
+                         * POST /dedicated/server/{serviceName}/virtualNetworkInterface/{uuid}/enable
+                         */
                         $post(): Promise<dedicated.server.Task>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                 };
             }
             vrack: {
-                // GET /dedicated/server/{serviceName}/vrack
+                /**
+                 * Server Vracks
+                 * GET /dedicated/server/{serviceName}/vrack
+                 */
                 $get(): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(vrack: string): {
-                    // DELETE /dedicated/server/{serviceName}/vrack/{vrack}
+                    /**
+                     * remove this server from this vrack
+                     * DELETE /dedicated/server/{serviceName}/vrack/{vrack}
+                     */
                     $delete(): Promise<vrack.Task>;
-                    // GET /dedicated/server/{serviceName}/vrack/{vrack}
+                    /**
+                     * Get this object properties
+                     * GET /dedicated/server/{serviceName}/vrack/{vrack}
+                     */
                     $get(): Promise<vrack.dedicatedServer>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     mrtg: {
-                        // GET /dedicated/server/{serviceName}/vrack/{vrack}/mrtg
+                        /**
+                         * Retrieve vrack traffic graph values
+                         * GET /dedicated/server/{serviceName}/vrack/{vrack}/mrtg
+                         */
                         $get(params: { period: dedicated.server.MrtgPeriodEnum, type: dedicated.server.MrtgTypeEnum }): Promise<dedicated.server.MrtgTimestampValue[]>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                 };
             }
