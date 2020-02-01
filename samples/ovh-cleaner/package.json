@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@ovh-api/api": "file:../../code/api",
-    "@ovh-api/common": "^2.0.0",
+    "@ovh-api/common": "^3.0.0",
     "@ovh-api/domain": "file:../../packages-eu/domain",
     "@ovh-api/hosting-web": "file:../../packages-eu/hosting-web",
     "@ovh-api/me": "file:../../packages-eu/me",

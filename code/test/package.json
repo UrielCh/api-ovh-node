@@ -13,7 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "@ovh-api/api": "file:../api",
-    "@ovh-api/common": "^2.0.0",
+    "@ovh-api/common": "^3.0.0",
     "@ovh-api/me": "3.0.0-beta-2",
     "chai": "^4.2.0",
     "mocha": "^7.0.1"

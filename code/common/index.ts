@@ -4,9 +4,13 @@
 export type OvhParamType = { [key: string]: any; };
 
 /**
- * params ton configure cache
+ * params to configure cache
  */
 export interface ICacheOptions {
+    /**
+     * action to controle cache
+     */
+    action?: 'flush' | 'disable';
     /**
      * Time to live in second
      */
