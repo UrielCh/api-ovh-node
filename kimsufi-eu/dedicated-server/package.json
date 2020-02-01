@@ -19,5 +19,10 @@
     "scripts": {
         "build": "tsc",
         "build:watch": "tsc --watch"
-    }
+    },
+    "files": [
+        "index.js",
+        "index.d.ts",
+        "index.ts"
+    ]
 }
