@@ -1,12 +1,12 @@
 {
     "name": "@ovh-api/me",
     "description": "Add typing to to ovh api me",
-    "version": "2.0.16",
+    "version": "3.0.0-beta-2",
     "typings": "index.d.ts",
     "license": "MIT",
     "author": "Uriel Chemouni <uchemouni@gmail.com>",
     "dependencies": {
-        "@ovh-api/common": "file:../../code/common"
+        "@ovh-api/common": "^2.0.0"
     },
     "publishConfig": {
         "access": "public"
