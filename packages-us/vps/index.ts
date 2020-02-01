@@ -356,14 +356,14 @@ export interface Vps {
         // GET /vps/{serviceName}
         $get(): Promise<vps.VPS>;
         // PUT /vps/{serviceName}
-        $put(params?: {cluster?: string, displayName?: string, keymap?: vps.VpsKeymapEnum, memoryLimit?: number, model?: vps.Model, monitoringIpBlocks?: string[], name?: string, netbootMode?: vps.VpsNetbootEnum, offerType?: vps.VpsOfferEnum, slaMonitoring?: boolean, state?: vps.VpsStateEnum, vcore?: number, zone?: string}): Promise<void>;
+        $put(params?: { cluster?: string, displayName?: string, keymap?: vps.VpsKeymapEnum, memoryLimit?: number, model?: vps.Model, monitoringIpBlocks?: string[], name?: string, netbootMode?: vps.VpsNetbootEnum, offerType?: vps.VpsOfferEnum, slaMonitoring?: boolean, state?: vps.VpsStateEnum, vcore?: number, zone?: string }): Promise<void>;
         activeOptions: {
             // GET /vps/{serviceName}/activeOptions
             $get(): Promise<vps.VpsOptionEnum[]>;
         }
         confirmTermination: {
             // POST /vps/{serviceName}/confirmTermination
-            $post(params: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+            $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
         }
         datacenter: {
             // GET /vps/{serviceName}/datacenter
@@ -400,12 +400,12 @@ export interface Vps {
                 // GET /vps/{serviceName}/ips/{ipAddress}
                 $get(): Promise<vps.Ip>;
                 // PUT /vps/{serviceName}/ips/{ipAddress}
-                $put(params?: {gateway?: string, geolocation?: vps.ip.GeolocationEnum, ipAddress?: string, macAddress?: string, reverse?: string, type?: vps.ip.TypeEnum, version?: coreTypes.IpVersionEnum}): Promise<void>;
+                $put(params?: { gateway?: string, geolocation?: vps.ip.GeolocationEnum, ipAddress?: string, macAddress?: string, reverse?: string, type?: vps.ip.TypeEnum, version?: coreTypes.IpVersionEnum }): Promise<void>;
             };
         }
         monitoring: {
             // GET /vps/{serviceName}/monitoring
-            $get(params: {period: vps.VpsMonitoringPeriodEnum, type: vps.VpsStatisticTypeEnum}): Promise<complexType.UnitAndValues<vps.VpsTimestampValue>>;
+            $get(params: { period: vps.VpsMonitoringPeriodEnum, type: vps.VpsStatisticTypeEnum }): Promise<complexType.UnitAndValues<vps.VpsTimestampValue>>;
         }
         option: {
             // GET /vps/{serviceName}/option
@@ -417,20 +417,20 @@ export interface Vps {
         }
         rebuild: {
             // POST /vps/{serviceName}/rebuild
-            $post(params: {doNotSendPassword?: boolean, imageId: string, sshKey?: string}): Promise<vps.Task>;
+            $post(params: { doNotSendPassword?: boolean, imageId: string, sshKey?: string }): Promise<vps.Task>;
         }
         secondaryDnsDomains: {
             // GET /vps/{serviceName}/secondaryDnsDomains
             $get(): Promise<string[]>;
             // POST /vps/{serviceName}/secondaryDnsDomains
-            $post(params: {domain: string, ip?: string}): Promise<void>;
+            $post(params: { domain: string, ip?: string }): Promise<void>;
             $(domain: string): {
                 // DELETE /vps/{serviceName}/secondaryDnsDomains/{domain}
                 $delete(): Promise<void>;
                 // GET /vps/{serviceName}/secondaryDnsDomains/{domain}
                 $get(): Promise<secondaryDns.SecondaryDNS>;
                 // PUT /vps/{serviceName}/secondaryDnsDomains/{domain}
-                $put(params?: {creationDate?: string, dns?: string, domain?: string, ipMaster?: string}): Promise<void>;
+                $put(params?: { creationDate?: string, dns?: string, domain?: string, ipMaster?: string }): Promise<void>;
                 dnsServer: {
                     // GET /vps/{serviceName}/secondaryDnsDomains/{domain}/dnsServer
                     $get(): Promise<secondaryDns.SecondaryDNSNameServer>;
@@ -445,7 +445,7 @@ export interface Vps {
             // GET /vps/{serviceName}/serviceInfos
             $get(): Promise<services.Service>;
             // PUT /vps/{serviceName}/serviceInfos
-            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+            $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
         }
         start: {
             // POST /vps/{serviceName}/start
@@ -457,7 +457,7 @@ export interface Vps {
         }
         tasks: {
             // GET /vps/{serviceName}/tasks
-            $get(params?: {state?: vps.TaskStateEnum, type?: vps.TaskTypeEnum}): Promise<number[]>;
+            $get(params?: { state?: vps.TaskStateEnum, type?: vps.TaskTypeEnum }): Promise<number[]>;
             $(id: number): {
                 // GET /vps/{serviceName}/tasks/{id}
                 $get(): Promise<vps.Task>;

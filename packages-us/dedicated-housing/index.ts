@@ -171,14 +171,14 @@ export interface Dedicated {
                         // GET /dedicated/housing/{serviceName}/features/backupFTP/access
                         $get(): Promise<string[]>;
                         // POST /dedicated/housing/{serviceName}/features/backupFTP/access
-                        $post(params: {cifs: boolean, ftp?: boolean, ipBlock: string, nfs: boolean}): Promise<dedicated.server.Task>;
+                        $post(params: { cifs: boolean, ftp?: boolean, ipBlock: string, nfs: boolean }): Promise<dedicated.server.Task>;
                         $(ipBlock: string): {
                             // DELETE /dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}
                             $delete(): Promise<dedicated.server.Task>;
                             // GET /dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}
                             $get(): Promise<dedicated.server.BackupFtpAcl>;
                             // PUT /dedicated/housing/{serviceName}/features/backupFTP/access/{ipBlock}
-                            $put(params?: {cifs?: boolean, ftp?: boolean, ipBlock?: string, isApplied?: boolean, lastUpdate?: string, nfs?: boolean}): Promise<void>;
+                            $put(params?: { cifs?: boolean, ftp?: boolean, ipBlock?: string, isApplied?: boolean, lastUpdate?: string, nfs?: boolean }): Promise<void>;
                         };
                     }
                     authorizableBlocks: {
@@ -201,11 +201,11 @@ export interface Dedicated {
                 // GET /dedicated/housing/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /dedicated/housing/{serviceName}/serviceInfos
-                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+                $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
             }
             task: {
                 // GET /dedicated/housing/{serviceName}/task
-                $get(params?: {function_?: dedicated.housing.TaskFunctionEnum, status?: dedicated.TaskStatusEnum}): Promise<number[]>;
+                $get(params?: { function_?: dedicated.housing.TaskFunctionEnum, status?: dedicated.TaskStatusEnum }): Promise<number[]>;
                 $(taskId: number): {
                     // GET /dedicated/housing/{serviceName}/task/{taskId}
                     $get(): Promise<dedicated.housing.Task>;

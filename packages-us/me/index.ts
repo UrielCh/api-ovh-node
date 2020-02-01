@@ -1181,7 +1181,7 @@ export interface Me {
     // GET /me
     $get(): Promise<nichandle.Nichandle>;
     // PUT /me
-    $put(params?: {address?: string, area?: string, birthCity?: string, birthDay?: string, city?: string, companyNationalIdentificationNumber?: string, corporationType?: string, country?: nichandle.CountryEnum, currency?: nichandle.Currency, customerCode?: string, email?: string, fax?: string, firstname?: string, italianSDI?: string, language?: nichandle.LanguageEnum, legalform?: nichandle.LegalFormEnum, name?: string, nationalIdentificationNumber?: string, nichandle?: string, organisation?: string, ovhCompany?: nichandle.OvhCompanyEnum, ovhSubsidiary?: nichandle.OvhSubsidiaryEnum, phone?: string, phoneCountry?: nichandle.CountryEnum, sex?: nichandle.GenderEnum, spareEmail?: string, state?: nichandle.StateEnum, vat?: string, zip?: string}): Promise<void>;
+    $put(params?: { address?: string, area?: string, birthCity?: string, birthDay?: string, city?: string, companyNationalIdentificationNumber?: string, corporationType?: string, country?: nichandle.CountryEnum, currency?: nichandle.Currency, customerCode?: string, email?: string, fax?: string, firstname?: string, italianSDI?: string, language?: nichandle.LanguageEnum, legalform?: nichandle.LegalFormEnum, name?: string, nationalIdentificationNumber?: string, nichandle?: string, organisation?: string, ovhCompany?: nichandle.OvhCompanyEnum, ovhSubsidiary?: nichandle.OvhSubsidiaryEnum, phone?: string, phoneCountry?: nichandle.CountryEnum, sex?: nichandle.GenderEnum, spareEmail?: string, state?: nichandle.StateEnum, vat?: string, zip?: string }): Promise<void>;
     accessRestriction: {
         backupCode: {
             // DELETE /me/accessRestriction/backupCode
@@ -1192,62 +1192,62 @@ export interface Me {
             $post(): Promise<nichandle.accessRestriction.SOTPSecret>;
             disable: {
                 // POST /me/accessRestriction/backupCode/disable
-                $post(params: {code: string}): Promise<void>;
+                $post(params: { code: string }): Promise<void>;
             }
             enable: {
                 // POST /me/accessRestriction/backupCode/enable
-                $post(params: {code: string}): Promise<void>;
+                $post(params: { code: string }): Promise<void>;
             }
             validate: {
                 // POST /me/accessRestriction/backupCode/validate
-                $post(params: {code: string}): Promise<nichandle.accessRestriction.SOTPValidate>;
+                $post(params: { code: string }): Promise<nichandle.accessRestriction.SOTPValidate>;
             }
         }
         developerMode: {
             // GET /me/accessRestriction/developerMode
             $get(): Promise<nichandle.DeveloperModeRestriction>;
             // PUT /me/accessRestriction/developerMode
-            $put(params?: {enabled?: boolean}): Promise<void>;
+            $put(params?: { enabled?: boolean }): Promise<void>;
         }
         ip: {
             // GET /me/accessRestriction/ip
             $get(): Promise<number[]>;
             // POST /me/accessRestriction/ip
-            $post(params: {ip: string, rule: nichandle.accessRestriction.IpRestrictionRuleEnum, warning: boolean}): Promise<void>;
+            $post(params: { ip: string, rule: nichandle.accessRestriction.IpRestrictionRuleEnum, warning: boolean }): Promise<void>;
             $(id: number): {
                 // DELETE /me/accessRestriction/ip/{id}
                 $delete(): Promise<void>;
                 // GET /me/accessRestriction/ip/{id}
                 $get(): Promise<nichandle.IpRestriction>;
                 // PUT /me/accessRestriction/ip/{id}
-                $put(params?: {id?: number, ip?: string, rule?: nichandle.accessRestriction.IpRestrictionRuleEnum, warning?: boolean}): Promise<void>;
+                $put(params?: { id?: number, ip?: string, rule?: nichandle.accessRestriction.IpRestrictionRuleEnum, warning?: boolean }): Promise<void>;
             };
         }
         ipDefaultRule: {
             // GET /me/accessRestriction/ipDefaultRule
             $get(): Promise<nichandle.IpRestrictionDefaultRule>;
             // PUT /me/accessRestriction/ipDefaultRule
-            $put(params?: {rule?: nichandle.accessRestriction.IpRestrictionRuleEnum, warning?: boolean}): Promise<void>;
+            $put(params?: { rule?: nichandle.accessRestriction.IpRestrictionRuleEnum, warning?: boolean }): Promise<void>;
         }
         sms: {
             // GET /me/accessRestriction/sms
             $get(): Promise<number[]>;
             // POST /me/accessRestriction/sms
-            $post(params: {phone: string}): Promise<nichandle.accessRestriction.SmsSecret>;
+            $post(params: { phone: string }): Promise<nichandle.accessRestriction.SmsSecret>;
             $(id: number): {
                 // DELETE /me/accessRestriction/sms/{id}
                 $delete(): Promise<void>;
                 // GET /me/accessRestriction/sms/{id}
                 $get(): Promise<nichandle.accessRestriction.SmsAccount>;
                 // PUT /me/accessRestriction/sms/{id}
-                $put(params?: {creationDate?: string, description?: string, id?: number, lastUsedDate?: string, phoneNumber?: string, status?: nichandle.accessRestriction.SmsStatusEnum}): Promise<void>;
+                $put(params?: { creationDate?: string, description?: string, id?: number, lastUsedDate?: string, phoneNumber?: string, status?: nichandle.accessRestriction.SmsStatusEnum }): Promise<void>;
                 disable: {
                     // POST /me/accessRestriction/sms/{id}/disable
-                    $post(params: {code: string}): Promise<void>;
+                    $post(params: { code: string }): Promise<void>;
                 }
                 enable: {
                     // POST /me/accessRestriction/sms/{id}/enable
-                    $post(params: {code: string}): Promise<void>;
+                    $post(params: { code: string }): Promise<void>;
                 }
                 sendCode: {
                     // POST /me/accessRestriction/sms/{id}/sendCode
@@ -1255,7 +1255,7 @@ export interface Me {
                 }
                 validate: {
                     // POST /me/accessRestriction/sms/{id}/validate
-                    $post(params: {code: string}): Promise<void>;
+                    $post(params: { code: string }): Promise<void>;
                 }
             };
         }
@@ -1270,18 +1270,18 @@ export interface Me {
                 // GET /me/accessRestriction/totp/{id}
                 $get(): Promise<nichandle.accessRestriction.TOTPAccount>;
                 // PUT /me/accessRestriction/totp/{id}
-                $put(params?: {creationDate?: string, description?: string, id?: number, lastUsedDate?: string, status?: nichandle.accessRestriction.TOTPStatusEnum}): Promise<void>;
+                $put(params?: { creationDate?: string, description?: string, id?: number, lastUsedDate?: string, status?: nichandle.accessRestriction.TOTPStatusEnum }): Promise<void>;
                 disable: {
                     // POST /me/accessRestriction/totp/{id}/disable
-                    $post(params: {code: string}): Promise<void>;
+                    $post(params: { code: string }): Promise<void>;
                 }
                 enable: {
                     // POST /me/accessRestriction/totp/{id}/enable
-                    $post(params: {code: string}): Promise<void>;
+                    $post(params: { code: string }): Promise<void>;
                 }
                 validate: {
                     // POST /me/accessRestriction/totp/{id}/validate
-                    $post(params: {code: string}): Promise<void>;
+                    $post(params: { code: string }): Promise<void>;
                 }
             };
         }
@@ -1296,29 +1296,29 @@ export interface Me {
                 // GET /me/accessRestriction/u2f/{id}
                 $get(): Promise<nichandle.accessRestriction.U2FAccount>;
                 // PUT /me/accessRestriction/u2f/{id}
-                $put(params?: {creationDate?: string, description?: string, id?: number, lastUsedDate?: string, status?: nichandle.accessRestriction.U2FStatusEnum}): Promise<void>;
+                $put(params?: { creationDate?: string, description?: string, id?: number, lastUsedDate?: string, status?: nichandle.accessRestriction.U2FStatusEnum }): Promise<void>;
                 challenge: {
                     // POST /me/accessRestriction/u2f/{id}/challenge
                     $post(): Promise<nichandle.accessRestriction.U2FSignChallenge>;
                 }
                 disable: {
                     // POST /me/accessRestriction/u2f/{id}/disable
-                    $post(params: {clientData: string, signatureData: string}): Promise<void>;
+                    $post(params: { clientData: string, signatureData: string }): Promise<void>;
                 }
                 enable: {
                     // POST /me/accessRestriction/u2f/{id}/enable
-                    $post(params: {clientData: string, signatureData: string}): Promise<void>;
+                    $post(params: { clientData: string, signatureData: string }): Promise<void>;
                 }
                 validate: {
                     // POST /me/accessRestriction/u2f/{id}/validate
-                    $post(params: {clientData: string, registrationData: string}): Promise<void>;
+                    $post(params: { clientData: string, registrationData: string }): Promise<void>;
                 }
             };
         }
     }
     agreements: {
         // GET /me/agreements
-        $get(params?: {agreed?: agreements.AgreementStateEnum, contractId?: number}): Promise<number[]>;
+        $get(params?: { agreed?: agreements.AgreementStateEnum, contractId?: number }): Promise<number[]>;
         $(id: number): {
             // GET /me/agreements/{id}
             $get(): Promise<agreements.ContractAgreement>;
@@ -1345,14 +1345,14 @@ export interface Me {
         }
         credential: {
             // GET /me/api/credential
-            $get(params?: {applicationId?: number, status?: auth.CredentialStateEnum}): Promise<number[]>;
+            $get(params?: { applicationId?: number, status?: auth.CredentialStateEnum }): Promise<number[]>;
             $(credentialId: number): {
                 // DELETE /me/api/credential/{credentialId}
                 $delete(): Promise<void>;
                 // GET /me/api/credential/{credentialId}
                 $get(): Promise<api.Credential>;
                 // PUT /me/api/credential/{credentialId}
-                $put(params?: {allowedIPs?: string[], applicationId?: number, creation?: string, credentialId?: number, expiration?: string, lastUse?: string, ovhSupport?: boolean, rules?: auth.AccessRule[], status?: auth.CredentialStateEnum}): Promise<void>;
+                $put(params?: { allowedIPs?: string[], applicationId?: number, creation?: string, credentialId?: number, expiration?: string, lastUse?: string, ovhSupport?: boolean, rules?: auth.AccessRule[], status?: auth.CredentialStateEnum }): Promise<void>;
                 application: {
                     // GET /me/api/credential/{credentialId}/application
                     $get(): Promise<api.Application>;
@@ -1366,7 +1366,7 @@ export interface Me {
     }
     bill: {
         // GET /me/bill
-        $get(params?: {date_from?: string, date_to?: string, orderId?: number}): Promise<string[]>;
+        $get(params?: { date_from?: string, date_to?: string, orderId?: number }): Promise<string[]>;
         $(billId: string): {
             // GET /me/bill/{billId}
             $get(): Promise<billing.Invoice>;
@@ -1375,7 +1375,7 @@ export interface Me {
                 $get(): Promise<balance.InvoicingBalance>;
                 operation: {
                     // GET /me/bill/{billId}/debt/operation
-                    $get(params?: {depositOrderId?: number}): Promise<number[]>;
+                    $get(params?: { depositOrderId?: number }): Promise<number[]>;
                     $(operationId: number): {
                         // GET /me/bill/{billId}/debt/operation/{operationId}
                         $get(): Promise<balance.OperationBalance>;
@@ -1396,28 +1396,28 @@ export interface Me {
             }
             download: {
                 // GET /me/bill/{billId}/download
-                $get(params?: {extension?: billing.DocumentExtensionEnum}): Promise<string>;
+                $get(params?: { extension?: billing.DocumentExtensionEnum }): Promise<string>;
             }
         };
     }
     billing: {
         group: {
             // GET /me/billing/group
-            $get(params?: {name?: string}): Promise<number[]>;
+            $get(params?: { name?: string }): Promise<number[]>;
             // POST /me/billing/group
-            $post(params?: {contactId?: number, creationDate?: string, groupId?: number, lastUpdate?: string, name?: string, paymentMethodId?: number}): Promise<me.billing.group.BillingGroup>;
+            $post(params?: { contactId?: number, creationDate?: string, groupId?: number, lastUpdate?: string, name?: string, paymentMethodId?: number }): Promise<me.billing.group.BillingGroup>;
             $(groupId: number): {
                 // DELETE /me/billing/group/{groupId}
                 $delete(): Promise<void>;
                 // GET /me/billing/group/{groupId}
                 $get(): Promise<me.billing.group.BillingGroup>;
                 // PUT /me/billing/group/{groupId}
-                $put(params?: {contactId?: number, creationDate?: string, groupId?: number, lastUpdate?: string, name?: string, paymentMethodId?: number}): Promise<void>;
+                $put(params?: { contactId?: number, creationDate?: string, groupId?: number, lastUpdate?: string, name?: string, paymentMethodId?: number }): Promise<void>;
                 service: {
                     // GET /me/billing/group/{groupId}/service
                     $get(): Promise<number[]>;
                     // POST /me/billing/group/{groupId}/service
-                    $post(params: {serviceId: number}): Promise<me.billing.group.Service>;
+                    $post(params: { serviceId: number }): Promise<me.billing.group.Service>;
                     $(serviceId: number): {
                         // DELETE /me/billing/group/{groupId}/service/{serviceId}
                         $delete(): Promise<void>;
@@ -1430,11 +1430,11 @@ export interface Me {
     }
     certificates: {
         // GET /me/certificates
-        $get(params?: {name?: string}): Promise<string[]>;
+        $get(params?: { name?: string }): Promise<string[]>;
     }
     changeEmail: {
         // POST /me/changeEmail
-        $post(params: {newEmail: string}): Promise<nichandle.emailChange.Task>;
+        $post(params: { newEmail: string }): Promise<nichandle.emailChange.Task>;
     }
     changePassword: {
         // POST /me/changePassword
@@ -1450,7 +1450,7 @@ export interface Me {
                 // GET /me/consent/{campaignName}/decision
                 $get(): Promise<me.consent.Consent>;
                 // PUT /me/consent/{campaignName}/decision
-                $put(params: {value: boolean}): Promise<void>;
+                $put(params: { value: boolean }): Promise<void>;
             }
         };
     }
@@ -1466,7 +1466,7 @@ export interface Me {
             }
             history: {
                 // GET /me/consumption/usage/history
-                $get(params: {beginDate: string, endDate: string}): Promise<me.consumption.Transaction[]>;
+                $get(params: { beginDate: string, endDate: string }): Promise<me.consumption.Transaction[]>;
             }
         }
     }
@@ -1474,12 +1474,12 @@ export interface Me {
         // GET /me/contact
         $get(): Promise<number[]>;
         // POST /me/contact
-        $post(params: {address: contact.Address, birthCity?: string, birthCountry?: nichandle.CountryEnum, birthDay?: string, birthZip?: string, cellPhone?: string, companyNationalIdentificationNumber?: string, email: string, fax?: string, firstName: string, gender?: nichandle.GenderEnum, language: nichandle.LanguageEnum, lastName: string, legalForm: nichandle.LegalFormEnum, nationalIdentificationNumber?: string, nationality?: nichandle.CountryEnum, organisationName?: string, organisationType?: string, phone: string, vat?: string}): Promise<contact.Contact>;
+        $post(params: { address: contact.Address, birthCity?: string, birthCountry?: nichandle.CountryEnum, birthDay?: string, birthZip?: string, cellPhone?: string, companyNationalIdentificationNumber?: string, email: string, fax?: string, firstName: string, gender?: nichandle.GenderEnum, language: nichandle.LanguageEnum, lastName: string, legalForm: nichandle.LegalFormEnum, nationalIdentificationNumber?: string, nationality?: nichandle.CountryEnum, organisationName?: string, organisationType?: string, phone: string, vat?: string }): Promise<contact.Contact>;
         $(contactId: number): {
             // GET /me/contact/{contactId}
             $get(): Promise<contact.Contact>;
             // PUT /me/contact/{contactId}
-            $put(params?: {address?: contact.Address, birthCity?: string, birthCountry?: nichandle.CountryEnum, birthDay?: string, birthZip?: string, cellPhone?: string, companyNationalIdentificationNumber?: string, email?: string, fax?: string, firstName?: string, gender?: nichandle.GenderEnum, language?: nichandle.LanguageEnum, lastName?: string, legalForm?: nichandle.LegalFormEnum, nationalIdentificationNumber?: string, nationality?: nichandle.CountryEnum, organisationName?: string, organisationType?: string, phone?: string, vat?: string}): Promise<contact.Contact>;
+            $put(params?: { address?: contact.Address, birthCity?: string, birthCountry?: nichandle.CountryEnum, birthDay?: string, birthZip?: string, cellPhone?: string, companyNationalIdentificationNumber?: string, email?: string, fax?: string, firstName?: string, gender?: nichandle.GenderEnum, language?: nichandle.LanguageEnum, lastName?: string, legalForm?: nichandle.LegalFormEnum, nationalIdentificationNumber?: string, nationality?: nichandle.CountryEnum, organisationName?: string, organisationType?: string, phone?: string, vat?: string }): Promise<contact.Contact>;
             fields: {
                 // GET /me/contact/{contactId}/fields
                 $get(): Promise<contact.FieldInformation[]>;
@@ -1489,7 +1489,7 @@ export interface Me {
     credit: {
         balance: {
             // GET /me/credit/balance
-            $get(params?: {type?: me.credit.balance.TypeEnum}): Promise<string[]>;
+            $get(params?: { type?: me.credit.balance.TypeEnum }): Promise<string[]>;
             $(balanceName: string): {
                 // GET /me/credit/balance/{balanceName}
                 $get(): Promise<me.credit.Balance>;
@@ -1505,7 +1505,7 @@ export interface Me {
         }
         code: {
             // POST /me/credit/code
-            $post(params: {inputCode: string, serviceId?: number}): Promise<me.credit.balance.Movement>;
+            $post(params: { inputCode: string, serviceId?: number }): Promise<me.credit.balance.Movement>;
         }
     }
     debtAccount: {
@@ -1519,7 +1519,7 @@ export interface Me {
                 $get(): Promise<balance.InvoicingBalance>;
                 operation: {
                     // GET /me/debtAccount/debt/{debtId}/operation
-                    $get(params?: {depositOrderId?: number}): Promise<number[]>;
+                    $get(params?: { depositOrderId?: number }): Promise<number[]>;
                     $(operationId: number): {
                         // GET /me/debtAccount/debt/{debtId}/operation/{operationId}
                         $get(): Promise<balance.OperationBalance>;
@@ -1533,12 +1533,12 @@ export interface Me {
         }
         pay: {
             // POST /me/debtAccount/pay
-            $post(params?: {orderIds?: number[], paymentMethodId?: number}): Promise<billing.InvoiceDepositRequest>;
+            $post(params?: { orderIds?: number[], paymentMethodId?: number }): Promise<billing.InvoiceDepositRequest>;
         }
     }
     deposit: {
         // GET /me/deposit
-        $get(params?: {date_from?: string, date_to?: string, orderId?: number}): Promise<string[]>;
+        $get(params?: { date_from?: string, date_to?: string, orderId?: number }): Promise<string[]>;
         $(depositId: string): {
             // GET /me/deposit/{depositId}
             $get(): Promise<billing.InvoiceDeposit>;
@@ -1557,7 +1557,7 @@ export interface Me {
                         $get(): Promise<balance.InvoicingBalance>;
                         operation: {
                             // GET /me/deposit/{depositId}/paidBills/{billId}/debt/operation
-                            $get(params?: {depositOrderId?: number}): Promise<number[]>;
+                            $get(params?: { depositOrderId?: number }): Promise<number[]>;
                             $(operationId: number): {
                                 // GET /me/deposit/{depositId}/paidBills/{billId}/debt/operation/{operationId}
                                 $get(): Promise<balance.OperationBalance>;
@@ -1578,7 +1578,7 @@ export interface Me {
                     }
                     download: {
                         // GET /me/deposit/{depositId}/paidBills/{billId}/download
-                        $get(params?: {extension?: billing.DocumentExtensionEnum}): Promise<string>;
+                        $get(params?: { extension?: billing.DocumentExtensionEnum }): Promise<string>;
                     }
                 };
             }
@@ -1586,7 +1586,7 @@ export interface Me {
     }
     depositRequest: {
         // GET /me/depositRequest
-        $get(params?: {creationDate_from?: string, creationDate_to?: string}): Promise<number[]>;
+        $get(params?: { creationDate_from?: string, creationDate_to?: string }): Promise<number[]>;
         $(id: number): {
             // GET /me/depositRequest/{id}
             $get(): Promise<billing.InvoiceDepositRequest>;
@@ -1596,14 +1596,14 @@ export interface Me {
         // GET /me/fidelityAccount
         $get(): Promise<billing.FidelityAccount>;
         // PUT /me/fidelityAccount
-        $put(params?: {alertThreshold?: number, balance?: number, canBeCredited?: boolean, lastUpdate?: string, openDate?: string}): Promise<void>;
+        $put(params?: { alertThreshold?: number, balance?: number, canBeCredited?: boolean, lastUpdate?: string, openDate?: string }): Promise<void>;
         creditOrder: {
             // POST /me/fidelityAccount/creditOrder
-            $post(params: {amount: number}): Promise<billing.Order>;
+            $post(params: { amount: number }): Promise<billing.Order>;
         }
         movements: {
             // GET /me/fidelityAccount/movements
-            $get(params?: {date_from?: string, date_to?: string}): Promise<number[]>;
+            $get(params?: { date_from?: string, date_to?: string }): Promise<number[]>;
             $(movementId: number): {
                 // GET /me/fidelityAccount/movements/{movementId}
                 $get(): Promise<billing.FidelityMovement>;
@@ -1619,28 +1619,28 @@ export interface Me {
             // GET /me/identity/group
             $get(): Promise<string[]>;
             // POST /me/identity/group
-            $post(params: {description?: string, name: string, role?: nichandle.RoleEnum}): Promise<nichandle.Authentication.Group>;
+            $post(params: { description?: string, name: string, role?: nichandle.RoleEnum }): Promise<nichandle.Authentication.Group>;
             $(group: string): {
                 // DELETE /me/identity/group/{group}
                 $delete(): Promise<void>;
                 // GET /me/identity/group/{group}
                 $get(): Promise<nichandle.Authentication.Group>;
                 // PUT /me/identity/group/{group}
-                $put(params?: {description?: string, role?: nichandle.RoleEnum}): Promise<void>;
+                $put(params?: { description?: string, role?: nichandle.RoleEnum }): Promise<void>;
             };
         }
         user: {
             // GET /me/identity/user
             $get(): Promise<string[]>;
             // POST /me/identity/user
-            $post(params: {description?: string, email: string, group?: string, login: string, password: string}): Promise<void>;
+            $post(params: { description?: string, email: string, group?: string, login: string, password: string }): Promise<void>;
             $(user: string): {
                 // DELETE /me/identity/user/{user}
                 $delete(): Promise<void>;
                 // GET /me/identity/user/{user}
                 $get(): Promise<nichandle.User>;
                 // PUT /me/identity/user/{user}
-                $put(params?: {description?: string, email?: string, group?: string}): Promise<void>;
+                $put(params?: { description?: string, email?: string, group?: string }): Promise<void>;
                 disable: {
                     // POST /me/identity/user/{user}/disable
                     $post(): Promise<void>;
@@ -1656,14 +1656,14 @@ export interface Me {
         // GET /me/installationTemplate
         $get(): Promise<string[]>;
         // POST /me/installationTemplate
-        $post(params: {baseTemplateName: string, defaultLanguage: dedicated.TemplateOsLanguageEnum, name: string}): Promise<void>;
+        $post(params: { baseTemplateName: string, defaultLanguage: dedicated.TemplateOsLanguageEnum, name: string }): Promise<void>;
         $(templateName: string): {
             // DELETE /me/installationTemplate/{templateName}
             $delete(): Promise<void>;
             // GET /me/installationTemplate/{templateName}
             $get(): Promise<dedicated.installationTemplate.Templates>;
             // PUT /me/installationTemplate/{templateName}
-            $put(params?: {availableLanguages?: dedicated.TemplateOsLanguageEnum[], beta?: boolean, bitFormat?: dedicated.server.BitFormatEnum, category?: dedicated.TemplateOsUsageEnum, customization?: dedicated.TemplateOsProperties, defaultLanguage?: dedicated.TemplateOsLanguageEnum, deprecated?: boolean, description?: string, distribution?: string, family?: dedicated.TemplateOsTypeEnum, filesystems?: dedicated.TemplateOsFileSystemEnum[], hardRaidConfiguration?: boolean, lastModification?: string, lvmReady?: boolean, supportsDistributionKernel?: boolean, supportsGptLabel?: boolean, supportsRTM?: boolean, supportsSqlServer?: boolean, supportsUEFI?: dedicated.server.SupportsUEFIEnum, templateName?: string}): Promise<void>;
+            $put(params?: { availableLanguages?: dedicated.TemplateOsLanguageEnum[], beta?: boolean, bitFormat?: dedicated.server.BitFormatEnum, category?: dedicated.TemplateOsUsageEnum, customization?: dedicated.TemplateOsProperties, defaultLanguage?: dedicated.TemplateOsLanguageEnum, deprecated?: boolean, description?: string, distribution?: string, family?: dedicated.TemplateOsTypeEnum, filesystems?: dedicated.TemplateOsFileSystemEnum[], hardRaidConfiguration?: boolean, lastModification?: string, lvmReady?: boolean, supportsDistributionKernel?: boolean, supportsGptLabel?: boolean, supportsRTM?: boolean, supportsSqlServer?: boolean, supportsUEFI?: dedicated.server.SupportsUEFIEnum, templateName?: string }): Promise<void>;
             checkIntegrity: {
                 // POST /me/installationTemplate/{templateName}/checkIntegrity
                 $post(): Promise<void>;
@@ -1672,40 +1672,40 @@ export interface Me {
                 // GET /me/installationTemplate/{templateName}/partitionScheme
                 $get(): Promise<string[]>;
                 // POST /me/installationTemplate/{templateName}/partitionScheme
-                $post(params: {name: string, priority: number}): Promise<void>;
+                $post(params: { name: string, priority: number }): Promise<void>;
                 $(schemeName: string): {
                     // DELETE /me/installationTemplate/{templateName}/partitionScheme/{schemeName}
                     $delete(): Promise<void>;
                     // GET /me/installationTemplate/{templateName}/partitionScheme/{schemeName}
                     $get(): Promise<dedicated.installationTemplate.templatePartitioningSchemes>;
                     // PUT /me/installationTemplate/{templateName}/partitionScheme/{schemeName}
-                    $put(params?: {name?: string, priority?: number}): Promise<void>;
+                    $put(params?: { name?: string, priority?: number }): Promise<void>;
                     hardwareRaid: {
                         // GET /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid
                         $get(): Promise<string[]>;
                         // POST /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid
-                        $post(params: {disks: string[], mode: dedicated.TemplateOsHardwareRaidEnum, name: string, step: number}): Promise<void>;
+                        $post(params: { disks: string[], mode: dedicated.TemplateOsHardwareRaidEnum, name: string, step: number }): Promise<void>;
                         $(name: string): {
                             // DELETE /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}
                             $delete(): Promise<void>;
                             // GET /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}
                             $get(): Promise<dedicated.installationTemplate.hardwareRaid>;
                             // PUT /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}
-                            $put(params?: {disks?: string[], mode?: dedicated.TemplateOsHardwareRaidEnum, name?: string, step?: number}): Promise<void>;
+                            $put(params?: { disks?: string[], mode?: dedicated.TemplateOsHardwareRaidEnum, name?: string, step?: number }): Promise<void>;
                         };
                     }
                     partition: {
                         // GET /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition
                         $get(): Promise<string[]>;
                         // POST /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition
-                        $post(params: {filesystem: dedicated.TemplateOsFileSystemEnum, mountpoint: string, raid?: number, size: number, step: number, type: dedicated.TemplatePartitionTypeEnum, volumeName?: string}): Promise<void>;
+                        $post(params: { filesystem: dedicated.TemplateOsFileSystemEnum, mountpoint: string, raid?: number, size: number, step: number, type: dedicated.TemplatePartitionTypeEnum, volumeName?: string }): Promise<void>;
                         $(mountpoint: string): {
                             // DELETE /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}
                             $delete(): Promise<void>;
                             // GET /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}
                             $get(): Promise<dedicated.installationTemplate.templatePartitions>;
                             // PUT /me/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}
-                            $put(params?: {filesystem?: dedicated.TemplateOsFileSystemEnum, mountpoint?: string, order?: number, raid?: dedicated.server.PartitionRaidEnum, size?: complexType.UnitAndValue<number>, type?: dedicated.TemplatePartitionTypeEnum, volumeName?: string}): Promise<void>;
+                            $put(params?: { filesystem?: dedicated.TemplateOsFileSystemEnum, mountpoint?: string, order?: number, raid?: dedicated.server.PartitionRaidEnum, size?: complexType.UnitAndValue<number>, type?: dedicated.TemplatePartitionTypeEnum, volumeName?: string }): Promise<void>;
                         };
                     }
                 };
@@ -1716,21 +1716,21 @@ export interface Me {
         // GET /me/ipOrganisation
         $get(): Promise<string[]>;
         // POST /me/ipOrganisation
-        $post(params: {abuse_mailbox: string, address: string, city: string, country: nichandle.CountryEnum, firstname: string, lastname: string, phone: string, registry: nichandle.IpRegistryEnum, state?: string, zip?: string}): Promise<void>;
+        $post(params: { abuse_mailbox: string, address: string, city: string, country: nichandle.CountryEnum, firstname: string, lastname: string, phone: string, registry: nichandle.IpRegistryEnum, state?: string, zip?: string }): Promise<void>;
         $(organisationId: string): {
             // DELETE /me/ipOrganisation/{organisationId}
             $delete(): Promise<void>;
             // GET /me/ipOrganisation/{organisationId}
             $get(): Promise<nichandle.Ipv4Org>;
             // PUT /me/ipOrganisation/{organisationId}
-            $put(params?: {abuse_mailbox?: string, address?: string, city?: string, country?: nichandle.CountryEnum, firstname?: string, lastname?: string, organisationId?: string, phone?: string, registry?: nichandle.IpRegistryEnum, state?: string, zip?: string}): Promise<void>;
+            $put(params?: { abuse_mailbox?: string, address?: string, city?: string, country?: nichandle.CountryEnum, firstname?: string, lastname?: string, organisationId?: string, phone?: string, registry?: nichandle.IpRegistryEnum, state?: string, zip?: string }): Promise<void>;
         };
     }
     ipxeScript: {
         // GET /me/ipxeScript
         $get(): Promise<string[]>;
         // POST /me/ipxeScript
-        $post(params: {description: string, name: string, script: string}): Promise<nichandle.ipxe>;
+        $post(params: { description: string, name: string, script: string }): Promise<nichandle.ipxe>;
         $(name: string): {
             // DELETE /me/ipxeScript/{name}
             $delete(): Promise<void>;
@@ -1760,7 +1760,7 @@ export interface Me {
                 // GET /me/order/{orderId}/balance
                 $get(): Promise<number[]>;
                 // POST /me/order/{orderId}/balance
-                $post(params: {balanceName: string}): Promise<billing.order.credit.Balance>;
+                $post(params: { balanceName: string }): Promise<billing.order.credit.Balance>;
                 $(balanceName: string): {
                     // DELETE /me/order/{orderId}/balance/{balanceName}
                     $delete(): Promise<void>;
@@ -1790,11 +1790,11 @@ export interface Me {
             }
             pay: {
                 // POST /me/order/{orderId}/pay
-                $post(params: {paymentMethod: billing.order.AvailablePaymentMethod}): Promise<void>;
+                $post(params: { paymentMethod: billing.order.AvailablePaymentMethod }): Promise<void>;
             }
             payWithRegisteredPaymentMean: {
                 // POST /me/order/{orderId}/payWithRegisteredPaymentMean
-                $post(params: {paymentMean: billing.paymentMethod.PaymentTypeEnum, paymentMeanId?: number}): Promise<void>;
+                $post(params: { paymentMean: billing.paymentMethod.PaymentTypeEnum, paymentMeanId?: number }): Promise<void>;
             }
             paymentMethods: {
                 // GET /me/order/{orderId}/paymentMethods
@@ -1802,7 +1802,7 @@ export interface Me {
             }
             retraction: {
                 // POST /me/order/{orderId}/retraction
-                $post(params: {comment?: string, reason: billing.order.RetractionReasonEnum}): Promise<void>;
+                $post(params: { comment?: string, reason: billing.order.RetractionReasonEnum }): Promise<void>;
             }
             status: {
                 // GET /me/order/{orderId}/status
@@ -1812,7 +1812,7 @@ export interface Me {
                 // GET /me/order/{orderId}/voucher
                 $get(): Promise<number[]>;
                 // POST /me/order/{orderId}/voucher
-                $post(params: {balanceName: string}): Promise<billing.order.OrderVoucher>;
+                $post(params: { balanceName: string }): Promise<billing.order.OrderVoucher>;
                 $(balanceName: string): {
                     // DELETE /me/order/{orderId}/voucher/{balanceName}
                     $delete(): Promise<void>;
@@ -1824,7 +1824,7 @@ export interface Me {
     }
     passwordRecover: {
         // POST /me/passwordRecover
-        $post(params: {ovhCompany: nichandle.OvhCompanyEnum, ovhId: string}): Promise<void>;
+        $post(params: { ovhCompany: nichandle.OvhCompanyEnum, ovhId: string }): Promise<void>;
     }
     payment: {
         availableMethods: {
@@ -1833,29 +1833,29 @@ export interface Me {
         }
         method: {
             // GET /me/payment/method
-            $get(params?: {paymentType?: string, status?: me.payment.method.PaymentMethod.Status}): Promise<number[]>;
+            $get(params?: { paymentType?: string, status?: me.payment.method.PaymentMethod.Status }): Promise<number[]>;
             // POST /me/payment/method
-            $post(params: {callbackUrl: me.payment.method.CallbackUrl, default_?: boolean, description?: string, orderId?: number, paymentType: string, register?: boolean}): Promise<me.payment.method.Register.ValidationResult>;
+            $post(params: { callbackUrl: me.payment.method.CallbackUrl, default_?: boolean, description?: string, orderId?: number, paymentType: string, register?: boolean }): Promise<me.payment.method.Register.ValidationResult>;
             $(paymentMethodId: number): {
                 // DELETE /me/payment/method/{paymentMethodId}
                 $delete(): Promise<me.payment.method.PaymentMethod>;
                 // GET /me/payment/method/{paymentMethodId}
                 $get(): Promise<me.payment.method.PaymentMethod>;
                 // PUT /me/payment/method/{paymentMethodId}
-                $put(params?: {default_?: boolean, description?: string}): Promise<billing.PaymentMethod>;
+                $put(params?: { default_?: boolean, description?: string }): Promise<billing.PaymentMethod>;
                 challenge: {
                     // POST /me/payment/method/{paymentMethodId}/challenge
-                    $post(params: {challenge: string}): Promise<me.payment.method.PaymentMethod>;
+                    $post(params: { challenge: string }): Promise<me.payment.method.PaymentMethod>;
                 }
                 finalize: {
                     // POST /me/payment/method/{paymentMethodId}/finalize
-                    $post(params?: {expirationMonth?: number, expirationYear?: number, formSessionId?: string, registrationId?: string}): Promise<me.payment.method.PaymentMethod>;
+                    $post(params?: { expirationMonth?: number, expirationYear?: number, formSessionId?: string, registrationId?: string }): Promise<me.payment.method.PaymentMethod>;
                 }
             };
         }
         transaction: {
             // GET /me/payment/transaction
-            $get(params?: {paymentMethodId?: number, status?: me.payment.method.Transaction.Status}): Promise<number[]>;
+            $get(params?: { paymentMethodId?: number, status?: me.payment.method.Transaction.Status }): Promise<number[]>;
             $(transactionId: number): {
                 // GET /me/payment/transaction/{transactionId}
                 $get(): Promise<me.payment.method.Transaction>;
@@ -1864,21 +1864,21 @@ export interface Me {
     }
     paymentMethod: {
         // GET /me/paymentMethod
-        $get(params?: {paymentType?: billing.paymentMethod.PaymentTypeEnum, status?: billing.paymentMethod.StatusEnum}): Promise<number[]>;
+        $get(params?: { paymentType?: billing.paymentMethod.PaymentTypeEnum, status?: billing.paymentMethod.StatusEnum }): Promise<number[]>;
         // POST /me/paymentMethod
-        $post(params: {billingContactId?: number, default_?: boolean, description?: string, paymentType: billing.paymentMethod.CreatePaymentTypeEnum, urlCallback?: string}): Promise<billing.PaymentMeanValidation>;
+        $post(params: { billingContactId?: number, default_?: boolean, description?: string, paymentType: billing.paymentMethod.CreatePaymentTypeEnum, urlCallback?: string }): Promise<billing.PaymentMeanValidation>;
         $(id: number): {
             // DELETE /me/paymentMethod/{id}
             $delete(): Promise<void>;
             // GET /me/paymentMethod/{id}
             $get(): Promise<billing.PaymentMethod>;
             // PUT /me/paymentMethod/{id}
-            $put(params?: {default_?: boolean, description?: string}): Promise<billing.PaymentMethod>;
+            $put(params?: { default_?: boolean, description?: string }): Promise<billing.PaymentMethod>;
         };
     }
     refund: {
         // GET /me/refund
-        $get(params?: {date_from?: string, date_to?: string, orderId?: number}): Promise<string[]>;
+        $get(params?: { date_from?: string, date_to?: string, orderId?: number }): Promise<string[]>;
         $(refundId: string): {
             // GET /me/refund/{refundId}
             $get(): Promise<billing.InvoiceRefund>;
@@ -1892,7 +1892,7 @@ export interface Me {
             }
             download: {
                 // GET /me/refund/{refundId}/download
-                $get(params?: {extension?: billing.DocumentExtensionEnum}): Promise<string>;
+                $get(params?: { extension?: billing.DocumentExtensionEnum }): Promise<string>;
             }
         };
     }
@@ -1924,26 +1924,26 @@ export interface Me {
         // GET /me/sshKey
         $get(): Promise<string[]>;
         // POST /me/sshKey
-        $post(params: {key: string, keyName: string}): Promise<void>;
+        $post(params: { key: string, keyName: string }): Promise<void>;
         $(keyName: string): {
             // DELETE /me/sshKey/{keyName}
             $delete(): Promise<void>;
             // GET /me/sshKey/{keyName}
             $get(): Promise<nichandle.sshKey>;
             // PUT /me/sshKey/{keyName}
-            $put(params?: {default_?: boolean, key?: string, keyName?: string}): Promise<void>;
+            $put(params?: { default_?: boolean, key?: string, keyName?: string }): Promise<void>;
         };
     }
     subAccount: {
         // GET /me/subAccount
         $get(): Promise<number[]>;
         // POST /me/subAccount
-        $post(params?: {description?: string}): Promise<number>;
+        $post(params?: { description?: string }): Promise<number>;
         $(id: number): {
             // GET /me/subAccount/{id}
             $get(): Promise<nichandle.SubAccount>;
             // PUT /me/subAccount/{id}
-            $put(params?: {creationDate?: string, description?: string, id?: number}): Promise<void>;
+            $put(params?: { creationDate?: string, description?: string, id?: number }): Promise<void>;
             createConsumerKey: {
                 // POST /me/subAccount/{id}/createConsumerKey
                 $post(): Promise<nichandle.SubAccountConsumerKey>;
@@ -1953,17 +1953,17 @@ export interface Me {
     task: {
         emailChange: {
             // GET /me/task/emailChange
-            $get(params?: {state?: nichandle.changeEmail.TaskStateEnum}): Promise<number[]>;
+            $get(params?: { state?: nichandle.changeEmail.TaskStateEnum }): Promise<number[]>;
             $(id: number): {
                 // GET /me/task/emailChange/{id}
                 $get(): Promise<nichandle.emailChange.Task>;
                 accept: {
                     // POST /me/task/emailChange/{id}/accept
-                    $post(params: {token: string}): Promise<void>;
+                    $post(params: { token: string }): Promise<void>;
                 }
                 refuse: {
                     // POST /me/task/emailChange/{id}/refuse
-                    $post(params: {token: string}): Promise<void>;
+                    $post(params: { token: string }): Promise<void>;
                 }
             };
         }
@@ -1975,12 +1975,12 @@ export interface Me {
     voucher: {
         checkValidity: {
             // POST /me/voucher/checkValidity
-            $post(params: {voucher: string}): Promise<nichandle.VoucherStatus>;
+            $post(params: { voucher: string }): Promise<nichandle.VoucherStatus>;
         }
     }
     withdrawal: {
         // GET /me/withdrawal
-        $get(params?: {date_from?: string, date_to?: string, orderId?: number}): Promise<string[]>;
+        $get(params?: { date_from?: string, date_to?: string, orderId?: number }): Promise<string[]>;
         $(withdrawalId: string): {
             // GET /me/withdrawal/{withdrawalId}
             $get(): Promise<billing.InvoiceWithdrawal>;

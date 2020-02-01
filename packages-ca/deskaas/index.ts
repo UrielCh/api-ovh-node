@@ -121,11 +121,11 @@ export interface Deskaas {
         $get(): Promise<deskaas.deskaas>;
         changeAlias: {
             // POST /deskaas/{serviceName}/changeAlias
-            $post(params: {alias: string}): Promise<deskaas.Task>;
+            $post(params: { alias: string }): Promise<deskaas.Task>;
         }
         confirmTermination: {
             // POST /deskaas/{serviceName}/confirmTermination
-            $post(params: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+            $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
         }
         console: {
             // POST /deskaas/{serviceName}/console
@@ -147,11 +147,11 @@ export interface Deskaas {
             // GET /deskaas/{serviceName}/serviceInfos
             $get(): Promise<services.Service>;
             // PUT /deskaas/{serviceName}/serviceInfos
-            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+            $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
         }
         task: {
             // GET /deskaas/{serviceName}/task
-            $get(params?: {state?: deskaasTaskStateEnum}): Promise<number[]>;
+            $get(params?: { state?: deskaasTaskStateEnum }): Promise<number[]>;
             $(taskId: number): {
                 // GET /deskaas/{serviceName}/task/{taskId}
                 $get(): Promise<deskaas.Task>;
@@ -163,22 +163,22 @@ export interface Deskaas {
         }
         upgrade: {
             // POST /deskaas/{serviceName}/upgrade
-            $post(params?: {newReference?: string, planCode?: string}): Promise<deskaas.Task>;
+            $post(params?: { newReference?: string, planCode?: string }): Promise<deskaas.Task>;
         }
         user: {
             // GET /deskaas/{serviceName}/user
             $get(): Promise<deskaas.User>;
             changePassword: {
                 // POST /deskaas/{serviceName}/user/changePassword
-                $post(params?: {password?: string}): Promise<deskaas.Task>;
+                $post(params?: { password?: string }): Promise<deskaas.Task>;
             }
             changeProperties: {
                 // POST /deskaas/{serviceName}/user/changeProperties
-                $post(params?: {email?: string}): Promise<deskaas.Task>;
+                $post(params?: { email?: string }): Promise<deskaas.Task>;
             }
             task: {
                 // GET /deskaas/{serviceName}/user/task
-                $get(params?: {state?: deskaasTaskStateEnum}): Promise<number[]>;
+                $get(params?: { state?: deskaasTaskStateEnum }): Promise<number[]>;
                 $(taskId: number): {
                     // GET /deskaas/{serviceName}/user/task/{taskId}
                     $get(): Promise<deskaas.Task>;

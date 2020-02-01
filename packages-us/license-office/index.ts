@@ -137,7 +137,7 @@ export interface License {
             // GET /license/office/{serviceName}
             $get(): Promise<license.office.OfficeTenant>;
             // PUT /license/office/{serviceName}
-            $put(params?: {address?: string, city?: string, creationDate?: string, displayName?: string, firstName?: string, lastName?: string, phone?: string, serviceType?: license.office.ServiceTypeEnum, status?: license.office.ServiceStateEnum, zipCode?: string}): Promise<void>;
+            $put(params?: { address?: string, city?: string, creationDate?: string, displayName?: string, firstName?: string, lastName?: string, phone?: string, serviceType?: license.office.ServiceTypeEnum, status?: license.office.ServiceStateEnum, zipCode?: string }): Promise<void>;
             domain: {
                 // GET /license/office/{serviceName}/domain
                 $get(): Promise<string[]>;
@@ -158,27 +158,27 @@ export interface License {
                 // GET /license/office/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /license/office/{serviceName}/serviceInfos
-                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+                $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
             }
             usageStatistics: {
                 // GET /license/office/{serviceName}/usageStatistics
-                $get(params: {from: string, to: string}): Promise<license.office.Statistics[]>;
+                $get(params: { from: string, to: string }): Promise<license.office.Statistics[]>;
             }
             user: {
                 // GET /license/office/{serviceName}/user
-                $get(params?: {activationEmail?: string, firstName?: string, lastName?: string, licences?: license.office.LicenceEnum[]}): Promise<string[]>;
+                $get(params?: { activationEmail?: string, firstName?: string, lastName?: string, licences?: license.office.LicenceEnum[] }): Promise<string[]>;
                 // POST /license/office/{serviceName}/user
-                $post(params: {domain: string, firstName?: string, lastName?: string, licence: license.office.LicenceEnum, login: string}): Promise<license.office.OfficeTask>;
+                $post(params: { domain: string, firstName?: string, lastName?: string, licence: license.office.LicenceEnum, login: string }): Promise<license.office.OfficeTask>;
                 $(activationEmail: string): {
                     // DELETE /license/office/{serviceName}/user/{activationEmail}
                     $delete(): Promise<license.office.OfficeTask>;
                     // GET /license/office/{serviceName}/user/{activationEmail}
                     $get(): Promise<license.office.OfficeUser>;
                     // PUT /license/office/{serviceName}/user/{activationEmail}
-                    $put(params?: {activationEmail?: string, deleteAtExpiration?: boolean, firstName?: string, isVirtual?: boolean, lastName?: string, licences?: license.office.LicenceEnum[], status?: license.office.UserStateEnum, taskPendingId?: number}): Promise<void>;
+                    $put(params?: { activationEmail?: string, deleteAtExpiration?: boolean, firstName?: string, isVirtual?: boolean, lastName?: string, licences?: license.office.LicenceEnum[], status?: license.office.UserStateEnum, taskPendingId?: number }): Promise<void>;
                     changePassword: {
                         // POST /license/office/{serviceName}/user/{activationEmail}/changePassword
-                        $post(params: {notifyEmail?: string, password?: string, shouldSendMail: boolean}): Promise<license.office.OfficeTask>;
+                        $post(params: { notifyEmail?: string, password?: string, shouldSendMail: boolean }): Promise<license.office.OfficeTask>;
                     }
                 };
             }

@@ -139,17 +139,17 @@ export interface OvhCloudConnect {
         // GET /ovhCloudConnect/{serviceName}
         $get(): Promise<ovhcloudconnect.Service>;
         // PUT /ovhCloudConnect/{serviceName}
-        $put(params?: {description?: string}): Promise<void>;
+        $put(params?: { description?: string }): Promise<void>;
         changeContact: {
             // POST /ovhCloudConnect/{serviceName}/changeContact
-            $post(params?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
+            $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
         }
         config: {
             pop: {
                 // GET /ovhCloudConnect/{serviceName}/config/pop
                 $get(): Promise<number[]>;
                 // POST /ovhCloudConnect/{serviceName}/config/pop
-                $post(params?: {customerBgpArea?: number, id?: number, interfaceId?: number, ovhBgpArea?: number, status?: ovhcloudconnect.popConfig.StatusEnum, subnet?: string, type?: ovhcloudconnect.popConfig.TypeEnum}): Promise<ovhcloudconnect.Task>;
+                $post(params?: { customerBgpArea?: number, id?: number, interfaceId?: number, ovhBgpArea?: number, status?: ovhcloudconnect.popConfig.StatusEnum, subnet?: string, type?: ovhcloudconnect.popConfig.TypeEnum }): Promise<ovhcloudconnect.Task>;
                 $(popId: number): {
                     // DELETE /ovhCloudConnect/{serviceName}/config/pop/{popId}
                     $delete(): Promise<ovhcloudconnect.Task>;
@@ -159,7 +159,7 @@ export interface OvhCloudConnect {
                         // GET /ovhCloudConnect/{serviceName}/config/pop/{popId}/datacenter
                         $get(): Promise<number[]>;
                         // POST /ovhCloudConnect/{serviceName}/config/pop/{popId}/datacenter
-                        $post(params?: {datacenterId?: number, id?: number, ovhBgpArea?: number, status?: ovhcloudconnect.popConfig.StatusEnum, subnet?: string}): Promise<ovhcloudconnect.Task>;
+                        $post(params?: { datacenterId?: number, id?: number, ovhBgpArea?: number, status?: ovhcloudconnect.popConfig.StatusEnum, subnet?: string }): Promise<ovhcloudconnect.Task>;
                         $(datacenterId: number): {
                             // DELETE /ovhCloudConnect/{serviceName}/config/pop/{popId}/datacenter/{datacenterId}
                             $delete(): Promise<ovhcloudconnect.Task>;
@@ -169,7 +169,7 @@ export interface OvhCloudConnect {
                                 // GET /ovhCloudConnect/{serviceName}/config/pop/{popId}/datacenter/{datacenterId}/extra
                                 $get(): Promise<number[]>;
                                 // POST /ovhCloudConnect/{serviceName}/config/pop/{popId}/datacenter/{datacenterId}/extra
-                                $post(params?: {bgpNeighborArea?: number, bgpNeighborIp?: string, id?: number, nextHop?: string, status?: ovhcloudconnect.popConfig.StatusEnum, subnet?: string, type?: ovhcloudconnect.datacenterExtraConfig.TypeEnum}): Promise<ovhcloudconnect.Task>;
+                                $post(params?: { bgpNeighborArea?: number, bgpNeighborIp?: string, id?: number, nextHop?: string, status?: ovhcloudconnect.popConfig.StatusEnum, subnet?: string, type?: ovhcloudconnect.datacenterExtraConfig.TypeEnum }): Promise<ovhcloudconnect.Task>;
                                 $(extraId: number): {
                                     // DELETE /ovhCloudConnect/{serviceName}/config/pop/{popId}/datacenter/{datacenterId}/extra/{extraId}
                                     $delete(): Promise<ovhcloudconnect.Task>;
@@ -184,7 +184,7 @@ export interface OvhCloudConnect {
         }
         confirmTermination: {
             // POST /ovhCloudConnect/{serviceName}/confirmTermination
-            $post(params: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+            $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
         }
         datacenter: {
             // GET /ovhCloudConnect/{serviceName}/datacenter
@@ -202,7 +202,7 @@ export interface OvhCloudConnect {
             // GET /ovhCloudConnect/{serviceName}/serviceInfos
             $get(): Promise<services.Service>;
             // PUT /ovhCloudConnect/{serviceName}/serviceInfos
-            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+            $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
         }
         task: {
             // GET /ovhCloudConnect/{serviceName}/task

@@ -108,38 +108,38 @@ export interface License {
         $get(): Promise<string[]>;
         orderableVersions: {
             // GET /license/worklight/orderableVersions
-            $get(params: {ip: string}): Promise<license.WorkLightOrderConfiguration[]>;
+            $get(params: { ip: string }): Promise<license.WorkLightOrderConfiguration[]>;
         }
         $(serviceName: string): {
             // GET /license/worklight/{serviceName}
             $get(): Promise<license.worklight.WorkLight>;
             // PUT /license/worklight/{serviceName}
-            $put(params?: {creation?: string, deleteAtExpiration?: boolean, domain?: string, ip?: string, licenseId?: string, status?: license.StateEnum, version?: license.WorkLightVersionEnum}): Promise<void>;
+            $put(params?: { creation?: string, deleteAtExpiration?: boolean, domain?: string, ip?: string, licenseId?: string, status?: license.StateEnum, version?: license.WorkLightVersionEnum }): Promise<void>;
             allowedDestinationIp: {
                 // GET /license/worklight/{serviceName}/allowedDestinationIp
                 $get(): Promise<string[]>;
             }
             canLicenseBeMovedTo: {
                 // GET /license/worklight/{serviceName}/canLicenseBeMovedTo
-                $get(params: {destinationIp: string}): Promise<license.ChangeIpStatus>;
+                $get(params: { destinationIp: string }): Promise<license.ChangeIpStatus>;
             }
             changeIp: {
                 // POST /license/worklight/{serviceName}/changeIp
-                $post(params: {destinationIp: string}): Promise<license.Task>;
+                $post(params: { destinationIp: string }): Promise<license.Task>;
             }
             confirmTermination: {
                 // POST /license/worklight/{serviceName}/confirmTermination
-                $post(params: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+                $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
             }
             serviceInfos: {
                 // GET /license/worklight/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /license/worklight/{serviceName}/serviceInfos
-                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+                $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
             }
             tasks: {
                 // GET /license/worklight/{serviceName}/tasks
-                $get(params?: {action?: license.ActionType, status?: license.TaskStateEnum}): Promise<number[]>;
+                $get(params?: { action?: license.ActionType, status?: license.TaskStateEnum }): Promise<number[]>;
                 $(taskId: number): {
                     // GET /license/worklight/{serviceName}/tasks/{taskId}
                     $get(): Promise<license.Task>;

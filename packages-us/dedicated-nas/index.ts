@@ -108,24 +108,24 @@ export interface Dedicated {
             // GET /dedicated/nas/{serviceName}
             $get(): Promise<dedicated.nas.Nas>;
             // PUT /dedicated/nas/{serviceName}
-            $put(params?: {canCreatePartition?: boolean, customName?: string, datacenter?: string, ip?: string, mountPath?: string, serviceName?: string, zpoolSize?: number}): Promise<void>;
+            $put(params?: { canCreatePartition?: boolean, customName?: string, datacenter?: string, ip?: string, mountPath?: string, serviceName?: string, zpoolSize?: number }): Promise<void>;
             partition: {
                 // GET /dedicated/nas/{serviceName}/partition
                 $get(): Promise<string[]>;
                 // POST /dedicated/nas/{serviceName}/partition
-                $post(params: {partitionName: string, protocol: dedicated.storage.ProtocolEnum, size: number}): Promise<dedicated.nasTask.Task>;
+                $post(params: { partitionName: string, protocol: dedicated.storage.ProtocolEnum, size: number }): Promise<dedicated.nasTask.Task>;
                 $(partitionName: string): {
                     // DELETE /dedicated/nas/{serviceName}/partition/{partitionName}
                     $delete(): Promise<dedicated.nasTask.Task>;
                     // GET /dedicated/nas/{serviceName}/partition/{partitionName}
                     $get(): Promise<dedicated.nas.Partition>;
                     // PUT /dedicated/nas/{serviceName}/partition/{partitionName}
-                    $put(params?: {partitionName?: string, protocol?: dedicated.storage.ProtocolEnum, size?: number}): Promise<void>;
+                    $put(params?: { partitionName?: string, protocol?: dedicated.storage.ProtocolEnum, size?: number }): Promise<void>;
                     access: {
                         // GET /dedicated/nas/{serviceName}/partition/{partitionName}/access
                         $get(): Promise<string[]>;
                         // POST /dedicated/nas/{serviceName}/partition/{partitionName}/access
-                        $post(params: {ip: string}): Promise<dedicated.nasTask.Task>;
+                        $post(params: { ip: string }): Promise<dedicated.nasTask.Task>;
                         $(ip: string): {
                             // DELETE /dedicated/nas/{serviceName}/partition/{partitionName}/access/{ip}
                             $delete(): Promise<dedicated.nasTask.Task>;
@@ -141,7 +141,7 @@ export interface Dedicated {
                         // GET /dedicated/nas/{serviceName}/partition/{partitionName}/quota
                         $get(): Promise<number[]>;
                         // POST /dedicated/nas/{serviceName}/partition/{partitionName}/quota
-                        $post(params: {size: number, uid: number}): Promise<dedicated.nasTask.Task>;
+                        $post(params: { size: number, uid: number }): Promise<dedicated.nasTask.Task>;
                         $(uid: number): {
                             // DELETE /dedicated/nas/{serviceName}/partition/{partitionName}/quota/{uid}
                             $delete(): Promise<dedicated.nasTask.Task>;
@@ -155,11 +155,11 @@ export interface Dedicated {
                 // GET /dedicated/nas/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /dedicated/nas/{serviceName}/serviceInfos
-                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+                $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
             }
             task: {
                 // GET /dedicated/nas/{serviceName}/task
-                $get(params?: {operation?: dedicated.storage.TaskFunctionEnum, status?: dedicated.TaskStatusEnum}): Promise<number[]>;
+                $get(params?: { operation?: dedicated.storage.TaskFunctionEnum, status?: dedicated.TaskStatusEnum }): Promise<number[]>;
                 $(taskId: number): {
                     // GET /dedicated/nas/{serviceName}/task/{taskId}
                     $get(): Promise<dedicated.nasTask.Task>;

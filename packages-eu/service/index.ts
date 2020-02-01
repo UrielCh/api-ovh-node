@@ -178,12 +178,12 @@ export interface Service {
         // GET /service/{serviceId}
         $get(): Promise<serviceList.Service>;
         // PUT /service/{serviceId}
-        $put(params?: {creationDate?: string, details?: complexType.SafeKeyValue<string>[], engagementDate?: string, expirationDate?: string, nextBillingDate?: string, plan?: service.Plan, quantity?: number, renew?: service.Renew, resource?: service.Resource, route?: service.Route, state?: service.BillingStateEnum}): Promise<void>;
+        $put(params?: { creationDate?: string, details?: complexType.SafeKeyValue<string>[], engagementDate?: string, expirationDate?: string, nextBillingDate?: string, plan?: service.Plan, quantity?: number, renew?: service.Renew, resource?: service.Resource, route?: service.Route, state?: service.BillingStateEnum }): Promise<void>;
         renew: {
             // GET /service/{serviceId}/renew
-            $get(params?: {includeOptions?: boolean}): Promise<service.renew.RenewDescription[]>;
+            $get(params?: { includeOptions?: boolean }): Promise<service.renew.RenewDescription[]>;
             // POST /service/{serviceId}/renew
-            $post(params: {dryRun?: boolean, duration: string, services: number[]}): Promise<service.renew.RenewOrder>;
+            $post(params: { dryRun?: boolean, duration: string, services: number[] }): Promise<service.renew.RenewOrder>;
         }
         reopen: {
             // POST /service/{serviceId}/reopen

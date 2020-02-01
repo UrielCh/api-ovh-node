@@ -90,11 +90,11 @@ export interface Cdn {
                 // GET /cdn/webstorage/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /cdn/webstorage/{serviceName}/serviceInfos
-                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+                $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
             }
             statistics: {
                 // GET /cdn/webstorage/{serviceName}/statistics
-                $get(params: {period: cdn.webstorage.StatsPeriodEnum, type: cdn.webstorage.StatsTypeEnum}): Promise<cdn.webstorage.StatsDataType[]>;
+                $get(params: { period: cdn.webstorage.StatsPeriodEnum, type: cdn.webstorage.StatsTypeEnum }): Promise<cdn.webstorage.StatsDataType[]>;
             }
         };
     }

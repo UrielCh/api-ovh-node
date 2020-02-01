@@ -155,7 +155,7 @@ export interface Vrack {
         // GET /vrack/{serviceName}
         $get(): Promise<vrack.vrack>;
         // PUT /vrack/{serviceName}
-        $put(params?: {description?: string, name?: string}): Promise<void>;
+        $put(params?: { description?: string, name?: string }): Promise<void>;
         allowedServices: {
             // GET /vrack/{serviceName}/allowedServices
             $get(): Promise<vrack.AllowedServices>;
@@ -164,7 +164,7 @@ export interface Vrack {
             // GET /vrack/{serviceName}/cloudProject
             $get(): Promise<string[]>;
             // POST /vrack/{serviceName}/cloudProject
-            $post(params: {project: string}): Promise<vrack.Task>;
+            $post(params: { project: string }): Promise<vrack.Task>;
             $(project: string): {
                 // DELETE /vrack/{serviceName}/cloudProject/{project}
                 $delete(): Promise<vrack.Task>;
@@ -176,7 +176,7 @@ export interface Vrack {
             // GET /vrack/{serviceName}/dedicatedCloud
             $get(): Promise<string[]>;
             // POST /vrack/{serviceName}/dedicatedCloud
-            $post(params: {dedicatedCloud: string}): Promise<vrack.Task>;
+            $post(params: { dedicatedCloud: string }): Promise<vrack.Task>;
             $(dedicatedCloud: string): {
                 // DELETE /vrack/{serviceName}/dedicatedCloud/{dedicatedCloud}
                 $delete(): Promise<vrack.Task>;
@@ -196,7 +196,7 @@ export interface Vrack {
                 }
                 move: {
                     // POST /vrack/{serviceName}/dedicatedCloudDatacenter/{datacenter}/move
-                    $post(params: {targetServiceName: string}): Promise<vrack.Task>;
+                    $post(params: { targetServiceName: string }): Promise<vrack.Task>;
                 }
             };
         }
@@ -207,14 +207,14 @@ export interface Vrack {
                 // GET /vrack/{serviceName}/dedicatedConnect/{name}
                 $get(): Promise<vrack.dedicatedConnect>;
                 // PUT /vrack/{serviceName}/dedicatedConnect/{name}
-                $put(params?: {name?: string}): Promise<void>;
+                $put(params?: { name?: string }): Promise<void>;
             };
         }
         dedicatedServer: {
             // GET /vrack/{serviceName}/dedicatedServer
             $get(): Promise<string[]>;
             // POST /vrack/{serviceName}/dedicatedServer
-            $post(params: {dedicatedServer: string}): Promise<vrack.Task>;
+            $post(params: { dedicatedServer: string }): Promise<vrack.Task>;
             $(dedicatedServer: string): {
                 // DELETE /vrack/{serviceName}/dedicatedServer/{dedicatedServer}
                 $delete(): Promise<vrack.Task>;
@@ -222,7 +222,7 @@ export interface Vrack {
                 $get(): Promise<vrack.dedicatedServer>;
                 mrtg: {
                     // GET /vrack/{serviceName}/dedicatedServer/{dedicatedServer}/mrtg
-                    $get(params: {period: dedicated.server.MrtgPeriodEnum, type: dedicated.server.MrtgTypeEnum}): Promise<dedicated.server.MrtgTimestampValue[]>;
+                    $get(params: { period: dedicated.server.MrtgPeriodEnum, type: dedicated.server.MrtgTypeEnum }): Promise<dedicated.server.MrtgTimestampValue[]>;
                 }
             };
         }
@@ -230,7 +230,7 @@ export interface Vrack {
             // GET /vrack/{serviceName}/dedicatedServerInterface
             $get(): Promise<string[]>;
             // POST /vrack/{serviceName}/dedicatedServerInterface
-            $post(params: {dedicatedServerInterface: string}): Promise<vrack.Task>;
+            $post(params: { dedicatedServerInterface: string }): Promise<vrack.Task>;
             $(dedicatedServerInterface: string): {
                 // DELETE /vrack/{serviceName}/dedicatedServerInterface/{dedicatedServerInterface}
                 $delete(): Promise<vrack.Task>;
@@ -246,7 +246,7 @@ export interface Vrack {
             // GET /vrack/{serviceName}/ip
             $get(): Promise<string[]>;
             // POST /vrack/{serviceName}/ip
-            $post(params: {block: string}): Promise<vrack.Task>;
+            $post(params: { block: string }): Promise<vrack.Task>;
             $(ip: string): {
                 // DELETE /vrack/{serviceName}/ip/{ip}
                 $delete(): Promise<vrack.Task>;
@@ -254,7 +254,7 @@ export interface Vrack {
                 $get(): Promise<vrack.ip>;
                 announceInZone: {
                     // POST /vrack/{serviceName}/ip/{ip}/announceInZone
-                    $post(params: {zone: vrackVrackZoneEnum}): Promise<vrack.Task>;
+                    $post(params: { zone: vrackVrackZoneEnum }): Promise<vrack.Task>;
                 }
                 availableZone: {
                     // GET /vrack/{serviceName}/ip/{ip}/availableZone
@@ -266,7 +266,7 @@ export interface Vrack {
             // GET /vrack/{serviceName}/ipLoadbalancing
             $get(): Promise<string[]>;
             // POST /vrack/{serviceName}/ipLoadbalancing
-            $post(params: {ipLoadbalancing: string}): Promise<vrack.Task>;
+            $post(params: { ipLoadbalancing: string }): Promise<vrack.Task>;
             $(ipLoadbalancing: string): {
                 // DELETE /vrack/{serviceName}/ipLoadbalancing/{ipLoadbalancing}
                 $delete(): Promise<vrack.Task>;
@@ -278,7 +278,7 @@ export interface Vrack {
             // GET /vrack/{serviceName}/legacyVrack
             $get(): Promise<string[]>;
             // POST /vrack/{serviceName}/legacyVrack
-            $post(params: {legacyVrack: string}): Promise<vrack.Task>;
+            $post(params: { legacyVrack: string }): Promise<vrack.Task>;
             $(legacyVrack: string): {
                 // DELETE /vrack/{serviceName}/legacyVrack/{legacyVrack}
                 $delete(): Promise<vrack.Task>;

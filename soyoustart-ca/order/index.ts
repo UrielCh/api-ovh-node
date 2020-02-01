@@ -129,62 +129,62 @@ export interface Order {
                 $get(): Promise<string[]>;
                 backupStorage: {
                     // GET /order/dedicated/server/{serviceName}/backupStorage
-                    $get(params: {capacity: dedicated.server.BackupStorageCapacityEnum}): Promise<string[]>;
+                    $get(params: { capacity: dedicated.server.BackupStorageCapacityEnum }): Promise<string[]>;
                     $(duration: string): {
                         // GET /order/dedicated/server/{serviceName}/backupStorage/{duration}
-                        $get(params: {capacity: dedicated.server.BackupStorageCapacityEnum}): Promise<order.Order>;
+                        $get(params: { capacity: dedicated.server.BackupStorageCapacityEnum }): Promise<order.Order>;
                         // POST /order/dedicated/server/{serviceName}/backupStorage/{duration}
-                        $post(params: {capacity: dedicated.server.BackupStorageCapacityEnum}): Promise<order.Order>;
+                        $post(params: { capacity: dedicated.server.BackupStorageCapacityEnum }): Promise<order.Order>;
                     };
                 }
                 failoverIP: {
                     // GET /order/dedicated/server/{serviceName}/failoverIP
-                    $get(params: {country: dedicated.server.IpCountryEnum}): Promise<string[]>;
+                    $get(params: { country: dedicated.server.IpCountryEnum }): Promise<string[]>;
                     $(duration: string): {
                         // GET /order/dedicated/server/{serviceName}/failoverIP/{duration}
-                        $get(params: {country: dedicated.server.IpCountryEnum}): Promise<order.Order>;
+                        $get(params: { country: dedicated.server.IpCountryEnum }): Promise<order.Order>;
                         // POST /order/dedicated/server/{serviceName}/failoverIP/{duration}
-                        $post(params: {country: dedicated.server.IpCountryEnum}): Promise<order.Order>;
+                        $post(params: { country: dedicated.server.IpCountryEnum }): Promise<order.Order>;
                     };
                 }
                 feature: {
                     // GET /order/dedicated/server/{serviceName}/feature
-                    $get(params: {feature: dedicated.server.OrderableSysFeatureEnum}): Promise<string[]>;
+                    $get(params: { feature: dedicated.server.OrderableSysFeatureEnum }): Promise<string[]>;
                     $(duration: string): {
                         // GET /order/dedicated/server/{serviceName}/feature/{duration}
-                        $get(params: {feature: dedicated.server.OrderableSysFeatureEnum}): Promise<order.Order>;
+                        $get(params: { feature: dedicated.server.OrderableSysFeatureEnum }): Promise<order.Order>;
                         // POST /order/dedicated/server/{serviceName}/feature/{duration}
-                        $post(params: {feature: dedicated.server.OrderableSysFeatureEnum}): Promise<order.Order>;
+                        $post(params: { feature: dedicated.server.OrderableSysFeatureEnum }): Promise<order.Order>;
                     };
                 }
                 firewall: {
                     // GET /order/dedicated/server/{serviceName}/firewall
-                    $get(params: {firewallModel: dedicated.server.FirewallModelEnum}): Promise<string[]>;
+                    $get(params: { firewallModel: dedicated.server.FirewallModelEnum }): Promise<string[]>;
                     $(duration: string): {
                         // GET /order/dedicated/server/{serviceName}/firewall/{duration}
-                        $get(params: {firewallModel: dedicated.server.FirewallModelEnum}): Promise<order.Order>;
+                        $get(params: { firewallModel: dedicated.server.FirewallModelEnum }): Promise<order.Order>;
                         // POST /order/dedicated/server/{serviceName}/firewall/{duration}
-                        $post(params: {firewallModel: dedicated.server.FirewallModelEnum}): Promise<order.Order>;
+                        $post(params: { firewallModel: dedicated.server.FirewallModelEnum }): Promise<order.Order>;
                     };
                 }
                 ip: {
                     // GET /order/dedicated/server/{serviceName}/ip
-                    $get(params: {blockSize: dedicated.server.IpBlockSizeEnum, country?: dedicated.server.IpCountryEnum, organisationId?: string, type: dedicated.server.IpTypeOrderableEnum}): Promise<string[]>;
+                    $get(params: { blockSize: dedicated.server.IpBlockSizeEnum, country?: dedicated.server.IpCountryEnum, organisationId?: string, type: dedicated.server.IpTypeOrderableEnum }): Promise<string[]>;
                     $(duration: string): {
                         // GET /order/dedicated/server/{serviceName}/ip/{duration}
-                        $get(params: {blockSize: dedicated.server.IpBlockSizeEnum, country?: dedicated.server.IpCountryEnum, organisationId?: string, type: dedicated.server.IpTypeOrderableEnum}): Promise<order.Order>;
+                        $get(params: { blockSize: dedicated.server.IpBlockSizeEnum, country?: dedicated.server.IpCountryEnum, organisationId?: string, type: dedicated.server.IpTypeOrderableEnum }): Promise<order.Order>;
                         // POST /order/dedicated/server/{serviceName}/ip/{duration}
-                        $post(params: {blockSize: dedicated.server.IpBlockSizeEnum, country?: dedicated.server.IpCountryEnum, organisationId?: string, type: dedicated.server.IpTypeOrderableEnum}): Promise<order.Order>;
+                        $post(params: { blockSize: dedicated.server.IpBlockSizeEnum, country?: dedicated.server.IpCountryEnum, organisationId?: string, type: dedicated.server.IpTypeOrderableEnum }): Promise<order.Order>;
                     };
                 }
                 ipMigration: {
                     // GET /order/dedicated/server/{serviceName}/ipMigration
-                    $get(params: {ip: string, token: string}): Promise<string[]>;
+                    $get(params: { ip: string, token: string }): Promise<string[]>;
                     $(duration: string): {
                         // GET /order/dedicated/server/{serviceName}/ipMigration/{duration}
-                        $get(params: {ip: string, token: string}): Promise<order.Order>;
+                        $get(params: { ip: string, token: string }): Promise<order.Order>;
                         // POST /order/dedicated/server/{serviceName}/ipMigration/{duration}
-                        $post(params: {ip: string, token: string}): Promise<order.Order>;
+                        $post(params: { ip: string, token: string }): Promise<order.Order>;
                     };
                 }
                 kvmExpress: {
@@ -199,22 +199,22 @@ export interface Order {
                 }
                 staticIP: {
                     // GET /order/dedicated/server/{serviceName}/staticIP
-                    $get(params: {country: dedicated.server.IpStaticCountryEnum}): Promise<string[]>;
+                    $get(params: { country: dedicated.server.IpStaticCountryEnum }): Promise<string[]>;
                     $(duration: string): {
                         // GET /order/dedicated/server/{serviceName}/staticIP/{duration}
-                        $get(params: {country: dedicated.server.IpStaticCountryEnum}): Promise<order.Order>;
+                        $get(params: { country: dedicated.server.IpStaticCountryEnum }): Promise<order.Order>;
                         // POST /order/dedicated/server/{serviceName}/staticIP/{duration}
-                        $post(params: {country: dedicated.server.IpStaticCountryEnum}): Promise<order.Order>;
+                        $post(params: { country: dedicated.server.IpStaticCountryEnum }): Promise<order.Order>;
                     };
                 }
                 usbKey: {
                     // GET /order/dedicated/server/{serviceName}/usbKey
-                    $get(params: {capacity: dedicated.server.UsbKeyCapacityEnum}): Promise<string[]>;
+                    $get(params: { capacity: dedicated.server.UsbKeyCapacityEnum }): Promise<string[]>;
                     $(duration: string): {
                         // GET /order/dedicated/server/{serviceName}/usbKey/{duration}
-                        $get(params: {capacity: dedicated.server.UsbKeyCapacityEnum}): Promise<order.Order>;
+                        $get(params: { capacity: dedicated.server.UsbKeyCapacityEnum }): Promise<order.Order>;
                         // POST /order/dedicated/server/{serviceName}/usbKey/{duration}
-                        $post(params: {capacity: dedicated.server.UsbKeyCapacityEnum}): Promise<order.Order>;
+                        $post(params: { capacity: dedicated.server.UsbKeyCapacityEnum }): Promise<order.Order>;
                     };
                 }
             };
@@ -224,12 +224,12 @@ export interface Order {
         cloudLinux: {
             new: {
                 // GET /order/license/cloudLinux/new
-                $get(params: {ip: string, version: license.CloudLinuxVersionEnum}): Promise<string[]>;
+                $get(params: { ip: string, version: license.CloudLinuxVersionEnum }): Promise<string[]>;
                 $(duration: string): {
                     // GET /order/license/cloudLinux/new/{duration}
-                    $get(params: {ip: string, version: license.CloudLinuxVersionEnum}): Promise<order.Order>;
+                    $get(params: { ip: string, version: license.CloudLinuxVersionEnum }): Promise<order.Order>;
                     // POST /order/license/cloudLinux/new/{duration}
-                    $post(params: {ip: string, version: license.CloudLinuxVersionEnum}): Promise<order.Order>;
+                    $post(params: { ip: string, version: license.CloudLinuxVersionEnum }): Promise<order.Order>;
                 };
             }
         }
@@ -238,12 +238,12 @@ export interface Order {
             $get(): Promise<string[]>;
             new: {
                 // GET /order/license/cpanel/new
-                $get(params: {ip: string, serviceType?: license.LicenseTypeEnum, version: license.OrderableCpanelVersionEnum}): Promise<string[]>;
+                $get(params: { ip: string, serviceType?: license.LicenseTypeEnum, version: license.OrderableCpanelVersionEnum }): Promise<string[]>;
                 $(duration: string): {
                     // GET /order/license/cpanel/new/{duration}
-                    $get(params: {ip: string, serviceType?: license.LicenseTypeEnum, version: license.OrderableCpanelVersionEnum}): Promise<order.Order>;
+                    $get(params: { ip: string, serviceType?: license.LicenseTypeEnum, version: license.OrderableCpanelVersionEnum }): Promise<order.Order>;
                     // POST /order/license/cpanel/new/{duration}
-                    $post(params: {ip: string, serviceType?: license.LicenseTypeEnum, version: license.OrderableCpanelVersionEnum}): Promise<order.Order>;
+                    $post(params: { ip: string, serviceType?: license.LicenseTypeEnum, version: license.OrderableCpanelVersionEnum }): Promise<order.Order>;
                 };
             }
             $(serviceName: string): {
@@ -251,12 +251,12 @@ export interface Order {
                 $get(): Promise<string[]>;
                 upgrade: {
                     // GET /order/license/cpanel/{serviceName}/upgrade
-                    $get(params: {version: license.OrderableCpanelVersionEnum}): Promise<string[]>;
+                    $get(params: { version: license.OrderableCpanelVersionEnum }): Promise<string[]>;
                     $(duration: string): {
                         // GET /order/license/cpanel/{serviceName}/upgrade/{duration}
-                        $get(params: {version: license.OrderableCpanelVersionEnum}): Promise<order.Order>;
+                        $get(params: { version: license.OrderableCpanelVersionEnum }): Promise<order.Order>;
                         // POST /order/license/cpanel/{serviceName}/upgrade/{duration}
-                        $post(params: {version: license.OrderableCpanelVersionEnum}): Promise<order.Order>;
+                        $post(params: { version: license.OrderableCpanelVersionEnum }): Promise<order.Order>;
                     };
                 }
             };
@@ -264,12 +264,12 @@ export interface Order {
         directadmin: {
             new: {
                 // GET /order/license/directadmin/new
-                $get(params: {ip: string, serviceType?: license.LicenseTypeEnum, version: license.OrderableDirectAdminVersionEnum}): Promise<string[]>;
+                $get(params: { ip: string, serviceType?: license.LicenseTypeEnum, version: license.OrderableDirectAdminVersionEnum }): Promise<string[]>;
                 $(duration: string): {
                     // GET /order/license/directadmin/new/{duration}
-                    $get(params: {ip: string, serviceType?: license.LicenseTypeEnum, version: license.OrderableDirectAdminVersionEnum}): Promise<order.Order>;
+                    $get(params: { ip: string, serviceType?: license.LicenseTypeEnum, version: license.OrderableDirectAdminVersionEnum }): Promise<order.Order>;
                     // POST /order/license/directadmin/new/{duration}
-                    $post(params: {ip: string, serviceType?: license.LicenseTypeEnum, version: license.OrderableDirectAdminVersionEnum}): Promise<order.Order>;
+                    $post(params: { ip: string, serviceType?: license.LicenseTypeEnum, version: license.OrderableDirectAdminVersionEnum }): Promise<order.Order>;
                 };
             }
         }
@@ -278,12 +278,12 @@ export interface Order {
             $get(): Promise<string[]>;
             new: {
                 // GET /order/license/plesk/new
-                $get(params: {antivirus?: license.OrderableAntivirusEnum, applicationSet?: license.PleskApplicationSetEnum, domainNumber?: license.OrderablePleskDomainNumberEnum, ip: string, languagePackNumber?: license.OrderablePleskLanguagePackEnum, powerpack?: boolean, resellerManagement?: boolean, serviceType?: license.LicenseTypeEnum, version: license.PleskVersionEnum, wordpressToolkit?: boolean}): Promise<string[]>;
+                $get(params: { antivirus?: license.OrderableAntivirusEnum, applicationSet?: license.PleskApplicationSetEnum, domainNumber?: license.OrderablePleskDomainNumberEnum, ip: string, languagePackNumber?: license.OrderablePleskLanguagePackEnum, powerpack?: boolean, resellerManagement?: boolean, serviceType?: license.LicenseTypeEnum, version: license.PleskVersionEnum, wordpressToolkit?: boolean }): Promise<string[]>;
                 $(duration: string): {
                     // GET /order/license/plesk/new/{duration}
-                    $get(params: {antivirus?: license.OrderableAntivirusEnum, applicationSet?: license.PleskApplicationSetEnum, domainNumber?: license.OrderablePleskDomainNumberEnum, ip: string, languagePackNumber?: license.OrderablePleskLanguagePackEnum, powerpack?: boolean, resellerManagement?: boolean, serviceType?: license.LicenseTypeEnum, version: license.PleskVersionEnum, wordpressToolkit?: boolean}): Promise<order.Order>;
+                    $get(params: { antivirus?: license.OrderableAntivirusEnum, applicationSet?: license.PleskApplicationSetEnum, domainNumber?: license.OrderablePleskDomainNumberEnum, ip: string, languagePackNumber?: license.OrderablePleskLanguagePackEnum, powerpack?: boolean, resellerManagement?: boolean, serviceType?: license.LicenseTypeEnum, version: license.PleskVersionEnum, wordpressToolkit?: boolean }): Promise<order.Order>;
                     // POST /order/license/plesk/new/{duration}
-                    $post(params: {antivirus?: license.OrderableAntivirusEnum, applicationSet?: license.PleskApplicationSetEnum, domainNumber?: license.OrderablePleskDomainNumberEnum, ip: string, languagePackNumber?: license.OrderablePleskLanguagePackEnum, powerpack?: boolean, resellerManagement?: boolean, serviceType?: license.LicenseTypeEnum, version: license.PleskVersionEnum, wordpressToolkit?: boolean}): Promise<order.Order>;
+                    $post(params: { antivirus?: license.OrderableAntivirusEnum, applicationSet?: license.PleskApplicationSetEnum, domainNumber?: license.OrderablePleskDomainNumberEnum, ip: string, languagePackNumber?: license.OrderablePleskLanguagePackEnum, powerpack?: boolean, resellerManagement?: boolean, serviceType?: license.LicenseTypeEnum, version: license.PleskVersionEnum, wordpressToolkit?: boolean }): Promise<order.Order>;
                 };
             }
             $(serviceName: string): {
@@ -291,12 +291,12 @@ export interface Order {
                 $get(): Promise<string[]>;
                 upgrade: {
                     // GET /order/license/plesk/{serviceName}/upgrade
-                    $get(params?: {antispam?: license.OrderableAntispamEnum, antivirus?: license.OrderableAntivirusEnum, applicationSet?: license.PleskApplicationSetEnum, domainNumber?: license.OrderablePleskDomainNumberEnum, languagePackNumber?: license.OrderablePleskLanguagePackEnum, powerpack?: boolean, resellerManagement?: boolean, version?: license.PleskVersionEnum, wordpressToolkit?: boolean}): Promise<string[]>;
+                    $get(params?: { antispam?: license.OrderableAntispamEnum, antivirus?: license.OrderableAntivirusEnum, applicationSet?: license.PleskApplicationSetEnum, domainNumber?: license.OrderablePleskDomainNumberEnum, languagePackNumber?: license.OrderablePleskLanguagePackEnum, powerpack?: boolean, resellerManagement?: boolean, version?: license.PleskVersionEnum, wordpressToolkit?: boolean }): Promise<string[]>;
                     $(duration: string): {
                         // GET /order/license/plesk/{serviceName}/upgrade/{duration}
-                        $get(params?: {antispam?: license.OrderableAntispamEnum, antivirus?: license.OrderableAntivirusEnum, applicationSet?: license.PleskApplicationSetEnum, domainNumber?: license.OrderablePleskDomainNumberEnum, languagePackNumber?: license.OrderablePleskLanguagePackEnum, powerpack?: boolean, resellerManagement?: boolean, version?: license.PleskVersionEnum, wordpressToolkit?: boolean}): Promise<order.Order>;
+                        $get(params?: { antispam?: license.OrderableAntispamEnum, antivirus?: license.OrderableAntivirusEnum, applicationSet?: license.PleskApplicationSetEnum, domainNumber?: license.OrderablePleskDomainNumberEnum, languagePackNumber?: license.OrderablePleskLanguagePackEnum, powerpack?: boolean, resellerManagement?: boolean, version?: license.PleskVersionEnum, wordpressToolkit?: boolean }): Promise<order.Order>;
                         // POST /order/license/plesk/{serviceName}/upgrade/{duration}
-                        $post(params?: {antispam?: license.OrderableAntispamEnum, antivirus?: license.OrderableAntivirusEnum, applicationSet?: license.PleskApplicationSetEnum, domainNumber?: license.OrderablePleskDomainNumberEnum, languagePackNumber?: license.OrderablePleskLanguagePackEnum, powerpack?: boolean, resellerManagement?: boolean, version?: license.PleskVersionEnum, wordpressToolkit?: boolean}): Promise<order.Order>;
+                        $post(params?: { antispam?: license.OrderableAntispamEnum, antivirus?: license.OrderableAntivirusEnum, applicationSet?: license.PleskApplicationSetEnum, domainNumber?: license.OrderablePleskDomainNumberEnum, languagePackNumber?: license.OrderablePleskLanguagePackEnum, powerpack?: boolean, resellerManagement?: boolean, version?: license.PleskVersionEnum, wordpressToolkit?: boolean }): Promise<order.Order>;
                     };
                 }
             };
@@ -306,12 +306,12 @@ export interface Order {
             $get(): Promise<string[]>;
             new: {
                 // GET /order/license/sqlserver/new
-                $get(params: {ip: string, version: license.SqlServerVersionEnum}): Promise<string[]>;
+                $get(params: { ip: string, version: license.SqlServerVersionEnum }): Promise<string[]>;
                 $(duration: string): {
                     // GET /order/license/sqlserver/new/{duration}
-                    $get(params: {ip: string, version: license.SqlServerVersionEnum}): Promise<order.Order>;
+                    $get(params: { ip: string, version: license.SqlServerVersionEnum }): Promise<order.Order>;
                     // POST /order/license/sqlserver/new/{duration}
-                    $post(params: {ip: string, version: license.SqlServerVersionEnum}): Promise<order.Order>;
+                    $post(params: { ip: string, version: license.SqlServerVersionEnum }): Promise<order.Order>;
                 };
             }
             $(serviceName: string): {
@@ -319,12 +319,12 @@ export interface Order {
                 $get(): Promise<string[]>;
                 upgrade: {
                     // GET /order/license/sqlserver/{serviceName}/upgrade
-                    $get(params: {version: license.SqlServerVersionEnum}): Promise<string[]>;
+                    $get(params: { version: license.SqlServerVersionEnum }): Promise<string[]>;
                     $(duration: string): {
                         // GET /order/license/sqlserver/{serviceName}/upgrade/{duration}
-                        $get(params: {version: license.SqlServerVersionEnum}): Promise<order.Order>;
+                        $get(params: { version: license.SqlServerVersionEnum }): Promise<order.Order>;
                         // POST /order/license/sqlserver/{serviceName}/upgrade/{duration}
-                        $post(params: {version: license.SqlServerVersionEnum}): Promise<order.Order>;
+                        $post(params: { version: license.SqlServerVersionEnum }): Promise<order.Order>;
                     };
                 }
             };
@@ -334,12 +334,12 @@ export interface Order {
             $get(): Promise<string[]>;
             new: {
                 // GET /order/license/virtuozzo/new
-                $get(params: {containerNumber: license.OrderableVirtuozzoContainerNumberEnum, ip: string, serviceType?: license.LicenseTypeEnum, version: license.OrderableVirtuozzoVersionEnum}): Promise<string[]>;
+                $get(params: { containerNumber: license.OrderableVirtuozzoContainerNumberEnum, ip: string, serviceType?: license.LicenseTypeEnum, version: license.OrderableVirtuozzoVersionEnum }): Promise<string[]>;
                 $(duration: string): {
                     // GET /order/license/virtuozzo/new/{duration}
-                    $get(params: {containerNumber: license.OrderableVirtuozzoContainerNumberEnum, ip: string, serviceType?: license.LicenseTypeEnum, version: license.OrderableVirtuozzoVersionEnum}): Promise<order.Order>;
+                    $get(params: { containerNumber: license.OrderableVirtuozzoContainerNumberEnum, ip: string, serviceType?: license.LicenseTypeEnum, version: license.OrderableVirtuozzoVersionEnum }): Promise<order.Order>;
                     // POST /order/license/virtuozzo/new/{duration}
-                    $post(params: {containerNumber: license.OrderableVirtuozzoContainerNumberEnum, ip: string, serviceType?: license.LicenseTypeEnum, version: license.OrderableVirtuozzoVersionEnum}): Promise<order.Order>;
+                    $post(params: { containerNumber: license.OrderableVirtuozzoContainerNumberEnum, ip: string, serviceType?: license.LicenseTypeEnum, version: license.OrderableVirtuozzoVersionEnum }): Promise<order.Order>;
                 };
             }
             $(serviceName: string): {
@@ -347,12 +347,12 @@ export interface Order {
                 $get(): Promise<string[]>;
                 upgrade: {
                     // GET /order/license/virtuozzo/{serviceName}/upgrade
-                    $get(params: {containerNumber: license.OrderableVirtuozzoContainerNumberEnum}): Promise<string[]>;
+                    $get(params: { containerNumber: license.OrderableVirtuozzoContainerNumberEnum }): Promise<string[]>;
                     $(duration: string): {
                         // GET /order/license/virtuozzo/{serviceName}/upgrade/{duration}
-                        $get(params: {containerNumber: license.OrderableVirtuozzoContainerNumberEnum}): Promise<order.Order>;
+                        $get(params: { containerNumber: license.OrderableVirtuozzoContainerNumberEnum }): Promise<order.Order>;
                         // POST /order/license/virtuozzo/{serviceName}/upgrade/{duration}
-                        $post(params: {containerNumber: license.OrderableVirtuozzoContainerNumberEnum}): Promise<order.Order>;
+                        $post(params: { containerNumber: license.OrderableVirtuozzoContainerNumberEnum }): Promise<order.Order>;
                     };
                 }
             };
@@ -362,12 +362,12 @@ export interface Order {
             $get(): Promise<string[]>;
             new: {
                 // GET /order/license/windows/new
-                $get(params: {ip: string, serviceType?: license.LicenseTypeEnum, sqlVersion?: license.WindowsSqlVersionEnum, version: license.WindowsOsVersionEnum}): Promise<string[]>;
+                $get(params: { ip: string, serviceType?: license.LicenseTypeEnum, sqlVersion?: license.WindowsSqlVersionEnum, version: license.WindowsOsVersionEnum }): Promise<string[]>;
                 $(duration: string): {
                     // GET /order/license/windows/new/{duration}
-                    $get(params: {ip: string, serviceType?: license.LicenseTypeEnum, sqlVersion?: license.WindowsSqlVersionEnum, version: license.WindowsOsVersionEnum}): Promise<order.Order>;
+                    $get(params: { ip: string, serviceType?: license.LicenseTypeEnum, sqlVersion?: license.WindowsSqlVersionEnum, version: license.WindowsOsVersionEnum }): Promise<order.Order>;
                     // POST /order/license/windows/new/{duration}
-                    $post(params: {ip: string, serviceType?: license.LicenseTypeEnum, sqlVersion?: license.WindowsSqlVersionEnum, version: license.WindowsOsVersionEnum}): Promise<order.Order>;
+                    $post(params: { ip: string, serviceType?: license.LicenseTypeEnum, sqlVersion?: license.WindowsSqlVersionEnum, version: license.WindowsOsVersionEnum }): Promise<order.Order>;
                 };
             }
             $(serviceName: string): {
@@ -375,12 +375,12 @@ export interface Order {
                 $get(): Promise<string[]>;
                 upgrade: {
                     // GET /order/license/windows/{serviceName}/upgrade
-                    $get(params?: {sqlVersion?: license.WindowsSqlVersionEnum, version?: license.WindowsOsVersionEnum}): Promise<string[]>;
+                    $get(params?: { sqlVersion?: license.WindowsSqlVersionEnum, version?: license.WindowsOsVersionEnum }): Promise<string[]>;
                     $(duration: string): {
                         // GET /order/license/windows/{serviceName}/upgrade/{duration}
-                        $get(params?: {sqlVersion?: license.WindowsSqlVersionEnum, version?: license.WindowsOsVersionEnum}): Promise<order.Order>;
+                        $get(params?: { sqlVersion?: license.WindowsSqlVersionEnum, version?: license.WindowsOsVersionEnum }): Promise<order.Order>;
                         // POST /order/license/windows/{serviceName}/upgrade/{duration}
-                        $post(params?: {sqlVersion?: license.WindowsSqlVersionEnum, version?: license.WindowsOsVersionEnum}): Promise<order.Order>;
+                        $post(params?: { sqlVersion?: license.WindowsSqlVersionEnum, version?: license.WindowsOsVersionEnum }): Promise<order.Order>;
                     };
                 }
             };
@@ -394,12 +394,12 @@ export interface Order {
             $get(): Promise<string[]>;
             upgrade: {
                 // GET /order/veeamCloudConnect/{serviceName}/upgrade
-                $get(params: {offer: veeamCloudConnect.Offer}): Promise<string[]>;
+                $get(params: { offer: veeamCloudConnect.Offer }): Promise<string[]>;
                 $(duration: string): {
                     // GET /order/veeamCloudConnect/{serviceName}/upgrade/{duration}
-                    $get(params: {offer: veeamCloudConnect.Offer}): Promise<order.Order>;
+                    $get(params: { offer: veeamCloudConnect.Offer }): Promise<order.Order>;
                     // POST /order/veeamCloudConnect/{serviceName}/upgrade/{duration}
-                    $post(params: {offer: veeamCloudConnect.Offer}): Promise<order.Order>;
+                    $post(params: { offer: veeamCloudConnect.Offer }): Promise<order.Order>;
                 };
             }
         };

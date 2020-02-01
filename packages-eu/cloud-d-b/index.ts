@@ -617,12 +617,12 @@ export interface CloudDB {
                 // GET /cloudDB/enterprise/cluster/{clusterId}
                 $get(): Promise<cloudDB.enterprise_Cluster>;
                 // PUT /cloudDB/enterprise/cluster/{clusterId}
-                $put(params?: {autoBackup?: boolean, backupSize?: number, creationDate?: string, hostCount?: number, id?: string, lastUpdate?: string, name?: string, offerName?: string, offerType?: cloudDB.enterprise.Offer.TypeEnum, regionName?: string, restoredVolumeSize?: number, status?: cloudDB.enterprise.Cluster.StatusEnum, taskId?: string, version?: string}): Promise<void>;
+                $put(params?: { autoBackup?: boolean, backupSize?: number, creationDate?: string, hostCount?: number, id?: string, lastUpdate?: string, name?: string, offerName?: string, offerType?: cloudDB.enterprise.Offer.TypeEnum, regionName?: string, restoredVolumeSize?: number, status?: cloudDB.enterprise.Cluster.StatusEnum, taskId?: string, version?: string }): Promise<void>;
                 backup: {
                     // GET /cloudDB/enterprise/cluster/{clusterId}/backup
                     $get(): Promise<string[]>;
                     // POST /cloudDB/enterprise/cluster/{clusterId}/backup
-                    $post(params: {clusterId: string, name: string}): Promise<cloudDB.enterprise_Cluster_Backup>;
+                    $post(params: { clusterId: string, name: string }): Promise<cloudDB.enterprise_Cluster_Backup>;
                     $(backupId: string): {
                         // DELETE /cloudDB/enterprise/cluster/{clusterId}/backup/{backupId}
                         $delete(): Promise<void>;
@@ -632,7 +632,7 @@ export interface CloudDB {
                 }
                 confirmTermination: {
                     // POST /cloudDB/enterprise/cluster/{clusterId}/confirmTermination
-                    $post(params: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+                    $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
                 }
                 endpoint: {
                     // GET /cloudDB/enterprise/cluster/{clusterId}/endpoint
@@ -654,7 +654,7 @@ export interface CloudDB {
                     // GET /cloudDB/enterprise/cluster/{clusterId}/logs
                     $get(): Promise<string[]>;
                     // POST /cloudDB/enterprise/cluster/{clusterId}/logs
-                    $post(params: {note?: string, username: string}): Promise<cloudDB.enterprise_Cluster_LdpMember>;
+                    $post(params: { note?: string, username: string }): Promise<cloudDB.enterprise_Cluster_LdpMember>;
                     $(logsId: string): {
                         // DELETE /cloudDB/enterprise/cluster/{clusterId}/logs/{logsId}
                         $delete(): Promise<void>;
@@ -678,15 +678,15 @@ export interface CloudDB {
                     // GET /cloudDB/enterprise/cluster/{clusterId}/maintenanceWindow
                     $get(): Promise<cloudDB.enterprise_Cluster_MaintenanceWindow>;
                     // POST /cloudDB/enterprise/cluster/{clusterId}/maintenanceWindow
-                    $post(params?: {dayOfWeek?: number, duration?: number, startTime?: string}): Promise<cloudDB.enterprise_Cluster_MaintenanceWindow>;
+                    $post(params?: { dayOfWeek?: number, duration?: number, startTime?: string }): Promise<cloudDB.enterprise_Cluster_MaintenanceWindow>;
                     // PUT /cloudDB/enterprise/cluster/{clusterId}/maintenanceWindow
-                    $put(params?: {clusterId?: string, creationDate?: string, dayOfWeek?: number, duration?: number, id?: string, lastUpdate?: string, startTime?: string, status?: cloudDB.enterprise.MaintenanceWindow.StatusEnum, taskId?: string}): Promise<void>;
+                    $put(params?: { clusterId?: string, creationDate?: string, dayOfWeek?: number, duration?: number, id?: string, lastUpdate?: string, startTime?: string, status?: cloudDB.enterprise.MaintenanceWindow.StatusEnum, taskId?: string }): Promise<void>;
                 }
                 restore: {
                     // GET /cloudDB/enterprise/cluster/{clusterId}/restore
                     $get(): Promise<string[]>;
                     // POST /cloudDB/enterprise/cluster/{clusterId}/restore
-                    $post(params?: {backupId?: string, timestamp?: string}): Promise<cloudDB.enterprise_Cluster_Restore>;
+                    $post(params?: { backupId?: string, timestamp?: string }): Promise<cloudDB.enterprise_Cluster_Restore>;
                     $(restoreId: string): {
                         // DELETE /cloudDB/enterprise/cluster/{clusterId}/restore/{restoreId}
                         $delete(): Promise<void>;
@@ -696,31 +696,31 @@ export interface CloudDB {
                             // GET /cloudDB/enterprise/cluster/{clusterId}/restore/{restoreId}/user
                             $get(): Promise<cloudDB.enterprise_Cluster_Restore_User>;
                             // POST /cloudDB/enterprise/cluster/{clusterId}/restore/{restoreId}/user
-                            $post(params: {password: string}): Promise<cloudDB.enterprise_Cluster_Restore_User>;
+                            $post(params: { password: string }): Promise<cloudDB.enterprise_Cluster_Restore_User>;
                         }
                     };
                 }
                 scale: {
                     // POST /cloudDB/enterprise/cluster/{clusterId}/scale
-                    $post(params: {count: number}): Promise<cloudDB.enterprise_Cluster>;
+                    $post(params: { count: number }): Promise<cloudDB.enterprise_Cluster>;
                 }
                 securityGroup: {
                     // GET /cloudDB/enterprise/cluster/{clusterId}/securityGroup
                     $get(): Promise<string[]>;
                     // POST /cloudDB/enterprise/cluster/{clusterId}/securityGroup
-                    $post(params: {clusterId: string, name: string}): Promise<cloudDB.enterprise_Cluster_SecurityGroup>;
+                    $post(params: { clusterId: string, name: string }): Promise<cloudDB.enterprise_Cluster_SecurityGroup>;
                     $(securityGroupId: string): {
                         // DELETE /cloudDB/enterprise/cluster/{clusterId}/securityGroup/{securityGroupId}
                         $delete(): Promise<void>;
                         // GET /cloudDB/enterprise/cluster/{clusterId}/securityGroup/{securityGroupId}
                         $get(): Promise<cloudDB.enterprise_Cluster_SecurityGroup>;
                         // PUT /cloudDB/enterprise/cluster/{clusterId}/securityGroup/{securityGroupId}
-                        $put(params?: {clusterId?: string, creationDate?: string, id?: string, lastUpdate?: string, name?: string, rulesCount?: number, status?: cloudDB.enterprise.SecurityGroup.StatusEnum, taskId?: string}): Promise<void>;
+                        $put(params?: { clusterId?: string, creationDate?: string, id?: string, lastUpdate?: string, name?: string, rulesCount?: number, status?: cloudDB.enterprise.SecurityGroup.StatusEnum, taskId?: string }): Promise<void>;
                         rule: {
                             // GET /cloudDB/enterprise/cluster/{clusterId}/securityGroup/{securityGroupId}/rule
                             $get(): Promise<string[]>;
                             // POST /cloudDB/enterprise/cluster/{clusterId}/securityGroup/{securityGroupId}/rule
-                            $post(params: {source: string}): Promise<cloudDB.enterprise_Cluster_SecurityGroup_Rule>;
+                            $post(params: { source: string }): Promise<cloudDB.enterprise_Cluster_SecurityGroup_Rule>;
                             $(ruleId: string): {
                                 // DELETE /cloudDB/enterprise/cluster/{clusterId}/securityGroup/{securityGroupId}/rule/{ruleId}
                                 $delete(): Promise<void>;
@@ -734,11 +734,11 @@ export interface CloudDB {
                     // GET /cloudDB/enterprise/cluster/{clusterId}/serviceInfos
                     $get(): Promise<services.Service>;
                     // PUT /cloudDB/enterprise/cluster/{clusterId}/serviceInfos
-                    $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+                    $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
                 }
                 task: {
                     // GET /cloudDB/enterprise/cluster/{clusterId}/task
-                    $get(params?: {function_?: string, status?: cloudDB.task.Status}): Promise<string[]>;
+                    $get(params?: { function_?: string, status?: cloudDB.task.Status }): Promise<string[]>;
                     $(taskId: string): {
                         // GET /cloudDB/enterprise/cluster/{clusterId}/task/{taskId}
                         $get(): Promise<cloudDB.Task>;
@@ -752,7 +752,7 @@ export interface CloudDB {
                     // GET /cloudDB/enterprise/cluster/{clusterId}/user
                     $get(): Promise<cloudDB.enterprise_Cluster_User>;
                     // POST /cloudDB/enterprise/cluster/{clusterId}/user
-                    $post(params: {password: string}): Promise<cloudDB.enterprise_Cluster_User>;
+                    $post(params: { password: string }): Promise<cloudDB.enterprise_Cluster_User>;
                 }
             };
         }

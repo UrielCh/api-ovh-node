@@ -133,7 +133,7 @@ export interface Partner {
     // GET /partner
     $get(): Promise<partner.Partner>;
     // POST /partner
-    $post(params: {acceptanceStatus?: partner.AcceptanceStatusEnum, account: partner.Account, areaOfExpertise: partner.AreaOfExpertiseEnum[], contact: partner.Contact, partnersProgramReason: string, salesProjection: number}): Promise<void>;
+    $post(params: { acceptanceStatus?: partner.AcceptanceStatusEnum, account: partner.Account, areaOfExpertise: partner.AreaOfExpertiseEnum[], contact: partner.Contact, partnersProgramReason: string, salesProjection: number }): Promise<void>;
     form: {
         schema: {
             // GET /partner/form/schema

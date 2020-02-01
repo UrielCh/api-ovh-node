@@ -171,10 +171,10 @@ export interface Dbaas {
             // GET /dbaas/timeseries/{serviceName}
             $get(): Promise<timeseries.Project>;
             // PUT /dbaas/timeseries/{serviceName}
-            $put(params?: {description?: string, displayName?: string, offerId?: string, regionId?: string, serviceName?: string, status?: timeseries.StatusTypeEnum}): Promise<void>;
+            $put(params?: { description?: string, displayName?: string, offerId?: string, regionId?: string, serviceName?: string, status?: timeseries.StatusTypeEnum }): Promise<void>;
             changeContact: {
                 // POST /dbaas/timeseries/{serviceName}/changeContact
-                $post(params?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
+                $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
             }
             consumption: {
                 // GET /dbaas/timeseries/{serviceName}/consumption
@@ -184,14 +184,14 @@ export interface Dbaas {
                 // GET /dbaas/timeseries/{serviceName}/key
                 $get(): Promise<paas.timeseries.Key[]>;
                 // POST /dbaas/timeseries/{serviceName}/key
-                $post(params: {description?: string, permissions: string[], tags: paas.timeseries.Tag[]}): Promise<paas.timeseries.Key>;
+                $post(params: { description?: string, permissions: string[], tags: paas.timeseries.Tag[] }): Promise<paas.timeseries.Key>;
                 $(keyId: string): {
                     // DELETE /dbaas/timeseries/{serviceName}/key/{keyId}
                     $delete(): Promise<boolean>;
                     // GET /dbaas/timeseries/{serviceName}/key/{keyId}
                     $get(): Promise<paas.timeseries.Key>;
                     // PUT /dbaas/timeseries/{serviceName}/key/{keyId}
-                    $put(params: {description?: string, permissions: tsaas.PermissionEnum[], tags: paas.timeseries.Tag[]}): Promise<paas.timeseries.Key>;
+                    $put(params: { description?: string, permissions: tsaas.PermissionEnum[], tags: paas.timeseries.Tag[] }): Promise<paas.timeseries.Key>;
                 };
             }
             quota: {
@@ -202,18 +202,18 @@ export interface Dbaas {
                 // GET /dbaas/timeseries/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /dbaas/timeseries/{serviceName}/serviceInfos
-                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+                $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
             }
             setup: {
                 // POST /dbaas/timeseries/{serviceName}/setup
-                $post(params: {description?: string, displayName: string, raTokenId?: string, raTokenKey?: string, regionId?: string}): Promise<paas.timeseries.Project>;
+                $post(params: { description?: string, displayName: string, raTokenId?: string, raTokenKey?: string, regionId?: string }): Promise<paas.timeseries.Project>;
             }
             token: {
                 opentsdb: {
                     // GET /dbaas/timeseries/{serviceName}/token/opentsdb
                     $get(): Promise<tsaas.OpenTSDBToken[]>;
                     // POST /dbaas/timeseries/{serviceName}/token/opentsdb
-                    $post(params: {description?: string, permission: string, tags: paas.timeseries.Tag[]}): Promise<tsaas.OpenTSDBToken>;
+                    $post(params: { description?: string, permission: string, tags: paas.timeseries.Tag[] }): Promise<tsaas.OpenTSDBToken>;
                     $(tokenId: string): {
                         // DELETE /dbaas/timeseries/{serviceName}/token/opentsdb/{tokenId}
                         $delete(): Promise<boolean>;

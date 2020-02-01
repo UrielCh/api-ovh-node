@@ -127,7 +127,7 @@ export interface Dbaas {
             // GET /dbaas/queue/{serviceName}
             $get(): Promise<dbaas.queue.App>;
             // PUT /dbaas/queue/{serviceName}
-            $put(params: {name: string}): Promise<dbaas.queue.App>;
+            $put(params: { name: string }): Promise<dbaas.queue.App>;
             key: {
                 // GET /dbaas/queue/{serviceName}/key
                 $get(): Promise<string[]>;
@@ -162,7 +162,7 @@ export interface Dbaas {
                 // GET /dbaas/queue/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /dbaas/queue/{serviceName}/serviceInfos
-                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+                $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
             }
             topic: {
                 // GET /dbaas/queue/{serviceName}/topic

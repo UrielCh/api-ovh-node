@@ -127,22 +127,22 @@ export interface SslGateway {
     }
     eligibility: {
         // GET /sslGateway/eligibility
-        $get(params: {domain: string}): Promise<sslGateway.EligibilityStatus>;
+        $get(params: { domain: string }): Promise<sslGateway.EligibilityStatus>;
     }
     $(serviceName: string): {
         // GET /sslGateway/{serviceName}
         $get(): Promise<sslGateway.SslGateway>;
         // PUT /sslGateway/{serviceName}
-        $put(params?: {allowedSource?: string[], displayName?: string, hsts?: boolean, httpsRedirect?: boolean, ipv4?: string, ipv6?: string, metricsToken?: string, offer?: sslGateway.OfferEnum, reverse?: string, serverHttps?: boolean, serviceName?: string, sslConfiguration?: sslGateway.SslConfigurationEnum, state?: sslGateway.StateEnum, zones?: string[]}): Promise<void>;
+        $put(params?: { allowedSource?: string[], displayName?: string, hsts?: boolean, httpsRedirect?: boolean, ipv4?: string, ipv6?: string, metricsToken?: string, offer?: sslGateway.OfferEnum, reverse?: string, serverHttps?: boolean, serviceName?: string, sslConfiguration?: sslGateway.SslConfigurationEnum, state?: sslGateway.StateEnum, zones?: string[] }): Promise<void>;
         confirmTermination: {
             // POST /sslGateway/{serviceName}/confirmTermination
-            $post(params: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+            $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
         }
         domain: {
             // GET /sslGateway/{serviceName}/domain
             $get(): Promise<number[]>;
             // POST /sslGateway/{serviceName}/domain
-            $post(params: {domain: string}): Promise<sslGateway.Domain>;
+            $post(params: { domain: string }): Promise<sslGateway.Domain>;
             $(id: number): {
                 // DELETE /sslGateway/{serviceName}/domain/{id}
                 $delete(): Promise<void>;
@@ -156,27 +156,27 @@ export interface SslGateway {
         }
         renewCertificate: {
             // POST /sslGateway/{serviceName}/renewCertificate
-            $post(params?: {domain?: string}): Promise<string[]>;
+            $post(params?: { domain?: string }): Promise<string[]>;
         }
         server: {
             // GET /sslGateway/{serviceName}/server
             $get(): Promise<number[]>;
             // POST /sslGateway/{serviceName}/server
-            $post(params: {address: string, port: number}): Promise<sslGateway.Server>;
+            $post(params: { address: string, port: number }): Promise<sslGateway.Server>;
             $(id: number): {
                 // DELETE /sslGateway/{serviceName}/server/{id}
                 $delete(): Promise<void>;
                 // GET /sslGateway/{serviceName}/server/{id}
                 $get(): Promise<sslGateway.Server>;
                 // PUT /sslGateway/{serviceName}/server/{id}
-                $put(params?: {address?: string, id?: number, port?: number, state?: sslGateway.ServerStateEnum}): Promise<void>;
+                $put(params?: { address?: string, id?: number, port?: number, state?: sslGateway.ServerStateEnum }): Promise<void>;
             };
         }
         serviceInfos: {
             // GET /sslGateway/{serviceName}/serviceInfos
             $get(): Promise<services.Service>;
             // PUT /sslGateway/{serviceName}/serviceInfos
-            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+            $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
         }
         task: {
             // GET /sslGateway/{serviceName}/task

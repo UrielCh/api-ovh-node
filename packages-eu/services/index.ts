@@ -275,7 +275,7 @@ export default proxyServices;
 // path /services
 export interface Services {
     // GET /services
-    $get(params?: {orderBy?: string, routes?: string, sort?: string}): Promise<number[]>;
+    $get(params?: { orderBy?: string, routes?: string, sort?: string }): Promise<number[]>;
     $(serviceId: number): {
         // GET /services/{serviceId}
         $get(): Promise<services.expanded.Service>;

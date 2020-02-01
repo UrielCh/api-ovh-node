@@ -149,13 +149,13 @@ export interface Caas {
             $get(): Promise<registry.service>;
             changeContact: {
                 // POST /caas/registry/{serviceName}/changeContact
-                $post(params?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
+                $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
             }
             namespaces: {
                 // GET /caas/registry/{serviceName}/namespaces
                 $get(): Promise<string[]>;
                 // POST /caas/registry/{serviceName}/namespaces
-                $post(params?: {name?: string}): Promise<registry.namespace>;
+                $post(params?: { name?: string }): Promise<registry.namespace>;
                 $(namespaceId: string): {
                     // DELETE /caas/registry/{serviceName}/namespaces/{namespaceId}
                     $delete(): Promise<void>;
@@ -170,12 +170,12 @@ export interface Caas {
                             // GET /caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}
                             $get(): Promise<registry.image>;
                             // PUT /caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}
-                            $put(params?: {public?: boolean}): Promise<registry.image>;
+                            $put(params?: { public?: boolean }): Promise<registry.image>;
                             permissions: {
                                 // GET /caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/permissions
                                 $get(): Promise<string[]>;
                                 // POST /caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/permissions
-                                $post(params?: {canRead?: boolean, canWrite?: boolean, isAdmin?: boolean, status?: registry.permission.status, userId?: string}): Promise<registry.permissions>;
+                                $post(params?: { canRead?: boolean, canWrite?: boolean, isAdmin?: boolean, status?: registry.permission.status, userId?: string }): Promise<registry.permissions>;
                                 $(permissionId: string): {
                                     // DELETE /caas/registry/{serviceName}/namespaces/{namespaceId}/images/{imageId}/permissions/{permissionId}
                                     $delete(): Promise<void>;
@@ -197,7 +197,7 @@ export interface Caas {
                         // GET /caas/registry/{serviceName}/namespaces/{namespaceId}/permissions
                         $get(): Promise<string[]>;
                         // POST /caas/registry/{serviceName}/namespaces/{namespaceId}/permissions
-                        $post(params?: {canRead?: boolean, canWrite?: boolean, isAdmin?: boolean, status?: registry.permission.status, userId?: string}): Promise<registry.permissions>;
+                        $post(params?: { canRead?: boolean, canWrite?: boolean, isAdmin?: boolean, status?: registry.permission.status, userId?: string }): Promise<registry.permissions>;
                         $(permissionId: string): {
                             // DELETE /caas/registry/{serviceName}/namespaces/{namespaceId}/permissions/{permissionId}
                             $delete(): Promise<void>;
@@ -211,13 +211,13 @@ export interface Caas {
                 // GET /caas/registry/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /caas/registry/{serviceName}/serviceInfos
-                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+                $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
             }
             users: {
                 // GET /caas/registry/{serviceName}/users
                 $get(): Promise<string[]>;
                 // POST /caas/registry/{serviceName}/users
-                $post(params?: {description?: string}): Promise<registry.user>;
+                $post(params?: { description?: string }): Promise<registry.user>;
                 $(userId: string): {
                     // DELETE /caas/registry/{serviceName}/users/{userId}
                     $delete(): Promise<void>;

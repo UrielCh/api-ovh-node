@@ -142,28 +142,28 @@ export interface License {
         $get(): Promise<string[]>;
         orderableVersions: {
             // GET /license/plesk/orderableVersions
-            $get(params: {ip: string}): Promise<license.PleskOrderConfiguration[]>;
+            $get(params: { ip: string }): Promise<license.PleskOrderConfiguration[]>;
         }
         $(serviceName: string): {
             // GET /license/plesk/{serviceName}
             $get(): Promise<license.plesk.Plesk>;
             // PUT /license/plesk/{serviceName}
-            $put(params?: {creation?: string, deleteAtExpiration?: boolean, domain?: string, domainNumber?: license.DomainNumberEnum, informationKey?: string, ip?: string, key?: string, licenseId?: string, productKey?: string, status?: license.StateEnum, version?: license.PleskVersionEnum}): Promise<void>;
+            $put(params?: { creation?: string, deleteAtExpiration?: boolean, domain?: string, domainNumber?: license.DomainNumberEnum, informationKey?: string, ip?: string, key?: string, licenseId?: string, productKey?: string, status?: license.StateEnum, version?: license.PleskVersionEnum }): Promise<void>;
             allowedDestinationIp: {
                 // GET /license/plesk/{serviceName}/allowedDestinationIp
                 $get(): Promise<string[]>;
             }
             canLicenseBeMovedTo: {
                 // GET /license/plesk/{serviceName}/canLicenseBeMovedTo
-                $get(params: {destinationIp: string}): Promise<license.ChangeIpStatus>;
+                $get(params: { destinationIp: string }): Promise<license.ChangeIpStatus>;
             }
             changeIp: {
                 // POST /license/plesk/{serviceName}/changeIp
-                $post(params: {destinationIp: string}): Promise<license.Task>;
+                $post(params: { destinationIp: string }): Promise<license.Task>;
             }
             confirmTermination: {
                 // POST /license/plesk/{serviceName}/confirmTermination
-                $post(params: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+                $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
             }
             option: {
                 // GET /license/plesk/{serviceName}/option
@@ -179,11 +179,11 @@ export interface License {
                 // GET /license/plesk/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /license/plesk/{serviceName}/serviceInfos
-                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+                $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
             }
             tasks: {
                 // GET /license/plesk/{serviceName}/tasks
-                $get(params?: {action?: license.ActionType, status?: license.TaskStateEnum}): Promise<number[]>;
+                $get(params?: { action?: license.ActionType, status?: license.TaskStateEnum }): Promise<number[]>;
                 $(taskId: number): {
                     // GET /license/plesk/{serviceName}/tasks/{taskId}
                     $get(): Promise<license.Task>;

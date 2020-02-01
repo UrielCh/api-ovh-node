@@ -137,18 +137,18 @@ export interface Saas {
             // GET /saas/csp2/{serviceName}
             $get(): Promise<saas.csp2.OfficeTenant>;
             // PUT /saas/csp2/{serviceName}
-            $put(params?: {address?: string, city?: string, creationDate?: string, displayName?: string, email?: string, firstName?: string, lastName?: string, phone?: string, serviceName?: string, status?: saas.csp2.ServiceStateEnum, zipCode?: string}): Promise<void>;
+            $put(params?: { address?: string, city?: string, creationDate?: string, displayName?: string, email?: string, firstName?: string, lastName?: string, phone?: string, serviceName?: string, status?: saas.csp2.ServiceStateEnum, zipCode?: string }): Promise<void>;
             billingPeriodPeaks: {
                 // GET /saas/csp2/{serviceName}/billingPeriodPeaks
                 $get(): Promise<saas.csp2.BillingStatistics>;
             }
             changeAdministratorPassword: {
                 // POST /saas/csp2/{serviceName}/changeAdministratorPassword
-                $post(params: {newPassword: string}): Promise<saas.csp2.OfficeTask>;
+                $post(params: { newPassword: string }): Promise<saas.csp2.OfficeTask>;
             }
             configureDomain: {
                 // POST /saas/csp2/{serviceName}/configureDomain
-                $post(params: {domain: string, supportedServices: saas.csp2.SupportedServiceEnum[]}): Promise<saas.csp2.OfficeTask>;
+                $post(params: { domain: string, supportedServices: saas.csp2.SupportedServiceEnum[] }): Promise<saas.csp2.OfficeTask>;
             }
             orderableLicenses: {
                 // GET /saas/csp2/{serviceName}/orderableLicenses
@@ -162,13 +162,13 @@ export interface Saas {
                 // GET /saas/csp2/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /saas/csp2/{serviceName}/serviceInfos
-                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+                $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
             }
             subscription: {
                 // GET /saas/csp2/{serviceName}/subscription
                 $get(): Promise<number[]>;
                 // POST /saas/csp2/{serviceName}/subscription
-                $post(params: {licenseId: number, quantity: number}): Promise<saas.csp2.OfficeTask>;
+                $post(params: { licenseId: number, quantity: number }): Promise<saas.csp2.OfficeTask>;
                 $(id: number): {
                     // DELETE /saas/csp2/{serviceName}/subscription/{id}
                     $delete(): Promise<saas.csp2.OfficeTask>;
@@ -184,11 +184,11 @@ export interface Saas {
                     }
                     changeQuantity: {
                         // POST /saas/csp2/{serviceName}/subscription/{id}/changeQuantity
-                        $post(params: {quantity: number}): Promise<saas.csp2.OfficeTask>;
+                        $post(params: { quantity: number }): Promise<saas.csp2.OfficeTask>;
                     }
                     orderAddon: {
                         // POST /saas/csp2/{serviceName}/subscription/{id}/orderAddon
-                        $post(params: {licenseId: number, quantity: number}): Promise<saas.csp2.OfficeTask>;
+                        $post(params: { licenseId: number, quantity: number }): Promise<saas.csp2.OfficeTask>;
                     }
                 };
             }
@@ -202,7 +202,7 @@ export interface Saas {
             }
             usageStatistics: {
                 // GET /saas/csp2/{serviceName}/usageStatistics
-                $get(params: {timePeriod: msServices.LicensePeriodEnum}): Promise<saas.csp2.Statistics[]>;
+                $get(params: { timePeriod: msServices.LicensePeriodEnum }): Promise<saas.csp2.Statistics[]>;
             }
         };
     }

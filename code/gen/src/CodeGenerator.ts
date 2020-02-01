@@ -431,7 +431,7 @@ export class CodeGenerator {
                     code += 'params';
                     if (mandatoryParams == 0)
                         code += '?';
-                    code += `: {${params.join(', ')}}`
+                    code += `: { ${params.join(', ')} }`
                 }
                 code += `): `;
                 let retType = op.responseFullType;

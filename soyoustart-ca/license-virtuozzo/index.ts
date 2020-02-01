@@ -131,32 +131,32 @@ export interface License {
         $get(): Promise<string[]>;
         orderableVersions: {
             // GET /license/virtuozzo/orderableVersions
-            $get(params: {ip: string}): Promise<license.VirtuozzoOrderConfiguration[]>;
+            $get(params: { ip: string }): Promise<license.VirtuozzoOrderConfiguration[]>;
         }
         $(serviceName: string): {
             // GET /license/virtuozzo/{serviceName}
             $get(): Promise<license.virtuozzo.Virtuozzo>;
             // PUT /license/virtuozzo/{serviceName}
-            $put(params?: {containerNumber?: license.VirtuozzoContainerNumberEnum, creation?: string, deleteAtExpiration?: boolean, domain?: string, informationKey?: string, ip?: string, licenseId?: string, productKey?: string, status?: license.StateEnum, version?: license.VirtuozzoVersionEnum}): Promise<void>;
+            $put(params?: { containerNumber?: license.VirtuozzoContainerNumberEnum, creation?: string, deleteAtExpiration?: boolean, domain?: string, informationKey?: string, ip?: string, licenseId?: string, productKey?: string, status?: license.StateEnum, version?: license.VirtuozzoVersionEnum }): Promise<void>;
             allowedDestinationIp: {
                 // GET /license/virtuozzo/{serviceName}/allowedDestinationIp
                 $get(): Promise<string[]>;
             }
             canLicenseBeMovedTo: {
                 // GET /license/virtuozzo/{serviceName}/canLicenseBeMovedTo
-                $get(params: {destinationIp: string}): Promise<license.ChangeIpStatus>;
+                $get(params: { destinationIp: string }): Promise<license.ChangeIpStatus>;
             }
             changeIp: {
                 // POST /license/virtuozzo/{serviceName}/changeIp
-                $post(params: {destinationIp: string}): Promise<license.Task>;
+                $post(params: { destinationIp: string }): Promise<license.Task>;
             }
             confirmTermination: {
                 // POST /license/virtuozzo/{serviceName}/confirmTermination
-                $post(params: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+                $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
             }
             option: {
                 // GET /license/virtuozzo/{serviceName}/option
-                $get(params?: {label?: license.OptionLabel}): Promise<license.OptionLabel[]>;
+                $get(params?: { label?: license.OptionLabel }): Promise<license.OptionLabel[]>;
                 $(label: license.OptionLabel): {
                     // DELETE /license/virtuozzo/{serviceName}/option/{label}
                     $delete(): Promise<license.Task>;
@@ -168,11 +168,11 @@ export interface License {
                 // GET /license/virtuozzo/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /license/virtuozzo/{serviceName}/serviceInfos
-                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+                $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
             }
             tasks: {
                 // GET /license/virtuozzo/{serviceName}/tasks
-                $get(params?: {action?: license.ActionType, status?: license.TaskStateEnum}): Promise<number[]>;
+                $get(params?: { action?: license.ActionType, status?: license.TaskStateEnum }): Promise<number[]>;
                 $(taskId: number): {
                     // GET /license/virtuozzo/{serviceName}/tasks/{taskId}
                     $get(): Promise<license.Task>;

@@ -85,7 +85,7 @@ export interface Hpcspot {
         $get(): Promise<hpcspot.Account>;
         consumption: {
             // GET /hpcspot/{serviceName}/consumption
-            $get(params?: {hpcspotItemEndDate_from?: string, hpcspotItemEndDate_to?: string, hpcspotItemId?: number, orderId?: number, type?: hpcspot.ConsumptionTypeEnum}): Promise<number[]>;
+            $get(params?: { hpcspotItemEndDate_from?: string, hpcspotItemEndDate_to?: string, hpcspotItemId?: number, orderId?: number, type?: hpcspot.ConsumptionTypeEnum }): Promise<number[]>;
             $(id: number): {
                 // GET /hpcspot/{serviceName}/consumption/{id}
                 $get(): Promise<hpcspot.Consumption>;
@@ -95,7 +95,7 @@ export interface Hpcspot {
             // GET /hpcspot/{serviceName}/serviceInfos
             $get(): Promise<services.Service>;
             // PUT /hpcspot/{serviceName}/serviceInfos
-            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+            $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
         }
     };
 }

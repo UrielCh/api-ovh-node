@@ -41,7 +41,7 @@ export interface Contact {
         $get(): Promise<contact.FormCharacteristic[]>;
         send: {
             // POST /contact/form/send
-            $post(params: {form: complexType.SafeKeyValue<string>[], type: string}): Promise<void>;
+            $post(params: { form: complexType.SafeKeyValue<string>[], type: string }): Promise<void>;
         }
     }
 }

@@ -100,24 +100,24 @@ export interface License {
         $get(): Promise<string[]>;
         orderableVersions: {
             // GET /license/cloudLinux/orderableVersions
-            $get(params: {ip: string}): Promise<license.CloudLinuxOrderConfiguration[]>;
+            $get(params: { ip: string }): Promise<license.CloudLinuxOrderConfiguration[]>;
         }
         $(serviceName: string): {
             // GET /license/cloudLinux/{serviceName}
             $get(): Promise<license.cloudLinux.CloudLinux>;
             confirmTermination: {
                 // POST /license/cloudLinux/{serviceName}/confirmTermination
-                $post(params: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+                $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
             }
             serviceInfos: {
                 // GET /license/cloudLinux/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /license/cloudLinux/{serviceName}/serviceInfos
-                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+                $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
             }
             tasks: {
                 // GET /license/cloudLinux/{serviceName}/tasks
-                $get(params?: {action?: license.ActionType, status?: license.TaskStateEnum}): Promise<number[]>;
+                $get(params?: { action?: license.ActionType, status?: license.TaskStateEnum }): Promise<number[]>;
                 $(taskId: number): {
                     // GET /license/cloudLinux/{serviceName}/tasks/{taskId}
                     $get(): Promise<license.Task>;

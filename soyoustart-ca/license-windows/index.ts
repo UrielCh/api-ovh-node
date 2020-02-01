@@ -114,16 +114,16 @@ export interface License {
         $get(): Promise<string[]>;
         orderableVersions: {
             // GET /license/windows/orderableVersions
-            $get(params: {ip: string}): Promise<license.WindowsOrderConfiguration[]>;
+            $get(params: { ip: string }): Promise<license.WindowsOrderConfiguration[]>;
         }
         $(serviceName: string): {
             // GET /license/windows/{serviceName}
             $get(): Promise<license.windows.Windows>;
             // PUT /license/windows/{serviceName}
-            $put(params?: {creation?: string, deleteAtExpiration?: boolean, domain?: string, ip?: string, licenseId?: string, status?: license.StateEnum, version?: license.WindowsOsVersionEnum}): Promise<void>;
+            $put(params?: { creation?: string, deleteAtExpiration?: boolean, domain?: string, ip?: string, licenseId?: string, status?: license.StateEnum, version?: license.WindowsOsVersionEnum }): Promise<void>;
             confirmTermination: {
                 // POST /license/windows/{serviceName}/confirmTermination
-                $post(params: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+                $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
             }
             option: {
                 // GET /license/windows/{serviceName}/option
@@ -139,15 +139,15 @@ export interface License {
                 // GET /license/windows/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /license/windows/{serviceName}/serviceInfos
-                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+                $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
             }
             sqlServer: {
                 // POST /license/windows/{serviceName}/sqlServer
-                $post(params: {licenseId: string, version: license.WindowsSqlVersionEnum}): Promise<license.Task>;
+                $post(params: { licenseId: string, version: license.WindowsSqlVersionEnum }): Promise<license.Task>;
             }
             tasks: {
                 // GET /license/windows/{serviceName}/tasks
-                $get(params?: {action?: license.ActionType, status?: license.TaskStateEnum}): Promise<number[]>;
+                $get(params?: { action?: license.ActionType, status?: license.TaskStateEnum }): Promise<number[]>;
                 $(taskId: number): {
                     // GET /license/windows/{serviceName}/tasks/{taskId}
                     $get(): Promise<license.Task>;

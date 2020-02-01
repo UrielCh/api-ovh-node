@@ -74,6 +74,6 @@ export default proxySupplyMondialRelay;
 export interface Supply {
     mondialRelay: {
         // POST /supply/mondialRelay
-        $post(params: {address?: string, city?: string, country: coreTypes.CountryEnum, zipcode?: string}): Promise<supply.MondialRelayReturn>;
+        $post(params: { address?: string, city?: string, country: coreTypes.CountryEnum, zipcode?: string }): Promise<supply.MondialRelayReturn>;
     }
 }

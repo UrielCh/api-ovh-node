@@ -110,38 +110,38 @@ export interface License {
         $get(): Promise<string[]>;
         orderableVersions: {
             // GET /license/cpanel/orderableVersions
-            $get(params: {ip: string}): Promise<license.CpanelOrderConfiguration[]>;
+            $get(params: { ip: string }): Promise<license.CpanelOrderConfiguration[]>;
         }
         $(serviceName: string): {
             // GET /license/cpanel/{serviceName}
             $get(): Promise<license.cpanel.Cpanel>;
             // PUT /license/cpanel/{serviceName}
-            $put(params?: {creation?: string, deleteAtExpiration?: boolean, domain?: string, ip?: string, licenseId?: string, status?: license.StateEnum, version?: license.CpanelVersionEnum}): Promise<void>;
+            $put(params?: { creation?: string, deleteAtExpiration?: boolean, domain?: string, ip?: string, licenseId?: string, status?: license.StateEnum, version?: license.CpanelVersionEnum }): Promise<void>;
             allowedDestinationIp: {
                 // GET /license/cpanel/{serviceName}/allowedDestinationIp
                 $get(): Promise<string[]>;
             }
             canLicenseBeMovedTo: {
                 // GET /license/cpanel/{serviceName}/canLicenseBeMovedTo
-                $get(params: {destinationIp: string}): Promise<license.ChangeIpStatus>;
+                $get(params: { destinationIp: string }): Promise<license.ChangeIpStatus>;
             }
             changeIp: {
                 // POST /license/cpanel/{serviceName}/changeIp
-                $post(params: {destinationIp: string}): Promise<license.Task>;
+                $post(params: { destinationIp: string }): Promise<license.Task>;
             }
             confirmTermination: {
                 // POST /license/cpanel/{serviceName}/confirmTermination
-                $post(params: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+                $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
             }
             serviceInfos: {
                 // GET /license/cpanel/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /license/cpanel/{serviceName}/serviceInfos
-                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+                $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
             }
             tasks: {
                 // GET /license/cpanel/{serviceName}/tasks
-                $get(params?: {action?: license.ActionType, status?: license.TaskStateEnum}): Promise<number[]>;
+                $get(params?: { action?: license.ActionType, status?: license.TaskStateEnum }): Promise<number[]>;
                 $(taskId: number): {
                     // GET /license/cpanel/{serviceName}/tasks/{taskId}
                     $get(): Promise<license.Task>;

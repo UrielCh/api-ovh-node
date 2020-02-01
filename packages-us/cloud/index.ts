@@ -739,7 +739,7 @@ export default proxyCloud;
 export interface Cloud {
     order: {
         // GET /cloud/order
-        $get(params?: {planCode?: string}): Promise<cloud.order.Order[]>;
+        $get(params?: { planCode?: string }): Promise<cloud.order.Order[]>;
     }
     project: {
         // GET /cloud/project
@@ -748,18 +748,18 @@ export interface Cloud {
             // GET /cloud/project/{serviceName}
             $get(): Promise<cloud.Project>;
             // PUT /cloud/project/{serviceName}
-            $put(params?: {access?: cloud.AccessTypeEnum, creationDate?: string, description?: string, expiration?: string, orderId?: number, planCode?: string, project_id?: string, status?: cloud.project.ProjectStatus, unleash?: boolean}): Promise<void>;
+            $put(params?: { access?: cloud.AccessTypeEnum, creationDate?: string, description?: string, expiration?: string, orderId?: number, planCode?: string, project_id?: string, status?: cloud.project.ProjectStatus, unleash?: boolean }): Promise<void>;
             activateMonthlyBilling: {
                 // POST /cloud/project/{serviceName}/activateMonthlyBilling
-                $post(params: {instances: cloud.instance.MonthlyInstanceBulkParams[]}): Promise<cloud.instance.InstanceDetail[]>;
+                $post(params: { instances: cloud.instance.MonthlyInstanceBulkParams[] }): Promise<cloud.instance.InstanceDetail[]>;
             }
             confirmTermination: {
                 // POST /cloud/project/{serviceName}/confirmTermination
-                $post(params: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+                $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
             }
             flavor: {
                 // GET /cloud/project/{serviceName}/flavor
-                $get(params?: {region?: string}): Promise<cloud.flavor.Flavor[]>;
+                $get(params?: { region?: string }): Promise<cloud.flavor.Flavor[]>;
                 $(flavorId: string): {
                     // GET /cloud/project/{serviceName}/flavor/{flavorId}
                     $get(): Promise<cloud.flavor.Flavor>;
@@ -767,7 +767,7 @@ export interface Cloud {
             }
             image: {
                 // GET /cloud/project/{serviceName}/image
-                $get(params?: {flavorType?: string, osType?: cloud.image.OSTypeEnum, region?: string}): Promise<cloud.image.Image[]>;
+                $get(params?: { flavorType?: string, osType?: cloud.image.OSTypeEnum, region?: string }): Promise<cloud.image.Image[]>;
                 $(imageId: string): {
                     // GET /cloud/project/{serviceName}/image/{imageId}
                     $get(): Promise<cloud.image.Image>;
@@ -775,23 +775,23 @@ export interface Cloud {
             }
             instance: {
                 // GET /cloud/project/{serviceName}/instance
-                $get(params?: {region?: string}): Promise<cloud.instance.Instance[]>;
+                $get(params?: { region?: string }): Promise<cloud.instance.Instance[]>;
                 // POST /cloud/project/{serviceName}/instance
-                $post(params: {autobackup?: cloud.instance.AutoBackup, flavorId: string, groupId?: string, imageId?: string, monthlyBilling?: boolean, name: string, networks?: cloud.instance.NetworkParams[], region: string, sshKeyId?: string, userData?: string, volumeId?: string}): Promise<cloud.instance.InstanceDetail>;
+                $post(params: { autobackup?: cloud.instance.AutoBackup, flavorId: string, groupId?: string, imageId?: string, monthlyBilling?: boolean, name: string, networks?: cloud.instance.NetworkParams[], region: string, sshKeyId?: string, userData?: string, volumeId?: string }): Promise<cloud.instance.InstanceDetail>;
                 bulk: {
                     // POST /cloud/project/{serviceName}/instance/bulk
-                    $post(params: {autobackup?: cloud.instance.AutoBackup, flavorId: string, groupId?: string, imageId?: string, monthlyBilling?: boolean, name: string, networks?: cloud.instance.NetworkBulkParams[], number: number, region: string, sshKeyId?: string, userData?: string, volumeId?: string}): Promise<cloud.instance.Instance[]>;
+                    $post(params: { autobackup?: cloud.instance.AutoBackup, flavorId: string, groupId?: string, imageId?: string, monthlyBilling?: boolean, name: string, networks?: cloud.instance.NetworkBulkParams[], number: number, region: string, sshKeyId?: string, userData?: string, volumeId?: string }): Promise<cloud.instance.Instance[]>;
                 }
                 group: {
                     // GET /cloud/project/{serviceName}/instance/group
-                    $get(params?: {region?: string}): Promise<cloud.instancegroup.InstanceGroup[]>;
+                    $get(params?: { region?: string }): Promise<cloud.instancegroup.InstanceGroup[]>;
                     // POST /cloud/project/{serviceName}/instance/group
-                    $post(params: {name: string, region: string, type: cloud.instancegroup.InstanceGroupTypeEnum}): Promise<cloud.instancegroup.InstanceGroup>;
+                    $post(params: { name: string, region: string, type: cloud.instancegroup.InstanceGroupTypeEnum }): Promise<cloud.instancegroup.InstanceGroup>;
                     $(groupId: string): {
                         // DELETE /cloud/project/{serviceName}/instance/group/{groupId}
                         $delete(): Promise<void>;
                         // GET /cloud/project/{serviceName}/instance/group/{groupId}
-                        $get(params?: {region?: string}): Promise<cloud.instancegroup.InstanceGroup>;
+                        $get(params?: { region?: string }): Promise<cloud.instancegroup.InstanceGroup>;
                     };
                 }
                 $(instanceId: string): {
@@ -800,7 +800,7 @@ export interface Cloud {
                     // GET /cloud/project/{serviceName}/instance/{instanceId}
                     $get(): Promise<cloud.instance.InstanceDetail>;
                     // PUT /cloud/project/{serviceName}/instance/{instanceId}
-                    $put(params: {instanceName: string}): Promise<void>;
+                    $put(params: { instanceName: string }): Promise<void>;
                     activeMonthlyBilling: {
                         // POST /cloud/project/{serviceName}/instance/{instanceId}/activeMonthlyBilling
                         $post(): Promise<cloud.instance.InstanceDetail>;
@@ -813,7 +813,7 @@ export interface Cloud {
                         // GET /cloud/project/{serviceName}/instance/{instanceId}/interface
                         $get(): Promise<cloud.instanceInterface.Interface[]>;
                         // POST /cloud/project/{serviceName}/instance/{instanceId}/interface
-                        $post(params: {ip?: string, networkId: string}): Promise<cloud.instanceInterface.Interface>;
+                        $post(params: { ip?: string, networkId: string }): Promise<cloud.instanceInterface.Interface>;
                         $(interfaceId: string): {
                             // DELETE /cloud/project/{serviceName}/instance/{instanceId}/interface/{interfaceId}
                             $delete(): Promise<void>;
@@ -823,23 +823,23 @@ export interface Cloud {
                     }
                     monitoring: {
                         // GET /cloud/project/{serviceName}/instance/{instanceId}/monitoring
-                        $get(params: {period: cloud.instance.MetricsPeriod, type: cloud.instance.MetricsType}): Promise<cloud.instance.InstanceMetrics>;
+                        $get(params: { period: cloud.instance.MetricsPeriod, type: cloud.instance.MetricsType }): Promise<cloud.instance.InstanceMetrics>;
                     }
                     reboot: {
                         // POST /cloud/project/{serviceName}/instance/{instanceId}/reboot
-                        $post(params: {type: cloud.instance.RebootTypeEnum}): Promise<void>;
+                        $post(params: { type: cloud.instance.RebootTypeEnum }): Promise<void>;
                     }
                     reinstall: {
                         // POST /cloud/project/{serviceName}/instance/{instanceId}/reinstall
-                        $post(params: {imageId: string}): Promise<cloud.instance.InstanceDetail>;
+                        $post(params: { imageId: string }): Promise<cloud.instance.InstanceDetail>;
                     }
                     rescueMode: {
                         // POST /cloud/project/{serviceName}/instance/{instanceId}/rescueMode
-                        $post(params: {imageId?: string, rescue: boolean}): Promise<cloud.instance.RescueAdminPassword>;
+                        $post(params: { imageId?: string, rescue: boolean }): Promise<cloud.instance.RescueAdminPassword>;
                     }
                     resize: {
                         // POST /cloud/project/{serviceName}/instance/{instanceId}/resize
-                        $post(params: {flavorId: string}): Promise<cloud.instance.InstanceDetail>;
+                        $post(params: { flavorId: string }): Promise<cloud.instance.InstanceDetail>;
                     }
                     resume: {
                         // POST /cloud/project/{serviceName}/instance/{instanceId}/resume
@@ -847,7 +847,7 @@ export interface Cloud {
                     }
                     snapshot: {
                         // POST /cloud/project/{serviceName}/instance/{instanceId}/snapshot
-                        $post(params: {snapshotName: string}): Promise<void>;
+                        $post(params: { snapshotName: string }): Promise<void>;
                     }
                     start: {
                         // POST /cloud/project/{serviceName}/instance/{instanceId}/start
@@ -874,7 +874,7 @@ export interface Cloud {
                         $get(): Promise<cloud.ip.FailoverIp>;
                         attach: {
                             // POST /cloud/project/{serviceName}/ip/failover/{id}/attach
-                            $post(params: {instanceId: string}): Promise<cloud.ip.FailoverIp>;
+                            $post(params: { instanceId: string }): Promise<cloud.ip.FailoverIp>;
                         }
                     };
                 }
@@ -900,7 +900,7 @@ export interface Cloud {
                     // GET /cloud/project/{serviceName}/migration/{migrationId}
                     $get(): Promise<cloud.migration.Migration>;
                     // PUT /cloud/project/{serviceName}/migration/{migrationId}
-                    $put(params: {date: string}): Promise<cloud.migration.Migration>;
+                    $put(params: { date: string }): Promise<cloud.migration.Migration>;
                 };
             }
             network: {
@@ -908,23 +908,23 @@ export interface Cloud {
                     // GET /cloud/project/{serviceName}/network/private
                     $get(): Promise<cloud.network.Network[]>;
                     // POST /cloud/project/{serviceName}/network/private
-                    $post(params: {name: string, regions?: string[], vlanId?: number}): Promise<cloud.network.Network>;
+                    $post(params: { name: string, regions?: string[], vlanId?: number }): Promise<cloud.network.Network>;
                     $(networkId: string): {
                         // DELETE /cloud/project/{serviceName}/network/private/{networkId}
                         $delete(): Promise<void>;
                         // GET /cloud/project/{serviceName}/network/private/{networkId}
                         $get(): Promise<cloud.network.Network>;
                         // PUT /cloud/project/{serviceName}/network/private/{networkId}
-                        $put(params: {name: string}): Promise<void>;
+                        $put(params: { name: string }): Promise<void>;
                         region: {
                             // POST /cloud/project/{serviceName}/network/private/{networkId}/region
-                            $post(params: {region: string}): Promise<cloud.network.Network>;
+                            $post(params: { region: string }): Promise<cloud.network.Network>;
                         }
                         subnet: {
                             // GET /cloud/project/{serviceName}/network/private/{networkId}/subnet
                             $get(): Promise<cloud.network.Subnet[]>;
                             // POST /cloud/project/{serviceName}/network/private/{networkId}/subnet
-                            $post(params: {dhcp: boolean, end: string, network: string, noGateway: boolean, region: string, start: string}): Promise<cloud.network.Subnet>;
+                            $post(params: { dhcp: boolean, end: string, network: string, noGateway: boolean, region: string, start: string }): Promise<cloud.network.Subnet>;
                             $(subnetId: string): {
                                 // DELETE /cloud/project/{serviceName}/network/private/{networkId}/subnet/{subnetId}
                                 $delete(): Promise<void>;
@@ -957,7 +957,7 @@ export interface Cloud {
                 // GET /cloud/project/{serviceName}/region
                 $get(): Promise<string[]>;
                 // POST /cloud/project/{serviceName}/region
-                $post(params: {region: string}): Promise<cloud.Region>;
+                $post(params: { region: string }): Promise<cloud.Region>;
                 $(regionName: string): {
                     // GET /cloud/project/{serviceName}/region/{regionName}
                     $get(): Promise<cloud.Region>;
@@ -965,7 +965,7 @@ export interface Cloud {
                         // GET /cloud/project/{serviceName}/region/{regionName}/quota
                         $get(): Promise<cloud.quota.Quotas>;
                         // POST /cloud/project/{serviceName}/region/{regionName}/quota
-                        $post(params: {name: string}): Promise<cloud.Operation>;
+                        $post(params: { name: string }): Promise<cloud.Operation>;
                         allowed: {
                             // GET /cloud/project/{serviceName}/region/{regionName}/quota/allowed
                             $get(): Promise<cloud.quota.AllowedQuota[]>;
@@ -985,11 +985,11 @@ export interface Cloud {
                 // GET /cloud/project/{serviceName}/serviceInfos
                 $get(): Promise<services.Service>;
                 // PUT /cloud/project/{serviceName}/serviceInfos
-                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+                $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
             }
             snapshot: {
                 // GET /cloud/project/{serviceName}/snapshot
-                $get(params?: {flavorType?: string, region?: string}): Promise<cloud.image.Image[]>;
+                $get(params?: { flavorType?: string, region?: string }): Promise<cloud.image.Image[]>;
                 $(imageId: string): {
                     // DELETE /cloud/project/{serviceName}/snapshot/{imageId}
                     $delete(): Promise<cloud.image.Image>;
@@ -999,9 +999,9 @@ export interface Cloud {
             }
             sshkey: {
                 // GET /cloud/project/{serviceName}/sshkey
-                $get(params?: {region?: string}): Promise<cloud.sshkey.SshKey[]>;
+                $get(params?: { region?: string }): Promise<cloud.sshkey.SshKey[]>;
                 // POST /cloud/project/{serviceName}/sshkey
-                $post(params: {name: string, publicKey: string, region?: string}): Promise<cloud.sshkey.SshKeyDetail>;
+                $post(params: { name: string, publicKey: string, region?: string }): Promise<cloud.sshkey.SshKeyDetail>;
                 $(keyId: string): {
                     // DELETE /cloud/project/{serviceName}/sshkey/{keyId}
                     $delete(): Promise<void>;
@@ -1025,7 +1025,7 @@ export interface Cloud {
                 // GET /cloud/project/{serviceName}/storage
                 $get(): Promise<cloud.storage.Container[]>;
                 // POST /cloud/project/{serviceName}/storage
-                $post(params: {archive: boolean, containerName: string, region: string}): Promise<cloud.storage.Container>;
+                $post(params: { archive: boolean, containerName: string, region: string }): Promise<cloud.storage.Container>;
                 access: {
                     // GET /cloud/project/{serviceName}/storage/access
                     $get(): Promise<cloud.storage.ContainerAccess>;
@@ -1036,18 +1036,18 @@ export interface Cloud {
                     // DELETE /cloud/project/{serviceName}/storage/{containerId}
                     $delete(): Promise<void>;
                     // GET /cloud/project/{serviceName}/storage/{containerId}
-                    $get(params?: {noObjects?: boolean}): Promise<cloud.storage.ContainerDetail>;
+                    $get(params?: { noObjects?: boolean }): Promise<cloud.storage.ContainerDetail>;
                     // PUT /cloud/project/{serviceName}/storage/{containerId}
-                    $put(params?: {containerType?: cloud.storage.TypeEnum}): Promise<void>;
+                    $put(params?: { containerType?: cloud.storage.TypeEnum }): Promise<void>;
                     cors: {
                         // DELETE /cloud/project/{serviceName}/storage/{containerId}/cors
-                        $delete(params: {origin: string}): Promise<void>;
+                        $delete(params: { origin: string }): Promise<void>;
                         // POST /cloud/project/{serviceName}/storage/{containerId}/cors
-                        $post(params: {origin: string}): Promise<void>;
+                        $post(params: { origin: string }): Promise<void>;
                     }
                     publicUrl: {
                         // POST /cloud/project/{serviceName}/storage/{containerId}/publicUrl
-                        $post(params: {expirationDate: string, objectName: string}): Promise<cloud.storage.ContainerObjectTempURL>;
+                        $post(params: { expirationDate: string, objectName: string }): Promise<cloud.storage.ContainerObjectTempURL>;
                     }
                     static: {
                         // POST /cloud/project/{serviceName}/storage/{containerId}/static
@@ -1055,7 +1055,7 @@ export interface Cloud {
                     }
                     user: {
                         // POST /cloud/project/{serviceName}/storage/{containerId}/user
-                        $post(params: {description?: string, right: cloud.storage.RightEnum}): Promise<cloud.user.UserDetail>;
+                        $post(params: { description?: string, right: cloud.storage.RightEnum }): Promise<cloud.user.UserDetail>;
                     }
                 };
             }
@@ -1067,7 +1067,7 @@ export interface Cloud {
                 // GET /cloud/project/{serviceName}/user
                 $get(): Promise<cloud.user.User[]>;
                 // POST /cloud/project/{serviceName}/user
-                $post(params?: {description?: string, role?: cloud.user.RoleEnum, roles?: cloud.user.RoleEnum[]}): Promise<cloud.user.UserDetail>;
+                $post(params?: { description?: string, role?: cloud.user.RoleEnum, roles?: cloud.user.RoleEnum[] }): Promise<cloud.user.UserDetail>;
                 $(userId: number): {
                     // DELETE /cloud/project/{serviceName}/user/{userId}
                     $delete(): Promise<void>;
@@ -1075,11 +1075,11 @@ export interface Cloud {
                     $get(): Promise<cloud.user.User>;
                     openrc: {
                         // GET /cloud/project/{serviceName}/user/{userId}/openrc
-                        $get(params: {region: string, version?: cloud.user.OpenrcVersionEnum}): Promise<cloud.user.Openrc>;
+                        $get(params: { region: string, version?: cloud.user.OpenrcVersionEnum }): Promise<cloud.user.Openrc>;
                     }
                     rclone: {
                         // GET /cloud/project/{serviceName}/user/{userId}/rclone
-                        $get(params: {region: string}): Promise<cloud.user.Rclone>;
+                        $get(params: { region: string }): Promise<cloud.user.Rclone>;
                     }
                     regeneratePassword: {
                         // POST /cloud/project/{serviceName}/user/{userId}/regeneratePassword
@@ -1089,9 +1089,9 @@ export interface Cloud {
                         // GET /cloud/project/{serviceName}/user/{userId}/role
                         $get(): Promise<cloud.role.Role[]>;
                         // POST /cloud/project/{serviceName}/user/{userId}/role
-                        $post(params: {roleId: string}): Promise<cloud.user.UserDetail>;
+                        $post(params: { roleId: string }): Promise<cloud.user.UserDetail>;
                         // PUT /cloud/project/{serviceName}/user/{userId}/role
-                        $put(params: {rolesIds: string[]}): Promise<cloud.user.UserDetail>;
+                        $put(params: { rolesIds: string[] }): Promise<cloud.user.UserDetail>;
                         $(roleId: string): {
                             // DELETE /cloud/project/{serviceName}/user/{userId}/role/{roleId}
                             $delete(): Promise<void>;
@@ -1101,18 +1101,18 @@ export interface Cloud {
                     }
                     token: {
                         // POST /cloud/project/{serviceName}/user/{userId}/token
-                        $post(params: {password: string}): Promise<cloud.authentication.Token>;
+                        $post(params: { password: string }): Promise<cloud.authentication.Token>;
                     }
                 };
             }
             volume: {
                 // GET /cloud/project/{serviceName}/volume
-                $get(params?: {region?: string}): Promise<cloud.volume.Volume[]>;
+                $get(params?: { region?: string }): Promise<cloud.volume.Volume[]>;
                 // POST /cloud/project/{serviceName}/volume
-                $post(params: {description?: string, imageId?: string, name?: string, region: string, size: number, snapshotId?: string, type: cloud.volume.VolumeTypeEnum}): Promise<cloud.volume.Volume>;
+                $post(params: { description?: string, imageId?: string, name?: string, region: string, size: number, snapshotId?: string, type: cloud.volume.VolumeTypeEnum }): Promise<cloud.volume.Volume>;
                 snapshot: {
                     // GET /cloud/project/{serviceName}/volume/snapshot
-                    $get(params?: {region?: string}): Promise<cloud.volume.Snapshot[]>;
+                    $get(params?: { region?: string }): Promise<cloud.volume.Snapshot[]>;
                     $(snapshotId: string): {
                         // DELETE /cloud/project/{serviceName}/volume/snapshot/{snapshotId}
                         $delete(): Promise<void>;
@@ -1126,22 +1126,22 @@ export interface Cloud {
                     // GET /cloud/project/{serviceName}/volume/{volumeId}
                     $get(): Promise<cloud.volume.Volume>;
                     // PUT /cloud/project/{serviceName}/volume/{volumeId}
-                    $put(params?: {description?: string, name?: string}): Promise<cloud.volume.Volume>;
+                    $put(params?: { description?: string, name?: string }): Promise<cloud.volume.Volume>;
                     attach: {
                         // POST /cloud/project/{serviceName}/volume/{volumeId}/attach
-                        $post(params: {instanceId: string}): Promise<cloud.volume.Volume>;
+                        $post(params: { instanceId: string }): Promise<cloud.volume.Volume>;
                     }
                     detach: {
                         // POST /cloud/project/{serviceName}/volume/{volumeId}/detach
-                        $post(params: {instanceId: string}): Promise<cloud.volume.Volume>;
+                        $post(params: { instanceId: string }): Promise<cloud.volume.Volume>;
                     }
                     snapshot: {
                         // POST /cloud/project/{serviceName}/volume/{volumeId}/snapshot
-                        $post(params?: {description?: string, name?: string}): Promise<cloud.volume.Snapshot>;
+                        $post(params?: { description?: string, name?: string }): Promise<cloud.volume.Snapshot>;
                     }
                     upsize: {
                         // POST /cloud/project/{serviceName}/volume/{volumeId}/upsize
-                        $post(params: {size: number}): Promise<cloud.volume.Volume>;
+                        $post(params: { size: number }): Promise<cloud.volume.Volume>;
                     }
                 };
             }

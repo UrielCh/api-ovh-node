@@ -74,7 +74,7 @@ export interface AllDom {
         $get(): Promise<allDom.AllDom>;
         domain: {
             // GET /allDom/{serviceName}/domain
-            $get(params?: {domain?: string}): Promise<string[]>;
+            $get(params?: { domain?: string }): Promise<string[]>;
             $(domain: string): {
                 // GET /allDom/{serviceName}/domain/{domain}
                 $get(): Promise<allDom.AllDomDomain>;
@@ -84,7 +84,7 @@ export interface AllDom {
             // GET /allDom/{serviceName}/serviceInfos
             $get(): Promise<services.Service>;
             // PUT /allDom/{serviceName}/serviceInfos
-            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+            $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
         }
     };
 }
