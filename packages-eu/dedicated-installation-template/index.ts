@@ -102,7 +102,7 @@ export default proxyDedicatedInstallationTemplate;
  * Api Proxy model
  */// Apis harmony
 // path /dedicated
-export interface Dedicated{
+export interface Dedicated {
     installationTemplate: {
         // GET /dedicated/installationTemplate
         $get(): Promise<string[]>;

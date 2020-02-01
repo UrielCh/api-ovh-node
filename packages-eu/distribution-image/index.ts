@@ -43,7 +43,7 @@ export default proxyDistributionImage;
  * Api Proxy model
  */// Apis harmony
 // path /distribution
-export interface Distribution{
+export interface Distribution {
     image: {
         $(serviceType: distribution.image.service): {
             // GET /distribution/image/{serviceType}

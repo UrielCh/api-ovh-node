@@ -83,7 +83,7 @@ export default proxySsl;
  * Api Proxy model
  */// Apis harmony
 // path /ssl
-export interface Ssl{
+export interface Ssl {
     // GET /ssl
     $get(): Promise<string[]>;
     $(serviceName: string): {

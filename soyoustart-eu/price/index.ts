@@ -52,7 +52,7 @@ export default proxyPrice;
  * Api Proxy model
  */// Apis harmony
 // path /price
-export interface Price{
+export interface Price {
     cluster: {
         hadoop: {
             cluster: {

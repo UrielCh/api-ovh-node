@@ -76,7 +76,7 @@ export default proxyVeeamVeeamEnterprise;
  * Api Proxy model
  */// Apis harmony
 // path /veeam
-export interface Veeam{
+export interface Veeam {
     veeamEnterprise: {
         // GET /veeam/veeamEnterprise
         $get(): Promise<string[]>;

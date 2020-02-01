@@ -229,7 +229,7 @@ export default proxyEmailPro;
  * Api Proxy model
  */// Apis harmony
 // path /email
-export interface Email{
+export interface Email {
     pro: {
         // GET /email/pro
         $get(): Promise<string[]>;

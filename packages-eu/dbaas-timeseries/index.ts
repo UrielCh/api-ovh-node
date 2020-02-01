@@ -159,7 +159,7 @@ export default proxyDbaasTimeseries;
  * Api Proxy model
  */// Apis harmony
 // path /dbaas
-export interface Dbaas{
+export interface Dbaas {
     timeseries: {
         // GET /dbaas/timeseries
         $get(): Promise<string[]>;

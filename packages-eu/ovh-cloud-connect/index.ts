@@ -132,7 +132,7 @@ export default proxyOvhCloudConnect;
  * Api Proxy model
  */// Apis harmony
 // path /ovhCloudConnect
-export interface OvhCloudConnect{
+export interface OvhCloudConnect {
     // GET /ovhCloudConnect
     $get(): Promise<string[]>;
     $(serviceName: string): {

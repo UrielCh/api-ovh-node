@@ -59,7 +59,7 @@ export default proxyStackMis;
  * Api Proxy model
  */// Apis harmony
 // path /stack
-export interface Stack{
+export interface Stack {
     mis: {
         // GET /stack/mis
         $get(): Promise<string[]>;

@@ -846,7 +846,7 @@ export default proxyDedicatedCloud;
  * Api Proxy model
  */// Apis harmony
 // path /dedicatedCloud
-export interface DedicatedCloud{
+export interface DedicatedCloud {
     // GET /dedicatedCloud
     $get(): Promise<string[]>;
     commercialRange: {

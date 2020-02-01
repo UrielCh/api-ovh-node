@@ -35,7 +35,7 @@ export default proxyContact;
  * Api Proxy model
  */// Apis harmony
 // path /contact
-export interface Contact{
+export interface Contact {
     form: {
         // GET /contact/form
         $get(): Promise<contact.FormCharacteristic[]>;

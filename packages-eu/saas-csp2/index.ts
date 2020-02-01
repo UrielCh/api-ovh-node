@@ -129,7 +129,7 @@ export default proxySaasCsp2;
  * Api Proxy model
  */// Apis harmony
 // path /saas
-export interface Saas{
+export interface Saas {
     csp2: {
         // GET /saas/csp2
         $get(): Promise<string[]>;

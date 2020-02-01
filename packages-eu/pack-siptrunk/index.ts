@@ -56,7 +56,7 @@ export default proxyPackSiptrunk;
  * Api Proxy model
  */// Apis harmony
 // path /pack
-export interface Pack{
+export interface Pack {
     siptrunk: {
         // GET /pack/siptrunk
         $get(): Promise<string[]>;

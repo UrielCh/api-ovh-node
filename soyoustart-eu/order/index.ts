@@ -133,7 +133,7 @@ export default proxyOrder;
  * Api Proxy model
  */// Apis harmony
 // path /order
-export interface Order{
+export interface Order {
     cluster: {
         hadoop: {
             new: {

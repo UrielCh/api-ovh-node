@@ -140,7 +140,7 @@ export default proxyClusterHadoop;
  * Api Proxy model
  */// Apis harmony
 // path /cluster
-export interface Cluster{
+export interface Cluster {
     hadoop: {
         // GET /cluster/hadoop
         $get(): Promise<string[]>;

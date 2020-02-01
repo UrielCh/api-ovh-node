@@ -267,7 +267,7 @@ export default proxyMsServices;
  * Api Proxy model
  */// Apis harmony
 // path /msServices
-export interface MsServices{
+export interface MsServices {
     // GET /msServices
     $get(): Promise<string[]>;
     sharepoint: {

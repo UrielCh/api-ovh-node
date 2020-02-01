@@ -1245,7 +1245,7 @@ export default proxyMe;
  * Api Proxy model
  */// Apis harmony
 // path /me
-export interface Me{
+export interface Me {
     // GET /me
     $get(): Promise<nichandle.Nichandle>;
     // PUT /me

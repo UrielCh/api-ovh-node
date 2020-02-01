@@ -71,7 +71,7 @@ export default proxySupplyMondialRelay;
  * Api Proxy model
  */// Apis harmony
 // path /supply
-export interface Supply{
+export interface Supply {
     mondialRelay: {
         // POST /supply/mondialRelay
         $post(params: {address?: string, city?: string, country: coreTypes.CountryEnum, zipcode?: string}): Promise<supply.MondialRelayReturn>;

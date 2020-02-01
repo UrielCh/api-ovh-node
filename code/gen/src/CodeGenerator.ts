@@ -376,7 +376,7 @@ export class CodeGenerator {
                 }
             } else {
                 code += `${ident0}// path ${api._path}${EOL}`;
-                code += `${ident0}export interface ${className(api._path)}`;
+                code += `${ident0}export interface ${className(api._path)} `;
             }
             code += `{${EOL}`;
         }

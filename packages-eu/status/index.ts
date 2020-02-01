@@ -53,7 +53,7 @@ export default proxyStatus;
  * Api Proxy model
  */// Apis harmony
 // path /status
-export interface Status{
+export interface Status {
     task: {
         // GET /status/task
         $get(params?: {impact?: ovhstatus.task.TaskImpactEnum, status?: ovhstatus.task.TaskStatusEnum, type?: ovhstatus.task.TaskTypeEnum}): Promise<status.Task.Task[]>;

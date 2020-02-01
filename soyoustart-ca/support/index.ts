@@ -62,7 +62,7 @@ export default proxySupport;
  * Api Proxy model
  */// Apis harmony
 // path /support
-export interface Support{
+export interface Support {
     tickets: {
         // GET /support/tickets
         $get(params?: {archived?: boolean, category?: support.TicketCategoryEnum, maxCreationDate?: string, minCreationDate?: string, product?: support.TicketProductEnum, serviceName?: string, status?: support.TicketStatusEnum, subject?: string, ticketNumber?: string}): Promise<number[]>;

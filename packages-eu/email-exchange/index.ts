@@ -516,7 +516,7 @@ export default proxyEmailExchange;
  * Api Proxy model
  */// Apis harmony
 // path /email
-export interface Email{
+export interface Email {
     exchange: {
         // GET /email/exchange
         $get(): Promise<string[]>;

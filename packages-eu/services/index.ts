@@ -273,7 +273,7 @@ export default proxyServices;
  * Api Proxy model
  */// Apis harmony
 // path /services
-export interface Services{
+export interface Services {
     // GET /services
     $get(params?: {orderBy?: string, routes?: string, sort?: string}): Promise<number[]>;
     $(serviceId: number): {

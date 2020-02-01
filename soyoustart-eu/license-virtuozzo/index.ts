@@ -125,7 +125,7 @@ export default proxyLicenseVirtuozzo;
  * Api Proxy model
  */// Apis harmony
 // path /license
-export interface License{
+export interface License {
     virtuozzo: {
         // GET /license/virtuozzo
         $get(): Promise<string[]>;

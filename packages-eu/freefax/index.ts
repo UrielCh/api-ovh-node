@@ -107,7 +107,7 @@ export default proxyFreefax;
  * Api Proxy model
  */// Apis harmony
 // path /freefax
-export interface Freefax{
+export interface Freefax {
     // GET /freefax
     $get(): Promise<string[]>;
     credits: {

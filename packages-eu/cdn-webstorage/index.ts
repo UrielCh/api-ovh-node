@@ -75,7 +75,7 @@ export default proxyCdnWebstorage;
  * Api Proxy model
  */// Apis harmony
 // path /cdn
-export interface Cdn{
+export interface Cdn {
     webstorage: {
         // GET /cdn/webstorage
         $get(): Promise<string[]>;

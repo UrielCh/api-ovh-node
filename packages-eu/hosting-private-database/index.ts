@@ -265,7 +265,7 @@ export default proxyHostingPrivateDatabase;
  * Api Proxy model
  */// Apis harmony
 // path /hosting
-export interface Hosting{
+export interface Hosting {
     privateDatabase: {
         // GET /hosting/privateDatabase
         $get(): Promise<string[]>;

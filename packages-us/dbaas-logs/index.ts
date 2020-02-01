@@ -395,7 +395,7 @@ export default proxyDbaasLogs;
  * Api Proxy model
  */// Apis harmony
 // path /dbaas
-export interface Dbaas{
+export interface Dbaas {
     logs: {
         // GET /dbaas/logs
         $get(): Promise<string[]>;

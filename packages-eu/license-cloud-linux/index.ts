@@ -94,7 +94,7 @@ export default proxyLicenseCloudLinux;
  * Api Proxy model
  */// Apis harmony
 // path /license
-export interface License{
+export interface License {
     cloudLinux: {
         // GET /license/cloudLinux
         $get(): Promise<string[]>;

@@ -216,7 +216,7 @@ export default proxyDedicatedCeph;
  * Api Proxy model
  */// Apis harmony
 // path /dedicated
-export interface Dedicated{
+export interface Dedicated {
     ceph: {
         // GET /dedicated/ceph
         $get(): Promise<string[]>;

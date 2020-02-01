@@ -770,7 +770,7 @@ export default proxyHostingWeb;
  * Api Proxy model
  */// Apis harmony
 // path /hosting
-export interface Hosting{
+export interface Hosting {
     web: {
         // GET /hosting/web
         $get(): Promise<string[]>;

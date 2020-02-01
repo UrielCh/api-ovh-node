@@ -101,7 +101,7 @@ export default proxyCdnWebsite;
  * Api Proxy model
  */// Apis harmony
 // path /cdn
-export interface Cdn{
+export interface Cdn {
     website: {
         // GET /cdn/website
         $get(): Promise<string[]>;

@@ -165,7 +165,7 @@ export default proxyAnalytics;
  * Api Proxy model
  */// Apis harmony
 // path /analytics
-export interface Analytics{
+export interface Analytics {
     capabilities: {
         platforms: {
             // GET /analytics/capabilities/platforms

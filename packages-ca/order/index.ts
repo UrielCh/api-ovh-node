@@ -782,7 +782,7 @@ export default proxyOrder;
  * Api Proxy model
  */// Apis harmony
 // path /order
-export interface Order{
+export interface Order {
     cart: {
         // GET /order/cart
         $get(params?: {description?: string}): Promise<string[]>;

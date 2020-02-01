@@ -60,7 +60,7 @@ export default proxyAuth;
  * Api Proxy model
  */// Apis harmony
 // path /auth
-export interface Auth{
+export interface Auth {
     credential: {
         // POST /auth/credential
         $post(params: {accessRules: auth.AccessRule[], redirection?: string}): Promise<auth.Credential>;

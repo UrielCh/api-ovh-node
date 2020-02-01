@@ -148,7 +148,7 @@ export default proxyVrack;
  * Api Proxy model
  */// Apis harmony
 // path /vrack
-export interface Vrack{
+export interface Vrack {
     // GET /vrack
     $get(): Promise<string[]>;
     $(serviceName: string): {

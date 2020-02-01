@@ -100,7 +100,7 @@ export default proxyKube;
  * Api Proxy model
  */// Apis harmony
 // path /kube
-export interface Kube{
+export interface Kube {
     // GET /kube
     $get(): Promise<string[]>;
     $(serviceName: string): {

@@ -108,7 +108,7 @@ export default proxyHostingReseller;
  * Api Proxy model
  */// Apis harmony
 // path /hosting
-export interface Hosting{
+export interface Hosting {
     reseller: {
         // GET /hosting/reseller
         $get(): Promise<string[]>;

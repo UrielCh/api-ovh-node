@@ -1656,7 +1656,7 @@ export default proxyTelephony;
  * Api Proxy model
  */// Apis harmony
 // path /telephony
-export interface Telephony{
+export interface Telephony {
     // GET /telephony
     $get(): Promise<string[]>;
     accessories: {

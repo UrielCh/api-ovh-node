@@ -129,7 +129,7 @@ export default proxyLicenseOffice;
  * Api Proxy model
  */// Apis harmony
 // path /license
-export interface License{
+export interface License {
     office: {
         // GET /license/office
         $get(): Promise<string[]>;

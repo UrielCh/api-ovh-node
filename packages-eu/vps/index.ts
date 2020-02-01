@@ -353,7 +353,7 @@ export default proxyVps;
  * Api Proxy model
  */// Apis harmony
 // path /vps
-export interface Vps{
+export interface Vps {
     // GET /vps
     $get(): Promise<string[]>;
     datacenter: {

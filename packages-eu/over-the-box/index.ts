@@ -185,7 +185,7 @@ export default proxyOverTheBox;
  * Api Proxy model
  */// Apis harmony
 // path /overTheBox
-export interface OverTheBox{
+export interface OverTheBox {
     // GET /overTheBox
     $get(): Promise<string[]>;
     availableOffers: {

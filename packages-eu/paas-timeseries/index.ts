@@ -137,7 +137,7 @@ export default proxyPaasTimeseries;
  * Api Proxy model
  */// Apis harmony
 // path /paas
-export interface Paas{
+export interface Paas {
     timeseries: {
         // GET /paas/timeseries
         $get(): Promise<string[]>;

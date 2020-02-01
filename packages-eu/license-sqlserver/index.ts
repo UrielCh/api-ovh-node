@@ -94,7 +94,7 @@ export default proxyLicenseSqlserver;
  * Api Proxy model
  */// Apis harmony
 // path /license
-export interface License{
+export interface License {
     sqlserver: {
         // GET /license/sqlserver
         $get(): Promise<string[]>;

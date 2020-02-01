@@ -182,7 +182,7 @@ export default proxyCaasContainers;
  * Api Proxy model
  */// Apis harmony
 // path /caas
-export interface Caas{
+export interface Caas {
     containers: {
         // GET /caas/containers
         $get(): Promise<string[]>;

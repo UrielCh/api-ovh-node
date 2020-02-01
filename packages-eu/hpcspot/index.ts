@@ -77,7 +77,7 @@ export default proxyHpcspot;
  * Api Proxy model
  */// Apis harmony
 // path /hpcspot
-export interface Hpcspot{
+export interface Hpcspot {
     // GET /hpcspot
     $get(): Promise<string[]>;
     $(serviceName: string): {

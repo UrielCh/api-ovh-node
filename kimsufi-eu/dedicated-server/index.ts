@@ -579,7 +579,7 @@ export default proxyDedicatedServer;
  * Api Proxy model
  */// Apis harmony
 // path /dedicated
-export interface Dedicated{
+export interface Dedicated {
     server: {
         // GET /dedicated/server
         $get(): Promise<string[]>;

@@ -140,7 +140,7 @@ export default proxyCaasRegistry;
  * Api Proxy model
  */// Apis harmony
 // path /caas
-export interface Caas{
+export interface Caas {
     registry: {
         // GET /caas/registry
         $get(): Promise<string[]>;

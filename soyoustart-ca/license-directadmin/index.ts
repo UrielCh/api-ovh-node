@@ -108,7 +108,7 @@ export default proxyLicenseDirectadmin;
  * Api Proxy model
  */// Apis harmony
 // path /license
-export interface License{
+export interface License {
     directadmin: {
         // GET /license/directadmin
         $get(): Promise<string[]>;

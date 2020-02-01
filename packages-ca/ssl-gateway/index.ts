@@ -118,7 +118,7 @@ export default proxySslGateway;
  * Api Proxy model
  */// Apis harmony
 // path /sslGateway
-export interface SslGateway{
+export interface SslGateway {
     // GET /sslGateway
     $get(): Promise<string[]>;
     availableZones: {

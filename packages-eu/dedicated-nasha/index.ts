@@ -168,7 +168,7 @@ export default proxyDedicatedNasha;
  * Api Proxy model
  */// Apis harmony
 // path /dedicated
-export interface Dedicated{
+export interface Dedicated {
     nasha: {
         // GET /dedicated/nasha
         $get(): Promise<string[]>;

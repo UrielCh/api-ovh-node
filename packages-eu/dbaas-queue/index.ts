@@ -119,7 +119,7 @@ export default proxyDbaasQueue;
  * Api Proxy model
  */// Apis harmony
 // path /dbaas
-export interface Dbaas{
+export interface Dbaas {
     queue: {
         // GET /dbaas/queue
         $get(): Promise<string[]>;

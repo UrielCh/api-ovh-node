@@ -608,7 +608,7 @@ export default proxyCloudDB;
  * Api Proxy model
  */// Apis harmony
 // path /cloudDB
-export interface CloudDB{
+export interface CloudDB {
     enterprise: {
         cluster: {
             // GET /cloudDB/enterprise/cluster

@@ -152,7 +152,7 @@ export default proxyDedicatedHousing;
  * Api Proxy model
  */// Apis harmony
 // path /dedicated
-export interface Dedicated{
+export interface Dedicated {
     housing: {
         // GET /dedicated/housing
         $get(): Promise<string[]>;

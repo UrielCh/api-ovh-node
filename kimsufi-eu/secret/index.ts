@@ -23,7 +23,7 @@ export default proxySecret;
  * Api Proxy model
  */// Apis harmony
 // path /secret
-export interface Secret{
+export interface Secret {
     retrieve: {
         // POST /secret/retrieve
         $post(params: {id: string}): Promise<secret.Secret>;

@@ -129,7 +129,7 @@ export default proxyPartner;
  * Api Proxy model
  */// Apis harmony
 // path /partner
-export interface Partner{
+export interface Partner {
     // GET /partner
     $get(): Promise<partner.Partner>;
     // POST /partner

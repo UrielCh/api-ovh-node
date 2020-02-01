@@ -226,7 +226,7 @@ export default proxyConnectivity;
  * Api Proxy model
  */// Apis harmony
 // path /connectivity
-export interface Connectivity{
+export interface Connectivity {
     eligibility: {
         search: {
             buildingDetails: {

@@ -113,7 +113,7 @@ export default proxyDeskaas;
  * Api Proxy model
  */// Apis harmony
 // path /deskaas
-export interface Deskaas{
+export interface Deskaas {
     // GET /deskaas
     $get(): Promise<string[]>;
     $(serviceName: string): {

@@ -241,7 +241,7 @@ export default proxyPartners;
  * Api Proxy model
  */// Apis harmony
 // path /partners
-export interface Partners{
+export interface Partners {
     register: {
         company: {
             // GET /partners/register/company

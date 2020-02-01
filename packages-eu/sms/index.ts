@@ -383,7 +383,7 @@ export default proxySms;
  * Api Proxy model
  */// Apis harmony
 // path /sms
-export interface Sms{
+export interface Sms {
     // GET /sms
     $get(): Promise<string[]>;
     estimate: {

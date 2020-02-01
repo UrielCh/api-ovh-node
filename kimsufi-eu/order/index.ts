@@ -63,7 +63,7 @@ export default proxyOrder;
  * Api Proxy model
  */// Apis harmony
 // path /order
-export interface Order{
+export interface Order {
     dedicated: {
         server: {
             // GET /order/dedicated/server

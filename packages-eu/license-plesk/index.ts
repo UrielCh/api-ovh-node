@@ -136,7 +136,7 @@ export default proxyLicensePlesk;
  * Api Proxy model
  */// Apis harmony
 // path /license
-export interface License{
+export interface License {
     plesk: {
         // GET /license/plesk
         $get(): Promise<string[]>;

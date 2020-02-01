@@ -104,7 +104,7 @@ export default proxyLicenseCpanel;
  * Api Proxy model
  */// Apis harmony
 // path /license
-export interface License{
+export interface License {
     cpanel: {
         // GET /license/cpanel
         $get(): Promise<string[]>;

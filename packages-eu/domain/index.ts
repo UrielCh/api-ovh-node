@@ -423,7 +423,7 @@ export default proxyDomain;
  * Api Proxy model
  */// Apis harmony
 // path /domain
-export interface Domain{
+export interface Domain {
     // GET /domain
     $get(params?: {whoisOwner?: string}): Promise<string[]>;
     data: {

@@ -374,7 +374,7 @@ export default proxyIp;
  * Api Proxy model
  */// Apis harmony
 // path /ip
-export interface Ip{
+export interface Ip {
     // GET /ip
     $get(params?: {description?: string, ip?: string, routedTo_serviceName?: string, type?: ip.IpTypeEnum}): Promise<string[]>;
     loadBalancing: {

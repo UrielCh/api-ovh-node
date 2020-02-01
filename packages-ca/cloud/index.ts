@@ -1769,7 +1769,7 @@ export default proxyCloud;
  * Api Proxy model
  */// Apis harmony
 // path /cloud
-export interface Cloud{
+export interface Cloud {
     // GET /cloud
     $get(): Promise<string[]>;
     agreements: {

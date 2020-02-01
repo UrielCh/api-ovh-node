@@ -102,7 +102,7 @@ export default proxyLicenseWorklight;
  * Api Proxy model
  */// Apis harmony
 // path /license
-export interface License{
+export interface License {
     worklight: {
         // GET /license/worklight
         $get(): Promise<string[]>;

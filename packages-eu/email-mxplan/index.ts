@@ -203,7 +203,7 @@ export default proxyEmailMxplan;
  * Api Proxy model
  */// Apis harmony
 // path /email
-export interface Email{
+export interface Email {
     mxplan: {
         // GET /email/mxplan
         $get(): Promise<string[]>;

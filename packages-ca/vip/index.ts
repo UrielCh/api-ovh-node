@@ -57,7 +57,7 @@ export default proxyVip;
  * Api Proxy model
  */// Apis harmony
 // path /vip
-export interface Vip{
+export interface Vip {
     // GET /vip
     $get(): Promise<string[]>;
     $(serviceName: string): {

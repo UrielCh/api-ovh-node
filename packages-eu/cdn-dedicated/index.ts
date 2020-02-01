@@ -141,7 +141,7 @@ export default proxyCdnDedicated;
  * Api Proxy model
  */// Apis harmony
 // path /cdn
-export interface Cdn{
+export interface Cdn {
     dedicated: {
         // GET /cdn/dedicated
         $get(): Promise<string[]>;

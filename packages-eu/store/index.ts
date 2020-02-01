@@ -79,7 +79,7 @@ export default proxyStore;
  * Api Proxy model
  */// Apis harmony
 // path /store
-export interface Store{
+export interface Store {
     contact: {
         // GET /store/contact
         $get(): Promise<MarketPlaceContact.Contact[]>;

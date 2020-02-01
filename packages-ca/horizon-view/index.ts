@@ -139,7 +139,7 @@ export default proxyHorizonView;
  * Api Proxy model
  */// Apis harmony
 // path /horizonView
-export interface HorizonView{
+export interface HorizonView {
     // GET /horizonView
     $get(): Promise<string[]>;
     $(serviceName: string): {

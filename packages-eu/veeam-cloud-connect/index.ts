@@ -101,7 +101,7 @@ export default proxyVeeamCloudConnect;
  * Api Proxy model
  */// Apis harmony
 // path /veeamCloudConnect
-export interface VeeamCloudConnect{
+export interface VeeamCloudConnect {
     // GET /veeamCloudConnect
     $get(): Promise<string[]>;
     $(serviceName: string): {

@@ -736,7 +736,7 @@ export default proxyCloud;
  * Api Proxy model
  */// Apis harmony
 // path /cloud
-export interface Cloud{
+export interface Cloud {
     order: {
         // GET /cloud/order
         $get(params?: {planCode?: string}): Promise<cloud.order.Order[]>;

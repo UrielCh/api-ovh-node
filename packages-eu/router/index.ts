@@ -139,7 +139,7 @@ export default proxyRouter;
  * Api Proxy model
  */// Apis harmony
 // path /router
-export interface Router{
+export interface Router {
     // GET /router
     $get(): Promise<string[]>;
     $(serviceName: string): {

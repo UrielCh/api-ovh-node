@@ -108,7 +108,7 @@ export default proxyLicenseWindows;
  * Api Proxy model
  */// Apis harmony
 // path /license
-export interface License{
+export interface License {
     windows: {
         // GET /license/windows
         $get(): Promise<string[]>;

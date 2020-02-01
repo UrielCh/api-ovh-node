@@ -100,7 +100,7 @@ export default proxyDedicatedNas;
  * Api Proxy model
  */// Apis harmony
 // path /dedicated
-export interface Dedicated{
+export interface Dedicated {
     nas: {
         // GET /dedicated/nas
         $get(): Promise<string[]>;

@@ -304,7 +304,7 @@ export default proxyEmailDomain;
  * Api Proxy model
  */// Apis harmony
 // path /email
-export interface Email{
+export interface Email {
     domain: {
         // GET /email/domain
         $get(): Promise<string[]>;

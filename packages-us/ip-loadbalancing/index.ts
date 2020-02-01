@@ -460,7 +460,7 @@ export default proxyIpLoadbalancing;
  * Api Proxy model
  */// Apis harmony
 // path /ipLoadbalancing
-export interface IpLoadbalancing{
+export interface IpLoadbalancing {
     // GET /ipLoadbalancing
     $get(): Promise<string[]>;
     availableZones: {

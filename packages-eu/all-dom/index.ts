@@ -66,7 +66,7 @@ export default proxyAllDom;
  * Api Proxy model
  */// Apis harmony
 // path /allDom
-export interface AllDom{
+export interface AllDom {
     // GET /allDom
     $get(): Promise<string[]>;
     $(serviceName: string): {

@@ -1038,7 +1038,7 @@ export default proxyXdsl;
  * Api Proxy model
  */// Apis harmony
 // path /xdsl
-export interface Xdsl{
+export interface Xdsl {
     // GET /xdsl
     $get(): Promise<string[]>;
     eligibility: {

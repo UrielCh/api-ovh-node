@@ -105,7 +105,7 @@ export default proxyMetrics;
  * Api Proxy model
  */// Apis harmony
 // path /metrics
-export interface Metrics{
+export interface Metrics {
     // GET /metrics
     $get(): Promise<string[]>;
     $(serviceName: string): {

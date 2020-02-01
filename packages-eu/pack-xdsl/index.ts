@@ -449,7 +449,7 @@ export default proxyPackXdsl;
  * Api Proxy model
  */// Apis harmony
 // path /pack
-export interface Pack{
+export interface Pack {
     xdsl: {
         // GET /pack/xdsl
         $get(): Promise<string[]>;
