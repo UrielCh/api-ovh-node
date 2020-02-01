@@ -40,6 +40,8 @@ import { CertMonitorProvider, stdOutCertMonitorProvider } from './certMonitor';
 export { CertMonitorProvider, CertMonitor } from './certMonitor';
 export { OvhCredentialNew } from './OVHInterfaces'
 import { EOL } from 'os';
+import { Cache, CacheSilot } from './Cache';
+
 /**
  * data used to create an Exception
  */
@@ -180,7 +182,6 @@ export interface OvhApiEvent {
     on(ev: 'warningMsg', listener: (params: string) => void): this;
     once(ev: 'warningMsg', listener: (params: string) => void): this;
     emit(ev: 'warningMsg', params: string): boolean;
-
 }
 
 /**
@@ -203,6 +204,7 @@ export default class OvhApi extends EventEmitter implements OvhRequestable, OvhA
     querySet: Set<string> | null;
     launchBrower: boolean;
     certMonitorProvider: CertMonitorProvider;
+    queryCache: Cache | null = null;
 
     constructor(params?: OvhParams) {
         super();
@@ -278,7 +280,12 @@ by default I will ask for all rights`);
         }
     }
 
-    async cache(param: ICacheOptions): Promise<any> {
+    async cache(template: string, param?: ICacheOptions): Promise<any> {
+        param = param || { ttl: 3600 };
+        if (!this.queryCache) {
+            this.queryCache = new Cache();
+        }
+        this.queryCache.cache(template, param);
     }
 
 
@@ -358,6 +365,7 @@ by default I will ask for all rights`);
      */
     public async doRequest(httpMethod: string, path: string, pathTemplate: string, params?: any): Promise<any> {
         httpMethod = httpMethod.toUpperCase();
+        let size = 0;
         /**
          * Time drift
          */
@@ -369,6 +377,17 @@ by default I will ask for all rights`);
                 throw new Error(`[OVH] Unable to fetch OVH API time ${err.message || err}`);
             }
         }
+        let cacheSilot: CacheSilot | undefined;
+        // httpMethod === 'GET' && this.queryCache
+        if (this.queryCache) {
+            cacheSilot = this.queryCache.silot(pathTemplate);
+            if (cacheSilot && httpMethod === 'GET') {
+                const value = cacheSilot.get(path);
+                if (value !== undefined)
+                    return value;
+            }
+        }
+
         /**
          * build Request
          */
@@ -472,7 +491,7 @@ by default I will ask for all rights`);
                         if (this.certCache) {
                             const { appKey, appSecret, consumerKey } = this;
                             const { applicationId, creation, credentialId, expiration, rules } = req;
-                            const jsonData = JSON.stringify({applicationId, appKey, appSecret, consumerKey, credentialId, rules, creation, expiration }, null, 2) + EOL;
+                            const jsonData = JSON.stringify({ applicationId, appKey, appSecret, consumerKey, credentialId, rules, creation, expiration }, null, 2) + EOL;
                             writeFile(this.certCache, jsonData, { encoding: 'utf-8', mode: 0o600 }, (err) => {
                                 if (err)
                                     this.emit('warningMsg', `Failed to write in ${this.certCache} ${err}`);
@@ -497,6 +516,7 @@ by default I will ask for all rights`);
             let responseData: any;
             const { statusCode, statusMessage } = response;
             if (body.length > 0) {
+                size = body.length;
                 try {
                     responseData = JSON.parse(body);
                 } catch (e) {
@@ -516,6 +536,12 @@ by default I will ask for all rights`);
                 this.emit('debug', `[OVH] API response to ${httpMethod} ${path}: ${body}`);
             }
             if (statusCode === 200) {
+                if (cacheSilot) {
+                    if (httpMethod === 'GET')
+                        cacheSilot.store(path, responseData, size);
+                    else
+                        cacheSilot.flush(path);
+                }
                 return responseData;
             }
 
@@ -627,7 +653,7 @@ by default I will ask for all rights`);
      * 
      * @deprecated
      */
-    public requestPromised(httpMethod: string, path: string, params?: OvhParamType): Promise<any>{
+    public requestPromised(httpMethod: string, path: string, params?: OvhParamType): Promise<any> {
         return this.request(httpMethod, path, params);
     }
 

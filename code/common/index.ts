@@ -48,7 +48,7 @@ export interface OvhRequestable {
     /**
      * cache controle
      */
-    cache(param: ICacheOptions): Promise<any>;
+    cache(template: string, param: ICacheOptions): Promise<any>;
 }
 
 /**
@@ -69,7 +69,12 @@ const commonGet = (key: string, target: OvhProxyApi) => {
         // $get $post $delete $put
         const fnc = (params: any) => {
             const mtd = key.substring(1);
-            return target._ovhEngine.doRequest(mtd, target._path, target._model, params);
+            if (mtd === 'cache') {
+                return target._ovhEngine.cache(target._model, params);
+            } else {
+                // get post put delete
+                return target._ovhEngine.doRequest(mtd, target._path, target._model, params);
+            }
         }
         return fnc.bind(target._ovhEngine);
     }
