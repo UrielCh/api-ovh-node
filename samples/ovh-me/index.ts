@@ -14,4 +14,4 @@ if (process.env.APP_KEY && process.env.APP_SECRET && process.env.CONSUMER_KEY)
 const ovh = new Ovh(config);
 const apiMe = ApiMe(ovh);
 
-apiMe.get("/me")().then(console.log);
+apiMe.$get().then(console.log);

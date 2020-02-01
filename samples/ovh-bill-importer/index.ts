@@ -96,7 +96,7 @@ async function main(root: string, type: 'pdf' | 'html') {
     apiMe = eu.proxyMe(ovh)
   }
 
-  const me = await apiMe.get('/me')()
+  const me = await apiMe.$get()
   if (program.token) {
     console.log(`Saving generarted token for next time in ${program.token}`)
     let { appKey, appSecret, consumerKey } = ovh
@@ -143,7 +143,7 @@ async function main(root: string, type: 'pdf' | 'html') {
   console.log(`${InvoicePDF.size} invoice PDF already downloaded`);
   console.log(`${Object.keys(invoiceTSV).length} invoice in summery.tsv`);
 
-  let billIds = await apiMe.get('/me/bill')()
+  let billIds = await apiMe.bill.$get()
   console.log(`${billIds.length} invoice available`);
   billIds = billIds
     .filter(billId => (!InvoicePDF.has(billId) || !invoiceTSV[billId]))
@@ -154,7 +154,7 @@ async function main(root: string, type: 'pdf' | 'html') {
 
   let counter = 0;
   const getInvoice = async (billId: string) => {
-    const billData: billing.Bill = await apiMe.get('/me/bill/{billId}')({ billId })
+    const billData: billing.Bill = await apiMe.bill.$(billId).$get();
     const date = new Date(billData.date);
     let year, month, day;
     if (program.utc) {
