@@ -111,8 +111,12 @@ async function genRegion(endpoint: IEndpoint) {
                     "build": "tsc",
                     "build:watch": "tsc --watch"
                 },
+                "files": [
+                    "index.js",
+                    "index.d.ts",
+                    "index.ts"
+                ]            
             }, { spaces: 4 })
-        //}
 
         fn = path.join(dir, 'tsconfig.json');
         rwfile = true;
