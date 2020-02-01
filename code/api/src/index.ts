@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 - Uriel Chemouni
+ * Copyright (c) 2019 - 2020 Uriel Chemouni
  * Copyright (c) 2013 - 2016 OVH SAS
  * Copyright (c) 2012 - 2013 Vincent Giersch
  *
@@ -33,13 +33,15 @@ import { RequestOptions } from 'http';
 import { endpoints } from './endpoints';
 import { writeFile, readFileSync } from 'fs';
 import { EventEmitter } from 'events';
-import { OvhRequestable, OvhParamType } from '@ovh-api/common';
+import { OvhRequestable, OvhParamType, ICacheOptions } from '@ovh-api/common';
 import { Socket } from 'net';
 import { HttpMethod, AccessRule, OvhCredentialNew, OvhCredential } from './OVHInterfaces';
 import { CertMonitorProvider, stdOutCertMonitorProvider } from './certMonitor';
 export { CertMonitorProvider, CertMonitor } from './certMonitor';
 export { OvhCredentialNew } from './OVHInterfaces'
 import { EOL } from 'os';
+import { Cache, CacheSilot } from './Cache';
+
 /**
  * data used to create an Exception
  */
@@ -180,7 +182,6 @@ export interface OvhApiEvent {
     on(ev: 'warningMsg', listener: (params: string) => void): this;
     once(ev: 'warningMsg', listener: (params: string) => void): this;
     emit(ev: 'warningMsg', params: string): boolean;
-
 }
 
 /**
@@ -203,6 +204,7 @@ export default class OvhApi extends EventEmitter implements OvhRequestable, OvhA
     querySet: Set<string> | null;
     launchBrower: boolean;
     certMonitorProvider: CertMonitorProvider;
+    queryCache: Cache | null = null;
 
     constructor(params?: OvhParams) {
         super();
@@ -277,6 +279,16 @@ by default I will ask for all rights`);
             throw new Error('[OVH] You should precise an application key / secret');
         }
     }
+
+    async cache(template: string, param?: ICacheOptions): Promise<any> {
+        param = param || { ttl: 3600 };
+        if (!this.queryCache) {
+            this.queryCache = new Cache();
+        }
+        this.queryCache.cache(template, param);
+    }
+
+
     /**
      * conver 'GET PATH1', 'POST PATH2', ... to AccessRules
      * 
@@ -323,27 +335,11 @@ by default I will ask for all rights`);
     /**
      * Execute a request on the API
      *
-     * @param {String} httpMethod: The HTTP method
-     * @param {String} pathTemplate: The request path
-     * @param {Object} params: The request parameters (passed as query string or
-     *                         body params)
-     * @param {Function} callback
-     * @param {Object} refer: The parent proxied object
+     * @param httpMethod: The HTTP method
+     * @param pathTemplate: The request path
+     * @param params: The request parameters (passed as query string or body params)
      */
-    public async request(httpMethod: string, pathTemplate: string, params?: any): Promise<any> {
-        // const ovhEngine = this;
-        httpMethod = httpMethod.toUpperCase();
-        /**
-         * Time drift
-         */
-        if (this.apiTimeDiff === null && pathTemplate !== '/auth/time') {
-            try {
-                const time: number = await this.request('GET', '/auth/time', {})
-                this.apiTimeDiff = time - Math.round(Date.now() / 1000);
-            } catch (err) {
-                throw new Error(`[OVH] Unable to fetch OVH API time ${err.message || err}`);
-            }
-        }
+    public request(httpMethod: string, pathTemplate: string, params?: any): Promise<any> {
         /**
          * replace Path variable
          */
@@ -356,6 +352,42 @@ by default I will ask for all rights`);
             delete params[m[1]];
             path = path.replace(m[0], String(val));
         }
+        return this.doRequest(httpMethod, path, pathTemplate, params);
+    }
+
+    /**
+     * Execute a request on the API
+     *
+     * @param httpMethod: The HTTP method
+     * @param path: The request path
+     * @param pathTemplate: The request path template
+     * @param params: The request parameters (passed as query string or body params)
+     */
+    public async doRequest(httpMethod: string, path: string, pathTemplate: string, params?: any): Promise<any> {
+        httpMethod = httpMethod.toUpperCase();
+        let size = 0;
+        /**
+         * Time drift
+         */
+        if (this.apiTimeDiff === null && pathTemplate !== '/auth/time') {
+            try {
+                const time: number = await this.request('GET', '/auth/time', {})
+                this.apiTimeDiff = time - Math.round(Date.now() / 1000);
+            } catch (err) {
+                throw new Error(`[OVH] Unable to fetch OVH API time ${err.message || err}`);
+            }
+        }
+        let cacheSilot: CacheSilot | undefined;
+        // httpMethod === 'GET' && this.queryCache
+        if (this.queryCache) {
+            cacheSilot = this.queryCache.silot(pathTemplate);
+            if (cacheSilot && httpMethod === 'GET') {
+                const value = cacheSilot.get(path);
+                if (value !== undefined)
+                    return value;
+            }
+        }
+
         /**
          * build Request
          */
@@ -459,7 +491,7 @@ by default I will ask for all rights`);
                         if (this.certCache) {
                             const { appKey, appSecret, consumerKey } = this;
                             const { applicationId, creation, credentialId, expiration, rules } = req;
-                            const jsonData = JSON.stringify({applicationId, appKey, appSecret, consumerKey, credentialId, rules, creation, expiration }, null, 2) + EOL;
+                            const jsonData = JSON.stringify({ applicationId, appKey, appSecret, consumerKey, credentialId, rules, creation, expiration }, null, 2) + EOL;
                             writeFile(this.certCache, jsonData, { encoding: 'utf-8', mode: 0o600 }, (err) => {
                                 if (err)
                                     this.emit('warningMsg', `Failed to write in ${this.certCache} ${err}`);
@@ -484,6 +516,7 @@ by default I will ask for all rights`);
             let responseData: any;
             const { statusCode, statusMessage } = response;
             if (body.length > 0) {
+                size = body.length;
                 try {
                     responseData = JSON.parse(body);
                 } catch (e) {
@@ -503,6 +536,12 @@ by default I will ask for all rights`);
                 this.emit('debug', `[OVH] API response to ${httpMethod} ${path}: ${body}`);
             }
             if (statusCode === 200) {
+                if (cacheSilot) {
+                    if (httpMethod === 'GET')
+                        cacheSilot.store(path, responseData, size);
+                    else
+                        cacheSilot.flush(path);
+                }
                 return responseData;
             }
 
@@ -610,10 +649,11 @@ by default I will ask for all rights`);
      *
      * @param {String} httpMethod: The HTTP method
      * @param {String} path: The request path
-     * @param {Object} params: The request parameters (passed as query string or
-     *                         body params)
+     * @param {Object} params: The request parameters (passed as query string or body params)
+     * 
+     * @deprecated
      */
-    public requestPromised(httpMethod: string, path: string, params?: OvhParamType) {
+    public requestPromised(httpMethod: string, path: string, params?: OvhParamType): Promise<any> {
         return this.request(httpMethod, path, params);
     }
 
@@ -626,7 +666,7 @@ by default I will ask for all rights`);
      * @param {Number|String} timestamp
      * @return {String} The signature
      */
-    private signRequest(httpMethod: string, url: string, body: string, timestamp: Number) {
+    private signRequest(httpMethod: string, url: string, body: string, timestamp: Number): string {
         let s = [
             this.appSecret,
             this.consumerKey,

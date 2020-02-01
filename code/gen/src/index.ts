@@ -31,10 +31,9 @@ async function genRegion(endpoint: IEndpoint) {
     if (false)
         apis = apis.filter((api) => {
             //return ~api.indexOf('veeam')
-            if (api.endsWith('ceph'))
-                return true;
+            //if (api.endsWith('ceph')) return true;
             //if ('/cloud' == api) return true;
-            //if ('/domain' == api) return true;
+            if ('/domain' == api) return true;
             //if ('/email/domain' == api) return true;
             //if ('/me' == api) return true;
             // if (this.api == '/cloud' || this.api == '/domain' || this.api == '/email/domain' || this.api == '/me'
@@ -97,7 +96,7 @@ async function genRegion(endpoint: IEndpoint) {
                 "license": "MIT",
                 "author": "Uriel Chemouni <uchemouni@gmail.com>",
                 "dependencies": {
-                    "@ovh-api/common": "^1.3.0",
+                    "@ovh-api/common": "^3.0.0",
                 },
                 "publishConfig": {
                     "access": "public"

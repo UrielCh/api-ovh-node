@@ -1,28 +1,49 @@
-import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
+import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /license/cloudLinux Models
  * Source: https://eu.api.soyoustart.com/1.0/license/cloudLinux.json
  */
 export namespace license {
-    // type fullname: license.ActionType
+    /**
+     * A short description of what does the Task on your license
+     * type fullname: license.ActionType
+     */
     export type ActionType = "addWindowFromExistingSerial" | "changeIp" | "changeOs" | "installLicense" | "optionUpgrade" | "releaseOption" | "versionUpgrade"
-    // interface fullName: license.CloudLinuxOrderConfiguration.CloudLinuxOrderConfiguration
+    /**
+     * Allowed CloudLinux versions per matching serviceTypes
+     * interface fullName: license.CloudLinuxOrderConfiguration.CloudLinuxOrderConfiguration
+     */
     export interface CloudLinuxOrderConfiguration {
         orderableVersions: license.OrderableCloudLinuxCompatibilityInfos[];
         serviceType: license.LicenseTypeEnum;
     }
-    // type fullname: license.CloudLinuxVersionEnum
+    /**
+     * All versions for CloudLinux product
+     * type fullname: license.CloudLinuxVersionEnum
+     */
     export type CloudLinuxVersionEnum = "SINGLE" | "WITH_CPANEL" | "WITH_PLESK12" | "cloudlinux-license"
-    // type fullname: license.LicenseTypeEnum
+    /**
+     * Possible values for license type
+     * type fullname: license.LicenseTypeEnum
+     */
     export type LicenseTypeEnum = "dedicated" | "dedicatedCloud" | "dedicatedFailover" | "failover" | "vm" | "vps" | "vps_ceph" | "vps_classic" | "vps_cloud" | "vps_cloud_2016" | "vps_ssd"
-    // interface fullName: license.OrderableCloudLinuxCompatibilityInfos.OrderableCloudLinuxCompatibilityInfos
+    /**
+     * All versions available for CloudLinux products
+     * interface fullName: license.OrderableCloudLinuxCompatibilityInfos.OrderableCloudLinuxCompatibilityInfos
+     */
     export interface OrderableCloudLinuxCompatibilityInfos {
         version: license.CloudLinuxVersionEnum;
     }
-    // type fullname: license.StateEnum
+    /**
+     * All states a license can be in
+     * type fullname: license.StateEnum
+     */
     export type StateEnum = "ok" | "released" | "terminated" | "toDeliver"
-    // interface fullName: license.Task.Task
+    /**
+     * licenses Todos
+     * interface fullName: license.Task.Task
+     */
     export interface Task {
         action: license.ActionType;
         doneDate?: string;
@@ -32,10 +53,16 @@ export namespace license {
         taskId: number;
         todoDate: string;
     }
-    // type fullname: license.TaskStateEnum
+    /**
+     * All states a license Task can be in
+     * type fullname: license.TaskStateEnum
+     */
     export type TaskStateEnum = "cancelled" | "doing" | "done" | "error" | "todo"
     export namespace cloudLinux {
-        // interface fullName: license.cloudLinux.CloudLinux.CloudLinux
+        /**
+         * Your CloudLinux license
+         * interface fullName: license.cloudLinux.CloudLinux.CloudLinux
+         */
         export interface CloudLinux {
             creation: string;
             domain: string;
@@ -47,7 +74,10 @@ export namespace license {
     }
 }
 export namespace service {
-    // interface fullName: service.RenewType.RenewType
+    /**
+     * Map a possible renew for a specific service
+     * interface fullName: service.RenewType.RenewType
+     */
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -55,17 +85,31 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    // type fullname: service.RenewalTypeEnum
+    /**
+     * Detailed renewal type of a service
+     * type fullname: service.RenewalTypeEnum
+     */
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    // type fullname: service.StateEnum
+    /**
+     * type fullname: service.StateEnum
+     */
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
-    // type fullname: service.TerminationFutureUseEnum
+    /**
+     * All future uses you can provide for a service termination
+     * type fullname: service.TerminationFutureUseEnum
+     */
     export type TerminationFutureUseEnum = "NOT_REPLACING_SERVICE" | "OTHER" | "SUBSCRIBE_AN_OTHER_SERVICE" | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR" | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR"
-    // type fullname: service.TerminationReasonEnum
+    /**
+     * All reasons you can provide for a service termination
+     * type fullname: service.TerminationReasonEnum
+     */
     export type TerminationReasonEnum = "FEATURES_DONT_SUIT_ME" | "LACK_OF_PERFORMANCES" | "MIGRATED_TO_ANOTHER_OVH_PRODUCT" | "MIGRATED_TO_COMPETITOR" | "NOT_ENOUGH_RECOGNITION" | "NOT_NEEDED_ANYMORE" | "NOT_RELIABLE" | "NO_ANSWER" | "OTHER" | "PRODUCT_DIMENSION_DONT_SUIT_ME" | "PRODUCT_TOOLS_DONT_SUIT_ME" | "TOO_EXPENSIVE" | "TOO_HARD_TO_USE" | "UNSATIFIED_BY_CUSTOMER_SUPPORT"
 }
 export namespace services {
-    // interface fullName: services.Service.Service
+    /**
+     * Details about a Service
+     * interface fullName: services.Service.Service
+     */
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;
@@ -91,88 +135,100 @@ export function proxyLicenseCloudLinux(ovhEngine: OvhRequestable): License {
 }
 export default proxyLicenseCloudLinux;
 /**
- * Api Proxy model
- */// Apis harmony
-// path /license
-export interface License{
+ * Api model for /license/cloudLinux
+ */
+export interface License {
     cloudLinux: {
-        // GET /license/cloudLinux
+        /**
+         * List available services
+         * GET /license/cloudLinux
+         */
         $get(): Promise<string[]>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         orderableVersions: {
-            // GET /license/cloudLinux/orderableVersions
-            $get(params: {ip: string}): Promise<license.CloudLinuxOrderConfiguration[]>;
+            /**
+             * Get the orderable CloudLinux versions
+             * GET /license/cloudLinux/orderableVersions
+             */
+            $get(params: { ip: string }): Promise<license.CloudLinuxOrderConfiguration[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         $(serviceName: string): {
-            // GET /license/cloudLinux/{serviceName}
+            /**
+             * Get this object properties
+             * GET /license/cloudLinux/{serviceName}
+             */
             $get(): Promise<license.cloudLinux.CloudLinux>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             confirmTermination: {
-                // POST /license/cloudLinux/{serviceName}/confirmTermination
-                $post(params: {commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}): Promise<string>;
+                /**
+                 * Confirm termination of your service
+                 * POST /license/cloudLinux/{serviceName}/confirmTermination
+                 */
+                $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             serviceInfos: {
-                // GET /license/cloudLinux/{serviceName}/serviceInfos
+                /**
+                 * Get this object properties
+                 * GET /license/cloudLinux/{serviceName}/serviceInfos
+                 */
                 $get(): Promise<services.Service>;
-                // PUT /license/cloudLinux/{serviceName}/serviceInfos
-                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+                /**
+                 * Alter this object properties
+                 * PUT /license/cloudLinux/{serviceName}/serviceInfos
+                 */
+                $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             tasks: {
-                // GET /license/cloudLinux/{serviceName}/tasks
-                $get(params?: {action?: license.ActionType, status?: license.TaskStateEnum}): Promise<number[]>;
+                /**
+                 * Tasks linked to this license
+                 * GET /license/cloudLinux/{serviceName}/tasks
+                 */
+                $get(params?: { action?: license.ActionType, status?: license.TaskStateEnum }): Promise<number[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(taskId: number): {
-                    // GET /license/cloudLinux/{serviceName}/tasks/{taskId}
+                    /**
+                     * Get this object properties
+                     * GET /license/cloudLinux/{serviceName}/tasks/{taskId}
+                     */
                     $get(): Promise<license.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 };
             }
             terminate: {
-                // POST /license/cloudLinux/{serviceName}/terminate
+                /**
+                 * Terminate your service
+                 * POST /license/cloudLinux/{serviceName}/terminate
+                 */
                 $post(): Promise<string>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         };
     }
-// Api
-  /**
-   * Operations about the LICENSE service
-   * List available services
-   */
-  get(path: '/license/cloudLinux'): () => Promise<string[]>;
-  /**
-   * Your CloudLinux license
-   * Get this object properties
-   */
-  get(path: '/license/cloudLinux/{serviceName}'): (params: {serviceName: string}) => Promise<license.cloudLinux.CloudLinux>;
-  /**
-   * Details about a Service
-   * Get this object properties
-   */
-  get(path: '/license/cloudLinux/{serviceName}/serviceInfos'): (params: {serviceName: string}) => Promise<services.Service>;
-  /**
-   * List the license.Task objects
-   * Tasks linked to this license
-   */
-  get(path: '/license/cloudLinux/{serviceName}/tasks'): (params: {serviceName: string, action?: license.ActionType, status?: license.TaskStateEnum}) => Promise<number[]>;
-  /**
-   * licenses Todos
-   * Get this object properties
-   */
-  get(path: '/license/cloudLinux/{serviceName}/tasks/{taskId}'): (params: {serviceName: string, taskId: number}) => Promise<license.Task>;
-  /**
-   * Get the orderable CloudLinux versions
-   * Get the orderable CloudLinux versions
-   */
-  get(path: '/license/cloudLinux/orderableVersions'): (params: {ip: string}) => Promise<license.CloudLinuxOrderConfiguration[]>;
-  /**
-   * Details about a Service
-   * Alter this object properties
-   */
-  put(path: '/license/cloudLinux/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
-  /**
-   * Confirm termination of your service
-   * Confirm termination of your service
-   */
-  post(path: '/license/cloudLinux/{serviceName}/confirmTermination'): (params: {serviceName: string, commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}) => Promise<string>;
-  /**
-   * Terminate your service
-   * Terminate your service
-   */
-  post(path: '/license/cloudLinux/{serviceName}/terminate'): (params: {serviceName: string}) => Promise<string>;
 }

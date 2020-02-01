@@ -1,12 +1,12 @@
 {
     "name": "@ovh-api/ms-services",
     "description": "Add typing to to ovh api ms-services",
-    "version": "2.0.16",
+    "version": "3.0.0",
     "typings": "index.d.ts",
     "license": "MIT",
     "author": "Uriel Chemouni <uchemouni@gmail.com>",
     "dependencies": {
-        "@ovh-api/common": "^1.3.0"
+        "@ovh-api/common": "^3.0.0"
     },
     "publishConfig": {
         "access": "public"

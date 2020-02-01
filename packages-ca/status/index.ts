@@ -1,4 +1,4 @@
-import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
+import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /status Models
@@ -6,24 +6,39 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  */
 export namespace ovhstatus {
     export namespace task {
-        // type fullname: ovhstatus.task.TaskImpactEnum
+        /**
+         * Description not available
+         * type fullname: ovhstatus.task.TaskImpactEnum
+         */
         export type TaskImpactEnum = "partialUnavailability" | "fullUnavailability" | "downtime" | "none" | "unknown"
-        // type fullname: ovhstatus.task.TaskStatusEnum
+        /**
+         * Description not available
+         * type fullname: ovhstatus.task.TaskStatusEnum
+         */
         export type TaskStatusEnum = "planned" | "inProgress" | "finished"
-        // type fullname: ovhstatus.task.TaskTypeEnum
+        /**
+         * Description not available
+         * type fullname: ovhstatus.task.TaskTypeEnum
+         */
         export type TaskTypeEnum = "incident" | "maintenance" | "upgrade"
     }
 }
 export namespace status {
     export namespace Reply {
-        // interface fullName: status.Reply.Reply.Reply
+        /**
+         * A reply is useful to know the progress of a task
+         * interface fullName: status.Reply.Reply.Reply
+         */
         export interface Reply {
             comment: string;
             date: string;
         }
     }
     export namespace Task {
-        // interface fullName: status.Task.Task.Task
+        /**
+         * A task linked to one of your services
+         * interface fullName: status.Task.Task.Task
+         */
         export interface Task {
             category: string;
             endDate?: string;
@@ -50,18 +65,18 @@ export function proxyStatus(ovhEngine: OvhRequestable): Status {
 }
 export default proxyStatus;
 /**
- * Api Proxy model
- */// Apis harmony
-// path /status
-export interface Status{
+ * Api model for /status
+ */
+export interface Status {
     task: {
-        // GET /status/task
-        $get(params?: {impact?: ovhstatus.task.TaskImpactEnum, status?: ovhstatus.task.TaskStatusEnum, type?: ovhstatus.task.TaskTypeEnum}): Promise<status.Task.Task[]>;
+        /**
+         * Find all the incidents or maintenances linked to your services
+         * GET /status/task
+         */
+        $get(params?: { impact?: ovhstatus.task.TaskImpactEnum, status?: ovhstatus.task.TaskStatusEnum, type?: ovhstatus.task.TaskTypeEnum }): Promise<status.Task.Task[]>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
     }
-// Api
-  /**
-   * API to get incidents or maintenances linked to nichandle services
-   * Find all the incidents or maintenances linked to your services
-   */
-  get(path: '/status/task'): (params?: {impact?: ovhstatus.task.TaskImpactEnum, status?: ovhstatus.task.TaskStatusEnum, type?: ovhstatus.task.TaskTypeEnum}) => Promise<status.Task.Task[]>;
 }

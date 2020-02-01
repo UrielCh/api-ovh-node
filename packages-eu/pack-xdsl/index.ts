@@ -1,4 +1,4 @@
-import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
+import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /pack/xdsl Models
@@ -6,7 +6,10 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  */
 export namespace connectivity {
     export namespace eligibility {
-        // interface fullName: connectivity.eligibility.Building.Building
+        /**
+         * Details of a Building
+         * interface fullName: connectivity.eligibility.Building.Building
+         */
         export interface Building {
             name: string;
             nro?: string;
@@ -14,25 +17,39 @@ export namespace connectivity {
             stairs: connectivity.eligibility.BuildingStair[];
             type: connectivity.eligibility.BuildingTypeEnum;
         }
-        // interface fullName: connectivity.eligibility.BuildingStair.BuildingStair
+        /**
+         * Stair details of a Building
+         * interface fullName: connectivity.eligibility.BuildingStair.BuildingStair
+         */
         export interface BuildingStair {
             floors: string[];
             stair: string;
         }
-        // type fullname: connectivity.eligibility.BuildingTypeEnum
+        /**
+         * Building type
+         * type fullname: connectivity.eligibility.BuildingTypeEnum
+         */
         export type BuildingTypeEnum = "BUILDING" | "HOUSE"
     }
 }
 export namespace order {
-    // interface fullName: order.Contract.Contract
+    /**
+     * A contract
+     * interface fullName: order.Contract.Contract
+     */
     export interface Contract {
         content: string;
         name: string;
         url: string;
     }
-    // type fullname: order.CurrencyCodeEnum
+    /**
+     * type fullname: order.CurrencyCodeEnum
+     */
     export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
-    // interface fullName: order.Price.Price
+    /**
+     * Price with it's currency and textual representation
+     * interface fullName: order.Price.Price
+     */
     export interface Price {
         currencyCode: order.CurrencyCodeEnum;
         text: string;
@@ -41,27 +58,45 @@ export namespace order {
 }
 export namespace pack {
     export namespace xdsl {
-        // interface fullName: pack.xdsl.AsyncTask.AsyncTask
+        /**
+         * Async task
+         * interface fullName: pack.xdsl.AsyncTask.AsyncTask
+         */
         export interface AsyncTask<T> {
             error?: string;
             result?: T;
             status: pack.xdsl.AsyncTaskStatusEnum;
         }
-        // type fullname: pack.xdsl.AsyncTaskStatusEnum
+        /**
+         * AsyncTask status
+         * type fullname: pack.xdsl.AsyncTaskStatusEnum
+         */
         export type AsyncTaskStatusEnum = "error" | "ok" | "pending"
-        // type fullname: pack.xdsl.DomainActionEnum
+        /**
+         * Domain action
+         * type fullname: pack.xdsl.DomainActionEnum
+         */
         export type DomainActionEnum = "create" | "trade" | "transfer"
-        // interface fullName: pack.xdsl.ExchangeAccountService.ExchangeAccountService
+        /**
+         * Exchange 2013 service
+         * interface fullName: pack.xdsl.ExchangeAccountService.ExchangeAccountService
+         */
         export interface ExchangeAccountService {
             domain: string;
             exchangeService: string;
             organizationName: string;
         }
-        // interface fullName: pack.xdsl.ExchangeLiteService.ExchangeLiteService
+        /**
+         * Exchange account service
+         * interface fullName: pack.xdsl.ExchangeLiteService.ExchangeLiteService
+         */
         export interface ExchangeLiteService {
             domain: string;
         }
-        // interface fullName: pack.xdsl.Hubic.Hubic
+        /**
+         * Hubic service
+         * interface fullName: pack.xdsl.Hubic.Hubic
+         */
         export interface Hubic {
             bytes: number;
             domain: string;
@@ -69,7 +104,10 @@ export namespace pack {
             size: string;
             voucher?: string;
         }
-        // interface fullName: pack.xdsl.PackAdsl.PackAdsl
+        /**
+         * Pack of xDSL services
+         * interface fullName: pack.xdsl.PackAdsl.PackAdsl
+         */
         export interface PackAdsl {
             capabilities: pack.xdsl.PackCapabilities;
             description?: string;
@@ -77,12 +115,18 @@ export namespace pack {
             offerPrice: order.Price;
             packName: string;
         }
-        // interface fullName: pack.xdsl.PackCapabilities.PackCapabilities
+        /**
+         * Describe the capabilities of this pack
+         * interface fullName: pack.xdsl.PackCapabilities.PackCapabilities
+         */
         export interface PackCapabilities {
             canMoveAddress: boolean;
             isLegacyOffer: boolean;
         }
-        // interface fullName: pack.xdsl.PackDetail.PackDetail
+        /**
+         * Information about pack xdsl
+         * interface fullName: pack.xdsl.PackDetail.PackDetail
+         */
         export interface PackDetail {
             accessname: string;
             description: string;
@@ -90,21 +134,33 @@ export namespace pack {
             packname: string;
             type: xdslDslTypeEnum;
         }
-        // interface fullName: pack.xdsl.ResiliationFollowUpDetail.ResiliationFollowUpDetail
+        /**
+         * Details about the resiliation
+         * interface fullName: pack.xdsl.ResiliationFollowUpDetail.ResiliationFollowUpDetail
+         */
         export interface ResiliationFollowUpDetail {
             dateTodo: string;
             needModemReturn: boolean;
             registrationDate: string;
             status: string;
         }
-        // type fullname: pack.xdsl.ResiliationReasonEnum
+        /**
+         * Reason of a resiliation
+         * type fullname: pack.xdsl.ResiliationReasonEnum
+         */
         export type ResiliationReasonEnum = "addressMove" | "billingProblems" | "cessationOfActivity" | "changeOfTerms" | "ftth" | "goToCompetitor" | "other" | "technicalProblems"
-        // interface fullName: pack.xdsl.ResiliationSurvey.ResiliationSurvey
+        /**
+         * Information about the reason for the resiliation
+         * interface fullName: pack.xdsl.ResiliationSurvey.ResiliationSurvey
+         */
         export interface ResiliationSurvey {
             comment?: string;
             type: pack.xdsl.ResiliationReasonEnum;
         }
-        // interface fullName: pack.xdsl.ResiliationTerms.ResiliationTerms
+        /**
+         * Show the resiliation terms
+         * interface fullName: pack.xdsl.ResiliationTerms.ResiliationTerms
+         */
         export interface ResiliationTerms {
             due: order.Price;
             engageDate?: string;
@@ -112,22 +168,34 @@ export namespace pack {
             resiliationDate: string;
             resiliationReasons: pack.xdsl.ResiliationReasonEnum[];
         }
-        // interface fullName: pack.xdsl.Service.Service
+        /**
+         * Service link to the pack
+         * interface fullName: pack.xdsl.Service.Service
+         */
         export interface Service {
             domain: string;
             id: number;
             type: pack.xdsl.ServiceNameEnum;
         }
-        // interface fullName: pack.xdsl.ServiceInformation.ServiceInformation
+        /**
+         * Informations about a service
+         * interface fullName: pack.xdsl.ServiceInformation.ServiceInformation
+         */
         export interface ServiceInformation {
             inCreation: number;
             name: pack.xdsl.ServiceNameEnum;
             total: number;
             used: number;
         }
-        // type fullname: pack.xdsl.ServiceNameEnum
+        /**
+         * Service name
+         * type fullname: pack.xdsl.ServiceNameEnum
+         */
         export type ServiceNameEnum = "domain" | "emailPro" | "exchangeAccount" | "exchangeIndividual" | "exchangeLite" | "exchangeOrganization" | "hostedEmail" | "hubic" | "modem" | "overTheBoxHardware" | "overTheBoxService" | "siteBuilderFull" | "siteBuilderStart" | "voipAlias" | "voipBillingAccount" | "voipEcoFax" | "voipLine" | "xdslAccess"
-        // interface fullName: pack.xdsl.ShippingAddress.ShippingAddress
+        /**
+         * Shipping address
+         * interface fullName: pack.xdsl.ShippingAddress.ShippingAddress
+         */
         export interface ShippingAddress {
             address: string;
             cityName: string;
@@ -137,14 +205,23 @@ export namespace pack {
             shippingId: string;
             zipCode: string;
         }
-        // type fullname: pack.xdsl.ShippingAddressContextEnum
+        /**
+         * Allowed contexts when looking for shipping addresses
+         * type fullname: pack.xdsl.ShippingAddressContextEnum
+         */
         export type ShippingAddressContextEnum = "migration" | "voipLine"
-        // interface fullName: pack.xdsl.SiteBuilderDomain.SiteBuilderDomain
+        /**
+         * SiteBuilder available domain infos
+         * interface fullName: pack.xdsl.SiteBuilderDomain.SiteBuilderDomain
+         */
         export interface SiteBuilderDomain {
             defaultSubDomain: string;
             domain: string;
         }
-        // interface fullName: pack.xdsl.SiteBuilderTemplate.SiteBuilderTemplate
+        /**
+         * SiteBuilder template infos
+         * interface fullName: pack.xdsl.SiteBuilderTemplate.SiteBuilderTemplate
+         */
         export interface SiteBuilderTemplate {
             bkId: number;
             id: number;
@@ -153,23 +230,35 @@ export namespace pack {
             reference: string;
             thumbImage: string;
         }
-        // interface fullName: pack.xdsl.Task.Task
+        /**
+         * Describes the current status of a task
+         * interface fullName: pack.xdsl.Task.Task
+         */
         export interface Task {
             function: string;
             id: number;
             status: pack.xdsl.TaskStatusEnum;
             updateDate: string;
         }
-        // type fullname: pack.xdsl.TaskStatusEnum
+        /**
+         * Status of a task.
+         * type fullname: pack.xdsl.TaskStatusEnum
+         */
         export type TaskStatusEnum = "cancelled" | "doing" | "done" | "error" | "problem" | "todo"
-        // interface fullName: pack.xdsl.UnpackTerms.UnpackTerms
+        /**
+         * Terms to unpack services
+         * interface fullName: pack.xdsl.UnpackTerms.UnpackTerms
+         */
         export interface UnpackTerms {
             isAllowed: boolean;
             price: order.Price;
             renewPeriod: number;
             renewPrice: order.Price;
         }
-        // interface fullName: pack.xdsl.VoIPHardware.VoIPHardware
+        /**
+         * Hardware for VoIP line
+         * interface fullName: pack.xdsl.VoIPHardware.VoIPHardware
+         */
         export interface VoIPHardware {
             deposit?: order.Price;
             image?: string;
@@ -179,30 +268,45 @@ export namespace pack {
             needShipping: boolean;
             url?: string;
         }
-        // interface fullName: pack.xdsl.VoIPLineOrder.VoIPLineOrder
+        /**
+         * Represents an order of VoIP lines
+         * interface fullName: pack.xdsl.VoIPLineOrder.VoIPLineOrder
+         */
         export interface VoIPLineOrder {
             needPayment: boolean;
             orderId: number;
             orderUrl: string;
             taskIds: number[];
         }
-        // interface fullName: pack.xdsl.VoipLineService.VoipLineService
+        /**
+         * VOIP line services
+         * interface fullName: pack.xdsl.VoipLineService.VoipLineService
+         */
         export interface VoipLineService {
             billingAccount: string;
             domain: string;
         }
         export namespace addressMove {
-            // interface fullName: pack.xdsl.addressMove.Creation.Creation
+            /**
+             * The parameters needed to create a new landline
+             * interface fullName: pack.xdsl.addressMove.Creation.Creation
+             */
             export interface Creation {
                 address: xdsleligibilityAddress;
                 meeting: xdsleligibilityBookMeetingSlot;
             }
-            // interface fullName: pack.xdsl.addressMove.Eligibility.Eligibility
+            /**
+             * Eligibility
+             * interface fullName: pack.xdsl.addressMove.Eligibility.Eligibility
+             */
             export interface Eligibility {
                 keepCurrentPortability?: xdsleligibilityPortability;
                 offers: pack.xdsl.addressMove.Offer[];
             }
-            // interface fullName: pack.xdsl.addressMove.Landline.Landline
+            /**
+             * The parameters needed to activate the access on a landline
+             * interface fullName: pack.xdsl.addressMove.Landline.Landline
+             */
             export interface Landline {
                 lineNumber: string;
                 portLineNumber: boolean;
@@ -210,7 +314,10 @@ export namespace pack {
                 status: xdsleligibilityLandlineStatusEnum;
                 unbundling: xdslDeconsolidationEnum;
             }
-            // interface fullName: pack.xdsl.addressMove.MoveOffer.MoveOffer
+            /**
+             * Address move offer
+             * interface fullName: pack.xdsl.addressMove.MoveOffer.MoveOffer
+             */
             export interface MoveOffer {
                 contracts: order.Contract[];
                 description: string;
@@ -225,11 +332,17 @@ export namespace pack {
                 subServicesToDelete: pack.xdsl.migration.SubServiceToDelete[];
                 url: string;
             }
-            // interface fullName: pack.xdsl.addressMove.MoveOfferResponse.MoveOfferResponse
+            /**
+             * List of available Move address offer
+             * interface fullName: pack.xdsl.addressMove.MoveOfferResponse.MoveOfferResponse
+             */
             export interface MoveOfferResponse {
                 offers: pack.xdsl.addressMove.MoveOffer[];
             }
-            // interface fullName: pack.xdsl.addressMove.Offer.Offer
+            /**
+             * An offer
+             * interface fullName: pack.xdsl.addressMove.Offer.Offer
+             */
             export interface Offer {
                 address: xdsleligibilityAddress;
                 estimatedDownload: number;
@@ -248,12 +361,18 @@ export namespace pack {
                 type: xdslDslTypeEnum;
                 unbundling: xdslDeconsolidationEnum;
             }
-            // interface fullName: pack.xdsl.addressMove.Price.Price
+            /**
+             * Price details for an offer
+             * interface fullName: pack.xdsl.addressMove.Price.Price
+             */
             export interface Price {
                 description: string;
                 price?: order.Price;
             }
-            // interface fullName: pack.xdsl.addressMove.PriceOffer.PriceOffer
+            /**
+             * Price details for an offer
+             * interface fullName: pack.xdsl.addressMove.PriceOffer.PriceOffer
+             */
             export interface PriceOffer {
                 currentOfferPrice: pack.xdsl.addressMove.Price;
                 due: pack.xdsl.addressMove.Price;
@@ -264,7 +383,10 @@ export namespace pack {
             }
         }
         export namespace migration {
-            // interface fullName: pack.xdsl.migration.MigrationOffer.MigrationOffer
+            /**
+             * Migration offer
+             * interface fullName: pack.xdsl.migration.MigrationOffer.MigrationOffer
+             */
             export interface MigrationOffer {
                 contractList: string[];
                 contracts: order.Contract[];
@@ -285,12 +407,18 @@ export namespace pack {
                 subServicesToDelete: pack.xdsl.migration.SubServiceToDelete[];
                 url: string;
             }
-            // interface fullName: pack.xdsl.migration.MigrationOfferResponse.MigrationOfferResponse
+            /**
+             * List of available Migration offer
+             * interface fullName: pack.xdsl.migration.MigrationOfferResponse.MigrationOfferResponse
+             */
             export interface MigrationOfferResponse {
                 buildings: connectivity.eligibility.Building[];
                 offers: pack.xdsl.migration.MigrationOffer[];
             }
-            // interface fullName: pack.xdsl.migration.OfferAvailableOption.OfferAvailableOption
+            /**
+             * Available option for the offer
+             * interface fullName: pack.xdsl.migration.OfferAvailableOption.OfferAvailableOption
+             */
             export interface OfferAvailableOption {
                 duration: number;
                 included: number;
@@ -298,17 +426,26 @@ export namespace pack {
                 optional: number;
                 optionalPrice?: order.Price;
             }
-            // interface fullName: pack.xdsl.migration.OfferOption.OfferOption
+            /**
+             * Option of Offer
+             * interface fullName: pack.xdsl.migration.OfferOption.OfferOption
+             */
             export interface OfferOption {
                 name: string;
                 quantity: number;
             }
-            // interface fullName: pack.xdsl.migration.OfferServiceToDelete.OfferServiceToDelete
+            /**
+             * Option of Offer
+             * interface fullName: pack.xdsl.migration.OfferServiceToDelete.OfferServiceToDelete
+             */
             export interface OfferServiceToDelete {
                 service: string;
                 type: pack.xdsl.ServiceNameEnum;
             }
-            // interface fullName: pack.xdsl.migration.SubServiceToDelete.SubServiceToDelete
+            /**
+             * Sub service to delete
+             * interface fullName: pack.xdsl.migration.SubServiceToDelete.SubServiceToDelete
+             */
             export interface SubServiceToDelete {
                 numberToDelete: number;
                 services: string[];
@@ -316,20 +453,29 @@ export namespace pack {
             }
         }
         export namespace promotionCode {
-            // interface fullName: pack.xdsl.promotionCode.Capabilities.Capabilities
+            /**
+             * Informations about a promotion code
+             * interface fullName: pack.xdsl.promotionCode.Capabilities.Capabilities
+             */
             export interface Capabilities {
                 amount: order.Price;
                 canGenerate: boolean;
                 engagement: number;
                 reasonCodes: pack.xdsl.promotionCode.ReasonCodes[];
             }
-            // type fullname: pack.xdsl.promotionCode.ReasonCodes
+            /**
+             * Reasons why the promotion code can not be generated
+             * type fullname: pack.xdsl.promotionCode.ReasonCodes
+             */
             export type ReasonCodes = "noMoreAvailable" | "offerNotCompatible" | "serviceNotInOkState" | "stillEngaged" | "taskInProgress"
         }
     }
 }
 export namespace service {
-    // interface fullName: service.RenewType.RenewType
+    /**
+     * Map a possible renew for a specific service
+     * interface fullName: service.RenewType.RenewType
+     */
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -337,13 +483,21 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    // type fullname: service.RenewalTypeEnum
+    /**
+     * Detailed renewal type of a service
+     * type fullname: service.RenewalTypeEnum
+     */
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    // type fullname: service.StateEnum
+    /**
+     * type fullname: service.StateEnum
+     */
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
 }
 export namespace services {
-    // interface fullName: services.Service.Service
+    /**
+     * Details about a Service
+     * interface fullName: services.Service.Service
+     */
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;
@@ -361,17 +515,28 @@ export namespace services {
     }
 }
 export namespace xdsl {
-    // type fullname: xdsl.DeconsolidationEnum
+    /**
+     * Deconsolidation of the line.
+     * type fullname: xdsl.DeconsolidationEnum
+     */
     export type DeconsolidationEnum = "createNeighbour" | "creation" | "creationNeighbour" | "partial" | "total"
-    // type fullname: xdsl.DslTypeEnum
+    /**
+     * Possible DSL technologies
+     * type fullname: xdsl.DslTypeEnum
+     */
     export type DslTypeEnum = "adsl" | "ftth" | "sdsl" | "vdsl"
-    // interface fullName: xdsl.LineSectionLength.LineSectionLength
+    /**
+     * interface fullName: xdsl.LineSectionLength.LineSectionLength
+     */
     export interface LineSectionLength {
         diameter: number;
         length: number;
     }
     export namespace eligibility {
-        // interface fullName: xdsl.eligibility.Address.Address
+        /**
+         * Represents an address
+         * interface fullName: xdsl.eligibility.Address.Address
+         */
         export interface Address {
             building?: string;
             city: xdsl.eligibility.City;
@@ -384,54 +549,84 @@ export namespace xdsl {
             street?: xdsl.eligibility.Street;
             streetNumber?: string;
         }
-        // interface fullName: xdsl.eligibility.BookMeetingSlot.BookMeetingSlot
+        /**
+         * Parameters to book a time slot for a meeting
+         * interface fullName: xdsl.eligibility.BookMeetingSlot.BookMeetingSlot
+         */
         export interface BookMeetingSlot {
             fakeMeeting: boolean;
             meetingSlot?: xdsl.eligibility.MeetingSlot;
             name: string;
         }
-        // interface fullName: xdsl.eligibility.City.City
+        /**
+         * Represent a city
+         * interface fullName: xdsl.eligibility.City.City
+         */
         export interface City {
             inseeCode: string;
             locality?: string;
             name: string;
             zipCode: string;
         }
-        // interface fullName: xdsl.eligibility.CodeAndMessage.CodeAndMessage
+        /**
+         * A message and its code
+         * interface fullName: xdsl.eligibility.CodeAndMessage.CodeAndMessage
+         */
         export interface CodeAndMessage {
             code: string;
             message: string;
         }
-        // type fullname: xdsl.eligibility.LandlineStatusEnum
+        /**
+         * Status of a landline
+         * type fullname: xdsl.eligibility.LandlineStatusEnum
+         */
         export type LandlineStatusEnum = "active" | "inactive"
-        // interface fullName: xdsl.eligibility.MeetingSlot.MeetingSlot
+        /**
+         * Represents a time slot for a meeting
+         * interface fullName: xdsl.eligibility.MeetingSlot.MeetingSlot
+         */
         export interface MeetingSlot {
             endDate: string;
             startDate: string;
             uiCode: string;
         }
-        // interface fullName: xdsl.eligibility.MeetingSlots.MeetingSlots
+        /**
+         * List of available meeting time slots
+         * interface fullName: xdsl.eligibility.MeetingSlots.MeetingSlots
+         */
         export interface MeetingSlots {
             canBookFakeMeeting: boolean;
             meetingSlots: xdsl.eligibility.MeetingSlot[];
         }
-        // interface fullName: xdsl.eligibility.Portability.Portability
+        /**
+         * Eligibility of the portability of the line number
+         * interface fullName: xdsl.eligibility.Portability.Portability
+         */
         export interface Portability {
             comments: xdsl.eligibility.CodeAndMessage[];
             eligible: boolean;
             underCondition: boolean;
             warnings: xdsl.eligibility.CodeAndMessage[];
         }
-        // type fullname: xdsl.eligibility.ProviderEnum
+        /**
+         * The providers
+         * type fullname: xdsl.eligibility.ProviderEnum
+         */
         export type ProviderEnum = "axione" | "ft" | "kosc" | "ovh" | "sfr"
-        // interface fullName: xdsl.eligibility.Street.Street
+        /**
+         * Represent a street
+         * interface fullName: xdsl.eligibility.Street.Street
+         */
         export interface Street {
             name: string;
             rivoliCode: string;
         }
     }
     export namespace hubic {
-        // interface fullName: xdsl.hubic.HubicDetailsResponse.HubicDetailsResponse
+        /**
+         * Details that the user used for his voucher
+         * interface fullName: xdsl.hubic.HubicDetailsResponse.HubicDetailsResponse
+         */
         export interface HubicDetailsResponse {
             email: string;
         }
@@ -446,669 +641,763 @@ export function proxyPackXdsl(ovhEngine: OvhRequestable): Pack {
 }
 export default proxyPackXdsl;
 /**
- * Api Proxy model
- */// Apis harmony
-// path /pack
-export interface Pack{
+ * Api model for /pack/xdsl
+ */
+export interface Pack {
     xdsl: {
-        // GET /pack/xdsl
+        /**
+         * List available services
+         * GET /pack/xdsl
+         */
         $get(): Promise<string[]>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         $(packName: string): {
-            // GET /pack/xdsl/{packName}
+            /**
+             * Get this object properties
+             * GET /pack/xdsl/{packName}
+             */
             $get(): Promise<pack.xdsl.PackAdsl>;
-            // PUT /pack/xdsl/{packName}
-            $put(params?: {capabilities?: pack.xdsl.PackCapabilities, description?: string, offerDescription?: string, offerPrice?: order.Price, packName?: string}): Promise<void>;
+            /**
+             * Alter this object properties
+             * PUT /pack/xdsl/{packName}
+             */
+            $put(params?: { capabilities?: pack.xdsl.PackCapabilities, description?: string, offerDescription?: string, offerPrice?: order.Price, packName?: string }): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             addressMove: {
                 eligibility: {
-                    // POST /pack/xdsl/{packName}/addressMove/eligibility
-                    $post(params?: {address?: xdsleligibilityAddress, lineNumber?: string}): Promise<pack.xdsl.AsyncTask<pack.xdsl.addressMove.Eligibility>>;
+                    /**
+                     * Eligibility to move the access
+                     * POST /pack/xdsl/{packName}/addressMove/eligibility
+                     */
+                    $post(params?: { address?: xdsleligibilityAddress, lineNumber?: string }): Promise<pack.xdsl.AsyncTask<pack.xdsl.addressMove.Eligibility>>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 move: {
-                    // POST /pack/xdsl/{packName}/addressMove/move
-                    $post(params: {creation?: pack.xdsl.addressMove.Creation, keepCurrentNumber: boolean, landline?: pack.xdsl.addressMove.Landline, moveOutDate?: string, offerCode: string, provider?: xdsleligibilityProviderEnum}): Promise<pack.xdsl.AsyncTask<number>>;
+                    /**
+                     * Move the Xdsl access to another address
+                     * POST /pack/xdsl/{packName}/addressMove/move
+                     */
+                    $post(params: { creation?: pack.xdsl.addressMove.Creation, keepCurrentNumber: boolean, landline?: pack.xdsl.addressMove.Landline, moveOutDate?: string, offerCode: string, provider?: xdsleligibilityProviderEnum }): Promise<pack.xdsl.AsyncTask<number>>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 moveFtth: {
-                    // POST /pack/xdsl/{packName}/addressMove/moveFtth
-                    $post(params: {buildingReference: string, floor: string, moveOutDate?: string, otp: boolean, otpReference?: string, stair: string}): Promise<pack.xdsl.AsyncTask<number>>;
+                    /**
+                     * Move the FTTH access to another address
+                     * POST /pack/xdsl/{packName}/addressMove/moveFtth
+                     */
+                    $post(params: { buildingReference: string, floor: string, moveOutDate?: string, otp: boolean, otpReference?: string, stair: string }): Promise<pack.xdsl.AsyncTask<number>>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 moveOffer: {
-                    // POST /pack/xdsl/{packName}/addressMove/moveOffer
-                    $post(params: {acceptContracts: boolean, buildingReference: string, eligibilityReference: string, engageMonths?: number, floor: string, keepCurrentNumber: boolean, mondialRelayId?: number, moveOutDate?: string, nicShipping?: string, offerName: string, options?: pack.xdsl.migration.OfferOption[], otp: boolean, otpReference?: string, productCode: string, stair: string, subServicesToDelete?: pack.xdsl.migration.OfferServiceToDelete[]}): Promise<pack.xdsl.AsyncTask<number>>;
+                    /**
+                     * Move the access to another address
+                     * POST /pack/xdsl/{packName}/addressMove/moveOffer
+                     */
+                    $post(params: { acceptContracts: boolean, buildingReference: string, eligibilityReference: string, engageMonths?: number, floor: string, keepCurrentNumber: boolean, mondialRelayId?: number, moveOutDate?: string, nicShipping?: string, offerName: string, options?: pack.xdsl.migration.OfferOption[], otp: boolean, otpReference?: string, productCode: string, stair: string, subServicesToDelete?: pack.xdsl.migration.OfferServiceToDelete[] }): Promise<pack.xdsl.AsyncTask<number>>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 offers: {
-                    // POST /pack/xdsl/{packName}/addressMove/offers
-                    $post(params: {eligibilityReference: string}): Promise<pack.xdsl.AsyncTask<pack.xdsl.addressMove.MoveOfferResponse>>;
+                    /**
+                     * Get the possibilities of address move offers available
+                     * POST /pack/xdsl/{packName}/addressMove/offers
+                     */
+                    $post(params: { eligibilityReference: string }): Promise<pack.xdsl.AsyncTask<pack.xdsl.addressMove.MoveOfferResponse>>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             }
             canCancelResiliation: {
-                // GET /pack/xdsl/{packName}/canCancelResiliation
+                /**
+                 * Check if the resiliation can be cancelled
+                 * GET /pack/xdsl/{packName}/canCancelResiliation
+                 */
                 $get(): Promise<boolean>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             cancelResiliation: {
-                // POST /pack/xdsl/{packName}/cancelResiliation
+                /**
+                 * Cancel the ongoing resiliation
+                 * POST /pack/xdsl/{packName}/cancelResiliation
+                 */
                 $post(): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             changeContact: {
-                // POST /pack/xdsl/{packName}/changeContact
-                $post(params?: {contactAdmin?: string, contactBilling?: string, contactTech?: string}): Promise<number[]>;
+                /**
+                 * Launch a contact change procedure
+                 * POST /pack/xdsl/{packName}/changeContact
+                 */
+                $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             domain: {
                 options: {
                     tlds: {
-                        // GET /pack/xdsl/{packName}/domain/options/tlds
+                        /**
+                         * Get the available tlds for domain order
+                         * GET /pack/xdsl/{packName}/domain/options/tlds
+                         */
                         $get(): Promise<string[]>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                 }
                 services: {
-                    // GET /pack/xdsl/{packName}/domain/services
+                    /**
+                     * Domain services
+                     * GET /pack/xdsl/{packName}/domain/services
+                     */
                     $get(): Promise<string[]>;
-                    // POST /pack/xdsl/{packName}/domain/services
-                    $post(params: {action: pack.xdsl.DomainActionEnum, authInfo?: string, domain: string, tld: string}): Promise<pack.xdsl.Task>;
+                    /**
+                     * Activate a domain service
+                     * POST /pack/xdsl/{packName}/domain/services
+                     */
+                    $post(params: { action: pack.xdsl.DomainActionEnum, authInfo?: string, domain: string, tld: string }): Promise<pack.xdsl.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             }
             emailPro: {
                 options: {
                     domains: {
-                        // GET /pack/xdsl/{packName}/emailPro/options/domains
+                        /**
+                         * List the available domains for the Email Pro service
+                         * GET /pack/xdsl/{packName}/emailPro/options/domains
+                         */
                         $get(): Promise<string[]>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     isEmailAvailable: {
-                        // GET /pack/xdsl/{packName}/emailPro/options/isEmailAvailable
-                        $get(params: {email: string}): Promise<boolean>;
+                        /**
+                         * Check if the given email address is available for an Email Pro activation
+                         * GET /pack/xdsl/{packName}/emailPro/options/isEmailAvailable
+                         */
+                        $get(params: { email: string }): Promise<boolean>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                 }
                 services: {
-                    // GET /pack/xdsl/{packName}/emailPro/services
+                    /**
+                     * List the Email Pro services
+                     * GET /pack/xdsl/{packName}/emailPro/services
+                     */
                     $get(): Promise<string[]>;
-                    // POST /pack/xdsl/{packName}/emailPro/services
-                    $post(params: {email: string, password: string}): Promise<pack.xdsl.Task>;
+                    /**
+                     * Activate an Email Pro service
+                     * POST /pack/xdsl/{packName}/emailPro/services
+                     */
+                    $post(params: { email: string, password: string }): Promise<pack.xdsl.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             }
             exchangeAccount: {
                 services: {
-                    // GET /pack/xdsl/{packName}/exchangeAccount/services
+                    /**
+                     * Exchange 2013 services
+                     * GET /pack/xdsl/{packName}/exchangeAccount/services
+                     */
                     $get(): Promise<string[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     $(domain: string): {
-                        // GET /pack/xdsl/{packName}/exchangeAccount/services/{domain}
+                        /**
+                         * Get this object properties
+                         * GET /pack/xdsl/{packName}/exchangeAccount/services/{domain}
+                         */
                         $get(): Promise<pack.xdsl.ExchangeAccountService>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     };
                 }
             }
             exchangeIndividual: {
                 options: {
                     domains: {
-                        // GET /pack/xdsl/{packName}/exchangeIndividual/options/domains
+                        /**
+                         * Get the available domains
+                         * GET /pack/xdsl/{packName}/exchangeIndividual/options/domains
+                         */
                         $get(): Promise<string[]>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     isEmailAvailable: {
-                        // GET /pack/xdsl/{packName}/exchangeIndividual/options/isEmailAvailable
-                        $get(params: {email: string}): Promise<boolean>;
+                        /**
+                         * Check if the email address is available for service creation
+                         * GET /pack/xdsl/{packName}/exchangeIndividual/options/isEmailAvailable
+                         */
+                        $get(params: { email: string }): Promise<boolean>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                 }
                 services: {
-                    // GET /pack/xdsl/{packName}/exchangeIndividual/services
+                    /**
+                     * Exchange services
+                     * GET /pack/xdsl/{packName}/exchangeIndividual/services
+                     */
                     $get(): Promise<string[]>;
-                    // POST /pack/xdsl/{packName}/exchangeIndividual/services
-                    $post(params: {email: string, password: string}): Promise<pack.xdsl.Task>;
+                    /**
+                     * Activate an exchange service
+                     * POST /pack/xdsl/{packName}/exchangeIndividual/services
+                     */
+                    $post(params: { email: string, password: string }): Promise<pack.xdsl.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             }
             exchangeLite: {
                 options: {
                     isEmailAvailable: {
-                        // GET /pack/xdsl/{packName}/exchangeLite/options/isEmailAvailable
-                        $get(params: {email: string}): Promise<boolean>;
+                        /**
+                         * Check if the email address is available for service creation
+                         * GET /pack/xdsl/{packName}/exchangeLite/options/isEmailAvailable
+                         */
+                        $get(params: { email: string }): Promise<boolean>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                 }
                 services: {
-                    // GET /pack/xdsl/{packName}/exchangeLite/services
+                    /**
+                     * Exchange lite services
+                     * GET /pack/xdsl/{packName}/exchangeLite/services
+                     */
                     $get(): Promise<string[]>;
-                    // POST /pack/xdsl/{packName}/exchangeLite/services
-                    $post(params: {antispam?: boolean, displayName?: string, email: string, firstName?: string, initials?: string, lastName?: string, password: string}): Promise<pack.xdsl.Task>;
+                    /**
+                     * Activate a exchange lite service
+                     * POST /pack/xdsl/{packName}/exchangeLite/services
+                     */
+                    $post(params: { antispam?: boolean, displayName?: string, email: string, firstName?: string, initials?: string, lastName?: string, password: string }): Promise<pack.xdsl.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     $(domain: string): {
-                        // GET /pack/xdsl/{packName}/exchangeLite/services/{domain}
+                        /**
+                         * Get this object properties
+                         * GET /pack/xdsl/{packName}/exchangeLite/services/{domain}
+                         */
                         $get(): Promise<pack.xdsl.ExchangeLiteService>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     };
                 }
             }
             exchangeOrganization: {
                 services: {
-                    // GET /pack/xdsl/{packName}/exchangeOrganization/services
+                    /**
+                     * Exchange 2013 organization services
+                     * GET /pack/xdsl/{packName}/exchangeOrganization/services
+                     */
                     $get(): Promise<string[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             }
             hostedEmail: {
                 options: {
                     domains: {
-                        // GET /pack/xdsl/{packName}/hostedEmail/options/domains
+                        /**
+                         * Get the hostedemail available domains
+                         * GET /pack/xdsl/{packName}/hostedEmail/options/domains
+                         */
                         $get(): Promise<string[]>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                 }
                 services: {
-                    // GET /pack/xdsl/{packName}/hostedEmail/services
+                    /**
+                     * Hosted email services
+                     * GET /pack/xdsl/{packName}/hostedEmail/services
+                     */
                     $get(): Promise<string[]>;
-                    // POST /pack/xdsl/{packName}/hostedEmail/services
-                    $post(params: {email: string, password: string}): Promise<pack.xdsl.Task>;
+                    /**
+                     * Activate an hosted email service
+                     * POST /pack/xdsl/{packName}/hostedEmail/services
+                     */
+                    $post(params: { email: string, password: string }): Promise<pack.xdsl.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             }
             hubic: {
                 services: {
-                    // GET /pack/xdsl/{packName}/hubic/services
+                    /**
+                     * Hubic perso services
+                     * GET /pack/xdsl/{packName}/hubic/services
+                     */
                     $get(): Promise<string[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     $(domain: string): {
-                        // GET /pack/xdsl/{packName}/hubic/services/{domain}
+                        /**
+                         * Get this object properties
+                         * GET /pack/xdsl/{packName}/hubic/services/{domain}
+                         */
                         $get(): Promise<pack.xdsl.Hubic>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         details: {
-                            // GET /pack/xdsl/{packName}/hubic/services/{domain}/details
+                            /**
+                             * Details associated to a voucher
+                             * GET /pack/xdsl/{packName}/hubic/services/{domain}/details
+                             */
                             $get(): Promise<pack.xdsl.AsyncTask<xdsl.hubic.HubicDetailsResponse>>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         }
                     };
                 }
             }
             migration: {
                 migrate: {
-                    // POST /pack/xdsl/{packName}/migration/migrate
-                    $post(params: {acceptContracts: boolean, buildingReference?: string, engageMonths?: number, floor?: string, mondialRelayId?: number, nicShipping?: string, offerName: string, options?: pack.xdsl.migration.OfferOption[], otp?: boolean, otpReference?: string, stair?: string, subServicesToDelete?: pack.xdsl.migration.OfferServiceToDelete[]}): Promise<pack.xdsl.Task>;
+                    /**
+                     * Migrate to the selected offer
+                     * POST /pack/xdsl/{packName}/migration/migrate
+                     */
+                    $post(params: { acceptContracts: boolean, buildingReference?: string, engageMonths?: number, floor?: string, mondialRelayId?: number, nicShipping?: string, offerName: string, options?: pack.xdsl.migration.OfferOption[], otp?: boolean, otpReference?: string, stair?: string, subServicesToDelete?: pack.xdsl.migration.OfferServiceToDelete[] }): Promise<pack.xdsl.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 offers: {
-                    // POST /pack/xdsl/{packName}/migration/offers
+                    /**
+                     * Get the possibilities of migration offers available
+                     * POST /pack/xdsl/{packName}/migration/offers
+                     */
                     $post(): Promise<pack.xdsl.AsyncTask<pack.xdsl.migration.MigrationOfferResponse>>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 servicesToDelete: {
-                    // POST /pack/xdsl/{packName}/migration/servicesToDelete
-                    $post(params: {offerName: string, options?: pack.xdsl.migration.OfferOption[]}): Promise<pack.xdsl.migration.SubServiceToDelete[]>;
+                    /**
+                     * Calculate services to delete with new offer and options
+                     * POST /pack/xdsl/{packName}/migration/servicesToDelete
+                     */
+                    $post(params: { offerName: string, options?: pack.xdsl.migration.OfferOption[] }): Promise<pack.xdsl.migration.SubServiceToDelete[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             }
             promotionCode: {
                 capabilities: {
-                    // GET /pack/xdsl/{packName}/promotionCode/capabilities
+                    /**
+                     * Get informations about the promotion code generation
+                     * GET /pack/xdsl/{packName}/promotionCode/capabilities
+                     */
                     $get(): Promise<pack.xdsl.promotionCode.Capabilities>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
                 generate: {
-                    // POST /pack/xdsl/{packName}/promotionCode/generate
+                    /**
+                     * Creates a task to generate a new promotion code
+                     * POST /pack/xdsl/{packName}/promotionCode/generate
+                     */
                     $post(): Promise<pack.xdsl.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             }
             resiliate: {
-                // POST /pack/xdsl/{packName}/resiliate
-                $post(params: {resiliationDate?: string, resiliationSurvey: pack.xdsl.ResiliationSurvey, servicesToKeep?: number[]}): Promise<pack.xdsl.ResiliationFollowUpDetail>;
+                /**
+                 * Resiliate the pack
+                 * POST /pack/xdsl/{packName}/resiliate
+                 */
+                $post(params: { resiliationDate?: string, resiliationSurvey: pack.xdsl.ResiliationSurvey, servicesToKeep?: number[] }): Promise<pack.xdsl.ResiliationFollowUpDetail>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             resiliationFollowUp: {
-                // GET /pack/xdsl/{packName}/resiliationFollowUp
+                /**
+                 * Get information about the ongoing resiliation
+                 * GET /pack/xdsl/{packName}/resiliationFollowUp
+                 */
                 $get(): Promise<pack.xdsl.ResiliationFollowUpDetail>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             resiliationTerms: {
-                // GET /pack/xdsl/{packName}/resiliationTerms
-                $get(params?: {resiliationDate?: string}): Promise<pack.xdsl.ResiliationTerms>;
+                /**
+                 * Get resiliation terms
+                 * GET /pack/xdsl/{packName}/resiliationTerms
+                 */
+                $get(params?: { resiliationDate?: string }): Promise<pack.xdsl.ResiliationTerms>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             serviceInfos: {
-                // GET /pack/xdsl/{packName}/serviceInfos
+                /**
+                 * Get this object properties
+                 * GET /pack/xdsl/{packName}/serviceInfos
+                 */
                 $get(): Promise<services.Service>;
-                // PUT /pack/xdsl/{packName}/serviceInfos
-                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+                /**
+                 * Alter this object properties
+                 * PUT /pack/xdsl/{packName}/serviceInfos
+                 */
+                $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             services: {
-                // GET /pack/xdsl/{packName}/services
+                /**
+                 * Informations about the services included in the pack
+                 * GET /pack/xdsl/{packName}/services
+                 */
                 $get(): Promise<pack.xdsl.ServiceInformation[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             shippingAddresses: {
-                // GET /pack/xdsl/{packName}/shippingAddresses
-                $get(params: {context: pack.xdsl.ShippingAddressContextEnum}): Promise<pack.xdsl.ShippingAddress[]>;
+                /**
+                 * Allowed shipping addresses given a context
+                 * GET /pack/xdsl/{packName}/shippingAddresses
+                 */
+                $get(params: { context: pack.xdsl.ShippingAddressContextEnum }): Promise<pack.xdsl.ShippingAddress[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             siteBuilderFull: {
                 options: {
                     domains: {
-                        // GET /pack/xdsl/{packName}/siteBuilderFull/options/domains
+                        /**
+                         * Get the available domains
+                         * GET /pack/xdsl/{packName}/siteBuilderFull/options/domains
+                         */
                         $get(): Promise<pack.xdsl.SiteBuilderDomain[]>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     templates: {
-                        // GET /pack/xdsl/{packName}/siteBuilderFull/options/templates
+                        /**
+                         * Get the available templates
+                         * GET /pack/xdsl/{packName}/siteBuilderFull/options/templates
+                         */
                         $get(): Promise<pack.xdsl.SiteBuilderTemplate[]>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                 }
                 services: {
-                    // GET /pack/xdsl/{packName}/siteBuilderFull/services
+                    /**
+                     * Sitebuilder full services
+                     * GET /pack/xdsl/{packName}/siteBuilderFull/services
+                     */
                     $get(): Promise<string[]>;
-                    // POST /pack/xdsl/{packName}/siteBuilderFull/services
-                    $post(params: {domain: string, subdomain: string, templateId: number}): Promise<pack.xdsl.Task>;
+                    /**
+                     * Activate a sitebuilder full service
+                     * POST /pack/xdsl/{packName}/siteBuilderFull/services
+                     */
+                    $post(params: { domain: string, subdomain: string, templateId: number }): Promise<pack.xdsl.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             }
             siteBuilderStart: {
                 options: {
                     domains: {
-                        // GET /pack/xdsl/{packName}/siteBuilderStart/options/domains
+                        /**
+                         * Get the available domains
+                         * GET /pack/xdsl/{packName}/siteBuilderStart/options/domains
+                         */
                         $get(): Promise<pack.xdsl.SiteBuilderDomain[]>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     templates: {
-                        // GET /pack/xdsl/{packName}/siteBuilderStart/options/templates
+                        /**
+                         * Get the available templates
+                         * GET /pack/xdsl/{packName}/siteBuilderStart/options/templates
+                         */
                         $get(): Promise<pack.xdsl.SiteBuilderTemplate[]>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                 }
                 services: {
-                    // GET /pack/xdsl/{packName}/siteBuilderStart/services
+                    /**
+                     * Sitebuilder start services
+                     * GET /pack/xdsl/{packName}/siteBuilderStart/services
+                     */
                     $get(): Promise<string[]>;
-                    // POST /pack/xdsl/{packName}/siteBuilderStart/services
-                    $post(params: {domain: string, subdomain: string, templateId: number}): Promise<pack.xdsl.Task>;
+                    /**
+                     * Activate a sitebuilder full service
+                     * POST /pack/xdsl/{packName}/siteBuilderStart/services
+                     */
+                    $post(params: { domain: string, subdomain: string, templateId: number }): Promise<pack.xdsl.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             }
             subServices: {
-                // GET /pack/xdsl/{packName}/subServices
+                /**
+                 * List services contained in the pack
+                 * GET /pack/xdsl/{packName}/subServices
+                 */
                 $get(): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(domain: string): {
-                    // GET /pack/xdsl/{packName}/subServices/{domain}
+                    /**
+                     * Get this object properties
+                     * GET /pack/xdsl/{packName}/subServices/{domain}
+                     */
                     $get(): Promise<pack.xdsl.Service>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     keepServiceTerms: {
-                        // GET /pack/xdsl/{packName}/subServices/{domain}/keepServiceTerms
+                        /**
+                         * Give the condition to unpack service from pack
+                         * GET /pack/xdsl/{packName}/subServices/{domain}/keepServiceTerms
+                         */
                         $get(): Promise<pack.xdsl.UnpackTerms>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                 };
             }
             tasks: {
-                // GET /pack/xdsl/{packName}/tasks
-                $get(params?: {function_?: string, status?: pack.xdsl.TaskStatusEnum}): Promise<number[]>;
+                /**
+                 * Tasks scheduled for this pack
+                 * GET /pack/xdsl/{packName}/tasks
+                 */
+                $get(params?: { function_?: string, status?: pack.xdsl.TaskStatusEnum }): Promise<number[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(id: number): {
-                    // GET /pack/xdsl/{packName}/tasks/{id}
+                    /**
+                     * Get this object properties
+                     * GET /pack/xdsl/{packName}/tasks/{id}
+                     */
                     $get(): Promise<pack.xdsl.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 };
             }
             voipBillingAccount: {
                 services: {
-                    // GET /pack/xdsl/{packName}/voipBillingAccount/services
+                    /**
+                     * VOIP billing accounts
+                     * GET /pack/xdsl/{packName}/voipBillingAccount/services
+                     */
                     $get(): Promise<string[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             }
             voipEcofax: {
                 services: {
-                    // GET /pack/xdsl/{packName}/voipEcofax/services
+                    /**
+                     * VOIP ecofax service
+                     * GET /pack/xdsl/{packName}/voipEcofax/services
+                     */
                     $get(): Promise<string[]>;
-                    // POST /pack/xdsl/{packName}/voipEcofax/services
+                    /**
+                     * Activate a voicefax service
+                     * POST /pack/xdsl/{packName}/voipEcofax/services
+                     */
                     $post(): Promise<pack.xdsl.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             }
             voipLine: {
                 options: {
                     customShippingAddress: {
-                        // POST /pack/xdsl/{packName}/voipLine/options/customShippingAddress
-                        $post(params: {address: string, cityName: string, firstName: string, lastName: string, zipCode: string}): Promise<number>;
+                        /**
+                         * Create a new shippingId to be used for voipLine service creation
+                         * POST /pack/xdsl/{packName}/voipLine/options/customShippingAddress
+                         */
+                        $post(params: { address: string, cityName: string, firstName: string, lastName: string, zipCode: string }): Promise<number>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     hardwares: {
-                        // GET /pack/xdsl/{packName}/voipLine/options/hardwares
+                        /**
+                         * Get available hardwares
+                         * GET /pack/xdsl/{packName}/voipLine/options/hardwares
+                         */
                         $get(): Promise<pack.xdsl.VoIPHardware[]>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                     shippingAddresses: {
-                        // GET /pack/xdsl/{packName}/voipLine/options/shippingAddresses
+                        /**
+                         * Get available shipping addresses
+                         * GET /pack/xdsl/{packName}/voipLine/options/shippingAddresses
+                         */
                         $get(): Promise<pack.xdsl.ShippingAddress[]>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     }
                 }
                 services: {
-                    // GET /pack/xdsl/{packName}/voipLine/services
+                    /**
+                     * VOIP line services
+                     * GET /pack/xdsl/{packName}/voipLine/services
+                     */
                     $get(): Promise<string[]>;
-                    // POST /pack/xdsl/{packName}/voipLine/services
-                    $post(params: {hardwareNames: string[], mondialRelayId?: string, shippingId?: string}): Promise<pack.xdsl.VoIPLineOrder>;
+                    /**
+                     * Activate a voip line service
+                     * POST /pack/xdsl/{packName}/voipLine/services
+                     */
+                    $post(params: { hardwareNames: string[], mondialRelayId?: string, shippingId?: string }): Promise<pack.xdsl.VoIPLineOrder>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     $(domain: string): {
-                        // GET /pack/xdsl/{packName}/voipLine/services/{domain}
+                        /**
+                         * Get this object properties
+                         * GET /pack/xdsl/{packName}/voipLine/services/{domain}
+                         */
                         $get(): Promise<pack.xdsl.VoipLineService>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     };
                 }
             }
             xdslAccess: {
                 services: {
-                    // GET /pack/xdsl/{packName}/xdslAccess/services
+                    /**
+                     * xDSL access services
+                     * GET /pack/xdsl/{packName}/xdslAccess/services
+                     */
                     $get(): Promise<string[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                 }
             }
         };
     }
-// Api
-  /**
-   * Operations about the PACK service
-   * List available services
-   */
-  get(path: '/pack/xdsl'): () => Promise<string[]>;
-  /**
-   * Pack of xDSL services
-   * Get this object properties
-   */
-  get(path: '/pack/xdsl/{packName}'): (params: {packName: string}) => Promise<pack.xdsl.PackAdsl>;
-  /**
-   * canCancelResiliation operations
-   * Check if the resiliation can be cancelled
-   */
-  get(path: '/pack/xdsl/{packName}/canCancelResiliation'): (params: {packName: string}) => Promise<boolean>;
-  /**
-   * tlds operations
-   * Get the available tlds for domain order
-   */
-  get(path: '/pack/xdsl/{packName}/domain/options/tlds'): (params: {packName: string}) => Promise<string[]>;
-  /**
-   * List the pack.xdsl.DomainService objects
-   * Domain services
-   */
-  get(path: '/pack/xdsl/{packName}/domain/services'): (params: {packName: string}) => Promise<string[]>;
-  /**
-   * domains operations
-   * List the available domains for the Email Pro service
-   */
-  get(path: '/pack/xdsl/{packName}/emailPro/options/domains'): (params: {packName: string}) => Promise<string[]>;
-  /**
-   * isEmailAvailable operations
-   * Check if the given email address is available for an Email Pro activation
-   */
-  get(path: '/pack/xdsl/{packName}/emailPro/options/isEmailAvailable'): (params: {packName: string, email: string}) => Promise<boolean>;
-  /**
-   * List the pack.xdsl.EmailProService objects
-   * List the Email Pro services
-   */
-  get(path: '/pack/xdsl/{packName}/emailPro/services'): (params: {packName: string}) => Promise<string[]>;
-  /**
-   * List the pack.xdsl.ExchangeAccountService objects
-   * Exchange 2013 services
-   */
-  get(path: '/pack/xdsl/{packName}/exchangeAccount/services'): (params: {packName: string}) => Promise<string[]>;
-  /**
-   * Exchange 2013 service
-   * Get this object properties
-   */
-  get(path: '/pack/xdsl/{packName}/exchangeAccount/services/{domain}'): (params: {domain: string, packName: string}) => Promise<pack.xdsl.ExchangeAccountService>;
-  /**
-   * domains operations
-   * Get the available domains
-   */
-  get(path: '/pack/xdsl/{packName}/exchangeIndividual/options/domains'): (params: {packName: string}) => Promise<string[]>;
-  /**
-   * isEmailAvailable operations
-   * Check if the email address is available for service creation
-   */
-  get(path: '/pack/xdsl/{packName}/exchangeIndividual/options/isEmailAvailable'): (params: {packName: string, email: string}) => Promise<boolean>;
-  /**
-   * List the pack.xdsl.ExchangeIndividual objects
-   * Exchange services
-   */
-  get(path: '/pack/xdsl/{packName}/exchangeIndividual/services'): (params: {packName: string}) => Promise<string[]>;
-  /**
-   * isEmailAvailable operations
-   * Check if the email address is available for service creation
-   */
-  get(path: '/pack/xdsl/{packName}/exchangeLite/options/isEmailAvailable'): (params: {packName: string, email: string}) => Promise<boolean>;
-  /**
-   * List the pack.xdsl.ExchangeLiteService objects
-   * Exchange lite services
-   */
-  get(path: '/pack/xdsl/{packName}/exchangeLite/services'): (params: {packName: string}) => Promise<string[]>;
-  /**
-   * Exchange account service
-   * Get this object properties
-   */
-  get(path: '/pack/xdsl/{packName}/exchangeLite/services/{domain}'): (params: {domain: string, packName: string}) => Promise<pack.xdsl.ExchangeLiteService>;
-  /**
-   * List the pack.xdsl.ExchangeOrganizationService objects
-   * Exchange 2013 organization services
-   */
-  get(path: '/pack/xdsl/{packName}/exchangeOrganization/services'): (params: {packName: string}) => Promise<string[]>;
-  /**
-   * domains operations
-   * Get the hostedemail available domains
-   */
-  get(path: '/pack/xdsl/{packName}/hostedEmail/options/domains'): (params: {packName: string}) => Promise<string[]>;
-  /**
-   * List the pack.xdsl.HostedEmailService objects
-   * Hosted email services
-   */
-  get(path: '/pack/xdsl/{packName}/hostedEmail/services'): (params: {packName: string}) => Promise<string[]>;
-  /**
-   * List the pack.xdsl.Hubic objects
-   * Hubic perso services
-   */
-  get(path: '/pack/xdsl/{packName}/hubic/services'): (params: {packName: string}) => Promise<string[]>;
-  /**
-   * Hubic service
-   * Get this object properties
-   */
-  get(path: '/pack/xdsl/{packName}/hubic/services/{domain}'): (params: {domain: string, packName: string}) => Promise<pack.xdsl.Hubic>;
-  /**
-   * details operations
-   * Details associated to a voucher
-   */
-  get(path: '/pack/xdsl/{packName}/hubic/services/{domain}/details'): (params: {domain: string, packName: string}) => Promise<pack.xdsl.AsyncTask<xdsl.hubic.HubicDetailsResponse>>;
-  /**
-   * capabilities operations
-   * Get informations about the promotion code generation
-   */
-  get(path: '/pack/xdsl/{packName}/promotionCode/capabilities'): (params: {packName: string}) => Promise<pack.xdsl.promotionCode.Capabilities>;
-  /**
-   * resiliationFollowUp operations
-   * Get information about the ongoing resiliation
-   */
-  get(path: '/pack/xdsl/{packName}/resiliationFollowUp'): (params: {packName: string}) => Promise<pack.xdsl.ResiliationFollowUpDetail>;
-  /**
-   * resiliationTerms operations
-   * Get resiliation terms
-   */
-  get(path: '/pack/xdsl/{packName}/resiliationTerms'): (params: {packName: string, resiliationDate?: string}) => Promise<pack.xdsl.ResiliationTerms>;
-  /**
-   * Details about a Service
-   * Get this object properties
-   */
-  get(path: '/pack/xdsl/{packName}/serviceInfos'): (params: {packName: string}) => Promise<services.Service>;
-  /**
-   * services operations
-   * Informations about the services included in the pack
-   */
-  get(path: '/pack/xdsl/{packName}/services'): (params: {packName: string}) => Promise<pack.xdsl.ServiceInformation[]>;
-  /**
-   * shippingAddresses operations
-   * Allowed shipping addresses given a context
-   */
-  get(path: '/pack/xdsl/{packName}/shippingAddresses'): (params: {packName: string, context: pack.xdsl.ShippingAddressContextEnum}) => Promise<pack.xdsl.ShippingAddress[]>;
-  /**
-   * domains operations
-   * Get the available domains
-   */
-  get(path: '/pack/xdsl/{packName}/siteBuilderFull/options/domains'): (params: {packName: string}) => Promise<pack.xdsl.SiteBuilderDomain[]>;
-  /**
-   * templates operations
-   * Get the available templates
-   */
-  get(path: '/pack/xdsl/{packName}/siteBuilderFull/options/templates'): (params: {packName: string}) => Promise<pack.xdsl.SiteBuilderTemplate[]>;
-  /**
-   * List the pack.xdsl.SiteBuilderFullService objects
-   * Sitebuilder full services
-   */
-  get(path: '/pack/xdsl/{packName}/siteBuilderFull/services'): (params: {packName: string}) => Promise<string[]>;
-  /**
-   * domains operations
-   * Get the available domains
-   */
-  get(path: '/pack/xdsl/{packName}/siteBuilderStart/options/domains'): (params: {packName: string}) => Promise<pack.xdsl.SiteBuilderDomain[]>;
-  /**
-   * templates operations
-   * Get the available templates
-   */
-  get(path: '/pack/xdsl/{packName}/siteBuilderStart/options/templates'): (params: {packName: string}) => Promise<pack.xdsl.SiteBuilderTemplate[]>;
-  /**
-   * List the pack.xdsl.SiteBuilderStartService objects
-   * Sitebuilder start services
-   */
-  get(path: '/pack/xdsl/{packName}/siteBuilderStart/services'): (params: {packName: string}) => Promise<string[]>;
-  /**
-   * List the pack.xdsl.Service objects
-   * List services contained in the pack
-   */
-  get(path: '/pack/xdsl/{packName}/subServices'): (params: {packName: string}) => Promise<string[]>;
-  /**
-   * Service link to the pack
-   * Get this object properties
-   */
-  get(path: '/pack/xdsl/{packName}/subServices/{domain}'): (params: {domain: string, packName: string}) => Promise<pack.xdsl.Service>;
-  /**
-   * keepServiceTerms operations
-   * Give the condition to unpack service from pack
-   */
-  get(path: '/pack/xdsl/{packName}/subServices/{domain}/keepServiceTerms'): (params: {domain: string, packName: string}) => Promise<pack.xdsl.UnpackTerms>;
-  /**
-   * List the pack.xdsl.Task objects
-   * Tasks scheduled for this pack
-   */
-  get(path: '/pack/xdsl/{packName}/tasks'): (params: {packName: string, function_?: string, status?: pack.xdsl.TaskStatusEnum}) => Promise<number[]>;
-  /**
-   * Describes the current status of a task
-   * Get this object properties
-   */
-  get(path: '/pack/xdsl/{packName}/tasks/{id}'): (params: {id: number, packName: string}) => Promise<pack.xdsl.Task>;
-  /**
-   * List the pack.xdsl.BillingAccountService objects
-   * VOIP billing accounts
-   */
-  get(path: '/pack/xdsl/{packName}/voipBillingAccount/services'): (params: {packName: string}) => Promise<string[]>;
-  /**
-   * List the pack.xdsl.VoipEcoFaxService objects
-   * VOIP ecofax service
-   */
-  get(path: '/pack/xdsl/{packName}/voipEcofax/services'): (params: {packName: string}) => Promise<string[]>;
-  /**
-   * hardwares operations
-   * Get available hardwares
-   */
-  get(path: '/pack/xdsl/{packName}/voipLine/options/hardwares'): (params: {packName: string}) => Promise<pack.xdsl.VoIPHardware[]>;
-  /**
-   * shippingAddresses operations
-   * Get available shipping addresses
-   */
-  get(path: '/pack/xdsl/{packName}/voipLine/options/shippingAddresses'): (params: {packName: string}) => Promise<pack.xdsl.ShippingAddress[]>;
-  /**
-   * List the pack.xdsl.VoipLineService objects
-   * VOIP line services
-   */
-  get(path: '/pack/xdsl/{packName}/voipLine/services'): (params: {packName: string}) => Promise<string[]>;
-  /**
-   * VOIP line services
-   * Get this object properties
-   */
-  get(path: '/pack/xdsl/{packName}/voipLine/services/{domain}'): (params: {domain: string, packName: string}) => Promise<pack.xdsl.VoipLineService>;
-  /**
-   * List the pack.xdsl.XdslAccessService objects
-   * xDSL access services
-   */
-  get(path: '/pack/xdsl/{packName}/xdslAccess/services'): (params: {packName: string}) => Promise<string[]>;
-  /**
-   * Pack of xDSL services
-   * Alter this object properties
-   */
-  put(path: '/pack/xdsl/{packName}'): (params: {packName: string, capabilities?: pack.xdsl.PackCapabilities, description?: string, offerDescription?: string, offerPrice?: order.Price}) => Promise<void>;
-  /**
-   * Details about a Service
-   * Alter this object properties
-   */
-  put(path: '/pack/xdsl/{packName}/serviceInfos'): (params: {packName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
-  /**
-   * eligibility operations
-   * Eligibility to move the access
-   */
-  post(path: '/pack/xdsl/{packName}/addressMove/eligibility'): (params: {packName: string, address?: xdsleligibilityAddress, lineNumber?: string}) => Promise<pack.xdsl.AsyncTask<pack.xdsl.addressMove.Eligibility>>;
-  /**
-   * move operations
-   * Move the Xdsl access to another address
-   */
-  post(path: '/pack/xdsl/{packName}/addressMove/move'): (params: {packName: string, creation?: pack.xdsl.addressMove.Creation, keepCurrentNumber: boolean, landline?: pack.xdsl.addressMove.Landline, moveOutDate?: string, offerCode: string, provider?: xdsleligibilityProviderEnum}) => Promise<pack.xdsl.AsyncTask<number>>;
-  /**
-   * moveFtth operations
-   * Move the FTTH access to another address
-   */
-  post(path: '/pack/xdsl/{packName}/addressMove/moveFtth'): (params: {packName: string, buildingReference: string, floor: string, moveOutDate?: string, otp: boolean, otpReference?: string, stair: string}) => Promise<pack.xdsl.AsyncTask<number>>;
-  /**
-   * moveOffer operations
-   * Move the access to another address
-   */
-  post(path: '/pack/xdsl/{packName}/addressMove/moveOffer'): (params: {packName: string, acceptContracts: boolean, buildingReference: string, eligibilityReference: string, engageMonths?: number, floor: string, keepCurrentNumber: boolean, mondialRelayId?: number, moveOutDate?: string, nicShipping?: string, offerName: string, options?: pack.xdsl.migration.OfferOption[], otp: boolean, otpReference?: string, productCode: string, stair: string, subServicesToDelete?: pack.xdsl.migration.OfferServiceToDelete[]}) => Promise<pack.xdsl.AsyncTask<number>>;
-  /**
-   * offers operations
-   * Get the possibilities of address move offers available
-   */
-  post(path: '/pack/xdsl/{packName}/addressMove/offers'): (params: {packName: string, eligibilityReference: string}) => Promise<pack.xdsl.AsyncTask<pack.xdsl.addressMove.MoveOfferResponse>>;
-  /**
-   * cancelResiliation operations
-   * Cancel the ongoing resiliation
-   */
-  post(path: '/pack/xdsl/{packName}/cancelResiliation'): (params: {packName: string}) => Promise<void>;
-  /**
-   * Change the contacts of this service
-   * Launch a contact change procedure
-   */
-  post(path: '/pack/xdsl/{packName}/changeContact'): (params: {packName: string, contactAdmin?: string, contactBilling?: string, contactTech?: string}) => Promise<number[]>;
-  /**
-   * List the pack.xdsl.DomainService objects
-   * Activate a domain service
-   */
-  post(path: '/pack/xdsl/{packName}/domain/services'): (params: {packName: string, action: pack.xdsl.DomainActionEnum, authInfo?: string, domain: string, tld: string}) => Promise<pack.xdsl.Task>;
-  /**
-   * List the pack.xdsl.EmailProService objects
-   * Activate an Email Pro service
-   */
-  post(path: '/pack/xdsl/{packName}/emailPro/services'): (params: {packName: string, email: string, password: string}) => Promise<pack.xdsl.Task>;
-  /**
-   * List the pack.xdsl.ExchangeIndividual objects
-   * Activate an exchange service
-   */
-  post(path: '/pack/xdsl/{packName}/exchangeIndividual/services'): (params: {packName: string, email: string, password: string}) => Promise<pack.xdsl.Task>;
-  /**
-   * List the pack.xdsl.ExchangeLiteService objects
-   * Activate a exchange lite service
-   */
-  post(path: '/pack/xdsl/{packName}/exchangeLite/services'): (params: {packName: string, antispam?: boolean, displayName?: string, email: string, firstName?: string, initials?: string, lastName?: string, password: string}) => Promise<pack.xdsl.Task>;
-  /**
-   * List the pack.xdsl.HostedEmailService objects
-   * Activate an hosted email service
-   */
-  post(path: '/pack/xdsl/{packName}/hostedEmail/services'): (params: {packName: string, email: string, password: string}) => Promise<pack.xdsl.Task>;
-  /**
-   * migrate operations
-   * Migrate to the selected offer
-   */
-  post(path: '/pack/xdsl/{packName}/migration/migrate'): (params: {packName: string, acceptContracts: boolean, buildingReference?: string, engageMonths?: number, floor?: string, mondialRelayId?: number, nicShipping?: string, offerName: string, options?: pack.xdsl.migration.OfferOption[], otp?: boolean, otpReference?: string, stair?: string, subServicesToDelete?: pack.xdsl.migration.OfferServiceToDelete[]}) => Promise<pack.xdsl.Task>;
-  /**
-   * offers operations
-   * Get the possibilities of migration offers available
-   */
-  post(path: '/pack/xdsl/{packName}/migration/offers'): (params: {packName: string}) => Promise<pack.xdsl.AsyncTask<pack.xdsl.migration.MigrationOfferResponse>>;
-  /**
-   * servicesToDelete operations
-   * Calculate services to delete with new offer and options
-   */
-  post(path: '/pack/xdsl/{packName}/migration/servicesToDelete'): (params: {packName: string, offerName: string, options?: pack.xdsl.migration.OfferOption[]}) => Promise<pack.xdsl.migration.SubServiceToDelete[]>;
-  /**
-   * generate operations
-   * Creates a task to generate a new promotion code
-   */
-  post(path: '/pack/xdsl/{packName}/promotionCode/generate'): (params: {packName: string}) => Promise<pack.xdsl.Task>;
-  /**
-   * resiliate operations
-   * Resiliate the pack
-   */
-  post(path: '/pack/xdsl/{packName}/resiliate'): (params: {packName: string, resiliationDate?: string, resiliationSurvey: pack.xdsl.ResiliationSurvey, servicesToKeep?: number[]}) => Promise<pack.xdsl.ResiliationFollowUpDetail>;
-  /**
-   * List the pack.xdsl.SiteBuilderFullService objects
-   * Activate a sitebuilder full service
-   */
-  post(path: '/pack/xdsl/{packName}/siteBuilderFull/services'): (params: {packName: string, domain: string, subdomain: string, templateId: number}) => Promise<pack.xdsl.Task>;
-  /**
-   * List the pack.xdsl.SiteBuilderStartService objects
-   * Activate a sitebuilder full service
-   */
-  post(path: '/pack/xdsl/{packName}/siteBuilderStart/services'): (params: {packName: string, domain: string, subdomain: string, templateId: number}) => Promise<pack.xdsl.Task>;
-  /**
-   * List the pack.xdsl.VoipEcoFaxService objects
-   * Activate a voicefax service
-   */
-  post(path: '/pack/xdsl/{packName}/voipEcofax/services'): (params: {packName: string}) => Promise<pack.xdsl.Task>;
-  /**
-   * customShippingAddress operations
-   * Create a new shippingId to be used for voipLine service creation
-   */
-  post(path: '/pack/xdsl/{packName}/voipLine/options/customShippingAddress'): (params: {packName: string, address: string, cityName: string, firstName: string, lastName: string, zipCode: string}) => Promise<number>;
-  /**
-   * List the pack.xdsl.VoipLineService objects
-   * Activate a voip line service
-   */
-  post(path: '/pack/xdsl/{packName}/voipLine/services'): (params: {packName: string, hardwareNames: string[], mondialRelayId?: string, shippingId?: string}) => Promise<pack.xdsl.VoIPLineOrder>;
 }
 /**
  * Extra Alias to bypass relativer namespace colitions

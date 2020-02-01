@@ -1,4 +1,4 @@
-import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
+import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /cdn/website Models
@@ -6,51 +6,93 @@ import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
  */
 export namespace cdn {
     export namespace website {
-        // interface fullName: cdn.website.Backend.Backend
+        /**
+         * Backend on zone
+         * interface fullName: cdn.website.Backend.Backend
+         */
         export interface Backend {
             ipv4: string;
             status: cdn.website.BackendStatusEnum;
         }
-        // type fullname: cdn.website.BackendStatusEnum
+        /**
+         * All states a status can be in
+         * type fullname: cdn.website.BackendStatusEnum
+         */
         export type BackendStatusEnum = "creating" | "error" | "on" | "removing"
-        // interface fullName: cdn.website.Domain.Domain
+        /**
+         * Domain on CDN
+         * interface fullName: cdn.website.Domain.Domain
+         */
         export interface Domain {
             domain: string;
             status: cdn.website.DomainStatusEnum;
         }
-        // type fullname: cdn.website.DomainStatusEnum
+        /**
+         * All states a status can be in
+         * type fullname: cdn.website.DomainStatusEnum
+         */
         export type DomainStatusEnum = "error" | "on" | "removing"
-        // type fullname: cdn.website.DomainZoneStatusEnum
+        /**
+         * All states a status can be in
+         * type fullname: cdn.website.DomainZoneStatusEnum
+         */
         export type DomainZoneStatusEnum = "error" | "on" | "removing"
-        // interface fullName: cdn.website.StatsDataType.StatsDataType
+        /**
+         * A structure describing type of a stats hash
+         * interface fullName: cdn.website.StatsDataType.StatsDataType
+         */
         export interface StatsDataType {
             date: string;
             value: number;
         }
-        // type fullname: cdn.website.StatsPeriodEnum
+        /**
+         * Period of the statistics
+         * type fullname: cdn.website.StatsPeriodEnum
+         */
         export type StatsPeriodEnum = "day" | "month" | "week"
-        // type fullname: cdn.website.StatsTypeEnum
+        /**
+         * Type of statistics related to cache
+         * type fullname: cdn.website.StatsTypeEnum
+         */
         export type StatsTypeEnum = "backend" | "cdn"
-        // type fullname: cdn.website.StatsValueEnum
+        /**
+         * Value bandwidth or request
+         * type fullname: cdn.website.StatsValueEnum
+         */
         export type StatsValueEnum = "bandwidth" | "request"
-        // interface fullName: cdn.website.Task.Task
+        /**
+         * Task on CDN
+         * interface fullName: cdn.website.Task.Task
+         */
         export interface Task {
             comment?: string;
             function: cdn.website.TaskFunctionEnum;
             status: cdn.website.TaskStateEnum;
             taskId: number;
         }
-        // type fullname: cdn.website.TaskFunctionEnum
+        /**
+         * All function CDN task can be
+         * type fullname: cdn.website.TaskFunctionEnum
+         */
         export type TaskFunctionEnum = "flushAll" | "installBackend" | "removeBackend" | "removeDomain" | "removeZone"
-        // type fullname: cdn.website.TaskStateEnum
+        /**
+         * All states a CDN task can be in
+         * type fullname: cdn.website.TaskStateEnum
+         */
         export type TaskStateEnum = "cancelled" | "doing" | "done" | "error" | "todo"
-        // interface fullName: cdn.website.Website.Website
+        /**
+         * Website CDN
+         * interface fullName: cdn.website.Website.Website
+         */
         export interface Website {
             anycast: string;
             offer: string;
             service: string;
         }
-        // interface fullName: cdn.website.Zone.Zone
+        /**
+         * Zone on CDN
+         * interface fullName: cdn.website.Zone.Zone
+         */
         export interface Zone {
             status: cdn.website.DomainZoneStatusEnum;
             zone: string;
@@ -58,7 +100,10 @@ export namespace cdn {
     }
 }
 export namespace service {
-    // interface fullName: service.RenewType.RenewType
+    /**
+     * Map a possible renew for a specific service
+     * interface fullName: service.RenewType.RenewType
+     */
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -66,13 +111,21 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    // type fullname: service.RenewalTypeEnum
+    /**
+     * Detailed renewal type of a service
+     * type fullname: service.RenewalTypeEnum
+     */
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    // type fullname: service.StateEnum
+    /**
+     * type fullname: service.StateEnum
+     */
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
 }
 export namespace services {
-    // interface fullName: services.Service.Service
+    /**
+     * Details about a Service
+     * interface fullName: services.Service.Service
+     */
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;
@@ -98,202 +151,218 @@ export function proxyCdnWebsite(ovhEngine: OvhRequestable): Cdn {
 }
 export default proxyCdnWebsite;
 /**
- * Api Proxy model
- */// Apis harmony
-// path /cdn
-export interface Cdn{
+ * Api model for /cdn/website
+ */
+export interface Cdn {
     website: {
-        // GET /cdn/website
+        /**
+         * List available services
+         * GET /cdn/website
+         */
         $get(): Promise<string[]>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         $(serviceName: string): {
-            // GET /cdn/website/{serviceName}
+            /**
+             * Get this object properties
+             * GET /cdn/website/{serviceName}
+             */
             $get(): Promise<cdn.website.Website>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             serviceInfos: {
-                // GET /cdn/website/{serviceName}/serviceInfos
+                /**
+                 * Get this object properties
+                 * GET /cdn/website/{serviceName}/serviceInfos
+                 */
                 $get(): Promise<services.Service>;
-                // PUT /cdn/website/{serviceName}/serviceInfos
-                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+                /**
+                 * Alter this object properties
+                 * PUT /cdn/website/{serviceName}/serviceInfos
+                 */
+                $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             zone: {
-                // DELETE /cdn/website/{serviceName}/zone
+                /**
+                 * Remove a zone from the CDN
+                 * DELETE /cdn/website/{serviceName}/zone
+                 */
                 $delete(): Promise<cdn.website.Task>;
-                // GET /cdn/website/{serviceName}/zone
+                /**
+                 * Get this object properties
+                 * GET /cdn/website/{serviceName}/zone
+                 */
                 $get(): Promise<cdn.website.Zone>;
-                // POST /cdn/website/{serviceName}/zone
-                $post(params: {zone: string}): Promise<cdn.website.Zone>;
+                /**
+                 * Configure a zone on CDN
+                 * POST /cdn/website/{serviceName}/zone
+                 */
+                $post(params: { zone: string }): Promise<cdn.website.Zone>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 backends: {
-                    // GET /cdn/website/{serviceName}/zone/backends
+                    /**
+                     * Backend associated to this zone
+                     * GET /cdn/website/{serviceName}/zone/backends
+                     */
                     $get(): Promise<string[]>;
-                    // POST /cdn/website/{serviceName}/zone/backends
-                    $post(params: {ipv4: string}): Promise<cdn.website.Task>;
+                    /**
+                     * Configure a backend on the zone
+                     * POST /cdn/website/{serviceName}/zone/backends
+                     */
+                    $post(params: { ipv4: string }): Promise<cdn.website.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     $(ipv4: string): {
-                        // DELETE /cdn/website/{serviceName}/zone/backends/{ipv4}
+                        /**
+                         * Remove a backend from the zone
+                         * DELETE /cdn/website/{serviceName}/zone/backends/{ipv4}
+                         */
                         $delete(): Promise<cdn.website.Task>;
-                        // GET /cdn/website/{serviceName}/zone/backends/{ipv4}
+                        /**
+                         * Get this object properties
+                         * GET /cdn/website/{serviceName}/zone/backends/{ipv4}
+                         */
                         $get(): Promise<cdn.website.Backend>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         tasks: {
-                            // GET /cdn/website/{serviceName}/zone/backends/{ipv4}/tasks
+                            /**
+                             * Task associated to this backend
+                             * GET /cdn/website/{serviceName}/zone/backends/{ipv4}/tasks
+                             */
                             $get(): Promise<number[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                             $(taskId: number): {
-                                // GET /cdn/website/{serviceName}/zone/backends/{ipv4}/tasks/{taskId}
+                                /**
+                                 * Get this object properties
+                                 * GET /cdn/website/{serviceName}/zone/backends/{ipv4}/tasks/{taskId}
+                                 */
                                 $get(): Promise<cdn.website.Task>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions): Promise<any>;
                             };
                         }
                     };
                 }
                 domains: {
-                    // GET /cdn/website/{serviceName}/zone/domains
+                    /**
+                     * Domain associated to this zone
+                     * GET /cdn/website/{serviceName}/zone/domains
+                     */
                     $get(): Promise<string[]>;
-                    // POST /cdn/website/{serviceName}/zone/domains
-                    $post(params: {domain: string}): Promise<cdn.website.Domain>;
+                    /**
+                     * Configure a domain on CDN
+                     * POST /cdn/website/{serviceName}/zone/domains
+                     */
+                    $post(params: { domain: string }): Promise<cdn.website.Domain>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     $(domain: string): {
-                        // DELETE /cdn/website/{serviceName}/zone/domains/{domain}
+                        /**
+                         * Remove a domain from the CDN
+                         * DELETE /cdn/website/{serviceName}/zone/domains/{domain}
+                         */
                         $delete(): Promise<cdn.website.Task>;
-                        // GET /cdn/website/{serviceName}/zone/domains/{domain}
+                        /**
+                         * Get this object properties
+                         * GET /cdn/website/{serviceName}/zone/domains/{domain}
+                         */
                         $get(): Promise<cdn.website.Domain>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         flush: {
-                            // POST /cdn/website/{serviceName}/zone/domains/{domain}/flush
+                            /**
+                             * Flush all cache
+                             * POST /cdn/website/{serviceName}/zone/domains/{domain}/flush
+                             */
                             $post(): Promise<cdn.website.Task>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         }
                         statistics: {
-                            // GET /cdn/website/{serviceName}/zone/domains/{domain}/statistics
-                            $get(params: {period: cdn.website.StatsPeriodEnum, type: cdn.website.StatsTypeEnum, value: cdn.website.StatsValueEnum}): Promise<cdn.website.StatsDataType[]>;
+                            /**
+                             * Get statistics about request on CDN, bandwidth value in Bytes
+                             * GET /cdn/website/{serviceName}/zone/domains/{domain}/statistics
+                             */
+                            $get(params: { period: cdn.website.StatsPeriodEnum, type: cdn.website.StatsTypeEnum, value: cdn.website.StatsValueEnum }): Promise<cdn.website.StatsDataType[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         }
                         tasks: {
-                            // GET /cdn/website/{serviceName}/zone/domains/{domain}/tasks
+                            /**
+                             * Task associated to this domain
+                             * GET /cdn/website/{serviceName}/zone/domains/{domain}/tasks
+                             */
                             $get(): Promise<number[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                             $(taskId: number): {
-                                // GET /cdn/website/{serviceName}/zone/domains/{domain}/tasks/{taskId}
+                                /**
+                                 * Get this object properties
+                                 * GET /cdn/website/{serviceName}/zone/domains/{domain}/tasks/{taskId}
+                                 */
                                 $get(): Promise<cdn.website.Task>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions): Promise<any>;
                             };
                         }
                     };
                 }
                 tasks: {
-                    // GET /cdn/website/{serviceName}/zone/tasks
+                    /**
+                     * Task associated to this zone
+                     * GET /cdn/website/{serviceName}/zone/tasks
+                     */
                     $get(): Promise<number[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     $(taskId: number): {
-                        // GET /cdn/website/{serviceName}/zone/tasks/{taskId}
+                        /**
+                         * Get this object properties
+                         * GET /cdn/website/{serviceName}/zone/tasks/{taskId}
+                         */
                         $get(): Promise<cdn.website.Task>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                     };
                 }
             }
         };
     }
-// Api
-  /**
-   * Operations about the CDNWEBSITE service
-   * List available services
-   */
-  get(path: '/cdn/website'): () => Promise<string[]>;
-  /**
-   * Website CDN
-   * Get this object properties
-   */
-  get(path: '/cdn/website/{serviceName}'): (params: {serviceName: string}) => Promise<cdn.website.Website>;
-  /**
-   * Details about a Service
-   * Get this object properties
-   */
-  get(path: '/cdn/website/{serviceName}/serviceInfos'): (params: {serviceName: string}) => Promise<services.Service>;
-  /**
-   * Zone on CDN
-   * Get this object properties
-   */
-  get(path: '/cdn/website/{serviceName}/zone'): (params: {serviceName: string}) => Promise<cdn.website.Zone>;
-  /**
-   * List the cdn.website.Backend objects
-   * Backend associated to this zone
-   */
-  get(path: '/cdn/website/{serviceName}/zone/backends'): (params: {serviceName: string}) => Promise<string[]>;
-  /**
-   * Backend on zone
-   * Get this object properties
-   */
-  get(path: '/cdn/website/{serviceName}/zone/backends/{ipv4}'): (params: {ipv4: string, serviceName: string}) => Promise<cdn.website.Backend>;
-  /**
-   * List the cdn.website.Task objects
-   * Task associated to this backend
-   */
-  get(path: '/cdn/website/{serviceName}/zone/backends/{ipv4}/tasks'): (params: {ipv4: string, serviceName: string}) => Promise<number[]>;
-  /**
-   * Task on CDN
-   * Get this object properties
-   */
-  get(path: '/cdn/website/{serviceName}/zone/backends/{ipv4}/tasks/{taskId}'): (params: {ipv4: string, serviceName: string, taskId: number}) => Promise<cdn.website.Task>;
-  /**
-   * List the cdn.website.Domain objects
-   * Domain associated to this zone
-   */
-  get(path: '/cdn/website/{serviceName}/zone/domains'): (params: {serviceName: string}) => Promise<string[]>;
-  /**
-   * Domain on CDN
-   * Get this object properties
-   */
-  get(path: '/cdn/website/{serviceName}/zone/domains/{domain}'): (params: {domain: string, serviceName: string}) => Promise<cdn.website.Domain>;
-  /**
-   * statistics operations
-   * Get statistics about request on CDN, bandwidth value in Bytes
-   */
-  get(path: '/cdn/website/{serviceName}/zone/domains/{domain}/statistics'): (params: {domain: string, serviceName: string, period: cdn.website.StatsPeriodEnum, type: cdn.website.StatsTypeEnum, value: cdn.website.StatsValueEnum}) => Promise<cdn.website.StatsDataType[]>;
-  /**
-   * List the cdn.website.Task objects
-   * Task associated to this domain
-   */
-  get(path: '/cdn/website/{serviceName}/zone/domains/{domain}/tasks'): (params: {domain: string, serviceName: string}) => Promise<number[]>;
-  /**
-   * Task on CDN
-   * Get this object properties
-   */
-  get(path: '/cdn/website/{serviceName}/zone/domains/{domain}/tasks/{taskId}'): (params: {domain: string, serviceName: string, taskId: number}) => Promise<cdn.website.Task>;
-  /**
-   * List the cdn.website.Task objects
-   * Task associated to this zone
-   */
-  get(path: '/cdn/website/{serviceName}/zone/tasks'): (params: {serviceName: string}) => Promise<number[]>;
-  /**
-   * Task on CDN
-   * Get this object properties
-   */
-  get(path: '/cdn/website/{serviceName}/zone/tasks/{taskId}'): (params: {serviceName: string, taskId: number}) => Promise<cdn.website.Task>;
-  /**
-   * Details about a Service
-   * Alter this object properties
-   */
-  put(path: '/cdn/website/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
-  /**
-   * Zone on CDN
-   * Configure a zone on CDN
-   */
-  post(path: '/cdn/website/{serviceName}/zone'): (params: {serviceName: string, zone: string}) => Promise<cdn.website.Zone>;
-  /**
-   * List the cdn.website.Backend objects
-   * Configure a backend on the zone
-   */
-  post(path: '/cdn/website/{serviceName}/zone/backends'): (params: {serviceName: string, ipv4: string}) => Promise<cdn.website.Task>;
-  /**
-   * List the cdn.website.Domain objects
-   * Configure a domain on CDN
-   */
-  post(path: '/cdn/website/{serviceName}/zone/domains'): (params: {serviceName: string, domain: string}) => Promise<cdn.website.Domain>;
-  /**
-   * flush operations
-   * Flush all cache
-   */
-  post(path: '/cdn/website/{serviceName}/zone/domains/{domain}/flush'): (params: {domain: string, serviceName: string}) => Promise<cdn.website.Task>;
-  /**
-   * Zone on CDN
-   * Remove a zone from the CDN
-   */
-  delete(path: '/cdn/website/{serviceName}/zone'): (params: {serviceName: string}) => Promise<cdn.website.Task>;
-  /**
-   * Backend on zone
-   * Remove a backend from the zone
-   */
-  delete(path: '/cdn/website/{serviceName}/zone/backends/{ipv4}'): (params: {ipv4: string, serviceName: string}) => Promise<cdn.website.Task>;
-  /**
-   * Domain on CDN
-   * Remove a domain from the CDN
-   */
-  delete(path: '/cdn/website/{serviceName}/zone/domains/{domain}'): (params: {domain: string, serviceName: string}) => Promise<cdn.website.Task>;
 }

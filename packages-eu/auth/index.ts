@@ -1,11 +1,14 @@
-import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
+import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /auth Models
  * Source: https://eu.api.ovh.com/1.0/auth.json
  */
 export namespace api {
-    // interface fullName: api.Credential.Credential
+    /**
+     * API Credential
+     * interface fullName: api.Credential.Credential
+     */
     export interface Credential {
         allowedIPs?: string[];
         applicationId: number;
@@ -19,33 +22,54 @@ export namespace api {
     }
 }
 export namespace auth {
-    // interface fullName: auth.AccessRule.AccessRule
+    /**
+     * Access rule required for the application
+     * interface fullName: auth.AccessRule.AccessRule
+     */
     export interface AccessRule {
         method: http.MethodEnum;
         path: string;
     }
-    // interface fullName: auth.Credential.Credential
+    /**
+     * Credential request to get access to the API
+     * interface fullName: auth.Credential.Credential
+     */
     export interface Credential {
         consumerKey: string;
         state: auth.CredentialStateEnum;
         validationUrl?: string;
     }
-    // type fullname: auth.CredentialStateEnum
+    /**
+     * All states a Credential can be in
+     * type fullname: auth.CredentialStateEnum
+     */
     export type CredentialStateEnum = "expired" | "pendingValidation" | "refused" | "validated"
-    // interface fullName: auth.Details.Details
+    /**
+     * Details about the authentication used
+     * interface fullName: auth.Details.Details
+     */
     export interface Details {
         description?: string;
         method: auth.MethodEnum;
         roles?: string[];
         user?: string;
     }
-    // type fullname: auth.MethodEnum
+    /**
+     * All Authentication methods available
+     * type fullname: auth.MethodEnum
+     */
     export type MethodEnum = "account" | "provider" | "user"
-    // type fullname: auth.ShouldDisplayMFAEnrollmentEnum
+    /**
+     * All ShouldDisplayMFAEnrollment values
+     * type fullname: auth.ShouldDisplayMFAEnrollmentEnum
+     */
     export type ShouldDisplayMFAEnrollmentEnum = "false" | "forced" | "true"
 }
 export namespace http {
-    // type fullname: http.MethodEnum
+    /**
+     * All HTTP methods available
+     * type fullname: http.MethodEnum
+     */
     export type MethodEnum = "DELETE" | "GET" | "POST" | "PUT"
 }
 
@@ -57,54 +81,62 @@ export function proxyAuth(ovhEngine: OvhRequestable): Auth {
 }
 export default proxyAuth;
 /**
- * Api Proxy model
- */// Apis harmony
-// path /auth
-export interface Auth{
+ * Api model for /auth
+ */
+export interface Auth {
     credential: {
-        // POST /auth/credential
-        $post(params: {accessRules: auth.AccessRule[], redirection?: string}): Promise<auth.Credential>;
+        /**
+         * Request a new credential for your application
+         * POST /auth/credential
+         */
+        $post(params: { accessRules: auth.AccessRule[], redirection?: string }): Promise<auth.Credential>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
     }
     currentCredential: {
-        // GET /auth/currentCredential
+        /**
+         * Get the current credential details
+         * GET /auth/currentCredential
+         */
         $get(): Promise<api.Credential>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
     }
     details: {
-        // GET /auth/details
+        /**
+         * Details about the current authentication
+         * GET /auth/details
+         */
         $get(): Promise<auth.Details>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
     }
     logout: {
-        // POST /auth/logout
+        /**
+         * Expire current credential
+         * POST /auth/logout
+         */
         $post(): Promise<void>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
     }
     time: {
-        // GET /auth/time
+        /**
+         * Get the current time of the OVH servers, since UNIX epoch
+         * GET /auth/time
+         */
         $get(): Promise<number>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
     }
-// Api
-  /**
-   * Get the current credential details
-   * Get the current credential details
-   */
-  get(path: '/auth/currentCredential'): () => Promise<api.Credential>;
-  /**
-   * Details about the current authentication
-   * Details about the current authentication
-   */
-  get(path: '/auth/details'): () => Promise<auth.Details>;
-  /**
-   * Get the time of OVH servers
-   * Get the current time of the OVH servers, since UNIX epoch
-   */
-  get(path: '/auth/time'): () => Promise<number>;
-  /**
-   * Operations with credentials
-   * Request a new credential for your application
-   */
-  post(path: '/auth/credential'): (params: {accessRules: auth.AccessRule[], redirection?: string}) => Promise<auth.Credential>;
-  /**
-   * Expire current credential
-   * Expire current credential
-   */
-  post(path: '/auth/logout'): () => Promise<void>;
 }

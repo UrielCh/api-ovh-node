@@ -1,11 +1,14 @@
-import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
+import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /distribution/image Models
  * Source: https://ca.api.ovh.com/1.0/distribution/image.json
  */
 export namespace distribution {
-    // interface fullName: distribution.image.image
+    /**
+     * Information about installed package for a given image
+     * interface fullName: distribution.image.image
+     */
     export interface image {
         name: string;
         packages: distribution.image.pakage[];
@@ -13,21 +16,33 @@ export namespace distribution {
         service: distribution.image.service;
     }
     export namespace image {
-        // interface fullName: distribution.image.package.pakage
+        /**
+         * An image package description
+         * interface fullName: distribution.image.package.pakage
+         */
         export interface pakage {
             alias: string;
             name: string;
             version: string;
         }
-        // interface fullName: distribution.image.properties.properties
+        /**
+         * Description not available
+         * interface fullName: distribution.image.properties.properties
+         */
         export interface properties {
             category: distribution.image.properties.category;
         }
         export namespace properties {
-            // type fullname: distribution.image.properties.category
+            /**
+             * Description not available
+             * type fullname: distribution.image.properties.category
+             */
             export type category = "none" | "bare" | "panel" | "cms" | "development" | "desktop"
         }
-        // type fullname: distribution.image.service
+        /**
+         * Description not available
+         * type fullname: distribution.image.service
+         */
         export type service = "vps" | "dedicated" | "cloud" | "dedicatedCloud"
     }
 }
@@ -40,29 +55,31 @@ export function proxyDistributionImage(ovhEngine: OvhRequestable): Distribution 
 }
 export default proxyDistributionImage;
 /**
- * Api Proxy model
- */// Apis harmony
-// path /distribution
-export interface Distribution{
+ * Api model for /distribution/image
+ */
+export interface Distribution {
     image: {
         $(serviceType: distribution.image.service): {
-            // GET /distribution/image/{serviceType}
+            /**
+             * List images for a service
+             * GET /distribution/image/{serviceType}
+             */
             $get(): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             $(imageName: string): {
-                // GET /distribution/image/{serviceType}/{imageName}
+                /**
+                 * Show image details
+                 * GET /distribution/image/{serviceType}/{imageName}
+                 */
                 $get(): Promise<distribution.image>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             };
         };
     }
-// Api
-  /**
-   * Missing description
-   * List images for a service
-   */
-  get(path: '/distribution/image/{serviceType}'): (params: {serviceType: distribution.image.service}) => Promise<string[]>;
-  /**
-   * Missing description
-   * Show image details
-   */
-  get(path: '/distribution/image/{serviceType}/{imageName}'): (params: {imageName: string, serviceType: distribution.image.service}) => Promise<distribution.image>;
 }

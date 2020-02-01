@@ -30,15 +30,15 @@
   },
   "dependencies": {
     "@ovh-api/api": "file:../../code/api",
-    "@ovh-api/common": "file:../../code/common",
-    "@ovh-api/domain": "file:../../packages/domain",
-    "@ovh-api/hosting-web": "file:../../packages/hosting-web",
-    "@ovh-api/me": "file:../../packages/me",
+    "@ovh-api/common": "^3.0.0",
+    "@ovh-api/domain": "file:../../packages-eu/domain",
+    "@ovh-api/hosting-web": "file:../../packages-eu/hosting-web",
+    "@ovh-api/me": "file:../../packages-eu/me",
     "bluebird": "^3.7.2"
   },
   "devDependencies": {
     "@types/bluebird": "^3.5.29",
-    "@types/node": "^13.5.0",
+    "@types/node": "^13.7.0",
     "ts-node": "^8.6.2",
     "typescript": "^3.7.5"
   }

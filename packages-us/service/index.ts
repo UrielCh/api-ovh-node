@@ -1,20 +1,28 @@
-import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
+import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /service Models
  * Source: https://api.us.ovhcloud.com/1.0/service.json
  */
 export namespace complexType {
-    // interface fullName: complexType.SafeKeyValue.SafeKeyValue
+    /**
+     * Key and value, with proper key strings
+     * interface fullName: complexType.SafeKeyValue.SafeKeyValue
+     */
     export interface SafeKeyValue<T> {
         key: string;
         value: T;
     }
 }
 export namespace order {
-    // type fullname: order.CurrencyCodeEnum
+    /**
+     * type fullname: order.CurrencyCodeEnum
+     */
     export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
-    // interface fullName: order.Price.Price
+    /**
+     * Price with it's currency and textual representation
+     * interface fullName: order.Price.Price
+     */
     export interface Price {
         currencyCode: order.CurrencyCodeEnum;
         text: string;
@@ -22,14 +30,23 @@ export namespace order {
     }
 }
 export namespace service {
-    // type fullname: service.BillingStateEnum
+    /**
+     * Possible billing states
+     * type fullname: service.BillingStateEnum
+     */
     export type BillingStateEnum = "expired" | "ok" | "pending" | "unpaid"
-    // interface fullName: service.Plan.Plan
+    /**
+     * Plan information
+     * interface fullName: service.Plan.Plan
+     */
     export interface Plan {
         code?: string;
         product: service.plan.Product;
     }
-    // interface fullName: service.Renew.Renew
+    /**
+     * Renew information
+     * interface fullName: service.Renew.Renew
+     */
     export interface Renew {
         dayOfMonth?: number;
         interval?: service.renew.Interval;
@@ -37,22 +54,34 @@ export namespace service {
         possibleIntervals?: service.renew.Interval[];
         possibleModes: service.renew.Mode[];
     }
-    // interface fullName: service.Resource.Resource
+    /**
+     * Resource service informations
+     * interface fullName: service.Resource.Resource
+     */
     export interface Resource {
         displayName: string;
         name?: string;
         state?: service.ResourceStateEnum;
     }
-    // type fullname: service.ResourceStateEnum
+    /**
+     * Possible resource states
+     * type fullname: service.ResourceStateEnum
+     */
     export type ResourceStateEnum = "deleted" | "deleting" | "ok" | "opening" | "suspended" | "suspending" | "toDelete" | "toOpen" | "toSuspend"
-    // interface fullName: service.Route.Route
+    /**
+     * route of this service
+     * interface fullName: service.Route.Route
+     */
     export interface Route {
         path?: string;
         url?: string;
         vars: complexType.SafeKeyValue<string>[];
     }
     export namespace consumption {
-        // interface fullName: service.consumption.Transaction.Transaction
+        /**
+         * List of consumptions recorded in a range
+         * interface fullName: service.consumption.Transaction.Transaction
+         */
         export interface Transaction {
             beginDate: string;
             creationDate?: string;
@@ -64,7 +93,10 @@ export namespace service {
             serviceId: number;
         }
         export namespace transaction {
-            // interface fullName: service.consumption.transaction.Element.Element
+            /**
+             * Element of consumption for resource
+             * interface fullName: service.consumption.transaction.Element.Element
+             */
             export interface Element {
                 details: service.consumption.transaction.Element.Detail[];
                 planCode: string;
@@ -72,7 +104,10 @@ export namespace service {
                 quantity: number;
             }
             export namespace Element {
-                // interface fullName: service.consumption.transaction.Element.Detail.Detail
+                /**
+                 * Element of consumption for resource
+                 * interface fullName: service.consumption.transaction.Element.Detail.Detail
+                 */
                 export interface Detail {
                     quantity: number;
                     unique_id?: string;
@@ -81,20 +116,32 @@ export namespace service {
         }
     }
     export namespace plan {
-        // interface fullName: service.plan.Product.Product
+        /**
+         * Product plan information
+         * interface fullName: service.plan.Product.Product
+         */
         export interface Product {
             name?: string;
         }
     }
     export namespace renew {
-        // type fullname: service.renew.Interval
+        /**
+         * Interval enum information
+         * type fullname: service.renew.Interval
+         */
         export type Interval = "P1M" | "P1Y" | "P2Y" | "P3M" | "P3Y" | "P6M"
-        // type fullname: service.renew.Mode
+        /**
+         * Mode enum informations
+         * type fullname: service.renew.Mode
+         */
         export type Mode = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "deleteAtEndEngagement" | "deleteAtExpiration" | "manual" | "oneShot" | "option"
     }
 }
 export namespace serviceList {
-    // interface fullName: serviceList.Service.Service
+    /**
+     * Details about a Service
+     * interface fullName: serviceList.Service.Service
+     */
     export interface Service {
         creationDate: string;
         details: complexType.SafeKeyValue<string>[];
@@ -118,59 +165,65 @@ export function proxyService(ovhEngine: OvhRequestable): Service {
 }
 export default proxyService;
 /**
- * Api Proxy model
- */// Apis harmony
-// path /service
-export interface Service{
-    // GET /service
+ * Api model for /service
+ */
+export interface Service {
+    /**
+     * List available services
+     * GET /service
+     */
     $get(): Promise<number[]>;
+    /**
+     * Controle cache
+     */
+    $cache(param?: ICacheOptions): Promise<any>;
     $(serviceId: number): {
-        // GET /service/{serviceId}
+        /**
+         * Get this object properties
+         * GET /service/{serviceId}
+         */
         $get(): Promise<serviceList.Service>;
-        // PUT /service/{serviceId}
-        $put(params?: {creationDate?: string, details?: complexType.SafeKeyValue<string>[], engagementDate?: string, expirationDate?: string, nextBillingDate?: string, plan?: service.Plan, quantity?: number, renew?: service.Renew, resource?: service.Resource, route?: service.Route, state?: service.BillingStateEnum}): Promise<void>;
+        /**
+         * Alter this object properties
+         * PUT /service/{serviceId}
+         */
+        $put(params?: { creationDate?: string, details?: complexType.SafeKeyValue<string>[], engagementDate?: string, expirationDate?: string, nextBillingDate?: string, plan?: service.Plan, quantity?: number, renew?: service.Renew, resource?: service.Resource, route?: service.Route, state?: service.BillingStateEnum }): Promise<void>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         reopen: {
-            // POST /service/{serviceId}/reopen
+            /**
+             * Reopen a suspended service
+             * POST /service/{serviceId}/reopen
+             */
             $post(): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         suspend: {
-            // POST /service/{serviceId}/suspend
+            /**
+             * Suspend the service. The service won't be accessible, but you will still be charged for it
+             * POST /service/{serviceId}/suspend
+             */
             $post(): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         terminate: {
-            // POST /service/{serviceId}/terminate
+            /**
+             * Terminates a suspended service
+             * POST /service/{serviceId}/terminate
+             */
             $post(): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
     };
-// Api
-  /**
-   * Operations about the services
-   * List available services
-   */
-  get(path: '/service'): () => Promise<number[]>;
-  /**
-   * Details about a Service
-   * Get this object properties
-   */
-  get(path: '/service/{serviceId}'): (params: {serviceId: number}) => Promise<serviceList.Service>;
-  /**
-   * Details about a Service
-   * Alter this object properties
-   */
-  put(path: '/service/{serviceId}'): (params: {serviceId: number, creationDate?: string, details?: complexType.SafeKeyValue<string>[], engagementDate?: string, expirationDate?: string, nextBillingDate?: string, plan?: service.Plan, quantity?: number, renew?: service.Renew, resource?: service.Resource, route?: service.Route, state?: service.BillingStateEnum}) => Promise<void>;
-  /**
-   * reopen operations
-   * Reopen a suspended service
-   */
-  post(path: '/service/{serviceId}/reopen'): (params: {serviceId: number}) => Promise<void>;
-  /**
-   * suspend operations
-   * Suspend the service. The service won't be accessible, but you will still be charged for it
-   */
-  post(path: '/service/{serviceId}/suspend'): (params: {serviceId: number}) => Promise<void>;
-  /**
-   * terminate operations
-   * Terminates a suspended service
-   */
-  post(path: '/service/{serviceId}/terminate'): (params: {serviceId: number}) => Promise<void>;
 }

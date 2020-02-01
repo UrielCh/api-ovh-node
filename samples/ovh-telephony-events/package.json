@@ -35,7 +35,7 @@
     "bin"
   ],
   "dependencies": {
-    "@ovh-api/api": "^2.1.5",
+    "@ovh-api/api": "^2.1.7",
     "@ovh-api/telephony": "^2.0.14",
     "bluebird": "^3.7.2",
     "commander": "^4.1.0",
@@ -47,7 +47,6 @@
   },
   "devDependencies": {
     "@types/bluebird": "^3.5.29",
-    "@types/commander": "^2.12.2",
     "@types/fs-extra": "^8.0.1",
     "@types/node-fetch": "^2.5.4",
     "ts-node": "^8.6.2",

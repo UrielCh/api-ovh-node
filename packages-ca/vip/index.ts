@@ -1,11 +1,14 @@
-import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
+import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /vip Models
  * Source: https://ca.api.ovh.com/1.0/vip.json
  */
 export namespace service {
-    // interface fullName: service.RenewType.RenewType
+    /**
+     * Map a possible renew for a specific service
+     * interface fullName: service.RenewType.RenewType
+     */
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -13,13 +16,21 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    // type fullname: service.RenewalTypeEnum
+    /**
+     * Detailed renewal type of a service
+     * type fullname: service.RenewalTypeEnum
+     */
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    // type fullname: service.StateEnum
+    /**
+     * type fullname: service.StateEnum
+     */
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
 }
 export namespace services {
-    // interface fullName: services.Service.Service
+    /**
+     * Details about a Service
+     * interface fullName: services.Service.Service
+     */
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;
@@ -37,12 +48,18 @@ export namespace services {
     }
 }
 export namespace vip {
-    // interface fullName: vip.SupportVip.SupportVip
+    /**
+     * Vip Service
+     * interface fullName: vip.SupportVip.SupportVip
+     */
     export interface SupportVip {
         serviceName: string;
         universe: vip.UniverseEnum[];
     }
-    // type fullname: vip.UniverseEnum
+    /**
+     * Available universe for VIP service
+     * type fullname: vip.UniverseEnum
+     */
     export type UniverseEnum = "cloud" | "dedicated" | "telecom" | "web"
 }
 
@@ -54,41 +71,43 @@ export function proxyVip(ovhEngine: OvhRequestable): Vip {
 }
 export default proxyVip;
 /**
- * Api Proxy model
- */// Apis harmony
-// path /vip
-export interface Vip{
-    // GET /vip
+ * Api model for /vip
+ */
+export interface Vip {
+    /**
+     * List available services
+     * GET /vip
+     */
     $get(): Promise<string[]>;
+    /**
+     * Controle cache
+     */
+    $cache(param?: ICacheOptions): Promise<any>;
     $(serviceName: string): {
-        // GET /vip/{serviceName}
+        /**
+         * Get this object properties
+         * GET /vip/{serviceName}
+         */
         $get(): Promise<vip.SupportVip>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         serviceInfos: {
-            // GET /vip/{serviceName}/serviceInfos
+            /**
+             * Get this object properties
+             * GET /vip/{serviceName}/serviceInfos
+             */
             $get(): Promise<services.Service>;
-            // PUT /vip/{serviceName}/serviceInfos
-            $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+            /**
+             * Alter this object properties
+             * PUT /vip/{serviceName}/serviceInfos
+             */
+            $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
     };
-// Api
-  /**
-   * Operations about the SUPPORT_PLUS service
-   * List available services
-   */
-  get(path: '/vip'): () => Promise<string[]>;
-  /**
-   * Vip Service
-   * Get this object properties
-   */
-  get(path: '/vip/{serviceName}'): (params: {serviceName: string}) => Promise<vip.SupportVip>;
-  /**
-   * Details about a Service
-   * Get this object properties
-   */
-  get(path: '/vip/{serviceName}/serviceInfos'): (params: {serviceName: string}) => Promise<services.Service>;
-  /**
-   * Details about a Service
-   * Alter this object properties
-   */
-  put(path: '/vip/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
 }

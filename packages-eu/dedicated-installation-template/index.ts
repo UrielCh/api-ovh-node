@@ -1,24 +1,39 @@
-import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
+import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /dedicated/installationTemplate Models
  * Source: https://eu.api.ovh.com/1.0/dedicated/installationTemplate.json
  */
 export namespace complexType {
-    // interface fullName: complexType.UnitAndValue.UnitAndValue
+    /**
+     * A numeric value tagged with its unit
+     * interface fullName: complexType.UnitAndValue.UnitAndValue
+     */
     export interface UnitAndValue<T> {
         unit: string;
         value: T;
     }
 }
 export namespace dedicated {
-    // type fullname: dedicated.TemplateOsFileSystemEnum
+    /**
+     * Filesystems available
+     * type fullname: dedicated.TemplateOsFileSystemEnum
+     */
     export type TemplateOsFileSystemEnum = "btrfs" | "ext3" | "ext4" | "ntfs" | "reiserfs" | "swap" | "ufs" | "xfs" | "zfs"
-    // type fullname: dedicated.TemplateOsHardwareRaidEnum
+    /**
+     * Hardware RAID enum
+     * type fullname: dedicated.TemplateOsHardwareRaidEnum
+     */
     export type TemplateOsHardwareRaidEnum = "raid0" | "raid1" | "raid10" | "raid5" | "raid50" | "raid6" | "raid60"
-    // type fullname: dedicated.TemplateOsLanguageEnum
+    /**
+     * all language available
+     * type fullname: dedicated.TemplateOsLanguageEnum
+     */
     export type TemplateOsLanguageEnum = "ar" | "bg" | "cs" | "da" | "de" | "el" | "en" | "es" | "et" | "fi" | "fr" | "he" | "hr" | "hu" | "it" | "ja" | "ko" | "lt" | "lv" | "nb" | "nl" | "no" | "pl" | "pt" | "ro" | "ru" | "sk" | "sl" | "sr" | "sv" | "th" | "tr" | "tu" | "uk" | "zh-Hans-CN" | "zh-Hans-HK"
-    // interface fullName: dedicated.TemplateOsProperties.TemplateOsProperties
+    /**
+     * A structure describing properties customizables about this dedicated installation template
+     * interface fullName: dedicated.TemplateOsProperties.TemplateOsProperties
+     */
     export interface TemplateOsProperties {
         changeLog?: string;
         customHostname?: string;
@@ -28,14 +43,26 @@ export namespace dedicated {
         sshKeyName?: string;
         useDistributionKernel?: boolean;
     }
-    // type fullname: dedicated.TemplateOsTypeEnum
+    /**
+     * Os type
+     * type fullname: dedicated.TemplateOsTypeEnum
+     */
     export type TemplateOsTypeEnum = "bsd" | "linux" | "solaris" | "windows"
-    // type fullname: dedicated.TemplateOsUsageEnum
+    /**
+     * Os usage definition
+     * type fullname: dedicated.TemplateOsUsageEnum
+     */
     export type TemplateOsUsageEnum = "basic" | "customer" | "hosting" | "other" | "readyToUse" | "virtualisation"
-    // type fullname: dedicated.TemplatePartitionTypeEnum
+    /**
+     * partition type
+     * type fullname: dedicated.TemplatePartitionTypeEnum
+     */
     export type TemplatePartitionTypeEnum = "logical" | "lv" | "primary"
     export namespace installationTemplate {
-        // interface fullName: dedicated.installationTemplate.Templates.Templates
+        /**
+         * Available installation templates
+         * interface fullName: dedicated.installationTemplate.Templates.Templates
+         */
         export interface Templates {
             availableLanguages: dedicated.TemplateOsLanguageEnum[];
             beta?: boolean;
@@ -58,19 +85,28 @@ export namespace dedicated {
             supportsUEFI?: dedicated.server.SupportsUEFIEnum;
             templateName: string;
         }
-        // interface fullName: dedicated.installationTemplate.hardwareRaid.hardwareRaid
+        /**
+         * Hardware RAID defined in this partitioning scheme
+         * interface fullName: dedicated.installationTemplate.hardwareRaid.hardwareRaid
+         */
         export interface hardwareRaid {
             disks: string[];
             mode: dedicated.TemplateOsHardwareRaidEnum;
             name: string;
             step: number;
         }
-        // interface fullName: dedicated.installationTemplate.templatePartitioningSchemes.templatePartitioningSchemes
+        /**
+         * Partitioning schemes available on this template
+         * interface fullName: dedicated.installationTemplate.templatePartitioningSchemes.templatePartitioningSchemes
+         */
         export interface templatePartitioningSchemes {
             name: string;
             priority: number;
         }
-        // interface fullName: dedicated.installationTemplate.templatePartitions.templatePartitions
+        /**
+         *  Partitions defined in this partitioning scheme
+         * interface fullName: dedicated.installationTemplate.templatePartitions.templatePartitions
+         */
         export interface templatePartitions {
             filesystem: dedicated.TemplateOsFileSystemEnum;
             mountpoint: string;
@@ -82,11 +118,20 @@ export namespace dedicated {
         }
     }
     export namespace server {
-        // type fullname: dedicated.server.BitFormatEnum
+        /**
+         * Available os bit format
+         * type fullname: dedicated.server.BitFormatEnum
+         */
         export type BitFormatEnum = 32 | 64
-        // type fullname: dedicated.server.PartitionRaidEnum
+        /**
+         * partition raid type
+         * type fullname: dedicated.server.PartitionRaidEnum
+         */
         export type PartitionRaidEnum = "0" | "1" | "10" | "5" | "6"
-        // type fullname: dedicated.server.SupportsUEFIEnum
+        /**
+         * supports UEFI setup
+         * type fullname: dedicated.server.SupportsUEFIEnum
+         */
         export type SupportsUEFIEnum = "no" | "only" | "yes"
     }
 }
@@ -99,81 +144,95 @@ export function proxyDedicatedInstallationTemplate(ovhEngine: OvhRequestable): D
 }
 export default proxyDedicatedInstallationTemplate;
 /**
- * Api Proxy model
- */// Apis harmony
-// path /dedicated
-export interface Dedicated{
+ * Api model for /dedicated/installationTemplate
+ */
+export interface Dedicated {
     installationTemplate: {
-        // GET /dedicated/installationTemplate
+        /**
+         * OVH operating system installation templates
+         * GET /dedicated/installationTemplate
+         */
         $get(): Promise<string[]>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         $(templateName: string): {
-            // GET /dedicated/installationTemplate/{templateName}
+            /**
+             * Get this object properties
+             * GET /dedicated/installationTemplate/{templateName}
+             */
             $get(): Promise<dedicated.installationTemplate.Templates>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             partitionScheme: {
-                // GET /dedicated/installationTemplate/{templateName}/partitionScheme
+                /**
+                 * Partitioning schemes available on this template
+                 * GET /dedicated/installationTemplate/{templateName}/partitionScheme
+                 */
                 $get(): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
                 $(schemeName: string): {
-                    // GET /dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}
+                    /**
+                     * Get this object properties
+                     * GET /dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}
+                     */
                     $get(): Promise<dedicated.installationTemplate.templatePartitioningSchemes>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions): Promise<any>;
                     hardwareRaid: {
-                        // GET /dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid
+                        /**
+                         * Hardware RAIDs defined in this partitioning scheme
+                         * GET /dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid
+                         */
                         $get(): Promise<string[]>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         $(name: string): {
-                            // GET /dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}
+                            /**
+                             * Get this object properties
+                             * GET /dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}
+                             */
                             $get(): Promise<dedicated.installationTemplate.hardwareRaid>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         };
                     }
                     partition: {
-                        // GET /dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition
+                        /**
+                         * Partitions defined in this partitioning scheme
+                         * GET /dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition
+                         */
                         $get(): Promise<string[]>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions): Promise<any>;
                         $(mountpoint: string): {
-                            // GET /dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}
+                            /**
+                             * Get this object properties
+                             * GET /dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}
+                             */
                             $get(): Promise<dedicated.installationTemplate.templatePartitions>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions): Promise<any>;
                         };
                     }
                 };
             }
         };
     }
-// Api
-  /**
-   * List the dedicated.installationTemplate.Templates objects
-   * OVH operating system installation templates
-   */
-  get(path: '/dedicated/installationTemplate'): () => Promise<string[]>;
-  /**
-   * Available installation templates
-   * Get this object properties
-   */
-  get(path: '/dedicated/installationTemplate/{templateName}'): (params: {templateName: string}) => Promise<dedicated.installationTemplate.Templates>;
-  /**
-   * List the dedicated.installationTemplate.templatePartitioningSchemes objects
-   * Partitioning schemes available on this template
-   */
-  get(path: '/dedicated/installationTemplate/{templateName}/partitionScheme'): (params: {templateName: string}) => Promise<string[]>;
-  /**
-   * Partitioning schemes available on this template
-   * Get this object properties
-   */
-  get(path: '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}'): (params: {schemeName: string, templateName: string}) => Promise<dedicated.installationTemplate.templatePartitioningSchemes>;
-  /**
-   * List the dedicated.installationTemplate.hardwareRaid objects
-   * Hardware RAIDs defined in this partitioning scheme
-   */
-  get(path: '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid'): (params: {schemeName: string, templateName: string}) => Promise<string[]>;
-  /**
-   * Hardware RAID defined in this partitioning scheme
-   * Get this object properties
-   */
-  get(path: '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}'): (params: {name: string, schemeName: string, templateName: string}) => Promise<dedicated.installationTemplate.hardwareRaid>;
-  /**
-   * List the dedicated.installationTemplate.templatePartitions objects
-   * Partitions defined in this partitioning scheme
-   */
-  get(path: '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition'): (params: {schemeName: string, templateName: string}) => Promise<string[]>;
-  /**
-   *  Partitions defined in this partitioning scheme
-   * Get this object properties
-   */
-  get(path: '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}'): (params: {mountpoint: string, schemeName: string, templateName: string}) => Promise<dedicated.installationTemplate.templatePartitions>;
 }

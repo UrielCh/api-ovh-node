@@ -1,11 +1,14 @@
-import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
+import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /dbaas/timeseries Models
  * Source: https://api.us.ovhcloud.com/1.0/dbaas/timeseries.json
  */
 export namespace service {
-    // interface fullName: service.RenewType.RenewType
+    /**
+     * Map a possible renew for a specific service
+     * interface fullName: service.RenewType.RenewType
+     */
     export interface RenewType {
         automatic: boolean;
         deleteAtExpiration: boolean;
@@ -13,13 +16,21 @@ export namespace service {
         manualPayment?: boolean;
         period?: number;
     }
-    // type fullname: service.RenewalTypeEnum
+    /**
+     * Detailed renewal type of a service
+     * type fullname: service.RenewalTypeEnum
+     */
     export type RenewalTypeEnum = "automaticForcedProduct" | "automaticV2012" | "automaticV2014" | "automaticV2016" | "manual" | "oneShot" | "option"
-    // type fullname: service.StateEnum
+    /**
+     * type fullname: service.StateEnum
+     */
     export type StateEnum = "expired" | "inCreation" | "ok" | "pendingDebt" | "unPaid"
 }
 export namespace services {
-    // interface fullName: services.Service.Service
+    /**
+     * Details about a Service
+     * interface fullName: services.Service.Service
+     */
     export interface Service {
         canDeleteAtExpiration: boolean;
         contactAdmin: string;
@@ -37,7 +48,10 @@ export namespace services {
     }
 }
 export namespace timeseries {
-    // interface fullName: timeseries.Project.Project
+    /**
+     * Timeseries project
+     * interface fullName: timeseries.Project.Project
+     */
     export interface Project {
         description?: string;
         displayName?: string;
@@ -46,7 +60,10 @@ export namespace timeseries {
         serviceName: string;
         status?: timeseries.StatusTypeEnum;
     }
-    // type fullname: timeseries.StatusTypeEnum
+    /**
+     * The current status for the project
+     * type fullname: timeseries.StatusTypeEnum
+     */
     export type StatusTypeEnum = "ACTIVE" | "CREATION" | "DELETED" | "UNCONFIGURED"
 }
 
@@ -58,50 +75,50 @@ export function proxyDbaasTimeseries(ovhEngine: OvhRequestable): Dbaas {
 }
 export default proxyDbaasTimeseries;
 /**
- * Api Proxy model
- */// Apis harmony
-// path /dbaas
-export interface Dbaas{
+ * Api model for /dbaas/timeseries
+ */
+export interface Dbaas {
     timeseries: {
-        // GET /dbaas/timeseries
+        /**
+         * List available services
+         * GET /dbaas/timeseries
+         */
         $get(): Promise<string[]>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         $(serviceName: string): {
-            // GET /dbaas/timeseries/{serviceName}
+            /**
+             * Get this object properties
+             * GET /dbaas/timeseries/{serviceName}
+             */
             $get(): Promise<timeseries.Project>;
-            // PUT /dbaas/timeseries/{serviceName}
-            $put(params?: {description?: string, displayName?: string, offerId?: string, regionId?: string, serviceName?: string, status?: timeseries.StatusTypeEnum}): Promise<void>;
+            /**
+             * Alter this object properties
+             * PUT /dbaas/timeseries/{serviceName}
+             */
+            $put(params?: { description?: string, displayName?: string, offerId?: string, regionId?: string, serviceName?: string, status?: timeseries.StatusTypeEnum }): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             serviceInfos: {
-                // GET /dbaas/timeseries/{serviceName}/serviceInfos
+                /**
+                 * Get this object properties
+                 * GET /dbaas/timeseries/{serviceName}/serviceInfos
+                 */
                 $get(): Promise<services.Service>;
-                // PUT /dbaas/timeseries/{serviceName}/serviceInfos
-                $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
+                /**
+                 * Alter this object properties
+                 * PUT /dbaas/timeseries/{serviceName}/serviceInfos
+                 */
+                $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         };
     }
-// Api
-  /**
-   * Operations about the PAAS_TIMESERIES service
-   * List available services
-   */
-  get(path: '/dbaas/timeseries'): () => Promise<string[]>;
-  /**
-   * Timeseries project
-   * Get this object properties
-   */
-  get(path: '/dbaas/timeseries/{serviceName}'): (params: {serviceName: string}) => Promise<timeseries.Project>;
-  /**
-   * Details about a Service
-   * Get this object properties
-   */
-  get(path: '/dbaas/timeseries/{serviceName}/serviceInfos'): (params: {serviceName: string}) => Promise<services.Service>;
-  /**
-   * Timeseries project
-   * Alter this object properties
-   */
-  put(path: '/dbaas/timeseries/{serviceName}'): (params: {serviceName: string, description?: string, displayName?: string, offerId?: string, regionId?: string, status?: timeseries.StatusTypeEnum}) => Promise<void>;
-  /**
-   * Details about a Service
-   * Alter this object properties
-   */
-  put(path: '/dbaas/timeseries/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
 }

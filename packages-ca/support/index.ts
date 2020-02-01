@@ -1,11 +1,14 @@
-import { OvhRequestable, buildOvhProxy } from '@ovh-api/common';
+import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /support Models
  * Source: https://ca.api.ovh.com/1.0/support.json
  */
 export namespace support {
-    // interface fullName: support.Message.Message
+    /**
+     * Support ticket message
+     * interface fullName: support.Message.Message
+     */
     export interface Message {
         body: string;
         creationDate: string;
@@ -14,15 +17,24 @@ export namespace support {
         ticketId: number;
         updateDate: string;
     }
-    // type fullname: support.MessageSenderEnum
+    /**
+     * Message sender type
+     * type fullname: support.MessageSenderEnum
+     */
     export type MessageSenderEnum = "customer" | "support"
-    // interface fullName: support.NewMessageInfo.NewMessageInfo
+    /**
+     * Newly created support identifiers
+     * interface fullName: support.NewMessageInfo.NewMessageInfo
+     */
     export interface NewMessageInfo {
         messageId: number;
         ticketId: number;
         ticketNumber: number;
     }
-    // interface fullName: support.Ticket.Ticket
+    /**
+     * Support Ticket
+     * interface fullName: support.Ticket.Ticket
+     */
     export interface Ticket {
         accountId: string;
         canBeClosed: boolean;
@@ -39,15 +51,30 @@ export namespace support {
         type: support.TicketTypeEnum;
         updateDate: string;
     }
-    // type fullname: support.TicketCategoryEnum
+    /**
+     * Ticket request category
+     * type fullname: support.TicketCategoryEnum
+     */
     export type TicketCategoryEnum = "assistance" | "billing" | "incident"
-    // type fullname: support.TicketProductEnum
+    /**
+     * Ticket product
+     * type fullname: support.TicketProductEnum
+     */
     export type TicketProductEnum = "adsl" | "cdn" | "dedicated" | "dedicated-billing" | "dedicated-other" | "dedicatedcloud" | "domain" | "exchange" | "fax" | "hosting" | "housing" | "iaas" | "mail" | "network" | "publiccloud" | "sms" | "ssl" | "storage" | "telecom-billing" | "telecom-other" | "vac" | "voip" | "vps" | "web-billing" | "web-other"
-    // type fullname: support.TicketStatusEnum
+    /**
+     * Support ticket statuses
+     * type fullname: support.TicketStatusEnum
+     */
     export type TicketStatusEnum = "closed" | "open" | "unknown"
-    // type fullname: support.TicketSubCategoryEnum
+    /**
+     * Ticket request subcategory
+     * type fullname: support.TicketSubCategoryEnum
+     */
     export type TicketSubCategoryEnum = "alerts" | "autorenew" | "bill" | "down" | "inProgress" | "new" | "other" | "perfs" | "start" | "usage"
-    // type fullname: support.TicketTypeEnum
+    /**
+     * Ticket type (criticalIntervention requires VIP support level)
+     * type fullname: support.TicketTypeEnum
+     */
     export type TicketTypeEnum = "criticalIntervention" | "genericRequest"
 }
 
@@ -59,90 +86,106 @@ export function proxySupport(ovhEngine: OvhRequestable): Support {
 }
 export default proxySupport;
 /**
- * Api Proxy model
- */// Apis harmony
-// path /support
-export interface Support{
+ * Api model for /support
+ */
+export interface Support {
     tickets: {
-        // GET /support/tickets
-        $get(params?: {archived?: boolean, category?: support.TicketCategoryEnum, maxCreationDate?: string, minCreationDate?: string, product?: support.TicketProductEnum, serviceName?: string, status?: support.TicketStatusEnum, subject?: string, ticketNumber?: string}): Promise<number[]>;
+        /**
+         * List support tickets identifiers for this service
+         * GET /support/tickets
+         */
+        $get(params?: { archived?: boolean, category?: support.TicketCategoryEnum, maxCreationDate?: string, minCreationDate?: string, product?: support.TicketProductEnum, serviceName?: string, status?: support.TicketStatusEnum, subject?: string, ticketNumber?: string }): Promise<number[]>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions): Promise<any>;
         create: {
-            // POST /support/tickets/create
-            $post(params: {body: string, category?: support.TicketCategoryEnum, product?: support.TicketProductEnum, serviceName?: string, subcategory?: support.TicketSubCategoryEnum, subject: string, type: support.TicketTypeEnum}): Promise<support.NewMessageInfo>;
+            /**
+             * Create a new ticket
+             * POST /support/tickets/create
+             */
+            $post(params: { body: string, category?: support.TicketCategoryEnum, product?: support.TicketProductEnum, serviceName?: string, subcategory?: support.TicketSubCategoryEnum, subject: string, type: support.TicketTypeEnum }): Promise<support.NewMessageInfo>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
         }
         $(ticketId: number): {
-            // GET /support/tickets/{ticketId}
+            /**
+             * Get ticket
+             * GET /support/tickets/{ticketId}
+             */
             $get(): Promise<support.Ticket>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions): Promise<any>;
             canBeScored: {
-                // GET /support/tickets/{ticketId}/canBeScored
+                /**
+                 * Checks whether ticket can be scored
+                 * GET /support/tickets/{ticketId}/canBeScored
+                 */
                 $get(): Promise<boolean>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             close: {
-                // POST /support/tickets/{ticketId}/close
+                /**
+                 * Close ticket
+                 * POST /support/tickets/{ticketId}/close
+                 */
                 $post(): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             messages: {
-                // GET /support/tickets/{ticketId}/messages
+                /**
+                 * Get ticket messages
+                 * GET /support/tickets/{ticketId}/messages
+                 */
                 $get(): Promise<support.Message[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             reopen: {
-                // POST /support/tickets/{ticketId}/reopen
-                $post(params: {body: string}): Promise<void>;
+                /**
+                 * Reopen a ticket
+                 * POST /support/tickets/{ticketId}/reopen
+                 */
+                $post(params: { body: string }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             reply: {
-                // POST /support/tickets/{ticketId}/reply
-                $post(params: {body: string}): Promise<void>;
+                /**
+                 * Reply to ticket
+                 * POST /support/tickets/{ticketId}/reply
+                 */
+                $post(params: { body: string }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
             score: {
-                // POST /support/tickets/{ticketId}/score
-                $post(params: {score: string, scoreComment?: string}): Promise<void>;
+                /**
+                 * Set ticket score
+                 * POST /support/tickets/{ticketId}/score
+                 */
+                $post(params: { score: string, scoreComment?: string }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions): Promise<any>;
             }
         };
     }
-// Api
-  /**
-   * List support tickets identifiers for this service
-   * List support tickets identifiers for this service
-   */
-  get(path: '/support/tickets'): (params?: {archived?: boolean, category?: support.TicketCategoryEnum, maxCreationDate?: string, minCreationDate?: string, product?: support.TicketProductEnum, serviceName?: string, status?: support.TicketStatusEnum, subject?: string, ticketNumber?: string}) => Promise<number[]>;
-  /**
-   * Get ticket
-   * Get ticket
-   */
-  get(path: '/support/tickets/{ticketId}'): (params: {ticketId: number}) => Promise<support.Ticket>;
-  /**
-   * Check whether ticket can be scored
-   * Checks whether ticket can be scored
-   */
-  get(path: '/support/tickets/{ticketId}/canBeScored'): (params: {ticketId: number}) => Promise<boolean>;
-  /**
-   * Get ticket messages
-   * Get ticket messages
-   */
-  get(path: '/support/tickets/{ticketId}/messages'): (params: {ticketId: number}) => Promise<support.Message[]>;
-  /**
-   * Close ticket
-   * Close ticket
-   */
-  post(path: '/support/tickets/{ticketId}/close'): (params: {ticketId: number}) => Promise<void>;
-  /**
-   * Reopen a ticket
-   * Reopen a ticket
-   */
-  post(path: '/support/tickets/{ticketId}/reopen'): (params: {ticketId: number, body: string}) => Promise<void>;
-  /**
-   * Reply to ticket
-   * Reply to ticket
-   */
-  post(path: '/support/tickets/{ticketId}/reply'): (params: {ticketId: number, body: string}) => Promise<void>;
-  /**
-   * Set ticket score
-   * Set ticket score
-   */
-  post(path: '/support/tickets/{ticketId}/score'): (params: {ticketId: number, score: string, scoreComment?: string}) => Promise<void>;
-  /**
-   * Create a new ticket
-   * Create a new ticket
-   */
-  post(path: '/support/tickets/create'): (params: {body: string, category?: support.TicketCategoryEnum, product?: support.TicketProductEnum, serviceName?: string, subcategory?: support.TicketSubCategoryEnum, subject: string, type: support.TicketTypeEnum}) => Promise<support.NewMessageInfo>;
 }
