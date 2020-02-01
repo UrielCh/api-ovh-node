@@ -1,8 +1,7 @@
 import Ovh from '@ovh-api/api';
 import ApiMe from '@ovh-api/me';
 import Promise from 'bluebird';
-//import { NichandleDocumentDocument } from '../../packages/me';
-import { nichandle } from '../../packages/me';
+import { nichandle } from '@ovh-api/me';
 
 import fse from 'fs-extra';
 import rp from 'request-promise'
