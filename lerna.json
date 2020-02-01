@@ -5,6 +5,7 @@
   "packages": [
     "code/api",
     "code/common",
+    "samples/*",
     "kimsufi-*/*",
     "packages-*/*",
     "soyoustart-*/*"
