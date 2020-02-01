@@ -69,25 +69,4 @@ export interface Price{
             }
         }
     }
-// Api
-  /**
-   * Get price of anti-DDos Pro option
-   * Get price of anti-DDos Pro option
-   */
-  get(path: '/price/dedicated/server/antiDDoSPro/{commercialRange}'): (params: {commercialRange: price.Dedicated.Server.AntiDDoSProEnum}) => Promise<order.Price>;
-  /**
-   * Get price of backup storage offer
-   * Get price of backup storage offer
-   */
-  get(path: '/price/dedicated/server/backupStorage/{capacity}'): (params: {capacity: price.Dedicated.Server.BackupStorageEnum}) => Promise<order.Price>;
-  /**
-   * Get price of available firewall models
-   * Get price of available firewall models
-   */
-  get(path: '/price/dedicated/server/firewall/{firewallModel}'): (params: {firewallModel: price.Dedicated.Server.FirewallEnum}) => Promise<order.Price>;
-  /**
-   * Get price of IPs
-   * Get price of IPs
-   */
-  get(path: '/price/dedicated/server/ip/{routedTo}'): (params: {routedTo: price.Dedicated.Server.IpEnum}) => Promise<order.Price>;
 }

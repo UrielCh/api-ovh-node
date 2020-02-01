@@ -98,35 +98,4 @@ export interface Hpcspot{
             $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
         }
     };
-// Api
-  /**
-   * Operations about the HPCSPOT service
-   * List available services
-   */
-  get(path: '/hpcspot'): () => Promise<string[]>;
-  /**
-   * Account HPC Spot
-   * Get this object properties
-   */
-  get(path: '/hpcspot/{serviceName}'): (params: {serviceName: string}) => Promise<hpcspot.Account>;
-  /**
-   * List the hpcspot.Consumption objects
-   * Details of the consumption of your account
-   */
-  get(path: '/hpcspot/{serviceName}/consumption'): (params: {serviceName: string, hpcspotItemEndDate_from?: string, hpcspotItemEndDate_to?: string, hpcspotItemId?: number, orderId?: number, type?: hpcspot.ConsumptionTypeEnum}) => Promise<number[]>;
-  /**
-   * Detail of a HPC Spot consumtion
-   * Get this object properties
-   */
-  get(path: '/hpcspot/{serviceName}/consumption/{id}'): (params: {id: number, serviceName: string}) => Promise<hpcspot.Consumption>;
-  /**
-   * Details about a Service
-   * Get this object properties
-   */
-  get(path: '/hpcspot/{serviceName}/serviceInfos'): (params: {serviceName: string}) => Promise<services.Service>;
-  /**
-   * Details about a Service
-   * Alter this object properties
-   */
-  put(path: '/hpcspot/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
 }

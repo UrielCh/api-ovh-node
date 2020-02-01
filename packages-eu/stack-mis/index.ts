@@ -74,25 +74,4 @@ export interface Stack{
             }
         };
     }
-// Api
-  /**
-   * Operations about the GS service
-   * List available services
-   */
-  get(path: '/stack/mis'): () => Promise<string[]>;
-  /**
-   * Stack MIS
-   * Get this object properties
-   */
-  get(path: '/stack/mis/{serviceName}'): (params: {serviceName: string}) => Promise<stack.mis.product>;
-  /**
-   * Details about a Service
-   * Get this object properties
-   */
-  get(path: '/stack/mis/{serviceName}/serviceInfos'): (params: {serviceName: string}) => Promise<services.Service>;
-  /**
-   * Details about a Service
-   * Alter this object properties
-   */
-  put(path: '/stack/mis/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
 }

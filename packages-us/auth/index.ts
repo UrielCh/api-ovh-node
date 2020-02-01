@@ -81,30 +81,4 @@ export interface Auth{
         // GET /auth/time
         $get(): Promise<number>;
     }
-// Api
-  /**
-   * Get the current credential details
-   * Get the current credential details
-   */
-  get(path: '/auth/currentCredential'): () => Promise<api.Credential>;
-  /**
-   * Details about the current authentication
-   * Details about the current authentication
-   */
-  get(path: '/auth/details'): () => Promise<auth.Details>;
-  /**
-   * Get the time of OVH servers
-   * Get the current time of the OVH servers, since UNIX epoch
-   */
-  get(path: '/auth/time'): () => Promise<number>;
-  /**
-   * Operations with credentials
-   * Request a new credential for your application
-   */
-  post(path: '/auth/credential'): (params: {accessRules: auth.AccessRule[], redirection?: string}) => Promise<auth.Credential>;
-  /**
-   * Expire current credential
-   * Expire current credential
-   */
-  post(path: '/auth/logout'): () => Promise<void>;
 }

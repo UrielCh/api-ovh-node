@@ -28,10 +28,4 @@ export interface Secret{
         // POST /secret/retrieve
         $post(params: {id: string}): Promise<secret.Secret>;
     }
-// Api
-  /**
-   * Retrieve a secret sent by email
-   * Retrieve a secret sent by email
-   */
-  post(path: '/secret/retrieve'): (params: {id: string}) => Promise<secret.Secret>;
 }

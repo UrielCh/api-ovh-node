@@ -87,35 +87,4 @@ export interface AllDom{
             $put(params?: {canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}): Promise<void>;
         }
     };
-// Api
-  /**
-   * Operations about the ALLDOM service
-   * List available services
-   */
-  get(path: '/allDom'): () => Promise<string[]>;
-  /**
-   * AllDom administration
-   * Get this object properties
-   */
-  get(path: '/allDom/{serviceName}'): (params: {serviceName: string}) => Promise<allDom.AllDom>;
-  /**
-   * List the allDom.AllDomDomain objects
-   * Domains attached to this allDom
-   */
-  get(path: '/allDom/{serviceName}/domain'): (params: {serviceName: string, domain?: string}) => Promise<string[]>;
-  /**
-   * Domain name of a allDom
-   * Get this object properties
-   */
-  get(path: '/allDom/{serviceName}/domain/{domain}'): (params: {domain: string, serviceName: string}) => Promise<allDom.AllDomDomain>;
-  /**
-   * Details about a Service
-   * Get this object properties
-   */
-  get(path: '/allDom/{serviceName}/serviceInfos'): (params: {serviceName: string}) => Promise<services.Service>;
-  /**
-   * Details about a Service
-   * Alter this object properties
-   */
-  put(path: '/allDom/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
 }

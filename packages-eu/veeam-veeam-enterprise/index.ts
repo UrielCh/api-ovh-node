@@ -115,57 +115,6 @@ export interface Veeam{
             }
         };
     }
-// Api
-  /**
-   * Operations about the VEEAMENTERPRISE service
-   * List available services
-   */
-  get(path: '/veeam/veeamEnterprise'): () => Promise<string[]>;
-  /**
-   * Veeeam Enterprise offer
-   * Get this object properties
-   */
-  get(path: '/veeam/veeamEnterprise/{serviceName}'): (params: {serviceName: string}) => Promise<veeam.veeamEnterprise.Account>;
-  /**
-   * Details about a Service
-   * Get this object properties
-   */
-  get(path: '/veeam/veeamEnterprise/{serviceName}/serviceInfos'): (params: {serviceName: string}) => Promise<services.Service>;
-  /**
-   * List the veeam.veeamEnterprise.Task objects
-   * Tasks associated with Veeam Enterprise
-   */
-  get(path: '/veeam/veeamEnterprise/{serviceName}/task'): (params: {serviceName: string, name?: string, state?: veeamEnterpriseTaskStateEnum}) => Promise<number[]>;
-  /**
-   * Operation with the Enterprise Account
-   * Get this object properties
-   */
-  get(path: '/veeam/veeamEnterprise/{serviceName}/task/{taskId}'): (params: {serviceName: string, taskId: number}) => Promise<veeam.veeamEnterprise.Task>;
-  /**
-   * Details about a Service
-   * Alter this object properties
-   */
-  put(path: '/veeam/veeamEnterprise/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
-  /**
-   * Confirm termination of your service
-   * Confirm termination of your service
-   */
-  post(path: '/veeam/veeamEnterprise/{serviceName}/confirmTermination'): (params: {serviceName: string, commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string}) => Promise<string>;
-  /**
-   * register operations
-   * Register Veeam Backup Server to Veeam Enterprise
-   */
-  post(path: '/veeam/veeamEnterprise/{serviceName}/register'): (params: {serviceName: string, ip: string, password: string, port: number, username: string}) => Promise<veeam.veeamEnterprise.Task[]>;
-  /**
-   * Terminate your service
-   * Terminate your service
-   */
-  post(path: '/veeam/veeamEnterprise/{serviceName}/terminate'): (params: {serviceName: string}) => Promise<string>;
-  /**
-   * update operations
-   * Update Veeam enterprise configuration
-   */
-  post(path: '/veeam/veeamEnterprise/{serviceName}/update'): (params: {serviceName: string, ip: string, password: string, port: number, username: string}) => Promise<veeam.veeamEnterprise.Task[]>;
 }
 /**
  * Extra Alias to bypass relativer namespace colitions

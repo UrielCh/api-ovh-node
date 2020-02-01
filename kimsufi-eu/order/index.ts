@@ -74,15 +74,4 @@ export interface Order{
             };
         }
     }
-// Api
-  /**
-   * Operations about the DEDICATED service
-   * List available services
-   */
-  get(path: '/order/dedicated/server'): () => Promise<string[]>;
-  /**
-   * List available options for this service
-   * Get allowed options
-   */
-  get(path: '/order/dedicated/server/{serviceName}'): (params: {serviceName: string}) => Promise<string[]>;
 }

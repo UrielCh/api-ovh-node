@@ -135,45 +135,4 @@ export interface Dedicated{
             }
         };
     }
-// Api
-  /**
-   * List the dedicated.installationTemplate.Templates objects
-   * OVH operating system installation templates
-   */
-  get(path: '/dedicated/installationTemplate'): () => Promise<string[]>;
-  /**
-   * Available installation templates
-   * Get this object properties
-   */
-  get(path: '/dedicated/installationTemplate/{templateName}'): (params: {templateName: string}) => Promise<dedicated.installationTemplate.Templates>;
-  /**
-   * List the dedicated.installationTemplate.templatePartitioningSchemes objects
-   * Partitioning schemes available on this template
-   */
-  get(path: '/dedicated/installationTemplate/{templateName}/partitionScheme'): (params: {templateName: string}) => Promise<string[]>;
-  /**
-   * Partitioning schemes available on this template
-   * Get this object properties
-   */
-  get(path: '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}'): (params: {schemeName: string, templateName: string}) => Promise<dedicated.installationTemplate.templatePartitioningSchemes>;
-  /**
-   * List the dedicated.installationTemplate.hardwareRaid objects
-   * Hardware RAIDs defined in this partitioning scheme
-   */
-  get(path: '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid'): (params: {schemeName: string, templateName: string}) => Promise<string[]>;
-  /**
-   * Hardware RAID defined in this partitioning scheme
-   * Get this object properties
-   */
-  get(path: '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/hardwareRaid/{name}'): (params: {name: string, schemeName: string, templateName: string}) => Promise<dedicated.installationTemplate.hardwareRaid>;
-  /**
-   * List the dedicated.installationTemplate.templatePartitions objects
-   * Partitions defined in this partitioning scheme
-   */
-  get(path: '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition'): (params: {schemeName: string, templateName: string}) => Promise<string[]>;
-  /**
-   *  Partitions defined in this partitioning scheme
-   * Get this object properties
-   */
-  get(path: '/dedicated/installationTemplate/{templateName}/partitionScheme/{schemeName}/partition/{mountpoint}'): (params: {mountpoint: string, schemeName: string, templateName: string}) => Promise<dedicated.installationTemplate.templatePartitions>;
 }

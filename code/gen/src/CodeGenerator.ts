@@ -264,6 +264,7 @@ export class CodeGenerator {
 
     /**
      * Interface flat
+     * dump legacy api
      * @param schema flag Call models
      * @param api 
      * @param code 
@@ -452,9 +453,9 @@ export class CodeGenerator {
             }
         }
 
-
-        if (depth === 1)
-            code += this.dumpApi(<Schema>this.schema, this.gen.apis, `// Api${EOL}`);
+        // dump legacy API
+        // if (depth === 1)
+        //    code += this.dumpApi(<Schema>this.schema, this.gen.apis, `// Api${EOL}`);
 
         code += EOB;
         return code;

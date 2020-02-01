@@ -75,30 +75,4 @@ export interface Pack{
             }
         };
     }
-// Api
-  /**
-   * Operations about the PACK service
-   * List available services
-   */
-  get(path: '/pack/siptrunk'): () => Promise<string[]>;
-  /**
-   * Pack of SIP trunk services
-   * Get this object properties
-   */
-  get(path: '/pack/siptrunk/{packName}'): (params: {packName: string}) => Promise<pack.siptrunk.PackSipTrunk>;
-  /**
-   * Details about a Service
-   * Get this object properties
-   */
-  get(path: '/pack/siptrunk/{packName}/serviceInfos'): (params: {packName: string}) => Promise<services.Service>;
-  /**
-   * Details about a Service
-   * Alter this object properties
-   */
-  put(path: '/pack/siptrunk/{packName}/serviceInfos'): (params: {packName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
-  /**
-   * Change the contacts of this service
-   * Launch a contact change procedure
-   */
-  post(path: '/pack/siptrunk/{packName}/changeContact'): (params: {packName: string, contactAdmin?: string, contactBilling?: string, contactTech?: string}) => Promise<number[]>;
 }

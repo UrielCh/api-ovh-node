@@ -58,10 +58,4 @@ export interface Status{
         // GET /status/task
         $get(params?: {impact?: ovhstatus.task.TaskImpactEnum, status?: ovhstatus.task.TaskStatusEnum, type?: ovhstatus.task.TaskTypeEnum}): Promise<status.Task.Task[]>;
     }
-// Api
-  /**
-   * API to get incidents or maintenances linked to nichandle services
-   * Find all the incidents or maintenances linked to your services
-   */
-  get(path: '/status/task'): (params?: {impact?: ovhstatus.task.TaskImpactEnum, status?: ovhstatus.task.TaskStatusEnum, type?: ovhstatus.task.TaskTypeEnum}) => Promise<status.Task.Task[]>;
 }

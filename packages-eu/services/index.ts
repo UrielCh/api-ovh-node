@@ -286,20 +286,4 @@ export interface Services{
             }
         }
     };
-// Api
-  /**
-   * Get list of your service details
-   * List available services
-   */
-  get(path: '/services'): (params?: {orderBy?: string, routes?: string, sort?: string}) => Promise<number[]>;
-  /**
-   * Get list of your service details
-   * Get details about a service
-   */
-  get(path: '/services/{serviceId}'): (params: {serviceId: number}) => Promise<services.expanded.Service>;
-  /**
-   * Engagement for a given service
-   * Get engagement details
-   */
-  get(path: '/services/{serviceId}/billing/engagement'): (params: {serviceId: number}) => Promise<services.billing.engagement.Engagement>;
 }

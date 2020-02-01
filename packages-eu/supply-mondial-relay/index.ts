@@ -76,10 +76,4 @@ export interface Supply{
         // POST /supply/mondialRelay
         $post(params: {address?: string, city?: string, country: coreTypes.CountryEnum, zipcode?: string}): Promise<supply.MondialRelayReturn>;
     }
-// Api
-  /**
-   * Find the 10 nearest MondialRelay points from address or city.
-   * Find the 10 nearest MondialRelay points from address or city.
-   */
-  post(path: '/supply/mondialRelay'): (params: {address?: string, city?: string, country: coreTypes.CountryEnum, zipcode?: string}) => Promise<supply.MondialRelayReturn>;
 }

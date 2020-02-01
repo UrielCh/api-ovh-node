@@ -3,6 +3,9 @@
  */
 export type OvhParamType = { [key: string]: any; };
 
+/**
+ * params ton configure cache
+ */
 export interface ICacheOptions {
     /**
      * Time to live in second
@@ -19,17 +22,17 @@ export interface ICacheOptions {
 }
 
 /**
- * contains `requestPromised`
+ * common interface used to call ovh engine
  */
 export interface OvhRequestable {
     /**
-    * Execute a request on the API with promise
-    *
-    * @param httpMethod: The HTTP method GET POST PUT DELETE
-    * @param path: The request final path
-    * @param pathTemplate: The request path with {pathParams}
-    * @param params: The request parameters (passed as query string or body params)
-    */
+     * Execute a request on the API with promise
+     *
+     * @param httpMethod: The HTTP method GET POST PUT DELETE
+     * @param path: The request final path
+     * @param pathTemplate: The request path with {pathParams}
+     * @param params: The request parameters (passed as query string or body params)
+     */
     doRequest(httpMethod: string, path: string, pathTemplate: string, params?: any): Promise<any>;
 
     /**
@@ -41,6 +44,7 @@ export interface OvhRequestable {
      * @deprecated
      */
     request(httpMethod: string, path: string, params?: OvhParamType): Promise<any>;
+
     /**
      * cache controle
      */
@@ -50,7 +54,7 @@ export interface OvhRequestable {
 /**
  * common Getter part fot handlers
  * - $()
- * - $getv/$put()/$post()/$delete()
+ * - $getv/$put()/$post()/$delete()/$cache()
  * - path navigation
  */
 const commonGet = (key: string, target: OvhProxyApi) => {
@@ -94,6 +98,7 @@ const handlerChild = <ProxyHandler<OvhProxyApi>>{
         switch (key) {
             case 'toString':
             case 'valueOf':
+            case 'toLocaleString':
                 return (<any>target)[p];
         }
         return commonGet(key, target);

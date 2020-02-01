@@ -198,45 +198,4 @@ export interface Service{
             $post(): Promise<void>;
         }
     };
-// Api
-  /**
-   * Operations about the services
-   * List available services
-   */
-  get(path: '/service'): () => Promise<number[]>;
-  /**
-   * Details about a Service
-   * Get this object properties
-   */
-  get(path: '/service/{serviceId}'): (params: {serviceId: number}) => Promise<serviceList.Service>;
-  /**
-   * Missing description
-   * List possible renews for this service
-   */
-  get(path: '/service/{serviceId}/renew'): (params: {serviceId: string, includeOptions?: boolean}) => Promise<service.renew.RenewDescription[]>;
-  /**
-   * Details about a Service
-   * Alter this object properties
-   */
-  put(path: '/service/{serviceId}'): (params: {serviceId: number, creationDate?: string, details?: complexType.SafeKeyValue<string>[], engagementDate?: string, expirationDate?: string, nextBillingDate?: string, plan?: service.Plan, quantity?: number, renew?: service.Renew, resource?: service.Resource, route?: service.Route, state?: service.BillingStateEnum}) => Promise<void>;
-  /**
-   * Missing description
-   * Create a renew order
-   */
-  post(path: '/service/{serviceId}/renew'): (params: {serviceId: string, dryRun?: boolean, duration: string, services: number[]}) => Promise<service.renew.RenewOrder>;
-  /**
-   * reopen operations
-   * Reopen a suspended service
-   */
-  post(path: '/service/{serviceId}/reopen'): (params: {serviceId: number}) => Promise<void>;
-  /**
-   * suspend operations
-   * Suspend the service. The service won't be accessible, but you will still be charged for it
-   */
-  post(path: '/service/{serviceId}/suspend'): (params: {serviceId: number}) => Promise<void>;
-  /**
-   * terminate operations
-   * Terminates a suspended service
-   */
-  post(path: '/service/{serviceId}/terminate'): (params: {serviceId: number}) => Promise<void>;
 }

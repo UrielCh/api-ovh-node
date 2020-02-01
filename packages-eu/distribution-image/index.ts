@@ -54,15 +54,4 @@ export interface Distribution{
             };
         };
     }
-// Api
-  /**
-   * Missing description
-   * List images for a service
-   */
-  get(path: '/distribution/image/{serviceType}'): (params: {serviceType: distribution.image.service}) => Promise<string[]>;
-  /**
-   * Missing description
-   * Show image details
-   */
-  get(path: '/distribution/image/{serviceType}/{imageName}'): (params: {imageName: string, serviceType: distribution.image.service}) => Promise<distribution.image>;
 }

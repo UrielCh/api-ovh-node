@@ -104,35 +104,4 @@ export interface Ssl{
             };
         }
     };
-// Api
-  /**
-   * Operations about the SSL service
-   * List available services
-   */
-  get(path: '/ssl'): () => Promise<string[]>;
-  /**
-   * Certificate of an SSL customer
-   * Get this object properties
-   */
-  get(path: '/ssl/{serviceName}'): (params: {serviceName: string}) => Promise<ssl.Certificate>;
-  /**
-   * Details about a Service
-   * Get this object properties
-   */
-  get(path: '/ssl/{serviceName}/serviceInfos'): (params: {serviceName: string}) => Promise<services.Service>;
-  /**
-   * List the ssl.Operation objects
-   * Tasks associated to this ssl
-   */
-  get(path: '/ssl/{serviceName}/tasks'): (params: {serviceName: string}) => Promise<number[]>;
-  /**
-   * Task on a SSL
-   * Get this object properties
-   */
-  get(path: '/ssl/{serviceName}/tasks/{taskId}'): (params: {serviceName: string, taskId: number}) => Promise<ssl.Operation>;
-  /**
-   * Details about a Service
-   * Alter this object properties
-   */
-  put(path: '/ssl/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
 }

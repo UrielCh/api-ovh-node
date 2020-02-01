@@ -105,40 +105,4 @@ export interface Price{
             }
         }
     }
-// Api
-  /**
-   * Get the price of a Hadoop cluster consumptions
-   * Get the price of a Hadoop cluster consumptions
-   */
-  get(path: '/price/cluster/hadoop/cluster/{duration}'): (params: {duration: price.Cluster.Hadoop.ClusterEnum}) => Promise<order.Price>;
-  /**
-   * Get the hourly price of the available node profiles
-   * Get the hourly price of the available node profiles
-   */
-  get(path: '/price/cluster/hadoop/node/hourly/{nodeProfile}'): (params: {nodeProfile: price.Cluster.Hadoop.Node.HourlyEnum}) => Promise<order.Price>;
-  /**
-   * Get the monthly price of the available node profiles
-   * Get the monthly price of the available node profiles
-   */
-  get(path: '/price/cluster/hadoop/node/monthly/{nodeProfile}'): (params: {nodeProfile: price.Cluster.Hadoop.Node.MonthlyEnum}) => Promise<order.Price>;
-  /**
-   * Get price of anti-DDos Pro option
-   * Get price of anti-DDos Pro option
-   */
-  get(path: '/price/dedicated/server/antiDDoSPro/{commercialRange}'): (params: {commercialRange: price.Dedicated.Server.AntiDDoSProEnum}) => Promise<order.Price>;
-  /**
-   * Get price of backup storage offer
-   * Get price of backup storage offer
-   */
-  get(path: '/price/dedicated/server/backupStorage/{capacity}'): (params: {capacity: price.Dedicated.Server.BackupStorageEnum}) => Promise<order.Price>;
-  /**
-   * Get price of available firewall models
-   * Get price of available firewall models
-   */
-  get(path: '/price/dedicated/server/firewall/{firewallModel}'): (params: {firewallModel: price.Dedicated.Server.FirewallEnum}) => Promise<order.Price>;
-  /**
-   * Get price of IPs
-   * Get price of IPs
-   */
-  get(path: '/price/dedicated/server/ip/{routedTo}'): (params: {routedTo: price.Dedicated.Server.IpEnum}) => Promise<order.Price>;
 }

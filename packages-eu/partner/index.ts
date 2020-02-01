@@ -140,20 +140,4 @@ export interface Partner{
             $get(): Promise<partner.form.Schema>;
         }
     }
-// Api
-  /**
-   * Partner registration
-   * Get partner status
-   */
-  get(path: '/partner'): () => Promise<partner.Partner>;
-  /**
-   * Partner form schema
-   * Get partner form schema
-   */
-  get(path: '/partner/form/schema'): () => Promise<partner.form.Schema>;
-  /**
-   * Partner registration
-   * Register as a partner
-   */
-  post(path: '/partner'): (params: {acceptanceStatus?: partner.AcceptanceStatusEnum, account: partner.Account, areaOfExpertise: partner.AreaOfExpertiseEnum[], contact: partner.Contact, partnersProgramReason: string, salesProjection: number}) => Promise<void>;
 }

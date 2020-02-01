@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 - Uriel Chemouni
+ * Copyright (c) 2019 - 2020 Uriel Chemouni
  * Copyright (c) 2013 - 2016 OVH SAS
  * Copyright (c) 2012 - 2013 Vincent Giersch
  *

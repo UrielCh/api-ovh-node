@@ -98,35 +98,4 @@ export interface Cdn{
             }
         };
     }
-// Api
-  /**
-   * Operations about the CDNSTATIC service
-   * List available services
-   */
-  get(path: '/cdn/webstorage'): () => Promise<string[]>;
-  /**
-   * Static CDN
-   * Get this object properties
-   */
-  get(path: '/cdn/webstorage/{serviceName}'): (params: {serviceName: string}) => Promise<cdn.webstorage.Account>;
-  /**
-   * credentials operations
-   * Gives for customer credentials to accesss swift account
-   */
-  get(path: '/cdn/webstorage/{serviceName}/credentials'): (params: {serviceName: string}) => Promise<cdn.webstorage.AccountCredentials>;
-  /**
-   * Details about a Service
-   * Get this object properties
-   */
-  get(path: '/cdn/webstorage/{serviceName}/serviceInfos'): (params: {serviceName: string}) => Promise<services.Service>;
-  /**
-   * statistics operations
-   * Return stats about bandwidth consumption
-   */
-  get(path: '/cdn/webstorage/{serviceName}/statistics'): (params: {serviceName: string, period: cdn.webstorage.StatsPeriodEnum, type: cdn.webstorage.StatsTypeEnum}) => Promise<cdn.webstorage.StatsDataType[]>;
-  /**
-   * Details about a Service
-   * Alter this object properties
-   */
-  put(path: '/cdn/webstorage/{serviceName}/serviceInfos'): (params: {serviceName: string, canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum}) => Promise<void>;
 }
