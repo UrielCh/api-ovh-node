@@ -26,18 +26,18 @@
     "url": "git+https://github.com/UrielCh/api-ovh-node.git"
   },
   "scripts": {
-    "clean": "npm run clean0 && npm run clean1 && npm run clean2 && npm run clean3 && npm run clean4 && npm run clean5",
+    "clean": "npm run clean0 && npm run clean1 && npm run clean2 && npm run clean3 && npm run clean-cache && npm run clean5",
     "clean0": "rimraf ./code/*/index.d.ts ./code/*/index.js",
     "clean1": "rimraf ./packages-*/*/yarn-error.log ./packages-*/*/index.d.ts   ./packages-*/*/index.js ./code/*/index.d.ts ./code/*/index.js",
     "clean2": "rimraf ./kimsufi-*/yarn-error.log    ./kimsufi-*/*/index.d.ts    ./kimsufi-*/*/index.js",
     "clean3": "rimraf ./soyoustart-*/yarn-error.log ./soyoustart-*/*/index.d.ts ./soyoustart-*/*/index.js",
-    "clean4": "rimraf **/.cache",
+    "clean-cache": "rimraf ./*/*/.cache",
     "clean5": "lerna clean -y",
-    "drop-cache": "rimraf ./*/*/.cache",
     "install-all": "lerna exec --stream -- npm i --cache ./.cache",
-    "bootstrap": "lerna bootstrap --concurrency=1",
+    "bootstrap": "lerna bootstrap --concurrency=1 --ignore-scripts --force-local",
+    "bootstrap2": "lerna bootstrap --mutex file:/tmp/.yarn-mutex --force-local",
     "build": "lerna run build",
-    "do-publish": "npm run clean && npm run install-all && npm run drop-cache && lerna bootstrap --concurrency=1 && lerna run build && lerna publish"
+    "do-publish": "npm run clean && npm run install-all && npm run bootstrap && npm run clean-cache && lerna publish"
   },
   "dependencies": {},
   "name": "api-ovh-node"
