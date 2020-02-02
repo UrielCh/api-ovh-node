@@ -16,7 +16,10 @@ for example with the API **dbaas** from [here](https://api.ovh.com/console/#/dba
 the call
 `GET /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/archive/{archiveId}`
 will be call like this:
-`archive = await dbaas.logs.$(serviceName).output.graylog.stream.$(streamId).archive.$(archiveId).$get()`;
+
+```typescript
+archive = await dbaas.logs.$(serviceName).output.graylog.stream.$(streamId).archive.$(archiveId).$get();
+```
 
 ### factorize API
 
