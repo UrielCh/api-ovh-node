@@ -13,12 +13,12 @@
   "author": "Uriel Chemouni <uchemouni@gmail.com>",
   "dependencies": {
     "@ovh-api/common": "^3.0.1",
-    "open": "^7.0.1"
+    "open": "^7.0.2"
   },
   "devDependencies": {
     "@types/chai": "^4.2.8",
     "@types/mocha": "^7.0.1",
-    "@types/node": "^13.5.3",
+    "@types/node": "^13.7.0",
     "@types/open": "^6.2.1",
     "chai": "^4.2.0",
     "mocha": "^7.0.1",
