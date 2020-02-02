@@ -1,7 +1,9 @@
 import { ICacheOptions } from "@ovh-api/common";
 
 export interface ICacheEntry {
-    // expiration
+    /**
+     * expiration timestamp
+     **/ 
     exp: number;
     path: string;
     size: number;
@@ -17,7 +19,17 @@ export class CacheSilot {
     constructor(public template: string, public options: ICacheOptions) {
     }
 
-    flush(path: string): boolean {
+    flush() {
+        this.index = {};
+        for (const value of this.values) {
+            delete value.value;
+        }
+        this.values = [] ;
+        this.count = 0;
+        this.size = 0;
+    }
+
+    discard(path: string): boolean {
         const value = this.index[path];
         if (value && value.exp) {
             this.count--;
@@ -63,7 +75,7 @@ export class CacheSilot {
     }
 
     store(path: string, value: any, size: number): boolean {
-        this.flush(path);
+        this.discard(path);
         if (this.options.size && size > this.options.size) {
             return false;
         }
@@ -109,10 +121,24 @@ export class Cache {
             return silot.get(path);
     }
 
-    flush(template: string, path: string) {
+    discard(template: string, path: string) {
         const silot = this.index[template];
         if (silot)
-            return silot.flush(path);
+            return silot.discard(path);
+    }
+
+    flush(template: string) {
+        const silot = this.index[template];
+        if (silot)
+            silot.flush();
+    }
+
+    disable(template: string) {
+        const silot = this.index[template];
+        if (silot) {
+            silot.flush();
+            delete this.index[template];
+        }
     }
 
     silot(template: string) : CacheSilot | undefined {

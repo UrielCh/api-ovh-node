@@ -8,10 +8,6 @@ export type OvhParamType = { [key: string]: any; };
  */
 export interface ICacheOptions {
     /**
-     * action to controle cache
-     */
-    action?: 'flush' | 'disable';
-    /**
      * Time to live in second
      */
     ttl?: number;
@@ -25,6 +21,8 @@ export interface ICacheOptions {
     count?: number
 }
 
+
+export type CacheAction = 'flush' | 'disable';
 /**
  * common interface used to call ovh engine
  */
@@ -52,7 +50,7 @@ export interface OvhRequestable {
     /**
      * cache controle
      */
-    cache(template: string, param: ICacheOptions): Promise<any>;
+    cache(template: string, param: ICacheOptions | CacheAction): Promise<any>;
 }
 
 /**

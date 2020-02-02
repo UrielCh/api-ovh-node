@@ -39,7 +39,7 @@ import { HttpMethod, AccessRule, OvhCredentialNew, OvhCredential } from './OVHIn
 import { CertMonitorProvider, stdOutCertMonitorProvider } from './certMonitor';
 export { CertMonitorProvider, CertMonitor } from './certMonitor';
 export { OvhCredentialNew } from './OVHInterfaces'
-import { EOL } from 'os';
+import { EOL, type } from 'os';
 import { Cache, CacheSilot } from './Cache';
 
 /**
@@ -184,6 +184,8 @@ export interface OvhApiEvent {
     emit(ev: 'warningMsg', params: string): boolean;
 }
 
+export type CacheAction = 'flush' | 'disable';
+
 /**
  * Main ovh api connector
  */
@@ -280,12 +282,20 @@ by default I will ask for all rights`);
         }
     }
 
-    async cache(template: string, param?: ICacheOptions): Promise<any> {
-        param = param || { ttl: 3600 };
+    async cache(template: string, param?: ICacheOptions | CacheAction): Promise<any> {
         if (!this.queryCache) {
             this.queryCache = new Cache();
         }
-        this.queryCache.cache(template, param);
+        param = param || { ttl: 3600 };
+        if (typeof (param) === 'string') {
+            if (param === 'disable') {
+
+            } else if (param === 'flush') {
+                this.queryCache.flush(template);
+            }
+        } else {
+            this.queryCache.cache(template, param);
+        }
     }
 
 
@@ -540,7 +550,7 @@ by default I will ask for all rights`);
                     if (httpMethod === 'GET')
                         cacheSilot.store(path, responseData, size);
                     else
-                        cacheSilot.flush(path);
+                        cacheSilot.discard(path);
                 }
                 return responseData;
             }
