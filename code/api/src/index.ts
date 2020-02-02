@@ -549,8 +549,12 @@ by default I will ask for all rights`);
                 if (cacheSilot) {
                     if (httpMethod === 'GET')
                         cacheSilot.store(path, responseData, size);
-                    else
+                    else {
                         cacheSilot.discard(path);
+                        if (httpMethod === 'DELETE') {
+                            cacheSilot.discard(path.replace(/\/[^/]+$/, ''));
+                        }
+                    }
                 }
                 return responseData;
             }

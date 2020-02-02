@@ -1,3 +1,5 @@
+V 3.0.2
+- improve $delete() auto-discard change.
 V 3.0.1
 - update $cache() interface add action 'flush', 'disable'
 V 3.0.0
