@@ -37,7 +37,7 @@
     "install-all": "lerna exec --stream -- npm i --cache ./.cache",
     "bootstrap": "lerna bootstrap --concurrency=1",
     "build": "lerna run build",
-    "do-publish": "lerna clean -y && npm run install-all && npm run drop-cache && lerna bootstrap --concurrency=1 && lerna run build && lerna publish"
+    "do-publish": "npm run clean && npm run install-all && npm run drop-cache && lerna bootstrap --concurrency=1 && lerna run build && lerna publish"
   },
   "dependencies": {},
   "name": "api-ovh-node"
