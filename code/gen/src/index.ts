@@ -108,12 +108,12 @@ async function genRegion(endpoint: IEndpoint) {
                 },
                 "scripts": {
                     "build": "tsc",
-                    "build:watch": "tsc --watch"
+                    "build:watch": "tsc --watch",
+                    "prepare": "npm run build"
                 },
                 "files": [
                     "index.js",
-                    "index.d.ts",
-                    "index.ts"
+                    "index.d.ts"
                 ]            
             }, { spaces: 4 })
 

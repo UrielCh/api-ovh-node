@@ -26,8 +26,9 @@ for (const { dir, name: nsName, country } of subs) {
             const { name, description } = data;
             console.log(`* [![NPM Version](https://img.shields.io/npm/v/@ovh-api/${name2}.svg?style=flat)](https://www.npmjs.org/package/@ovh-api/${name2}) *Api ${name}* ${description}`);
             if (true) {
-                // data.files = ["index.js", "index.d.ts", "index.ts" ];
+                data.files = ["index.js", "index.d.ts"]; // , "index.ts" 
                 data.scripts.prepare = "npm run build";
+                data.dependencies["@ovh-api/common"] = "^3.0.1";
                 content = JSON.stringify(data, undefined, 4) + EOL;
                 fs.writeFileSync(jsonFile, content, { encoding: 'utf8' });
             }
