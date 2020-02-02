@@ -1,4 +1,4 @@
-import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
+import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /caas/containers Models
@@ -256,7 +256,7 @@ export interface Caas {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         slaves: {
             flavors: {
                 /**
@@ -267,7 +267,7 @@ export interface Caas {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(flavorId: string): {
                     /**
                      * Inspect the argument slave flavor
@@ -277,7 +277,7 @@ export interface Caas {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 };
             }
         }
@@ -290,7 +290,7 @@ export interface Caas {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             availableFrameworks: {
                 /**
                  * List all the installable Mesos frameworks
@@ -300,7 +300,7 @@ export interface Caas {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             changeContact: {
                 /**
@@ -311,7 +311,7 @@ export interface Caas {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             frameworks: {
                 /**
@@ -322,7 +322,7 @@ export interface Caas {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(frameworkId: string): {
                     /**
                      * Inspect the stack framework
@@ -332,7 +332,7 @@ export interface Caas {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     apps: {
                         /**
                          * List apps in the framework
@@ -342,7 +342,7 @@ export interface Caas {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     password: {
                         /**
@@ -353,7 +353,7 @@ export interface Caas {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }
@@ -372,7 +372,7 @@ export interface Caas {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(credentialsId: string): {
                         /**
                          * Delete the registry credentials.
@@ -392,7 +392,7 @@ export interface Caas {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     };
                 }
             }
@@ -410,7 +410,7 @@ export interface Caas {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             slaves: {
                 /**
@@ -421,7 +421,7 @@ export interface Caas {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(slaveId: string): {
                     /**
                      * Inspect the argument user slave instance
@@ -431,7 +431,7 @@ export interface Caas {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 };
             }
             ssl: {
@@ -453,7 +453,7 @@ export interface Caas {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         };
     }

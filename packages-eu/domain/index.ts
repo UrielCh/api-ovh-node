@@ -1,4 +1,4 @@
-import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
+import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /domain Models
@@ -660,7 +660,7 @@ export interface Domain {
     /**
      * Controle cache
      */
-    $cache(param?: ICacheOptions): Promise<any>;
+    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
     data: {
         afnicAssociationInformation: {
             /**
@@ -676,7 +676,7 @@ export interface Domain {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(associationInformationId: number): {
                 /**
                  * Retrieve an association information according to Afnic
@@ -686,7 +686,7 @@ export interface Domain {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
         afnicCorporationTrademarkInformation: {
@@ -703,7 +703,7 @@ export interface Domain {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(afnicCorporationTrademarkId: number): {
                 /**
                  * Retrieve a corporation trademark information according to Afnic
@@ -713,7 +713,7 @@ export interface Domain {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
         claimNotice: {
@@ -725,7 +725,7 @@ export interface Domain {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         extension: {
             /**
@@ -736,7 +736,7 @@ export interface Domain {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         proContact: {
             /**
@@ -752,7 +752,7 @@ export interface Domain {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(proContactId: number): {
                 /**
                  * Retrieve information about a Pro Contact
@@ -762,7 +762,7 @@ export interface Domain {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
         smd: {
@@ -779,7 +779,7 @@ export interface Domain {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(smdId: number): {
                 /**
                  * Delete a SMD file
@@ -799,7 +799,7 @@ export interface Domain {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
     }
@@ -812,7 +812,7 @@ export interface Domain {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
     }
     zone: {
         /**
@@ -823,7 +823,7 @@ export interface Domain {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         $(zoneName: string): {
             /**
              * Get this object properties
@@ -833,7 +833,7 @@ export interface Domain {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             changeContact: {
                 /**
                  * Launch a contact change procedure
@@ -843,7 +843,7 @@ export interface Domain {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             confirmTermination: {
                 /**
@@ -854,7 +854,7 @@ export interface Domain {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             dnssec: {
                 /**
@@ -875,7 +875,7 @@ export interface Domain {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             dynHost: {
                 login: {
@@ -892,7 +892,7 @@ export interface Domain {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(login: string): {
                         /**
                          * Delete a DynHost login
@@ -912,7 +912,7 @@ export interface Domain {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         changePassword: {
                             /**
                              * Change password of the DynHost login
@@ -922,7 +922,7 @@ export interface Domain {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                     };
                 }
@@ -940,7 +940,7 @@ export interface Domain {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(id: number): {
                         /**
                          * Delete a DynHost record (Don't forget to refresh the zone)
@@ -960,7 +960,7 @@ export interface Domain {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     };
                 }
             }
@@ -973,7 +973,7 @@ export interface Domain {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             history: {
                 /**
@@ -984,7 +984,7 @@ export interface Domain {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(creationDate: string): {
                     /**
                      * Get this object properties
@@ -994,7 +994,7 @@ export interface Domain {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     restore: {
                         /**
                          * Restore the DNS zone
@@ -1004,7 +1004,7 @@ export interface Domain {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }
@@ -1017,7 +1017,7 @@ export interface Domain {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             record: {
                 /**
@@ -1033,7 +1033,7 @@ export interface Domain {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(id: number): {
                     /**
                      * Delete a DNS record (Don't forget to refresh the zone)
@@ -1053,7 +1053,7 @@ export interface Domain {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 };
             }
             redirection: {
@@ -1070,7 +1070,7 @@ export interface Domain {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(id: number): {
                     /**
                      * Delete a redirection (Don't forget to refresh the zone)
@@ -1090,7 +1090,7 @@ export interface Domain {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 };
             }
             refresh: {
@@ -1102,7 +1102,7 @@ export interface Domain {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             reset: {
                 /**
@@ -1113,7 +1113,7 @@ export interface Domain {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             serviceInfos: {
                 /**
@@ -1129,7 +1129,7 @@ export interface Domain {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             soa: {
                 /**
@@ -1145,7 +1145,7 @@ export interface Domain {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             status: {
                 /**
@@ -1156,7 +1156,7 @@ export interface Domain {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             task: {
                 /**
@@ -1167,7 +1167,7 @@ export interface Domain {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(id: number): {
                     /**
                      * Get this object properties
@@ -1177,7 +1177,7 @@ export interface Domain {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     accelerate: {
                         /**
                          * Accelerate the task
@@ -1187,7 +1187,7 @@ export interface Domain {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     cancel: {
                         /**
@@ -1198,7 +1198,7 @@ export interface Domain {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     relaunch: {
                         /**
@@ -1209,7 +1209,7 @@ export interface Domain {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }
@@ -1222,7 +1222,7 @@ export interface Domain {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         };
     }
@@ -1240,7 +1240,7 @@ export interface Domain {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         activateZone: {
             /**
              * Activate the DNS zone for this domain
@@ -1250,7 +1250,7 @@ export interface Domain {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         authInfo: {
             /**
@@ -1261,7 +1261,7 @@ export interface Domain {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         changeContact: {
             /**
@@ -1272,7 +1272,7 @@ export interface Domain {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         configurations: {
             obfuscatedEmails: {
@@ -1289,7 +1289,7 @@ export interface Domain {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 refresh: {
                     /**
                      * Refresh an obfuscated emails configuration
@@ -1299,7 +1299,7 @@ export interface Domain {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
             optin: {
@@ -1316,7 +1316,7 @@ export interface Domain {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         }
         dsRecord: {
@@ -1333,7 +1333,7 @@ export interface Domain {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(id: number): {
                 /**
                  * Get this object properties
@@ -1343,7 +1343,7 @@ export interface Domain {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
         email: {
@@ -1357,7 +1357,7 @@ export interface Domain {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
         }
@@ -1375,7 +1375,7 @@ export interface Domain {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(host: string): {
                 /**
                  * Delete the glue record
@@ -1390,7 +1390,7 @@ export interface Domain {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 update: {
                     /**
                      * Update the glue record
@@ -1400,7 +1400,7 @@ export interface Domain {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -1418,7 +1418,7 @@ export interface Domain {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(id: number): {
                 /**
                  * Delete a name server
@@ -1433,7 +1433,7 @@ export interface Domain {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 status: {
                     /**
                      * Get name server status
@@ -1443,7 +1443,7 @@ export interface Domain {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -1457,7 +1457,7 @@ export interface Domain {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         }
         option: {
@@ -1469,7 +1469,7 @@ export interface Domain {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(option: domain.DomainOptionEnum): {
                 /**
                  * Release a given option
@@ -1484,7 +1484,7 @@ export interface Domain {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
         owo: {
@@ -1501,7 +1501,7 @@ export interface Domain {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(field: domain.WhoisObfuscatorFieldsEnum): {
                 /**
                  * Delete a whois obfuscator
@@ -1516,7 +1516,7 @@ export interface Domain {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
         rules: {
@@ -1529,7 +1529,7 @@ export interface Domain {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             optin: {
                 /**
@@ -1540,7 +1540,7 @@ export interface Domain {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         }
         serviceInfos: {
@@ -1557,7 +1557,7 @@ export interface Domain {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         task: {
             /**
@@ -1568,7 +1568,7 @@ export interface Domain {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(id: number): {
                 /**
                  * Get this object properties
@@ -1578,7 +1578,7 @@ export interface Domain {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 accelerate: {
                     /**
                      * Accelerate the task
@@ -1588,7 +1588,7 @@ export interface Domain {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 cancel: {
                     /**
@@ -1599,7 +1599,7 @@ export interface Domain {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 relaunch: {
                     /**
@@ -1610,7 +1610,7 @@ export interface Domain {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -1623,7 +1623,7 @@ export interface Domain {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         ukRegistrars: {
             /**
@@ -1634,7 +1634,7 @@ export interface Domain {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
     };
 }

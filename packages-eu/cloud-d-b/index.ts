@@ -1,4 +1,4 @@
-import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
+import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /cloudDB Models
@@ -878,7 +878,7 @@ export interface CloudDB {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(clusterId: string): {
                 /**
                  * Get this object properties
@@ -893,7 +893,7 @@ export interface CloudDB {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 backup: {
                     /**
                      * Backups of this cluster
@@ -908,7 +908,7 @@ export interface CloudDB {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(backupId: string): {
                         /**
                          * Delete a cluster backup
@@ -923,7 +923,7 @@ export interface CloudDB {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     };
                 }
                 confirmTermination: {
@@ -935,7 +935,7 @@ export interface CloudDB {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 endpoint: {
                     /**
@@ -946,7 +946,7 @@ export interface CloudDB {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(endpointId: string): {
                         /**
                          * Get this object properties
@@ -956,7 +956,7 @@ export interface CloudDB {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     };
                 }
                 host: {
@@ -968,7 +968,7 @@ export interface CloudDB {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(hostId: string): {
                         /**
                          * Get this object properties
@@ -978,7 +978,7 @@ export interface CloudDB {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     };
                 }
                 logs: {
@@ -995,7 +995,7 @@ export interface CloudDB {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(logsId: string): {
                         /**
                          * Revoke access to cluster's logs
@@ -1010,7 +1010,7 @@ export interface CloudDB {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     };
                 }
                 maintenance: {
@@ -1022,7 +1022,7 @@ export interface CloudDB {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(maintenanceId: string): {
                         /**
                          * Delete the maintenance
@@ -1037,7 +1037,7 @@ export interface CloudDB {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     };
                 }
                 maintenanceWindow: {
@@ -1064,7 +1064,7 @@ export interface CloudDB {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 restore: {
                     /**
@@ -1080,7 +1080,7 @@ export interface CloudDB {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(restoreId: string): {
                         /**
                          * Delete a restore
@@ -1095,7 +1095,7 @@ export interface CloudDB {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         user: {
                             /**
                              * Get this object properties
@@ -1110,7 +1110,7 @@ export interface CloudDB {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                     };
                 }
@@ -1123,7 +1123,7 @@ export interface CloudDB {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 securityGroup: {
                     /**
@@ -1139,7 +1139,7 @@ export interface CloudDB {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(securityGroupId: string): {
                         /**
                          * Delete a security group from this cluster
@@ -1159,7 +1159,7 @@ export interface CloudDB {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         rule: {
                             /**
                              * Security group rules
@@ -1174,7 +1174,7 @@ export interface CloudDB {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             $(ruleId: string): {
                                 /**
                                  * Delete a rule from this security group
@@ -1189,7 +1189,7 @@ export interface CloudDB {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             };
                         }
                     };
@@ -1208,7 +1208,7 @@ export interface CloudDB {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 task: {
                     /**
@@ -1219,7 +1219,7 @@ export interface CloudDB {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(taskId: string): {
                         /**
                          * Get this object properties
@@ -1229,7 +1229,7 @@ export interface CloudDB {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     };
                 }
                 terminate: {
@@ -1241,7 +1241,7 @@ export interface CloudDB {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 user: {
                     /**
@@ -1257,7 +1257,7 @@ export interface CloudDB {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -1270,7 +1270,7 @@ export interface CloudDB {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(offerName: string): {
                 /**
                  * Get this object properties
@@ -1280,7 +1280,7 @@ export interface CloudDB {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 region: {
                     /**
                      * Regions of this offer
@@ -1290,7 +1290,7 @@ export interface CloudDB {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(regionName: string): {
                         /**
                          * Get this object properties
@@ -1300,7 +1300,7 @@ export interface CloudDB {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     };
                 }
             };
@@ -1314,7 +1314,7 @@ export interface CloudDB {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(regionName: string): {
                 /**
                  * Get this object properties
@@ -1324,7 +1324,7 @@ export interface CloudDB {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
     }

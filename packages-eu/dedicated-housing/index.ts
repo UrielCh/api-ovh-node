@@ -1,4 +1,4 @@
-import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
+import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /dedicated/housing Models
@@ -226,7 +226,7 @@ export interface Dedicated {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         $(serviceName: string): {
             /**
              * Get this object properties
@@ -236,7 +236,7 @@ export interface Dedicated {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             features: {
                 backupFTP: {
                     /**
@@ -257,7 +257,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     access: {
                         /**
                          * List of IP blocks (and protocols to allow on these blocks) authorized on your backup FTP
@@ -272,7 +272,7 @@ export interface Dedicated {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         $(ipBlock: string): {
                             /**
                              * Revoke this ACL
@@ -292,7 +292,7 @@ export interface Dedicated {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         };
                     }
                     authorizableBlocks: {
@@ -304,7 +304,7 @@ export interface Dedicated {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     password: {
                         /**
@@ -315,7 +315,7 @@ export interface Dedicated {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 }
             }
@@ -329,7 +329,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
             serviceInfos: {
@@ -346,7 +346,7 @@ export interface Dedicated {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             task: {
                 /**
@@ -357,7 +357,7 @@ export interface Dedicated {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(taskId: number): {
                     /**
                      * Get this object properties
@@ -367,7 +367,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     cancel: {
                         /**
                          * this action stop the task progression if it's possible
@@ -377,7 +377,7 @@ export interface Dedicated {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }

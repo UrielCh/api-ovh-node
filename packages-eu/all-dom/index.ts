@@ -1,4 +1,4 @@
-import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
+import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /allDom Models
@@ -97,7 +97,7 @@ export interface AllDom {
     /**
      * Controle cache
      */
-    $cache(param?: ICacheOptions): Promise<any>;
+    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
     $(serviceName: string): {
         /**
          * Get this object properties
@@ -107,7 +107,7 @@ export interface AllDom {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         domain: {
             /**
              * Domains attached to this allDom
@@ -117,7 +117,7 @@ export interface AllDom {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(domain: string): {
                 /**
                  * Get this object properties
@@ -127,7 +127,7 @@ export interface AllDom {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
         serviceInfos: {
@@ -144,7 +144,7 @@ export interface AllDom {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
     };
 }

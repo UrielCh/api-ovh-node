@@ -1,4 +1,4 @@
-import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
+import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /kube Models
@@ -152,7 +152,7 @@ export interface Kube {
     /**
      * Controle cache
      */
-    $cache(param?: ICacheOptions): Promise<any>;
+    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
     $(serviceName: string): {
         /**
          * Get information about your managed Kubernetes cluster
@@ -167,7 +167,7 @@ export interface Kube {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         changeContact: {
             /**
              * Launch a contact change procedure
@@ -177,7 +177,7 @@ export interface Kube {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         confirmTermination: {
             /**
@@ -188,7 +188,7 @@ export interface Kube {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         kubeconfig: {
             /**
@@ -199,7 +199,7 @@ export interface Kube {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         publiccloud: {
             node: {
@@ -216,7 +216,7 @@ export interface Kube {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(nodeId: string): {
                     /**
                      * Delete a node on your cluster
@@ -231,7 +231,7 @@ export interface Kube {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 };
             }
             project: {
@@ -243,7 +243,7 @@ export interface Kube {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         }
         reset: {
@@ -255,7 +255,7 @@ export interface Kube {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         serviceInfos: {
             /**
@@ -271,7 +271,7 @@ export interface Kube {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         terminate: {
             /**
@@ -282,7 +282,7 @@ export interface Kube {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         update: {
             /**
@@ -293,7 +293,7 @@ export interface Kube {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         updatePolicy: {
             /**
@@ -304,7 +304,7 @@ export interface Kube {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
     };
 }

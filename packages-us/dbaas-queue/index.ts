@@ -1,4 +1,4 @@
-import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
+import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /dbaas/queue Models
@@ -172,7 +172,7 @@ export interface Dbaas {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         $(serviceName: string): {
             /**
              * Get an application
@@ -187,7 +187,7 @@ export interface Dbaas {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             key: {
                 /**
                  * List all keys of the application
@@ -197,7 +197,7 @@ export interface Dbaas {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(keyId: string): {
                     /**
                      * Get a key
@@ -207,7 +207,7 @@ export interface Dbaas {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 };
             }
             metrics: {
@@ -220,7 +220,7 @@ export interface Dbaas {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
             region: {
@@ -232,7 +232,7 @@ export interface Dbaas {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(regionId: string): {
                     /**
                      * Get one region
@@ -242,7 +242,7 @@ export interface Dbaas {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 };
             }
             role: {
@@ -254,7 +254,7 @@ export interface Dbaas {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(roleName: string): {
                     /**
                      * Get a role
@@ -264,7 +264,7 @@ export interface Dbaas {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 };
             }
             serviceInfos: {
@@ -281,7 +281,7 @@ export interface Dbaas {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             topic: {
                 /**
@@ -292,7 +292,7 @@ export interface Dbaas {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(topicId: string): {
                     /**
                      * Delete a topic
@@ -307,7 +307,7 @@ export interface Dbaas {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 };
             }
             user: {
@@ -319,7 +319,7 @@ export interface Dbaas {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(userId: string): {
                     /**
                      * Get a user
@@ -329,7 +329,7 @@ export interface Dbaas {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     changePassword: {
                         /**
                          * Generate a new user password
@@ -339,7 +339,7 @@ export interface Dbaas {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     roles: {
                         /**
@@ -350,7 +350,7 @@ export interface Dbaas {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }

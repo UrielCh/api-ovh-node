@@ -1,4 +1,4 @@
-import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
+import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /dedicated/server Models
@@ -1413,7 +1413,7 @@ export interface Dedicated {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         availabilities: {
             /**
              * List the availability of dedicated server
@@ -1423,7 +1423,7 @@ export interface Dedicated {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             raw: {
                 /**
                  * List the availability of dedicated server
@@ -1433,7 +1433,7 @@ export interface Dedicated {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         }
         datacenter: {
@@ -1446,7 +1446,7 @@ export interface Dedicated {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         }
         osAvailabilities: {
@@ -1458,7 +1458,7 @@ export interface Dedicated {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         virtualNetworkInterface: {
             $(uuid: string): {
@@ -1470,7 +1470,7 @@ export interface Dedicated {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
         $(serviceName: string): {
@@ -1487,7 +1487,7 @@ export interface Dedicated {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             authenticationSecret: {
                 /**
                  * Retrieve secret to connect to the server / application
@@ -1497,7 +1497,7 @@ export interface Dedicated {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             backupCloudOfferDetails: {
                 /**
@@ -1508,7 +1508,7 @@ export interface Dedicated {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             biosSettings: {
                 /**
@@ -1519,7 +1519,7 @@ export interface Dedicated {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 sgx: {
                     /**
                      * Get this object properties
@@ -1529,7 +1529,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     configure: {
                         /**
                          * Configure SGX feature
@@ -1539,7 +1539,7 @@ export interface Dedicated {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 }
             }
@@ -1552,7 +1552,7 @@ export interface Dedicated {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(bootId: number): {
                     /**
                      * Get this object properties
@@ -1562,7 +1562,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     option: {
                         /**
                          * Option used on this netboot
@@ -1572,7 +1572,7 @@ export interface Dedicated {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         $(option: dedicated.server.BootOptionEnum): {
                             /**
                              * Get this object properties
@@ -1582,7 +1582,7 @@ export interface Dedicated {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         };
                     }
                 };
@@ -1601,7 +1601,7 @@ export interface Dedicated {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             changeContact: {
                 /**
@@ -1612,7 +1612,7 @@ export interface Dedicated {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             confirmTermination: {
                 /**
@@ -1623,7 +1623,7 @@ export interface Dedicated {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             features: {
                 backupCloud: {
@@ -1645,7 +1645,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     password: {
                         /**
                          * Change your cloud account password
@@ -1655,7 +1655,7 @@ export interface Dedicated {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 }
                 backupFTP: {
@@ -1677,7 +1677,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     access: {
                         /**
                          * List of IP blocks (and protocols to allow on these blocks) authorized on your backup FTP
@@ -1692,7 +1692,7 @@ export interface Dedicated {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         $(ipBlock: string): {
                             /**
                              * Revoke this ACL
@@ -1712,7 +1712,7 @@ export interface Dedicated {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         };
                     }
                     authorizableBlocks: {
@@ -1724,7 +1724,7 @@ export interface Dedicated {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     password: {
                         /**
@@ -1735,7 +1735,7 @@ export interface Dedicated {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 }
                 firewall: {
@@ -1752,7 +1752,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 ipmi: {
                     /**
@@ -1763,7 +1763,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     access: {
                         /**
                          * IPMI access method
@@ -1778,7 +1778,7 @@ export interface Dedicated {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     resetInterface: {
                         /**
@@ -1789,7 +1789,7 @@ export interface Dedicated {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     resetSessions: {
                         /**
@@ -1800,7 +1800,7 @@ export interface Dedicated {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     test: {
                         /**
@@ -1816,7 +1816,7 @@ export interface Dedicated {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 }
                 kvm: {
@@ -1828,7 +1828,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
             firewall: {
@@ -1842,7 +1842,7 @@ export interface Dedicated {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     link: {
                         /**
@@ -1853,7 +1853,7 @@ export interface Dedicated {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 }
             }
@@ -1867,7 +1867,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 compatibleTemplates: {
                     /**
@@ -1878,7 +1878,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 hardwareRaidProfile: {
                     /**
@@ -1889,7 +1889,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 hardwareRaidSize: {
                     /**
@@ -1900,7 +1900,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 start: {
                     /**
@@ -1911,7 +1911,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 status: {
                     /**
@@ -1922,7 +1922,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 templateCapabilities: {
                     /**
@@ -1933,7 +1933,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
             intervention: {
@@ -1945,7 +1945,7 @@ export interface Dedicated {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(interventionId: number): {
                     /**
                      * Get this object properties
@@ -1955,7 +1955,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 };
             }
             ipBlockMerge: {
@@ -1967,7 +1967,7 @@ export interface Dedicated {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             ipCanBeMovedTo: {
                 /**
@@ -1978,7 +1978,7 @@ export interface Dedicated {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             ipCountryAvailable: {
                 /**
@@ -1989,7 +1989,7 @@ export interface Dedicated {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             ipMove: {
                 /**
@@ -2000,7 +2000,7 @@ export interface Dedicated {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             ips: {
                 /**
@@ -2011,7 +2011,7 @@ export interface Dedicated {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             license: {
                 compliantWindows: {
@@ -2023,7 +2023,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 compliantWindowsSqlServer: {
                     /**
@@ -2034,7 +2034,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 windows: {
                     /**
@@ -2045,7 +2045,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
             mrtg: {
@@ -2057,7 +2057,7 @@ export interface Dedicated {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             networkInterfaceController: {
                 /**
@@ -2068,7 +2068,7 @@ export interface Dedicated {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(mac: string): {
                     /**
                      * Get this object properties
@@ -2078,7 +2078,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     mrtg: {
                         /**
                          * Retrieve traffic graph values
@@ -2088,7 +2088,7 @@ export interface Dedicated {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }
@@ -2102,7 +2102,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 ungroup: {
                     /**
@@ -2113,7 +2113,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
             option: {
@@ -2125,7 +2125,7 @@ export interface Dedicated {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(option: dedicated.server.OptionEnum): {
                     /**
                      * Release a given option
@@ -2140,7 +2140,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 };
             }
             orderable: {
@@ -2153,7 +2153,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 bandwidth: {
                     /**
@@ -2164,7 +2164,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 bandwidthvRack: {
                     /**
@@ -2175,7 +2175,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 feature: {
                     /**
@@ -2186,7 +2186,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 ip: {
                     /**
@@ -2197,7 +2197,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 kvm: {
                     /**
@@ -2208,7 +2208,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 kvmExpress: {
                     /**
@@ -2219,7 +2219,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 professionalUse: {
                     /**
@@ -2230,7 +2230,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 traffic: {
                     /**
@@ -2241,7 +2241,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 usbKey: {
                     /**
@@ -2252,7 +2252,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
             reboot: {
@@ -2264,7 +2264,7 @@ export interface Dedicated {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             secondaryDnsDomains: {
                 /**
@@ -2280,7 +2280,7 @@ export interface Dedicated {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(domain: string): {
                     /**
                      * remove this domain
@@ -2300,7 +2300,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     dnsServer: {
                         /**
                          * domain name server informations
@@ -2310,7 +2310,7 @@ export interface Dedicated {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }
@@ -2323,7 +2323,7 @@ export interface Dedicated {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             secondaryDnsNameServerAvailable: {
                 /**
@@ -2334,7 +2334,7 @@ export interface Dedicated {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             serviceInfos: {
                 /**
@@ -2350,7 +2350,7 @@ export interface Dedicated {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             serviceMonitoring: {
                 /**
@@ -2366,7 +2366,7 @@ export interface Dedicated {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(monitoringId: number): {
                     /**
                      * Remove this service monitoring
@@ -2386,7 +2386,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     alert: {
                         email: {
                             /**
@@ -2402,7 +2402,7 @@ export interface Dedicated {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             $(alertId: number): {
                                 /**
                                  * Remove this Email alert monitoring
@@ -2422,7 +2422,7 @@ export interface Dedicated {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             };
                         }
                         sms: {
@@ -2439,7 +2439,7 @@ export interface Dedicated {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             $(alertId: number): {
                                 /**
                                  * Remove this SMS alert
@@ -2459,7 +2459,7 @@ export interface Dedicated {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             };
                         }
                     }
@@ -2475,7 +2475,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 ip: {
                     /**
@@ -2486,7 +2486,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 network: {
                     /**
@@ -2497,7 +2497,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
             spla: {
@@ -2514,7 +2514,7 @@ export interface Dedicated {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(id: number): {
                     /**
                      * Get this object properties
@@ -2529,7 +2529,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     revoke: {
                         /**
                          * Revoke an SPLA license
@@ -2539,7 +2539,7 @@ export interface Dedicated {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }
@@ -2552,7 +2552,7 @@ export interface Dedicated {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 chart: {
                     /**
                      * Retrieve RTM graph values
@@ -2562,7 +2562,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 connection: {
                     /**
@@ -2573,7 +2573,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 cpu: {
                     /**
@@ -2584,7 +2584,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 disk: {
                     /**
@@ -2595,7 +2595,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(disk: string): {
                         /**
                          * Get this object properties
@@ -2605,7 +2605,7 @@ export interface Dedicated {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         smart: {
                             /**
                              * Get disk smart informations
@@ -2615,7 +2615,7 @@ export interface Dedicated {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                     };
                 }
@@ -2628,7 +2628,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 memory: {
                     /**
@@ -2639,7 +2639,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 motherboard: {
                     /**
@@ -2650,7 +2650,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 os: {
                     /**
@@ -2661,7 +2661,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 partition: {
                     /**
@@ -2672,7 +2672,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(partition: string): {
                         /**
                          * Get this object properties
@@ -2682,7 +2682,7 @@ export interface Dedicated {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         chart: {
                             /**
                              * Retrieve partition charts
@@ -2692,7 +2692,7 @@ export interface Dedicated {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                     };
                 }
@@ -2705,7 +2705,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 process: {
                     /**
@@ -2716,7 +2716,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 raid: {
                     /**
@@ -2727,7 +2727,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(unit: string): {
                         /**
                          * Get this object properties
@@ -2737,7 +2737,7 @@ export interface Dedicated {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         volume: {
                             /**
                              * Raid unit volumes
@@ -2747,7 +2747,7 @@ export interface Dedicated {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             $(volume: string): {
                                 /**
                                  * Get this object properties
@@ -2757,7 +2757,7 @@ export interface Dedicated {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                 port: {
                                     /**
                                      * Raid unit volume ports
@@ -2767,7 +2767,7 @@ export interface Dedicated {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                     $(port: string): {
                                         /**
                                          * Get this object properties
@@ -2777,7 +2777,7 @@ export interface Dedicated {
                                         /**
                                          * Controle cache
                                          */
-                                        $cache(param?: ICacheOptions): Promise<any>;
+                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                     };
                                 }
                             };
@@ -2796,7 +2796,7 @@ export interface Dedicated {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 }
             }
@@ -2809,7 +2809,7 @@ export interface Dedicated {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(taskId: number): {
                     /**
                      * Get this object properties
@@ -2819,7 +2819,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     cancel: {
                         /**
                          * this action stop the task progression if it's possible
@@ -2829,7 +2829,7 @@ export interface Dedicated {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }
@@ -2842,7 +2842,7 @@ export interface Dedicated {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             virtualMac: {
                 /**
@@ -2858,7 +2858,7 @@ export interface Dedicated {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(macAddress: string): {
                     /**
                      * Get this object properties
@@ -2868,7 +2868,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     virtualAddress: {
                         /**
                          * List of IPs associated to this Virtual MAC
@@ -2883,7 +2883,7 @@ export interface Dedicated {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         $(ipAddress: string): {
                             /**
                              * Remove this ip from virtual mac , if you remove the last linked Ip, virtualmac will be deleted
@@ -2898,7 +2898,7 @@ export interface Dedicated {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         };
                     }
                 };
@@ -2912,7 +2912,7 @@ export interface Dedicated {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(uuid: string): {
                     /**
                      * Get this object properties
@@ -2927,7 +2927,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     disable: {
                         /**
                          * Disable this VirtualNetworkInterface
@@ -2937,7 +2937,7 @@ export interface Dedicated {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     enable: {
                         /**
@@ -2948,7 +2948,7 @@ export interface Dedicated {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }
@@ -2961,7 +2961,7 @@ export interface Dedicated {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(vrack: string): {
                     /**
                      * remove this server from this vrack
@@ -2976,7 +2976,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     mrtg: {
                         /**
                          * Retrieve vrack traffic graph values
@@ -2986,7 +2986,7 @@ export interface Dedicated {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }

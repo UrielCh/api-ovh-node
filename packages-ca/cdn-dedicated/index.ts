@@ -1,4 +1,4 @@
-import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
+import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /cdn/dedicated Models
@@ -224,7 +224,7 @@ export interface Cdn {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         pops: {
             /**
              * List of CDN Pops
@@ -234,7 +234,7 @@ export interface Cdn {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(name: string): {
                 /**
                  * Get this object properties
@@ -244,7 +244,7 @@ export interface Cdn {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
         $(serviceName: string): {
@@ -256,7 +256,7 @@ export interface Cdn {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             domains: {
                 /**
                  * Domains associated to this anycast
@@ -271,7 +271,7 @@ export interface Cdn {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(domain: string): {
                     /**
                      * Remove a domain from the CDN
@@ -291,7 +291,7 @@ export interface Cdn {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     backends: {
                         /**
                          * Backend associated to the domain
@@ -306,7 +306,7 @@ export interface Cdn {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         $(ip: string): {
                             /**
                              * Remove a backend IP
@@ -321,7 +321,7 @@ export interface Cdn {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         };
                     }
                     cacheRules: {
@@ -338,7 +338,7 @@ export interface Cdn {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         $(cacheRuleId: number): {
                             /**
                              * Remove cache rule
@@ -358,7 +358,7 @@ export interface Cdn {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             flush: {
                                 /**
                                  * Flush the cache
@@ -368,7 +368,7 @@ export interface Cdn {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             }
                             tasks: {
                                 /**
@@ -379,7 +379,7 @@ export interface Cdn {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                 $(taskId: number): {
                                     /**
                                      * Get this object properties
@@ -389,7 +389,7 @@ export interface Cdn {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                 };
                             }
                         };
@@ -403,7 +403,7 @@ export interface Cdn {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     logs: {
                         /**
@@ -414,7 +414,7 @@ export interface Cdn {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     statistics: {
                         /**
@@ -425,7 +425,7 @@ export interface Cdn {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     tasks: {
                         /**
@@ -436,7 +436,7 @@ export interface Cdn {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         $(taskId: number): {
                             /**
                              * Get this object properties
@@ -446,7 +446,7 @@ export interface Cdn {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         };
                     }
                 };
@@ -460,7 +460,7 @@ export interface Cdn {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             quota: {
                 /**
@@ -471,7 +471,7 @@ export interface Cdn {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             serviceInfos: {
                 /**
@@ -487,7 +487,7 @@ export interface Cdn {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             ssl: {
                 /**
@@ -508,7 +508,7 @@ export interface Cdn {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 tasks: {
                     /**
                      * Task associated to the ssl
@@ -518,7 +518,7 @@ export interface Cdn {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(taskId: number): {
                         /**
                          * Get this object properties
@@ -528,7 +528,7 @@ export interface Cdn {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     };
                 }
                 update: {
@@ -540,7 +540,7 @@ export interface Cdn {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
         };

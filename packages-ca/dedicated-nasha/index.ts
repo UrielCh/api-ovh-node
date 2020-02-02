@@ -1,4 +1,4 @@
-import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
+import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /dedicated/nasha Models
@@ -269,7 +269,7 @@ export interface Dedicated {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         availabilities: {
             /**
              * Get availabilities of nasha offer
@@ -279,7 +279,7 @@ export interface Dedicated {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         $(serviceName: string): {
             /**
@@ -295,7 +295,7 @@ export interface Dedicated {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             confirmTermination: {
                 /**
                  * Confirm termination of your service
@@ -305,7 +305,7 @@ export interface Dedicated {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             partition: {
                 /**
@@ -321,7 +321,7 @@ export interface Dedicated {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(partitionName: string): {
                     /**
                      * Delete this partition
@@ -341,7 +341,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     access: {
                         /**
                          * get ACL for this partition
@@ -356,7 +356,7 @@ export interface Dedicated {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         $(ip: string): {
                             /**
                              * Delete an ACL entry
@@ -371,7 +371,7 @@ export interface Dedicated {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         };
                     }
                     authorizableBlocks: {
@@ -383,7 +383,7 @@ export interface Dedicated {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     authorizableIps: {
                         /**
@@ -394,7 +394,7 @@ export interface Dedicated {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     customSnapshot: {
                         /**
@@ -410,7 +410,7 @@ export interface Dedicated {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         $(name: string): {
                             /**
                              * Delete a given snapshot
@@ -425,7 +425,7 @@ export interface Dedicated {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         };
                     }
                     options: {
@@ -442,7 +442,7 @@ export interface Dedicated {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     quota: {
                         /**
@@ -458,7 +458,7 @@ export interface Dedicated {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         $(uid: number): {
                             /**
                              * Delete a given quota
@@ -473,7 +473,7 @@ export interface Dedicated {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         };
                     }
                     snapshot: {
@@ -490,7 +490,7 @@ export interface Dedicated {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         $(snapshotType: dedicated.storage.SnapshotEnum): {
                             /**
                              * Delete a given snapshot
@@ -505,7 +505,7 @@ export interface Dedicated {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         };
                     }
                     use: {
@@ -517,7 +517,7 @@ export interface Dedicated {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }
@@ -535,7 +535,7 @@ export interface Dedicated {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             task: {
                 /**
@@ -546,7 +546,7 @@ export interface Dedicated {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(taskId: number): {
                     /**
                      * Get this object properties
@@ -556,7 +556,7 @@ export interface Dedicated {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 };
             }
             terminate: {
@@ -568,7 +568,7 @@ export interface Dedicated {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             use: {
                 /**
@@ -579,7 +579,7 @@ export interface Dedicated {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             vrack: {
                 /**
@@ -590,7 +590,7 @@ export interface Dedicated {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         };
     }

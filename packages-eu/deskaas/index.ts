@@ -1,4 +1,4 @@
-import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
+import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /deskaas Models
@@ -165,7 +165,7 @@ export interface Deskaas {
     /**
      * Controle cache
      */
-    $cache(param?: ICacheOptions): Promise<any>;
+    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
     $(serviceName: string): {
         /**
          * Get this object properties
@@ -175,7 +175,7 @@ export interface Deskaas {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         changeAlias: {
             /**
              * Change the Virtual Desktop alias
@@ -185,7 +185,7 @@ export interface Deskaas {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         changeContact: {
             /**
@@ -196,7 +196,7 @@ export interface Deskaas {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         confirmTermination: {
             /**
@@ -207,7 +207,7 @@ export interface Deskaas {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         console: {
             /**
@@ -218,7 +218,7 @@ export interface Deskaas {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         passwordPolicy: {
             /**
@@ -229,7 +229,7 @@ export interface Deskaas {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         reboot: {
             /**
@@ -240,7 +240,7 @@ export interface Deskaas {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         refresh: {
             /**
@@ -251,7 +251,7 @@ export interface Deskaas {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         serviceInfos: {
             /**
@@ -267,7 +267,7 @@ export interface Deskaas {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         task: {
             /**
@@ -278,7 +278,7 @@ export interface Deskaas {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(taskId: number): {
                 /**
                  * Get this object properties
@@ -288,7 +288,7 @@ export interface Deskaas {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
         terminate: {
@@ -300,7 +300,7 @@ export interface Deskaas {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         upgrade: {
             /**
@@ -311,7 +311,7 @@ export interface Deskaas {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         user: {
             /**
@@ -322,7 +322,7 @@ export interface Deskaas {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             changePassword: {
                 /**
                  * Change Desktop As A Service user password
@@ -332,7 +332,7 @@ export interface Deskaas {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             changeProperties: {
                 /**
@@ -343,7 +343,7 @@ export interface Deskaas {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             task: {
                 /**
@@ -354,7 +354,7 @@ export interface Deskaas {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(taskId: number): {
                     /**
                      * Get this object properties
@@ -364,7 +364,7 @@ export interface Deskaas {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 };
             }
         }

@@ -1,4 +1,4 @@
-import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
+import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /hpcspot Models
@@ -111,7 +111,7 @@ export interface Hpcspot {
     /**
      * Controle cache
      */
-    $cache(param?: ICacheOptions): Promise<any>;
+    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
     $(serviceName: string): {
         /**
          * Get this object properties
@@ -121,7 +121,7 @@ export interface Hpcspot {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         consumption: {
             /**
              * Details of the consumption of your account
@@ -131,7 +131,7 @@ export interface Hpcspot {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(id: number): {
                 /**
                  * Get this object properties
@@ -141,7 +141,7 @@ export interface Hpcspot {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
         serviceInfos: {
@@ -158,7 +158,7 @@ export interface Hpcspot {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
     };
 }

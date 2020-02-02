@@ -1,4 +1,4 @@
-import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
+import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /overTheBox Models
@@ -272,7 +272,7 @@ export interface OverTheBox {
     /**
      * Controle cache
      */
-    $cache(param?: ICacheOptions): Promise<any>;
+    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
     availableOffers: {
         /**
          * List the available offers for the new call
@@ -282,7 +282,7 @@ export interface OverTheBox {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
     }
     devices: {
         /**
@@ -293,7 +293,7 @@ export interface OverTheBox {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
     }
     $(serviceName: string): {
         /**
@@ -314,7 +314,7 @@ export interface OverTheBox {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         availableReleaseChannels: {
             /**
              * List available release channels for this service
@@ -324,7 +324,7 @@ export interface OverTheBox {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         backups: {
             /**
@@ -335,7 +335,7 @@ export interface OverTheBox {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(backupId: string): {
                 /**
                  * Get this object properties
@@ -345,7 +345,7 @@ export interface OverTheBox {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
         cancelResiliation: {
@@ -357,7 +357,7 @@ export interface OverTheBox {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         changeContact: {
             /**
@@ -368,7 +368,7 @@ export interface OverTheBox {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         device: {
             /**
@@ -384,7 +384,7 @@ export interface OverTheBox {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             actions: {
                 /**
                  * List of actions scheduled for this device
@@ -399,7 +399,7 @@ export interface OverTheBox {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(actionId: string): {
                     /**
                      * Get this object properties
@@ -409,7 +409,7 @@ export interface OverTheBox {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 };
             }
             availableActions: {
@@ -421,7 +421,7 @@ export interface OverTheBox {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             backup: {
                 /**
@@ -432,7 +432,7 @@ export interface OverTheBox {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             logs: {
                 /**
@@ -443,7 +443,7 @@ export interface OverTheBox {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             restoreBackup: {
                 /**
@@ -454,7 +454,7 @@ export interface OverTheBox {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         }
         linkDevice: {
@@ -466,7 +466,7 @@ export interface OverTheBox {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         migration: {
             offers: {
@@ -478,7 +478,7 @@ export interface OverTheBox {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         }
         remoteAccesses: {
@@ -495,7 +495,7 @@ export interface OverTheBox {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(remoteAccessId: string): {
                 /**
                  * Delete a remote access
@@ -510,7 +510,7 @@ export interface OverTheBox {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 authorize: {
                     /**
                      * Authorize the remote access
@@ -520,7 +520,7 @@ export interface OverTheBox {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -538,7 +538,7 @@ export interface OverTheBox {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         tasks: {
             /**
@@ -549,7 +549,7 @@ export interface OverTheBox {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(taskId: string): {
                 /**
                  * Get this object properties
@@ -559,7 +559,7 @@ export interface OverTheBox {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
     };

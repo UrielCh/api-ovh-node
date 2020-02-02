@@ -1,4 +1,4 @@
-import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
+import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /vrack Models
@@ -224,7 +224,7 @@ export interface Vrack {
     /**
      * Controle cache
      */
-    $cache(param?: ICacheOptions): Promise<any>;
+    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
     $(serviceName: string): {
         /**
          * Get this object properties
@@ -239,7 +239,7 @@ export interface Vrack {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         allowedServices: {
             /**
              * List all services allowed in this vrack
@@ -249,7 +249,7 @@ export interface Vrack {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         cloudProject: {
             /**
@@ -265,7 +265,7 @@ export interface Vrack {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(project: string): {
                 /**
                  * remove this publicCloud project from this vrack
@@ -280,7 +280,7 @@ export interface Vrack {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
         dedicatedCloud: {
@@ -297,7 +297,7 @@ export interface Vrack {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(dedicatedCloud: string): {
                 /**
                  * remove this dedicatedCloud (VmNetwork) from this vrack
@@ -312,7 +312,7 @@ export interface Vrack {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
         dedicatedCloudDatacenter: {
@@ -324,7 +324,7 @@ export interface Vrack {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(datacenter: string): {
                 /**
                  * Get this object properties
@@ -334,7 +334,7 @@ export interface Vrack {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 allowedVrack: {
                     /**
                      * Vracks allowed for your dedicatedCloud datacenter
@@ -344,7 +344,7 @@ export interface Vrack {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 move: {
                     /**
@@ -355,7 +355,7 @@ export interface Vrack {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -368,7 +368,7 @@ export interface Vrack {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(name: string): {
                 /**
                  * Get this object properties
@@ -383,7 +383,7 @@ export interface Vrack {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
         dedicatedServer: {
@@ -400,7 +400,7 @@ export interface Vrack {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(dedicatedServer: string): {
                 /**
                  * remove this server from this vrack
@@ -415,7 +415,7 @@ export interface Vrack {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 mrtg: {
                     /**
                      * Retrieve vrack traffic graph values
@@ -425,7 +425,7 @@ export interface Vrack {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -443,7 +443,7 @@ export interface Vrack {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(dedicatedServerInterface: string): {
                 /**
                  * remove this server interface from this vrack
@@ -458,7 +458,7 @@ export interface Vrack {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
         dedicatedServerInterfaceDetails: {
@@ -470,7 +470,7 @@ export interface Vrack {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         ip: {
             /**
@@ -486,7 +486,7 @@ export interface Vrack {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(ip: string): {
                 /**
                  * remove this IP block from this vrack
@@ -501,7 +501,7 @@ export interface Vrack {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 announceInZone: {
                     /**
                      * Announce IP to zone for vrack
@@ -511,7 +511,7 @@ export interface Vrack {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 availableZone: {
                     /**
@@ -522,7 +522,7 @@ export interface Vrack {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -540,7 +540,7 @@ export interface Vrack {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(ipLoadbalancing: string): {
                 /**
                  * remove this ipLoadbalancing from this vrack
@@ -555,7 +555,7 @@ export interface Vrack {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
         legacyVrack: {
@@ -572,7 +572,7 @@ export interface Vrack {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(legacyVrack: string): {
                 /**
                  * remove this legacy vrack (vrackXXXX) from this vrack (pn-XXXX)
@@ -587,7 +587,7 @@ export interface Vrack {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
         serviceInfos: {
@@ -599,7 +599,7 @@ export interface Vrack {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         task: {
             /**
@@ -610,7 +610,7 @@ export interface Vrack {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(taskId: number): {
                 /**
                  * Get this object properties
@@ -620,7 +620,7 @@ export interface Vrack {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
     };

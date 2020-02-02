@@ -1,4 +1,4 @@
-import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
+import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /store Models
@@ -108,7 +108,7 @@ export interface Store {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         $(contactId: string): {
             /**
              * Remove an existing contact
@@ -128,7 +128,7 @@ export interface Store {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             document: {
                 /**
                  * List document associated with contact
@@ -143,7 +143,7 @@ export interface Store {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(documentId: string): {
                     /**
                      * Unlink a document from a contact
@@ -153,7 +153,7 @@ export interface Store {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 };
             }
         };
@@ -172,7 +172,7 @@ export interface Store {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         cors: {
             /**
              * Add CORS support on your container
@@ -182,7 +182,7 @@ export interface Store {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         $(documentId: string): {
             /**
@@ -198,7 +198,7 @@ export interface Store {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         };
     }
     partner: {
@@ -215,7 +215,7 @@ export interface Store {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         $(partnerId: string): {
             /**
              * Delete partner
@@ -235,7 +235,7 @@ export interface Store {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             document: {
                 /**
                  * List document associated with partner
@@ -250,7 +250,7 @@ export interface Store {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(documentId: string): {
                     /**
                      * Unlink a document from a partner
@@ -260,7 +260,7 @@ export interface Store {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 };
             }
             product: {
@@ -277,7 +277,7 @@ export interface Store {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(productId: string): {
                     /**
                      * Delete product
@@ -297,7 +297,7 @@ export interface Store {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     document: {
                         /**
                          * List document associated with product
@@ -312,7 +312,7 @@ export interface Store {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         $(documentId: string): {
                             /**
                              * Unlink a document from a product
@@ -322,7 +322,7 @@ export interface Store {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         };
                     }
                 };

@@ -1,4 +1,4 @@
-import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
+import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /order Models
@@ -796,7 +796,7 @@ export interface Order {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         $(cartId: string): {
             /**
              * Delete a cart
@@ -816,7 +816,7 @@ export interface Order {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             assign: {
                 /**
                  * Assign a shopping cart to an loggedin client
@@ -826,7 +826,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             baremetalServers: {
                 /**
@@ -842,7 +842,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
                      * Get informations about baremetal server options
@@ -857,7 +857,7 @@ export interface Order {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
             checkout: {
@@ -874,7 +874,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             cloud: {
                 /**
@@ -890,7 +890,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
                      * Get informations about Public Cloud options
@@ -905,7 +905,7 @@ export interface Order {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
             coupon: {
@@ -927,7 +927,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             dedicated: {
                 /**
@@ -943,7 +943,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
                      * Get informations about dedicated server options
@@ -958,7 +958,7 @@ export interface Order {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
             discover: {
@@ -975,7 +975,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
                      * Get informations about Dedicated Discover server options
@@ -990,7 +990,7 @@ export interface Order {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
             ip: {
@@ -1007,7 +1007,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
                      * Get informations about IP addresses options
@@ -1022,7 +1022,7 @@ export interface Order {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
             ipLoadbalancing: {
@@ -1039,7 +1039,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
                      * Get informations about IP Load-Balancing options
@@ -1054,7 +1054,7 @@ export interface Order {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
             item: {
@@ -1066,7 +1066,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(itemId: number): {
                     /**
                      * Delete an item from a cart
@@ -1086,7 +1086,7 @@ export interface Order {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     configuration: {
                         /**
                          * Retrieve all configuration item of the cart item
@@ -1101,7 +1101,7 @@ export interface Order {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         $(configurationId: number): {
                             /**
                              * Delete configuration item
@@ -1116,7 +1116,7 @@ export interface Order {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         };
                     }
                     requiredConfiguration: {
@@ -1128,7 +1128,7 @@ export interface Order {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }
@@ -1146,7 +1146,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             licenseDirectadmin: {
                 /**
@@ -1162,7 +1162,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             licensePlesk: {
                 /**
@@ -1178,7 +1178,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
                      * Get informations about Plesk license options
@@ -1193,7 +1193,7 @@ export interface Order {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
             licenseSqlServer: {
@@ -1210,7 +1210,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             licenseVirtuozzo: {
                 /**
@@ -1226,7 +1226,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
                      * Get informations about Virtuozzo license options
@@ -1241,7 +1241,7 @@ export interface Order {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
             licenseWindows: {
@@ -1258,7 +1258,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             licenseWorklight: {
                 /**
@@ -1274,7 +1274,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             licensecPanel: {
                 /**
@@ -1290,7 +1290,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             ovhCloudConnect: {
                 /**
@@ -1306,7 +1306,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             sslComodo: {
                 /**
@@ -1322,7 +1322,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             summary: {
                 /**
@@ -1333,7 +1333,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             veeamEnterprise: {
                 /**
@@ -1349,7 +1349,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
                      * Get informations about Veeam Enterprise options
@@ -1364,7 +1364,7 @@ export interface Order {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
             vps: {
@@ -1381,7 +1381,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
                      * Get informations about VPS options
@@ -1396,7 +1396,7 @@ export interface Order {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
             vrack: {
@@ -1413,7 +1413,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         };
     }
@@ -1427,7 +1427,7 @@ export interface Order {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(serviceName: string): {
                 /**
                  * Get informations about additional baremetal servers offer for your service
@@ -1442,7 +1442,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
         cloud: {
@@ -1454,7 +1454,7 @@ export interface Order {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(serviceName: string): {
                 /**
                  * Get informations about additional Cloud offer for your service
@@ -1469,7 +1469,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
         dedicated: {
@@ -1481,7 +1481,7 @@ export interface Order {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(serviceName: string): {
                 /**
                  * Get informations about additional dedicated offer for your service
@@ -1496,7 +1496,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
         ipLoadbalancing: {
@@ -1508,7 +1508,7 @@ export interface Order {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(serviceName: string): {
                 /**
                  * Get informations about additional IP Load-Balancing offer for your service
@@ -1523,7 +1523,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
         privateCloud: {
@@ -1535,7 +1535,7 @@ export interface Order {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(serviceName: string): {
                 /**
                  * Get informations about additional Private Cloud offer for your service
@@ -1550,7 +1550,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
         privateCloudReseller: {
@@ -1562,7 +1562,7 @@ export interface Order {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(serviceName: string): {
                 /**
                  * Get informations about additional Private Cloud offer for your service
@@ -1577,7 +1577,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
         privateCloudResellerEnterprise: {
@@ -1589,7 +1589,7 @@ export interface Order {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(serviceName: string): {
                 /**
                  * Get informations about additional Private Cloud Enterprise offer for your service
@@ -1604,7 +1604,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
     }
@@ -1618,7 +1618,7 @@ export interface Order {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             cloud: {
                 /**
                  * Retrieve information of Public Cloud catalog
@@ -1628,7 +1628,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             dedicated: {
                 /**
@@ -1639,7 +1639,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             discover: {
                 /**
@@ -1650,7 +1650,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             ip: {
                 /**
@@ -1661,7 +1661,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             licenseCloudLinux: {
                 /**
@@ -1672,7 +1672,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             licenseDirectadmin: {
                 /**
@@ -1683,7 +1683,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             licensePlesk: {
                 /**
@@ -1694,7 +1694,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             licenseSqlServer: {
                 /**
@@ -1705,7 +1705,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             licenseVirtuozzo: {
                 /**
@@ -1716,7 +1716,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             licenseWindows: {
                 /**
@@ -1727,7 +1727,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             licenseWorklight: {
                 /**
@@ -1738,7 +1738,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             licensecPanel: {
                 /**
@@ -1749,7 +1749,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             vps: {
                 /**
@@ -1760,7 +1760,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         }
         public: {
@@ -1773,7 +1773,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             cloud: {
                 /**
@@ -1784,7 +1784,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             enterpriseCloudDatabases: {
                 /**
@@ -1795,7 +1795,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             privateSQL: {
                 /**
@@ -1806,7 +1806,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             vps: {
                 /**
@@ -1817,7 +1817,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             webHosting: {
                 /**
@@ -1828,7 +1828,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         }
     }
@@ -1842,7 +1842,7 @@ export interface Order {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(serviceName: string): {
                 /**
                  * Retrieve available offers to upgrade your service to
@@ -1852,7 +1852,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(planCode: string): {
                     /**
                      * Get a provisional order for the selected upgrade of your service
@@ -1867,7 +1867,7 @@ export interface Order {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 };
             };
         }
@@ -1880,7 +1880,7 @@ export interface Order {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(serviceName: string): {
                 /**
                  * Retrieve available offers to upgrade your service to
@@ -1890,7 +1890,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(planCode: string): {
                     /**
                      * Get a provisional order for the selected upgrade of your service
@@ -1905,7 +1905,7 @@ export interface Order {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 };
             };
         }
@@ -1918,7 +1918,7 @@ export interface Order {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(serviceName: string): {
                 /**
                  * Retrieve available offers to upgrade your service to
@@ -1928,7 +1928,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(planCode: string): {
                     /**
                      * Get a provisional order for the selected upgrade of your service
@@ -1943,7 +1943,7 @@ export interface Order {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 };
             };
         }
@@ -1956,7 +1956,7 @@ export interface Order {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(serviceName: string): {
                 /**
                  * Retrieve available offers to upgrade your service to
@@ -1966,7 +1966,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(planCode: string): {
                     /**
                      * Get a provisional order for the selected upgrade of your service
@@ -1981,7 +1981,7 @@ export interface Order {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 };
             };
         }

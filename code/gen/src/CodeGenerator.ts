@@ -22,7 +22,7 @@ export class CodeGenerator {
         if (!this.schema)
             await this.loadSchema();
         // start generation
-        let code = `import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';${EOL}${EOL}/**${EOL}`;
+        let code = `import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-api/common';${EOL}${EOL}/**${EOL}`;
         code += ` * START API ${this.api} Models${EOL}`;
         code += ` * Source: ${this.gen.getFullPath(this.api)}${EOL} */${EOL}`;
 
@@ -469,7 +469,7 @@ export class CodeGenerator {
             code += `${ident}/**${EOL}`;
             code += `${ident} * Controle cache${EOL}`;
             code += `${ident} */${EOL}`;
-            code += `${ident}$cache(param?: ICacheOptions): Promise<any>;${EOL}`;
+            code += `${ident}$cache(param?: ICacheOptions | CacheAction): Promise<any>;${EOL}`;
 
         }
 

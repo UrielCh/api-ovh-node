@@ -1,4 +1,4 @@
-import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
+import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /ip Models
@@ -591,7 +591,7 @@ export interface Ip {
     /**
      * Controle cache
      */
-    $cache(param?: ICacheOptions): Promise<any>;
+    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
     loadBalancing: {
         /**
          * List available services
@@ -601,7 +601,7 @@ export interface Ip {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         $(serviceName: string): {
             /**
              * Get this object properties
@@ -611,7 +611,7 @@ export interface Ip {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             allowedBackends: {
                 /**
                  * List of backends you can attach to your IP
@@ -621,7 +621,7 @@ export interface Ip {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             backend: {
                 /**
@@ -637,7 +637,7 @@ export interface Ip {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(backend: string): {
                     /**
                      * Remove a backend IP
@@ -657,7 +657,7 @@ export interface Ip {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     backupState: {
                         /**
                          * Set or unset the backend as a backup of another backend. Requests will be directed to the backup only if the main backend is in probe fail
@@ -667,7 +667,7 @@ export interface Ip {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     setWeight: {
                         /**
@@ -678,7 +678,7 @@ export interface Ip {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }
@@ -691,7 +691,7 @@ export interface Ip {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             internalNatIp: {
                 /**
@@ -702,7 +702,7 @@ export interface Ip {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             portsRedirection: {
                 /**
@@ -718,7 +718,7 @@ export interface Ip {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(srcPort: ip.LoadBalancingAdditionalPortEnum): {
                     /**
                      * Delete a port redirection
@@ -733,7 +733,7 @@ export interface Ip {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 };
             }
             probeIp: {
@@ -745,7 +745,7 @@ export interface Ip {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             restoreSsl: {
                 /**
@@ -756,7 +756,7 @@ export interface Ip {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             serviceInfos: {
                 /**
@@ -772,7 +772,7 @@ export interface Ip {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             stickiness: {
                 /**
@@ -783,7 +783,7 @@ export interface Ip {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             switchToIplbNextGenerationApi: {
                 /**
@@ -794,7 +794,7 @@ export interface Ip {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             task: {
                 /**
@@ -805,7 +805,7 @@ export interface Ip {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(taskId: number): {
                     /**
                      * Get this object properties
@@ -815,7 +815,7 @@ export interface Ip {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 };
             }
         };
@@ -829,7 +829,7 @@ export interface Ip {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         $(serviceName: string): {
             /**
              * Get this object properties
@@ -844,7 +844,7 @@ export interface Ip {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             changeContact: {
                 /**
                  * Launch a contact change procedure
@@ -854,7 +854,7 @@ export interface Ip {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             confirmTermination: {
                 /**
@@ -865,7 +865,7 @@ export interface Ip {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             serviceInfos: {
                 /**
@@ -876,7 +876,7 @@ export interface Ip {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             terminate: {
                 /**
@@ -887,7 +887,7 @@ export interface Ip {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         };
     }
@@ -905,7 +905,7 @@ export interface Ip {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         antihack: {
             /**
              * Anti-Hack blocked IP
@@ -915,7 +915,7 @@ export interface Ip {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(ipBlocked: string): {
                 /**
                  * Get this object properties
@@ -925,7 +925,7 @@ export interface Ip {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 unblock: {
                     /**
                      * Unblock this IP
@@ -935,7 +935,7 @@ export interface Ip {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -948,7 +948,7 @@ export interface Ip {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(ipBlocked: string): {
                 /**
                  * Get this object properties
@@ -958,7 +958,7 @@ export interface Ip {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 unblock: {
                     /**
                      * Unblock this IP
@@ -968,7 +968,7 @@ export interface Ip {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -981,7 +981,7 @@ export interface Ip {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         delegation: {
             /**
@@ -997,7 +997,7 @@ export interface Ip {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(target: string): {
                 /**
                  * Delete a target for reverse delegation on IPv6 subnet
@@ -1012,7 +1012,7 @@ export interface Ip {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
         firewall: {
@@ -1029,7 +1029,7 @@ export interface Ip {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(ipOnFirewall: string): {
                 /**
                  * AntiDDOS option. Delete IP and rules from firewall
@@ -1049,7 +1049,7 @@ export interface Ip {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 rule: {
                     /**
                      * Rules for this IP
@@ -1064,7 +1064,7 @@ export interface Ip {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(sequence: number): {
                         /**
                          * AntiDDOS option. Delete rule
@@ -1079,7 +1079,7 @@ export interface Ip {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     };
                 }
             };
@@ -1093,7 +1093,7 @@ export interface Ip {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(ipOnGame: string): {
                 /**
                  * Get this object properties
@@ -1108,7 +1108,7 @@ export interface Ip {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 rule: {
                     /**
                      * IDs of rules configured for this IP
@@ -1123,7 +1123,7 @@ export interface Ip {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(id: number): {
                         /**
                          * Delete rule
@@ -1138,7 +1138,7 @@ export interface Ip {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     };
                 }
             };
@@ -1153,7 +1153,7 @@ export interface Ip {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             cpanel: {
                 /**
@@ -1164,7 +1164,7 @@ export interface Ip {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             directadmin: {
                 /**
@@ -1175,7 +1175,7 @@ export interface Ip {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             plesk: {
                 /**
@@ -1186,7 +1186,7 @@ export interface Ip {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             sqlserver: {
                 /**
@@ -1197,7 +1197,7 @@ export interface Ip {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             virtuozzo: {
                 /**
@@ -1208,7 +1208,7 @@ export interface Ip {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             windows: {
                 /**
@@ -1219,7 +1219,7 @@ export interface Ip {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             worklight: {
                 /**
@@ -1230,7 +1230,7 @@ export interface Ip {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         }
         migrationToken: {
@@ -1247,7 +1247,7 @@ export interface Ip {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         mitigation: {
             /**
@@ -1263,7 +1263,7 @@ export interface Ip {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(ipOnMitigation: string): {
                 /**
                  * AntiDDOS option. Delete IP from mitigation
@@ -1283,7 +1283,7 @@ export interface Ip {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 stats: {
                     /**
                      * AntiDDOS option. Get statistics about your traffic in and out during this mitigation
@@ -1293,7 +1293,7 @@ export interface Ip {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 topStream: {
                     /**
@@ -1304,7 +1304,7 @@ export interface Ip {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -1322,7 +1322,7 @@ export interface Ip {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(ipMitigationProfile: string): {
                 /**
                  * Delete mitigation profile
@@ -1342,7 +1342,7 @@ export interface Ip {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
         move: {
@@ -1359,7 +1359,7 @@ export interface Ip {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         park: {
             /**
@@ -1370,7 +1370,7 @@ export interface Ip {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         phishing: {
             /**
@@ -1381,7 +1381,7 @@ export interface Ip {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(id: number): {
                 /**
                  * Get this object properties
@@ -1391,7 +1391,7 @@ export interface Ip {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
         reverse: {
@@ -1408,7 +1408,7 @@ export interface Ip {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(ipReverse: string): {
                 /**
                  * Delete a reverse on one IP
@@ -1423,7 +1423,7 @@ export interface Ip {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
         ripe: {
@@ -1440,7 +1440,7 @@ export interface Ip {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         spam: {
             /**
@@ -1451,7 +1451,7 @@ export interface Ip {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(ipSpamming: string): {
                 /**
                  * Get this object properties
@@ -1461,7 +1461,7 @@ export interface Ip {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 stats: {
                     /**
                      * Get statistics about the email traffic
@@ -1471,7 +1471,7 @@ export interface Ip {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 unblock: {
                     /**
@@ -1482,7 +1482,7 @@ export interface Ip {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -1495,7 +1495,7 @@ export interface Ip {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(taskId: number): {
                 /**
                  * Get this object properties
@@ -1505,7 +1505,7 @@ export interface Ip {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
         terminate: {
@@ -1517,7 +1517,7 @@ export interface Ip {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
     };
 }

@@ -1,4 +1,4 @@
-import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
+import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /cluster/hadoop Models
@@ -217,7 +217,7 @@ export interface Cluster {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         orderInformations: {
             /**
              * Get informations about the order of one cluster
@@ -227,7 +227,7 @@ export interface Cluster {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         orderableNodeProfiles: {
             /**
@@ -238,7 +238,7 @@ export interface Cluster {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         $(serviceName: string): {
             /**
@@ -249,7 +249,7 @@ export interface Cluster {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             consumptions: {
                 /**
                  * Get the current consumptions that you will billed for on the next bill
@@ -259,7 +259,7 @@ export interface Cluster {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             networkAcl: {
                 /**
@@ -275,7 +275,7 @@ export interface Cluster {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(block: string): {
                     /**
                      * Remove this ACL
@@ -295,7 +295,7 @@ export interface Cluster {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 };
             }
             node: {
@@ -307,7 +307,7 @@ export interface Cluster {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(hostname: string): {
                     /**
                      * Remove this Node from the Cluster
@@ -322,7 +322,7 @@ export interface Cluster {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     decommission: {
                         /**
                          * Decommission the node and all the services on it
@@ -332,7 +332,7 @@ export interface Cluster {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     recommission: {
                         /**
@@ -343,7 +343,7 @@ export interface Cluster {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     role: {
                         /**
@@ -359,7 +359,7 @@ export interface Cluster {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         $(type: cluster.hadoop.RoleTypeEnum): {
                             /**
                              * Remove this Role from the Node
@@ -374,7 +374,7 @@ export interface Cluster {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             restart: {
                                 /**
                                  * Restart the role on the node (THIS ACTION WILL RESTART OTHER DEPENDANT ROLES)
@@ -384,7 +384,7 @@ export interface Cluster {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             }
                             start: {
                                 /**
@@ -395,7 +395,7 @@ export interface Cluster {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             }
                             stop: {
                                 /**
@@ -406,7 +406,7 @@ export interface Cluster {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             }
                         };
                     }
@@ -421,7 +421,7 @@ export interface Cluster {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             nodeConsumptions: {
                 /**
@@ -432,7 +432,7 @@ export interface Cluster {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             orderNewNodeHourly: {
                 /**
@@ -443,7 +443,7 @@ export interface Cluster {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             orderableNodeProfiles: {
                 /**
@@ -454,7 +454,7 @@ export interface Cluster {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             restart: {
                 /**
@@ -465,7 +465,7 @@ export interface Cluster {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             service: {
                 restart: {
@@ -477,7 +477,7 @@ export interface Cluster {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 start: {
                     /**
@@ -488,7 +488,7 @@ export interface Cluster {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 stop: {
                     /**
@@ -499,7 +499,7 @@ export interface Cluster {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
             serviceInfos: {
@@ -516,7 +516,7 @@ export interface Cluster {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             start: {
                 /**
@@ -527,7 +527,7 @@ export interface Cluster {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             stop: {
                 /**
@@ -538,7 +538,7 @@ export interface Cluster {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             task: {
                 /**
@@ -549,7 +549,7 @@ export interface Cluster {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(taskId: number): {
                     /**
                      * Get this object properties
@@ -559,7 +559,7 @@ export interface Cluster {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 };
             }
             terminate: {
@@ -571,7 +571,7 @@ export interface Cluster {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             user: {
                 /**
@@ -587,7 +587,7 @@ export interface Cluster {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(username: string): {
                     /**
                      * Remove this User
@@ -607,7 +607,7 @@ export interface Cluster {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     resetPassword: {
                         /**
                          * Reset the password for a given Hadoop Cluster User
@@ -617,7 +617,7 @@ export interface Cluster {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }

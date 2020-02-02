@@ -1,4 +1,4 @@
-import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
+import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /order Models
@@ -227,7 +227,7 @@ export interface Order {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(serviceName: string): {
                 /**
                  * Get allowed options
@@ -237,7 +237,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 backupStorage: {
                     /**
                      * Get allowed durations for 'backupStorage' option
@@ -247,7 +247,7 @@ export interface Order {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(duration: string): {
                         /**
                          * Get prices and contracts information
@@ -262,7 +262,7 @@ export interface Order {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     };
                 }
                 failoverIP: {
@@ -274,7 +274,7 @@ export interface Order {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(duration: string): {
                         /**
                          * Get prices and contracts information
@@ -289,7 +289,7 @@ export interface Order {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     };
                 }
                 feature: {
@@ -301,7 +301,7 @@ export interface Order {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(duration: string): {
                         /**
                          * Get prices and contracts information
@@ -316,7 +316,7 @@ export interface Order {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     };
                 }
                 firewall: {
@@ -328,7 +328,7 @@ export interface Order {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(duration: string): {
                         /**
                          * Get prices and contracts information
@@ -343,7 +343,7 @@ export interface Order {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     };
                 }
                 ip: {
@@ -355,7 +355,7 @@ export interface Order {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(duration: string): {
                         /**
                          * Get prices and contracts information
@@ -370,7 +370,7 @@ export interface Order {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     };
                 }
                 ipMigration: {
@@ -382,7 +382,7 @@ export interface Order {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(duration: string): {
                         /**
                          * Get prices and contracts information
@@ -397,7 +397,7 @@ export interface Order {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     };
                 }
                 kvmExpress: {
@@ -409,7 +409,7 @@ export interface Order {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(duration: string): {
                         /**
                          * Get prices and contracts information
@@ -424,7 +424,7 @@ export interface Order {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     };
                 }
                 staticIP: {
@@ -436,7 +436,7 @@ export interface Order {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(duration: string): {
                         /**
                          * Get prices and contracts information
@@ -451,7 +451,7 @@ export interface Order {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     };
                 }
                 usbKey: {
@@ -463,7 +463,7 @@ export interface Order {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(duration: string): {
                         /**
                          * Get prices and contracts information
@@ -478,7 +478,7 @@ export interface Order {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     };
                 }
             };
@@ -495,7 +495,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(duration: string): {
                     /**
                      * Get prices and contracts information
@@ -510,7 +510,7 @@ export interface Order {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 };
             }
         }
@@ -523,7 +523,7 @@ export interface Order {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             new: {
                 /**
                  * Get allowed durations for 'new' option
@@ -533,7 +533,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(duration: string): {
                     /**
                      * Get prices and contracts information
@@ -548,7 +548,7 @@ export interface Order {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 };
             }
             $(serviceName: string): {
@@ -560,7 +560,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 upgrade: {
                     /**
                      * Get allowed durations for 'upgrade' option
@@ -570,7 +570,7 @@ export interface Order {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(duration: string): {
                         /**
                          * Get prices and contracts information
@@ -585,7 +585,7 @@ export interface Order {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     };
                 }
             };
@@ -600,7 +600,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(duration: string): {
                     /**
                      * Get prices and contracts information
@@ -615,7 +615,7 @@ export interface Order {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 };
             }
         }
@@ -628,7 +628,7 @@ export interface Order {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             new: {
                 /**
                  * Get allowed durations for 'new' option
@@ -638,7 +638,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(duration: string): {
                     /**
                      * Get prices and contracts information
@@ -653,7 +653,7 @@ export interface Order {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 };
             }
             $(serviceName: string): {
@@ -665,7 +665,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 upgrade: {
                     /**
                      * Get allowed durations for 'upgrade' option
@@ -675,7 +675,7 @@ export interface Order {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(duration: string): {
                         /**
                          * Get prices and contracts information
@@ -690,7 +690,7 @@ export interface Order {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     };
                 }
             };
@@ -704,7 +704,7 @@ export interface Order {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             new: {
                 /**
                  * Get allowed durations for 'new' option
@@ -714,7 +714,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(duration: string): {
                     /**
                      * Get prices and contracts information
@@ -729,7 +729,7 @@ export interface Order {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 };
             }
             $(serviceName: string): {
@@ -741,7 +741,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 upgrade: {
                     /**
                      * Get allowed durations for 'upgrade' option
@@ -751,7 +751,7 @@ export interface Order {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(duration: string): {
                         /**
                          * Get prices and contracts information
@@ -766,7 +766,7 @@ export interface Order {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     };
                 }
             };
@@ -780,7 +780,7 @@ export interface Order {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             new: {
                 /**
                  * Get allowed durations for 'new' option
@@ -790,7 +790,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(duration: string): {
                     /**
                      * Get prices and contracts information
@@ -805,7 +805,7 @@ export interface Order {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 };
             }
             $(serviceName: string): {
@@ -817,7 +817,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 upgrade: {
                     /**
                      * Get allowed durations for 'upgrade' option
@@ -827,7 +827,7 @@ export interface Order {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(duration: string): {
                         /**
                          * Get prices and contracts information
@@ -842,7 +842,7 @@ export interface Order {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     };
                 }
             };
@@ -856,7 +856,7 @@ export interface Order {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             new: {
                 /**
                  * Get allowed durations for 'new' option
@@ -866,7 +866,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(duration: string): {
                     /**
                      * Get prices and contracts information
@@ -881,7 +881,7 @@ export interface Order {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 };
             }
             $(serviceName: string): {
@@ -893,7 +893,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 upgrade: {
                     /**
                      * Get allowed durations for 'upgrade' option
@@ -903,7 +903,7 @@ export interface Order {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(duration: string): {
                         /**
                          * Get prices and contracts information
@@ -918,7 +918,7 @@ export interface Order {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     };
                 }
             };
@@ -933,7 +933,7 @@ export interface Order {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         $(serviceName: string): {
             /**
              * Get allowed options
@@ -943,7 +943,7 @@ export interface Order {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             upgrade: {
                 /**
                  * Get allowed durations for 'upgrade' option
@@ -953,7 +953,7 @@ export interface Order {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(duration: string): {
                     /**
                      * Get prices and contracts information
@@ -968,7 +968,7 @@ export interface Order {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 };
             }
         };

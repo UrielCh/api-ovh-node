@@ -1,4 +1,4 @@
-import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
+import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /horizonView Models
@@ -206,7 +206,7 @@ export interface HorizonView {
     /**
      * Controle cache
      */
-    $cache(param?: ICacheOptions): Promise<any>;
+    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
     $(serviceName: string): {
         /**
          * Get this object properties
@@ -216,7 +216,7 @@ export interface HorizonView {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         accessPoint: {
             /**
              * Pool associated with this Datacenter
@@ -231,7 +231,7 @@ export interface HorizonView {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(accessPointId: number): {
                 /**
                  * Delete this access point 
@@ -246,7 +246,7 @@ export interface HorizonView {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 changeSessionTimeout: {
                     /**
                      * Manage your session Timeout on Unified Access Gateway
@@ -256,7 +256,7 @@ export interface HorizonView {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 customerNetwork: {
                     /**
@@ -272,7 +272,7 @@ export interface HorizonView {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(customerNetworkId: number): {
                         /**
                          * Delete this Customer Network
@@ -287,7 +287,7 @@ export interface HorizonView {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     };
                 }
                 disableTwoFA: {
@@ -299,7 +299,7 @@ export interface HorizonView {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 disableWindowsUsernameOption: {
                     /**
@@ -310,7 +310,7 @@ export interface HorizonView {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 enableTwoFA: {
                     /**
@@ -321,7 +321,7 @@ export interface HorizonView {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 enableWindowsUsernameOption: {
                     /**
@@ -332,7 +332,7 @@ export interface HorizonView {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -345,7 +345,7 @@ export interface HorizonView {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         customerNetwork: {
             /**
@@ -361,7 +361,7 @@ export interface HorizonView {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(customerNetworkId: number): {
                 /**
                  * Delete this Customer Network
@@ -376,7 +376,7 @@ export interface HorizonView {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
         dedicatedHorizon: {
@@ -388,7 +388,7 @@ export interface HorizonView {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             customerUser: {
                 /**
                  * Account to access to your pool
@@ -403,7 +403,7 @@ export interface HorizonView {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(username: string): {
                     /**
                      * Delete this Customer User
@@ -418,7 +418,7 @@ export interface HorizonView {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     changePassword: {
                         /**
                          * Change Horizon View Customer  user password
@@ -428,7 +428,7 @@ export interface HorizonView {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }
@@ -441,7 +441,7 @@ export interface HorizonView {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             enableStorageAccelerator: {
                 /**
@@ -452,7 +452,7 @@ export interface HorizonView {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             task: {
                 /**
@@ -463,7 +463,7 @@ export interface HorizonView {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(taskId: number): {
                     /**
                      * Get this object properties
@@ -473,7 +473,7 @@ export interface HorizonView {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 };
             }
             user: {
@@ -485,7 +485,7 @@ export interface HorizonView {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 changePassword: {
                     /**
                      * Change Horizon View user password
@@ -495,7 +495,7 @@ export interface HorizonView {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 changeProperties: {
                     /**
@@ -506,7 +506,7 @@ export interface HorizonView {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
         }
@@ -524,7 +524,7 @@ export interface HorizonView {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(domainTrustId: number): {
                 /**
                  * Get this object properties
@@ -534,7 +534,7 @@ export interface HorizonView {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 addChildDomain: {
                     /**
                      * Add a child domain for this domain.
@@ -544,7 +544,7 @@ export interface HorizonView {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 addDomainController: {
                     /**
@@ -555,7 +555,7 @@ export interface HorizonView {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 addDomainUserOnComposer: {
                     /**
@@ -566,7 +566,7 @@ export interface HorizonView {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 createTrust: {
                     /**
@@ -577,7 +577,7 @@ export interface HorizonView {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -595,7 +595,7 @@ export interface HorizonView {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         terminate: {
             /**
@@ -606,7 +606,7 @@ export interface HorizonView {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
     };
 }

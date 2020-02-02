@@ -1,4 +1,4 @@
-import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
+import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /me Models
@@ -1733,7 +1733,7 @@ export interface Me {
     /**
      * Controle cache
      */
-    $cache(param?: ICacheOptions): Promise<any>;
+    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
     accessRestriction: {
         backupCode: {
             /**
@@ -1754,7 +1754,7 @@ export interface Me {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             disable: {
                 /**
                  * Disable this SOTP account
@@ -1764,7 +1764,7 @@ export interface Me {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             enable: {
                 /**
@@ -1775,7 +1775,7 @@ export interface Me {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             validate: {
                 /**
@@ -1786,7 +1786,7 @@ export interface Me {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         }
         developerMode: {
@@ -1803,7 +1803,7 @@ export interface Me {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         ip: {
             /**
@@ -1819,7 +1819,7 @@ export interface Me {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(id: number): {
                 /**
                  * Delete this restriction rule
@@ -1839,7 +1839,7 @@ export interface Me {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
         ipDefaultRule: {
@@ -1856,7 +1856,7 @@ export interface Me {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         sms: {
             /**
@@ -1872,7 +1872,7 @@ export interface Me {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(id: number): {
                 /**
                  * Delete this Two-Factor
@@ -1892,7 +1892,7 @@ export interface Me {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 disable: {
                     /**
                      * Disable this SMS account
@@ -1902,7 +1902,7 @@ export interface Me {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 enable: {
                     /**
@@ -1913,7 +1913,7 @@ export interface Me {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 sendCode: {
                     /**
@@ -1924,7 +1924,7 @@ export interface Me {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 validate: {
                     /**
@@ -1935,7 +1935,7 @@ export interface Me {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -1953,7 +1953,7 @@ export interface Me {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(id: number): {
                 /**
                  * Delete this Two-Factor
@@ -1973,7 +1973,7 @@ export interface Me {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 disable: {
                     /**
                      * Disable this TOTP account
@@ -1983,7 +1983,7 @@ export interface Me {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 enable: {
                     /**
@@ -1994,7 +1994,7 @@ export interface Me {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 validate: {
                     /**
@@ -2005,7 +2005,7 @@ export interface Me {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -2023,7 +2023,7 @@ export interface Me {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(id: number): {
                 /**
                  * Delete this Two-Factor
@@ -2043,7 +2043,7 @@ export interface Me {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 challenge: {
                     /**
                      * Get an U2F Challenge
@@ -2053,7 +2053,7 @@ export interface Me {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 disable: {
                     /**
@@ -2064,7 +2064,7 @@ export interface Me {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 enable: {
                     /**
@@ -2075,7 +2075,7 @@ export interface Me {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 validate: {
                     /**
@@ -2086,7 +2086,7 @@ export interface Me {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -2100,7 +2100,7 @@ export interface Me {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         $(id: number): {
             /**
              * Get this object properties
@@ -2110,7 +2110,7 @@ export interface Me {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             accept: {
                 /**
                  * Accept this contract
@@ -2120,7 +2120,7 @@ export interface Me {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             contract: {
                 /**
@@ -2131,7 +2131,7 @@ export interface Me {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         };
     }
@@ -2145,7 +2145,7 @@ export interface Me {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(applicationId: number): {
                 /**
                  * Remove this application. It will revoke all credential belonging to this application.
@@ -2160,7 +2160,7 @@ export interface Me {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
         credential: {
@@ -2172,7 +2172,7 @@ export interface Me {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(credentialId: number): {
                 /**
                  * Remove this credential
@@ -2192,7 +2192,7 @@ export interface Me {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 application: {
                     /**
                      * Get this object properties
@@ -2202,7 +2202,7 @@ export interface Me {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -2216,7 +2216,7 @@ export interface Me {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
     }
     bill: {
         /**
@@ -2227,7 +2227,7 @@ export interface Me {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         $(billId: string): {
             /**
              * Get this object properties
@@ -2237,7 +2237,7 @@ export interface Me {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             debt: {
                 /**
                  * Get this object properties
@@ -2247,7 +2247,7 @@ export interface Me {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 operation: {
                     /**
                      * All operations related to these debts
@@ -2257,7 +2257,7 @@ export interface Me {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(operationId: number): {
                         /**
                          * Get this object properties
@@ -2267,7 +2267,7 @@ export interface Me {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         associatedObject: {
                             /**
                              * Return main data about the object related to this operation
@@ -2277,7 +2277,7 @@ export interface Me {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                     };
                 }
@@ -2291,7 +2291,7 @@ export interface Me {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(billDetailId: string): {
                     /**
                      * Get this object properties
@@ -2301,7 +2301,7 @@ export interface Me {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 };
             }
             download: {
@@ -2313,7 +2313,7 @@ export interface Me {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         };
     }
@@ -2332,7 +2332,7 @@ export interface Me {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(groupId: number): {
                 /**
                  * Delete a billing group
@@ -2352,7 +2352,7 @@ export interface Me {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 service: {
                     /**
                      * Retrieve billing group service ID list
@@ -2367,7 +2367,7 @@ export interface Me {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(serviceId: number): {
                         /**
                          * Unlink a service from a billing group
@@ -2382,7 +2382,7 @@ export interface Me {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     };
                 }
             };
@@ -2397,7 +2397,7 @@ export interface Me {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
     }
     changeEmail: {
         /**
@@ -2408,7 +2408,7 @@ export interface Me {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
     }
     changePassword: {
         /**
@@ -2419,7 +2419,7 @@ export interface Me {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
     }
     consent: {
         /**
@@ -2430,7 +2430,7 @@ export interface Me {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         $(campaignName: string): {
             /**
              * Retrieve information about a consent campaign
@@ -2440,7 +2440,7 @@ export interface Me {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             decision: {
                 /**
                  * Get decision value for a consent campaign
@@ -2455,7 +2455,7 @@ export interface Me {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         };
     }
@@ -2470,7 +2470,7 @@ export interface Me {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             forecast: {
                 /**
@@ -2481,7 +2481,7 @@ export interface Me {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             history: {
                 /**
@@ -2492,7 +2492,7 @@ export interface Me {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         }
     }
@@ -2510,7 +2510,7 @@ export interface Me {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         $(contactId: number): {
             /**
              * Retrieve information about a contact
@@ -2525,7 +2525,7 @@ export interface Me {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             fields: {
                 /**
                  * Display mandatory/read-only informations of a contact
@@ -2535,7 +2535,7 @@ export interface Me {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         };
     }
@@ -2549,7 +2549,7 @@ export interface Me {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(balanceName: string): {
                 /**
                  * Retrieve a credit balance
@@ -2559,7 +2559,7 @@ export interface Me {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 movement: {
                     /**
                      * Retrieve movements for a specific balance
@@ -2569,7 +2569,7 @@ export interface Me {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(movementId: number): {
                         /**
                          * Retrieve a specific movement for a credit balance
@@ -2579,7 +2579,7 @@ export interface Me {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     };
                 }
             };
@@ -2593,7 +2593,7 @@ export interface Me {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
     }
     debtAccount: {
@@ -2605,7 +2605,7 @@ export interface Me {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         debt: {
             /**
              * All debts related to your account
@@ -2615,7 +2615,7 @@ export interface Me {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(debtId: number): {
                 /**
                  * Get this object properties
@@ -2625,7 +2625,7 @@ export interface Me {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 operation: {
                     /**
                      * All operations related to these debts
@@ -2635,7 +2635,7 @@ export interface Me {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     $(operationId: number): {
                         /**
                          * Get this object properties
@@ -2645,7 +2645,7 @@ export interface Me {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         associatedObject: {
                             /**
                              * Return main data about the object related to this operation
@@ -2655,7 +2655,7 @@ export interface Me {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                     };
                 }
@@ -2670,7 +2670,7 @@ export interface Me {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
     }
     deposit: {
@@ -2682,7 +2682,7 @@ export interface Me {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         $(depositId: string): {
             /**
              * Get this object properties
@@ -2692,7 +2692,7 @@ export interface Me {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             download: {
                 /**
                  * Generate download link for the pdf document
@@ -2702,7 +2702,7 @@ export interface Me {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             paidBills: {
                 /**
@@ -2713,7 +2713,7 @@ export interface Me {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(billId: string): {
                     /**
                      * Get this object properties
@@ -2723,7 +2723,7 @@ export interface Me {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     debt: {
                         /**
                          * Get this object properties
@@ -2733,7 +2733,7 @@ export interface Me {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         operation: {
                             /**
                              * All operations related to these debts
@@ -2743,7 +2743,7 @@ export interface Me {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             $(operationId: number): {
                                 /**
                                  * Get this object properties
@@ -2753,7 +2753,7 @@ export interface Me {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                 associatedObject: {
                                     /**
                                      * Return main data about the object related to this operation
@@ -2763,7 +2763,7 @@ export interface Me {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                 }
                             };
                         }
@@ -2777,7 +2777,7 @@ export interface Me {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         $(billDetailId: string): {
                             /**
                              * Get this object properties
@@ -2787,7 +2787,7 @@ export interface Me {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         };
                     }
                     download: {
@@ -2799,7 +2799,7 @@ export interface Me {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }
@@ -2814,7 +2814,7 @@ export interface Me {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         $(id: number): {
             /**
              * Get this object properties
@@ -2824,7 +2824,7 @@ export interface Me {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         };
     }
     fidelityAccount: {
@@ -2841,7 +2841,7 @@ export interface Me {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         creditOrder: {
             /**
              * Generate an order that can be paid in order to credit the fidelity account
@@ -2851,7 +2851,7 @@ export interface Me {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         movements: {
             /**
@@ -2862,7 +2862,7 @@ export interface Me {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(movementId: number): {
                 /**
                  * Get this object properties
@@ -2872,7 +2872,7 @@ export interface Me {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
     }
@@ -2885,7 +2885,7 @@ export interface Me {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
     }
     identity: {
         group: {
@@ -2902,7 +2902,7 @@ export interface Me {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(group: string): {
                 /**
                  * Delete this object
@@ -2922,7 +2922,7 @@ export interface Me {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
         user: {
@@ -2939,7 +2939,7 @@ export interface Me {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(user: string): {
                 /**
                  * Delete this object
@@ -2959,7 +2959,7 @@ export interface Me {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 disable: {
                     /**
                      * Disable this user
@@ -2969,7 +2969,7 @@ export interface Me {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 enable: {
                     /**
@@ -2980,7 +2980,7 @@ export interface Me {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -2999,7 +2999,7 @@ export interface Me {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         $(templateName: string): {
             /**
              * remove this template
@@ -3019,7 +3019,7 @@ export interface Me {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             checkIntegrity: {
                 /**
                  * Check the integrity of this template
@@ -3029,7 +3029,7 @@ export interface Me {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             partitionScheme: {
                 /**
@@ -3045,7 +3045,7 @@ export interface Me {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(schemeName: string): {
                     /**
                      * remove this scheme of partition
@@ -3065,7 +3065,7 @@ export interface Me {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     hardwareRaid: {
                         /**
                          * Hardware RAIDs defined in this partitioning scheme
@@ -3080,7 +3080,7 @@ export interface Me {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         $(name: string): {
                             /**
                              * Remove this RAID
@@ -3100,7 +3100,7 @@ export interface Me {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         };
                     }
                     partition: {
@@ -3117,7 +3117,7 @@ export interface Me {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         $(mountpoint: string): {
                             /**
                              * remove this partition
@@ -3137,7 +3137,7 @@ export interface Me {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         };
                     }
                 };
@@ -3158,7 +3158,7 @@ export interface Me {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         $(organisationId: string): {
             /**
              * Delete this organisation
@@ -3178,7 +3178,7 @@ export interface Me {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         };
     }
     ipxeScript: {
@@ -3195,7 +3195,7 @@ export interface Me {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         $(name: string): {
             /**
              * Remove this IPXE Script
@@ -3210,7 +3210,7 @@ export interface Me {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         };
     }
     order: {
@@ -3222,7 +3222,7 @@ export interface Me {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         $(orderId: number): {
             /**
              * Retrieve an order
@@ -3232,7 +3232,7 @@ export interface Me {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             associatedObject: {
                 /**
                  * Return data about the object associated to the order
@@ -3242,7 +3242,7 @@ export interface Me {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             availablePaymentMethod: {
                 /**
@@ -3253,7 +3253,7 @@ export interface Me {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             availableRegisteredPaymentMean: {
                 /**
@@ -3264,7 +3264,7 @@ export interface Me {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             balance: {
                 /**
@@ -3280,7 +3280,7 @@ export interface Me {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(balanceName: string): {
                     /**
                      * Remove a credit balance from this Order
@@ -3295,7 +3295,7 @@ export interface Me {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 };
             }
             details: {
@@ -3307,7 +3307,7 @@ export interface Me {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(detailId: number): {
                     /**
                      * Retrieve an order detail
@@ -3317,7 +3317,7 @@ export interface Me {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     extension: {
                         /**
                          * Retrieve an order detail extensions
@@ -3327,7 +3327,7 @@ export interface Me {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     operations: {
                         /**
@@ -3338,7 +3338,7 @@ export interface Me {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         $(operationId: number): {
                             /**
                              * Retrieve a list of operations linked to this order detail
@@ -3348,7 +3348,7 @@ export interface Me {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         };
                     }
                 };
@@ -3362,7 +3362,7 @@ export interface Me {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             payWithRegisteredPaymentMean: {
                 /**
@@ -3373,7 +3373,7 @@ export interface Me {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             paymentMethods: {
                 /**
@@ -3384,7 +3384,7 @@ export interface Me {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             retraction: {
                 /**
@@ -3395,7 +3395,7 @@ export interface Me {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             status: {
                 /**
@@ -3406,7 +3406,7 @@ export interface Me {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             voucher: {
                 /**
@@ -3422,7 +3422,7 @@ export interface Me {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(balanceName: string): {
                     /**
                      * Remove Voucher from this Order
@@ -3437,7 +3437,7 @@ export interface Me {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 };
             }
         };
@@ -3451,7 +3451,7 @@ export interface Me {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
     }
     payment: {
         availableMethods: {
@@ -3463,7 +3463,7 @@ export interface Me {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         method: {
             /**
@@ -3479,7 +3479,7 @@ export interface Me {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(paymentMethodId: number): {
                 /**
                  * Cancel one payment method
@@ -3499,7 +3499,7 @@ export interface Me {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 challenge: {
                     /**
                      * Challenge one payment method
@@ -3509,7 +3509,7 @@ export interface Me {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 finalize: {
                     /**
@@ -3520,7 +3520,7 @@ export interface Me {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -3533,7 +3533,7 @@ export interface Me {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(transactionId: number): {
                 /**
                  * Get associated payment method transaction
@@ -3543,7 +3543,7 @@ export interface Me {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
     }
@@ -3561,7 +3561,7 @@ export interface Me {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         $(id: number): {
             /**
              * Delete the selected payment mean
@@ -3581,7 +3581,7 @@ export interface Me {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         };
     }
     refund: {
@@ -3593,7 +3593,7 @@ export interface Me {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         $(refundId: string): {
             /**
              * Get this object properties
@@ -3603,7 +3603,7 @@ export interface Me {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             details: {
                 /**
                  * Give access to all entries of the refund
@@ -3613,7 +3613,7 @@ export interface Me {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(refundDetailId: string): {
                     /**
                      * Get this object properties
@@ -3623,7 +3623,7 @@ export interface Me {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 };
             }
             download: {
@@ -3635,7 +3635,7 @@ export interface Me {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         };
     }
@@ -3648,7 +3648,7 @@ export interface Me {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         $(id: number): {
             /**
              * Get this object properties
@@ -3658,7 +3658,7 @@ export interface Me {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             apply: {
                 /**
                  * Ask for SLA application
@@ -3668,7 +3668,7 @@ export interface Me {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             canBeApplied: {
                 /**
@@ -3679,7 +3679,7 @@ export interface Me {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             services: {
                 /**
@@ -3690,7 +3690,7 @@ export interface Me {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             status: {
                 /**
@@ -3701,7 +3701,7 @@ export interface Me {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         };
     }
@@ -3719,7 +3719,7 @@ export interface Me {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         $(keyName: string): {
             /**
              * Remove this public SSH key
@@ -3739,7 +3739,7 @@ export interface Me {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         };
     }
     subAccount: {
@@ -3756,7 +3756,7 @@ export interface Me {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         $(id: number): {
             /**
              * Get this object properties
@@ -3771,7 +3771,7 @@ export interface Me {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             createConsumerKey: {
                 /**
                  * Create a consumer key for the current application
@@ -3781,7 +3781,7 @@ export interface Me {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         };
     }
@@ -3795,7 +3795,7 @@ export interface Me {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(id: number): {
                 /**
                  * Get this object properties
@@ -3805,7 +3805,7 @@ export interface Me {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 accept: {
                     /**
                      * Accept this change request
@@ -3815,7 +3815,7 @@ export interface Me {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
                 refuse: {
                     /**
@@ -3826,7 +3826,7 @@ export interface Me {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             };
         }
@@ -3840,7 +3840,7 @@ export interface Me {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
     }
     voucher: {
         checkValidity: {
@@ -3852,7 +3852,7 @@ export interface Me {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
     }
     withdrawal: {
@@ -3864,7 +3864,7 @@ export interface Me {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         $(withdrawalId: string): {
             /**
              * Get this object properties
@@ -3874,7 +3874,7 @@ export interface Me {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             download: {
                 /**
                  * Generate download link for the pdf document
@@ -3884,7 +3884,7 @@ export interface Me {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         };
     }

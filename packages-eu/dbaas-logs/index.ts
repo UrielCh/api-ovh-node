@@ -1,4 +1,4 @@
-import { buildOvhProxy, ICacheOptions, OvhRequestable } from '@ovh-api/common';
+import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-api/common';
 
 /**
  * START API /dbaas/logs Models
@@ -927,7 +927,7 @@ export interface Dbaas {
         /**
          * Controle cache
          */
-        $cache(param?: ICacheOptions): Promise<any>;
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         input: {
             engine: {
                 /**
@@ -938,7 +938,7 @@ export interface Dbaas {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(engineId: string): {
                     /**
                      * Returns details of specified input engine
@@ -948,7 +948,7 @@ export interface Dbaas {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     helper: {
                         /**
                          * Return the list of available helpers for the given input engine
@@ -958,7 +958,7 @@ export interface Dbaas {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         $(helperId: string): {
                             /**
                              * Returns details of specified input engine helper
@@ -968,7 +968,7 @@ export interface Dbaas {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         };
                     }
                 };
@@ -984,7 +984,7 @@ export interface Dbaas {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
         $(serviceName: string): {
@@ -1001,7 +1001,7 @@ export interface Dbaas {
             /**
              * Controle cache
              */
-            $cache(param?: ICacheOptions): Promise<any>;
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             changeContact: {
                 /**
                  * Launch a contact change procedure
@@ -1011,7 +1011,7 @@ export interface Dbaas {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             cluster: {
                 /**
@@ -1022,7 +1022,7 @@ export interface Dbaas {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(clusterId: string): {
                     /**
                      * Returns details of an allowed cluster
@@ -1037,7 +1037,7 @@ export interface Dbaas {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     allowedNetwork: {
                         /**
                          * List all the network ID allowed to contact given cluster
@@ -1052,7 +1052,7 @@ export interface Dbaas {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         $(allowedNetworkId: string): {
                             /**
                              * Remove the specified IP from the list of allowed networks
@@ -1067,7 +1067,7 @@ export interface Dbaas {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         };
                     }
                 };
@@ -1086,7 +1086,7 @@ export interface Dbaas {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(inputId: string): {
                     /**
                      * Remove the specified input object
@@ -1106,7 +1106,7 @@ export interface Dbaas {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     action: {
                         /**
                          * Returns actions of specified input
@@ -1116,7 +1116,7 @@ export interface Dbaas {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     allowedNetwork: {
                         /**
@@ -1132,7 +1132,7 @@ export interface Dbaas {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         $(allowedNetworkId: string): {
                             /**
                              * Remove the specified IP from the list of allowed networks
@@ -1147,7 +1147,7 @@ export interface Dbaas {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         };
                     }
                     configtest: {
@@ -1159,7 +1159,7 @@ export interface Dbaas {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         result: {
                             /**
                              * Returns the config test operation result
@@ -1169,7 +1169,7 @@ export interface Dbaas {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                     }
                     configuration: {
@@ -1187,7 +1187,7 @@ export interface Dbaas {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         logstash: {
                             /**
@@ -1203,7 +1203,7 @@ export interface Dbaas {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                     }
                     end: {
@@ -1215,7 +1215,7 @@ export interface Dbaas {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     logs: {
                         url: {
@@ -1227,7 +1227,7 @@ export interface Dbaas {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                     }
                     restart: {
@@ -1239,7 +1239,7 @@ export interface Dbaas {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     start: {
                         /**
@@ -1250,7 +1250,7 @@ export interface Dbaas {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                     url: {
                         /**
@@ -1261,7 +1261,7 @@ export interface Dbaas {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }
@@ -1274,7 +1274,7 @@ export interface Dbaas {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             offer: {
                 /**
@@ -1285,7 +1285,7 @@ export interface Dbaas {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             operation: {
                 /**
@@ -1296,7 +1296,7 @@ export interface Dbaas {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(operationId: string): {
                     /**
                      * Returns details of specified operation
@@ -1306,7 +1306,7 @@ export interface Dbaas {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 };
             }
             option: {
@@ -1318,7 +1318,7 @@ export interface Dbaas {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(optionId: string): {
                     /**
                      * Returns details of a subscribed option
@@ -1328,7 +1328,7 @@ export interface Dbaas {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     terminate: {
                         /**
                          * Remove the specified subscribed option
@@ -1338,7 +1338,7 @@ export interface Dbaas {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
                 };
             }
@@ -1358,7 +1358,7 @@ export interface Dbaas {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         $(aliasId: string): {
                             /**
                              * Remove specified elasticsearch alias
@@ -1378,7 +1378,7 @@ export interface Dbaas {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             index: {
                                 /**
                                  * Returns the list of elasticsearch indexes attached to specified
@@ -1394,7 +1394,7 @@ export interface Dbaas {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                 $(indexId: string): {
                                     /**
                                      * Detach a elasticsearch index from specified elasticsearch alias
@@ -1404,7 +1404,7 @@ export interface Dbaas {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                 };
                             }
                             stream: {
@@ -1422,7 +1422,7 @@ export interface Dbaas {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                 $(streamId: string): {
                                     /**
                                      * Detach a graylog stream from specified elasticsearch alias
@@ -1432,7 +1432,7 @@ export interface Dbaas {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                 };
                             }
                             url: {
@@ -1444,7 +1444,7 @@ export interface Dbaas {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             }
                         };
                     }
@@ -1462,7 +1462,7 @@ export interface Dbaas {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         $(indexId: string): {
                             /**
                              * Remove specified elasticsearch index
@@ -1482,7 +1482,7 @@ export interface Dbaas {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             url: {
                                 /**
                                  * Returns the list of urls of specified graylog stream
@@ -1492,7 +1492,7 @@ export interface Dbaas {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             }
                         };
                     }
@@ -1512,7 +1512,7 @@ export interface Dbaas {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         $(dashboardId: string): {
                             /**
                              * Remove specified graylog dashboard
@@ -1532,7 +1532,7 @@ export interface Dbaas {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             duplicate: {
                                 /**
                                  * Copy all widgets from specified dashboard to a new one
@@ -1542,7 +1542,7 @@ export interface Dbaas {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             }
                             url: {
                                 /**
@@ -1553,7 +1553,7 @@ export interface Dbaas {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             }
                         };
                     }
@@ -1571,7 +1571,7 @@ export interface Dbaas {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         $(streamId: string): {
                             /**
                              * Remove specified graylog stream
@@ -1591,7 +1591,7 @@ export interface Dbaas {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             alert: {
                                 /**
                                  * Returns the list of configured alerts of specified graylog stream
@@ -1606,7 +1606,7 @@ export interface Dbaas {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                 $(alertId: string): {
                                     /**
                                      * Remove alert from specified graylog stream
@@ -1626,7 +1626,7 @@ export interface Dbaas {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                 };
                             }
                             archive: {
@@ -1638,7 +1638,7 @@ export interface Dbaas {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                 $(archiveId: string): {
                                     /**
                                      * Returns details of specified archive
@@ -1648,7 +1648,7 @@ export interface Dbaas {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                     url: {
                                         /**
                                          * Get a public temporary URL to access the archive
@@ -1658,7 +1658,7 @@ export interface Dbaas {
                                         /**
                                          * Controle cache
                                          */
-                                        $cache(param?: ICacheOptions): Promise<any>;
+                                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                     }
                                 };
                             }
@@ -1676,7 +1676,7 @@ export interface Dbaas {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                 $(ruleId: string): {
                                     /**
                                      * Remove specified graylog stream rule
@@ -1691,7 +1691,7 @@ export interface Dbaas {
                                     /**
                                      * Controle cache
                                      */
-                                    $cache(param?: ICacheOptions): Promise<any>;
+                                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                                 };
                             }
                             url: {
@@ -1703,7 +1703,7 @@ export interface Dbaas {
                                 /**
                                  * Controle cache
                                  */
-                                $cache(param?: ICacheOptions): Promise<any>;
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             }
                         };
                     }
@@ -1718,7 +1718,7 @@ export interface Dbaas {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             role: {
                 /**
@@ -1734,7 +1734,7 @@ export interface Dbaas {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(roleId: string): {
                     /**
                      * Remove specified role
@@ -1754,7 +1754,7 @@ export interface Dbaas {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     member: {
                         /**
                          * Returns the member list of specified role
@@ -1769,7 +1769,7 @@ export interface Dbaas {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         $(username: string): {
                             /**
                              * Remove user from the member list of specified role
@@ -1789,7 +1789,7 @@ export interface Dbaas {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         };
                     }
                     permission: {
@@ -1801,7 +1801,7 @@ export interface Dbaas {
                         /**
                          * Controle cache
                          */
-                        $cache(param?: ICacheOptions): Promise<any>;
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         alias: {
                             /**
                              * Append a elasticsearch alias permission to role
@@ -1811,7 +1811,7 @@ export interface Dbaas {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         dashboard: {
                             /**
@@ -1822,7 +1822,7 @@ export interface Dbaas {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         index: {
                             /**
@@ -1833,7 +1833,7 @@ export interface Dbaas {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         stream: {
                             /**
@@ -1844,7 +1844,7 @@ export interface Dbaas {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
                         $(permissionId: string): {
                             /**
@@ -1860,7 +1860,7 @@ export interface Dbaas {
                             /**
                              * Controle cache
                              */
-                            $cache(param?: ICacheOptions): Promise<any>;
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         };
                     }
                 };
@@ -1879,7 +1879,7 @@ export interface Dbaas {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             token: {
                 /**
@@ -1895,7 +1895,7 @@ export interface Dbaas {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 $(tokenId: string): {
                     /**
                      * Delete the specified token
@@ -1910,7 +1910,7 @@ export interface Dbaas {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 };
             }
             url: {
@@ -1922,7 +1922,7 @@ export interface Dbaas {
                 /**
                  * Controle cache
                  */
-                $cache(param?: ICacheOptions): Promise<any>;
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             user: {
                 changePassword: {
@@ -1934,7 +1934,7 @@ export interface Dbaas {
                     /**
                      * Controle cache
                      */
-                    $cache(param?: ICacheOptions): Promise<any>;
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
         };
