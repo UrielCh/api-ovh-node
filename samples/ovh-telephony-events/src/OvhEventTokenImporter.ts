@@ -78,11 +78,11 @@ export class OvhEventTokenImporter {
         console.log(`Importing ${billingAccounts.length} token`)
         await bluebird.map(
             billingAccounts,
-            (billingAccount, index, length) => api.get('/telephony/{billingAccount}/eventToken')({ billingAccount })
+            (billingAccount, index, length) => api.$(billingAccount).eventToken.$get()
                 .then(
                     ({ token }) => addToken(billingAccount, token),
                     // 404: The requested object (eventToken) does not exist
-                    (err) => api.post('/telephony/{billingAccount}/eventToken')({ billingAccount, expiration: 'unlimited' })
+                    (err) => api.$(billingAccount).eventToken.$post({ expiration: 'unlimited' })
                         .then(token => addToken(billingAccount, token))
                 ).catch((err) => { console.log(`Error with ${billingAccount} ${err}`) }),
             { concurrency: 5 }

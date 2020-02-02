@@ -20,7 +20,7 @@ const api = {
  * leave the OVH calls clearly available in the source code.
  */
 async function printIP() {
-    const ips = await api.ip.get('/ip')();
+    const ips = await api.ip.$get();
     return ips;
 }
 

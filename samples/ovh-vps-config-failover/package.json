@@ -31,8 +31,8 @@
     "prepare": "npm run build"
   },
   "dependencies": {
-    "@ovh-api/api": "^2.1.5",
-    "@ovh-api/vps": "^2.0.13",
+    "@ovh-api/api": "^3.0.0",
+    "@ovh-api/vps": "^3.0.0",
     "fs-extra": "^8.1.0"
   },
   "devDependencies": {

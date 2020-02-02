@@ -28,8 +28,8 @@
     "prepare": "npm run build"
   },
   "dependencies": {
-    "@ovh-api/api": "^2.1.5",
-    "@ovh-api/domain": "^2.0.13",
+    "@ovh-api/api": "^3.0.0",
+    "@ovh-api/domain": "^3.0.0",
     "node-fetch": "^2.6.0"
   },
   "devDependencies": {

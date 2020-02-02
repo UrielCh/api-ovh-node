@@ -35,8 +35,8 @@
     "bin"
   ],
   "dependencies": {
-    "@ovh-api/api": "^2.1.7",
-    "@ovh-api/telephony": "^2.0.14",
+    "@ovh-api/api": "^3.0.0",
+    "@ovh-api/telephony": "^3.0.0",
     "bluebird": "^3.7.2",
     "commander": "^4.1.0",
     "debounce": "^1.2.0",
