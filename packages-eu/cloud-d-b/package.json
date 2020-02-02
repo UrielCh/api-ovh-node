@@ -18,7 +18,8 @@
     },
     "scripts": {
         "build": "tsc",
-        "build:watch": "tsc --watch"
+        "build:watch": "tsc --watch",
+        "prepare": "npm run build"
     },
     "files": [
         "index.js",

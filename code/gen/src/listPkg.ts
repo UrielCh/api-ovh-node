@@ -25,9 +25,12 @@ for (const { dir, name: nsName, country } of subs) {
             const data = JSON.parse(content);
             const { name, description } = data;
             console.log(`* [![NPM Version](https://img.shields.io/npm/v/@ovh-api/${name2}.svg?style=flat)](https://www.npmjs.org/package/@ovh-api/${name2}) *Api ${name}* ${description}`);
-            // data.files = ["index.js", "index.d.ts", "index.ts" ];
-            // content = JSON.stringify(data, undefined, 4) + EOL;
-            // fs.writeFileSync(jsonFile, content, { encoding: 'utf8' });
+            if (true) {
+                // data.files = ["index.js", "index.d.ts", "index.ts" ];
+                data.scripts.prepare = "npm run build";
+                content = JSON.stringify(data, undefined, 4) + EOL;
+                fs.writeFileSync(jsonFile, content, { encoding: 'utf8' });
+            }
         } catch (e) {
         }
     }

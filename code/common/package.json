@@ -23,7 +23,6 @@
   },
   "files": [
     "index.js",
-    "index.d.ts",
-    "index.ts"
+    "index.d.ts"
   ]
 }
