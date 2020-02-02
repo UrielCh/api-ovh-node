@@ -3,7 +3,6 @@
   "npmClient": "npm",
   "useWorkspaces": false,
   "packages": [
-    "code/common",
     "kimsufi-*/*",
     "packages-*/*",
     "soyoustart-*/*"

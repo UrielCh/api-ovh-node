@@ -39,7 +39,7 @@ import { HttpMethod, AccessRule, OvhCredentialNew, OvhCredential } from './OVHIn
 import { CertMonitorProvider, stdOutCertMonitorProvider } from './certMonitor';
 export { CertMonitorProvider, CertMonitor } from './certMonitor';
 export { OvhCredentialNew } from './OVHInterfaces'
-import { EOL, type } from 'os';
+import { EOL } from 'os';
 import { Cache, CacheSilot } from './Cache';
 
 /**

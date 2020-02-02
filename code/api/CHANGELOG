@@ -1,3 +1,9 @@
+V 3.0.1
+- update $cache() interface add action 'flush', 'disable'
+V 3.0.0
+- add $cache()
+- add remove legacy get/put/post/delete root calls from typing
+- add js doc
 V 2.1.7
 - allow OvhApi() with no param
 V 2.1.6
