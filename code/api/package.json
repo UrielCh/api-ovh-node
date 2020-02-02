@@ -1,7 +1,7 @@
 {
   "name": "@ovh-api/api",
   "description": "Ovh api connector implementation",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "keywords": [
     "ovh",
     "api",
@@ -12,7 +12,7 @@
   "license": "MIT",
   "author": "Uriel Chemouni <uchemouni@gmail.com>",
   "dependencies": {
-    "@ovh-api/common": "^3.0.0",
+    "@ovh-api/common": "^3.0.1",
     "open": "^7.0.1"
   },
   "devDependencies": {
