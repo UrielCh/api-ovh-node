@@ -256,8 +256,6 @@ import Ovh from '@ovh-api/api';
 
 const ovh = new Ovh({accessRules: 'GET /ip'});
 const api = ApiMe(ovh);
-api.get('/me').then(console.log)
-// or
 api.$get().then(console.log)
 ```
 
@@ -278,9 +276,7 @@ const config = {
 };
 const ovh = new Ovh(config);
 const api = ApiMe(ovh);
-api.get('/me').then(console.log);
-// or
 api.$get().then(console.log);
 ```
 
-For more samples see [samples](https://github.com/UrielCh/api-ovh-node/tree/master/code/sample)
+For samples see [samples](https://github.com/UrielCh/api-ovh-node/tree/master/code/sample)
