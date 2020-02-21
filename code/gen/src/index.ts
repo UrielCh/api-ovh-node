@@ -96,7 +96,7 @@ async function genRegion(endpoint: IEndpoint) {
                 "license": "MIT",
                 "author": "Uriel Chemouni <uchemouni@gmail.com>",
                 "dependencies": {
-                    "@ovh-api/common": "^3.0.0",
+                    "@ovh-api/common": "^3.1.0",
                 },
                 "publishConfig": {
                     "access": "public"

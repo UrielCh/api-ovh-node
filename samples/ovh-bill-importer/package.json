@@ -33,7 +33,7 @@
     "@ovh-api-ca/me": "^3.0.0",
     "@ovh-api-us/me": "^3.0.0",
     "@ovh-api/api": "^3.0.0",
-    "@ovh-api/common": "^3.0.0",
+    "@ovh-api/common": "^3.1.0",
     "@ovh-api/me": "^3.0.0",
     "bluebird": "^3.7.2",
     "commander": "^4.1.0",
