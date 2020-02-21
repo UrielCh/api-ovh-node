@@ -85,9 +85,9 @@ export interface OvhRequestable {
 const commonGet = (key: string, target: OvhProxyApi) => {
     if (key.startsWith('$')) {
         // give parameter in path
-        if (key == '$') {
+        if (key === '$') {
             return (id: any) => {
-                const child = new OvhProxyApi(target._ovhEngine, `${target._path}/${id}`, `${target._path}/*`);
+                const child = new OvhProxyApi(target._ovhEngine, `${target._path}/${id}`, `${target._model}/*`);
                 return new Proxy(child, handlerChild);
             }
         }
@@ -105,7 +105,7 @@ const commonGet = (key: string, target: OvhProxyApi) => {
     }
     if (key.startsWith('_'))
         key = key.substring(1);
-    const child = new OvhProxyApi(target._ovhEngine, `${target._path}/${key}`);
+    const child = new OvhProxyApi(target._ovhEngine, `${target._path}/${key}`, `${target._model}/${key}`);
     return new Proxy(child, handlerChild);
 }
 
@@ -122,7 +122,7 @@ const handlerChild = <ProxyHandler<OvhProxyApi>>{
         return target;
     },
     get(target: OvhProxyApi, p: PropertyKey, receiver: any) {
-        if (typeof p == 'symbol')
+        if (typeof p === 'symbol')
             return (<any>target)[p];
         const key = p.toString();
         switch (key) {
@@ -151,7 +151,7 @@ const handlerRoot = <ProxyHandler<OvhProxyApi>>{
         return target;
     },
     get(target: OvhProxyApi, p: PropertyKey, receiver: any) {
-        if (typeof p == 'symbol')
+        if (typeof p === 'symbol')
             return (<any>target)[p];
         let key = p.toString();
         switch (key) {
@@ -200,8 +200,8 @@ const handlerRoot = <ProxyHandler<OvhProxyApi>>{
  */
 class OvhProxyApi {
     public _ovhEngine: OvhRequestable;
-    public _path: string = '';
-    public _model: string = '';
+    public _path: string;
+    public _model: string;
     constructor(ovhEngine: OvhRequestable, path: string, model?: string) {
         this._ovhEngine = ovhEngine;
         this._path = path;

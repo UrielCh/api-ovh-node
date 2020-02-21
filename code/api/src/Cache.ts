@@ -113,6 +113,8 @@ export class Cache {
         const silot = this.index[template];
         if (silot)
             silot.options = options;
+        else if (options.silotClass) 
+            this.index[template] = new options.silotClass(template, options);
         else
             this.index[template] = new this.slotClass(template, options);
     }
