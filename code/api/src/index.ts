@@ -33,14 +33,14 @@ import { RequestOptions } from 'http';
 import { endpoints } from './endpoints';
 import { writeFile, readFileSync } from 'fs';
 import { EventEmitter } from 'events';
-import { OvhRequestable, OvhParamType, ICacheOptions } from '@ovh-api/common';
+import { OvhRequestable, OvhParamType, ICacheOptions, ICacheSilot, CacheAction, SlotConstructor } from '@ovh-api/common';
 import { Socket } from 'net';
 import { HttpMethod, AccessRule, OvhCredentialNew, OvhCredential } from './OVHInterfaces';
 import { CertMonitorProvider, stdOutCertMonitorProvider } from './certMonitor';
 export { CertMonitorProvider, CertMonitor } from './certMonitor';
 export { OvhCredentialNew } from './OVHInterfaces'
 import { EOL } from 'os';
-import { Cache, CacheSilot } from './Cache';
+import { Cache } from './Cache';
 
 /**
  * data used to create an Exception
@@ -153,6 +153,10 @@ export interface OvhParams {
      * by default console.log validationUrl every 30 seconds
      */
     certMonitorProvider?: CertMonitorProvider;
+    /**
+     * overwrite cache Slot implementation.
+     */
+    slotClass?: SlotConstructor;
 }
 
 /**
@@ -160,7 +164,9 @@ export interface OvhParams {
  * @param duration wime to wait in ms
  */
 const wait = (duration: number) => new Promise(resolve => setTimeout(() => (resolve()), duration));
-
+/**
+ * interface for explicite events typing
+ */
 export interface OvhApiEvent {
     /**
      * emit before each request (sent a single time in case of retry)
@@ -184,8 +190,6 @@ export interface OvhApiEvent {
     emit(ev: 'warningMsg', params: string): boolean;
 }
 
-export type CacheAction = 'flush' | 'disable';
-
 /**
  * Main ovh api connector
  */
@@ -207,6 +211,7 @@ export default class OvhApi extends EventEmitter implements OvhRequestable, OvhA
     launchBrower: boolean;
     certMonitorProvider: CertMonitorProvider;
     queryCache: Cache | null = null;
+    slotClass?: SlotConstructor;
 
     constructor(params?: OvhParams) {
         super();
@@ -223,6 +228,7 @@ export default class OvhApi extends EventEmitter implements OvhRequestable, OvhA
         this.maxRetry = (typeof params.maxRetry === 'number') ? params.maxRetry : 10;
         this.launchBrower = (params.launchBrower === false) ? false : true;
         this.certMonitorProvider = params.certMonitorProvider || stdOutCertMonitorProvider;
+        this.slotClass = params.slotClass || undefined;
 
         if (params.saveQuerys) {
             this.querySet = new Set();
@@ -284,7 +290,7 @@ by default I will ask for all rights`);
 
     async cache(template: string, param?: ICacheOptions | CacheAction): Promise<any> {
         if (!this.queryCache) {
-            this.queryCache = new Cache();
+            this.queryCache = new Cache({slotClass: this.slotClass});
         }
         param = param || { ttl: 3600 };
         if (typeof (param) === 'string') {
@@ -387,12 +393,12 @@ by default I will ask for all rights`);
                 throw new Error(`[OVH] Unable to fetch OVH API time ${err.message || err}`);
             }
         }
-        let cacheSilot: CacheSilot | undefined;
+        let cacheSilot: ICacheSilot | undefined;
         // httpMethod === 'GET' && this.queryCache
         if (this.queryCache) {
             cacheSilot = this.queryCache.silot(pathTemplate);
             if (cacheSilot && httpMethod === 'GET') {
-                const value = cacheSilot.get(path);
+                const value = await cacheSilot.get(path);
                 if (value !== undefined)
                     return value;
             }
@@ -548,11 +554,11 @@ by default I will ask for all rights`);
             if (statusCode === 200) {
                 if (cacheSilot) {
                     if (httpMethod === 'GET')
-                        cacheSilot.store(path, responseData, size);
+                        await cacheSilot.store(path, responseData, size);
                     else {
-                        cacheSilot.discard(path);
+                        await cacheSilot.discard(path);
                         if (httpMethod === 'DELETE') {
-                            cacheSilot.discard(path.replace(/\/[^/]+$/, ''));
+                            await cacheSilot.discard(path.replace(/\/[^/]+$/, ''));
                         }
                     }
                 }

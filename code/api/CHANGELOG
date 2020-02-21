@@ -1,3 +1,6 @@
+V 3.1.0
+- cache is now async and it's implementation can be overwrite by $query().
+- default cache can be set in OvhApi constructor.
 V 3.0.2
 - improve $delete() auto-discard change.
 V 3.0.1

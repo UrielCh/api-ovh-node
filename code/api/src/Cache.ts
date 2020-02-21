@@ -1,4 +1,4 @@
-import { ICacheOptions } from "@ovh-api/common";
+import { ICacheOptions, ICacheSilot, SlotConstructor } from "@ovh-api/common";
 
 export interface ICacheEntry {
     /**
@@ -10,7 +10,7 @@ export interface ICacheEntry {
     value: any;
 }
 
-export class CacheSilot {
+export class CacheSilot implements ICacheSilot {
     size: number = 0;
     count: number = 0;
     index: { [key: string]: ICacheEntry } = {};
@@ -19,7 +19,7 @@ export class CacheSilot {
     constructor(public template: string, public options: ICacheOptions) {
     }
 
-    flush() {
+    async flush(): Promise<void> {
         this.index = {};
         for (const value of this.values) {
             delete value.value;
@@ -29,7 +29,7 @@ export class CacheSilot {
         this.size = 0;
     }
 
-    discard(path: string): boolean {
+    async discard(path: string): Promise<boolean> {
         const value = this.index[path];
         if (value && value.exp) {
             this.count--;
@@ -41,7 +41,7 @@ export class CacheSilot {
         return false;
     }
 
-    get(path: string): any | undefined {
+    async get(path: string): Promise<any | undefined> {
         const value = this.index[path];
         if (value) {
             if (Date.now() < value.exp)
@@ -52,7 +52,7 @@ export class CacheSilot {
         return undefined;
     }
 
-    cleanup(): void {
+    async cleanup(): Promise<void> {
         const now = Date.now();
         while (this.values.length) {
             let value = this.values[0];
@@ -74,14 +74,13 @@ export class CacheSilot {
         }
     }
 
-    store(path: string, value: any, size: number): boolean {
+    async store(path: string, value: any, size: number): Promise<boolean> {
         this.discard(path);
         if (this.options.size && size > this.options.size) {
             return false;
         }
         const ttl = (this.options.ttl || 3600) * 1000;
         const entry = {
-            // expiration
             exp: Date.now() + ttl,
             path, size, value
         } as ICacheEntry;
@@ -93,55 +92,73 @@ export class CacheSilot {
             this.cleanup();
         return true;
     }
-
 }
-export class Cache {
-    index: { [key: string]: CacheSilot } = {};
-    constructor() {
-    }
 
+export class Cache {
+    private slotClass: SlotConstructor;
+    private index: { [key: string]: ICacheSilot } = {};
+
+    constructor(options?: {slotClass?: SlotConstructor}) {
+        if (options && options.slotClass)
+            this.slotClass = options.slotClass;
+        else
+            this.slotClass = CacheSilot;
+    }
+    /**
+     * enable cache
+     * @param template
+     * @param options
+     */
     cache(template: string, options: ICacheOptions) {
         const silot = this.index[template];
         if (silot)
             silot.options = options;
         else
-            this.index[template] = new CacheSilot(template, options);
+            this.index[template] = new this.slotClass(template, options);
     }
 
-    store(template: string, path: string, value: any, size: number): boolean {
+    /**
+     * disable cache
+     * @param template
+     */
+    async disable(template: string) {
+        const silot = this.index[template];
+        if (silot) {
+            await silot.flush();
+            delete this.index[template];
+        }
+    }
+
+    async store(template: string, path: string, value: any, size: number): Promise<boolean> {
         const silot = this.index[template];
         if (silot)
             return silot.store(path, value, size);
         return false
     }
 
-    get(template: string, path: string) : any | undefined {
+    async get(template: string, path: string): Promise<any | undefined> {
         const silot = this.index[template];
         if (silot)
             return silot.get(path);
     }
 
-    discard(template: string, path: string) {
+    async discard(template: string, path: string) {
         const silot = this.index[template];
         if (silot)
             return silot.discard(path);
     }
 
-    flush(template: string) {
+    async flush(template: string) {
         const silot = this.index[template];
         if (silot)
-            silot.flush();
+            await silot.flush();
     }
 
-    disable(template: string) {
-        const silot = this.index[template];
-        if (silot) {
-            silot.flush();
-            delete this.index[template];
-        }
-    }
-
-    silot(template: string) : CacheSilot | undefined {
+    /**
+     * get internal silot for advance actions
+     * @param template 
+     */
+    silot(template: string) : ICacheSilot | undefined {
         return this.index[template];
     }
 }

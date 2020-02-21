@@ -4,6 +4,23 @@
 export type OvhParamType = { [key: string]: any; };
 
 /**
+ * Public interface of a silot
+ * you can have one silot per Ovh API call
+ */
+export interface ICacheSilot {
+    options: ICacheOptions;
+    flush(): Promise<void>;
+    store(path: string, value: any, size: number): Promise<boolean>;
+    get(path: string): Promise<any | undefined>;
+    discard(path: string): Promise<boolean>;
+}
+
+/**
+ * constructor for a silot cache
+ */
+export type SlotConstructor = new (template: string, options: ICacheOptions) => ICacheSilot;
+
+/**
  * params to configure cache
  */
 export interface ICacheOptions {
@@ -19,10 +36,16 @@ export interface ICacheOptions {
      * max number of entry in your cache
      */
     count?: number
+    /**
+     * explicite silot construtor used to overwrite in memory default silotCache
+     */
+    silotClass?: SlotConstructor;
 }
 
-
-export type CacheAction = 'flush' | 'disable';
+/**
+ * 'flush' and 'disable' are the main action, other can be add later
+ */
+export type CacheAction = 'flush' | 'disable' | string;
 /**
  * common interface used to call ovh engine
  */
