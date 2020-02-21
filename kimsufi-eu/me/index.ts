@@ -813,6 +813,7 @@ export namespace debt {
         dueDate?: string;
         orderId: number;
         pendingAmount: orderPrice;
+        status: debt.entry.StatusDebtOrderEnum;
         todoAmount: orderPrice;
         unmaturedAmount: orderPrice;
     }
@@ -860,6 +861,11 @@ export namespace debt {
          * type fullname: debt.entry.OperationEnum
          */
         export type OperationEnum = "CANCEL" | "CASH_MANUAL" | "CHECK_MANUAL" | "CREDITCARD" | "CREDITCARD_AUTOMATIC" | "CREDITCARD_MANUAL" | "CREDIT_ACCOUNT_AUTOMATIC" | "EDINAR_MANUAL" | "IDEAL_MANUAL" | "MULTIBANCO_MANUAL" | "ORDER" | "PAYPAL_AUTOMATIC" | "PAYPAL_MANUAL" | "PAYU_MANUAL" | "RECOVERY_TRANSFER_AUTOMATIC" | "REFUND" | "REFUND_CHECK" | "REFUND_CREDITCARD" | "REFUND_CREDIT_ACCOUNT" | "REFUND_LOSS" | "REFUND_PAYPAL" | "REFUND_PAYU" | "REFUND_SEPA" | "REFUND_TRANSFER" | "REFUND_UNKNOWN" | "SEPA_AUTOMATIC" | "TRANSFER_MANUAL" | "UNPAID_CHECK" | "UNPAID_CREDITCARD" | "UNPAID_CREDIT_ACCOUNT" | "UNPAID_PAYPAL" | "UNPAID_SEPA" | "UNPAID_WITHDRAW" | "WARRANT_MANUAL" | "WITHDRAW_AUTOMATIC"
+        /**
+         * All status a debt HistoryOrder entry can be in
+         * type fullname: debt.entry.StatusDebtOrderEnum
+         */
+        export type StatusDebtOrderEnum = "PAID" | "REFUNDED" | "TO_BE_PAID" | "UNMATURED" | "UNPAID"
         /**
          * All status a debt entry can be in
          * type fullname: debt.entry.StatusEnum

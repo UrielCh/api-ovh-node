@@ -92,6 +92,7 @@ export namespace cloud {
      * interface fullName: cloud.Component.Component
      */
     export interface Component {
+        endpoint: string;
         name: string;
         status: cloud.ServiceStatusEnum;
     }
@@ -1091,6 +1092,7 @@ export namespace cloud {
          * interface fullName: cloud.containerRegistry.Plan.Plan
          */
         export interface Plan {
+            code: string;
             createdAt: string;
             features: cloud.containerRegistry.Features;
             id: string;

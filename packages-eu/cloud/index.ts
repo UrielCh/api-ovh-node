@@ -92,6 +92,7 @@ export namespace cloud {
      * interface fullName: cloud.Component.Component
      */
     export interface Component {
+        endpoint: string;
         name: string;
         status: cloud.ServiceStatusEnum;
     }
@@ -1091,6 +1092,7 @@ export namespace cloud {
          * interface fullName: cloud.containerRegistry.Plan.Plan
          */
         export interface Plan {
+            code: string;
             createdAt: string;
             features: cloud.containerRegistry.Features;
             id: string;
@@ -2244,6 +2246,13 @@ export namespace cloud {
         }
         export namespace dataProcessing {
             /**
+             * Authorization status
+             * interface fullName: cloud.project.dataProcessing.AuthorizationStatus.AuthorizationStatus
+             */
+            export interface AuthorizationStatus {
+                authorized: boolean;
+            }
+            /**
              * Engine parameters
              * interface fullName: cloud.project.dataProcessing.CapabilitiesEngineParameter.CapabilitiesEngineParameter
              */
@@ -3302,6 +3311,172 @@ export interface Cloud {
                  * Controle cache
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+            ai: {
+                capabilities: {
+                    serving: {
+                        flavor: {
+                            /**
+                             * List Serving Engine available flavor
+                             * GET /cloud/project/{serviceName}/ai/capabilities/serving/flavor
+                             */
+                            $get(): Promise<cloud.project.ai.serving.Flavor[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                        presetImage: {
+                            /**
+                             * List Serving Engine Preset Model Images
+                             * GET /cloud/project/{serviceName}/ai/capabilities/serving/presetImage
+                             */
+                            $get(): Promise<cloud.project.ai.serving.PresetImage[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                        region: {
+                            /**
+                             * List Serving Engine available regions
+                             * GET /cloud/project/{serviceName}/ai/capabilities/serving/region
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                    }
+                }
+                serving: {
+                    /**
+                     * List namespaces of the project
+                     * GET /cloud/project/{serviceName}/ai/serving
+                     */
+                    $get(): Promise<cloud.project.ai.serving.Namespace[]>;
+                    /**
+                     * Create a new namespace
+                     * POST /cloud/project/{serviceName}/ai/serving
+                     */
+                    $post(params: { container: string, description: string, region: string }): Promise<cloud.project.ai.serving.Namespace>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $(namespaceId: string): {
+                        /**
+                         * Delete a namespace
+                         * DELETE /cloud/project/{serviceName}/ai/serving/{namespaceId}
+                         */
+                        $delete(): Promise<void>;
+                        /**
+                         * Get the namespace information
+                         * GET /cloud/project/{serviceName}/ai/serving/{namespaceId}
+                         */
+                        $get(): Promise<cloud.project.ai.serving.Namespace>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        model: {
+                            /**
+                             * List models
+                             * GET /cloud/project/{serviceName}/ai/serving/{namespaceId}/model
+                             */
+                            $get(): Promise<cloud.project.ai.serving.Model[]>;
+                            /**
+                             * Create a new model
+                             * POST /cloud/project/{serviceName}/ai/serving/{namespaceId}/model
+                             */
+                            $post(params: { flavor: string, id: string, imageId?: string, storagePath?: string, workflowTemplate?: cloud.project.ai.serving.WorkflowTemplateEnum }): Promise<cloud.project.ai.serving.Model>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(modelId: string): {
+                                /**
+                                 * Delete a model
+                                 * DELETE /cloud/project/{serviceName}/ai/serving/{namespaceId}/model/{modelId}
+                                 */
+                                $delete(): Promise<void>;
+                                /**
+                                 * Get model information
+                                 * GET /cloud/project/{serviceName}/ai/serving/{namespaceId}/model/{modelId}
+                                 */
+                                $get(): Promise<cloud.project.ai.serving.Model>;
+                                /**
+                                 * Update a model
+                                 * PUT /cloud/project/{serviceName}/ai/serving/{namespaceId}/model/{modelId}
+                                 */
+                                $put(): Promise<cloud.project.ai.serving.Model>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        registry: {
+                            /**
+                             * Detach the current registry
+                             * DELETE /cloud/project/{serviceName}/ai/serving/{namespaceId}/registry
+                             */
+                            $delete(): Promise<void>;
+                            /**
+                             * Get registry information
+                             * GET /cloud/project/{serviceName}/ai/serving/{namespaceId}/registry
+                             */
+                            $get(): Promise<cloud.project.ai.serving.Registry>;
+                            /**
+                             * Attach a docker registry
+                             * POST /cloud/project/{serviceName}/ai/serving/{namespaceId}/registry
+                             */
+                            $post(params: { custom?: boolean, password: string, url: string, username: string }): Promise<cloud.project.ai.serving.RegistryResponse>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                        token: {
+                            /**
+                             * List tokens
+                             * GET /cloud/project/{serviceName}/ai/serving/{namespaceId}/token
+                             */
+                            $get(): Promise<cloud.project.ai.serving.Token[]>;
+                            /**
+                             * Create a new token
+                             * POST /cloud/project/{serviceName}/ai/serving/{namespaceId}/token
+                             */
+                            $post(params: { createdAt?: string, groups: cloud.project.ai.serving.TokenGroupEnum[], id?: string, resource: string, token?: string }): Promise<cloud.project.ai.serving.Token>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(tokenId: string): {
+                                /**
+                                 * Delete a token
+                                 * DELETE /cloud/project/{serviceName}/ai/serving/{namespaceId}/token/{tokenId}
+                                 */
+                                $delete(): Promise<void>;
+                                /**
+                                 * Get token information
+                                 * GET /cloud/project/{serviceName}/ai/serving/{namespaceId}/token/{tokenId}
+                                 */
+                                $get(): Promise<cloud.project.ai.serving.Token>;
+                                /**
+                                 * Renew a new token
+                                 * PUT /cloud/project/{serviceName}/ai/serving/{namespaceId}/token/{tokenId}
+                                 */
+                                $put(): Promise<cloud.project.ai.serving.Token>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                    };
+                }
             }
             alerting: {
                 /**

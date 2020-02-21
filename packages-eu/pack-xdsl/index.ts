@@ -4,6 +4,16 @@ import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-
  * START API /pack/xdsl Models
  * Source: https://eu.api.ovh.com/1.0/pack/xdsl.json
  */
+export namespace complexType {
+    /**
+     * A numeric value tagged with its unit
+     * interface fullName: complexType.UnitAndValue.UnitAndValue
+     */
+    export interface UnitAndValue<T> {
+        unit: string;
+        value: T;
+    }
+}
 export namespace connectivity {
     export namespace eligibility {
         /**
@@ -91,6 +101,63 @@ export namespace pack {
          * interface fullName: pack.xdsl.ExchangeLiteService.ExchangeLiteService
          */
         export interface ExchangeLiteService {
+            domain: string;
+        }
+        export namespace HostedEmail {
+            /**
+             * HostedEmail account
+             * interface fullName: pack.xdsl.HostedEmail.Account.Account
+             */
+            export interface Account {
+                antispamEnabled: boolean;
+                antivirusEnabled: boolean;
+                offer: pack.xdsl.HostedEmail.AccountOfferEnum;
+                primaryEmailAddress: string;
+                quota: complexType.UnitAndValue<number>;
+                size: complexType.UnitAndValue<number>;
+            }
+            /**
+             * Available offers
+             * type fullname: pack.xdsl.HostedEmail.AccountOfferEnum
+             */
+            export type AccountOfferEnum = "individual"
+            /**
+             * HostedEmail configuration
+             * interface fullName: pack.xdsl.HostedEmail.Configuration.Configuration
+             */
+            export interface Configuration {
+                services: pack.xdsl.HostedEmail.ConfigurationService[];
+                status: pack.xdsl.HostedEmail.ConfigurationStatusEnum;
+                webmailUrl: string;
+            }
+            /**
+             * HostedEmail configuration service
+             * interface fullName: pack.xdsl.HostedEmail.ConfigurationService.ConfigurationService
+             */
+            export interface ConfigurationService {
+                host: string;
+                ip: string;
+                port: number;
+                service: pack.xdsl.HostedEmail.ConfigurationServiceEnum;
+                smtpAuth?: boolean;
+                startTls: boolean;
+            }
+            /**
+             * Available types of service
+             * type fullname: pack.xdsl.HostedEmail.ConfigurationServiceEnum
+             */
+            export type ConfigurationServiceEnum = "imap" | "imaps" | "pop3" | "pop3s" | "smtp" | "smtps" | "submission"
+            /**
+             * Available configuration statuses
+             * type fullname: pack.xdsl.HostedEmail.ConfigurationStatusEnum
+             */
+            export type ConfigurationStatusEnum = "active" | "suspended"
+        }
+        /**
+         * Hosted email services
+         * interface fullName: pack.xdsl.HostedEmailService.HostedEmailService
+         */
+        export interface HostedEmailService {
             domain: string;
         }
         /**
@@ -982,6 +1049,55 @@ export interface Pack {
                      * Controle cache
                      */
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $(domain: string): {
+                        /**
+                         * Delete hosted email account
+                         * DELETE /pack/xdsl/{packName}/hostedEmail/services/{domain}
+                         */
+                        $delete(): Promise<void>;
+                        /**
+                         * Get this object properties
+                         * GET /pack/xdsl/{packName}/hostedEmail/services/{domain}
+                         */
+                        $get(): Promise<pack.xdsl.HostedEmailService>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        account: {
+                            /**
+                             * Get hosted email account informations
+                             * GET /pack/xdsl/{packName}/hostedEmail/services/{domain}/account
+                             */
+                            $get(): Promise<pack.xdsl.HostedEmail.Account>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                        changePassword: {
+                            /**
+                             * Change hosted email account password
+                             * POST /pack/xdsl/{packName}/hostedEmail/services/{domain}/changePassword
+                             */
+                            $post(params: { password: string }): Promise<void>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                        configuration: {
+                            /**
+                             * Get hosted email configuration informations
+                             * GET /pack/xdsl/{packName}/hostedEmail/services/{domain}/configuration
+                             */
+                            $get(): Promise<pack.xdsl.HostedEmail.Configuration>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                    };
                 }
             }
             hubic: {

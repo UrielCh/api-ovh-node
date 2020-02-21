@@ -64,12 +64,12 @@ export namespace price {
                      * Enum of Hourlys
                      * type fullname: price.DedicatedCloud._2013v1.Bhs1a.Filer.HourlyEnum
                      */
-                    export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200g-GB" | "nfs-3300-GB" | "nfs-3600-GB" | "nfs-6600-GB"
+                    export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200g-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-3600-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-9000-GB"
                     /**
                      * Enum of Monthlys
                      * type fullname: price.DedicatedCloud._2013v1.Bhs1a.Filer.MonthlyEnum
                      */
-                    export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-3300-GB" | "nfs-3600-GB" | "nfs-6600-GB"
+                    export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-3600-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-9000-GB"
                 }
                 export namespace Host {
                     /**
@@ -90,12 +90,12 @@ export namespace price {
                      * Enum of Hourlys
                      * type fullname: price.DedicatedCloud._2013v1.Rbx2a.Filer.HourlyEnum
                      */
-                    export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200g-GB" | "nfs-3300-GB" | "nfs-3600-GB" | "nfs-6600-GB"
+                    export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200g-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-3600-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-9000-GB"
                     /**
                      * Enum of Monthlys
                      * type fullname: price.DedicatedCloud._2013v1.Rbx2a.Filer.MonthlyEnum
                      */
-                    export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-3300-GB" | "nfs-3600-GB" | "nfs-6600-GB"
+                    export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-3600-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-9000-GB"
                 }
                 export namespace Host {
                     /**
@@ -116,12 +116,12 @@ export namespace price {
                      * Enum of Hourlys
                      * type fullname: price.DedicatedCloud._2013v1.Sbg1a.Filer.HourlyEnum
                      */
-                    export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200g-GB" | "nfs-3300-GB" | "nfs-3600-GB" | "nfs-6600-GB"
+                    export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200g-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-3600-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-9000-GB"
                     /**
                      * Enum of Monthlys
                      * type fullname: price.DedicatedCloud._2013v1.Sbg1a.Filer.MonthlyEnum
                      */
-                    export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-3300-GB" | "nfs-3600-GB" | "nfs-6600-GB"
+                    export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-3600-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-9000-GB"
                 }
                 export namespace Host {
                     /**
@@ -145,12 +145,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2014v1.Bhs1a.Enterprise.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2014v1.Bhs1a.Enterprise.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -171,12 +171,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2014v1.Bhs1a.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2014v1.Bhs1a.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -199,12 +199,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2014v1.Rbx2a.Enterprise.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2014v1.Rbx2a.Enterprise.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -225,12 +225,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2014v1.Rbx2a.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2014v1.Rbx2a.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -253,12 +253,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2014v1.Rbx2b.Enterprise.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2014v1.Rbx2b.Enterprise.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -279,12 +279,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2014v1.Rbx2b.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2014v1.Rbx2b.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -307,12 +307,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2014v1.Sbg1a.Enterprise.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2014v1.Sbg1a.Enterprise.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -333,12 +333,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2014v1.Sbg1a.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2014v1.Sbg1a.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -363,12 +363,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2014v2.Bhs1a.Enterprise.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2014v2.Bhs1a.Enterprise.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -389,12 +389,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2014v2.Bhs1a.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2014v2.Bhs1a.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -417,12 +417,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2014v2.Rbx2a.Enterprise.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2014v2.Rbx2a.Enterprise.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -443,12 +443,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2014v2.Rbx2a.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2014v2.Rbx2a.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -471,12 +471,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2014v2.Rbx2b.Enterprise.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2014v2.Rbx2b.Enterprise.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -497,12 +497,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2014v2.Rbx2b.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2014v2.Rbx2b.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -525,12 +525,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2014v2.Sbg1a.Enterprise.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2014v2.Sbg1a.Enterprise.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -551,12 +551,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2014v2.Sbg1a.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2014v2.Sbg1a.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -581,12 +581,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v1.Bhs1a.Enterprise.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v1.Bhs1a.Enterprise.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -607,12 +607,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v1.Bhs1a.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v1.Bhs1a.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -635,12 +635,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v1.Rbx2a.Enterprise.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v1.Rbx2a.Enterprise.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -661,12 +661,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v1.Rbx2a.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v1.Rbx2a.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -689,12 +689,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v1.Rbx2b.Enterprise.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v1.Rbx2b.Enterprise.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -715,12 +715,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v1.Rbx2b.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v1.Rbx2b.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -743,12 +743,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v1.Sbg1a.Enterprise.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v1.Sbg1a.Enterprise.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -769,12 +769,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v1.Sbg1a.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v1.Sbg1a.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -799,12 +799,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v2.Bhs1a.Enterprise.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v2.Bhs1a.Enterprise.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -825,12 +825,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v2.Bhs1a.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v2.Bhs1a.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -853,12 +853,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v2.Rbx2a.Enterprise.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v2.Rbx2a.Enterprise.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -879,12 +879,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v2.Rbx2a.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v2.Rbx2a.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -907,12 +907,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v2.Rbx2b.Enterprise.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v2.Rbx2b.Enterprise.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -933,12 +933,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v2.Rbx2b.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v2.Rbx2b.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -961,12 +961,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v2.Sbg1a.Enterprise.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v2.Sbg1a.Enterprise.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -987,12 +987,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v2.Sbg1a.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v2.Sbg1a.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -1017,12 +1017,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v3.Bhs1a.Enterprise.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v3.Bhs1a.Enterprise.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -1043,12 +1043,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v3.Bhs1a.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v3.Bhs1a.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -1071,12 +1071,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v3.Rbx2a.Enterprise.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v3.Rbx2a.Enterprise.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -1097,12 +1097,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v3.Rbx2a.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v3.Rbx2a.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -1125,12 +1125,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v3.Rbx2b.Enterprise.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v3.Rbx2b.Enterprise.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -1151,12 +1151,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v3.Rbx2b.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v3.Rbx2b.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -1179,12 +1179,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v3.Sbg1a.Enterprise.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v3.Sbg1a.Enterprise.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -1205,12 +1205,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v3.Sbg1a.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v3.Sbg1a.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -1235,12 +1235,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v4.Bhs1a.Enterprise.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v4.Bhs1a.Enterprise.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -1261,12 +1261,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v4.Bhs1a.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v4.Bhs1a.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -1289,12 +1289,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v4.Rbx2a.Enterprise.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v4.Rbx2a.Enterprise.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -1315,12 +1315,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v4.Rbx2a.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v4.Rbx2a.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -1343,12 +1343,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v4.Rbx2b.Enterprise.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v4.Rbx2b.Enterprise.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -1369,12 +1369,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v4.Rbx2b.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v4.Rbx2b.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -1397,12 +1397,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v4.Sbg1a.Enterprise.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v4.Sbg1a.Enterprise.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -1423,12 +1423,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v4.Sbg1a.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v4.Sbg1a.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -1453,12 +1453,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v5.Bhs1a.Enterprise.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v5.Bhs1a.Enterprise.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -1479,12 +1479,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v5.Bhs1a.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v5.Bhs1a.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -1507,12 +1507,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v5.Rbx2a.Enterprise.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v5.Rbx2a.Enterprise.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -1533,12 +1533,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v5.Rbx2a.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v5.Rbx2a.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -1561,12 +1561,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v5.Rbx2b.Enterprise.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v5.Rbx2b.Enterprise.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -1587,12 +1587,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v5.Rbx2b.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v5.Rbx2b.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -1615,12 +1615,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v5.Sbg1a.Enterprise.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v5.Sbg1a.Enterprise.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -1641,12 +1641,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v5.Sbg1a.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v5.Sbg1a.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -1671,12 +1671,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v6.Bhs1a.Enterprise.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v6.Bhs1a.Enterprise.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -1697,12 +1697,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v6.Bhs1a.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v6.Bhs1a.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -1725,12 +1725,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v6.Rbx2a.Enterprise.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v6.Rbx2a.Enterprise.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -1751,12 +1751,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v6.Rbx2a.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v6.Rbx2a.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -1779,12 +1779,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v6.Rbx2b.Enterprise.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v6.Rbx2b.Enterprise.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -1805,12 +1805,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v6.Rbx2b.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v6.Rbx2b.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -1833,12 +1833,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v6.Sbg1a.Enterprise.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v6.Sbg1a.Enterprise.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -1859,12 +1859,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v6.Sbg1a.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v6.Sbg1a.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -1889,12 +1889,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v7.Bhs1a.Enterprise.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v7.Bhs1a.Enterprise.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -1915,12 +1915,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v7.Bhs1a.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v7.Bhs1a.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -1943,12 +1943,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v7.Rbx2a.Enterprise.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v7.Rbx2a.Enterprise.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -1969,12 +1969,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v7.Rbx2a.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v7.Rbx2a.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -1997,12 +1997,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v7.Rbx2b.Enterprise.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v7.Rbx2b.Enterprise.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -2023,12 +2023,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v7.Rbx2b.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v7.Rbx2b.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -2051,12 +2051,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v7.Sbg1a.Enterprise.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v7.Sbg1a.Enterprise.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -2077,12 +2077,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2016v7.Sbg1a.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "iscsi-1200-GB" | "iscsi-13200g-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2016v7.Sbg1a.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "iscsi-1200-GB" | "iscsi-13200-GB" | "iscsi-3300-GB" | "iscsi-6600-GB" | "iscsi-800-GB" | "nfs-100-GB" | "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -2107,12 +2107,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2018v1.Bhs1a.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v1.Bhs1a.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -2135,12 +2135,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2018v1.Eri1c.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v1.Eri1c.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -2163,12 +2163,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2018v1.Lim1c.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v1.Lim1c.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -2191,12 +2191,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2018v1.Rbx2a.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v1.Rbx2a.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -2219,12 +2219,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2018v1.Rbx2b.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v1.Rbx2b.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -2247,12 +2247,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2018v1.Sbg1a.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v1.Sbg1a.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -2275,12 +2275,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2018v1.Waw1c.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v1.Waw1c.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -2305,12 +2305,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2018v2.Bhs1a.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v2.Bhs1a.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -2333,12 +2333,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2018v2.Eri1c.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v2.Eri1c.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -2361,12 +2361,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2018v2.Lim1c.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v2.Lim1c.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -2389,12 +2389,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2018v2.Rbx2a.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v2.Rbx2a.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -2417,12 +2417,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2018v2.Rbx2b.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v2.Rbx2b.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -2445,12 +2445,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2018v2.Sbg1a.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v2.Sbg1a.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -2473,12 +2473,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2018v2.Waw1c.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v2.Waw1c.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -2503,12 +2503,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2018v3.Bhs1a.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v3.Bhs1a.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -2531,12 +2531,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2018v3.Eri1c.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v3.Eri1c.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -2559,12 +2559,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2018v3.Lim1c.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v3.Lim1c.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -2587,12 +2587,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2018v3.Rbx2a.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v3.Rbx2a.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -2615,12 +2615,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2018v3.Rbx2b.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v3.Rbx2b.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -2643,12 +2643,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2018v3.Sbg1a.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v3.Sbg1a.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -2671,12 +2671,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2018v3.Waw1c.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v3.Waw1c.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -2701,12 +2701,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2018v4.Bhs1a.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v4.Bhs1a.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -2729,12 +2729,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2018v4.Eri1c.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v4.Eri1c.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -2757,12 +2757,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2018v4.Lim1c.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v4.Lim1c.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -2785,12 +2785,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2018v4.Rbx2a.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v4.Rbx2a.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -2813,12 +2813,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2018v4.Rbx2b.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v4.Rbx2b.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -2841,12 +2841,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2018v4.Sbg1a.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v4.Sbg1a.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -2869,12 +2869,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2018v4.Waw1c.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v4.Waw1c.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -2899,12 +2899,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2018v5.Bhs1a.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v5.Bhs1a.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -2927,12 +2927,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2018v5.Eri1c.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v5.Eri1c.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -2955,12 +2955,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2018v5.Lim1c.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v5.Lim1c.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -2983,12 +2983,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2018v5.Rbx2a.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v5.Rbx2a.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -3011,12 +3011,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2018v5.Rbx2b.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v5.Rbx2b.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -3039,12 +3039,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2018v5.Sbg1a.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v5.Sbg1a.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -3067,12 +3067,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2018v5.Waw1c.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v5.Waw1c.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -3097,12 +3097,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2018v6.Bhs1a.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v6.Bhs1a.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -3125,12 +3125,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2018v6.Eri1c.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v6.Eri1c.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -3153,12 +3153,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2018v6.Lim1c.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v6.Lim1c.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -3181,12 +3181,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2018v6.Rbx2a.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v6.Rbx2a.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -3209,12 +3209,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2018v6.Rbx2b.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v6.Rbx2b.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -3237,12 +3237,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2018v6.Sbg1a.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v6.Sbg1a.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -3265,12 +3265,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2018v6.Waw1c.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v6.Waw1c.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -3295,12 +3295,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2018v7.Bhs1a.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v7.Bhs1a.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -3323,12 +3323,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2018v7.Eri1c.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v7.Eri1c.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -3351,12 +3351,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2018v7.Lim1c.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v7.Lim1c.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -3379,12 +3379,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2018v7.Rbx2a.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v7.Rbx2a.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -3407,12 +3407,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2018v7.Rbx2b.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v7.Rbx2b.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -3435,12 +3435,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2018v7.Sbg1a.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v7.Sbg1a.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**
@@ -3463,12 +3463,12 @@ export namespace price {
                          * Enum of Hourlys
                          * type fullname: price.DedicatedCloud._2018v7.Waw1c.Infrastructure.Filer.HourlyEnum
                          */
-                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type HourlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                         /**
                          * Enum of Monthlys
                          * type fullname: price.DedicatedCloud._2018v7.Waw1c.Infrastructure.Filer.MonthlyEnum
                          */
-                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-2400-GB" | "nfs-3300-GB" | "nfs-6600-GB" | "nfs-800-GB"
+                        export type MonthlyEnum = "nfs-1200-GB" | "nfs-13200-GB" | "nfs-1600-GB" | "nfs-18000-GB" | "nfs-2000-GB" | "nfs-2400-GB" | "nfs-3000-GB" | "nfs-3300-GB" | "nfs-36000-GB" | "nfs-6000-GB" | "nfs-6600-GB" | "nfs-800-GB" | "nfs-9000-GB"
                     }
                     export namespace Host {
                         /**

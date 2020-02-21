@@ -2500,7 +2500,7 @@ export interface Telephony {
          * Get all available accessories
          * GET /telephony/accessories
          */
-        $get(params: { country: telephony.NumberCountryEnum }): Promise<telephony.AccessoryOffer[]>;
+        $get(params: { brand?: string, country: telephony.NumberCountryEnum }): Promise<telephony.AccessoryOffer[]>;
         /**
          * Controle cache
          */
