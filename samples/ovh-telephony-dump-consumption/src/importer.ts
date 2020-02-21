@@ -2,23 +2,42 @@ import { Telephony } from '@ovh-api/telephony'
 import { StoreMysql } from "./StoreMysql";
 import { getVoiceConsumptions, getVoiceConsumption } from "./retry";
 import Bluebird from 'bluebird'
+import program from 'commander'
 
 export interface VOIPService {
   billingAccount: string;
   type: 'number' | 'line';
   name: string;
 }
-
-async function getAllService(apiPhone: Telephony): Promise<VOIPService[]> {
+/**
+ * import all services from all groups
+ */
+async function getAllService(apiPhone: Telephony, options?: {
+  groupSelection?: Set<string>
+  serviceSelection?: Set<string>
+}): Promise<VOIPService[]> {
+  options = options || {};
+  const { groupSelection } = options;
+  let { serviceSelection } = options;
   const list: VOIPService[] = [];
-  const billingAccounts = await apiPhone.$get();
+  let billingAccounts = await apiPhone.$get();
+  if (groupSelection && groupSelection.size) {
+    billingAccounts = billingAccounts
+      .filter(g => groupSelection.has(g));
+  }
+  if (serviceSelection && !serviceSelection.size) {
+    serviceSelection = undefined;
+  }
   await Bluebird.map(billingAccounts, async billingAccount => {
     try {
-      const lines = await apiPhone.$(billingAccount).line.$get();
-      const numbers = await apiPhone.$(billingAccount).number.$get();
-
+      let lines = await apiPhone.$(billingAccount).line.$get();
+      let numbers = await apiPhone.$(billingAccount).number.$get();
+      if (serviceSelection) {
+        lines = lines.filter(n => (serviceSelection as Set<string>).has(n));
+        numbers = numbers.filter(n => (serviceSelection as Set<string>).has(n));
+      }
       lines.forEach(name => list.push({ billingAccount, type: 'line', name }));
-      numbers.forEach(name => list.push({ billingAccount, type: 'line', name }));
+      numbers.forEach(name => list.push({ billingAccount, type: 'number', name }));
     } catch (e) { // service do not exists
       console.log(`Loading billing: ${billingAccount}:`, e);
       return;
@@ -45,7 +64,10 @@ export async function importAll(apiPhone: Telephony, store: StoreMysql) {
     }
   }, 10000);
 
-  const services = await getAllService(apiPhone);
+  const services = await getAllService(apiPhone, {
+    groupSelection: program.billing,
+    serviceSelection: program.service
+  });
   cnts.services = services.length;
   await Bluebird.map(services, async ({ billingAccount, type, name }) => {
     threads.services++;

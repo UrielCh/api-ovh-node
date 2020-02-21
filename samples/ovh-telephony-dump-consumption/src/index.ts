@@ -13,8 +13,18 @@ Bluebird.config({
   // longStackTraces: true
 });
 
+const setAccumulator = (paramName: string, regexp: RegExp) => (value:string, previous: Set<string>) => {
+  if (! value.match(regexp))
+    throw Error(`invalid value: "${value}" for ${paramName}`);
+  previous = previous || new Set();
+  previous.add(value);
+  return previous
+};
+
 program
   .version(version)
+  .option('-s, --service <service>', 'Only download this service consumtion', setAccumulator('service', /00[\d+]/), new Set<string>())
+  .option('-b, --billing <billing>', 'Only download this billinggroup consumtion', setAccumulator('billing', /[a-z]{2}-\d+-\d+/), new Set<string>())
   .parse(process.argv)
 
 async function main() {
