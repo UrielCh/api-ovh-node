@@ -290,7 +290,7 @@ by default I will ask for all rights`);
 
     async cache(template: string, param?: ICacheOptions | CacheAction): Promise<any> {
         if (!this.queryCache) {
-            this.queryCache = new Cache({slotClass: this.slotClass});
+            this.queryCache = new Cache({ slotClass: this.slotClass });
         }
         param = param || { ttl: 3600 };
         if (typeof (param) === 'string') {
@@ -604,6 +604,7 @@ by default I will ask for all rights`);
         }
 
         const makeRequest = () => new Promise((resolve, reject) => {
+            const { maxRetry } = this;
             let req = https.request(options, (res: IncomingMessage) => {
                 let body = '';
                 res.on('data', (chunk) => body += chunk)
@@ -611,12 +612,27 @@ by default I will ask for all rights`);
                         retryCnt++;
                         // 504 Gateway Time-out
                         // 408 Request Time-out
-                        const { statusCode } = res;
-                        if ((statusCode == 504 || statusCode == 408) && retryCnt <= this.maxRetry) {
-                            this.emit('warning', { retryCnt: retryCnt, maxRetry: this.maxRetry, method: httpMethod, path, statusCode, statusMessage: res.statusMessage });
-                            await wait(this.retrySleep * retryCnt);
-                            makeRequest().then(resolve, reject);
-                            return;
+                        let { statusCode } = res;
+                        if (retryCnt <= maxRetry) {
+                            /**
+                             * Correct invalid return code 400 QUERY_TIME_OUT
+                             * that can be sent by OVH
+                             */
+                            if ((statusCode == 400)) {
+                                try {
+                                    const responseErr: IOvhError = JSON.parse(body);
+                                    if (responseErr.errorCode === "QUERY_TIME_OUT") {
+                                        statusCode = 408;
+                                    }
+                                } catch (e) { }
+                            }
+
+                            if ((statusCode === 504 || statusCode === 408)) {
+                                this.emit('warning', { retryCnt, maxRetry, method: httpMethod, path, statusCode, statusMessage: res.statusMessage });
+                                await wait(this.retrySleep * retryCnt);
+                                makeRequest().then(resolve, reject);
+                                return;
+                            }
                         }
                         return handleResponse(res, body).then(resolve, reject)
                     })
