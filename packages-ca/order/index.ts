@@ -1913,6 +1913,38 @@ export interface Order {
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
+            logs: {
+                /**
+                 * Get informations about Logs offers
+                 * GET /order/cart/{cartId}/logs
+                 */
+                $get(): Promise<order.cart.GenericProductDefinition[]>;
+                /**
+                 * Post a new Logs item in your cart
+                 * POST /order/cart/{cartId}/logs
+                 */
+                $post(params: { duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                options: {
+                    /**
+                     * Get informations about Logs options
+                     * GET /order/cart/{cartId}/logs/options
+                     */
+                    $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
+                    /**
+                     * Post a new Logs option in your cart
+                     * POST /order/cart/{cartId}/logs/options
+                     */
+                    $post(params: { duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+            }
             nasha: {
                 /**
                  * Get informations about NAS HA offers

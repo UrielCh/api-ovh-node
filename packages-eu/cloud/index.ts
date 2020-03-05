@@ -2264,6 +2264,15 @@ export namespace cloud {
                 type: string;
             }
             /**
+             * Engine Template
+             * interface fullName: cloud.project.dataProcessing.CapabilitiesTemplate.CapabilitiesTemplate
+             */
+            export interface CapabilitiesTemplate {
+                cores: number;
+                id: number;
+                memory: number;
+            }
+            /**
              * Capabilities of data processing service
              * interface fullName: cloud.project.dataProcessing.Capability.Capability
              */
@@ -2271,6 +2280,7 @@ export namespace cloud {
                 availableVersions: cloud.project.dataProcessing.EngineVersion[];
                 name: string;
                 parameters: cloud.project.dataProcessing.CapabilitiesEngineParameter[];
+                templates: cloud.project.dataProcessing.CapabilitiesTemplate[];
             }
             /**
              * Parameters of the engine

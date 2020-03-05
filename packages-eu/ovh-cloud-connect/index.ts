@@ -38,6 +38,17 @@ export namespace ovhcloudconnect {
         type: ovhcloudconnect.datacenterExtraConfig.TypeEnum;
     }
     /**
+     * OVHcloud Connect Interface
+     * interface fullName: ovhcloudconnect.Interface.Interface
+     */
+    export interface Interface {
+        id: number;
+        incomingLightStatus: ovhcloudconnect.interface.LightStatusEnum;
+        lightLastUpdate: string;
+        outgoingLightStatus: ovhcloudconnect.interface.LightStatusEnum;
+        status: ovhcloudconnect.interface.StatusEnum;
+    }
+    /**
      * OVHcloud Connect Service Pop Configuration
      * interface fullName: ovhcloudconnect.PopConfig.PopConfig
      */
@@ -58,7 +69,9 @@ export namespace ovhcloudconnect {
         bandwidth: ovhcloudconnect.service.BandwidthEnum;
         description: string;
         interfaceList: number[];
+        pop: string;
         portQuantity: ovhcloudconnect.service.PortEnum;
+        product: string;
         status: ovhcloudconnect.service.StatusEnum;
         uuid: string;
         vrack?: string;
@@ -86,6 +99,18 @@ export namespace ovhcloudconnect {
          * type fullname: ovhcloudconnect.datacenterExtraConfig.TypeEnum
          */
         export type TypeEnum = "bgp" | "network"
+    }
+    export namespace interface {
+        /**
+         * Enum values for the light status
+         * type fullname: ovhcloudconnect.interface.LightStatusEnum
+         */
+        export type LightStatusEnum = "up" | "down" | "unknown"
+        /**
+         * Enum values for interface status
+         * type fullname: ovhcloudconnect.interface.StatusEnum
+         */
+        export type StatusEnum = "enabled" | "disabled"
     }
     export namespace popConfig {
         /**
@@ -354,6 +379,28 @@ export interface OvhCloudConnect {
                  * GET /ovhCloudConnect/{serviceName}/datacenter/{id}
                  */
                 $get(): Promise<ovhcloudconnect.Datacenter>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            };
+        }
+        interface: {
+            /**
+             * List interfaces linked to the Service
+             * GET /ovhCloudConnect/{serviceName}/interface
+             */
+            $get(): Promise<number[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $(id: number): {
+                /**
+                 * Get the Interface information
+                 * GET /ovhCloudConnect/{serviceName}/interface/{id}
+                 */
+                $get(): Promise<ovhcloudconnect.Interface>;
                 /**
                  * Controle cache
                  */

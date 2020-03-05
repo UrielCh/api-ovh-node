@@ -1,0 +1,28 @@
+{
+    "name": "@ovh-kimsufi/license-directadmin",
+    "description": "Add typing to to ovh api license-directadmin",
+    "version": "2.0.0",
+    "typings": "index.d.ts",
+    "license": "MIT",
+    "author": "Uriel Chemouni <uchemouni@gmail.com>",
+    "dependencies": {
+        "@ovh-api/common": "^3.1.0"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "bugs": "https://github.com/UrielCh/api-ovh-node/issues",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/UrielCh/api-ovh-node.git"
+    },
+    "scripts": {
+        "build": "tsc",
+        "build:watch": "tsc --watch",
+        "prepare": "npm run build"
+    },
+    "files": [
+        "index.js",
+        "index.d.ts"
+    ]
+}

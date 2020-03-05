@@ -642,6 +642,7 @@ export namespace xdsl {
         canExchange: boolean;
         newModel: string;
         price: order.Price;
+        priceWithTax: order.Price;
     }
     /**
      * Describe general information of a Modem

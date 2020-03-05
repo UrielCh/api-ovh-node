@@ -1492,6 +1492,17 @@ export interface DedicatedCloud {
              */
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
+        changeContact: {
+            /**
+             * Launch a contact change procedure
+             * POST /dedicatedCloud/{serviceName}/changeContact
+             */
+            $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        }
         changeProperties: {
             /**
              * Update this Private Cloud properties.

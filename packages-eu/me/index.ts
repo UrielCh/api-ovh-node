@@ -134,6 +134,7 @@ export namespace billing {
      */
     export interface Bill {
         billId: string;
+        category: billing.CategoryEnum;
         date: string;
         orderId: number;
         password: string;
@@ -162,6 +163,11 @@ export namespace billing {
      * type fullname: billing.BillingTaskStatusEnum
      */
     export type BillingTaskStatusEnum = "cancelled" | "customerError" | "doing" | "done" | "init" | "ovhError" | "todo"
+    /**
+     * Types of plans
+     * type fullname: billing.CategoryEnum
+     */
+    export type CategoryEnum = "autorenew" | "purchase-cloud" | "purchase-servers" | "purchase-telecom" | "purchase-web"
     /**
      * Credit balance applied on an Order
      * interface fullName: billing.CreditBalance.CreditBalance
@@ -2808,7 +2814,7 @@ export interface Me {
          * List of all the bills the logged account has
          * GET /me/bill
          */
-        $get(params?: { date_from?: string, date_to?: string, orderId?: number }): Promise<string[]>;
+        $get(params?: { category?: billing.CategoryEnum, date_from?: string, date_to?: string, orderId?: number }): Promise<string[]>;
         /**
          * Controle cache
          */
