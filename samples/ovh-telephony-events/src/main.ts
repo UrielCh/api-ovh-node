@@ -122,7 +122,7 @@ async function main() {
         nbEvent = 0;
         // fromtime = 0;
     };
-    const logEvents = myDebounce(program.debounce, log)
+    const logEvents = myDebounce(Number(program.debounce), log)
     const logIdle1 = debounce(() => { console.error(`${new Date().toISOString()} WARNING no Activity in ${program.channel} for more than 2 min`) }, 120000)
     const logIdle2 = debounce(() => { console.error(`${new Date().toISOString()} ERROR   no Activity in ${program.channel} for more than 10 min, you may need to reset your tokens with OvhEventTokenImporter --reset`) }, 600000)
     logIdle1();
