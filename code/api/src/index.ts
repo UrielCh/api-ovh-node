@@ -221,7 +221,7 @@ export default class OvhApi extends EventEmitter implements OvhRequestable, OvhA
         this.appKey = params.appKey || 'bIYf2Ji3u5Qm93JZ';
         this.appSecret = params.appSecret || 'MGqfOgkblLhj1GOefKULD3ljnWitUwBW';
         this.consumerKey = params.consumerKey || null;
-        this.timeout = params.timeout;
+        this.timeout = params.timeout || 3 * 60_000; // default time out is 3 minutes
         this.apiTimeDiff = params.apiTimeDiff || null;
         this.certCache = params.certCache || '';
         this.retrySleep = (typeof params.retrySleep === 'number') ? params.retrySleep : 100;
@@ -411,7 +411,8 @@ by default I will ask for all rights`);
             host: this.host,
             port: this.port,
             method: httpMethod,
-            path: this.basePath + path
+            path: this.basePath + path,
+            timeout: this.timeout,
         };
 
         if (this.querySet) {
@@ -636,6 +637,10 @@ by default I will ask for all rights`);
                         }
                         return handleResponse(res, body).then(resolve, reject)
                     })
+            }).on('timeout', () => {
+                // TODO remove this debug
+                console.error('req abort timeout, retryCnt: ${retryCnt}');
+                req.abort();
             }).on('error', async (e) => {
                 // network connextion error like read ECONNRESET
                 retryCnt++;
