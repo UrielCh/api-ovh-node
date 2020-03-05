@@ -43,10 +43,10 @@ export namespace ovhcloudconnect {
      */
     export interface Interface {
         id: number;
-        incomingLightStatus: ovhcloudconnect.interface.LightStatusEnum;
+        incomingLightStatus: ovhcloudconnect.interf.LightStatusEnum;
         lightLastUpdate: string;
-        outgoingLightStatus: ovhcloudconnect.interface.LightStatusEnum;
-        status: ovhcloudconnect.interface.StatusEnum;
+        outgoingLightStatus: ovhcloudconnect.interf.LightStatusEnum;
+        status: ovhcloudconnect.interf.StatusEnum;
     }
     /**
      * OVHcloud Connect Service Pop Configuration
@@ -100,15 +100,15 @@ export namespace ovhcloudconnect {
          */
         export type TypeEnum = "bgp" | "network"
     }
-    export namespace interface {
+    export namespace interf {
         /**
          * Enum values for the light status
-         * type fullname: ovhcloudconnect.interface.LightStatusEnum
+         * type fullname: ovhcloudconnect.interf.LightStatusEnum
          */
         export type LightStatusEnum = "up" | "down" | "unknown"
         /**
          * Enum values for interface status
-         * type fullname: ovhcloudconnect.interface.StatusEnum
+         * type fullname: ovhcloudconnect.interf.StatusEnum
          */
         export type StatusEnum = "enabled" | "disabled"
     }

@@ -71,6 +71,13 @@ export let filterReservedKw = (name: string) => {
         name = name.replace(/\.package$/, '.pakage')
     }
 
+    if (~name.indexOf('interface')) {
+        if (name === 'interface')
+            return 'interf';
+        name = name.replace(/\.interface([.\[])/, '.interf$1')
+        name = name.replace(/\.interface$/, '.interf')
+    }
+
     name = name.replace(/\.([0-9])/g, '._$1')
     name = name.replace(/^([0-9])/g, '_$1')
     return name;
