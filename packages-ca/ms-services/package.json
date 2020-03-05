@@ -1,7 +1,7 @@
 {
     "name": "@ovh-api-ca/ms-services",
     "description": "Add typing to to ovh api ms-services",
-    "version": "3.1.0",
+    "version": "3.1.1",
     "typings": "index.d.ts",
     "license": "MIT",
     "author": "Uriel Chemouni <uchemouni@gmail.com>",
