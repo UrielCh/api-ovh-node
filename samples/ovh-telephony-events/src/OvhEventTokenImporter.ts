@@ -73,7 +73,7 @@ export class OvhEventTokenImporter {
         } catch {
             console.log(`cacheFile ${this._cachefile} do not Exists, creating a new one`);
             let tokens = await this.feachToken(billingAccounts);
-            await fse.writeJSON(this._cachefile, tokens);
+            await fse.writeJSON(this._cachefile, tokens, {spaces: 1});
             return tokens;
         }
     }

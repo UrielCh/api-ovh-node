@@ -1,39 +1,43 @@
 # Changelog
 
-## verion 1.4.7
+## verion 1.4.8
+
+- fix missing format json on cache file.
+
+## version 1.4.7
 
 - add --cert-cache param to store ovh cert on disk.
 
-## verion 1.4.6
+## version 1.4.6
 
 - append nic in error injected in Redis.
 
-## verion 1.4.3
+## version 1.4.3
 
 - implement reconnect group V2.
 
-## verion 1.4.1
+## version 1.4.1
 
 - improve error support.
 
-## verion 1.4.0
+## version 1.4.0
 
 - improve error handeling.
 - foward error to the redis.
 
-## verion 1.3.6
+## version 1.3.6
 
 - add error handeling.
 
-## verion 1.3.5
+## version 1.3.5
 
 - add date in Warning and Error messages.
 
-## verion 1.3.4
+## version 1.3.4
 
 - remove extra reference.
 
-## verion 1.3.3
+## version 1.3.3
 
 - add fix display number version
 - add check online version.
