@@ -8,6 +8,7 @@ import fetch from "node-fetch";
 import debounce from 'debounce';
 import fse from 'fs-extra';
 import kleur from 'kleur';
+import OvhApi from "@ovh-api/api";
 
 // sample exec line:
 // ts-node main.ts --redis-host 127.0.0.1 --cache tokens.json --channel event-voip
@@ -20,7 +21,8 @@ program
     .option('--redis-port <port>', 'use non standatd port')
     .option('--redis-password <password>', 'provide a redis password')
     .option('--channel <channel>', 'channel key used in redis to push events')
-    .option('--cache <cacheFile.json>', 'store and cache tokens')
+    .option('--cache <cache.json>', 'Store and cache event tokens')
+    .option('--cert-cache <cert-cache.json>', 'Store OVH cert used to generate event tokens')
     .option('--debounce <3000>', 'debounce log in ms', /[0-9]+/, "3000")
     .option('--v1', 'use Api V1 (by default use V2)')
     .parse(process.argv);
@@ -75,9 +77,12 @@ export function myDebounce(
 
 async function main() {
     checkUpdate();
+    const engine = new OvhApi({
+        accessRules: 'GET /me, GET /telephony, GET /telephony/*/eventToken, POST /telephony/*/eventToken, DELETE /telephony/*/eventToken',
+        certCache: program.certCache,
+    });
 
-    const importer = new OvhEventTokenImporter();
-
+    const importer = new OvhEventTokenImporter(engine);
     if (program['reset']) {
         if (program.cache) {
             console.log(`Try to deleting old token file ${program.cache}`);

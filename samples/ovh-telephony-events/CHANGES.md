@@ -1,5 +1,9 @@
 # Changelog
 
+## verion 1.4.7
+
+- add --cert-cache param to store ovh cert on disk.
+
 ## verion 1.4.6
 
 - append nic in error injected in Redis.

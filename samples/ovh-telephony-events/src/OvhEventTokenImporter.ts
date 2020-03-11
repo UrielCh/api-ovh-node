@@ -1,5 +1,5 @@
 import ApiTel, { telephony } from '@ovh-api/telephony';
-import ApiMe, { me } from '@ovh-api/me';
+import ApiMe from '@ovh-api/me';
 import bluebird from 'bluebird';
 import { IEvToken } from "./model";
 import OvhApi from "@ovh-api/api";
