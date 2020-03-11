@@ -31,15 +31,17 @@ $ ovh-telephony-events --help
 Usage: index.ts [options]
 
 Options:
-  -V, --version                output the version number
-  --reset                      reset all tokens
-  --redis-host <host>          store Even in Redis
-  --redis-port <port>          use non standatd port
-  --redis-password <password>  provide a redis password
-  --channel <channel>          channel key used in redis to push events
-  --cache <cacheFile.json>     store and cache tokens
-  --v1                         use Api V1 (by default use V2)
-  -h, --help                   output usage information
+  -V, --version                   Output the version number
+  --reset                         Reset all tokens
+  --redis-host <host>             Store Even in Redis
+  --redis-port <port>             Use non standatd port
+  --redis-password <password>     Provide a redis password
+  --channel <channel>             Channel key used in redis to push events
+  --cache <cache.json>            Store and cache event tokens
+  --cert-cache <cert-cache.json>  Store OVH cert used to generate event tokens
+  --debounce <3000>               Debounce log in ms (default: "3000")
+  --v1                            Use Api V1 (by default use V2)
+  -h, --help                      Output usage information
 ```
 
 ### example

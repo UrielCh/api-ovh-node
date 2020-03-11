@@ -16,15 +16,15 @@ import OvhApi from "@ovh-api/api";
 const { version } = require('../package.json');
 program
     .version(version)
-    .option('--reset', 'reset all tokens')
-    .option('--redis-host <host>', 'store Even in Redis')
-    .option('--redis-port <port>', 'use non standatd port')
-    .option('--redis-password <password>', 'provide a redis password')
-    .option('--channel <channel>', 'channel key used in redis to push events')
+    .option('--reset', 'Reset all tokens')
+    .option('--redis-host <host>', 'Store Even in Redis')
+    .option('--redis-port <port>', 'Use non standatd port')
+    .option('--redis-password <password>', 'Provide a redis password')
+    .option('--channel <channel>', 'Channel key used in redis to push events')
     .option('--cache <cache.json>', 'Store and cache event tokens')
     .option('--cert-cache <cert-cache.json>', 'Store OVH cert used to generate event tokens')
-    .option('--debounce <3000>', 'debounce log in ms', /[0-9]+/, "3000")
-    .option('--v1', 'use Api V1 (by default use V2)')
+    .option('--debounce <3000>', 'Debounce log in ms', /[0-9]+/, "3000")
+    .option('--v1', 'Use api V1 (by default use V2)')
     .parse(process.argv);
 
 function checkUpdate() {
@@ -123,10 +123,13 @@ async function main() {
     })
 
     let nbEvent = 0;
-
+    /**
+     * simple activity viewer on screen
+     * this log is debounce bay debounce ms to avoid flooding your log.
+     */
     const log = () => {
         const now = new Date();
-        console.log(`${now.toISOString()} Send ${nbEvent} event to ${program.channel}`);
+        console.log(`${now.toISOString()} Send ${nbEvent} event to ${program.channel} (${importer.nic})`);
         nbEvent = 0;
         // fromtime = 0;
     };
