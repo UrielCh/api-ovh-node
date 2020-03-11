@@ -1,5 +1,9 @@
 # Changelog
 
+## verion 1.4.6
+
+- append nic in error injected in Redis.
+
 ## verion 1.4.3
 
 - implement reconnect group V2.

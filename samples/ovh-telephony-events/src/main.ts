@@ -75,6 +75,9 @@ export function myDebounce(
 
 async function main() {
     checkUpdate();
+
+    const importer = new OvhEventTokenImporter();
+
     if (program['reset']) {
         if (program.cache) {
             console.log(`Try to deleting old token file ${program.cache}`);
@@ -82,7 +85,7 @@ async function main() {
                 await fse.remove(program.cache)
             } catch (e) {
             }
-            await new OvhEventTokenImporter().reset();
+            await importer.reset();
         }
         return "reset Done";
     }
@@ -91,7 +94,7 @@ async function main() {
         redis = createHandyClient({ host: program['redisHost'], port: Number(program['redisPort']) | 6379, password: program['redisPassword'] });
     }
     const cachefile: string = program.cache;
-    const tokens: IEvToken[] = await new OvhEventTokenImporter().cacheFile(cachefile).load();
+    const tokens: IEvToken[] = await importer.cacheFile(cachefile).load();
 
     let listener: IOvhEventListener;
     if (program.v1)
@@ -123,8 +126,8 @@ async function main() {
         // fromtime = 0;
     };
     const logEvents = myDebounce(Number(program.debounce), log)
-    const logIdle1 = debounce(() => { console.error(`${new Date().toISOString()} WARNING no Activity in ${program.channel} for more than 2 min`) }, 120000)
-    const logIdle2 = debounce(() => { console.error(`${new Date().toISOString()} ERROR   no Activity in ${program.channel} for more than 10 min, you may need to reset your tokens with OvhEventTokenImporter --reset`) }, 600000)
+    const logIdle1 = debounce(() => { console.error(`${new Date().toISOString()} WARNING no Activity in ${program.channel} (${importer.nic}) for more than 2 min`) }, 120000)
+    const logIdle2 = debounce(() => { console.error(`${new Date().toISOString()} ERROR   no Activity in ${program.channel} (${importer.nic}) for more than 10 min, you may need to reset your tokens with OvhEventTokenImporter --reset`) }, 600000)
     logIdle1();
     logIdle2();
     listener.on("message", (ev) => {

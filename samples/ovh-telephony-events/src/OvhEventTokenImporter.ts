@@ -1,4 +1,5 @@
-import Api, { telephony } from '@ovh-api/telephony';
+import ApiTel, { telephony } from '@ovh-api/telephony';
+import ApiMe, { me } from '@ovh-api/me';
 import bluebird from 'bluebird';
 import { IEvToken } from "./model";
 import OvhApi from "@ovh-api/api";
@@ -10,9 +11,10 @@ import fse from 'fs-extra';
 export class OvhEventTokenImporter {
     private engine: OvhApi;
     private _cachefile: string;
+    public nic: string = '';
 
     public constructor(engine?: OvhApi) {
-        this.engine = engine || new OvhApi({ accessRules: 'GET /telephony, GET /telephony/*/eventToken, POST /telephony/*/eventToken, DELETE /telephony/*/eventToken' });
+        this.engine = engine || new OvhApi({ accessRules: 'GET /me, GET /telephony, GET /telephony/*/eventToken, POST /telephony/*/eventToken, DELETE /telephony/*/eventToken' });
         this._cachefile = '';
     }
 
@@ -21,19 +23,19 @@ export class OvhEventTokenImporter {
         return this;
     }
     public async reset(): Promise<any> {
-        const api = Api(this.engine);
-        const billingAccounts = await api.$get();
+        const apiTel = ApiTel(this.engine);
+        const billingAccounts = await apiTel.$get();
         console.log(`reset Token from ${billingAccounts.length} groupes`);
         await bluebird.map(billingAccounts, async (billingAccount) => {
             let token: telephony.EventToken | null = null;
             try {
-                token = await api.$(billingAccount).eventToken.$get();
+                token = await apiTel.$(billingAccount).eventToken.$get();
             } catch (e) {
             }
             if (token && token.token) {
                 console.log(`invalidate ${token.token} for groupe ${billingAccount}`);
                 try {
-                    await api.$(billingAccount).eventToken.$delete();
+                    await apiTel.$(billingAccount).eventToken.$delete();
                 } catch (e) {
                     console.error(e);
                 }
@@ -45,6 +47,15 @@ export class OvhEventTokenImporter {
         if (!this._cachefile) {
             return await this.feachToken(billingAccounts);
         }
+        try {
+            const apiMe = ApiMe(this.engine);
+            const info = await apiMe.$get();
+            this.nic = info.nichandle
+        } catch (e) {
+            console.error('Update your cert with extra GET /me', e);
+            this.nic = this._cachefile;
+        }
+
         try {
             await fse.access(this._cachefile);
             let tokens = await fse.readJSON(this._cachefile);
@@ -69,7 +80,7 @@ export class OvhEventTokenImporter {
 
     private async feachToken(billingAccounts?: string[]): Promise<IEvToken[]> {
         let tokens: IEvToken[] = []
-        const api = Api(this.engine);
+        const api = ApiTel(this.engine);
         if (!billingAccounts || billingAccounts.length == 0)
             billingAccounts = await api.$get();
         function addToken(billingAccount: string, token: string) {
