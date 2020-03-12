@@ -95,7 +95,7 @@ async function main() {
         return "reset Done";
     }
     let redis: IHandyRedis | null = null;
-    if (program['redisHost']) {
+    if (program.redisHost) {
         redis = createHandyClient({ host: program['redisHost'], port: Number(program['redisPort']) | 6379, password: program['redisPassword'] });
     }
     const cachefile: string = program.cache;
@@ -109,7 +109,8 @@ async function main() {
 
     if (!program.channel) {
         program.channel = 'event-voip';
-        console.log(`--channel not provided, using default '${program.channel}'`);
+        if (redis)
+            console.log(`--channel not provided, using default '${program.channel}'`);
     }
     if (redis)
         listener.redis(redis, program.channel)

@@ -3,7 +3,7 @@ import { IOvhEventListener, IEvToken, IVoipEvent, ErrorEvent } from "./model";
 import { IHandyRedis } from "handy-redis";
 import fetch from "node-fetch";
 import debounce from 'debounce';
-import bluebird from 'bluebird';
+import Bluebird from 'bluebird';
 
 const headers = { 'Content-Type': 'application/json', 'Accept': 'text/plain' };
 
@@ -139,7 +139,6 @@ export class OvhEventListenerV2 extends EventEmitter implements IOvhEventListene
                                     }
                                 }
                                 if (this._redis) {
-                                    // console.log(`${(new Date()).toISOString()} Send ${events.length} event to ${this.channel}`);
                                     for (const m of events) {
                                         delete m['token']; // hide token
                                         await this._redis.publish(this.channel, JSON.stringify(m));
@@ -155,6 +154,9 @@ export class OvhEventListenerV2 extends EventEmitter implements IOvhEventListene
             await Promise.all(listen); // useless for now
         })
     }
+    /**
+     * format and inject error in stream
+     */
     private async handleError(message: ErrorEvent) {
         const text = JSON.stringify(message)
         this.logError(`OVH is down ${text}`);
@@ -162,6 +164,6 @@ export class OvhEventListenerV2 extends EventEmitter implements IOvhEventListene
         if (this._redis) {
             await this._redis.publish(this.channel, text);
         }
-        await bluebird.delay(200);
+        await Bluebird.delay(200);
     }
 }

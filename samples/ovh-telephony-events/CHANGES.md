@@ -1,5 +1,9 @@
 # Changelog
 
+## verion 1.4.10
+
+- Add error handeling in event v1
+
 ## verion 1.4.9
 
 - Add nic handle in log.

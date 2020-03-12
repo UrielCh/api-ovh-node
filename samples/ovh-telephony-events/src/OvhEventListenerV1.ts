@@ -1,7 +1,9 @@
-import { VoipEventV1Root, IOvhEventListener, IEvToken, IVoipEvent, VoipEventV1, QueueEvent, LineEvent, IVoipEventQueues, IVoipEventSip } from "./model";
+import { VoipEventV1Root, IOvhEventListener, IEvToken, IVoipEvent, VoipEventV1, ErrorEvent, IVoipEventQueues, IVoipEventSip } from "./model";
 import { EventEmitter } from "events";
 import { IHandyRedis } from "handy-redis";
+import debounce from 'debounce';
 import fetch from "node-fetch";
+import Bluebird from "bluebird";
 
 const headers = { 'Content-Type': 'application/json', 'Accept': 'text/plain' };
 
@@ -9,6 +11,8 @@ export class OvhEventListenerV1 extends EventEmitter implements IOvhEventListene
     private _redis: IHandyRedis | null;
     private tokens: IEvToken[];
     private channel: string;
+    private logError = debounce(console.error, 1000, true);
+    
     constructor(tokens: IEvToken[]) {
         super();
         this._redis = null
@@ -23,13 +27,40 @@ export class OvhEventListenerV1 extends EventEmitter implements IOvhEventListene
     }
 
     public async listen() {
-        console.log(`Registring event Api V1`)
+        console.log(`Registring event Api V1`);
         const listen = this.tokens.map(async ({ billingAccount, token }) => {
+
+            const get = async (url: string): Promise<VoipEventV1Root> => {
+                const response = await fetch(url, { method: 'GET', headers })
+                const { status } = response;
+                if (status !== 200) {
+                    console.error(`url: ${url} retun statusCode: ${status}`)
+                    this.handleError({
+                        groups: billingAccount,
+                        url,
+                        status: response.status,
+                        statusText: response.statusText
+                    });
+                } else {
+                    const body = await response.text();
+                    try {
+                        return JSON.parse(body) as VoipEventV1Root;
+                    } catch (e1) {
+                        console.error('url: ${url} Failed to parse:' + body)
+                    }
+                }
+                return {
+                    Session: '',
+                    Message: '',
+                    Events: [],
+                } as VoipEventV1Root;
+            }
+
             let session = '';
             const url = `https://events.voip.ovh.net/?token=${token}${session}`;
             while (true) {
                 try {
-                    const rawData = await this.get(url);
+                    const rawData = await get(url);
                     if (rawData.Session)
                         session = `&session=${rawData.Session}`;
                     const events: IVoipEvent[] = rawData.Events.map((e: VoipEventV1) => {
@@ -70,7 +101,6 @@ export class OvhEventListenerV1 extends EventEmitter implements IOvhEventListene
                             }
                         }
                         if (this._redis) {
-                            // console.log(`${(new Date()).toISOString()} Send ${events.length} event to ${this.channel}`);
                             for (const m of events) {
                                 delete m['token']; // hide token
                                 await this._redis.publish(this.channel, JSON.stringify(m));
@@ -78,27 +108,22 @@ export class OvhEventListenerV1 extends EventEmitter implements IOvhEventListene
                         }
                     }
                 } catch (e) {
-                    console.log(e)
+                    console.error(e)
                 }
             }
         })
         await Promise.all(listen);
     }
-
-    private async get(url: string): Promise<VoipEventV1Root> {
-        const response = await fetch(url, { method: 'GET', headers })
-        const body = await response.text();
-        let resp: VoipEventV1Root;
-        try {
-            resp = JSON.parse(body);
-        } catch (e1) {
-            console.log('fail to parse:' + body)
-            resp = {
-                Session: '',
-                Message: '',
-                Events: [],
-            };
+    /**
+     * format and inject error in stream
+     */
+    private async handleError(message: ErrorEvent) {
+        const text = JSON.stringify(message)
+        this.logError(`OVH is down ${text}`);
+        this.emit('error', Error(text));
+        if (this._redis) {
+            await this._redis.publish(this.channel, text);
         }
-        return resp;
+        await Bluebird.delay(200);
     }
 }
