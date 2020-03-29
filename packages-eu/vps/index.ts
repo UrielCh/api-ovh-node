@@ -463,7 +463,7 @@ export namespace vps {
          * Geolocation of the IP Address
          * type fullname: vps.ip.GeolocationEnum
          */
-        export type GeolocationEnum = "au" | "be" | "ca" | "cz" | "de" | "es" | "fi" | "fr" | "ie" | "it" | "lt" | "nl" | "pl" | "pt" | "sg" | "uk" | "us"
+        export type GeolocationEnum = "au" | "be" | "ca" | "cz" | "de" | "es" | "fi" | "fr" | "gb" | "ie" | "it" | "lt" | "nl" | "pl" | "pt" | "sg" | "uk" | "us"
         /**
          * Service states for an Ip
          * interface fullName: vps.ip.ServiceStatus.ServiceStatus

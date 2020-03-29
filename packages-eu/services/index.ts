@@ -440,5 +440,38 @@ export interface Services {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         }
+        form: {
+            /**
+             * List available forms for service
+             * GET /services/{serviceId}/form
+             */
+            $get(): Promise<services.form.Description[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $(formName: string): {
+                /**
+                 * Get specified form description for service
+                 * GET /services/{serviceId}/form/{formName}
+                 */
+                $get(): Promise<services.form.Description>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                answer: {
+                    /**
+                     * Post answers to the form for your service
+                     * POST /services/{serviceId}/form/{formName}/answer
+                     */
+                    $post(params: { answers: services.form.Answer[] }): Promise<services.form.Response>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+            };
+        }
     };
 }

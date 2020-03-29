@@ -98,7 +98,7 @@ export namespace dedicatedCloud {
      * All states a Dedicated Cloud Backup can be in
      * type fullname: dedicatedCloud.BackupStateEnum
      */
-    export type BackupStateEnum = "disabled" | "disabling" | "enabled" | "enabling" | "error" | "removing"
+    export type BackupStateEnum = "disabled" | "disabling" | "enabled" | "enabling" | "error" | "migrating" | "removing"
     /**
      * The billing type of this Dedicated Cloud
      * type fullname: dedicatedCloud.BillingTypeEnum
@@ -1691,6 +1691,17 @@ export interface DedicatedCloud {
                              * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/state
                              */
                             $post(): Promise<dedicatedCloud.disasterRecovery.Profile>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                        status: {
+                            /**
+                             * Get the current state of Zerto deployment on your dedicated Cloud.
+                             * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/disasterRecovery/zerto/status
+                             */
+                            $get(): Promise<dedicatedCloud.disasterRecovery.Profile>;
                             /**
                              * Controle cache
                              */

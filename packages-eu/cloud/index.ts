@@ -1540,7 +1540,7 @@ export namespace cloud {
          * Enum values for Status
          * type fullname: cloud.kube.ClusterStatusEnum
          */
-        export type ClusterStatusEnum = "INSTALLING" | "UPDATING" | "RESETTING" | "SUSPENDING" | "REOPENING" | "DELETING" | "SUSPENDED" | "ERROR" | "USER_ERROR" | "USER_QUOTA_ERROR" | "READY"
+        export type ClusterStatusEnum = "INSTALLING" | "UPDATING" | "RESETTING" | "SUSPENDING" | "REOPENING" | "DELETING" | "SUSPENDED" | "MAINTENANCE" | "ERROR" | "USER_ERROR" | "USER_QUOTA_ERROR" | "READY"
         /**
          * a flavor kind
          * interface fullName: cloud.kube.Flavor.Flavor
@@ -1634,7 +1634,7 @@ export namespace cloud {
          * Enum values for Status
          * type fullname: cloud.kube.NodeStatusEnum
          */
-        export type NodeStatusEnum = "INSTALLING" | "UPDATING" | "RESETTING" | "SUSPENDING" | "REOPENING" | "DELETING" | "SUSPENDED" | "ERROR" | "USER_ERROR" | "USER_QUOTA_ERROR" | "USER_NODE_NOT_FOUND_ERROR" | "USER_NODE_SUSPENDED_SERVICE" | "READY"
+        export type NodeStatusEnum = "INSTALLING" | "REDEPLOYING" | "UPDATING" | "RESETTING" | "SUSPENDING" | "REOPENING" | "DELETING" | "SUSPENDED" | "ERROR" | "USER_ERROR" | "USER_QUOTA_ERROR" | "USER_NODE_NOT_FOUND_ERROR" | "USER_NODE_SUSPENDED_SERVICE" | "READY"
         /**
          * Enum values for available regions
          * type fullname: cloud.kube.Region
@@ -1684,7 +1684,7 @@ export namespace cloud {
          * List of available versions for upgrade
          * type fullname: cloud.kube.UpgradeVersionEnum
          */
-        export type UpgradeVersionEnum = "1.12" | "1.13" | "1.14" | "1.15" | "1.16" | "1.17"
+        export type UpgradeVersionEnum = "1.14" | "1.15" | "1.16" | "1.17"
         /**
          * List of available versions for installation
          * type fullname: cloud.kube.Version
@@ -1694,7 +1694,7 @@ export namespace cloud {
          * List of available versions for installation
          * type fullname: cloud.kube.VersionEnum
          */
-        export type VersionEnum = "1.14" | "1.15" | "1.16" | "1.17"
+        export type VersionEnum = "1.15" | "1.16" | "1.17"
     }
     export namespace migration {
         /**

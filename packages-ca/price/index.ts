@@ -3495,6 +3495,30 @@ export namespace price {
             export type OfferEnum = "hosted"
         }
     }
+    export namespace Hosting {
+        /**
+         * Enum of PrivateDatabases
+         * type fullname: price.Hosting.PrivateDatabaseEnum
+         */
+        export type PrivateDatabaseEnum = "mysql_4.1_1024" | "mysql_4.1_128" | "mysql_4.1_256" | "mysql_4.1_512" | "mysql_5.0_1024" | "mysql_5.0_128" | "mysql_5.0_256" | "mysql_5.0_512" | "mysql_5.1_1024" | "mysql_5.1_128" | "mysql_5.1_256" | "mysql_5.1_512" | "mysql_5.5_1024" | "mysql_5.5_128" | "mysql_5.5_256" | "mysql_5.5_512"
+        export namespace Web {
+            /**
+             * Enum of Cdns
+             * type fullname: price.Hosting.Web.CdnEnum
+             */
+            export type CdnEnum = "CDN_BUSINESS"
+            /**
+             * Enum of ExtraSqlPersos
+             * type fullname: price.Hosting.Web.ExtraSqlPersoEnum
+             */
+            export type ExtraSqlPersoEnum = "SQLPERSO_1_BASES_400_MB" | "SQLPERSO_1_BASES_800_MB" | "SQLPERSO_20_BASES_100_MB" | "SQLPERSO_20_BASES_200_MB" | "SQLPERSO_2_BASES_400_MB" | "SQLPERSO_2_BASES_800_MB" | "SQLPERSO_50_BASES_100_MB" | "SQLPERSO_50_BASES_200_MB" | "SQLPERSO_5_BASES_100_MB" | "SQLPERSO_5_BASES_200_MB" | "SQLPERSO_5_BASES_400_MB" | "SQLPERSO_5_BASES_800_MB"
+            /**
+             * Enum of Ssls
+             * type fullname: price.Hosting.Web.SslEnum
+             */
+            export type SslEnum = "HOSTEDSSL"
+        }
+    }
     export namespace License {
         /**
          * Enum of Offices
@@ -11238,6 +11262,62 @@ export interface Price {
                         }
                     }
                 }
+            }
+        }
+    }
+    hosting: {
+        privateDatabase: {
+            $(privateDatabaseName: price.Hosting.PrivateDatabaseEnum): {
+                /**
+                 * Get the price for a private database
+                 * GET /price/hosting/privateDatabase/{privateDatabaseName}
+                 */
+                $get(): Promise<order.Price>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            };
+        }
+        web: {
+            cdn: {
+                $(cdnName: price.Hosting.Web.CdnEnum): {
+                    /**
+                     * Get the price for cdn option
+                     * GET /price/hosting/web/cdn/{cdnName}
+                     */
+                    $get(): Promise<order.Price>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                };
+            }
+            extraSqlPerso: {
+                $(extraSqlPersoName: price.Hosting.Web.ExtraSqlPersoEnum): {
+                    /**
+                     * Get the price for extra sql perso option
+                     * GET /price/hosting/web/extraSqlPerso/{extraSqlPersoName}
+                     */
+                    $get(): Promise<order.Price>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                };
+            }
+            ssl: {
+                $(sslName: price.Hosting.Web.SslEnum): {
+                    /**
+                     * Get the price for hosted ssl option
+                     * GET /price/hosting/web/ssl/{sslName}
+                     */
+                    $get(): Promise<order.Price>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                };
             }
         }
     }

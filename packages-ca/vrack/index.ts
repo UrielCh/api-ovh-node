@@ -81,6 +81,7 @@ export namespace vrack {
         ip?: string[];
         ipLoadbalancing?: string[];
         legacyVrack?: string[];
+        ovhCloudConnect?: string[];
     }
     /**
      * vrack tasks
@@ -178,6 +179,14 @@ export namespace vrack {
     export interface nasha {
         serviceIp: string;
         zpool: string;
+    }
+    /**
+     * ovhCloudConnect in vrack
+     * interface fullName: vrack.ovhCloudConnect.ovhCloudConnect
+     */
+    export interface ovhCloudConnect {
+        ovhCloudConnect: string;
+        vrack: string;
     }
     /**
      * vrack datacenter interface

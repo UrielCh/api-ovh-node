@@ -3834,6 +3834,17 @@ export interface Me {
                     }
                 };
             }
+            followUp: {
+                /**
+                 * Return tracking of the order
+                 * GET /me/order/{orderId}/followUp
+                 */
+                $get(): Promise<billing.order.FollowUp[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
             pay: {
                 /**
                  * Pay with a payment method reference

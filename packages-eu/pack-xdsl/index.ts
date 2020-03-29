@@ -328,6 +328,7 @@ export namespace pack {
          */
         export interface VoIPHardware {
             deposit?: order.Price;
+            fees?: order.Price;
             image?: string;
             label: string;
             max?: number;

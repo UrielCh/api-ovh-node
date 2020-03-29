@@ -1388,7 +1388,7 @@ export namespace vps {
          * Geolocation of the IP Address
          * type fullname: vps.ip.GeolocationEnum
          */
-        export type GeolocationEnum = "au" | "be" | "ca" | "cz" | "de" | "es" | "fi" | "fr" | "ie" | "it" | "lt" | "nl" | "pl" | "pt" | "sg" | "uk" | "us"
+        export type GeolocationEnum = "au" | "be" | "ca" | "cz" | "de" | "es" | "fi" | "fr" | "gb" | "ie" | "it" | "lt" | "nl" | "pl" | "pt" | "sg" | "uk" | "us"
     }
 }
 export namespace vrack {
@@ -4153,6 +4153,17 @@ export interface Order {
                 /**
                  * Retrieve Public Cloud catalog
                  * GET /order/catalog/public/cloud
+                 */
+                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+            cloudDB: {
+                /**
+                 * Retrieve Cloud DB catalog
+                 * GET /order/catalog/public/cloudDB
                  */
                 $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
                 /**

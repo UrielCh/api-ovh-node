@@ -1540,7 +1540,7 @@ export namespace cloud {
          * Enum values for Status
          * type fullname: cloud.kube.ClusterStatusEnum
          */
-        export type ClusterStatusEnum = "INSTALLING" | "UPDATING" | "RESETTING" | "SUSPENDING" | "REOPENING" | "DELETING" | "SUSPENDED" | "ERROR" | "USER_ERROR" | "USER_QUOTA_ERROR" | "READY"
+        export type ClusterStatusEnum = "INSTALLING" | "UPDATING" | "RESETTING" | "SUSPENDING" | "REOPENING" | "DELETING" | "SUSPENDED" | "MAINTENANCE" | "ERROR" | "USER_ERROR" | "USER_QUOTA_ERROR" | "READY"
         /**
          * a flavor kind
          * interface fullName: cloud.kube.Flavor.Flavor
@@ -1634,7 +1634,7 @@ export namespace cloud {
          * Enum values for Status
          * type fullname: cloud.kube.NodeStatusEnum
          */
-        export type NodeStatusEnum = "INSTALLING" | "UPDATING" | "RESETTING" | "SUSPENDING" | "REOPENING" | "DELETING" | "SUSPENDED" | "ERROR" | "USER_ERROR" | "USER_QUOTA_ERROR" | "USER_NODE_NOT_FOUND_ERROR" | "USER_NODE_SUSPENDED_SERVICE" | "READY"
+        export type NodeStatusEnum = "INSTALLING" | "REDEPLOYING" | "UPDATING" | "RESETTING" | "SUSPENDING" | "REOPENING" | "DELETING" | "SUSPENDED" | "ERROR" | "USER_ERROR" | "USER_QUOTA_ERROR" | "USER_NODE_NOT_FOUND_ERROR" | "USER_NODE_SUSPENDED_SERVICE" | "READY"
         /**
          * Enum values for available regions
          * type fullname: cloud.kube.Region
@@ -1684,7 +1684,7 @@ export namespace cloud {
          * List of available versions for upgrade
          * type fullname: cloud.kube.UpgradeVersionEnum
          */
-        export type UpgradeVersionEnum = "1.12" | "1.13" | "1.14" | "1.15" | "1.16" | "1.17"
+        export type UpgradeVersionEnum = "1.14" | "1.15" | "1.16" | "1.17"
         /**
          * List of available versions for installation
          * type fullname: cloud.kube.Version
@@ -1694,7 +1694,7 @@ export namespace cloud {
          * List of available versions for installation
          * type fullname: cloud.kube.VersionEnum
          */
-        export type VersionEnum = "1.14" | "1.15" | "1.16" | "1.17"
+        export type VersionEnum = "1.15" | "1.16" | "1.17"
     }
     export namespace migration {
         /**
@@ -1942,6 +1942,29 @@ export namespace cloud {
             total: orderPrice;
         }
         /**
+         * A load balancer to handle workload
+         * interface fullName: cloud.project.LoadBalancer.LoadBalancer
+         */
+        export interface LoadBalancer {
+            address: cloud.project.loadbalancer.Address;
+            configuration: cloud.project.loadbalancer.ConfigurationVersion;
+            description?: string;
+            id: string;
+            name?: string;
+            region: string;
+            status: cloud.project.loadbalancer.StatusEnum;
+        }
+        /**
+         * A load balancer to handle workload
+         * interface fullName: cloud.project.LoadBalancerCreation.LoadBalancerCreation
+         */
+        export interface LoadBalancerCreation {
+            description?: string;
+            id: string;
+            name?: string;
+            region: string;
+        }
+        /**
          * New cloud project
          * interface fullName: cloud.project.NewProject.NewProject
          */
@@ -2092,6 +2115,104 @@ export namespace cloud {
         export interface VolumesUsage {
             detail: cloud.project.VolumeUsageDetail[];
             total: orderPrice;
+        }
+        export namespace loadbalancer {
+            /**
+             * Address to reach the load balancer
+             * interface fullName: cloud.project.loadbalancer.Address.Address
+             */
+            export interface Address {
+                ipv4: string;
+                ipv6?: string;
+            }
+            /**
+             * A load balancer backend
+             * interface fullName: cloud.project.loadbalancer.Backend.Backend
+             */
+            export interface Backend {
+                balancer?: cloud.project.loadbalancer.backend.BalancerAlgorithmEnum;
+                name: string;
+                proxyProtocol?: cloud.project.loadbalancer.backend.ProxyProtocolEnum;
+                servers: cloud.project.loadbalancer.Server[];
+            }
+            /**
+             * Select a load balancer backend
+             * interface fullName: cloud.project.loadbalancer.BackendSelector.BackendSelector
+             */
+            export interface BackendSelector {
+                name: string;
+            }
+            /**
+             * A load balancer configuration
+             * interface fullName: cloud.project.loadbalancer.Configuration.Configuration
+             */
+            export interface Configuration {
+                backends: cloud.project.loadbalancer.Backend[];
+                frontends: cloud.project.loadbalancer.Frontend[];
+                previousVersion?: number;
+                version: number;
+            }
+            /**
+             * Information about version of the configuration
+             * interface fullName: cloud.project.loadbalancer.ConfigurationVersion.ConfigurationVersion
+             */
+            export interface ConfigurationVersion {
+                applied: number;
+                latest: number;
+            }
+            /**
+             * A load balancer frontend
+             * interface fullName: cloud.project.loadbalancer.Frontend.Frontend
+             */
+            export interface Frontend {
+                backends: cloud.project.loadbalancer.BackendSelector[];
+                mode?: cloud.project.loadbalancer.frontend.ModeEnum;
+                name: string;
+                port: number;
+                whitelist: string[];
+            }
+            /**
+             * Region information
+             * interface fullName: cloud.project.loadbalancer.Region.Region
+             */
+            export interface Region {
+                region: string;
+            }
+            /**
+             * A load balancer backend server
+             * interface fullName: cloud.project.loadbalancer.Server.Server
+             */
+            export interface Server {
+                ip: string;
+                name: string;
+                noCheck?: boolean;
+                port: number;
+                weight?: number;
+            }
+            /**
+             * Status of a load balancer
+             * type fullname: cloud.project.loadbalancer.StatusEnum
+             */
+            export type StatusEnum = "INSTALLING" | "APPLYING" | "RUNNING" | "DELETING" | "ERROR"
+            export namespace backend {
+                /**
+                 * Available load balancer backend balancer algorithm
+                 * type fullname: cloud.project.loadbalancer.backend.BalancerAlgorithmEnum
+                 */
+                export type BalancerAlgorithmEnum = "roundrobin" | "static-rr" | "leastconn" | "first" | "source"
+                /**
+                 * Available load balancer backend proxy-protocol
+                 * type fullname: cloud.project.loadbalancer.backend.ProxyProtocolEnum
+                 */
+                export type ProxyProtocolEnum = "v1" | "v2" | "v2-ssl" | "v2-cn"
+            }
+            export namespace frontend {
+                /**
+                 * Available load balancer frontend mode
+                 * type fullname: cloud.project.loadbalancer.frontend.ModeEnum
+                 */
+                export type ModeEnum = "TCP"
+            }
         }
     }
     export namespace quota {

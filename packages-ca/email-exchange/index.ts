@@ -253,7 +253,7 @@ export namespace email {
          * Server State
          * type fullname: email.exchange.ServerStateEnum
          */
-        export type ServerStateEnum = "configurationPending" | "notConfigured" | "ok"
+        export type ServerStateEnum = "configurationError" | "configurationPending" | "notConfigured" | "ok"
         /**
          * Service Offer name
          * type fullname: email.exchange.ServiceOfferEnum

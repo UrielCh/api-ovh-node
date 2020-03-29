@@ -82,6 +82,11 @@ export namespace auth {
 }
 export namespace billing {
     /**
+     * List of available archive types
+     * type fullname: billing.ArchiveTypeEnum
+     */
+    export type ArchiveTypeEnum = "csv" | "zip"
+    /**
      * Available automatic payment means
      * interface fullName: billing.AutomaticPaymentMean.AutomaticPaymentMean
      */
@@ -1336,6 +1341,20 @@ export namespace me {
                 serviceId: number;
             }
         }
+    }
+    export namespace partnerLevel {
+        /**
+         * Partner level of an account
+         * interface fullName: me.partnerLevel.Level.Level
+         */
+        export interface Level {
+            level: me.partnerLevel.LevelTypeEnum;
+        }
+        /**
+         * Type of level
+         * type fullname: me.partnerLevel.LevelTypeEnum
+         */
+        export type LevelTypeEnum = "none" | "standard" | "advanced"
     }
     export namespace payment {
         export namespace method {
@@ -2647,6 +2666,17 @@ export interface Me {
          * Controle cache
          */
         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        export: {
+            /**
+             * Exports a bundle of invoices
+             * POST /me/bill/export
+             */
+            $post(params: { archiveType: billing.ArchiveTypeEnum, endDate?: string, ids?: string[], startDate?: string }): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        }
         $(billId: string): {
             /**
              * Get this object properties
@@ -3904,6 +3934,17 @@ export interface Me {
                     }
                 };
             }
+            followUp: {
+                /**
+                 * Return tracking of the order
+                 * GET /me/order/{orderId}/followUp
+                 */
+                $get(): Promise<billing.order.FollowUp[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
             pay: {
                 /**
                  * Pay with a payment method reference
@@ -4064,6 +4105,17 @@ export interface Me {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         };
+    }
+    partnerLevel: {
+        /**
+         * Fetch the partner level of the account
+         * GET /me/partnerLevel
+         */
+        $get(): Promise<me.partnerLevel.Level>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
     }
     passwordRecover: {
         /**
@@ -4397,6 +4449,17 @@ export interface Me {
          * Controle cache
          */
         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        export: {
+            /**
+             * Exports a bundle of refunds
+             * POST /me/refund/export
+             */
+            $post(params: { archiveType: billing.ArchiveTypeEnum, endDate?: string, ids?: string[], startDate?: string }): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        }
         $(refundId: string): {
             /**
              * Get this object properties

@@ -175,6 +175,73 @@ export namespace email {
         export type accountQuotaEnum = 300 | 50
     }
 }
+export namespace hosting {
+    export namespace PrivateDatabase {
+        /**
+         * Private database available ram sizes
+         * type fullname: hosting.PrivateDatabase.AvailableRamSizeEnum
+         */
+        export type AvailableRamSizeEnum = "1024" | "2048" | "4096" | "512"
+        /**
+         * Available datacenters
+         * type fullname: hosting.PrivateDatabase.DatacenterEnum
+         */
+        export type DatacenterEnum = "gra1" | "gra2" | "p19"
+        /**
+         * Available offers
+         * type fullname: hosting.PrivateDatabase.OfferEnum
+         */
+        export type OfferEnum = "classic" | "public"
+        /**
+         * Private database orderable versions
+         * type fullname: hosting.PrivateDatabase.OrderableVersionEnum
+         */
+        export type OrderableVersionEnum = "mariadb_10.1" | "mariadb_10.2" | "mongodb_3.4" | "mongodb_4.0" | "mysql_5.5" | "mysql_5.6" | "mysql_5.7" | "postgresql_10" | "postgresql_11" | "postgresql_12" | "postgresql_9.4" | "postgresql_9.5" | "postgresql_9.6" | "redis_3.2" | "redis_4.0"
+    }
+    export namespace web {
+        /**
+         * Available offers to increase bandwidth quota (unit in GB)
+         * type fullname: hosting.web.BandwidthOfferEnum
+         */
+        export type BandwidthOfferEnum = 10 | 100 | 1000 | 10000 | 20 | 250 | 30 | 40 | 50 | 500
+        /**
+         * Hosting's CDN offer
+         * type fullname: hosting.web.CdnOfferEnum
+         */
+        export type CdnOfferEnum = "CDN_BUSINESS" | "CDN_BUSINESS_FREE"
+        /**
+         * Dns zone modification possibilities when installing a new hosting
+         * type fullname: hosting.web.DnsZoneEnum
+         */
+        export type DnsZoneEnum = "NO_CHANGE" | "RESET_ALL" | "RESET_ONLY_A" | "RESET_ONLY_MX"
+        /**
+         * Hosting's offer
+         * type fullname: hosting.web.OfferEnum
+         */
+        export type OfferEnum = "CLOUDWEB_1" | "CLOUDWEB_2" | "CLOUDWEB_3" | "KS" | "PERFORMANCE_1" | "PERFORMANCE_2" | "PERFORMANCE_3" | "PERFORMANCE_4" | "PERSO" | "PRO" | "START"
+        export namespace database {
+            /**
+             * Sql perso's offer enum
+             * type fullname: hosting.web.database.SqlPersoOfferEnum
+             */
+            export type SqlPersoOfferEnum = "SQLPERSO_1_BASES_400_MB" | "SQLPERSO_1_BASES_800_MB" | "SQLPERSO_20_BASES_100_MB" | "SQLPERSO_20_BASES_200_MB" | "SQLPERSO_2_BASES_400_MB" | "SQLPERSO_2_BASES_800_MB" | "SQLPERSO_50_BASES_100_MB" | "SQLPERSO_50_BASES_200_MB" | "SQLPERSO_5_BASES_100_MB" | "SQLPERSO_5_BASES_200_MB" | "SQLPERSO_5_BASES_400_MB" | "SQLPERSO_5_BASES_800_MB"
+        }
+        export namespace module {
+            /**
+             * Module's name orderable when order a new hosting
+             * type fullname: hosting.web.module.OrderableNameEnum
+             */
+            export type OrderableNameEnum = "DRUPAL" | "JOOMLA" | "PRESTASHOP" | "WORDPRESS"
+        }
+        export namespace order {
+            /**
+             * MX plan linked to the new main domain
+             * type fullname: hosting.web.order.MxPlanEnum
+             */
+            export type MxPlanEnum = "005" | "025" | "100" | "delete" | "full"
+        }
+    }
+}
 export namespace license {
     /**
      * All versions for CloudLinux product
@@ -1184,7 +1251,7 @@ export namespace vps {
          * Geolocation of the IP Address
          * type fullname: vps.ip.GeolocationEnum
          */
-        export type GeolocationEnum = "au" | "be" | "ca" | "cz" | "de" | "es" | "fi" | "fr" | "ie" | "it" | "lt" | "nl" | "pl" | "pt" | "sg" | "uk" | "us"
+        export type GeolocationEnum = "au" | "be" | "ca" | "cz" | "de" | "es" | "fi" | "fr" | "gb" | "ie" | "it" | "lt" | "nl" | "pl" | "pt" | "sg" | "uk" | "us"
     }
 }
 export namespace vrack {
@@ -2201,6 +2268,38 @@ export interface Order {
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
+            sslComodo: {
+                /**
+                 * Get informations about SSL Comodo offers
+                 * GET /order/cart/{cartId}/sslComodo
+                 */
+                $get(): Promise<order.cart.GenericProductDefinition[]>;
+                /**
+                 * Post a new SSL Comodo item in your cart
+                 * POST /order/cart/{cartId}/sslComodo
+                 */
+                $post(params: { duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                options: {
+                    /**
+                     * Get informations about SSL Comodo options
+                     * GET /order/cart/{cartId}/sslComodo/options
+                     */
+                    $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
+                    /**
+                     * Post a new SSL Comodo option in your cart
+                     * POST /order/cart/{cartId}/sslComodo/options
+                     */
+                    $post(params: { duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+            }
             sslGateway: {
                 /**
                  * Get informations about SSL Gateway offers
@@ -2443,6 +2542,33 @@ export interface Order {
                 /**
                  * Post an additional IP Load-Balancing option in your cart
                  * POST /order/cartServiceOption/ipLoadbalancing/{serviceName}
+                 */
+                $post(params: { cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            };
+        }
+        logs: {
+            /**
+             * List available services
+             * GET /order/cartServiceOption/logs
+             */
+            $get(): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $(serviceName: string): {
+                /**
+                 * Get informations about additional Logs offer for your service
+                 * GET /order/cartServiceOption/logs/{serviceName}
+                 */
+                $get(): Promise<order.cart.GenericOptionDefinition[]>;
+                /**
+                 * Post an additional Logs option in your cart
+                 * POST /order/cartServiceOption/logs/{serviceName}
                  */
                 $post(params: { cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
                 /**
@@ -3933,6 +4059,295 @@ export interface Order {
             };
         }
     }
+    hosting: {
+        privateDatabase: {
+            /**
+             * List available services
+             * GET /order/hosting/privateDatabase
+             */
+            $get(): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            new: {
+                /**
+                 * Get allowed durations for 'new' option
+                 * GET /order/hosting/privateDatabase/new
+                 */
+                $get(params: { datacenter?: hosting.PrivateDatabase.DatacenterEnum, offer?: hosting.PrivateDatabase.OfferEnum, ram: hosting.PrivateDatabase.AvailableRamSizeEnum, version: hosting.PrivateDatabase.OrderableVersionEnum }): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $(duration: string): {
+                    /**
+                     * Get prices and contracts information
+                     * GET /order/hosting/privateDatabase/new/{duration}
+                     */
+                    $get(params: { datacenter?: hosting.PrivateDatabase.DatacenterEnum, offer?: hosting.PrivateDatabase.OfferEnum, ram: hosting.PrivateDatabase.AvailableRamSizeEnum, version: hosting.PrivateDatabase.OrderableVersionEnum }): Promise<order.Order>;
+                    /**
+                     * Create order
+                     * POST /order/hosting/privateDatabase/new/{duration}
+                     */
+                    $post(params: { datacenter?: hosting.PrivateDatabase.DatacenterEnum, offer?: hosting.PrivateDatabase.OfferEnum, ram: hosting.PrivateDatabase.AvailableRamSizeEnum, version: hosting.PrivateDatabase.OrderableVersionEnum }): Promise<order.Order>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                };
+            }
+            $(serviceName: string): {
+                /**
+                 * Get allowed options
+                 * GET /order/hosting/privateDatabase/{serviceName}
+                 */
+                $get(): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                ram: {
+                    /**
+                     * Get allowed durations for 'ram' option
+                     * GET /order/hosting/privateDatabase/{serviceName}/ram
+                     */
+                    $get(params: { ram: hosting.PrivateDatabase.AvailableRamSizeEnum }): Promise<string[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $(duration: string): {
+                        /**
+                         * Get prices and contracts information
+                         * GET /order/hosting/privateDatabase/{serviceName}/ram/{duration}
+                         */
+                        $get(params: { ram: hosting.PrivateDatabase.AvailableRamSizeEnum }): Promise<order.Order>;
+                        /**
+                         * Create order
+                         * POST /order/hosting/privateDatabase/{serviceName}/ram/{duration}
+                         */
+                        $post(params: { ram: hosting.PrivateDatabase.AvailableRamSizeEnum }): Promise<order.Order>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    };
+                }
+            };
+        }
+        web: {
+            /**
+             * List available services
+             * GET /order/hosting/web
+             */
+            $get(): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            new: {
+                /**
+                 * Get allowed durations for 'new' option
+                 * GET /order/hosting/web/new
+                 */
+                $get(params: { dnsZone?: hosting.web.DnsZoneEnum, domain: string, module?: hosting.web.module.OrderableNameEnum, offer: hosting.web.OfferEnum, waiveRetractationPeriod?: boolean }): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $(duration: string): {
+                    /**
+                     * Get prices and contracts information
+                     * GET /order/hosting/web/new/{duration}
+                     */
+                    $get(params: { dnsZone?: hosting.web.DnsZoneEnum, domain: string, module?: hosting.web.module.OrderableNameEnum, offer: hosting.web.OfferEnum, waiveRetractationPeriod?: boolean }): Promise<order.Order>;
+                    /**
+                     * Create order
+                     * POST /order/hosting/web/new/{duration}
+                     */
+                    $post(params: { dnsZone?: hosting.web.DnsZoneEnum, domain: string, module?: hosting.web.module.OrderableNameEnum, offer: hosting.web.OfferEnum, waiveRetractationPeriod?: boolean }): Promise<order.Order>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                };
+            }
+            $(serviceName: string): {
+                /**
+                 * Get allowed options
+                 * GET /order/hosting/web/{serviceName}
+                 */
+                $get(): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                bandwidth: {
+                    /**
+                     * Get allowed durations for 'bandwidth' option
+                     * GET /order/hosting/web/{serviceName}/bandwidth
+                     */
+                    $get(params: { traffic: hosting.web.BandwidthOfferEnum }): Promise<string[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $(duration: string): {
+                        /**
+                         * Get prices and contracts information
+                         * GET /order/hosting/web/{serviceName}/bandwidth/{duration}
+                         */
+                        $get(params: { traffic: hosting.web.BandwidthOfferEnum }): Promise<order.Order>;
+                        /**
+                         * Create order
+                         * POST /order/hosting/web/{serviceName}/bandwidth/{duration}
+                         */
+                        $post(params: { traffic: hosting.web.BandwidthOfferEnum }): Promise<order.Order>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    };
+                }
+                cdn: {
+                    /**
+                     * Get allowed durations for 'cdn' option
+                     * GET /order/hosting/web/{serviceName}/cdn
+                     */
+                    $get(params: { offer: hosting.web.CdnOfferEnum }): Promise<string[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $(duration: string): {
+                        /**
+                         * Get prices and contracts information
+                         * GET /order/hosting/web/{serviceName}/cdn/{duration}
+                         */
+                        $get(params: { offer: hosting.web.CdnOfferEnum }): Promise<order.Order>;
+                        /**
+                         * Create order
+                         * POST /order/hosting/web/{serviceName}/cdn/{duration}
+                         */
+                        $post(params: { offer: hosting.web.CdnOfferEnum }): Promise<order.Order>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    };
+                }
+                changeMainDomain: {
+                    /**
+                     * Get allowed durations for 'changeMainDomain' option
+                     * GET /order/hosting/web/{serviceName}/changeMainDomain
+                     */
+                    $get(params: { domain: string, mxplan: hosting.web.order.MxPlanEnum }): Promise<string[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $(duration: string): {
+                        /**
+                         * Get prices and contracts information
+                         * GET /order/hosting/web/{serviceName}/changeMainDomain/{duration}
+                         */
+                        $get(params: { domain: string, mxplan: hosting.web.order.MxPlanEnum }): Promise<order.Order>;
+                        /**
+                         * Create order
+                         * POST /order/hosting/web/{serviceName}/changeMainDomain/{duration}
+                         */
+                        $post(params: { domain: string, mxplan: hosting.web.order.MxPlanEnum }): Promise<order.Order>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    };
+                }
+                extraSqlPerso: {
+                    /**
+                     * Get allowed durations for 'extraSqlPerso' option
+                     * GET /order/hosting/web/{serviceName}/extraSqlPerso
+                     */
+                    $get(params: { offer: hosting.web.database.SqlPersoOfferEnum }): Promise<string[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $(duration: string): {
+                        /**
+                         * Get prices and contracts information
+                         * GET /order/hosting/web/{serviceName}/extraSqlPerso/{duration}
+                         */
+                        $get(params: { offer: hosting.web.database.SqlPersoOfferEnum }): Promise<order.Order>;
+                        /**
+                         * Create order
+                         * POST /order/hosting/web/{serviceName}/extraSqlPerso/{duration}
+                         */
+                        $post(params: { offer: hosting.web.database.SqlPersoOfferEnum }): Promise<order.Order>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    };
+                }
+                ssl: {
+                    /**
+                     * Get allowed durations for 'ssl' option
+                     * GET /order/hosting/web/{serviceName}/ssl
+                     */
+                    $get(): Promise<string[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $(duration: string): {
+                        /**
+                         * Get prices and contracts information
+                         * GET /order/hosting/web/{serviceName}/ssl/{duration}
+                         */
+                        $get(): Promise<order.Order>;
+                        /**
+                         * Create order
+                         * POST /order/hosting/web/{serviceName}/ssl/{duration}
+                         */
+                        $post(): Promise<order.Order>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    };
+                }
+                upgrade: {
+                    /**
+                     * Get allowed durations for 'upgrade' option
+                     * GET /order/hosting/web/{serviceName}/upgrade
+                     */
+                    $get(params: { offer: hosting.web.OfferEnum, startTime?: string, waiveRetractationPeriod?: boolean }): Promise<string[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $(duration: string): {
+                        /**
+                         * Get prices and contracts information
+                         * GET /order/hosting/web/{serviceName}/upgrade/{duration}
+                         */
+                        $get(params: { offer: hosting.web.OfferEnum, startTime?: string, waiveRetractationPeriod?: boolean }): Promise<order.Order>;
+                        /**
+                         * Create order
+                         * POST /order/hosting/web/{serviceName}/upgrade/{duration}
+                         */
+                        $post(params: { offer: hosting.web.OfferEnum, startTime?: string, waiveRetractationPeriod?: boolean }): Promise<order.Order>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    };
+                }
+            };
+        }
+    }
     license: {
         cloudLinux: {
             new: {
@@ -4651,6 +5066,44 @@ export interface Order {
                     /**
                      * Perform the requested upgrade of your service
                      * POST /order/upgrade/ipLoadbalancing/{serviceName}/{planCode}
+                     */
+                    $post(params: { autoPayWithPreferredPaymentMethod?: boolean, quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                };
+            };
+        }
+        logs: {
+            /**
+             * List available services
+             * GET /order/upgrade/logs
+             */
+            $get(): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $(serviceName: string): {
+                /**
+                 * Retrieve available offers to upgrade your service to
+                 * GET /order/upgrade/logs/{serviceName}
+                 */
+                $get(): Promise<order.cart.GenericProductDefinition[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $(planCode: string): {
+                    /**
+                     * Get a provisional order for the selected upgrade of your service
+                     * GET /order/upgrade/logs/{serviceName}/{planCode}
+                     */
+                    $get(params: { quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    /**
+                     * Perform the requested upgrade of your service
+                     * POST /order/upgrade/logs/{serviceName}/{planCode}
                      */
                     $post(params: { autoPayWithPreferredPaymentMethod?: boolean, quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
                     /**

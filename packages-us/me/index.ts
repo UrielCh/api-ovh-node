@@ -531,6 +531,15 @@ export namespace billing {
             type: billing.paymentMethod.PaymentTypeEnum;
         }
         /**
+         * Follow up history of an order
+         * interface fullName: billing.order.FollowUp.FollowUp
+         */
+        export interface FollowUp {
+            history: billing.order.followUp.History[];
+            status: billing.order.followUp.StatusEnum;
+            step: billing.order.followUp.StepEnum;
+        }
+        /**
          * The object containing all capacities about a given order
          * interface fullName: billing.order.OrderCapacities.OrderCapacities
          */
@@ -586,6 +595,32 @@ export namespace billing {
                 amount: orderPrice;
                 balanceName: string;
             }
+        }
+        export namespace followUp {
+            /**
+             * Step history of order follow-up
+             * interface fullName: billing.order.followUp.History.History
+             */
+            export interface History {
+                date: string;
+                description: string;
+                label: billing.order.followUp.HistoryStatusEnum;
+            }
+            /**
+             * History label of order follow-up
+             * type fullname: billing.order.followUp.HistoryStatusEnum
+             */
+            export type HistoryStatusEnum = "DELIVERY" | "FRAUD_CHECK" | "FRAUD_DOCS_REQUESTED" | "FRAUD_MANUAL_REVIEW" | "FRAUD_REFUSED" | "INVOICE_IN_PROGRESS" | "INVOICE_SENT" | "ORDER_ACCEPTED" | "ORDER_STARTED" | "PAYMENT_CONFIRMED" | "PAYMENT_INITIATED" | "PAYMENT_RECEIVED" | "REGISTERED_PAYMENT_INITIATED"
+            /**
+             * Step status of order follow-up
+             * type fullname: billing.order.followUp.StatusEnum
+             */
+            export type StatusEnum = "DOING" | "DONE" | "ERROR" | "TODO"
+            /**
+             * Status of order follow-up
+             * type fullname: billing.order.followUp.StepEnum
+             */
+            export type StepEnum = "AVAILABLE" | "DELIVERING" | "VALIDATED" | "VALIDATING"
         }
     }
     export namespace paymentMethod {
@@ -3352,6 +3387,17 @@ export interface Me {
                         };
                     }
                 };
+            }
+            followUp: {
+                /**
+                 * Return tracking of the order
+                 * GET /me/order/{orderId}/followUp
+                 */
+                $get(): Promise<billing.order.FollowUp[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             pay: {
                 /**

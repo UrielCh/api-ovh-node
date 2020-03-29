@@ -91,7 +91,7 @@ async function genRegion(endpoint: IEndpoint) {
             await fse.writeJSON(fn, {
                 "name": `@${endpoint.namespace}/${flat}`,
                 "description": `Add typing to to ovh api ${flat}`,
-                "version": "2.0.0",
+                "version": "3.0.0",
                 "typings": "index.d.ts",
                 "license": "MIT",
                 "author": "Uriel Chemouni <uchemouni@gmail.com>",
