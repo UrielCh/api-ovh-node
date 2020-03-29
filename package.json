@@ -13,10 +13,10 @@
   "license": "MIT",
   "devDependencies": {
     "@types/debounce": "^1.2.0",
-    "@types/node": "^13.7.4",
+    "@types/node": "^13.9.5",
     "lerna": "^3.20.2",
     "rimraf": "^3.0.2",
-    "typescript": "^3.8.2"
+    "typescript": "^3.8.3"
   },
   "publishConfig": {
     "access": "false"
@@ -29,14 +29,14 @@
     "preparenv": "npm install -g typescript",
     "clean": "npm run clean0 && npm run clean1 && npm run clean2 && npm run clean3 && npm run clean-cache && npm run clean5",
     "clean0": "rimraf ./code/*/index.d.ts ./code/*/index.js",
-    "clean1": "rimraf ./packages-*/*/yarn-error.log ./packages-*/*/index.d.ts   ./packages-*/*/index.js ./code/*/index.d.ts ./code/*/index.js",
-    "clean2": "rimraf ./kimsufi-*/yarn-error.log    ./kimsufi-*/*/index.d.ts    ./kimsufi-*/*/index.js",
-    "clean3": "rimraf ./soyoustart-*/yarn-error.log ./soyoustart-*/*/index.d.ts ./soyoustart-*/*/index.js",
+    "clean1": "rimraf ./packages-*/*/index.d.ts   ./packages-*/*/index.js ./code/*/index.d.ts ./code/*/index.js",
+    "clean2": "rimraf ./kimsufi-*/*/index.d.ts    ./kimsufi-*/*/index.js",
+    "clean3": "rimraf ./soyoustart-*/*/index.d.ts ./soyoustart-*/*/index.js",
     "clean-cache": "rimraf ./*/*/.cache",
     "clean5": "lerna clean -y",
     "install-all": "lerna exec --stream -- npm i --cache ./.cache",
     "bootstrap": "lerna bootstrap --concurrency=1 --ignore-scripts --force-local",
-    "bootstrap2": "lerna bootstrap --mutex file:/tmp/.yarn-mutex --force-local",
+    "bootstrap2": "lerna bootstrap --mutex file:/tmp/.npm-mutex --force-local",
     "build": "lerna run build",
     "do-publish": "npm run clean && npm run install-all && npm run bootstrap && npm run clean-cache && lerna publish"
   },
