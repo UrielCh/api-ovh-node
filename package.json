@@ -13,7 +13,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/debounce": "^1.2.0",
-    "@types/node": "^13.9.5",
+    "@types/node": "^13.13.0",
     "lerna": "^3.20.2",
     "rimraf": "^3.0.2",
     "typescript": "^3.8.3"
@@ -26,7 +26,8 @@
     "url": "git+https://github.com/UrielCh/api-ovh-node.git"
   },
   "scripts": {
-    "preparenv": "npm install -g typescript",
+    "regen": "cd code && cd gen && npm install && ts-node src/index.ts",
+    "preparenv": "npm install -g typescript ts-node",
     "clean": "npm run clean0 && npm run clean1 && npm run clean2 && npm run clean3 && npm run clean-cache && npm run clean5",
     "clean0": "rimraf ./code/*/index.d.ts ./code/*/index.js",
     "clean1": "rimraf ./packages-*/*/index.d.ts   ./packages-*/*/index.js ./code/*/index.d.ts ./code/*/index.js",

@@ -4171,6 +4171,17 @@ export interface Order {
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
+            dns: {
+                /**
+                 * Retrieve DNS catalog
+                 * GET /order/catalog/public/dns
+                 */
+                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
             emailDomain: {
                 /**
                  * Retrieve Email Domain catalog
@@ -4186,6 +4197,17 @@ export interface Order {
                 /**
                  * Retrieve Enterprise Cloud Databases catalog
                  * GET /order/catalog/public/enterpriseCloudDatabases
+                 */
+                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+            privateCloud: {
+                /**
+                 * Retrieve Private Cloud catalog
+                 * GET /order/catalog/public/privateCloud
                  */
                 $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
                 /**

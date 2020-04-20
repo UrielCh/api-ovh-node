@@ -434,6 +434,26 @@ export namespace domain {
             type: domain.ContactAllTypesEnum;
         }
     }
+    export namespace services {
+        export namespace options {
+            /**
+             * Data of a domain option
+             * interface fullName: domain.services.options.Option.Option
+             */
+            export interface Option {
+                serviceName: string;
+            }
+            /**
+             * Representation of the domain options
+             * interface fullName: domain.services.options.Options.Options
+             */
+            export interface Options {
+                hosting?: domain.services.options.Option;
+                offer?: domain.services.options.Option;
+                zone?: domain.services.options.Option;
+            }
+        }
+    }
     export namespace zone {
         /**
          * DNS Anycast service
@@ -1486,6 +1506,17 @@ export interface Domain {
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
+        }
+        options: {
+            /**
+             * Retrieve data about the options associated to a domain
+             * GET /domain/{serviceName}/options
+             */
+            $get(): Promise<domain.services.options.Options>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         owo: {
             /**

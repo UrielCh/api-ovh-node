@@ -1206,6 +1206,7 @@ export namespace cloud {
             osType: string;
             outboundBandwidth?: number;
             planCodes: cloud.flavor.FlavorPlanCodes;
+            quota: number;
             ram: number;
             region: string;
             type: string;
@@ -2262,6 +2263,7 @@ export namespace cloud {
                 mandatory: boolean;
                 name: string;
                 type: string;
+                validator: cloud.project.dataProcessing.ParameterValidator;
             }
             /**
              * Engine Template
@@ -2349,6 +2351,15 @@ export namespace cloud {
             export interface MetricsEndpoint {
                 name: string;
                 url: string;
+            }
+            /**
+             * Conditions to which the value of parameter must conform
+             * interface fullName: cloud.project.dataProcessing.ParameterValidator.ParameterValidator
+             */
+            export interface ParameterValidator {
+                max?: number;
+                min?: number;
+                regex?: string;
             }
             /**
              * Possible state of the job
@@ -2499,7 +2510,16 @@ export namespace cloud {
             export interface Configuration {
                 backends: cloud.project.loadbalancer.Backend[];
                 frontends: cloud.project.loadbalancer.Frontend[];
-                previousVersion?: number;
+                version: number;
+            }
+            /**
+             * A load balancer configuration
+             * interface fullName: cloud.project.loadbalancer.ConfigurationCreation.ConfigurationCreation
+             */
+            export interface ConfigurationCreation {
+                backends: cloud.project.loadbalancer.Backend[];
+                frontends: cloud.project.loadbalancer.Frontend[];
+                previousVersion: number;
                 version: number;
             }
             /**
@@ -2543,7 +2563,7 @@ export namespace cloud {
              * Status of a load balancer
              * type fullname: cloud.project.loadbalancer.StatusEnum
              */
-            export type StatusEnum = "INSTALLING" | "APPLYING" | "RUNNING" | "DELETING" | "ERROR"
+            export type StatusEnum = "CREATED" | "APPLYING" | "RUNNING" | "DELETING" | "ERROR"
             export namespace backend {
                 /**
                  * Available load balancer backend balancer algorithm
@@ -3734,6 +3754,89 @@ export interface Cloud {
                      */
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 };
+            }
+            dataProcessing: {
+                authorization: {
+                    /**
+                     * Get authorization status
+                     * GET /cloud/project/{serviceName}/dataProcessing/authorization
+                     */
+                    $get(): Promise<cloud.project.dataProcessing.AuthorizationStatus>;
+                    /**
+                     * Authorization of Data Processing service by allowing access to your object storage containers
+                     * POST /cloud/project/{serviceName}/dataProcessing/authorization
+                     */
+                    $post(): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+                capabilities: {
+                    /**
+                     * Data processing capabilities
+                     * GET /cloud/project/{serviceName}/dataProcessing/capabilities
+                     */
+                    $get(): Promise<cloud.project.dataProcessing.Capability[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+                jobs: {
+                    /**
+                     * List all jobs
+                     * GET /cloud/project/{serviceName}/dataProcessing/jobs
+                     */
+                    $get(): Promise<string[]>;
+                    /**
+                     * Submit a job
+                     * POST /cloud/project/{serviceName}/dataProcessing/jobs
+                     */
+                    $post(params: { containerName: string, creationDate?: string, endDate?: string, engine: string, engineParameters: cloud.project.dataProcessing.EngineParameter[], engineVersion: string, id?: string, name?: string, region: string, startDate?: string, status?: cloud.project.dataProcessing.StatusEnum }): Promise<cloud.project.dataProcessing.Job>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $(jobId: string): {
+                        /**
+                         * Kill job with given id
+                         * DELETE /cloud/project/{serviceName}/dataProcessing/jobs/{jobId}
+                         */
+                        $delete(): Promise<void>;
+                        /**
+                         * Get jobs information
+                         * GET /cloud/project/{serviceName}/dataProcessing/jobs/{jobId}
+                         */
+                        $get(): Promise<cloud.project.dataProcessing.Job>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        logs: {
+                            /**
+                             * Get the logs of a job
+                             * GET /cloud/project/{serviceName}/dataProcessing/jobs/{jobId}/logs
+                             */
+                            $get(params?: { from?: string }): Promise<cloud.project.dataProcessing.JobLogs>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                    };
+                }
+                metrics: {
+                    /**
+                     * Get metrics token and urls compatible with this token
+                     * GET /cloud/project/{serviceName}/dataProcessing/metrics
+                     */
+                    $get(): Promise<cloud.project.dataProcessing.Metrics>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
             }
             flavor: {
                 /**

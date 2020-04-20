@@ -1206,6 +1206,7 @@ export namespace cloud {
             osType: string;
             outboundBandwidth?: number;
             planCodes: cloud.flavor.FlavorPlanCodes;
+            quota: number;
             ram: number;
             region: string;
             type: string;
@@ -2149,7 +2150,16 @@ export namespace cloud {
             export interface Configuration {
                 backends: cloud.project.loadbalancer.Backend[];
                 frontends: cloud.project.loadbalancer.Frontend[];
-                previousVersion?: number;
+                version: number;
+            }
+            /**
+             * A load balancer configuration
+             * interface fullName: cloud.project.loadbalancer.ConfigurationCreation.ConfigurationCreation
+             */
+            export interface ConfigurationCreation {
+                backends: cloud.project.loadbalancer.Backend[];
+                frontends: cloud.project.loadbalancer.Frontend[];
+                previousVersion: number;
                 version: number;
             }
             /**
@@ -2193,7 +2203,7 @@ export namespace cloud {
              * Status of a load balancer
              * type fullname: cloud.project.loadbalancer.StatusEnum
              */
-            export type StatusEnum = "INSTALLING" | "APPLYING" | "RUNNING" | "DELETING" | "ERROR"
+            export type StatusEnum = "CREATED" | "APPLYING" | "RUNNING" | "DELETING" | "ERROR"
             export namespace backend {
                 /**
                  * Available load balancer backend balancer algorithm

@@ -1542,6 +1542,33 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
+        logs: {
+            /**
+             * List available services
+             * GET /order/cartServiceOption/logs
+             */
+            $get(): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $(serviceName: string): {
+                /**
+                 * Get informations about additional Logs offer for your service
+                 * GET /order/cartServiceOption/logs/{serviceName}
+                 */
+                $get(): Promise<order.cart.GenericOptionDefinition[]>;
+                /**
+                 * Post an additional Logs option in your cart
+                 * POST /order/cartServiceOption/logs/{serviceName}
+                 */
+                $post(params: { cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            };
+        }
         privateCloud: {
             /**
              * List available services
@@ -1615,6 +1642,33 @@ export interface Order {
                 /**
                  * Post an additional Private Cloud Enterprise option in your cart
                  * POST /order/cartServiceOption/privateCloudResellerEnterprise/{serviceName}
+                 */
+                $post(params: { cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            };
+        }
+        vps: {
+            /**
+             * List available services
+             * GET /order/cartServiceOption/vps
+             */
+            $get(): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $(serviceName: string): {
+                /**
+                 * Get informations about additional VPS offer for your service
+                 * GET /order/cartServiceOption/vps/{serviceName}
+                 */
+                $get(): Promise<order.cart.GenericOptionDefinition[]>;
+                /**
+                 * Post an additional VPS option in your cart
+                 * POST /order/cartServiceOption/vps/{serviceName}
                  */
                 $post(params: { cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
                 /**
@@ -1813,6 +1867,17 @@ export interface Order {
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
+            privateCloud: {
+                /**
+                 * Retrieve Private Cloud catalog
+                 * GET /order/catalog/public/privateCloud
+                 */
+                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
             privateSQL: {
                 /**
                  * Retrieve Private SQL catalog
@@ -1828,17 +1893,6 @@ export interface Order {
                 /**
                  * Retrieve VPS catalog
                  * GET /order/catalog/public/vps
-                 */
-                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            }
-            webHosting: {
-                /**
-                 * Retrieve Web Hosting catalog
-                 * GET /order/catalog/public/webHosting
                  */
                 $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
                 /**
@@ -1992,6 +2046,82 @@ export interface Order {
                     /**
                      * Perform the requested upgrade of your service
                      * POST /order/upgrade/privateCloud/{serviceName}/{planCode}
+                     */
+                    $post(params: { autoPayWithPreferredPaymentMethod?: boolean, quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                };
+            };
+        }
+        vps: {
+            /**
+             * List available services
+             * GET /order/upgrade/vps
+             */
+            $get(): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $(serviceName: string): {
+                /**
+                 * Retrieve available offers to upgrade your service to
+                 * GET /order/upgrade/vps/{serviceName}
+                 */
+                $get(): Promise<order.cart.GenericProductDefinition[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $(planCode: string): {
+                    /**
+                     * Get a provisional order for the selected upgrade of your service
+                     * GET /order/upgrade/vps/{serviceName}/{planCode}
+                     */
+                    $get(params: { quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    /**
+                     * Perform the requested upgrade of your service
+                     * POST /order/upgrade/vps/{serviceName}/{planCode}
+                     */
+                    $post(params: { autoPayWithPreferredPaymentMethod?: boolean, quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                };
+            };
+        }
+        vpsAdditionalDisk: {
+            /**
+             * List available services
+             * GET /order/upgrade/vpsAdditionalDisk
+             */
+            $get(): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $(serviceName: string): {
+                /**
+                 * Retrieve available offers to upgrade your service to
+                 * GET /order/upgrade/vpsAdditionalDisk/{serviceName}
+                 */
+                $get(): Promise<order.cart.GenericProductDefinition[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $(planCode: string): {
+                    /**
+                     * Get a provisional order for the selected upgrade of your service
+                     * GET /order/upgrade/vpsAdditionalDisk/{serviceName}/{planCode}
+                     */
+                    $get(params: { quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
+                    /**
+                     * Perform the requested upgrade of your service
+                     * POST /order/upgrade/vpsAdditionalDisk/{serviceName}/{planCode}
                      */
                     $post(params: { autoPayWithPreferredPaymentMethod?: boolean, quantity: number }): Promise<order.upgrade.order_upgrade_OperationAndOrder>;
                     /**

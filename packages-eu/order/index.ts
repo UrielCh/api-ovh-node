@@ -4439,6 +4439,17 @@ export interface Order {
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
+            dns: {
+                /**
+                 * Retrieve DNS catalog
+                 * GET /order/catalog/public/dns
+                 */
+                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
             emailDomain: {
                 /**
                  * Retrieve Email Domain catalog
@@ -4461,10 +4472,32 @@ export interface Order {
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
+            privateCloud: {
+                /**
+                 * Retrieve Private Cloud catalog
+                 * GET /order/catalog/public/privateCloud
+                 */
+                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
             privateSQL: {
                 /**
                  * Retrieve Private SQL catalog
                  * GET /order/catalog/public/privateSQL
+                 */
+                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+            vps: {
+                /**
+                 * Retrieve VPS catalog
+                 * GET /order/catalog/public/vps
                  */
                 $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
                 /**

@@ -81,6 +81,7 @@ export namespace vrack {
         ip?: string[];
         ipLoadbalancing?: string[];
         legacyVrack?: string[];
+        ovhCloudConnect?: string[];
     }
     /**
      * vrack tasks
@@ -178,6 +179,14 @@ export namespace vrack {
     export interface nasha {
         serviceIp: string;
         zpool: string;
+    }
+    /**
+     * ovhCloudConnect in vrack
+     * interface fullName: vrack.ovhCloudConnect.ovhCloudConnect
+     */
+    export interface ovhCloudConnect {
+        ovhCloudConnect: string;
+        vrack: string;
     }
     /**
      * vrack datacenter interface
@@ -584,6 +593,38 @@ export interface Vrack {
                  * GET /vrack/{serviceName}/legacyVrack/{legacyVrack}
                  */
                 $get(): Promise<vrack.legacyVrack>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            };
+        }
+        ovhCloudConnect: {
+            /**
+             * vrack for ovhCloudConnect
+             * GET /vrack/{serviceName}/ovhCloudConnect
+             */
+            $get(): Promise<string[]>;
+            /**
+             * Add an ovhCloudConnect to the vrack
+             * POST /vrack/{serviceName}/ovhCloudConnect
+             */
+            $post(params: { ovhCloudConnect: string }): Promise<vrack.Task>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $(ovhCloudConnect: string): {
+                /**
+                 * Remove the ovhCloudConnect from the vrack
+                 * DELETE /vrack/{serviceName}/ovhCloudConnect/{ovhCloudConnect}
+                 */
+                $delete(): Promise<vrack.Task>;
+                /**
+                 * Get this object properties
+                 * GET /vrack/{serviceName}/ovhCloudConnect/{ovhCloudConnect}
+                 */
+                $get(): Promise<vrack.ovhCloudConnect>;
                 /**
                  * Controle cache
                  */

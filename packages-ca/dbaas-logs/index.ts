@@ -63,6 +63,7 @@ export namespace dbaas {
             clusterId: string;
             clusterType: dbaas.logs.ClusterClusterTypeEnum;
             dedicatedInputPEM: string;
+            defaultRetentionId: string;
             directInputAllowedNetworks: string[];
             directInputPEM: string;
             hostname: string;
@@ -111,6 +112,15 @@ export namespace dbaas {
          * type fullname: dbaas.logs.ClusterRegionEnum
          */
         export type ClusterRegionEnum = "GRA" | "RBX" | "BHS" | "SBG" | "P-19"
+        /**
+         * Cluster retention
+         * interface fullName: dbaas.logs.ClusterRetention.ClusterRetention
+         */
+        export interface ClusterRetention {
+            duration?: string;
+            isSupported: boolean;
+            retentionId: string;
+        }
         /**
          * Graylog dashboard
          * interface fullName: dbaas.logs.Dashboard.Dashboard
@@ -204,7 +214,6 @@ export namespace dbaas {
          */
         export interface Input {
             allowedNetworks?: string[];
-            autoSelectOption?: boolean;
             createdAt: string;
             description: string;
             engineId: string;
@@ -291,6 +300,17 @@ export namespace dbaas {
             singleInstanceEnabled?: boolean;
             streamId: string;
             title: string;
+        }
+        /**
+         * Kibana instance
+         * interface fullName: dbaas.logs.Kibana.Kibana
+         */
+        export interface Kibana {
+            createdAt: string;
+            isEditable: boolean;
+            kibanaId: string;
+            name: string;
+            updatedAt?: string;
         }
         /**
          * Logstash configuration
@@ -515,6 +535,7 @@ export namespace dbaas {
             indexingEnabled?: boolean;
             optionId?: string;
             parentStreamId?: string;
+            retentionId?: string;
             title: string;
             webSocketEnabled?: boolean;
         }
@@ -553,6 +574,7 @@ export namespace dbaas {
             aliasId?: string;
             dashboardId?: string;
             indexId?: string;
+            kibanaId?: string;
             permissionId: string;
             permissionType?: dbaas.logs.PermissionTypeEnum;
             streamId?: string;
@@ -654,7 +676,7 @@ export namespace dbaas {
          */
         export interface RolePermissionDashboardCreation {
             dashboardId: string;
-            permissionType?: dbaas.logs.PermissionDashboardPermissionTypeEnum;
+            permissionType?: dbaas.logs.PermissionTypeEnum;
         }
         /**
          * Missing description
@@ -662,7 +684,15 @@ export namespace dbaas {
          */
         export interface RolePermissionIndexCreation {
             indexId: string;
-            permissionType?: dbaas.logs.PermissionIndexPermissionTypeEnum;
+            permissionType?: dbaas.logs.PermissionTypeEnum;
+        }
+        /**
+         * Missing description
+         * interface fullName: dbaas.logs.RolePermissionKibanaCreation.RolePermissionKibanaCreation
+         */
+        export interface RolePermissionKibanaCreation {
+            kibanaId: string;
+            permissionType?: dbaas.logs.PermissionTypeEnum;
         }
         /**
          * Missing description
@@ -726,6 +756,7 @@ export namespace dbaas {
             nbArchive: number;
             optionId?: string;
             parentStreamId?: string;
+            retentionId: string;
             streamId: string;
             title: string;
             updatedAt?: string;
@@ -1053,6 +1084,28 @@ export interface Dbaas {
                              * GET /dbaas/logs/{serviceName}/cluster/{clusterId}/allowedNetwork/{allowedNetworkId}
                              */
                             $get(): Promise<dbaas.logs.ClusterAllowedNetwork>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        };
+                    }
+                    retention: {
+                        /**
+                         * List all the retention ID available for a given cluster
+                         * GET /dbaas/logs/{serviceName}/cluster/{clusterId}/retention
+                         */
+                        $get(): Promise<string[]>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $(retentionId: string): {
+                            /**
+                             * Returns details of a retention
+                             * GET /dbaas/logs/{serviceName}/cluster/{clusterId}/retention/{retentionId}
+                             */
+                            $get(): Promise<dbaas.logs.ClusterRetention>;
                             /**
                              * Controle cache
                              */
@@ -1426,7 +1479,7 @@ export interface Dbaas {
                             }
                             url: {
                                 /**
-                                 * Returns the list of urls of specified graylog stream
+                                 * Returns the list of urls of specified alias
                                  * GET /dbaas/logs/{serviceName}/output/elasticsearch/alias/{aliasId}/url
                                  */
                                 $get(): Promise<dbaas.logs.Url[]>;
@@ -1474,7 +1527,7 @@ export interface Dbaas {
                             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                             url: {
                                 /**
-                                 * Returns the list of urls of specified graylog stream
+                                 * Returns the list of urls of specified index
                                  * GET /dbaas/logs/{serviceName}/output/elasticsearch/index/{indexId}/url
                                  */
                                 $get(): Promise<dbaas.logs.Url[]>;
@@ -1556,7 +1609,7 @@ export interface Dbaas {
                          * Register a new graylog stream
                          * POST /dbaas/logs/{serviceName}/output/graylog/stream
                          */
-                        $post(params: { autoSelectOption?: boolean, coldStorageCompression?: dbaas.logs.StreamColdStorageCompressionEnum, coldStorageContent?: dbaas.logs.StreamColdStorageContentEnum, coldStorageEnabled?: boolean, coldStorageNotifyEnabled?: boolean, coldStorageRetention?: number, coldStorageTarget?: dbaas.logs.StreamColdStorageTargetEnum, description: string, indexingEnabled?: boolean, optionId?: string, parentStreamId?: string, title: string, webSocketEnabled?: boolean }): Promise<dbaas.logs.Operation>;
+                        $post(params: { autoSelectOption?: boolean, coldStorageCompression?: dbaas.logs.StreamColdStorageCompressionEnum, coldStorageContent?: dbaas.logs.StreamColdStorageContentEnum, coldStorageEnabled?: boolean, coldStorageNotifyEnabled?: boolean, coldStorageRetention?: number, coldStorageTarget?: dbaas.logs.StreamColdStorageTargetEnum, description: string, indexingEnabled?: boolean, optionId?: string, parentStreamId?: string, retentionId?: string, title: string, webSocketEnabled?: boolean }): Promise<dbaas.logs.Operation>;
                         /**
                          * Controle cache
                          */
@@ -1807,7 +1860,7 @@ export interface Dbaas {
                              * Append a graylog dashboard permission to role
                              * POST /dbaas/logs/{serviceName}/role/{roleId}/permission/dashboard
                              */
-                            $post(params: { dashboardId: string, permissionType?: dbaas.logs.PermissionDashboardPermissionTypeEnum }): Promise<dbaas.logs.Operation>;
+                            $post(params: { dashboardId: string, permissionType?: dbaas.logs.PermissionTypeEnum }): Promise<dbaas.logs.Operation>;
                             /**
                              * Controle cache
                              */
@@ -1818,7 +1871,7 @@ export interface Dbaas {
                              * Append a elasticsearch index permission to role
                              * POST /dbaas/logs/{serviceName}/role/{roleId}/permission/index
                              */
-                            $post(params: { indexId: string, permissionType?: dbaas.logs.PermissionIndexPermissionTypeEnum }): Promise<dbaas.logs.Operation>;
+                            $post(params: { indexId: string, permissionType?: dbaas.logs.PermissionTypeEnum }): Promise<dbaas.logs.Operation>;
                             /**
                              * Controle cache
                              */

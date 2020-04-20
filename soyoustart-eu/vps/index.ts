@@ -875,6 +875,41 @@ export interface Vps {
              */
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
+        images: {
+            available: {
+                /**
+                 * Images available for this virtual server
+                 * GET /vps/{serviceName}/images/available
+                 */
+                $get(): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $(id: string): {
+                    /**
+                     * Get this object properties
+                     * GET /vps/{serviceName}/images/available/{id}
+                     */
+                    $get(): Promise<vps.Image>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                };
+            }
+            current: {
+                /**
+                 * Get this object properties
+                 * GET /vps/{serviceName}/images/current
+                 */
+                $get(): Promise<vps.Image>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+        }
         ipCountryAvailable: {
             /**
              * Get the countries you can select for your IPs geolocation
@@ -984,6 +1019,17 @@ export interface Vps {
              * POST /vps/{serviceName}/reboot
              */
             $post(): Promise<vps.Task>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        }
+        rebuild: {
+            /**
+             * Reinstall the virtual server
+             * POST /vps/{serviceName}/rebuild
+             */
+            $post(params: { doNotSendPassword?: boolean, imageId: string, sshKey?: string }): Promise<vps.Task>;
             /**
              * Controle cache
              */

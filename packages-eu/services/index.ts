@@ -440,6 +440,50 @@ export interface Services {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         }
+        detach: {
+            /**
+             * List offers this option can be converted to
+             * GET /services/{serviceId}/detach
+             */
+            $get(): Promise<order.cart.GenericProductDefinition[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $(planCode: string): {
+                /**
+                 * View an offer this option can be converted to
+                 * GET /services/{serviceId}/detach/{planCode}
+                 */
+                $get(): Promise<order.cart.GenericProductDefinition>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                execute: {
+                    /**
+                     * Perform the migration to a standalone offer. May require you to pay an Order
+                     * POST /services/{serviceId}/detach/{planCode}/execute
+                     */
+                    $post(params: { autoPayWithPreferredPaymentMethod?: boolean, duration: string, pricingMode: string, quantity: number }): Promise<services.operation.Order>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+                simulate: {
+                    /**
+                     * Simulate the migration to a standalone offer. It won't generate any Order or issue any changes to your Service
+                     * POST /services/{serviceId}/detach/{planCode}/simulate
+                     */
+                    $post(params: { autoPayWithPreferredPaymentMethod?: boolean, duration: string, pricingMode: string, quantity: number }): Promise<services.operation.Order>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+            };
+        }
         form: {
             /**
              * List available forms for service

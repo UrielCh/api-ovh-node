@@ -2,7 +2,7 @@ import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-
 
 /**
  * START API /domain Models
- * Source: https://eu.api.kimsufi.com/1.0/domain.json
+ * Source: https://ca.api.ovh.com/1.0/domain.json
  */
 export namespace dnssec {
     /**
@@ -470,26 +470,6 @@ export namespace domain {
             status: dnssec.DnssecStatusEnum;
         }
         /**
-         * Manage DynHost login
-         * interface fullName: domain.zone.DynHostLogin.DynHostLogin
-         */
-        export interface DynHostLogin {
-            login: string;
-            subDomain: string;
-            zone: string;
-        }
-        /**
-         * DynHost record
-         * interface fullName: domain.zone.DynHostRecord.DynHostRecord
-         */
-        export interface DynHostRecord {
-            id: number;
-            ip: string;
-            subDomain?: string;
-            ttl?: number;
-            zone: string;
-        }
-        /**
          * Zone resource records
          * interface fullName: domain.zone.Record.Record
          */
@@ -854,17 +834,6 @@ export interface Domain {
              * Controle cache
              */
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            changeContact: {
-                /**
-                 * Launch a contact change procedure
-                 * POST /domain/zone/{zoneName}/changeContact
-                 */
-                $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            }
             confirmTermination: {
                 /**
                  * Confirm termination of your service
@@ -896,93 +865,6 @@ export interface Domain {
                  * Controle cache
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            }
-            dynHost: {
-                login: {
-                    /**
-                     * DynHost' logins
-                     * GET /domain/zone/{zoneName}/dynHost/login
-                     */
-                    $get(params?: { login?: string, subDomain?: string }): Promise<string[]>;
-                    /**
-                     * Create a new DynHost login
-                     * POST /domain/zone/{zoneName}/dynHost/login
-                     */
-                    $post(params: { loginSuffix: string, password: string, subDomain: string }): Promise<domain.zone.DynHostLogin>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    $(login: string): {
-                        /**
-                         * Delete a DynHost login
-                         * DELETE /domain/zone/{zoneName}/dynHost/login/{login}
-                         */
-                        $delete(): Promise<void>;
-                        /**
-                         * Get this object properties
-                         * GET /domain/zone/{zoneName}/dynHost/login/{login}
-                         */
-                        $get(): Promise<domain.zone.DynHostLogin>;
-                        /**
-                         * Alter this object properties
-                         * PUT /domain/zone/{zoneName}/dynHost/login/{login}
-                         */
-                        $put(params?: { login?: string, subDomain?: string, zone?: string }): Promise<void>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                        changePassword: {
-                            /**
-                             * Change password of the DynHost login
-                             * POST /domain/zone/{zoneName}/dynHost/login/{login}/changePassword
-                             */
-                            $post(params: { password: string }): Promise<void>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                        }
-                    };
-                }
-                record: {
-                    /**
-                     * DynHost' records
-                     * GET /domain/zone/{zoneName}/dynHost/record
-                     */
-                    $get(params?: { subDomain?: string }): Promise<number[]>;
-                    /**
-                     * Create a new DynHost record (Don't forget to refresh the zone)
-                     * POST /domain/zone/{zoneName}/dynHost/record
-                     */
-                    $post(params: { ip: string, subDomain?: string }): Promise<domain.zone.DynHostRecord>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    $(id: number): {
-                        /**
-                         * Delete a DynHost record (Don't forget to refresh the zone)
-                         * DELETE /domain/zone/{zoneName}/dynHost/record/{id}
-                         */
-                        $delete(): Promise<void>;
-                        /**
-                         * Get this object properties
-                         * GET /domain/zone/{zoneName}/dynHost/record/{id}
-                         */
-                        $get(): Promise<domain.zone.DynHostRecord>;
-                        /**
-                         * Alter this object properties
-                         * PUT /domain/zone/{zoneName}/dynHost/record/{id}
-                         */
-                        $put(params?: { id?: number, ip?: string, subDomain?: string, ttl?: number, zone?: string }): Promise<void>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    };
-                }
             }
             export: {
                 /**
@@ -1278,17 +1160,6 @@ export interface Domain {
              * GET /domain/{serviceName}/authInfo
              */
             $get(): Promise<string>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-        }
-        changeContact: {
-            /**
-             * Launch a contact change procedure
-             * POST /domain/{serviceName}/changeContact
-             */
-            $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
             /**
              * Controle cache
              */

@@ -479,6 +479,11 @@ export namespace order {
             ovhSubsidiary: nichandle.OvhSubsidiaryEnum;
         }
         /**
+         * Action values for domain product information
+         * type fullname: order.cart.DomainActionEnum
+         */
+        export type DomainActionEnum = "create" | "transfer" | "update" | "trade"
+        /**
          * Representation of domain name order properties
          * interface fullName: order.cart.DomainSettings.DomainSettings
          */
@@ -505,6 +510,27 @@ export namespace order {
          * interface fullName: order.cart.GenericDedicatedOptionsCreation.GenericDedicatedOptionsCreation
          */
         export interface GenericDedicatedOptionsCreation {
+            duration: string;
+            itemId: number;
+            planCode: string;
+            pricingMode: string;
+            quantity: number;
+        }
+        /**
+         * Missing description
+         * interface fullName: order.cart.GenericDomainCreation.GenericDomainCreation
+         */
+        export interface GenericDomainCreation {
+            domain: string;
+            duration?: string;
+            offerId?: string;
+            quantity?: number;
+        }
+        /**
+         * Missing description
+         * interface fullName: order.cart.GenericDomainOptionsCreation.GenericDomainOptionsCreation
+         */
+        export interface GenericDomainOptionsCreation {
             duration: string;
             itemId: number;
             planCode: string;
@@ -638,6 +664,24 @@ export namespace order {
          * type fullname: order.cart.PriceLabelEnum
          */
         export type PriceLabelEnum = "PRICE" | "DISCOUNT" | "FEE" | "TOTAL" | "RENEW"
+        /**
+         * Information about a product for Order/Cart
+         * interface fullName: order.cart.ProductInformation.ProductInformation
+         */
+        export interface ProductInformation {
+            action: order.cart.DomainActionEnum;
+            configurations: order.cart.ConfigurationRequirements[];
+            deliveryTime: string;
+            duration: string[];
+            offer?: string;
+            offerId?: string;
+            orderable: boolean;
+            phase: string;
+            prices?: order.cart.Price[];
+            pricingMode: string;
+            productId: string;
+            quantityMax: number;
+        }
         /**
          * Missing description
          * interface fullName: order.cart.Update.Update
@@ -1633,6 +1677,38 @@ export interface Order {
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
+            domain: {
+                /**
+                 * Get informations about a domain name
+                 * GET /order/cart/{cartId}/domain
+                 */
+                $get(params: { domain: string }): Promise<order.cart.ProductInformation[]>;
+                /**
+                 * Post a new domain in your cart
+                 * POST /order/cart/{cartId}/domain
+                 */
+                $post(params: { domain: string, duration?: string, offerId?: string, quantity?: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                options: {
+                    /**
+                     * Get informations about domain names options
+                     * GET /order/cart/{cartId}/domain/options
+                     */
+                    $get(params: { domain: string }): Promise<order.cart.GenericOptionDefinition[]>;
+                    /**
+                     * Post a new domain name option in your cart
+                     * POST /order/cart/{cartId}/domain/options
+                     */
+                    $post(params: { duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+            }
             enterpriseCloudDatabases: {
                 /**
                  * Get informations about an Enterprise Cloud Databases cluster
@@ -2523,6 +2599,33 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
+        domain: {
+            /**
+             * List available services
+             * GET /order/cartServiceOption/domain
+             */
+            $get(params?: { whoisOwner?: string }): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $(serviceName: string): {
+                /**
+                 * Get informations about additional Domain offer for your service
+                 * GET /order/cartServiceOption/domain/{serviceName}
+                 */
+                $get(): Promise<order.cart.GenericOptionDefinition[]>;
+                /**
+                 * Post an additional Domain option in your cart
+                 * POST /order/cartServiceOption/domain/{serviceName}
+                 */
+                $post(params: { cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            };
+        }
         ipLoadbalancing: {
             /**
              * List available services
@@ -3017,6 +3120,17 @@ export interface Order {
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
+            dns: {
+                /**
+                 * Retrieve DNS catalog
+                 * GET /order/catalog/public/dns
+                 */
+                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
             enterpriseCloudDatabases: {
                 /**
                  * Retrieve Enterprise Cloud Databases catalog
@@ -3028,10 +3142,32 @@ export interface Order {
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
+            privateCloud: {
+                /**
+                 * Retrieve Private Cloud catalog
+                 * GET /order/catalog/public/privateCloud
+                 */
+                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
             privateSQL: {
                 /**
                  * Retrieve Private SQL catalog
                  * GET /order/catalog/public/privateSQL
+                 */
+                $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+            vps: {
+                /**
+                 * Retrieve VPS catalog
+                 * GET /order/catalog/public/vps
                  */
                 $get(params: { ovhSubsidiary: nichandle.OvhSubsidiaryEnum }): Promise<order.catalog.publik.Catalog>;
                 /**
@@ -3908,6 +4044,73 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         };
+    }
+    domain: {
+        zone: {
+            /**
+             * List available services
+             * GET /order/domain/zone
+             */
+            $get(): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            new: {
+                /**
+                 * Get prices and contracts information
+                 * GET /order/domain/zone/new
+                 */
+                $get(params: { minimized?: boolean, zoneName: string }): Promise<order.Order>;
+                /**
+                 * Create order
+                 * POST /order/domain/zone/new
+                 */
+                $post(params: { minimized?: boolean, zoneName: string }): Promise<order.Order>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+            $(zoneName: string): {
+                /**
+                 * Get allowed options
+                 * GET /order/domain/zone/{zoneName}
+                 */
+                $get(): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                dnsAnycast: {
+                    /**
+                     * Get allowed durations for 'dnsAnycast' option
+                     * GET /order/domain/zone/{zoneName}/dnsAnycast
+                     */
+                    $get(): Promise<string[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $(duration: string): {
+                        /**
+                         * Get prices and contracts information
+                         * GET /order/domain/zone/{zoneName}/dnsAnycast/{duration}
+                         */
+                        $get(): Promise<order.Order>;
+                        /**
+                         * Create order
+                         * POST /order/domain/zone/{zoneName}/dnsAnycast/{duration}
+                         */
+                        $post(): Promise<order.Order>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    };
+                }
+            };
+        }
     }
     email: {
         exchange: {

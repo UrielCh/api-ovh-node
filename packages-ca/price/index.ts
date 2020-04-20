@@ -3486,6 +3486,15 @@ export namespace price {
             }
         }
     }
+    export namespace Domain {
+        export namespace Zone {
+            /**
+             * Enum of Options
+             * type fullname: price.Domain.Zone.OptionEnum
+             */
+            export type OptionEnum = "dnsAnycast"
+        }
+    }
     export namespace Email {
         export namespace Exchange {
             /**
@@ -11262,6 +11271,23 @@ export interface Price {
                         }
                     }
                 }
+            }
+        }
+    }
+    domain: {
+        zone: {
+            option: {
+                $(optionName: price.Domain.Zone.OptionEnum): {
+                    /**
+                     * Get price of zone options
+                     * GET /price/domain/zone/option/{optionName}
+                     */
+                    $get(): Promise<order.Price>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                };
             }
         }
     }

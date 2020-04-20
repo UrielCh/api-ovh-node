@@ -654,6 +654,7 @@ export namespace cloud {
             osType: string;
             outboundBandwidth?: number;
             planCodes: cloud.flavor.FlavorPlanCodes;
+            quota: number;
             ram: number;
             region: string;
             type: string;

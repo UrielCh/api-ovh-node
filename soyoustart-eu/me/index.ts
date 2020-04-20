@@ -95,6 +95,11 @@ export namespace auth {
 }
 export namespace billing {
     /**
+     * List of available archive types
+     * type fullname: billing.ArchiveTypeEnum
+     */
+    export type ArchiveTypeEnum = "csv" | "zip"
+    /**
      * Available automatic payment means
      * interface fullName: billing.AutomaticPaymentMean.AutomaticPaymentMean
      */
@@ -2585,6 +2590,17 @@ export interface Me {
          * Controle cache
          */
         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        export: {
+            /**
+             * Exports a bundle of invoices
+             * POST /me/bill/export
+             */
+            $post(params: { archiveType: billing.ArchiveTypeEnum, endDate?: string, ids?: string[], startDate?: string }): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        }
         $(billId: string): {
             /**
              * Get this object properties
@@ -4338,6 +4354,17 @@ export interface Me {
          * Controle cache
          */
         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        export: {
+            /**
+             * Exports a bundle of refunds
+             * POST /me/refund/export
+             */
+            $post(params: { archiveType: billing.ArchiveTypeEnum, endDate?: string, ids?: string[], startDate?: string }): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        }
         $(refundId: string): {
             /**
              * Get this object properties

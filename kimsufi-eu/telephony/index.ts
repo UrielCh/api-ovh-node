@@ -1125,7 +1125,9 @@ export namespace telephony {
     export interface LinePhone {
         brand: string;
         description: string;
+        fees?: order.Price;
         maxline: number;
+        offerType: telephony.RmaOfferTypeEnum;
         price: order.Price;
         protocol: telephonyProtocolEnum;
     }

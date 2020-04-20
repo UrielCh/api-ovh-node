@@ -1349,14 +1349,81 @@ export namespace me {
          */
         export interface Level {
             level: me.partnerLevel.LevelTypeEnum;
+            requirement: me.partnerLevel.RequirementLoSEnum;
         }
         /**
          * Type of level
          * type fullname: me.partnerLevel.LevelTypeEnum
          */
         export type LevelTypeEnum = "none" | "standard" | "advanced"
+        /**
+         * Level of Support required
+         * type fullname: me.partnerLevel.RequirementLoSEnum
+         */
+        export type RequirementLoSEnum = "none" | "premium" | "premium-accredited"
     }
     export namespace payment {
+        /**
+         * Available payment method object
+         * interface fullName: me.payment.AvailablePaymentMethod.AvailablePaymentMethod
+         */
+        export interface AvailablePaymentMethod {
+            formSessionId?: string;
+            icon: me.payment.Icon;
+            integration: me.payment.IntegrationEnum;
+            merchantId?: string;
+            oneshot: boolean;
+            organizationId?: string;
+            paymentType: string;
+            registerable: boolean;
+            registerableWithTransaction: boolean;
+        }
+        /**
+         * Icon
+         * interface fullName: me.payment.Icon.Icon
+         */
+        export interface Icon {
+            data?: string;
+            name: string;
+            url?: string;
+        }
+        /**
+         * Register integration type enum
+         * type fullname: me.payment.IntegrationEnum
+         */
+        export type IntegrationEnum = "NONE" | "IFRAME_VANTIV" | "IN_CONTEXT" | "REDIRECT"
+        /**
+         * Payment method object
+         * interface fullName: me.payment.PaymentMethod.PaymentMethod
+         */
+        export interface PaymentMethod {
+            billingContactId?: number;
+            creationDate: string;
+            default: boolean;
+            description?: string;
+            expirationDate?: string;
+            icon: me.payment.Icon;
+            label?: string;
+            lastUpdate: string;
+            paymentMeanId?: number;
+            paymentMethodId: number;
+            paymentSubType?: string;
+            paymentType: string;
+            status: me.payment.method.StatusEnum;
+        }
+        /**
+         * Transaction object
+         * interface fullName: me.payment.Transaction.Transaction
+         */
+        export interface Transaction {
+            amount: orderPrice;
+            creationDate: string;
+            lastUpdate: string;
+            paymentMethodId: number;
+            status: me.payment.transaction.StatusEnum;
+            transactionId: number;
+            type: me.payment.transaction.TypeEnum;
+        }
         export namespace method {
             /**
              * Available payment method object
@@ -1380,6 +1447,35 @@ export namespace me {
                 failure: string;
                 pending: string;
                 success: string;
+            }
+            /**
+             * Payment method Challenge
+             * interface fullName: me.payment.method.Challenge.Challenge
+             */
+            export interface Challenge {
+                challenge: string;
+            }
+            /**
+             * Payment method creation payload
+             * interface fullName: me.payment.method.Creation.Creation
+             */
+            export interface Creation {
+                callbackUrl: me.payment.method.CallbackUrl;
+                default: boolean;
+                description: string;
+                orderId: number;
+                paymentType: string;
+                register: boolean;
+            }
+            /**
+             * Payload to finalize payment method registration
+             * interface fullName: me.payment.method.Finalize.Finalize
+             */
+            export interface Finalize {
+                expirationMonth: number;
+                expirationYear: number;
+                formSessionId: string;
+                registrationId: string;
             }
             /**
              * Icon
@@ -1430,6 +1526,11 @@ export namespace me {
                 }
             }
             /**
+             * Payment method status
+             * type fullname: me.payment.method.StatusEnum
+             */
+            export type StatusEnum = "CANCELED" | "CANCELING" | "CREATED" | "ERROR" | "EXPIRED" | "FAILED" | "CREATING" | "MAINTENANCE" | "PAUSED" | "VALID"
+            /**
              * Payment method transaction object
              * interface fullName: me.payment.method.Transaction.Transaction
              */
@@ -1452,6 +1553,30 @@ export namespace me {
                  */
                 export type Type = "CREDIT" | "DEBIT"
             }
+            /**
+             * Registration response to validate
+             * interface fullName: me.payment.method.Validation.Validation
+             */
+            export interface Validation {
+                formSessionId?: string;
+                merchandId?: string;
+                organizationId?: string;
+                paymentMethodId: number;
+                url?: string;
+                validationType: me.payment.IntegrationEnum;
+            }
+        }
+        export namespace transaction {
+            /**
+             * Transaction status
+             * type fullname: me.payment.transaction.StatusEnum
+             */
+            export type StatusEnum = "CANCELED" | "CANCELING" | "CONFIRMING" | "ERROR" | "EXPIRED" | "FAILED" | "READY" | "SUCCESS"
+            /**
+             * Transaction type
+             * type fullname: me.payment.transaction.TypeEnum
+             */
+            export type TypeEnum = "CREDIT" | "DEBIT"
         }
     }
     export namespace paymentMean {
@@ -1760,7 +1885,7 @@ export namespace nichandle {
      * OVH subsidiaries
      * type fullname: nichandle.OvhSubsidiaryEnum
      */
-    export type OvhSubsidiaryEnum = "ASIA" | "AU" | "CA" | "CZ" | "DE" | "ES" | "EU" | "FI" | "FR" | "GB" | "IE" | "IT" | "LT" | "MA" | "NL" | "PL" | "PT" | "QC" | "SG" | "SN" | "TN" | "US" | "WE" | "WS"
+    export type OvhSubsidiaryEnum = "ASIA" | "AU" | "CA" | "QC" | "SG" | "WE" | "WS"
     /**
      * Indicates the mandatory nature of having a valid payment method
      * type fullname: nichandle.RequiredPaymentMethodEnum
@@ -4134,7 +4259,7 @@ export interface Me {
              * Retrieve available payment method
              * GET /me/payment/availableMethods
              */
-            $get(): Promise<me.payment.method.AvailablePaymentMethod[]>;
+            $get(): Promise<me.payment.AvailablePaymentMethod[]>;
             /**
              * Controle cache
              */
@@ -4142,45 +4267,45 @@ export interface Me {
         }
         method: {
             /**
-             * Retrieve payment method ID list
+             * Retrieve payment method list
              * GET /me/payment/method
              */
-            $get(params?: { paymentType?: string, status?: me.payment.method.PaymentMethod.Status }): Promise<number[]>;
+            $get(params?: { default_?: boolean, paymentType?: string, status?: me.payment.method.StatusEnum }): Promise<number[]>;
             /**
-             * Pay an order and register a new payment method if necessary
+             * Register a new payment method
              * POST /me/payment/method
              */
-            $post(params: { callbackUrl: me.payment.method.CallbackUrl, default_?: boolean, description?: string, orderId?: number, paymentType: string, register?: boolean }): Promise<me.payment.method.Register.ValidationResult>;
+            $post(params: { callbackUrl: me.payment.method.CallbackUrl, default_?: boolean, description?: string, orderId?: number, paymentType: string, register?: boolean }): Promise<me.payment.method.Validation>;
             /**
              * Controle cache
              */
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(paymentMethodId: number): {
                 /**
-                 * Cancel one payment method
+                 * Delete a payment method
                  * DELETE /me/payment/method/{paymentMethodId}
                  */
-                $delete(): Promise<me.payment.method.PaymentMethod>;
+                $delete(): Promise<me.payment.PaymentMethod>;
                 /**
-                 * Get one payment method
+                 * Retrieve a payment method
                  * GET /me/payment/method/{paymentMethodId}
                  */
-                $get(): Promise<me.payment.method.PaymentMethod>;
+                $get(): Promise<me.payment.PaymentMethod>;
                 /**
                  * Edit payment method
                  * PUT /me/payment/method/{paymentMethodId}
                  */
-                $put(params?: { default_?: boolean, description?: string }): Promise<billing.PaymentMethod>;
+                $put(params?: { billingContactId?: number, creationDate?: string, default_?: boolean, description?: string, expirationDate?: string, icon?: me.payment.Icon, label?: string, lastUpdate?: string, paymentMeanId?: number, paymentMethodId?: number, paymentSubType?: string, paymentType?: string, status?: me.payment.method.StatusEnum }): Promise<me.payment.PaymentMethod>;
                 /**
                  * Controle cache
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 challenge: {
                     /**
-                     * Challenge one payment method
+                     * Challenge your payment method
                      * POST /me/payment/method/{paymentMethodId}/challenge
                      */
-                    $post(params: { challenge: string }): Promise<me.payment.method.PaymentMethod>;
+                    $post(params: { challenge: string }): Promise<me.payment.PaymentMethod>;
                     /**
                      * Controle cache
                      */
@@ -4188,10 +4313,10 @@ export interface Me {
                 }
                 finalize: {
                     /**
-                     * Finalize one payment method registration
+                     * Finalize a payment method registration
                      * POST /me/payment/method/{paymentMethodId}/finalize
                      */
-                    $post(params?: { expirationMonth?: number, expirationYear?: number, formSessionId?: string, registrationId?: string }): Promise<me.payment.method.PaymentMethod>;
+                    $post(params?: { expirationMonth?: number, expirationYear?: number, formSessionId?: string, registrationId?: string }): Promise<me.payment.PaymentMethod>;
                     /**
                      * Controle cache
                      */
@@ -4201,20 +4326,20 @@ export interface Me {
         }
         transaction: {
             /**
-             * Retrieve associated payment method transaction ID list
+             * Retrieve payment transaction list
              * GET /me/payment/transaction
              */
-            $get(params?: { paymentMethodId?: number, status?: me.payment.method.Transaction.Status }): Promise<number[]>;
+            $get(params?: { paymentMethodId?: number, status?: me.payment.transaction.StatusEnum }): Promise<number[]>;
             /**
              * Controle cache
              */
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(transactionId: number): {
                 /**
-                 * Get associated payment method transaction
+                 * Retrieve a transaction
                  * GET /me/payment/transaction/{transactionId}
                  */
-                $get(): Promise<me.payment.method.Transaction>;
+                $get(): Promise<me.payment.Transaction>;
                 /**
                  * Controle cache
                  */
