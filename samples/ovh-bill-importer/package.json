@@ -1,6 +1,6 @@
 {
   "name": "ovh-bill-importer",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Download and organize all your ovh.com / OVHcloud bills",
   "main": "index.js",
   "keywords": [
@@ -25,27 +25,28 @@
   },
   "bugs": "https://github.com/UrielCh/api-ovh-node/issues",
   "scripts": {
+    "test": "ts-node index.ts --max-age=0Y --split=month --api=eu --dest=../../../invoices --token ../../../token-bill-importer.json",
     "build": "tsc -p .",
     "build:watch": "tsc -p . --watch",
     "prepare": "npm run build"
   },
   "dependencies": {
-    "@ovh-api-ca/me": "^3.0.0",
-    "@ovh-api-us/me": "^3.0.0",
-    "@ovh-api/api": "^3.0.0",
-    "@ovh-api/common": "^3.1.0",
-    "@ovh-api/me": "^3.0.0",
+    "@ovh-api-ca/me": "^3.1.2",
+    "@ovh-api-us/me": "^3.1.2",
+    "@ovh-api/api": "^3.1.1",
+    "@ovh-api/common": "^3.1.1",
+    "@ovh-api/me": "^3.1.2",
     "bluebird": "^3.7.2",
-    "commander": "^4.1.0",
-    "fs-extra": "^8.1.0",
+    "commander": "^5.0.0",
+    "fs-extra": "^9.0.0",
     "node-fetch": "^2.6.0"
   },
   "devDependencies": {
-    "@types/bluebird": "^3.5.29",
-    "@types/fs-extra": "^8.0.1",
-    "@types/node-fetch": "^2.5.4",
-    "ts-node": "^8.6.2",
-    "typescript": "^3.7.5"
+    "@types/bluebird": "^3.5.30",
+    "@types/fs-extra": "^8.1.0",
+    "@types/node-fetch": "^2.5.6",
+    "ts-node": "^8.8.2",
+    "typescript": "^3.8.3"
   },
   "files": [
     "bin"

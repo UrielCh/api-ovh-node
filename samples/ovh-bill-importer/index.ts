@@ -3,7 +3,6 @@ import fse from 'fs-extra'
 import * as eu from '@ovh-api/me'
 import * as us from '@ovh-api-us/me'
 import * as ca from '@ovh-api-ca/me'
-import { billing } from '@ovh-api/me';
 
 import Ovh, { OvhParams } from '@ovh-api/api'
 import path from 'path'
@@ -21,10 +20,11 @@ program
   .option('-a, --api <type>', 'api country you want to use supported ones: eu/us/ca', /^(eu|us|ca)$/i, 'eu')
   .option('-c, --concurrency <number>', 'max concurent download', /^[0-9]+$/)
   .option('--token <tokenfile>', 'save and reuse the certificat by storing them in a file')
+  .option('-m, --max-age <timeYMD>', 'max time back you want to download, end with Y/M/D (Year/Month/Day)', /^[0-9]+[YMD]$/, '1Y')
   .parse(process.argv)
 
 /**
- * list all existing invoice
+ * list all existing Invoices
  * @param root root directory
  * @param type file extention
  */
@@ -63,7 +63,49 @@ interface CsvLine {
   currency: string
 }
 
+function parseDate(date: Date): { year: string, month: string, day: string } {
+  let year, month, day;
+  if (program.utc) {
+    year = String(date.getUTCFullYear())
+    month = ('0' + (1 + date.getUTCMonth())).slice(-2)
+    day = ('0' + date.getUTCDate()).slice(-2)
+  } else {
+    year = String(date.getFullYear())
+    month = ('0' + (1 + date.getMonth())).slice(-2)
+    day = ('0' + date.getDate()).slice(-2)
+  }
+  return { year, month, day };
+}
+
 async function main(root: string, type: 'pdf' | 'html') {
+  let importLimit = '';
+  if (program.maxAge) {
+    program.maxAge = program.maxAge.toUpperCase()
+    if (!program.maxAge.match(/^[0-9]+[YMD]$/))
+      throw Error('invalid max-age value, should be a number ending by Y, M or D');
+    const now = new Date();
+    let year = program.utc ? now.getUTCFullYear() : now.getFullYear();
+    let month = program.utc ? now.getUTCMonth() : now.getMonth();
+    let day = program.utc ? now.getUTCDate() : now.getDate();
+    let importRimeLimit: Date;
+    if (program.maxAge.endsWith('Y')) {
+      year -= Number(program.maxAge.replace(/[^0-9]/g, ''));
+      importRimeLimit = new Date(year, 0, 1, 0, 0, 0, 0);
+    } else if (program.maxAge.endsWith('M')) {
+      month -= Number(program.maxAge.replace(/[^0-9]/g, ''));
+      importRimeLimit = new Date(year, month, 1, 0, 0, 0, 0);
+    } else if (program.maxAge.endsWith('D')) {
+      day -= Number(program.maxAge.replace(/[^0-9]/g, ''));
+      importRimeLimit = new Date(year, month, day, 0, 0, 0, 0);
+    } else {
+      // can not get here.
+      throw Error('Fatal');
+    }
+    const lim = parseDate(importRimeLimit);
+    importLimit = `${lim.year}-${lim.month}-${lim.day}`;
+    console.log(`Invoices emit before ${importLimit} won't be imported`);
+  }
+
   let token = null;
   let param: OvhParams = { accessRules: `GET /me, GET /me/bill, GET /me/bill/*` };
   try {
@@ -108,7 +150,7 @@ async function main(root: string, type: 'pdf' | 'html') {
   await fse.ensureDir(dest)
 
   const summaryFile = path.join(dest, "summary.tsv")
-  if (await fse.existsSync(summaryFile)) {
+  if (fse.existsSync(summaryFile)) {
     let input = fse.readFileSync(summaryFile, { encoding: 'utf8' })
     input.split(/[\r\n]+/g)
       .forEach(line => {
@@ -140,11 +182,18 @@ async function main(root: string, type: 'pdf' | 'html') {
   }
 
   const InvoicePDF = new Set(await listDir(dest, type))
-  console.log(`${InvoicePDF.size} invoice PDF already downloaded`);
-  console.log(`${Object.keys(invoiceTSV).length} invoice in summery.tsv`);
+  console.log(`${InvoicePDF.size} Invoices PDF already downloaded`);
+  console.log(`${Object.keys(invoiceTSV).length} Invoices in summery.tsv`);
 
   let billIds = await apiMe.bill.$get()
-  console.log(`${billIds.length} invoice available`);
+  const counter = {
+    total: billIds.length,
+    review: 0,
+    tooOld: 0,
+    download: 0,
+  }
+
+  console.log(`${billIds.length} Invoices available`);
   billIds = billIds
     .filter(billId => (!InvoicePDF.has(billId) || !invoiceTSV[billId]))
   const toDownload = billIds.filter((billId) => !InvoicePDF.has(billId)).length
@@ -152,23 +201,31 @@ async function main(root: string, type: 'pdf' | 'html') {
   console.log(`${toDownload} need to be download`);
   console.log(`${toSummeryzed} need to be add to summery.tsv`);
 
-  let counter = 0;
+  let toOldId = {} as {[key: string]: number};
+
   const getInvoice = async (billId: string) => {
-    const billData: billing.Bill = await apiMe.bill.$(billId).$get()
-    const date = new Date(billData.date);
-    let year, month, day;
-    if (program.utc) {
-      year = String(date.getUTCFullYear())
-      month = ('0' + (1 + date.getUTCMonth())).slice(-2)
-      day = ('0' + date.getUTCDate()).slice(-2)
-    } else {
-      year = String(date.getFullYear())
-      month = ('0' + (1 + date.getMonth())).slice(-2)
-      day = ('0' + date.getDate()).slice(-2)
+    const billType: string = billId.replace(/[0-9]/g, '');
+    const billNumber: number = Number(billId.replace(/[^0-9]/g, ''));
+    const oldId = toOldId[billType];
+
+    if (oldId && oldId > billNumber)
+      return;
+
+    counter.review++;
+    const billData = await apiMe.bill.$(billId).$get()
+    const { year, month, day } = parseDate(new Date(billData.date));
+    const date = `${year}-${month}-${day}`;
+
+    if (importLimit && importLimit.localeCompare(date) > 0) {
+      counter.tooOld++;
+      if (!oldId || oldId < billNumber)
+        toOldId[billType] = billNumber;
+      return;
     }
+    // importLimit
     const line: CsvLine = {
       invoiceId: billId,
-      date: `${year}-${month}-${day}`,
+      date,
       HT: billData.priceWithoutTax.value.toFixed(2),
       TVA: (billData.priceWithTax.value - billData.priceWithoutTax.value).toFixed(2),
       TTC: billData.priceWithTax.value.toFixed(2),
@@ -176,7 +233,7 @@ async function main(root: string, type: 'pdf' | 'html') {
     }
 
     if (!InvoicePDF.has(billId)) {
-      const downloadId = ++counter;
+      const downloadId = ++counter.download;
       const finalFile = toFilePath(line);
       try {
         const stats = await fse.stat(finalFile)
@@ -233,12 +290,15 @@ async function main(root: string, type: 'pdf' | 'html') {
     let db = allInvoice.map(({ invoiceId, date, HT, TVA, TTC, currency }) => `${invoiceId}\t${date}\t${HT}\t${TVA}\t${TTC}\t${currency}`)
     db.unshift('invoiceId\tdate\tHT\tTVA\tTTC\tcurrency')
     await fse.writeFile(summaryFile, db.join(EOL), { encoding: 'utf8' })
-    console.log('All done.')
+    if (counter.tooOld)
+      console.log(`${counter.tooOld} Invoices ignore due to Age, ${counter.download} Invoices downloaded, ${counter.review} Invoices reviewed, ${counter.total} Invoices available in the account`)
+    else
+      console.log(`${counter.download} Invoices downloaded, ${counter.review} Invoices reviewed, ${counter.total} Invoices available in the account`)
   } else {
     console.log('No new invoice. Bye.')
   }
 }
 if (program.dest)
-  main(<string>program.dest, 'pdf').then(() => process.exit(), err => console.error(err))
+  main(<string>program.dest, 'pdf').catch(err => console.error(err))
 else if (!program.help)
   console.log('--help for usage')

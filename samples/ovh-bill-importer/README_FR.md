@@ -14,8 +14,18 @@ Ce script utilise les packages npm `ovh-api/api` et `@ovh-api/me`
 npm install -g ovh-bill-importer
 ```
 
+ou bien avec `npx`
+
+```bash
+npx ovh-bill-importer --help
+```
+
+
 ## ChangeLog
 
+- V 1.1.1 ajout --max-age <time-range> avec time-range acceptant des valeurs comme 4m pour 4 mois, 1y pour 1 ans, 10d pour 10 jour.
+- V 1.1.0 ajout --api <type> avec type acceptant les valeurs  (eu, ca, us).
+- V 1.0.6 correction regression.
 - V 1.0.5 reprise des telechargement des facture en cas d'erreur de connexion.
 - V 1.0.4 relance le telechargement en cas de `too many request`.
 - V 1.0.3 reprise sur erreur au niveau des API.
@@ -32,6 +42,8 @@ Options:
   -d, --dest <path>           destination directory
   -s, --split <type>          hierarchy model year/month/none default is month (default: "month")
   -c, --concurrency <number>  max concurent download
+  --token <tokenfile>         save and reuse the certificat by storing them in a file
+  -m, --max-age <timeYMD>     max time back you want to download, end with Y/M/D (Year/Month/Day) (default: "1Y")
   -h, --help                  output usage information
 ```
 

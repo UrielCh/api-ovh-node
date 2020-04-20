@@ -14,8 +14,17 @@ This script use the npm packages `@ovh-api/api` and `@ovh-api/me`
 npm install -g ovh-bill-importer
 ```
 
+or use `npx`
+
+```bash
+npx ovh-bill-importer --help
+```
+
+
 ## ChangeLog
 
+- V 1.1.1 add --max-age <time-range> with time-range like 4m for 4 month, 1y for 1 year, 10d for 10 days.
+- V 1.1.0 add --api <type> with type in (eu, ca, us).
 - V 1.0.6 fix regression in incremental execution.
 - V 1.0.5 properly handle error whene downloading invoices.
 - V 1.0.4 properly recover on too many request error.
@@ -34,6 +43,7 @@ Options:
   -s, --split <type>          hierarchy model year/month/none default is month (default: "month")
   -c, --concurrency <number>  max concurent download
   --token <tokenfile>         save and reuse the certificat by storing them in a file
+  -m, --max-age <timeYMD>     max time back you want to download, end with Y/M/D (Year/Month/Day) (default: "1Y")
   -h, --help                  output usage information
 ```
 
