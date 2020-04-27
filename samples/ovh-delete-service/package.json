@@ -27,18 +27,18 @@
     "prepare": "npm run build"
   },
   "dependencies": {
-    "@ovh-api/api": "^3.0.0",
-    "@ovh-api/common": "^3.1.0",
-    "@ovh-api/me": "^3.0.0",
-    "@ovh-api/telephony": "^3.0.0",
+    "@ovh-api/api": "^3.1.1",
+    "@ovh-api/common": "^3.1.1",
+    "@ovh-api/me": "^3.1.2",
+    "@ovh-api/telephony": "^3.1.2",
     "bluebird": "^3.7.2",
-    "commander": "^4.1.0",
-    "fs-extra": "^8.1.0"
+    "commander": "^5.1.0",
+    "fs-extra": "^9.0.0"
   },
   "devDependencies": {
-    "@types/bluebird": "^3.5.29",
-    "@types/fs-extra": "^8.0.1",
-    "ts-node": "^8.6.2",
-    "typescript": "^3.7.5"
+    "@types/bluebird": "^3.5.30",
+    "@types/fs-extra": "^8.1.0",
+    "ts-node": "^8.9.1",
+    "typescript": "^3.8.3"
   }
 }

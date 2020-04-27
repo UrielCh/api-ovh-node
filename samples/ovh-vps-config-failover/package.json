@@ -31,13 +31,13 @@
     "prepare": "npm run build"
   },
   "dependencies": {
-    "@ovh-api/api": "^3.0.0",
-    "@ovh-api/vps": "^3.0.0",
-    "fs-extra": "^8.1.0"
+    "@ovh-api/api": "^3.1.1",
+    "@ovh-api/vps": "^3.1.2",
+    "fs-extra": "^9.0.0"
   },
   "devDependencies": {
-    "@types/fs-extra": "^8.0.1",
-    "ts-node": "^8.6.2",
-    "typescript": "^3.7.5"
+    "@types/fs-extra": "^8.1.0",
+    "ts-node": "^8.9.1",
+    "typescript": "^3.8.3"
   }
 }
