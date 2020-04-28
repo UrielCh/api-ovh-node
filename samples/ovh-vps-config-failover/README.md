@@ -3,11 +3,22 @@
 [![NPM Version](https://img.shields.io/npm/v/ovh-vps-config-failover.svg?style=flat)](https://www.npmjs.org/package/ovh-vps-config-failover)
 
 If nodejs is not installed:
+
 ```bash
-wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 bash
 nvm install node
 ```
+
+or
+
+```bash
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+bash
+nvm install node
+```
+
+then
 
 Configure the IP-failover on OVH VPS using Debian / CentOS
 
