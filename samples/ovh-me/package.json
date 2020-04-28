@@ -11,11 +11,11 @@
     "prepare": "npm run build"
   },
   "dependencies": {
-    "@ovh-api/api": "^3.0.0",
-    "@ovh-api/me": "^3.0.0"
+    "@ovh-api/api": "^3.1.1",
+    "@ovh-api/me": "^3.1.2"
   },
   "devDependencies": {
-    "ts-node": "^8.6.2",
-    "typescript": "^3.7.5"
+    "ts-node": "^8.9.1",
+    "typescript": "^3.8.3"
   }
 }
