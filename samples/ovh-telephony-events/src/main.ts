@@ -9,6 +9,7 @@ import debounce from 'debounce';
 import fse from 'fs-extra';
 import kleur from 'kleur';
 import OvhApi from "@ovh-api/api";
+import { myDebounce } from './myDebounce';
 
 // sample exec line:
 // ts-node main.ts --redis-host 127.0.0.1 --cache tokens.json --channel event-voip
@@ -58,21 +59,6 @@ function checkUpdate() {
             }
         }, () => { })
     }, () => { });
-}
-
-export function myDebounce(
-    delay: number,
-    callback: () => any,
-): () => any {
-    let next: NodeJS.Timeout | null = null;
-    return () => {
-        if (next)
-            return;
-        next = setTimeout(() => {
-            callback();
-            next = null;
-        }, delay)
-    }
 }
 
 async function main() {
@@ -128,13 +114,13 @@ async function main() {
      * simple activity viewer on screen
      * this log is debounce bay debounce ms to avoid flooding your log.
      */
-    const log = () => {
+    const logSentEvent = () => {
         const now = new Date();
-        console.log(`${now.toISOString()} Send ${nbEvent} event to ${program.channel} (${importer.nic})`);
+        console.log(`${now.toISOString()} Sent ${nbEvent} event to ${program.channel} (${importer.nic})`);
         nbEvent = 0;
         // fromtime = 0;
     };
-    const logEvents = myDebounce(Number(program.debounce), log)
+    const logEvents = myDebounce(logSentEvent, Number(program.debounce))
     const logIdle1 = debounce(() => { console.error(`${new Date().toISOString()} WARNING no Activity in ${program.channel} (${importer.nic}) for more than 2 min`) }, 120000)
     const logIdle2 = debounce(() => { console.error(`${new Date().toISOString()} ERROR   no Activity in ${program.channel} (${importer.nic}) for more than 10 min, you may need to reset your tokens with OvhEventTokenImporter --reset`) }, 600000)
     logIdle1();
