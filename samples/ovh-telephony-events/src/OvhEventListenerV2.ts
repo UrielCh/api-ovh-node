@@ -124,6 +124,11 @@ export class OvhEventListenerV2 extends EventEmitter implements IOvhEventListene
                                 status: response.status,
                                 statusText: response.statusText
                             });
+                            if (response.status === 404) {
+                                // Session not found.
+                                await this.connectGroup(group);
+                                continue;
+                            }
                         } else {
                             const text = await response.text();
                             if (text === 'Timeout, please reconnect') {

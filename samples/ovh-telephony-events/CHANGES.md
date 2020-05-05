@@ -1,8 +1,12 @@
 # Changelog
 
+## verion 1.4.11
+
+- Add reconnect if event v2 poll return 404.
+
 ## verion 1.4.10
 
-- Add error handeling in event v1
+- Add error handeling in event v1.
 
 ## verion 1.4.9
 
