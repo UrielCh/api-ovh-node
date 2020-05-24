@@ -87,7 +87,7 @@ export class OvhEventListenerV2 extends EventEmitter implements IOvhEventListene
             } else {
                 let resp = await response.text();
                 if (resp !== `Successfully subscribed on token ${g2.token}`) {
-                    console.error('unexpected response from events.voip.ovh.net/v2/session:' + resp);
+                    console.error(`unexpected response from events.voip.ovh.net/v2/session: ${resp}`);
                 }
             }
         }
@@ -113,7 +113,7 @@ export class OvhEventListenerV2 extends EventEmitter implements IOvhEventListene
             resolve();
 
             const listen = groups2.map(async (group: IEvTokenGroup) => {
-                const url = `https://events.voip.ovh.net/v2/session/${group.session}/events/poll`;
+                let url = `https://events.voip.ovh.net/v2/session/${group.session}/events/poll`;
                 while (true) {
                     try {
                         const response = await fetch(url, { method: 'GET', headers })
@@ -127,6 +127,8 @@ export class OvhEventListenerV2 extends EventEmitter implements IOvhEventListene
                             if (response.status === 404) {
                                 // Session not found.
                                 await this.connectGroup(group);
+                                // update URL with new session
+                                url = `https://events.voip.ovh.net/v2/session/${group.session}/events/poll`;
                                 continue;
                             }
                         } else {

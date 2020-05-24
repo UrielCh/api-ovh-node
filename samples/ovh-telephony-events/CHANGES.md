@@ -1,5 +1,9 @@
 # Changelog
 
+## verion 1.4.12
+
+- fix missing update URL after a 404 error.
+
 ## verion 1.4.11
 
 - Add reconnect if event v2 poll return 404.
