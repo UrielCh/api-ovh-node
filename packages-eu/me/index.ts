@@ -3080,7 +3080,7 @@ export interface Me {
              * Retrieve all billing groups
              * GET /me/billing/group
              */
-            $get(params?: { name?: string }): Promise<number[]>;
+            $get(params?: { name?: string, serviceId?: number }): Promise<number[]>;
             /**
              * Create a new billing group
              * POST /me/billing/group

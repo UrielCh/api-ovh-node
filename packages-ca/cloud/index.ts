@@ -1810,62 +1810,6 @@ export namespace cloud {
          */
         export type StatusEnum = "unpaid" | "delivering" | "delivered" | "unknown"
     }
-    export namespace pca {
-        /**
-         * Task type available for cloud archives
-         * type fullname: cloud.pca.BillingRefEnum
-         */
-        export type BillingRefEnum = "backup" | "delete" | "restore"
-        /**
-         * Openstack swift credentials for your PCA offer
-         * interface fullName: cloud.pca.DownloadCredentials.DownloadCredentials
-         */
-        export interface DownloadCredentials {
-            authEndpoint: string;
-            container: string;
-            login: string;
-            password: string;
-            region: string;
-            storageEndpoint: string;
-            tenantId: string;
-            tenantName: string;
-        }
-        /**
-         * Task types for cloud archives
-         * type fullname: cloud.pca.FunctionTypeEnum
-         */
-        export type FunctionTypeEnum = "createUser" | "delete" | "restore" | "setPassword" | "setSessionName" | "setSshKey"
-        /**
-         * Session state available for cloud archives
-         * type fullname: cloud.pca.SessionStateEnum
-         */
-        export type SessionStateEnum = "doing" | "doingBackup" | "doingDelete" | "doingRestore" | "done" | "error" | "failedDelete" | "failedRestore" | "new" | "tagging" | "toBackup" | "toDelete" | "toRestore"
-        /**
-         * Task status for cloud archives
-         * type fullname: cloud.pca.TaskStateEnum
-         */
-        export type TaskStateEnum = "cancelled" | "deleted" | "doing" | "doingBackup" | "doingDelete" | "doingRestore" | "done" | "error" | "failedDelete" | "failedRestore" | "new" | "tagging" | "toBackup" | "toDelete" | "toRestore" | "todo"
-        /**
-         * Task type available for cloud archives
-         * type fullname: cloud.pca.TaskTypeEnum
-         */
-        export type TaskTypeEnum = "delete" | "restore"
-        /**
-         * State of the request to transfer a PCA offer to Object Storage
-         * interface fullName: cloud.pca.TransferState.TransferState
-         */
-        export interface TransferState {
-            agreements?: number[];
-            projectId: string;
-            state: cloud.pca.TransferStateEnum;
-            transferDate?: string;
-        }
-        /**
-         * Transfer states
-         * type fullname: cloud.pca.TransferStateEnum
-         */
-        export type TransferStateEnum = "deleted" | "transferred" | "untransferred" | "waitingAgreementsValidation"
-    }
     export namespace project {
         /**
          * Usage information for current month on your project
@@ -2262,6 +2206,128 @@ export namespace cloud {
                  */
                 export type WorkflowTemplateEnum = "build-image" | "preset-image"
             }
+        }
+        export namespace dataProcessing {
+            /**
+             * Authorization status
+             * interface fullName: cloud.project.dataProcessing.AuthorizationStatus.AuthorizationStatus
+             */
+            export interface AuthorizationStatus {
+                authorized: boolean;
+            }
+            /**
+             * Engine parameters
+             * interface fullName: cloud.project.dataProcessing.CapabilitiesEngineParameter.CapabilitiesEngineParameter
+             */
+            export interface CapabilitiesEngineParameter {
+                default?: string;
+                description: string;
+                mandatory: boolean;
+                name: string;
+                type: string;
+                validator: cloud.project.dataProcessing.ParameterValidator;
+            }
+            /**
+             * Engine Template
+             * interface fullName: cloud.project.dataProcessing.CapabilitiesTemplate.CapabilitiesTemplate
+             */
+            export interface CapabilitiesTemplate {
+                cores: number;
+                id: number;
+                memory: number;
+            }
+            /**
+             * Capabilities of data processing service
+             * interface fullName: cloud.project.dataProcessing.Capability.Capability
+             */
+            export interface Capability {
+                availableVersions: cloud.project.dataProcessing.EngineVersion[];
+                name: string;
+                parameters: cloud.project.dataProcessing.CapabilitiesEngineParameter[];
+                templates: cloud.project.dataProcessing.CapabilitiesTemplate[];
+            }
+            /**
+             * Parameters of the engine
+             * interface fullName: cloud.project.dataProcessing.EngineParameter.EngineParameter
+             */
+            export interface EngineParameter {
+                name: string;
+                value: string;
+            }
+            /**
+             * Engine version
+             * interface fullName: cloud.project.dataProcessing.EngineVersion.EngineVersion
+             */
+            export interface EngineVersion {
+                availableRegions: string[];
+                description: string;
+                name: string;
+            }
+            /**
+             * Job information
+             * interface fullName: cloud.project.dataProcessing.Job.Job
+             */
+            export interface Job {
+                containerName: string;
+                creationDate?: string;
+                endDate?: string;
+                engine: string;
+                engineParameters: cloud.project.dataProcessing.EngineParameter[];
+                engineVersion: string;
+                id: string;
+                name: string;
+                region: string;
+                startDate?: string;
+                status: cloud.project.dataProcessing.StatusEnum;
+            }
+            /**
+             * Job Logs
+             * interface fullName: cloud.project.dataProcessing.JobLogs.JobLogs
+             */
+            export interface JobLogs {
+                logs: cloud.project.dataProcessing.LogLine[];
+                logsAddress?: string;
+                startDate: string;
+            }
+            /**
+             * Log line
+             * interface fullName: cloud.project.dataProcessing.LogLine.LogLine
+             */
+            export interface LogLine {
+                content: string;
+                id: number;
+                timestamp: string;
+            }
+            /**
+             * Metrics information
+             * interface fullName: cloud.project.dataProcessing.Metrics.Metrics
+             */
+            export interface Metrics {
+                endpoints: cloud.project.dataProcessing.MetricsEndpoint[];
+                token: string;
+            }
+            /**
+             * Job Logs
+             * interface fullName: cloud.project.dataProcessing.MetricsEndpoint.MetricsEndpoint
+             */
+            export interface MetricsEndpoint {
+                name: string;
+                url: string;
+            }
+            /**
+             * Conditions to which the value of parameter must conform
+             * interface fullName: cloud.project.dataProcessing.ParameterValidator.ParameterValidator
+             */
+            export interface ParameterValidator {
+                max?: number;
+                min?: number;
+                regex?: string;
+            }
+            /**
+             * Possible state of the job
+             * type fullname: cloud.project.dataProcessing.StatusEnum
+             */
+            export type StatusEnum = "UNKNOWN" | "PENDING" | "SUBMITTED" | "RUNNING" | "CANCELLING" | "FAILED" | "TERMINATED" | "COMPLETED"
         }
         export namespace loadbalancer {
             /**
@@ -2862,72 +2928,6 @@ export namespace order {
         value: number;
     }
 }
-export namespace pca {
-    /**
-     * Cloud Archives Account
-     * interface fullName: pca.Account.Account
-     */
-    export interface Account {
-        domain: string;
-        host: string;
-        login: string;
-        password: string;
-        sshkey?: string;
-    }
-    /**
-     * cloud archives billing
-     * interface fullName: pca.Billing.Billing
-     */
-    export interface Billing {
-        billed: boolean;
-        date: string;
-        id: number;
-        quantity: number;
-        reference: cloud.pca.BillingRefEnum;
-        total: number;
-    }
-    /**
-     * cloud archives files
-     * interface fullName: pca.File.File
-     */
-    export interface File {
-        MD5: string;
-        SHA1: string;
-        SHA256: string;
-        id: string;
-        name: string;
-        size: number;
-        state: string;
-        type: string;
-    }
-    /**
-     * cloud archives sessions
-     * interface fullName: pca.Session.Session
-     */
-    export interface Session {
-        endDate?: string;
-        id: string;
-        login: string;
-        name: string;
-        size: number;
-        srcIp?: string;
-        startDate: string;
-        state: cloud.pca.SessionStateEnum;
-    }
-    /**
-     * cloud archives tasks
-     * interface fullName: pca.Task.Task
-     */
-    export interface Task {
-        comment?: string;
-        function: cloud.pca.FunctionTypeEnum;
-        id: string;
-        ipAddress?: string;
-        login: string;
-        status: cloud.pca.TaskStateEnum;
-        todoDate: string;
-    }
-}
 export namespace service {
     /**
      * Map a possible renew for a specific service
@@ -2993,15 +2993,6 @@ export default proxyCloud;
  * Api model for /cloud
  */
 export interface Cloud {
-    /**
-     * List available services
-     * GET /cloud
-     */
-    $get(): Promise<string[]>;
-    /**
-     * Controle cache
-     */
-    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
     agreements: {
         /**
          * Get agreements related to a product
@@ -3548,6 +3539,89 @@ export interface Cloud {
                      */
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 };
+            }
+            dataProcessing: {
+                authorization: {
+                    /**
+                     * Get authorization status
+                     * GET /cloud/project/{serviceName}/dataProcessing/authorization
+                     */
+                    $get(): Promise<cloud.project.dataProcessing.AuthorizationStatus>;
+                    /**
+                     * Authorization of Data Processing service by allowing access to your object storage containers
+                     * POST /cloud/project/{serviceName}/dataProcessing/authorization
+                     */
+                    $post(): Promise<void>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+                capabilities: {
+                    /**
+                     * Data processing capabilities
+                     * GET /cloud/project/{serviceName}/dataProcessing/capabilities
+                     */
+                    $get(): Promise<cloud.project.dataProcessing.Capability[]>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+                jobs: {
+                    /**
+                     * List all jobs
+                     * GET /cloud/project/{serviceName}/dataProcessing/jobs
+                     */
+                    $get(): Promise<string[]>;
+                    /**
+                     * Submit a job
+                     * POST /cloud/project/{serviceName}/dataProcessing/jobs
+                     */
+                    $post(params: { containerName: string, creationDate?: string, endDate?: string, engine: string, engineParameters: cloud.project.dataProcessing.EngineParameter[], engineVersion: string, id?: string, name?: string, region: string, startDate?: string, status?: cloud.project.dataProcessing.StatusEnum }): Promise<cloud.project.dataProcessing.Job>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $(jobId: string): {
+                        /**
+                         * Kill job with given id
+                         * DELETE /cloud/project/{serviceName}/dataProcessing/jobs/{jobId}
+                         */
+                        $delete(): Promise<void>;
+                        /**
+                         * Get jobs information
+                         * GET /cloud/project/{serviceName}/dataProcessing/jobs/{jobId}
+                         */
+                        $get(): Promise<cloud.project.dataProcessing.Job>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        logs: {
+                            /**
+                             * Get the logs of a job
+                             * GET /cloud/project/{serviceName}/dataProcessing/jobs/{jobId}/logs
+                             */
+                            $get(params?: { from?: string }): Promise<cloud.project.dataProcessing.JobLogs>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                    };
+                }
+                metrics: {
+                    /**
+                     * Get metrics token and urls compatible with this token
+                     * GET /cloud/project/{serviceName}/dataProcessing/metrics
+                     */
+                    $get(): Promise<cloud.project.dataProcessing.Metrics>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
             }
             flavor: {
                 /**
@@ -4906,176 +4980,6 @@ export interface Cloud {
          */
         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
     }
-    $(serviceName: string | number): {
-        pca: {
-            /**
-             * List available services
-             * GET /cloud/{serviceName}/pca
-             */
-            $get(): Promise<string[]>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            $(pcaServiceName: string): {
-                /**
-                 * Get this object properties
-                 * GET /cloud/{serviceName}/pca/{pcaServiceName}
-                 */
-                $get(): Promise<pca.Account>;
-                /**
-                 * Alter this object properties
-                 * PUT /cloud/{serviceName}/pca/{pcaServiceName}
-                 */
-                $put(params?: { domain?: string, host?: string, login?: string, password?: string, sshkey?: string }): Promise<void>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                billing: {
-                    /**
-                     * cloud Archives billing items
-                     * GET /cloud/{serviceName}/pca/{pcaServiceName}/billing
-                     */
-                    $get(params?: { billed?: boolean, date_from?: string, date_to?: string }): Promise<number[]>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    $(billingId: number): {
-                        /**
-                         * Get this object properties
-                         * GET /cloud/{serviceName}/pca/{pcaServiceName}/billing/{billingId}
-                         */
-                        $get(): Promise<pca.Billing>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    };
-                }
-                serviceInfos: {
-                    /**
-                     * Get this object properties
-                     * GET /cloud/{serviceName}/pca/{pcaServiceName}/serviceInfos
-                     */
-                    $get(): Promise<services.Service>;
-                    /**
-                     * Alter this object properties
-                     * PUT /cloud/{serviceName}/pca/{pcaServiceName}/serviceInfos
-                     */
-                    $put(params?: { canDeleteAtExpiration?: boolean, contactAdmin?: string, contactBilling?: string, contactTech?: string, creation?: string, domain?: string, engagedUpTo?: string, expiration?: string, possibleRenewPeriod?: number[], renew?: service.RenewType, renewalType?: service.RenewalTypeEnum, serviceId?: number, status?: service.StateEnum }): Promise<void>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                }
-                sessions: {
-                    /**
-                     * cloud archives sessions for account
-                     * GET /cloud/{serviceName}/pca/{pcaServiceName}/sessions
-                     */
-                    $get(params?: { name?: string }): Promise<string[]>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    $(sessionId: string): {
-                        /**
-                         * Create a delete task for all files in session
-                         * DELETE /cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}
-                         */
-                        $delete(): Promise<pca.Task>;
-                        /**
-                         * Get this object properties
-                         * GET /cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}
-                         */
-                        $get(): Promise<pca.Session>;
-                        /**
-                         * Alter this object properties
-                         * PUT /cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}
-                         */
-                        $put(params?: { endDate?: string, id?: string, login?: string, name?: string, size?: number, srcIp?: string, startDate?: string, state?: cloud.pca.SessionStateEnum }): Promise<void>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                        files: {
-                            /**
-                             * cloud archives files in session
-                             * GET /cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}/files
-                             */
-                            $get(params?: { name?: string }): Promise<string[]>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                            $(fileId: string): {
-                                /**
-                                 * Get this object properties
-                                 * GET /cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}/files/{fileId}
-                                 */
-                                $get(): Promise<pca.File>;
-                                /**
-                                 * Controle cache
-                                 */
-                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                            };
-                        }
-                        restore: {
-                            /**
-                             * Create a restore task for session
-                             * POST /cloud/{serviceName}/pca/{pcaServiceName}/sessions/{sessionId}/restore
-                             */
-                            $post(): Promise<pca.Task>;
-                            /**
-                             * Controle cache
-                             */
-                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                        }
-                    };
-                }
-                tasks: {
-                    /**
-                     * cloud archives tasks for account
-                     * GET /cloud/{serviceName}/pca/{pcaServiceName}/tasks
-                     */
-                    $get(params?: { function_?: cloud.pca.FunctionTypeEnum, status?: cloud.pca.TaskStateEnum, todoDate_from?: string, todoDate_to?: string }): Promise<string[]>;
-                    /**
-                     * Create a cloud archives task
-                     * POST /cloud/{serviceName}/pca/{pcaServiceName}/tasks
-                     */
-                    $post(params: { fileIds: string[], sessionId: string, taskFunction: cloud.pca.TaskTypeEnum }): Promise<pca.Task>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    $(taskId: string): {
-                        /**
-                         * Get this object properties
-                         * GET /cloud/{serviceName}/pca/{pcaServiceName}/tasks/{taskId}
-                         */
-                        $get(): Promise<pca.Task>;
-                        /**
-                         * Controle cache
-                         */
-                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                    };
-                }
-                usage: {
-                    /**
-                     * View account current total sessions usage (bytes)
-                     * GET /cloud/{serviceName}/pca/{pcaServiceName}/usage
-                     */
-                    $get(): Promise<number>;
-                    /**
-                     * Controle cache
-                     */
-                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-                }
-            };
-        }
-    };
 }
 /**
  * Extra Alias to bypass relativer namespace colitions

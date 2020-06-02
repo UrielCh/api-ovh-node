@@ -1663,12 +1663,11 @@ export namespace nichandle {
 }
 export namespace order {
     /**
-     * Currency code
      * type fullname: order.CurrencyCodeEnum
      */
     export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
     /**
-     * Price with its currency and textual representation
+     * Price with it's currency and textual representation
      * interface fullName: order.Price.Price
      */
     export interface Price {
@@ -2358,7 +2357,7 @@ export interface Me {
              * Retrieve all billing groups
              * GET /me/billing/group
              */
-            $get(params?: { name?: string }): Promise<number[]>;
+            $get(params?: { name?: string, serviceId?: number }): Promise<number[]>;
             /**
              * Create a new billing group
              * POST /me/billing/group
@@ -2577,10 +2576,10 @@ export interface Me {
     credit: {
         balance: {
             /**
-             * Retrieve all credit balances
+             * Retrieve credit balance names
              * GET /me/credit/balance
              */
-            $get(params?: { type?: me.credit.balance.TypeEnum }): Promise<string[]>;
+            $get(params?: { type?: billing.credit.balance.Type }): Promise<string[]>;
             /**
              * Controle cache
              */
@@ -2590,7 +2589,7 @@ export interface Me {
                  * Retrieve a credit balance
                  * GET /me/credit/balance/{balanceName}
                  */
-                $get(): Promise<me.credit.Balance>;
+                $get(): Promise<billing.credit.Balance>;
                 /**
                  * Controle cache
                  */
@@ -2610,7 +2609,7 @@ export interface Me {
                          * Retrieve a specific movement for a credit balance
                          * GET /me/credit/balance/{balanceName}/movement/{movementId}
                          */
-                        $get(): Promise<me.credit.balance.Movement>;
+                        $get(): Promise<billing.credit.balance.Movement>;
                         /**
                          * Controle cache
                          */
@@ -2624,7 +2623,7 @@ export interface Me {
              * Validate a code to generate associated credit movement
              * POST /me/credit/code
              */
-            $post(params: { inputCode: string, serviceId?: number }): Promise<me.credit.balance.Movement>;
+            $post(params: { inputCode: string, serviceId?: number }): Promise<billing.credit.balance.Movement>;
             /**
              * Controle cache
              */

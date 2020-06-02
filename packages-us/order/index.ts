@@ -1596,6 +1596,33 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
+        privateCloudEnterprise: {
+            /**
+             * List available services
+             * GET /order/cartServiceOption/privateCloudEnterprise
+             */
+            $get(): Promise<string[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $(serviceName: string): {
+                /**
+                 * Get informations about additional Private Cloud offer for your service
+                 * GET /order/cartServiceOption/privateCloudEnterprise/{serviceName}
+                 */
+                $get(): Promise<order.cart.GenericOptionDefinition[]>;
+                /**
+                 * Post an additional Private Cloud option in your cart
+                 * POST /order/cartServiceOption/privateCloudEnterprise/{serviceName}
+                 */
+                $post(params: { cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            };
+        }
         privateCloudReseller: {
             /**
              * List available services

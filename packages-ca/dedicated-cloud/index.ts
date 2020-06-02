@@ -271,6 +271,13 @@ export namespace dedicatedCloud {
         name: string;
     }
     /**
+     * Host resilience test hability
+     * interface fullName: dedicatedCloud.HostResilience.HostResilience
+     */
+    export interface HostResilience {
+        state: dedicatedCloudoptionStateEnum;
+    }
+    /**
      * Hypervisor and their availability
      * interface fullName: dedicatedCloud.HostStockHypervisor.HostStockHypervisor
      */
@@ -1926,6 +1933,50 @@ export interface DedicatedCloud {
                              * Controle cache
                              */
                             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                        resilience: {
+                            /**
+                             * Get this object properties
+                             * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/resilience
+                             */
+                            $get(): Promise<dedicatedCloud.HostResilience>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            canBeEnabled: {
+                                /**
+                                 * Check if resilience test can be performed
+                                 * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/resilience/canBeEnabled
+                                 */
+                                $get(): Promise<boolean>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            }
+                            disable: {
+                                /**
+                                 * Disable resilience test (reconnect the network of your host)
+                                 * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/resilience/disable
+                                 */
+                                $post(): Promise<dedicatedCloud.Task>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            }
+                            enable: {
+                                /**
+                                 * Enable resilience test (disconnnect the network of your host)
+                                 * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/resilience/enable
+                                 */
+                                $post(params?: { duration?: number }): Promise<dedicatedCloud.Task>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            }
                         }
                         task: {
                             /**
