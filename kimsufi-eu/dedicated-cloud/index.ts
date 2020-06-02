@@ -684,6 +684,26 @@ export namespace dedicatedCloud {
          */
         export type OfferTypeEnum = "advanced" | "backup" | "classic" | "legacy" | "premium"
         /**
+         * All messages descriptions for the proxies optimization
+         * type fullname: dedicatedCloud.backup.OptimizeMessageEnum
+         */
+        export type OptimizeMessageEnum = "hasMoreBackupJobs" | "hasMoreProxies" | "hasSufficientProxies" | "noBackupJobs"
+        /**
+         * Details about proxies Optimization
+         * interface fullName: dedicatedCloud.backup.OptimizeProxies.OptimizeProxies
+         */
+        export interface OptimizeProxies {
+            message: dedicatedCloudbackupOptimizeMessageEnum;
+            numberOfProxiesDeployed: number;
+            numberOfProxiesImpact: number;
+            recommendation: dedicatedCloudbackupOptimizeRecommendationEnum;
+        }
+        /**
+         * All recommendations for the proxies optimization
+         * type fullname: dedicatedCloud.backup.OptimizeRecommendationEnum
+         */
+        export type OptimizeRecommendationEnum = "add" | "optimized" | "remove"
+        /**
          * Details about a restore point
          * interface fullName: dedicatedCloud.backup.RestorePoint.RestorePoint
          */
@@ -1594,6 +1614,17 @@ export interface DedicatedCloud {
                      * Controle cache
                      */
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    canOptimizeProxies: {
+                        /**
+                         * Generates recommendation for Backup Proxies optimization
+                         * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/canOptimizeProxies
+                         */
+                        $get(): Promise<dedicatedCloud.backup.OptimizeProxies>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    }
                     changeProperties: {
                         /**
                          * Edit the backup on a Private Cloud
@@ -1633,6 +1664,17 @@ export interface DedicatedCloud {
                          * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/offerCapabilities
                          */
                         $get(): Promise<dedicatedCloud.backup.BackupCapabilities[]>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    }
+                    optimizeProxies: {
+                        /**
+                         * Optimizes number of Backup Proxies required for given Datacenter
+                         * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/optimizeProxies
+                         */
+                        $post(): Promise<dedicatedCloud.Task>;
                         /**
                          * Controle cache
                          */
@@ -3400,6 +3442,8 @@ type dedicatedCloudvirtualMachinePowerState = dedicatedCloud.virtualMachinePower
 type dedicatedCloudvirtualMachineFaultToleranceState = dedicatedCloud.virtualMachineFaultToleranceState;
 type dedicatedCloudbackupJobStateEnum = dedicatedCloud.backup.JobStateEnum;
 type dedicatedCloudbackupRestorePoint = dedicatedCloud.backup.RestorePoint;
+type dedicatedCloudbackupOptimizeMessageEnum = dedicatedCloud.backup.OptimizeMessageEnum;
+type dedicatedCloudbackupOptimizeRecommendationEnum = dedicatedCloud.backup.OptimizeRecommendationEnum;
 type dedicatedCloudclusterAutoScaleModeEnum = dedicatedCloud.cluster.AutoScaleModeEnum;
 type dedicatedCloudBillingTypeEnum = dedicatedCloud.BillingTypeEnum;
 type dedicatedCloudGenerationEnum = dedicatedCloud.GenerationEnum;

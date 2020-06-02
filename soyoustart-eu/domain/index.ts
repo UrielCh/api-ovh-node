@@ -628,6 +628,13 @@ export namespace services {
 }
 export namespace zone {
     /**
+     * Zone capabilities
+     * interface fullName: zone.Capabilities.Capabilities
+     */
+    export interface Capabilities {
+        dynHost: boolean;
+    }
+    /**
      * Resource record fieldType
      * type fullname: zone.NamedResolutionFieldTypeEnum
      */
@@ -854,6 +861,17 @@ export interface Domain {
              * Controle cache
              */
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            capabilities: {
+                /**
+                 * Zone capabilities
+                 * GET /domain/zone/{zoneName}/capabilities
+                 */
+                $get(): Promise<zone.Capabilities>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
             changeContact: {
                 /**
                  * Launch a contact change procedure

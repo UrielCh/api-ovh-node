@@ -207,6 +207,7 @@ export namespace cloud {
         expiration?: string;
         orderId?: number;
         planCode: string;
+        projectName?: string;
         project_id: string;
         status: cloud.project.ProjectStatus;
         unleash: boolean;
@@ -2152,7 +2153,7 @@ export interface Cloud {
              * Alter this object properties
              * PUT /cloud/project/{serviceName}
              */
-            $put(params?: { access?: cloud.AccessTypeEnum, creationDate?: string, description?: string, expiration?: string, orderId?: number, planCode?: string, project_id?: string, status?: cloud.project.ProjectStatus, unleash?: boolean }): Promise<void>;
+            $put(params?: { access?: cloud.AccessTypeEnum, creationDate?: string, description?: string, expiration?: string, orderId?: number, planCode?: string, projectName?: string, project_id?: string, status?: cloud.project.ProjectStatus, unleash?: boolean }): Promise<void>;
             /**
              * Controle cache
              */

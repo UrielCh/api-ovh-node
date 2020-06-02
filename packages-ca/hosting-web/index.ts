@@ -97,7 +97,7 @@ export namespace hosting {
          * Available cluster countries
          * type fullname: hosting.web.CountryEnum
          */
-        export type CountryEnum = "BE" | "CZ" | "DE" | "ES" | "FI" | "FR" | "IE" | "IT" | "LT" | "NL" | "PL" | "PT" | "UK"
+        export type CountryEnum = "BE" | "CA" | "CZ" | "DE" | "ES" | "FI" | "FR" | "IE" | "IT" | "LT" | "NL" | "PL" | "PT" | "UK"
         /**
          * Struct which describes mail offer available and his quota
          * interface fullName: hosting.web.CreationEmailCapabilities.CreationEmailCapabilities
@@ -120,7 +120,7 @@ export namespace hosting {
          * Available datacenters
          * type fullname: hosting.web.DatacenterEnum
          */
-        export type DatacenterEnum = "gra1" | "gra2" | "p19"
+        export type DatacenterEnum = "bhs1" | "gra1" | "gra2" | "p19"
         /**
          * Disk properties (size and type of disk)
          * interface fullName: hosting.web.DiskType.DiskType
@@ -937,6 +937,8 @@ export namespace hosting {
         export interface ownLogs {
             fqdn: string;
             id: number;
+            logs: string;
+            stats: string;
             status: hosting.web.ownLogs.StatusEnum;
             taskId?: number;
         }
@@ -2164,7 +2166,7 @@ export interface Hosting {
                  * Own Logs linked to your hosting
                  * GET /hosting/web/{serviceName}/ownLogs
                  */
-                $get(): Promise<number[]>;
+                $get(params?: { fqdn?: string }): Promise<number[]>;
                 /**
                  * Controle cache
                  */

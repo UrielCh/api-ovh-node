@@ -129,7 +129,7 @@ export namespace ovhcloudconnect {
          * Enum values for bandwidth
          * type fullname: ovhcloudconnect.service.BandwidthEnum
          */
-        export type BandwidthEnum = "10g" | "1g"
+        export type BandwidthEnum = "200m" | "500m" | "1g" | "2g" | "5g" | "10g"
         /**
          * Enum values for port quantity
          * type fullname: ovhcloudconnect.service.PortEnum
@@ -265,7 +265,7 @@ export interface OvhCloudConnect {
                  * Create a Pop Configuration
                  * POST /ovhCloudConnect/{serviceName}/config/pop
                  */
-                $post(params?: { customerBgpArea?: number, id?: number, interfaceId?: number, ovhBgpArea?: number, status?: ovhcloudconnect.popConfig.StatusEnum, subnet?: string, type?: ovhcloudconnect.popConfig.TypeEnum }): Promise<ovhcloudconnect.Task>;
+                $post(params: { customerBgpArea?: number, id?: number, interfaceId: number, ovhBgpArea?: number, status?: ovhcloudconnect.popConfig.StatusEnum, subnet?: string, type: ovhcloudconnect.popConfig.TypeEnum }): Promise<ovhcloudconnect.Task>;
                 /**
                  * Controle cache
                  */
@@ -295,7 +295,7 @@ export interface OvhCloudConnect {
                          * Create a Datacenter Configuration
                          * POST /ovhCloudConnect/{serviceName}/config/pop/{popId}/datacenter
                          */
-                        $post(params?: { datacenterId?: number, id?: number, ovhBgpArea?: number, status?: ovhcloudconnect.popConfig.StatusEnum, subnet?: string }): Promise<ovhcloudconnect.Task>;
+                        $post(params: { datacenterId: number, id?: number, ovhBgpArea?: number, status?: ovhcloudconnect.popConfig.StatusEnum, subnet?: string }): Promise<ovhcloudconnect.Task>;
                         /**
                          * Controle cache
                          */
@@ -325,7 +325,7 @@ export interface OvhCloudConnect {
                                  * Create a Datacenter Extra Configuration
                                  * POST /ovhCloudConnect/{serviceName}/config/pop/{popId}/datacenter/{datacenterId}/extra
                                  */
-                                $post(params?: { bgpNeighborArea?: number, bgpNeighborIp?: string, id?: number, nextHop?: string, status?: ovhcloudconnect.popConfig.StatusEnum, subnet?: string, type?: ovhcloudconnect.datacenterExtraConfig.TypeEnum }): Promise<ovhcloudconnect.Task>;
+                                $post(params: { bgpNeighborArea?: number, bgpNeighborIp?: string, id?: number, nextHop?: string, status?: ovhcloudconnect.popConfig.StatusEnum, subnet?: string, type: ovhcloudconnect.datacenterExtraConfig.TypeEnum }): Promise<ovhcloudconnect.Task>;
                                 /**
                                  * Controle cache
                                  */
@@ -405,6 +405,28 @@ export interface OvhCloudConnect {
                  * Controle cache
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                lock: {
+                    /**
+                     * Lock the port
+                     * POST /ovhCloudConnect/{serviceName}/interface/{id}/lock
+                     */
+                    $post(): Promise<ovhcloudconnect.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+                unlock: {
+                    /**
+                     * Unlock the port
+                     * POST /ovhCloudConnect/{serviceName}/interface/{id}/unlock
+                     */
+                    $post(): Promise<ovhcloudconnect.Task>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
             };
         }
         loa: {
@@ -436,7 +458,7 @@ export interface OvhCloudConnect {
         }
         task: {
             /**
-             * Get Task linked to of a OVHcloud Connect Service
+             * Get Task linked to a OVHcloud Connect Service
              * GET /ovhCloudConnect/{serviceName}/task
              */
             $get(): Promise<number[]>;
@@ -446,7 +468,7 @@ export interface OvhCloudConnect {
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             $(id: number): {
                 /**
-                 * Get Tasks linked to of a OVHcloud Connect Service
+                 * Get Tasks linked to a OVHcloud Connect Service
                  * GET /ovhCloudConnect/{serviceName}/task/{id}
                  */
                 $get(): Promise<ovhcloudconnect.Task>;

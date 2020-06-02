@@ -223,6 +223,7 @@ export namespace cloud {
         expiration?: string;
         orderId?: number;
         planCode: string;
+        projectName?: string;
         project_id: string;
         status: cloud.project.ProjectStatusEnum;
         unleash: boolean;
@@ -1685,7 +1686,7 @@ export namespace cloud {
          * List of available versions for upgrade
          * type fullname: cloud.kube.UpgradeVersionEnum
          */
-        export type UpgradeVersionEnum = "1.14" | "1.15" | "1.16" | "1.17"
+        export type UpgradeVersionEnum = "1.14" | "1.15" | "1.16" | "1.17" | "1.18"
         /**
          * List of available versions for installation
          * type fullname: cloud.kube.Version
@@ -1695,7 +1696,7 @@ export namespace cloud {
          * List of available versions for installation
          * type fullname: cloud.kube.VersionEnum
          */
-        export type VersionEnum = "1.15" | "1.16" | "1.17"
+        export type VersionEnum = "1.15" | "1.16" | "1.17" | "1.18"
     }
     export namespace migration {
         /**
@@ -1950,6 +1951,7 @@ export namespace cloud {
             address: cloud.project.loadbalancer.Address;
             configuration: cloud.project.loadbalancer.ConfigurationVersion;
             description?: string;
+            egressAddress: cloud.project.loadbalancer.Addresses;
             id: string;
             name?: string;
             region: string;
@@ -2131,6 +2133,22 @@ export namespace cloud {
                 export interface Flavor {
                     description: string;
                     id: string;
+                }
+                /**
+                 * Metrics information
+                 * interface fullName: cloud.project.ai.serving.Metrics.Metrics
+                 */
+                export interface Metrics {
+                    endpoints: cloud.project.ai.serving.MetricsEndpoint[];
+                    token: string;
+                }
+                /**
+                 * User Metrics Endpoints
+                 * interface fullName: cloud.project.ai.serving.MetricsEndpoint.MetricsEndpoint
+                 */
+                export interface MetricsEndpoint {
+                    name: string;
+                    url: string;
                 }
                 /**
                  * A deployed machine learning model
@@ -2487,6 +2505,14 @@ export namespace cloud {
                 ipv6?: string;
             }
             /**
+             * IP list split in version 4 and 6
+             * interface fullName: cloud.project.loadbalancer.Addresses.Addresses
+             */
+            export interface Addresses {
+                ipv4: string[];
+                ipv6?: string[];
+            }
+            /**
              * A load balancer backend
              * interface fullName: cloud.project.loadbalancer.Backend.Backend
              */
@@ -2563,7 +2589,7 @@ export namespace cloud {
              * Status of a load balancer
              * type fullname: cloud.project.loadbalancer.StatusEnum
              */
-            export type StatusEnum = "CREATED" | "APPLYING" | "RUNNING" | "DELETING" | "ERROR"
+            export type StatusEnum = "CREATED" | "APPLYING" | "RUNNING" | "DELETING" | "ERROR" | "FROZEN"
             export namespace backend {
                 /**
                  * Available load balancer backend balancer algorithm
@@ -3294,7 +3320,7 @@ export interface Cloud {
              * Alter this object properties
              * PUT /cloud/project/{serviceName}
              */
-            $put(params?: { access?: cloud.AccessTypeEnum, creationDate?: string, description?: string, expiration?: string, orderId?: number, planCode?: string, project_id?: string, status?: cloud.project.ProjectStatusEnum, unleash?: boolean }): Promise<void>;
+            $put(params?: { access?: cloud.AccessTypeEnum, creationDate?: string, description?: string, expiration?: string, orderId?: number, planCode?: string, projectName?: string, project_id?: string, status?: cloud.project.ProjectStatusEnum, unleash?: boolean }): Promise<void>;
             /**
              * Controle cache
              */
@@ -3410,6 +3436,17 @@ export interface Cloud {
                          * Controle cache
                          */
                         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        metrics: {
+                            /**
+                             * Get metrics token and urls compatible with this token
+                             * GET /cloud/project/{serviceName}/ai/serving/{namespaceId}/metrics
+                             */
+                            $get(): Promise<cloud.project.ai.serving.Metrics>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
                         model: {
                             /**
                              * List models
@@ -3600,6 +3637,30 @@ export interface Cloud {
                      * Controle cache
                      */
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+                loadbalancer: {
+                    region: {
+                        /**
+                         * List all available regions
+                         * GET /cloud/project/{serviceName}/capabilities/loadbalancer/region
+                         */
+                        $get(): Promise<string[]>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $(regionName: string): {
+                            /**
+                             * Get specific information of a region
+                             * GET /cloud/project/{serviceName}/capabilities/loadbalancer/region/{regionName}
+                             */
+                            $get(): Promise<cloud.project.loadbalancer.Region>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        };
+                    }
                 }
             }
             changeContact: {
@@ -4410,6 +4471,17 @@ export interface Cloud {
                          * Controle cache
                          */
                         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        reset: {
+                            /**
+                             * Reset kubeconfig: Certificates will be regenerated, nodes will be reinstalled
+                             * POST /cloud/project/{serviceName}/kube/{kubeId}/kubeconfig/reset
+                             */
+                            $post(): Promise<void>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
                     }
                     node: {
                         /**
@@ -4514,6 +4586,28 @@ export interface Cloud {
                          */
                         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
+                };
+            }
+            loadbalancer: {
+                /**
+                 * List all load balancer for a tenant
+                 * GET /cloud/project/{serviceName}/loadbalancer
+                 */
+                $get(): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $(loadBalancerId: string): {
+                    /**
+                     * Get a load balancer
+                     * GET /cloud/project/{serviceName}/loadbalancer/{loadBalancerId}
+                     */
+                    $get(): Promise<cloud.project.LoadBalancer>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 };
             }
             migration: {

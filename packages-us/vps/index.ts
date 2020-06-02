@@ -73,6 +73,13 @@ export namespace dedicated {
         }
     }
 }
+export namespace nichandle {
+    /**
+     * OVH subsidiaries
+     * type fullname: nichandle.OvhSubsidiaryEnum
+     */
+    export type OvhSubsidiaryEnum = "CZ" | "DE" | "ES" | "EU" | "FI" | "FR" | "GB" | "IE" | "IT" | "LT" | "MA" | "NL" | "PL" | "PT" | "SN" | "TN" | "ASIA" | "AU" | "CA" | "QC" | "SG" | "WE" | "WS" | "US"
+}
 export namespace secondaryDns {
     /**
      * Secondary dns infos
@@ -491,12 +498,61 @@ export namespace vps {
     }
     export namespace migration {
         /**
+         * A structure describing a migration from VPS Cloud 2014 to VPS 2020
+         * interface fullName: vps.migration.Cloud2014to2020.Cloud2014to2020
+         */
+        export interface Cloud2014to2020 {
+            date?: string;
+            model?: string;
+            notAfter?: string;
+            notBefore?: string;
+            options: vps.migration.OptionMapping[];
+            status: vps.migration.StatusEnum;
+        }
+        /**
          * Description not available
          * interface fullName: vps.migration.Migration.Migration
          */
         export interface Migration {
             date: string;
             id: string;
+        }
+        /**
+         * Mapping between a VPS 2014 option code and a VPS 2020 option code
+         * interface fullName: vps.migration.OptionMapping.OptionMapping
+         */
+        export interface OptionMapping {
+            vps2014code: vps.VpsOptionEnum;
+            vps2020code: string;
+        }
+        /**
+         * All status a migration task can be in
+         * type fullname: vps.migration.StatusEnum
+         */
+        export type StatusEnum = "notAvailable" | "planned" | "toPlan"
+    }
+    export namespace order {
+        export namespace rule {
+            /**
+             * Datacenter rules
+             * interface fullName: vps.order.rule.Datacenter.Datacenter
+             */
+            export interface Datacenter {
+                datacenter: string;
+                status: vps.order.rule.DatacenterStatusEnum;
+            }
+            /**
+             * Possible values for datacenter status
+             * type fullname: vps.order.rule.DatacenterStatusEnum
+             */
+            export type DatacenterStatusEnum = "available" | "out-of-stock"
+            /**
+             * Datacenters rules
+             * interface fullName: vps.order.rule.Datacenters.Datacenters
+             */
+            export interface Datacenters {
+                datacenters: vps.order.rule.Datacenter[];
+            }
         }
     }
     export namespace veeam {
@@ -558,6 +614,21 @@ export interface Vps {
      * Controle cache
      */
     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+    order: {
+        rule: {
+            datacenter: {
+                /**
+                 * List datacenters with priority and stock status
+                 * GET /vps/order/rule/datacenter
+                 */
+                $get(params: { os?: string, ovhSubsidiary: nichandle.OvhSubsidiaryEnum, planCode: string }): Promise<vps.order.rule.Datacenters>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+        }
+    }
     $(serviceName: string): {
         /**
          * Get this object properties
@@ -584,12 +655,78 @@ export interface Vps {
              */
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
+        automatedBackup: {
+            /**
+             * Get this object properties
+             * GET /vps/{serviceName}/automatedBackup
+             */
+            $get(): Promise<vps.AutomatedBackup>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            attachedBackup: {
+                /**
+                 * Backup attached to your VPS
+                 * GET /vps/{serviceName}/automatedBackup/attachedBackup
+                 */
+                $get(): Promise<vps.automatedBackup.Attached[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+            detachBackup: {
+                /**
+                 * Create a VPS.Task that will umount a restored backup on your VPS
+                 * POST /vps/{serviceName}/automatedBackup/detachBackup
+                 */
+                $post(params: { restorePoint: string }): Promise<vps.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+            restore: {
+                /**
+                 * Creates a VPS.Task that will restore the given restorePoint
+                 * POST /vps/{serviceName}/automatedBackup/restore
+                 */
+                $post(params: { changePassword?: boolean, restorePoint: string, type: vps.RestoreTypeEnum }): Promise<vps.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+            restorePoints: {
+                /**
+                 * Get available Restore Points
+                 * GET /vps/{serviceName}/automatedBackup/restorePoints
+                 */
+                $get(params: { state: vps.RestoreStateEnum }): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+        }
         confirmTermination: {
             /**
              * Confirm termination of your service
              * POST /vps/{serviceName}/confirmTermination
              */
             $post(params: { commentary?: string, futureUse?: service.TerminationFutureUseEnum, reason?: service.TerminationReasonEnum, token: string }): Promise<string>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        }
+        createSnapshot: {
+            /**
+             * Create a snapshot of the Virtual Server if the snapshot option is enabled and if there is no existing snapshot
+             * POST /vps/{serviceName}/createSnapshot
+             */
+            $post(params?: { description?: string }): Promise<vps.Task>;
             /**
              * Controle cache
              */
@@ -605,6 +742,55 @@ export interface Vps {
              * Controle cache
              */
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        }
+        disks: {
+            /**
+             * Disks associated to this virtual server
+             * GET /vps/{serviceName}/disks
+             */
+            $get(): Promise<number[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $(id: number): {
+                /**
+                 * Get this object properties
+                 * GET /vps/{serviceName}/disks/{id}
+                 */
+                $get(): Promise<vps.Disk>;
+                /**
+                 * Alter this object properties
+                 * PUT /vps/{serviceName}/disks/{id}
+                 */
+                $put(params?: { bandwidthLimit?: number, id?: number, lowFreeSpaceThreshold?: number, monitoring?: boolean, size?: number, state?: vps.disk.StateEnum, type?: vps.disk.TypeEnum }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                monitoring: {
+                    /**
+                     * Return many statistics about the disk for a given period
+                     * GET /vps/{serviceName}/disks/{id}/monitoring
+                     */
+                    $get(params: { period: vps.VpsMonitoringPeriodEnum, type: vps.disk.StatisticTypeEnum }): Promise<complexType.UnitAndValues<vps.VpsTimestampValue>>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+                use: {
+                    /**
+                     * Return many statistics about the disk at that time
+                     * GET /vps/{serviceName}/disks/{id}/use
+                     */
+                    $get(params: { type: vps.disk.StatisticTypeEnum }): Promise<complexType.UnitAndValue<number>>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+            };
         }
         getConsoleUrl: {
             /**
@@ -695,6 +881,22 @@ export interface Vps {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
         }
+        migration2014: {
+            /**
+             * Get information on a possible migration of a VPS Cloud 2014 to VPS Cloud 2020
+             * GET /vps/{serviceName}/migration2014
+             */
+            $get(): Promise<vps.migration.Cloud2014to2020>;
+            /**
+             * Schedule the migration of a VPS Cloud 2014 to VPS Cloud 2020
+             * POST /vps/{serviceName}/migration2014
+             */
+            $post(params: { date: string }): Promise<vps.Task>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        }
         monitoring: {
             /**
              * Return many statistics about the virtual machine for a given period
@@ -716,6 +918,22 @@ export interface Vps {
              * Controle cache
              */
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $(option: vps.VpsOptionEnum): {
+                /**
+                 * Release a given option
+                 * DELETE /vps/{serviceName}/option/{option}
+                 */
+                $delete(params?: { deleteNow?: boolean }): Promise<void>;
+                /**
+                 * Get this object properties
+                 * GET /vps/{serviceName}/option/{option}
+                 */
+                $get(): Promise<vps.Option>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            };
         }
         reboot: {
             /**
@@ -813,6 +1031,38 @@ export interface Vps {
              * Controle cache
              */
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        }
+        snapshot: {
+            /**
+             * Creates a vps.Task that will delete the Snapshot
+             * DELETE /vps/{serviceName}/snapshot
+             */
+            $delete(): Promise<vps.Task>;
+            /**
+             * Get this object properties
+             * GET /vps/{serviceName}/snapshot
+             */
+            $get(): Promise<vps.Snapshot>;
+            /**
+             * Alter this object properties
+             * PUT /vps/{serviceName}/snapshot
+             */
+            $put(params?: { creationDate?: string, description?: string }): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            revert: {
+                /**
+                 * Revert the Virtual Server to this snapshot
+                 * POST /vps/{serviceName}/snapshot/revert
+                 */
+                $post(): Promise<vps.Task>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
         }
         start: {
             /**

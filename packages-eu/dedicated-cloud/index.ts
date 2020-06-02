@@ -271,6 +271,13 @@ export namespace dedicatedCloud {
         name: string;
     }
     /**
+     * Host resilience test hability
+     * interface fullName: dedicatedCloud.HostResilience.HostResilience
+     */
+    export interface HostResilience {
+        state: dedicatedCloudoptionStateEnum;
+    }
+    /**
      * Hypervisor and their availability
      * interface fullName: dedicatedCloud.HostStockHypervisor.HostStockHypervisor
      */
@@ -683,6 +690,26 @@ export namespace dedicatedCloud {
          * type fullname: dedicatedCloud.backup.OfferTypeEnum
          */
         export type OfferTypeEnum = "advanced" | "backup" | "classic" | "legacy" | "premium"
+        /**
+         * All messages descriptions for the proxies optimization
+         * type fullname: dedicatedCloud.backup.OptimizeMessageEnum
+         */
+        export type OptimizeMessageEnum = "hasMoreBackupJobs" | "hasMoreProxies" | "hasSufficientProxies" | "noBackupJobs"
+        /**
+         * Details about proxies Optimization
+         * interface fullName: dedicatedCloud.backup.OptimizeProxies.OptimizeProxies
+         */
+        export interface OptimizeProxies {
+            message: dedicatedCloudbackupOptimizeMessageEnum;
+            numberOfProxiesDeployed: number;
+            numberOfProxiesImpact: number;
+            recommendation: dedicatedCloudbackupOptimizeRecommendationEnum;
+        }
+        /**
+         * All recommendations for the proxies optimization
+         * type fullname: dedicatedCloud.backup.OptimizeRecommendationEnum
+         */
+        export type OptimizeRecommendationEnum = "add" | "optimized" | "remove"
         /**
          * Details about a restore point
          * interface fullName: dedicatedCloud.backup.RestorePoint.RestorePoint
@@ -1594,6 +1621,17 @@ export interface DedicatedCloud {
                      * Controle cache
                      */
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    canOptimizeProxies: {
+                        /**
+                         * Generates recommendation for Backup Proxies optimization
+                         * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/canOptimizeProxies
+                         */
+                        $get(): Promise<dedicatedCloud.backup.OptimizeProxies>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    }
                     changeProperties: {
                         /**
                          * Edit the backup on a Private Cloud
@@ -1633,6 +1671,17 @@ export interface DedicatedCloud {
                          * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/offerCapabilities
                          */
                         $get(): Promise<dedicatedCloud.backup.BackupCapabilities[]>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    }
+                    optimizeProxies: {
+                        /**
+                         * Optimizes number of Backup Proxies required for given Datacenter
+                         * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/backup/optimizeProxies
+                         */
+                        $post(): Promise<dedicatedCloud.Task>;
                         /**
                          * Controle cache
                          */
@@ -1895,6 +1944,50 @@ export interface DedicatedCloud {
                              * Controle cache
                              */
                             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                        resilience: {
+                            /**
+                             * Get this object properties
+                             * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/resilience
+                             */
+                            $get(): Promise<dedicatedCloud.HostResilience>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            canBeEnabled: {
+                                /**
+                                 * Check if resilience test can be performed
+                                 * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/resilience/canBeEnabled
+                                 */
+                                $get(): Promise<boolean>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            }
+                            disable: {
+                                /**
+                                 * Disable resilience test (reconnect the network of your host)
+                                 * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/resilience/disable
+                                 */
+                                $post(): Promise<dedicatedCloud.Task>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            }
+                            enable: {
+                                /**
+                                 * Enable resilience test (disconnnect the network of your host)
+                                 * POST /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/resilience/enable
+                                 */
+                                $post(params?: { duration?: number }): Promise<dedicatedCloud.Task>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            }
                         }
                         task: {
                             /**
@@ -3400,6 +3493,8 @@ type dedicatedCloudvirtualMachinePowerState = dedicatedCloud.virtualMachinePower
 type dedicatedCloudvirtualMachineFaultToleranceState = dedicatedCloud.virtualMachineFaultToleranceState;
 type dedicatedCloudbackupJobStateEnum = dedicatedCloud.backup.JobStateEnum;
 type dedicatedCloudbackupRestorePoint = dedicatedCloud.backup.RestorePoint;
+type dedicatedCloudbackupOptimizeMessageEnum = dedicatedCloud.backup.OptimizeMessageEnum;
+type dedicatedCloudbackupOptimizeRecommendationEnum = dedicatedCloud.backup.OptimizeRecommendationEnum;
 type dedicatedCloudclusterAutoScaleModeEnum = dedicatedCloud.cluster.AutoScaleModeEnum;
 type dedicatedCloudBillingTypeEnum = dedicatedCloud.BillingTypeEnum;
 type dedicatedCloudGenerationEnum = dedicatedCloud.GenerationEnum;

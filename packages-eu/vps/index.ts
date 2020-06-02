@@ -79,6 +79,11 @@ export namespace nichandle {
      * type fullname: nichandle.CountryEnum
      */
     export type CountryEnum = "AC" | "AD" | "AE" | "AF" | "AG" | "AI" | "AL" | "AM" | "AO" | "AQ" | "AR" | "AS" | "AT" | "AU" | "AW" | "AX" | "AZ" | "BA" | "BB" | "BD" | "BE" | "BF" | "BG" | "BH" | "BI" | "BJ" | "BL" | "BM" | "BN" | "BO" | "BQ" | "BR" | "BS" | "BT" | "BW" | "BY" | "BZ" | "CA" | "CC" | "CD" | "CF" | "CG" | "CH" | "CI" | "CK" | "CL" | "CM" | "CN" | "CO" | "CR" | "CU" | "CV" | "CW" | "CX" | "CY" | "CZ" | "DE" | "DG" | "DJ" | "DK" | "DM" | "DO" | "DZ" | "EA" | "EC" | "EE" | "EG" | "EH" | "ER" | "ES" | "ET" | "FI" | "FJ" | "FK" | "FM" | "FO" | "FR" | "GA" | "GB" | "GD" | "GE" | "GF" | "GG" | "GH" | "GI" | "GL" | "GM" | "GN" | "GP" | "GQ" | "GR" | "GS" | "GT" | "GU" | "GW" | "GY" | "HK" | "HN" | "HR" | "HT" | "HU" | "IC" | "ID" | "IE" | "IL" | "IM" | "IN" | "IO" | "IQ" | "IR" | "IS" | "IT" | "JE" | "JM" | "JO" | "JP" | "KE" | "KG" | "KH" | "KI" | "KM" | "KN" | "KP" | "KR" | "KW" | "KY" | "KZ" | "LA" | "LB" | "LC" | "LI" | "LK" | "LR" | "LS" | "LT" | "LU" | "LV" | "LY" | "MA" | "MC" | "MD" | "ME" | "MF" | "MG" | "MH" | "MK" | "ML" | "MM" | "MN" | "MO" | "MP" | "MQ" | "MR" | "MS" | "MT" | "MU" | "MV" | "MW" | "MX" | "MY" | "MZ" | "NA" | "NC" | "NE" | "NF" | "NG" | "NI" | "NL" | "NO" | "NP" | "NR" | "NU" | "NZ" | "OM" | "PA" | "PE" | "PF" | "PG" | "PH" | "PK" | "PL" | "PM" | "PN" | "PR" | "PS" | "PT" | "PW" | "PY" | "QA" | "RE" | "RO" | "RS" | "RU" | "RW" | "SA" | "SB" | "SC" | "SD" | "SE" | "SG" | "SH" | "SI" | "SJ" | "SK" | "SL" | "SM" | "SN" | "SO" | "SR" | "SS" | "ST" | "SV" | "SX" | "SY" | "SZ" | "TA" | "TC" | "TD" | "TF" | "TG" | "TH" | "TJ" | "TK" | "TL" | "TM" | "TN" | "TO" | "TR" | "TT" | "TV" | "TW" | "TZ" | "UA" | "UG" | "UM" | "UNKNOWN" | "US" | "UY" | "UZ" | "VA" | "VC" | "VE" | "VG" | "VI" | "VN" | "VU" | "WF" | "WS" | "XK" | "YE" | "YT" | "ZA" | "ZM" | "ZW"
+    /**
+     * OVH subsidiaries
+     * type fullname: nichandle.OvhSubsidiaryEnum
+     */
+    export type OvhSubsidiaryEnum = "CZ" | "DE" | "ES" | "EU" | "FI" | "FR" | "GB" | "IE" | "IT" | "LT" | "MA" | "NL" | "PL" | "PT" | "SN" | "TN"
 }
 export namespace secondaryDns {
     /**
@@ -498,12 +503,61 @@ export namespace vps {
     }
     export namespace migration {
         /**
+         * A structure describing a migration from VPS Cloud 2014 to VPS 2020
+         * interface fullName: vps.migration.Cloud2014to2020.Cloud2014to2020
+         */
+        export interface Cloud2014to2020 {
+            date?: string;
+            model?: string;
+            notAfter?: string;
+            notBefore?: string;
+            options: vps.migration.OptionMapping[];
+            status: vps.migration.StatusEnum;
+        }
+        /**
          * Description not available
          * interface fullName: vps.migration.Migration.Migration
          */
         export interface Migration {
             date: string;
             id: string;
+        }
+        /**
+         * Mapping between a VPS 2014 option code and a VPS 2020 option code
+         * interface fullName: vps.migration.OptionMapping.OptionMapping
+         */
+        export interface OptionMapping {
+            vps2014code: vps.VpsOptionEnum;
+            vps2020code: string;
+        }
+        /**
+         * All status a migration task can be in
+         * type fullname: vps.migration.StatusEnum
+         */
+        export type StatusEnum = "notAvailable" | "planned" | "toPlan"
+    }
+    export namespace order {
+        export namespace rule {
+            /**
+             * Datacenter rules
+             * interface fullName: vps.order.rule.Datacenter.Datacenter
+             */
+            export interface Datacenter {
+                datacenter: string;
+                status: vps.order.rule.DatacenterStatusEnum;
+            }
+            /**
+             * Possible values for datacenter status
+             * type fullname: vps.order.rule.DatacenterStatusEnum
+             */
+            export type DatacenterStatusEnum = "available" | "out-of-stock"
+            /**
+             * Datacenters rules
+             * interface fullName: vps.order.rule.Datacenters.Datacenters
+             */
+            export interface Datacenters {
+                datacenters: vps.order.rule.Datacenter[];
+            }
         }
     }
     export namespace veeam {
@@ -575,6 +629,21 @@ export interface Vps {
          * Controle cache
          */
         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+    }
+    order: {
+        rule: {
+            datacenter: {
+                /**
+                 * List datacenters with priority and stock status
+                 * GET /vps/order/rule/datacenter
+                 */
+                $get(params: { os?: string, ovhSubsidiary: nichandle.OvhSubsidiaryEnum, planCode: string }): Promise<vps.order.rule.Datacenters>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+        }
     }
     $(serviceName: string): {
         /**
@@ -952,6 +1021,22 @@ export interface Vps {
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             };
+        }
+        migration2014: {
+            /**
+             * Get information on a possible migration of a VPS Cloud 2014 to VPS Cloud 2020
+             * GET /vps/{serviceName}/migration2014
+             */
+            $get(): Promise<vps.migration.Cloud2014to2020>;
+            /**
+             * Schedule the migration of a VPS Cloud 2014 to VPS Cloud 2020
+             * POST /vps/{serviceName}/migration2014
+             */
+            $post(params: { date: string }): Promise<vps.Task>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
         }
         models: {
             /**

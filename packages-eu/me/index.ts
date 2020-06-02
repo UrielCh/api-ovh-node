@@ -1531,8 +1531,8 @@ export namespace me {
             export interface Creation {
                 callbackUrl: me.payment.method.CallbackUrl;
                 default: boolean;
-                description: string;
-                orderId: number;
+                description?: string;
+                orderId?: number;
                 paymentType: string;
                 register: boolean;
             }
@@ -1541,10 +1541,10 @@ export namespace me {
              * interface fullName: me.payment.method.Finalize.Finalize
              */
             export interface Finalize {
-                expirationMonth: number;
-                expirationYear: number;
-                formSessionId: string;
-                registrationId: string;
+                expirationMonth?: number;
+                expirationYear?: number;
+                formSessionId?: string;
+                registrationId?: string;
             }
             /**
              * Icon

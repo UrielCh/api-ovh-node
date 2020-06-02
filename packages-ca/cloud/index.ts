@@ -223,6 +223,7 @@ export namespace cloud {
         expiration?: string;
         orderId?: number;
         planCode: string;
+        projectName?: string;
         project_id: string;
         status: cloud.project.ProjectStatusEnum;
         unleash: boolean;
@@ -1685,7 +1686,7 @@ export namespace cloud {
          * List of available versions for upgrade
          * type fullname: cloud.kube.UpgradeVersionEnum
          */
-        export type UpgradeVersionEnum = "1.14" | "1.15" | "1.16" | "1.17"
+        export type UpgradeVersionEnum = "1.14" | "1.15" | "1.16" | "1.17" | "1.18"
         /**
          * List of available versions for installation
          * type fullname: cloud.kube.Version
@@ -1695,7 +1696,7 @@ export namespace cloud {
          * List of available versions for installation
          * type fullname: cloud.kube.VersionEnum
          */
-        export type VersionEnum = "1.15" | "1.16" | "1.17"
+        export type VersionEnum = "1.15" | "1.16" | "1.17" | "1.18"
     }
     export namespace migration {
         /**
@@ -1950,6 +1951,7 @@ export namespace cloud {
             address: cloud.project.loadbalancer.Address;
             configuration: cloud.project.loadbalancer.ConfigurationVersion;
             description?: string;
+            egressAddress: cloud.project.loadbalancer.Addresses;
             id: string;
             name?: string;
             region: string;
@@ -2117,6 +2119,150 @@ export namespace cloud {
             detail: cloud.project.VolumeUsageDetail[];
             total: orderPrice;
         }
+        export namespace ai {
+            export namespace serving {
+                /**
+                 * Status of API
+                 * type fullname: cloud.project.ai.serving.APIStatusEnum
+                 */
+                export type APIStatusEnum = "pending" | "starting" | "running" | "scaling" | "waking" | "sleeping"
+                /**
+                 * Compute Flavor for the Serving Engine
+                 * interface fullName: cloud.project.ai.serving.Flavor.Flavor
+                 */
+                export interface Flavor {
+                    description: string;
+                    id: string;
+                }
+                /**
+                 * Metrics information
+                 * interface fullName: cloud.project.ai.serving.Metrics.Metrics
+                 */
+                export interface Metrics {
+                    endpoints: cloud.project.ai.serving.MetricsEndpoint[];
+                    token: string;
+                }
+                /**
+                 * User Metrics Endpoints
+                 * interface fullName: cloud.project.ai.serving.MetricsEndpoint.MetricsEndpoint
+                 */
+                export interface MetricsEndpoint {
+                    name: string;
+                    url: string;
+                }
+                /**
+                 * A deployed machine learning model
+                 * interface fullName: cloud.project.ai.serving.Model.Model
+                 */
+                export interface Model {
+                    apiStatus: cloud.project.ai.serving.APIStatusEnum;
+                    createdAt: string;
+                    id: string;
+                    replicas?: number;
+                    url?: string;
+                    version?: number;
+                    versionStatus: cloud.project.ai.serving.VersionStatusEnum;
+                    workflowTemplate?: cloud.project.ai.serving.WorkflowTemplateEnum;
+                    workflowTemplateParameters: cloud.project.ai.serving.ModelWorkflowTemplateParameter;
+                }
+                /**
+                 * Missing description
+                 * interface fullName: cloud.project.ai.serving.ModelDefinition.ModelDefinition
+                 */
+                export interface ModelDefinition {
+                    flavor: string;
+                    id: string;
+                    imageId?: string;
+                    storagePath?: string;
+                    workflowTemplate?: cloud.project.ai.serving.WorkflowTemplateEnum;
+                }
+                /**
+                 * Parameters of the Workflow that build
+                 * interface fullName: cloud.project.ai.serving.ModelWorkflowTemplateParameter.ModelWorkflowTemplateParameter
+                 */
+                export interface ModelWorkflowTemplateParameter {
+                    imageId?: string;
+                    storagePath?: string;
+                }
+                /**
+                 * A serving engine namespace
+                 * interface fullName: cloud.project.ai.serving.Namespace.Namespace
+                 */
+                export interface Namespace {
+                    clusterId: string;
+                    container: string;
+                    containerId: string;
+                    createdAt: string;
+                    description: string;
+                    hubUrl: string;
+                    id: string;
+                    region: string;
+                    url: string;
+                }
+                /**
+                 * Missing description
+                 * interface fullName: cloud.project.ai.serving.NamespaceCreation.NamespaceCreation
+                 */
+                export interface NamespaceCreation {
+                    container: string;
+                    description: string;
+                    region: string;
+                }
+                /**
+                 * A Image of a built serving model
+                 * interface fullName: cloud.project.ai.serving.PresetImage.PresetImage
+                 */
+                export interface PresetImage {
+                    description: string;
+                    id: string;
+                    link?: string;
+                    name: string;
+                }
+                /**
+                 * Representation of a registry
+                 * interface fullName: cloud.project.ai.serving.Registry.Registry
+                 */
+                export interface Registry {
+                    custom: boolean;
+                    password: string;
+                    url: string;
+                    username: string;
+                }
+                /**
+                 * Missing description
+                 * interface fullName: cloud.project.ai.serving.RegistryResponse.RegistryResponse
+                 */
+                export interface RegistryResponse {
+                    message: string;
+                }
+                /**
+                 * A token to access / manage a machine learning Model
+                 * interface fullName: cloud.project.ai.serving.Token.Token
+                 */
+                export interface Token {
+                    createdAt: string;
+                    groups: cloud.project.ai.serving.TokenGroupEnum[];
+                    id: string;
+                    resource: string;
+                    token?: string;
+                }
+                /**
+                 * A serving engine access group
+                 * type fullname: cloud.project.ai.serving.TokenGroupEnum
+                 */
+                export type TokenGroupEnum = "model-management" | "model-evaluation"
+                /**
+                 * Status of current version
+                 * type fullname: cloud.project.ai.serving.VersionStatusEnum
+                 */
+                export type VersionStatusEnum = "pending" | "building" | "built" | "build-error" | "deploying" | "deployed" | "rollback" | "failed"
+                /**
+                 * The workflow Template to use
+                 * type fullname: cloud.project.ai.serving.WorkflowTemplateEnum
+                 */
+                export type WorkflowTemplateEnum = "build-image" | "preset-image"
+            }
+        }
         export namespace loadbalancer {
             /**
              * Address to reach the load balancer
@@ -2125,6 +2271,14 @@ export namespace cloud {
             export interface Address {
                 ipv4: string;
                 ipv6?: string;
+            }
+            /**
+             * IP list split in version 4 and 6
+             * interface fullName: cloud.project.loadbalancer.Addresses.Addresses
+             */
+            export interface Addresses {
+                ipv4: string[];
+                ipv6?: string[];
             }
             /**
              * A load balancer backend
@@ -2203,7 +2357,7 @@ export namespace cloud {
              * Status of a load balancer
              * type fullname: cloud.project.loadbalancer.StatusEnum
              */
-            export type StatusEnum = "CREATED" | "APPLYING" | "RUNNING" | "DELETING" | "ERROR"
+            export type StatusEnum = "CREATED" | "APPLYING" | "RUNNING" | "DELETING" | "ERROR" | "FROZEN"
             export namespace backend {
                 /**
                  * Available load balancer backend balancer algorithm
@@ -2934,7 +3088,7 @@ export interface Cloud {
              * Alter this object properties
              * PUT /cloud/project/{serviceName}
              */
-            $put(params?: { access?: cloud.AccessTypeEnum, creationDate?: string, description?: string, expiration?: string, orderId?: number, planCode?: string, project_id?: string, status?: cloud.project.ProjectStatusEnum, unleash?: boolean }): Promise<void>;
+            $put(params?: { access?: cloud.AccessTypeEnum, creationDate?: string, description?: string, expiration?: string, orderId?: number, planCode?: string, projectName?: string, project_id?: string, status?: cloud.project.ProjectStatusEnum, unleash?: boolean }): Promise<void>;
             /**
              * Controle cache
              */
@@ -2981,6 +3135,183 @@ export interface Cloud {
                  * Controle cache
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+            ai: {
+                capabilities: {
+                    serving: {
+                        flavor: {
+                            /**
+                             * List Serving Engine available flavor
+                             * GET /cloud/project/{serviceName}/ai/capabilities/serving/flavor
+                             */
+                            $get(): Promise<cloud.project.ai.serving.Flavor[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                        presetImage: {
+                            /**
+                             * List Serving Engine Preset Model Images
+                             * GET /cloud/project/{serviceName}/ai/capabilities/serving/presetImage
+                             */
+                            $get(): Promise<cloud.project.ai.serving.PresetImage[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                        region: {
+                            /**
+                             * List Serving Engine available regions
+                             * GET /cloud/project/{serviceName}/ai/capabilities/serving/region
+                             */
+                            $get(): Promise<string[]>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                    }
+                }
+                serving: {
+                    /**
+                     * List namespaces of the project
+                     * GET /cloud/project/{serviceName}/ai/serving
+                     */
+                    $get(): Promise<cloud.project.ai.serving.Namespace[]>;
+                    /**
+                     * Create a new namespace
+                     * POST /cloud/project/{serviceName}/ai/serving
+                     */
+                    $post(params: { container: string, description: string, region: string }): Promise<cloud.project.ai.serving.Namespace>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    $(namespaceId: string): {
+                        /**
+                         * Delete a namespace
+                         * DELETE /cloud/project/{serviceName}/ai/serving/{namespaceId}
+                         */
+                        $delete(): Promise<void>;
+                        /**
+                         * Get the namespace information
+                         * GET /cloud/project/{serviceName}/ai/serving/{namespaceId}
+                         */
+                        $get(): Promise<cloud.project.ai.serving.Namespace>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        metrics: {
+                            /**
+                             * Get metrics token and urls compatible with this token
+                             * GET /cloud/project/{serviceName}/ai/serving/{namespaceId}/metrics
+                             */
+                            $get(): Promise<cloud.project.ai.serving.Metrics>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                        model: {
+                            /**
+                             * List models
+                             * GET /cloud/project/{serviceName}/ai/serving/{namespaceId}/model
+                             */
+                            $get(): Promise<cloud.project.ai.serving.Model[]>;
+                            /**
+                             * Create a new model
+                             * POST /cloud/project/{serviceName}/ai/serving/{namespaceId}/model
+                             */
+                            $post(params: { flavor: string, id: string, imageId?: string, storagePath?: string, workflowTemplate?: cloud.project.ai.serving.WorkflowTemplateEnum }): Promise<cloud.project.ai.serving.Model>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(modelId: string): {
+                                /**
+                                 * Delete a model
+                                 * DELETE /cloud/project/{serviceName}/ai/serving/{namespaceId}/model/{modelId}
+                                 */
+                                $delete(): Promise<void>;
+                                /**
+                                 * Get model information
+                                 * GET /cloud/project/{serviceName}/ai/serving/{namespaceId}/model/{modelId}
+                                 */
+                                $get(): Promise<cloud.project.ai.serving.Model>;
+                                /**
+                                 * Update a model
+                                 * PUT /cloud/project/{serviceName}/ai/serving/{namespaceId}/model/{modelId}
+                                 */
+                                $put(): Promise<cloud.project.ai.serving.Model>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                        registry: {
+                            /**
+                             * Detach the current registry
+                             * DELETE /cloud/project/{serviceName}/ai/serving/{namespaceId}/registry
+                             */
+                            $delete(): Promise<void>;
+                            /**
+                             * Get registry information
+                             * GET /cloud/project/{serviceName}/ai/serving/{namespaceId}/registry
+                             */
+                            $get(): Promise<cloud.project.ai.serving.Registry>;
+                            /**
+                             * Attach a docker registry
+                             * POST /cloud/project/{serviceName}/ai/serving/{namespaceId}/registry
+                             */
+                            $post(params: { custom?: boolean, password: string, url: string, username: string }): Promise<cloud.project.ai.serving.RegistryResponse>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                        token: {
+                            /**
+                             * List tokens
+                             * GET /cloud/project/{serviceName}/ai/serving/{namespaceId}/token
+                             */
+                            $get(): Promise<cloud.project.ai.serving.Token[]>;
+                            /**
+                             * Create a new token
+                             * POST /cloud/project/{serviceName}/ai/serving/{namespaceId}/token
+                             */
+                            $post(params: { createdAt?: string, groups: cloud.project.ai.serving.TokenGroupEnum[], id?: string, resource: string, token?: string }): Promise<cloud.project.ai.serving.Token>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(tokenId: string): {
+                                /**
+                                 * Delete a token
+                                 * DELETE /cloud/project/{serviceName}/ai/serving/{namespaceId}/token/{tokenId}
+                                 */
+                                $delete(): Promise<void>;
+                                /**
+                                 * Get token information
+                                 * GET /cloud/project/{serviceName}/ai/serving/{namespaceId}/token/{tokenId}
+                                 */
+                                $get(): Promise<cloud.project.ai.serving.Token>;
+                                /**
+                                 * Renew a new token
+                                 * PUT /cloud/project/{serviceName}/ai/serving/{namespaceId}/token/{tokenId}
+                                 */
+                                $put(): Promise<cloud.project.ai.serving.Token>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
+                        }
+                    };
+                }
             }
             alerting: {
                 /**
@@ -3628,6 +3959,17 @@ export interface Cloud {
                          * Controle cache
                          */
                         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        reset: {
+                            /**
+                             * Reset kubeconfig: Certificates will be regenerated, nodes will be reinstalled
+                             * POST /cloud/project/{serviceName}/kube/{kubeId}/kubeconfig/reset
+                             */
+                            $post(): Promise<void>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
                     }
                     node: {
                         /**
@@ -3732,6 +4074,28 @@ export interface Cloud {
                          */
                         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                     }
+                };
+            }
+            loadbalancer: {
+                /**
+                 * List all load balancer for a tenant
+                 * GET /cloud/project/{serviceName}/loadbalancer
+                 */
+                $get(): Promise<string[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                $(loadBalancerId: string): {
+                    /**
+                     * Get a load balancer
+                     * GET /cloud/project/{serviceName}/loadbalancer/{loadBalancerId}
+                     */
+                    $get(): Promise<cloud.project.LoadBalancer>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 };
             }
             migration: {

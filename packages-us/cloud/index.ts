@@ -15,7 +15,7 @@ export namespace cloud {
      * interface fullName: cloud.AvailableRegion.AvailableRegion
      */
     export interface AvailableRegion {
-        continentCode: cloud.RegionContinent;
+        continentCode: cloud.RegionContinentEnum;
         datacenterLocation: string;
         name: string;
     }
@@ -37,8 +37,9 @@ export namespace cloud {
      * interface fullName: cloud.Component.Component
      */
     export interface Component {
+        endpoint: string;
         name: string;
-        status: cloud.ServiceStatus;
+        status: cloud.ServiceStatusEnum;
     }
     /**
      * An execution of the backup workflow
@@ -46,7 +47,7 @@ export namespace cloud {
      */
     export interface Execution {
         executedAt: string;
-        state: cloud.ExecutionState;
+        state: cloud.ExecutionStateEnum;
         stateInfo: string;
     }
     /**
@@ -54,6 +55,11 @@ export namespace cloud {
      * type fullname: cloud.ExecutionState
      */
     export type ExecutionState = "IDLE" | "RUNNING" | "SUCCESS" | "ERROR" | "PAUSED"
+    /**
+     * Enum values for State
+     * type fullname: cloud.ExecutionStateEnum
+     */
+    export type ExecutionStateEnum = "IDLE" | "RUNNING" | "SUCCESS" | "ERROR" | "PAUSED"
     /**
      * Enum values for IpCountry
      * type fullname: cloud.IpCountryEnum
@@ -66,7 +72,7 @@ export namespace cloud {
     export interface Lab {
         id: string;
         name: string;
-        status: cloud.LabStatus;
+        status: cloud.LabStatusEnum;
     }
     /**
      * List of required agreements to activate the lab
@@ -82,6 +88,11 @@ export namespace cloud {
      */
     export type LabStatus = "open" | "activating" | "activated" | "closed"
     /**
+     * Enum values for Status
+     * type fullname: cloud.LabStatusEnum
+     */
+    export type LabStatusEnum = "open" | "activating" | "activated" | "closed"
+    /**
      * An operation is an async process on your Project
      * interface fullName: cloud.Operation.Operation
      */
@@ -93,13 +104,18 @@ export namespace cloud {
         progress: number;
         regions?: string[];
         startedAt?: string;
-        status: cloud.OperationStatus;
+        status: cloud.OperationStatusEnum;
     }
     /**
      * Enum values for Status
      * type fullname: cloud.OperationStatus
      */
     export type OperationStatus = "created" | "in-progress" | "completed" | "in-error" | "unknown"
+    /**
+     * Enum values for Status
+     * type fullname: cloud.OperationStatusEnum
+     */
+    export type OperationStatusEnum = "created" | "in-progress" | "completed" | "in-error" | "unknown"
     /**
      * Project
      * interface fullName: cloud.Project.Project
@@ -111,21 +127,335 @@ export namespace cloud {
         expiration?: string;
         orderId?: number;
         planCode: string;
+        projectName?: string;
         project_id: string;
-        status: cloud.project.ProjectStatus;
+        status: cloud.project.ProjectStatusEnum;
         unleash: boolean;
+    }
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectActivateMonthlyBillingCreation.ProjectActivateMonthlyBillingCreation
+     */
+    export interface ProjectActivateMonthlyBillingCreation {
+        instances: cloud.instance.MonthlyInstanceBulkParams[];
+    }
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectInstanceBulkCreation.ProjectInstanceBulkCreation
+     */
+    export interface ProjectInstanceBulkCreation {
+        autobackup?: cloud.instance.AutoBackup;
+        flavorId: string;
+        groupId?: string;
+        imageId?: string;
+        monthlyBilling?: boolean;
+        name: string;
+        networks?: cloud.instance.NetworkBulkParams[];
+        number: number;
+        region: string;
+        sshKeyId?: string;
+        userData?: string;
+        volumeId?: string;
+    }
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectInstanceCreation.ProjectInstanceCreation
+     */
+    export interface ProjectInstanceCreation {
+        autobackup?: cloud.instance.AutoBackup;
+        flavorId: string;
+        groupId?: string;
+        imageId?: string;
+        monthlyBilling?: boolean;
+        name: string;
+        networks?: cloud.instance.NetworkParams[];
+        region: string;
+        sshKeyId?: string;
+        userData?: string;
+        volumeId?: string;
+    }
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectInstanceGroupCreation.ProjectInstanceGroupCreation
+     */
+    export interface ProjectInstanceGroupCreation {
+        name: string;
+        region: string;
+        type: cloud.instancegroup.InstanceGroupTypeEnum;
+    }
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectInstanceInterfaceCreation.ProjectInstanceInterfaceCreation
+     */
+    export interface ProjectInstanceInterfaceCreation {
+        ip?: string;
+        networkId: string;
+    }
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectInstanceRebootCreation.ProjectInstanceRebootCreation
+     */
+    export interface ProjectInstanceRebootCreation {
+        type: cloud.instance.RebootTypeEnum;
+    }
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectInstanceReinstallCreation.ProjectInstanceReinstallCreation
+     */
+    export interface ProjectInstanceReinstallCreation {
+        imageId: string;
+    }
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectInstanceRescueModeCreation.ProjectInstanceRescueModeCreation
+     */
+    export interface ProjectInstanceRescueModeCreation {
+        imageId?: string;
+        rescue: boolean;
+    }
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectInstanceResizeCreation.ProjectInstanceResizeCreation
+     */
+    export interface ProjectInstanceResizeCreation {
+        flavorId: string;
+    }
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectInstanceSnapshotCreation.ProjectInstanceSnapshotCreation
+     */
+    export interface ProjectInstanceSnapshotCreation {
+        snapshotName: string;
+    }
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectInstanceUpdate.ProjectInstanceUpdate
+     */
+    export interface ProjectInstanceUpdate {
+        instanceName: string;
+    }
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectIpFailoverAttachCreation.ProjectIpFailoverAttachCreation
+     */
+    export interface ProjectIpFailoverAttachCreation {
+        instanceId: string;
+    }
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectMigrationUpdate.ProjectMigrationUpdate
+     */
+    export interface ProjectMigrationUpdate {
+        date: string;
+    }
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectNetworkPrivateCreation.ProjectNetworkPrivateCreation
+     */
+    export interface ProjectNetworkPrivateCreation {
+        name: string;
+        regions?: string[];
+        vlanId?: number;
+    }
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectNetworkPrivateRegionCreation.ProjectNetworkPrivateRegionCreation
+     */
+    export interface ProjectNetworkPrivateRegionCreation {
+        region: string;
+    }
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectNetworkPrivateSubnetCreation.ProjectNetworkPrivateSubnetCreation
+     */
+    export interface ProjectNetworkPrivateSubnetCreation {
+        dhcp: boolean;
+        end: string;
+        network: string;
+        noGateway: boolean;
+        region: string;
+        start: string;
+    }
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectNetworkPrivateSubnetUpdate.ProjectNetworkPrivateSubnetUpdate
+     */
+    export interface ProjectNetworkPrivateSubnetUpdate {
+        dhcp: boolean;
+        disableGateway: boolean;
+        gatewayIp?: string;
+    }
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectNetworkPrivateUpdate.ProjectNetworkPrivateUpdate
+     */
+    export interface ProjectNetworkPrivateUpdate {
+        name: string;
+    }
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectRegionCreation.ProjectRegionCreation
+     */
+    export interface ProjectRegionCreation {
+        region: string;
+    }
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectRegionQuotaCreation.ProjectRegionQuotaCreation
+     */
+    export interface ProjectRegionQuotaCreation {
+        name: string;
+    }
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectRegionWorkflowBackupCreation.ProjectRegionWorkflowBackupCreation
+     */
+    export interface ProjectRegionWorkflowBackupCreation {
+        cron: string;
+        instanceId: string;
+        maxExecutionCount?: number;
+        name: string;
+        rotation: number;
+    }
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectSshkeyCreation.ProjectSshkeyCreation
+     */
+    export interface ProjectSshkeyCreation {
+        name: string;
+        publicKey: string;
+        region?: string;
+    }
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectStorageCorsCreation.ProjectStorageCorsCreation
+     */
+    export interface ProjectStorageCorsCreation {
+        origin: string;
+    }
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectStorageCreation.ProjectStorageCreation
+     */
+    export interface ProjectStorageCreation {
+        archive: boolean;
+        containerName: string;
+        region: string;
+    }
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectStoragePublicUrlCreation.ProjectStoragePublicUrlCreation
+     */
+    export interface ProjectStoragePublicUrlCreation {
+        expirationDate: string;
+        objectName: string;
+    }
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectStorageUpdate.ProjectStorageUpdate
+     */
+    export interface ProjectStorageUpdate {
+        containerType?: cloud.storage.TypeEnum;
+    }
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectStorageUserCreation.ProjectStorageUserCreation
+     */
+    export interface ProjectStorageUserCreation {
+        description?: string;
+        right: cloud.storage.RightEnum;
+    }
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectUserCreation.ProjectUserCreation
+     */
+    export interface ProjectUserCreation {
+        description?: string;
+        role?: cloud.user.RoleEnum;
+        roles?: cloud.user.RoleEnum[];
+    }
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectUserRoleCreation.ProjectUserRoleCreation
+     */
+    export interface ProjectUserRoleCreation {
+        roleId: string;
+    }
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectUserRoleUpdate.ProjectUserRoleUpdate
+     */
+    export interface ProjectUserRoleUpdate {
+        rolesIds: string[];
+    }
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectUserTokenCreation.ProjectUserTokenCreation
+     */
+    export interface ProjectUserTokenCreation {
+        password: string;
+    }
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectVolumeAttachCreation.ProjectVolumeAttachCreation
+     */
+    export interface ProjectVolumeAttachCreation {
+        instanceId: string;
+    }
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectVolumeCreation.ProjectVolumeCreation
+     */
+    export interface ProjectVolumeCreation {
+        description?: string;
+        imageId?: string;
+        name?: string;
+        region: string;
+        size: number;
+        snapshotId?: string;
+        type: cloud.volume.VolumeTypeEnum;
+    }
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectVolumeDetachCreation.ProjectVolumeDetachCreation
+     */
+    export interface ProjectVolumeDetachCreation {
+        instanceId: string;
+    }
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectVolumeSnapshotCreation.ProjectVolumeSnapshotCreation
+     */
+    export interface ProjectVolumeSnapshotCreation {
+        description?: string;
+        name?: string;
+    }
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectVolumeUpdate.ProjectVolumeUpdate
+     */
+    export interface ProjectVolumeUpdate {
+        description?: string;
+        name?: string;
+    }
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectVolumeUpsizeCreation.ProjectVolumeUpsizeCreation
+     */
+    export interface ProjectVolumeUpsizeCreation {
+        size: number;
     }
     /**
      * Details about your region
      * interface fullName: cloud.Region.Region
      */
     export interface Region {
-        continentCode: cloud.RegionContinent;
+        continentCode: cloud.RegionContinentEnum;
         datacenterLocation: string;
         ipCountries: cloud.IpCountryEnum[];
         name: string;
         services: cloud.Component[];
-        status: cloud.RegionStatus;
+        status: cloud.RegionStatusEnum;
     }
     /**
      * Enum values for ContinentCode
@@ -133,15 +463,30 @@ export namespace cloud {
      */
     export type RegionContinent = "EU" | "NA" | "US" | "ASIA"
     /**
+     * Enum values for ContinentCode
+     * type fullname: cloud.RegionContinentEnum
+     */
+    export type RegionContinentEnum = "EU" | "NA" | "US" | "ASIA"
+    /**
      * Enum values for Status
      * type fullname: cloud.RegionStatus
      */
     export type RegionStatus = "UP" | "DOWN" | "MAINTENANCE"
     /**
      * Enum values for Status
+     * type fullname: cloud.RegionStatusEnum
+     */
+    export type RegionStatusEnum = "UP" | "DOWN" | "MAINTENANCE"
+    /**
+     * Enum values for Status
      * type fullname: cloud.ServiceStatus
      */
     export type ServiceStatus = "UP" | "DOWN"
+    /**
+     * Enum values for Status
+     * type fullname: cloud.ServiceStatusEnum
+     */
+    export type ServiceStatusEnum = "UP" | "DOWN"
     /**
      * A vRack allows to connect your OVH infrastructures accross products and datacenters
      * interface fullName: cloud.Vrack.Vrack
@@ -228,6 +573,258 @@ export namespace cloud {
             name: string;
         }
     }
+    export namespace billingView {
+        /**
+         * BandwidthInstance
+         * interface fullName: cloud.billingView.BandwidthInstance.BandwidthInstance
+         */
+        export interface BandwidthInstance {
+            quantity: cloud.billingView.Quantity;
+            totalPrice: number;
+        }
+        /**
+         * BandwidthStorage
+         * interface fullName: cloud.billingView.BandwidthStorage.BandwidthStorage
+         */
+        export interface BandwidthStorage {
+            quantity: cloud.billingView.Quantity;
+            totalPrice: number;
+        }
+        /**
+         * Component
+         * interface fullName: cloud.billingView.Component.Component
+         */
+        export interface Component {
+            name: string;
+            quantity: cloud.billingView.Quantity;
+            totalPrice: number;
+        }
+        /**
+         * HourlyInstance
+         * interface fullName: cloud.billingView.HourlyInstance.HourlyInstance
+         */
+        export interface HourlyInstance {
+            details: cloud.billingView.HourlyInstanceDetail[];
+            quantity: cloud.billingView.Quantity;
+            reference: string;
+            region: string;
+            totalPrice: number;
+        }
+        /**
+         * HourlyInstanceBandwidth
+         * interface fullName: cloud.billingView.HourlyInstanceBandwidth.HourlyInstanceBandwidth
+         */
+        export interface HourlyInstanceBandwidth {
+            incomingBandwidth?: cloud.billingView.BandwidthInstance;
+            outgoingBandwidth?: cloud.billingView.BandwidthInstance;
+            region: string;
+            totalPrice: number;
+        }
+        /**
+         * HourlyInstanceDetail
+         * interface fullName: cloud.billingView.HourlyInstanceDetail.HourlyInstanceDetail
+         */
+        export interface HourlyInstanceDetail {
+            instanceId: string;
+            quantity: cloud.billingView.Quantity;
+            totalPrice: number;
+        }
+        /**
+         * HourlyInstanceOption
+         * interface fullName: cloud.billingView.HourlyInstanceOption.HourlyInstanceOption
+         */
+        export interface HourlyInstanceOption {
+            details: cloud.billingView.HourlyInstanceOptionDetail[];
+            quantity: cloud.billingView.Quantity;
+            reference: string;
+            region: string;
+            totalPrice: number;
+        }
+        /**
+         * HourlyInstanceOptionDetail
+         * interface fullName: cloud.billingView.HourlyInstanceOptionDetail.HourlyInstanceOptionDetail
+         */
+        export interface HourlyInstanceOptionDetail {
+            instanceId: string;
+            quantity: cloud.billingView.Quantity;
+            totalPrice: number;
+        }
+        /**
+         * HourlyResources
+         * interface fullName: cloud.billingView.HourlyResources.HourlyResources
+         */
+        export interface HourlyResources {
+            instance: cloud.billingView.HourlyInstance[];
+            instanceBandwidth: cloud.billingView.HourlyInstanceBandwidth[];
+            instanceOption: cloud.billingView.HourlyInstanceOption[];
+            snapshot: cloud.billingView.HourlySnapshot[];
+            storage: cloud.billingView.HourlyStorage[];
+            volume: cloud.billingView.HourlyVolume[];
+        }
+        /**
+         * HourlySnapshot
+         * interface fullName: cloud.billingView.HourlySnapshot.HourlySnapshot
+         */
+        export interface HourlySnapshot {
+            instance?: cloud.billingView.InstanceSnapshot;
+            region: string;
+            totalPrice: number;
+            volume?: cloud.billingView.VolumeSnapshot;
+        }
+        /**
+         * HourlyStorage
+         * interface fullName: cloud.billingView.HourlyStorage.HourlyStorage
+         */
+        export interface HourlyStorage {
+            incomingBandwidth?: cloud.billingView.BandwidthStorage;
+            outgoingBandwidth?: cloud.billingView.BandwidthStorage;
+            region: string;
+            stored?: cloud.billingView.StoredStorage;
+            totalPrice: number;
+            type: cloud.billingView.StorageTypeEnum;
+        }
+        /**
+         * HourlyVolume
+         * interface fullName: cloud.billingView.HourlyVolume.HourlyVolume
+         */
+        export interface HourlyVolume {
+            details: cloud.billingView.HourlyVolumeDetail[];
+            quantity: cloud.billingView.Quantity;
+            region: string;
+            totalPrice: number;
+            type: string;
+        }
+        /**
+         * HourlyVolumeDetail
+         * interface fullName: cloud.billingView.HourlyVolumeDetail.HourlyVolumeDetail
+         */
+        export interface HourlyVolumeDetail {
+            quantity: cloud.billingView.Quantity;
+            totalPrice: number;
+            volumeId: string;
+        }
+        /**
+         * InstanceSnapshot
+         * interface fullName: cloud.billingView.InstanceSnapshot.InstanceSnapshot
+         */
+        export interface InstanceSnapshot {
+            quantity: cloud.billingView.Quantity;
+            totalPrice: number;
+        }
+        /**
+         * MonthlyInstance
+         * interface fullName: cloud.billingView.MonthlyInstance.MonthlyInstance
+         */
+        export interface MonthlyInstance {
+            details: cloud.billingView.MonthlyInstanceDetail[];
+            reference: string;
+            region: string;
+            totalPrice: number;
+        }
+        /**
+         * MonthlyInstanceDetail
+         * interface fullName: cloud.billingView.MonthlyInstanceDetail.MonthlyInstanceDetail
+         */
+        export interface MonthlyInstanceDetail {
+            activation: string;
+            instanceId: string;
+            totalPrice: number;
+        }
+        /**
+         * MonthlyInstanceOption
+         * interface fullName: cloud.billingView.MonthlyInstanceOption.MonthlyInstanceOption
+         */
+        export interface MonthlyInstanceOption {
+            details: cloud.billingView.MonthlyInstanceOptionDetail[];
+            reference: string;
+            region: string;
+            totalPrice: number;
+        }
+        /**
+         * MonthlyInstanceOptionDetail
+         * interface fullName: cloud.billingView.MonthlyInstanceOptionDetail.MonthlyInstanceOptionDetail
+         */
+        export interface MonthlyInstanceOptionDetail {
+            instanceId: string;
+            totalPrice: number;
+        }
+        /**
+         * MonthlyResources
+         * interface fullName: cloud.billingView.MonthlyResources.MonthlyResources
+         */
+        export interface MonthlyResources {
+            instance: cloud.billingView.MonthlyInstance[];
+            instanceOption: cloud.billingView.MonthlyInstanceOption[];
+        }
+        /**
+         * Quantity
+         * interface fullName: cloud.billingView.Quantity.Quantity
+         */
+        export interface Quantity {
+            unit: cloud.billingView.UnitQuantityEnum;
+            value: number;
+        }
+        /**
+         * RegionalizedResource
+         * interface fullName: cloud.billingView.RegionalizedResource.RegionalizedResource
+         */
+        export interface RegionalizedResource {
+            components: cloud.billingView.Component[];
+            region: string;
+        }
+        /**
+         * StorageTypeEnum
+         * type fullname: cloud.billingView.StorageTypeEnum
+         */
+        export type StorageTypeEnum = "pcs" | "pca"
+        /**
+         * StoredStorage
+         * interface fullName: cloud.billingView.StoredStorage.StoredStorage
+         */
+        export interface StoredStorage {
+            quantity: cloud.billingView.Quantity;
+            totalPrice: number;
+        }
+        /**
+         * TypedResources
+         * interface fullName: cloud.billingView.TypedResources.TypedResources
+         */
+        export interface TypedResources {
+            resources: cloud.billingView.RegionalizedResource[];
+            totalPrice: number;
+            type: string;
+        }
+        /**
+         * UnitQuantity
+         * type fullname: cloud.billingView.UnitQuantityEnum
+         */
+        export type UnitQuantityEnum = "GiB" | "GiBh" | "Hour" | "Minute" | "Second"
+        /**
+         * UsedCredit
+         * interface fullName: cloud.billingView.UsedCredit.UsedCredit
+         */
+        export interface UsedCredit {
+            description: string;
+            id: number;
+            usedAmount: number;
+        }
+        /**
+         * UsedCredits
+         * interface fullName: cloud.billingView.UsedCredits.UsedCredits
+         */
+        export interface UsedCredits {
+            details: cloud.billingView.UsedCredit[];
+            totalCredit: number;
+        }
+        /**
+         * VolumeSnapshot
+         * interface fullName: cloud.billingView.VolumeSnapshot.VolumeSnapshot
+         */
+        export interface VolumeSnapshot {
+            quantity: cloud.billingView.Quantity;
+            totalPrice: number;
+        }
+    }
     export namespace capabilities {
         /**
          * Capability
@@ -240,12 +837,25 @@ export namespace cloud {
     }
     export namespace flavor {
         /**
+         * Flavor capability
+         * interface fullName: cloud.flavor.Capability.Capability
+         */
+        export interface Capability {
+            enabled: boolean;
+            name: cloud.flavor.CapabilityNameEnum;
+        }
+        /**
+         * Enum values for flavor capabilities names
+         * type fullname: cloud.flavor.CapabilityNameEnum
+         */
+        export type CapabilityNameEnum = "resize" | "snapshot" | "volume" | "failoverip"
+        /**
          * Flavor
          * interface fullName: cloud.flavor.Flavor.Flavor
          */
         export interface Flavor {
             available: boolean;
-            capabilities: cloud.capabilities.Capability[];
+            capabilities: cloud.flavor.Capability[];
             disk: number;
             id: string;
             inboundBandwidth?: number;
@@ -383,7 +993,7 @@ export namespace cloud {
          * InstanceStatusEnum
          * type fullname: cloud.instance.InstanceStatusEnum
          */
-        export type InstanceStatusEnum = "ACTIVE" | "BUILDING" | "DELETED" | "ERROR" | "HARD_REBOOT" | "PASSWORD" | "PAUSED" | "REBOOT" | "REBUILD" | "RESCUED" | "RESIZED" | "REVERT_RESIZE" | "SOFT_DELETED" | "STOPPED" | "SUSPENDED" | "UNKNOWN" | "VERIFY_RESIZE" | "MIGRATING" | "RESIZE" | "BUILD" | "SHUTOFF" | "RESCUE" | "SHELVED" | "SHELVED_OFFLOADED" | "RESCUING" | "UNRESCUING" | "SNAPSHOTTING" | "RESUMING"
+        export type InstanceStatusEnum = "ACTIVE" | "BUILDING" | "DELETED" | "DELETING" | "ERROR" | "HARD_REBOOT" | "PASSWORD" | "PAUSED" | "REBOOT" | "REBUILD" | "RESCUED" | "RESIZED" | "REVERT_RESIZE" | "SOFT_DELETED" | "STOPPED" | "SUSPENDED" | "UNKNOWN" | "VERIFY_RESIZE" | "MIGRATING" | "RESIZE" | "BUILD" | "SHUTOFF" | "RESCUE" | "SHELVED" | "SHELVED_OFFLOADED" | "RESCUING" | "UNRESCUING" | "SNAPSHOTTING" | "RESUMING"
         /**
          * InstanceVnc
          * interface fullName: cloud.instance.InstanceVnc.InstanceVnc
@@ -409,10 +1019,20 @@ export namespace cloud {
          */
         export type MetricsPeriod = "lastday" | "lastmonth" | "lastweek" | "lastyear" | "today"
         /**
+         * MetricsPeriod
+         * type fullname: cloud.instance.MetricsPeriodEnum
+         */
+        export type MetricsPeriodEnum = "lastday" | "lastmonth" | "lastweek" | "lastyear" | "today"
+        /**
          * MetricsType
          * type fullname: cloud.instance.MetricsType
          */
         export type MetricsType = "mem:used" | "mem:max" | "cpu:used" | "cpu:max" | "net:tx" | "net:rx"
+        /**
+         * MetricsType
+         * type fullname: cloud.instance.MetricsTypeEnum
+         */
+        export type MetricsTypeEnum = "mem:used" | "mem:max" | "cpu:used" | "cpu:max" | "net:tx" | "net:rx"
         /**
          * MonthlyBilling
          * interface fullName: cloud.instance.MonthlyBilling.MonthlyBilling
@@ -657,6 +1277,11 @@ export namespace cloud {
          * type fullname: cloud.project.ProjectStatus
          */
         export type ProjectStatus = "creating" | "deleted" | "deleting" | "ok" | "suspended"
+        /**
+         * Possible values for project status
+         * type fullname: cloud.project.ProjectStatusEnum
+         */
+        export type ProjectStatusEnum = "creating" | "deleted" | "deleting" | "ok" | "suspended"
     }
     export namespace quota {
         /**
@@ -924,6 +1549,90 @@ export namespace cloud {
          */
         export type TypeEnum = "static" | "public" | "private"
     }
+    export namespace usage {
+        /**
+         * PaymentTypeEnum
+         * type fullname: cloud.usage.PaymentTypeEnum
+         */
+        export type PaymentTypeEnum = "pre" | "post"
+        /**
+         * Period
+         * interface fullName: cloud.usage.Period.Period
+         */
+        export interface Period {
+            from: string;
+            to: string;
+        }
+        /**
+         * UsageBill
+         * interface fullName: cloud.usage.UsageBill.UsageBill
+         */
+        export interface UsageBill {
+            bill_id: string;
+            credit: number;
+            part: number;
+            payment_type: cloud.usage.PaymentTypeEnum;
+            total: number;
+        }
+        /**
+         * UsageCurrent
+         * interface fullName: cloud.usage.UsageCurrent.UsageCurrent
+         */
+        export interface UsageCurrent {
+            hourlyUsage?: cloud.billingView.HourlyResources;
+            lastUpdate: string;
+            monthlyUsage?: cloud.billingView.MonthlyResources;
+            period: cloud.usage.Period;
+            resourcesUsage?: cloud.billingView.TypedResources[];
+        }
+        /**
+         * UsageCurrentBills
+         * interface fullName: cloud.usage.UsageCurrentBills.UsageCurrentBills
+         */
+        export interface UsageCurrentBills {
+            bills: cloud.usage.UsageBill[];
+        }
+        /**
+         * UsageForecast
+         * interface fullName: cloud.usage.UsageForecast.UsageForecast
+         */
+        export interface UsageForecast {
+            hourlyUsage?: cloud.billingView.HourlyResources;
+            lastUpdate: string;
+            monthlyUsage?: cloud.billingView.MonthlyResources;
+            period: cloud.usage.Period;
+            resourcesUsage?: cloud.billingView.TypedResources[];
+            usableCredits?: cloud.billingView.UsedCredits;
+        }
+        /**
+         * UsageHistory
+         * interface fullName: cloud.usage.UsageHistory.UsageHistory
+         */
+        export interface UsageHistory {
+            id: string;
+            lastUpdate: string;
+            period: cloud.usage.Period;
+        }
+        /**
+         * UsageHistoryDetail
+         * interface fullName: cloud.usage.UsageHistoryDetail.UsageHistoryDetail
+         */
+        export interface UsageHistoryDetail {
+            hourlyUsage?: cloud.billingView.HourlyResources;
+            id: string;
+            lastUpdate: string;
+            monthlyUsage?: cloud.billingView.MonthlyResources;
+            period: cloud.usage.Period;
+            resourcesUsage?: cloud.billingView.TypedResources[];
+        }
+        /**
+         * UsageHistoryDetailBills
+         * interface fullName: cloud.usage.UsageHistoryDetailBills.UsageHistoryDetailBills
+         */
+        export interface UsageHistoryDetailBills {
+            bills: cloud.usage.UsageBill[];
+        }
+    }
     export namespace user {
         /**
          * Openrc
@@ -1121,7 +1830,7 @@ export interface Cloud {
              * Alter this object properties
              * PUT /cloud/project/{serviceName}
              */
-            $put(params?: { access?: cloud.AccessTypeEnum, creationDate?: string, description?: string, expiration?: string, orderId?: number, planCode?: string, project_id?: string, status?: cloud.project.ProjectStatus, unleash?: boolean }): Promise<void>;
+            $put(params?: { access?: cloud.AccessTypeEnum, creationDate?: string, description?: string, expiration?: string, orderId?: number, planCode?: string, projectName?: string, project_id?: string, status?: cloud.project.ProjectStatusEnum, unleash?: boolean }): Promise<void>;
             /**
              * Controle cache
              */
@@ -1194,7 +1903,7 @@ export interface Cloud {
             }
             instance: {
                 /**
-                 * Get instances
+                 * Get instance
                  * GET /cloud/project/{serviceName}/instance
                  */
                 $get(params?: { region?: string }): Promise<cloud.instance.Instance[]>;
@@ -1329,7 +2038,7 @@ export interface Cloud {
                          * Return many statistics about the virtual machine for a given period
                          * GET /cloud/project/{serviceName}/instance/{instanceId}/monitoring
                          */
-                        $get(params: { period: cloud.instance.MetricsPeriod, type: cloud.instance.MetricsType }): Promise<cloud.instance.InstanceMetrics>;
+                        $get(params: { period: cloud.instance.MetricsPeriodEnum, type: cloud.instance.MetricsTypeEnum }): Promise<cloud.instance.InstanceMetrics>;
                         /**
                          * Controle cache
                          */
@@ -1727,6 +2436,40 @@ export interface Cloud {
                              * Controle cache
                              */
                             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                    }
+                    workflow: {
+                        backup: {
+                            /**
+                             * List your automated backups
+                             * GET /cloud/project/{serviceName}/region/{regionName}/workflow/backup
+                             */
+                            $get(): Promise<cloud.Backup[]>;
+                            /**
+                             * Create a new automated backup
+                             * POST /cloud/project/{serviceName}/region/{regionName}/workflow/backup
+                             */
+                            $post(params: { cron: string, instanceId: string, maxExecutionCount?: number, name: string, rotation: number }): Promise<cloud.Backup>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            $(backupWorkflowId: string): {
+                                /**
+                                 * Delete a backup workflow process
+                                 * DELETE /cloud/project/{serviceName}/region/{regionName}/workflow/backup/{backupWorkflowId}
+                                 */
+                                $delete(): Promise<void>;
+                                /**
+                                 * Get details about a backup workflow process
+                                 * GET /cloud/project/{serviceName}/region/{regionName}/workflow/backup/{backupWorkflowId}
+                                 */
+                                $get(): Promise<cloud.Backup>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            };
                         }
                     }
                 };

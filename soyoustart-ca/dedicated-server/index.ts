@@ -22,6 +22,14 @@ export namespace complexType {
         value?: number;
     }
     /**
+     * Key and value, with proper key strings
+     * interface fullName: complexType.SafeKeyValue.SafeKeyValue
+     */
+    export interface SafeKeyValue<T> {
+        key: string;
+        value: T;
+    }
+    /**
      * A numeric value tagged with its unit
      * interface fullName: complexType.UnitAndValue.UnitAndValue
      */
@@ -55,10 +63,20 @@ export namespace dedicated {
         url: string;
     }
     /**
+     * CheckSum type
+     * type fullname: dedicated.CheckSumTypesEnum
+     */
+    export type CheckSumTypesEnum = "md5" | "sha1" | "sha256" | "sha512"
+    /**
      * ovh datacenter
      * type fullname: dedicated.DatacenterEnum
      */
-    export type DatacenterEnum = "bhs1" | "bhs2" | "bhs3" | "bhs4" | "bhs5" | "bhs6" | "bhs7" | "dc1" | "eri1" | "gra1" | "gra2" | "gsw" | "hil1" | "lim1" | "p19" | "rbx-hz" | "rbx1" | "rbx2" | "rbx3" | "rbx4" | "rbx5" | "rbx6" | "rbx7" | "sbg1" | "sbg2" | "sbg3" | "sbg4" | "sgp1" | "syd1" | "vin1" | "waw1"
+    export type DatacenterEnum = "bhs1" | "bhs2" | "bhs3" | "bhs4" | "bhs5" | "bhs6" | "bhs7" | "dc1" | "eri1" | "gra1" | "gra2" | "gsw" | "hil1" | "lim1" | "p19" | "rbx-hz" | "rbx1" | "rbx2" | "rbx3" | "rbx4" | "rbx5" | "rbx6" | "rbx7" | "rbx8" | "sbg1" | "sbg2" | "sbg3" | "sbg4" | "sgp1" | "syd1" | "vin1" | "waw1"
+    /**
+     * Type of your image
+     * type fullname: dedicated.ImageTypesEnum
+     */
+    export type ImageTypesEnum = "ova" | "qcow2" | "raw"
     /**
      * profile firewall asa
      * type fullname: dedicated.ProfileFirewallEnum
@@ -236,6 +254,21 @@ export namespace dedicated {
          * type fullname: dedicated.server.BootTypeEnum
          */
         export type BootTypeEnum = "harddisk" | "internal" | "ipxeCustomerScript" | "network" | "rescue"
+        /**
+         * Bring you own Image on your server
+         * interface fullName: dedicated.server.ByoiStatus.ByoiStatus
+         */
+        export interface ByoiStatus {
+            checksum?: string;
+            message?: string;
+            servername?: string;
+            status?: dedicated.server.ByoiStatusEnum;
+        }
+        /**
+         * All states a status can be in
+         * type fullname: dedicated.server.ByoiStatusEnum
+         */
+        export type ByoiStatusEnum = "doing" | "done" | "error"
         /**
          * Time to live in minutes for cache
          * type fullname: dedicated.server.CacheTTLEnum

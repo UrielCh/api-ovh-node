@@ -191,6 +191,7 @@ export namespace sms {
     export interface Job {
         creationDatetime: string;
         credits: number;
+        deliveredAt?: string;
         deliveryReceipt: number;
         differedDelivery: number;
         id: number;
@@ -200,6 +201,7 @@ export namespace sms {
         ptt: number;
         receiver: string;
         sender: string;
+        sentAt?: string;
     }
     /**
      * A structure describing the encoding, length and number of SMS parts of a text message
@@ -218,6 +220,7 @@ export namespace sms {
     export interface Outgoing {
         creationDatetime: string;
         credits: number;
+        deliveredAt?: string;
         deliveryReceipt: number;
         differedDelivery: number;
         id: number;
@@ -227,6 +230,7 @@ export namespace sms {
         ptt: number;
         receiver: string;
         sender: string;
+        sentAt?: string;
         tag: string;
         tariffCode: string;
     }

@@ -61,6 +61,67 @@ export namespace dnssec {
 }
 export namespace domain {
     /**
+     * An action to execute on a domain name
+     * type fullname: domain.ActionEnum
+     */
+    export type ActionEnum = "create" | "transfer" | "update" | "trade"
+    /**
+     * A contact contains the personal data of a user
+     * interface fullName: domain.Contact.Contact
+     */
+    export interface Contact {
+        accreditationCountry?: nichandle.CountryEnum;
+        accreditationId?: string;
+        accreditationOrganism?: string;
+        accreditationYear?: number;
+        address?: domain.ContactAddress;
+        birthCity?: string;
+        birthDay?: string;
+        companyNationalIdentificationNumber?: string;
+        email?: string;
+        enterpriseId?: string;
+        fax?: string;
+        firstName?: string;
+        gender?: nichandle.GenderEnum;
+        id: number;
+        insee?: string;
+        language?: nichandle.LanguageEnum;
+        lastName?: string;
+        legalForm?: nichandle.LegalFormEnum;
+        legalFormCategory?: string;
+        nationalIdentificationNumber?: string;
+        nationality?: nichandle.CountryEnum;
+        organisationAccountable?: string;
+        organisationFunding?: string;
+        organisationFundingOther?: string;
+        organisationName?: string;
+        organisationRole?: string;
+        organisationRoleOther?: string;
+        organisationStaffStatus?: string;
+        organisationStaffStatusOther?: string;
+        organisationType?: string;
+        organisationTypeOther?: string;
+        phone?: string;
+        registrantDocumentType?: string;
+        registrantDocumentTypeOther?: string;
+        roleInOrganisation?: string;
+        vat?: string;
+        website?: string;
+    }
+    /**
+     * Missing description
+     * interface fullName: domain.ContactAddress.ContactAddress
+     */
+    export interface ContactAddress {
+        city?: string;
+        country?: nichandle.CountryEnum;
+        line1?: string;
+        line2?: string;
+        line3?: string;
+        province?: string;
+        zip?: string;
+    }
+    /**
      * Contact type fields
      * type fullname: domain.ContactAllTypesEnum
      */
@@ -75,6 +136,18 @@ export namespace domain {
         ip?: string;
         isUsed: boolean;
         toDelete: boolean;
+    }
+    /**
+     * A domain data
+     * interface fullName: domain.Data.Data
+     */
+    export interface Data {
+        audience?: string;
+        authInfo?: string;
+        isFor?: domain.IsForEnum[];
+        otherPurpose?: string;
+        reason?: string;
+        represent?: string;
     }
     /**
      * Domain's DNSSEC Key
@@ -164,7 +237,7 @@ export namespace domain {
      * Possible purposes of the domain
      * type fullname: domain.IsForEnum
      */
-    export type IsForEnum = "campaign_website" | "educational_website" | "emails" | "information_website" | "other_purpose" | "redirect_page" | "transactional_website"
+    export type IsForEnum = "campaign_website" | "educational_website" | "information_website" | "transactional_website" | "redirect_page" | "emails" | "other_purpose"
     /**
      * Offer
      * type fullname: domain.OfferEnum
@@ -252,6 +325,71 @@ export namespace domain {
      * type fullname: domain.WhoisObfuscatorFieldsEnum
      */
     export type WhoisObfuscatorFieldsEnum = "address" | "email" | "phone"
+    export namespace configuration {
+        export namespace rules {
+            /**
+             * A configuration rule defines validation to launch when executing an action on a domain (create, trade...). Depending on the extension, the rule may be different
+             * interface fullName: domain.configuration.rules.Constraint.Constraint
+             */
+            export interface Constraint {
+                conditions?: domain.configuration.rules.Rule;
+                contexts?: domain.configuration.rules.ContextEnum[];
+                operator?: domain.configuration.rules.OperatorEnum;
+                value?: string;
+                values?: string[];
+            }
+            /**
+             * Used in rule to tell if rule (or part of the rule) is applicable for a given context
+             * type fullname: domain.configuration.rules.ContextEnum
+             */
+            export type ContextEnum = "update" | "create" | "transfer" | "trade" | "order" | "premium" | "accept_conditions" | "claims" | "reason" | "protected_code"
+            /**
+             * Operator use in configuration rule to check content of a field
+             * type fullname: domain.configuration.rules.OperatorEnum
+             */
+            export type OperatorEnum = "eq" | "ne" | "gt" | "gte" | "lt" | "lte" | "maxlength" | "minlength" | "between" | "contains" | "notcontains" | "empty" | "notempty" | "match" | "shouldbetrue" | "required" | "readonly"
+            /**
+             * A configuration rule defines validation to launch when executing an action on a domain (create, trade...). Depending on the extension, the rule may be different
+             * interface fullName: domain.configuration.rules.Rule.Rule
+             */
+            export interface Rule {
+                and?: domain.configuration.rules.Rule[];
+                conditions?: domain.configuration.rules.Rule;
+                constraints?: domain.configuration.rules.Constraint[];
+                contexts?: domain.configuration.rules.ContextEnum[];
+                description?: string;
+                fields?: domain.configuration.rules.Rule;
+                label?: string;
+                or?: domain.configuration.rules.Rule[];
+                placeholder?: string;
+                type?: domain.configuration.rules.TypeEnum;
+            }
+            /**
+             * A rule data contains the fields that must be validated against a rule
+             * interface fullName: domain.configuration.rules.RuleData.RuleData
+             */
+            export interface RuleData {
+                adminAccount?: nichandle.Nichandle;
+                domain?: domain.Data;
+                extras?: domain.configuration.rules.RuleExtraData;
+                owner?: domain.Contact;
+                techAccount?: nichandle.Nichandle;
+            }
+            /**
+             * The extra data contain additional rule data fields
+             * interface fullName: domain.configuration.rules.RuleExtraData.RuleExtraData
+             */
+            export interface RuleExtraData {
+                acceptCondition?: boolean;
+                authInfo?: string;
+            }
+            /**
+             * Type of rule configuration
+             * type fullname: domain.configuration.rules.TypeEnum
+             */
+            export type TypeEnum = "string" | "text" | "bool" | "number" | "json" | "contact" | "domain"
+        }
+    }
     export namespace configurations {
         /**
          * Representation of the domain custom fields
@@ -572,6 +710,79 @@ export namespace nichandle {
      * type fullname: nichandle.CountryEnum
      */
     export type CountryEnum = "AC" | "AD" | "AE" | "AF" | "AG" | "AI" | "AL" | "AM" | "AO" | "AQ" | "AR" | "AS" | "AT" | "AU" | "AW" | "AX" | "AZ" | "BA" | "BB" | "BD" | "BE" | "BF" | "BG" | "BH" | "BI" | "BJ" | "BL" | "BM" | "BN" | "BO" | "BQ" | "BR" | "BS" | "BT" | "BW" | "BY" | "BZ" | "CA" | "CC" | "CD" | "CF" | "CG" | "CH" | "CI" | "CK" | "CL" | "CM" | "CN" | "CO" | "CR" | "CU" | "CV" | "CW" | "CX" | "CY" | "CZ" | "DE" | "DG" | "DJ" | "DK" | "DM" | "DO" | "DZ" | "EA" | "EC" | "EE" | "EG" | "EH" | "ER" | "ES" | "ET" | "FI" | "FJ" | "FK" | "FM" | "FO" | "FR" | "GA" | "GB" | "GD" | "GE" | "GF" | "GG" | "GH" | "GI" | "GL" | "GM" | "GN" | "GP" | "GQ" | "GR" | "GS" | "GT" | "GU" | "GW" | "GY" | "HK" | "HN" | "HR" | "HT" | "HU" | "IC" | "ID" | "IE" | "IL" | "IM" | "IN" | "IO" | "IQ" | "IR" | "IS" | "IT" | "JE" | "JM" | "JO" | "JP" | "KE" | "KG" | "KH" | "KI" | "KM" | "KN" | "KP" | "KR" | "KW" | "KY" | "KZ" | "LA" | "LB" | "LC" | "LI" | "LK" | "LR" | "LS" | "LT" | "LU" | "LV" | "LY" | "MA" | "MC" | "MD" | "ME" | "MF" | "MG" | "MH" | "MK" | "ML" | "MM" | "MN" | "MO" | "MP" | "MQ" | "MR" | "MS" | "MT" | "MU" | "MV" | "MW" | "MX" | "MY" | "MZ" | "NA" | "NC" | "NE" | "NF" | "NG" | "NI" | "NL" | "NO" | "NP" | "NR" | "NU" | "NZ" | "OM" | "PA" | "PE" | "PF" | "PG" | "PH" | "PK" | "PL" | "PM" | "PN" | "PR" | "PS" | "PT" | "PW" | "PY" | "QA" | "RE" | "RO" | "RS" | "RU" | "RW" | "SA" | "SB" | "SC" | "SD" | "SE" | "SG" | "SH" | "SI" | "SJ" | "SK" | "SL" | "SM" | "SN" | "SO" | "SR" | "SS" | "ST" | "SV" | "SX" | "SY" | "SZ" | "TA" | "TC" | "TD" | "TF" | "TG" | "TH" | "TJ" | "TK" | "TL" | "TM" | "TN" | "TO" | "TR" | "TT" | "TV" | "TW" | "TZ" | "UA" | "UG" | "UM" | "UNKNOWN" | "US" | "UY" | "UZ" | "VA" | "VC" | "VE" | "VG" | "VI" | "VN" | "VU" | "WF" | "WS" | "XK" | "YE" | "YT" | "ZA" | "ZM" | "ZW"
+    /**
+     * Customer currency
+     * interface fullName: nichandle.Currency.Currency
+     */
+    export interface Currency {
+        code: string;
+        symbol: string;
+    }
+    /**
+     * All genders a person can choose
+     * type fullname: nichandle.GenderEnum
+     */
+    export type GenderEnum = "female" | "male"
+    /**
+     * Languages a nichandle can choose
+     * type fullname: nichandle.LanguageEnum
+     */
+    export type LanguageEnum = "cs_CZ" | "de_DE" | "en_AU" | "en_CA" | "en_GB" | "en_IE" | "en_US" | "es_ES" | "fi_FI" | "fr_CA" | "fr_FR" | "fr_MA" | "fr_SN" | "fr_TN" | "it_IT" | "lt_LT" | "nl_NL" | "pl_PL" | "pt_PT"
+    /**
+     * Legal forms a nichandle can be registered as
+     * type fullname: nichandle.LegalFormEnum
+     */
+    export type LegalFormEnum = "administration" | "association" | "corporation" | "individual" | "other" | "personalcorporation"
+    /**
+     * Details about your OVH identifier
+     * interface fullName: nichandle.Nichandle.Nichandle
+     */
+    export interface Nichandle {
+        address?: string;
+        area?: string;
+        birthCity?: string;
+        birthDay?: string;
+        city?: string;
+        companyNationalIdentificationNumber?: string;
+        corporationType?: string;
+        country: nichandle.CountryEnum;
+        currency: nichandle.Currency;
+        customerCode?: string;
+        email: string;
+        fax?: string;
+        firstname?: string;
+        italianSDI?: string;
+        language?: nichandle.LanguageEnum;
+        legalform: nichandle.LegalFormEnum;
+        name?: string;
+        nationalIdentificationNumber?: string;
+        nichandle: string;
+        organisation?: string;
+        ovhCompany: nichandle.OvhCompanyEnum;
+        ovhSubsidiary: nichandle.OvhSubsidiaryEnum;
+        phone?: string;
+        phoneCountry?: nichandle.CountryEnum;
+        sex?: nichandle.GenderEnum;
+        spareEmail?: string;
+        state: nichandle.StateEnum;
+        vat?: string;
+        zip?: string;
+    }
+    /**
+     * OVH subsidiaries
+     * type fullname: nichandle.OvhCompanyEnum
+     */
+    export type OvhCompanyEnum = "kimsufi" | "ovh" | "soyoustart"
+    /**
+     * OVH subsidiaries
+     * type fullname: nichandle.OvhSubsidiaryEnum
+     */
+    export type OvhSubsidiaryEnum = "CZ" | "DE" | "ES" | "EU" | "FI" | "FR" | "GB" | "IE" | "IT" | "LT" | "MA" | "NL" | "PL" | "PT" | "SN" | "TN"
+    /**
+     * States a nichandle can be in
+     * type fullname: nichandle.StateEnum
+     */
+    export type StateEnum = "complete" | "incomplete"
 }
 export namespace service {
     /**
@@ -627,6 +838,13 @@ export namespace services {
     }
 }
 export namespace zone {
+    /**
+     * Zone capabilities
+     * interface fullName: zone.Capabilities.Capabilities
+     */
+    export interface Capabilities {
+        dynHost: boolean;
+    }
     /**
      * Resource record fieldType
      * type fullname: zone.NamedResolutionFieldTypeEnum
@@ -752,7 +970,7 @@ export interface Domain {
              * List all the extensions for a specific country
              * GET /domain/data/extension
              */
-            $get(params: { country: nichandle.CountryEnum }): Promise<string[]>;
+            $get(params?: { country?: nichandle.CountryEnum }): Promise<string[]>;
             /**
              * Controle cache
              */
@@ -854,6 +1072,17 @@ export interface Domain {
              * Controle cache
              */
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            capabilities: {
+                /**
+                 * Zone capabilities
+                 * GET /domain/zone/{zoneName}/capabilities
+                 */
+                $get(): Promise<zone.Capabilities>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
             changeContact: {
                 /**
                  * Launch a contact change procedure

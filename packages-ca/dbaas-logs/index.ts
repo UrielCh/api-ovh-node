@@ -205,6 +205,7 @@ export namespace dbaas {
             isShareable: boolean;
             maxSize: number;
             name: string;
+            nbShard?: number;
             optionId?: string;
             updatedAt?: string;
         }
@@ -221,6 +222,7 @@ export namespace dbaas {
             hostname: string;
             inputId: string;
             isRestartRequired: boolean;
+            nbInstance?: number;
             optionId?: string;
             publicAddress: string;
             singleInstanceEnabled?: boolean;
@@ -277,6 +279,7 @@ export namespace dbaas {
             description: string;
             engineId: string;
             exposedPort?: string;
+            nbInstance?: number;
             optionId?: string;
             singleInstanceEnabled?: boolean;
             streamId: string;
@@ -296,6 +299,7 @@ export namespace dbaas {
             description: string;
             engineId: string;
             exposedPort?: string;
+            nbInstance?: number;
             optionId?: string;
             singleInstanceEnabled?: boolean;
             streamId: string;
@@ -442,6 +446,7 @@ export namespace dbaas {
             alertNotifyEnabled?: boolean;
             autoSelectOption?: boolean;
             description: string;
+            nbShard?: number;
             optionId?: string;
             suffix: string;
         }
@@ -533,8 +538,11 @@ export namespace dbaas {
             coldStorageTarget?: dbaas.logs.StreamColdStorageTargetEnum;
             description: string;
             indexingEnabled?: boolean;
+            indexingMaxSize?: number;
+            indexingNotifyEnabled?: boolean;
             optionId?: string;
             parentStreamId?: string;
+            pauseIndexingOnMaxSize?: boolean;
             retentionId?: string;
             title: string;
             webSocketEnabled?: boolean;
@@ -562,7 +570,10 @@ export namespace dbaas {
             coldStorageTarget?: dbaas.logs.StreamColdStorageTargetEnum;
             description: string;
             indexingEnabled?: boolean;
+            indexingMaxSize?: number;
+            indexingNotifyEnabled?: boolean;
             optionId?: string;
+            pauseIndexingOnMaxSize?: boolean;
             title: string;
             webSocketEnabled?: boolean;
         }
@@ -751,11 +762,15 @@ export namespace dbaas {
             createdAt: string;
             description: string;
             indexingEnabled?: boolean;
+            indexingMaxSize?: number;
+            indexingNotifyEnabled?: boolean;
             isEditable: boolean;
             isShareable: boolean;
+            nbAlertCondition: number;
             nbArchive: number;
             optionId?: string;
             parentStreamId?: string;
+            pauseIndexingOnMaxSize?: boolean;
             retentionId: string;
             streamId: string;
             title: string;
@@ -1124,7 +1139,7 @@ export interface Dbaas {
                  * Register a new input object
                  * POST /dbaas/logs/{serviceName}/input
                  */
-                $post(params: { allowedNetworks?: string[], autoSelectOption?: boolean, description: string, engineId: string, exposedPort?: string, optionId?: string, singleInstanceEnabled?: boolean, streamId: string, title: string }): Promise<dbaas.logs.Operation>;
+                $post(params: { allowedNetworks?: string[], autoSelectOption?: boolean, description: string, engineId: string, exposedPort?: string, nbInstance?: number, optionId?: string, singleInstanceEnabled?: boolean, streamId: string, title: string }): Promise<dbaas.logs.Operation>;
                 /**
                  * Controle cache
                  */
@@ -1144,7 +1159,7 @@ export interface Dbaas {
                      * Update information of specified input object
                      * PUT /dbaas/logs/{serviceName}/input/{inputId}
                      */
-                    $put(params: { allowedNetworks?: string[], description: string, engineId: string, exposedPort?: string, optionId?: string, singleInstanceEnabled?: boolean, streamId: string, title: string }): Promise<dbaas.logs.Operation>;
+                    $put(params: { allowedNetworks?: string[], description: string, engineId: string, exposedPort?: string, nbInstance?: number, optionId?: string, singleInstanceEnabled?: boolean, streamId: string, title: string }): Promise<dbaas.logs.Operation>;
                     /**
                      * Controle cache
                      */
@@ -1500,7 +1515,7 @@ export interface Dbaas {
                          * Register a new elasticsearch index
                          * POST /dbaas/logs/{serviceName}/output/elasticsearch/index
                          */
-                        $post(params: { alertNotifyEnabled?: boolean, autoSelectOption?: boolean, description: string, optionId?: string, suffix: string }): Promise<dbaas.logs.Operation>;
+                        $post(params: { alertNotifyEnabled?: boolean, autoSelectOption?: boolean, description: string, nbShard?: number, optionId?: string, suffix: string }): Promise<dbaas.logs.Operation>;
                         /**
                          * Controle cache
                          */
@@ -1609,7 +1624,7 @@ export interface Dbaas {
                          * Register a new graylog stream
                          * POST /dbaas/logs/{serviceName}/output/graylog/stream
                          */
-                        $post(params: { autoSelectOption?: boolean, coldStorageCompression?: dbaas.logs.StreamColdStorageCompressionEnum, coldStorageContent?: dbaas.logs.StreamColdStorageContentEnum, coldStorageEnabled?: boolean, coldStorageNotifyEnabled?: boolean, coldStorageRetention?: number, coldStorageTarget?: dbaas.logs.StreamColdStorageTargetEnum, description: string, indexingEnabled?: boolean, optionId?: string, parentStreamId?: string, retentionId?: string, title: string, webSocketEnabled?: boolean }): Promise<dbaas.logs.Operation>;
+                        $post(params: { autoSelectOption?: boolean, coldStorageCompression?: dbaas.logs.StreamColdStorageCompressionEnum, coldStorageContent?: dbaas.logs.StreamColdStorageContentEnum, coldStorageEnabled?: boolean, coldStorageNotifyEnabled?: boolean, coldStorageRetention?: number, coldStorageTarget?: dbaas.logs.StreamColdStorageTargetEnum, description: string, indexingEnabled?: boolean, indexingMaxSize?: number, indexingNotifyEnabled?: boolean, optionId?: string, parentStreamId?: string, pauseIndexingOnMaxSize?: boolean, retentionId?: string, title: string, webSocketEnabled?: boolean }): Promise<dbaas.logs.Operation>;
                         /**
                          * Controle cache
                          */
@@ -1629,7 +1644,7 @@ export interface Dbaas {
                              * Update information of specified graylog stream
                              * PUT /dbaas/logs/{serviceName}/output/graylog/stream/{streamId}
                              */
-                            $put(params: { coldStorageCompression?: dbaas.logs.StreamColdStorageCompressionEnum, coldStorageContent?: dbaas.logs.StreamColdStorageContentEnum, coldStorageEnabled?: boolean, coldStorageNotifyEnabled?: boolean, coldStorageRetention?: number, coldStorageTarget?: dbaas.logs.StreamColdStorageTargetEnum, description: string, indexingEnabled?: boolean, optionId?: string, title: string, webSocketEnabled?: boolean }): Promise<dbaas.logs.Operation>;
+                            $put(params: { coldStorageCompression?: dbaas.logs.StreamColdStorageCompressionEnum, coldStorageContent?: dbaas.logs.StreamColdStorageContentEnum, coldStorageEnabled?: boolean, coldStorageNotifyEnabled?: boolean, coldStorageRetention?: number, coldStorageTarget?: dbaas.logs.StreamColdStorageTargetEnum, description: string, indexingEnabled?: boolean, indexingMaxSize?: number, indexingNotifyEnabled?: boolean, optionId?: string, pauseIndexingOnMaxSize?: boolean, title: string, webSocketEnabled?: boolean }): Promise<dbaas.logs.Operation>;
                             /**
                              * Controle cache
                              */
