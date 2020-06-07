@@ -1533,6 +1533,38 @@ export interface Order {
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
+            dedicatedCloud: {
+                /**
+                 * Get informations about a dedicated server
+                 * GET /order/cart/{cartId}/dedicatedCloud
+                 */
+                $get(params?: { family?: string, planCode?: string }): Promise<order.cart.GenericProductDefinition[]>;
+                /**
+                 * Post a new dedicated server item in your cart
+                 * POST /order/cart/{cartId}/dedicatedCloud
+                 */
+                $post(params: { duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                options: {
+                    /**
+                     * Get informations about dedicated server options
+                     * GET /order/cart/{cartId}/dedicatedCloud/options
+                     */
+                    $get(params: { family?: string, planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
+                    /**
+                     * Post a new dedicated server option in your cart
+                     * POST /order/cart/{cartId}/dedicatedCloud/options
+                     */
+                    $post(params: { duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+            }
             dedicatedDirectSales: {
                 /**
                  * Get informations about a dedicated Direct Sales server
@@ -1589,6 +1621,38 @@ export interface Order {
                     /**
                      * Post a new dedicated labs server option in your cart
                      * POST /order/cart/{cartId}/dedicatedLabs/options
+                     */
+                    $post(params: { duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+            }
+            dedicatedPciVps: {
+                /**
+                 * Get informations about a dedicated server
+                 * GET /order/cart/{cartId}/dedicatedPciVps
+                 */
+                $get(params?: { family?: string, planCode?: string }): Promise<order.cart.GenericProductDefinition[]>;
+                /**
+                 * Post a new dedicated server item in your cart
+                 * POST /order/cart/{cartId}/dedicatedPciVps
+                 */
+                $post(params: { duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                options: {
+                    /**
+                     * Get informations about dedicated server options
+                     * GET /order/cart/{cartId}/dedicatedPciVps/options
+                     */
+                    $get(params: { family?: string, planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
+                    /**
+                     * Post a new dedicated server option in your cart
+                     * POST /order/cart/{cartId}/dedicatedPciVps/options
                      */
                     $post(params: { duration: string, itemId: number, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
                     /**
@@ -2703,33 +2767,6 @@ export interface Order {
                 /**
                  * Post an additional dedicated option in your cart
                  * POST /order/cartServiceOption/dedicated/{serviceName}
-                 */
-                $post(params: { cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
-                /**
-                 * Controle cache
-                 */
-                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            };
-        }
-        dns: {
-            /**
-             * List available services
-             * GET /order/cartServiceOption/dns
-             */
-            $get(): Promise<string[]>;
-            /**
-             * Controle cache
-             */
-            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
-            $(serviceName: string): {
-                /**
-                 * Get informations about additional Domain offer for your service
-                 * GET /order/cartServiceOption/dns/{serviceName}
-                 */
-                $get(): Promise<order.cart.GenericOptionDefinition[]>;
-                /**
-                 * Post an additional Domain option in your cart
-                 * POST /order/cartServiceOption/dns/{serviceName}
                  */
                 $post(params: { cartId: string, duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
                 /**

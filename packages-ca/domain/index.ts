@@ -950,7 +950,7 @@ export interface Domain {
              * List all the extensions for a specific country
              * GET /domain/data/extension
              */
-            $get(params?: { country?: nichandle.CountryEnum }): Promise<string[]>;
+            $get(params?: { country?: nichandle.OvhSubsidiaryEnum }): Promise<string[]>;
             /**
              * Controle cache
              */

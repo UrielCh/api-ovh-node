@@ -147,7 +147,7 @@ export namespace dedicated {
          * SGX PRMRR value enum
          * type fullname: dedicated.server.BiosSettingsSgxPrmrrEnum
          */
-        export type BiosSettingsSgxPrmrrEnum = "128MB" | "256MB" | "32MB" | "64MB"
+        export type BiosSettingsSgxPrmrrEnum = "128" | "256" | "32" | "64"
         /**
          * SGX Status enum
          * type fullname: dedicated.server.BiosSettingsSgxStatusEnum
@@ -159,6 +159,15 @@ export namespace dedicated {
          */
         export interface BiosSettingsSupport {
             sgx: boolean;
+            sgxOptions: dedicated.server.BiosSettingsSupportSgxOptions;
+        }
+        /**
+         * A structure describing supported SGX options values
+         * interface fullName: dedicated.server.BiosSettingsSupportSgxOptions.BiosSettingsSupportSgxOptions
+         */
+        export interface BiosSettingsSupportSgxOptions {
+            prmrr: dedicated.server.BiosSettingsSgxPrmrrEnum[];
+            status: dedicated.server.BiosSettingsSgxStatusEnum[];
         }
         /**
          * Server boot mode
