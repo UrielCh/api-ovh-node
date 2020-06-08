@@ -1,6 +1,7 @@
 import { networkInterfaces } from 'os'
 import fse, { readFile, writeFile } from 'fs-extra'
 import ApiVps from '@ovh-api/vps'
+import ApiCloud from '@ovh-api/cloud'
 import Ovh from '@ovh-api/api'
 
 type DistName = 'centos' | 'debian';
@@ -20,7 +21,7 @@ async function main() {
   if (!networks)
     throw 'os.networkInterfaces() failed';
 
-  let ifaces = Object.keys(networks).filter((iface: string) => iface !== 'lo');
+  let ifaces = Object.keys(networks).filter((iface: string) => iface !== 'lo').filter((iface: string) => !~iface.indexOf(':'));
   if (ifaces.length != 1) {
     console.error(`Your host looks to have more than one non localhost interface. [${ifaces.join(',')}] Sorry can not deal with that.`);
     return;
@@ -38,35 +39,58 @@ async function main() {
   const hosts = await readFile('/etc/hosts', 'utf8');
   let serviceName = '';
 
+  // try to find a VPS name
   let m = hosts.match(/127.0.1.1\s+([a-z0-9]+\.ovh\.net)/);
   if (!m)
     m = hosts.match(/\s([a-z0-9]+\.ovh\.net)/);
   if (m) {
     serviceName = m[1];
   } else {
-    console.log('failed to identify host name from /etc/hosts contents');
+    console.log('Failed to identify host name from /etc/hosts contents, I can deal with it...');
   }
-
+  // distrib is debian or centOS ?
   const distrib: DistName = await identDist();
   console.log({ serviceName, mainIP, distrib });
   console.log('');
-  const accessRules: string = serviceName ? `GET /vps/${serviceName}/ips` : `GET /vps/*, GET /1.0/vps`
+  const accessRules: string = serviceName ? `GET /vps/${serviceName}/ips` : `GET /vps/*, GET /vps, GET /cloud/project, GET /cloud/project/*/instance, GET /cloud/project/*/ip/failover`
   let ovh = new Ovh({ accessRules });
-  const vps = ApiVps(ovh);
+  const apis = {
+    vps: ApiVps(ovh),
+    cloud: ApiCloud(ovh),
+  }
 
   let data: string[] = [];
   if (serviceName) {
-    data = await vps.$(serviceName).ips.$get();
+    data = await apis.vps.$(serviceName).ips.$get();
   } else {
-    let vpss = await vps.$get();
+    let vpss = await apis.vps.$get();
     console.log(`Scanning ${vpss.length} vps`);
-    const ips: string[][] = await Promise.all(vpss.map(serviceName => vps.$(serviceName).ips.$get()));
+    const ips: string[][] = await Promise.all(vpss.map(serviceName => apis.vps.$(serviceName).ips.$get()));
     for (let i = 0; i < vpss.length; i++) {
       if (!ips[i].find((e) => e == mainIP))
         continue;
       serviceName = vpss[i];
       data = ips[i];
       break;
+    }
+    if (!serviceName) {
+      const projects = await apis.cloud.project.$get();
+      console.log(`This host is not visible in your VPS, Scanning your ${projects.length} public cloud projects.`);
+      for (const project of projects) {
+        const instances = await apis.cloud.project.$(project).instance.$get();
+        console.log(`Cloud Project ${project} containing ${instances.length}`);
+        for (const instance of instances) {
+          if (!instance.ipAddresses.filter(b => b.ip === mainIP).length)
+            continue;
+          serviceName = instance.id;
+          const ips = await apis.cloud.project.$(project).ip.failover.$get();
+          data = ips.filter(ip => ip.routedTo === instance.id).map(ip => ip.block as string);
+          console.log(`Host identifyed as ${serviceName} from project ${project}`);
+          break;
+        }
+        if (serviceName)
+          break;
+      }
     }
   }
   if (!serviceName) {

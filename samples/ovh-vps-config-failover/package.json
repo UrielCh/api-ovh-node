@@ -26,12 +26,14 @@
   },
   "bugs": "https://github.com/UrielCh/api-ovh-node/issues",
   "scripts": {
+    "run": "npm run build && node index.js",
     "build": "tsc",
     "build:watch": "tsc --watch",
     "prepare": "npm run build"
   },
   "dependencies": {
     "@ovh-api/api": "^3.1.1",
+    "@ovh-api/cloud": "^3.1.3",
     "@ovh-api/vps": "^3.1.2",
     "fs-extra": "^9.0.0"
   },
