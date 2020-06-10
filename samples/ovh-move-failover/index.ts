@@ -136,7 +136,7 @@ async function main(source: string, dest: string) {
     t = new Date().getTime() - t;
     // console.log(`Moving ${toMove2.ip} => ${JSON.stringify(validDest)} Done in ${(t/1000).toFixed(1)} Sec`);
     console.log(`Moving ${toMove2.ip} => ${dest} Done in ${(t/1000).toFixed(1)} Sec`);
-  }, { concurrency: 10 });
+  }, { concurrency: 16 });
   if (noMovable.length) {
     console.log();
     console.log(`The folowing IP can not be move: ${noMovable.join(', ')}`)
