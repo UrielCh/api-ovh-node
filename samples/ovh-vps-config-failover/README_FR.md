@@ -12,8 +12,7 @@ nvm install node
 Configuration des IP-failover des OVH VPS sous Debian / CentOS
 
 ```bash
-npm install -g ovh-vps-config-failover
-ovh-vps-config-failover
+npx ovh-vps-config-failover gen
 ```
 
 ![ovh-vps-config-failover on vps](https://github.com/UrielCh/api-ovh-node/blob/master/samples/ressources/ovh-vps-config-failover.gif?raw=true "preview")

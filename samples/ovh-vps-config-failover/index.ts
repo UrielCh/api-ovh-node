@@ -2,9 +2,50 @@ import { networkInterfaces } from 'os'
 import fse, { readFile, writeFile } from 'fs-extra'
 import ApiVps from '@ovh-api/vps'
 import ApiCloud from '@ovh-api/cloud'
+import ApiIp from '@ovh-api/ip'
 import Ovh from '@ovh-api/api'
+import program from 'commander'
 
 type DistName = 'centos' | 'debian';
+
+/**
+ * @param iface Generate configuration files
+ * @param ipFo ip failover list
+ * @param distrib distribution
+ */
+async function displayConf(iface: string, ipFo: string[], distrib?: DistName) {
+  if (!distrib)
+    distrib = await identDist();
+  if (distrib === 'debian') {
+    const confs = ipFo.map((ip, i) => `auto ${iface}:${i}
+iface ${iface}:${i + 1} inet static
+address ${ip}
+netmask 255.255.255.255
+broadcast ${ip}
+`);
+    await writeFile('51-fo', confs.join('\n'), { mode: 0o644 })
+    console.log('51-fo Generated')
+    console.log('')
+    console.log('mv 51-fo  /etc/network/interfaces.d/')
+    console.log('service networking restart')
+  } else if (distrib === 'centos') {
+    const confs = ipFo.map((ip, i) => `DEVICE="${iface}:${i}"
+BOOTPROTO=static
+IPADDR="${ip}"
+NETMASK="255.255.255.255"
+BROADCAST="${ip}"
+ONBOOT=yes   
+`);
+    for (let i = 0; i < confs.length; i++) {
+      await writeFile(`ifcfg-${iface}:${i}`, confs[i], { mode: 0o644 });
+    }
+    console.log(`ifcfg-${iface}:* Generated`)
+    console.log('')
+    console.log(`mv ifcfg-${iface}:* /etc/sysconfig/network-scripts/`)
+    for (let i = 0; i < confs.length; i++)
+      console.log(`ifup ifcfg-${iface}:${i}`);
+  }
+}
 
 async function identDist(): Promise<DistName> {
   let list = (await fse.readdir('/etc'))
@@ -16,15 +57,13 @@ async function identDist(): Promise<DistName> {
   return 'debian';
 }
 
-async function main() {
+async function detectNetwork(): Promise<{mainIP: string, iface: string}> {
   const networks = networkInterfaces()
   if (!networks)
     throw 'os.networkInterfaces() failed';
-
   let ifaces = Object.keys(networks).filter((iface: string) => iface !== 'lo').filter((iface: string) => !~iface.indexOf(':'));
   if (ifaces.length != 1) {
-    console.error(`Your host looks to have more than one non localhost interface. [${ifaces.join(',')}] Sorry can not deal with that.`);
-    return;
+    throw Error(`Your host looks to have more than one non localhost interface. [${ifaces.join(',')}] Sorry can not deal with that.`);
   }
   const iface = ifaces[0];
   const network = networks[iface];
@@ -35,6 +74,24 @@ async function main() {
   if (!mainIP)
     throw `No ${iface} has no IPv4`;
   console.log(`Your main IP is ${mainIP}`)
+  return {mainIP, iface};
+}
+
+async function genAllFailover() {
+  const { iface } = await detectNetwork();
+  const accessRules: string = `GET /ip, GET /ip/*`;
+  let ovh = new Ovh({ accessRules });
+  const apis = {
+    ip: ApiIp(ovh),
+  }
+  const ipFo = await apis.ip.$get({type: 'failover'});
+  console.log(`TOTAL FailOver: ${ipFo.length}`)
+  await displayConf(iface, ipFo);
+}
+
+async function genFailover() {
+  const {mainIP, iface} = await detectNetwork();
+
   // search hostname in /etc/hosts
   const hosts = await readFile('/etc/hosts', 'utf8');
   let serviceName = '';
@@ -102,35 +159,19 @@ async function main() {
     return;
   }
   console.log(`TOTAL IP: ${data.length} FailOver: ${ipFo.length}`)
-
-  if (distrib === 'debian') {
-    const confs = ipFo.map((ip, i) => `auto ${iface}:${i}
-iface ${iface}:${i + 1} inet static
-address ${ip}
-netmask 255.255.255.255
-broadcast ${ip}
-`);
-    await writeFile('51-fo', confs.join('\n'), { mode: 0o644 })
-    console.log('51-fo Generated')
-    console.log('')
-    console.log('mv 51-fo  /etc/network/interfaces.d/')
-    console.log('service networking restart')
-  } else if (distrib === 'centos') {
-    const confs = ipFo.map((ip, i) => `DEVICE="${iface}:${i}"
-BOOTPROTO=static
-IPADDR="${ip}"
-NETMASK="255.255.255.255"
-BROADCAST="${ip}"
-ONBOOT=yes   
-`);
-    for (let i = 0; i < confs.length; i++) {
-      await writeFile(`ifcfg-${iface}:${i}`, confs[i], { mode: 0o644 });
-    }
-    console.log(`ifcfg-${iface}:* Generated`)
-    console.log('')
-    console.log(`mv ifcfg-${iface}:* /etc/sysconfig/network-scripts/`)
-    for (let i = 0; i < confs.length; i++)
-      console.log(`ifup ifcfg-${iface}:${i}`);
-  }
+  await displayConf(iface, ipFo, distrib);
 }
-main().catch(console.error);
+const { version } = require('./package.json');
+
+program.version(version)
+  .description('Generate Failover configuration files for your server.');
+
+program.command('catch-all')
+  .description('Configure this host to handle all of your failover IPs.  (Only use this option if you know what you are doing)')
+  .action(genAllFailover);
+
+program.command('gen')
+  .description('Configure this host to handle his failover IPs.')
+  .action(genFailover);
+
+program.parse();
