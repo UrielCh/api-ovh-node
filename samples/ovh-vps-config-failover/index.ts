@@ -10,6 +10,7 @@ import IPCIDR from "ip-cidr";
 interface Option {
   verbose?: boolean,
   cert?: string
+  interface?: string
 };
 
 type DistName = 'centos' | 'debian';
@@ -99,13 +100,16 @@ async function identDist(): Promise<DistName> {
   return 'debian';
 }
 
-async function detectNetwork(): Promise<{mainIP: string, iface: string}> {
+async function detectNetwork(options: Option): Promise<{mainIP: string, iface: string}> {
   const networks = networkInterfaces()
   if (!networks)
     throw 'os.networkInterfaces() failed';
   let ifaces = Object.keys(networks).filter((iface: string) => iface !== 'lo').filter((iface: string) => !~iface.indexOf(':'));
+  if (ifaces.length != 1 && options.interface) {
+    ifaces = ifaces.filter(n => n === options.interface);
+  }
   if (ifaces.length != 1) {
-    throw Error(`Your host looks to have more than one non localhost interface. [${ifaces.join(',')}] Sorry can not deal with that.`);
+    throw Error(`Your host looks to have more than one non localhost interface. [${ifaces.join(',')}] Sorry can not deal with that. use -i param to git the rigth value.`);
   }
   const iface = ifaces[0];
   const network = networks[iface];
@@ -124,7 +128,7 @@ let _option: Option = {};
 
 async function genAllFailover(options: Option) {  
   _option = options;
-  const { iface } = await detectNetwork();
+  const { iface } = await detectNetwork(options);
   const accessRules: string = `GET /ip, GET /ip/*`;
   let ovh = new Ovh({ accessRules, certCache: _option.cert });
   const apis = {
@@ -138,7 +142,7 @@ async function genAllFailover(options: Option) {
 
 async function genFailover(options: Option) {
   _option = options;
-  const {mainIP, iface} = await detectNetwork();
+  const {mainIP, iface} = await detectNetwork(options);
 
   // search hostname in /etc/hosts
   const hosts = await readFile('/etc/hosts', 'utf8');
@@ -217,12 +221,14 @@ program.version(version)
 
 program.command('catch-all')
   .description('Configure this host to handle all of your failover IPs.  (Only use this option if you know what you are doing)')
+  .option('-i, --interface', 'force interface name if auto detection failed')
   .option('-v, --verbose', 'generate verbose alias name instead of number')
   .option('-c, --cert <cache file>', 'stoge certificat in a file')
   .action(genAllFailover);
 
 program.command('gen')
   .description('Configure this host to handle his failover IPs.')
+  .option('-i, --interface', 'force interface name if auto detection failed')
   .option('-v, --verbose', 'generate verbose alias name instead of number')
   .option('-c, --cert <cache file>', 'stoge certificat in a file')
   .action(genFailover);
