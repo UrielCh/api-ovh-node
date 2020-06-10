@@ -158,7 +158,7 @@ async function genFailover(options: Option) {
   console.log({ serviceName, mainIP, distrib });
   console.log('');
   const accessRules: string = serviceName ? `GET /vps/${serviceName}/ips` : `GET /vps/*, GET /vps, GET /cloud/project, GET /cloud/project/*/instance, GET /cloud/project/*/ip/failover`
-  let ovh = new Ovh({ accessRules });
+  let ovh = new Ovh({ accessRules, certCache: _option.cert });
   const apis = {
     vps: ApiVps(ovh),
     cloud: ApiCloud(ovh),
