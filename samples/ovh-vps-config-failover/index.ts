@@ -5,8 +5,23 @@ import ApiCloud from '@ovh-api/cloud'
 import ApiIp from '@ovh-api/ip'
 import Ovh from '@ovh-api/api'
 import program from 'commander'
+import IPCIDR from "ip-cidr";
 
 type DistName = 'centos' | 'debian';
+
+function extendIPCCIDR(ips: string[]) {
+  const ipOut = [] as string[];
+  for (const ip of ips) {
+    if (!~ip.indexOf('/')) {
+      ipOut.push(ip);
+    } else {
+      const cidr = new IPCIDR(ip);
+      for (const ip0 of cidr.toArray())
+        ipOut.push(ip0);
+    }
+  }
+  return ipOut;
+}
 
 /**
  * @param iface Generate configuration files
@@ -84,8 +99,9 @@ async function genAllFailover() {
   const apis = {
     ip: ApiIp(ovh),
   }
-  const ipFo = await apis.ip.$get({type: 'failover'});
-  console.log(`TOTAL FailOver: ${ipFo.length}`)
+  let ipFo = await apis.ip.$get({type: 'failover'});
+  ipFo = extendIPCCIDR(ipFo);
+  console.log(`TOTAL FailOver: ${ipFo.length}`);
   await displayConf(iface, ipFo);
 }
 
@@ -153,11 +169,12 @@ async function genFailover() {
   if (!serviceName) {
     throw Error('failed to serviceName');
   }
-  const ipFo: string[] = data.filter(a => a != mainIP).filter(a => !~a.indexOf(':'))
+  let ipFo: string[] = data.filter(a => a != mainIP).filter(a => !~a.indexOf(':'))
   if (!ipFo.length) {
     console.log(`no ip Failover for ${serviceName} nothink to do.`)
     return;
   }
+  ipFo = extendIPCCIDR(ipFo);
   console.log(`TOTAL IP: ${data.length} FailOver: ${ipFo.length}`)
   await displayConf(iface, ipFo, distrib);
 }
