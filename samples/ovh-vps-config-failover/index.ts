@@ -7,6 +7,11 @@ import Ovh from '@ovh-api/api'
 import program from 'commander'
 import IPCIDR from "ip-cidr";
 
+interface Option {
+  verbose?: boolean,
+  cert?: string
+};
+
 type DistName = 'centos' | 'debian';
 
 function extendIPCCIDR(ips: string[]) {
@@ -22,6 +27,18 @@ function extendIPCCIDR(ips: string[]) {
   }
   return ipOut;
 }
+/**
+ * return 1,2,3... in default mode
+ * or return ip as hexa string in verbose mode
+ * @param ip 
+ * @param i 
+ * 
+ */
+function ipPos2Alias(ip: string, i: number): string{
+  if (!_option.verbose)
+    return `${i}`;
+  return ip.split('.').map(i=>Number(i).toString(16).padStart(2, '0')).join('');
+}
 
 /**
  * @param iface Generate configuration files
@@ -31,34 +48,44 @@ function extendIPCCIDR(ips: string[]) {
 async function displayConf(iface: string, ipFo: string[], distrib?: DistName) {
   if (!distrib)
     distrib = await identDist();
+    
   if (distrib === 'debian') {
-    const confs = ipFo.map((ip, i) => `auto ${iface}:${i}
-iface ${iface}:${i + 1} inet static
+    const confs = ipFo.map((ip, i) => {
+      const alias = `${iface}:${ipPos2Alias(ip, i)}`;
+      return `auto ${alias}
+iface ${alias} inet static
 address ${ip}
 netmask 255.255.255.255
 broadcast ${ip}
-`);
+`});
     await writeFile('51-fo', confs.join('\n'), { mode: 0o644 })
     console.log('51-fo Generated')
     console.log('')
     console.log('mv 51-fo  /etc/network/interfaces.d/')
     console.log('service networking restart')
-  } else if (distrib === 'centos') {
-    const confs = ipFo.map((ip, i) => `DEVICE="${iface}:${i}"
+    return;
+  }
+  if (distrib === 'centos') {
+    const confs = ipFo.map((ip, i) => {
+      const alias = `${iface}:${ipPos2Alias(ip, i)}`;
+      const content = `DEVICE="${alias}"
 BOOTPROTO=static
 IPADDR="${ip}"
 NETMASK="255.255.255.255"
 BROADCAST="${ip}"
 ONBOOT=yes   
-`);
-    for (let i = 0; i < confs.length; i++) {
-      await writeFile(`ifcfg-${iface}:${i}`, confs[i], { mode: 0o644 });
+`;
+      return {alias, content};
+    });
+    for (const conf of confs) {
+      await writeFile(`ifcfg-${conf.alias}`, conf.content, { mode: 0o644 });
     }
-    console.log(`ifcfg-${iface}:* Generated`)
-    console.log('')
-    console.log(`mv ifcfg-${iface}:* /etc/sysconfig/network-scripts/`)
-    for (let i = 0; i < confs.length; i++)
-      console.log(`ifup ifcfg-${iface}:${i}`);
+    console.log(`ifcfg-${iface}:* Generated`);
+    console.log('');
+    console.log(`mv ifcfg-${iface}:* /etc/sysconfig/network-scripts/`);
+    for (const conf of confs) {
+      console.log(`ifup ifcfg-${conf.alias}`);
+    }
   }
 }
 
@@ -92,10 +119,14 @@ async function detectNetwork(): Promise<{mainIP: string, iface: string}> {
   return {mainIP, iface};
 }
 
-async function genAllFailover() {
+
+let _option: Option = {};
+
+async function genAllFailover(options: Option) {  
+  _option = options;
   const { iface } = await detectNetwork();
   const accessRules: string = `GET /ip, GET /ip/*`;
-  let ovh = new Ovh({ accessRules });
+  let ovh = new Ovh({ accessRules, certCache: _option.cert });
   const apis = {
     ip: ApiIp(ovh),
   }
@@ -105,7 +136,8 @@ async function genAllFailover() {
   await displayConf(iface, ipFo);
 }
 
-async function genFailover() {
+async function genFailover(options: Option) {
+  _option = options;
   const {mainIP, iface} = await detectNetwork();
 
   // search hostname in /etc/hosts
@@ -185,10 +217,15 @@ program.version(version)
 
 program.command('catch-all')
   .description('Configure this host to handle all of your failover IPs.  (Only use this option if you know what you are doing)')
+  .option('-v, --verbose', 'generate verbose alias name instead of number')
+  .option('-c, --cert <cache file>', 'stoge certificat in a file')
   .action(genAllFailover);
 
 program.command('gen')
   .description('Configure this host to handle his failover IPs.')
+  .option('-v, --verbose', 'generate verbose alias name instead of number')
+  .option('-c, --cert <cache file>', 'stoge certificat in a file')
   .action(genFailover);
 
 program.parse();
+
