@@ -86,8 +86,10 @@ const commonGet = (key: string, target: OvhProxyApi) => {
     if (key.startsWith('$')) {
         // give parameter in path
         if (key === '$') {
-            return (id: any) => {
-                const child = new OvhProxyApi(target._ovhEngine, `${target._path}/${id}`, `${target._model}/*`);
+            return (id: string | number) => {
+                // escape '/' char
+                const idStr = String(id).replace(/\//g, '%2F');
+                const child = new OvhProxyApi(target._ovhEngine, `${target._path}/${idStr}`, `${target._model}/*`);
                 return new Proxy(child, handlerChild);
             }
         }

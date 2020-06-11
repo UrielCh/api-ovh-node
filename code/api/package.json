@@ -12,7 +12,7 @@
   "license": "MIT",
   "author": "Uriel Chemouni <uchemouni@gmail.com>",
   "dependencies": {
-    "@ovh-api/common": "^3.1.1",
+    "@ovh-api/common": "^3.1.2",
     "open": "^7.0.3"
   },
   "devDependencies": {

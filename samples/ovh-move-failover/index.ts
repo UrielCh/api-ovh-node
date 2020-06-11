@@ -3,7 +3,7 @@ import Ovh from '@ovh-api/api'
 import Bluebird from 'bluebird';
 import program from 'commander';
 
-let api: Ip;
+let apiIP: Ip;
 
 async function getValiDest(toMove: ip.Ip[]): Promise<ip.Destination[]> {
   console.log(`You select ${toMove.length} ip for migration:`);
@@ -12,7 +12,7 @@ async function getValiDest(toMove: ip.Ip[]): Promise<ip.Destination[]> {
   let dests: ip.Destinations | undefined;;
   for (const theIp of toMove) {
     try {
-      dests = await api.$(theIp.ip.replace(/\//g, '%2F')).move.$get();
+      dests = await apiIP.$(theIp.ip.replace(/\//g, '%2F')).move.$get();
       break;
     } catch (e) {
       // some IP cause Error 500
@@ -54,8 +54,8 @@ async function indexDestination(dests2: ip.Destination[]) {
 }
 
 async function indexSource(): Promise<{ [key: string]: ip.Ip[] }> {
-  const allIps = await api.$get();
-  const datas = await Bluebird.map(allIps, ip => api.$(ip.replace(/\//g, '%2F')).$get().catch(() => null), { concurrency: 20 });
+  const allIps = await apiIP.$get();
+  const datas = await Bluebird.map(allIps, ip => apiIP.$(ip.replace(/\//g, '%2F')).$get().catch(() => null), { concurrency: 20 });
   let indexed = {} as { [key: string]: ip.Ip[] };
   for (const data of datas) {
     if (!data)
@@ -76,12 +76,13 @@ async function main(source: string, dest: string) {
   console.log(`Migrate ${source} to ${dest}`);
   const accessRules = `GET /ip, GET /ip/*, POST /ip/*/move, GET /ip/*/move`
   let ovh = new Ovh({ accessRules, certCache: program.cache });
-  api = ApiIp(ovh);
+  apiIP = ApiIp(ovh);
   const indexed = await indexSource();
   const toMove = indexed[source];
   if (!toMove) {
-    if (source)
+    if (source) {
       console.log(`Can not find source: ${source}`);
+    }
     console.log(`available sources are:`);
     for (const key of Object.keys(indexed)) {
       console.log(`- ${key} (constains ${indexed[key].length} IP)`)
@@ -107,7 +108,7 @@ async function main(source: string, dest: string) {
     let t = new Date().getTime();
     let task: ip.IpTask;
     try {
-      task = await api.$(ip).move.$post(validDest);
+      task = await apiIP.$(ip).move.$post(validDest);
       console.log(`Start Moving ${toMove2.ip} to ${dest}`);
     } catch (e) {
       noMovable.push(toMove2.ip);
@@ -116,7 +117,7 @@ async function main(source: string, dest: string) {
     while (true) {
         await Bluebird.delay(1000);
         try {
-          task = await api.$(ip).task.$(task.taskId).$get();
+          task = await apiIP.$(ip).task.$(task.taskId).$get();
         } catch (e) {
           // if task not found should be done.
           break;

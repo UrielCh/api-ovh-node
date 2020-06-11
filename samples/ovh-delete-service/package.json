@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@ovh-api/api": "^3.1.1",
-    "@ovh-api/common": "^3.1.1",
+    "@ovh-api/common": "^3.1.2",
     "@ovh-api/me": "^3.1.2",
     "@ovh-api/telephony": "^3.1.2",
     "bluebird": "^3.7.2",

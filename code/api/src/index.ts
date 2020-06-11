@@ -379,7 +379,7 @@ by default I will ask for all rights`);
      * @param pathTemplate: The request path template
      * @param params: The request parameters (passed as query string or body params)
      */
-    public async doRequest(httpMethod: string, path: string, pathTemplate: string, params?: any): Promise<any> {
+    public async doRequest(httpMethod: string, path: string, pathTemplate: string, params?: {[key:string]: any}): Promise<any> {
         httpMethod = httpMethod.toUpperCase();
         let size = 0;
         /**

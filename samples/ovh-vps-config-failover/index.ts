@@ -106,7 +106,7 @@ async function detectNetwork(options: Option): Promise<{mainIP: string, iface: s
     throw 'os.networkInterfaces() failed';
   let ifaces = Object.keys(networks).filter((iface: string) => iface !== 'lo').filter((iface: string) => !~iface.indexOf(':'));
   if (ifaces.length != 1 && options.interface) {
-    ifaces = ifaces.filter(n => n === options.interface);
+    ifaces = [ options.interface ];
   }
   if (ifaces.length != 1) {
     throw Error(`Your host looks to have more than one non localhost interface. [${ifaces.join(',')}] Sorry can not deal with that. use -i param to git the rigth value.`);
@@ -221,14 +221,14 @@ program.version(version)
 
 program.command('catch-all')
   .description('Configure this host to handle all of your failover IPs.  (Only use this option if you know what you are doing)')
-  .option('-i, --interface', 'force interface name if auto detection failed')
+  .option('-i, --interface <inet>', 'force interface name if auto detection failed')
   .option('-v, --verbose', 'generate verbose alias name instead of number')
   .option('-c, --cert <cache file>', 'stoge certificat in a file')
   .action(genAllFailover);
 
 program.command('gen')
   .description('Configure this host to handle his failover IPs.')
-  .option('-i, --interface', 'force interface name if auto detection failed')
+  .option('-i, --interface <inet>', 'force interface name if auto detection failed')
   .option('-v, --verbose', 'generate verbose alias name instead of number')
   .option('-c, --cert <cache file>', 'stoge certificat in a file')
   .action(genFailover);
