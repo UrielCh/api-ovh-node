@@ -1,18 +1,116 @@
-import ApiIp, { ip, Ip } from '@ovh-api/ip'
-import Ovh from '@ovh-api/api'
+import ApiIp, { coreTypes, ip, Ip } from '@ovh-api/ip';
+import ApiCloud, { Cloud } from '@ovh-api/cloud';
+import ApiVps, { Vps } from '@ovh-api/vps';
+import Ovh from '@ovh-api/api';
 import Bluebird from 'bluebird';
 import program from 'commander';
 
-let apiIP: Ip;
 
-async function getValiDest(toMove: ip.Ip[]): Promise<ip.Destination[]> {
-  console.log(`You select ${toMove.length} ip for migration:`);
-  console.log(`${toMove.map(b => b.ip).join(', ')}`);
+const accessRules = `GET /ip, GET /ip/*, POST /ip/*/move, GET /ip/*/move, GET /cloud/project/*, GET /cloud/project/*/ip/failover, GET /cloud/project, GET /vps/*`
+
+let api: {
+  ip: Ip;
+  cloud: Cloud;
+  vps: Vps;
+}
+
+
+interface IPSelection {
+  key: string,
+  desc: string,
+  // to: string;
+  // nexthop?: string;
+  ips: ip.Ip[];
+}
+
+/**
+ * find all IP sources
+ */
+async function indexSource(): Promise<{ [key: string]: IPSelection }> {
+  const allIps = await api.ip.$get();
+  console.log (`find ${allIps.length} IP clock`)
+  const datas = await Bluebird.map(allIps, async (ip) => {
+    try {
+      return await api.ip.$(ip).$get()
+    } catch (e) {
+      // console.log(e);
+    }
+  }, { concurrency: 20 });
+  let indexed = {} as { [key: string]: IPSelection };
+  // console.log (datas)  
+
+  api.cloud.project.$get();
+
+  const datas2 = datas.filter(a=>a) as ip.Ip[];
+  await Bluebird.map(datas2, async (data: ip.Ip) => {
+    let routedTo = '';
+    if (data.routedTo)
+      routedTo = data.routedTo.serviceName || '';
+    if (!indexed[routedTo]) {
+      indexed[routedTo] = {
+        key: routedTo,
+        desc: '',
+        ips: [],
+      }
+      let extraDesc = '';
+      if (data.type === 'vps') {
+        const extra = await api.vps.$(routedTo).$get();
+        extraDesc = extra.displayName || extra.name;
+        extraDesc += ' ';
+      }
+      if (data.type === 'cloud') {
+        const extra = await api.cloud.project.$(routedTo).$get();
+        extraDesc = extra.description || extra.project_id;
+        extraDesc += ' ';
+      }
+      indexed[routedTo].desc =`${extraDesc}${data.type} IP`;
+    }
+    indexed[routedTo].ips.push(data);
+    // indexed[data.ip] = [data];
+  }, {concurrency: 10});
+  // console.log (Object.keys(indexed))  
+  console.log (`Start indexing public cloud`)
+
+  const cloudProjects = await api.cloud.project.$get();
+  const cloudProjectsIPss = await Bluebird.map(cloudProjects, project => api.cloud.project.$(project).ip.failover.$get(), { concurrency: 10 });
+  for (let i=0; i<cloudProjects.length; i++) {
+    const item = i;
+    await Bluebird.map(cloudProjectsIPss[i], async cloudProjectsIP => {
+      let routedTo = cloudProjectsIP.routedTo;
+      if (!cloudProjectsIP.ip)
+        return;
+      const data: ip.Ip = {
+        canBeTerminated: false,
+        country: cloudProjectsIP.geoloc as coreTypes.CountryEnum,
+        ip: cloudProjectsIP.ip,
+        routedTo: {serviceName: cloudProjectsIP.id,},
+        type: 'cloud',
+      }
+      if (!indexed[routedTo]) {
+        const projectId = cloudProjects[item];
+        indexed[routedTo] = {
+          key: routedTo,
+          desc: '',
+          ips: [],
+        }
+        const instance = await api.cloud.project.$(projectId).instance.$(routedTo).$get();
+        indexed[routedTo].desc = `public cloud ${cloudProjects} Instance ${instance.name}`;        
+      }
+      indexed[routedTo].ips.push(data);
+    }, {concurrency: 10})
+  }
+  return indexed;
+}
+
+
+async function getValiDest(toMove: IPSelection): Promise<ip.Destination[]> {
+  console.log(`You select ${toMove.ips.length} ip for migration:`);
+  console.log(`${toMove.ips.map(b => b.ip).join(', ')}`);
   console.log();
   let dests: ip.Destinations | undefined;;
-  for (const theIp of toMove) {
+  for (const theIp of toMove.ips) {
     try {
-      dests = await apiIP.$(theIp.ip.replace(/\//g, '%2F')).move.$get();
+      dests = await api.ip.$(theIp.ip).move.$get();
       break;
     } catch (e) {
       // some IP cause Error 500
@@ -53,30 +151,20 @@ async function indexDestination(dests2: ip.Destination[]) {
   return indexedDest
 }
 
-async function indexSource(): Promise<{ [key: string]: ip.Ip[] }> {
-  const allIps = await apiIP.$get();
-  const datas = await Bluebird.map(allIps, ip => apiIP.$(ip.replace(/\//g, '%2F')).$get().catch(() => null), { concurrency: 20 });
-  let indexed = {} as { [key: string]: ip.Ip[] };
-  for (const data of datas) {
-    if (!data)
-      continue;
-    let routedTo = '';
-    if (data.routedTo)
-      routedTo = data.routedTo.serviceName || '';
-    if (indexed[routedTo])
-      indexed[routedTo].push(data);
-    else
-      indexed[routedTo] = [data];
-    indexed[data.ip] = [data];
-  }
-  return indexed;
-}
-
 async function main(source: string, dest: string) {
-  console.log(`Migrate ${source} to ${dest}`);
-  const accessRules = `GET /ip, GET /ip/*, POST /ip/*/move, GET /ip/*/move`
+  if (!source)
+    console.log('Listing all IP sopurces');
+  else if (!dest)
+    console.log(`List destination fo migrate ${source}`);
+  else
+    console.log(`Migrate ${source} to ${dest}`);
+
   let ovh = new Ovh({ accessRules, certCache: program.cache });
-  apiIP = ApiIp(ovh);
+  api = {
+    ip: ApiIp(ovh),
+    cloud: ApiCloud(ovh),
+    vps: ApiVps(ovh),
+  }
   const indexed = await indexSource();
   const toMove = indexed[source];
   if (!toMove) {
@@ -85,7 +173,7 @@ async function main(source: string, dest: string) {
     }
     console.log(`available sources are:`);
     for (const key of Object.keys(indexed)) {
-      console.log(`- ${key} (constains ${indexed[key].length} IP)`)
+      console.log(`- ${key} (${indexed[key].desc}) constains ${indexed[key].ips.length} IPs`)
     }
     process.exit(1);
   }
@@ -103,12 +191,12 @@ async function main(source: string, dest: string) {
     return;
   }
   const noMovable = [] as string[];
-  await Bluebird.map(toMove, async (toMove2: ip.Ip) => {
-    const ip = toMove2.ip.replace(/\//g, '%2F');
+  await Bluebird.map(toMove.ips, async (toMove2: ip.Ip) => {
+    // const ip = toMove2.ip;
     let t = new Date().getTime();
     let task: ip.IpTask;
     try {
-      task = await apiIP.$(ip).move.$post(validDest);
+      task = await api.ip.$(toMove2.ip).move.$post(validDest);
       console.log(`Start Moving ${toMove2.ip} to ${dest}`);
     } catch (e) {
       noMovable.push(toMove2.ip);
@@ -117,7 +205,7 @@ async function main(source: string, dest: string) {
     while (true) {
         await Bluebird.delay(1000);
         try {
-          task = await apiIP.$(ip).task.$(task.taskId).$get();
+          task = await api.ip.$(toMove2.ip).task.$(task.taskId).$get();
         } catch (e) {
           // if task not found should be done.
           break;
