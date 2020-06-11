@@ -33,7 +33,7 @@ if you have a lots of call with the same prefix ex:
 you can factorize thoses call like this:
 
 ```typescript
-const alertApi = dbaas.logs.$(serviceName)/output/graylog/stream/(streamId)/alert
+const alertApi = dbaas.logs.$(serviceName).output.graylog.stream.$(streamId).alert;
 const ids = await alertApi.$get();
 if (ids.length) {
     const alert = await alertApi.$(ids[0]).$get();

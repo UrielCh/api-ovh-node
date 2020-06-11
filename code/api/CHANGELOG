@@ -1,3 +1,5 @@
+V 3.1.2
+- add escape character '/' whene used in query parameter params
 V 3.1.1
 - Fix bug in cache activation.
 V 3.1.0
