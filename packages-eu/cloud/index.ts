@@ -367,8 +367,20 @@ export namespace cloud {
      */
     export interface ProjectKubeCreation {
         name?: string;
+        nodepool?: cloud.ProjectKubeCreationNodePool;
         region: cloud.kube.RegionEnum;
         version?: cloud.kube.VersionEnum;
+    }
+    /**
+     * Missing description
+     * interface fullName: cloud.ProjectKubeCreationNodePool.ProjectKubeCreationNodePool
+     */
+    export interface ProjectKubeCreationNodePool {
+        desiredNodes?: number;
+        flavorName?: string;
+        maxNodes?: number;
+        minNodes?: number;
+        name?: string;
     }
     /**
      * Missing description
@@ -1542,7 +1554,7 @@ export namespace cloud {
          * Enum values for Status
          * type fullname: cloud.kube.ClusterStatusEnum
          */
-        export type ClusterStatusEnum = "INSTALLING" | "UPDATING" | "RESETTING" | "SUSPENDING" | "REOPENING" | "DELETING" | "SUSPENDED" | "MAINTENANCE" | "ERROR" | "USER_ERROR" | "USER_QUOTA_ERROR" | "READY"
+        export type ClusterStatusEnum = "INSTALLING" | "UPDATING" | "REDEPLOYING" | "RESETTING" | "SUSPENDING" | "REOPENING" | "DELETING" | "SUSPENDED" | "MAINTENANCE" | "ERROR" | "USER_ERROR" | "USER_QUOTA_ERROR" | "READY"
         /**
          * a flavor kind
          * interface fullName: cloud.kube.Flavor.Flavor
@@ -2071,6 +2083,16 @@ export namespace cloud {
                  */
                 export type APIStatusEnum = "pending" | "starting" | "running" | "scaling" | "waking" | "sleeping"
                 /**
+                 * Autoscaling specification
+                 * interface fullName: cloud.project.ai.serving.AutoscalingSpec.AutoscalingSpec
+                 */
+                export interface AutoscalingSpec {
+                    cpuAverageUtilization?: number;
+                    maxReplicas?: number;
+                    memoryAverageUtilization?: number;
+                    minReplicas?: number;
+                }
+                /**
                  * Compute Flavor for the Serving Engine
                  * interface fullName: cloud.project.ai.serving.Flavor.Flavor
                  */
@@ -2114,6 +2136,7 @@ export namespace cloud {
                  * interface fullName: cloud.project.ai.serving.ModelDefinition.ModelDefinition
                  */
                 export interface ModelDefinition {
+                    autoscalingSpec?: cloud.project.ai.serving.AutoscalingSpec;
                     flavor: string;
                     id: string;
                     imageId?: string;
@@ -3326,7 +3349,7 @@ export interface Cloud {
                              * Create a new model
                              * POST /cloud/project/{serviceName}/ai/serving/{namespaceId}/model
                              */
-                            $post(params: { flavor: string, id: string, imageId?: string, storagePath?: string, workflowTemplate?: cloud.project.ai.serving.WorkflowTemplateEnum }): Promise<cloud.project.ai.serving.Model>;
+                            $post(params: { autoscalingSpec?: cloud.project.ai.serving.AutoscalingSpec, flavor: string, id: string, imageId?: string, storagePath?: string, workflowTemplate?: cloud.project.ai.serving.WorkflowTemplateEnum }): Promise<cloud.project.ai.serving.Model>;
                             /**
                              * Controle cache
                              */
@@ -3506,6 +3529,30 @@ export interface Cloud {
                      * Controle cache
                      */
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+                kube: {
+                    flavors: {
+                        /**
+                         * List Kubernetes available flavors for a region
+                         * GET /cloud/project/{serviceName}/capabilities/kube/flavors
+                         */
+                        $get(params?: { region?: cloud.kube.RegionEnum }): Promise<cloud.kube.Flavor[]>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    }
+                    regions: {
+                        /**
+                         * List Kubernetes available regions
+                         * GET /cloud/project/{serviceName}/capabilities/kube/regions
+                         */
+                        $get(): Promise<cloud.kube.RegionEnum[]>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    }
                 }
                 loadbalancer: {
                     region: {
@@ -4283,7 +4330,7 @@ export interface Cloud {
                  * Create a new managed Kubernetes cluster
                  * POST /cloud/project/{serviceName}/kube
                  */
-                $post(params: { name?: string, region: cloud.kube.RegionEnum, version?: cloud.kube.VersionEnum }): Promise<cloud.kube.Cluster>;
+                $post(params: { name?: string, nodepool?: cloud.ProjectKubeCreationNodePool, region: cloud.kube.RegionEnum, version?: cloud.kube.VersionEnum }): Promise<cloud.kube.Cluster>;
                 /**
                  * Controle cache
                  */

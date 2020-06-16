@@ -49,6 +49,16 @@ export namespace ovhcloudconnect {
         status: ovhcloudconnect.interf.StatusEnum;
     }
     /**
+     * OVHcloud Connect Service Key
+     * interface fullName: ovhcloudconnect.Key.Key
+     */
+    export interface Key {
+        id: number;
+        key: string;
+        provider: ovhcloudconnect.key.ProviderEnum;
+        status: ovhcloudconnect.key.StatusEnum;
+    }
+    /**
      * OVHcloud Connect Service Pop Configuration
      * interface fullName: ovhcloudconnect.PopConfig.PopConfig
      */
@@ -60,6 +70,13 @@ export namespace ovhcloudconnect {
         status: ovhcloudconnect.popConfig.StatusEnum;
         subnet: string;
         type: ovhcloudconnect.popConfig.TypeEnum;
+    }
+    /**
+     * OVHcloud Connect send key answer
+     * interface fullName: ovhcloudconnect.SendKeyAnswer.SendKeyAnswer
+     */
+    export interface SendKeyAnswer {
+        messageCode: ovhcloudconnect.messageCode.Enum;
     }
     /**
      * OVHcloud Connect Service
@@ -87,6 +104,13 @@ export namespace ovhcloudconnect {
         status: ovhcloudconnect.task.StatusEnum;
     }
     /**
+     * OVHcloud Connect email
+     * interface fullName: ovhcloudconnect.To.To
+     */
+    export interface To {
+        email: string;
+    }
+    /**
      * Missing description
      * interface fullName: ovhcloudconnect.Update.Update
      */
@@ -111,6 +135,25 @@ export namespace ovhcloudconnect {
          * type fullname: ovhcloudconnect.interf.StatusEnum
          */
         export type StatusEnum = "enabled" | "disabled"
+    }
+    export namespace key {
+        /**
+         * Enum values for service key provider
+         * type fullname: ovhcloudconnect.key.ProviderEnum
+         */
+        export type ProviderEnum = "megaport" | "equinix" | "internal"
+        /**
+         * Enum values for service key status
+         * type fullname: ovhcloudconnect.key.StatusEnum
+         */
+        export type StatusEnum = "doing" | "active" | "cancelled" | "terminated" | "toCheck"
+    }
+    export namespace messageCode {
+        /**
+         * Enum values for messageCode
+         * type fullname: ovhcloudconnect.messageCode.Enum
+         */
+        export type Enum = "mailSent"
     }
     export namespace popConfig {
         /**
@@ -455,6 +498,50 @@ export interface OvhCloudConnect {
              * Controle cache
              */
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        }
+        serviceKey: {
+            /**
+             * Get Keys linked to a OVHcloud Connect Service
+             * GET /ovhCloudConnect/{serviceName}/serviceKey
+             */
+            $get(): Promise<number[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            $(serviceKeyId: number): {
+                /**
+                 * Get Key linked to a OVHcloud Connect Service
+                 * GET /ovhCloudConnect/{serviceName}/serviceKey/{serviceKeyId}
+                 */
+                $get(): Promise<ovhcloudconnect.Key>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                regenerate: {
+                    /**
+                     * Regenerate Service Key linked to a OVHcloud Connect Service
+                     * POST /ovhCloudConnect/{serviceName}/serviceKey/{serviceKeyId}/regenerate
+                     */
+                    $post(): Promise<ovhcloudconnect.Key>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+                send: {
+                    /**
+                     * Send key value to customer
+                     * POST /ovhCloudConnect/{serviceName}/serviceKey/{serviceKeyId}/send
+                     */
+                    $post(params: { email: string }): Promise<ovhcloudconnect.SendKeyAnswer>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+            };
         }
         task: {
             /**

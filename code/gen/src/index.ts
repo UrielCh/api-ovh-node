@@ -58,9 +58,10 @@ async function genRegion(endpoint: IEndpoint) {
         rimraf.sync(path.join(packagesDir, name));
     })
     /**
-     * 
+     * : ${allApi.join(',')}
      */
-    console.log(`Available APis on ${endpoint.host}: ${allApi.join(',')}`);
+    const concurrency = 4;
+    console.log(`Found ${allApi.length} Api available on ${endpoint.host}`);
     await Promise.map(apis, async api => {
         let cg = new CodeGenerator({ host: endpoint.host, port: endpoint.port.toString()}, api);
         try {
@@ -135,7 +136,7 @@ async function genRegion(endpoint: IEndpoint) {
                     "esModuleInterop": true,
                 }
             }, { spaces: 4 });
-    }, { concurrency: 4 });
+    }, { concurrency });
 }
 
 main().then(() => console.log);

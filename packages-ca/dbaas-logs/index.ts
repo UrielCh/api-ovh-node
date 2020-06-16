@@ -136,6 +136,11 @@ export namespace dbaas {
             updatedAt?: string;
         }
         /**
+         * Possible values for DeliveryStatusEnum
+         * type fullname: dbaas.logs.DeliveryStatusEnum
+         */
+        export type DeliveryStatusEnum = "DELIVERING" | "READY" | "DELETING"
+        /**
          * Input engine
          * interface fullName: dbaas.logs.Engine.Engine
          */
@@ -311,10 +316,26 @@ export namespace dbaas {
          */
         export interface Kibana {
             createdAt: string;
+            deliveryStatus: dbaas.logs.DeliveryStatusEnum;
+            description: string;
             isEditable: boolean;
             kibanaId: string;
             name: string;
             updatedAt?: string;
+        }
+        /**
+         * Missing description
+         * interface fullName: dbaas.logs.KibanaCreation.KibanaCreation
+         */
+        export interface KibanaCreation {
+            description: string;
+        }
+        /**
+         * Missing description
+         * interface fullName: dbaas.logs.KibanaUpdate.KibanaUpdate
+         */
+        export interface KibanaUpdate {
+            description: string;
         }
         /**
          * Logstash configuration
@@ -590,16 +611,6 @@ export namespace dbaas {
             permissionType?: dbaas.logs.PermissionTypeEnum;
             streamId?: string;
         }
-        /**
-         * Possible values for PermissionDashboardPermissionTypeEnum
-         * type fullname: dbaas.logs.PermissionDashboardPermissionTypeEnum
-         */
-        export type PermissionDashboardPermissionTypeEnum = "READ_ONLY" | "READ_WRITE"
-        /**
-         * Possible values for PermissionIndexPermissionTypeEnum
-         * type fullname: dbaas.logs.PermissionIndexPermissionTypeEnum
-         */
-        export type PermissionIndexPermissionTypeEnum = "READ_ONLY" | "READ_WRITE"
         /**
          * Possible values for PermissionTypeEnum
          * type fullname: dbaas.logs.PermissionTypeEnum
@@ -1048,6 +1059,17 @@ export interface Dbaas {
              * Controle cache
              */
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            changeContact: {
+                /**
+                 * Launch a contact change procedure
+                 * POST /dbaas/logs/{serviceName}/changeContact
+                 */
+                $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
             cluster: {
                 /**
                  * Returns the list of allowed cluster
@@ -1553,6 +1575,54 @@ export interface Dbaas {
                             }
                         };
                     }
+                    kibana: {
+                        /**
+                         * Returns the list of Kibana instances
+                         * GET /dbaas/logs/{serviceName}/output/elasticsearch/kibana
+                         */
+                        $get(): Promise<string[]>;
+                        /**
+                         * Register a new Kibana instance
+                         * POST /dbaas/logs/{serviceName}/output/elasticsearch/kibana
+                         */
+                        $post(params: { description: string }): Promise<dbaas.logs.Operation>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $(kibanaId: string): {
+                            /**
+                             * Remove specified Kibana instance
+                             * DELETE /dbaas/logs/{serviceName}/output/elasticsearch/kibana/{kibanaId}
+                             */
+                            $delete(): Promise<dbaas.logs.Operation>;
+                            /**
+                             * Returns specified Kibana instance
+                             * GET /dbaas/logs/{serviceName}/output/elasticsearch/kibana/{kibanaId}
+                             */
+                            $get(): Promise<dbaas.logs.Kibana>;
+                            /**
+                             * Update specified Kibana instance
+                             * PUT /dbaas/logs/{serviceName}/output/elasticsearch/kibana/{kibanaId}
+                             */
+                            $put(params: { description: string }): Promise<dbaas.logs.Operation>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            url: {
+                                /**
+                                 * Returns the list of urls of specified Kibana
+                                 * GET /dbaas/logs/{serviceName}/output/elasticsearch/kibana/{kibanaId}/url
+                                 */
+                                $get(): Promise<dbaas.logs.Url[]>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            }
+                        };
+                    }
                 }
                 graylog: {
                     dashboard: {
@@ -1887,6 +1957,17 @@ export interface Dbaas {
                              * POST /dbaas/logs/{serviceName}/role/{roleId}/permission/index
                              */
                             $post(params: { indexId: string, permissionType?: dbaas.logs.PermissionTypeEnum }): Promise<dbaas.logs.Operation>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                        kibana: {
+                            /**
+                             * Append a kibana permission to role
+                             * POST /dbaas/logs/{serviceName}/role/{roleId}/permission/kibana
+                             */
+                            $post(params: { kibanaId: string, permissionType?: dbaas.logs.PermissionTypeEnum }): Promise<dbaas.logs.Operation>;
                             /**
                              * Controle cache
                              */
