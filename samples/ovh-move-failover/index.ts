@@ -21,6 +21,7 @@ interface IPSelection {
   // to: string;
   // nexthop?: string;
   ips: ip.Ip[];
+  type: 'IP' | 'DEST',
 }
 
 /**
@@ -51,6 +52,7 @@ async function indexSource(): Promise<{ [key: string]: IPSelection }> {
         key: routedTo,
         desc: '',
         ips: [],
+        type: 'DEST',
       }
       let extraDesc = '';
       if (data.type === 'vps') {
@@ -66,7 +68,20 @@ async function indexSource(): Promise<{ [key: string]: IPSelection }> {
       indexed[routedTo].desc =`${extraDesc}${data.type} IP`;
     }
     indexed[routedTo].ips.push(data);
-    // indexed[data.ip] = [data];
+
+    indexed[data.ip] = {
+      key: data.ip,
+      desc: '',
+      ips: [data],
+      type: 'IP',
+    }
+    const k2 = data.ip.replace(/\/.+/, '');
+    indexed[k2] = {
+      key: k2,
+      desc: '',
+      ips: [data],
+      type: 'IP',
+    }
   }, {concurrency: 10});
   // console.log (Object.keys(indexed))  
   console.log (`Start indexing public cloud`)
@@ -92,6 +107,7 @@ async function indexSource(): Promise<{ [key: string]: IPSelection }> {
           key: routedTo,
           desc: '',
           ips: [],
+          type: 'DEST',
         }
         const instance = await api.cloud.project.$(projectId).instance.$(routedTo).$get();
         indexed[routedTo].desc = `public cloud ${cloudProjects} Instance ${instance.name}`;        
@@ -101,7 +117,6 @@ async function indexSource(): Promise<{ [key: string]: IPSelection }> {
   }
   return indexed;
 }
-
 
 async function getValiDest(toMove: IPSelection): Promise<ip.Destination[]> {
   console.log(`You select ${toMove.ips.length} ip for migration:`);
@@ -132,7 +147,8 @@ async function getValiDest(toMove: IPSelection): Promise<ip.Destination[]> {
     dests2 = [...dests2, ...dests.ipLoadbalancing];
   if (dests.vps)
     dests2 = [...dests2, ...dests.vps];
-  return dests2;
+    
+  return dests2;  
 }
 
 async function indexDestination(dests2: ip.Destination[]) {
@@ -173,10 +189,13 @@ async function main(source: string, dest: string) {
     }
     console.log(`available sources are:`);
     for (const key of Object.keys(indexed)) {
-      console.log(`- ${key} (${indexed[key].desc}) constains ${indexed[key].ips.length} IPs`)
+      if (indexed[key].type == 'DEST')
+        console.log(`- ${key} (${indexed[key].desc}) constains ${indexed[key].ips.length} IPs`)      
     }
+    console.log(`- All IP range cand also be sevected. as 1.2.3.4 or 1.2.3.4/32 or 1.2.3.4/30...`)
     process.exit(1);
   }
+
   const dests2 = await getValiDest(toMove);
   const indexedDest = await indexDestination(dests2);
   const validDest = indexedDest[dest];
