@@ -1,7 +1,7 @@
 {
     "name": "@ovh-api-us/dedicated-installation-template",
     "description": "Add typing to to ovh api dedicated-installation-template",
-    "version": "3.1.1",
+    "version": "3.1.4",
     "typings": "index.d.ts",
     "license": "MIT",
     "author": "Uriel Chemouni <uchemouni@gmail.com>",
