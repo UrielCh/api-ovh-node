@@ -1,7 +1,7 @@
 {
     "name": "@ovh-kimsufi/analytics",
     "description": "Add typing to to ovh api analytics",
-    "version": "3.1.4",
+    "version": "3.1.5",
     "typings": "index.d.ts",
     "license": "MIT",
     "author": "Uriel Chemouni <uchemouni@gmail.com>",
