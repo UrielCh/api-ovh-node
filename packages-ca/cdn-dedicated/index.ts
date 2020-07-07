@@ -257,6 +257,17 @@ export interface Cdn {
              * Controle cache
              */
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            changeContact: {
+                /**
+                 * Launch a contact change procedure
+                 * POST /cdn/dedicated/{serviceName}/changeContact
+                 */
+                $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
             domains: {
                 /**
                  * Domains associated to this anycast

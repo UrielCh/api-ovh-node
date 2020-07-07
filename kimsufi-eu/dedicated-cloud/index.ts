@@ -21,6 +21,13 @@ export namespace coreTypes {
      */
     export type CountryEnum = "ac" | "ad" | "ae" | "af" | "ag" | "ai" | "al" | "am" | "an" | "ao" | "aq" | "ar" | "as" | "at" | "au" | "aw" | "ax" | "az" | "ba" | "bb" | "bd" | "be" | "bf" | "bg" | "bh" | "bi" | "bj" | "bl" | "bm" | "bn" | "bo" | "bq" | "br" | "bs" | "bt" | "bv" | "bw" | "by" | "bz" | "ca" | "cc" | "cd" | "cf" | "cg" | "ch" | "ci" | "ck" | "cl" | "cm" | "cn" | "co" | "cr" | "cs" | "cu" | "cv" | "cw" | "cx" | "cy" | "cz" | "de" | "dj" | "dk" | "dm" | "do" | "dz" | "ec" | "ee" | "eg" | "eh" | "er" | "es" | "et" | "fc" | "fd" | "fi" | "fj" | "fk" | "fm" | "fo" | "fr" | "fx" | "ga" | "gb" | "gd" | "ge" | "gf" | "gg" | "gh" | "gi" | "gl" | "gm" | "gn" | "gp" | "gq" | "gr" | "gs" | "gt" | "gu" | "gw" | "gy" | "hk" | "hm" | "hn" | "hr" | "ht" | "hu" | "id" | "ie" | "il" | "im" | "in" | "io" | "iq" | "ir" | "is" | "it" | "je" | "jm" | "jo" | "jp" | "ke" | "kg" | "kh" | "ki" | "km" | "kn" | "kp" | "kr" | "kw" | "ky" | "kz" | "la" | "lb" | "lc" | "li" | "lk" | "lr" | "ls" | "lt" | "lu" | "lv" | "ly" | "ma" | "mc" | "md" | "me" | "mf" | "mg" | "mh" | "mk" | "ml" | "mm" | "mn" | "mo" | "mp" | "mq" | "mr" | "ms" | "mt" | "mu" | "mv" | "mw" | "mx" | "my" | "mz" | "na" | "nc" | "ne" | "nf" | "ng" | "ni" | "nl" | "no" | "np" | "nr" | "nu" | "nz" | "om" | "pa" | "pe" | "pf" | "pg" | "ph" | "pk" | "pl" | "pm" | "pn" | "pr" | "ps" | "pt" | "pw" | "py" | "qa" | "qc" | "re" | "ro" | "rs" | "ru" | "rw" | "sa" | "sb" | "sc" | "sd" | "se" | "sg" | "sh" | "si" | "sj" | "sk" | "sl" | "sm" | "sn" | "so" | "sr" | "ss" | "st" | "sv" | "sx" | "sy" | "sz" | "tc" | "td" | "tf" | "tg" | "th" | "tj" | "tk" | "tl" | "tm" | "tn" | "to" | "tp" | "tr" | "tt" | "tv" | "tw" | "tz" | "ua" | "ug" | "uk" | "um" | "us" | "uy" | "uz" | "va" | "vc" | "ve" | "vg" | "vi" | "vn" | "vu" | "we" | "wf" | "ws" | "ye" | "yt" | "yu" | "za" | "zm" | "zw"
 }
+export namespace dedicated {
+    /**
+     * ovh datacenter
+     * type fullname: dedicated.DatacenterEnum
+     */
+    export type DatacenterEnum = "bhs1" | "bhs2" | "bhs3" | "bhs4" | "bhs5" | "bhs6" | "bhs7" | "dc1" | "eri1" | "gra1" | "gra2" | "gsw" | "hil1" | "lim1" | "p19" | "rbx-hz" | "rbx1" | "rbx2" | "rbx3" | "rbx4" | "rbx5" | "rbx6" | "rbx7" | "rbx8" | "sbg1" | "sbg2" | "sbg3" | "sbg4" | "sgp1" | "syd1" | "vin1" | "waw1"
+}
 export namespace dedicatedCloud {
     /**
      * Network allowed to connect to the Private Cloud management interface
@@ -195,7 +202,7 @@ export namespace dedicatedCloud {
      * interface fullName: dedicatedCloud.Filer.Filer
      */
     export interface Filer {
-        billingType: dedicatedCloudressourcesBillingTypeEnum;
+        billingType?: dedicatedCloudressourcesBillingTypeEnum;
         filerId: number;
         fullProfile: string;
         name: string;
@@ -863,6 +870,20 @@ export namespace dedicatedCloud {
             lastUpdate: string;
         }
         /**
+         * Location of the Filer
+         * interface fullName: dedicatedCloud.filer.Location.Location
+         */
+        export interface Location {
+            datacenter: dedicated.DatacenterEnum;
+            rack: string;
+            room: string;
+        }
+        /**
+         * All nodes types for a Filer
+         * type fullname: dedicatedCloud.filer.NodeTypeEnum
+         */
+        export type NodeTypeEnum = "master" | "slave"
+        /**
          * A Filer profile
          * interface fullName: dedicatedCloud.filer.Profile.Profile
          */
@@ -885,6 +906,15 @@ export namespace dedicatedCloud {
         export interface HourlyConsumption {
             consumption: complexType.UnitAndValue<number>;
             lastUpdate: string;
+        }
+        /**
+         * Location of the Host
+         * interface fullName: dedicatedCloud.host.Location.Location
+         */
+        export interface Location {
+            datacenter: dedicated.DatacenterEnum;
+            rack: string;
+            room: string;
         }
         /**
          * A Host profile
@@ -1835,6 +1865,17 @@ export interface DedicatedCloud {
                              */
                             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                         }
+                        location: {
+                            /**
+                             * Location of the Filer
+                             * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer/{filerId}/location
+                             */
+                            $get(params?: { node?: dedicatedCloud.filer.NodeTypeEnum }): Promise<dedicatedCloud.filer.Location>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
                         remove: {
                             /**
                              * Remove the filer from your Private Cloud.
@@ -1929,6 +1970,17 @@ export interface DedicatedCloud {
                              * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/hourlyConsumption
                              */
                             $get(): Promise<dedicatedCloud.host.HourlyConsumption>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        }
+                        location: {
+                            /**
+                             * Location of the host
+                             * GET /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/host/{hostId}/location
+                             */
+                            $get(): Promise<dedicatedCloud.host.Location>;
                             /**
                              * Controle cache
                              */
@@ -2386,6 +2438,17 @@ export interface DedicatedCloud {
                      * GET /dedicatedCloud/{serviceName}/filer/{filerId}/hourlyConsumption
                      */
                     $get(): Promise<dedicatedCloud.filer.HourlyConsumption>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
+                location: {
+                    /**
+                     * Location of the Filer
+                     * GET /dedicatedCloud/{serviceName}/filer/{filerId}/location
+                     */
+                    $get(params?: { node?: dedicatedCloud.filer.NodeTypeEnum }): Promise<dedicatedCloud.filer.Location>;
                     /**
                      * Controle cache
                      */

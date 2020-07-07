@@ -172,7 +172,7 @@ export namespace billing {
      * Types of plans
      * type fullname: billing.CategoryEnum
      */
-    export type CategoryEnum = "autorenew" | "purchase-cloud" | "purchase-servers" | "purchase-telecom" | "purchase-web"
+    export type CategoryEnum = "autorenew" | "earlyrenewal" | "purchase" | "purchase-cloud" | "purchase-servers" | "purchase-telecom" | "purchase-web"
     /**
      * Credit balance applied on an Order
      * interface fullName: billing.CreditBalance.CreditBalance
@@ -647,6 +647,17 @@ export namespace billing {
             type?: billing.order.associatedObject.TypeEnum;
         }
         /**
+         * Detailed consumption's retrieval information
+         * interface fullName: billing.order.ConsumptionDetails.ConsumptionDetails
+         */
+        export interface ConsumptionDetails {
+            fileFormat?: consumption.ConsumptionExportFormatsEnum;
+            fileURL?: string;
+            message?: string;
+            taskId: number;
+            taskStatus: consumption.ConsumptionExportTaskStatusEnum;
+        }
+        /**
          * Follow up history of an order
          * interface fullName: billing.order.FollowUp.FollowUp
          */
@@ -824,6 +835,18 @@ export namespace complexType {
         unit: string;
         value: T;
     }
+}
+export namespace consumption {
+    /**
+     * Export file format
+     * type fullname: consumption.ConsumptionExportFormatsEnum
+     */
+    export type ConsumptionExportFormatsEnum = "csv"
+    /**
+     * Export task status
+     * type fullname: consumption.ConsumptionExportTaskStatusEnum
+     */
+    export type ConsumptionExportTaskStatusEnum = "DOING" | "DONE" | "ERROR" | "TODO"
 }
 export namespace contact {
     /**
@@ -3761,6 +3784,19 @@ export interface Me {
                  * Controle cache
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
+            consumption: {
+                details: {
+                    /**
+                     * Retrieve order's detailed consumption information as a file
+                     * GET /me/order/{orderId}/consumption/details
+                     */
+                    $get(params: { fileFormat: consumption.ConsumptionExportFormatsEnum }): Promise<billing.order.ConsumptionDetails>;
+                    /**
+                     * Controle cache
+                     */
+                    $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                }
             }
             debt: {
                 /**

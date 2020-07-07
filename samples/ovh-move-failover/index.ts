@@ -4,7 +4,7 @@ import ApiVps, { Vps } from '@ovh-api/vps';
 import Ovh from '@ovh-api/api';
 import Bluebird from 'bluebird';
 import program from 'commander';
-
+import chalk from 'chalk';
 
 const accessRules = `GET /ip, GET /ip/*, POST /ip/*/move, GET /ip/*/move, GET /cloud/project/*, GET /cloud/project/*/ip/failover, GET /cloud/project, GET /vps/*`
 
@@ -29,21 +29,11 @@ interface IPSelection {
  */
 async function indexSource(): Promise<{ [key: string]: IPSelection }> {
   const allIps = await api.ip.$get();
-  console.log (`find ${allIps.length} IP clock`)
-  const datas = await Bluebird.map(allIps, async (ip) => {
-    try {
-      return await api.ip.$(ip).$get()
-    } catch (e) {
-      // console.log(e);
-    }
-  }, { concurrency: 20 });
+  console.log (`Find a total of ${allIps.length} IP.`)
+  const allIpDatas = await Bluebird.map(allIps, ip => api.ip.$(ip).$get(), { concurrency: 20 });
   let indexed = {} as { [key: string]: IPSelection };
-  // console.log (datas)  
-
-  api.cloud.project.$get();
-
-  const datas2 = datas.filter(a=>a) as ip.Ip[];
-  await Bluebird.map(datas2, async (data: ip.Ip) => {
+  const allIpDatas2 = allIpDatas.filter(a=>a) as ip.Ip[];
+  await Bluebird.map(allIpDatas2, async (data: ip.Ip) => {
     let routedTo = '';
     if (data.routedTo)
       routedTo = data.routedTo.serviceName || '';
@@ -110,7 +100,11 @@ async function indexSource(): Promise<{ [key: string]: IPSelection }> {
           type: 'DEST',
         }
         const instance = await api.cloud.project.$(projectId).instance.$(routedTo).$get();
-        indexed[routedTo].desc = `public cloud ${cloudProjects} Instance ${instance.name}`;        
+        if (instance.status === 'DELETED') {
+          indexed[routedTo].desc = `public cloud ${cloudProjects} ${chalk.redBright('DELETED Instance !!!')}`;
+        } else {
+          indexed[routedTo].desc = `public cloud ${cloudProjects} Instance ${chalk.yellow(instance.name)}`;
+        }
       }
       indexed[routedTo].ips.push(data);
     }, {concurrency: 10})
@@ -120,6 +114,7 @@ async function indexSource(): Promise<{ [key: string]: IPSelection }> {
 
 async function getValiDest(toMove: IPSelection): Promise<ip.Destination[]> {
   console.log(`You select ${toMove.ips.length} ip for migration:`);
+  console.log(toMove);
   console.log(`${toMove.ips.map(b => b.ip).join(', ')}`);
   console.log();
   let dests: ip.Destinations | undefined;;
@@ -190,7 +185,7 @@ async function main(source: string, dest: string) {
     console.log(`available sources are:`);
     for (const key of Object.keys(indexed)) {
       if (indexed[key].type == 'DEST')
-        console.log(`- ${key} (${indexed[key].desc}) constains ${indexed[key].ips.length} IPs`)      
+        console.log(`- ${chalk.green(key)} (${indexed[key].desc}) constains ${indexed[key].ips.length} IPs`)      
     }
     console.log(`- All IP range cand also be sevected. as 1.2.3.4 or 1.2.3.4/32 or 1.2.3.4/30...`)
     process.exit(1);

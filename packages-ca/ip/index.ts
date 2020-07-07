@@ -845,6 +845,17 @@ export interface Ip {
              * Controle cache
              */
             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            changeContact: {
+                /**
+                 * Launch a contact change procedure
+                 * POST /ip/service/{serviceName}/changeContact
+                 */
+                $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
             confirmTermination: {
                 /**
                  * Confirm termination of your service

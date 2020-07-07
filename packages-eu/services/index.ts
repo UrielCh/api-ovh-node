@@ -285,6 +285,7 @@ export namespace services {
          */
         export interface Service {
             billing: services.expanded.Billing;
+            parentServiceId?: number;
             resource: services.expanded.Resource;
             route?: services.expanded.Route;
             serviceId: number;

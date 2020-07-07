@@ -428,6 +428,17 @@ export interface Hosting {
                  */
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
+            changeContact: {
+                /**
+                 * Launch a contact change procedure
+                 * POST /hosting/privateDatabase/{serviceName}/changeContact
+                 */
+                $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
             changeFtpPassword: {
                 /**
                  * Change your ftp admin password

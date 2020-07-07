@@ -221,6 +221,7 @@ export namespace cloud {
         creationDate: string;
         description?: string;
         expiration?: string;
+        manualQuota: boolean;
         orderId?: number;
         planCode: string;
         projectName?: string;
@@ -368,7 +369,7 @@ export namespace cloud {
     export interface ProjectKubeCreation {
         name?: string;
         nodepool?: cloud.ProjectKubeCreationNodePool;
-        region: cloud.kube.RegionEnum;
+        region: cloud.kube.ClusterCreationRegionEnum;
         version?: cloud.kube.VersionEnum;
     }
     /**
@@ -1029,7 +1030,7 @@ export namespace cloud {
          * UnitQuantity
          * type fullname: cloud.billingView.UnitQuantityEnum
          */
-        export type UnitQuantityEnum = "GiB" | "GiBh" | "Hour" | "Minute" | "Second"
+        export type UnitQuantityEnum = "GiB" | "GiBh" | "Hour" | "Minute" | "Second" | "Unit"
         /**
          * UsedCredit
          * interface fullName: cloud.billingView.UsedCredit.UsedCredit
@@ -1546,6 +1547,11 @@ export namespace cloud {
             version: string;
         }
         /**
+         * Enum values for available regions when creating a cluster
+         * type fullname: cloud.kube.ClusterCreationRegionEnum
+         */
+        export type ClusterCreationRegionEnum = "GRA5" | "GRA7" | "BHS5"
+        /**
          * Enum values for Status
          * type fullname: cloud.kube.ClusterStatus
          */
@@ -1658,7 +1664,7 @@ export namespace cloud {
          * Enum values for available regions
          * type fullname: cloud.kube.RegionEnum
          */
-        export type RegionEnum = "GRA5" | "GRA7" | "BHS5"
+        export type RegionEnum = "GRA5" | "GRA7" | "BHS5" | "SBG5"
         /**
          * Enum values for worker nodes reset policy
          * type fullname: cloud.kube.ResetWorkerNodesPolicy
@@ -2229,6 +2235,15 @@ export namespace cloud {
                  */
                 export type WorkflowTemplateEnum = "build-image" | "preset-image"
             }
+            export namespace training {
+                /**
+                 * Authorization status
+                 * interface fullName: cloud.project.ai.training.AuthorizationStatus.AuthorizationStatus
+                 */
+                export interface AuthorizationStatus {
+                    authorized: boolean;
+                }
+            }
         }
         export namespace dataProcessing {
             /**
@@ -2402,7 +2417,6 @@ export namespace cloud {
             export interface ConfigurationCreation {
                 backends: cloud.project.loadbalancer.Backend[];
                 frontends: cloud.project.loadbalancer.Frontend[];
-                previousVersion: number;
                 version: number;
             }
             /**
@@ -2464,7 +2478,7 @@ export namespace cloud {
                  * Available load balancer frontend mode
                  * type fullname: cloud.project.loadbalancer.frontend.ModeEnum
                  */
-                export type ModeEnum = "TCP"
+                export type ModeEnum = "HTTP" | "TCP"
             }
         }
     }
@@ -3102,7 +3116,7 @@ export interface Cloud {
              * Alter this object properties
              * PUT /cloud/project/{serviceName}
              */
-            $put(params?: { access?: cloud.AccessTypeEnum, creationDate?: string, description?: string, expiration?: string, orderId?: number, planCode?: string, projectName?: string, project_id?: string, status?: cloud.project.ProjectStatusEnum, unleash?: boolean }): Promise<void>;
+            $put(params?: { access?: cloud.AccessTypeEnum, creationDate?: string, description?: string, expiration?: string, manualQuota?: boolean, orderId?: number, planCode?: string, projectName?: string, project_id?: string, status?: cloud.project.ProjectStatusEnum, unleash?: boolean }): Promise<void>;
             /**
              * Controle cache
              */
@@ -3420,6 +3434,17 @@ export interface Cloud {
                      */
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
+            }
+            changeContact: {
+                /**
+                 * Launch a contact change procedure
+                 * POST /cloud/project/{serviceName}/changeContact
+                 */
+                $post(params?: { contactAdmin?: string, contactBilling?: string, contactTech?: string }): Promise<number[]>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             confirmTermination: {
                 /**
@@ -3999,7 +4024,7 @@ export interface Cloud {
                  * Create a new managed Kubernetes cluster
                  * POST /cloud/project/{serviceName}/kube
                  */
-                $post(params: { name?: string, nodepool?: cloud.ProjectKubeCreationNodePool, region: cloud.kube.RegionEnum, version?: cloud.kube.VersionEnum }): Promise<cloud.kube.Cluster>;
+                $post(params: { name?: string, nodepool?: cloud.ProjectKubeCreationNodePool, region: cloud.kube.ClusterCreationRegionEnum, version?: cloud.kube.VersionEnum }): Promise<cloud.kube.Cluster>;
                 /**
                  * Controle cache
                  */
@@ -4098,6 +4123,54 @@ export interface Cloud {
                              * Controle cache
                              */
                             $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        };
+                    }
+                    nodepool: {
+                        /**
+                         * List your nodepools
+                         * GET /cloud/project/{serviceName}/kube/{kubeId}/nodepool
+                         */
+                        $get(): Promise<cloud.kube.NodePool[]>;
+                        /**
+                         * Create a nodepool on your cluster
+                         * POST /cloud/project/{serviceName}/kube/{kubeId}/nodepool
+                         */
+                        $post(params: { desiredNodes?: number, flavorName: string, maxNodes?: number, minNodes?: number, name?: string }): Promise<cloud.kube.NodePool>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                        $(nodePoolId: string): {
+                            /**
+                             * Delete a nodepool from your cluster
+                             * DELETE /cloud/project/{serviceName}/kube/{kubeId}/nodepool/{nodePoolId}
+                             */
+                            $delete(): Promise<void>;
+                            /**
+                             * Get information on a specific nodepool on your cluster
+                             * GET /cloud/project/{serviceName}/kube/{kubeId}/nodepool/{nodePoolId}
+                             */
+                            $get(): Promise<cloud.kube.NodePool>;
+                            /**
+                             * Update your nodepool (quota or size)
+                             * PUT /cloud/project/{serviceName}/kube/{kubeId}/nodepool/{nodePoolId}
+                             */
+                            $put(params?: { desiredNodes?: number, maxNodes?: number, minNodes?: number }): Promise<void>;
+                            /**
+                             * Controle cache
+                             */
+                            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            nodes: {
+                                /**
+                                 * List all nodes contained in a nodepool
+                                 * GET /cloud/project/{serviceName}/kube/{kubeId}/nodepool/{nodePoolId}/nodes
+                                 */
+                                $get(): Promise<cloud.kube.Node[]>;
+                                /**
+                                 * Controle cache
+                                 */
+                                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                            }
                         };
                     }
                     reset: {

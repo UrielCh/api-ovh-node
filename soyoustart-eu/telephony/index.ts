@@ -349,6 +349,7 @@ export namespace telephony {
      * interface fullName: telephony.CarrierSipCustomerEndpoint.CarrierSipCustomerEndpoint
      */
     export interface CarrierSipCustomerEndpoint {
+        enableIncomingCalls: boolean;
         id: number;
         ip: string;
         port: number;

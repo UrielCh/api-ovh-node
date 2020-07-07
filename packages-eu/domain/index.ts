@@ -76,7 +76,10 @@ export namespace domain {
         accreditationYear?: number;
         address?: domain.ContactAddress;
         birthCity?: string;
+        birthCountry?: nichandle.CountryEnum;
         birthDay?: string;
+        birthZip?: string;
+        cellPhone?: string;
         companyNationalIdentificationNumber?: string;
         email?: string;
         enterpriseId?: string;
@@ -118,6 +121,7 @@ export namespace domain {
         line1?: string;
         line2?: string;
         line3?: string;
+        otherDetails?: string;
         province?: string;
         zip?: string;
     }
@@ -387,7 +391,7 @@ export namespace domain {
              * Type of rule configuration
              * type fullname: domain.configuration.rules.TypeEnum
              */
-            export type TypeEnum = "string" | "text" | "bool" | "number" | "json" | "contact" | "domain"
+            export type TypeEnum = "string" | "text" | "bool" | "number" | "json" | "contact" | "domain" | "date_ISO8601"
         }
     }
     export namespace configurations {
@@ -899,6 +903,60 @@ export interface Domain {
      * Controle cache
      */
     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+    configurationRule: {
+        /**
+         * Get configuration rule applied for a domain in a given action
+         * GET /domain/configurationRule
+         */
+        $get(params: { action: domain.ActionEnum, domain: string }): Promise<domain.configuration.rules.Rule>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        check: {
+            /**
+             * Validate a rule data for a specified domain
+             * POST /domain/configurationRule/check
+             */
+            $post(params?: { adminAccount?: nichandle.Nichandle, domain?: domain.Data, extras?: domain.configuration.rules.RuleExtraData, owner?: domain.Contact, techAccount?: nichandle.Nichandle }): Promise<void>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        }
+    }
+    contact: {
+        /**
+         * List all contacts
+         * GET /domain/contact
+         */
+        $get(): Promise<domain.Contact[]>;
+        /**
+         * Create a contact
+         * POST /domain/contact
+         */
+        $post(params?: { accreditationCountry?: nichandle.CountryEnum, accreditationId?: string, accreditationOrganism?: string, accreditationYear?: number, address?: domain.ContactAddress, birthCity?: string, birthCountry?: nichandle.CountryEnum, birthDay?: string, birthZip?: string, cellPhone?: string, companyNationalIdentificationNumber?: string, email?: string, enterpriseId?: string, fax?: string, firstName?: string, gender?: nichandle.GenderEnum, id?: number, insee?: string, language?: nichandle.LanguageEnum, lastName?: string, legalForm?: nichandle.LegalFormEnum, legalFormCategory?: string, nationalIdentificationNumber?: string, nationality?: nichandle.CountryEnum, organisationAccountable?: string, organisationFunding?: string, organisationFundingOther?: string, organisationName?: string, organisationRole?: string, organisationRoleOther?: string, organisationStaffStatus?: string, organisationStaffStatusOther?: string, organisationType?: string, organisationTypeOther?: string, phone?: string, registrantDocumentType?: string, registrantDocumentTypeOther?: string, roleInOrganisation?: string, vat?: string, website?: string }): Promise<domain.Contact>;
+        /**
+         * Controle cache
+         */
+        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        $(contactId: number): {
+            /**
+             * Get details about a contact
+             * GET /domain/contact/{contactId}
+             */
+            $get(): Promise<domain.Contact>;
+            /**
+             * Update a contact
+             * PUT /domain/contact/{contactId}
+             */
+            $put(params?: { accreditationCountry?: nichandle.CountryEnum, accreditationId?: string, accreditationOrganism?: string, accreditationYear?: number, address?: domain.ContactAddress, birthCity?: string, birthCountry?: nichandle.CountryEnum, birthDay?: string, birthZip?: string, cellPhone?: string, companyNationalIdentificationNumber?: string, email?: string, enterpriseId?: string, fax?: string, firstName?: string, gender?: nichandle.GenderEnum, id?: number, insee?: string, language?: nichandle.LanguageEnum, lastName?: string, legalForm?: nichandle.LegalFormEnum, legalFormCategory?: string, nationalIdentificationNumber?: string, nationality?: nichandle.CountryEnum, organisationAccountable?: string, organisationFunding?: string, organisationFundingOther?: string, organisationName?: string, organisationRole?: string, organisationRoleOther?: string, organisationStaffStatus?: string, organisationStaffStatusOther?: string, organisationType?: string, organisationTypeOther?: string, phone?: string, registrantDocumentType?: string, registrantDocumentTypeOther?: string, roleInOrganisation?: string, vat?: string, website?: string }): Promise<domain.Contact>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        };
+    }
     data: {
         afnicAssociationInformation: {
             /**
