@@ -473,7 +473,6 @@ printIP().then(console.log)
 - [![NPM Version](https://img.shields.io/npm/v/@ovh-kimsufi-ca/order.svg?style=flat)](https://www.npmjs.org/package/@ovh-kimsufi-ca/order) *Api @ovh-kimsufi-ca/order* Add typing to to ovh api order
 - [![NPM Version](https://img.shields.io/npm/v/@ovh-kimsufi-ca/support.svg?style=flat)](https://www.npmjs.org/package/@ovh-kimsufi-ca/support) *Api @ovh-kimsufi-ca/support* Add typing to to ovh api support
 
-
 ## Samples
 
 [working samples can be find here](https://github.com/UrielCh/api-ovh-node/tree/master/samples)

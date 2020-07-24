@@ -1,29 +1,30 @@
-# Connector for OVHCloud service cdn-dedicated
+# OVHCloud API client for **cdn-dedicated** region Europe
 
-This module contains all typing needed to use OvhCloud cdn-dedicated service, with hi-level IntelliSense / Code Completion
+This module contains all typing needed to use OvhCloud **cdn-dedicated** APIs, with hi-level IntelliSense / Code Completion
 
 [![NPM Version](https://img.shields.io/npm/v/@ovh-kimsufi/cdn-dedicated.svg?style=flat)](https://www.npmjs.org/package/@ovh-kimsufi/cdn-dedicated)
 
-## setup
+## Setup
 
 With npm:
-````bash
+
+```bash
 npm install --save @ovh-api/api
 npm install --save @ovh-kimsufi/me
 npm install --save @ovh-kimsufi/cdn-dedicated
 ... Add all APIs you needs
-````
+```
 
-## usage
+## Usage
 
-````typescript
+```typescript
 import OvhEngine from '@ovh-api/api';
 import apiMe from '@ovh-kimsufi/me';
 import apiCdnDedicated from '@ovh-kimsufi/cdn-dedicated';
 
 const ovhEngine = new OvhEngine({ 
-    certCache: './cert-cache.json', // optionnal cache certificat to disk
-    accessRules: 'GET /cdn/dedicated, GET /cdn/dedicated/*, GET /me', // optionnal limit the requested privileges.
+    certCache: './cert-cache.json', // optional cache certificat on disk.
+    accessRules: 'GET /cdn/dedicated, GET /cdn/dedicated/*, GET /me', // optional limit the requested privileges.
 });
 
 const api = {
@@ -37,5 +38,4 @@ const test = async () => {
     console.log(`${nichandle} have the following services:`);
     console.log(data);
 }
-
-````
+```

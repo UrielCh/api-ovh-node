@@ -1,29 +1,30 @@
-# Connector for OVHCloud service connectivity
+# OVHCloud API client for **connectivity** region Europe
 
-This module contains all typing needed to use OvhCloud connectivity service, with hi-level IntelliSense / Code Completion
+This module contains all typing needed to use OvhCloud **connectivity** APIs, with hi-level IntelliSense / Code Completion
 
 [![NPM Version](https://img.shields.io/npm/v/@ovh-api/connectivity.svg?style=flat)](https://www.npmjs.org/package/@ovh-api/connectivity)
 
-## setup
+## Setup
 
 With npm:
-````bash
+
+```bash
 npm install --save @ovh-api/api
 npm install --save @ovh-api/me
 npm install --save @ovh-api/connectivity
 ... Add all APIs you needs
-````
+```
 
-## usage
+## Usage
 
-````typescript
+```typescript
 import OvhEngine from '@ovh-api/api';
 import apiMe from '@ovh-api/me';
 import apiConnectivity from '@ovh-api/connectivity';
 
 const ovhEngine = new OvhEngine({ 
-    certCache: './cert-cache.json', // optionnal cache certificat to disk
-    accessRules: 'GET /connectivity, GET /connectivity/*, GET /me', // optionnal limit the requested privileges.
+    certCache: './cert-cache.json', // optional cache certificat on disk.
+    accessRules: 'GET /connectivity, GET /connectivity/*, GET /me', // optional limit the requested privileges.
 });
 
 const api = {
@@ -37,5 +38,4 @@ const test = async () => {
     console.log(`${nichandle} have the following services:`);
     console.log(data);
 }
-
-````
+```

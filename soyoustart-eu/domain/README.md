@@ -1,29 +1,30 @@
-# Connector for OVHCloud service domain
+# OVHCloud API client for **domain** region Europe
 
-This module contains all typing needed to use OvhCloud domain service, with hi-level IntelliSense / Code Completion
+This module contains all typing needed to use OvhCloud **domain** APIs, with hi-level IntelliSense / Code Completion
 
 [![NPM Version](https://img.shields.io/npm/v/@ovh-soyoustart/domain.svg?style=flat)](https://www.npmjs.org/package/@ovh-soyoustart/domain)
 
-## setup
+## Setup
 
 With npm:
-````bash
+
+```bash
 npm install --save @ovh-api/api
 npm install --save @ovh-soyoustart/me
 npm install --save @ovh-soyoustart/domain
 ... Add all APIs you needs
-````
+```
 
-## usage
+## Usage
 
-````typescript
+```typescript
 import OvhEngine from '@ovh-api/api';
 import apiMe from '@ovh-soyoustart/me';
 import apiDomain from '@ovh-soyoustart/domain';
 
 const ovhEngine = new OvhEngine({ 
-    certCache: './cert-cache.json', // optionnal cache certificat to disk
-    accessRules: 'GET /domain, GET /domain/*, GET /me', // optionnal limit the requested privileges.
+    certCache: './cert-cache.json', // optional cache certificat on disk.
+    accessRules: 'GET /domain, GET /domain/*, GET /me', // optional limit the requested privileges.
 });
 
 const api = {
@@ -37,5 +38,4 @@ const test = async () => {
     console.log(`${nichandle} have the following services:`);
     console.log(data);
 }
-
-````
+```

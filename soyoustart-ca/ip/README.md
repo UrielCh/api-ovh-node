@@ -1,29 +1,30 @@
-# Connector for OVHCloud service ip
+# OVHCloud API client for **ip** region Canada
 
-This module contains all typing needed to use OvhCloud ip service, with hi-level IntelliSense / Code Completion
+This module contains all typing needed to use OvhCloud **ip** APIs, with hi-level IntelliSense / Code Completion
 
 [![NPM Version](https://img.shields.io/npm/v/@ovh-soyoustart-ca/ip.svg?style=flat)](https://www.npmjs.org/package/@ovh-soyoustart-ca/ip)
 
-## setup
+## Setup
 
 With npm:
-````bash
+
+```bash
 npm install --save @ovh-api/api
 npm install --save @ovh-soyoustart-ca/me
 npm install --save @ovh-soyoustart-ca/ip
 ... Add all APIs you needs
-````
+```
 
-## usage
+## Usage
 
-````typescript
+```typescript
 import OvhEngine from '@ovh-api/api';
 import apiMe from '@ovh-soyoustart-ca/me';
 import apiIp from '@ovh-soyoustart-ca/ip';
 
 const ovhEngine = new OvhEngine({ 
-    certCache: './cert-cache.json', // optionnal cache certificat to disk
-    accessRules: 'GET /ip, GET /ip/*, GET /me', // optionnal limit the requested privileges.
+    certCache: './cert-cache.json', // optional cache certificat on disk.
+    accessRules: 'GET /ip, GET /ip/*, GET /me', // optional limit the requested privileges.
 });
 
 const api = {
@@ -37,5 +38,4 @@ const test = async () => {
     console.log(`${nichandle} have the following services:`);
     console.log(data);
 }
-
-````
+```

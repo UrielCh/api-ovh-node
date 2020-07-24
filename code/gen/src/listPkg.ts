@@ -29,6 +29,7 @@ for (const { dir, name: nsName, country } of subs) {
                 data.files = ["index.js", "index.d.ts"]; // , "index.ts" 
                 data.scripts.prepare = "npm run build";
                 data.dependencies["@ovh-api/common"] = "^3.1.2";
+                data.keywords = ["ovh", "ovhCloud", "api", "typing", "typescript"];
                 content = JSON.stringify(data, undefined, 4) + EOL;
                 fs.writeFileSync(jsonFile, content, { encoding: 'utf8' });
             }

@@ -1,29 +1,30 @@
-# Connector for OVHCloud service router
+# OVHCloud API client for **router** region Europe
 
-This module contains all typing needed to use OvhCloud router service, with hi-level IntelliSense / Code Completion
+This module contains all typing needed to use OvhCloud **router** APIs, with hi-level IntelliSense / Code Completion
 
 [![NPM Version](https://img.shields.io/npm/v/@ovh-api/router.svg?style=flat)](https://www.npmjs.org/package/@ovh-api/router)
 
-## setup
+## Setup
 
 With npm:
-````bash
+
+```bash
 npm install --save @ovh-api/api
 npm install --save @ovh-api/me
 npm install --save @ovh-api/router
 ... Add all APIs you needs
-````
+```
 
-## usage
+## Usage
 
-````typescript
+```typescript
 import OvhEngine from '@ovh-api/api';
 import apiMe from '@ovh-api/me';
 import apiRouter from '@ovh-api/router';
 
 const ovhEngine = new OvhEngine({ 
-    certCache: './cert-cache.json', // optionnal cache certificat to disk
-    accessRules: 'GET /router, GET /router/*, GET /me', // optionnal limit the requested privileges.
+    certCache: './cert-cache.json', // optional cache certificat on disk.
+    accessRules: 'GET /router, GET /router/*, GET /me', // optional limit the requested privileges.
 });
 
 const api = {
@@ -37,5 +38,4 @@ const test = async () => {
     console.log(`${nichandle} have the following services:`);
     console.log(data);
 }
-
-````
+```

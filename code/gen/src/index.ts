@@ -94,13 +94,13 @@ async function genRegion(endpoint: IEndpoint) {
 
         fn = path.join(dir, 'README.md');
         const content: string[] = [];
-        content.push(`# Connector for OVHCloud service ${flat}`);
+        content.push(`# OVHCloud API client for **${flat}** region ${endpoint.region}`);
         content.push(``);
-        content.push(`This module contains all typing needed to use OvhCloud ${flat} service, with hi-level IntelliSense / Code Completion`);
+        content.push(`This module contains all typing needed to use OvhCloud **${flat}** APIs, with hi-level IntelliSense / Code Completion`);
         content.push(``);
         content.push(`[![NPM Version](https://img.shields.io/npm/v/@${endpoint.namespace}/${flat}.svg?style=flat)](https://www.npmjs.org/package/@${endpoint.namespace}/${flat})`);
         content.push(``);
-        content.push(`## setup`);
+        content.push(`## Setup`);
         content.push(``);
         content.push(`With npm:`);
         content.push(``);
@@ -113,7 +113,7 @@ async function genRegion(endpoint: IEndpoint) {
         content.push(`... Add all APIs you needs`);
         content.push('```');
         content.push(``);
-        content.push(`## usage`);
+        content.push(`## Usage`);
         content.push(``);
         content.push('```typescript');
         content.push(`import OvhEngine from '@ovh-api/api';`);
@@ -124,13 +124,12 @@ async function genRegion(endpoint: IEndpoint) {
         content.push(`import api${formatUpperCamlCase(flat)} from '@${endpoint.namespace}/${flat}';`);
         content.push('');
         content.push(`const ovhEngine = new OvhEngine({ `);
-        content.push(`    certCache: './cert-cache.json', // optionnal cache certificat to disk`);
-
+        content.push(`    certCache: './cert-cache.json', // optional cache certificat on disk.`);
         let privileges = `GET ${cg.api}, GET ${cg.api}/*`
         if (flat != 'me') {
             privileges += ', GET /me';
         }
-        content.push(`    accessRules: '${privileges}', // optionnal limit the requested privileges.`);
+        content.push(`    accessRules: '${privileges}', // optional limit the requested privileges.`);
         content.push(`});`);
         content.push('');
         content.push('const api = {');
@@ -148,8 +147,8 @@ async function genRegion(endpoint: IEndpoint) {
         content.push('    console.log(`${nichandle} have the following services:`);');
         content.push('    console.log(data);');
         content.push('}');
+        content.push('```');
         content.push('');
-        content.push('``');
         // import { EOL } from 'os';
         await fse.writeFile(fn, content.join('\n'));
 
@@ -168,6 +167,13 @@ async function genRegion(endpoint: IEndpoint) {
                 name: `@${endpoint.namespace}/${flat}`,
                 description: `Add typing to to ovh api ${flat}`,
                 version: "3.0.0",
+                keywords: [
+                    "ovh",
+                    "ovhCloud",
+                    "api",
+                    "typing",
+                    "typescript"
+                ],
                 typings: "index.d.ts",
                 license: "MIT",
                 author: "Uriel Chemouni <uchemouni@gmail.com>",

@@ -1,29 +1,30 @@
-# Connector for OVHCloud service cdn-webstorage
+# OVHCloud API client for **cdn-webstorage** region Europe
 
-This module contains all typing needed to use OvhCloud cdn-webstorage service, with hi-level IntelliSense / Code Completion
+This module contains all typing needed to use OvhCloud **cdn-webstorage** APIs, with hi-level IntelliSense / Code Completion
 
 [![NPM Version](https://img.shields.io/npm/v/@ovh-soyoustart/cdn-webstorage.svg?style=flat)](https://www.npmjs.org/package/@ovh-soyoustart/cdn-webstorage)
 
-## setup
+## Setup
 
 With npm:
-````bash
+
+```bash
 npm install --save @ovh-api/api
 npm install --save @ovh-soyoustart/me
 npm install --save @ovh-soyoustart/cdn-webstorage
 ... Add all APIs you needs
-````
+```
 
-## usage
+## Usage
 
-````typescript
+```typescript
 import OvhEngine from '@ovh-api/api';
 import apiMe from '@ovh-soyoustart/me';
 import apiCdnWebstorage from '@ovh-soyoustart/cdn-webstorage';
 
 const ovhEngine = new OvhEngine({ 
-    certCache: './cert-cache.json', // optionnal cache certificat to disk
-    accessRules: 'GET /cdn/webstorage, GET /cdn/webstorage/*, GET /me', // optionnal limit the requested privileges.
+    certCache: './cert-cache.json', // optional cache certificat on disk.
+    accessRules: 'GET /cdn/webstorage, GET /cdn/webstorage/*, GET /me', // optional limit the requested privileges.
 });
 
 const api = {
@@ -37,5 +38,4 @@ const test = async () => {
     console.log(`${nichandle} have the following services:`);
     console.log(data);
 }
-
-````
+```

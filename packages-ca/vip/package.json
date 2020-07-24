@@ -25,5 +25,12 @@
         "index.js",
         "index.d.ts"
     ],
-    "gitHead": "3fbc412b060ce7c7e04b91156596f37428629579"
+    "gitHead": "3fbc412b060ce7c7e04b91156596f37428629579",
+    "keywords": [
+        "ovh",
+        "ovhCloud",
+        "api",
+        "typing",
+        "typescript"
+    ]
 }

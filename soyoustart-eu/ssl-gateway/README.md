@@ -1,29 +1,30 @@
-# Connector for OVHCloud service ssl-gateway
+# OVHCloud API client for **ssl-gateway** region Europe
 
-This module contains all typing needed to use OvhCloud ssl-gateway service, with hi-level IntelliSense / Code Completion
+This module contains all typing needed to use OvhCloud **ssl-gateway** APIs, with hi-level IntelliSense / Code Completion
 
 [![NPM Version](https://img.shields.io/npm/v/@ovh-soyoustart/ssl-gateway.svg?style=flat)](https://www.npmjs.org/package/@ovh-soyoustart/ssl-gateway)
 
-## setup
+## Setup
 
 With npm:
-````bash
+
+```bash
 npm install --save @ovh-api/api
 npm install --save @ovh-soyoustart/me
 npm install --save @ovh-soyoustart/ssl-gateway
 ... Add all APIs you needs
-````
+```
 
-## usage
+## Usage
 
-````typescript
+```typescript
 import OvhEngine from '@ovh-api/api';
 import apiMe from '@ovh-soyoustart/me';
 import apiSslGateway from '@ovh-soyoustart/ssl-gateway';
 
 const ovhEngine = new OvhEngine({ 
-    certCache: './cert-cache.json', // optionnal cache certificat to disk
-    accessRules: 'GET /sslGateway, GET /sslGateway/*, GET /me', // optionnal limit the requested privileges.
+    certCache: './cert-cache.json', // optional cache certificat on disk.
+    accessRules: 'GET /sslGateway, GET /sslGateway/*, GET /me', // optional limit the requested privileges.
 });
 
 const api = {
@@ -37,5 +38,4 @@ const test = async () => {
     console.log(`${nichandle} have the following services:`);
     console.log(data);
 }
-
-````
+```
