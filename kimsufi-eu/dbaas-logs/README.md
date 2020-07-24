@@ -7,12 +7,13 @@ This module contains all typing needed to use OvhCloud dbaas-logs service, with 
 ## setup
 
 With npm:
-````bash
+
+```bash
 npm install --save @ovh-api/api
 npm install --save @ovh-kimsufi/me
 npm install --save @ovh-kimsufi/dbaas-logs
 ... Add all APIs you needs
-````
+```
 
 ## usage
 

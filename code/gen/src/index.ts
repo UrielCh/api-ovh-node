@@ -103,18 +103,19 @@ async function genRegion(endpoint: IEndpoint) {
         content.push(`## setup`);
         content.push(``);
         content.push(`With npm:`);
-        content.push('````bash');
+        content.push(``);
+        content.push('```bash');
         content.push('npm install --save @ovh-api/api');
         if (flat != 'me') {
             content.push(`npm install --save @${endpoint.namespace}/me`);
         }
         content.push(`npm install --save @${endpoint.namespace}/${flat}`);
         content.push(`... Add all APIs you needs`);
-        content.push('````');
+        content.push('```');
         content.push(``);
         content.push(`## usage`);
         content.push(``);
-        content.push('````typescript');
+        content.push('```typescript');
         content.push(`import OvhEngine from '@ovh-api/api';`);
         if (flat != 'me') {
             content.push(`import apiMe from '@${endpoint.namespace}/me';`);
@@ -148,7 +149,7 @@ async function genRegion(endpoint: IEndpoint) {
         content.push('    console.log(data);');
         content.push('}');
         content.push('');
-        content.push('````');
+        content.push('``');
         // import { EOL } from 'os';
         await fse.writeFile(fn, content.join('\n'));
 

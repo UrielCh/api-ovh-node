@@ -24,7 +24,7 @@ for (const { dir, name: nsName, country } of subs) {
             let content = fs.readFileSync(jsonFile, { encoding: 'utf8' });
             const data = JSON.parse(content);
             const { name, description } = data;
-            console.log(`* [![NPM Version](https://img.shields.io/npm/v/${name}.svg?style=flat)](https://www.npmjs.org/package/${name}) *Api ${name}* ${description}`);
+            console.log(`- [![NPM Version](https://img.shields.io/npm/v/${name}.svg?style=flat)](https://www.npmjs.org/package/${name}) *Api ${name}* ${description}`);
             if (true) {
                 data.files = ["index.js", "index.d.ts"]; // , "index.ts" 
                 data.scripts.prepare = "npm run build";
