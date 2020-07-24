@@ -24,11 +24,11 @@ for (const { dir, name: nsName, country } of subs) {
             let content = fs.readFileSync(jsonFile, { encoding: 'utf8' });
             const data = JSON.parse(content);
             const { name, description } = data;
-            console.log(`* [![NPM Version](https://img.shields.io/npm/v/@ovh-api/${name2}.svg?style=flat)](https://www.npmjs.org/package/@ovh-api/${name2}) *Api ${name}* ${description}`);
+            console.log(`* [![NPM Version](https://img.shields.io/npm/v/${name}.svg?style=flat)](https://www.npmjs.org/package/${name}) *Api ${name}* ${description}`);
             if (true) {
                 data.files = ["index.js", "index.d.ts"]; // , "index.ts" 
                 data.scripts.prepare = "npm run build";
-                data.dependencies["@ovh-api/common"] = "^3.0.1";
+                data.dependencies["@ovh-api/common"] = "^3.0.2";
                 content = JSON.stringify(data, undefined, 4) + EOL;
                 fs.writeFileSync(jsonFile, content, { encoding: 'utf8' });
             }

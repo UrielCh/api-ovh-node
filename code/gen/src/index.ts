@@ -5,6 +5,7 @@ import { CodeGenerator } from './CodeGenerator';
 import Promise from 'bluebird';
 import rimraf from 'rimraf'
 import { IEndpoint, endpoints } from './endpoints';
+import { formatUpperCamlCase, formatLowerCamlCase } from './utils';
 
 const PathToApiName = (api: string) => api.substring(1).replace(/\//g, '-').replace(/[A-Z]/g, letter => `-${letter.toLowerCase()}`).replace(/^-/, '');
 
@@ -76,11 +77,84 @@ async function genRegion(endpoint: IEndpoint) {
         let flat = PathToApiName(api);
         let dir = path.join(packagesDir, flat);
         await fse.ensureDir(dir);
+
+        ////////////
+        // index.ts
+        //
+
         let fn = path.join(dir, 'index.ts');
         let code = await cg.generate();
-        // console.log(`${api} saving ${fn}`);
         await fse.writeFile(fn, code);
         let rwfile = true;
+
+
+        ////////////
+        // readme.md
+        //
+
+        fn = path.join(dir, 'README.md');
+        const content: string[] = [];
+        content.push(`# Connector for OVHCloud service ${flat}`);
+        content.push(``);
+        content.push(`This module contains all typing needed to use OvhCloud ${flat} service, with hi-level IntelliSense / Code complession`);
+        content.push(``);
+        content.push(`[![NPM Version](https://img.shields.io/npm/v/@${endpoint.namespace}/${flat}.svg?style=flat)](https://www.npmjs.org/package/@${endpoint.namespace}/${flat})`);
+        content.push(``);
+        content.push(`## setup`);
+        content.push(``);
+        content.push(`With npm:`);
+        content.push('````bash');
+        content.push('npm install --save @ovh-api/api');
+        if (flat != 'me') {
+            content.push(`npm install --save @${endpoint.namespace}/me`);
+        }
+        content.push(`npm install --save @${endpoint.namespace}/${flat}`);
+        content.push(`... Add all APIs you needs`);
+        content.push('````');
+        content.push(``);
+        content.push(`## usage`);
+        content.push(``);
+        content.push('````typescript');
+        content.push(`import OvhEngine from '@ovh-api/api';`);
+        if (flat != 'me') {
+            content.push(`import apiMe from '@${endpoint.namespace}/me';`);
+        }
+        
+        content.push(`import api${formatUpperCamlCase(flat)} from '@${endpoint.namespace}/${flat}';`);
+        content.push('');
+        content.push(`const ovhEngine = new OvhEngine({ `);
+        content.push(`    certCache: './cert-cache.json', // optionnal cache certificat to disk`);
+
+        let privileges = `GET ${cg.api}, GET ${cg.api}/*`
+        if (flat != 'me') {
+            privileges += ', GET /me';
+        }
+        content.push(`    accessRules: '${privileges}', // optionnal limit the requested privileges.`);
+        content.push(`});`);
+        content.push('');
+        content.push('const api = {');
+        if (flat != 'me') {
+            content.push(`    me: apiMe(ovhEngine),`);
+        }
+        content.push(`    ${formatLowerCamlCase(flat)}: api${formatUpperCamlCase(flat)}(ovhEngine),`);
+        content.push('}');
+        content.push('');
+        content.push('const test = async () => {');
+        if (flat != 'me') {
+            content.push(`    const { nichandle } = await api.me.$get();`);
+        }
+        content.push(`    const data = await api.${formatLowerCamlCase(flat)}.$get();`);
+        content.push('    console.log(`${nichandle} have the following services:`);');
+        content.push('    console.log(data);');
+        content.push('}');
+        content.push('');
+        content.push('````');
+        // import { EOL } from 'os';
+        await fse.writeFile(fn, content.join('\n'));
+
+        ////////////
+        // package.json
+        //
 
         fn = path.join(dir, 'package.json');
         try {
@@ -90,33 +164,37 @@ async function genRegion(endpoint: IEndpoint) {
         //rwfile = true;
         if (rwfile)
             await fse.writeJSON(fn, {
-                "name": `@${endpoint.namespace}/${flat}`,
-                "description": `Add typing to to ovh api ${flat}`,
-                "version": "3.0.0",
-                "typings": "index.d.ts",
-                "license": "MIT",
-                "author": "Uriel Chemouni <uchemouni@gmail.com>",
-                "dependencies": {
+                name: `@${endpoint.namespace}/${flat}`,
+                description: `Add typing to to ovh api ${flat}`,
+                version: "3.0.0",
+                typings: "index.d.ts",
+                license: "MIT",
+                author: "Uriel Chemouni <uchemouni@gmail.com>",
+                dependencies: {
                     "@ovh-api/common": "^3.1.2",
                 },
-                "publishConfig": {
-                    "access": "public"
+                publishConfig: {
+                    access: "public"
                 },
-                "bugs": "https://github.com/UrielCh/api-ovh-node/issues",
-                "repository": {
-                    "type": "git",
-                    "url": "git+https://github.com/UrielCh/api-ovh-node.git"
+                bugs: "https://github.com/UrielCh/api-ovh-node/issues",
+                repository: {
+                    type: "git",
+                    url: "git+https://github.com/UrielCh/api-ovh-node.git"
                 },
-                "scripts": {
-                    "build": "tsc",
+                scripts: {
+                    build: "tsc",
                     "build:watch": "tsc --watch",
-                    "prepare": "npm run build"
+                    prepare: "npm run build"
                 },
-                "files": [
+                files: [
                     "index.js",
                     "index.d.ts"
                 ]            
             }, { spaces: 4 })
+
+        ////////////
+        // tsconfig.json
+        //
 
         fn = path.join(dir, 'tsconfig.json');
         rwfile = true;
@@ -136,6 +214,7 @@ async function genRegion(endpoint: IEndpoint) {
                     "esModuleInterop": true,
                 }
             }, { spaces: 4 });
+        // DONE
     }, { concurrency });
 }
 

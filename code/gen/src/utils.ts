@@ -62,6 +62,24 @@ export function formatUpperCamlCase(name: string) {
     return sb.toString();
 }
 
+export function formatLowerCamlCase(name: string) {
+    let sb = '';
+    let upper = false;
+    for (let i = 0; i < name.length; i++) {
+        let c = name.charAt(i);
+        if (c == '_' || c == '-') {
+            upper = true;
+            continue;
+        }
+        if (upper) {
+            sb += c.toLocaleUpperCase();
+            upper = false;
+        } else
+            sb += c;
+    }
+    return sb.toString();
+}
+
 export function className(path: string): string {
     return formatUpperCamlCase(path.replace(/\//g, '_').replace(/[{}]/g, '_').replace(/[__]/g, '_'))
 }
