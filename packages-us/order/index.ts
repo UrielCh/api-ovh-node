@@ -995,7 +995,7 @@ export interface Order {
             }
             ip: {
                 /**
-                 * Get informations about IP addresses offers
+                 * Get information about IP addresses offers
                  * GET /order/cart/{cartId}/ip
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -1010,7 +1010,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about IP addresses options
+                     * Get information about IP addresses options
                      * GET /order/cart/{cartId}/ip/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;

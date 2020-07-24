@@ -1629,6 +1629,27 @@ export interface Dedicated {
                     }
                 };
             }
+            bringYourOwnImage: {
+                /**
+                 * Delete your current image installation
+                 * DELETE /dedicated/server/{serviceName}/bringYourOwnImage
+                 */
+                $delete(): Promise<void>;
+                /**
+                 * Get this object properties
+                 * GET /dedicated/server/{serviceName}/bringYourOwnImage
+                 */
+                $get(): Promise<dedicated.server.ByoiStatus>;
+                /**
+                 * Start an install with your own image
+                 * POST /dedicated/server/{serviceName}/bringYourOwnImage
+                 */
+                $post(params: { checkSum: string, checkSumType: dedicated.CheckSumTypesEnum, description?: string, diskGroupId?: number, hostname: string, httpHeader?: complexType.SafeKeyValue<string>[], sshKey: string, type: dedicated.ImageTypesEnum, URL: string, userData?: string, userMetadatas?: complexType.SafeKeyValue<string>[] }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
             burst: {
                 /**
                  * Get this object properties

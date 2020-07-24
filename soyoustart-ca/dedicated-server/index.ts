@@ -1331,6 +1331,27 @@ export interface Dedicated {
                     }
                 };
             }
+            bringYourOwnImage: {
+                /**
+                 * Delete your current image installation
+                 * DELETE /dedicated/server/{serviceName}/bringYourOwnImage
+                 */
+                $delete(): Promise<void>;
+                /**
+                 * Get this object properties
+                 * GET /dedicated/server/{serviceName}/bringYourOwnImage
+                 */
+                $get(): Promise<dedicated.server.ByoiStatus>;
+                /**
+                 * Start an install with your own image
+                 * POST /dedicated/server/{serviceName}/bringYourOwnImage
+                 */
+                $post(params: { checkSum: string, checkSumType: dedicated.CheckSumTypesEnum, description?: string, diskGroupId?: number, hostname: string, httpHeader?: complexType.SafeKeyValue<string>[], sshKey: string, type: dedicated.ImageTypesEnum, URL: string, userData?: string, userMetadatas?: complexType.SafeKeyValue<string>[] }): Promise<void>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
             confirmTermination: {
                 /**
                  * Confirm termination of your service
@@ -2393,12 +2414,34 @@ export interface Dedicated {
             }
             support: {
                 replace: {
+                    cooling: {
+                        /**
+                         * Ask for a cooling module replacement
+                         * POST /dedicated/server/{serviceName}/support/replace/cooling
+                         */
+                        $post(params: { comment: string, details: string }): Promise<support.NewMessageInfo>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    }
                     hardDiskDrive: {
                         /**
                          * Ask for a broken HDD replacement
                          * POST /dedicated/server/{serviceName}/support/replace/hardDiskDrive
                          */
                         $post(params: { comment: string, disks: dedicated.server.SupportReplaceHddInfo[], inverse: boolean }): Promise<support.NewMessageInfo>;
+                        /**
+                         * Controle cache
+                         */
+                        $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+                    }
+                    memory: {
+                        /**
+                         * Ask for a faulty RAM module replacement
+                         * POST /dedicated/server/{serviceName}/support/replace/memory
+                         */
+                        $post(params: { comment: string, details: string, slots?: string[] }): Promise<support.NewMessageInfo>;
                         /**
                          * Controle cache
                          */

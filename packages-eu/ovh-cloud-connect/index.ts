@@ -68,7 +68,7 @@ export namespace ovhcloudconnect {
         interfaceId: number;
         ovhBgpArea: number;
         status: ovhcloudconnect.popConfig.StatusEnum;
-        subnet: string;
+        subnet?: string;
         type: ovhcloudconnect.popConfig.TypeEnum;
     }
     /**
@@ -89,6 +89,7 @@ export namespace ovhcloudconnect {
         pop: string;
         portQuantity: ovhcloudconnect.service.PortEnum;
         product: string;
+        provider: ovhcloudconnect.service.ProviderEnum;
         status: ovhcloudconnect.service.StatusEnum;
         uuid: string;
         vrack?: string;
@@ -178,6 +179,11 @@ export namespace ovhcloudconnect {
          * type fullname: ovhcloudconnect.service.PortEnum
          */
         export type PortEnum = "1" | "2"
+        /**
+         * Enum values for service provider
+         * type fullname: ovhcloudconnect.service.ProviderEnum
+         */
+        export type ProviderEnum = "megaport" | "equinix" | "internal" | "OVHcloud"
         /**
          * Enum values for the Service
          * type fullname: ovhcloudconnect.service.StatusEnum

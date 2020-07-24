@@ -2497,6 +2497,22 @@ export interface Order {
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
             }
+            ipReseller: {
+                /**
+                 * Get information about IP addresses reseller offers
+                 * GET /order/cart/{cartId}/ipReseller
+                 */
+                $get(): Promise<order.cart.GenericProductDefinition[]>;
+                /**
+                 * Post a new IP address reseller item in your cart
+                 * POST /order/cart/{cartId}/ipReseller
+                 */
+                $post(params: { duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+            }
             item: {
                 /**
                  * List all the items of a cart

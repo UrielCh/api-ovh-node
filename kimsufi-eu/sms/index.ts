@@ -4,6 +4,21 @@ import { buildOvhProxy, CacheAction, ICacheOptions, OvhRequestable } from '@ovh-
  * START API /sms Models
  * Source: https://eu.api.kimsufi.com/1.0/sms.json
  */
+export namespace order {
+    /**
+     * type fullname: order.CurrencyCodeEnum
+     */
+    export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
+    /**
+     * Price with it's currency and textual representation
+     * interface fullName: order.Price.Price
+     */
+    export interface Price {
+        currencyCode: order.CurrencyCodeEnum;
+        text: string;
+        value: number;
+    }
+}
 export namespace reference {
     /**
      * All country prices accessible from a reference
@@ -121,6 +136,16 @@ export namespace sms {
      */
     export type CountryEnum = "ag" | "ai" | "all" | "an" | "ar" | "at" | "au" | "aw" | "ba" | "bb" | "be" | "bg" | "bh" | "bm" | "bo" | "br" | "bz" | "ch" | "cl" | "cn" | "co" | "cr" | "cu" | "cy" | "cz" | "de" | "dk" | "dm" | "dz" | "ec" | "ee" | "eg" | "es" | "fi" | "fr" | "gb" | "gd" | "gp" | "gr" | "gy" | "hk" | "hn" | "hr" | "ht" | "hu" | "id" | "ie" | "il" | "in" | "is" | "it" | "jm" | "jo" | "jp" | "kr" | "kw" | "ky" | "lb" | "lc" | "lt" | "lu" | "lv" | "ma" | "me" | "mq" | "ms" | "mt" | "my" | "nc" | "ng" | "nl" | "no" | "nz" | "pa" | "pe" | "pf" | "ph" | "pk" | "pl" | "pt" | "py" | "re" | "ro" | "rs" | "ru" | "sa" | "se" | "sg" | "si" | "sk" | "sr" | "tc" | "th" | "tn" | "tr" | "tt" | "tw" | "ua" | "uy" | "vc" | "ve" | "vg" | "vn" | "za"
     /**
+     * Rates of a given destination
+     * interface fullName: sms.DestinationRates.DestinationRates
+     */
+    export interface DestinationRates {
+        country: string;
+        countryCode: sms.CountryEnum;
+        credit: number;
+        price: order.Price;
+    }
+    /**
      * Way type
      * type fullname: sms.DocumentWayTypeEnum
      */
@@ -233,6 +258,20 @@ export namespace sms {
         sentAt?: string;
         tag: string;
         tariffCode: string;
+    }
+    /**
+     * Details about a SMS pack
+     * interface fullName: sms.PackDetails.PackDetails
+     */
+    export interface PackDetails {
+        countryCode: sms.CountryEnum;
+        credit: number;
+        creditPrice: order.Price;
+        creditQuantityMax?: number;
+        creditQuantityMin: number;
+        smsPrice: order.Price;
+        smsQuantityMax?: number;
+        smsQuantityMin: number;
     }
     /**
      * A structure describing all information about an sms pack offer
@@ -611,6 +650,30 @@ export interface Sms {
          * Controle cache
          */
         $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+    }
+    rates: {
+        destinations: {
+            /**
+             * Get the prices and credits to send a SMS towards given country
+             * GET /sms/rates/destinations
+             */
+            $get(params: { country: sms.CountryEnum }): Promise<sms.DestinationRates>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        }
+        packs: {
+            /**
+             * Get the prices and credits of all the SMS packs with informations about the destination country
+             * GET /sms/rates/packs
+             */
+            $get(params: { country: sms.CountryEnum }): Promise<sms.PackDetails[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        }
     }
     virtualNumbers: {
         /**

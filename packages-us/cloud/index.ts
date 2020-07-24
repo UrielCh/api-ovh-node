@@ -125,6 +125,7 @@ export namespace cloud {
         creationDate: string;
         description?: string;
         expiration?: string;
+        manualQuota: boolean;
         orderId?: number;
         planCode: string;
         projectName?: string;
@@ -798,7 +799,7 @@ export namespace cloud {
          * UnitQuantity
          * type fullname: cloud.billingView.UnitQuantityEnum
          */
-        export type UnitQuantityEnum = "GiB" | "GiBh" | "Hour" | "Minute" | "Second"
+        export type UnitQuantityEnum = "GiB" | "GiBh" | "Hour" | "Minute" | "Second" | "Unit"
         /**
          * UsedCredit
          * interface fullName: cloud.billingView.UsedCredit.UsedCredit
@@ -1830,7 +1831,7 @@ export interface Cloud {
              * Alter this object properties
              * PUT /cloud/project/{serviceName}
              */
-            $put(params?: { access?: cloud.AccessTypeEnum, creationDate?: string, description?: string, expiration?: string, orderId?: number, planCode?: string, projectName?: string, project_id?: string, status?: cloud.project.ProjectStatusEnum, unleash?: boolean }): Promise<void>;
+            $put(params?: { access?: cloud.AccessTypeEnum, creationDate?: string, description?: string, expiration?: string, manualQuota?: boolean, orderId?: number, planCode?: string, projectName?: string, project_id?: string, status?: cloud.project.ProjectStatusEnum, unleash?: boolean }): Promise<void>;
             /**
              * Controle cache
              */

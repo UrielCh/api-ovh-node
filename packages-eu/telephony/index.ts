@@ -2131,7 +2131,7 @@ export namespace telephony {
      * List of possible type of a telephony service
      * type fullname: telephony.TelephonySearchServiceTypeEnum
      */
-    export type TelephonySearchServiceTypeEnum = "alias" | "line"
+    export type TelephonySearchServiceTypeEnum = "alias" | "line" | "trunk"
     /**
      * Telephony service
      * interface fullName: telephony.TelephonyService.TelephonyService

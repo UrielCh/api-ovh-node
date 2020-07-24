@@ -2243,6 +2243,76 @@ export namespace cloud {
                 export interface AuthorizationStatus {
                     authorized: boolean;
                 }
+                /**
+                 * Training Platform Data Object
+                 * interface fullName: cloud.project.ai.training.Data.Data
+                 */
+                export interface Data {
+                    account: string;
+                    created: string;
+                    id: string;
+                    name: string;
+                    region: cloud.project.ai.training.RegionEnum;
+                    user: string;
+                }
+                /**
+                 * Training Platform Data Spec Object
+                 * interface fullName: cloud.project.ai.training.DataSpec.DataSpec
+                 */
+                export interface DataSpec {
+                    name: string;
+                    region: cloud.project.ai.training.RegionEnum;
+                    user: string;
+                }
+                /**
+                 * Training Platform Job Object
+                 * interface fullName: cloud.project.ai.training.Job.Job
+                 */
+                export interface Job {
+                    command: string[];
+                    created: string;
+                    data: string[];
+                    id: string;
+                    image: string;
+                    name: string;
+                    region: cloud.project.ai.training.RegionEnum;
+                    resources: cloud.project.ai.training.JobResource;
+                    state: cloud.project.ai.training.JobStatusEnum;
+                    updatedOn: string;
+                    user: string;
+                }
+                /**
+                 * Training Platform Job Resource Object
+                 * interface fullName: cloud.project.ai.training.JobResource.JobResource
+                 */
+                export interface JobResource {
+                    cpu?: number;
+                    gpu?: number;
+                    mem?: number;
+                }
+                /**
+                 * Training Platform Job Spec Object to create a job
+                 * interface fullName: cloud.project.ai.training.JobSpec.JobSpec
+                 */
+                export interface JobSpec {
+                    command: string[];
+                    data: string[];
+                    image: string;
+                    name?: string;
+                    region: cloud.project.ai.training.RegionEnum;
+                    resources: cloud.project.ai.training.JobResource;
+                    user: string;
+                }
+                /**
+                 * Status of the job
+                 * type fullname: cloud.project.ai.training.JobStatusEnum
+                 */
+                export type JobStatusEnum = "CANCELLED" | "FAILED" | "INTERRUPTED" | "SUCCEEDED" | "QUEUING" | "QUEUED"
+                /**
+                 * Training Platform Region Enum
+                 * type fullname: cloud.project.ai.training.RegionEnum
+                 */
+                export type RegionEnum = "GRA"
             }
         }
         export namespace dataProcessing {

@@ -917,6 +917,34 @@ export namespace http {
     export type MethodEnum = "DELETE" | "GET" | "POST" | "PUT"
 }
 export namespace me {
+    /**
+     * Country Migration
+     * interface fullName: me.Migration.Migration
+     */
+    export interface Migration {
+        from: nichandle.OvhSubsidiaryEnum;
+        id: number;
+        status: me.migration.StatusEnum;
+        steps?: me.migration.Step[];
+        to: nichandle.OvhSubsidiaryEnum;
+    }
+    export namespace agreements {
+        /**
+         * State of the agreement
+         * type fullname: me.agreements.AgreementStatusEnum
+         */
+        export type AgreementStatusEnum = "obsolete" | "todo" | "ko" | "ok"
+        /**
+         * Contract Agreement
+         * interface fullName: me.agreements.ContractAgreement.ContractAgreement
+         */
+        export interface ContractAgreement {
+            agreed: me.agreements.AgreementStatusEnum;
+            contractId: number;
+            date: string;
+            id: number;
+        }
+    }
     export namespace billing {
         export namespace group {
             /**
@@ -1125,6 +1153,72 @@ export namespace me {
                 inputCode: string;
                 serviceId: number;
             }
+        }
+    }
+    export namespace migration {
+        /**
+         * contract
+         * interface fullName: me.migration.Contract.Contract
+         */
+        export interface Contract {
+            active: boolean;
+            date: string;
+            id: number;
+            name: string;
+            pdf: string;
+            text: string;
+        }
+        /**
+         * Status of the migration
+         * type fullname: me.migration.StatusEnum
+         */
+        export type StatusEnum = "CANCELED" | "CHECKED" | "DOING" | "MIGRATED" | "TO_CHECK" | "TODO"
+        /**
+         * Country Migration Step
+         * interface fullName: me.migration.Step.Step
+         */
+        export interface Step {
+            contracts?: me.migration.step.Contracts;
+            debt?: me.migration.step.Debt;
+            name: me.migration.step.NameEnum;
+            orders?: me.migration.step.Orders;
+            status: me.migration.step.StatusEnum;
+        }
+        export namespace step {
+            /**
+             * Country Migration step contracts data
+             * interface fullName: me.migration.step.Contracts.Contracts
+             */
+            export interface Contracts {
+                agreements: me.agreements.ContractAgreement[];
+            }
+            /**
+             * Country Migration step debt data
+             * interface fullName: me.migration.step.Debt.Debt
+             */
+            export interface Debt {
+                balanceAmount?: orderPrice;
+                ovhAccountAmount?: orderPrice;
+            }
+            /**
+             * Name of the migration step
+             * type fullname: me.migration.step.NameEnum
+             */
+            export type NameEnum = "ORDERS" | "DEBT" | "NIC" | "CONTRACTS"
+            /**
+             * Country Migration step orders data
+             * interface fullName: me.migration.step.Orders.Orders
+             */
+            export interface Orders {
+                pendingOperations: boolean;
+                pendingPromotions: boolean;
+                pendingSubscriptions: boolean;
+            }
+            /**
+             * Status of the migration step
+             * type fullname: me.migration.step.StatusEnum
+             */
+            export type StatusEnum = "OK" | "PENDING"
         }
     }
     export namespace payment {
@@ -1412,7 +1506,7 @@ export namespace nichandle {
      * OVH subsidiaries
      * type fullname: nichandle.OvhSubsidiaryEnum
      */
-    export type OvhSubsidiaryEnum = "ASIA" | "AU" | "CA" | "CZ" | "DE" | "ES" | "EU" | "FI" | "FR" | "GB" | "IE" | "IT" | "LT" | "MA" | "NL" | "PL" | "PT" | "QC" | "SG" | "SN" | "TN" | "US" | "WE" | "WS"
+    export type OvhSubsidiaryEnum = "CZ" | "DE" | "ES" | "EU" | "FI" | "FR" | "GB" | "IE" | "IT" | "LT" | "MA" | "NL" | "PL" | "PT" | "SN" | "TN" | "ASIA" | "AU" | "CA" | "QC" | "SG" | "WE" | "WS" | "US"
     /**
      * Indicates the mandatory nature of having a valid payment method
      * type fullname: nichandle.RequiredPaymentMethodEnum
@@ -1663,11 +1757,12 @@ export namespace nichandle {
 }
 export namespace order {
     /**
+     * Currency code
      * type fullname: order.CurrencyCodeEnum
      */
     export type CurrencyCodeEnum = "AUD" | "CAD" | "CZK" | "EUR" | "GBP" | "LTL" | "MAD" | "N/A" | "PLN" | "SGD" | "TND" | "USD" | "XOF" | "points"
     /**
-     * Price with it's currency and textual representation
+     * Price with its currency and textual representation
      * interface fullName: order.Price.Price
      */
     export interface Price {
@@ -2576,10 +2671,10 @@ export interface Me {
     credit: {
         balance: {
             /**
-             * Retrieve credit balance names
+             * Retrieve all credit balances
              * GET /me/credit/balance
              */
-            $get(params?: { type?: billing.credit.balance.Type }): Promise<string[]>;
+            $get(params?: { type?: me.credit.balance.TypeEnum }): Promise<string[]>;
             /**
              * Controle cache
              */
@@ -2589,7 +2684,7 @@ export interface Me {
                  * Retrieve a credit balance
                  * GET /me/credit/balance/{balanceName}
                  */
-                $get(): Promise<billing.credit.Balance>;
+                $get(): Promise<me.credit.Balance>;
                 /**
                  * Controle cache
                  */
@@ -2609,7 +2704,7 @@ export interface Me {
                          * Retrieve a specific movement for a credit balance
                          * GET /me/credit/balance/{balanceName}/movement/{movementId}
                          */
-                        $get(): Promise<billing.credit.balance.Movement>;
+                        $get(): Promise<me.credit.balance.Movement>;
                         /**
                          * Controle cache
                          */
@@ -2623,7 +2718,7 @@ export interface Me {
              * Validate a code to generate associated credit movement
              * POST /me/credit/code
              */
-            $post(params: { inputCode: string, serviceId?: number }): Promise<billing.credit.balance.Movement>;
+            $post(params: { inputCode: string, serviceId?: number }): Promise<me.credit.balance.Movement>;
             /**
              * Controle cache
              */

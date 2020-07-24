@@ -2135,7 +2135,7 @@ export interface Order {
             }
             ip: {
                 /**
-                 * Get informations about IP addresses offers
+                 * Get information about IP addresses offers
                  * GET /order/cart/{cartId}/ip
                  */
                 $get(): Promise<order.cart.GenericProductDefinition[]>;
@@ -2150,7 +2150,7 @@ export interface Order {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 options: {
                     /**
-                     * Get informations about IP addresses options
+                     * Get information about IP addresses options
                      * GET /order/cart/{cartId}/ip/options
                      */
                     $get(params: { planCode: string }): Promise<order.cart.GenericOptionDefinition[]>;
@@ -2196,6 +2196,22 @@ export interface Order {
                      */
                     $cache(param?: ICacheOptions | CacheAction): Promise<any>;
                 }
+            }
+            ipReseller: {
+                /**
+                 * Get information about IP addresses reseller offers
+                 * GET /order/cart/{cartId}/ipReseller
+                 */
+                $get(): Promise<order.cart.GenericProductDefinition[]>;
+                /**
+                 * Post a new IP address reseller item in your cart
+                 * POST /order/cart/{cartId}/ipReseller
+                 */
+                $post(params: { duration: string, planCode: string, pricingMode: string, quantity: number }): Promise<order.cart.Item>;
+                /**
+                 * Controle cache
+                 */
+                $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
             item: {
                 /**

@@ -178,5 +178,16 @@ export interface Services {
                 $cache(param?: ICacheOptions | CacheAction): Promise<any>;
             }
         }
+        options: {
+            /**
+             * Get options of a service
+             * GET /services/{serviceId}/options
+             */
+            $get(): Promise<services.expanded.Service[]>;
+            /**
+             * Controle cache
+             */
+            $cache(param?: ICacheOptions | CacheAction): Promise<any>;
+        }
     };
 }
