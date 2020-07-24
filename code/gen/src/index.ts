@@ -144,7 +144,9 @@ async function genRegion(endpoint: IEndpoint) {
             content.push(`    const { nichandle } = await api.me.$get();`);
         }
         content.push(`    const data = await api.${formatLowerCamlCase(flat)}.$get();`);
-        content.push('    console.log(`${nichandle} have the following services:`);');
+        if (flat != 'me') {
+            content.push('    console.log(`${nichandle} have the following services:`);');
+        }
         content.push('    console.log(data);');
         content.push('}');
         content.push('```');
