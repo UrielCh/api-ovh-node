@@ -1,6 +1,6 @@
 # Connector for OVHCloud service new-account
 
-This module contains all typing needed to use OvhCloud new-account service, with hi-level IntelliSense / Code complession
+This module contains all typing needed to use OvhCloud new-account service, with hi-level IntelliSense / Code Completion
 
 [![NPM Version](https://img.shields.io/npm/v/@ovh-api-ca/new-account.svg?style=flat)](https://www.npmjs.org/package/@ovh-api-ca/new-account)
 

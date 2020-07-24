@@ -1,6 +1,6 @@
 # Connector for OVHCloud service deskaas
 
-This module contains all typing needed to use OvhCloud deskaas service, with hi-level IntelliSense / Code complession
+This module contains all typing needed to use OvhCloud deskaas service, with hi-level IntelliSense / Code Completion
 
 [![NPM Version](https://img.shields.io/npm/v/@ovh-api-ca/deskaas.svg?style=flat)](https://www.npmjs.org/package/@ovh-api-ca/deskaas)
 

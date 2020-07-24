@@ -1,6 +1,6 @@
 # Connector for OVHCloud service ssl
 
-This module contains all typing needed to use OvhCloud ssl service, with hi-level IntelliSense / Code complession
+This module contains all typing needed to use OvhCloud ssl service, with hi-level IntelliSense / Code Completion
 
 [![NPM Version](https://img.shields.io/npm/v/@ovh-api/ssl.svg?style=flat)](https://www.npmjs.org/package/@ovh-api/ssl)
 

@@ -1,6 +1,6 @@
 # Connector for OVHCloud service cloud
 
-This module contains all typing needed to use OvhCloud cloud service, with hi-level IntelliSense / Code complession
+This module contains all typing needed to use OvhCloud cloud service, with hi-level IntelliSense / Code Completion
 
 [![NPM Version](https://img.shields.io/npm/v/@ovh-api/cloud.svg?style=flat)](https://www.npmjs.org/package/@ovh-api/cloud)
 

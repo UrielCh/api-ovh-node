@@ -1,6 +1,6 @@
 # Connector for OVHCloud service vps
 
-This module contains all typing needed to use OvhCloud vps service, with hi-level IntelliSense / Code complession
+This module contains all typing needed to use OvhCloud vps service, with hi-level IntelliSense / Code Completion
 
 [![NPM Version](https://img.shields.io/npm/v/@ovh-api/vps.svg?style=flat)](https://www.npmjs.org/package/@ovh-api/vps)
 

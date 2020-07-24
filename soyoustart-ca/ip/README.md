@@ -1,6 +1,6 @@
 # Connector for OVHCloud service ip
 
-This module contains all typing needed to use OvhCloud ip service, with hi-level IntelliSense / Code complession
+This module contains all typing needed to use OvhCloud ip service, with hi-level IntelliSense / Code Completion
 
 [![NPM Version](https://img.shields.io/npm/v/@ovh-soyoustart-ca/ip.svg?style=flat)](https://www.npmjs.org/package/@ovh-soyoustart-ca/ip)
 

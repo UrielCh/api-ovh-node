@@ -1,6 +1,6 @@
 # Connector for OVHCloud service analytics
 
-This module contains all typing needed to use OvhCloud analytics service, with hi-level IntelliSense / Code complession
+This module contains all typing needed to use OvhCloud analytics service, with hi-level IntelliSense / Code Completion
 
 [![NPM Version](https://img.shields.io/npm/v/@ovh-kimsufi/analytics.svg?style=flat)](https://www.npmjs.org/package/@ovh-kimsufi/analytics)
 

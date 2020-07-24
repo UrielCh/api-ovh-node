@@ -1,6 +1,6 @@
 # Connector for OVHCloud service dbaas-logs
 
-This module contains all typing needed to use OvhCloud dbaas-logs service, with hi-level IntelliSense / Code complession
+This module contains all typing needed to use OvhCloud dbaas-logs service, with hi-level IntelliSense / Code Completion
 
 [![NPM Version](https://img.shields.io/npm/v/@ovh-api-ca/dbaas-logs.svg?style=flat)](https://www.npmjs.org/package/@ovh-api-ca/dbaas-logs)
 

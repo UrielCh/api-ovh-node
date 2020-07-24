@@ -1,6 +1,6 @@
 # Connector for OVHCloud service ms-services
 
-This module contains all typing needed to use OvhCloud ms-services service, with hi-level IntelliSense / Code complession
+This module contains all typing needed to use OvhCloud ms-services service, with hi-level IntelliSense / Code Completion
 
 [![NPM Version](https://img.shields.io/npm/v/@ovh-api-ca/ms-services.svg?style=flat)](https://www.npmjs.org/package/@ovh-api-ca/ms-services)
 

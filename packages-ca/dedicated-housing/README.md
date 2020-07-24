@@ -1,6 +1,6 @@
 # Connector for OVHCloud service dedicated-housing
 
-This module contains all typing needed to use OvhCloud dedicated-housing service, with hi-level IntelliSense / Code complession
+This module contains all typing needed to use OvhCloud dedicated-housing service, with hi-level IntelliSense / Code Completion
 
 [![NPM Version](https://img.shields.io/npm/v/@ovh-api-ca/dedicated-housing.svg?style=flat)](https://www.npmjs.org/package/@ovh-api-ca/dedicated-housing)
 

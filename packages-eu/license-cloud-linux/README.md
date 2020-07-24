@@ -1,6 +1,6 @@
 # Connector for OVHCloud service license-cloud-linux
 
-This module contains all typing needed to use OvhCloud license-cloud-linux service, with hi-level IntelliSense / Code complession
+This module contains all typing needed to use OvhCloud license-cloud-linux service, with hi-level IntelliSense / Code Completion
 
 [![NPM Version](https://img.shields.io/npm/v/@ovh-api/license-cloud-linux.svg?style=flat)](https://www.npmjs.org/package/@ovh-api/license-cloud-linux)
 

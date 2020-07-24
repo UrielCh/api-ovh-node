@@ -1,6 +1,6 @@
 # Connector for OVHCloud service caas-registry
 
-This module contains all typing needed to use OvhCloud caas-registry service, with hi-level IntelliSense / Code complession
+This module contains all typing needed to use OvhCloud caas-registry service, with hi-level IntelliSense / Code Completion
 
 [![NPM Version](https://img.shields.io/npm/v/@ovh-kimsufi/caas-registry.svg?style=flat)](https://www.npmjs.org/package/@ovh-kimsufi/caas-registry)
 

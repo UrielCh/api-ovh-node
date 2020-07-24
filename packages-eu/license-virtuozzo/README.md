@@ -1,6 +1,6 @@
 # Connector for OVHCloud service license-virtuozzo
 
-This module contains all typing needed to use OvhCloud license-virtuozzo service, with hi-level IntelliSense / Code complession
+This module contains all typing needed to use OvhCloud license-virtuozzo service, with hi-level IntelliSense / Code Completion
 
 [![NPM Version](https://img.shields.io/npm/v/@ovh-api/license-virtuozzo.svg?style=flat)](https://www.npmjs.org/package/@ovh-api/license-virtuozzo)
 

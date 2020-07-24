@@ -1,6 +1,6 @@
 # Connector for OVHCloud service license-windows
 
-This module contains all typing needed to use OvhCloud license-windows service, with hi-level IntelliSense / Code complession
+This module contains all typing needed to use OvhCloud license-windows service, with hi-level IntelliSense / Code Completion
 
 [![NPM Version](https://img.shields.io/npm/v/@ovh-api-us/license-windows.svg?style=flat)](https://www.npmjs.org/package/@ovh-api-us/license-windows)
 

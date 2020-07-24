@@ -1,6 +1,6 @@
 # Connector for OVHCloud service dedicated-cloud
 
-This module contains all typing needed to use OvhCloud dedicated-cloud service, with hi-level IntelliSense / Code complession
+This module contains all typing needed to use OvhCloud dedicated-cloud service, with hi-level IntelliSense / Code Completion
 
 [![NPM Version](https://img.shields.io/npm/v/@ovh-soyoustart/dedicated-cloud.svg?style=flat)](https://www.npmjs.org/package/@ovh-soyoustart/dedicated-cloud)
 

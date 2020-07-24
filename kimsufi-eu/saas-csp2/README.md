@@ -1,6 +1,6 @@
 # Connector for OVHCloud service saas-csp2
 
-This module contains all typing needed to use OvhCloud saas-csp2 service, with hi-level IntelliSense / Code complession
+This module contains all typing needed to use OvhCloud saas-csp2 service, with hi-level IntelliSense / Code Completion
 
 [![NPM Version](https://img.shields.io/npm/v/@ovh-kimsufi/saas-csp2.svg?style=flat)](https://www.npmjs.org/package/@ovh-kimsufi/saas-csp2)
 

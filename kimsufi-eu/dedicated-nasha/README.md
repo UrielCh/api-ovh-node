@@ -1,6 +1,6 @@
 # Connector for OVHCloud service dedicated-nasha
 
-This module contains all typing needed to use OvhCloud dedicated-nasha service, with hi-level IntelliSense / Code complession
+This module contains all typing needed to use OvhCloud dedicated-nasha service, with hi-level IntelliSense / Code Completion
 
 [![NPM Version](https://img.shields.io/npm/v/@ovh-kimsufi/dedicated-nasha.svg?style=flat)](https://www.npmjs.org/package/@ovh-kimsufi/dedicated-nasha)
 

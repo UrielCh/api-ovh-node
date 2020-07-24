@@ -1,6 +1,6 @@
 # Connector for OVHCloud service dedicated-installation-template
 
-This module contains all typing needed to use OvhCloud dedicated-installation-template service, with hi-level IntelliSense / Code complession
+This module contains all typing needed to use OvhCloud dedicated-installation-template service, with hi-level IntelliSense / Code Completion
 
 [![NPM Version](https://img.shields.io/npm/v/@ovh-soyoustart/dedicated-installation-template.svg?style=flat)](https://www.npmjs.org/package/@ovh-soyoustart/dedicated-installation-template)
 

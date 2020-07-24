@@ -1,6 +1,6 @@
 # Connector for OVHCloud service distribution-image
 
-This module contains all typing needed to use OvhCloud distribution-image service, with hi-level IntelliSense / Code complession
+This module contains all typing needed to use OvhCloud distribution-image service, with hi-level IntelliSense / Code Completion
 
 [![NPM Version](https://img.shields.io/npm/v/@ovh-kimsufi/distribution-image.svg?style=flat)](https://www.npmjs.org/package/@ovh-kimsufi/distribution-image)
 

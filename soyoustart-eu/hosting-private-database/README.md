@@ -1,6 +1,6 @@
 # Connector for OVHCloud service hosting-private-database
 
-This module contains all typing needed to use OvhCloud hosting-private-database service, with hi-level IntelliSense / Code complession
+This module contains all typing needed to use OvhCloud hosting-private-database service, with hi-level IntelliSense / Code Completion
 
 [![NPM Version](https://img.shields.io/npm/v/@ovh-soyoustart/hosting-private-database.svg?style=flat)](https://www.npmjs.org/package/@ovh-soyoustart/hosting-private-database)
 

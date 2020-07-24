@@ -1,6 +1,6 @@
 # Connector for OVHCloud service partners
 
-This module contains all typing needed to use OvhCloud partners service, with hi-level IntelliSense / Code complession
+This module contains all typing needed to use OvhCloud partners service, with hi-level IntelliSense / Code Completion
 
 [![NPM Version](https://img.shields.io/npm/v/@ovh-kimsufi/partners.svg?style=flat)](https://www.npmjs.org/package/@ovh-kimsufi/partners)
 

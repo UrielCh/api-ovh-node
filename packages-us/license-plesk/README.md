@@ -1,6 +1,6 @@
 # Connector for OVHCloud service license-plesk
 
-This module contains all typing needed to use OvhCloud license-plesk service, with hi-level IntelliSense / Code complession
+This module contains all typing needed to use OvhCloud license-plesk service, with hi-level IntelliSense / Code Completion
 
 [![NPM Version](https://img.shields.io/npm/v/@ovh-api-us/license-plesk.svg?style=flat)](https://www.npmjs.org/package/@ovh-api-us/license-plesk)
 

@@ -96,7 +96,7 @@ async function genRegion(endpoint: IEndpoint) {
         const content: string[] = [];
         content.push(`# Connector for OVHCloud service ${flat}`);
         content.push(``);
-        content.push(`This module contains all typing needed to use OvhCloud ${flat} service, with hi-level IntelliSense / Code complession`);
+        content.push(`This module contains all typing needed to use OvhCloud ${flat} service, with hi-level IntelliSense / Code Completion`);
         content.push(``);
         content.push(`[![NPM Version](https://img.shields.io/npm/v/@${endpoint.namespace}/${flat}.svg?style=flat)](https://www.npmjs.org/package/@${endpoint.namespace}/${flat})`);
         content.push(``);

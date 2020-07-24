@@ -1,6 +1,6 @@
 # Connector for OVHCloud service me
 
-This module contains all typing needed to use OvhCloud me service, with hi-level IntelliSense / Code complession
+This module contains all typing needed to use OvhCloud me service, with hi-level IntelliSense / Code Completion
 
 [![NPM Version](https://img.shields.io/npm/v/@ovh-kimsufi-ca/me.svg?style=flat)](https://www.npmjs.org/package/@ovh-kimsufi-ca/me)
 

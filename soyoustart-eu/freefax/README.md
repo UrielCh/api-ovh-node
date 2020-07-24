@@ -1,6 +1,6 @@
 # Connector for OVHCloud service freefax
 
-This module contains all typing needed to use OvhCloud freefax service, with hi-level IntelliSense / Code complession
+This module contains all typing needed to use OvhCloud freefax service, with hi-level IntelliSense / Code Completion
 
 [![NPM Version](https://img.shields.io/npm/v/@ovh-soyoustart/freefax.svg?style=flat)](https://www.npmjs.org/package/@ovh-soyoustart/freefax)
 

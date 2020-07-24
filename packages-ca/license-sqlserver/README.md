@@ -1,6 +1,6 @@
 # Connector for OVHCloud service license-sqlserver
 
-This module contains all typing needed to use OvhCloud license-sqlserver service, with hi-level IntelliSense / Code complession
+This module contains all typing needed to use OvhCloud license-sqlserver service, with hi-level IntelliSense / Code Completion
 
 [![NPM Version](https://img.shields.io/npm/v/@ovh-api-ca/license-sqlserver.svg?style=flat)](https://www.npmjs.org/package/@ovh-api-ca/license-sqlserver)
 

@@ -1,6 +1,6 @@
 # Connector for OVHCloud service ip-loadbalancing
 
-This module contains all typing needed to use OvhCloud ip-loadbalancing service, with hi-level IntelliSense / Code complession
+This module contains all typing needed to use OvhCloud ip-loadbalancing service, with hi-level IntelliSense / Code Completion
 
 [![NPM Version](https://img.shields.io/npm/v/@ovh-soyoustart/ip-loadbalancing.svg?style=flat)](https://www.npmjs.org/package/@ovh-soyoustart/ip-loadbalancing)
 
