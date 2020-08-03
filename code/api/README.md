@@ -2,7 +2,7 @@
 
 [![NPM Version](https://img.shields.io/npm/v/@ovh-api/common.svg?style=api)](https://www.npmjs.org/package/@ovh-api/api)
 
-Thoses package mostly contains typings file to assist developper in Ovh-Cloud api usage.
+This package mostly contains typings file to assist developer in Ovh-Cloud api usage.
 
 This client bling you, API's doc within your IDE.
 
@@ -12,7 +12,7 @@ This client bling you, API's doc within your IDE.
 
 with this client your IDE will only allow valid code.
 
-By the way, this api contains a lot of information about the API usage, but do not include those data in you your bundeled code, and do not increase the size of your distributable bundeled code.
+By the way, this api contains a lot of information about the API usage, but do not include those data in you your bundled code, and do not increase the size of your distributable bundled code.
 
 ## Basic
 
@@ -54,7 +54,7 @@ for (const id of ids) {
 }
 ```
 
-For a multi-thread's version:
+For a multi-threaded version:
 
 ```typescript
 const alertApi = dbaas.logs.$(serviceName).output.graylog.stream.$(streamId).alert;
@@ -68,7 +68,7 @@ await Promise.all(ids, async(id) => {
 });
 ```
 
-For a 3-thread's version using Bluebird:
+For a 3-threaded version using Bluebird:
 
 ```typescript
 const alertApi = dbaas.logs.$(serviceName).output.graylog.stream.$(streamId).alert;
@@ -100,9 +100,9 @@ await alertApi.$(id[0]).$delete()
 ids = await alertApi.$get();
 ```
 
-### certificat management
+### certificate management
 
-The Api can query for a new certificat by oppening a new browser.
+The Api can query for a new certificate by opening a new browser.
 
 The activated consumerKey can be store in a cache file if `certCache` option is provided.
 
