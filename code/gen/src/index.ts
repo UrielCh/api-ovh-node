@@ -8,6 +8,8 @@ async function main() {
         //    continue;
         try {
             await regionGen.genRegion();
+            if (regionGen.deletedApi)
+            console.log(`${regionGen.deletedApi} API deleted`);
         } catch (e) {
             console.error(`Fail to gen ${endpoint.host} API`, e)
         }

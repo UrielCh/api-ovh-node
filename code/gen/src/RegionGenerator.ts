@@ -16,6 +16,7 @@ export class RegionGenerator {
 
     private _apis?: string[];
     private workDir: string;
+    deletedApi = 0;
     /**
      * get all available APIs for this region
      */
@@ -43,8 +44,10 @@ export class RegionGenerator {
         let oldApis = await fse.readdir(this.workDir)
         oldApis = oldApis.filter(name => !apiSet.has(name))
         oldApis.forEach(name => {
-            console.log(`${name} can be remove`);
-            rimraf.sync(path.join(this.workDir, name));
+            const fullDir = path.join(this.workDir, name);
+            console.log(`${this.endpoint.directory}/${name} can be remove, deleting: ${fullDir}`);
+            rimraf.sync(fullDir);
+            this.deletedApi++;
         })
     }
 
